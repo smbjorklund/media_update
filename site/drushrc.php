@@ -159,7 +159,11 @@
  * array or add a new element.
  */
 $options['structure-tables'] = array(
- 'common' => array('cache', 'cache_filter', 'cache_menu', 'cache_page', 'history', 'sessions', 'watchdog'),
+    'common' => array(
+	'cache', 'cache_block', 'cache_bootstrap', 'cache_field', 'cache_filter',
+	'cache_form', 'cache_image', 'cache_menu', 'cache_page', 'cache_path',
+	'history', 'sessions', 'watchdog',
+    ),
 );
 
 /*
