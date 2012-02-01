@@ -177,7 +177,15 @@
  *   );
  * @endcode
  */
-$databases = array();
+$databases['default']['default'] = array (
+  'database' => 'db1',
+  'username' => 'user1',
+  'password' => 'foo1',
+  'host' => 'glory.uib.no',
+  'port' => '',
+  'driver' => 'pgsql',
+  'prefix' => '',
+);
 
 /**
  * Access control for update.php script.
@@ -209,7 +217,7 @@ $update_free_access = FALSE;
  *   $drupal_hash_salt = file_get_contents('/home/example/salt.txt');
  *
  */
-$drupal_hash_salt = '';
+$drupal_hash_salt = 'hVOAKUjQoeaQHjvi-_vClW-UEZBGZhG2RydQGfy-3Ls';
 
 /**
  * Base URL (optional).
