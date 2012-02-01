@@ -1,0 +1,4 @@
+[submodule "drupal"]
+	path = drupal
+	url = git@git.uib.no:x-contrib/drupal.git
+	branch = w3.uib.no
