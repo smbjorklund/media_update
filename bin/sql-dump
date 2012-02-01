@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# This creates an SQL dump file in the site/files directory
+
+cd drupal && drush sql-dump --result-file=sites/default/files/dump.sql --structure-tables-key=common
