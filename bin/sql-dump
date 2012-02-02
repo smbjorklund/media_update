@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # This creates an SQL dump file in the site/files directory
-cd drupal && drush -l http://w3.uib.no sql-dump --result-file=sites/uib.no/files/dump.sql --structure-tables-key=common
+cd drupal && drush -l http://w3.uib.no sql-dump --result-file=sites/uib.no/files/dump.sql --structure-tables-key=common "$@"
