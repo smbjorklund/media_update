@@ -11,9 +11,4 @@ html  = open("tmpl/header.html").read().decode("UTF-8")
 html += markdown(md_linkify(open(sys.argv[1]).read().decode("UTF-8")))
 html += open("tmpl/footer.html").read().decode("UTF-8")
 
-import os
-host = os.environ.get("WWW_UIB_NO")
-if host:
-    html = re.sub("https?://www\.uib\.no", "http://" + host, html)
-
 print html.encode("UTF-8")

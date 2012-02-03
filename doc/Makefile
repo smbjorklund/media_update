@@ -1,25 +1,13 @@
 HTML = \
-       cms.html      \
-       datamodel-intro.html \
-       fs.html       \
-       fs_debugging_tips.html \
-       howto.html    \
-       git.html      \
        index.html    \
-       lang.html     \
-       meny.html     \
-       notation.html \
-       sebra.html    \
-       terms.html    \
-       style.html
 
 PYTHON = python
-BOOTSTRAP_PY = ../thesite-dev/bootstrap.py
+BOOTSTRAP_PY = bootstrap.py
 
-.SUFFIXES: .txt .html
+.SUFFIXES: .md .html
 .PHONY: clean realclean
 
-.txt.html:
+.md.html:
 	bin/python htmlify.py $< >$@
 
 all: bin/python $(HTML)
