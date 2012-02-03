@@ -1,0 +1,4 @@
+#!/bin/sh
+(cd drupal && drush site-install minimal --db-url=pgsql://user1:foo1@glory.uib.no/db1 --sites-subdir=uib.no --verbose)
+chmod +w site site/settings.php
+chmod 777 site/files
