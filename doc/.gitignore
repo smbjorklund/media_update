@@ -1,0 +1,8 @@
+/index.html
+
+/.installed.cfg
+/bin/python
+/bin/buildout
+/develop-eggs/
+/eggs/
+/parts/
