@@ -12,11 +12,24 @@ set -x
 drush site-install minimal --db-url=pgsql://user1:foo1@glory.uib.no/db1 --sites-subdir=$SITE_DIR --verbose --yes
 
 cd sites/$SITE_DIR || exit 1
+
 chmod u+w . settings.php
 chmod 777 files
+
+cat <<'EOT' >>drushrc.php
+<?php
+$options['structure-tables'] = array(
+    'common' => array(
+       'cache', 'cache_block', 'cache_bootstrap', 'cache_field', 'cache_filter',
+       'cache_form', 'cache_image', 'cache_menu', 'cache_page', 'cache_path', 'cache_update',
+       'history', 'sessions', 'watchdog',
+    ),
+);
+EOT
 (cd ../../.. && bin/sql-dump)
+
 git init
-git add settings.php dump.sql
+git add settings.php drushrc.php dump.sql
 git commit -m "site-init"
 git branch -m master site/$SITE_DIR
 git remote add origin git@git.uib.no:site/w3.uib.no.git
