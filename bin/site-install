@@ -1,4 +1,23 @@
 #!/bin/sh
-(cd drupal && drush site-install minimal --db-url=pgsql://user1:foo1@glory.uib.no/db1 --sites-subdir=uib.no --verbose)
-chmod +w site site/settings.php
-chmod 777 site/files
+
+cd drupal || exit 1
+
+SITE_DIR=uib.no
+if [ -e sites/$SITE_DIR ]; then
+    echo "drupal/sites/$SITE_DIR already exists, aborting."
+    exit 1
+fi
+
+set -x
+drush site-install minimal --db-url=pgsql://user1:foo1@glory.uib.no/db1 --sites-subdir=$SITE_DIR --verbose --yes
+
+cd sites/$SITE_DIR || exit 1
+chmod u+w . settings.php
+chmod 777 files
+git init
+git add settings.php
+git commit -m "site-init"
+git branch -m master site/$SITE_DIR
+git remote add origin git@git.uib.no:site/w3.uib.no.git
+
+echo "Run 'git push origin site/$SITE_DIR' to upload"
