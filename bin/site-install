@@ -30,8 +30,9 @@ EOT
 
 git init
 git add settings.php drushrc.php dump.sql
-git commit -m "site-init"
+git commit -m "site-install"
 git branch -m master site/$SITE_DIR
 git remote add origin git@git.uib.no:site/w3.uib.no.git
 
+set +x
 echo "Run 'git push origin site/$SITE_DIR' to upload"
