@@ -14,8 +14,9 @@ drush site-install minimal --db-url=pgsql://user1:foo1@glory.uib.no/db1 --sites-
 cd sites/$SITE_DIR || exit 1
 chmod u+w . settings.php
 chmod 777 files
+(cd ../../.. && bin/sql-dump)
 git init
-git add settings.php
+git add settings.php dump.sql
 git commit -m "site-init"
 git branch -m master site/$SITE_DIR
 git remote add origin git@git.uib.no:site/w3.uib.no.git
