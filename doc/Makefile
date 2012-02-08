@@ -1,6 +1,7 @@
 HTML = \
        index.html    \
        content.html  \
+       style.html    \
        terms.html
 
 PYTHON = python
