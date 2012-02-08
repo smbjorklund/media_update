@@ -37,7 +37,7 @@ Et område kan også ha en engelsk version. Den engelske versjonen av området e
 et selvstendig område med sitt eget innhold og sitt eget navnerom.
 
 Områder kan være tilknyttet hverandre i en hierarkisk struktur uavhengig av
-stien som brukes. F.eks. ved at institutter tilhører fakulteter.
+stien og stedkoder som brukes. F.eks. ved at institutter tilhører fakulteter.
 
 ### Representasjon i Drupal
 
