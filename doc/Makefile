@@ -1,5 +1,7 @@
 HTML = \
        index.html    \
+       content.html  \
+       terms.html
 
 PYTHON = python
 BOOTSTRAP_PY = bootstrap.py
