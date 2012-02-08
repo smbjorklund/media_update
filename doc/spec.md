@@ -1,3 +1,12 @@
+<style>
+  /* Implement automatic numbering av sections */
+  body { counter-reset: h2 h3; }
+  h2 { counter-reset: h3; }
+  h2:before { content: counter(h2) ". "; counter-increment: h2; }
+  h3:before { content: counter(h2) "." counter(h3) ". "; counter-increment: h3; }
+</style>
+
+
 # Spesifiksjon
 
 Dette er en spesifikasjon av jobben som skal gjøres for å implementere
