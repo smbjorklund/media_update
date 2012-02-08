@@ -1,6 +1,7 @@
 HTML = \
        index.html    \
        content.html  \
+       spec.html     \
        style.html    \
        terms.html
 

@@ -87,3 +87,7 @@ oversettelse av begrepene vi bruker som er UiB spesifikke.
 * User
 * View
 * Workbench
+
+Andre begreper
+
+* slug
