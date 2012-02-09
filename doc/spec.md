@@ -15,6 +15,8 @@ går under navnet w3.uib.no (tredje gjenerasjon www.uib.no).  Navnerommet
 www.uib.no vil gradvis blir faset over fra den gamle løsningen på string.uib.no
 til w3.uib.no etterhvert som utrullingen skrider fram.
 
+Oppdatert versjon finnes på <https://float.uib.no/hudson/job/w3-docs/lastBuild/artifact/doc/spec.html>.
+
 ## Områder
 
 ### Funksjonelle krav
