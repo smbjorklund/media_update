@@ -36,3 +36,8 @@ table tr.even {
 h2 {
     margin-top: 3em;
 }
+
+code {
+    font-family: Courier, "fixed-width";
+    font-size: 2ex;
+}
