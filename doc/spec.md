@@ -9,7 +9,7 @@
 
 # Spesifikasjon w3.uib.no
 
-Versjon ${DATE}
+Versjon ${DATE_VERSION}
 
 > Siste oppdatert versjon av dette dokumentet er å finne på <https://float.uib.no/hudson/job/w3-docs/lastBuild/artifact/doc/spec.html>.
 

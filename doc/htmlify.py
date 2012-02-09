@@ -11,8 +11,26 @@ def md_linkify(text, filename):
         p = os.popen("git log --pretty=format:%ci --max-count=1 " + filename, "r")
         date = p.read().split()
         return date[0]
-
     text = re.sub(r'\${DATE}', expand_date, text)
+
+    def expand_date_version(m):
+        date = None
+        count = 0
+        p = os.popen("git log --pretty=format:%ci --max-count=20 " + filename, "r")
+        for line in p:
+            d = line.split()[0]
+            if date is None:
+                date = d
+                count = 1
+            elif date == d:
+                count += 1
+            else:
+                break
+        version = date
+        if count > 1:
+            version += "-r" + str(count)
+        return version
+    text = re.sub(r'\${DATE_VERSION}', expand_date_version, text)
 
     return text
 
