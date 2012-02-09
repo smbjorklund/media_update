@@ -66,7 +66,7 @@ Slug genereres default basert på innholdets tittel, men kan overstyres.
 
 ...
 
-## Workdesk
+## Webdesk
 
 ### Funksjonelle krav
 
