@@ -19,6 +19,9 @@ går under navnet w3.uib.no (tredje gjenerasjon www.uib.no).  Navnerommet
 www.uib.no vil gradvis blir faset over fra den gamle løsningen på string.uib.no
 til w3.uib.no etterhvert som utrullingen skrider fram.
 
+Den gamle løsningen basert på ZTM blir referert til som *w2* i dette dokumentet.
+Den enda gamlere løsningen på webber.uib.no blir referert til som *w1* i dette dokumentet.
+
 
 ## Områder
 
@@ -70,28 +73,82 @@ Slug genereres default basert på innholdets tittel, men kan overstyres.
 
 ### Funksjonelle krav
 
+Redaktører og innholdsprodusenter bør ha et samlet sted hvor de får oversikt over
+artikler og sider de er involvert i og hvor nytt innhold produseres.
+
 ### Representasjon i Drupal
 
 Vi vil sette opp Drupals workbench som vår webdesk.
 
 ## Genererte lister (Views)
 
-## FS presentasjon
+### Funksjonelle krav
+
+Ansattlister.  Opplisting av områder.  Opplisting av studieinformasjon.
+
+## Presentasjon av studieinformasjon (fra FS)
+
+### Funksjonelle krav
+
+Kravet er at de samme sidene og listene som genereres idag også skal genereres av det nye systmet.
+
+### Representasjon i Drupal
 
 FS-presentasjonene vil generers eksternt via [fs_pres](http://fs_pres.app.uib.no) og proxes
 så inn i Drupal.
 
-Kravet er at de samme sidene og listene som genereres idag også skal genereres av det nye systmet.
-
 ## Personsider
+
+### Funksjonelle krav
+
+Alle ansatte ved UiB får sin egen personside (både norsk og engelsk versjon).
+Som ansatt menes de som er registrert i Sebra som 'ansatt' eller 'ekstern',
+samt studenter som er blitt klasifisert som ansatt under et område.
+
+Siden skal vise basis informasjon om brukeren (navn, funksjon, stilling,
+besøksadresse, epost, telefon, andre kontaktpunker som brukeren ønsker
+publisert).  Siden skal kunne vise bilde av personen.
+
+Brukerens brukernavn på UiBs systemer skal *ikke* eksponeres på personsiden.
+
+Brukeren skal kunne hente inn én ekstern RSS-feed på personsiden.
+
+Personsiden skal eksponere forskningsresultater fra Cristin.
+
+Brukere må kunne redigere deler av innholdet på siden.
+
+URLen til personsiden skal være
+`w3.uib.no/personer/<Fornavn>.<Etternavn><_##>`.  URLen skal være stabil.
+Suffiset `_##` er et tall som bruker i de tilfeller der `<Fornavn>.<Etternavn>`
+ikke er unikt.
+
+> En brukerdefinert slug hadde kanskje vært en mulighet.  Alternativet kunne
+> være `/personer/&lt;somethinguniqe>/&lt;Fornavn>-&lt;Etternavn>
+
+Personsider består etter at brukeren har sluttet ved UiB, men gjemmes som
+standard.  Vil vises som "410 Gone", eventuelt med redirect til ny identitet
+for personer som har lagt igjen det.
 
 ### Ansattlister
 
-## Cristin integration
+Personer kan knyttes til ett eller flere områder som ansatt.  De vil da komme fram in ansattlisten
+for området.  Ansattlisten linker tilbake til personsiden.
+
+### Cristin integration
 
 ## NSD integration
 
+### Funksjonelle krav
+
+Integrasjonen som eksisterer i w2 videreføres.
+
 ## Kalender
+
+## Søk
+
+## Kart
+
+## Video (og media generelt)
 
 ## Styling
 
