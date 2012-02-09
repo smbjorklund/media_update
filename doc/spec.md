@@ -7,7 +7,11 @@
 </style>
 
 
-# Spesifiksjon
+# Spesifikasjon w3.uib.no
+
+Versjon ${DATE}
+
+> Siste oppdatert versjon av dette dokumentet er å finne på <https://float.uib.no/hudson/job/w3-docs/lastBuild/artifact/doc/spec.html>.
 
 Dette er en spesifikasjon av jobben som skal gjøres for å implementere
 w3.uib.no i Drupal sett fra et tekniskt/operasjonelt synspunkt.  Det nye siten
@@ -15,7 +19,6 @@ går under navnet w3.uib.no (tredje gjenerasjon www.uib.no).  Navnerommet
 www.uib.no vil gradvis blir faset over fra den gamle løsningen på string.uib.no
 til w3.uib.no etterhvert som utrullingen skrider fram.
 
-Oppdatert versjon finnes på <https://float.uib.no/hudson/job/w3-docs/lastBuild/artifact/doc/spec.html>.
 
 ## Områder
 
