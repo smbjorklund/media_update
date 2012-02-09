@@ -84,7 +84,11 @@ Vi vil sette opp Drupals workbench som vår webdesk.
 
 ### Funksjonelle krav
 
-Ansattlister.  Opplisting av områder.  Opplisting av studieinformasjon.
+Følgende lister skal settes opp:
+
+* Ansattlister
+* Opplisting av områder
+* Opplisting av studieinformasjon
 
 ## Presentasjon av studieinformasjon (fra FS)
 
