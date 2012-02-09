@@ -30,22 +30,34 @@ Den enda gamlere løsningen på webber.uib.no blir referert til som *w1* i dette
 Websiten w3.uib.no deles inn i områder.  Hver avdeling, institutt og fakultet
 får egne områder. Andre områder omhandler tema, f.eks. "utdanning" eller
 "kunst". Hvert område får sin egen URL prefix, f.eks. "it" for IT-avdelingen;
-dvs. URLen til området blir "w3.uib.no/it".
+dvs. URLen til området blir `w3.uib.no/it`.
 
 Områdene har sine egne samlinger av innhold (nyheter og sider). Hvert område har
-sin egen meny. Personer er knyttet til områder som ansatte, innholdsprodusenter
+sin egen meny.
+
+Personer er knyttet til områder som ansatte, innholdsprodusenter
 og redaktører. En person kan være ansatt, redaktør og/eller innholdsprodusent
-på mange områder.
+på mange områder.  Disse tilknyttingene er administrert i Sebra og w3 må
+holde seg i sync med dette.
 
 Innhold fra et område kan dras inn på et annet (ikke kopi). Innholdet vil da
-vises i kontekst av det andre området, men endringer som gjøres på det første
-vises begge steder.
+vises i kontekst av det andre området, og endringer som gjøres på det første
+vises begge steder.  Redaktører på det andre området får ikke tilgang til
+å endre innholdet.
 
 Et område kan også ha en engelsk version. Den engelske versjonen av området er
 et selvstendig område med sitt eget innhold og sitt eget navnerom.
 
 Områder kan være tilknyttet hverandre i en hierarkisk struktur uavhengig av
 stien og stedkoder som brukes. F.eks. ved at institutter tilhører fakulteter.
+Et område kan knyttes til flere overordede områder (DAG-struktur).
+
+Områder kan importere en ekstern RSS-feed.  Tittellinjene fra de *n* første
+elementene fra denne feeden vises som en liste på områdets forside.
+
+Områder skal automatisk importere RSS-feeded fra
+[Jobbnorge](http://www.jobbnorge.no/).  Denne vises bare når det pr tiden er
+utestående stillinger.
 
 ### Representasjon i Drupal
 
@@ -94,7 +106,7 @@ Følgende lister skal settes opp:
 
 ### Funksjonelle krav
 
-Kravet er at de samme sidene og listene som genereres idag også skal genereres av det nye systmet.
+Kravet er at de samme sidene og listene som genereres i ew2 også skal genereres av det nye systmet.
 
 ### Representasjon i Drupal
 
@@ -105,9 +117,9 @@ så inn i Drupal.
 
 ### Funksjonelle krav
 
-Alle ansatte ved UiB får sin egen personside (både norsk og engelsk versjon).
+Alle *ansatte* ved UiB får sin egen personside (både norsk og engelsk versjon).
 Som ansatt menes de som er registrert i Sebra som 'ansatt' eller 'ekstern',
-samt studenter som er blitt klasifisert som ansatt under et område.
+samt studenter som er blitt klassifisert som ansatt under et område.
 
 Siden skal vise basis informasjon om brukeren (navn, funksjon, stilling,
 besøksadresse, epost, telefon, andre kontaktpunker som brukeren ønsker
@@ -131,7 +143,8 @@ ikke er unikt.
 
 Personsider består etter at brukeren har sluttet ved UiB, men gjemmes som
 standard.  Vil vises som "410 Gone", eventuelt med redirect til ny identitet
-for personer som har lagt igjen det.
+for personer som har lagt igjen det.  Kommer brukeren tilbake som ansatt
+ved UiB gjennoppstår siden der den var før.
 
 ### Ansattlister
 
@@ -139,6 +152,15 @@ Personer kan knyttes til ett eller flere områder som ansatt.  De vil da komme f
 for området.  Ansattlisten linker tilbake til personsiden.
 
 ### Cristin integration
+
+[Cristin](http://www.cristin.no/) her en funksjon hvor man kan beskrive "sine
+viktigste arbeider".  Hvis disse er definert så vil disse be referert
+på personsiden.  Hvis ikke plukkes de 10 sist publiserte tidsskriftsartikene.
+
+Generelle tekster som beskriver personen overføres også fra Cristin.
+
+Hvis bilde er definert i Cristin, men ikke i eksternwebben så brukes bilde
+fra Cristin.
 
 ## NSD integration
 
@@ -150,15 +172,50 @@ Integrasjonen som eksisterer i w2 videreføres.
 
 ## Søk
 
+### Funksjonelle krav
+
+Brukere må kunne søke etter tekster og få fram den mest relevante informasjonen som
+finnes om temaet i webben.
+
 ## Kart
 
 ## Video (og media generelt)
 
+Vimeo eller lagring av video i løsningen.
+
 ## Styling
+
+Eget responsivt theme
 
 ## Engelsk
 
 ## Migrasjon
+
+### Funksjonelle krav
+
+Publiserte nyhetsartikler, infosider og fremtidige kalenderoppføringer fra w2
+skal automatisk overføres til w3.  Overføringen må inkludere metainformasjon
+(som når innholdet ble forfattet og sist endret) og eventuell filvedlegg.
+
+Navigasjonsider (og menyer) i w2 skal automatisk avbildes i menyer i Drupal for
+w3.  Navigasjonsider med test og bilde blir til infosider i w3.
+
+Upublisert innhold i w2 blir *ikke* flyttet over.  Filvedlegg som ikke er referert
+fra innhold som er blitt flyttet over vil ikke bli flyttet over.
+
+Ingen informasjon overføres fra w1.  Etter full utrulling av w3 så slås w1 av.
+Innhold som ikke er flyttet vil da effektivt ikke være publisert lenger.
+
+### Teknisk gjennomføring
+
+Det må skrives views til w2 for å eksponere nyhetsartikler, infosider,
+navigasjonsider og kalenderoppføringer som XML dokumenter (eller tilsvarende
+strukturert informasjon).
+
+
+Vi vil bruke `migration` modulen til Drupal for å konsumere viewene fra w2.
+
+> Format for viewene justeres etter hva som er hensiktsmessig for migrate.
 
 ## Project organization
 
