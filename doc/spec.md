@@ -17,7 +17,7 @@ Dette er en spesifikasjon av jobben som skal gjøres for å implementere
 *w3.uib.no* i [Drupal](http://drupal.org) sett fra et teknisk/operasjonelt
 synspunkt.  Det nye webstedet går under navnet *w3.uib.no* (tredje gjenerasjon
 *www.uib.no*).  Navnerommet *www.uib.no* vil gradvis blir faset over fra den
-gamle løsningen på *string.uib.no* til w3.uib.no etterhvert som utrullingen
+gamle løsningen på *string.uib.no* til *w3.uib.no* etterhvert som utrullingen
 skrider fram.
 
 Den gamle løsningen basert på ZTM blir referert til som *w2* i dette dokumentet.
@@ -28,7 +28,7 @@ Den enda gamlere løsningen på webber.uib.no blir referert til som *w1* i dette
 
 ### Funksjonelle krav
 
-Webstedet w3.uib.no deles inn i områder.  Hver avdeling, institutt og fakultet
+Webstedet *w3.uib.no* deles inn i områder.  Hver avdeling, institutt og fakultet
 får egne områder. Andre områder omhandler tema, f.eks. "utdanning" eller
 "kunst". Hvert område får sin egen URL prefix, f.eks. "it" for IT-avdelingen;
 dvs. URLen til området blir `w3.uib.no/it`.
