@@ -32,6 +32,20 @@ får egne områder. Andre områder omhandler tema, f.eks. "utdanning" eller
 "kunst". Hvert område får sin egen URL prefix, f.eks. "it" for IT-avdelingen;
 dvs. URLen til området blir `w3.uib.no/it`.
 
+Områder klassifiseres etter "type" som kan påvirke layout og hvilke elementer som
+vises.
+
+> Pr 2012-02-10 har vi 406 områder i w2.  Disse fordeler seg på følgende områdetyper:
+>
+> * Forskningsgruppe (245)
+> * Institutt (50)
+> * Fagressurser-UB (33)
+> * Forskerskole (25)
+> * Avdeling (19)
+> * Seksjon (18)
+> * Tema (9)
+> * Fakultet (7)
+
 Områdene har sine egne samlinger av innhold (nyheter og sider). Hvert område har
 sin egen meny.
 
