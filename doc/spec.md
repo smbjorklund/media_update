@@ -46,6 +46,9 @@ vises.
 > * Seksjon (18)
 > * Tema (9)
 > * Fakultet (7)
+>
+> Område typen "Prosjekt" er på trappene men enda ikke støttet av w2-koden.
+> Dette skaper noen problemer som f.eks. JEW-717.
 
 Områdene har sine egne samlinger av innhold (nyheter og sider). Hvert område har
 sin egen meny.
