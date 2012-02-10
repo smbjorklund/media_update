@@ -33,6 +33,7 @@ Fields:
 Fields:
 
 * title
+* slug
 * kicker (stikktittel)
 * lead (ingress)
 * body
@@ -43,14 +44,8 @@ Fields:
 Fields:
 
 * title
+* slug
 * body
-
-### calendar
-
-Fields:
-
-* title
-* area: ref(area)
 
 ### event (no:Hendelse)
 
@@ -62,7 +57,7 @@ Fields:
 * start: datetime
 * end: datetime
 * body: richtext
-* calendar: ref(calendar)
+* area: ref(area)
 
 ### ref_page (no:Referanseside)
 
