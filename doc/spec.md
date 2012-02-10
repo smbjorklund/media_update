@@ -59,8 +59,8 @@ vises i kontekst av det andre området, og endringer som gjøres på det første
 vises begge steder.  Redaktører på det andre området får ikke tilgang til
 å endre innholdet.
 
-Et område kan også ha en engelsk version. Den engelske versjonen av området er
-et selvstendig område med sitt eget innhold og sitt eget navnerom.
+Et område skal også ha en engelsk version. Den engelske versjonen av området er
+et selvstendig område med sitt eget innhold og sitt eget navnerom (URL sti).
 
 Områder kan være tilknyttet hverandre i en hierarkisk struktur uavhengig av
 stien og stedkoder som brukes. F.eks. ved at institutter tilhører fakulteter.
