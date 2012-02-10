@@ -80,6 +80,11 @@ Områder skal automatisk importere RSS-feeded fra
 [Jobbnorge](http://www.jobbnorge.no/).  Denne vises bare når det pr tiden er
 utestående stillinger.
 
+#### Spesielle områder
+
+Universitetsbiblioteket har fått diverse spesialtilpasninger.  Disse må til
+en hvis grad videreføres.
+
 ### Representasjon i Drupal
 
 Områder blir taksonomitermer.
