@@ -14,10 +14,11 @@ Versjon ${DATE_VERSION}
 > Siste oppdatert versjon av dette dokumentet er å finne på <https://float.uib.no/hudson/job/w3-docs/lastBuild/artifact/doc/spec.html>.
 
 Dette er en spesifikasjon av jobben som skal gjøres for å implementere
-w3.uib.no i Drupal sett fra et tekniskt/operasjonelt synspunkt.  Det nye siten
-går under navnet w3.uib.no (tredje gjenerasjon www.uib.no).  Navnerommet
-www.uib.no vil gradvis blir faset over fra den gamle løsningen på string.uib.no
-til w3.uib.no etterhvert som utrullingen skrider fram.
+*w3.uib.no* i [Drupal](http://drupal.org) sett fra et teknisk/operasjonelt
+synspunkt.  Det nye webstedet går under navnet *w3.uib.no* (tredje gjenerasjon
+*www.uib.no*).  Navnerommet *www.uib.no* vil gradvis blir faset over fra den
+gamle løsningen på *string.uib.no* til w3.uib.no etterhvert som utrullingen
+skrider fram.
 
 Den gamle løsningen basert på ZTM blir referert til som *w2* i dette dokumentet.
 Den enda gamlere løsningen på webber.uib.no blir referert til som *w1* i dette dokumentet.
@@ -27,7 +28,7 @@ Den enda gamlere løsningen på webber.uib.no blir referert til som *w1* i dette
 
 ### Funksjonelle krav
 
-Websiten w3.uib.no deles inn i områder.  Hver avdeling, institutt og fakultet
+Webstedet w3.uib.no deles inn i områder.  Hver avdeling, institutt og fakultet
 får egne områder. Andre områder omhandler tema, f.eks. "utdanning" eller
 "kunst". Hvert område får sin egen URL prefix, f.eks. "it" for IT-avdelingen;
 dvs. URLen til området blir `w3.uib.no/it`.
@@ -48,6 +49,9 @@ vises.
 
 Områdene har sine egne samlinger av innhold (nyheter og sider). Hvert område har
 sin egen meny.
+
+Områder har bilde, tittel, beskrivelse og profiltekst som faste elementer
+på forsiden.
 
 Personer er knyttet til områder som ansatte, innholdsprodusenter
 og redaktører. En person kan være ansatt, redaktør og/eller innholdsprodusent
@@ -84,16 +88,28 @@ Områder blir taksonomitermer.
 Innholdstypene som skal representeres er *nyhetsartikkel*, *infoside*, og *kalenderhendelse*.
 
 *Nyhetsartikler* samles under gitt område og får sti basert på
-publikasjonstidspunkt og slug.
+publikasjonstidspunkt og slug.  Feltene er tittel, slug, stikktittel, hovedbilde,
+ingress, tekst, forfattere.
+
+*Infosider* knyttes inn ved at de legges i menyen til et område.
+Felter er tittel, slug, hovedbilde, tekst.
 
 *Kalenderhendelser* samles under et gitt område (hvert område får sin egen
-kalender) og får sti basert på publikasjonstidspunk og slug.
+kalender) og får sti basert på publikasjonstidspunk og slug. Felter
+er tittel, slug, tekst, fra, til.
 
-Slug genereres default basert på innholdets tittel, men kan overstyres.
+Filvedlegg skal kunne knyttes til alle innholdstypene.  Det vil være
+begrensinger på hvilke typer filvedlegg som kan lastes opp.
+
+Slug genereres default basert på innholdets tittel, men kan overstyres ved
+å fylle inn feltet *slug*.
 
 ### Representasjon i Drupal
 
-...
+Innholdstypene rigges opp som innholdstyper. :-)
+
+Det er ikke sikkert det er formålstjenelig å ha et eget slug felt.  Alternativet
+er at vi setter opp direkte mulighet til å endre aliasingen i drupal.
 
 ## Webdesk
 
@@ -113,6 +129,7 @@ Vi vil sette opp Drupals workbench som vår webdesk.
 Følgende lister skal settes opp:
 
 * Ansattlister
+* Nyhetsartikker
 * Opplisting av områder
 * Opplisting av studieinformasjon
 
@@ -120,11 +137,28 @@ Følgende lister skal settes opp:
 
 ### Funksjonelle krav
 
-Kravet er at de samme sidene og listene som genereres i ew2 også skal genereres av det nye systmet.
+Kravet er at de samme sidene og listene som genereres i w2 også skal genereres av det nye systmet.
+Disse sidene er:
+
+* `/emne/<kode>`
+* `/emne/<kode>?semester=<sem>`
+* `/studieprogram/<kode>`
+* `/studieretning/<kode>`
+* `/kurs/<kode>`
+
+Disse finnes også i engelsk versjon.
+
+Listene er:
+
+* `/utdanning/studietilbud/<nus1-slug>`
+* `/utdanning/studietilbug/<nus1-slug>/<nus2-slug>`
+* `/utdanning/evu/evutilbud/<slug>`
+* `/<område>/utdanning/<emner>`
+* ...
 
 ### Representasjon i Drupal
 
-FS-presentasjonene vil generers eksternt via [fs_pres](http://fs_pres.app.uib.no) og proxes
+FS-presentasjonene vil genereres eksternt via [fs_pres](http://fs_pres.app.uib.no) og proxes
 så inn i Drupal.
 
 ## Personsider
@@ -150,7 +184,7 @@ Brukere må kunne redigere deler av innholdet på siden.
 URLen til personsiden skal være
 `w3.uib.no/personer/<Fornavn>.<Etternavn><_##>`.  URLen skal være stabil.
 Suffiset `_##` er et tall som bruker i de tilfeller der `<Fornavn>.<Etternavn>`
-ikke er unikt.
+ikke er unikt.  Første "mann til mølla" får navnet uten suffiks.
 
 > En brukerdefinert slug hadde kanskje vært en mulighet.  Alternativet kunne
 > være `/personer/&lt;somethinguniqe>/&lt;Fornavn>-&lt;Etternavn>
@@ -180,9 +214,9 @@ fra Cristin.
 
 ### Funksjonelle krav
 
-Integrasjonen som eksisterer i w2 videreføres.
-
-## Kalender
+Integrasjonen som eksisterer i w2 videreføres.  Dette er tabellen "Nøkkeltall for UiB"
+på `http://www.uib.no/om` og sidene disse linker til.  Innholdet av nivå 2 sidene kommer
+direkte fra NSD, men styles av oss.
 
 ## Søk
 
@@ -193,15 +227,19 @@ finnes om temaet i webben.
 
 ## Kart
 
+Integrasjon med maps.google.com for å vise hvor bygninger er plasert videreføres.
+
 ## Video (og media generelt)
 
 Vimeo eller lagring av video i løsningen.
 
 ## Styling
 
-Eget responsivt theme
+Eget responsivt theme.
 
 ## Engelsk
+
+English areas and English content.
 
 ## Migrasjon
 
@@ -214,11 +252,21 @@ skal automatisk overføres til w3.  Overføringen må inkludere metainformasjon
 Navigasjonsider (og menyer) i w2 skal automatisk avbildes i menyer i Drupal for
 w3.  Navigasjonsider med test og bilde blir til infosider i w3.
 
-Upublisert innhold i w2 blir *ikke* flyttet over.  Filvedlegg som ikke er referert
+Områdene settes automatisk opp basert på definisjonene i Sebra.  Beskrivelse
+og profiltekst overføres fra w2.
+
+Personsider settes automatisk opp baser på brukerlistene i Sebra.
+
+### Innhold fra w2 som ikke flyttes over
+
+Upublisert innhold i w2 blir ikke flyttet over.  Filvedlegg som ikke er referert
 fra innhold som er blitt flyttet over vil ikke bli flyttet over.
 
 Ingen informasjon overføres fra w1.  Etter full utrulling av w3 så slås w1 av.
 Innhold som ikke er flyttet vil da effektivt ikke være publisert lenger.
+
+Brukerinnfylt innhold fra personsidene flyttes ikke over.  Sidene gjennskapes
+i w3 basert på informasjonen vi får overført fra Sebra og Cristin.
 
 ### Teknisk gjennomføring
 
@@ -226,6 +274,7 @@ Det må skrives views til w2 for å eksponere nyhetsartikler, infosider,
 navigasjonsider og kalenderoppføringer som XML dokumenter (eller tilsvarende
 strukturert informasjon).
 
+Tilsvarende views må også skrives for å eksportere tekster for områder og fag.
 
 Vi vil bruke `migration` modulen til Drupal for å konsumere viewene fra w2.
 
@@ -235,9 +284,20 @@ Vi vil bruke `migration` modulen til Drupal for å konsumere viewene fra w2.
 
 ## Development environment
 
+Git, egne instanser, databaser, [style guide](style.html).
+
+Repos:
+
+* git.uib.no:site/w3.uib.no (master branch, site/* branches)
+* git.uib.no:x-contrib/drupal
+
 ## Automated testing
 
+Jenkins, Drupal unittesting, Selenium
+
 ## Documentation
+
+The doc directory in the w3 repo
 
 ## Deployment
 
