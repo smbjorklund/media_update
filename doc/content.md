@@ -2,6 +2,10 @@
 
 This just list out the content types that we will use.
 
+### area_type (no: Områdetype)
+
+Tekst eller taksonomitype.
+
 ### area (no:Område)
 
 A subdivision of the site.  Areas are containers for articles and pages and
@@ -15,6 +19,7 @@ Fields:
 * title
 * title_en
 * place?: ref(place)
+* type: ref(areatype)
 
 ### place (no:Sted)
 

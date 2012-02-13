@@ -94,7 +94,7 @@ en hvis grad videreføres.
 
 ### Representasjon i Drupal
 
-Områder blir taksonomitermer.
+Områder blir taksonomitermer.  Områdetyper blir taksonomitermer (på et høyere nivå).
 
 ## Innholdstyper
 
