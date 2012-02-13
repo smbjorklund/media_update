@@ -26,9 +26,14 @@ Den enda gamlere løsningen på webber.uib.no blir referert til som *w1* i dette
 
 ## Generelt
 
-Målet med w3 er å frambringe en ny løsning som er funksjonell og brukervennlig,
-samt et godt fundament for videre utvikling. Løsning skal være driftbart
-og stabil.
+Målet med w3 er å frambringe en ny løsning for *uib.no* som er funksjonell og
+brukervennlig, samt et godt fundament for videre utvikling. Løsning skal være
+godt testet, driftbar og stabil.
+
+I utgangspunket er funksjonaliteten som skal implementeres den samme som w2 tilbyr.
+Det er også ønskelig at ressursene videreførere URL-navnerommet til w2 i den grad
+det er mulig.  I de tilfellene dette ikke mulig så settes det opp en redirect fra
+gammel URL til ny.
 
 
 ## Områder
