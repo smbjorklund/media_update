@@ -24,6 +24,13 @@ Den gamle løsningen basert på ZTM blir referert til som *w2* i dette dokumente
 Den enda gamlere løsningen på webber.uib.no blir referert til som *w1* i dette dokumentet.
 
 
+## Generelt
+
+Målet med w3 er å frambringe en ny løsning som er funksjonell og brukervennlig,
+samt et godt fundament for videre utvikling. Løsning skal være driftbart
+og stabil.
+
+
 ## Områder
 
 ### Funksjonelle krav
