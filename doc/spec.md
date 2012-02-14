@@ -160,6 +160,7 @@ Følgende lister skal settes opp:
 * Nyhetsartikker
 * Opplisting av områder
 * Opplisting av studieinformasjon
+* Opplisting av utlyste stillinger
 
 ## Presentasjon av studieinformasjon (fra FS)
 
