@@ -101,6 +101,8 @@ Aktuelt er en nyhetsavis som presentere nyhetsartikler.
 
 WebTV gir oversikt over videoer.
 
+http://www.uib.no/stilling lister opp alle utlyste stillinger på Jobbnorge.  Kjører på w1 fortsatt.
+
 ### Representasjon i Drupal
 
 Områder blir taksonomitermer.  Områdetyper blir taksonomitermer (på et høyere nivå).
