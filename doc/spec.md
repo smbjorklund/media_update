@@ -254,13 +254,15 @@ direkte fra NSD, men styles av oss.
 Brukere må kunne søke etter tekster og få fram den mest relevante informasjonen som
 finnes om temaet i webben.
 
+### Representasjon i Drupal
+
+Vi etablerer *search.uib.no* som en ny søketjeneste (separat prosjekt) som
+så vil integrere w3 mot.  Fallback er å fortsette å bruke Google Custom Search
+som vi gjør i w2.
+
 ## Kart
 
 Integrasjon med maps.google.com for å vise hvor bygninger er plasert videreføres.
-
-## Video (og media generelt)
-
-Vimeo eller lagring av video i løsningen.
 
 ## Styling
 
@@ -274,9 +276,10 @@ English areas and English content.
 
 ### Funksjonelle krav
 
-Publiserte nyhetsartikler, infosider og fremtidige kalenderoppføringer fra w2
-skal automatisk overføres til w3.  Overføringen må inkludere metainformasjon
-(som når innholdet ble forfattet og sist endret) og eventuell filvedlegg.
+Publiserte nyhetsartikler, vimeo-videoer, infosider og fremtidige
+kalenderoppføringer fra w2 skal automatisk overføres til w3.  Overføringen må
+inkludere metainformasjon (som når innholdet ble forfattet og sist endret) og
+eventuell filvedlegg.
 
 Navigasjonsider (og menyer) i w2 skal automatisk avbildes i menyer i Drupal for
 w3.  Navigasjonsider med test og bilde blir til infosider i w3.
@@ -310,6 +313,8 @@ Vi vil bruke `migration` modulen til Drupal for å konsumere viewene fra w2.
 > Format for viewene justeres etter hva som er hensiktsmessig for migrate.
 
 ## Project organization
+
+SCRUM, 4 persons from ITA, 4 persons from KA.
 
 ## Development environment
 
