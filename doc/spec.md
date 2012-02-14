@@ -97,6 +97,10 @@ utestående stillinger.
 Universitetsbiblioteket har fått diverse spesialtilpasninger.  Disse må til
 en hvis grad videreføres.
 
+Aktuelt er en nyhetsavis som presentere nyhetsartikler.
+
+WebTV gir oversikt over videoer.
+
 ### Representasjon i Drupal
 
 Områder blir taksonomitermer.  Områdetyper blir taksonomitermer (på et høyere nivå).
@@ -117,6 +121,8 @@ Felter er tittel, slug, hovedbilde, tekst.
 *Kalenderhendelser* samles under et gitt område (hvert område får sin egen
 kalender) og får sti basert på publikasjonstidspunk og slug. Felter
 er tittel, slug, tekst, fra, til.
+
+*Vimeo-video* referer til en video på [Vimeo](http://vimeo.com).  Disse listes opp på WebTV området.
 
 Filvedlegg skal kunne knyttes til alle innholdstypene.  Det vil være
 begrensinger på hvilke typer filvedlegg som kan lastes opp.
