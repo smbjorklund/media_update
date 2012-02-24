@@ -302,15 +302,14 @@ i w3 basert på informasjonen vi får overført fra Sebra og Cristin.
 
 ### Teknisk gjennomføring
 
-Det må skrives views til w2 for å eksponere nyhetsartikler, infosider,
-navigasjonsider og kalenderoppføringer som XML dokumenter (eller tilsvarende
-strukturert informasjon).
-
-Tilsvarende views må også skrives for å eksportere tekster for områder og fag.
+Eksporten skjer gjennom [xtopic viewet i w2](http://float.uib.no/hudson/job/docs-w2/HTML/export.html).
+Dette er et generelt view som kan dumpe alle typer innhold.
 
 Vi vil bruke `migration` modulen til Drupal for å konsumere viewene fra w2.
 
-> Format for viewene justeres etter hva som er hensiktsmessig for migrate.
+> Formatet fra xtopic viewet justeres etter hva som er hensiktsmessig for migrate.
+> Informasjon om scope/assosiasjonstyper er ikke med i dumpene og må kanskje
+> introduseres for å flytte over alle relasjonene som er av betydning.
 
 ## Project organization
 
