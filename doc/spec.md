@@ -11,7 +11,7 @@
 
 Versjon ${DATE_VERSION}
 
-> Siste oppdatert versjon av dette dokumentet er å finne på <https://float.uib.no/hudson/job/w3-docs/lastBuild/artifact/doc/spec.html>.
+> Siste oppdatert versjon av dette dokumentet er å finne på <https://float.uib.no/hudson/job/docs-w3/HTML/spec.html>.
 
 Dette er en spesifikasjon av jobben som skal gjøres for å implementere
 *w3.uib.no* i [Drupal](http://drupal.org) sett fra et teknisk/operasjonelt
