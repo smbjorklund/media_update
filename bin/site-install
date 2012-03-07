@@ -9,7 +9,7 @@ if [ -e sites/$SITE_DIR ]; then
 fi
 
 set -x
-drush site-install minimal --db-url=pgsql://user1:foo1@glory.uib.no/db1 --sites-subdir=$SITE_DIR --verbose --yes
+drush site-install minimal --db-url=pgsql://user1:pass1@glory.uib.no/db1 --sites-subdir=$SITE_DIR --verbose --yes
 
 cd sites/$SITE_DIR || exit 1
 
