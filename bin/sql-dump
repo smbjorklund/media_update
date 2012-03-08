@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # This creates an SQL dump file in the site/files directory.  Use sql-restore to initialize the database from the file.
-cd drupal && drush -l http://w3.uib.no sql-dump --result-file=sites/uib.no/dump.sql --structure-tables-key=common "$@"
+cd drupal && drush -l http://${1:-uib.no} sql-dump --result-file=sites/${1:-uib.no}/dump.sql --structure-tables-key=common "$@"

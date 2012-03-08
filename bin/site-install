@@ -1,20 +1,24 @@
 #!/bin/sh
 
+SITE_DIR=${1:-uib.no}
+DATABASE=pgsql://user1:pass1@glory.uib.no/db1
+DATABASE=sqlite:sites/$SITE_DIR/files/site.db
+
 cd drupal || exit 1
 
-SITE_DIR=uib.no
 if [ -e sites/$SITE_DIR ]; then
     echo "drupal/sites/$SITE_DIR already exists, aborting."
     exit 1
 fi
 
 set -x
-drush site-install minimal --db-url=pgsql://user1:pass1@glory.uib.no/db1 --sites-subdir=$SITE_DIR --verbose --yes
+drush site-install minimal --db-url=$DATABASE --sites-subdir=$SITE_DIR --verbose --yes
 
 cd sites/$SITE_DIR || exit 1
 
 chmod u+w . settings.php
-chmod 777 files
+find files -type d | xargs chmod 777
+find files -type f | xargs chmod 666
 
 cat <<'EOT' >>drushrc.php
 <?php
@@ -26,7 +30,7 @@ $options['structure-tables'] = array(
     ),
 );
 EOT
-(cd ../../.. && bin/sql-dump)
+(cd ../../.. && bin/sql-dump $SITE_DIR)
 
 git init
 git add settings.php drushrc.php dump.sql
