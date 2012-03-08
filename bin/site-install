@@ -31,6 +31,7 @@ $options['structure-tables'] = array(
     ),
 );
 EOT
+(cd ../../.. && rm -f site && ln -s drupal/sites/$SITE_DIR site)
 (cd ../../.. && bin/sql-dump $SITE_DIR)
 
 git init
@@ -40,4 +41,4 @@ git branch -m master site/$SITE_DIR
 git remote add origin git@git.uib.no:site/w3.uib.no.git
 
 set +x
-echo "Run 'git push origin site/$SITE_DIR' to upload"
+echo "Run 'cd site && git push origin site/$SITE_DIR' to upload"
