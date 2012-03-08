@@ -1,0 +1,9 @@
+#!/bin/sh
+
+test -L site || exit 1
+
+SITE=$(basename $(readlink site))
+
+cd drupal || exit 1
+
+exec drush -l http://$SITE "$@"
