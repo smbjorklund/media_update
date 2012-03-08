@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UiB Feature Area feature.
+ */
+
+include_once 'uib_feature_area.features.inc';
