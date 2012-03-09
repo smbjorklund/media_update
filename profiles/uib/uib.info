@@ -1,0 +1,8 @@
+name = w3.uib.no
+description = Dependencies and setup for the new web
+version = 0.1
+core = 7.x
+dependencies[] = block
+dependencies[] = dblog
+dependencies[] = uib_feature_area
+files[] = uib.profile
