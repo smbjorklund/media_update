@@ -5,6 +5,7 @@ core = 7.x
 dependencies[] = block
 dependencies[] = dblog
 dependencies[] = uib_feature_area
+dependencies[] = uib_feature_article
 dependencies[] = toolbar
 dependencies[] = help
 dependencies[] = devel
