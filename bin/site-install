@@ -1,7 +1,7 @@
 #!/bin/sh
 
 SITE_DIR=${1:-uib.no}
-PROFILE=${2:minimal}
+PROFILE=${2:-minimal}
 DATABASE=pgsql://user1:pass1@glory.uib.no/db1
 DATABASE=sqlite:sites/$SITE_DIR/files/site.db
 
@@ -13,7 +13,7 @@ if [ -e sites/$SITE_DIR ]; then
 fi
 
 set -x
-drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --clean-url --verbose --yes
+drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --clean-url --verbose --yes || exit 1
 
 cd sites/$SITE_DIR || exit 1
 
