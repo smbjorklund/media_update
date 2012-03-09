@@ -31,16 +31,6 @@ function uib_install() {
     ),
     array(
       'module' => 'system',
-      'delta' => 'management',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 1,
-      'region' => 'sidebar_first',
-      'pages' => '',
-      'cache' => -1,
-    ),
-    array(
-      'module' => 'system',
       'delta' => 'help',
       'theme' => $default_theme,
       'status' => 1,
@@ -55,6 +45,10 @@ function uib_install() {
     $query->values($record);
   }
   $query->execute();
+
+  $theme_settings = variable_get('theme_settings');
+  $theme_settings['toggle_secondary_menu'] = 0;
+  variable_set('theme_settings', $theme_settings);
 
   // Users should not be allowed to register
   variable_set('user_register', USER_REGISTER_ADMINISTRATORS_ONLY);
