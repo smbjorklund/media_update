@@ -6,4 +6,6 @@ dependencies[] = block
 dependencies[] = dblog
 dependencies[] = uib_feature_area
 dependencies[] = toolbar
+dependencies[] = help
+dependencies[] = devel
 files[] = uib.profile
