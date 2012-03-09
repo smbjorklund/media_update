@@ -8,4 +8,5 @@ dependencies[] = uib_feature_area
 dependencies[] = toolbar
 dependencies[] = help
 dependencies[] = devel
+dependencies[] = module_filter
 files[] = uib.profile
