@@ -13,7 +13,7 @@ if [ -e sites/$SITE_DIR ]; then
 fi
 
 set -x
-drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --clean-url --verbose --yes || exit 1
+drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --account-pass=admin --clean-url --verbose --yes || exit 1
 
 cd sites/$SITE_DIR || exit 1
 
