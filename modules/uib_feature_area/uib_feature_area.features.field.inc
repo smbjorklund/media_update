@@ -10,6 +10,81 @@
 function uib_feature_area_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-uib_ou-field_uib_geo'
+  $fields['node-uib_ou-field_uib_geo'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_geo',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'geofield',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'geofield',
+    ),
+    'field_instance' => array(
+      'bundle' => 'uib_ou',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'geofield_map',
+          'settings' => array(
+            'geofield_map_baselayers_hybrid' => 1,
+            'geofield_map_baselayers_map' => 1,
+            'geofield_map_baselayers_physical' => 0,
+            'geofield_map_baselayers_satellite' => 1,
+            'geofield_map_controltype' => 'default',
+            'geofield_map_draggable' => 0,
+            'geofield_map_height' => '300px',
+            'geofield_map_maptype' => 'map',
+            'geofield_map_mtc' => 'standard',
+            'geofield_map_overview' => 0,
+            'geofield_map_overview_opened' => 0,
+            'geofield_map_pancontrol' => 1,
+            'geofield_map_scale' => 0,
+            'geofield_map_scrollwheel' => 0,
+            'geofield_map_streetview_show' => 0,
+            'geofield_map_width' => '100%',
+            'geofield_map_zoom' => '8',
+          ),
+          'type' => 'geofield_map_map',
+          'weight' => '6',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_geo',
+      'label' => 'Location',
+      'required' => 0,
+      'settings' => array(
+        'local_solr' => array(
+          'enabled' => FALSE,
+          'lat_field' => 'lat',
+          'lng_field' => 'lng',
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'geofield',
+        'settings' => array(),
+        'type' => 'geofield_latlon',
+        'weight' => '37',
+      ),
+    ),
+  );
+
   // Exported field: 'node-uib_ou-field_uib_jobbnorge_id'
   $fields['node-uib_ou-field_uib_jobbnorge_id'] = array(
     'field_config' => array(
@@ -41,7 +116,7 @@ function uib_feature_area_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 3,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -110,7 +185,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -178,7 +253,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -247,7 +322,7 @@ function uib_feature_area_field_default_fields() {
             'use_widget_handlers' => 1,
           ),
           'type' => 'addressfield_default',
-          'weight' => 5,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -323,7 +398,7 @@ function uib_feature_area_field_default_fields() {
             'use_widget_handlers' => 1,
           ),
           'type' => 'addressfield_default',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -573,6 +648,7 @@ function uib_feature_area_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Jobbnorge ID');
+  t('Location');
   t('Parents');
   t('Place');
   t('Place ID');
