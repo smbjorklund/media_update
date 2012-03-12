@@ -8,9 +8,9 @@ We use git submodules here, so after the initial clone you need to run:
 
     git submodule update --init --recursive
 
-to grab the rest of the code to get a working envirionment.
+to grab the rest of the code to get a working environment.
 
-To set up a test site, configure Apache to serve the the 'drupal' directory
+To set up a test site, configure Apache to serve the 'drupal' directory
 at the root of some virtual host.  Having the string 'uib' as part of of the
 hostname helps the git ignore rules in the drupal repo.  You might for instance
 use a domainname like 'w3.uib.local' set up as an alias for localhost.
