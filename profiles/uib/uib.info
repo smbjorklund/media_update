@@ -11,5 +11,6 @@ dependencies[] = uib_feature_article
 dependencies[] = toolbar
 dependencies[] = help
 dependencies[] = devel
+dependencies[] = diff
 dependencies[] = module_filter
 files[] = uib.profile
