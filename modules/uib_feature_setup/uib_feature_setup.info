@@ -1,5 +1,5 @@
-name = "UiB Setup"
-description = "General setup"
+name = "UiB Feature Setup"
+description = "General setup for w3.uib.no"
 core = "7.x"
 package = "Features"
 version = "7.x-0.1"
