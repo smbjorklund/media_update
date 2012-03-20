@@ -15,6 +15,8 @@ at the root of some virtual host.  Having the string 'uib' as part of of the
 hostname helps the git ignore rules in the drupal repo.  You might for instance
 use a domainname like 'w3.uib.local' set up as an alias for localhost.
 
+Then you need to make sure you have drush installed.
+
 Then set up the drupal site by invoking:
 
     bin/site-install w3.uib.local
