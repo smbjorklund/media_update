@@ -645,8 +645,8 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area_type-field_uib_sebra_id'
-  $fields['taxonomy_term-area_type-field_uib_sebra_id'] = array(
+  // Exported field: 'taxonomy_term-area-field_uib_sebra_id'
+  $fields['taxonomy_term-area-field_uib_sebra_id'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -661,7 +661,7 @@ function uib_feature_area_field_default_fields() {
       'type' => 'number_integer',
     ),
     'field_instance' => array(
-      'bundle' => 'area_type',
+      'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -676,7 +676,7 @@ function uib_feature_area_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 0,
+          'weight' => 3,
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -695,7 +695,7 @@ function uib_feature_area_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '1',
+        'weight' => '35',
       ),
     ),
   );
