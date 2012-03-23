@@ -9,6 +9,7 @@ dependencies[] = field_ui
 dependencies[] = uib_feature_setup
 dependencies[] = uib_feature_area
 dependencies[] = uib_feature_article
+dependencies[] = uib_feature_user
 dependencies[] = toolbar
 dependencies[] = help
 dependencies[] = devel
