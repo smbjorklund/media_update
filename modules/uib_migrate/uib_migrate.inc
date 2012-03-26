@@ -3,7 +3,7 @@ class UiBArticleMigration extends XMLMigration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('example'));
 
-    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=faculty&full_dump&limit=2";
+    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=article&prefix=/hf&full_dump&limit=0";
     $item_xpath = '/topiclist/topic';  // relative to document
     $item_ID_xpath = '@id';
 
