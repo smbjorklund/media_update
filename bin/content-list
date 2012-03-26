@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+
+use strict;
+
+my $host = "www.uib.no";
+$host = "void:8098";
+
+my @prefixes = ("hf", "ahkr", "fof", "fremmedsprak", "lle", "grieg");
+my @types = ("infopage", "newsitem");
+
+for my $prefix (@prefixes) {
+    for my $type (@types) {
+	my $url = "http://$host/topicmap/\@\@xtopic?type=$type&prefix=/$prefix&limit=0&csv";
+	print "curl '$url' >content-$prefix-$type.csv\n";
+    }
+}
