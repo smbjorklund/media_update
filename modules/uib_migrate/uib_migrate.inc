@@ -18,9 +18,9 @@ class UiBArticleMigration extends XMLMigration {
     $this->destination = new MigrateDestinationNode('uib_article');
     $this->map = new MigrateSQLMap($this->machineName,
         array(
-          'nid' => array(
+          'w2_id' => array(
             'type' => 'varchar',
-	    'length' => 255,
+	    'length' => 32,
 	    'not null' => TRUE,
 	  ),
         ),
