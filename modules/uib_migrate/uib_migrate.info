@@ -1,0 +1,7 @@
+name = "UIB Migrate w2"
+description = "Migrate data from w2"
+package = "UiB"
+core = 7.x
+dependencies[] = migrate
+dependencies[] = uib_feature_article
+files[] = uib_migrate.inc
