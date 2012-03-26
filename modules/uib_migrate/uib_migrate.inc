@@ -9,6 +9,7 @@ class UiBArticleMigration extends XMLMigration {
 
     $fields = array(
       'title' => t('Title'),
+      'id' => t('ID from w2'),
     );
 
     $items_class = new MigrateItemsXML($items_url, $item_xpath, $item_ID_xpath);
@@ -27,5 +28,6 @@ class UiBArticleMigration extends XMLMigration {
       );
 
     $this->addFieldMapping('title', 'title')->xpath('title');
+    $this->addFieldMapping('field_uib_w2_id', 'id')->xpath('@id');
   }
 }
