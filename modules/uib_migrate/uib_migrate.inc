@@ -3,7 +3,9 @@ class UiBArticleMigration extends XMLMigration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('article'));
 
-    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=article&full_dump";
+    $item_type = "article";
+
+    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=$item_type&full_dump";
     $item_xpath = '/topiclist/topic';  // relative to document
     $item_ID_xpath = '@id';
 
@@ -38,6 +40,7 @@ class UiBArticleMigration extends XMLMigration {
     $this->addFieldMapping('title', 'title')->xpath('title');
     $this->addFieldMapping('field_uib_w2_id', 'w2_id')->xpath('@id');
     $this->addFieldMapping('field_uib_w2_path', 'path')->xpath('@path');
+    $this->addFieldMapping('field_uib_article_type')->defaultValue($item_type)->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('created', 'created')->xpath('field[@name="created"]');
     $this->addFieldMapping('changed', 'modified')->xpath('field[@name="modified"]');
     $this->addFieldMapping('field_uib_kicker', 'stikktittel')->xpath('field[@name="stikktittel"]');
