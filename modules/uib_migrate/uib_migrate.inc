@@ -37,6 +37,8 @@ class UiBArticleMigration extends XMLMigration {
     $this->addFieldMapping('title', 'title')->xpath('title');
     $this->addFieldMapping('field_uib_w2_id', 'w2_id')->xpath('@id');
     $this->addFieldMapping('field_uib_w2_path', 'path')->xpath('@path');
+    $this->addFieldMapping('created', 'created')->xpath('field[@name="created"]');
+    $this->addFieldMapping('changed', 'modified')->xpath('field[@name="modified"]');
     $this->addFieldMapping('field_uib_lead', 'dc_description')->xpath('field[@name="dc_description"]');
     $this->addFieldMapping('field_uib_text', 'text')->xpath('field[@name="text"]');
   }
