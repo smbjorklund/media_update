@@ -1,4 +1,47 @@
 <?php
+class UiBAreaMigration extends XMLMigration {
+  public function __construct() {
+    parent::__construct(MigrateGroup::getInstance('area'));
+
+    $item_type = "faculty";
+
+    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=$item_type&full_dump";
+    $item_xpath = '/topiclist/topic';  // relative to document
+    $item_ID_xpath = '@id';
+
+    $fields = array(
+      'w2_id' => t('Object ID from w2'),
+      'path' => t('Object path in w2; also works as URL'),
+      'title' => t('The title of the object'),
+      'state' => t('Publish state'),
+      'dc_description' => t('Introduction text for article'),
+      'text' => t('Main text of article (in HTML format)'),
+      'created' => t('Created date'),
+      'modified' => t('Modified date'),
+      'effectivedate' => t('Publishing date'),
+    );
+
+    $items_class = new MigrateItemsXML($items_url, $item_xpath, $item_ID_xpath);
+    $this->source = new MigrateSourceMultiItems($items_class, $fields);
+
+    $this->destination = new MigrateDestinationTerm('area');
+    $this->map = new MigrateSQLMap($this->machineName,
+        array(
+          'w2_id' => array(
+            'type' => 'varchar',
+	    'length' => 32,
+	    'not null' => TRUE,
+	  ),
+        ),
+        MigrateDestinationTerm::getKeySchema()
+      );
+
+    $this->addFieldMapping('name', 'title')->xpath('title');
+    $this->addFieldMapping('description', 'text')->xpath('field[@name="text"]');
+    $this->addFieldMapping('field_uib_area_type')->defaultValue($item_type)->arguments(array('create_term' => TRUE));
+  }
+}
+
 class UiBArticleMigration extends XMLMigration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('article'));
