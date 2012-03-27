@@ -1,7 +1,7 @@
 <?php
 class UiBArticleMigration extends XMLMigration {
   public function __construct() {
-    parent::__construct(MigrateGroup::getInstance('example'));
+    parent::__construct(MigrateGroup::getInstance('article'));
 
     $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=article&prefix=/hf&full_dump&limit=0";
     $item_xpath = '/topiclist/topic';  // relative to document
