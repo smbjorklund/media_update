@@ -12,6 +12,7 @@ class UiBArticleMigration extends XMLMigration {
       'path' => t('Object path in w2; also works as URL'),
       'title' => t('The title of the object'),
       'state' => t('Publish state'),
+      'stikktittel' => t('Kicker'),
       'dc_description' => t('Introduction text for article'),
       'text' => t('Main text of article (in HTML format)'),
       'created' => t('Created date'),
@@ -39,6 +40,7 @@ class UiBArticleMigration extends XMLMigration {
     $this->addFieldMapping('field_uib_w2_path', 'path')->xpath('@path');
     $this->addFieldMapping('created', 'created')->xpath('field[@name="created"]');
     $this->addFieldMapping('changed', 'modified')->xpath('field[@name="modified"]');
+    $this->addFieldMapping('field_uib_kicker', 'stikktittel')->xpath('field[@name="stikktittel"]');
     $this->addFieldMapping('field_uib_lead', 'dc_description')->xpath('field[@name="dc_description"]');
     $this->addFieldMapping('field_uib_text', 'text')->xpath('field[@name="text"]');
   }
