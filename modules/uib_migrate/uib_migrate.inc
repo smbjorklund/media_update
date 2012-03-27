@@ -3,13 +3,20 @@ class UiBArticleMigration extends XMLMigration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('article'));
 
-    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=article&prefix=/hf&full_dump&limit=0";
+    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=article&full_dump";
     $item_xpath = '/topiclist/topic';  // relative to document
     $item_ID_xpath = '@id';
 
     $fields = array(
-      'title' => t('Title'),
-      'w2_id' => t('ID from w2'),
+      'w2_id' => t('Object ID from w2'),
+      'path' => t('Object path in w2; also works as URL'),
+      'title' => t('The title of the object'),
+      'state' => t('Publish state'),
+      'dc_description' => t('Introduction text for article'),
+      'text' => t('Main text of article (in HTML format)'),
+      'created' => t('Created date'),
+      'modified' => t('Modified date'),
+      'effectivedate' => t('Publishing date'),
     );
 
     $items_class = new MigrateItemsXML($items_url, $item_xpath, $item_ID_xpath);
