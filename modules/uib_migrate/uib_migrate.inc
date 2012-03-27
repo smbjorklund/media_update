@@ -3,9 +3,7 @@ class UiBAreaMigration extends XMLMigration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('area'));
 
-    $item_type = "faculty";
-
-    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=$item_type&full_dump";
+    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=area&full_dump&allinstances&limit=0";
     $item_xpath = '/topiclist/topic';  // relative to document
     $item_ID_xpath = '@id';
 
@@ -14,6 +12,7 @@ class UiBAreaMigration extends XMLMigration {
       'path' => t('Object path in w2; also works as URL'),
       'title' => t('The title of the object'),
       'state' => t('Publish state'),
+      'type' => t('Type of object'),
       'dc_description' => t('Introduction text for article'),
       'text' => t('Main text of article (in HTML format)'),
       'created' => t('Created date'),
@@ -38,7 +37,7 @@ class UiBAreaMigration extends XMLMigration {
 
     $this->addFieldMapping('name', 'title')->xpath('title');
     $this->addFieldMapping('description', 'text')->xpath('field[@name="text"]');
-    $this->addFieldMapping('field_uib_area_type')->defaultValue($item_type)->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_uib_area_type', 'type')->xpath('type/@name')->arguments(array('create_term' => TRUE));
   }
 }
 
