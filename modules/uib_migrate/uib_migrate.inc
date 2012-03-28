@@ -1,9 +1,17 @@
 <?php
-class UiBAreaMigration extends XMLMigration {
+
+abstract class UiBXMLMigration extends XMLMigration {
+    public function w2_server() {
+	return variable_get('uib_w2_server', 'testbool.uib.no');
+    }
+}
+
+class UiBAreaMigration extends UiBXMLMigration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('area'));
 
-    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=area&full_dump&allinstances&limit=0";
+    $server = $this->w2_server();
+    $items_url = "http://$server/topicmap/@@xtopic?type=area&full_dump&allinstances&limit=50";
     $item_xpath = '/topiclist/topic';  // relative to document
     $item_ID_xpath = '@id';
 
@@ -41,13 +49,14 @@ class UiBAreaMigration extends XMLMigration {
   }
 }
 
-class UiBArticleMigration extends XMLMigration {
+class UiBArticleMigration extends UiBXMLMigration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('article'));
 
     $item_type = "article";
 
-    $items_url = "http://testbool.uib.no/topicmap/@@xtopic?type=$item_type&full_dump";
+    $server = $this->w2_server();
+    $items_url = "http://$server/topicmap/@@xtopic?type=$item_type&full_dump";
     $item_xpath = '/topiclist/topic';  // relative to document
     $item_ID_xpath = '@id';
 
