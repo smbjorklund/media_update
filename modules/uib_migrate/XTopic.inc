@@ -24,6 +24,16 @@ class XTopic extends stdClass {
       'title' => t('Title'),
     );
   }
+
+  public static function getKeySchema() {
+    return array(
+      'id' => array(
+	'type' => 'varchar',
+	'length' => 32,
+	'not null' => TRUE,
+      ),
+    );
+  }
 }
 
 class XTopicListSource extends MigrateSource {
@@ -89,6 +99,7 @@ class XTopicListSource extends MigrateSource {
       $this->currentKey = NULL;
     }
   }
+
 }
 
 abstract class XTopicToArticleMigration extends Migration {
@@ -99,13 +110,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->destination = new MigrateDestinationNode('uib_article');
 
     $this->map = new MigrateSQLMap($this->machineName,
-      array(
-	'id' => array(
-	  'type' => 'varchar',
-	  'length' => 32,
-	  'not null' => TRUE,
-	),
-      ),
+      XTopic::getKeySchema(),
       MigrateDestinationNode::getKeySchema()
     );
 
@@ -130,13 +135,7 @@ class AreaMigration extends Migration {
     $this->destination = new MigrateDestinationTerm('area');
 
     $this->map = new MigrateSQLMap($this->machineName,
-      array(
-	'id' => array(
-	  'type' => 'varchar',
-	  'length' => 32,
-	  'not null' => TRUE,
-	),
-      ),
+      XTopic::getKeySchema(),
       MigrateDestinationTerm::getKeySchema()
     );
 
