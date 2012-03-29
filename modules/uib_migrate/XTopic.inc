@@ -121,3 +121,25 @@ class InfoPageMigration extends XTopicToArticleMigration {
 class NewsItem extends XTopicToArticleMigration {
   public $topic_type = 'newsItem';
 }
+
+class AreaMigration extends Migration {
+  public function __construct() {
+    parent::__construct(MigrateGroup::getInstance('xtopic'));
+
+    $this->source = new XTopicListSource('faculty');
+    $this->destination = new MigrateDestinationTerm('area');
+
+    $this->map = new MigrateSQLMap($this->machineName,
+      array(
+	'id' => array(
+	  'type' => 'varchar',
+	  'length' => 32,
+	  'not null' => TRUE,
+	),
+      ),
+      MigrateDestinationTerm::getKeySchema()
+    );
+
+    $this->addFieldMapping('name', 'title');
+  }
+}
