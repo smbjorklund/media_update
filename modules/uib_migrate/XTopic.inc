@@ -91,11 +91,11 @@ class XTopicListSource extends MigrateSource {
   }
 }
 
-class XTopicMigration extends Migration {
+abstract class XTopicToArticleMigration extends Migration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('xtopic'));
 
-    $this->source = new XTopicListSource('faculty');
+    $this->source = new XTopicListSource($this->topic_type);
     $this->destination = new MigrateDestinationNode('uib_article');
 
     $this->map = new MigrateSQLMap($this->machineName,
@@ -112,4 +112,12 @@ class XTopicMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('title', 'title');
   }
+}
+
+class InfoPageMigration extends XTopicToArticleMigration {
+  public $topic_type = 'infopage';
+}
+
+class NewsItem extends XTopicToArticleMigration {
+  public $topic_type = 'newsItem';
 }
