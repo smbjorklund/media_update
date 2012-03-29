@@ -14,6 +14,9 @@ class XTopic extends stdClass {
     $this->id = $id;
     $xml = simplexml_load_file($url);
     $topic = $xml->topic;
+    if (empty($topic)) {
+      throw new Exception("Topic $id not found");
+    }
     $this->title = (string)$topic->title;
     $this->state = (string)$topic['state'];
     $this->path = (string)$topic['path'];
