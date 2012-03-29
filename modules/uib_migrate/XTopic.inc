@@ -88,10 +88,9 @@ class XTopicListSource extends MigrateSource {
     $this->offset += count($ids);
   }
 
-  public function rewind() {
+  public function performRewind() {
     $this->offset = 0;
-    $this->moreIds();
-    $this->next();
+    $this->moreIds(); // need to set $count
   }
 
   public function computeCount() {
@@ -102,18 +101,14 @@ class XTopicListSource extends MigrateSource {
     return $this->count;
   }
 
-  public function next() {
+  public function getNextRow() {
     if (!$this->ids && $this->offset < $this->count) {
       $this->moreIds();
     }
     if ($this->ids) {
-      $row = $this->currentRow = new XTopic(array_shift($this->ids));
-      $this->currentKey=array($row->id);
+      return new XTopic(array_shift($this->ids));
     }
-    else {
-      $this->currentRow = NULL;
-      $this->currentKey = NULL;
-    }
+    return NULL;
   }
 
 }
