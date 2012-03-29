@@ -19,7 +19,7 @@ class XTopic extends stdClass {
     }
     $this->title = (string)$topic->title;
     $this->state = (string)$topic['state'];
-    $this->path = (string)$topic['path'];
+    $this->path = substr($topic['path'], 1);
     $this->type = (string)$topic->type['name'];
     foreach ($topic->field as $field) {
       $this->$field['name'] = (string)$field;
@@ -165,5 +165,6 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('name', 'title');
     $this->addFieldMapping('description', 'text');
     $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('path', 'path');
   }
 }

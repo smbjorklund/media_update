@@ -6,6 +6,7 @@ dependencies[] = block
 dependencies[] = dblog
 dependencies[] = field
 dependencies[] = field_ui
+dependencies[] = path
 dependencies[] = uib_feature_setup
 dependencies[] = uib_feature_area
 dependencies[] = uib_feature_article
