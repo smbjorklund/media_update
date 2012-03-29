@@ -1,8 +1,16 @@
 <?php
 
 class XTopic extends stdClass {
+  public static $w2_server;
+  public static function url() {
+    if (is_null(self::$w2_server)) {
+	self::$w2_server = variable_get('uib_w2_server', 'testbool.uib.no');
+    }
+    return "http://" . self::$w2_server . "/topicmap/@@xtopic";
+  }
+
   public function __construct($id) {
-    $url = "http://void:8098/topicmap/@@xtopic?id=$id";
+    $url = XTopic::url() . "?id=$id";
     print "$url\n";
     $this->id = $id;
     $xml = simplexml_load_file($url);
@@ -19,13 +27,18 @@ class XTopic extends stdClass {
 }
 
 class XTopicListSource extends MigrateSource {
-  private $listUrl = "http://void:8098/topicmap/@@xtopic?type=faculty";
+  private $listUrl;
   private $count;
   private $offset;
   private $ids;
 
+  public function __construct($type) {
+    parent::__construct();
+    $this->listUrl = XTopic::url() . "?type=$type";
+  }
+
   public function __toString() {
-    return "XTopicList";
+    return $this->listUrl;
   }
 
   public function fields() {
@@ -82,7 +95,7 @@ class XTopicMigration extends Migration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('xtopic'));
 
-    $this->source = new XTopicListSource();
+    $this->source = new XTopicListSource('faculty');
     $this->destination = new MigrateDestinationNode('uib_article');
 
     $this->map = new MigrateSQLMap($this->machineName,
