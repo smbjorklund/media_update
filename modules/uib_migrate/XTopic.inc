@@ -15,12 +15,27 @@ class XTopic extends stdClass {
     $xml = simplexml_load_file($url);
     $topic = $xml->topic;
     $this->title = (string)$topic->title;
+    $this->state = (string)$topic['state'];
+    $this->path = (string)$topic['path'];
+    $this->type = (string)$topic->type['name'];
+    foreach ($topic->field as $field) {
+      $this->$field['name'] = (string)$field;
+    }
   }
 
   public static function fields() {
     return array(
-      'id' => t('TopicID'),
+      'id' => t('Topic serial number (and identifier)'),
       'title' => t('Title'),
+      'state' => t('Publishing state; one of private, published, retracted'),
+      'path' => t('The path of the topic in the database'),
+      'type' => t('What kind of topic is this'),
+      'created' => t('When was this topic created, ISO datetime'),
+      'modified' => t('When was this topic last modified, ISO datetime'),
+      'effectivedate' => t('Publishing date, ISO datetime'),
+      'stikktittel' => t('Kicker'),
+      'dc_description' => t('Summary of the article'),
+      'text' => t('The main text of the article; raw HTML'),
     );
   }
 
