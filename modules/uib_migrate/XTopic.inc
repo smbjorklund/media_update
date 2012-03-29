@@ -129,6 +129,13 @@ abstract class XTopicToArticleMigration extends Migration {
 
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('title', 'title');
+    $this->addFieldMapping('field_uib_w2_path', 'path');
+    $this->addFieldMapping('field_uib_article_type')->defaultValue($this->topic_type)->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('created', 'created');
+    $this->addFieldMapping('changed', 'modified');
+    $this->addFieldMapping('field_uib_kicker', 'stikktittel');
+    $this->addFieldMapping('field_uib_lead', 'dc_description');
+    $this->addFieldMapping('field_uib_text', 'text');
   }
 }
 
@@ -153,5 +160,7 @@ class AreaMigration extends Migration {
     );
 
     $this->addFieldMapping('name', 'title');
+    $this->addFieldMapping('description', 'text');
+    $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
   }
 }
