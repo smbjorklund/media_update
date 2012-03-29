@@ -106,7 +106,7 @@ abstract class XTopicToArticleMigration extends Migration {
 	  'not null' => TRUE,
 	),
       ),
-      MigrateDestinationTerm::getKeySchema()
+      MigrateDestinationNode::getKeySchema()
     );
 
     $this->addFieldMapping('field_uib_w2_id', 'id');
