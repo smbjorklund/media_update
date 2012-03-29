@@ -5,3 +5,4 @@ core = 7.x
 dependencies[] = migrate
 dependencies[] = uib_feature_article
 files[] = uib_migrate.inc
+files[] = XTopic.inc
