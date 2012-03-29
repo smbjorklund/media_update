@@ -11,7 +11,6 @@ class XTopic extends stdClass {
 
   public function __construct($id) {
     $url = XTopic::url() . "?id=$id";
-    print "$url\n";
     $this->id = $id;
     $xml = simplexml_load_file($url);
     $topic = $xml->topic;
@@ -57,7 +56,6 @@ class XTopicListSource extends MigrateSource {
 
   private function moreIds() {
     $url = $this->listUrl . "&offset=$this->offset";
-    print "$url\n";
     $xml = simplexml_load_file($url);
     if ($this->offset == 0) {
       $range = explode('/', $xml['range']);
