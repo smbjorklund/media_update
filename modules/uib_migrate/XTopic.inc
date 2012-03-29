@@ -62,6 +62,9 @@ class XTopicListSource extends MigrateSource {
   public function __construct($type) {
     parent::__construct();
     $this->listUrl = XTopic::url() . "?type=$type";
+    if ($type == 'area') {
+      $this->listUrl .= '&allinstances';
+    }
   }
 
   public function __toString() {
@@ -149,7 +152,7 @@ class AreaMigration extends Migration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('xtopic'));
 
-    $this->source = new XTopicListSource('faculty');
+    $this->source = new XTopicListSource('area');
     $this->destination = new MigrateDestinationTerm('area');
 
     $this->map = new MigrateSQLMap($this->machineName,
