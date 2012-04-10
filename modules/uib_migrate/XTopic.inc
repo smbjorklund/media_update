@@ -4,7 +4,7 @@ class XTopic extends stdClass {
   public static $w2_server;
   public static function url() {
     if (is_null(self::$w2_server)) {
-	self::$w2_server = variable_get('uib_w2_server', 'testbool.uib.no');
+      self::$w2_server = variable_get('uib_w2_server', 'testbool.uib.no');
     }
     return "http://" . self::$w2_server . "/topicmap/@@xtopic";
   }
@@ -45,9 +45,9 @@ class XTopic extends stdClass {
   public static function getKeySchema() {
     return array(
       'id' => array(
-	'type' => 'varchar',
-	'length' => 32,
-	'not null' => TRUE,
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
       ),
     );
   }
