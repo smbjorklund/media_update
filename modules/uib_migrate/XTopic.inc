@@ -22,7 +22,17 @@ class XTopic extends stdClass {
     $this->path = substr($topic['path'], 1);
     $this->type = (string)$topic->type['name'];
     foreach ($topic->field as $field) {
-      $this->$field['name'] = (string)$field;
+      if ($field['name'] == 'psi') {
+        $value = (string)$field;
+        $this->{$field['name']}[] = $field;
+        $arr = explode('?omraadekode=', $value);
+        if (count($arr) == 2) {
+          $this->omraadekode = preg_replace('/_en$/', '', $arr[1]);
+        }
+      }
+      else {
+        $this->$field['name'] = (string)$field;
+      }
     }
   }
 
@@ -30,6 +40,7 @@ class XTopic extends stdClass {
     return array(
       'id' => t('Topic serial number (and identifier)'),
       'title' => t('Title'),
+      'psi' => t('Public Subject Idendentifer'),
       'state' => t('Publishing state; one of private, published, retracted'),
       'path' => t('The path of the topic in the database'),
       'type' => t('What kind of topic is this'),
@@ -39,6 +50,7 @@ class XTopic extends stdClass {
       'stikktittel' => t('Kicker'),
       'dc_description' => t('Summary of the article'),
       'text' => t('The main text of the article; raw HTML'),
+      'omraadekode' => t('Sebra Area ID'),
     );
   }
 
@@ -164,6 +176,7 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('description', 'text');
     $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('path', 'path');
+    $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
   }
 
   public function prepareRow($row) {
