@@ -180,6 +180,12 @@ class AreaMigration extends Migration {
   }
 
   public function prepareRow($row) {
-    return $row->state == 'published';
+    if ($row->state != 'published') {
+      return FALSE;
+    }
+    if ($row->alpha2_code != 'no') {
+      return FALSE;
+    }
+    //print_r($row);
   }
 }
