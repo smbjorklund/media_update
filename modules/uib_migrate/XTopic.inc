@@ -24,7 +24,7 @@ class XTopic extends stdClass {
     foreach ($topic->field as $field) {
       if ($field['name'] == 'psi') {
         $value = (string)$field;
-        $this->{$field['name']}[] = $field;
+        $this->{$field['name']}[] = $value;
         $arr = explode('?omraadekode=', $value);
         if (count($arr) == 2) {
           $this->omraadekode = preg_replace('/_en$/', '', $arr[1]);
