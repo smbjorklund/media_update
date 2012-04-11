@@ -186,6 +186,9 @@ class AreaMigration extends Migration {
     if ($row->alpha2_code != 'no') {
       return FALSE;
     }
+    if ($row->placeid) {
+      $row->place = new SebraPlace($row->placeid);
+    }
     //print_r($row);
   }
 }

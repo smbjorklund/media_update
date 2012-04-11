@@ -6,3 +6,4 @@ dependencies[] = migrate
 dependencies[] = uib_feature_article
 files[] = uib_migrate.inc
 files[] = XTopic.inc
+files[] = SebraPlace.inc
