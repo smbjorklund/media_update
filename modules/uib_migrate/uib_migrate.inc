@@ -1,6 +1,9 @@
 <?php
 
 abstract class XTopicToArticleMigration extends Migration {
+  public $topic_type;   // to be overridden
+  public $article_type; // to be overridden
+
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('xtopic'));
 
@@ -15,7 +18,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('field_uib_w2_path', 'path');
-    $this->addFieldMapping('field_uib_article_type')->defaultValue($this->topic_type)->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_uib_article_type')->defaultValue($this->article_type)->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('created', 'created');
     $this->addFieldMapping('changed', 'modified');
     $this->addFieldMapping('field_uib_kicker', 'stikktittel');
@@ -27,14 +30,17 @@ abstract class XTopicToArticleMigration extends Migration {
 
 class InfoPageMigration extends XTopicToArticleMigration {
   public $topic_type = 'infopage';
+  public $article_type = 'infopage';
 }
 
 class NavPageMigration extends InfoPageMigration {
   public $topic_type = 'navigationpage';
+  public $article_type = 'infopage';
 }
 
 class NewsItem extends XTopicToArticleMigration {
   public $topic_type = 'newsItem';
+  public $article_type = 'news';
 }
 
 class AreaMigration extends Migration {
