@@ -38,7 +38,7 @@ class NavPageMigration extends InfoPageMigration {
   public $article_type = 'infopage';
 }
 
-class NewsItem extends XTopicToArticleMigration {
+class NewsMigration extends XTopicToArticleMigration {
   public $topic_type = 'newsItem';
   public $article_type = 'news';
 }
