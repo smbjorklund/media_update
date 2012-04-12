@@ -12,6 +12,9 @@ class XTopic extends stdClass {
   public function __construct($id) {
     $url = XTopic::url() . "?id=$id";
     $this->id = $id;
+    if (function_exists('drush_log')) {
+      drush_log('GET ' . $url);
+    }
     $xml = simplexml_load_file($url);
     $topic = $xml->topic;
     if (empty($topic)) {
@@ -104,6 +107,9 @@ class XTopicListSource extends MigrateSource {
 
   private function moreIds() {
     $url = $this->listUrl . "&offset=$this->offset";
+    if (function_exists('drush_log')) {
+      drush_log('GET ' . $url);
+    }
     $xml = simplexml_load_file($url);
     if ($this->offset == 0) {
       $range = explode('/', $xml['range']);

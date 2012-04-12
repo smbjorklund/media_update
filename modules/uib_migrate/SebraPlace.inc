@@ -5,6 +5,9 @@ class SebraPlace extends stdClass {
   public function __construct($id) {
     $url = 'http://sebra.uib.no/sws/place?code=' . $id;
     $this->id = $id;
+    if (function_exists('drush_log')) {
+      drush_log('GET ' . $url);
+    }
     $place = simplexml_load_file($url);
     if (empty($place)) {
       throw new Exception("Place $id not found: " . $url);
