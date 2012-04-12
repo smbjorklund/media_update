@@ -11,6 +11,11 @@ class SebraPlace extends stdClass {
     }
     $this->name = (string)$place->name;
     $this->address = (string)$place->address;
+    $this->postbox = (string)$place->postboks;
+    $this->postcode = (string)$place->postnr;
+    $this->postarea = (string)$place->postcode;
+    $this->phone = (string)$place->tlf;
+    $this->alias = (string)$place->alias;
     $this->maildomain = (string)$place->maildomain;
   }
 }

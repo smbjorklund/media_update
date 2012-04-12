@@ -186,9 +186,35 @@ class AreaMigration extends Migration {
     if ($row->alpha2_code != 'no') {
       return FALSE;
     }
+  }
+
+  public function prepare($term, $row) {
     if ($row->placeid) {
-      $row->place = new SebraPlace($row->placeid);
+      // XXX Check if we already have a 'uib_ou' node with the given placeid
+      $place = new SebraPlace($row->placeid);
+      $node = new stdClass();
+      $node->type = 'uib_ou';
+      $node->title = $place->name;
+      $node->uid = 1;
+      $node->status = 1;
+      $node->revision = 0;
+      $node->language = 'und';
+      $node->field_uib_ou_id['und'][0]['value'] = $row->placeid;
+      $node->field_uib_ou_shortname['und'][0]['value'] = $place->alias;
+
+      $node->field_uib_postal_address['und'][0]['thoroughfare'] = 'Postboks ' . $place->postbox;
+      $node->field_uib_postal_address['und'][0]['postal_code'] = $place->postcode;
+      $node->field_uib_postal_address['und'][0]['locality'] = $place->postarea;
+      $node->field_uib_postal_address['und'][0]['country'] = 'NO';
+
+      $node->field_uib_visit_address['und'][0]['thoroughfare'] = $place->address;
+      $node->field_uib_visit_address['und'][0]['postal_code'] = $place->postcode;
+      $node->field_uib_visit_address['und'][0]['locality'] = $place->postarea;
+      $node->field_uib_visit_address['und'][0]['country'] = 'NO';
+
+      node_save($node);
+      $term->field_uib_ou['und'][0]['target_id'] = $node->nid;
     }
-    //print_r($row);
+    //print_r($term);
   }
 }
