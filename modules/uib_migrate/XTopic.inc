@@ -34,6 +34,14 @@ class XTopic extends stdClass {
         $this->$field['name'] = (string)$field;
       }
     }
+
+    foreach ($topic->xlink as $xlink) {
+      $this->xlink[(string)$xlink['name']][] = (string)$xlink['ref'];
+    }
+
+    if(!empty($this->xlink['subordinate/hierarchical-relation/superordinate'])) {
+      $this->parent_id = $this->xlink['subordinate/hierarchical-relation/superordinate'][0];
+    }
   }
 
   public static function fields() {
@@ -51,6 +59,7 @@ class XTopic extends stdClass {
       'dc_description' => t('Summary of the article'),
       'text' => t('The main text of the article; raw HTML'),
       'omraadekode' => t('Sebra Area ID'),
+      'parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
     );
   }
 
@@ -149,11 +158,16 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_kicker', 'stikktittel');
     $this->addFieldMapping('field_uib_lead', 'dc_description');
     $this->addFieldMapping('field_uib_text', 'text');
+    $this->addFieldMapping('field_uib_w2_parent_id', 'parent_id');
   }
 }
 
 class InfoPageMigration extends XTopicToArticleMigration {
   public $topic_type = 'infopage';
+}
+
+class NavPageMigration extends InfoPageMigration {
+  public $topic_type = 'navigationpage';
 }
 
 class NewsItem extends XTopicToArticleMigration {
