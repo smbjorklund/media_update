@@ -26,6 +26,27 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_text', 'text');
     $this->addFieldMapping('field_uib_w2_parent_id', 'parent_id');
   }
+
+  public function prepare($node, $row) {
+    // Locate the area this article belongs to
+    //
+    // The only connection we have is that the source path will be "under" the
+    // path of the area, but we don't know the number of segments in the area
+    // path, so we start searching for the longest path prefix that map to a
+    // taxonomy term; and then just assume this will be the area.
+    $tid = NULL;
+    $segments = explode('/', $row->path);
+    array_pop($segments); // no need to look for the topic itself
+    while ($segments) {
+      $term_path = drupal_get_normal_path(implode('/', $segments));
+      if (substr($term_path, 0, 14) == 'taxonomy/term/') {
+        $tid = substr($term_path, 14);
+        $node->field_uib_area['und'][0]['tid'] = $tid;
+        break;
+      }
+      array_pop($segments);
+    }
+  }
 }
 
 class InfoPageMigration extends XTopicToArticleMigration {
