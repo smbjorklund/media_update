@@ -25,6 +25,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_lead', 'dc_description');
     $this->addFieldMapping('field_uib_text', 'text');
     $this->addFieldMapping('field_uib_w2_parent_id', 'parent_id');
+    $this->addFieldMapping('field_uib_weight', 'weight');
   }
 
   public function prepare($node, $row) {
