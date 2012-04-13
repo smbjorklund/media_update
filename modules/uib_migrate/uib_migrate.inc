@@ -5,7 +5,7 @@ abstract class XTopicToArticleMigration extends Migration {
   public $article_type; // to be overridden
 
   public function __construct() {
-    parent::__construct(MigrateGroup::getInstance('xtopic'));
+    parent::__construct(MigrateGroup::getInstance('article', array('area')));
 
     $this->source = new XTopicListSource($this->topic_type);
     $this->destination = new MigrateDestinationNode('uib_article');
@@ -68,7 +68,7 @@ class AreaMigration extends Migration {
   private $vid;
 
   public function __construct() {
-    parent::__construct(MigrateGroup::getInstance('xtopic'));
+    parent::__construct(MigrateGroup::getInstance('area'));
 
     $this->source = new XTopicListSource('area');
 
