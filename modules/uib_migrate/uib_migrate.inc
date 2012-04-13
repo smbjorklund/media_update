@@ -44,11 +44,23 @@ class NewsMigration extends XTopicToArticleMigration {
 }
 
 class AreaMigration extends Migration {
+  private $vid;
+
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('xtopic'));
 
     $this->source = new XTopicListSource('area');
-    $this->destination = new MigrateDestinationTerm('area');
+
+    $destination_machine_name = 'area';
+
+    $this->destination = new MigrateDestinationTerm($destination_machine_name);
+
+    // Get the $vid of the destination
+    $vids = array_keys(taxonomy_vocabulary_load_multiple(
+      array(),
+      array('machine_name' => $destination_machine_name)
+    ));
+    $this->vid = $vids[0];
 
     $this->map = new MigrateSQLMap($this->machineName,
       XTopic::getKeySchema(),
@@ -67,7 +79,7 @@ class AreaMigration extends Migration {
 
   protected function createStub($migration, $source_id) {
     $term = new stdClass;
-    $term->vocabulary_machine_name = $this->destination->getBundle();
+    $term->vid = $this->vid;
     $term->name = t('Stub for ') . $source_id[0];
     taxonomy_term_save($term);
     return array($term->tid);
