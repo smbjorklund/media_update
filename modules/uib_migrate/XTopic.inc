@@ -50,6 +50,10 @@ class XTopic extends stdClass {
       $menu_order = drupal_json_decode($menu_order);
       $this->weight = array_search($this->id, $menu_order);
     }
+
+    if (!empty($this->xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
+      $this->area_parent_ids =  $this->xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
+    }
   }
 
   public static function fields() {
@@ -69,6 +73,7 @@ class XTopic extends stdClass {
       'omraadekode' => t('Sebra Area ID'),
       'parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
       'weight' => t('Sort order among siblings'),
+      'area_parent_ids' => t('The serial numbers of the area parents'),
     );
   }
 

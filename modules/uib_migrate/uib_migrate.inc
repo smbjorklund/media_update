@@ -60,6 +60,17 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('path', 'path');
     $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
+    $this->addFieldMapping('field_uib_area_parents', 'area_parent_ids')
+      ->sourceMigration('Area')
+      ->arguments(array('source_type' => 'tid'));
+  }
+
+  protected function createStub($migration, $source_id) {
+    $term = new stdClass;
+    $term->vocabulary_machine_name = $this->destination->getBundle();
+    $term->name = t('Stub for ') . $source_id[0];
+    taxonomy_term_save($term);
+    return array($term->tid);
   }
 
   public function prepareRow($row) {
