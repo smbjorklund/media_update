@@ -84,6 +84,7 @@ class XTopic extends stdClass {
 }
 
 class XTopicListSource extends MigrateSource {
+  private $type;
   private $listUrl;
   private $count;
   private $offset;
@@ -91,6 +92,7 @@ class XTopicListSource extends MigrateSource {
 
   public function __construct($type) {
     parent::__construct();
+    $this->type = $type;
     $this->listUrl = XTopic::url() . "?type=$type";
     if ($type == 'area') {
       $this->listUrl .= '&allinstances';
@@ -106,6 +108,26 @@ class XTopicListSource extends MigrateSource {
   }
 
   private function moreIds() {
+    // Force a limited set of source stuff to be available to
+    // speed up debugging during developemnt
+    if (1) {
+      // Look for xtopic CSV files as alternative indexes
+      $fh = @fopen(dirname(__FILE__) . '/' . $this->type . '.csv', 'r');
+      if ($fh) {
+        $this->ids = array();
+        while ($data = fgetcsv($fh)) {
+          $id = $data[1];
+          if ($id == 'id') { continue; }  // skip header line
+          $this->ids[] = $id;
+        }
+        fclose($fh);
+
+        $this->count = count($this->ids);
+        $this->offset += $this->count;
+        return;
+      }
+    }
+
     $url = $this->listUrl . "&offset=$this->offset";
     if (function_exists('drush_log')) {
       drush_log('GET ' . $url);
