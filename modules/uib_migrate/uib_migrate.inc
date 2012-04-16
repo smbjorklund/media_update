@@ -165,3 +165,25 @@ class AreaMigration extends Migration {
     //print_r($term);
   }
 }
+
+class UserMigration extends Migration {
+  public function __construct() {
+    parent::__construct(MigrateGroup::getInstance('user', array('area')));
+
+    $this->source = new XTopicListSource('person');
+    $this->destination = new MigrateDestinationUser();
+
+    $this->map = new MigrateSQLMap($this->machineName,
+      XTopic::getKeySchema(),
+      MigrateDestinationUser::getKeySchema()
+    );
+
+    $this->addFieldMapping('name', 'uib-id');
+    $this->addFieldMapping('mail', 'epost');
+    $this->addFieldMapping('status')->defaultValue(1);  // activated
+    $this->addFieldMapping('field_uib_w2_id', 'id');
+    $this->addFieldMapping('field_uib_first_name', 'fornavn');
+    $this->addFieldMapping('field_uib_last_name', 'etternavn');
+    $this->addFieldMapping('field_uib_position', 'stilling');
+  }
+}

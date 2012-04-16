@@ -74,6 +74,13 @@ class XTopic extends stdClass {
       'parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
       'weight' => t('Sort order among siblings'),
       'area_parent_ids' => t('The serial numbers of the area parents'),
+
+      # User fields
+      'uib-id' => t('Username at UiB'),
+      'epost' => t('E-mail address'),
+      'fornavn' => t('First name'),
+      'etternavn' => t('Last name'),
+      'stilling' => t('Position at UiB'),
     );
   }
 
