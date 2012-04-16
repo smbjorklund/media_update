@@ -26,6 +26,8 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_text', 'text');
     $this->addFieldMapping('field_uib_w2_parent_id', 'parent_id');
     $this->addFieldMapping('field_uib_weight', 'weight');
+    $this->addFieldMapping('uid', 'author')
+      ->sourceMigration('User');
   }
 
   public function prepareRow($row) {
@@ -186,5 +188,14 @@ class UserMigration extends Migration {
     $this->addFieldMapping('field_uib_first_name', 'fornavn');
     $this->addFieldMapping('field_uib_last_name', 'etternavn');
     $this->addFieldMapping('field_uib_position', 'stilling');
+  }
+
+  protected function createStub($migration, $source_id) {
+    $user = new stdClass;
+    $user->name = t('Stub for ') . $source_id[0];
+    $user->mail = 'nobody@uib.no';
+    $user->status = 0;
+    user_save($user);
+    return array($user->uid);
   }
 }

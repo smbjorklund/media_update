@@ -54,6 +54,10 @@ class XTopic extends stdClass {
     if (!empty($this->xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
       $this->area_parent_ids =  $this->xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
     }
+
+    if (!empty($this->xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
+      $this->author =  $this->xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
+    }
   }
 
   public static function fields() {
@@ -74,6 +78,7 @@ class XTopic extends stdClass {
       'parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
       'weight' => t('Sort order among siblings'),
       'area_parent_ids' => t('The serial numbers of the area parents'),
+      'author' => t('The author of the article'),
 
       # User fields
       'uib-id' => t('Username at UiB'),
