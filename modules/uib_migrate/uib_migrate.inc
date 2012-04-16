@@ -103,6 +103,7 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('field_uib_area_parents', 'area_parent_ids')
       ->sourceMigration('Area')
       ->arguments(array('source_type' => 'tid'));
+    $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
   }
 
   protected function createStub($migration, $source_id) {
