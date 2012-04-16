@@ -28,6 +28,12 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_weight', 'weight');
   }
 
+  public function prepareRow($row) {
+    if ($row->state != 'published') {
+      return FALSE;
+    }
+  }
+
   public function prepare($node, $row) {
     // Locate the area this article belongs to
     //
