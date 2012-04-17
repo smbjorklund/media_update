@@ -24,6 +24,10 @@ class XTopic extends stdClass {
     $this->state = (string)$topic['state'];
     $this->path = substr($topic['path'], 1);
     $this->type = (string)$topic->type['name'];
+    $site = (string)$topic->site['ref'];
+    if ($site != $id) {
+      $this->site = $site;
+    }
     foreach ($topic->field as $field) {
       if ($field['name'] == 'psi') {
         $value = (string)$field;
@@ -68,6 +72,7 @@ class XTopic extends stdClass {
       'state' => t('Publishing state; one of private, published, retracted'),
       'path' => t('The path of the topic in the database'),
       'type' => t('What kind of topic is this'),
+      'site' => t('What site does this topic belong to (serial)'),
       'created' => t('When was this topic created, ISO datetime'),
       'modified' => t('When was this topic last modified, ISO datetime'),
       'effectivedate' => t('Publishing date, ISO datetime'),
@@ -78,7 +83,7 @@ class XTopic extends stdClass {
       'parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
       'weight' => t('Sort order among siblings'),
       'area_parent_ids' => t('The serial numbers of the area parents'),
-      'author' => t('The author of the article'),
+      'author' => t('The author of the article (serial)'),
 
       # User fields
       'uib-id' => t('Username at UiB'),
