@@ -133,6 +133,13 @@ class XTopicListSource extends MigrateSource {
     // Force a limited set of source stuff to be available to
     // speed up debugging during developemnt
     if (1) {
+      $serial = drush_get_option('serial');
+      if ($serial) {
+        $this->ids = explode(',', $serial);
+        $this->count = count($this->ids);
+        $this->offset += $this->count;
+        return;
+      }
       // Look for xtopic CSV files as alternative indexes
       $fh = @fopen(dirname(__FILE__) . '/' . $this->type . '.csv', 'r');
       if ($fh) {
