@@ -83,6 +83,7 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('description', 'text');
     $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('path', 'path');
+    $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
     $this->addFieldMapping('field_uib_area_parents', 'area_parent_ids')
       ->sourceMigration('Area')
