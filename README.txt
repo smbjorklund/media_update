@@ -29,3 +29,20 @@ It will also create a symlink at 'site' linking to the site. The 'site' will be
 its own git repo.
 
 The 'doc' directory contains further information you might want to read first.
+
+To fill up the site with some content, migrate data from testbool by invoking
+a command like this one:
+
+    bin/site-drush migrate-import --verbose --limit="4 items" News
+
+This will import the 4 first News articles. To see what kind of data is
+available for import you might run:
+
+    bin/site-drush migrate-status
+
+To migrate all content run:
+
+    bin/site-drush migrate-import --all --verbose
+
+while you go get yourself a nice cup of tea.  This command will take hours to
+finish.
