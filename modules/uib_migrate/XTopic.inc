@@ -24,7 +24,7 @@ class XTopic extends stdClass {
     $this->state = (string)$topic['state'];
     $this->path = substr($topic['path'], 1);
     $this->type = (string)$topic->type['name'];
-    $site = (string)$topic->site['ref'];
+    $site = (string)$topic->site['no_site'] or $site = (string)$topic->site['ref'];
     if ($site != $id) {
       $this->site = $site;
     }
