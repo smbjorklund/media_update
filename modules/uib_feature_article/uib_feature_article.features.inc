@@ -12,6 +12,13 @@ function uib_feature_article_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function uib_feature_article_views_api() {
+  return array("version" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function uib_feature_article_node_info() {
