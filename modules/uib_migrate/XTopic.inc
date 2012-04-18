@@ -9,11 +9,15 @@ class XTopic extends stdClass {
     return "http://" . self::$w2_server . "/topicmap/@@xtopic";
   }
 
-  public function __construct($id) {
+  public function __construct($id, $reason=NULL) {
     $url = XTopic::url() . "?id=$id";
     $this->id = $id;
     if (function_exists('drush_log')) {
-      drush_log('GET ' . $url);
+      $log_msg = 'GET ' . $url;
+      if ($reason) {
+        $log_msg .= ' (' . $reason . ')';
+      }
+      drush_log($log_msg);
     }
     $xml = simplexml_load_file($url);
     $topic = $xml->topic;
@@ -51,7 +55,7 @@ class XTopic extends stdClass {
 
     if(!empty($this->xlink['subordinate/hierarchical-relation/superordinate'])) {
       $this->parent_id = $this->xlink['subordinate/hierarchical-relation/superordinate'][0];
-      $parent = new XTopic($this->parent_id);
+      $parent = new XTopic($this->parent_id, 'parent of ' . $id);
       //$this->parent = $parent;
       $menu_order = $parent->menuorder;
       $menu_order = drupal_json_decode($menu_order);
