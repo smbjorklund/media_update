@@ -19,6 +19,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('field_uib_w2_path', 'path');
     $this->addFieldMapping('field_uib_article_type')->defaultValue($this->article_type)->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('language', 'site_lang');
     $this->addFieldMapping('created', 'created');
     $this->addFieldMapping('changed', 'modified');
     $this->addFieldMapping('field_uib_kicker', 'stikktittel');

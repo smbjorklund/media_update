@@ -24,10 +24,13 @@ class XTopic extends stdClass {
     $this->state = (string)$topic['state'];
     $this->path = substr($topic['path'], 1);
     $this->type = (string)$topic->type['name'];
+
     $site = (string)$topic->site['no_site'] or $site = (string)$topic->site['ref'];
     if ($site != $id) {
       $this->site = $site;
     }
+    $this->site_lang = $topic->site['lang'];
+
     foreach ($topic->field as $field) {
       if ($field['name'] == 'psi') {
         $value = (string)$field;
@@ -73,6 +76,7 @@ class XTopic extends stdClass {
       'path' => t('The path of the topic in the database'),
       'type' => t('What kind of topic is this'),
       'site' => t('What site does this topic belong to (serial)'),
+      'site_lang' => t('What\'s the the language of the site this topic belongs to'),
       'created' => t('When was this topic created, ISO datetime'),
       'modified' => t('When was this topic last modified, ISO datetime'),
       'effectivedate' => t('Publishing date, ISO datetime'),
