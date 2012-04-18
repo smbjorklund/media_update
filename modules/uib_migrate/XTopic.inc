@@ -9,7 +9,7 @@ class XTopic extends stdClass {
     return "http://" . self::$w2_server . "/topicmap/@@xtopic";
   }
 
-  public function __construct($id, $reason=NULL) {
+  public function __construct($id, $shallow=FALSE, $reason=NULL) {
     $url = XTopic::url() . "?id=$id";
     $this->id = $id;
     if (function_exists('drush_log')) {
@@ -55,11 +55,13 @@ class XTopic extends stdClass {
 
     if(!empty($this->xlink['subordinate/hierarchical-relation/superordinate'])) {
       $this->parent_id = $this->xlink['subordinate/hierarchical-relation/superordinate'][0];
-      $parent = new XTopic($this->parent_id, 'parent of ' . $id);
-      //$this->parent = $parent;
-      $menu_order = $parent->menuorder;
-      $menu_order = drupal_json_decode($menu_order);
-      $this->weight = array_search($this->id, $menu_order);
+      if (!$shallow) {
+        $parent = new XTopic($this->parent_id, TRUE, 'parent of ' . $id);
+        //$this->parent = $parent;
+        $menu_order = $parent->menuorder;
+        $menu_order = drupal_json_decode($menu_order);
+        $this->weight = array_search($this->id, $menu_order);
+      }
     }
 
     if (!empty($this->xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
