@@ -180,6 +180,33 @@ function uib_feature_article_views_default_views() {
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'Y-m-d';
+  /* Field: Field: ID w2 */
+  $handler->display->display_options['fields']['field_uib_w2_id']['id'] = 'field_uib_w2_id';
+  $handler->display->display_options['fields']['field_uib_w2_id']['table'] = 'field_data_field_uib_w2_id';
+  $handler->display->display_options['fields']['field_uib_w2_id']['field'] = 'field_uib_w2_id';
+  $handler->display->display_options['fields']['field_uib_w2_id']['label'] = 'w2';
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['text'] = 'xtopic';
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['path'] = 'http://testbool.uib.no/topicmap/@@xtopic?id=[field_uib_w2_id]';
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['alt'] = '[field_uib_w2_id]';
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
