@@ -13,6 +13,7 @@ dependencies[] = uib_feature_article
 dependencies[] = uib_feature_user
 dependencies[] = uib_migrate
 dependencies[] = migrate_ui
+dependencies[] = views_ui
 dependencies[] = toolbar
 dependencies[] = help
 dependencies[] = devel
