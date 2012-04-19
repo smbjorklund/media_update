@@ -13,7 +13,7 @@ if [ -e sites/$SITE_DIR ]; then
 fi
 
 set -x
-drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --account-pass=admin --clean-url --verbose --yes || exit 1
+drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --account-pass=admin --site-mail="w3@it.uib.no" --site-name="Universitetet i Bergen" --clean-url --verbose --yes || exit 1
 
 cat <<EOT >sites/default/settings.php
 No default site.  You need to visit <a href="http://$SITE_DIR">$SITE_DIR</a> instead.
