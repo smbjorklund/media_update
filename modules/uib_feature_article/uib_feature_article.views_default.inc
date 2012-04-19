@@ -207,6 +207,31 @@ function uib_feature_article_views_default_views() {
   $handler->display->display_options['fields']['field_uib_w2_id']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_uib_w2_id']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_uib_w2_id']['field_api_classes'] = 0;
+  /* Field: Content translation: Language */
+  $handler->display->display_options['fields']['language']['id'] = 'language';
+  $handler->display->display_options['fields']['language']['table'] = 'node';
+  $handler->display->display_options['fields']['language']['field'] = 'language';
+  $handler->display->display_options['fields']['language']['label'] = 'Lang';
+  $handler->display->display_options['fields']['language']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['language']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['language']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['language']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['language']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['language']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['language']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['language']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['language']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['language']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['language']['native_language'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -230,6 +255,29 @@ function uib_feature_article_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'a';
+  $translatables['uib_articles'] = array(
+    t('Master'),
+    t('Articles'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('Area'),
+    t('Type'),
+    t('Author'),
+    t('Date'),
+    t('w2'),
+    t('xtopic'),
+    t('http://testbool.uib.no/topicmap/@@xtopic?id=[field_uib_w2_id]'),
+    t('[field_uib_w2_id]'),
+    t('Lang'),
+    t('Page'),
+  );
   $export['uib_articles'] = $view;
 
   return $export;
