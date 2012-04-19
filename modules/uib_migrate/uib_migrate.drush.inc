@@ -4,9 +4,11 @@
     $items['uib-migrate-find-parents'] = array(
       'description' => 'Traverses articles of the type infopage and tries to find the parent node',
       'aliases' => array('uib-fp',),
-      'examples' => array('drush uib-fp' => 'Tries to find parents of existing nodes'),
+      'examples' => array(
+        'drush uib-fp' => 'Tries to find parents of existing nodes',
+        ),
       'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
-      'arguments' => array('args' => 'arguments'),
+      'arguments' => array(),
       'options' => array(),
     );
     return $items;
@@ -14,9 +16,12 @@
 
   function drush_uib_migrate_find_parents() {
     $query = db_select('node', 'n');
-    $query->join('field_data_field_uib_w2_parent_id','p', 'n.nid=p.entity_id');
+    $query->join('field_data_field_uib_w2_parent_id', 'p', 'n.nid=p.entity_id');
+    $query->join('field_data_field_uib_article_type', 't', 'n.nid=t.entity_id');
+    $query->join('taxonomy_term_data', 'term', 't.field_uib_article_type_tid=term.tid');
     $query->fields('p', array('field_uib_w2_parent_id_value'))
       ->fields('n', array('nid'));
+    $query->condition('term.name', 'infopage', '=');
     $result = $query->execute();
 
     foreach ($result as $r) {
@@ -31,7 +36,6 @@
             'bundle' => 'uib_article',
             'deleted' => 0,
             'entity_id' => $r->nid,
-            'language' => 'und',
             'delta' => 0,
             'field_uib_parent_target_id' => $pid['nid'],
             ))
