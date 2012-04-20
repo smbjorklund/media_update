@@ -109,6 +109,7 @@ class AreaMigration extends Migration {
     $term = new stdClass;
     $term->vid = $this->vid;
     $term->name = t('Stub for ') . $source_id[0];
+    $term->field_uib_w2_id['und'][0]['value'] = $source_id[0];
     taxonomy_term_save($term);
     return array($term->tid);
   }
@@ -192,6 +193,7 @@ class UserMigration extends Migration {
     $user->name = t('Stub for ') . $source_id[0];
     $user->mail = 'nobody@uib.no';
     $user->status = 0;
+    $user->field_uib_w2_id['und'][0]['value'] = $source_id[0];
     user_save($user);
     return array($user->uid);
   }
