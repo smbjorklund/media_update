@@ -129,7 +129,7 @@ class XTopicListSource extends MigrateSource {
     parent::__construct();
     $this->type = $type;
     $this->listUrl = XTopic::url() . "?type=$type";
-    if ($type == 'area') {
+    if ($type == 'area' || $type == 'event') {
       $this->listUrl .= '&allinstances';
     }
   }
