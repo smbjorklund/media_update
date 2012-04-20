@@ -6,6 +6,10 @@ This just list out the content types that we will use.
 
 Tekst eller taksonomitype.  Fakultet, Institutt, Avdeling, Forskingsgruppe, Forskerskole, Seksjon, Tema,...
 
+Fields:
+
+* name
+
 ### area (no:Område)
 
 A subdivision of the site.  Areas are containers for articles and pages and
@@ -58,7 +62,7 @@ Fields:
 
 ### article_type (taxonomy)
 
-???
+* name
 
 ### article (no:Arikkel)
 
