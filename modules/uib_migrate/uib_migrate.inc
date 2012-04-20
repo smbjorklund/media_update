@@ -18,7 +18,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('field_uib_w2_path', 'path');
-    $this->addFieldMapping('field_uib_article_type', 'xtype')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_uib_article_type', 'article_type')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('language', 'site_lang');
     $this->addFieldMapping('created', 'created');
     $this->addFieldMapping('changed', 'modified');
@@ -38,7 +38,7 @@ abstract class XTopicToArticleMigration extends Migration {
     if ($row->state != 'published') {
       return FALSE;
     }
-    $row->xtype = $this->article_type;
+    $row->article_type = $this->article_type;
   }
 }
 
@@ -65,7 +65,7 @@ class EventMigration extends XTopicToArticleMigration{
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    $row->xtype = $row->type;
+    $row->article_type = $row->type;
   }
 }
 
