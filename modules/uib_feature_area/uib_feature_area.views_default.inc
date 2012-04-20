@@ -150,6 +150,32 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_area_type']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_uib_area_type']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_uib_area_type']['field_api_classes'] = 0;
+  /* Field: Field: ID w2 */
+  $handler->display->display_options['fields']['field_uib_w2_id']['id'] = 'field_uib_w2_id';
+  $handler->display->display_options['fields']['field_uib_w2_id']['table'] = 'field_data_field_uib_w2_id';
+  $handler->display->display_options['fields']['field_uib_w2_id']['field'] = 'field_uib_w2_id';
+  $handler->display->display_options['fields']['field_uib_w2_id']['label'] = 'w2';
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['text'] = 'xtopic';
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['path'] = 'http://testbool.uib.no/topicmap/@@xtopic?id=[field_uib_w2_id]';
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_uib_w2_id']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_uib_w2_id']['field_api_classes'] = 0;
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
@@ -161,6 +187,27 @@ function uib_feature_area_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'areas';
+  $translatables['uib_areas'] = array(
+    t('Master'),
+    t('Areas'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('Parents'),
+    t('Place'),
+    t('Sebra ID'),
+    t('Type'),
+    t('w2'),
+    t('xtopic'),
+    t('http://testbool.uib.no/topicmap/@@xtopic?id=[field_uib_w2_id]'),
+    t('Page'),
+  );
   $export['uib_areas'] = $view;
 
   return $export;
