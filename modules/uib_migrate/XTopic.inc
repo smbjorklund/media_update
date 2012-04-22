@@ -70,9 +70,11 @@ class XTopic extends stdClass {
     if (!empty($this->xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
       $this->area_parent_ids =  $this->xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
     }
-
     if (!empty($this->xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
       $this->author =  $this->xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
+    }
+    if (!empty($this->xlink['decorated/hovedtekstbilde/decoration'])) {
+      $this->main_media = $this->xlink['decorated/hovedtekstbilde/decoration'][0]; //Todo: iterate and make sure we pick up all file recources.
     }
   }
 
@@ -97,6 +99,7 @@ class XTopic extends stdClass {
       'weight' => t('Sort order among siblings'),
       'area_parent_ids' => t('The serial numbers of the area parents'),
       'author' => t('The author of the article (serial)'),
+      'main_media' => t('Media file used in article'),
 
       # User fields
       'uib-id' => t('Username at UiB'),
