@@ -631,7 +631,7 @@ function uib_feature_area_field_default_fields() {
       'entity_type' => 'taxonomy_term',
       'field_name' => 'field_uib_ou',
       'label' => 'Place',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
