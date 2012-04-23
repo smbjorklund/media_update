@@ -33,7 +33,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('uid', 'author')
       ->sourceMigration('User');
     $this->addFieldMapping('field_uib_main_media', 'main_media_file');
-    $this->addFieldMapping('field_uib_main_media:title', 'main_image_title');
+    $this->addFieldMapping('field_uib_main_media:filename')->defaultValue('foo title');;
   }
 
   public function prepareRow($row) {
