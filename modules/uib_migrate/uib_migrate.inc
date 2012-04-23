@@ -125,7 +125,9 @@ class AreaMigration extends Migration {
     );
 
     $this->addFieldMapping('name', 'title');
-    $this->addFieldMapping('description', 'text');
+    $this->addFieldMapping('description')->issueGroup(t('DNM'));
+    $this->addFieldMapping('field_uib_trans_text', 'text')
+      ->arguments(array('language' => 'nb'));
     $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('path', 'path');
     $this->addFieldMapping('field_uib_w2_id', 'id');
