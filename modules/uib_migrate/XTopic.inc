@@ -76,6 +76,23 @@ class XTopic extends stdClass {
     if (!empty($this->xlink['decorated/hovedtekstbilde/decoration'])) {
       $this->main_media = $this->xlink['decorated/hovedtekstbilde/decoration'][0]; //Todo: iterate and make sure we pick up all file recources.
     }
+    if (!empty($this->xlink['has_attachment/vedlegg/attachment'])) {
+      $attachments_id = $this->xlink['has_attachment/vedlegg/attachment'];
+      //$this->attachment = $this->xlink['decorated/hovedtekstbilde/decoration'];
+      foreach ($attachments_id as $attachment) {
+        $attachment = ($this->getAttachment($attachment));
+        drush_log('Attachment found: ' . $attachment);
+        $this->attachment = $attachment;
+      }
+    }
+  }
+
+  public function getAttachment(&$attachment_id) {
+    $file_url = XTopic::url() . "?id=" . $attachment_id;
+    //drush_log('Attachment loacted: ' .$file_url, $type='notice');
+    $xml = simplexml_load_file($file_url);
+    $topic = $xml->topic;
+    return 'http://' .XTopic::$w2_server ."/". $topic->field[2];
   }
 
   public static function fields() {
@@ -99,7 +116,8 @@ class XTopic extends stdClass {
       'weight' => t('Sort order among siblings'),
       'area_parent_ids' => t('The serial numbers of the area parents'),
       'author' => t('The author of the article (serial)'),
-      'main_media' => t('Media file used in article'),
+      'main_media_file' => t('Media file used in article'),
+      'attachment' => t('Attachment(s) added to content'),
 
       # User fields
       'uib-id' => t('Username at UiB'),
