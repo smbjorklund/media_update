@@ -82,7 +82,7 @@ class XTopic extends stdClass {
       $this->author =  $this->xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
     }
     if (!empty($this->xlink['decorated/hovedtekstbilde/decoration'])) {
-      $this->main_media = $this->xlink['decorated/hovedtekstbilde/decoration'][0]; //Todo: iterate and make sure we pick up all file recources.
+      $this->main_media = $this->xlink['decorated/stort_hovedtekstbilde/decoration'][0]; //Todo: iterate and make sure we pick up all file recources.
     }
     if (!empty($this->xlink['has_attachment/vedlegg/attachment'])) {
       $attachments_id = $this->xlink['has_attachment/vedlegg/attachment'];
