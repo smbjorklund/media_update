@@ -78,18 +78,18 @@ class XTopic extends stdClass {
     }
     if (!empty($this->xlink['has_attachment/vedlegg/attachment'])) {
       $attachments_id = $this->xlink['has_attachment/vedlegg/attachment'];
-      //$this->attachment = $this->xlink['decorated/hovedtekstbilde/decoration'];
+      $files = array();
       foreach ($attachments_id as $attachment) {
         $attachment = ($this->getAttachment($attachment));
         drush_log('Attachment found: ' . $attachment);
-        $this->attachment = $attachment;
+        $files[] = $attachment;
       }
+      $this->attachment = $files;
     }
   }
 
   public function getAttachment(&$attachment_id) {
     $file_url = XTopic::url() . "?id=" . $attachment_id;
-    //drush_log('Attachment loacted: ' .$file_url, $type='notice');
     $xml = simplexml_load_file($file_url);
     $topic = $xml->topic;
     return 'http://' .XTopic::$w2_server ."/". $topic->field[2];
