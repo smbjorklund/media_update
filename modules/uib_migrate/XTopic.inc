@@ -81,8 +81,16 @@ class XTopic extends stdClass {
     if (!empty($this->xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
       $this->author =  $this->xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
     }
-    if (!empty($this->xlink['decorated/hovedtekstbilde/decoration'])) {
-      $this->main_media = $this->xlink['decorated/stort_hovedtekstbilde/decoration'][0]; //Todo: iterate and make sure we pick up all file recources.
+    if (!empty($this->xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
+      $this->main_media = $this->xlink['decorated/stort_hovedtekstbilde/decoration'][0];
+    }
+    if (!empty($this->xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
+      $media_id = $this->xlink['decorated/hovedtekstbilde/decoration'];
+      $media_uri = array();
+      foreach ($media_id as $id) {
+        $media_uri[] = $this->getMedia($id);
+      }
+      $this->media = $media_uri;
     }
     if (!empty($this->xlink['has_attachment/vedlegg/attachment'])) {
       $attachments_id = $this->xlink['has_attachment/vedlegg/attachment'];
@@ -94,6 +102,14 @@ class XTopic extends stdClass {
       }
       $this->attachment = $files;
     }
+  }
+
+  public function getMedia(&$id) {
+    $xml = new XTopic($id);
+    $path = ($xml->original);
+    $media_uri = "http://" . XTopic::$w2_server . "/" . $path;
+    drush_log('getMedia() found: ' . $media_uri, $type='notice');
+    return $media_uri;
   }
 
   public function getAttachment(&$attachment_id) {
@@ -124,8 +140,9 @@ class XTopic extends stdClass {
       'weight' => t('Sort order among siblings'),
       'area_parent_ids' => t('The serial numbers of the area parents'),
       'author' => t('The author of the article (serial)'),
-      'main_media_file' => t('Media file used in article'),
+      'main_media' => t('Media file used in article'),
       'attachment' => t('Attachment(s) added to content'),
+      'media' => t('Media inline image(s)'),
 
       # User fields
       'uib-id' => t('Username at UiB'),

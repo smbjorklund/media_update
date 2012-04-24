@@ -33,7 +33,8 @@ abstract class XTopicToArticleMigration extends Migration {
       ->arguments(array('source_type' => 'tid'));
     $this->addFieldMapping('uid', 'author')
       ->sourceMigration('User');
-    $this->addFieldMapping('field_uib_main_media', 'main_media_file');
+    $this->addFieldMapping('field_uib_main_media', 'main_media');
+    $this->addFieldMapping('field_uib_media', 'media');
     $this->addFieldMapping('field_uib_main_media:filename')->defaultValue('foo title');
     $this->addFieldMapping('field_uib_files', 'attachment');
   }
@@ -45,13 +46,13 @@ abstract class XTopicToArticleMigration extends Migration {
     $row->article_type = $this->article_type;
 
     if (isset($row->main_media)) {
-      $media_file = $this->getMedia($row->main_media);
+      $media_file = $this->getMainMedia($row->main_media);
       drush_log('Media file found: ' . $media_file, $type='notice');
-      $row->main_media_file = $media_file;
+      $row->main_media = $media_file;
     }
   }
 
-  public function getMedia(&$media) {
+  public function getMainMedia(&$media) {
     $media_url = XTopic::url() . "?id=" . $media;
     drush_log('Media search, loading: ' .$media_url, $type='notice');
     $xml = simplexml_load_file($media_url);
