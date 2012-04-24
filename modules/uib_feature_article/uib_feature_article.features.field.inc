@@ -1112,7 +1112,7 @@ function uib_feature_article_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_weight',
-      'label' => 'weight',
+      'label' => 'Weight',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -1147,7 +1147,7 @@ function uib_feature_article_field_default_fields() {
   t('Path w2');
   t('Text');
   t('Type');
-  t('weight');
+  t('Weight');
 
   return $fields;
 }
