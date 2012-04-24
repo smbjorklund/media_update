@@ -47,6 +47,14 @@ class XTopic extends stdClass {
           $this->omraadekode = preg_replace('/_en$/', '', $arr[1]);
         }
       }
+      elseif ($field['name'] == 'original') {
+        if ($field['datatype'] == 'anyUri') {
+          $start7 = substr($field, 0, 7);
+          if ($start7 == 'http://' || $start7 == 'https:/')
+            continue;
+        }
+        $this->original = (string)$field;
+      }
       else {
         $this->$field['name'] = (string)$field;
       }
