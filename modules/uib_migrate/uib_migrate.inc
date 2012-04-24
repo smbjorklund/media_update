@@ -44,7 +44,7 @@ abstract class XTopicToArticleMigration extends Migration {
     }
     $row->article_type = $this->article_type;
 
-    if ($row->main_media) {
+    if (isset($row->main_media)) {
       $media_file = $this->getMedia($row->main_media);
       drush_log('Media file found: ' . $media_file, $type='notice');
       $row->main_media_file = $media_file;
