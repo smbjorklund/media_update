@@ -58,12 +58,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $topic = $xml->topic;
     $media_file = $topic->field[2];
     $title = $topic->title; // File title
-    //drush_log('Media title: ' . $title, $type='notice');
     $media_file = 'http://' .XTopic::$w2_server ."/". $media_file;
-    $foo = array (
-      'media_uri' => $media_file,
-      'title' => $title,
-      );
     return $media_file;
   }
 }
