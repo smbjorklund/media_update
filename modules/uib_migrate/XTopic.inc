@@ -151,6 +151,7 @@ class XTopic extends stdClass {
       'attachment' => t('Attachment(s) added to content'),
       'media' => t('Media inline image(s)'),
       'contacts' => t('Contacts for events'),
+      'location' => t('Location for events'),
 
       # User fields
       'uib-id' => t('Username at UiB'),
