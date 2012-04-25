@@ -24,6 +24,8 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('changed', 'modified');
     $this->addFieldMapping('field_uib_date', 'start_date'); // handled in 'prepare' for EventMigration
     $this->addFieldMapping('field_uib_links', 'hjemmeside'); // handled in 'prepare' for EventMigration
+    $this->addFieldMapping('field_uib_contacts', 'contacts')
+      ->sourceMigration('User');
     $this->addFieldMapping('field_uib_kicker', 'stikktittel');
     $this->addFieldMapping('field_uib_lead', 'dc_description');
     $this->addFieldMapping('field_uib_text', 'text');

@@ -100,6 +100,14 @@ class XTopic extends stdClass {
       }
       $this->attachment = $attachment_uri;
     }
+    if (!empty($this->xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'])) {
+      $contacts_id = $this->xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
+      $contacts = array();
+      foreach ($contacts_id as $id) {
+        $contacts[] = $id;
+      }
+      $this->contacts = $contacts;
+    }
   }
 
   public function getMedia(&$id) {
@@ -142,6 +150,7 @@ class XTopic extends stdClass {
       'main_media' => t('Media file used in article'),
       'attachment' => t('Attachment(s) added to content'),
       'media' => t('Media inline image(s)'),
+      'contacts' => t('Contacts for events'),
 
       # User fields
       'uib-id' => t('Username at UiB'),
