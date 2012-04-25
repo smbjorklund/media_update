@@ -21,4 +21,5 @@ dependencies[] = help
 dependencies[] = devel
 dependencies[] = diff
 dependencies[] = module_filter
+dependencies[] = menu
 files[] = uib.profile
