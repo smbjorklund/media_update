@@ -82,7 +82,12 @@ class XTopic extends stdClass {
       $this->author =  $this->xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
     }
     if (!empty($this->xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
-      $this->main_media = $this->xlink['decorated/stort_hovedtekstbilde/decoration'][0];
+      $media_id = $this->xlink['decorated/stort_hovedtekstbilde/decoration'];
+      $media_uri = array();
+      foreach ($media_id as $id) {
+        $media_uri[] = $this->getMedia($id);
+      }
+      $this->main_media = $media_uri;
     }
     if (!empty($this->xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
       $media_id = $this->xlink['decorated/hovedtekstbilde/decoration'];
@@ -124,6 +129,14 @@ class XTopic extends stdClass {
     $attachment_uri = "http://" . XTopic::$w2_server . "/" . $path;
     drush_log('Attachment found: ' . $attachment_uri, $type='notice');
     return $attachment_uri;
+  }
+
+  public function getMeta(&$id) {
+    $xml = new XTopic($id);
+    $title = $xml->title;
+    $photographer = $xml->field['photographer'];
+    drush_log($title . 'taken by: ' . $photographer, $type='notice');
+    return;
   }
 
   public static function fields() {

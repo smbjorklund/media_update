@@ -48,23 +48,6 @@ abstract class XTopicToArticleMigration extends Migration {
       return FALSE;
     }
     $row->article_type = $this->article_type;
-
-    if (isset($row->main_media)) {
-      $media_file = $this->getMainMedia($row->main_media);
-      drush_log('Media file found: ' . $media_file, $type='notice');
-      $row->main_media = $media_file;
-    }
-  }
-
-  public function getMainMedia(&$media) {
-    $media_url = XTopic::url() . "?id=" . $media;
-    drush_log('Media search, loading: ' .$media_url, $type='notice');
-    $xml = simplexml_load_file($media_url);
-    $topic = $xml->topic;
-    $media_file = $topic->field[2];
-    $title = $topic->title; // File title
-    $media_file = 'http://' .XTopic::$w2_server ."/". $media_file;
-    return $media_file;
   }
 }
 
