@@ -93,30 +93,29 @@ class XTopic extends stdClass {
       $this->media = $media_uri;
     }
     if (!empty($this->xlink['has_attachment/vedlegg/attachment'])) {
-      $attachments_id = $this->xlink['has_attachment/vedlegg/attachment'];
-      $files = array();
-      foreach ($attachments_id as $attachment) {
-        $attachment = ($this->getAttachment($attachment));
-        drush_log('Attachment found: ' . $attachment);
-        $files[] = $attachment;
+      $attachment_id = $this->xlink['has_attachment/vedlegg/attachment'];
+      $attachment_uri = array();
+      foreach ($attachment_id as $id) {
+        $attachment_uri[] = ($this->getAttachment($id));
       }
-      $this->attachment = $files;
+      $this->attachment = $attachment_uri;
     }
   }
 
   public function getMedia(&$id) {
     $xml = new XTopic($id);
-    $path = ($xml->original);
+    $path = $xml->original;
     $media_uri = "http://" . XTopic::$w2_server . "/" . $path;
     drush_log('getMedia() found: ' . $media_uri, $type='notice');
     return $media_uri;
   }
 
-  public function getAttachment(&$attachment_id) {
-    $file_url = XTopic::url() . "?id=" . $attachment_id;
-    $xml = simplexml_load_file($file_url);
-    $topic = $xml->topic;
-    return 'http://' .XTopic::$w2_server ."/". $topic->field[2];
+  public function getAttachment(&$id) {
+    $xml = new XTopic($id);
+    $path = $xml->path;
+    $attachment_uri = "http://" . XTopic::$w2_server . "/" . $path;
+    drush_log('Attachment found: ' . $attachment_uri, $type='notice');
+    return $attachment_uri;
   }
 
   public static function fields() {
