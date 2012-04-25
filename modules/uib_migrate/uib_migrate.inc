@@ -23,6 +23,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('created', 'created');
     $this->addFieldMapping('changed', 'modified');
     $this->addFieldMapping('field_uib_date', 'start_date'); // handled in 'prepare' for EventMigration
+    $this->addFieldMapping('field_uib_links', 'hjemmeside'); // handled in 'prepare' for EventMigration
     $this->addFieldMapping('field_uib_kicker', 'stikktittel');
     $this->addFieldMapping('field_uib_lead', 'dc_description');
     $this->addFieldMapping('field_uib_text', 'text');
@@ -94,6 +95,11 @@ class EventMigration extends XTopicToArticleMigration{
   public function prepare($node, stdClass $row) {
     $node->field_uib_date['und'][0]['value'] = $row->start_date;
     $node->field_uib_date['und'][0]['value2'] = $row->end_date;
+    //Prevent empty links instances
+    if (!empty($row->hjemmeside)){
+          $node->field_uib_links['und'][0]['url'] = $row->hjemmeside;
+          $node->field_uib_links['und'][0]['title'] = $row->lenketekst;
+    }
   }
 }
 
