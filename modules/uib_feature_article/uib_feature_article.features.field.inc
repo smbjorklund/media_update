@@ -868,14 +868,14 @@ function uib_feature_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_article-field_uib_parent'
-  $fields['node-uib_article-field_uib_parent'] = array(
+  // Exported field: 'node-uib_article-field_uib_nav_parent'
+  $fields['node-uib_article-field_uib_nav_parent'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_uib_parent',
+      'field_name' => 'field_uib_nav_parent',
       'foreign keys' => array(
         'node' => array(
           'columns' => array(
@@ -935,7 +935,7 @@ function uib_feature_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_uib_parent',
+      'field_name' => 'field_uib_nav_parent',
       'label' => 'Parent',
       'required' => 0,
       'settings' => array(
@@ -1089,14 +1089,14 @@ function uib_feature_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_article-field_uib_w2_parent_id'
-  $fields['node-uib_article-field_uib_w2_parent_id'] = array(
+  // Exported field: 'node-uib_article-field_uib_w2_nav_parent_id'
+  $fields['node-uib_article-field_uib_w2_nav_parent_id'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_uib_w2_parent_id',
+      'field_name' => 'field_uib_w2_nav_parent_id',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -1138,7 +1138,7 @@ function uib_feature_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_uib_w2_parent_id',
+      'field_name' => 'field_uib_w2_nav_parent_id',
       'label' => 'Parent ID w2',
       'required' => 0,
       'settings' => array(
@@ -1225,14 +1225,14 @@ function uib_feature_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_article-field_uib_weight'
-  $fields['node-uib_article-field_uib_weight'] = array(
+  // Exported field: 'node-uib_article-field_uib_nav_weight'
+  $fields['node-uib_article-field_uib_nav_weight'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_uib_weight',
+      'field_name' => 'field_uib_nav_weight',
       'foreign keys' => array(),
       'indexes' => array(),
       'module' => 'number',
@@ -1266,7 +1266,7 @@ function uib_feature_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_uib_weight',
+      'field_name' => 'field_uib_nav_weight',
       'label' => 'Weight',
       'required' => 0,
       'settings' => array(
