@@ -65,13 +65,13 @@ class XTopic extends stdClass {
     }
 
     if(!empty($this->xlink['subordinate/hierarchical-relation/superordinate'])) {
-      $this->parent_id = $this->xlink['subordinate/hierarchical-relation/superordinate'][0];
+      $this->nav_parent_id = $this->xlink['subordinate/hierarchical-relation/superordinate'][0];
       if (!$shallow) {
-        $parent = new XTopic($this->parent_id, TRUE, 'parent of ' . $id);
+        $parent = new XTopic($this->nav_parent_id, TRUE, 'parent of ' . $id);
         //$this->parent = $parent;
         $menu_order = $parent->menuorder;
         $menu_order = drupal_json_decode($menu_order);
-        $this->weight = array_search($this->id, $menu_order);
+        $this->nav_weight = array_search($this->id, $menu_order);
       }
     }
 
@@ -156,8 +156,8 @@ class XTopic extends stdClass {
       'dc_description' => t('Summary of the article'),
       'text' => t('The main text of the article; raw HTML'),
       'omraadekode' => t('Sebra Area ID'),
-      'parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
-      'weight' => t('Sort order among siblings'),
+      'nav_parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
+      'nav_weight' => t('Sort order among siblings'),
       'area_parent_ids' => t('The serial numbers of the area parents'),
       'author' => t('The author of the article (serial)'),
       'main_media' => t('Media file used in article'),
