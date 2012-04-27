@@ -115,7 +115,7 @@ class XTopic extends stdClass {
     }
   }
 
-  public function getMedia(&$id) {
+  public function getMedia($id) {
     $topic = new XTopic($id);
     $path = $topic->original;
     $media_uri = "http://" . XTopic::$w2_server . "/" . $path;
@@ -123,7 +123,7 @@ class XTopic extends stdClass {
     return $media_uri;
   }
 
-  public function getAttachment(&$id) {
+  public function getAttachment($id) {
     $topic = new XTopic($id);
     $path = $topic->path;
     $attachment_uri = "http://" . XTopic::$w2_server . "/" . $path;
@@ -131,7 +131,7 @@ class XTopic extends stdClass {
     return $attachment_uri;
   }
 
-  public function getMeta(&$id) {
+  public function getMeta($id) {
     $topic = new XTopic($id);
     $title = $topic->title;
     $photographer = $topic->field['photographer'];
