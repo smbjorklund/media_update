@@ -116,25 +116,25 @@ class XTopic extends stdClass {
   }
 
   public function getMedia(&$id) {
-    $xml = new XTopic($id);
-    $path = $xml->original;
+    $topic = new XTopic($id);
+    $path = $topic->original;
     $media_uri = "http://" . XTopic::$w2_server . "/" . $path;
     drush_log('getMedia() found: ' . $media_uri, $type='notice');
     return $media_uri;
   }
 
   public function getAttachment(&$id) {
-    $xml = new XTopic($id);
-    $path = $xml->path;
+    $topic = new XTopic($id);
+    $path = $topic->path;
     $attachment_uri = "http://" . XTopic::$w2_server . "/" . $path;
     drush_log('Attachment found: ' . $attachment_uri, $type='notice');
     return $attachment_uri;
   }
 
   public function getMeta(&$id) {
-    $xml = new XTopic($id);
-    $title = $xml->title;
-    $photographer = $xml->field['photographer'];
+    $topic = new XTopic($id);
+    $title = $topic->title;
+    $photographer = $topic->field['photographer'];
     drush_log($title . 'taken by: ' . $photographer, $type='notice');
     return;
   }
