@@ -82,6 +82,9 @@ class XTopic extends stdClass {
         $menu_order = drupal_json_decode($menu_order);
         $this->nav_weight = array_search($this->id, $menu_order);
       }
+      if ($this->nav_parent_id == $topic->site['ref']) {
+        unset($this->nav_parent_id);
+      }
     }
 
     if (!empty($xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
