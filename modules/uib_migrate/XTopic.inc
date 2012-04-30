@@ -47,6 +47,14 @@ class XTopic extends stdClass {
           $this->omraadekode = preg_replace('/_en$/', '', $arr[1]);
         }
       }
+      elseif ($field['name'] == 'menuorder') {
+        // We only care about the version of 'menuorder' that's scoped with
+        // the current site.
+        if ((string)$field['scope'] != (string)$topic->site['ref']) {
+          continue;
+        }
+        $this->menuorder = (string)$field;
+      }
       elseif ($field['name'] == 'original') {
         if ($field['datatype'] == 'anyUri') {
           $start7 = substr($field, 0, 7);
