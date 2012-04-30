@@ -118,11 +118,7 @@ function uib_feature_article_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'uib_article',
-      'default_value' => array(
-        0 => array(
-          'tid' => '5',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
