@@ -124,7 +124,7 @@ class XTopic extends stdClass {
   }
 
   public function getMedia($id) {
-    $topic = new XTopic($id);
+    $topic = new XTopic($id, TRUE, 'media');
     $path = $topic->original;
     $media_uri = "http://" . XTopic::$w2_server . "/" . $path;
     drush_log('getMedia() found: ' . $media_uri, $type='notice');
@@ -132,7 +132,7 @@ class XTopic extends stdClass {
   }
 
   public function getAttachment($id) {
-    $topic = new XTopic($id);
+    $topic = new XTopic($id, TRUE, 'attachment');
     $path = $topic->path;
     $attachment_uri = "http://" . XTopic::$w2_server . "/" . $path;
     drush_log('Attachment found: ' . $attachment_uri, $type='notice');
@@ -140,7 +140,7 @@ class XTopic extends stdClass {
   }
 
   public function getMeta($id) {
-    $topic = new XTopic($id);
+    $topic = new XTopic($id, TRUE, 'meta');
     $title = $topic->title;
     $photographer = $topic->field['photographer'];
     drush_log($title . 'taken by: ' . $photographer, $type='notice');
