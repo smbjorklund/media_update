@@ -120,12 +120,7 @@ class XTopic extends stdClass {
     }
 
     if (!empty($xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'])) {
-      $contacts_id = $xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
-      $contacts = array();
-      foreach ($contacts_id as $id) {
-        $contacts[] = $id;
-      }
-      $this->contacts = $contacts;
+      $this->contacts = $xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
     }
   }
 
