@@ -6,6 +6,13 @@
  * Perform actions to set up the site for this profile.
  */
 function uib_install() {
+  // Create the area menu
+  menu_save(array(
+    'menu_name' => 'area',
+    'title' => 'Areas',
+    'description' => 'All areas should have a top level entry in this menu.  Under the area this menu is used for the main organization of content',
+  ));
+
   // Enable some standard blocks.
   $default_theme = variable_get('theme_default', 'bartik');
   $values = array(
@@ -16,6 +23,16 @@ function uib_install() {
       'status' => 1,
       'weight' => 0,
       'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'menu',
+      'delta' => 'area',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_first',
       'pages' => '',
       'cache' => -1,
     ),
