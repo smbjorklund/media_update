@@ -87,9 +87,11 @@ class XTopic extends stdClass {
     if (!empty($xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
       $this->area_parent_ids =  $xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
     }
+
     if (!empty($xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
       $this->author =  $xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
     }
+
     if (!empty($xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
       $media_id = $xlink['decorated/stort_hovedtekstbilde/decoration'];
       $media_uri = array();
@@ -98,6 +100,7 @@ class XTopic extends stdClass {
       }
       $this->main_media = $media_uri;
     }
+
     if (!empty($xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
       $media_id = $xlink['decorated/hovedtekstbilde/decoration'];
       $media_uri = array();
@@ -106,6 +109,7 @@ class XTopic extends stdClass {
       }
       $this->media = $media_uri;
     }
+
     if (!empty($xlink['has_attachment/vedlegg/attachment'])) {
       $attachment_id = $xlink['has_attachment/vedlegg/attachment'];
       $attachment_uri = array();
@@ -114,6 +118,7 @@ class XTopic extends stdClass {
       }
       $this->attachment = $attachment_uri;
     }
+
     if (!empty($xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'])) {
       $contacts_id = $xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
       $contacts = array();
