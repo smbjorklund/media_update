@@ -31,6 +31,8 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_lead', 'dc_description');
     $this->addFieldMapping('field_uib_text', 'text');
     $this->addFieldMapping('field_uib_w2_nav_parent_id', 'nav_parent_id');
+    $this->addFieldMapping('field_uib_nav_parent', 'nav_parent_id')
+      ->sourceMigration('NavPage');
     $this->addFieldMapping('field_uib_nav_weight', 'nav_weight');
     $this->addFieldMapping('field_uib_area', 'site')
       ->sourceMigration('Area')
@@ -59,6 +61,17 @@ class InfoPageMigration extends XTopicToArticleMigration {
 class NavPageMigration extends InfoPageMigration {
   public $topic_type = 'navigationpage';
   public $article_type = 'infopage';
+
+  protected function createStub($migration, $source_id) {
+    $node = new stdClass;
+    $node->type = $this->destination->getBundle();
+    $node->uid = 1;
+    $node->title = t('Navigation stub for ') . $source_id[0];
+    $node->field_uib_w2_id['und'][0]['value'] = $source_id[0];
+    node_save($node);
+    return array($node->nid);
+  }
+
 }
 
 class NewsMigration extends XTopicToArticleMigration {
