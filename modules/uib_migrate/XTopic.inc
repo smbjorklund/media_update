@@ -128,7 +128,7 @@ class XTopic extends stdClass {
     $topic = new XTopic($id, TRUE, 'media');
     $path = $topic->original;
     $media_uri = "http://" . XTopic::$w2_server . "/" . $path;
-    drush_log('getMedia() found: ' . $media_uri, $type='notice');
+    //drush_log('getMedia() found: ' . $media_uri, $type='notice');
     return $media_uri;
   }
 
@@ -136,7 +136,7 @@ class XTopic extends stdClass {
     $topic = new XTopic($id, TRUE, 'attachment');
     $path = $topic->path;
     $attachment_uri = "http://" . XTopic::$w2_server . "/" . $path;
-    drush_log('Attachment found: ' . $attachment_uri, $type='notice');
+    //drush_log('Attachment found: ' . $attachment_uri, $type='notice');
     return $attachment_uri;
   }
 
