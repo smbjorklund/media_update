@@ -200,6 +200,15 @@ class AreaMigration extends Migration {
     }
     //print_r($term);
   }
+
+  public function complete($term, $row) {
+    $menu_link = array(
+      'menu_name' => 'area',
+      'link_path' => drupal_get_normal_path('taxonomy/term/' . $term->tid),
+      'link_title' => $term->name,
+    );
+    menu_link_save($menu_link);
+  }
 }
 
 class UserMigration extends Migration {
