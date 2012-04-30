@@ -233,7 +233,10 @@ class XTopicListSource extends MigrateSource {
         }
       }
       // Look for xtopic CSV files as alternative indexes
-      $fh = @fopen(dirname(__FILE__) . '/' . $this->type . '.csv', 'r');
+      $csv_file = dirname(__FILE__) . '/'
+        . variable_get('uib_test_dir', 'test-jur') . '/'
+        . $this->type . '.csv';
+      $fh = @fopen($csv_file, 'r');
       if ($fh) {
         $this->ids = array();
         while ($data = fgetcsv($fh)) {
