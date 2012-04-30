@@ -68,12 +68,13 @@ class XTopic extends stdClass {
       }
     }
 
-    foreach ($topic->xlink as $xlink) {
-      $this->xlink[(string)$xlink['name']][] = (string)$xlink['ref'];
+    $xlink = array();
+    foreach ($topic->xlink as $x) {
+      $xlink[(string)$x['name']][] = (string)$x['ref'];
     }
 
-    if(!empty($this->xlink['subordinate/hierarchical-relation/superordinate'])) {
-      $this->nav_parent_id = $this->xlink['subordinate/hierarchical-relation/superordinate'][0];
+    if(!empty($xlink['subordinate/hierarchical-relation/superordinate'])) {
+      $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][0];
       if (!$shallow) {
         $parent = new XTopic($this->nav_parent_id, TRUE, 'parent of ' . $id);
         //$this->parent = $parent;
@@ -83,38 +84,38 @@ class XTopic extends stdClass {
       }
     }
 
-    if (!empty($this->xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
-      $this->area_parent_ids =  $this->xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
+    if (!empty($xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
+      $this->area_parent_ids =  $xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
     }
-    if (!empty($this->xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
-      $this->author =  $this->xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
+    if (!empty($xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
+      $this->author =  $xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
     }
-    if (!empty($this->xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
-      $media_id = $this->xlink['decorated/stort_hovedtekstbilde/decoration'];
+    if (!empty($xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
+      $media_id = $xlink['decorated/stort_hovedtekstbilde/decoration'];
       $media_uri = array();
       foreach ($media_id as $id) {
         $media_uri[] = $this->getMedia($id);
       }
       $this->main_media = $media_uri;
     }
-    if (!empty($this->xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
-      $media_id = $this->xlink['decorated/hovedtekstbilde/decoration'];
+    if (!empty($xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
+      $media_id = $xlink['decorated/hovedtekstbilde/decoration'];
       $media_uri = array();
       foreach ($media_id as $id) {
         $media_uri[] = $this->getMedia($id);
       }
       $this->media = $media_uri;
     }
-    if (!empty($this->xlink['has_attachment/vedlegg/attachment'])) {
-      $attachment_id = $this->xlink['has_attachment/vedlegg/attachment'];
+    if (!empty($xlink['has_attachment/vedlegg/attachment'])) {
+      $attachment_id = $xlink['has_attachment/vedlegg/attachment'];
       $attachment_uri = array();
       foreach ($attachment_id as $id) {
         $attachment_uri[] = ($this->getAttachment($id));
       }
       $this->attachment = $attachment_uri;
     }
-    if (!empty($this->xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'])) {
-      $contacts_id = $this->xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
+    if (!empty($xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'])) {
+      $contacts_id = $xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
       $contacts = array();
       foreach ($contacts_id as $id) {
         $contacts[] = $id;
