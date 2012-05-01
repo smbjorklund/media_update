@@ -161,6 +161,7 @@ class AreaMigration extends Migration {
       ->sourceMigration('Area')
       ->arguments(array('source_type' => 'tid'));
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
+    $this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
   }
 
   protected function createStub($migration, $source_id) {
