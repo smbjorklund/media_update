@@ -3,6 +3,7 @@ HTML = \
        content.html  \
        spec.html     \
        style.html    \
+       apache-local.html \
        terms.html
 
 PYTHON = python
