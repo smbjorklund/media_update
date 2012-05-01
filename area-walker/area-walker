@@ -38,14 +38,19 @@ class XTopic_UserAgent(uib.web.UserAgent):
             url = self.prefix + url
         return super(XTopic_UserAgent, self).get(url)
 
-    def get_xtopic(self, xid):
-        etree =  self.get_xml_etree('topicmap/@@xtopic?id=' + str(xid))
+    def _xtopic(self, etree):
         if etree is None:
             return None
         t = etree.find('topic')
         if t is None:
             return None
         return XTopic(t)
+
+    def get_xtopic(self, xid):
+        return self._xtopic(self.get_xml_etree('topicmap/@@xtopic?id=' + str(xid)))
+
+    def get_xtopic_by_path(self, path):
+        return self._xtopic(self.get_xml_etree(path + '/xtopic'))
 
 def indent(depth):
     print '  ' * depth,
@@ -63,7 +68,7 @@ def walk(topic, type_counter, depth=0):
             print '###', k, 'does not exist!'
 
 ua = XTopic_UserAgent()
-area = ua.get_xtopic(1243165932600519669)
+area = ua.get_xtopic_by_path("it")
 
 type_counter = Counter()
 walk(area, type_counter)
