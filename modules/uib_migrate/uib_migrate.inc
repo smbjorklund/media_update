@@ -151,10 +151,6 @@ class AreaMigration extends Migration {
 
     $this->addFieldMapping('name', 'title');
     $this->addFieldMapping('description')->issueGroup(t('DNM'));
-    $this->addFieldMapping('field_uib_trans_text', 'text')
-      ->arguments(array('language' => 'nb'));
-    $this->addFieldMapping('field_uib_trans_text', 'text_en')
-      ->arguments(array('language' => 'en'));
     $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('path', 'path');
     $this->addFieldMapping('field_uib_w2_id', 'id');
@@ -164,6 +160,14 @@ class AreaMigration extends Migration {
       ->arguments(array('source_type' => 'tid'));
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
     $this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
+
+    // Can't get this to work; so we just transfer the values in the prepare
+    // callback instead.
+    //
+    //$this->addFieldMapping('field_uib_trans_text', 'text')
+    //  ->arguments(array('language' => 'nb'));
+    //$this->addFieldMapping('field_uib_trans_text', 'text_en')
+    //  ->arguments(array('language' => 'en'));
   }
 
   protected function createStub($migration, $source_id) {
@@ -185,6 +189,11 @@ class AreaMigration extends Migration {
   }
 
   public function prepare($term, $row) {
+    // Handle the translatable files here.  The field mapping can't deal with
+    // multiple source values mapping to a single translatable field
+    $term->field_uib_trans_text['nb'][0]['value'] = $row->text;
+    $term->field_uib_trans_text['en'][0]['value'] = $row->text_en;
+
     if ($row->placeid) {
       // Check if we already have a 'uib_ou' node with the given placeid
       $query = new EntityFieldQuery;
