@@ -30,7 +30,8 @@ class XTopic extends stdClass {
     $this->type = (string)$topic->type['name'];
 
     $site = (string)$topic->site['no_site'] or $site = (string)$topic->site['ref'];
-    if ($site != $id) {
+    $this->is_site = $site == $id;
+    if (!$this->is_site) {
       $this->site = $site;
     }
     $this->site_lang = $topic->site['lang'];
@@ -66,6 +67,11 @@ class XTopic extends stdClass {
       else {
         $this->$field['name'] = (string)$field;
       }
+    }
+
+    if ($this->is_site and !$shallow and $topic->site['lang'] == 'no') {
+      $en_topic = new XTopic($topic->site['en_site'], TRUE, 'english site');
+      $this->text_en = $en_topic->text;
     }
 
     $xlink = array();
@@ -167,7 +173,8 @@ class XTopic extends stdClass {
       'effectivedate' => t('Publishing date, ISO datetime'),
       'stikktittel' => t('Kicker'),
       'dc_description' => t('Summary of the article'),
-      'text' => t('The main text of the article; raw HTML'),
+      'text' => t('The main text of the article or area; raw HTML'),
+      'text_en' => t('The english main text of an area; raw HTML'),
       'omraadekode' => t('Sebra Area ID'),
       'nav_parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
       'nav_weight' => t('Sort order among siblings'),
