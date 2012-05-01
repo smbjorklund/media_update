@@ -2,6 +2,7 @@
 
 import uib.web
 import json
+from collections import Counter
 
 class XTopic(object):
     def __init__(self, etree):
@@ -49,17 +50,23 @@ class XTopic_UserAgent(uib.web.UserAgent):
 def indent(depth):
     print '  ' * depth,
 
-def walk(topic, depth=0):
+def walk(topic, type_counter, depth=0):
     indent(depth)
     print topic.title_type().encode('UTF-8')
+    type_counter[topic.topic_type()] += 1;
     for k in topic.nav_kids():
         t = ua.get_xtopic(k)
         if t:
-            walk(t, depth + 1)
+            walk(t, type_counter, depth + 1)
         else:
             indent(depth + 1)
             print '###', k, 'does not exist!'
 
 ua = XTopic_UserAgent()
 area = ua.get_xtopic(1243165932600519669)
-walk(area)
+
+type_counter = Counter()
+walk(area, type_counter)
+
+print
+print type_counter
