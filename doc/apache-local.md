@@ -41,6 +41,7 @@ Likewise I've chosen to checkout the w3.uib.no tree under _~/Sites_:
 
     cd ~/Sites
     git clone --recursive git@git.uib.no:site/w3.uib.no.git
+    cd w3.uib.no
     bin/site-install w3.uib.local
 
 The w3.uib.no application wants to run from the root of its own domain. Above
