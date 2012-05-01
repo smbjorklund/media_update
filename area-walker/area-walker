@@ -1,0 +1,65 @@
+#!/usr/bin/env python
+
+import uib.web
+import json
+
+class XTopic(object):
+    def __init__(self, etree):
+        self.etree = etree
+
+    def title(self):
+        return self.etree.find('title').text
+
+    def topic_type(self):
+        return self.etree.find('type').get('name')
+
+    def title_type(self):
+        res = self.title()
+        t = self.topic_type()
+        if t:
+            res += ' [' + t + ']'
+        return res
+
+    def nav_kids(self):
+        site = self.etree.find('site')
+        if site is not None:
+            site = site.get('ref')
+        for f in self.etree.findall('field'):
+            if f.get('name') == 'menuorder' and f.get('scope') == site:
+                return json.loads(f.text)
+        return []
+
+class XTopic_UserAgent(uib.web.UserAgent):
+    prefix = "http://testbool.uib.no/"
+
+    def get(self, url):
+        if not url.startswith(("http:", "https")):
+            url = self.prefix + url
+        return super(XTopic_UserAgent, self).get(url)
+
+    def get_xtopic(self, xid):
+        etree =  self.get_xml_etree('topicmap/@@xtopic?id=' + str(xid))
+        if etree is None:
+            return None
+        t = etree.find('topic')
+        if t is None:
+            return None
+        return XTopic(t)
+
+def indent(depth):
+    print '  ' * depth,
+
+def walk(topic, depth=0):
+    indent(depth)
+    print topic.title_type().encode('UTF-8')
+    for k in topic.nav_kids():
+        t = ua.get_xtopic(k)
+        if t:
+            walk(t, depth + 1)
+        else:
+            indent(depth + 1)
+            print '###', k, 'does not exist!'
+
+ua = XTopic_UserAgent()
+area = ua.get_xtopic(1243165932600519669)
+walk(area)

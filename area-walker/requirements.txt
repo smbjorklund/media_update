@@ -1,0 +1,2 @@
+py-uib
+--find-links http://float.uib.no/pycode/
