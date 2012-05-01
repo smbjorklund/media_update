@@ -72,6 +72,29 @@ class NavPageMigration extends InfoPageMigration {
     return array($node->nid);
   }
 
+  public function complete($node, $row) {
+    if (isset($row->menu_top_entry)) {
+      // Determine the menu_link of the corresponding area
+      $result = db_select('menu_links')
+        ->fields('menu_links', array('mlid', 'link_path'))
+        ->condition('menu_name', 'area')
+        ->condition('link_path', 'taxonomy/term/' . $node->field_uib_area['und'][0]['tid'])
+        ->condition('depth', 1);
+      foreach($result->execute() as $item) {
+        $area_mlid = $item->mlid;
+      }
+
+      // Create top level area menu link
+      $menu_link = array(
+        'menu_name' => 'area',
+        'link_path' => drupal_get_normal_path('node/' . $node->nid),
+        'link_title' => $node->title,
+        'weight' => $row->nav_weight,
+        'plid' => $area_mlid,
+      );
+      menu_link_save($menu_link);
+    }
+  }
 }
 
 class NewsMigration extends XTopicToArticleMigration {

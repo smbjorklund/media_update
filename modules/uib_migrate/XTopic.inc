@@ -84,6 +84,7 @@ class XTopic extends stdClass {
       }
       if ($this->nav_parent_id == $topic->site['ref']) {
         unset($this->nav_parent_id);
+        $this->menu_top_entry = TRUE;
       }
     }
 
