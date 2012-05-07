@@ -61,6 +61,7 @@ class Walker(object):
         self.type_counter = Counter()
         self.site = site
         self.seen = set()
+        self.max_depth = 0
 
     def xprint(self, topic, depth):
         line = topic.title()
@@ -78,9 +79,12 @@ class Walker(object):
 
     def walk(self, topic, depth=0):
         self.xprint(topic, depth)
+
+        if depth > self.max_depth:
+            self.max_depth = depth
+
         if topic.id() in self.seen:
             return
-
         self.seen.add(topic.id())
 
         self.type_counter[topic.topic_type()] += 1;
@@ -108,3 +112,4 @@ walker.walk(area)
 
 print
 print walker.type_counter
+print 'max depth', walker.max_depth
