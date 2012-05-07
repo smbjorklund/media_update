@@ -53,15 +53,17 @@ class XTopic_UserAgent(uib.web.UserAgent):
     def get_xtopic_by_path(self, path):
         return self._xtopic(self.get_xml_etree(path + '/xtopic'))
 
-def print_indent(depth, line):
-    print '  ' * depth, line.encode('UTF-8')
-
 class Walker(object):
     def __init__(self, site):
         self.type_counter = Counter()
         self.site = site
-        self.seen = set()
+        self.seen_at = {}
         self.max_depth = 0
+        self.count = 0
+
+    def print_indent(self, depth, line):
+        self.count += 1
+        print '%4d %2d %s%s' % (self.count, depth, '  ' * depth, line.encode('UTF-8'))
 
     def xprint(self, topic, depth):
         line = topic.title()
@@ -71,11 +73,12 @@ class Walker(object):
             line += t
         if topic.site() != self.site:
             line += '*'
-        if topic.id() in self.seen:
-            line += ', DUPLICATE'
+        seen_at = self.seen_at.get(topic.id())
+        if seen_at is not None:
+            line += ', DUPLICATE #' + str(seen_at)
         line += ']'
 
-        print_indent(depth, line)
+        self.print_indent(depth, line)
 
     def walk(self, topic, depth=0):
         self.xprint(topic, depth)
@@ -83,9 +86,9 @@ class Walker(object):
         if depth > self.max_depth:
             self.max_depth = depth
 
-        if topic.id() in self.seen:
+        if topic.id() in self.seen_at:
             return
-        self.seen.add(topic.id())
+        self.seen_at[topic.id()] = self.count
 
         self.type_counter[topic.topic_type()] += 1;
         for k in topic.nav_kids():
@@ -93,7 +96,7 @@ class Walker(object):
             if t:
                 self.walk(t, depth + 1)
             else:
-                print_indent(depth + 1, '### %s does not exist!' % (k,))
+                self.print_indent(depth + 1, '### %s does not exist!' % (k,))
 
 arg_parser = argparse.ArgumentParser(description='Walk the navigation menus of an area')
 arg_parser.add_argument('area', default='it', nargs='?', help='area path to start traversing (default is "it")')
