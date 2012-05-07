@@ -63,23 +63,28 @@ class XTopic_UserAgent(uib.web.UserAgent):
 def indent(depth):
     print '  ' * depth,
 
-def walk(topic, type_counter, site, depth=0):
-    indent(depth)
-    print topic.title_type_site(site).encode('UTF-8')
-    type_counter[topic.topic_type()] += 1;
-    for k in topic.nav_kids():
-        t = ua.get_xtopic(k)
-        if t:
-            walk(t, type_counter, site, depth + 1)
-        else:
-            indent(depth + 1)
-            print '###', k, 'does not exist!'
+class Walker(object):
+    def __init__(self, site):
+        self.type_counter = Counter()
+        self.site = site
+
+    def walk(self, topic, depth=0):
+        indent(depth)
+        print topic.title_type_site(self.site).encode('UTF-8')
+        self.type_counter[topic.topic_type()] += 1;
+        for k in topic.nav_kids():
+            t = ua.get_xtopic(k)
+            if t:
+                self.walk(t, depth + 1)
+            else:
+                indent(depth + 1)
+                print '###', k, 'does not exist!'
 
 ua = XTopic_UserAgent()
 area = ua.get_xtopic_by_path("it")
 
-type_counter = Counter()
-walk(area, type_counter, area.site())
+walker = Walker(area.site())
+walker.walk(area)
 
 print
-print type_counter
+print walker.type_counter
