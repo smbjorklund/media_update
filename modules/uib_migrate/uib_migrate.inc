@@ -159,7 +159,7 @@ class AreaMigration extends Migration {
       ->sourceMigration('Area')
       ->arguments(array('source_type' => 'tid'));
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
-    $this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
+    //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
 
     // Can't get this to work; so we just transfer the values in the prepare
     // callback instead.
@@ -233,6 +233,24 @@ class AreaMigration extends Migration {
         $term->field_uib_ou['und'][0]['target_id'] = $node->nid;
       }
     }
+
+    if ($row->media) {
+      $file = new stdClass();
+      $filename = 'public://' . drupal_basename($row->media[0]);
+      $filename = file_destination($filename, FILE_EXISTS_RENAME);
+      copy($row->media[0], $filename);
+      $file->filename = drupal_basename($filename);
+      $file->uri = $filename;
+      $file->uid = 1;
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      //print_r($file);
+      $term->field_uib_main_media['und'][0] = array(
+        'fid' => $file->fid,
+        'display' => 1,
+      );
+    }
+
     //print_r($term);
   }
 
