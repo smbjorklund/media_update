@@ -238,12 +238,17 @@ class AreaMigration extends Migration {
       $file = new stdClass();
       $filename = 'public://' . drupal_basename($row->media[0]);
       $filename = file_destination($filename, FILE_EXISTS_RENAME);
-      copy($row->media[0], $filename);
+      if (!@copy($row->media[0], $filename)) {
+        die("Could not copy file " . $row->media[0] . "\n");
+      }
       $file->filename = drupal_basename($filename);
       $file->uri = $filename;
       $file->uid = 1;
       $file->status = FILE_STATUS_PERMANENT;
       file_save($file);
+      if (!$file->fid) {
+        die("Could not save file");
+      }
       //print_r($file);
       $term->field_uib_main_media['und'][0] = array(
         'fid' => $file->fid,
