@@ -82,15 +82,15 @@ class Walker(object):
                 print '###', k, 'does not exist!'
 
 arg_parser = argparse.ArgumentParser(description='Walk the navigation menus of an area')
-arg_parser.add_argument('site', default='it')
+arg_parser.add_argument('area', default='it', nargs='?', help='area path to start traversing (default is "it")')
 
 args = arg_parser.parse_args()
 
 ua = XTopic_UserAgent()
-area = ua.get_xtopic_by_path(args.site)
+area = ua.get_xtopic_by_path(args.area)
 if area is None:
     import sys
-    sys.stderr.write('No such area: ' + repr(args.site) + '\n')
+    sys.stderr.write('No such area: ' + repr(args.area) + '\n')
     sys.exit(1)
 
 walker = Walker(area.site())
