@@ -9,6 +9,9 @@ class XTopic(object):
     def __init__(self, etree):
         self.etree = etree
 
+    def id(self):
+        return self.etree.get('id')
+
     def title(self):
         return self.etree.find('title').text
 
@@ -18,17 +21,6 @@ class XTopic(object):
 
     def topic_type(self):
         return self.etree.find('type').get('name')
-
-    def title_type_site(self, site):
-        res = self.title()
-        res += ' ['
-        t = self.topic_type()
-        if t:
-            res += t
-        if self.site() != site:
-            res += '*'
-        res += ']'
-        return res
 
     def nav_kids(self):
         site = self.etree.find('site')
@@ -61,25 +53,43 @@ class XTopic_UserAgent(uib.web.UserAgent):
     def get_xtopic_by_path(self, path):
         return self._xtopic(self.get_xml_etree(path + '/xtopic'))
 
-def indent(depth):
-    print '  ' * depth,
+def print_indent(depth, line):
+    print '  ' * depth, line.encode('UTF-8')
 
 class Walker(object):
     def __init__(self, site):
         self.type_counter = Counter()
         self.site = site
+        self.seen = set()
+
+    def xprint(self, topic, depth):
+        line = topic.title()
+        line += ' ['
+        t = topic.topic_type()
+        if t:
+            line += t
+        if topic.site() != self.site:
+            line += '*'
+        if topic.id() in self.seen:
+            line += ', DUPLICATE'
+        line += ']'
+
+        print_indent(depth, line)
 
     def walk(self, topic, depth=0):
-        indent(depth)
-        print topic.title_type_site(self.site).encode('UTF-8')
+        self.xprint(topic, depth)
+        if topic.id() in self.seen:
+            return
+
+        self.seen.add(topic.id())
+
         self.type_counter[topic.topic_type()] += 1;
         for k in topic.nav_kids():
             t = ua.get_xtopic(k)
             if t:
                 self.walk(t, depth + 1)
             else:
-                indent(depth + 1)
-                print '###', k, 'does not exist!'
+                print_indent(depth + 1, '### %s does not exist!' % (k,))
 
 arg_parser = argparse.ArgumentParser(description='Walk the navigation menus of an area')
 arg_parser.add_argument('area', default='it', nargs='?', help='area path to start traversing (default is "it")')
