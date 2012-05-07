@@ -11,14 +11,22 @@ class XTopic(object):
     def title(self):
         return self.etree.find('title').text
 
+    def site(self):
+        e = self.etree.find('site')
+        return e.get('ref') if e is not None else None
+
     def topic_type(self):
         return self.etree.find('type').get('name')
 
-    def title_type(self):
+    def title_type_site(self, site):
         res = self.title()
+        res += ' ['
         t = self.topic_type()
         if t:
-            res += ' [' + t + ']'
+            res += t
+        if self.site() != site:
+            res += '*'
+        res += ']'
         return res
 
     def nav_kids(self):
@@ -55,14 +63,14 @@ class XTopic_UserAgent(uib.web.UserAgent):
 def indent(depth):
     print '  ' * depth,
 
-def walk(topic, type_counter, depth=0):
+def walk(topic, type_counter, site, depth=0):
     indent(depth)
-    print topic.title_type().encode('UTF-8')
+    print topic.title_type_site(site).encode('UTF-8')
     type_counter[topic.topic_type()] += 1;
     for k in topic.nav_kids():
         t = ua.get_xtopic(k)
         if t:
-            walk(t, type_counter, depth + 1)
+            walk(t, type_counter, site, depth + 1)
         else:
             indent(depth + 1)
             print '###', k, 'does not exist!'
@@ -71,7 +79,7 @@ ua = XTopic_UserAgent()
 area = ua.get_xtopic_by_path("it")
 
 type_counter = Counter()
-walk(area, type_counter)
+walk(area, type_counter, area.site())
 
 print
 print type_counter
