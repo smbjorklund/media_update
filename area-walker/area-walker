@@ -3,6 +3,7 @@
 import uib.web
 import json
 from collections import Counter
+import argparse
 
 class XTopic(object):
     def __init__(self, etree):
@@ -80,8 +81,17 @@ class Walker(object):
                 indent(depth + 1)
                 print '###', k, 'does not exist!'
 
+arg_parser = argparse.ArgumentParser(description='Walk the navigation menus of an area')
+arg_parser.add_argument('site', default='it')
+
+args = arg_parser.parse_args()
+
 ua = XTopic_UserAgent()
-area = ua.get_xtopic_by_path("it")
+area = ua.get_xtopic_by_path(args.site)
+if area is None:
+    import sys
+    sys.stderr.write('No such area: ' + repr(args.site) + '\n')
+    sys.exit(1)
 
 walker = Walker(area.site())
 walker.walk(area)
