@@ -20,7 +20,10 @@ class XTopic(object):
         return e.get('ref') if e is not None else None
 
     def topic_type(self):
-        return self.etree.find('type').get('name')
+        t = self.etree.find('type')
+        if t is None:
+            return None
+        return t.get('name')
 
     def nav_kids(self, site=None):
         if site is None:
