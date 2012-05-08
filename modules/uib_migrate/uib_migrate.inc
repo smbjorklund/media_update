@@ -1,5 +1,26 @@
 <?php
 
+function xtopic_file($id) {
+  $xtopic = new XTopic($id, FALSE, 'file');
+  $uri = "http://" . XTopic::$w2_server . "/" . $xtopic->original;
+
+  $file = new stdClass();
+  $filename = 'public://' . drupal_basename($uri);
+  $filename = file_destination($filename, FILE_EXISTS_RENAME);
+  if (!@copy($uri, $filename)) {
+    die("Could not copy file " . $uri . "\n");
+  }
+  $file->filename = drupal_basename($filename);
+  $file->uri = $filename;
+  $file->uid = 1;
+  $file->status = FILE_STATUS_PERMANENT;
+  file_save($file);
+  if (!$file->fid) {
+    die("Could not save file");
+  }
+  return $file;
+}
+
 abstract class XTopicToArticleMigration extends Migration {
   public $topic_type;   // to be overridden
   public $article_type; // to be overridden
@@ -39,10 +60,9 @@ abstract class XTopicToArticleMigration extends Migration {
       ->arguments(array('source_type' => 'tid'));
     $this->addFieldMapping('uid', 'author')
       ->sourceMigration('User');
-    $this->addFieldMapping('field_uib_main_media', 'main_media');
-    $this->addFieldMapping('field_uib_media', 'media');
-    $this->addFieldMapping('field_uib_main_media:filename')->defaultValue('foo title');
-    $this->addFieldMapping('field_uib_files', 'attachment');
+    // $this->addFieldMapping('field_uib_main_media', 'main_media');
+    // $this->addFieldMapping('field_uib_media', 'media');
+    // $this->addFieldMapping('field_uib_files', 'attachments');
   }
 
   public function prepareRow($row) {
@@ -50,6 +70,36 @@ abstract class XTopicToArticleMigration extends Migration {
       return FALSE;
     }
     $row->article_type = $this->article_type;
+  }
+
+  public function prepare($node, $row) {
+    if ($row->main_media) {
+      $file = xtopic_file($row->main_media);
+      $node->field_uib_main_media['und'][0] = array(
+        'fid' => $file->fid,
+        'display' => 1,
+      );
+    }
+
+    if (!empty($row->media)) {
+      foreach ($row->media as $file_id) {
+        $file = xtopic_file($file_id);
+        $node->field_uib_media['und'][] = array(
+          'fid' => $file->fid,
+          'display' => 1,
+        );
+      }
+    }
+
+    if (!empty($row->attachments)) {
+      foreach ($row->attachments as $file_id) {
+        $file = xtopic_file($file_id);
+        $node->field_uib_files['und'][] = array(
+          'fid' => $file->fid,
+          'display' => 1,
+        );
+      }
+    }
   }
 }
 
@@ -115,6 +165,7 @@ class EventMigration extends XTopicToArticleMigration{
   }
 
   public function prepare($node, stdClass $row) {
+    parent::prepare($node, $row);
     $node->field_uib_date['und'][0]['value'] = $row->start_date;
     $node->field_uib_date['und'][0]['value2'] = $row->end_date;
     //Prevent empty links instances
@@ -235,21 +286,7 @@ class AreaMigration extends Migration {
     }
 
     if ($row->media) {
-      $file = new stdClass();
-      $filename = 'public://' . drupal_basename($row->media[0]);
-      $filename = file_destination($filename, FILE_EXISTS_RENAME);
-      if (!@copy($row->media[0], $filename)) {
-        die("Could not copy file " . $row->media[0] . "\n");
-      }
-      $file->filename = drupal_basename($filename);
-      $file->uri = $filename;
-      $file->uid = 1;
-      $file->status = FILE_STATUS_PERMANENT;
-      file_save($file);
-      if (!$file->fid) {
-        die("Could not save file");
-      }
-      //print_r($file);
+      $file = xtopic_file($row->media[0]);
       $term->field_uib_main_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,

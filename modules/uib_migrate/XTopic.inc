@@ -103,59 +103,20 @@ class XTopic extends stdClass {
     }
 
     if (!empty($xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
-      $media_id = $xlink['decorated/stort_hovedtekstbilde/decoration'];
-      $media_uri = array();
-      foreach ($media_id as $id) {
-        $media_uri[] = $this->getMedia($id);
-      }
-      $this->main_media = $media_uri;
+      $this->main_media = $xlink['decorated/stort_hovedtekstbilde/decoration'][0];
     }
 
     if (!empty($xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
-      $media_id = $xlink['decorated/hovedtekstbilde/decoration'];
-      $media_uri = array();
-      foreach ($media_id as $id) {
-        $media_uri[] = $this->getMedia($id);
-      }
-      $this->media = $media_uri;
+      $this->media = $xlink['decorated/hovedtekstbilde/decoration'];
     }
 
     if (!empty($xlink['has_attachment/vedlegg/attachment'])) {
-      $attachment_id = $xlink['has_attachment/vedlegg/attachment'];
-      $attachment_uri = array();
-      foreach ($attachment_id as $id) {
-        $attachment_uri[] = ($this->getAttachment($id));
-      }
-      $this->attachment = $attachment_uri;
+      $this->attachments = $xlink['has_attachment/vedlegg/attachment'];
     }
 
     if (!empty($xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'])) {
       $this->contacts = $xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
     }
-  }
-
-  public function getMedia($id) {
-    $topic = new XTopic($id, TRUE, 'media');
-    $path = $topic->original;
-    $media_uri = "http://" . XTopic::$w2_server . "/" . $path;
-    //drush_log('getMedia() found: ' . $media_uri, $type='notice');
-    return $media_uri;
-  }
-
-  public function getAttachment($id) {
-    $topic = new XTopic($id, TRUE, 'attachment');
-    $path = $topic->path;
-    $attachment_uri = "http://" . XTopic::$w2_server . "/" . $path;
-    //drush_log('Attachment found: ' . $attachment_uri, $type='notice');
-    return $attachment_uri;
-  }
-
-  public function getMeta($id) {
-    $topic = new XTopic($id, TRUE, 'meta');
-    $title = $topic->title;
-    $photographer = $topic->field['photographer'];
-    drush_log($title . 'taken by: ' . $photographer, $type='notice');
-    return;
   }
 
   public static function fields() {
