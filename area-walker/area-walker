@@ -12,6 +12,9 @@ class XTopic(object):
     def id(self):
         return self.etree.get('id')
 
+    def path(self):
+        return self.etree.get('path')[1:]
+
     def title(self):
         return self.etree.find('title').text
 
@@ -77,8 +80,15 @@ class Walker(object):
             line += t
         else:
             line += 'NO_TYPE'
-        if topic.site() != self.site:
-            line += '*'
+        tsite = topic.site()
+        if tsite:
+            if tsite != self.site:
+                other_site = self.ua.get_xtopic(tsite)
+                if other_site.id() != topic.id():
+                    line += ' from'
+                line += ' ' + other_site.path()
+        else:
+            line += ' imported'
         seen_at = self.seen_at.get(topic.id())
         if seen_at is not None:
             line += ', DUPLICATE #' + str(seen_at)
@@ -98,7 +108,7 @@ class Walker(object):
 
         self.type_counter[topic.topic_type()] += 1;
         for k in topic.nav_kids(self.site):
-            t = ua.get_xtopic(k)
+            t = self.ua.get_xtopic(k)
             if t:
                 self.walk(t, depth + 1)
             else:
@@ -117,7 +127,7 @@ if area is None:
     sys.stderr.write('No such area: ' + repr(args.area) + '\n')
     sys.exit(1)
 
-walker = Walker(site=area.site(), show_ids=args.ids)
+walker = Walker(site=area.site(), show_ids=args.ids, ua=ua)
 walker.walk(area)
 
 print
