@@ -56,12 +56,12 @@ class XTopic_UserAgent(uib.web.UserAgent):
         return self._xtopic(self.get_xml_etree(path + '/xtopic'))
 
 class Walker(object):
-    def __init__(self, site):
+    def __init__(self, **kw):
         self.type_counter = Counter()
-        self.site = site
         self.seen_at = {}
         self.max_depth = 0
         self.count = 0
+        self.__dict__.update(kw)
 
     def print_indent(self, depth, line):
         self.count += 1
@@ -117,8 +117,7 @@ if area is None:
     sys.stderr.write('No such area: ' + repr(args.area) + '\n')
     sys.exit(1)
 
-walker = Walker(area.site())
-walker.show_ids = args.ids
+walker = Walker(site=area.site(), show_ids=args.ids)
 walker.walk(area)
 
 print
