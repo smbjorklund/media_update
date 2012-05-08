@@ -22,10 +22,9 @@ class XTopic(object):
     def topic_type(self):
         return self.etree.find('type').get('name')
 
-    def nav_kids(self):
-        site = self.etree.find('site')
-        if site is not None:
-            site = site.get('ref')
+    def nav_kids(self, site=None):
+        if site is None:
+            site = self.site()
         for f in self.etree.findall('field'):
             if f.get('name') == 'menuorder' and f.get('scope') == site:
                 return json.loads(f.text)
@@ -91,7 +90,7 @@ class Walker(object):
         self.seen_at[topic.id()] = self.count
 
         self.type_counter[topic.topic_type()] += 1;
-        for k in topic.nav_kids():
+        for k in topic.nav_kids(self.site):
             t = ua.get_xtopic(k)
             if t:
                 self.walk(t, depth + 1)
