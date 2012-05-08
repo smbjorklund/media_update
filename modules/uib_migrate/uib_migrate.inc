@@ -19,7 +19,7 @@ function xtopic_file($id) {
   if (!@copy($uri, $filename)) {
     die("Could not copy file " . $uri . "\n");
   }
-  $file->filename = drupal_basename($filename);
+  $file->filename = $xtopic->title;
   $file->uri = $filename;
   $file->uid = 1;
   $file->status = FILE_STATUS_PERMANENT;
