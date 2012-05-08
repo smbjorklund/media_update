@@ -70,9 +70,13 @@ class Walker(object):
     def xprint(self, topic, depth):
         line = topic.title()
         line += ' ['
+        if self.show_ids:
+            line += topic.id() + ', '
         t = topic.topic_type()
         if t:
             line += t
+        else:
+            line += 'NO_TYPE'
         if topic.site() != self.site:
             line += '*'
         seen_at = self.seen_at.get(topic.id())
@@ -101,6 +105,7 @@ class Walker(object):
                 self.print_indent(depth + 1, '### %s does not exist!' % (k,))
 
 arg_parser = argparse.ArgumentParser(description='Walk the navigation menus of an area')
+arg_parser.add_argument('--ids', action='store_true', help='print the ids of the listed topics')
 arg_parser.add_argument('area', default='it', nargs='?', help='area path to start traversing (default is "it")')
 
 args = arg_parser.parse_args()
@@ -113,6 +118,7 @@ if area is None:
     sys.exit(1)
 
 walker = Walker(area.site())
+walker.show_ids = args.ids
 walker.walk(area)
 
 print
