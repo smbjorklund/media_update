@@ -2,7 +2,16 @@
 
 function xtopic_file($id) {
   $xtopic = new XTopic($id, FALSE, 'file');
-  $uri = "http://" . XTopic::$w2_server . "/" . $xtopic->original;
+  if ($xtopic->type == 'image') {
+    $uri = $xtopic->original;
+  }
+  elseif ($xtopic->type == 'file') {
+    $uri = $xtopic->file;
+  }
+  else {
+    die("Unknown file type: " . $xtopic->type);
+  }
+  $uri = "http://" . XTopic::$w2_server . "/" . $uri;
 
   $file = new stdClass();
   $filename = 'public://' . drupal_basename($uri);
