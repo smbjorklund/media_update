@@ -39,6 +39,16 @@ class XTopic extends stdClass {
       $this->site_lang = 'nb'; // Drupal uses nb/nn (bokmål/nynorsk)
     }
 
+    foreach ($topic->profiletext as $profiletext){
+      $this->profiletext .= (string)$profiletext;
+      if($profiletext["image_ref"] && $profiletext["href"] ){
+        $this->profiletext .= sprintf ("<a href='%s'><img src='%s'></a>",$profiletext['href'], $profiletext['image_ref']);
+      }
+      else if($profiletext["image_ref"]){
+        $this->profiletext .= sprintf ("<img src='%s'>", $profiletext['image_ref']);
+      }
+
+    }
     foreach ($topic->field as $field) {
       if ($field['name'] == 'psi') {
         $value = (string)$field;
@@ -72,6 +82,12 @@ class XTopic extends stdClass {
     if ($this->is_site and !$shallow and $topic->site['lang'] == 'no') {
       $en_topic = new XTopic($topic->site['en_site'], TRUE, 'english site');
       $this->text_en = $en_topic->text;
+    }
+
+
+    if ($this->is_site and !$shallow and $topic->site['lang'] == 'no') {
+      $en_topic = new XTopic($topic->site['en_site'], TRUE, 'english site');
+      $this->profiletext_en = $en_topic->profiletext;
     }
 
     $xlink = array();
@@ -136,6 +152,8 @@ class XTopic extends stdClass {
       'dc_description' => t('Summary of the article'),
       'text' => t('The main text of the article or area; raw HTML'),
       'text_en' => t('The english main text of an area; raw HTML'),
+      'profiletext' => t('The norwegian profile text area; raw HTML'),
+      'profiletext_en' => t('The english profile text area; raw HTML'),
       'omraadekode' => t('Sebra Area ID'),
       'nav_parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
       'nav_weight' => t('Sort order among siblings'),

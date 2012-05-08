@@ -253,6 +253,8 @@ class AreaMigration extends Migration {
     // multiple source values mapping to a single translatable field
     $term->field_uib_trans_text['nb'][0]['value'] = $row->text;
     $term->field_uib_trans_text['en'][0]['value'] = $row->text_en;
+    $term->field_uib_trans_text2['en'][0]['value'] = $row->profiletext_en;
+    $term->field_uib_trans_text2['nb'][0]['value'] = $row->profiletext;
 
     if ($row->placeid) {
       // Check if we already have a 'uib_ou' node with the given placeid
