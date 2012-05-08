@@ -194,14 +194,14 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-audio-field_uid_description'
-  $fields['file-audio-field_uid_description'] = array(
+  // Exported field: 'file-audio-field_uib_description'
+  $fields['file-audio-field_uib_description'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_uid_description',
+      'field_name' => 'field_uib_description',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -267,7 +267,7 @@ function uib_feature_setup_field_default_fields() {
         ),
       ),
       'entity_type' => 'file',
-      'field_name' => 'field_uid_description',
+      'field_name' => 'field_uib_description',
       'label' => 'Description',
       'required' => 0,
       'settings' => array(
@@ -470,14 +470,14 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_uid_description'
-  $fields['file-image-field_uid_description'] = array(
+  // Exported field: 'file-image-field_uib_description'
+  $fields['file-image-field_uib_description'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_uid_description',
+      'field_name' => 'field_uib_description',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -543,7 +543,7 @@ function uib_feature_setup_field_default_fields() {
         ),
       ),
       'entity_type' => 'file',
-      'field_name' => 'field_uid_description',
+      'field_name' => 'field_uib_description',
       'label' => 'Description',
       'required' => 0,
       'settings' => array(
@@ -746,14 +746,14 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_uid_description'
-  $fields['file-video-field_uid_description'] = array(
+  // Exported field: 'file-video-field_uib_description'
+  $fields['file-video-field_uib_description'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_uid_description',
+      'field_name' => 'field_uib_description',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -819,7 +819,7 @@ function uib_feature_setup_field_default_fields() {
         ),
       ),
       'entity_type' => 'file',
-      'field_name' => 'field_uid_description',
+      'field_name' => 'field_uib_description',
       'label' => 'Description',
       'required' => 0,
       'settings' => array(
