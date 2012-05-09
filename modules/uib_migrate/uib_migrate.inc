@@ -19,6 +19,15 @@ function xtopic_file($id) {
   if (!@copy($uri, $filename)) {
     die("Could not copy file " . $uri . "\n");
   }
+  if ($xtopic->photographer) {
+    $file->field_uib_owner['und'][]['value'] = $xtopic->photographer;
+  }
+  if ($xtopic->{1351138798041054899}) {
+    $file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
+  }
+  if ($xtopic->dc_description) {
+    $file->field_uib_description['und'][]['value'] = $xtopic->dc_description;
+  }
   $file->filename = $xtopic->title;
   $file->uri = $filename;
   $file->uid = 1;
