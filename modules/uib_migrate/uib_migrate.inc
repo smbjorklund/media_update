@@ -28,6 +28,7 @@ function xtopic_file($id) {
   if ($xtopic->dc_description) {
     $file->field_uib_description['und'][]['value'] = $xtopic->dc_description;
   }
+  $file->field_uib_w2_id['und'][]['value'] = $id;
   $file->filename = $xtopic->title;
   $file->uri = $filename;
   $file->uid = 1;
