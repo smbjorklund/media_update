@@ -1,6 +1,19 @@
 <?php
 
 function xtopic_file($id) {
+  // Check if we already have a 'file' migrated from the same id, if so return it
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'file')
+    ->fieldCondition('field_uib_w2_id', 'value', $id, '=')
+    ->range(0,1)
+    ->execute();
+  if (!empty($result['file'])) {
+    $res = array_values($result['file']);
+    return $res[0]; // will be a stdClass object with 'fid' set, which is good enough
+  }
+
+  // Fetch file meta info from w2
   $xtopic = new XTopic($id, FALSE, 'file');
   if ($xtopic->type == 'image') {
     $uri = $xtopic->original;
