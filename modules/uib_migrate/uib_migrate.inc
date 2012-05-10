@@ -37,6 +37,10 @@ function xtopic_file($id) {
   if (!$file->fid) {
     die("Could not save file");
   }
+  else {  //Touch timestamp to preserve timestamps from legacy system (w2).
+    $file->timestamp = strtotime($xtopic->created);
+    drupal_write_record('file_managed', $file, 'fid');
+  }
   return $file;
 }
 
