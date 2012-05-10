@@ -12,6 +12,7 @@ dependencies[] = translation
 dependencies[] = uib_feature_setup
 dependencies[] = uib_feature_area
 dependencies[] = uib_feature_article
+dependencies[] = uib_feature_testimonial
 dependencies[] = uib_feature_user
 dependencies[] = uib_migrate
 dependencies[] = uib_nomail
