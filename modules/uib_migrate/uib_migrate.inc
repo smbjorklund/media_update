@@ -363,6 +363,7 @@ class UserMigration extends Migration {
     $this->addFieldMapping('field_uib_first_name', 'fornavn');
     $this->addFieldMapping('field_uib_last_name', 'etternavn');
     $this->addFieldMapping('field_uib_position', 'stilling');
+    $this->addFieldMapping('field_uib_slug', 'slug');
   }
 
   protected function createStub($migration, $source_id) {

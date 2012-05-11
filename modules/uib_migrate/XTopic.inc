@@ -27,6 +27,7 @@ class XTopic extends stdClass {
     $this->title = (string)$topic->title;
     $this->state = (string)$topic['state'];
     $this->path = substr($topic['path'], 1);
+    $this->slug = basename($this->path);
     $this->type = (string)$topic->type['name'];
 
     $site = (string)$topic->site['no_site'] or $site = (string)$topic->site['ref'];
@@ -146,6 +147,7 @@ class XTopic extends stdClass {
       'psi' => t('Public Subject Idendentifer'),
       'state' => t('Publishing state; one of private, published, retracted'),
       'path' => t('The path of the topic in the database'),
+      'slug' => t('Last part of the path'),
       'type' => t('What kind of topic is this'),
       'site' => t('What site does this topic belong to (serial)'),
       'site_lang' => t('What\'s the the language of the site this topic belongs to'),
