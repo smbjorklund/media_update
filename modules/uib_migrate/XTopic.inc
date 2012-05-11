@@ -75,7 +75,11 @@ class XTopic extends stdClass {
         $this->original = (string)$field;
       }
       else {
-        $this->$field['name'] = (string)$field;
+        $fname = $field['name'];
+        if ($field['scope']) {
+          $fname .= ':' . $field['scope'];
+        }
+        $this->$fname = (string)$field;
       }
     }
 
