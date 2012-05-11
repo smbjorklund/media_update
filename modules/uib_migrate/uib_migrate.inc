@@ -1,5 +1,9 @@
 <?php
 
+function xtopic_cleanup($text) {
+  return html_entity_decode($text, ENT_QUOTES, 'UTF-8');
+}
+
 function xtopic_file($id) {
   // Check if we already have a 'file' migrated from the same id, if so return it
   $query = new EntityFieldQuery;
@@ -106,6 +110,11 @@ abstract class XTopicToArticleMigration extends Migration {
       return FALSE;
     }
     $row->article_type = $this->article_type;
+
+    if ($row->text) {
+      $clean_text = xtopic_cleanup($row->text);
+      $row->text = $clean_text;
+    }
   }
 
   public function prepare($node, $row) {
