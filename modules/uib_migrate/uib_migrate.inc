@@ -335,10 +335,20 @@ class AreaMigration extends Migration {
   }
 
   public function complete($term, $row) {
+    $weight = array_search($row->type, array(
+      'fakultet', 'institutt', 'enhet',
+      'section',
+      'forskningsgruppe', 'forskerskole',
+    ));
+    if ($weight === FALSE) {
+      $weight = 99;
+    }
+
     $menu_link = array(
       'menu_name' => 'area',
       'link_path' => drupal_get_normal_path('taxonomy/term/' . $term->tid),
       'link_title' => $term->name,
+      'weight' => $weight,
     );
     menu_link_save($menu_link);
   }
