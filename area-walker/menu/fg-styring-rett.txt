@@ -1,0 +1,12 @@
+   1  0 Demokrati, styring, rett og arbeidsliv [5656253015567411015, forskningsgruppe]
+   2  1   Forskning [1235929283846359916, navigationpage]
+   3  2     Demokrati og rettsstat [1923453867571470952, article from forskning]
+   4  1   Prosjekter [1235929283846359922, navigationpage]
+   5  2     ### 4441953170177221007 does not exist!
+   6  1   Publikasjoner [1235929283846359928, navigationpage]
+   7  2     ### 8687239640169206184 does not exist!
+   8  1   Kontakt [1235929283846359934, navigationpage]
+   9  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1, 'displaylisting': 1, 'article': 1})
+max depth 2

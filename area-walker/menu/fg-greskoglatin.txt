@@ -1,0 +1,18 @@
+   1  0 Forskergruppe for gresk og latinsk filologi [5656253015567411030, forskningsgruppe]
+   2  1   Forskning  [1318179816522490232, navigationpage]
+   3  2     Prosjekter [1318179816522490238, navigationpage]
+   4  3       Aeschylus’ Supplices [1087553672870028340, article]
+   5  3       Den antikke biografien [7426949704670812614, article]
+   6  3       Aristoteles på norsk [3198439980396002936, article]
+   7  3       Callimachus' Hymns [8562410788892648605, article]
+   8  2     Antikken og ettertiden [5554214643052458817, article]
+   9  1   Prosjekter [1318179816522490238, navigationpage, DUPLICATE #3]
+  10  1   Publikasjoner [1318179816522490244, navigationpage]
+  11  2     Bøker utgitt siste fem år [8384071208010217462, article]
+  12  1   Kontakt [1318179816522490250, navigationpage]
+  13  2     Staff [3197327699316275688, personliste from rg/classicalphilology]
+  14  2     Affiliated staff [5772153891271102746, personliste from rg/classicalphilology]
+  15  2     Emeriti [2447319346713207208, personliste from rg/classicalphilology]
+
+Counter({'article': 6, 'navigationpage': 4, 'personliste': 3, 'forskningsgruppe': 1})
+max depth 3

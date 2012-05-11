@@ -1,0 +1,11 @@
+   1  0 Teater. Scene og scenisk uttrykk [7833789259207351505, forskningsgruppe]
+   2  1   Forskning [399123665644168920, navigationpage]
+   3  2     ### 3562631666573452396 does not exist!
+   4  2     ### 207410795842383532 does not exist!
+   5  1   Prosjekter [399123665644168926, navigationpage]
+   6  1   Publikasjoner [399123665644168932, navigationpage]
+   7  1   Kontakt [8054978980739271630, navigationpage]
+   8  2     Gruppemedlemmer [7221156165995034700, article]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1, 'article': 1})
+max depth 2

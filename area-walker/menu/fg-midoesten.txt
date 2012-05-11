@@ -1,0 +1,16 @@
+   1  0 Forskningsgruppe på Midtausten- og Afrikastudiar [5656253015567411005, forskningsgruppe exp:ahkr]
+   2  1   Forskning [5764464275005062482, navigationpage]
+   3  2     Forskning [7325156199309459533, article]
+   4  1   Prosjekter [5764464275005062488, navigationpage]
+   5  2     Fellesprosjekter [5143556518330434660, article]
+   6  2     Individuelle prosjekter [6636336250904032174, article]
+   7  2     Aktivitetar [7015243203276481879, article]
+   8  1   Publikasjoner [5764464275005062494, navigationpage]
+   9  2     ### 4863816228067135155 does not exist!
+  10  2     Publikasjoner [7818454599718134766, article]
+  11  1   Kontakt [5764464275005062500, navigationpage]
+  12  2     Kontakt oss [6636336250904032195, article]
+  13  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'article': 6, 'navigationpage': 4, 'forskningsgruppe': 1, 'displaylisting': 1})
+max depth 2

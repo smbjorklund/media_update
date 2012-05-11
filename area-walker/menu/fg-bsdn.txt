@@ -1,0 +1,5 @@
+   1  0 The Bergen Shakespeare and Drama Network [4119519473738977913, forskningsgruppe]
+   2  1   Research [1910309401557503388, navigationpage]
+
+Counter({'forskningsgruppe': 1, 'navigationpage': 1})
+max depth 1

@@ -1,0 +1,17 @@
+   1  0 Nordmenn i Latin-Amerika [6512764593279536396, forskningsgruppe]
+   2  1   Forskning [6245503012372885248, navigationpage]
+   3  2     ### 813612091930396060 does not exist!
+   4  2     Tematisk fokus [4326530334778269988, article]
+   5  2     Bakgrunn og historikk [7969121216977682406, article]
+   6  1   Prosjekter [8034808833207782983, navigationpage]
+   7  2     Database [7969121216977682415, article]
+   8  2     Utstillingar [5477198290689241477, article]
+   9  2     Kurs for masterstudentar [5477198290689241486, article]
+  10  1   Publikasjoner [4299123609434116236, navigationpage]
+  11  2     Utvalde publikasjonar [5647333804975043259, article]
+  12  1   Kontakt [946627902300888839, navigationpage]
+  13  2     Kontaktar [4551729004958161418, article]
+  14  2     Medlemmer [1334190636752536547, article]
+
+Counter({'article': 8, 'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 2

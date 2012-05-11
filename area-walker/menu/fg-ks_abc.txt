@@ -1,0 +1,9 @@
+   1  0 Kultur og samfunn i Argentina, Brasil og Chile [1185126445238998563, forskningsgruppe]
+   2  1   Forskning [153375241783675606, navigationpage]
+   3  1   Prosjekter [3543703850913386276, navigationpage]
+   4  1   Publikasjoner [7918531835309892833, navigationpage]
+   5  1   ### 7918531835309892839 does not exist!
+   6  1   Kontakt [7918531835309892844, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

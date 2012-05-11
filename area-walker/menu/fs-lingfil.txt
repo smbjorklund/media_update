@@ -1,0 +1,9 @@
+   1  0 Forskerskolen i språkvitenskap og filologi [8484772882432234993, forskerskole]
+   2  1   Forskerskulen [767887311248690001, navigationpage]
+   3  1   Forskning [9217554990521225263, navigationpage]
+   4  1   Aktivitetar [2933812599323062043, navigationpage]
+   5  1   Arkiv [2933812599323062049, navigationpage]
+   6  1   Kontakt [1430498224139302594, navigationpage]
+
+Counter({'navigationpage': 5, 'forskerskole': 1})
+max depth 1

@@ -1,0 +1,13 @@
+   1  0 Tekst, handling og rom [5656253015567411075, forskningsgruppe]
+   2  1   Forskning [6002984299737491224, navigationpage]
+   3  2     Forskningsfelt [2544003695215315691, article]
+   4  1   Prosjekter [6002984299737491230, navigationpage]
+   5  1   Aktiviteter [6002984299737491236, navigationpage]
+   6  2     Seminar  [8111727849540110446, article]
+   7  2     Studiar framlagde i THR/TAS-samanheng [424839281531645437, article]
+   8  1   Kontakter [6002984299737491242, navigationpage]
+   9  2     Kontaktperson/leiar [353931291273271511, article]
+  10  2     Medlemmer og nettverk [353931291273271501, article]
+
+Counter({'article': 5, 'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 2

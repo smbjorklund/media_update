@@ -1,0 +1,19 @@
+   1  0 Internasjonaliseringsprosesser i kulturelt og historisk perspektiv [1829107811045872391, forskningsgruppe exp:ahkr]
+   2  1   Forskning [3454113443820195723, navigationpage]
+   3  2     ### 8184788486360095413 does not exist!
+   4  2     Om gruppen [3475710756768044650, article]
+   5  1   Prosjekter [3454113443820195729, navigationpage]
+   6  2     Fellesprosjekter [7833446795401689126, article]
+   7  2     Individuelle prosjekter [4839783838626758296, article]
+   8  2     Mastergradsprosjekter [2965642268795085426, article]
+   9  2     Aktiviteter [3473703118566854943, article]
+  10  1   Publikasjoner [3454113443820195735, navigationpage]
+  11  2     Utvalgte publikasjoner [3442040953649351226, article]
+  12  1   Samarbeidspartnere [8773441833729491893, navigationpage]
+  13  1   Kontakt [5502103862194954907, navigationpage]
+  14  2     Kontakt oss [7683927959873457940, article]
+  15  2     Forskningsprofiler [1884175579795470421, article]
+  16  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'article': 8, 'navigationpage': 5, 'forskningsgruppe': 1, 'displaylisting': 1})
+max depth 2

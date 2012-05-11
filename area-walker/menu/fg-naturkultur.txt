@@ -1,0 +1,16 @@
+   1  0 Naturens kulturhistorie [250049071070656721, forskningsgruppe]
+   2  1   Forskning [5451102613205915731, navigationpage]
+   3  2     ### 211765087223078441 does not exist!
+   4  2     Cnature forskernettverk [7235545263842993520, article]
+   5  1   Prosjekter [5451102613205915737, navigationpage]
+   6  2     Sites in Marginal Landscapes [5477558579359508781, article]
+   7  2     Sight, sense, and cognition. [1417669125291821930, article]
+   8  2     Imag(in)ing the Nano-scale [4151137320932949865, article]
+   9  1   Publikasjoner [5451102613205915743, navigationpage]
+  10  2     ### 2899003659230302029 does not exist!
+  11  1   Aktiviteter [8495605222187979702, navigationpage]
+  12  1   Kontakt [8755906303091617121, navigationpage]
+  13  2     Medlemmer [5194830115894961954, personliste]
+
+Counter({'navigationpage': 5, 'article': 4, 'forskningsgruppe': 1, 'personliste': 1})
+max depth 2

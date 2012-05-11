@@ -1,0 +1,20 @@
+   1  0 Rett, retorikk og litteratur [5656253015567411040, forskningsgruppe]
+   2  1   Forskning [4324459002338829346, navigationpage]
+   3  2     Nordisk nettverk for rett og litteratur [8903484389750042174, article]
+   4  1   Prosjekter [4324459002338829352, navigationpage]
+   5  2     NFR-prosjekt: Justismordets dramaturgi [2024093333513907631, article]
+   6  1   Publikasjoner [4324459002338829358, navigationpage]
+   7  2     Doktorgrader [1235689786380924153, navigationpage]
+   8  3       Paragrafer om tilfellet Torgersen [1393938457118426751, article]
+   9  3       Rettferdige ord [8501612547810630423, article]
+  10  2     Utgivelser - forskergruppen [5986924475935504029, navigationpage]
+  11  3       Tolv og en halv tale om litteratur og lov og rett [3780853059015144399, article]
+  12  3       Stjerneskudd [7782078256597948658, article]
+  13  2     Intervjuer - Kronikker [7222585913198996937, navigationpage]
+  14  3       Johan Dragvoll om Torgersen - BT 02.08.2009 [7222585913198996946, article]
+  15  3       Kronikk: "Åpenhet om Treholt" [8165955513927907241, article]
+  16  1   Kontakt [4324459002338829364, navigationpage]
+  17  2     Forskere [5175709439832488721, personliste]
+
+Counter({'article': 8, 'navigationpage': 7, 'forskningsgruppe': 1, 'personliste': 1})
+max depth 3

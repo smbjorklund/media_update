@@ -1,0 +1,12 @@
+   1  0 Europas grenser [2544953682870257688, forskningsgruppe]
+   2  1   Forskning [3045040636853819882, navigationpage]
+   3  2     Informasjon [6485511448188460078, article]
+   4  1   Prosjekter [3045040636853819888, navigationpage]
+   5  2     Publikasjoner [3045040636853819894, navigationpage]
+   6  3       Publikasjoner [9135962152608728506, article]
+   7  1   Publikasjoner [3045040636853819894, navigationpage, DUPLICATE #5]
+   8  1   Kontakt [3045040636853819900, navigationpage]
+   9  2     Kontaktinformsajon [3201031628090939768, article]
+
+Counter({'navigationpage': 4, 'article': 3, 'forskningsgruppe': 1})
+max depth 3

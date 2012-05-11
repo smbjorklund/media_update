@@ -1,0 +1,9 @@
+   1  0 Prosjekt vitenskapshistorie [216001478162513684, forskningsgruppe]
+   2  1   Prosjekter [9152367448559602655, navigationpage]
+   3  1   Publikasjoner [9152367448559602661, navigationpage]
+   4  1   Aktiviteter [7789892720436487308, navigationpage]
+   5  1   Samarbeidspartnere [7789892720436487302, navigationpage]
+   6  1   Kontakt [7789892720436487314, navigationpage]
+
+Counter({'navigationpage': 5, 'forskningsgruppe': 1})
+max depth 1

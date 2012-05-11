@@ -1,0 +1,16 @@
+   1  0 Karibia: Identiteter og konflikter [4474100487159784213, forskningsgruppe]
+   2  1   Forskning [2376355065786987562, navigationpage]
+   3  2     Om oss [5167232185423480543, article]
+   4  2     Seminarhistorikk [7192680638185674892, article]
+   5  2     Les Caraïbes : Identités et Conflits - Qui sommes-nous? [7417790120049410413, article]
+   6  2     El Caribe: Identidades y Conflictos - ¿Quiénes somos? [7316465281902311451, article]
+   7  2     The Caribbean: Identities and Conflicts – Who are we? [7316465281902311463, article]
+   8  1   Prosjekter [8767733478908864864, navigationpage]
+   9  1   Publikasjoner [8767733478908864870, navigationpage]
+  10  2     Bøker, artikler og bokkapitler [6313374589895773021, article]
+  11  1   Kontakt [2376355065786987569, navigationpage]
+  12  2     Adresse [7905313321323259192, article]
+  13  2     Medlemmer [5734306877286876760, article]
+
+Counter({'article': 8, 'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 2

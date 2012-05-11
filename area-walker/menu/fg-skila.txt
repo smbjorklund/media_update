@@ -1,0 +1,5 @@
+   1  0 Språk og kultur i Latin-Amerika [5656253015567410925, forskningsgruppe]
+   2  1   Forskning [7781240053927971665, navigationpage]
+
+Counter({'forskningsgruppe': 1, 'navigationpage': 1})
+max depth 1

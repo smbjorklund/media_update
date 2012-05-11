@@ -1,0 +1,10 @@
+   1  0 Bergen Transkulturasjon Studieseminar [563280042351746109, forskningsgruppe]
+   2  1   Forskning [563280042351746122, navigationpage]
+   3  2     bergen-transculturation-studies [6071853718635213273, article, RETRACTED]
+   4  1   Prosjekter [563280042351746130, navigationpage]
+   5  2     Seminar program spring 2011 [3112979312795568254, article, RETRACTED]
+   6  1   Publikasjoner [563280042351746134, navigationpage]
+   7  1   Kontakt [563280042351746126, navigationpage]
+
+Counter({'navigationpage': 4, 'article': 2, 'forskningsgruppe': 1})
+max depth 2

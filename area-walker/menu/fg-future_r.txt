@@ -1,0 +1,11 @@
+   1  0 The Future of Russian [4119519473738977921, forskningsgruppe]
+   2  1   Research [7104760192694467460, navigationpage]
+   3  2     ### 551046187785148419 does not exist!
+   4  2     Åpningskonferanse forskningsprosjektet The Future of Russian [436046382705131244, article]
+   5  1   Projects [7104760192694467466, navigationpage]
+   6  1   Publications [7104760192694467472, navigationpage]
+   7  1   Contact [7104760192694467478, navigationpage]
+   8  2     Details [522583185547482681, article]
+
+Counter({'navigationpage': 4, 'article': 2, 'forskningsgruppe': 1})
+max depth 2

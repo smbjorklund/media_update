@@ -1,0 +1,8 @@
+   1  0 Elektronisk litteratur [2300875233110824327, forskningsgruppe]
+   2  1   Forskning [2300875233110824340, navigationpage]
+   3  1   Prosjekter [2300875233110824348, navigationpage]
+   4  1   Publikasjoner [2300875233110824352, navigationpage]
+   5  1   Kontakt [2300875233110824344, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

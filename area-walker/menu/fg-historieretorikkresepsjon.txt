@@ -1,0 +1,8 @@
+   1  0 Historie, retorikk og resepsjon [2201170085019555846, forskningsgruppe]
+   2  1   Forskning [4700107789709597190, navigationpage]
+   3  1   Prosjekter [4700107789709597196, navigationpage]
+   4  1   Publikasjoner [4700107789709597202, navigationpage]
+   5  1   Kontakt [186252561128609489, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

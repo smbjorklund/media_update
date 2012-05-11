@@ -1,0 +1,26 @@
+   1  0 Litteratur og vitenskap [5656253015567411150, forskningsgruppe]
+   2  1   Forskning [8344119316660751425, navigationpage]
+   3  2     Presentasjon av forskningsområdet [4309537192153597114, article]
+   4  2     ### 4677516321772138650 does not exist!
+   5  2     Tidligere seminarer [495926254594024825, article]
+   6  2     Om forskergruppen [3543657000160249675, article]
+   7  1   Prosjekter [8344119316660751431, navigationpage]
+   8  1   Publikasjoner [8344119316660751437, navigationpage]
+   9  2     2010 [3319563942044578150, navigationpage]
+  10  3       ### 9197203825783520319 does not exist!
+  11  2     Generell litteraturliste [4893572981180264816, article]
+  12  1   Kontakt [8344119316660751443, navigationpage]
+  13  2     Ledelse [7219420386327716566, article]
+  14  2     Medlemmer - interne [5875568873787065339, personliste]
+  15  2     Medlemmer - eksterne [2324878050895710459, navigationpage]
+  16  3       Dame Gillian Beer [887271940761163442, article]
+  17  3       Nick Daly [2324878050895710465, article]
+  18  3       Folkert Degenring [5392192855156881759, article]
+  19  3       Ingvil Førland Hellstrand [4875340918060187967, article]
+  20  3       Simona Morando [8069921130452275741, article]
+  21  3       Paola Spinozzi [5392192855156881767, article]
+  22  3       Joanna Zylinska [4700201071030020667, article]
+  23  3       Marie Öhman [4700201071030020672, article]
+
+Counter({'article': 13, 'navigationpage': 6, 'forskningsgruppe': 1, 'personliste': 1})
+max depth 3
