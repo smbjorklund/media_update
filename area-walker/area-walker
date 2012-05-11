@@ -40,6 +40,13 @@ class XTopic(object):
         for f in self.etree.findall('xlink[@name="har_tilknyttet/tilknytning/er_tilknyttet"]'):
             yield f.get('ref')
 
+    def exported_to(self):
+        site = self.site()
+        for f in self.etree.findall('xlink[@name="subordinate/hierarchical-relation/superordinate"]'):
+            scope = f.get('scope')
+            if scope != site:
+                yield scope
+
 class XTopic_UserAgent(uib.web.UserAgent):
     prefix = "http://testbool.uib.no/"
 
@@ -91,6 +98,10 @@ class Walker(object):
                 if other_site.id() != topic.id():
                     line += ' from'
                 line += ' ' + other_site.path()
+            else:
+                for esite in topic.exported_to():
+                    esite = self.ua.get_xtopic(esite)
+                    line += ' exp:' + esite.path()
         else:
             line += ' imported'
         seen_at = self.seen_at.get(topic.id())
