@@ -36,6 +36,10 @@ class XTopic(object):
                 return json.loads(f.text)
         return []
 
+    def area_kids(self, site=None):
+        for f in self.etree.findall('xlink[@name="har_tilknyttet/tilknytning/er_tilknyttet"]'):
+            yield f.get('ref')
+
 class XTopic_UserAgent(uib.web.UserAgent):
     prefix = "http://testbool.uib.no/"
 
@@ -107,6 +111,11 @@ class Walker(object):
         self.seen_at[topic.id()] = self.count
 
         self.type_counter[topic.topic_type()] += 1;
+        if self.args.areas:
+            for k in topic.area_kids():
+                t = self.ua.get_xtopic(k)
+                self.walk(t, depth + 1)
+            return
         for k in topic.nav_kids(self.site):
             t = self.ua.get_xtopic(k)
             if t:
@@ -116,6 +125,7 @@ class Walker(object):
 
 arg_parser = argparse.ArgumentParser(description='Walk the navigation menus of an area')
 arg_parser.add_argument('--ids', action='store_true', help='print the ids of the listed topics')
+arg_parser.add_argument('--areas', action='store_true', help='walk sub areas instead of menues')
 arg_parser.add_argument('area', default='it', nargs='?', help='area path to start traversing (default is "it")')
 
 args = arg_parser.parse_args()
@@ -127,7 +137,7 @@ if area is None:
     sys.stderr.write('No such area: ' + repr(args.area) + '\n')
     sys.exit(1)
 
-walker = Walker(site=area.site(), show_ids=args.ids, ua=ua)
+walker = Walker(site=area.site(), show_ids=args.ids, ua=ua, args=args)
 walker.walk(area)
 
 print
