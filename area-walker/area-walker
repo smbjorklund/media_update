@@ -12,6 +12,9 @@ class XTopic(object):
     def id(self):
         return self.etree.get('id')
 
+    def state(self):
+        return self.etree.get('state')
+
     def path(self):
         return self.etree.get('path')[1:]
 
@@ -104,6 +107,8 @@ class Walker(object):
                     line += ' exp:' + esite.path()
         else:
             line += ' imported'
+        if topic.state() != 'published':
+            line += ', ' + topic.state().upper()
         seen_at = self.seen_at.get(topic.id())
         if seen_at is not None:
             line += ', DUPLICATE #' + str(seen_at)
