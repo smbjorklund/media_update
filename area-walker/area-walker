@@ -117,6 +117,9 @@ class Walker(object):
         self.print_indent(depth, line)
 
     def walk(self, topic, depth=0):
+        if self.args.published and topic.state() != 'published':
+            return
+
         self.xprint(topic, depth)
 
         if depth > self.max_depth:
@@ -136,11 +139,12 @@ class Walker(object):
             t = self.ua.get_xtopic(k)
             if t:
                 self.walk(t, depth + 1)
-            else:
+            elif not args.published:
                 self.print_indent(depth + 1, '### %s does not exist!' % (k,))
 
 arg_parser = argparse.ArgumentParser(description='Walk the navigation menus of an area')
 arg_parser.add_argument('--ids', action='store_true', help='print the ids of the listed topics')
+arg_parser.add_argument('--published', action='store_true', help='only show published stuff')
 arg_parser.add_argument('--areas', action='store_true', help='walk sub areas instead of menues')
 arg_parser.add_argument('area', default='it', nargs='?', help='area path to start traversing (default is "it")')
 
