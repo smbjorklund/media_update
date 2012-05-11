@@ -1,0 +1,12 @@
+   1  0 Forskergruppe for naturressurs-, miljø- og utviklingsrett [8077009513978315069, forskningsgruppe]
+   2  1   Forskning [2926972349807656643, navigationpage]
+   3  1   Prosjekter [2926972349807656649, navigationpage]
+   4  2     Legal frameworks for Conservation of Biodiversity and Ecosystem Services in the Himalayas [3739226335932446609, article from jur]
+   5  2     The Matrix [3145143583556365954, article from rg/EECRG]
+   6  1   Publikasjoner [2926972349807656655, navigationpage]
+   7  1   Undervisning [5002764315043650955, navigationpage]
+   8  1   Kontakt [150601567809268181, navigationpage]
+   9  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'navigationpage': 5, 'article': 2, 'forskningsgruppe': 1, 'displaylisting': 1})
+max depth 2

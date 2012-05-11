@@ -1,0 +1,18 @@
+   1  0 Forskerskolen i rettsvitenskap [8206698655763108720, forskerskole exp:jur exp:jur]
+   2  1   Forskerskolen [6092181293618624796, navigationpage]
+   3  2     Reglement for forskerskolen i rettsvitenskap [3762240222458981639, article]
+   4  2     Ph.d.-programmet i rettsvitenskap [754642057327985727, navigationpage]
+   5  3       Reglement for opplæringsdelen ved ph.d.-programmet i rettsvitenskap [1264135246692141729, article exp:jur]
+   6  2     Veiledning til søkere til stipendiatstilling [7200310594043851491, article]
+   7  1   Forskning [9103317118831652140, navigationpage]
+   8  1   Aktiviteter [3595542828448207708, navigationpage]
+   9  2     Program for høstsemesteret 2010 [11165898891237257, article]
+  10  2     Rettsfilosofiseminar i Bergen, 7.-9. juni 2010 [3472051436654567551, article]
+  11  2     Program for forskerskolen, høst 2010 [859190161261122017, article, RETRACTED]
+  12  2     Program for forskerskolen våren 2010 [3090888247251075468, article, RETRACTED]
+  13  2     Det nasjonale doktorgradseminaret, Solstrand 19.-21.9.11 [2512845902029361217, article]
+  14  1   Kontakt [3595542828448207714, navigationpage]
+  15  2     Ph.d.-kandidater ved Det juridiske fakultet [5718785092177830699, article from jur]
+
+Counter({'article': 9, 'navigationpage': 5, 'forskerskole': 1})
+max depth 3

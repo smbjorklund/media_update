@@ -1,0 +1,18 @@
+   1  0 Forskargruppe for rettskultur [6303840081008101116, forskningsgruppe]
+   2  1   Forskning [1403131724587864965, navigationpage]
+   3  2     Om forskargruppa for rettskultur [6654549593044213826, article]
+   4  2     Presentasjonar [2268131750856272804, article]
+   5  1   Prosjekter [131766463313238360, navigationpage]
+   6  2     Retten og det norske – rettsleg grunnlag for framveksten av ein norsk identitet mellom 1814 og 2014 [7030700413779460290, article]
+   7  2     Grunnlova av 1814 i skjeringspunktet mellom erfaring og visjon [7030700413779460303, article]
+   8  2     Høgsterettshistorie 1965-2015 [6597084311710678326, article]
+   9  1   Publikasjoner [131766463313238365, navigationpage]
+  10  2     Champagne at the Funeral  [7179341870009997588, article]
+  11  1   Undervisning [2990535564861611289, navigationpage]
+  12  2     Rettshistorie og komparativ rett [6956394931879119043, emne imported]
+  13  2     Nettressursar i JUS134: Rettshistorie og komparativ rett [4093884702386435721, article]
+  14  1   Kontakt [2990535564861611295, navigationpage]
+  15  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'article': 7, 'navigationpage': 5, 'forskningsgruppe': 1, 'displaylisting': 1, 'emne': 1})
+max depth 2

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for area in $(cat areas.txt); do
+   echo $area
+   ./area-walker $area --ids >menu-$(echo $area | perl -pe 's,/,-,g').txt
+done

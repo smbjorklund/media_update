@@ -1,0 +1,12 @@
+   1  0 Forskergruppe for forvaltningsrett [960401666385782622, forskningsgruppe]
+   2  1   Forskning [3890095757735467500, navigationpage]
+   3  2     Om gruppen [2487953277079925897, article]
+   4  1   Prosjekter [1340225440102386225, navigationpage]
+   5  1   Publikasjoner [1116893065857599215, navigationpage]
+   6  1   Undervisning [8069062115051735982, navigationpage]
+   7  2     Emnebank - masteroppgaver [7050736323234770733, article]
+   8  1   Kontakt [3890095757735467506, navigationpage]
+   9  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'navigationpage': 5, 'article': 2, 'forskningsgruppe': 1, 'displaylisting': 1})
+max depth 2

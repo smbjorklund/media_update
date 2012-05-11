@@ -1,0 +1,11 @@
+   1  0 Forskergruppe for formuerett [8205306051363516801, forskningsgruppe]
+   2  1   Forskning [941725400742222027, navigationpage]
+   3  2     Forskergruppeaktivitet [5794272812751059849, article]
+   4  1   Prosjekter [941725400742222035, navigationpage]
+   5  1   Publikasjoner [941725400742222039, navigationpage]
+   6  1   Undervisning [75989695845399108, navigationpage]
+   7  1   Kontakt [941725400742222031, navigationpage]
+   8  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'navigationpage': 5, 'forskningsgruppe': 1, 'displaylisting': 1, 'article': 1})
+max depth 2

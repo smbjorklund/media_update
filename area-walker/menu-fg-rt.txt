@@ -1,0 +1,19 @@
+   1  0 Forskergruppe for rettsteori [4371220800724026506, forskningsgruppe]
+   2  1   Forskning [4045486668282060070, navigationpage]
+   3  2     Arkiv [5667316222941462842, article, RETRACTED]
+   4  1   Prosjekter [4045486668282060076, navigationpage]
+   5  1   Publikasjoner [5698530901062596848, navigationpage]
+   6  1   Undervisning [4491921375875147197, navigationpage]
+   7  2     Examen philosophicum - seminarmodell [6093314962745679712, emne imported]
+   8  2     Examen philosophicum- skuleeksamen [4113716627969907286, emne imported]
+   9  2     Juridisk forprøve [1751298753729215190, emne imported]
+  10  2     Juridisk metode [7729536516489030306, emne imported]
+  11  2     Law and Justice [3371352379016522280, emne imported]
+  12  2     Legal Philosophy [3371352379016522268, emne imported]
+  13  2     Rettskjelde- og metodelære [4717256624880739249, emne imported]
+  14  2     Emnebank - masteroppgaver [7180267646253914404, article]
+  15  1   Kontakt [8747132724527073371, navigationpage]
+  16  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'emne': 7, 'navigationpage': 5, 'article': 2, 'forskningsgruppe': 1, 'displaylisting': 1})
+max depth 2
