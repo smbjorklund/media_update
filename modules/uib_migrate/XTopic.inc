@@ -86,8 +86,10 @@ class XTopic extends stdClass {
 
     if ($this->is_site and !$shallow and $topic->site['lang'] == 'no' and $topic->site['en_site']) {
       $en_topic = new XTopic($topic->site['en_site'], TRUE, 'english site');
-      $this->text_en = $en_topic->text;
-      $this->profiletext_en = $en_topic->profiletext;
+      if (isset($en_topic->text))
+        $this->text_en = $en_topic->text;
+      if (isset($en_topic->profiletext))
+        $this->profiletext_en = $en_topic->profiletext;
     }
 
     $xlink = array();
