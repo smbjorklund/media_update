@@ -4,6 +4,7 @@ HTML = \
        spec.html     \
        style.html    \
        apache-local.html \
+       plan.html     \
        terms.html
 
 PYTHON = python
