@@ -353,14 +353,14 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_main_media'
-  $fields['node-uib_testimonial-field_uib_main_media'] = array(
+  // Exported field: 'node-uib_testimonial-field_uib_media'
+  $fields['node-uib_testimonial-field_uib_media'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_uib_main_media',
+      'field_name' => 'field_uib_media',
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -390,12 +390,10 @@ function uib_feature_testimonial_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'file_entity',
-          'settings' => array(
-            'file_view_mode' => 'default',
-          ),
-          'type' => 'file_rendered',
-          'weight' => '11',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => 15,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -405,8 +403,8 @@ function uib_feature_testimonial_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_uib_main_media',
-      'label' => 'Main image',
+      'field_name' => 'field_uib_media',
+      'label' => 'Inline images',
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
@@ -436,7 +434,7 @@ function uib_feature_testimonial_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '12',
+        'weight' => '18',
       ),
     ),
   );
@@ -990,8 +988,8 @@ function uib_feature_testimonial_field_default_fields() {
   t('Exchange place');
   t('Exchange text');
   t('ID w2');
+  t('Inline images');
   t('Lead');
-  t('Main image');
   t('Name');
   t('Organization');
   t('Path w2');
