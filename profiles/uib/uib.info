@@ -16,6 +16,7 @@ dependencies[] = uib_feature_testimonial
 dependencies[] = uib_feature_user
 dependencies[] = uib_migrate
 dependencies[] = uib_nomail
+dependencies[] = uib_theme_hack
 dependencies[] = migrate_ui
 dependencies[] = views_ui
 dependencies[] = admin_menu_toolbar
