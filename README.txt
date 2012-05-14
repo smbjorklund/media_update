@@ -33,16 +33,17 @@ The 'doc' directory contains further information you might want to read first.
 To fill up the site with some content, migrate data from testbool by invoking
 a command like this one:
 
-    bin/site-drush migrate-import --verbose --limit="4 items" News
+    bin/site-drush migrate-import --verbose --all
 
-This will import the 4 first News articles. To see what kind of data is
-available for import you might run:
+This will import the default test data set (defined by
+modules/uib_migrate/test-jur/).  Should finish in a minute or two.
+
+To switch to the 'test-hf' data set run:
+
+    bin/site-drush vset uib_test_dir test-hf
+
+and then run 'migrate-import' once more.
+
+To see what kind of data is available for import you might run:
 
     bin/site-drush migrate-status
-
-To migrate all content run:
-
-    bin/site-drush migrate-import --all --verbose
-
-while you go get yourself a nice cup of tea.  This command will take hours to
-finish.
