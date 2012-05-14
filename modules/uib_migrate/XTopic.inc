@@ -135,6 +135,17 @@ class XTopic extends stdClass {
     if (!empty($xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'])) {
       $this->contacts = $xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
     }
+
+    if(!empty($xlink['omtaler/omtale/omtalt'])){
+      $relatedprogrammes = array();
+
+      foreach ($xlink['omtaler/omtale/omtalt'] as $programme) {
+      $programmecode = new XTopic($programme, TRUE, 'get studyprogramme code');
+      $relatedprogrammes[] = $programmecode->studieprogramkode;
+      }
+
+      $this->related_programmes = $relatedprogrammes;
+    }
   }
 
   public static function fields() {
@@ -167,6 +178,16 @@ class XTopic extends stdClass {
       'media' => t('Media inline image(s)'),
       'contacts' => t('Contacts for events'),
       'location' => t('Location for events'),
+
+      # Testimonial
+      'name' => t('Name for testimonial'),
+      'position' =>t('Position for testimonial'),
+      'education' =>t('Education for testimonial'),
+      'exchange_place' =>t('Exchange place for testimonial'),
+      'exchange_text' =>t('Exchange text for testimonial'),
+      'quote' =>t('Quote for testimonial'),
+      'organization' =>t('Organization for testimonial'),
+      'related_programmes' =>t('Related studyprogrammes'),
 
       # User fields
       'uib-id' => t('Username at UiB'),

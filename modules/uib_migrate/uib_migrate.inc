@@ -221,6 +221,66 @@ class EventMigration extends XTopicToArticleMigration{
   }
 }
 
+class TestimonialMigration extends Migration {
+
+  public function __construct() {
+    parent::__construct(MigrateGroup::getInstance('testimonial'));
+
+    $this->source = new XTopicListSource('testimonial');
+
+    $destination_machine_name = 'uib_testimonial';
+
+    $this->destination = new MigrateDestinationNode($destination_machine_name);
+
+    $this->map = new MigrateSQLMap($this->machineName,
+      XTopic::getKeySchema(),
+      MigrateDestinationNode::getKeySchema()
+    );
+
+    $this->addFieldMapping('title', 'title');
+    $this->addFieldMapping('language', 'site_lang');
+    $this->addFieldMapping('uid', 'author')
+      ->sourceMigration('User');
+    $this->addFieldMapping('created', 'created');
+    $this->addFieldMapping('changed', 'modified');
+    $this->addFieldMapping('field_uib_w2_id', 'id');
+    $this->addFieldMapping('field_uib_w2_path', 'path');
+    $this->addFieldMapping('field_uib_lead', 'dc_description');
+    $this->addFieldMapping('field_uib_text', 'text');
+    $this->addFieldMapping('field_uib_position', 'stilling');
+    $this->addFieldMapping('field_uib_education', 'utdanning');
+    $this->addFieldMapping('field_uib_name', 'navn');
+    $this->addFieldMapping('field_uib_quote', 'sitat');
+    $this->addFieldMapping('field_uib_related_programmes', 'related_programmes');
+    $this->addFieldMapping('field_uib_exchange_place', 'utvekslingssted');
+    $this->addFieldMapping('field_uib_exchange_text', 'utvekslingsavsnitt');
+    $this->addFieldMapping('field_uib_organization', 'organisation');
+    $this->addFieldMapping('field_uib_area', 'site')
+      ->sourceMigration('Area')
+      ->arguments(array('source_type' => 'tid'));
+
+  }
+  public function prepareRow($row) {
+    if ($row->state != 'published') {
+      return FALSE;
+    }
+  }
+
+  public function prepare($node, $row) {
+
+    if (!empty($row->media)) {
+      foreach ($row->media as $file_id) {
+        $file = xtopic_file($file_id);
+        $node->field_uib_media['und'][] = array(
+          'fid' => $file->fid,
+          'display' => 1,
+        );
+      }
+    }
+  }
+
+}
+
 class AreaMigration extends Migration {
   private $vid;
 
