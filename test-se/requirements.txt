@@ -1,0 +1,4 @@
+unittest2
+selenium
+pyvirtualdisplay
+unittest_xml_reporting

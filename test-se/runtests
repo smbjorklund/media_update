@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+import sys
+import argparse
+
+p = argparse.ArgumentParser()
+p.add_argument('--headless', action='store_true', help='start headless X-server for browser to display on')
+p.add_argument('--dots', action='store_true', help='show progress with dots')
+p.add_argument('--xunit', action='store_true', help='generate jUnit compatible XML')
+p.add_argument('--dry-run', action='store_true', help='just print the selected tests')
+p.add_argument('tests', nargs='+', help='dotted names of the tests to run')
+args = p.parse_args()
+
+if args.headless:
+    from pyvirtualdisplay import Display
+    display = Display(visible=0, size=(1000,600))
+    display.start()
+
+from unittest2 import defaultTestLoader as loader, TestSuite
+
+import unittest
+def test_cases(suite):
+    if isinstance(suite, unittest.TestCase):
+        yield suite
+    else:
+        for t in suite:
+            for x in test_cases(t):
+                yield x
+
+tests = loader.loadTestsFromNames(args.tests)
+
+if args.dry_run:
+    for case in test_cases(tests):
+        print case
+    sys.exit(0)
+
+if args.xunit:
+    from xmlrunner import XMLTestRunner
+    runner = XMLTestRunner(output='test-reports')
+else:
+    from unittest2 import TextTestRunner
+    runner = TextTestRunner(verbosity=1 if args.dots else 2)
+res = runner.run(tests)
+sys.exit(not res.wasSuccessful())

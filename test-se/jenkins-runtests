@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ ! -d mypy ]; then
+    virtualenv --no-site-packages --distribute mypy
+    mypy/bin/pip --quiet install -r requirements.txt
+fi
+
+source mypy/bin/activate
+
+rm -f *.png
+./runtests --headless "$@"
