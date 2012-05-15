@@ -224,7 +224,7 @@ class EventMigration extends XTopicToArticleMigration{
 class TestimonialMigration extends Migration {
 
   public function __construct() {
-    parent::__construct(MigrateGroup::getInstance('testimonial'));
+    parent::__construct(MigrateGroup::getInstance('testimonial', array('area', 'user')));
 
     $this->source = new XTopicListSource('testimonial');
 
