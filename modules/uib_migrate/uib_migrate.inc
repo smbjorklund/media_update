@@ -224,10 +224,7 @@ class TestimonialMigration extends Migration {
     parent::__construct(MigrateGroup::getInstance('testimonial', array('area', 'user')));
 
     $this->source = new XTopicListSource('testimonial');
-
-    $destination_machine_name = 'uib_testimonial';
-
-    $this->destination = new MigrateDestinationNode($destination_machine_name);
+    $this->destination = new MigrateDestinationNode('uib_testimonial');
 
     $this->map = new MigrateSQLMap($this->machineName,
       XTopic::getKeySchema(),
