@@ -197,7 +197,7 @@ class NewsMigration extends XTopicToArticleMigration {
   public $article_type = 'news';
 }
 
-class EventMigration extends XTopicToArticleMigration{
+class EventMigration extends XTopicToArticleMigration {
   public $topic_type = 'event';
   public $article_type= 'event';
 
@@ -209,7 +209,7 @@ class EventMigration extends XTopicToArticleMigration{
 
   }
 
-  public function prepare($node, stdClass $row) {
+  public function prepare($node, $row) {
     parent::prepare($node, $row);
     $node->field_uib_date['und'][0]['value'] = $row->start_date;
     $node->field_uib_date['und'][0]['value2'] = $row->end_date;
