@@ -39,7 +39,6 @@ function uib_feature_testimonial_strongarm() {
   $strongarm->name = 'node_options_uib_testimonial';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
   $export['node_options_uib_testimonial'] = $strongarm;
 
@@ -54,7 +53,7 @@ function uib_feature_testimonial_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_uib_testimonial';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_uib_testimonial'] = $strongarm;
 
   return $export;
