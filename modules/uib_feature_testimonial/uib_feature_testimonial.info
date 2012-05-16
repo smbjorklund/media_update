@@ -1,5 +1,5 @@
 name = "UiB Feature Testimonial"
-description = "Define testiomonials"
+description = "Define testimonials"
 core = "7.x"
 package = "Features"
 php = "5.2.4"
