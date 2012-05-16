@@ -285,6 +285,33 @@ class TestimonialMigration extends Migration {
 
 }
 
+class ResearchTopicMigration extends Migration {
+
+  public function __construct() {
+    parent::__construct(MigrateGroup::getInstance('tags'));
+
+    $this->source = new XTopicListSource('forskningstema');
+    $this->destination = new MigrateDestinationTerm('research_topic_no');
+    $this->map = new MigrateSQLMap($this->machineName,
+      XTopic::getKeySchema(),
+      MigrateDestinationTerm::getKeySchema()
+    );
+
+    $this->addFieldMapping('name', 'title');
+
+  }
+
+  public function prepareRow($row) {
+    if ($row->state != 'published') {
+      return FALSE;
+    }
+    // skip the letter range categories present in the old data
+    if (preg_match('/^\w-\w$/', $row->title)) {
+      return FALSE;
+    }
+  }
+}
+
 class AreaMigration extends Migration {
   private $vid;
 
