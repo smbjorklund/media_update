@@ -100,9 +100,6 @@ abstract class XTopicToArticleMigration extends Migration {
       ->arguments(array('source_type' => 'tid'));
     $this->addFieldMapping('uid', 'author')
       ->sourceMigration('User');
-    // $this->addFieldMapping('field_uib_main_media', 'main_media');
-    // $this->addFieldMapping('field_uib_media', 'media');
-    // $this->addFieldMapping('field_uib_files', 'attachments');
   }
 
   public function prepareRow($row) {
