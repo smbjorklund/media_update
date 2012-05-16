@@ -16,5 +16,5 @@ class SiteTestCase(unittest.TestCase):
 
     def test_homepage(self):
         self.driver.get(self.site_url)
-        self.assertEqual(self.driver.title, "Universitetet i Bergen")
+        self.assertEqual(self.driver.title, "Welcome to Universitetet i Bergen | Universitetet i Bergen")
         self.driver.save_screenshot('home.png')
