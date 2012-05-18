@@ -1,6 +1,6 @@
 <?php
   function uib_theme_hack_entity_view_alter(&$build, $type) {
-    $server = 'http://uib.no/';
+    $server = 'http://testbool.uib.no/';
     if (isset($build['field_uib_w2_path'])) {
       $w2_path = $build['field_uib_w2_path'][0]['#markup'];
       $build['field_uib_w2_path'][0]['#markup'] = '<a href="'  . $server . $w2_path . '">' . $w2_path . '</a>';
