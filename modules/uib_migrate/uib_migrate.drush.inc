@@ -5,7 +5,7 @@ function uib_migrate_drush_command() {
     'description' => 'Recursive traversal of node starting at top level menu item',
     'aliases' => array('uib-bm',),
     'examples' => array(
-      'drush uib-fp' => 'Tries to recursive build menu',
+      'drush uib-bm' => 'Tries to recursive build menu',
       ),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
     'arguments' => array(),
