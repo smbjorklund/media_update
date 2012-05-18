@@ -306,7 +306,7 @@ class ResearchTopicMigration extends Migration {
       return FALSE;
     }
     // skip the letter range categories present in the old data
-    if (preg_match('/^\w-\w$/', $row->title)) {
+    if (preg_match('/^[a-z]-([a-z]|å)$/', $row->title)) {
       return FALSE;
     }
   }
