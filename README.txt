@@ -34,9 +34,10 @@ To fill up the site with some content, migrate data from testbool by invoking
 a command like this one:
 
     bin/site-drush migrate-import --verbose --all
+    bin/site-drush uib-migrate-build-menu --verbose
 
-This will import the default test data set (defined by
-modules/uib_migrate/test-jur/).  Should finish in a minute or two.
+This will import the default test data set (defined by modules/uib_migrate/test-jur/)
+and fill in the area menu.  Should finish in a minute or two.
 
 To switch to the 'test-hf' data set run:
 
