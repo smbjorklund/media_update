@@ -20,7 +20,7 @@ function uib_feature_article_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Dato',
+    'label' => 'Dates',
     'weight' => '6',
     'children' => array(
       0 => 'field_uib_date',
