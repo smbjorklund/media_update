@@ -18,3 +18,11 @@ class SiteTestCase(unittest.TestCase):
         self.driver.get(self.site_url)
         self.assertEqual(self.driver.title, "Welcome to Universitetet i Bergen | Universitetet i Bergen")
         self.driver.save_screenshot('home.png')
+
+    def test_infopage(self):
+        self.driver.get(self.site_url)
+        self.driver.find_element_by_link_text('Det juridiske fakultet').click()
+        self.driver.find_element_by_link_text('Om fakultetet').click()
+        self.driver.find_element_by_link_text('Organisasjonen').click()
+        self.assertEqual(self.driver.title, "Organisasjonen | Universitetet i Bergen")
+        self.driver.save_screenshot('infopage.png')
