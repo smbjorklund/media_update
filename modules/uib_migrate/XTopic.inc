@@ -44,9 +44,11 @@ class XTopic extends stdClass {
       $this->profiletext .= (string)$profiletext;
       if($profiletext["image_ref"] && $profiletext["href"] ){
         $this->profiletext .= sprintf ("<a href='%s'><img src='%s'></a>",$profiletext['href'], $profiletext['image_ref']);
+        $this->profileimages[] = (string)$profiletext["image_ref"];
       }
       else if($profiletext["image_ref"]){
         $this->profiletext .= sprintf ("<img src='%s'>", $profiletext['image_ref']);
+        $this->profileimages[] = (string)$profiletext["image_ref"];
       }
 
     }
