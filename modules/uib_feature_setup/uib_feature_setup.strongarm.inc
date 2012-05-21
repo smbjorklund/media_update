@@ -41,6 +41,13 @@ function uib_feature_setup_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'language_count';
+  $strongarm->value = 2;
+  $export['language_count'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_default';
   $strongarm->value = (object) array(
     'language' => 'nb',
@@ -51,7 +58,7 @@ function uib_feature_setup_strongarm() {
     'plurals' => '2',
     'formula' => '($n!=1)',
     'domain' => '',
-    'prefix' => '',
+    'prefix' => 'nb',
     'weight' => '0',
     'javascript' => 'ARBAAqtbgVO7ZlZZAW6KduVq0yEcrrsoGcqFk2wbzuA',
   );
