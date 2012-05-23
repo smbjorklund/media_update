@@ -76,4 +76,13 @@ function uib_install() {
 
   // Set up languages
   locale_add_language('nb', 'Norwegian', 'Norsk');
+
+  // Install all our feature modules
+  features_install_modules(array(
+    'uib_feature_setup',
+    'uib_feature_area',
+    'uib_feature_article',
+    'uib_feature_testimonial',
+    'uib_feature_user'
+    ));
 }
