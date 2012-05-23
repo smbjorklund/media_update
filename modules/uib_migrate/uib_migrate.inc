@@ -92,8 +92,6 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_lead', 'dc_description');
     $this->addFieldMapping('field_uib_text', 'text');
     $this->addFieldMapping('field_uib_w2_nav_parent_id', 'nav_parent_id');
-    $this->addFieldMapping('field_uib_nav_parent', 'nav_parent_id')
-      ->sourceMigration('NavPage');
     $this->addFieldMapping('field_uib_nav_weight', 'nav_weight');
     $this->addFieldMapping('field_uib_area', 'site')
       ->sourceMigration('Area')
