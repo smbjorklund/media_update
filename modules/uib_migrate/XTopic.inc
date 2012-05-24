@@ -70,11 +70,9 @@ class XTopic extends stdClass {
         $this->menuorder = (string)$field;
       }
       elseif ($field['name'] == 'original') {
-        if ($field['datatype'] == 'anyUri') {
-          $start7 = substr($field, 0, 7);
-          if ($start7 == 'http://' || $start7 == 'https:/')
-            continue;
-        }
+        $start7 = substr($field, 0, 7);
+        if ($start7 == 'http://' || $start7 == 'https:/')
+          continue;
         $this->original = (string)$field;
       }
       else {
