@@ -140,8 +140,13 @@ class XTopic extends stdClass {
       $relatedprogrammes = array();
 
       foreach ($xlink['omtaler/omtale/omtalt'] as $programme) {
-        $programmecode = new XTopic($programme, TRUE, 'studyprogramme');
-        $relatedprogrammes[] = $programmecode->studieprogramkode;
+        $omtalt = new XTopic($programme, TRUE, 'omtalt');
+        if ($omtalt->type == 'studieprogram') {
+          $relatedprogrammes[] = $omtalt->studieprogramkode;
+        }
+        else {
+          drush_log("Relation (omtalt) to $omtalt->type dropped", 'error');
+        }
       }
 
       $this->related_programmes = $relatedprogrammes;
