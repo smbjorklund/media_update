@@ -86,3 +86,11 @@ function uib_install() {
     'uib_feature_user'
     ));
 }
+
+// Workaround if your settings are overridden by hook_install()
+module_load_include('inc', 'features', 'features.export');
+module_load_include('module', 'features', 'features');
+$module = 'uib_feature_setup';
+$stats = features_get_component_states(array('uib_feature_setup'), FALSE);
+$revert = array($module => array('variable'));
+features_revert($revert);
