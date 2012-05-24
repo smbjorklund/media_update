@@ -140,8 +140,8 @@ class XTopic extends stdClass {
       $relatedprogrammes = array();
 
       foreach ($xlink['omtaler/omtale/omtalt'] as $programme) {
-      $programmecode = new XTopic($programme, TRUE, 'get studyprogramme code');
-      $relatedprogrammes[] = $programmecode->studieprogramkode;
+        $programmecode = new XTopic($programme, TRUE, 'studyprogramme');
+        $relatedprogrammes[] = $programmecode->studieprogramkode;
       }
 
       $this->related_programmes = $relatedprogrammes;
