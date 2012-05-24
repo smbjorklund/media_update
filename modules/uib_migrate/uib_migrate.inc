@@ -106,7 +106,7 @@ abstract class XTopicToArticleMigration extends Migration {
     }
     $row->article_type = $this->article_type;
 
-    if ($row->text) {
+    if (isset($row->text)) {
       $clean_text = xtopic_cleanup($row->text);
       $row->text = $clean_text;
     }
