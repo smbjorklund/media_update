@@ -266,7 +266,7 @@ class XTopicListSource extends MigrateSource {
       }
     }
 
-    $url = $this->listUrl . "&offset=$this->offset";
+    $url = $this->listUrl . "&limit=50&&offset=$this->offset";
     if (function_exists('drush_log')) {
       drush_log('GET ' . $url);
     }
