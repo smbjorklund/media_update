@@ -60,7 +60,7 @@ function uib_migrate__build_menu_tree($node, $mlid, $depth) {
           'plid' => $mlid,
         );
         $kid_mlid = menu_link_save($menu_link);
-        drush_log("Created menu link for node $kid_nid");
+        drush_log("Created menu link at depth $depth for node $kid_nid \"$kid_node->title\"");
       }
 
       uib_migrate__build_menu_tree($kid_node, $kid_mlid, $depth+1);
