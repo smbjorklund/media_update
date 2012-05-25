@@ -27,6 +27,16 @@ function uib_install() {
       'cache' => -1,
     ),
     array(
+      'module' => 'locale',
+      'delta' => 'language',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_first',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
       'module' => 'menu',
       'delta' => 'area',
       'theme' => $default_theme,
