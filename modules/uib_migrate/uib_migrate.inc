@@ -376,6 +376,8 @@ class AreaMigration extends Migration {
   public function prepare($term, $row) {
     // Handle the translatable files here.  The field mapping can't deal with
     // multiple source values mapping to a single translatable field
+    $term->name_field['nb'][0]['value'] = $row->title;
+    $term->name_field['en'][0]['value'] = $row->engelsk_navn;
     $term->field_uib_trans_text['nb'][0]['value'] = $row->text;
     $term->field_uib_trans_text['en'][0]['value'] = $row->text_en;
     $term->field_uib_trans_text2['en'][0]['value'] = $row->profiletext_en;
