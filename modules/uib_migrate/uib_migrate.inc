@@ -456,7 +456,7 @@ class AreaMigration extends Migration {
     $menu_link = array(
       'menu_name' => 'area',
       'link_path' => drupal_get_normal_path('taxonomy/term/' . $term->tid),
-      'link_title' => $term->name,
+      'link_title' => $term->name_field['nb'][0][value] . ' (mlink)',
       'weight' => $weight,
     );
     menu_link_save($menu_link);
