@@ -58,7 +58,7 @@ function uib_feature_setup_strongarm() {
     'plurals' => '2',
     'formula' => '($n!=1)',
     'domain' => '',
-    'prefix' => 'nb',
+    'prefix' => '',
     'weight' => '0',
     'javascript' => 'ARBAAqtbgVO7ZlZZAW6KduVq0yEcrrsoGcqFk2wbzuA',
   );

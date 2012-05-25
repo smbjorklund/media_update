@@ -76,6 +76,14 @@ function uib_install() {
 
   // Set up languages
   locale_add_language('nb', 'Norwegian', 'Norsk');
+  db_update('languages')
+    ->fields(array('prefix' => 'en'))
+    ->condition('language', 'en')
+    ->execute();
+  db_update('languages')
+    ->fields(array('prefix' => ''))
+    ->condition('language', 'nb')
+    ->execute();
 
   // Install all our feature modules
   features_install_modules(array(
