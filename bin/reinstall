@@ -1,0 +1,10 @@
+#!/bin/sh
+
+test -L site || exit 1
+SITE=$(basename $(readlink site))
+
+set -x
+sudo rm -rf drupal/sites/$SITE
+bin/site-install $SITE
+bin/site-drush migrate-import --verbose --all
+bin/site-drush uib-migrate-build-menu --verbose
