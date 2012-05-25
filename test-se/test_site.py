@@ -21,7 +21,7 @@ class SiteTestCase(unittest.TestCase):
 
     def test_infopage(self):
         self.driver.get(self.site_url)
-        self.driver.find_element_by_link_text('Det juridiske fakultet').click()
+        self.driver.find_element_by_link_text('Det juridiske fakultet (mlink)').click()
         self.driver.find_element_by_link_text('Om fakultetet').click()
         self.driver.find_element_by_link_text('Organisasjonen').click()
         self.assertEqual(self.driver.title, "Organisasjonen | Universitetet i Bergen")
