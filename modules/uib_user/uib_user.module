@@ -1,0 +1,16 @@
+<?php
+
+function uib_user_username_alter(&$name, $account) {
+  if (isset($account->uid)) {
+    $user = user_load($account->uid);
+    if (!empty($user->field_first_name)) {
+      $name = $user->field_first_name['und'][0]['safe_value'];
+      if (!empty($user->field_last_name)) {
+	$name = "$name " . $user->field_last_name['und'][0]['safe_value'];
+      }
+    }
+    else {
+      $name = "[$name]";
+    }
+  }
+}

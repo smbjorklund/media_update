@@ -1,0 +1,5 @@
+name = UiB Users
+description = "Change how users are presented"
+package = "UiB"
+core = 7.x
+files[] = uib_user.test
