@@ -9,6 +9,7 @@ dependencies[] = field_ui
 dependencies[] = path
 dependencies[] = locale
 dependencies[] = translation
+dependencies[] = uib_user
 dependencies[] = uib_migrate
 dependencies[] = uib_nomail
 dependencies[] = uib_theme_hack
