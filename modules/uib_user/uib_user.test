@@ -20,8 +20,8 @@ class UiBUserTestCase extends DrupalWebTestCase {
 	$this->user_gisle = $this->drupalCreateUser();
 
 	$edit = array();
-	$edit['field_first_name']['und'][0]['value'] = 'Gisle';
-	$edit['field_last_name']['und'][0]['value'] = 'Aas';
+	$edit['field_uib_first_name']['und'][0]['value'] = 'Gisle';
+	$edit['field_uib_last_name']['und'][0]['value'] = 'Aas';
 	user_save($this->user_gisle, $edit);
     }
 
