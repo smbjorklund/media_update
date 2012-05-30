@@ -347,6 +347,7 @@ function uib_feature_area_field_default_fields() {
           ),
           'format_handlers' => array(
             'address' => 'address',
+            'address-hide-country' => 'address-hide-country',
             'name-full' => 0,
             'name-oneline' => 0,
             'organisation' => 0,
@@ -423,6 +424,7 @@ function uib_feature_area_field_default_fields() {
           ),
           'format_handlers' => array(
             'address' => 'address',
+            'address-hide-country' => 'address-hide-country',
             'name-full' => 0,
             'name-oneline' => 0,
             'organisation' => 0,
