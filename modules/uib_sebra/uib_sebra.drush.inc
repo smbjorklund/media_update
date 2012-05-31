@@ -9,6 +9,13 @@ function uib_sebra_drush_command() {
       'limit' => 'Only process this many places before terminating',
     ),
   );
+  $items['uib-dump-place'] = array(
+    'description' => 'Get a place object from Sebra and dump its attributes',
+    'arguments' => array(
+      'place-id' => 'The 6-digit place code of the place to dump',
+    ),
+    'required-arguments' => TRUE,
+  );
   return $items;
 }
 
@@ -41,4 +48,9 @@ function drush_uib_sebra_places() {
         break;
     }
   }
+}
+
+function drush_uib_sebra_uib_dump_place($place_id) {
+  $place = new SebraPlace($place_id);
+  print_r($place);
 }
