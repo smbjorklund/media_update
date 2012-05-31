@@ -385,15 +385,9 @@ class AreaMigration extends Migration {
 
     if ($row->placeid) {
       // Check if we already have a 'uib_ou' node with the given placeid
-      $query = new EntityFieldQuery;
-      $result = $query
-        ->entityCondition('entity_type', 'node')
-        ->fieldCondition('field_uib_ou_id', 'value', $row->placeid, '=')
-        ->range(0,1)
-        ->execute();
-      if (!empty($result['node'])) {
-        $nids = array_keys($result['node']);
-        $term->field_uib_ou['und'][0]['target_id'] = $nids[0];
+      $nid = uib_sebra__uib_ou_nid($place_id);
+      if ($nid) {
+        $term->field_uib_ou['und'][0]['target_id'] = $nid;
       }
       else {
         // Create a new 'uib_ou' node

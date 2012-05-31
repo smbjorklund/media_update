@@ -1,5 +1,21 @@
 <?php
 
+function uib_sebra__uib_ou_nid($place_id) {
+    $query = new EntityFieldQuery;
+    $result = $query
+      ->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'uib_ou')
+      ->fieldCondition('field_uib_ou_id', 'value', $place_id, '=')
+      ->range(0,1)
+      ->execute();
+
+    if (!empty($result['node'])) {
+      $nids = array_keys($result['node']);
+      return $nids[0];
+    }
+    return NULL;
+}
+
 function uib_sebra__create_uib_ou($place_id) {
   $place = new SebraPlace($place_id);
   $node = new stdClass();

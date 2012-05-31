@@ -25,21 +25,12 @@ function drush_uib_sebra_places() {
 
   foreach ($places->place as $place) {
     $place_id = (string)$place->code;
-
-    $query = new EntityFieldQuery;
-    $result = $query
-      ->entityCondition('entity_type', 'node')
-      ->fieldCondition('field_uib_ou_id', 'value', $place_id, '=')
-      ->range(0,1)
-      ->execute();
-
-    if (empty($result['node'])) {
-      $nid = uib_sebra__create_uib_ou($place_id);
-      drush_log("Created node $nid for place $place_id $place->name");
+    $nid = uib_sebra__uib_ou_nid($place_id);
+    if ($nid === NULL) {
+      $node = uib_sebra__create_uib_ou($place_id);
+      drush_log("Created node $node->nid for place $place_id $place->name");
     }
     else {
-      $nids = array_keys($result['node']);
-      $nid = $nids[0];
       drush_log("Node $nid corresponds to $place_id $place->name");
     }
 
