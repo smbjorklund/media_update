@@ -8,7 +8,7 @@ class SebraPlace extends stdClass {
     if (function_exists('drush_log')) {
       drush_log('GET ' . $url);
     }
-    $place = simplexml_load_file($url);
+    $place = @simplexml_load_file($url);
     if (empty($place)) {
       throw new Exception("Place $id not found: " . $url);
     }
