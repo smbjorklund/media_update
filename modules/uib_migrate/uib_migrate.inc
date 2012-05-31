@@ -396,29 +396,8 @@ class AreaMigration extends Migration {
         $term->field_uib_ou['und'][0]['target_id'] = $nids[0];
       }
       else {
-        // Create a new 'oib_ou' node
-        $place = new SebraPlace($row->placeid);
-        $node = new stdClass();
-        $node->type = 'uib_ou';
-        $node->title = $place->name;
-        $node->uid = 1;
-        $node->status = 1;
-        $node->revision = 0;
-        $node->language = 'und';
-        $node->field_uib_ou_id['und'][0]['value'] = $row->placeid;
-        $node->field_uib_ou_shortname['und'][0]['value'] = $place->alias;
-
-        $node->field_uib_postal_address['und'][0]['thoroughfare'] = 'Postboks ' . $place->postbox;
-        $node->field_uib_postal_address['und'][0]['postal_code'] = $place->postcode;
-        $node->field_uib_postal_address['und'][0]['locality'] = $place->postarea;
-        $node->field_uib_postal_address['und'][0]['country'] = 'NO';
-
-        $node->field_uib_visit_address['und'][0]['thoroughfare'] = $place->address;
-        $node->field_uib_visit_address['und'][0]['postal_code'] = $place->postcode;
-        $node->field_uib_visit_address['und'][0]['locality'] = $place->postarea;
-        $node->field_uib_visit_address['und'][0]['country'] = 'NO';
-
-        node_save($node);
+        // Create a new 'uib_ou' node
+        $node = uib_sebra__create_uib_ou($row->placeid);
         $term->field_uib_ou['und'][0]['target_id'] = $node->nid;
       }
     }

@@ -42,29 +42,3 @@ function drush_uib_sebra_places() {
     }
   }
 }
-
-function uib_sebra__create_uib_ou($place_id) {
-  $place = new SebraPlace($place_id);
-  $node = new stdClass();
-  $node->type = 'uib_ou';
-  $node->title = $place->name;
-  $node->uid = 1;
-  $node->status = 1;
-  $node->revision = 0;
-  $node->language = 'und';
-  $node->field_uib_ou_id['und'][0]['value'] = $place_id;
-  $node->field_uib_ou_shortname['und'][0]['value'] = $place->alias;
-
-  $node->field_uib_postal_address['und'][0]['thoroughfare'] = 'Postboks ' . $place->postbox;
-  $node->field_uib_postal_address['und'][0]['postal_code'] = $place->postcode;
-  $node->field_uib_postal_address['und'][0]['locality'] = $place->postarea;
-  $node->field_uib_postal_address['und'][0]['country'] = 'NO';
-
-  $node->field_uib_visit_address['und'][0]['thoroughfare'] = $place->address;
-  $node->field_uib_visit_address['und'][0]['postal_code'] = $place->postcode;
-  $node->field_uib_visit_address['und'][0]['locality'] = $place->postarea;
-  $node->field_uib_visit_address['und'][0]['country'] = 'NO';
-
-  node_save($node);
-  return $node->nid;
-}
