@@ -5,13 +5,17 @@ function uib_sebra_drush_command() {
     'description' => 'Syncronize places in Sebra with the Drupal database',
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
     'arguments' => array(),
-    'options' => array(),
+    'options' => array(
+      'limit' => 'Only process this many places before terminating',
+    ),
   );
   return $items;
 }
 
 function drush_uib_sebra_places() {
   $places = simplexml_load_file('http://sebra.uib.no/sws/places?status=aktiv');
+  $limit = (int)drush_get_option('limit', 0);
+
   foreach ($places->place as $place) {
     $place_id = (string)$place->code;
 
@@ -32,6 +36,10 @@ function drush_uib_sebra_places() {
       drush_log("Node $nid corresponds to $place_id $place->name");
     }
 
+    if ($limit) {
+      if (--$limit == 0)
+        break;
+    }
   }
 }
 
