@@ -4,6 +4,6 @@ package = "UiB"
 core = 7.x
 dependencies[] = migrate
 dependencies[] = uib_feature_article
+dependencies[] = uib_sebra
 files[] = uib_migrate.inc
 files[] = XTopic.inc
-files[] = SebraPlace.inc

@@ -1,0 +1,5 @@
+name = "UIB Sebra integratin"
+description = "Syncronize data with Sebra"
+package = "UiB"
+core = 7.x
+files[] = SebraPlace.inc
