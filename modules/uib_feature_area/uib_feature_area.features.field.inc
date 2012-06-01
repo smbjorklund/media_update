@@ -34,7 +34,7 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'phone',
           'settings' => array(),
           'type' => 'phone',
@@ -155,7 +155,7 @@ function uib_feature_area_field_default_fields() {
           ),
         ),
         'type' => 'geocoder',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -182,7 +182,7 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -216,7 +216,7 @@ function uib_feature_area_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '3',
+        'weight' => '7',
       ),
     ),
   );
@@ -256,7 +256,7 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -284,7 +284,7 @@ function uib_feature_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '8',
       ),
     ),
   );
@@ -324,7 +324,7 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -392,7 +392,7 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -449,7 +449,7 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'phone',
           'settings' => array(),
           'type' => 'phone',
@@ -633,7 +633,7 @@ function uib_feature_area_field_default_fields() {
           ),
         ),
         'type' => 'addressfield_standard',
-        'weight' => '7',
+        'weight' => '9',
       ),
     ),
   );
