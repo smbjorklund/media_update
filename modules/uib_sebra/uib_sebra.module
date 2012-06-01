@@ -27,6 +27,7 @@ function uib_sebra__create_uib_ou($place_id) {
   $node->language = 'und';
   $node->field_uib_ou_id['und'][0]['value'] = $place_id;
   $node->field_uib_ou_shortname['und'][0]['value'] = $place->alias;
+  $node->field_uib_mail_domain['und'][0]['value'] = $place->maildomain;
 
   $node->field_uib_postal_address['und'][0]['thoroughfare'] = 'Postboks ' . $place->postbox;
   $node->field_uib_postal_address['und'][0]['postal_code'] = $place->postcode;
@@ -37,6 +38,11 @@ function uib_sebra__create_uib_ou($place_id) {
   $node->field_uib_visit_address['und'][0]['postal_code'] = $place->postcode;
   $node->field_uib_visit_address['und'][0]['locality'] = $place->postarea;
   $node->field_uib_visit_address['und'][0]['country'] = 'NO';
+
+  if (isset($place->phone))
+    $node->field_uib_phone['und'][0]['value'] = '+47 ' . $place->phone;
+  if (isset($place->fax))
+    $node->field_uib_fax['und'][0]['value'] = '+47 ' . $place->fax;
 
   node_save($node);
   return $node;
