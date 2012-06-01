@@ -57,12 +57,21 @@ function drush_uib_sebra_uib_dump_place($place_id) {
 }
 
 function drush_uib_sebra_users() {
-  $limit = (int)drush_get_option('limit', 1);
+  $limit = (int)drush_get_option('limit', 5);
   $users = array_merge(
     uib_sebra__get_persons('staff'),
     uib_sebra__get_persons('extern')
   );
-  print_r($users);
+  $users = array('adbho', 'gaa041', 'sbj051'); // debug with a smaller set
+  foreach ($users as $username) {
+    $u = new SebraPerson($username);
+    print_r($u);
+
+    if ($limit) {
+      if (--$limit == 0)
+        break;
+    }
+  }
 }
 
 function uib_sebra__get_persons($type) {
