@@ -38,7 +38,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'phone',
           'settings' => array(),
           'type' => 'phone',
-          'weight' => 8,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -64,7 +64,7 @@ function uib_feature_area_field_default_fields() {
         'module' => 'phone',
         'settings' => array(),
         'type' => 'phone_textfield',
-        'weight' => '39',
+        'weight' => '6',
       ),
     ),
   );
@@ -99,7 +99,7 @@ function uib_feature_area_field_default_fields() {
             'geofield_map_baselayers_physical' => 0,
             'geofield_map_baselayers_satellite' => 1,
             'geofield_map_controltype' => 'default',
-            'geofield_map_draggable' => 0,
+            'geofield_map_draggable' => 1,
             'geofield_map_height' => '300px',
             'geofield_map_maptype' => 'map',
             'geofield_map_mtc' => 'standard',
@@ -108,12 +108,12 @@ function uib_feature_area_field_default_fields() {
             'geofield_map_pancontrol' => 1,
             'geofield_map_scale' => 0,
             'geofield_map_scrollwheel' => 0,
-            'geofield_map_streetview_show' => 0,
+            'geofield_map_streetview_show' => 1,
             'geofield_map_width' => '100%',
-            'geofield_map_zoom' => '8',
+            'geofield_map_zoom' => '17',
           ),
           'type' => 'geofield_map_map',
-          'weight' => '6',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -136,10 +136,26 @@ function uib_feature_area_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'geofield',
-        'settings' => array(),
-        'type' => 'geofield_latlon',
-        'weight' => '37',
+        'module' => 'geocoder',
+        'settings' => array(
+          'delta_handling' => 'default',
+          'geocoder_field' => 'field_uib_visit_address',
+          'geocoder_handler' => 'google',
+          'handler_settings' => array(
+            'google' => array(
+              'all_results' => 0,
+              'geometry_type' => 'point',
+              'reject_results' => array(
+                'APPROXIMATE' => 0,
+                'GEOMETRIC_CENTER' => 0,
+                'RANGE_INTERPOLATED' => 0,
+                'ROOFTOP' => 0,
+              ),
+            ),
+          ),
+        ),
+        'type' => 'geocoder',
+        'weight' => '9',
       ),
     ),
   );
@@ -175,7 +191,7 @@ function uib_feature_area_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '3',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -200,7 +216,7 @@ function uib_feature_area_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '34',
+        'weight' => '3',
       ),
     ),
   );
@@ -244,7 +260,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 9,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -268,7 +284,7 @@ function uib_feature_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '40',
+        'weight' => '4',
       ),
     ),
   );
@@ -312,7 +328,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -336,7 +352,7 @@ function uib_feature_area_field_default_fields() {
           'size' => '6',
         ),
         'type' => 'text_textfield',
-        'weight' => '32',
+        'weight' => '1',
       ),
     ),
   );
@@ -380,7 +396,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -404,7 +420,7 @@ function uib_feature_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '33',
+        'weight' => '2',
       ),
     ),
   );
@@ -437,7 +453,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'phone',
           'settings' => array(),
           'type' => 'phone',
-          'weight' => 7,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -463,7 +479,7 @@ function uib_feature_area_field_default_fields() {
         'module' => 'phone',
         'settings' => array(),
         'type' => 'phone_textfield',
-        'weight' => '38',
+        'weight' => '5',
       ),
     ),
   );
@@ -508,7 +524,7 @@ function uib_feature_area_field_default_fields() {
             'use_widget_handlers' => 1,
           ),
           'type' => 'addressfield_default',
-          'weight' => '5',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -540,7 +556,7 @@ function uib_feature_area_field_default_fields() {
           ),
         ),
         'type' => 'addressfield_standard',
-        'weight' => '36',
+        'weight' => '8',
       ),
     ),
   );
@@ -585,7 +601,7 @@ function uib_feature_area_field_default_fields() {
             'use_widget_handlers' => 1,
           ),
           'type' => 'addressfield_default',
-          'weight' => '4',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -617,7 +633,7 @@ function uib_feature_area_field_default_fields() {
           ),
         ),
         'type' => 'addressfield_standard',
-        'weight' => '35',
+        'weight' => '7',
       ),
     ),
   );
