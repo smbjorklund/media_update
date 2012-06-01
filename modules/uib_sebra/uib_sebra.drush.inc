@@ -20,7 +20,9 @@ function uib_sebra_drush_command() {
 }
 
 function drush_uib_sebra_places() {
-  $places = simplexml_load_file('http://sebra.uib.no/sws/places?status=aktiv');
+  $places_url = "http://sebra.uib.no/sws/places?status=aktiv";
+  drush_log("GET $places_url");
+  $places = simplexml_load_file($places_url);
   $limit = (int)drush_get_option('limit', 0);
 
   foreach ($places->place as $place) {
