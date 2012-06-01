@@ -3,3 +3,4 @@ description = "Syncronize data with Sebra"
 package = "UiB"
 core = 7.x
 files[] = SebraPlace.inc
+files[] = SebraPerson.inc
