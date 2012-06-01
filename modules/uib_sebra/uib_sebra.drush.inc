@@ -62,10 +62,30 @@ function drush_uib_sebra_users() {
     uib_sebra__get_persons('staff'),
     uib_sebra__get_persons('extern')
   );
-  $users = array('adbho', 'gaa041', 'sbj051'); // debug with a smaller set
+  //$users = array('adbho', 'gaa041', 'sbj051'); // debug with a smaller set
+
   foreach ($users as $username) {
-    $u = new SebraPerson($username);
-    print_r($u);
+    $account = user_load_by_name($username);
+    if ($account) {
+      $u = NULL;
+      drush_log("User $account->uid corresponds to $username <$account->mail>");
+    }
+    else {
+      $u = new SebraPerson($username);
+      $account = new stdClass();
+      $account->is_new = 1;
+      $account->name = $u->id;
+      $account->mail = $u->email;
+      $account->status = 1; // ACTIVE
+      $account->field_uib_first_name['und'][0]['value'] = $u->first_name;
+      $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
+      $account->field_uib_position['nb'][0]['value'] = $u->position_name_no;
+      $account->field_uib_position['en'][0]['value'] = $u->position_name_en;
+      user_save($account);
+      drush_log("Created user $account->uid for $username <$u->email>");
+    }
+
+    // print_r(array($account, $u));
 
     if ($limit) {
       if (--$limit == 0)
