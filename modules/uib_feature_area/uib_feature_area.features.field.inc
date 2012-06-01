@@ -10,6 +10,65 @@
 function uib_feature_area_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-uib_ou-field_uib_fax'
+  $fields['node-uib_ou-field_uib_fax'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_fax',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'phone',
+      'settings' => array(
+        'country' => 'int',
+      ),
+      'translatable' => '0',
+      'type' => 'phone',
+    ),
+    'field_instance' => array(
+      'bundle' => 'uib_ou',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'phone',
+          'settings' => array(),
+          'type' => 'phone',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_fax',
+      'label' => 'Fax',
+      'required' => 0,
+      'settings' => array(
+        'ca_phone_parentheses' => 1,
+        'ca_phone_separator' => '-',
+        'phone_country_code' => 0,
+        'phone_default_country_code' => '47',
+        'phone_int_max_length' => '15',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'phone',
+        'settings' => array(),
+        'type' => 'phone_textfield',
+        'weight' => '39',
+      ),
+    ),
+  );
+
   // Exported field: 'node-uib_ou-field_uib_geo'
   $fields['node-uib_ou-field_uib_geo'] = array(
     'field_config' => array(
@@ -146,6 +205,74 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-uib_ou-field_uib_mail_domain'
+  $fields['node-uib_ou-field_uib_mail_domain'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_mail_domain',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'uib_ou',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 9,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_mail_domain',
+      'label' => 'Mail domain',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '40',
+      ),
+    ),
+  );
+
   // Exported field: 'node-uib_ou-field_uib_ou_id'
   $fields['node-uib_ou-field_uib_ou_id'] = array(
     'field_config' => array(
@@ -278,6 +405,65 @@ function uib_feature_area_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '33',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-uib_ou-field_uib_phone'
+  $fields['node-uib_ou-field_uib_phone'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_phone',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'phone',
+      'settings' => array(
+        'country' => 'int',
+      ),
+      'translatable' => '0',
+      'type' => 'phone',
+    ),
+    'field_instance' => array(
+      'bundle' => 'uib_ou',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'phone',
+          'settings' => array(),
+          'type' => 'phone',
+          'weight' => 7,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_phone',
+      'label' => 'Phone',
+      'required' => 0,
+      'settings' => array(
+        'ca_phone_parentheses' => 1,
+        'ca_phone_separator' => '-',
+        'phone_country_code' => 0,
+        'phone_default_country_code' => '47',
+        'phone_int_max_length' => '15',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'phone',
+        'settings' => array(),
+        'type' => 'phone_textfield',
+        'weight' => '38',
       ),
     ),
   );
@@ -1111,13 +1297,16 @@ function uib_feature_area_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A field replacing taxonomy term name.');
+  t('Fax');
   t('ID w2');
   t('Inline images');
   t('Jobbnorge ID');
   t('Location');
+  t('Mail domain');
   t('Main image');
   t('Name');
   t('Parents');
+  t('Phone');
   t('Place');
   t('Place ID');
   t('Postal Address');
