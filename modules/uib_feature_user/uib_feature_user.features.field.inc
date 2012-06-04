@@ -258,6 +258,74 @@ function uib_feature_user_field_default_fields() {
     ),
   );
 
+  // Exported field: 'user-user-field_uib_user_domain'
+  $fields['user-user-field_uib_user_domain'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_user_domain',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '16',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => array(
+        0 => array(
+          'value' => 'local',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
+
+The domain \'local\' is for local users.  The domain \'uib\' is for used for usernames allocated by Sebra. ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 5,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_uib_user_domain',
+      'label' => 'User Domain',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => 1,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '16',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '13',
+      ),
+    ),
+  );
+
   // Exported field: 'user-user-field_uib_w2_id'
   $fields['user-user-field_uib_w2_id'] = array(
     'field_config' => array(
@@ -327,6 +395,10 @@ function uib_feature_user_field_default_fields() {
   t('Last name');
   t('Position');
   t('Slug');
+  t('The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
+
+The domain \'local\' is for local users.  The domain \'uib\' is for used for usernames allocated by Sebra. ');
+  t('User Domain');
 
   return $fields;
 }
