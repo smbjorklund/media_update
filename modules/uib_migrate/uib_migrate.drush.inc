@@ -49,7 +49,7 @@ function uib_migrate__build_menu_tree($node, $mlid, $depth) {
       foreach($result->execute() as $item) {
         $kid_mlid = $item->mlid;
       }
-      #print_r($kid_node);
+
       if (!isset($kid_mlid)) {
         // Create menu link
         $menu_link = array(
