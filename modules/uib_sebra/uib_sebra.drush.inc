@@ -100,6 +100,38 @@ function drush_uib_sebra_users() {
         break;
     }
   }
+
+  // look for users to block
+  $users = array_flip($users); // make it easy to look them up by username
+
+  $query = new EntityFieldQuery;
+  $query = $query
+    ->entityCondition('entity_type', 'user')
+    ->fieldCondition('field_uib_user_domain', 'value', 'uib', '=');
+  $result = $query->execute();
+  foreach (array_keys($result['user']) as $uid) {
+    $user = user_load($uid);
+    if (isset($users[$user->name])) {
+      if ($user->status == 0) {
+        user_save($user, array(
+          'status' => 1, // ACTIVE
+        ));
+        drush_log("$user->name unblocked");
+      }
+      else {
+        drush_log("$user->name is still active");
+      }
+    }
+    elseif ($user->status != 0) {
+      user_save($user, array(
+        'status' => 0, // BLOCKED
+      ));
+      drush_log("$user->name blocked");
+    }
+    else {
+      drush_log("$user->name is still blocked");
+    }
+  }
 }
 
 function uib_sebra__get_persons($type) {
