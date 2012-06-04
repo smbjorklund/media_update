@@ -109,6 +109,7 @@ function drush_uib_sebra_users() {
     ->entityCondition('entity_type', 'user')
     ->fieldCondition('field_uib_user_domain', 'value', 'uib', '=');
   $result = $query->execute();
+  $active_count = 0;
   foreach (array_keys($result['user']) as $uid) {
     $account = user_load($uid);
     if (isset($users[$account->name])) {
@@ -119,7 +120,7 @@ function drush_uib_sebra_users() {
         drush_log("$account->name unblocked");
       }
       else {
-        drush_log("$account->name is still active");
+        $active_count++;
       }
     }
     elseif ($account->status != 0) {
@@ -132,6 +133,7 @@ function drush_uib_sebra_users() {
       drush_log("$account->name is still blocked");
     }
   }
+  drush_log("$active_count uib-accounts are still active");
 }
 
 function uib_sebra__get_persons($type) {
