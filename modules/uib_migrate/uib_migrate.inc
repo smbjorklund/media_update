@@ -451,6 +451,7 @@ class UserMigration extends Migration {
     $this->addFieldMapping('name', 'uib-id');
     $this->addFieldMapping('mail', 'epost');
     $this->addFieldMapping('status')->defaultValue(1);  // activated
+    $this->addFieldMapping('field_uib_user_domain')->defaultValue('uib'); // XXX look for sebra in PSI
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('field_uib_first_name', 'fornavn');
     $this->addFieldMapping('field_uib_last_name', 'etternavn');

@@ -84,6 +84,7 @@ function drush_uib_sebra_users() {
       $account->name = $u->id;
       $account->mail = $u->email;
       $account->status = 1; // ACTIVE
+      $account->field_uib_user_domain['und'][0]['value'] = 'uib';
       $account->field_uib_first_name['und'][0]['value'] = $u->first_name;
       $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
       $account->field_uib_position['nb'][0]['value'] = $u->position_name_no;
