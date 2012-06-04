@@ -110,26 +110,26 @@ function drush_uib_sebra_users() {
     ->fieldCondition('field_uib_user_domain', 'value', 'uib', '=');
   $result = $query->execute();
   foreach (array_keys($result['user']) as $uid) {
-    $user = user_load($uid);
-    if (isset($users[$user->name])) {
-      if ($user->status == 0) {
-        user_save($user, array(
+    $account = user_load($uid);
+    if (isset($users[$account->name])) {
+      if ($account->status == 0) {
+        user_save($account, array(
           'status' => 1, // ACTIVE
         ));
-        drush_log("$user->name unblocked");
+        drush_log("$account->name unblocked");
       }
       else {
-        drush_log("$user->name is still active");
+        drush_log("$account->name is still active");
       }
     }
-    elseif ($user->status != 0) {
-      user_save($user, array(
+    elseif ($account->status != 0) {
+      user_save($account, array(
         'status' => 0, // BLOCKED
       ));
-      drush_log("$user->name blocked");
+      drush_log("$account->name blocked");
     }
     else {
-      drush_log("$user->name is still blocked");
+      drush_log("$account->name is still blocked");
     }
   }
 }
