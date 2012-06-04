@@ -49,14 +49,14 @@ function uib_migrate__build_menu_tree($node, $mlid, $depth) {
       foreach($result->execute() as $item) {
         $kid_mlid = $item->mlid;
       }
-
+      #print_r($kid_node);
       if (!isset($kid_mlid)) {
         // Create menu link
         $menu_link = array(
           'menu_name' => 'area',
           'link_path' => 'node/' . $kid_nid,
           'link_title' => $kid_node->title,
-          'weight' => 0,
+          'weight' => $kid_node->field_uib_nav_weight['und'][0]['value'],
           'plid' => $mlid,
         );
         $kid_mlid = menu_link_save($menu_link);
