@@ -63,6 +63,13 @@ function drush_uib_sebra_users() {
     uib_sebra__get_persons('extern')
   );
   //$users = array('adbho', 'gaa041', 'sbj051'); // debug with a smaller set
+  $users_count = count($users);
+  if ($limit) {
+    drush_log("Starting to process $limit of $users_count users");
+  }
+  else {
+    drush_log("Processing $users_count users");
+  }
 
   foreach ($users as $username) {
     $account = user_load_by_name($username);
