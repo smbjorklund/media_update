@@ -119,6 +119,16 @@ class XTopic extends stdClass {
     if (!empty($xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
       $this->author =  $xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
     }
+    //News should use $xlink['er_skrevet_av/forfatterskap/har_skrevet']
+    if ($this->type != 'newsitem') {
+      foreach ($topic->{'workflow-transition'} as $transition){
+        if ($transition['action'] == 'publish') {
+          if ($transition['user']) {
+            $this->author =  $transition['user'];
+          }
+        }
+      }
+    }
 
     if (!empty($xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
       $this->main_media = $xlink['decorated/stort_hovedtekstbilde/decoration'][0];
