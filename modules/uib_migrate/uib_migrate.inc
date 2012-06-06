@@ -378,8 +378,8 @@ class AreaMigration extends Migration {
     // multiple source values mapping to a single translatable field
     $term->name_field['nb'][0]['value'] = $row->title;
     $term->name_field['en'][0]['value'] = $row->engelsk_navn;
-    $term->field_uib_trans_text['nb'][0]['value'] = $row->text;
-    $term->field_uib_trans_text['en'][0]['value'] = $row->text_en;
+    $term->field_uib_trans_text['nb'][0]['value'] = (isset($row->fullkampanjetittel) ? "<h2>$row->fullkampanjetittel</h2>" : "<hr>") . $row->text;
+    $term->field_uib_trans_text['en'][0]['value'] = (isset($row->fullkampanjetittel_en) ? "<h2>$row->fullkampanjetittel_en</h2>" : "<hr>") . $row->text_en;
     $term->field_uib_trans_text2['en'][0]['value'] = $row->profiletext_en;
     $term->field_uib_trans_text2['nb'][0]['value'] = $row->profiletext;
 

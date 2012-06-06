@@ -92,6 +92,12 @@ class XTopic extends stdClass {
         $this->profiletext_en = $en_topic->profiletext;
     }
 
+    if ($this->is_site and !$shallow and $topic->site['lang'] == 'no' and $topic->site['en_site']) {
+      $en_topic = new XTopic($topic->site['en_site'], TRUE, 'english site');
+      if (isset($en_topic->fullkampanjetittel))
+        $this->fullkampanjetittel_en = $en_topic->fullkampanjetittel;
+    }
+
     $xlink = array();
     foreach ($topic->xlink as $x) {
       $xlink[(string)$x['name']][] = (string)$x['ref'];
@@ -193,6 +199,8 @@ class XTopic extends stdClass {
       'media' => t('Media inline image(s)'),
       'contacts' => t('Contacts for events'),
       'location' => t('Location for events'),
+      'fullkampanjetittel' => t('Norwegian main title for Areas'),
+      'fullkampanjetittel_en' => t('English main title for Areas'),
 
       # Testimonial
       'name' => t('Name for testimonial'),
