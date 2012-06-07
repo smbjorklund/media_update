@@ -159,7 +159,7 @@ function uib_feature_user_field_default_fields() {
       'settings' => array(
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(

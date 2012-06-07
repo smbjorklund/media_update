@@ -73,12 +73,31 @@ function drush_uib_sebra_users() {
 
   foreach ($users as $username) {
     $account = user_load_by_name($username);
+    $u = new SebraPerson($username);
     if ($account) {
-      $u = NULL;
-      drush_log("User $account->uid corresponds to $username <$account->mail>");
+      $edit = array();
+      if ($account->mail != $u->email)
+        $edit['mail'] = $u->email;
+      if ($account->status != 1)
+        $edit['status'] = 1;
+      if ($account->field_uib_first_name['und'][0]['value'] != $u->first_name)
+        $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
+      if ($account->field_uib_last_name['und'][0]['value'] != $u->last_name)
+        $edit['field_uib_last_name']['und'][0]['value'] = $u->last_name;
+      if ($account->field_uib_position['nb'][0]['value'] != $u->position_name_no)
+        $edit['field_uib_position']['nb'][0]['value'] = $u->position_name_no;
+      if ($account->field_uib_position['en'][0]['value'] != $u->position_name_en)
+        $edit['field_uib_position']['en'][0]['value'] = $u->position_name_en;
+
+      if (empty($edit)) {
+        drush_log("No change for $username <$account->mail>");
+      }
+      else {
+        user_save($account, $edit);
+        drush_log("Updated fields for $username <$account->mail>");
+      }
     }
     else {
-      $u = new SebraPerson($username);
       $account = new stdClass();
       $account->is_new = 1;
       $account->name = $u->id;
