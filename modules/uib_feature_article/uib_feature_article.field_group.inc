@@ -134,11 +134,11 @@ function uib_feature_article_field_group_info() {
     'label' => 'W2 and meta data',
     'weight' => '11',
     'children' => array(
-      0 => 'field_uib_nav_parent',
-      1 => 'field_uib_nav_weight',
-      2 => 'field_uib_w2_id',
-      3 => 'field_uib_w2_nav_parent_id',
-      4 => 'field_uib_w2_path',
+      0 => 'field_uib_nav_weight',
+      1 => 'field_uib_w2_id',
+      2 => 'field_uib_w2_nav_parent_id',
+      3 => 'field_uib_w2_path',
+      4 => 'field_uib_menu_title_w2',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
