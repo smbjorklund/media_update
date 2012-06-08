@@ -99,6 +99,8 @@ abstract class XTopicToArticleMigration extends Migration {
       ->arguments(array('source_type' => 'tid'));
     $this->addFieldMapping('uid', 'author')
       ->sourceMigration('User');
+    $this->addFieldMapping('field_uib_byline', 'byline')
+      ->sourceMigration('User');
   }
 
   public function prepareRow($row) {

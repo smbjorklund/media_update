@@ -123,10 +123,10 @@ class XTopic extends stdClass {
     }
 
     if (!empty($xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
-      $this->author =  $xlink['er_skrevet_av/forfatterskap/har_skrevet'][0];
+      $this->byline =  $xlink['er_skrevet_av/forfatterskap/har_skrevet'];
     }
-    //News should use $xlink['er_skrevet_av/forfatterskap/har_skrevet']
-    if ($this->type != 'newsitem') {
+
+    if (isset($topic->{'workflow-transition'})) {
       foreach ($topic->{'workflow-transition'} as $transition){
         if ($transition['action'] == 'publish') {
           if ($transition['user']) {
