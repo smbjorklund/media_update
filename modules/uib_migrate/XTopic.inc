@@ -201,6 +201,7 @@ class XTopic extends stdClass {
       'location' => t('Location for events'),
       'fullkampanjetittel' => t('Norwegian main title for Areas'),
       'fullkampanjetittel_en' => t('English main title for Areas'),
+      'menypunkttittel' => t('Menu title for infopages and navpages'),
 
       # Testimonial
       'name' => t('Name for testimonial'),
