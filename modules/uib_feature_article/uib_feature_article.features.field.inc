@@ -54,7 +54,7 @@ function uib_feature_article_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -127,7 +127,7 @@ function uib_feature_article_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -162,11 +162,11 @@ function uib_feature_article_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_uib_byline',
       'foreign keys' => array(
-        'node' => array(
+        'users' => array(
           'columns' => array(
-            'target_id' => 'nid',
+            'target_id' => 'uid',
           ),
-          'table' => 'node',
+          'table' => 'users',
         ),
       ),
       'indexes' => array(
@@ -204,13 +204,13 @@ function uib_feature_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'entityreference',
           'settings' => array(
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 18,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -372,7 +372,7 @@ function uib_feature_article_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -530,11 +530,11 @@ function uib_feature_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -600,7 +600,7 @@ function uib_feature_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -994,7 +994,7 @@ function uib_feature_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 17,
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1054,7 +1054,7 @@ function uib_feature_article_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1121,7 +1121,7 @@ function uib_feature_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1189,7 +1189,7 @@ function uib_feature_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1257,7 +1257,7 @@ function uib_feature_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1325,7 +1325,7 @@ function uib_feature_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
