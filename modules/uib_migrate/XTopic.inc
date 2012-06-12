@@ -35,7 +35,7 @@ class XTopic extends stdClass {
     if (!$this->is_site) {
       $this->site = $site;
     }
-    $this->site_lang = $topic->site['lang'];
+    $this->site_lang = (string)$topic->site['lang'];
     if ($this->site_lang == 'no') {
       $this->site_lang = 'nb'; // Drupal uses nb/nn (bokmål/nynorsk)
     }
