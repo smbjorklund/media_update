@@ -265,10 +265,6 @@ class TestimonialMigration extends Migration {
         return FALSE;
       }
     }
-
-
-
-
   }
 
   public function prepare($node, $row) {
