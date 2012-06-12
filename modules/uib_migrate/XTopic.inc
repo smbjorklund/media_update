@@ -130,7 +130,7 @@ class XTopic extends stdClass {
       foreach ($topic->{'workflow-transition'} as $transition){
         if ($transition['action'] == 'publish') {
           if ($transition['user']) {
-            $this->author =  $transition['user'];
+            $this->author =  (string)$transition['user'];
           }
         }
       }
