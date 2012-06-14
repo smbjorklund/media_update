@@ -638,6 +638,67 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
+  // Exported field: 'taxonomy_term-area-description_field'
+  $fields['taxonomy_term-area-description_field'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'description_field',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A field replacing taxonomy term description.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'description_field',
+      'label' => 'Description',
+      'required' => FALSE,
+      'settings' => array(
+        'display_summary' => 0,
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 20,
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => -5,
+      ),
+    ),
+  );
+
   // Exported field: 'taxonomy_term-area-field_uib_area_parents'
   $fields['taxonomy_term-area-field_uib_area_parents'] = array(
     'field_config' => array(
@@ -678,11 +739,11 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '3',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -746,11 +807,11 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '2',
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -812,7 +873,7 @@ function uib_feature_area_field_default_fields() {
             'file_view_mode' => 'media_large',
           ),
           'type' => 'file_rendered',
-          'weight' => '7',
+          'weight' => '6',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -892,7 +953,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => '10',
+          'weight' => '9',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -986,13 +1047,13 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'entityreference',
           'settings' => array(
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '4',
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -1034,7 +1095,7 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -1043,7 +1104,7 @@ function uib_feature_area_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '5',
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -1104,7 +1165,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '8',
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -1164,7 +1225,7 @@ function uib_feature_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '9',
+          'weight' => '8',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -1222,11 +1283,11 @@ function uib_feature_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '6',
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -1284,11 +1345,10 @@ function uib_feature_area_field_default_fields() {
       'description' => 'A field replacing taxonomy term name.',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
+          'label' => 'above',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => '10',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -1312,7 +1372,9 @@ function uib_feature_area_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('A field replacing taxonomy term description.');
   t('A field replacing taxonomy term name.');
+  t('Description');
   t('Fax');
   t('ID w2');
   t('Inline images');
