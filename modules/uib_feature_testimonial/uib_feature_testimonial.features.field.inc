@@ -10,7 +10,7 @@
 function uib_feature_testimonial_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-uib_testimonial-field_uib_area'
+  // Exported field: 'node-uib_testimonial-field_uib_area'.
   $fields['node-uib_testimonial-field_uib_area'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -83,7 +84,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_education'
+  // Exported field: 'node-uib_testimonial-field_uib_education'.
   $fields['node-uib_testimonial-field_uib_education'] = array(
     'field_config' => array(
       'active' => '1',
@@ -104,6 +105,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -151,7 +153,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_exchange_place'
+  // Exported field: 'node-uib_testimonial-field_uib_exchange_place'.
   $fields['node-uib_testimonial-field_uib_exchange_place'] = array(
     'field_config' => array(
       'active' => '1',
@@ -172,6 +174,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -219,7 +222,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_exchange_text'
+  // Exported field: 'node-uib_testimonial-field_uib_exchange_text'.
   $fields['node-uib_testimonial-field_uib_exchange_text'] = array(
     'field_config' => array(
       'active' => '1',
@@ -240,6 +243,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -287,7 +291,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_lead'
+  // Exported field: 'node-uib_testimonial-field_uib_lead'.
   $fields['node-uib_testimonial-field_uib_lead'] = array(
     'field_config' => array(
       'active' => '1',
@@ -308,6 +312,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -353,7 +358,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_media'
+  // Exported field: 'node-uib_testimonial-field_uib_media'.
   $fields['node-uib_testimonial-field_uib_media'] = array(
     'field_config' => array(
       'active' => '1',
@@ -374,6 +379,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -439,7 +445,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_name'
+  // Exported field: 'node-uib_testimonial-field_uib_name'.
   $fields['node-uib_testimonial-field_uib_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -460,6 +466,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -507,7 +514,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_organization'
+  // Exported field: 'node-uib_testimonial-field_uib_organization'.
   $fields['node-uib_testimonial-field_uib_organization'] = array(
     'field_config' => array(
       'active' => '1',
@@ -528,6 +535,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -575,7 +583,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_position'
+  // Exported field: 'node-uib_testimonial-field_uib_position'.
   $fields['node-uib_testimonial-field_uib_position'] = array(
     'field_config' => array(
       'active' => '1',
@@ -596,11 +604,12 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -643,7 +652,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_quote'
+  // Exported field: 'node-uib_testimonial-field_uib_quote'.
   $fields['node-uib_testimonial-field_uib_quote'] = array(
     'field_config' => array(
       'active' => '1',
@@ -664,6 +673,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -711,7 +721,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_related_programmes'
+  // Exported field: 'node-uib_testimonial-field_uib_related_programmes'.
   $fields['node-uib_testimonial-field_uib_related_programmes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -732,6 +742,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -779,7 +790,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_text'
+  // Exported field: 'node-uib_testimonial-field_uib_text'.
   $fields['node-uib_testimonial-field_uib_text'] = array(
     'field_config' => array(
       'active' => '1',
@@ -800,6 +811,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -845,7 +857,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_w2_id'
+  // Exported field: 'node-uib_testimonial-field_uib_w2_id'.
   $fields['node-uib_testimonial-field_uib_w2_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -866,6 +878,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -913,7 +926,7 @@ function uib_feature_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_w2_path'
+  // Exported field: 'node-uib_testimonial-field_uib_w2_path'.
   $fields['node-uib_testimonial-field_uib_w2_path'] = array(
     'field_config' => array(
       'active' => '1',
@@ -934,6 +947,7 @@ function uib_feature_testimonial_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',

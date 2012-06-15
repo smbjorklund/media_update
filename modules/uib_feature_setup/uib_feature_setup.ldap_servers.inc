@@ -27,6 +27,7 @@ function uib_feature_setup_default_ldap_servers() {
     0 => 'ou=people,dc=uib,dc=no',
   );
   $ldap_servers_conf->user_attr = 'uid';
+  $ldap_servers_conf->account_name_attr = '';
   $ldap_servers_conf->mail_attr = 'mail';
   $ldap_servers_conf->mail_template = '';
   $ldap_servers_conf->allow_conflicting_drupal_accts = FALSE;

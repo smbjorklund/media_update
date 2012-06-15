@@ -10,7 +10,7 @@
 function uib_feature_setup_filter_default_formats() {
   $formats = array();
 
-  // Exported format: HTML
+  // Exported format: HTML.
   $formats['html'] = array(
     'format' => 'html',
     'name' => 'HTML',
@@ -30,7 +30,7 @@ function uib_feature_setup_filter_default_formats() {
     ),
   );
 
-  // Exported format: Plain text
+  // Exported format: Plain text.
   $formats['plain_text'] = array(
     'format' => 'plain_text',
     'name' => 'Plain text',

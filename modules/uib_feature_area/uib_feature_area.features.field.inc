@@ -10,7 +10,7 @@
 function uib_feature_area_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-uib_ou-field_uib_fax'
+  // Exported field: 'node-uib_ou-field_uib_fax'.
   $fields['node-uib_ou-field_uib_fax'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20,6 +20,7 @@ function uib_feature_area_field_default_fields() {
       'field_name' => 'field_uib_fax',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'phone',
       'settings' => array(
         'country' => 'int',
@@ -69,7 +70,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_ou-field_uib_geo'
+  // Exported field: 'node-uib_ou-field_uib_geo'.
   $fields['node-uib_ou-field_uib_geo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -79,6 +80,7 @@ function uib_feature_area_field_default_fields() {
       'field_name' => 'field_uib_geo',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'geofield',
       'settings' => array(),
       'translatable' => '0',
@@ -160,7 +162,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_ou-field_uib_jobbnorge_id'
+  // Exported field: 'node-uib_ou-field_uib_jobbnorge_id'.
   $fields['node-uib_ou-field_uib_jobbnorge_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -170,6 +172,7 @@ function uib_feature_area_field_default_fields() {
       'field_name' => 'field_uib_jobbnorge_id',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -221,7 +224,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_ou-field_uib_mail_domain'
+  // Exported field: 'node-uib_ou-field_uib_mail_domain'.
   $fields['node-uib_ou-field_uib_mail_domain'] = array(
     'field_config' => array(
       'active' => '1',
@@ -242,6 +245,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -289,7 +293,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_ou-field_uib_ou_id'
+  // Exported field: 'node-uib_ou-field_uib_ou_id'.
   $fields['node-uib_ou-field_uib_ou_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -310,6 +314,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '6',
@@ -357,7 +362,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_ou-field_uib_ou_shortname'
+  // Exported field: 'node-uib_ou-field_uib_ou_shortname'.
   $fields['node-uib_ou-field_uib_ou_shortname'] = array(
     'field_config' => array(
       'active' => '1',
@@ -378,6 +383,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -425,7 +431,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_ou-field_uib_phone'
+  // Exported field: 'node-uib_ou-field_uib_phone'.
   $fields['node-uib_ou-field_uib_phone'] = array(
     'field_config' => array(
       'active' => '1',
@@ -435,6 +441,7 @@ function uib_feature_area_field_default_fields() {
       'field_name' => 'field_uib_phone',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'phone',
       'settings' => array(
         'country' => 'int',
@@ -484,7 +491,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_ou-field_uib_postal_address'
+  // Exported field: 'node-uib_ou-field_uib_postal_address'.
   $fields['node-uib_ou-field_uib_postal_address'] = array(
     'field_config' => array(
       'active' => '1',
@@ -494,6 +501,7 @@ function uib_feature_area_field_default_fields() {
       'field_name' => 'field_uib_postal_address',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'addressfield',
       'settings' => array(),
       'translatable' => '0',
@@ -561,7 +569,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_ou-field_uib_visit_address'
+  // Exported field: 'node-uib_ou-field_uib_visit_address'.
   $fields['node-uib_ou-field_uib_visit_address'] = array(
     'field_config' => array(
       'active' => '1',
@@ -571,6 +579,7 @@ function uib_feature_area_field_default_fields() {
       'field_name' => 'field_uib_visit_address',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'addressfield',
       'settings' => array(),
       'translatable' => '0',
@@ -638,7 +647,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-description_field'
+  // Exported field: 'taxonomy_term-area-description_field'.
   $fields['taxonomy_term-area-description_field'] = array(
     'field_config' => array(
       'active' => '1',
@@ -659,6 +668,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -699,7 +709,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-field_uib_area_parents'
+  // Exported field: 'taxonomy_term-area-field_uib_area_parents'.
   $fields['taxonomy_term-area-field_uib_area_parents'] = array(
     'field_config' => array(
       'active' => '1',
@@ -720,6 +730,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -763,7 +774,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-field_uib_area_type'
+  // Exported field: 'taxonomy_term-area-field_uib_area_type'.
   $fields['taxonomy_term-area-field_uib_area_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -784,6 +795,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -831,7 +843,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-field_uib_main_media'
+  // Exported field: 'taxonomy_term-area-field_uib_main_media'.
   $fields['taxonomy_term-area-field_uib_main_media'] = array(
     'field_config' => array(
       'active' => '1',
@@ -852,6 +864,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -913,7 +926,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-field_uib_media'
+  // Exported field: 'taxonomy_term-area-field_uib_media'.
   $fields['taxonomy_term-area-field_uib_media'] = array(
     'field_config' => array(
       'active' => '1',
@@ -934,6 +947,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -994,7 +1008,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-field_uib_ou'
+  // Exported field: 'taxonomy_term-area-field_uib_ou'.
   $fields['taxonomy_term-area-field_uib_ou'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1015,6 +1029,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'target_id',
         ),
       ),
+      'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
         'handler' => 'base',
@@ -1073,7 +1088,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-field_uib_sebra_id'
+  // Exported field: 'taxonomy_term-area-field_uib_sebra_id'.
   $fields['taxonomy_term-area-field_uib_sebra_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1083,6 +1098,7 @@ function uib_feature_area_field_default_fields() {
       'field_name' => 'field_uib_sebra_id',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -1128,7 +1144,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-field_uib_trans_text'
+  // Exported field: 'taxonomy_term-area-field_uib_trans_text'.
   $fields['taxonomy_term-area-field_uib_trans_text'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1149,6 +1165,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -1188,7 +1205,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-field_uib_trans_text2'
+  // Exported field: 'taxonomy_term-area-field_uib_trans_text2'.
   $fields['taxonomy_term-area-field_uib_trans_text2'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1209,6 +1226,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -1248,7 +1266,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-field_uib_w2_id'
+  // Exported field: 'taxonomy_term-area-field_uib_w2_id'.
   $fields['taxonomy_term-area-field_uib_w2_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1269,6 +1287,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -1310,7 +1329,7 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-area-name_field'
+  // Exported field: 'taxonomy_term-area-name_field'.
   $fields['taxonomy_term-area-name_field'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1331,6 +1350,7 @@ function uib_feature_area_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => 255,

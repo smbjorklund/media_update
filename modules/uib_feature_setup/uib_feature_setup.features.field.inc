@@ -10,7 +10,7 @@
 function uib_feature_setup_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'file-audio-field_uib_copyright'
+  // Exported field: 'file-audio-field_uib_copyright'.
   $fields['file-audio-field_uib_copyright'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -102,7 +103,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-audio-field_uib_description'
+  // Exported field: 'file-audio-field_uib_description'.
   $fields['file-audio-field_uib_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -123,6 +124,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -194,7 +196,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-audio-field_uib_owner'
+  // Exported field: 'file-audio-field_uib_owner'.
   $fields['file-audio-field_uib_owner'] = array(
     'field_config' => array(
       'active' => '1',
@@ -215,6 +217,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -286,7 +289,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-audio-field_uib_w2_id'
+  // Exported field: 'file-audio-field_uib_w2_id'.
   $fields['file-audio-field_uib_w2_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -307,6 +310,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -378,7 +382,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_uib_copyright'
+  // Exported field: 'file-image-field_uib_copyright'.
   $fields['file-image-field_uib_copyright'] = array(
     'field_config' => array(
       'active' => '1',
@@ -399,6 +403,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -470,7 +475,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_uib_description'
+  // Exported field: 'file-image-field_uib_description'.
   $fields['file-image-field_uib_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -491,6 +496,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -562,7 +568,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_uib_owner'
+  // Exported field: 'file-image-field_uib_owner'.
   $fields['file-image-field_uib_owner'] = array(
     'field_config' => array(
       'active' => '1',
@@ -583,6 +589,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -654,7 +661,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_uib_w2_id'
+  // Exported field: 'file-image-field_uib_w2_id'.
   $fields['file-image-field_uib_w2_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -675,6 +682,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -746,7 +754,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_uib_copyright'
+  // Exported field: 'file-video-field_uib_copyright'.
   $fields['file-video-field_uib_copyright'] = array(
     'field_config' => array(
       'active' => '1',
@@ -767,6 +775,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -838,7 +847,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_uib_description'
+  // Exported field: 'file-video-field_uib_description'.
   $fields['file-video-field_uib_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -859,6 +868,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -930,7 +940,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_uib_owner'
+  // Exported field: 'file-video-field_uib_owner'.
   $fields['file-video-field_uib_owner'] = array(
     'field_config' => array(
       'active' => '1',
@@ -951,6 +961,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1022,7 +1033,7 @@ function uib_feature_setup_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_uib_w2_id'
+  // Exported field: 'file-video-field_uib_w2_id'.
   $fields['file-video-field_uib_w2_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1043,6 +1054,7 @@ function uib_feature_setup_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',

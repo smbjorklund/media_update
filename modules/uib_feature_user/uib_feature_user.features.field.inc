@@ -10,7 +10,7 @@
 function uib_feature_user_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'user-user-field_uib_first_name'
+  // Exported field: 'user-user-field_uib_first_name'.
   $fields['user-user-field_uib_first_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function uib_feature_user_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -72,7 +73,7 @@ function uib_feature_user_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_uib_last_name'
+  // Exported field: 'user-user-field_uib_last_name'.
   $fields['user-user-field_uib_last_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -93,6 +94,7 @@ function uib_feature_user_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -134,7 +136,7 @@ function uib_feature_user_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_uib_position'
+  // Exported field: 'user-user-field_uib_position'.
   $fields['user-user-field_uib_position'] = array(
     'field_config' => array(
       'active' => '1',
@@ -155,6 +157,7 @@ function uib_feature_user_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -196,7 +199,7 @@ function uib_feature_user_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_uib_slug'
+  // Exported field: 'user-user-field_uib_slug'.
   $fields['user-user-field_uib_slug'] = array(
     'field_config' => array(
       'active' => '1',
@@ -217,6 +220,7 @@ function uib_feature_user_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -258,7 +262,7 @@ function uib_feature_user_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_uib_user_domain'
+  // Exported field: 'user-user-field_uib_user_domain'.
   $fields['user-user-field_uib_user_domain'] = array(
     'field_config' => array(
       'active' => '1',
@@ -279,6 +283,7 @@ function uib_feature_user_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '16',
@@ -326,7 +331,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     ),
   );
 
-  // Exported field: 'user-user-field_uib_w2_id'
+  // Exported field: 'user-user-field_uib_w2_id'.
   $fields['user-user-field_uib_w2_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -347,6 +352,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
