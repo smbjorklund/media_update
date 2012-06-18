@@ -1,5 +1,5 @@
 name = w3.uib.no
-description = Dependencies and setup for the new web
+description = Install w3.uib.no.
 version = 0.1
 core = 7.x
 dependencies[] = dblog

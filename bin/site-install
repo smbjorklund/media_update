@@ -19,14 +19,6 @@ drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-n
 # Fix that by explictly reverting those changes.
 drush -l http://$SITE_DIR features-revert --yes uib_feature_setup
 
-# Enable and set the UiB theme as default theme
-drush -l http://$SITE_DIR en uib_zen --yes
-drush -l http://$SITE_DIR vset theme_default uib_zen --always-set
-
-# Enable and set Seven as admin theme
-drush -l http://$SITE_DIR en seven --yes
-drush -l http://$SITE_DIR vset admin_theme seven --always-set
-
 cat <<EOT >sites/default/settings.php
 No default site.  You need to visit <a href="http://$SITE_DIR">$SITE_DIR</a> instead.
 <?php

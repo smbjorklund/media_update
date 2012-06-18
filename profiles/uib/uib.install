@@ -6,6 +6,14 @@
  * Perform actions to set up the site for this profile.
  */
 function uib_install() {
+    // Set the default and admin themes
+  echo "Changing theme settings\n";
+  variable_set("theme_default", "uib_zen");
+  variable_set("admin_theme", "seven");
+  variable_set("node_admin_theme", '0');
+  theme_enable(array("uib_zen"));
+  theme_disable(array("bartik"));
+
   // Create the area menu
   menu_save(array(
     'menu_name' => 'area',
