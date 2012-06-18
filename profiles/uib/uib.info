@@ -14,6 +14,7 @@ dependencies[] = uib_nomail
 dependencies[] = uib_theme_hack
 dependencies[] = migrate_ui
 dependencies[] = views_ui
+dependencies[] = context_ui
 dependencies[] = admin_menu_toolbar
 dependencies[] = help
 dependencies[] = devel
