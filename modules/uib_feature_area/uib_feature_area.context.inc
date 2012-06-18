@@ -30,6 +30,12 @@ function uib_feature_area_context_default_contexts() {
           'module' => 'menu',
           'delta' => 'area',
           'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
+        'views-area_kids-block_1' => array(
+          'module' => 'views',
+          'delta' => 'area_kids-block_1',
+          'region' => 'sidebar_second',
           'weight' => '-10',
         ),
       ),

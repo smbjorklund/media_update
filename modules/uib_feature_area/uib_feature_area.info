@@ -59,4 +59,5 @@ features[variable][] = entity_translation_entity_types
 features[variable][] = node_options_uib_ou
 features[variable][] = node_preview_uib_ou
 features[variable][] = node_submitted_uib_ou
+features[views_view][] = area_kids
 features[views_view][] = uib_areas
