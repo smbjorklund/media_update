@@ -22,7 +22,6 @@ function uib_feature_area_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Kids';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -30,7 +29,14 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_uib_area_type',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -48,6 +54,41 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 1;
+  /* Field: Taxonomy term: Type */
+  $handler->display->display_options['fields']['field_uib_area_type']['id'] = 'field_uib_area_type';
+  $handler->display->display_options['fields']['field_uib_area_type']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['fields']['field_uib_area_type']['field'] = 'field_uib_area_type';
+  $handler->display->display_options['fields']['field_uib_area_type']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_area_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_area_type']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_uib_area_type']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_uib_area_type']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_uib_area_type']['field_api_classes'] = 0;
+  /* Sort criterion: Taxonomy term: Type (field_uib_area_type) */
+  $handler->display->display_options['sorts']['field_uib_area_type_tid']['id'] = 'field_uib_area_type_tid';
+  $handler->display->display_options['sorts']['field_uib_area_type_tid']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['sorts']['field_uib_area_type_tid']['field'] = 'field_uib_area_type_tid';
+  $handler->display->display_options['sorts']['field_uib_area_type_tid']['order'] = 'DESC';
+  /* Sort criterion: Taxonomy term: Name */
+  $handler->display->display_options['sorts']['name']['id'] = 'name';
+  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['name']['field'] = 'name';
   /* Contextual filter: Taxonomy term: Parents (field_uib_area_parents) */
   $handler->display->display_options['arguments']['field_uib_area_parents_tid']['id'] = 'field_uib_area_parents_tid';
   $handler->display->display_options['arguments']['field_uib_area_parents_tid']['table'] = 'field_data_field_uib_area_parents';
@@ -76,7 +117,6 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['block_description'] = 'Area kids';
   $translatables['area_kids'] = array(
     t('Master'),
-    t('Kids'),
     t('more'),
     t('Apply'),
     t('Reset'),
