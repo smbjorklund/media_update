@@ -458,6 +458,17 @@ class UserMigration extends Migration {
     $this->addFieldMapping('field_uib_slug', 'slug');
   }
 
+  public function prepareRow($row) {
+    $valid_psi_prefix = "http://sebra.fd.uib.no/person?uid=";
+    foreach ($row->psi as $psi) {
+      if (substr($psi, 0, strlen($valid_psi_prefix)) === $valid_psi_prefix)
+        return TRUE;
+    }
+    if (function_exists('drush_log'))
+      drush_log("Ignored user $row->id: Bad PSI", 'warning');
+    return FALSE;
+  }
+
   protected function createStub($migration, $source_id) {
     $user = new stdClass;
     $user->name = t('User stub for ') . $source_id[0];
