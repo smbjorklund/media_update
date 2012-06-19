@@ -43,7 +43,9 @@ To switch to the 'test-hf' data set run:
 
     bin/site-drush vset uib_test_dir test-hf
 
-and then run 'migrate-import' once more.
+and then run 'migrate-import' once more.  To migrate all data run:
+
+    bin/site-drush vset uib_test_dir ALL
 
 To see what kind of data is available for import you might run:
 
