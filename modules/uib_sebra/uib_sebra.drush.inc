@@ -72,48 +72,7 @@ function drush_uib_sebra_users() {
   }
 
   foreach ($users as $username) {
-    $account = user_load_by_name($username);
-    $u = new SebraPerson($username);
-    if ($account) {
-      $edit = array();
-      if ($account->mail != $u->email)
-        $edit['mail'] = $u->email;
-      if ($account->status != 1)
-        $edit['status'] = 1;
-      if ($account->field_uib_first_name['und'][0]['value'] != $u->first_name)
-        $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
-      if ($account->field_uib_last_name['und'][0]['value'] != $u->last_name)
-        $edit['field_uib_last_name']['und'][0]['value'] = $u->last_name;
-      if ($account->field_uib_position['nb'][0]['value'] != $u->position_name_no)
-        $edit['field_uib_position']['nb'][0]['value'] = $u->position_name_no;
-      if ($account->field_uib_position['en'][0]['value'] != $u->position_name_en)
-        $edit['field_uib_position']['en'][0]['value'] = $u->position_name_en;
-
-      if (empty($edit)) {
-        drush_log("No change for $username <$account->mail>");
-      }
-      else {
-        user_save($account, $edit);
-        drush_log("Updated fields for $username <$account->mail>");
-      }
-    }
-    else {
-      $account = new stdClass();
-      $account->is_new = 1;
-      $account->name = $u->id;
-      $account->mail = $u->email;
-      $account->status = 1; // ACTIVE
-      $account->field_uib_user_domain['und'][0]['value'] = 'uib';
-      $account->field_uib_first_name['und'][0]['value'] = $u->first_name;
-      $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
-      $account->field_uib_position['nb'][0]['value'] = $u->position_name_no;
-      $account->field_uib_position['en'][0]['value'] = $u->position_name_en;
-      user_save($account);
-      drush_log("Created user $account->uid for $username <$u->email>");
-    }
-
-    // print_r(array($account, $u));
-
+    uib_sebra__sync_user($username);
     if ($limit) {
       if (--$limit == 0)
         break;
@@ -166,4 +125,46 @@ function uib_sebra__get_persons($type) {
     $uids[] = (string)$p->id;
   }
   return $uids;
+}
+
+function uib_sebra__sync_user($username) {
+  $account = user_load_by_name($username);
+  $u = new SebraPerson($username);
+  if ($account) {
+    $edit = array();
+    if ($account->mail != $u->email)
+      $edit['mail'] = $u->email;
+    if ($account->status != 1)
+      $edit['status'] = 1;
+    if ($account->field_uib_first_name['und'][0]['value'] != $u->first_name)
+      $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
+    if ($account->field_uib_last_name['und'][0]['value'] != $u->last_name)
+      $edit['field_uib_last_name']['und'][0]['value'] = $u->last_name;
+    if ($account->field_uib_position['nb'][0]['value'] != $u->position_name_no)
+      $edit['field_uib_position']['nb'][0]['value'] = $u->position_name_no;
+    if ($account->field_uib_position['en'][0]['value'] != $u->position_name_en)
+      $edit['field_uib_position']['en'][0]['value'] = $u->position_name_en;
+
+    if (empty($edit)) {
+      drush_log("No change for $username <$account->mail>");
+    }
+    else {
+      user_save($account, $edit);
+      drush_log("Updated fields for $username <$account->mail>");
+    }
+  }
+  else {
+    $account = new stdClass();
+    $account->is_new = 1;
+    $account->name = $u->id;
+    $account->mail = $u->email;
+    $account->status = 1; // ACTIVE
+    $account->field_uib_user_domain['und'][0]['value'] = 'uib';
+    $account->field_uib_first_name['und'][0]['value'] = $u->first_name;
+    $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
+    $account->field_uib_position['nb'][0]['value'] = $u->position_name_no;
+    $account->field_uib_position['en'][0]['value'] = $u->position_name_en;
+    user_save($account);
+    drush_log("Created user $account->uid for $username <$u->email>");
+  }
 }
