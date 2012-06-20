@@ -86,7 +86,7 @@ function drush_uib_sebra_areas() {
       }
     }
     else {
-      drush_log("No sebra_id for $term->name", 'warning');
+      drush_log("No sebra_id for /taxonomy/term/$tid", 'warning');
     }
   }
 
@@ -100,7 +100,7 @@ function drush_uib_sebra_areas() {
       user_save($account, array(
         'field_uib_staff_at' => array('und' => $user_tid[$username]),
       ));
-      drush_log('Updated staff_at setting for $username');
+      drush_log("Updated staff_at setting for $username /user/$account->uid");
     }
     else {
       $unchanged++;
