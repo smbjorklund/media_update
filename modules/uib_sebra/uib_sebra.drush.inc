@@ -16,6 +16,11 @@ function uib_sebra_drush_command() {
     ),
     'required-arguments' => TRUE,
   );
+  $items['uib-sebra-areas'] = array(
+    'description' => 'Syncronize areas in Sebra with the Drupal database',
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(),
+  );
   $items['uib-sebra-users'] = array(
     'description' => 'Syncronize users in Sebra with the Drupal database',
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
@@ -54,6 +59,54 @@ function drush_uib_sebra_places() {
 function drush_uib_sebra_uib_dump_place($place_id) {
   $place = new SebraPlace($place_id);
   print_r($place);
+}
+
+function drush_uib_sebra_areas() {
+  // Fill this array with what areas each user belongs to
+  $user_tid = array();
+
+  $area_type = taxonomy_vocabulary_machine_name_load('area');
+  $query = new EntityFieldQuery;
+  $query = $query
+    ->entityCondition('entity_type', 'taxonomy_term')
+    ->propertyCondition('vid', $area_type->vid)
+    ;
+  $result = $query->execute();
+
+  foreach (array_keys($result['taxonomy_term']) as $tid) {
+    $term = taxonomy_term_load($tid);
+    $sebra_id = $term->field_uib_sebra_id['und'][0]['value'];
+    if ($sebra_id) {
+      $area_url = "http://sebra.uib.no/sws/omraader?omraadekode=$sebra_id";
+      drush_log("GET $area_url");
+      $area_doc = simplexml_load_file($area_url);
+      #print_r(array($tid, $sebra_id, $area_doc));
+      foreach ($area_doc->omraade->visninger->uibid as $uname) {
+        $user_tid[(string)$uname][]['target_id'] = $tid;
+      }
+    }
+    else {
+      drush_log("No sebra_id for $term->name", 'warning');
+    }
+  }
+
+  $unchanged = 0;
+  foreach (array_keys($user_tid) as $username) {
+    $account = user_load_by_name($username);
+    if (!$account)
+      $account = uib_sebra__sync_user($username);
+    //print_r(array($username, $account->field_uib_staff_at, $user_tid[$username]));
+    if ($account->field_uib_staff_at['und'] != $user_tid[$username]) {
+      user_save($account, array(
+        'field_uib_staff_at' => array('und' => $user_tid[$username]),
+      ));
+      drush_log('Updated staff_at setting for $username');
+    }
+    else {
+      $unchanged++;
+    }
+  }
+  drush_log("staff_at unchanged for $unchanged users");
 }
 
 function drush_uib_sebra_users() {
@@ -167,4 +220,5 @@ function uib_sebra__sync_user($username) {
     user_save($account);
     drush_log("Created user $account->uid for $username <$u->email>");
   }
+  return $account;
 }
