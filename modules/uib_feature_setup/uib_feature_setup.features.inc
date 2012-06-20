@@ -21,3 +21,10 @@ function uib_feature_setup_ctools_plugin_api() {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_views_api().
+ */
+function uib_feature_setup_views_api() {
+  return array("version" => "3.0");
+}
