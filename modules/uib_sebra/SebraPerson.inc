@@ -9,7 +9,7 @@ class SebraPerson extends stdClass {
     }
     $person = @simplexml_load_file($url);
     if (empty($person)) {
-      throw new Exception("Place $id not found: " . $url);
+      throw new Exception("Person $id not found: " . $url);
     }
 
     $this->id = $id;
