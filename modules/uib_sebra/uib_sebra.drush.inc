@@ -73,6 +73,8 @@ function drush_uib_sebra_areas() {
     ;
   $result = $query->execute();
 
+  $got_them_all = TRUE;
+
   foreach (array_keys($result['taxonomy_term']) as $tid) {
     $term = taxonomy_term_load($tid);
     $sebra_id = $term->field_uib_sebra_id['und'][0]['value'];
@@ -80,6 +82,10 @@ function drush_uib_sebra_areas() {
       $area_url = "http://sebra.uib.no/sws/omraader?omraadekode=$sebra_id";
       drush_log("GET $area_url");
       $area_doc = simplexml_load_file($area_url);
+      if (empty($area_doc)) {
+        drush_log("Can't get $area_url", 'error');
+        $got_them_all = FALSE;
+      }
       #print_r(array($tid, $sebra_id, $area_doc));
       foreach ($area_doc->omraade->visninger->uibid as $uname) {
         $user_tid[(string)$uname][]['target_id'] = $tid;
@@ -90,12 +96,16 @@ function drush_uib_sebra_areas() {
     }
   }
 
+  if (!$got_them_all) {
+    drush_log("Can't update staff_at since some areas failed to load", 'error');
+    return;
+  }
+
   $unchanged = 0;
   foreach (array_keys($user_tid) as $username) {
     $account = user_load_by_name($username);
     if (!$account)
       $account = uib_sebra__sync_user($username);
-    //print_r(array($username, $account->field_uib_staff_at, $user_tid[$username]));
     if ($account->field_uib_staff_at['und'] != $user_tid[$username]) {
       user_save($account, array(
         'field_uib_staff_at' => array('und' => $user_tid[$username]),
