@@ -21,7 +21,7 @@ PHP attributter (på klasser) bruker navn på formen `$foo_bar_baz`.
 
 Hjelpefunksjoner i uib-modulen `uib_foo` får `uib_foo__` prefix (merk dobbel `_` på slutten) slik at de ikke kommer i konflikt med andre navn eller hooks (som bare vil ha en enkel `_` på slutten av prefikset).
 
-## PHP
+## PHP, JS, CSS
 
 Generelt prøver vi følge standarden som Drupal core setter.
 
@@ -49,3 +49,23 @@ Store array oppsett skrives på formen:
       ),
       'fourth' => 4,
     );
+
+## GIT
+Generelle kjøreregler for bruk av GIT
+
+### GIT commit message format
+Legger oss på omtreng samme linje som Linux kjernen og andre for å prøve å oppnå en ren og pen commit historie.
+Commit messages må ikke overstige 72 char. Skriv kort og konsis. Har man behov for en mere utfyllende commit message skal man benytte følgende format:
+
+    Din normale korte commit message
+    (tom linje)
+    Skriv din lengere og mere detaljerte kommentar til hva endringen gjør.`
+
+Er din commit knyttet til en sak i [RTS](https://rts.uib.no/projects/w3) er konvensjonen at du prefikser commit message med RTS-###. Den vil da har formen:
+
+    RTS-9999 Short summary of change
+    (tom linje)
+    Explain why this change was made (if applicable).
+    yadayada, bla, bla.
+
+Dette er samme konvensjonen vi brukte for gamle eksternwebben bare med "JEW-###"-prefiks.  Etterhvert er det ønskelig at nesten alle commits har dette prefikset. Alle endringer bør være forankret i en RTS-oppgave.
