@@ -1,3 +1,6 @@
+[Index](index.html)
+***
+
 # Plan for teknisk utvikling av w3.uib.no (første fase)
 
 Dette dokumenterer planen for teknisk utvikling av w3.uib.no for 2012.
@@ -295,3 +298,6 @@ Intensitet:
     2012-10    0%
     2012-11    0%
     2012-12    0%
+
+***
+[Index](index.html)

@@ -1,3 +1,6 @@
+[Index](index.html)
+***
+
 # Kodestandard
 
 Dette dokumentet beskriver regler for navngiving og koding i Drupal.
@@ -69,3 +72,6 @@ Er din commit knyttet til en sak i [RTS](https://rts.uib.no/projects/w3) er konv
     yadayada, bla, bla.
 
 Dette er samme konvensjonen vi brukte for gamle eksternwebben bare med "JEW-###"-prefiks.  Etterhvert er det ønskelig at nesten alle commits har dette prefikset. Alle endringer bør være forankret i en RTS-oppgave.
+
+***
+[Index](index.html)

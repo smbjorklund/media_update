@@ -1,3 +1,5 @@
+[Index](index.html)
+***
 
 # Terminiologi
 
@@ -91,3 +93,6 @@ oversettelse av begrepene vi bruker som er UiB spesifikke.
 Andre begreper
 
 * slug
+
+***
+[Index](index.html)

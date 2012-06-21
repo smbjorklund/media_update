@@ -1,3 +1,6 @@
+[Index](index.html)
+***
+
 # Apache developement setup
 
 This just documents how Gisle has set up Apache on OS X to allow local developement.
@@ -65,3 +68,6 @@ and then I created _/etc/apache2/other/username-vhosts.conf_ with this content:
     </VirtualHost>
 
 That's it!
+
+***
+[Index](index.html)

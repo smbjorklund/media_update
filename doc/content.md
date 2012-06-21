@@ -1,3 +1,6 @@
+[Index](index.html)
+***
+
 ## Content types
 
 This just list out the content types that we will use.
@@ -132,3 +135,5 @@ Fields:
 * body: richtext
 * area: ref(area)
 
+***
+[Index](index.html)
