@@ -9,4 +9,8 @@
       $w2_id =  $build['field_uib_w2_id'][0]['#markup'];
       $build['field_uib_w2_id'][0]['#markup'] = '<a href="' . $server . 'topicmap/@@xtopic?id=' . $w2_id . '">' . $w2_id . '</a>';
     }
+    if (isset($build['field_uib_sebra_id'])) {
+      $sebra_id =  $build['field_uib_sebra_id'][0]['#markup'];
+      $build['field_uib_sebra_id'][0]['#markup'] = '<a href="http://sebra.uib.no/sws/omraader?omraadekode=' . $sebra_id . '">' . $sebra_id . '</a>';
+    }
   }
