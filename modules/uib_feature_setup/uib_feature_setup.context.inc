@@ -26,11 +26,17 @@ function uib_feature_setup_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'locale-language' => array(
+          'module' => 'locale',
+          'delta' => 'language',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
         'views-faculties-block' => array(
           'module' => 'views',
           'delta' => 'faculties-block',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),
