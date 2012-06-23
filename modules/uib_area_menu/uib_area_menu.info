@@ -1,0 +1,5 @@
+name = "UIB Area Menu setup"
+description = "Configure the menu block module"
+package = "UiB"
+core = 7.x
+dependencies[] = menu_block
