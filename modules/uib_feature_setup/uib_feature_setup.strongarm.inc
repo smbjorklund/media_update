@@ -143,7 +143,7 @@ function uib_feature_setup_strongarm() {
   $strongarm->name = 'ldap_authentication_conf';
   $strongarm->value = array(
     'sids' => array(
-      'ldapproxy' => 'ldapproxy',
+      'uib_ldap' => 'uib_ldap',
     ),
     'authenticationMode' => 1,
     'loginConflictResolve' => 2,
