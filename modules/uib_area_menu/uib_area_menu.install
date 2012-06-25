@@ -1,0 +1,9 @@
+<?php
+
+function uib_area_menu_install() {
+  menu_save(array(
+    'menu_name' => 'area',
+    'title' => 'Areas',
+    'description' => 'All areas should have a top level entry in this menu.  Under the area this menu is used for the main organization of content',
+  ));
+}

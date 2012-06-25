@@ -14,13 +14,6 @@ function uib_install() {
   theme_enable(array("uib_zen"));
   theme_disable(array("bartik"));
 
-  // Create the area menu
-  menu_save(array(
-    'menu_name' => 'area',
-    'title' => 'Areas',
-    'description' => 'All areas should have a top level entry in this menu.  Under the area this menu is used for the main organization of content',
-  ));
-
   $theme_settings = variable_get('theme_settings');
   $theme_settings['toggle_secondary_menu'] = 0;
   variable_set('theme_settings', $theme_settings);
