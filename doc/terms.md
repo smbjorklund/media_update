@@ -73,21 +73,44 @@ oversettelse av begrepene vi bruker som er UiB spesifikke.
 
 * Block
 * Comment
+* Content
+* Content type
+* Context
+* Cron
 * Entity
 * Feature
+* fid (file id)
 * Field
+* Hook
+* Layout
 * Menu
+* mlid (menu link id)
 * Module
+* nid (node id)
 * Node
+* Page
+* Pane
+* Panel
+* Path
+* Permission
+* plid (parent (menu) link id)
 * Region
+* Render array
 * Setting
 * Site
 * Taxonomy
+* Term
 * Text format
+* Text filter
 * Theme
+* tid (term id)
 * Token
+* uid (user id)
 * User
+* vid (vocabulary id)
 * View
+* View mode
+* Vocabulary
 * Workbench
 
 Andre begreper
