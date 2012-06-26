@@ -62,6 +62,7 @@ features[variable][] = locale_language_providers_weight_language_content
 features[variable][] = site_default_country
 features[variable][] = site_mail
 features[variable][] = site_name
+features[variable][] = theme_uib_zen_settings
 features[variable][] = translation_language_type
 features[variable][] = update_check_disabled
 features[variable][] = update_check_frequency
