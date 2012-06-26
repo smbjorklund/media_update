@@ -199,9 +199,9 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['name_field']['empty_zero'] = 0;
   $handler->display->display_options['fields']['name_field']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['name_field']['field_api_classes'] = 0;
-  /* Sort criterion: Taxonomy vocabulary: Name */
+  /* Sort criterion: Taxonomy term: Name */
   $handler->display->display_options['sorts']['name']['id'] = 'name';
-  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['name']['field'] = 'name';
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
