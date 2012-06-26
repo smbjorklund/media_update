@@ -113,7 +113,7 @@ oversettelse av begrepene vi bruker som er UiB spesifikke.
 * Vocabulary
 * Workbench
 
-Andre begreper
+## Andre begreper
 
 * slug
 
