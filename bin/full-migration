@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -x
+DRUSH=bin/site-drush
+LOG=var/log/full-migrate-$(date +%Y%m%dT%H%M).log
+VERBOSE=--verbose
+#ROLLBACK=--rollback --strict=0
+
+mkdir -p $(dirname $LOG)
+
+$DRUSH vset uib_test_dir ALL
+
+function timestamp {
+   date +"=== %F %T ===" >>$LOG
+   echo >>$LOG
+}
+
+timestamp
+
+$DRUSH migrate-status | tee -a $LOG
+echo >>$LOG
+
+$DRUSH migrate-import $VERBOSE $ROLLBACK Area 2>&1 | tee -a $LOG
+timestamp
+
+$DRUSH migrate-import $VERBOSE $ROLLBACK ResearchTopic 2>&1 | tee -a $LOG
+timestamp
+
+$DRUSH migrate-import $VERBOSE $ROLLBACK Testimonial 2>&1 | tee -a $LOG
+timestamp
+
+$DRUSH migrate-import $VERBOSE $ROLLBACK --group=article 2>&1 | tee -a $LOG
+timestamp
