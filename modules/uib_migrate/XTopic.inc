@@ -104,9 +104,16 @@ class XTopic extends stdClass {
       if (!$shallow) {
         $parent = new XTopic($this->nav_parent_id, TRUE, 'parent of ' . $id);
         //$this->parent = $parent;
-        $menu_order = $parent->menuorder;
-        $menu_order = drupal_json_decode($menu_order);
-        $this->nav_weight = array_search($this->id, $menu_order);
+        if (isset($parent->menuorder)) {
+          $menu_order = $parent->menuorder;
+          $menu_order = drupal_json_decode($menu_order);
+          $idx = array_search($this->id, $menu_order);
+          if ($idx !== FALSE)
+            $this->nav_weight = $idx;
+        }
+        if (!isset($this->nav_weight)) {
+          drush_log("Can't find $this->id in the menu of its parent $this->nav_parent_id", 'warning');
+        }
       }
       if ($this->nav_parent_id == $topic->site['ref']) {
         unset($this->nav_parent_id);
