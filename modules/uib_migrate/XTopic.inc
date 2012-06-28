@@ -296,9 +296,25 @@ class XTopicListSource extends MigrateSource {
       $this->count = $range[1];
     }
 
+    static $bad_apple;
+    if (!isset($bad_apple)) {
+      $bad_apple = array();
+      foreach (file(dirname(__FILE__) . '/etc/bad-apples.txt') as $line) {
+        $line = explode('#', $line, 2);  # ignore trailing comments
+        $id = trim($line[0]);
+        if ($id)
+          $bad_apple[$id] = TRUE;
+      }
+    }
+
     $ids = array();
     foreach ($xml->topic as $t) {
-      $ids[] = (string)$t['id'];
+      $id = (string)$t['id'];
+      if ($bad_apple[$id]) {
+        drush_log("Bad apple $id, skipped", 'warning');
+        continue;
+      }
+      $ids[] = $id;
     }
     $this->ids = $ids;
     $this->offset += count($ids);
