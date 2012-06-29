@@ -1,0 +1,4 @@
+name = UIB library
+description = "A library of helpful tools by UiB for UiB (api only)."
+package = "UiB"
+core = 7.x

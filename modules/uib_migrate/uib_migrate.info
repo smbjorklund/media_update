@@ -3,6 +3,7 @@ description = "Migrate data from w2"
 package = "UiB"
 core = 7.x
 dependencies[] = migrate
+dependencies[] = uibx
 dependencies[] = uib_feature_article
 dependencies[] = uib_sebra
 files[] = uib_migrate.inc

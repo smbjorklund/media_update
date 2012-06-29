@@ -1,0 +1,21 @@
+<?php
+
+function uibx_log($message, $type='notice') {
+  if (function_exists('drush_log')) {
+    drush_log($message, $type);
+  }
+  else {
+    switch ($type) {
+    case 'error':
+    case 'failed':
+      $severity = WATCHDOG_ERROR;
+      break;
+    case 'warning':
+      $severity = WATCHDOG_WARNING;
+      break;
+    default:
+      $severity = WATCHDOG_NOTICE;
+    }
+    watchdog('uibx', $message, NULL, $severity);
+  }
+}

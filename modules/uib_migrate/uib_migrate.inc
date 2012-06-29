@@ -464,8 +464,7 @@ class UserMigration extends Migration {
       if (substr($psi, 0, strlen($valid_psi_prefix)) === $valid_psi_prefix)
         return TRUE;
     }
-    if (function_exists('drush_log'))
-      drush_log("Ignored user $row->id: Bad PSI", 'warning');
+    uibx_log("Ignored user $row->id: Bad PSI", 'warning');
     return FALSE;
   }
 

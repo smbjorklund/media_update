@@ -6,7 +6,8 @@
 Dette dokumentet beskriver regler for navngiving og koding i Drupal.
 
 ## Navngivning
-Modulene som vi skriver selv (spesifikt for denne applikasjonen) har `uib_` prefix. Alle disse modulene har `package` satt til `"UiB"` slik at de grupperes sammen i modullisten.
+
+Modulene som vi skriver selv (spesifikt for denne applikasjonen) har `uib_` prefix. Alle disse modulene har `package` satt til `"UiB"` slik at de grupperes sammen i modullisten.  Unntaket er "uibx" modulen vår.
 
 Feature moduler har `uib_feature_` prefix.
 

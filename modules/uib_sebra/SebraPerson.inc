@@ -4,9 +4,7 @@ class SebraPerson extends stdClass {
 
   public function __construct($id) {
     $url = 'http://sebra.uib.no/sws/person?id=' . $id;
-    if (function_exists('drush_log')) {
-      drush_log('GET ' . $url);
-    }
+    uibx_log('GET ' . $url);
     $person = @simplexml_load_file($url);
     if (empty($person)) {
       throw new Exception("Person $id not found: " . $url);
@@ -25,9 +23,7 @@ class SebraPerson extends stdClass {
     $this->visit_address_country = (string)$person->land;
 
     $url = 'http://sebra.uib.no/sws/staff?id=' . $id;
-    if (function_exists('drush_log')) {
-      drush_log('GET ' . $url);
-    }
+    uibx_log('GET ' . $url);
     $staff = @simplexml_load_file($url);
     if (!empty($staff)) {
       $this->person_type = 'staff';
@@ -39,9 +35,7 @@ class SebraPerson extends stdClass {
     }
     else {
       $url = 'http://sebra.uib.no/sws/affiliated?id=' . $id;
-      if (function_exists('drush_log')) {
-        drush_log('GET ' . $url);
-      }
+      uibx_log('GET ' . $url);
       $extern = @simplexml_load_file($url);
       if (!empty($extern)) {
         $this->person_type = 'extern';
@@ -54,9 +48,7 @@ class SebraPerson extends stdClass {
 
     if (0) {
       $url = 'http://sebra.uib.no/sws/omraaderoller?id=' . $id;
-      if (function_exists('drush_log')) {
-        drush_log('GET ' . $url);
-      }
+      uibx_log('GET ' . $url);
       $roles = @simplexml_load_file($url);
       //...
     }

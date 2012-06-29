@@ -12,13 +12,13 @@ class XTopic extends stdClass {
   public function __construct($id, $shallow=FALSE, $reason=NULL) {
     $url = XTopic::url() . "?id=$id";
     $this->id = $id;
-    if (function_exists('drush_log')) {
-      $log_msg = 'GET ' . $url;
-      if ($reason) {
-        $log_msg .= ' (' . $reason . ')';
-      }
-      drush_log($log_msg);
+
+    $log_msg = 'GET ' . $url;
+    if ($reason) {
+      $log_msg .= ' (' . $reason . ')';
     }
+    uibx_log($log_msg);
+
     $xml = simplexml_load_file($url);
     $topic = $xml->topic;
     if (empty($topic)) {
@@ -112,7 +112,7 @@ class XTopic extends stdClass {
             $this->nav_weight = $idx;
         }
         if (!isset($this->nav_weight)) {
-          drush_log("Can't find $this->id in the menu of its parent $this->nav_parent_id", 'warning');
+          uibx_log("Can't find $this->id in the menu of its parent $this->nav_parent_id", 'warning');
         }
       }
       if ($this->nav_parent_id == $topic->site['ref']) {
@@ -164,7 +164,7 @@ class XTopic extends stdClass {
           $relatedprogrammes[] = $omtalt->studieprogramkode;
         }
         else {
-          drush_log("Relation (omtalt) to $omtalt->type dropped", 'warning');
+          uibx_log("Relation (omtalt) to $omtalt->type dropped", 'warning');
         }
       }
 
@@ -294,9 +294,7 @@ class XTopicListSource extends MigrateSource {
     }
 
     $url = $this->listUrl . "&limit=50&offset=$this->offset";
-    if (function_exists('drush_log')) {
-      drush_log('GET ' . $url);
-    }
+    uibx_log('GET ' . $url);
     $xml = simplexml_load_file($url);
     if ($this->offset == 0) {
       $range = explode('/', $xml['range']);
@@ -318,7 +316,7 @@ class XTopicListSource extends MigrateSource {
     foreach ($xml->topic as $t) {
       $id = (string)$t['id'];
       if ($bad_apple[$id]) {
-        drush_log("Bad apple $id, skipped", 'warning');
+        uibx_log("Bad apple $id, skipped", 'warning');
         continue;
       }
       $ids[] = $id;
