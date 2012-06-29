@@ -1,4 +1,4 @@
-name = "UIB Sebra integratin"
+name = UiB Sebra integration
 description = "Syncronize data with Sebra"
 package = "UiB"
 core = 7.x
