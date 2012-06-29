@@ -31,11 +31,18 @@ function xtopic_file($id) {
   $uri = "http://" . XTopic::$w2_server . "/" . $uri;
 
   $file = new stdClass();
-  $filename = 'public://' . drupal_basename($uri);
+
+  $basename = drupal_basename($uri);
+  $hash = strtolower(substr($basename, 0, 2));
+  $dirname = 'public://w2/' . $hash;
+  @drupal_mkdir($dirname, NULL, TRUE);
+  $filename = "$dirname/$basename";
   $filename = file_destination($filename, FILE_EXISTS_RENAME);
+
   if (!@copy($uri, $filename)) {
     die("Could not copy file " . $uri . "\n");
   }
+
   if (isset($xtopic->photographer)) {
     $file->field_uib_owner['und'][]['value'] = $xtopic->photographer;
   }
