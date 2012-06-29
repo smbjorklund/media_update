@@ -1,7 +1,8 @@
 <?php
 
 function uib_sebra__sws_url($path) {
-  $url = 'http://sebra.uib.no/sws/' . $path;
+  $url = variable_get('uib_sws_url', 'http://sebra.uib.no/sws/');
+  $url .= $path;
   return $url;
 }
 

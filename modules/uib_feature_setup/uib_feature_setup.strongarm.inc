@@ -273,6 +273,13 @@ function uib_feature_setup_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'uib_sws_url';
+  $strongarm->value = 'http://attila.uib.no/sws/';
+  $export['uib_sws_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'update_check_disabled';
   $strongarm->value = 1;
   $export['update_check_disabled'] = $strongarm;
