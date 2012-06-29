@@ -5,6 +5,8 @@ SITE=$(basename $(readlink site))
 
 set -x
 test -d drupal/sites/$SITE && mv drupal/sites/$SITE drupal/sites/$SITE-$(date +%Y%m%dT%H%M)
-bin/site-install $SITE
-bin/site-drush migrate-import --verbose --all
-bin/site-drush uib-migrate-build-menu --verbose
+
+if bin/site-install $SITE; then
+    bin/site-drush migrate-import --verbose --all
+    bin/site-drush uib-migrate-build-menu --verbose
+fi
