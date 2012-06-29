@@ -3,12 +3,10 @@
 class SebraPlace extends stdClass {
 
   public function __construct($id) {
-    $url = 'http://sebra.uib.no/sws/place?code=' . $id;
     $this->id = $id;
-    uibx_log('GET ' . $url);
-    $place = @simplexml_load_file($url);
+    $place = uib_sebra__sws_get('place?code=' . $id);
     if (empty($place)) {
-      throw new Exception("Place $id not found: " . $url);
+      throw new Exception("Place $id not found");
     }
     $this->name = (string)$place->name;
     $this->address = (string)$place->address;

@@ -33,9 +33,7 @@ function uib_sebra_drush_command() {
 }
 
 function drush_uib_sebra_places() {
-  $places_url = "http://sebra.uib.no/sws/places?status=aktiv";
-  drush_log("GET $places_url");
-  $places = simplexml_load_file($places_url);
+  $places = uib_sebra__sws_get('places?status=aktiv');
   $limit = (int)drush_get_option('limit', 0);
 
   foreach ($places->place as $place) {
@@ -79,11 +77,9 @@ function drush_uib_sebra_areas() {
     $term = taxonomy_term_load($tid);
     $sebra_id = $term->field_uib_sebra_id['und'][0]['value'];
     if ($sebra_id) {
-      $area_url = "http://sebra.uib.no/sws/omraader?omraadekode=$sebra_id";
-      drush_log("GET $area_url");
-      $area_doc = simplexml_load_file($area_url);
+      $area_doc = uib_sebra__sws_get("omraader?omraadekode=$sebra_id");
       if (empty($area_doc)) {
-        drush_log("Can't get $area_url", 'error');
+        drush_log("Can't get $sebra_id", 'error');
         $got_them_all = FALSE;
       }
       #print_r(array($tid, $sebra_id, $area_doc));
@@ -178,11 +174,10 @@ function drush_uib_sebra_users() {
 }
 
 function uib_sebra__get_persons($type) {
-  $persons_url = 'http://sebra.uib.no/sws/persons';
+  $persons_url = 'persons';
   if ($type)
     $persons_url .= "?type=$type";
-  drush_log("GET $persons_url");
-  $persons = simplexml_load_file($persons_url);
+  $persons = uib_sebra__sws_get($persons_url);
   $uids = array();
   foreach ($persons->person as $p) {
     $uids[] = (string)$p->id;

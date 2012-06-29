@@ -1,5 +1,17 @@
 <?php
 
+function uib_sebra__sws_url($path) {
+  $url = 'http://sebra.uib.no/sws/' . $path;
+  return $url;
+}
+
+function uib_sebra__sws_get($path) {
+  $url = uib_sebra__sws_url($path);
+  uibx_log('GET ' . $url);
+  $object = @simplexml_load_file($url);
+  return $object;
+}
+
 function uib_sebra__uib_ou_nid($place_id) {
     $query = new EntityFieldQuery;
     $result = $query
