@@ -36,13 +36,13 @@ function xtopic_file($id) {
   if (!@copy($uri, $filename)) {
     die("Could not copy file " . $uri . "\n");
   }
-  if ($xtopic->photographer) {
+  if (isset($xtopic->photographer)) {
     $file->field_uib_owner['und'][]['value'] = $xtopic->photographer;
   }
-  if ($xtopic->{1351138798041054899}) {
+  if (isset($xtopic->{1351138798041054899})) {
     $file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
   }
-  if ($xtopic->dc_description) {
+  if (isset($xtopic->dc_description)) {
     $file->field_uib_description['und'][]['value'] = $xtopic->dc_description;
   }
   $file->field_uib_w2_id['und'][]['value'] = $id;
@@ -116,7 +116,7 @@ abstract class XTopicToArticleMigration extends Migration {
   }
 
   public function prepare($node, $row) {
-    if ($row->main_media) {
+    if (isset($row->main_media)) {
       $file = xtopic_file($row->main_media);
       $node->field_uib_main_media['und'][0] = array(
         'fid' => $file->fid,
@@ -382,9 +382,9 @@ class AreaMigration extends Migration {
     $term->field_uib_trans_text2['en'][0]['value'] = $row->profiletext_en;
     $term->field_uib_trans_text2['nb'][0]['value'] = $row->profiletext;
 
-    if ($row->placeid) {
+    if (isset($row->placeid)) {
       // Check if we already have a 'uib_ou' node with the given placeid
-      $nid = uib_sebra__uib_ou_nid($place_id);
+      $nid = uib_sebra__uib_ou_nid($row->placeid);
       if ($nid) {
         $term->field_uib_ou['und'][0]['target_id'] = $nid;
       }
@@ -395,7 +395,7 @@ class AreaMigration extends Migration {
       }
     }
 
-    if ($row->media) {
+    if (isset($row->media)) {
       $file = xtopic_file($row->media[0]);
       $term->field_uib_main_media['und'][0] = array(
         'fid' => $file->fid,
@@ -403,7 +403,7 @@ class AreaMigration extends Migration {
       );
     }
 
-    if ($row->profileimages) {
+    if (isset($row->profileimages)) {
       foreach ($row->profileimages as $file_id) {
         $file = xtopic_file($file_id);
         $term->field_uib_media['und'][] = array(
@@ -428,7 +428,7 @@ class AreaMigration extends Migration {
     $menu_link = array(
       'menu_name' => 'area',
       'link_path' => drupal_get_normal_path('taxonomy/term/' . $term->tid),
-      'link_title' => $term->name_field['nb'][0][value] . ' (mlink)',
+      'link_title' => $term->name_field['nb'][0]['value'] . ' (mlink)',
       'weight' => $weight,
     );
     menu_link_save($menu_link);
