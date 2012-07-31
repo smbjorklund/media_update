@@ -315,7 +315,7 @@ class XTopicListSource extends MigrateSource {
     $ids = array();
     foreach ($xml->topic as $t) {
       $id = (string)$t['id'];
-      if ($bad_apple[$id]) {
+      if (isset($bad_apple[$id])) {
         uibx_log("Bad apple $id, skipped", 'warning');
         continue;
       }
