@@ -2,7 +2,7 @@
 
 set -x
 DRUSH=bin/site-drush
-LOG=var/log/full-migrate-$(date +%Y%m%dT%H%M).log
+LOG=site/log/full-migrate-$(date +%Y%m%dT%H%M).log
 VERBOSE=--verbose
 #ROLLBACK=--rollback --strict=0
 
