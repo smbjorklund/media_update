@@ -102,7 +102,7 @@ function drush_uib_sebra_areas() {
     $account = user_load_by_name($username);
     if (!$account)
       $account = uib_sebra__sync_user($username);
-    if ($account->field_uib_staff_at['und'] != $user_tid[$username]) {
+    if (!isset($account->field_uib_staff_at) || $account->field_uib_staff_at['und'] != $user_tid[$username]) {
       user_save($account, array(
         'field_uib_staff_at' => array('und' => $user_tid[$username]),
       ));
