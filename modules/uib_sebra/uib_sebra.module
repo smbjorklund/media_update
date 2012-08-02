@@ -2,9 +2,9 @@
 
 function uib_sebra_cron_job_scheduler_info() {
   return array(
-    'sebra_sync_places' => array(
-      'queue name' => 'sebra_sync_places',
-      'worker callback' => 'uib_sebra__sync_places',
+    'sebra_sync' => array(
+      'queue name' => 'sebra_sync',
+      'worker callback' => 'uib_sebra__sync',
       'jobs' => array(
         array(
           'type' => 'sebra',
@@ -17,9 +17,16 @@ function uib_sebra_cron_job_scheduler_info() {
   );
 }
 
-function uib_sebra__sync_places($job) {
+function uib_sebra__sync($job) {
+  uibx_log("SEBRA SYNC start");
+  uib_sebra__sync_places(10);
+  uib_sebra__sync_areas();
+  uib_sebra__sync_users(10);
+  uibx_log("SEBRA SYNC done");
+}
+
+function uib_sebra__sync_places($limit) {
   $places = uib_sebra__sws_get('places?status=aktiv');
-  $limit = isset($job['limit']) ? $job['limit'] : 20;
 
   foreach ($places->place as $place) {
     $place_id = (string)$place->code;
@@ -94,4 +101,172 @@ function uib_sebra__create_uib_ou($place_id) {
 
   node_save($node);
   return $node;
+}
+
+function uib_sebra__sync_areas() {
+  // Fill this array with what areas each user belongs to
+  $user_tid = array();
+
+  $area_type = taxonomy_vocabulary_machine_name_load('area');
+  $query = new EntityFieldQuery;
+  $query = $query
+    ->entityCondition('entity_type', 'taxonomy_term')
+    ->propertyCondition('vid', $area_type->vid)
+    ;
+  $result = $query->execute();
+
+  $got_them_all = TRUE;
+
+  foreach (array_keys($result['taxonomy_term']) as $tid) {
+    $term = taxonomy_term_load($tid);
+    $sebra_id = $term->field_uib_sebra_id['und'][0]['value'];
+    if ($sebra_id) {
+      $area_doc = uib_sebra__sws_get("omraader?omraadekode=$sebra_id");
+      if (empty($area_doc)) {
+        uibx_log("Can't get $sebra_id", 'error');
+        $got_them_all = FALSE;
+      }
+      #print_r(array($tid, $sebra_id, $area_doc));
+      foreach ($area_doc->omraade->visninger->uibid as $uname) {
+        $user_tid[(string)$uname][]['target_id'] = $tid;
+      }
+    }
+    else {
+      uibx_log("No sebra_id for /taxonomy/term/$tid", 'warning');
+    }
+  }
+
+  if (!$got_them_all) {
+    uibx_log("Can't update staff_at since some areas failed to load", 'error');
+    return;
+  }
+
+  $unchanged = 0;
+  foreach (array_keys($user_tid) as $username) {
+    $account = user_load_by_name($username);
+    if (!$account)
+      $account = uib_sebra__sync_user($username);
+    if (!isset($account->field_uib_staff_at) || $account->field_uib_staff_at['und'] != $user_tid[$username]) {
+      user_save($account, array(
+        'field_uib_staff_at' => array('und' => $user_tid[$username]),
+      ));
+      uibx_log("Updated staff_at setting for $username /user/$account->uid");
+    }
+    else {
+      $unchanged++;
+    }
+  }
+  uibx_log("staff_at unchanged for $unchanged users");
+}
+
+function uib_sebra__sync_users($limit) {
+  $users = array_merge(
+    uib_sebra__get_persons('staff'),
+    uib_sebra__get_persons('extern')
+  );
+  //$users = array('adbho', 'gaa041', 'sbj051'); // debug with a smaller set
+  $users_count = count($users);
+  if ($limit) {
+    uibx_log("Starting to process $limit of $users_count users");
+  }
+  else {
+    uibx_log("Processing $users_count users");
+  }
+
+  foreach ($users as $username) {
+    uib_sebra__sync_user($username);
+    if ($limit) {
+      if (--$limit == 0)
+        break;
+    }
+  }
+
+  // look for users to block
+  $users = array_flip($users); // make it easy to look them up by username
+
+  $query = new EntityFieldQuery;
+  $query = $query
+    ->entityCondition('entity_type', 'user')
+    ->fieldCondition('field_uib_user_domain', 'value', 'uib', '=');
+  $result = $query->execute();
+  $active_count = 0;
+  foreach (array_keys($result['user']) as $uid) {
+    $account = user_load($uid);
+    if (isset($users[$account->name])) {
+      if ($account->status == 0) {
+        user_save($account, array(
+          'status' => 1, // ACTIVE
+        ));
+        uibx_log("$account->name unblocked");
+      }
+      else {
+        $active_count++;
+      }
+    }
+    elseif ($account->status != 0) {
+      user_save($account, array(
+        'status' => 0, // BLOCKED
+      ));
+      uibx_log("$account->name blocked");
+    }
+    else {
+      uibx_log("$account->name is still blocked");
+    }
+  }
+  uibx_log("$active_count uib-accounts are still active");
+}
+
+function uib_sebra__get_persons($type) {
+  $persons_url = 'persons';
+  if ($type)
+    $persons_url .= "?type=$type";
+  $persons = uib_sebra__sws_get($persons_url);
+  $uids = array();
+  foreach ($persons->person as $p) {
+    $uids[] = (string)$p->id;
+  }
+  return $uids;
+}
+
+function uib_sebra__sync_user($username) {
+  $account = user_load_by_name($username);
+  $u = new SebraPerson($username);
+  if ($account) {
+    $edit = array();
+    if ($account->mail != $u->email)
+      $edit['mail'] = $u->email;
+    if ($account->status != 1)
+      $edit['status'] = 1;
+    if ($account->field_uib_first_name['und'][0]['value'] != $u->first_name)
+      $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
+    if ($account->field_uib_last_name['und'][0]['value'] != $u->last_name)
+      $edit['field_uib_last_name']['und'][0]['value'] = $u->last_name;
+    if ($account->field_uib_position['nb'][0]['value'] != $u->position_name_no)
+      $edit['field_uib_position']['nb'][0]['value'] = $u->position_name_no;
+    if ($account->field_uib_position['en'][0]['value'] != $u->position_name_en)
+      $edit['field_uib_position']['en'][0]['value'] = $u->position_name_en;
+
+    if (empty($edit)) {
+      uibx_log("No change for $username <$account->mail>");
+    }
+    else {
+      user_save($account, $edit);
+      uibx_log("Updated fields for $username <$account->mail>");
+    }
+  }
+  else {
+    $account = new stdClass();
+    $account->is_new = 1;
+    $account->name = $u->id;
+    $account->mail = $u->email;
+    $account->status = 1; // ACTIVE
+    $account->field_uib_user_domain['und'][0]['value'] = 'uib';
+    $account->field_uib_first_name['und'][0]['value'] = $u->first_name;
+    $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
+    $account->field_uib_position['nb'][0]['value'] = $u->position_name_no;
+    $account->field_uib_position['en'][0]['value'] = $u->position_name_en;
+    user_save($account);
+    uibx_log("Created user $account->uid for $username <$u->email>");
+  }
+  return $account;
 }
