@@ -1,5 +1,40 @@
 <?php
 
+function uib_sebra_cron_job_scheduler_info() {
+  return array(
+    'sebra_sync_places' => array(
+      'queue name' => 'sebra_sync_places',
+      'worker callback' => 'uib_sebra__sync_places',
+      'jobs' => array(
+        array(
+          'type' => 'sebra',
+          'id' => 0,
+          'period' => 60*60,
+          'periodic' => TRUE,
+        ),
+      ),
+    ),
+  );
+}
+
+function uib_sebra__sync_places($job) {
+  $places = uib_sebra__sws_get('places?status=aktiv');
+  $limit = isset($job['limit']) ? $job['limit'] : 20;
+
+  foreach ($places->place as $place) {
+    $place_id = (string)$place->code;
+    $nid = uib_sebra__uib_ou_nid($place_id);
+    if ($nid === NULL) {
+      $node = uib_sebra__create_uib_ou($place_id);
+      uibx_log("Created node $node->nid for place $place_id $place->name");
+      if ($limit) {
+        if (--$limit == 0)
+          break;
+      }
+    }
+  }
+}
+
 function uib_sebra__sws_url($path) {
   $url = variable_get('uib_sws_url', 'http://sebra.uib.no/sws/');
   $url .= $path;

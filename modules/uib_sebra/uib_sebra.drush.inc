@@ -33,25 +33,8 @@ function uib_sebra_drush_command() {
 }
 
 function drush_uib_sebra_places() {
-  $places = uib_sebra__sws_get('places?status=aktiv');
   $limit = (int)drush_get_option('limit', 0);
-
-  foreach ($places->place as $place) {
-    $place_id = (string)$place->code;
-    $nid = uib_sebra__uib_ou_nid($place_id);
-    if ($nid === NULL) {
-      $node = uib_sebra__create_uib_ou($place_id);
-      drush_log("Created node $node->nid for place $place_id $place->name");
-    }
-    else {
-      drush_log("Node $nid corresponds to $place_id $place->name");
-    }
-
-    if ($limit) {
-      if (--$limit == 0)
-        break;
-    }
-  }
+  uib_sebra__sync_places(array('limit' => $limit));
 }
 
 function drush_uib_sebra_uib_dump_place($place_id) {
