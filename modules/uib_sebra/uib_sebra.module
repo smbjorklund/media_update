@@ -21,7 +21,7 @@ function uib_sebra__sync($job) {
   uibx_log("SEBRA SYNC start");
   uib_sebra__sync_places(10);
   uib_sebra__sync_areas();
-  uib_sebra__sync_users(10);
+  uib_sebra__sync_users(100);
   uibx_log("SEBRA SYNC done");
 }
 
@@ -166,14 +166,22 @@ function uib_sebra__sync_users($limit) {
   );
   //$users = array('adbho', 'gaa041', 'sbj051'); // debug with a smaller set
   $users_count = count($users);
+  $offset = 0;
+
   if ($limit) {
-    uibx_log("Starting to process $limit of $users_count users");
+    $offset = variable_get('uib_sebra_user_offset', 0);
+    if ($offset >= $users_count)
+      $offset = 0;
+    variable_set('uib_sebra_user_offset', $offset + $limit);
+    uibx_log("Starting to process $limit of $users_count users at offset $offset");
   }
   else {
     uibx_log("Processing $users_count users");
   }
 
   foreach ($users as $username) {
+    if (--$offset > 0)
+      continue;
     uib_sebra__sync_user($username);
     if ($limit) {
       if (--$limit == 0)
