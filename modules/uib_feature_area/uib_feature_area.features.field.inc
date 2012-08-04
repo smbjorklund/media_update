@@ -24,6 +24,7 @@ function uib_feature_area_field_default_fields() {
       'module' => 'phone',
       'settings' => array(
         'country' => 'int',
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'phone',
@@ -55,6 +56,7 @@ function uib_feature_area_field_default_fields() {
       'settings' => array(
         'ca_phone_parentheses' => 1,
         'ca_phone_separator' => '-',
+        'entity_translation_sync' => FALSE,
         'phone_country_code' => 0,
         'phone_default_country_code' => '47',
         'phone_int_max_length' => '15',
@@ -82,7 +84,9 @@ function uib_feature_area_field_default_fields() {
       'indexes' => array(),
       'locked' => '0',
       'module' => 'geofield',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'geofield',
     ),
@@ -129,6 +133,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Location',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'local_solr' => array(
           'enabled' => FALSE,
           'lat_field' => 'lat',
@@ -174,7 +179,9 @@ function uib_feature_area_field_default_fields() {
       'indexes' => array(),
       'locked' => '0',
       'module' => 'number',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'number_integer',
     ),
@@ -208,6 +215,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Jobbnorge ID',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max' => '',
         'min' => '0',
         'prefix' => '',
@@ -248,6 +256,7 @@ function uib_feature_area_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -278,6 +287,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Mail domain',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -317,6 +327,7 @@ function uib_feature_area_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '6',
       ),
       'translatable' => '0',
@@ -347,6 +358,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Place ID',
       'required' => 1,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -386,6 +398,7 @@ function uib_feature_area_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -416,6 +429,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Short name',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -445,6 +459,7 @@ function uib_feature_area_field_default_fields() {
       'module' => 'phone',
       'settings' => array(
         'country' => 'int',
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'phone',
@@ -476,6 +491,7 @@ function uib_feature_area_field_default_fields() {
       'settings' => array(
         'ca_phone_parentheses' => 1,
         'ca_phone_separator' => '-',
+        'entity_translation_sync' => FALSE,
         'phone_country_code' => 0,
         'phone_default_country_code' => '47',
         'phone_int_max_length' => '15',
@@ -503,7 +519,9 @@ function uib_feature_area_field_default_fields() {
       'indexes' => array(),
       'locked' => '0',
       'module' => 'addressfield',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'addressfield',
     ),
@@ -546,6 +564,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Postal Address',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -581,7 +600,9 @@ function uib_feature_area_field_default_fields() {
       'indexes' => array(),
       'locked' => '0',
       'module' => 'addressfield',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'addressfield',
     ),
@@ -624,6 +645,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Visit Address',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -670,7 +692,9 @@ function uib_feature_area_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -694,6 +718,7 @@ function uib_feature_area_field_default_fields() {
       'required' => FALSE,
       'settings' => array(
         'display_summary' => 0,
+        'entity_translation_sync' => FALSE,
         'text_processing' => 1,
         'user_register_form' => FALSE,
       ),
@@ -704,7 +729,7 @@ function uib_feature_area_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => -5,
+        'weight' => '-5',
       ),
     ),
   );
@@ -739,6 +764,7 @@ function uib_feature_area_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -762,6 +788,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Parents',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -804,6 +831,7 @@ function uib_feature_area_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -831,6 +859,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Type',
       'required' => 1,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -869,6 +898,9 @@ function uib_feature_area_field_default_fields() {
       'settings' => array(
         'display_default' => 0,
         'display_field' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -895,6 +927,7 @@ function uib_feature_area_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => 'media',
         'file_extensions' => 'png jpg',
         'max_filesize' => '',
@@ -952,6 +985,9 @@ function uib_feature_area_field_default_fields() {
       'settings' => array(
         'display_default' => 0,
         'display_field' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -976,6 +1012,7 @@ function uib_feature_area_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => '',
         'file_extensions' => 'txt',
         'max_filesize' => '',
@@ -1008,6 +1045,92 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
+  // Exported field: 'taxonomy_term-area-field_uib_newslist'.
+  $fields['taxonomy_term-area-field_uib_newslist'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '5',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_newslist',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'field_uib_area:tid',
+            'property' => 'nid',
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'uib_article' => 'uib_article',
+          ),
+        ),
+        'handler_submit' => 'Change handler',
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 11,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'field_uib_newslist',
+      'label' => 'Newslist',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
+        ),
+        'type' => 'entityreference_autocomplete',
+        'weight' => '11',
+      ),
+    ),
+  );
+
   // Exported field: 'taxonomy_term-area-field_uib_ou'.
   $fields['taxonomy_term-area-field_uib_ou'] = array(
     'field_config' => array(
@@ -1032,6 +1155,7 @@ function uib_feature_area_field_default_fields() {
       'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'handler' => 'base',
         'handler_settings' => array(
           'behaviors' => array(
@@ -1076,6 +1200,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Place',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1100,7 +1225,9 @@ function uib_feature_area_field_default_fields() {
       'indexes' => array(),
       'locked' => '0',
       'module' => 'number',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'number_integer',
     ),
@@ -1128,6 +1255,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Sebra ID',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max' => '',
         'min' => '0',
         'prefix' => '',
@@ -1167,7 +1295,9 @@ function uib_feature_area_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '1',
       'type' => 'text_long',
     ),
@@ -1190,6 +1320,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Text',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1228,7 +1359,9 @@ function uib_feature_area_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '1',
       'type' => 'text_long',
     ),
@@ -1251,6 +1384,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Text sidebar',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1290,6 +1424,7 @@ function uib_feature_area_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '40',
       ),
       'translatable' => '0',
@@ -1314,6 +1449,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'ID w2',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1353,6 +1489,7 @@ function uib_feature_area_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => 255,
       ),
       'translatable' => '1',
@@ -1376,6 +1513,7 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Name',
       'required' => TRUE,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => 0,
         'user_register_form' => FALSE,
       ),
@@ -1385,7 +1523,7 @@ function uib_feature_area_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'text_textfield',
-        'weight' => -5,
+        'weight' => '-5',
       ),
     ),
   );
@@ -1403,6 +1541,7 @@ function uib_feature_area_field_default_fields() {
   t('Mail domain');
   t('Main image');
   t('Name');
+  t('Newslist');
   t('Parents');
   t('Phone');
   t('Place');

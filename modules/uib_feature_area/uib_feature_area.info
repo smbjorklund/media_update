@@ -44,6 +44,7 @@ features[field][] = taxonomy_term-area-field_uib_area_parents
 features[field][] = taxonomy_term-area-field_uib_area_type
 features[field][] = taxonomy_term-area-field_uib_main_media
 features[field][] = taxonomy_term-area-field_uib_media
+features[field][] = taxonomy_term-area-field_uib_newslist
 features[field][] = taxonomy_term-area-field_uib_ou
 features[field][] = taxonomy_term-area-field_uib_sebra_id
 features[field][] = taxonomy_term-area-field_uib_trans_text
