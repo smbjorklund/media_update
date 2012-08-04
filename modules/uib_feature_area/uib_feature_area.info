@@ -62,4 +62,5 @@ features[variable][] = node_submitted_uib_ou
 features[variable][] = page_manager_term_view_disabled
 features[views_view][] = area_kids
 features[views_view][] = faculties
+features[views_view][] = newlist
 features[views_view][] = uib_areas
