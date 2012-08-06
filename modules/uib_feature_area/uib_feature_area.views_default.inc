@@ -54,7 +54,7 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 1;
-  /* Field: Taxonomy term: Type */
+  /* Field: Field: Type */
   $handler->display->display_options['fields']['field_uib_area_type']['id'] = 'field_uib_area_type';
   $handler->display->display_options['fields']['field_uib_area_type']['table'] = 'field_data_field_uib_area_type';
   $handler->display->display_options['fields']['field_uib_area_type']['field'] = 'field_uib_area_type';
@@ -80,7 +80,7 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_area_type']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_uib_area_type']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_uib_area_type']['field_api_classes'] = 0;
-  /* Sort criterion: Taxonomy term: Type (field_uib_area_type) */
+  /* Sort criterion: Field: Type (field_uib_area_type) */
   $handler->display->display_options['sorts']['field_uib_area_type_tid']['id'] = 'field_uib_area_type_tid';
   $handler->display->display_options['sorts']['field_uib_area_type_tid']['table'] = 'field_data_field_uib_area_type';
   $handler->display->display_options['sorts']['field_uib_area_type_tid']['field'] = 'field_uib_area_type_tid';
@@ -441,7 +441,7 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_area_parents']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_uib_area_parents']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_uib_area_parents']['field_api_classes'] = 0;
-  /* Field: Taxonomy term: Place */
+  /* Field: Field: Place */
   $handler->display->display_options['fields']['field_uib_ou']['id'] = 'field_uib_ou';
   $handler->display->display_options['fields']['field_uib_ou']['table'] = 'field_data_field_uib_ou';
   $handler->display->display_options['fields']['field_uib_ou']['field'] = 'field_uib_ou';
@@ -494,7 +494,7 @@ function uib_feature_area_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['fields']['field_uib_sebra_id']['field_api_classes'] = 0;
-  /* Field: Taxonomy term: Type */
+  /* Field: Field: Type */
   $handler->display->display_options['fields']['field_uib_area_type']['id'] = 'field_uib_area_type';
   $handler->display->display_options['fields']['field_uib_area_type']['table'] = 'field_data_field_uib_area_type';
   $handler->display->display_options['fields']['field_uib_area_type']['field'] = 'field_uib_area_type';

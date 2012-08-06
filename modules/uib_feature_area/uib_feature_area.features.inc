@@ -34,6 +34,14 @@ function uib_feature_area_views_api() {
  */
 function uib_feature_area_node_info() {
   $items = array(
+    'area' => array(
+      'name' => t('Area'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'uib_ou' => array(
       'name' => t('Organisational Unit'),
       'base' => 'node_content',
