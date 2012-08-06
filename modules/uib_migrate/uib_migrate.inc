@@ -342,14 +342,8 @@ class AreaMigration extends Migration {
       ->arguments(array('source_type' => 'nid'));
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
     //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
-
-    // Can't get this to work; so we just transfer the values in the prepare
-    // callback instead.
-    //
-    //$this->addFieldMapping('field_uib_trans_text', 'text')
-    //  ->arguments(array('language' => 'nb'));
-    //$this->addFieldMapping('field_uib_trans_text', 'text_en')
-    //  ->arguments(array('language' => 'en'));
+    $this->addFieldMapping('field_uib_text', 'text');
+    $this->addFieldMapping('field_uib_text2', 'profiletext');
   }
 
   protected function createStub($migration, $source_id) {
@@ -365,28 +359,9 @@ class AreaMigration extends Migration {
     if ($row->state != 'published') {
       return FALSE;
     }
-    if ($row->alpha2_code != 'no') {
-      return FALSE;
-    }
   }
 
   public function prepare($term, $row) {
-    // Handle the translatable files here.  The field mapping can't deal with
-    // multiple source values mapping to a single translatable field
-    $term->name_field['nb'][0]['value'] = $row->title;
-    $term->name_field['en'][0]['value'] = $row->engelsk_navn;
-
-    // Less warnings if we can assume these fields are set
-    foreach (array('text', 'text_en', 'profiletext', 'profiletext_en') as $attr) {
-      if (!isset($row->$attr))
-        $row->$attr = '';
-    }
-
-    $term->field_uib_trans_text['nb'][0]['value'] = (isset($row->fullkampanjetittel) ? "<h2>$row->fullkampanjetittel</h2>" : "") . $row->text;
-    $term->field_uib_trans_text['en'][0]['value'] = (isset($row->fullkampanjetittel_en) ? "<h2>$row->fullkampanjetittel_en</h2>" : "") . $row->text_en;
-    $term->field_uib_trans_text2['en'][0]['value'] = $row->profiletext_en;
-    $term->field_uib_trans_text2['nb'][0]['value'] = $row->profiletext;
-
     if (isset($row->placeid)) {
       // Check if we already have a 'uib_ou' node with the given placeid
       $nid = uib_sebra__uib_ou_nid($row->placeid);
