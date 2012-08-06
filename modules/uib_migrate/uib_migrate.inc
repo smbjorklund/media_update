@@ -332,6 +332,7 @@ class AreaMigration extends Migration {
     );
 
     $this->addFieldMapping('title', 'title');
+    $this->addFieldMapping('language', 'site_lang');
     $this->addFieldMapping('description')->issueGroup(t('DNM'));
     $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('path', 'path');
