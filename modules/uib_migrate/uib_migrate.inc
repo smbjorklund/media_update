@@ -103,7 +103,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_nav_weight', 'nav_weight');
     $this->addFieldMapping('field_uib_area', 'site')
       ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'tid'));
+      ->arguments(array('source_type' => 'nid'));
     $this->addFieldMapping('uid', 'author')
       ->sourceMigration('User');
     $this->addFieldMapping('field_uib_byline', 'byline')
@@ -259,7 +259,7 @@ class TestimonialMigration extends Migration {
     $this->addFieldMapping('field_uib_organization', 'organisation');
     $this->addFieldMapping('field_uib_area', 'site')
       ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'tid'));
+      ->arguments(array('source_type' => 'nid'));
 
   }
   public function prepareRow($row) {
@@ -317,8 +317,6 @@ class ResearchTopicMigration extends Migration {
 }
 
 class AreaMigration extends Migration {
-  private $vid;
-
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('area'));
 
@@ -326,21 +324,14 @@ class AreaMigration extends Migration {
 
     $destination_machine_name = 'area';
 
-    $this->destination = new MigrateDestinationTerm($destination_machine_name);
-
-    // Get the $vid of the destination
-    $vids = array_keys(taxonomy_vocabulary_load_multiple(
-      array(),
-      array('machine_name' => $destination_machine_name)
-    ));
-    $this->vid = $vids[0];
+    $this->destination = new MigrateDestinationNode($destination_machine_name);
 
     $this->map = new MigrateSQLMap($this->machineName,
       XTopic::getKeySchema(),
       MigrateDestinationTerm::getKeySchema()
     );
 
-    $this->addFieldMapping('name', 'title');
+    $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('description')->issueGroup(t('DNM'));
     $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('path', 'path');
@@ -348,7 +339,7 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
     $this->addFieldMapping('field_uib_area_parents', 'area_parent_ids')
       ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'tid'));
+      ->arguments(array('source_type' => 'nid'));
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
     //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
 
@@ -363,7 +354,7 @@ class AreaMigration extends Migration {
 
   protected function createStub($migration, $source_id) {
     $term = new stdClass;
-    $term->vid = $this->vid;
+    $term->type = 'area';
     $term->name = t('Area stub for ') . $source_id[0];
     $term->field_uib_w2_id['und'][0]['value'] = $source_id[0];
     taxonomy_term_save($term);
