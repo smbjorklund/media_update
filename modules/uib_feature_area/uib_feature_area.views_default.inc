@@ -89,7 +89,7 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['sorts']['name']['id'] = 'name';
   $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['name']['field'] = 'name';
-  /* Contextual filter: Taxonomy term: Parents (field_uib_area_parents) */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_uib_area_parents_tid']['id'] = 'field_uib_area_parents_tid';
   $handler->display->display_options['arguments']['field_uib_area_parents_tid']['table'] = 'field_data_field_uib_area_parents';
   $handler->display->display_options['arguments']['field_uib_area_parents_tid']['field'] = 'field_uib_area_parents_tid';
@@ -102,8 +102,6 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_area_parents_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_uib_area_parents_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_uib_area_parents_tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_uib_area_parents_tid']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['field_uib_area_parents_tid']['not'] = 0;
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
@@ -414,7 +412,7 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 1;
-  /* Field: Taxonomy term: Parents */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_uib_area_parents']['id'] = 'field_uib_area_parents';
   $handler->display->display_options['fields']['field_uib_area_parents']['table'] = 'field_data_field_uib_area_parents';
   $handler->display->display_options['fields']['field_uib_area_parents']['field'] = 'field_uib_area_parents';
@@ -436,11 +434,6 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_area_parents']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_uib_area_parents']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_uib_area_parents']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_uib_area_parents']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_uib_area_parents']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_uib_area_parents']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_uib_area_parents']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_uib_area_parents']['field_api_classes'] = 0;
   /* Field: Field: Place */
   $handler->display->display_options['fields']['field_uib_ou']['id'] = 'field_uib_ou';
   $handler->display->display_options['fields']['field_uib_ou']['table'] = 'field_data_field_uib_ou';
@@ -566,7 +559,7 @@ function uib_feature_area_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('Parents'),
+    t('Broken handler field_data_field_uib_area_parents.field_uib_area_parents'),
     t('Place'),
     t('Sebra ID'),
     t('Type'),

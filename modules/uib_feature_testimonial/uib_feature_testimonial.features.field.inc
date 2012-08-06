@@ -19,31 +19,43 @@ function uib_feature_testimonial_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_uib_area',
       'foreign keys' => array(
-        'tid' => array(
+        'node' => array(
           'columns' => array(
-            'tid' => 'tid',
+            'target_id' => 'nid',
           ),
-          'table' => 'taxonomy_term_data',
+          'table' => 'node',
         ),
       ),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'target_id' => array(
+          0 => 'target_id',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'entityreference',
       'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'area',
-            'parent' => '0',
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'field_uib_area_parents_node:target_id',
+            'property' => 'nid',
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'area' => 'area',
           ),
         ),
-        'entity_translation_sync' => FALSE,
+        'handler_submit' => 'Change handler',
+        'target_type' => 'node',
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'uib_testimonial',
@@ -53,10 +65,12 @@ function uib_feature_testimonial_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '10',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 16,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -68,19 +82,19 @@ function uib_feature_testimonial_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_uib_area',
       'label' => 'Area',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
-        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'taxonomy',
+        'active' => 1,
+        'module' => 'entityreference',
         'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
         ),
-        'type' => 'taxonomy_autocomplete',
+        'type' => 'entityreference_autocomplete',
         'weight' => '1',
       ),
     ),
@@ -455,7 +469,7 @@ function uib_feature_testimonial_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '18',
+        'weight' => '14',
       ),
     ),
   );
@@ -951,7 +965,7 @@ function uib_feature_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '16',
+        'weight' => '13',
       ),
     ),
   );
@@ -1022,7 +1036,7 @@ function uib_feature_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '12',
       ),
     ),
   );
