@@ -337,7 +337,7 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('path', 'path');
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
-    $this->addFieldMapping('field_uib_area_parents', 'area_parent_ids')
+    $this->addFieldMapping('field_uib_area_parents_node', 'area_parent_ids')
       ->sourceMigration('Area')
       ->arguments(array('source_type' => 'nid'));
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
@@ -353,12 +353,12 @@ class AreaMigration extends Migration {
   }
 
   protected function createStub($migration, $source_id) {
-    $term = new stdClass;
-    $term->type = 'area';
-    $term->name = t('Area stub for ') . $source_id[0];
-    $term->field_uib_w2_id['und'][0]['value'] = $source_id[0];
-    taxonomy_term_save($term);
-    return array($term->tid);
+    $node = new stdClass;
+    $node->type = 'area';
+    $node->title = t('Area stub for ') . $source_id[0];
+    $node->field_uib_w2_id['und'][0]['value'] = $source_id[0];
+    node_save($node);
+    return array($node->nid);
   }
 
   public function prepareRow($row) {
