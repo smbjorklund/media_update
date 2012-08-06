@@ -40,6 +40,7 @@ function uib_feature_article_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -69,6 +70,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Area',
       'required' => 1,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -114,6 +116,7 @@ function uib_feature_article_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -143,6 +146,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Type',
       'required' => 1,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -179,6 +183,7 @@ function uib_feature_article_field_default_fields() {
       'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'handler' => 'base',
         'handler_settings' => array(
           'behaviors' => array(
@@ -227,6 +232,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Byline',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -267,6 +273,7 @@ function uib_feature_article_field_default_fields() {
       'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'handler' => 'base',
         'handler_settings' => array(
           'behaviors' => array(
@@ -315,6 +322,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Contacts',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -346,6 +354,7 @@ function uib_feature_article_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 'day',
           'hour' => 'hour',
@@ -395,6 +404,7 @@ function uib_feature_article_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -440,6 +450,9 @@ function uib_feature_article_field_default_fields() {
       'settings' => array(
         'display_default' => 0,
         'display_field' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -470,6 +483,7 @@ function uib_feature_article_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => 'attachments',
         'file_extensions' => 'txt rtf pdf odf',
         'max_filesize' => '',
@@ -525,6 +539,7 @@ function uib_feature_article_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -555,6 +570,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Kicker',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -593,7 +609,9 @@ function uib_feature_article_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -622,6 +640,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Lead',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -659,6 +678,7 @@ function uib_feature_article_field_default_fields() {
           'url_cutoff' => 80,
         ),
         'enable_tokens' => 1,
+        'entity_translation_sync' => FALSE,
         'title' => 'optional',
         'title_maxlength' => 128,
         'title_value' => '',
@@ -703,6 +723,7 @@ function uib_feature_article_field_default_fields() {
           'url_cutoff' => '80',
         ),
         'enable_tokens' => 1,
+        'entity_translation_sync' => FALSE,
         'title' => 'required',
         'title_maxlength' => '128',
         'title_value' => '',
@@ -744,6 +765,7 @@ function uib_feature_article_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -774,6 +796,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Location',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -815,6 +838,9 @@ function uib_feature_article_field_default_fields() {
       'settings' => array(
         'display_default' => 0,
         'display_field' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -847,6 +873,7 @@ function uib_feature_article_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => 'media',
         'file_extensions' => 'txt',
         'max_filesize' => '',
@@ -904,6 +931,9 @@ function uib_feature_article_field_default_fields() {
       'settings' => array(
         'display_default' => 0,
         'display_field' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -936,6 +966,7 @@ function uib_feature_article_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => 'media',
         'file_extensions' => 'jpg png',
         'max_filesize' => '',
@@ -991,6 +1022,7 @@ function uib_feature_article_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -1021,6 +1053,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Menu title w2',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1048,7 +1081,9 @@ function uib_feature_article_field_default_fields() {
       'indexes' => array(),
       'locked' => '0',
       'module' => 'number',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'number_integer',
     ),
@@ -1082,6 +1117,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Weight',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max' => '',
         'min' => '',
         'prefix' => '',
@@ -1121,7 +1157,9 @@ function uib_feature_article_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -1150,6 +1188,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Text',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
@@ -1189,6 +1228,7 @@ function uib_feature_article_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '40',
       ),
       'translatable' => '0',
@@ -1219,6 +1259,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'ID w2',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1258,6 +1299,7 @@ function uib_feature_article_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -1288,6 +1330,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Parent ID w2',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1327,6 +1370,7 @@ function uib_feature_article_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -1357,6 +1401,7 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Path w2',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),

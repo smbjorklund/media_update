@@ -40,6 +40,7 @@ function uib_feature_testimonial_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -69,6 +70,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Area',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -108,6 +110,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -138,6 +141,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Education',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -177,6 +181,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -207,6 +212,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Exchange place',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -246,6 +252,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -276,6 +283,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Exchange text',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -314,7 +322,9 @@ function uib_feature_testimonial_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -343,6 +353,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Lead',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -384,6 +395,9 @@ function uib_feature_testimonial_field_default_fields() {
       'settings' => array(
         'display_default' => 0,
         'display_field' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -414,6 +428,7 @@ function uib_feature_testimonial_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => '',
         'file_extensions' => 'txt',
         'max_filesize' => '',
@@ -469,6 +484,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -499,6 +515,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Name',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -538,6 +555,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -568,6 +586,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Organization',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -607,6 +626,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '1',
@@ -637,6 +657,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Position',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -676,6 +697,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -706,6 +728,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Quote',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -745,6 +768,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -775,6 +799,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Related studyprogrammes',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -813,7 +838,9 @@ function uib_feature_testimonial_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -842,6 +869,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Text',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -881,6 +909,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '40',
       ),
       'translatable' => '0',
@@ -911,6 +940,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'ID w2',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -950,6 +980,7 @@ function uib_feature_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -980,6 +1011,7 @@ function uib_feature_testimonial_field_default_fields() {
       'label' => 'Path w2',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
