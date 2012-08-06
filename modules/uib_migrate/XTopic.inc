@@ -30,7 +30,7 @@ class XTopic extends stdClass {
     $this->slug = basename($this->path);
     $this->type = (string)$topic->type['name'];
 
-    $site = (string)$topic->site['no_site'] or $site = (string)$topic->site['ref'];
+    $site = (string)$topic->site['ref'];
     $this->is_site = $site == $id;
     if (!$this->is_site) {
       $this->site = $site;
@@ -82,16 +82,6 @@ class XTopic extends stdClass {
         }
         $this->$fname = (string)$field;
       }
-    }
-
-    if ($this->is_site and !$shallow and $topic->site['lang'] == 'no' and $topic->site['en_site']) {
-      $en_topic = new XTopic($topic->site['en_site'], TRUE, 'english site');
-      if (isset($en_topic->text))
-        $this->text_en = $en_topic->text;
-      if (isset($en_topic->profiletext))
-        $this->profiletext_en = $en_topic->profiletext;
-      if (isset($en_topic->fullkampanjetittel))
-        $this->fullkampanjetittel_en = $en_topic->fullkampanjetittel;
     }
 
     $xlink = array();
@@ -189,9 +179,7 @@ class XTopic extends stdClass {
       'stikktittel' => t('Kicker'),
       'dc_description' => t('Summary of the article'),
       'text' => t('The main text of the article or area; raw HTML'),
-      'text_en' => t('The english main text of an area; raw HTML'),
       'profiletext' => t('The norwegian profile text area; raw HTML'),
-      'profiletext_en' => t('The english profile text area; raw HTML'),
       'omraadekode' => t('Sebra Area ID'),
       'nav_parent_id' => t('The serial number of the parent topic (applies for InfoPages and NavPages)'),
       'nav_weight' => t('Sort order among siblings'),
@@ -203,7 +191,6 @@ class XTopic extends stdClass {
       'contacts' => t('Contacts for events'),
       'location' => t('Location for events'),
       'fullkampanjetittel' => t('Norwegian main title for Areas'),
-      'fullkampanjetittel_en' => t('English main title for Areas'),
       'menypunkttittel' => t('Menu title for infopages and navpages'),
 
       # Testimonial
