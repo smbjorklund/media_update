@@ -102,8 +102,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_nav_parent_id', 'nav_parent_id');
     $this->addFieldMapping('field_uib_nav_weight', 'nav_weight');
     $this->addFieldMapping('field_uib_area', 'site')
-      ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'nid'));
+      ->sourceMigration('Area');
     $this->addFieldMapping('uid', 'author')
       ->sourceMigration('User');
     $this->addFieldMapping('field_uib_byline', 'byline')
@@ -258,8 +257,7 @@ class TestimonialMigration extends Migration {
     $this->addFieldMapping('field_uib_exchange_text', 'utvekslingsavsnitt');
     $this->addFieldMapping('field_uib_organization', 'organisation');
     $this->addFieldMapping('field_uib_area', 'site')
-      ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'nid'));
+      ->sourceMigration('Area');
 
   }
   public function prepareRow($row) {
@@ -339,8 +337,7 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
     $this->addFieldMapping('field_uib_area_parents_node', 'area_parent_ids')
-      ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'nid'));
+      ->sourceMigration('Area');
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
     //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
     $this->addFieldMapping('field_uib_text', 'text');
