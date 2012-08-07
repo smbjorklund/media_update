@@ -397,10 +397,11 @@ class AreaMigration extends Migration {
   }
 
   public function complete($node, $row) {
-    if ($row->no_site == $row->id) {
-      $node->tnid = $node->nid;
-      node_save($node);
-    }
+    // Set tnid; can't map it directly because we can't map to ourself
+    $node->tnid = $row->no_site == $row->id ? $node->nid :
+      $this->handleSourceMigration('Area', array($row->no_site), NULL, $this);
+    node_save($node);
+
     $weight = array_search($row->type, array(
       'fakultet', 'institutt', 'enhet',
       'section',
