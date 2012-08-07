@@ -397,6 +397,7 @@ class AreaMigration extends Migration {
     // Set tnid; can't map it directly because we can't map to ourself
     $node->tnid = $row->no_site == $row->id ? $node->nid :
       $this->handleSourceMigration('Area', array($row->no_site), NULL, $this);
+    unset($node->path);  // avoids setting the alias twice
     node_save($node);
 
     $weight = array_search($row->type, array(
