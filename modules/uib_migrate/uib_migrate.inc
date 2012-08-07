@@ -102,8 +102,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_nav_parent_id', 'nav_parent_id');
     $this->addFieldMapping('field_uib_nav_weight', 'nav_weight');
     $this->addFieldMapping('field_uib_area', 'site')
-      ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'nid'));
+      ->sourceMigration('Area');
     $this->addFieldMapping('uid', 'author')
       ->sourceMigration('User');
     $this->addFieldMapping('field_uib_byline', 'byline')
@@ -178,7 +177,7 @@ class NavPageMigration extends InfoPageMigration {
       $result = db_select('menu_links')
         ->fields('menu_links', array('mlid', 'link_path'))
         ->condition('menu_name', 'area')
-        ->condition('link_path', 'taxonomy/term/' . $node->field_uib_area['und'][0]['tid'])
+        ->condition('link_path', 'node/' . $node->field_uib_area['und'][0]['target_id'])
         ->condition('depth', 1);
       foreach($result->execute() as $item) {
         $area_mlid = $item->mlid;
@@ -258,8 +257,7 @@ class TestimonialMigration extends Migration {
     $this->addFieldMapping('field_uib_exchange_text', 'utvekslingsavsnitt');
     $this->addFieldMapping('field_uib_organization', 'organisation');
     $this->addFieldMapping('field_uib_area', 'site')
-      ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'nid'));
+      ->sourceMigration('Area');
 
   }
   public function prepareRow($row) {
@@ -339,8 +337,7 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
     $this->addFieldMapping('field_uib_area_parents_node', 'area_parent_ids')
-      ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'nid'));
+      ->sourceMigration('Area');
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
     //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
     $this->addFieldMapping('field_uib_text', 'text');
@@ -397,10 +394,11 @@ class AreaMigration extends Migration {
   }
 
   public function complete($node, $row) {
-    if ($row->no_site == $row->id) {
-      $node->tnid = $node->nid;
-      node_save($node);
-    }
+    // Set tnid; can't map it directly because we can't map to ourself
+    $node->tnid = $row->no_site == $row->id ? $node->nid :
+      $this->handleSourceMigration('Area', array($row->no_site), NULL, $this);
+    node_save($node);
+
     $weight = array_search($row->type, array(
       'fakultet', 'institutt', 'enhet',
       'section',
