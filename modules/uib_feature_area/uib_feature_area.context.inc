@@ -33,7 +33,7 @@ function uib_feature_area_context_default_contexts() {
           'module' => 'views',
           'delta' => 'area_kids-block',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '2',
         ),
       ),
     ),

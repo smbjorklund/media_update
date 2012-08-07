@@ -32,17 +32,17 @@ function uib_feature_setup_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
-        'menu_block-top-area-menu' => array(
-          'module' => 'menu_block',
-          'delta' => 'top-area-menu',
-          'region' => 'sidebar_first',
-          'weight' => '-9',
-        ),
         'views-faculties-block_1' => array(
           'module' => 'views',
           'delta' => 'faculties-block_1',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '5',
+        ),
+        'menu_block-top-area-menu' => array(
+          'module' => 'menu_block',
+          'delta' => 'top-area-menu',
+          'region' => 'sidebar_first',
+          'weight' => '0',
         ),
         'menu_block-page-area-menu' => array(
           'module' => 'menu_block',
