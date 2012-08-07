@@ -27,6 +27,7 @@ class XTopic extends stdClass {
     $this->title = (string)$topic->title;
     $this->state = (string)$topic['state'];
     $this->path = substr($topic['path'], 1);
+    $this->path = preg_replace('/\\/en($|\\/)/', '$1', $this->path);
     $this->slug = basename($this->path);
     $this->type = (string)$topic->type['name'];
 
