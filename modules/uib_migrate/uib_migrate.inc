@@ -345,6 +345,7 @@ class AreaMigration extends Migration {
     //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
     $this->addFieldMapping('field_uib_text', 'text');
     $this->addFieldMapping('field_uib_text2', 'profiletext');
+    $this->addFieldMapping('tnid', 'no_site')->sourceMigration('Area');
   }
 
   protected function createStub($migration, $source_id) {

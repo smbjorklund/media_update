@@ -32,7 +32,10 @@ class XTopic extends stdClass {
 
     $site = (string)$topic->site['ref'];
     $this->is_site = $site == $id;
-    if (!$this->is_site) {
+    if ($this->is_site) {
+      $this->no_site = (string)$topic->site['no_site'] or $this->no_site = $site;
+    }
+    else {
       $this->site = $site;
     }
     $this->site_lang = (string)$topic->site['lang'];
