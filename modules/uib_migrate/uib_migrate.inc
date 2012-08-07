@@ -178,7 +178,7 @@ class NavPageMigration extends InfoPageMigration {
       $result = db_select('menu_links')
         ->fields('menu_links', array('mlid', 'link_path'))
         ->condition('menu_name', 'area')
-        ->condition('link_path', 'taxonomy/term/' . $node->field_uib_area['und'][0]['tid'])
+        ->condition('link_path', 'node/' . $node->field_uib_area['und'][0]['target_id'])
         ->condition('depth', 1);
       foreach($result->execute() as $item) {
         $area_mlid = $item->mlid;
