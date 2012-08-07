@@ -172,7 +172,7 @@ function uib_feature_area_views_default_views() {
   $view->name = 'faculties';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'taxonomy_term_data';
+  $view->base_table = 'node';
   $view->human_name = 'Faculties';
   $view->core = 7;
   $view->api_version = '3.0';
@@ -187,95 +187,61 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid']['id'] = 'tid';
-  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['tid']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['tid']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['tid']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['tid']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['tid']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['tid']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['tid']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['tid']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['tid']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['tid']['format_plural'] = 0;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['name_field']['id'] = 'name_field';
-  $handler->display->display_options['fields']['name_field']['table'] = 'field_data_name_field';
-  $handler->display->display_options['fields']['name_field']['field'] = 'name_field';
-  $handler->display->display_options['fields']['name_field']['label'] = '';
-  $handler->display->display_options['fields']['name_field']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['name_field']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['name_field']['alter']['path'] = 'taxonomy/term/[tid]';
-  $handler->display->display_options['fields']['name_field']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['name_field']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['name_field']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['name_field']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['name_field']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['name_field']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['name_field']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['name_field']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['name_field']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['name_field']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['name_field']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['name_field']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['name_field']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['name_field']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['name_field']['hide_alter_empty'] = 1;
-  /* Sort criterion: Taxonomy term: Name */
-  $handler->display->display_options['sorts']['name']['id'] = 'name';
-  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['sorts']['name']['field'] = 'name';
-  /* Filter criterion: Taxonomy vocabulary: Machine name */
-  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
-  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
-  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
-  $handler->display->display_options['filters']['machine_name']['value'] = array(
-    'area' => 'area',
-  );
-  /* Filter criterion: Only faculties */
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type (field_uib_area_type) */
   $handler->display->display_options['filters']['field_uib_area_type_tid']['id'] = 'field_uib_area_type_tid';
   $handler->display->display_options['filters']['field_uib_area_type_tid']['table'] = 'field_data_field_uib_area_type';
   $handler->display->display_options['filters']['field_uib_area_type_tid']['field'] = 'field_uib_area_type_tid';
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['ui_name'] = 'Only faculties';
   $handler->display->display_options['filters']['field_uib_area_type_tid']['value'] = array(
-    0 => '4',
+    4 => '4',
   );
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['expose']['operator_id'] = 'field_uib_area_type_tid_op';
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['expose']['label'] = 'Type (field_uib_area_type)';
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['expose']['operator'] = 'field_uib_area_type_tid_op';
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['expose']['identifier'] = 'field_uib_area_type_tid';
   $handler->display->display_options['filters']['field_uib_area_type_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_uib_area_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_uib_area_type_tid']['vocabulary'] = 'area_type';
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['error_message'] = 1;
+  /* Filter criterion: Content translation: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'faculties';
 
   /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['block_description'] = 'Faculties';
   $translatables['faculties'] = array(
     t('Master'),
     t('Faculties'),
@@ -285,11 +251,6 @@ function uib_feature_area_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Term ID'),
-    t('.'),
-    t(','),
-    t('taxonomy/term/[tid]'),
-    t('Type (field_uib_area_type)'),
     t('Page'),
     t('Block'),
   );
