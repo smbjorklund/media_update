@@ -345,7 +345,6 @@ class AreaMigration extends Migration {
     //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
     $this->addFieldMapping('field_uib_text', 'text');
     $this->addFieldMapping('field_uib_text2', 'profiletext');
-    $this->addFieldMapping('tnid', 'no_site')->sourceMigration('Area');
   }
 
   protected function createStub($migration, $source_id) {
@@ -398,6 +397,10 @@ class AreaMigration extends Migration {
   }
 
   public function complete($node, $row) {
+    if ($row->no_site == $row->id) {
+      $node->tnid = $node->nid;
+      node_save($node);
+    }
     $weight = array_search($row->type, array(
       'fakultet', 'institutt', 'enhet',
       'section',
