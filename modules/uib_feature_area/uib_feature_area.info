@@ -23,7 +23,6 @@ dependencies[] = panels
 dependencies[] = phone
 dependencies[] = strongarm
 dependencies[] = taxonomy
-dependencies[] = title
 dependencies[] = views
 features[context][] = area_kids
 features[ctools][] = context:context:3
