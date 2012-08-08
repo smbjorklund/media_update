@@ -6,8 +6,11 @@
 This just documents how Gisle has set up Apache on OS X to allow local developement.
 In the description below replace _username_ with your own.
 
-First you need to enable Apache and PHP.  Apache is enabled from "System Preferences >> Sharing >> Web sharing".
-This will start up Apache and set up the _~/Sites_ directory mapped to <http://localhost/~username/>.
+First you need to enable Apache and PHP.  For Mac OS X 10.7 "Lion" and older
+Apache is enabled from "System Preferences >> Sharing >> Web sharing".  This
+will start up Apache and set up the _~/Sites_ directory mapped to
+<http://localhost/~username/>.  For "Mountain Lion" the is no GUI to enable
+apache, so you would just have to enable it manually.
 
 The configuration files for Apache is found in the _/etc/apache2_ directory.
 
