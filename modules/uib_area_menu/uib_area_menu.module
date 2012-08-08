@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Impliments hook_menu_block_blocks
+ */
+
 function uib_area_menu_menu_block_blocks() {
   return array(
     'top-area-menu' => array(
