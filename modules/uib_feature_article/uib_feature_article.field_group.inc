@@ -21,7 +21,7 @@ function uib_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Dates',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_uib_date',
     ),
@@ -48,7 +48,7 @@ function uib_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'GEO and addresses',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_uib_contacts',
       1 => 'field_uib_location',
@@ -76,7 +76,7 @@ function uib_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Links',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_uib_links',
     ),
@@ -103,7 +103,7 @@ function uib_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Media and attachments',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_uib_files',
       1 => 'field_uib_main_media',
@@ -132,7 +132,7 @@ function uib_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'W2 and meta data',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'field_uib_menu_title_w2',
       1 => 'field_uib_nav_weight',
