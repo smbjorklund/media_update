@@ -402,7 +402,7 @@ function uib_feature_area_field_default_fields() {
           'view' => array(
             'args' => array(),
             'display_name' => 'entityreference_1',
-            'view_name' => 'newlist',
+            'view_name' => 'newslist',
           ),
         ),
         'handler_submit' => 'Change handler',

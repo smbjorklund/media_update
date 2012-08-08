@@ -257,11 +257,11 @@ function uib_feature_area_views_default_views() {
   $export['faculties'] = $view;
 
   $view = new view;
-  $view->name = 'newlist';
-  $view->description = 'A view that is useb by the newslist field on areas';
+  $view->name = 'newslist';
+  $view->description = 'A view that is used by the newslist field on areas';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Newlist';
+  $view->human_name = 'Newslist';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -323,7 +323,9 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_area']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_uib_area']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_uib_area']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_uib_area']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_uib_area']['settings'] = array(
+    'link' => 0,
+  );
   $handler->display->display_options['fields']['field_uib_area']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -361,7 +363,7 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $translatables['newlist'] = array(
+  $translatables['newslist'] = array(
     t('Master'),
     t('more'),
     t('Apply'),
@@ -374,7 +376,7 @@ function uib_feature_area_views_default_views() {
     t('Offset'),
     t('Entity Reference'),
   );
-  $export['newlist'] = $view;
+  $export['newslist'] = $view;
 
   return $export;
 }
