@@ -105,34 +105,33 @@ function uib_sebra__create_uib_ou($place_id) {
 
 function uib_sebra__sync_areas() {
   // Fill this array with what areas each user belongs to
-  $user_tid = array();
+  $user_target_id = array();
 
-  $area_type = taxonomy_vocabulary_machine_name_load('area');
   $query = new EntityFieldQuery;
   $query = $query
-    ->entityCondition('entity_type', 'taxonomy_term')
-    ->propertyCondition('vid', $area_type->vid)
+    ->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'area')
     ;
   $result = $query->execute();
 
   $got_them_all = TRUE;
 
-  foreach (array_keys($result['taxonomy_term']) as $tid) {
-    $term = taxonomy_term_load($tid);
-    $sebra_id = $term->field_uib_sebra_id['und'][0]['value'];
+  foreach (array_keys($result['node']) as $nid) {
+    $node = node_load($nid);
+    $sebra_id = $node->field_uib_sebra_id['und'][0]['value'];
     if ($sebra_id) {
       $area_doc = uib_sebra__sws_get("omraader?omraadekode=$sebra_id");
       if (empty($area_doc)) {
         uibx_log("Can't get $sebra_id", 'error');
         $got_them_all = FALSE;
       }
-      #print_r(array($tid, $sebra_id, $area_doc));
+      #print_r(array($nid, $sebra_id, $area_doc));
       foreach ($area_doc->omraade->visninger->uibid as $uname) {
-        $user_tid[(string)$uname][]['target_id'] = $tid;
+        $user_target_id[(string)$uname][]['target_id'] = $nid;
       }
     }
     else {
-      uibx_log("No sebra_id for /taxonomy/term/$tid", 'warning');
+      uibx_log("No sebra_id for /node/$nid", 'warning');
     }
   }
 
@@ -142,13 +141,13 @@ function uib_sebra__sync_areas() {
   }
 
   $unchanged = 0;
-  foreach (array_keys($user_tid) as $username) {
+  foreach (array_keys($user_target_id) as $username) {
     $account = user_load_by_name($username);
     if (!$account)
       $account = uib_sebra__sync_user($username);
-    if (!isset($account->field_uib_staff_at) || $account->field_uib_staff_at['und'] != $user_tid[$username]) {
+    if (!isset($account->field_uib_staff_at) || $account->field_uib_staff_at['und'] != $user_target_id[$username]) {
       user_save($account, array(
-        'field_uib_staff_at' => array('und' => $user_tid[$username]),
+        'field_uib_staff_at' => array('und' => $user_target_id[$username]),
       ));
       uibx_log("Updated staff_at setting for $username /user/$account->uid");
     }
