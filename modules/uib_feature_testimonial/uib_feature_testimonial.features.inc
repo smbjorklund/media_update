@@ -20,12 +20,12 @@ function uib_feature_testimonial_ctools_plugin_api() {
 function uib_feature_testimonial_node_info() {
   $items = array(
     'uib_testimonial' => array(
-      'name' => t('Testimonial'),
+      'name' => t('Vitnesbyrd'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Norsk beskrivelse manger her.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
+      'title_label' => t('Tittel'),
+      'help' => t('Norsk beskrivelse manger her.'),
     ),
   );
   return $items;

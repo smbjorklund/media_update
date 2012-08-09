@@ -31,12 +31,12 @@ function uib_feature_article_views_api() {
 function uib_feature_article_node_info() {
   $items = array(
     'uib_article' => array(
-      'name' => t('Article'),
+      'name' => t('Artikkel'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Norsk beskrivelse manger her.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
+      'title_label' => t('Tittel'),
+      'help' => t('Norsk beskrivelse manger her.'),
     ),
   );
   return $items;
