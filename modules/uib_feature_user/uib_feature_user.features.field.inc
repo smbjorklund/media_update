@@ -263,90 +263,6 @@ function uib_feature_user_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_uib_staff_at'.
-  $fields['user-user-field_uib_staff_at'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_uib_staff_at',
-      'foreign keys' => array(
-        'taxonomy_term_data' => array(
-          'columns' => array(
-            'target_id' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'entityreference',
-      'settings' => array(
-        'handler' => 'base',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'views-select-list' => array(
-              'status' => 0,
-            ),
-          ),
-          'sort' => array(
-            'direction' => 'ASC',
-            'field' => 'field_uib_area_parents_node:target_id',
-            'property' => 'nid',
-            'type' => 'none',
-          ),
-          'target_bundles' => array(
-            'area' => 'area',
-          ),
-        ),
-        'handler_submit' => 'Change handler',
-        'target_type' => 'node',
-      ),
-      'translatable' => '0',
-      'type' => 'entityreference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'user',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
-          'weight' => 6,
-        ),
-      ),
-      'entity_type' => 'user',
-      'field_name' => 'field_uib_staff_at',
-      'label' => 'Staff at',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => 0,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'entityreference',
-        'settings' => array(
-          'match_operator' => 'CONTAINS',
-          'path' => '',
-          'size' => '60',
-        ),
-        'type' => 'entityreference_autocomplete',
-        'weight' => '14',
-      ),
-    ),
-  );
-
   // Exported field: 'user-user-field_uib_user_domain'.
   $fields['user-user-field_uib_user_domain'] = array(
     'field_config' => array(
@@ -487,7 +403,6 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Last name');
   t('Position');
   t('Slug');
-  t('Staff at');
   t('The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
 
 The domain \'local\' is for local users.  The domain \'uib\' is for used for usernames allocated by Sebra. ');

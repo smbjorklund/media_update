@@ -38,6 +38,7 @@ features[field][] = node-area-field_uib_media
 features[field][] = node-area-field_uib_newslist
 features[field][] = node-area-field_uib_ou
 features[field][] = node-area-field_uib_sebra_id
+features[field][] = node-area-field_uib_staff
 features[field][] = node-area-field_uib_text
 features[field][] = node-area-field_uib_text2
 features[field][] = node-area-field_uib_w2_id
