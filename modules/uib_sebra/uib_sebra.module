@@ -104,9 +104,6 @@ function uib_sebra__create_uib_ou($place_id) {
 }
 
 function uib_sebra__sync_areas() {
-  // Fill this array with what areas each user belongs to
-  $user_target_id = array();
-
   $query = new EntityFieldQuery;
   $query = $query
     ->entityCondition('entity_type', 'node')
@@ -114,48 +111,37 @@ function uib_sebra__sync_areas() {
     ;
   $result = $query->execute();
 
-  $got_them_all = TRUE;
-
+  $unchanged = 0;
   foreach (array_keys($result['node']) as $nid) {
-    $node = node_load($nid);
-    $sebra_id = $node->field_uib_sebra_id['und'][0]['value'];
+    $area = node_load($nid);
+    $sebra_id = $area->field_uib_sebra_id['und'][0]['value'];
     if ($sebra_id) {
       $area_doc = uib_sebra__sws_get("omraader?omraadekode=$sebra_id");
       if (empty($area_doc)) {
         uibx_log("Can't get $sebra_id", 'error');
-        $got_them_all = FALSE;
       }
       #print_r(array($nid, $sebra_id, $area_doc));
+      $staff = array();
       foreach ($area_doc->omraade->visninger->uibid as $uname) {
-        $user_target_id[(string)$uname][]['target_id'] = $nid;
+        $account = user_load_by_name($uname);
+        if (!$account)
+          $account = uib_sebra__sync_user($uname);
+        $staff['und'][]['target_id'] = $account->uid;
+      }
+      if (!isset($area->field_uib_staff) || $area->field_uib_staff != $staff) {
+        $area->field_uib_staff = $staff;
+        node_save($area);
+        uibx_log("Updated staff setting area /node/$nid");
+      }
+      else {
+        $unchanged++;
       }
     }
     else {
       uibx_log("No sebra_id for /node/$nid", 'warning');
     }
   }
-
-  if (!$got_them_all) {
-    uibx_log("Can't update staff_at since some areas failed to load", 'error');
-    return;
-  }
-
-  $unchanged = 0;
-  foreach (array_keys($user_target_id) as $username) {
-    $account = user_load_by_name($username);
-    if (!$account)
-      $account = uib_sebra__sync_user($username);
-    if (!isset($account->field_uib_staff_at) || $account->field_uib_staff_at['und'] != $user_target_id[$username]) {
-      user_save($account, array(
-        'field_uib_staff_at' => array('und' => $user_target_id[$username]),
-      ));
-      uibx_log("Updated staff_at setting for $username /user/$account->uid");
-    }
-    else {
-      $unchanged++;
-    }
-  }
-  uibx_log("staff_at unchanged for $unchanged users");
+  uibx_log("staff attribute unchanged for $unchanged areas");
 }
 
 function uib_sebra__sync_users($limit) {
