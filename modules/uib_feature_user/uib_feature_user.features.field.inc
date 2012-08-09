@@ -160,6 +160,7 @@ function uib_feature_user_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '1',
@@ -295,8 +296,8 @@ function uib_feature_user_field_default_fields() {
           ),
           'sort' => array(
             'direction' => 'ASC',
-            'field' => 'description_field:value',
-            'property' => 'tid',
+            'field' => 'field_uib_area_parents_node:target_id',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -304,7 +305,7 @@ function uib_feature_user_field_default_fields() {
           ),
         ),
         'handler_submit' => 'Change handler',
-        'target_type' => 'taxonomy_term',
+        'target_type' => 'node',
       ),
       'translatable' => '0',
       'type' => 'entityreference',
@@ -439,6 +440,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '40',
       ),
       'translatable' => '0',

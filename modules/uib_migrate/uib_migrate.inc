@@ -102,8 +102,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_nav_parent_id', 'nav_parent_id');
     $this->addFieldMapping('field_uib_nav_weight', 'nav_weight');
     $this->addFieldMapping('field_uib_area', 'site')
-      ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'tid'));
+      ->sourceMigration('Area');
     $this->addFieldMapping('uid', 'author')
       ->sourceMigration('User');
     $this->addFieldMapping('field_uib_byline', 'byline')
@@ -178,7 +177,7 @@ class NavPageMigration extends InfoPageMigration {
       $result = db_select('menu_links')
         ->fields('menu_links', array('mlid', 'link_path'))
         ->condition('menu_name', 'area')
-        ->condition('link_path', 'taxonomy/term/' . $node->field_uib_area['und'][0]['tid'])
+        ->condition('link_path', 'node/' . $node->field_uib_area['und'][0]['target_id'])
         ->condition('depth', 1);
       foreach($result->execute() as $item) {
         $area_mlid = $item->mlid;
@@ -258,8 +257,7 @@ class TestimonialMigration extends Migration {
     $this->addFieldMapping('field_uib_exchange_text', 'utvekslingsavsnitt');
     $this->addFieldMapping('field_uib_organization', 'organisation');
     $this->addFieldMapping('field_uib_area', 'site')
-      ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'tid'));
+      ->sourceMigration('Area');
 
   }
   public function prepareRow($row) {
@@ -317,8 +315,6 @@ class ResearchTopicMigration extends Migration {
 }
 
 class AreaMigration extends Migration {
-  private $vid;
-
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('area'));
 
@@ -326,76 +322,44 @@ class AreaMigration extends Migration {
 
     $destination_machine_name = 'area';
 
-    $this->destination = new MigrateDestinationTerm($destination_machine_name);
-
-    // Get the $vid of the destination
-    $vids = array_keys(taxonomy_vocabulary_load_multiple(
-      array(),
-      array('machine_name' => $destination_machine_name)
-    ));
-    $this->vid = $vids[0];
+    $this->destination = new MigrateDestinationNode($destination_machine_name);
 
     $this->map = new MigrateSQLMap($this->machineName,
       XTopic::getKeySchema(),
       MigrateDestinationTerm::getKeySchema()
     );
 
-    $this->addFieldMapping('name', 'title');
+    $this->addFieldMapping('title', 'title');
+    $this->addFieldMapping('language', 'site_lang');
     $this->addFieldMapping('description')->issueGroup(t('DNM'));
     $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('path', 'path');
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
-    $this->addFieldMapping('field_uib_area_parents', 'area_parent_ids')
-      ->sourceMigration('Area')
-      ->arguments(array('source_type' => 'tid'));
+    $this->addFieldMapping('field_uib_area_parents_node', 'area_parent_ids')
+      ->sourceMigration('Area');
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
     //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
-
-    // Can't get this to work; so we just transfer the values in the prepare
-    // callback instead.
-    //
-    //$this->addFieldMapping('field_uib_trans_text', 'text')
-    //  ->arguments(array('language' => 'nb'));
-    //$this->addFieldMapping('field_uib_trans_text', 'text_en')
-    //  ->arguments(array('language' => 'en'));
+    $this->addFieldMapping('field_uib_text', 'text');
+    $this->addFieldMapping('field_uib_text2', 'profiletext');
   }
 
   protected function createStub($migration, $source_id) {
-    $term = new stdClass;
-    $term->vid = $this->vid;
-    $term->name = t('Area stub for ') . $source_id[0];
-    $term->field_uib_w2_id['und'][0]['value'] = $source_id[0];
-    taxonomy_term_save($term);
-    return array($term->tid);
+    $node = new stdClass;
+    $node->type = 'area';
+    $node->title = t('Area stub for ') . $source_id[0];
+    $node->field_uib_w2_id['und'][0]['value'] = $source_id[0];
+    node_save($node);
+    return array($node->nid);
   }
 
   public function prepareRow($row) {
     if ($row->state != 'published') {
       return FALSE;
     }
-    if ($row->alpha2_code != 'no') {
-      return FALSE;
-    }
   }
 
   public function prepare($term, $row) {
-    // Handle the translatable files here.  The field mapping can't deal with
-    // multiple source values mapping to a single translatable field
-    $term->name_field['nb'][0]['value'] = $row->title;
-    $term->name_field['en'][0]['value'] = $row->engelsk_navn;
-
-    // Less warnings if we can assume these fields are set
-    foreach (array('text', 'text_en', 'profiletext', 'profiletext_en') as $attr) {
-      if (!isset($row->$attr))
-        $row->$attr = '';
-    }
-
-    $term->field_uib_trans_text['nb'][0]['value'] = (isset($row->fullkampanjetittel) ? "<h2>$row->fullkampanjetittel</h2>" : "") . $row->text;
-    $term->field_uib_trans_text['en'][0]['value'] = (isset($row->fullkampanjetittel_en) ? "<h2>$row->fullkampanjetittel_en</h2>" : "") . $row->text_en;
-    $term->field_uib_trans_text2['en'][0]['value'] = $row->profiletext_en;
-    $term->field_uib_trans_text2['nb'][0]['value'] = $row->profiletext;
-
     if (isset($row->placeid)) {
       // Check if we already have a 'uib_ou' node with the given placeid
       $nid = uib_sebra__uib_ou_nid($row->placeid);
@@ -429,7 +393,13 @@ class AreaMigration extends Migration {
     //print_r($term);
   }
 
-  public function complete($term, $row) {
+  public function complete($node, $row) {
+    // Set tnid; can't map it directly because we can't map to ourself
+    $node->tnid = $row->no_site == $row->id ? $node->nid :
+      $this->handleSourceMigration('Area', array($row->no_site), NULL, $this);
+    unset($node->path);  // avoids setting the alias twice
+    node_save($node);
+
     $weight = array_search($row->type, array(
       'fakultet', 'institutt', 'enhet',
       'section',
@@ -441,8 +411,8 @@ class AreaMigration extends Migration {
 
     $menu_link = array(
       'menu_name' => 'area',
-      'link_path' => drupal_get_normal_path('taxonomy/term/' . $term->tid),
-      'link_title' => $term->name_field['nb'][0]['value'] . ' (mlink)',
+      'link_path' => drupal_get_normal_path('node/' . $node->nid),
+      'link_title' => $node->title . ' (mlink)',
       'weight' => $weight,
     );
     menu_link_save($menu_link);

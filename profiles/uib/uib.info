@@ -22,4 +22,6 @@ dependencies[] = devel
 dependencies[] = diff
 dependencies[] = module_filter
 dependencies[] = menu
+dependencies[] = contextual
+dependencies[] = i18n_node
 files[] = uib.profile

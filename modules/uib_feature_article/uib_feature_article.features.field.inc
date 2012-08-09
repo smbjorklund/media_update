@@ -19,31 +19,43 @@ function uib_feature_article_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_uib_area',
       'foreign keys' => array(
-        'tid' => array(
+        'node' => array(
           'columns' => array(
-            'tid' => 'tid',
+            'target_id' => 'nid',
           ),
-          'table' => 'taxonomy_term_data',
+          'table' => 'node',
         ),
       ),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'target_id' => array(
+          0 => 'target_id',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'entityreference',
       'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'area',
-            'parent' => '0',
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'field_uib_area_parents_node:target_id',
+            'property' => 'nid',
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'area' => 'area',
           ),
         ),
-        'entity_translation_sync' => FALSE,
+        'handler_submit' => 'Change handler',
+        'target_type' => 'node',
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'uib_article',
@@ -53,10 +65,12 @@ function uib_feature_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '4',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 18,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -70,18 +84,18 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Area',
       'required' => 1,
       'settings' => array(
-        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'taxonomy',
+        'active' => 1,
+        'module' => 'entityreference',
         'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
         ),
-        'type' => 'taxonomy_autocomplete',
-        'weight' => '2',
+        'type' => 'entityreference_autocomplete',
+        'weight' => '3',
       ),
     ),
   );
@@ -154,7 +168,7 @@ function uib_feature_article_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -244,7 +258,7 @@ function uib_feature_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -581,7 +595,7 @@ function uib_feature_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -651,7 +665,7 @@ function uib_feature_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -1199,7 +1213,7 @@ function uib_feature_article_field_default_fields() {
           'rows' => '10',
         ),
         'type' => 'text_textarea',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );

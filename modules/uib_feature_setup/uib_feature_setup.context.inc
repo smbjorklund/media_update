@@ -15,7 +15,7 @@ function uib_feature_setup_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'navigation';
   $context->description = 'Basic navigation for the whole site';
-  $context->tag = '';
+  $context->tag = 'block';
   $context->conditions = array(
     'sitewide' => array(
       'values' => array(
@@ -32,17 +32,17 @@ function uib_feature_setup_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
+        'views-faculties-block_1' => array(
+          'module' => 'views',
+          'delta' => 'faculties-block_1',
+          'region' => 'sidebar_first',
+          'weight' => '5',
+        ),
         'menu_block-top-area-menu' => array(
           'module' => 'menu_block',
           'delta' => 'top-area-menu',
           'region' => 'sidebar_first',
-          'weight' => '-9',
-        ),
-        'views-faculties-block' => array(
-          'module' => 'views',
-          'delta' => 'faculties-block',
-          'region' => 'sidebar_first',
-          'weight' => '-8',
+          'weight' => '0',
         ),
         'menu_block-page-area-menu' => array(
           'module' => 'menu_block',
@@ -58,6 +58,7 @@ function uib_feature_setup_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Basic navigation for the whole site');
+  t('block');
   $export['navigation'] = $context;
 
   return $export;
