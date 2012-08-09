@@ -51,7 +51,6 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
   /* Contextual filter: Content: Parents (field_uib_area_parents_node) */
   $handler->display->display_options['arguments']['field_uib_area_parents_node_target_id']['id'] = 'field_uib_area_parents_node_target_id';
   $handler->display->display_options['arguments']['field_uib_area_parents_node_target_id']['table'] = 'field_data_field_uib_area_parents_node';
@@ -209,7 +208,6 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
