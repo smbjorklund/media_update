@@ -215,22 +215,19 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type (field_uib_area_type) */
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['id'] = 'field_uib_area_type_tid';
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['table'] = 'field_data_field_uib_area_type';
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['field'] = 'field_uib_area_type_tid';
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['value'] = array(
-    4 => '4',
-  );
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_uib_area_type_tid']['vocabulary'] = 'area_type';
   /* Filter criterion: Content translation: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
+  /* Filter criterion: Content: Type (field_uib_area_type) */
+  $handler->display->display_options['filters']['field_uib_area_type_value']['id'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['field'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['value'] = array(
+    'faculty' => 'faculty',
   );
 
   /* Display: Page */

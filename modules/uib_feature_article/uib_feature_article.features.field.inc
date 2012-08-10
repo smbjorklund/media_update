@@ -108,45 +108,41 @@ function uib_feature_article_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_uib_article_type',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
+      'foreign keys' => array(),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'value' => array(
+          0 => 'value',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'article_type',
-            'parent' => '0',
-          ),
+          'news' => 'news',
+          'infopage' => 'info page',
+          'event' => 'event',
         ),
-        'entity_translation_sync' => FALSE,
+        'allowed_values_function' => '',
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'list_text',
     ),
     'field_instance' => array(
       'bundle' => 'uib_article',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 'news',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '5',
+          'type' => 'list_default',
+          'weight' => 19,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -160,15 +156,14 @@ function uib_feature_article_field_default_fields() {
       'label' => 'Type',
       'required' => 1,
       'settings' => array(
-        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'options',
         'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '2',
+        'type' => 'options_select',
+        'weight' => '1',
       ),
     ),
   );
@@ -1078,7 +1073,7 @@ function uib_feature_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '24',
       ),
     ),
   );
@@ -1143,7 +1138,7 @@ function uib_feature_article_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '12',
+        'weight' => '25',
       ),
     ),
   );
@@ -1284,7 +1279,7 @@ function uib_feature_article_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '21',
       ),
     ),
   );
@@ -1355,7 +1350,7 @@ function uib_feature_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '23',
       ),
     ),
   );
@@ -1426,7 +1421,7 @@ function uib_feature_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '22',
       ),
     ),
   );

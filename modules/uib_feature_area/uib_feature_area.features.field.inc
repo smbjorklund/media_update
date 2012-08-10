@@ -110,49 +110,44 @@ function uib_feature_area_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_uib_area_type',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
+      'foreign keys' => array(),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'value' => array(
+          0 => 'value',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'area_type',
-            'parent' => '0',
-          ),
+          'faculty' => 'faculty',
+          'institute' => 'institute',
+          'unit' => 'unit',
+          'research group' => 'research group',
+          'research school' => 'research school',
+          'section' => 'section',
         ),
-        'entity_translation_sync' => FALSE,
+        'allowed_values_function' => '',
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'list_text',
     ),
     'field_instance' => array(
       'bundle' => 'area',
       'default_value' => array(
         0 => array(
-          'tid' => '6',
+          'value' => 'section',
         ),
       ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
-          'module' => 'taxonomy',
+          'label' => 'above',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
+          'type' => 'list_default',
+          'weight' => 11,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -166,14 +161,13 @@ function uib_feature_area_field_default_fields() {
       'label' => 'Type',
       'required' => 1,
       'settings' => array(
-        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'options',
         'settings' => array(),
-        'type' => 'options_buttons',
+        'type' => 'options_select',
         'weight' => '2',
       ),
     ),
@@ -253,9 +247,9 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
             'image' => 'image',
             'video' => 0,
           ),
@@ -347,9 +341,9 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
             'image' => 'image',
             'video' => 0,
           ),

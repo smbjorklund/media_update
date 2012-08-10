@@ -87,7 +87,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('field_uib_menu_title_w2','menypunkttittel');
     $this->addFieldMapping('field_uib_w2_path', 'path');
-    $this->addFieldMapping('field_uib_article_type', 'article_type')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_uib_article_type', 'article_type');
     $this->addFieldMapping('language', 'site_lang');
     $this->addFieldMapping('created', 'created');
     $this->addFieldMapping('changed', 'modified');
@@ -332,7 +332,7 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('language', 'site_lang');
     $this->addFieldMapping('description')->issueGroup(t('DNM'));
-    $this->addFieldMapping('field_uib_area_type', 'type')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_uib_area_type', 'type');
     $this->addFieldMapping('path', 'path');
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
