@@ -29,24 +29,24 @@ function uib_feature_setup_context_default_contexts() {
         'locale-language' => array(
           'module' => 'locale',
           'delta' => 'language',
-          'region' => 'sidebar_first',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'menu_block-page-area-menu' => array(
+          'module' => 'menu_block',
+          'delta' => 'page-area-menu',
+          'region' => 'sidebar_second',
           'weight' => '-10',
         ),
         'views-faculties-block_1' => array(
           'module' => 'views',
           'delta' => 'faculties-block_1',
-          'region' => 'sidebar_first',
-          'weight' => '5',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
         ),
         'menu_block-top-area-menu' => array(
           'module' => 'menu_block',
           'delta' => 'top-area-menu',
-          'region' => 'sidebar_first',
-          'weight' => '0',
-        ),
-        'menu_block-page-area-menu' => array(
-          'module' => 'menu_block',
-          'delta' => 'page-area-menu',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
