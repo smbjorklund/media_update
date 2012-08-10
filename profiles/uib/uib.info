@@ -25,4 +25,5 @@ dependencies[] = menu
 dependencies[] = contextual
 dependencies[] = i18n_node
 dependencies[] = i18n_field
+dependencies[] = i18n_sync
 files[] = uib.profile
