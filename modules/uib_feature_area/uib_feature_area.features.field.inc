@@ -249,8 +249,8 @@ function uib_feature_area_field_default_fields() {
           'allowed_types' => array(
             'image' => 'image',
             'video' => 0,
-            0 => 0,
             'audio' => 0,
+            0 => 0,
             'default' => 0,
           ),
           'browser_plugins' => array(
@@ -343,8 +343,8 @@ function uib_feature_area_field_default_fields() {
           'allowed_types' => array(
             'image' => 'image',
             'video' => 0,
-            0 => 0,
             'audio' => 0,
+            0 => 0,
             'default' => 0,
           ),
           'browser_plugins' => array(
@@ -418,7 +418,7 @@ function uib_feature_area_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '8',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -663,12 +663,9 @@ function uib_feature_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
-          'weight' => '9',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -804,10 +801,9 @@ function uib_feature_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '7',
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',

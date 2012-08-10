@@ -78,6 +78,17 @@ function uib_feature_area_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_area';
+  $strongarm->value = array(
+    0 => 'field_uib_ou',
+    1 => 'field_uib_sebra_id',
+    2 => 'field_uib_staff',
+  );
+  $export['i18n_sync_node_type_area'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_area';
   $strongarm->value = '2';
   $export['language_content_type_area'] = $strongarm;
