@@ -216,7 +216,7 @@ function uib_feature_area_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'area',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Norsk hjelpetekst mangler.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -236,11 +236,10 @@ function uib_feature_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_main_media',
-      'label' => 'Main image',
+      'label' => 'Hovedbilde',
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'entity_translation_sync' => FALSE,
         'file_directory' => '',
         'file_extensions' => 'txt',
         'max_filesize' => '',
@@ -254,6 +253,7 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
+            0 => 0,
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
@@ -310,7 +310,7 @@ function uib_feature_area_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'area',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Norsk hjelpetekst mangler.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -334,7 +334,6 @@ function uib_feature_area_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'entity_translation_sync' => FALSE,
         'file_directory' => '',
         'file_extensions' => 'txt',
         'max_filesize' => '',
@@ -348,6 +347,7 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
+            0 => 0,
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
@@ -415,7 +415,7 @@ function uib_feature_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Norsk hjelpetekst mangler.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -435,7 +435,7 @@ function uib_feature_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_newslist',
-      'label' => 'Newslist',
+      'label' => 'Akuelle saker',
       'required' => 0,
       'settings' => array(
         'entity_translation_sync' => FALSE,
@@ -489,7 +489,7 @@ function uib_feature_area_field_default_fields() {
           ),
           'sort' => array(
             'direction' => 'ASC',
-            'field' => 'field_uib_area_type:tid',
+            'field' => 'field_uib_area:target_id',
             'property' => 'nid',
             'type' => 'none',
           ),
@@ -507,7 +507,7 @@ function uib_feature_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Norsk hjelpetekst mangler.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -527,7 +527,7 @@ function uib_feature_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_ou',
-      'label' => 'Place',
+      'label' => 'Sted',
       'required' => 0,
       'settings' => array(
         'entity_translation_sync' => FALSE,
@@ -665,7 +665,7 @@ function uib_feature_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Norsk hjelpetekst mangler.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -685,7 +685,7 @@ function uib_feature_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_staff',
-      'label' => 'Staff',
+      'label' => 'Ansatte',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -737,7 +737,7 @@ function uib_feature_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Norsk hjelpetekst mangler.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -755,10 +755,9 @@ function uib_feature_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_text',
-      'label' => 'Text',
+      'label' => 'Tekst',
       'required' => 0,
       'settings' => array(
-        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -807,7 +806,7 @@ function uib_feature_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Norsk hjelpetekst mangler.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -825,10 +824,9 @@ function uib_feature_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_text2',
-      'label' => 'Text Sidebar',
+      'label' => 'Sekuder tekst',
       'required' => 0,
       'settings' => array(
-        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1576,24 +1574,25 @@ function uib_feature_area_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Akuelle saker');
+  t('Ansatte');
   t('Fax');
+  t('Hovedbilde');
   t('ID w2');
   t('Inline images');
   t('Jobbnorge ID');
   t('Location');
   t('Mail domain');
-  t('Main image');
-  t('Newslist');
+  t('Norsk hjelpetekst mangler.');
   t('Parents');
   t('Phone');
-  t('Place');
   t('Place ID');
   t('Postal Address');
   t('Sebra ID');
+  t('Sekuder tekst');
   t('Short name');
-  t('Staff');
-  t('Text');
-  t('Text Sidebar');
+  t('Sted');
+  t('Tekst');
   t('Type');
   t('Visit Address');
 

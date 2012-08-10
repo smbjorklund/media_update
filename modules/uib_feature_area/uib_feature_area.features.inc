@@ -39,12 +39,12 @@ function uib_feature_area_views_api() {
 function uib_feature_area_node_info() {
   $items = array(
     'area' => array(
-      'name' => t('Area'),
+      'name' => t('Område'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Norsk beskrivelse mangler.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
+      'title_label' => t('Navn'),
+      'help' => t('Norsk beskrivelse mangler.'),
     ),
     'uib_ou' => array(
       'name' => t('Organisational Unit'),
