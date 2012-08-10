@@ -8,6 +8,20 @@ class XTopic extends stdClass {
     }
     return "http://" . self::$w2_server . "/topicmap/@@xtopic";
   }
+  public static function type_map($w2_type) {
+    static $type_map = array(
+      'fakultet' => 'faculty',
+      'institutt' => 'institute',
+      'enhet' => 'unit',
+      'avdeling' => 'unit',
+      'forskningsgruppe' => 'research group',
+      'forskerskole' => 'research school',
+      'seksjon' => 'section',
+    );
+    if (isset($type_map[$w2_type]))
+      return $type_map[$w2_type];
+    return $w2_type;
+  }
 
   public function __construct($id, $shallow=FALSE, $reason=NULL) {
     $url = XTopic::url() . "?id=$id";
@@ -29,7 +43,7 @@ class XTopic extends stdClass {
     $this->path = substr($topic['path'], 1);
     $this->path = preg_replace('/\\/en($|\\/)/', '$1', $this->path);
     $this->slug = basename($this->path);
-    $this->type = (string)$topic->type['name'];
+    $this->type = XTopic::type_map((string)$topic->type['name']);
 
     $site = (string)$topic->site['ref'];
     $this->is_site = $site == $id;
