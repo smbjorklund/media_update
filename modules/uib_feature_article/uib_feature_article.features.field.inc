@@ -43,7 +43,7 @@ function uib_feature_article_field_default_fields() {
           ),
           'sort' => array(
             'direction' => 'ASC',
-            'field' => 'field_uib_area_parents_node:target_id',
+            'field' => 'field_uib_area_parents:target_id',
             'property' => 'nid',
             'type' => 'none',
           ),

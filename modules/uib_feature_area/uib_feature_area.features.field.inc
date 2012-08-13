@@ -10,14 +10,14 @@
 function uib_feature_area_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-area-field_uib_area_parents_node'.
-  $fields['node-area-field_uib_area_parents_node'] = array(
+  // Exported field: 'node-area-field_uib_area_parents'.
+  $fields['node-area-field_uib_area_parents'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_uib_area_parents_node',
+      'field_name' => 'field_uib_area_parents',
       'foreign keys' => array(
         'node' => array(
           'columns' => array(
@@ -81,7 +81,7 @@ function uib_feature_area_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_uib_area_parents_node',
+      'field_name' => 'field_uib_area_parents',
       'label' => 'Parents',
       'required' => 0,
       'settings' => array(

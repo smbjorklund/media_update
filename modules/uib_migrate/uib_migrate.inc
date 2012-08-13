@@ -336,7 +336,7 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('path', 'path');
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('field_uib_sebra_id', 'omraadekode');
-    $this->addFieldMapping('field_uib_area_parents_node', 'area_parent_ids')
+    $this->addFieldMapping('field_uib_area_parents', 'area_parent_ids')
       ->sourceMigration('Area');
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
     //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
