@@ -69,6 +69,7 @@ features[variable][] = node_preview_area
 features[variable][] = node_preview_uib_ou
 features[variable][] = node_submitted_area
 features[variable][] = node_submitted_uib_ou
+features[variable][] = page_manager_node_view_disabled
 features[variable][] = page_manager_term_view_disabled
 features[views_view][] = area_kids
 features[views_view][] = areas
