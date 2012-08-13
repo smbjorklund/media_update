@@ -30,6 +30,13 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_uib_area_type',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -47,6 +54,31 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['field_uib_area_type']['id'] = 'field_uib_area_type';
+  $handler->display->display_options['fields']['field_uib_area_type']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['fields']['field_uib_area_type']['field'] = 'field_uib_area_type';
+  $handler->display->display_options['fields']['field_uib_area_type']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_area_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_area_type']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_uib_area_type']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_uib_area_type']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_uib_area_type']['field_api_classes'] = 0;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
