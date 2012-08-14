@@ -29,6 +29,14 @@ function uib_sebra_drush_command() {
       'limit' => 'Only process this many users before terminating',
     ),
   );
+  $items['uib-sebra-user'] = array(
+    'description' => 'Syncronize the given user from Sebra with the Drupal database',
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(
+      'user' => 'The username',
+    ),
+    'required-arguments' => TRUE,
+  );
   return $items;
 }
 
@@ -44,6 +52,10 @@ function drush_uib_sebra_uib_dump_place($place_id) {
 
 function drush_uib_sebra_areas() {
   uib_sebra__sync_areas();
+}
+
+function drush_uib_sebra_user($user) {
+  uib_sebra__sync_user($user);
 }
 
 function drush_uib_sebra_users() {
