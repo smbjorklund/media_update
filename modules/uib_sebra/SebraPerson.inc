@@ -13,8 +13,14 @@ class SebraPerson extends stdClass {
     $this->last_name = (string)$person->surname;
     $this->email = (string)$person->epost;
     $this->sex = (string)$person->sex;
+
     $this->phone_office = (string)$person->tlf;
+    if ($this->phone_office == 'na')
+      $this->phone_office = '';
     $this->phone_mobile = (string)$person->mobile;
+    if ($this->phone_mobile == 'na')
+      $this->phone_mobile = '';
+
     $this->visit_address_street = (string)$person->address;
     $this->visit_address_zip = (string)$person->postnr;
     $this->visit_address_city = (string)$person->postcode;
