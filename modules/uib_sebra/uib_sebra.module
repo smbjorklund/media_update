@@ -55,6 +55,10 @@ function uib_sebra__sws_get($path) {
   return $object;
 }
 
+
+/**
+ * Look up the node id of the organisation unit with the given $place_id.
+ */
 function uib_sebra__uib_ou_nid($place_id) {
     $query = new EntityFieldQuery;
     $result = $query
@@ -71,6 +75,13 @@ function uib_sebra__uib_ou_nid($place_id) {
     return NULL;
 }
 
+/**
+ * Create a new node representing the organisation unit with the given
+ * $place_id.
+ *
+ * Note that this function will create duplicates if called again for a
+ * place that's already in the Drupal database.
+ */
 function uib_sebra__create_uib_ou($place_id) {
   $place = new SebraPlace($place_id);
   $node = new stdClass();
@@ -103,6 +114,9 @@ function uib_sebra__create_uib_ou($place_id) {
   return $node;
 }
 
+/**
+ * Sync the 'field_uib_staff' of all areas that define a 'field_uib_sebra_id'.
+ */
 function uib_sebra__sync_areas() {
   $query = new EntityFieldQuery;
   $query = $query
@@ -143,6 +157,16 @@ function uib_sebra__sync_areas() {
   }
   uibx_log("staff attribute unchanged for $unchanged areas");
 }
+
+/**
+ * Sync users between Sebra and the Drual database.
+ *
+ * If $limit is provided only sync the given number of users.  In this case the
+ * function maintains an internal counter in the variable
+ * "uib_sebra_user_offset" and will start syncing from that user.
+ *
+ * Syncing with a $limit of 0 means unlimited and will take a long time.
+ */
 
 function uib_sebra__sync_users($limit) {
   $users = array_merge(
@@ -209,6 +233,11 @@ function uib_sebra__sync_users($limit) {
   uibx_log("$active_count uib-accounts are still active");
 }
 
+/**
+ * Returns the list of active usernames.  The $type argument limits the kind of users
+ * to return.  It can be one of 'staff', 'student', or 'extern'.
+ */
+
 function uib_sebra__get_persons($type) {
   $persons_url = 'persons';
   if ($type)
@@ -220,6 +249,16 @@ function uib_sebra__get_persons($type) {
   }
   return $uids;
 }
+
+/**
+ * Syncronice the given user with Sebra.  If the user did not already exist in
+ * the Drupal database it will be created.  If it exist, this function will
+ * figure out if any attributes need to be changed and if so update the user.
+ *
+ * The function logs what it does with uibx_log().
+ *
+ * The function returns the user object created/loaded.
+ */
 
 function uib_sebra__sync_user($username) {
   $account = user_load_by_name($username);

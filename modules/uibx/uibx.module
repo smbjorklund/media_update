@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Alternative logger that will log stuff with drush_log() if running under
+ * drush; otherwise redirect messages to the watchdog log.
+ */
+
 function uibx_log($message, $type='notice') {
   if (function_exists('drush_log')) {
     drush_log($message, $type);
