@@ -224,6 +224,13 @@ function uib_sebra__get_persons($type) {
 function uib_sebra__sync_user($username) {
   $account = user_load_by_name($username);
   $u = new SebraPerson($username);
+
+  $phones = array();
+  if (!empty($u->phone_office))
+    $phones['und'][]['value'] = '+47 ' . $u->phone_office;
+  if (!empty($u->phone_mobile))
+    $phones['und'][]['value'] = '+47 ' . $u->phone_mobile;
+
   if ($account) {
     $edit = array();
     if ($account->mail != $u->email)
@@ -238,6 +245,8 @@ function uib_sebra__sync_user($username) {
       $edit['field_uib_position']['und'][0]['value'] = $u->position_name_no;
     if ($account->field_uib_position_en['und'][0]['value'] != $u->position_name_en)
       $edit['field_uib_position_en']['und'][0]['value'] = $u->position_name_en;
+    if ($account->field_uib_phone != $phones)
+      $edit['field_uib_phone'] = $phones;
 
     if (empty($edit)) {
       uibx_log("No change for $username <$account->mail>");
@@ -258,6 +267,7 @@ function uib_sebra__sync_user($username) {
     $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
     $account->field_uib_position['und'][0]['value'] = $u->position_name_no;
     $account->field_uib_position_en['und'][0]['value'] = $u->position_name_en;
+    $account->field_uib_phone = $phones;
     user_save($account);
     uibx_log("Created user $account->uid for $username <$u->email>");
   }
