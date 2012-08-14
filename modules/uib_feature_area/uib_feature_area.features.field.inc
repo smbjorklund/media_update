@@ -248,8 +248,8 @@ function uib_feature_area_field_default_fields() {
           ),
           'allowed_types' => array(
             'audio' => 0,
-            0 => 0,
             'default' => 0,
+            0 => 0,
             'image' => 'image',
             'video' => 0,
           ),
@@ -342,8 +342,8 @@ function uib_feature_area_field_default_fields() {
           ),
           'allowed_types' => array(
             'audio' => 0,
-            0 => 0,
             'default' => 0,
+            0 => 0,
             'image' => 'image',
             'video' => 0,
           ),
@@ -1342,7 +1342,7 @@ function uib_feature_area_field_default_fields() {
   $fields['node-uib_ou-field_uib_phone'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_uib_phone',

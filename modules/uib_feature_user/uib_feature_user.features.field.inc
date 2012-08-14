@@ -68,7 +68,7 @@ function uib_feature_user_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '3',
       ),
     ),
   );
@@ -131,7 +131,62 @@ function uib_feature_user_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'user-user-field_uib_phone'.
+  $fields['user-user-field_uib_phone'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_phone',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'phone',
+      'settings' => array(
+        'country' => 'int',
+        'entity_translation_sync' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'phone',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'phone',
+          'settings' => array(),
+          'type' => 'phone',
+          'weight' => 6,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_uib_phone',
+      'label' => 'Phone',
+      'required' => 0,
+      'settings' => array(
+        'ca_phone_parentheses' => 1,
+        'ca_phone_separator' => '-',
+        'phone_country_code' => 0,
+        'phone_default_country_code' => '1',
+        'phone_int_max_length' => '15',
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'phone',
+        'settings' => array(),
+        'type' => 'phone_textfield',
+        'weight' => '6',
       ),
     ),
   );
@@ -195,7 +250,7 @@ function uib_feature_user_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '5',
       ),
     ),
   );
@@ -258,7 +313,7 @@ function uib_feature_user_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '8',
       ),
     ),
   );
@@ -327,7 +382,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'size' => '16',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '9',
       ),
     ),
   );
@@ -391,7 +446,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '7',
       ),
     ),
   );
@@ -401,6 +456,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('First name');
   t('ID w2');
   t('Last name');
+  t('Phone');
   t('Position');
   t('Slug');
   t('The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
