@@ -234,7 +234,7 @@ function uib_sebra__sync_user($username) {
       $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
     if ($account->field_uib_last_name['und'][0]['value'] != $u->last_name)
       $edit['field_uib_last_name']['und'][0]['value'] = $u->last_name;
-    if ($account->field_uib_position['nb'][0]['value'] != $u->position_name_no)
+    if ($account->field_uib_position['und'][0]['value'] != $u->position_name_no)
       $edit['field_uib_position']['und'][0]['value'] = $u->position_name_no;
     if ($account->field_uib_position_en['und'][0]['value'] != $u->position_name_en)
       $edit['field_uib_position_en']['und'][0]['value'] = $u->position_name_en;
