@@ -1,6 +1,22 @@
 <?php
 
+/** Information about a user obtained from Sebra.
+ *
+ *  SebraPerson is a stdClass object with the following attributes: id,
+ *  first_name, last_name, email, sex, phone_office, phone_mobile,
+ *  visit_address_*, person_type, place_code, postion_code, position_name_no,
+ *  position_name_en, position_category.  Attributes might be missing.
+ */
+
 class SebraPerson extends stdClass {
+
+  /** Create a new SebraPerson object.
+   *
+   *  Will throw an exception if no user with the given name is known by Sebra.
+   *
+   *  @param $id
+   *    The UiB username of the person to fetch information about
+   */
 
   public function __construct($id) {
     $person = uib_sebra__sws_get('person?id=' . $id);
