@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Impliments hook_menu_block_blocks
+ * Implements hook_menu_block_blocks
  */
 
 function uib_area_menu_menu_block_blocks() {
