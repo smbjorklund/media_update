@@ -1,7 +1,21 @@
 <?php
 
+/**
+ * Information about a UiB organisation unit obtained from Sebra.
+ *
+ */
 class SebraPlace extends stdClass {
 
+  /**
+   * Construct a new SebraPlace object.
+   *
+   * The object will have the attributes 'name', 'address', 'postbox',
+   * 'postcode', 'postarea', 'phone', 'fax', 'alias', 'maildomain'.
+   *
+   * @param $id
+   *    The place code.  It's a 6-digit number.  For instance '221000'
+   *    represent the IT-department.
+   */
   public function __construct($id) {
     $this->id = $id;
     $place = uib_sebra__sws_get('place?code=' . $id);
