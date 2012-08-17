@@ -39,7 +39,7 @@ function xtopic_file($id) {
   else {
     die("Unknown file type: " . $xtopic->type);
   }
-  $uri = "http://" . XTopic::$w2_server . "/" . $uri;
+  $uri = XTopic::url($uri);
 
   $file = new stdClass();
 

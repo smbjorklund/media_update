@@ -18,11 +18,11 @@ class XTopic extends stdClass {
    * This defaults to 'testbool.uib.no', but you can override this by setting
    * the 'uib_w2_server' configuration variable.
    */
-  public static function url() {
+  public static function url($path='topicmap/@@xtopic') {
     if (is_null(self::$w2_server)) {
       self::$w2_server = variable_get('uib_w2_server', 'testbool.uib.no');
     }
-    return "http://" . self::$w2_server . "/topicmap/@@xtopic";
+    return 'http://' . self::$w2_server . '/' . $path;
   }
   private static function type_map($w2_type) {
     static $type_map = array(
