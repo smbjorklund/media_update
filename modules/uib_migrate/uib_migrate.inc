@@ -4,6 +4,17 @@ function xtopic_cleanup($text) {
   return html_entity_decode($text, ENT_QUOTES, 'UTF-8');
 }
 
+/**
+ * Returns the Drupal file object matching the given XTopic file object.
+ *
+ * @param $id
+ *    XTopic $id.  The $id must reference an XTopic object of type 'file'.
+ *
+ * @returns
+ *    A Drupal file object.  If the file has been seen before return the
+ *    same Drupal object.  If not a new file object is created and stored
+ *    in the Drupal database and then returned.
+ */
 function xtopic_file($id) {
   // Check if we already have a 'file' migrated from the same id, if so return it
   $query = new EntityFieldQuery;
@@ -68,6 +79,9 @@ function xtopic_file($id) {
   return $file;
 }
 
+/**
+ * Base class for Article Migrations.
+ */
 abstract class XTopicToArticleMigration extends Migration {
   public $topic_type;   // to be overridden
   public $article_type; // to be overridden
@@ -152,11 +166,20 @@ abstract class XTopicToArticleMigration extends Migration {
   }
 }
 
+/**
+ * Migrate w2 infopages to Articles.
+ */
 class InfoPageMigration extends XTopicToArticleMigration {
   public $topic_type = 'infopage';
   public $article_type = 'infopage';
 }
 
+/**
+ * Migrate w2 naviation pages to Articles.
+ *
+ * We map them to 'infopages', so in w3 there isn't really a difference between
+ * info pages and naviation pages.
+ */
 class NavPageMigration extends InfoPageMigration {
   public $topic_type = 'navigationpage';
   public $article_type = 'infopage';
@@ -196,11 +219,17 @@ class NavPageMigration extends InfoPageMigration {
   }
 }
 
+/**
+ * Migrate w2 newsItems to Articles of type news'.
+ */
 class NewsMigration extends XTopicToArticleMigration {
   public $topic_type = 'newsItem';
   public $article_type = 'news';
 }
 
+/**
+ * Migrate w2 calendar entries to Articles.
+ */
 class EventMigration extends XTopicToArticleMigration {
   public $topic_type = 'event';
   public $article_type= 'event';
@@ -225,6 +254,12 @@ class EventMigration extends XTopicToArticleMigration {
   }
 }
 
+/**
+ * Migrate w2 testimonials to w3
+ *
+ * (we have a separate testimonials type in w3 as
+ * well).
+ */
 class TestimonialMigration extends Migration {
 
   public function __construct() {
@@ -287,6 +322,11 @@ class TestimonialMigration extends Migration {
 
 }
 
+/**
+ * Migrate w2 research topics to the research_topic taxonomy.
+ *
+ * Currently only deals with the Norwegian variant of these.
+ */
 class ResearchTopicMigration extends Migration {
 
   public function __construct() {
@@ -314,6 +354,9 @@ class ResearchTopicMigration extends Migration {
   }
 }
 
+/**
+ * Migrate w2 areas to w3.
+ */
 class AreaMigration extends Migration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('area'));
@@ -419,6 +462,12 @@ class AreaMigration extends Migration {
   }
 }
 
+/**
+ * Migrate users from w2.
+ *
+ * Users will be synced directly from Sebra, but this class make sure that we
+ * preserve the connection between the other content objects and users.
+ */
 class UserMigration extends Migration {
   public function __construct() {
     parent::__construct(MigrateGroup::getInstance('user', array('area')));
