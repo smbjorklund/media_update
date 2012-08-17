@@ -1,14 +1,30 @@
 <?php
 
+/**
+ * Representation of a ZTM Topic from w2.
+ *
+ * The old www.uib.no server's data is based on the ZTM Topic map model.
+ * The content objects are called topics, and the xtopic view is a way to
+ * expose these as XML.  The XTopic class is a way to consume these documents
+ * from PHP (in a way suitable for use by the Drupal migrate module).
+ */
+
 class XTopic extends stdClass {
-  public static $w2_server;
+  private static $w2_server;
+
+  /**
+   * Returns the URL of the server to read xtopic documents from.
+   *
+   * This defaults to 'testbool.uib.no', but you can override this by setting
+   * the 'uib_w2_server' configuration variable.
+   */
   public static function url() {
     if (is_null(self::$w2_server)) {
       self::$w2_server = variable_get('uib_w2_server', 'testbool.uib.no');
     }
     return "http://" . self::$w2_server . "/topicmap/@@xtopic";
   }
-  public static function type_map($w2_type) {
+  private static function type_map($w2_type) {
     static $type_map = array(
       'fakultet' => 'faculty',
       'institutt' => 'institute',
@@ -22,6 +38,19 @@ class XTopic extends stdClass {
       return $type_map[$w2_type];
     return $w2_type;
   }
+
+  /**
+   * Creates a new XTopic object from the given $id.
+   *
+   * @param $id
+   *   The topic id; usually a huge integer.  Also a called topic serial number.
+   *
+   * @param $shallow
+   *   If TRUE don't fetch related topics
+   *
+   * @param $reason
+   *   Using during logging to explain why this topic was instantiated.
+   */
 
   public function __construct($id, $shallow=FALSE, $reason=NULL) {
     $url = XTopic::url() . "?id=$id";
@@ -180,6 +209,13 @@ class XTopic extends stdClass {
     }
   }
 
+  /**
+   * Listing of the fields that might be set for an XTopic object.
+   *
+   * @returns
+   *   An array with the field identifiers as keys and a short documentation
+   *   string as value.
+   */
   public static function fields() {
     return array(
       'id' => t('Topic serial number (and identifier)'),
@@ -241,6 +277,9 @@ class XTopic extends stdClass {
   }
 }
 
+/**
+ * Listing of topics of a given type.
+ */
 class XTopicListSource extends MigrateSource {
   private $type;
   private $listUrl;
@@ -248,6 +287,19 @@ class XTopicListSource extends MigrateSource {
   private $offset;
   private $ids;
 
+  /**
+   * Create a new listing object.
+   *
+   * If the 'uib_test_dir' configuration variable is set, the listings will be
+   * picked up from '$dir/$type.csv' files in the given directory.  This is
+   * useful during development and debugging.  The variable currently defaults
+   * to 'test-jur', so by default we will only migrate the objects set up
+   * for this test case.
+   *
+   * @param $type
+   *   What type of topics to list.  Is a string like 'navigationpage' or
+   *   'infopage' or 'area'.
+   */
   public function __construct($type) {
     parent::__construct();
     $this->type = $type;
@@ -343,6 +395,9 @@ class XTopicListSource extends MigrateSource {
     return $this->count;
   }
 
+  /**
+   * Returns the next XTopic object.
+   */
   public function getNextRow() {
     if (!$this->ids && $this->offset < $this->count) {
       $this->moreIds();
