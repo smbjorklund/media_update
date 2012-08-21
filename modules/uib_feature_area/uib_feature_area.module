@@ -5,3 +5,28 @@
  */
 
 include_once 'uib_feature_area.features.inc';
+
+/**
+ * Implements hook_menu_block_blocks
+ */
+
+function uib_feature_area_menu_block_blocks() {
+  return array(
+    'top-area-menu' => array(
+      'menu_name'   => 'area',
+      'title_link'  => FALSE,
+      'admin_title' => 'Top level area menu',
+      'level'       => 2,
+      'depth'       => 2,
+      'expanded'    => 1,
+    ),
+    'page-area-menu' => array(
+      'menu_name'   => 'area',
+      'title_link'  => FALSE,
+      'admin_title' => 'Page level area menu',
+      'follow'      => 1,
+      'level'       => 4,
+      'depth'       => 1,
+    ),
+  );
+}

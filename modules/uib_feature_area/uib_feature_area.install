@@ -1,6 +1,6 @@
 <?php
 
-function uib_area_menu_install() {
+function uib_feature_area_install() {
   menu_save(array(
     'menu_name' => 'area',
     'title' => 'Areas',

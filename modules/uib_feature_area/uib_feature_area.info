@@ -17,6 +17,7 @@ dependencies[] = geocoder
 dependencies[] = geofield_map
 dependencies[] = list
 dependencies[] = media
+dependencies[] = menu_block
 dependencies[] = number
 dependencies[] = options
 dependencies[] = page_manager
