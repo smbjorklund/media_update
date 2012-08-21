@@ -13,7 +13,7 @@ class UiBUserTestCase extends DrupalWebTestCase {
     protected $user_gisle;
 
     public function setUp() {
-	parent::setUp('uib_user', 'uib_feature_user');
+	parent::setUp('uib_feature_user');
 
 	# Set up some users
 	$this->user_default = $this->drupalCreateUser();
