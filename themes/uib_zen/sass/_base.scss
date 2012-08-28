@@ -37,7 +37,7 @@ $legacy-support-for-ie8: true;
 // use in the normalize.scss file.
 // @see http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
-$base-font-size:   16px; // The font size set on the root html element.
+$base-font-size:   14px; // The font size set on the root html element.
 $base-line-height: 24px; // This line-height determines the basic unit of vertical rhythm.
 
 $h1-font-size: 2    * $base-font-size;
@@ -73,14 +73,32 @@ $arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
 $courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
 
 // Now create some variables for the font stacks we want to use on this site.
-$base-font-family: $verdana; // The font family set on the html element.
-$font-body:        $verdana;
+$base-font-family: $arial; // The font family set on the html element.
+$font-body:        $times-new-roman;
 $font-monospace:   $courier;
 
 
 //
 // Colors, etc.
 //
+
+
+// Colors
+$blue:  #005473;
+$gray:  #333;
+
+
+$base-blue: $blue;
+$base-gray: $gray;
+
+// Sidebarborder
+
+$border: 1px solid #c8d1d5;
+$sidebar-border: $border;
+
+
+
+
 
 // The amount lists, blockquotes and comments are indented.
 $indent-amount: 30px;

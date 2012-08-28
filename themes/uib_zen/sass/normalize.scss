@@ -134,6 +134,7 @@ input,
 select,
 textarea {
   font-family: $base-font-family;
+  color:$base-gray;
 }
 
 /*
@@ -214,6 +215,15 @@ h2 {
   @include adjust-font-size-to( $h2-font-size );
   @include leader(1, $h2-font-size);
   @include trailer(1, $h2-font-size);
+  border-top:$sidebar-border;
+  border-bottom:$sidebar-border;
+  font-family:$font-body;
+  text-transform:uppercase;
+  font-size:14px;
+  line-height:20px;
+  font-weight:bold;
+  color:#555;
+  padding:2px;
 }
 
 h3 {

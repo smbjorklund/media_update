@@ -37,7 +37,6 @@ body {
     padding: 2px 0 3px 0;
     text-align: center;
     background-color: #666;
-    color: #fff;
   }
 }
 
@@ -69,7 +68,6 @@ body {
 
   a:link,
   a:visited {
-    color: #000;
     text-decoration: none;
   }
 
@@ -95,6 +93,15 @@ body {
 #main {
 }
 
+#main a{
+  color:$base-blue;
+  text-decoration:none;
+  &:hover { text-decoration:underline; }
+  
+}
+
+
+
 /*
  * Content
  */
@@ -115,7 +122,6 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
 }
 
 h1.title, /* The title of the page */

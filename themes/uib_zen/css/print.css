@@ -23,7 +23,7 @@
     /* Add visible URL after links. */
     content: " (" attr(href) ")";
     font-weight: normal;
-    font-size: 16px;
+    font-size: 14px;
   }
   /* line 30, ../sass/print.scss */
   #content a[href^="javascript:"]:after,
