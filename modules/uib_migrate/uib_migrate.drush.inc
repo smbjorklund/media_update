@@ -21,6 +21,8 @@ function uib_migrate_drush_command() {
 }
 
 function drush_uib_migrate_uib_sync_w2_user($username) {
+  module_load_include('inc', 'uib_migrate');
+
   $account = user_load_by_name($username);
   if (!$account) {
     uibx_log('No user with the given username exist');
@@ -35,6 +37,15 @@ function drush_uib_migrate_uib_sync_w2_user($username) {
   if ($account->field_uib_w2_id['und'][0]['value'] != $w2u->id) {
     $edit['field_uib_w2_id']['und'][0]['value'] = $w2u->id;
   }
+
+  if (!empty($w2u->main_media)) {
+    $file = xtopic_file($w2u->main_media);
+    if ($file && (empty($account->picture) || $account->picture->fid != $file->fid)) {
+      $file->status = FILE_STATUS_PERMANENT; // fake it since xtopic_file doesn't really load the file object
+      $edit['picture'] = $file;
+    }
+  }
+
   if (empty($edit)) {
     uibx_log("No change for $username <$account->mail>");
   }

@@ -187,6 +187,11 @@ class XTopic extends stdClass {
       $this->main_media = $xlink['decorated/stort_hovedtekstbilde/decoration'][0];
     }
 
+    if (!empty($xlink['decorated/personbilde/decoration'])) { // Main image for users
+      // Can reuse safely reuse main_media here
+      $this->main_media = $xlink['decorated/personbilde/decoration'][0];
+    }
+
     if (!empty($xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
       $this->media = $xlink['decorated/hovedtekstbilde/decoration'];
     }
