@@ -44,6 +44,8 @@ class XTopic extends stdClass {
    *
    * @param $id
    *   The topic id; usually a huge integer.  Also a called topic serial number.
+   *   You might also provide a string on the form "username:$username" to look
+   *   up users directly based on their UiB user name.
    *
    * @param $shallow
    *   If TRUE don't fetch related topics
@@ -53,8 +55,12 @@ class XTopic extends stdClass {
    */
 
   public function __construct($id, $shallow=FALSE, $reason=NULL) {
-    $url = XTopic::url() . "?id=$id";
-    $this->id = $id;
+    if (substr($id, 0, 9) == 'username:') {
+      $url = XTopic::url() . "?username=" . substr($id, 9);
+    }
+    else {
+      $url = XTopic::url() . "?id=$id";
+    }
 
     $log_msg = 'GET ' . $url;
     if ($reason) {
@@ -67,6 +73,7 @@ class XTopic extends stdClass {
     if (empty($topic)) {
       throw new Exception("Topic $id not found");
     }
+    $this->id = (string)$topic['id'];
     $this->title = (string)$topic->title;
     $this->state = (string)$topic['state'];
     $this->path = substr($topic['path'], 1);
