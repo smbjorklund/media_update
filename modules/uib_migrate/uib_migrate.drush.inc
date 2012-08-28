@@ -42,6 +42,27 @@ function drush_uib_migrate_uib_sync_w2_user($username) {
     user_save($account, $edit);
     uibx_log("Updated fields for $username <$account->mail>");
   }
+
+  // Update the path aliases if needed
+  $source = 'user/' . $account->uid;
+  $slug = $account->field_uib_slug['und'][0]['value'];
+  foreach (array('nb' => 'personer', 'en' => 'persons') as $lang => $prefix) {
+    $path_key = array(
+      "source" => $source,
+      "language" => $lang,
+    );
+    $alias = $prefix . '/' . $slug;
+    $path = path_load($path_key);
+    if (empty($path)) {
+      $path = $path_key;
+    }
+    elseif ($path['alias'] == $alias) {
+      continue; // no need up update the alias
+    }
+    $path['alias'] = $alias;
+    path_save($path);
+    uibx_log("Set $lang path alias for $username to $alias");
+  }
 }
 
 function drush_uib_migrate_build_menu() {
