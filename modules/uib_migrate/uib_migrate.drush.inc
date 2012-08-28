@@ -8,7 +8,40 @@ function uib_migrate_drush_command() {
     'arguments' => array(),
     'options' => array(),
   );
+  $items['uib-sync-w2-user'] = array(
+    'description' => 'Syncronise user fields that are maintained in w2',
+    'aliases' => array('uib-w2u'),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(
+      'user' => 'The username',
+    ),
+    'required-arguments' => TRUE,
+  );
   return $items;
+}
+
+function drush_uib_migrate_uib_sync_w2_user($username) {
+  $account = user_load_by_name($username);
+  if (!$account) {
+    uibx_log('No user with the given username exist');
+    return;
+  }
+  $w2u = new XTopic("username:$username");
+
+  $edit = array();
+  if ($account->field_uib_slug['und'][0]['value'] != $w2u->slug) {
+    $edit['field_uib_slug']['und'][0]['value'] = $w2u->slug;
+  }
+  if ($account->field_uib_w2_id['und'][0]['value'] != $w2u->id) {
+    $edit['field_uib_w2_id']['und'][0]['value'] = $w2u->id;
+  }
+  if (empty($edit)) {
+    uibx_log("No change for $username <$account->mail>");
+  }
+  else {
+    user_save($account, $edit);
+    uibx_log("Updated fields for $username <$account->mail>");
+  }
 }
 
 function drush_uib_migrate_build_menu() {
