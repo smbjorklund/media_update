@@ -16,6 +16,9 @@ ul li.expanded {
   }
   list-style-image: inline-image("menu-expanded.png");
   list-style-type: circle;
+  float:left;
+  
+  
 }
 ul li.collapsed {
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
@@ -36,6 +39,7 @@ ul li.leaf {
  * The active item in a Drupal menu
  */
 
+
 li a.active {
   color: #000;
 }
@@ -46,28 +50,27 @@ li a.active {
 
 #navigation {
   /* overflow: hidden; */ /* Sometimes you want to prevent overlapping with main div. */
+  background-color:#D5D5D5;
+  height:auto;
 
   .block {
     margin-bottom: 0;
+    
   }
 
   .block-menu .block-title,
   .block-menu-block .block-title {
     @include element-invisible();
+    
   }
 
   ul.links, /* Main menu and secondary menu links */
-  ul.menu { /* Menu block links */
-    margin: 0;
-    padding: 0;
-    text-align: left; /* LTR */
-
+  ul .menu { 
+    
+  /* Menu block links */
     li { /* A simple method to get navigation links to appear in one line. */
-      float: left; /* LTR */
-      padding: 0 10px 0 0; /* LTR */
-      list-style-type: none;
-      list-style-image: none;
-    }
+      list-style:none
+      }
   }
 }
 

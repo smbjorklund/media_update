@@ -9,16 +9,17 @@
 ul li.expanded {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
   list-style-type: circle;
+  float: left;
 }
 
-/* line 20, ../sass/navigation.scss */
+/* line 23, ../sass/navigation.scss */
 ul li.collapsed {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
   /* LTR */
   list-style-type: disc;
 }
 
-/* line 27, ../sass/navigation.scss */
+/* line 30, ../sass/navigation.scss */
 ul li.leaf {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHBAMAAAA2fErgAAAAD1BMVEX///+/v7+Li4sAAADAwMBFvsw8AAAAAXRSTlMAQObYZgAAAB1JREFUCFtjYAADYwMGBmYVZSDhKAwkFJWhYiAAAB2+Aa/9ugeaAAAAAElFTkSuQmCC');
   list-style-type: square;
@@ -27,7 +28,7 @@ ul li.leaf {
 /*
  * The active item in a Drupal menu
  */
-/* line 39, ../sass/navigation.scss */
+/* line 43, ../sass/navigation.scss */
 li a.active {
   color: #000;
 }
@@ -35,16 +36,18 @@ li a.active {
 /*
  * Navigation bar
  */
-/* line 47, ../sass/navigation.scss */
+/* line 51, ../sass/navigation.scss */
 #navigation {
   /* overflow: hidden; */
   /* Sometimes you want to prevent overlapping with main div. */
+  background-color: #D5D5D5;
+  height: auto;
 }
-/* line 50, ../sass/navigation.scss */
+/* line 56, ../sass/navigation.scss */
 #navigation .block {
   margin-bottom: 0;
 }
-/* line 55, ../sass/navigation.scss */
+/* line 62, ../sass/navigation.scss */
 #navigation .block-menu .block-title,
 #navigation .block-menu-block .block-title {
   position: absolute !important;
@@ -53,31 +56,22 @@ li a.active {
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
 }
-/* line 60, ../sass/navigation.scss */
+/* line 68, ../sass/navigation.scss */
 #navigation ul.links,
-#navigation ul.menu {
+#navigation ul .menu {
   /* Menu block links */
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  /* LTR */
 }
-/* line 65, ../sass/navigation.scss */
+/* line 71, ../sass/navigation.scss */
 #navigation ul.links li,
-#navigation ul.menu li {
+#navigation ul .menu li {
   /* A simple method to get navigation links to appear in one line. */
-  float: left;
-  /* LTR */
-  padding: 0 10px 0 0;
-  /* LTR */
-  list-style-type: none;
-  list-style-image: none;
+  list-style: none;
 }
 
 /*
  * Main menu and Secondary menu links
  */
-/* line 84, ../sass/navigation.scss */
+/* line 87, ../sass/navigation.scss */
 #secondary-menu {
   float: right;
   /* LTR */
