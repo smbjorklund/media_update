@@ -32,10 +32,10 @@ function uib_feature_setup_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'menu_block-page-area-menu' => array(
+        'menu_block-top-area-menu' => array(
           'module' => 'menu_block',
-          'delta' => 'page-area-menu',
-          'region' => 'sidebar_second',
+          'delta' => 'top-area-menu',
+          'region' => 'navigation',
           'weight' => '-10',
         ),
         'views-faculties-block_1' => array(
@@ -44,9 +44,9 @@ function uib_feature_setup_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'menu_block-top-area-menu' => array(
+        'menu_block-page-area-menu' => array(
           'module' => 'menu_block',
-          'delta' => 'top-area-menu',
+          'delta' => 'page-area-menu',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
