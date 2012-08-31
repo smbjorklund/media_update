@@ -20,7 +20,7 @@ function uib_migrate_cron_job_scheduler_info() {
         array(
           'type' => 'w2',
           'id' => 0,
-          'period' => 1*60,
+          'period' => 15*60,
           'periodic' => TRUE,
         ),
       ),
@@ -30,8 +30,28 @@ function uib_migrate_cron_job_scheduler_info() {
 
 function uib_migrate__w2_sync($job) {
   uibx_log("W2 SYNC start");
-  uib_migrate__sync_w2_user('gaa041');
+  uib_migrate__sync_w2_users(100);
   uibx_log("W2 SYNC done");
+}
+
+function uib_migrate__sync_w2_users($limit=100) {
+  $offset = variable_get('uib_w2_user_offset', 0);
+
+  $query = new EntityFieldQuery;
+  $query = $query
+    ->entityCondition('entity_type', 'user')
+    ->fieldCondition('field_uib_user_domain', 'value', 'uib', '=')
+    ->range($offset, $limit);
+  $result = $query->execute();
+
+  $count = 0;
+  foreach (array_keys($result['user']) as $uid) {
+    $account = user_load($uid);
+    uib_migrate__sync_w2_user($account->name);
+    $count++;
+  }
+
+  variable_set('uib_w2_user_offset', $count < $limit ? 0 : $offset + $count);
 }
 
 
