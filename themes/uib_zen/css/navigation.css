@@ -23,12 +23,13 @@ ul li.collapsed {
 ul li.leaf {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHBAMAAAA2fErgAAAAD1BMVEX///+/v7+Li4sAAADAwMBFvsw8AAAAAXRSTlMAQObYZgAAAB1JREFUCFtjYAADYwMGBmYVZSDhKAwkFJWhYiAAAB2+Aa/9ugeaAAAAAElFTkSuQmCC');
   list-style-type: square;
+  float: left;
 }
 
 /*
  * The active item in a Drupal menu
  */
-/* line 43, ../sass/navigation.scss */
+/* line 44, ../sass/navigation.scss */
 li a.active {
   color: #000;
 }
@@ -36,18 +37,20 @@ li a.active {
 /*
  * Navigation bar
  */
-/* line 51, ../sass/navigation.scss */
+/* line 52, ../sass/navigation.scss */
 #navigation {
-  /* overflow: hidden; */
+  overflow: visible;
   /* Sometimes you want to prevent overlapping with main div. */
   background-color: #D5D5D5;
-  height: auto;
+  width: 960px;
+  clear: both;
+  position: absolute;
 }
-/* line 56, ../sass/navigation.scss */
+/* line 59, ../sass/navigation.scss */
 #navigation .block {
   margin-bottom: 0;
 }
-/* line 62, ../sass/navigation.scss */
+/* line 65, ../sass/navigation.scss */
 #navigation .block-menu .block-title,
 #navigation .block-menu-block .block-title {
   position: absolute !important;
@@ -56,22 +59,23 @@ li a.active {
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
 }
-/* line 68, ../sass/navigation.scss */
+/* line 71, ../sass/navigation.scss */
 #navigation ul.links,
 #navigation ul .menu {
   /* Menu block links */
 }
-/* line 71, ../sass/navigation.scss */
+/* line 74, ../sass/navigation.scss */
 #navigation ul.links li,
 #navigation ul .menu li {
   /* A simple method to get navigation links to appear in one line. */
   list-style: none;
+  margin-left: 30px;
 }
 
 /*
  * Main menu and Secondary menu links
  */
-/* line 87, ../sass/navigation.scss */
+/* line 91, ../sass/navigation.scss */
 #secondary-menu {
   float: right;
   /* LTR */
