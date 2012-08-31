@@ -117,7 +117,7 @@ audio:not([controls]) {
  */
 
 html {
-  font-size: 100% * ($base-font-size / 16px); /* 1 */
+  font-size: 100% * ($base-font-size / 14px); /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -ms-text-size-adjust: 100%; /* 2 */
   /* Establishes a vertical rhythm unit using $base-line-height. */
@@ -135,6 +135,8 @@ select,
 textarea {
   font-family: $base-font-family;
   color:$base-gray;
+  font-size:0.75em; /* 12 / 16 */
+  line-height:20px;
 }
 
 /*
