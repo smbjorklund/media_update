@@ -22,58 +22,7 @@ function uib_migrate_drush_command() {
 
 function drush_uib_migrate_uib_sync_w2_user($username) {
   module_load_include('inc', 'uib_migrate');
-
-  $account = user_load_by_name($username);
-  if (!$account) {
-    uibx_log('No user with the given username exist');
-    return;
-  }
-  $w2u = new XTopic("username:$username");
-
-  $edit = array();
-  if ($account->field_uib_slug['und'][0]['value'] != $w2u->slug) {
-    $edit['field_uib_slug']['und'][0]['value'] = $w2u->slug;
-  }
-  if ($account->field_uib_w2_id['und'][0]['value'] != $w2u->id) {
-    $edit['field_uib_w2_id']['und'][0]['value'] = $w2u->id;
-  }
-
-  if (!empty($w2u->main_media)) {
-    $file = xtopic_file($w2u->main_media);
-    if ($file && (empty($account->picture) || $account->picture->fid != $file->fid)) {
-      $file->status = FILE_STATUS_PERMANENT; // fake it since xtopic_file doesn't really load the file object
-      $edit['picture'] = $file;
-    }
-  }
-
-  if (empty($edit)) {
-    uibx_log("No change for $username <$account->mail>");
-  }
-  else {
-    user_save($account, $edit);
-    uibx_log("Updated fields for $username <$account->mail>");
-  }
-
-  // Update the path aliases if needed
-  $source = 'user/' . $account->uid;
-  $slug = $account->field_uib_slug['und'][0]['value'];
-  foreach (array('nb' => 'personer', 'en' => 'persons') as $lang => $prefix) {
-    $path_key = array(
-      "source" => $source,
-      "language" => $lang,
-    );
-    $alias = $prefix . '/' . $slug;
-    $path = path_load($path_key);
-    if (empty($path)) {
-      $path = $path_key;
-    }
-    elseif ($path['alias'] == $alias) {
-      continue; // no need up update the alias
-    }
-    $path['alias'] = $alias;
-    path_save($path);
-    uibx_log("Set $lang path alias for $username to $alias");
-  }
+  uib_migrate__sync_w2_user($username);
 }
 
 function drush_uib_migrate_build_menu() {

@@ -10,3 +10,89 @@ function uib_migrate_migrate_api() {
   );
   return $api;
 }
+
+function uib_migrate_cron_job_scheduler_info() {
+  return array(
+    'w2_sync' => array(
+      'queue name' => 'w2_sync',
+      'worker callback' => 'uib_migrate__w2_sync',
+      'jobs' => array(
+        array(
+          'type' => 'w2',
+          'id' => 0,
+          'period' => 1*60,
+          'periodic' => TRUE,
+        ),
+      ),
+    ),
+  );
+}
+
+function uib_migrate__w2_sync($job) {
+  uibx_log("W2 SYNC start");
+  uib_migrate__sync_w2_user('gaa041');
+  uibx_log("W2 SYNC done");
+}
+
+
+/**
+ * Fetch information about users still maintained in w2.
+ *
+ * This currently includes the slug and user picture.
+ * A side effect of fetching the slug is to maintain path
+ * aliases compatible with w2.
+ */
+
+function uib_migrate__sync_w2_user($username) {
+  $account = user_load_by_name($username);
+  if (!$account) {
+    uibx_log('No user with the given username exist');
+    return;
+  }
+  $w2u = new XTopic("username:$username");
+
+  $edit = array();
+  if ($account->field_uib_slug['und'][0]['value'] != $w2u->slug) {
+    $edit['field_uib_slug']['und'][0]['value'] = $w2u->slug;
+  }
+  if ($account->field_uib_w2_id['und'][0]['value'] != $w2u->id) {
+    $edit['field_uib_w2_id']['und'][0]['value'] = $w2u->id;
+  }
+
+  if (!empty($w2u->main_media)) {
+    $file = xtopic_file($w2u->main_media);
+    if ($file && (empty($account->picture) || $account->picture->fid != $file->fid)) {
+      $file->status = FILE_STATUS_PERMANENT; // fake it since xtopic_file doesn't really load the file object
+      $edit['picture'] = $file;
+    }
+  }
+
+  if (empty($edit)) {
+    uibx_log("No change for $username <$account->mail>");
+  }
+  else {
+    user_save($account, $edit);
+    uibx_log("Updated fields for $username <$account->mail>");
+  }
+
+  // Update the path aliases if needed
+  $source = 'user/' . $account->uid;
+  $slug = $account->field_uib_slug['und'][0]['value'];
+  foreach (array('nb' => 'personer', 'en' => 'persons') as $lang => $prefix) {
+    $path_key = array(
+      "source" => $source,
+      "language" => $lang,
+    );
+    $alias = $prefix . '/' . $slug;
+    $path = path_load($path_key);
+    if (empty($path)) {
+      $path = $path_key;
+    }
+    elseif ($path['alias'] == $alias) {
+      continue; // no need up update the alias
+    }
+    $path['alias'] = $alias;
+    path_save($path);
+    uibx_log("Set $lang path alias for $username to $alias");
+  }
+}
