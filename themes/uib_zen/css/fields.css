@@ -35,10 +35,15 @@
 /*
  * Field types (Core)
  */
+/* line 43, ../sass/fields.scss */
+.field-name-field-uib-lead {
+  font-weight: bold;
+}
+
 /*
  * Field types (Contrib)
  */
-/* line 83, ../sass/fields.scss */
+/* line 87, ../sass/fields.scss */
 .field-type-datetime {
   /* Always use "datetime" when creating new CCK date fields. "date" and "datestamp" are legacy types. */
 }
@@ -46,7 +51,7 @@
 /*
  * Named fields
  */
-/* line 105, ../sass/fields.scss */
+/* line 109, ../sass/fields.scss */
 .field-name-field-FIELDNAME {
   /* Underscores in field name are replaced with dashes. */
 }
