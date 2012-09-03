@@ -30,3 +30,33 @@ function uib_feature_area_menu_block_blocks() {
     ),
   );
 }
+
+
+/**
+ * Implements hook_block_info().
+ */
+
+function uib_feature_area_block_info() {
+  return array(
+    'colophon' => array(
+      'info' => t('Colophone'),
+      'status' => TRUE,
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+
+function uib_feature_area_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+  case 'colophon':
+    $block['subject'] = t('Colophone');
+    $block['content'] = 'Universitetet i Bergen | Foo';
+    break;
+  }
+  return $block;
+}
