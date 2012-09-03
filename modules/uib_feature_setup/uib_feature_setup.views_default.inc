@@ -10,7 +10,7 @@
 function uib_feature_setup_views_default_views() {
   $export = array();
 
-  $view = new view;
+  $view = new view();
   $view->name = 'users';
   $view->description = 'List all site users';
   $view->tag = 'default';
@@ -23,6 +23,7 @@ function uib_feature_setup_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'users';
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access user profiles';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -99,31 +100,10 @@ function uib_feature_setup_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['override'] = 1;
-  $handler->display->display_options['style_options']['sticky'] = 0;
-  $handler->display->display_options['style_options']['empty_table'] = 0;
   /* Field: Bulk operations: User */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'users';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo']['entity_load_capacity'] = '10';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo']['operations'] = array(
     'action::system_block_ip_action' => array(
@@ -214,201 +194,45 @@ function uib_feature_setup_views_default_views() {
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  $handler->display->display_options['fields']['uid']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['uid']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['uid']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['uid']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['uid']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['uid']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['uid']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['uid']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['uid']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['uid']['link_to_user'] = 1;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['name']['link_to_user'] = 1;
-  $handler->display->display_options['fields']['name']['overwrite_anonymous'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   /* Field: User: First name */
   $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['field'] = 'field_uib_first_name';
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_uib_first_name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_uib_first_name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_uib_first_name']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_uib_first_name']['field_api_classes'] = 0;
   /* Field: User: Last name */
   $handler->display->display_options['fields']['field_uib_last_name']['id'] = 'field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['table'] = 'field_data_field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['field'] = 'field_uib_last_name';
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_uib_last_name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_uib_last_name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_uib_last_name']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_uib_last_name']['field_api_classes'] = 0;
   /* Field: User: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
-  $handler->display->display_options['fields']['mail']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['mail']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['mail']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['mail']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['mail']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['mail']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['mail']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['mail']['hide_alter_empty'] = 1;
   /* Field: User: Roles */
   $handler->display->display_options['fields']['rid']['id'] = 'rid';
   $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
   $handler->display->display_options['fields']['rid']['field'] = 'rid';
-  $handler->display->display_options['fields']['rid']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['rid']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['rid']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['rid']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['rid']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['rid']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['rid']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['rid']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['rid']['hide_alter_empty'] = 1;
   /* Field: User: Last access */
   $handler->display->display_options['fields']['access']['id'] = 'access';
   $handler->display->display_options['fields']['access']['table'] = 'users';
   $handler->display->display_options['fields']['access']['field'] = 'access';
-  $handler->display->display_options['fields']['access']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['access']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['access']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['access']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['access']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['access']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['access']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['access']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['access']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['access']['date_format'] = 'long';
   /* Field: User: Last login */
   $handler->display->display_options['fields']['login']['id'] = 'login';
   $handler->display->display_options['fields']['login']['table'] = 'users';
   $handler->display->display_options['fields']['login']['field'] = 'login';
-  $handler->display->display_options['fields']['login']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['login']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['login']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['login']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['login']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['login']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['login']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['login']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['login']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['login']['date_format'] = 'long';
   /* Field: User: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'users';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
-  $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['edit_node']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['edit_node']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['html'] = 0;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['edit_node']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['edit_node']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['edit_node']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['edit_node']['hide_alter_empty'] = 1;
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
@@ -423,11 +247,9 @@ function uib_feature_setup_views_default_views() {
   $handler->display->display_options['filters']['status']['exposed'] = TRUE;
   $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
   $handler->display->display_options['filters']['status']['expose']['label'] = 'Active';
-  $handler->display->display_options['filters']['status']['expose']['use_operator'] = FALSE;
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
   $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
-  $handler->display->display_options['filters']['status']['expose']['required'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
   /* Filter criterion: User: First name (field_uib_first_name) */
   $handler->display->display_options['filters']['field_uib_first_name_value']['id'] = 'field_uib_first_name_value';
   $handler->display->display_options['filters']['field_uib_first_name_value']['table'] = 'field_data_field_uib_first_name';
@@ -436,11 +258,9 @@ function uib_feature_setup_views_default_views() {
   $handler->display->display_options['filters']['field_uib_first_name_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['operator_id'] = 'field_uib_first_name_value_op';
   $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['label'] = 'First name';
-  $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['use_operator'] = 1;
+  $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['use_operator'] = TRUE;
   $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['operator'] = 'field_uib_first_name_value_op';
   $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['identifier'] = 'field_uib_first_name_value';
-  $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['required'] = 0;
-  $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['multiple'] = FALSE;
   /* Filter criterion: User: Last name (field_uib_last_name) */
   $handler->display->display_options['filters']['field_uib_last_name_value']['id'] = 'field_uib_last_name_value';
   $handler->display->display_options['filters']['field_uib_last_name_value']['table'] = 'field_data_field_uib_last_name';
@@ -449,11 +269,9 @@ function uib_feature_setup_views_default_views() {
   $handler->display->display_options['filters']['field_uib_last_name_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['operator_id'] = 'field_uib_last_name_value_op';
   $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['label'] = 'Last name';
-  $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['use_operator'] = 1;
+  $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['use_operator'] = TRUE;
   $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['operator'] = 'field_uib_last_name_value_op';
   $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['identifier'] = 'field_uib_last_name_value';
-  $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['required'] = 0;
-  $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['multiple'] = FALSE;
   /* Filter criterion: User: Name */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'users';
@@ -462,11 +280,9 @@ function uib_feature_setup_views_default_views() {
   $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
   $handler->display->display_options['filters']['uid']['expose']['label'] = 'Name';
-  $handler->display->display_options['filters']['uid']['expose']['use_operator'] = 1;
+  $handler->display->display_options['filters']['uid']['expose']['use_operator'] = TRUE;
   $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
   $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
-  $handler->display->display_options['filters']['uid']['expose']['multiple'] = FALSE;
-  $handler->display->display_options['filters']['uid']['expose']['reduce'] = 0;
   /* Filter criterion: User: Roles */
   $handler->display->display_options['filters']['rid']['id'] = 'rid';
   $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
@@ -476,11 +292,10 @@ function uib_feature_setup_views_default_views() {
   $handler->display->display_options['filters']['rid']['expose']['label'] = 'Roles';
   $handler->display->display_options['filters']['rid']['expose']['operator'] = 'rid_op';
   $handler->display->display_options['filters']['rid']['expose']['identifier'] = 'rid';
-  $handler->display->display_options['filters']['rid']['expose']['reduce'] = 0;
-  $handler->display->display_options['filters']['rid']['reduce_duplicates'] = 0;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'admin/content/users';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Users';
@@ -499,6 +314,10 @@ function uib_feature_setup_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
     t('User'),
     t('Uid'),
     t('First name'),
