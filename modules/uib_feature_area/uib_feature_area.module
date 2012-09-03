@@ -57,30 +57,42 @@ function uib_feature_area_block_view($delta='') {
     $block['subject'] = t('Colophone');
     $block['content'] = array(
       'name' => array(
-        '#prefix' => '<h3>',
-        '#suffix' => '</h3>',
-        '#markup' => t('University of Bergen'),
+        '#type' => 'html_tag',
+        '#tag' => 'h3',
+        '#value' => t('University of Bergen'),
       ),
       'address' => array(
-        '#prefix' => '<br>' . t('Address: '),
-        '#markup' => 'Postboks 7800, 5020 BERGEN',
+        '#theme' => 'key_value',
+        '#key' => t('Address'),
+        '#value' => 'Postboks 7800, 5020 BERGEN',
       ),
-      'tlf' => array(
-        '#prefix' => '<br>' . t('Phone: '),
-        '#markup' => '55 58 00 00',
+      'phone' => array(
+        '#theme' => 'key_value',
+        '#key' => t('Phone'),
+        '#value' => '+47 55 58 00 00',
       ),
-      'fax' => array(),
+      'fax' => array(
+        '#theme' => 'key_value',
+        '#key' => t('Fax'),
+      ),
       'emergency' => array(
-        '#prefix' => '<br>' . t('24-hour security hotline: '),
-        '#markup' => '55 58 80 81',
+        '#theme' => 'key_value',
+        '#key' => t('24-hour security hotline'),
+        '#value' => '+47 55 58 80 81',
+      ),
+      'responsible_this_page' => array(
+        '#theme' => 'key_value',
+        '#key' => t('Responsible for this page'),
       ),
       'contact' => array(
-        '#prefix' => '<br>' . t('Contact: '),
-        '#markup' => 'post@uib.no',
+        '#theme' => 'key_value',
+        '#key' => t('Contact'),
+        '#value' => 'post@uib.no',
       ),
       'responsible' => array(
-        '#prefix' => '<br>' . t('Responsible: '),
-        '#markup' => t('Director of Communications'),
+        '#theme' => 'key_value',
+        '#key' => t('Responsible'),
+        '#value' => t('Director of Communications'),
       ),
     );
     if (arg(0) == 'node' && is_numeric(arg(1))) {
@@ -92,9 +104,24 @@ function uib_feature_area_block_view($delta='') {
         $area = $node->field_uib_area['und'][0]['entity'];
       }
       if ($area) {
-        $block['content']['name']['#markup'] = 'Universitetet i Bergen | ' . $area->title;
+        $place = node_load($area->field_uib_ou['und'][0]['target_id']);
+        $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
+        //dsm($place);
+        $block['content']['responsible_this_page']['#value'] = $place->title;
+        if (isset($place->field_uib_phone)) {
+          $block['content']['phone']['#value'] =
+            $place->field_uib_phone['und'][0]['value'];
+        }
+        if (isset($place->field_uib_fax)) {
+          $block['content']['fax']['#value'] =
+            $place->field_uib_fax['und'][0]['value'];
+        }
+        if (isset($place->field_uib_mail_domain)) {
+          $block['content']['contact']['#value'] =
+            'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
+        }
       }
-      unset($block['content']['emergency']);
+      hide($block['content']['emergency']);
     }
     break;
   }
