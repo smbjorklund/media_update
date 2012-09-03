@@ -158,10 +158,11 @@ body {
  */
 
 a:link {
+  color:$base-gray;
 }
 
 a:visited {
-  color:#333;
+  color:$base-gray;
 }
 
 a:hover,
@@ -222,8 +223,8 @@ h2 {
   border-bottom: $sidebar-border;
   font-family: $font-body;
   text-transform: uppercase;
-  font-size: 14px;
-  line-height: 20px;
+/*  font-size: .9375em; <- Korrekt størrelse, men blir ikke lest*/  
+ line-height: 20px;
   font-weight: bold;
   color: #555;
   padding: 2px;

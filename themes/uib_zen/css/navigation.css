@@ -32,7 +32,7 @@ ul li.leaf {
  */
 /* line 44, ../sass/navigation.scss */
 li a.active {
-  color: #333;
+  color: #333333;
 }
 
 /*
@@ -42,16 +42,15 @@ li a.active {
 #navigation {
   overflow: visible;
   /* Sometimes you want to prevent overlapping with main div. */
-  width: 960px;
   clear: both;
   position: absolute;
 }
-/* line 58, ../sass/navigation.scss */
+/* line 57, ../sass/navigation.scss */
 #navigation .block {
   margin-bottom: 0;
   display: block;
 }
-/* line 64, ../sass/navigation.scss */
+/* line 63, ../sass/navigation.scss */
 #navigation .block-menu .block-title,
 #navigation .block-menu-block .block-title {
   position: absolute !important;
@@ -60,12 +59,12 @@ li a.active {
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
 }
-/* line 70, ../sass/navigation.scss */
+/* line 69, ../sass/navigation.scss */
 #navigation ul.links,
 #navigation ul .menu {
   /* Menu block links */
 }
-/* line 73, ../sass/navigation.scss */
+/* line 72, ../sass/navigation.scss */
 #navigation ul.links li,
 #navigation ul .menu li {
   /* A simple method to get navigation links to appear in one line. */
@@ -76,7 +75,7 @@ li a.active {
 /*
  * Main menu and Secondary menu links
  */
-/* line 90, ../sass/navigation.scss */
+/* line 89, ../sass/navigation.scss */
 #secondary-menu {
   float: right;
   /* LTR */
@@ -91,3 +90,8 @@ li a.active {
  * Drupal core has limited ways in which it can display its menus. To get around
  * these limitations, see http://drupal.org/project/menu_block
  */
+/* UiB lists */
+/* line 113, ../sass/navigation.scss */
+ul.language-switcher-locale-url li {
+  display: inline;
+}

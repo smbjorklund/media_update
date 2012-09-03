@@ -42,7 +42,7 @@ ul li.leaf {
 
 
 li a.active {
-  color: #333;
+  color: $base-gray;
 }
 
 /*
@@ -51,7 +51,6 @@ li a.active {
 
 #navigation {
   overflow: visible;  /* Sometimes you want to prevent overlapping with main div. */
-  width:960px;
   clear:both;
   position:absolute;
 
@@ -107,3 +106,10 @@ li a.active {
 
 .block-menu-block {
 }
+
+/* UiB lists */
+
+ul.language-switcher-locale-url li
+  {
+    display:inline;
+  }
