@@ -55,8 +55,49 @@ function uib_feature_area_block_view($delta='') {
   switch ($delta) {
   case 'colophon':
     $block['subject'] = t('Colophone');
-    $block['content'] = 'Universitetet i Bergen | Foo';
+    $block['content'] = array(
+      'name' => array(
+        '#prefix' => '<h3>',
+        '#suffix' => '</h3>',
+        '#markup' => t('University of Bergen'),
+      ),
+      'address' => array(
+        '#prefix' => '<br>' . t('Address: '),
+        '#markup' => 'Postboks 7800, 5020 BERGEN',
+      ),
+      'tlf' => array(
+        '#prefix' => '<br>' . t('Phone: '),
+        '#markup' => '55 58 00 00',
+      ),
+      'fax' => array(),
+      'emergency' => array(
+        '#prefix' => '<br>' . t('24-hour security hotline: '),
+        '#markup' => '55 58 80 81',
+      ),
+      'contact' => array(
+        '#prefix' => '<br>' . t('Contact: '),
+        '#markup' => 'post@uib.no',
+      ),
+      'responsible' => array(
+        '#prefix' => '<br>' . t('Responsible: '),
+        '#markup' => t('Director of Communications'),
+      ),
+    );
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $node = node_load(arg(1));
+      if ($node->type == 'area') {
+        $area = $node;
+      }
+      elseif (isset($node->field_uib_area)) {
+        $area = $node->field_uib_area['und'][0]['entity'];
+      }
+      if ($area) {
+        $block['content']['name']['#markup'] = 'Universitetet i Bergen | ' . $area->title;
+      }
+      unset($block['content']['emergency']);
+    }
     break;
   }
+  //dsm($block);
   return $block;
 }
