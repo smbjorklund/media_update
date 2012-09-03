@@ -51,14 +51,13 @@ li a.active {
 
 #navigation {
   overflow: visible;  /* Sometimes you want to prevent overlapping with main div. */
-  background-color:#D5D5D5;
   width:960px;
   clear:both;
   position:absolute;
 
   .block {
     margin-bottom: 0;
-    
+    display:block;
   }
 
   .block-menu .block-title,
