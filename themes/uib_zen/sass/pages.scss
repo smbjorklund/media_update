@@ -63,12 +63,19 @@ body {
 
 #site-name { /* The name of the website */
   margin: 0;
-  font-size: 2em;
+  font-size: 1.5em;
   line-height: 1.5em;
+  
+  /* den røde streken mellom logo og tittel i header */
+  border-left:1px #A20000 solid;  
+  padding:30px;
+  margin-left:30px;
 
   a:link,
   a:visited {
     text-decoration: none;
+    font-weight:normal;
+    color:$base-gray;
   }
 
   a:hover,
@@ -93,7 +100,7 @@ body {
 #main {
 }
 
-#main a{
+#main a {
   color:$base-blue;
   text-decoration:none;
   &:hover { text-decoration:underline; }

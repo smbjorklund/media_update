@@ -161,6 +161,7 @@ a:link {
 }
 
 a:visited {
+  color:#333;
 }
 
 a:hover,
@@ -400,6 +401,7 @@ ul,
 .item-list ul /* Drupal override */ {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
   margin: rhythm(1) 0;
+  list-style:none;
 }
 
 .item-list ul li { /* Drupal override */
