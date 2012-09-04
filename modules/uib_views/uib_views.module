@@ -1,0 +1,22 @@
+<?php
+function uib_views_views_query_alter(&$view, &$query) {
+  if ($view->name == 'ansatte') {
+
+    if (!empty($query->where[0]['conditions'][0])) {
+      dd ('processing arguments');
+      $alias = '';
+      foreach ($view->args as $value) {
+        $alias .= $value . '/';
+      }
+
+      $alias = rtrim($alias, "/");
+      $node = drupal_get_normal_path($alias, $language = NULL);
+
+      if ($alias != $node) {
+        dd ('nid: ' . $node);
+        $nid = substr(strrchr($node, "/"), 1);
+        $query->where[0]['conditions'][0]['value'][':node_nid'] = $nid;
+      }
+    }
+  }
+}
