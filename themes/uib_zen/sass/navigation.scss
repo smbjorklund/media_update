@@ -16,7 +16,7 @@ ul li.expanded {
   }
   list-style-image: inline-image("menu-expanded.png");
   list-style-type: circle;
-  float:left;
+  float: left;
   
   
 }
@@ -33,8 +33,7 @@ ul li.leaf {
   }
   list-style-image: inline-image("menu-leaf.png");
   list-style-type: square;
-/*  float:left;
-*/}
+}
 
 /*
  * The active item in a Drupal menu
@@ -51,12 +50,12 @@ li a.active {
 
 #navigation {
   overflow: visible;  /* Sometimes you want to prevent overlapping with main div. */
-  clear:both;
-  position:absolute;
+  clear: both;
+  position: absolute;
 
   .block {
     margin-bottom: 0;
-    display:block;
+    display: block;
   }
 
   .block-menu .block-title,
@@ -67,11 +66,13 @@ li a.active {
 
   ul.links, /* Main menu and secondary menu links */
   ul .menu { 
+    padding-left: 0;
+    margin-right: 40px;
     
   /* Menu block links */
     li { /* A simple method to get navigation links to appear in one line. */
-      list-style:none;
-      margin-left:30px;   
+      list-style: none;
+
       }
   }
 }
@@ -111,5 +112,5 @@ li a.active {
 
 ul.language-switcher-locale-url li
   {
-    display:inline;
+    display: inline;
   }

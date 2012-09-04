@@ -46,10 +46,10 @@ body {
 
 #header {
   background-image:url('../images/bergenmuseum.png');
-  background-repeat:no-repeat;
-  background-position:right;
-  height:170px;
-  border-bottom:solid 2px $base-gray;
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 170px;
+  border-bottom: solid 2px $base-gray;
 }
 
 #logo { /* Wrapping link for logo */
@@ -59,7 +59,7 @@ body {
 
   img {
     vertical-align: bottom;
-    height:70px;
+    height: 70px;
   }
 }
 
@@ -73,16 +73,16 @@ body {
   line-height: 1.5em;
   
   /* den røde streken mellom logo og tittel i header */
-  border-left:1px #AA0000 solid;  
-  padding:20px;
-  margin-left:20px;
+  border-left: 1px #AA0000 solid;
+  padding: 20px;
+  margin-left: 20px;
 
   a:link,
   a:visited {
     text-decoration: none;
-    font-weight:normal;
-    color:$base-gray;
-  }
+    font-weight: normal;
+    color: $base-gray;
+}
 
   a:hover,
   a:focus {
@@ -108,20 +108,18 @@ body {
 }
 
 #main a {
-  color:$base-blue;
-  text-decoration:none;
-  &:hover { text-decoration:underline; }
+  color: $base-blue;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
   
 }
-
-
 
 /*
  * Content
  */
 
 #content {
-  margin-top:80px; /* Gir plass til menyen, skal fjernes når vi finner en bedre løsning på menyen */
+  margin-top: 80px; /* Gir plass til menyen, skal fjernes når vi finner en bedre løsning på menyen */
 }
 
 .region-highlighted {
@@ -141,9 +139,9 @@ body {
 }
 
 h1.title  /* The title of the page */ {
-  color:$base-gray;
-  font-weight:normal;
-  font-size:1.5em;
+  color: $base-gray;
+  font-weight: normal;
+  font-size: 1.5em;
 }
 
 h2.node-title, /* Title of a piece of content when it is given in a list of content */

@@ -158,11 +158,11 @@ body {
  */
 
 a:link {
-  color:$base-gray;
+  color: $base-gray;
 }
 
 a:visited {
-  color:$base-gray;
+  color: $base-gray;
 }
 
 a:hover,
@@ -224,7 +224,7 @@ h2 {
   font-family: $font-body;
   text-transform: uppercase;
 /*  font-size: .9375em; <- Korrekt størrelse, men blir ikke lest*/  
- line-height: 20px;
+  line-height: 20px;
   font-weight: bold;
   color: #555;
   padding: 2px;
@@ -402,7 +402,7 @@ ul,
 .item-list ul /* Drupal override */ {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
   margin: rhythm(1) 0;
-  list-style:none;
+  list-style: none;
 }
 
 .item-list ul li { /* Drupal override */
