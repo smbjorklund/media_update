@@ -116,6 +116,36 @@ function uib_feature_area_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-3';
     $pane->panel = 'right';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_uib_newslist';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'entityreference_entity_view',
+      'delta_limit' => '0',
+      'delta_offset' => '0',
+      'delta_reversed' => 0,
+      'formatter_settings' => array(
+        'view_mode' => 'teaser',
+      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][1] = 'new-3';
+    $pane = new stdClass();
+    $pane->pid = 'new-4';
+    $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'views-recent_news-block';
     $pane->shown = TRUE;
@@ -130,10 +160,10 @@ function uib_feature_area_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][1] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][2] = 'new-4';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
@@ -190,7 +220,7 @@ function uib_feature_area_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'taxonomy_term:field_uib_trans_text2';
@@ -215,10 +245,10 @@ function uib_feature_area_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['left'][0] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['left'][0] = 'new-5';
     $pane = new stdClass();
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'views-area_kids-block_1';
@@ -236,10 +266,10 @@ function uib_feature_area_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['left'][1] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['left'][1] = 'new-6';
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'taxonomy_term:field_uib_main_media';
@@ -266,10 +296,10 @@ function uib_feature_area_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][0] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][0] = 'new-7';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-8';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'taxonomy_term:field_uib_trans_text';
@@ -294,10 +324,10 @@ function uib_feature_area_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['right'][1] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][1] = 'new-8';
     $pane = new stdClass();
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'taxonomy_term:field_uib_newslist';
@@ -324,10 +354,10 @@ function uib_feature_area_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][2] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][2] = 'new-9';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-5';
+  $display->title_pane = 'new-6';
   $handler->conf['display'] = $display;
   $export['term_view_panel_context'] = $handler;
 
