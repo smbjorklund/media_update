@@ -30,7 +30,10 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
@@ -40,36 +43,55 @@ function uib_ansatte_views_default_views() {
     ),
   );
   $handler->display->display_options['style_options']['columns'] = array(
-    'field_uib_staff' => 'field_uib_staff',
+    'uid' => 'uid',
+    'field_uib_first_name' => 'field_uib_first_name',
+    'field_uib_last_name' => 'field_uib_last_name',
+    'mail' => 'mail',
     'title' => 'title',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
-    'field_uib_staff' => array(
+    'uid' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_uib_first_name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_uib_last_name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'mail' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'title' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
   );
-  /* Field: Content: Ansatte */
-  $handler->display->display_options['fields']['field_uib_staff']['id'] = 'field_uib_staff';
-  $handler->display->display_options['fields']['field_uib_staff']['table'] = 'field_data_field_uib_staff';
-  $handler->display->display_options['fields']['field_uib_staff']['field'] = 'field_uib_staff';
-  $handler->display->display_options['fields']['field_uib_staff']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_staff']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_uib_staff']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_staff']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_uib_staff']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_uib_staff']['multi_type'] = 'ul';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_uib_staff_target_id']['id'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['relationships']['field_uib_staff_target_id']['table'] = 'field_data_field_uib_staff';
+  $handler->display->display_options['relationships']['field_uib_staff_target_id']['field'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['relationships']['field_uib_staff_target_id']['required'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -77,6 +99,56 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h2';
+  /* Field: User: Picture */
+  $handler->display->display_options['fields']['picture']['id'] = 'picture';
+  $handler->display->display_options['fields']['picture']['table'] = 'users';
+  $handler->display->display_options['fields']['picture']['field'] = 'picture';
+  $handler->display->display_options['fields']['picture']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['picture']['label'] = '';
+  $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['picture']['hide_empty'] = TRUE;
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'field_uib_staff_target_id';
+  /* Field: User: First name */
+  $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['field'] = 'field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['relationship'] = 'field_uib_staff_target_id';
+  /* Field: User: Last name */
+  $handler->display->display_options['fields']['field_uib_last_name']['id'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['table'] = 'field_data_field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['field'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['relationship'] = 'field_uib_staff_target_id';
+  /* Field: Field: Position */
+  $handler->display->display_options['fields']['field_uib_position']['id'] = 'field_uib_position';
+  $handler->display->display_options['fields']['field_uib_position']['table'] = 'field_data_field_uib_position';
+  $handler->display->display_options['fields']['field_uib_position']['field'] = 'field_uib_position';
+  $handler->display->display_options['fields']['field_uib_position']['relationship'] = 'field_uib_staff_target_id';
+  /* Field: User: Position (english) */
+  $handler->display->display_options['fields']['field_uib_position_en']['id'] = 'field_uib_position_en';
+  $handler->display->display_options['fields']['field_uib_position_en']['table'] = 'field_data_field_uib_position_en';
+  $handler->display->display_options['fields']['field_uib_position_en']['field'] = 'field_uib_position_en';
+  $handler->display->display_options['fields']['field_uib_position_en']['relationship'] = 'field_uib_staff_target_id';
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['relationship'] = 'field_uib_staff_target_id';
+  /* Field: Field: Phone */
+  $handler->display->display_options['fields']['field_uib_phone']['id'] = 'field_uib_phone';
+  $handler->display->display_options['fields']['field_uib_phone']['table'] = 'field_data_field_uib_phone';
+  $handler->display->display_options['fields']['field_uib_phone']['field'] = 'field_uib_phone';
+  $handler->display->display_options['fields']['field_uib_phone']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_phone']['delta_offset'] = '0';
+  /* Sort criterion: User: Last name (field_uib_last_name) */
+  $handler->display->display_options['sorts']['field_uib_last_name_value']['id'] = 'field_uib_last_name_value';
+  $handler->display->display_options['sorts']['field_uib_last_name_value']['table'] = 'field_data_field_uib_last_name';
+  $handler->display->display_options['sorts']['field_uib_last_name_value']['field'] = 'field_uib_last_name_value';
+  $handler->display->display_options['sorts']['field_uib_last_name_value']['relationship'] = 'field_uib_staff_target_id';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -104,39 +176,6 @@ function uib_ansatte_views_default_views() {
     return TRUE;
   ';
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'area' => 'area',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
-  );
-  $handler->display->display_options['filters']['language']['group'] = 1;
-  /* Filter criterion: Content: Type (field_uib_area_type) */
-  $handler->display->display_options['filters']['field_uib_area_type_value']['id'] = 'field_uib_area_type_value';
-  $handler->display->display_options['filters']['field_uib_area_type_value']['table'] = 'field_data_field_uib_area_type';
-  $handler->display->display_options['filters']['field_uib_area_type_value']['field'] = 'field_uib_area_type_value';
-  $handler->display->display_options['filters']['field_uib_area_type_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_uib_area_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['operator_id'] = 'field_uib_area_type_value_op';
-  $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['operator'] = 'field_uib_area_type_value_op';
-  $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['identifier'] = 'field_uib_area_type_value';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
@@ -193,9 +232,16 @@ function uib_ansatte_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('User entity referenced from field_uib_staff'),
+    t('Uid'),
+    t('First name'),
+    t('Last name'),
+    t('Position'),
+    t('Position (english)'),
+    t('E-mail'),
+    t('Phone'),
     t('All'),
     t('Ansatte hos %1'),
-    t('Type'),
     t('Page'),
     t('node page'),
   );
