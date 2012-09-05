@@ -135,16 +135,14 @@ function uib_ansatte_views_default_views() {
 
     if ($argument == $node) {
       dd (\'Node not found\');
-      return TRUE;
     }
 
-    if ($argument != $node {
+    if ($argument != $node) {
       dd (\'node: \' . $node);
       $nid = substr(strrchr($node, "/"), 1);
-      return TRUE;
     }
 
-    return;
+    return TRUE;
   ';
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = 0;
