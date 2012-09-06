@@ -29,64 +29,24 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'title',
+      'field' => 'field_uib_last_name_1',
       'rendered' => 1,
-      'rendered_strip' => 0,
+      'rendered_strip' => 1,
     ),
   );
-  $handler->display->display_options['style_options']['columns'] = array(
-    'uid' => 'uid',
-    'field_uib_first_name' => 'field_uib_first_name',
-    'field_uib_last_name' => 'field_uib_last_name',
-    'mail' => 'mail',
-    'title' => 'title',
-  );
-  $handler->display->display_options['style_options']['default'] = '-1';
-  $handler->display->display_options['style_options']['info'] = array(
-    'uid' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_uib_first_name' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_uib_last_name' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'mail' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'title' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-  );
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_uib_staff_target_id']['id'] = 'field_uib_staff_target_id';
   $handler->display->display_options['relationships']['field_uib_staff_target_id']['table'] = 'field_data_field_uib_staff';
@@ -106,44 +66,85 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['picture']['field'] = 'picture';
   $handler->display->display_options['fields']['picture']['relationship'] = 'field_uib_staff_target_id';
   $handler->display->display_options['fields']['picture']['label'] = '';
+  $handler->display->display_options['fields']['picture']['exclude'] = TRUE;
   $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['picture']['hide_empty'] = TRUE;
-  /* Field: User: Uid */
-  $handler->display->display_options['fields']['uid']['id'] = 'uid';
-  $handler->display->display_options['fields']['uid']['table'] = 'users';
-  $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  $handler->display->display_options['fields']['uid']['relationship'] = 'field_uib_staff_target_id';
   /* Field: User: First name */
   $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['field'] = 'field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_first_name']['exclude'] = TRUE;
   /* Field: User: Last name */
   $handler->display->display_options['fields']['field_uib_last_name']['id'] = 'field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['table'] = 'field_data_field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['field'] = 'field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name']['alter']['text'] = '[field_uib_last_name]</br>';
   /* Field: Field: Position */
   $handler->display->display_options['fields']['field_uib_position']['id'] = 'field_uib_position';
   $handler->display->display_options['fields']['field_uib_position']['table'] = 'field_data_field_uib_position';
   $handler->display->display_options['fields']['field_uib_position']['field'] = 'field_uib_position';
   $handler->display->display_options['fields']['field_uib_position']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_position']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_position']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_position']['alter']['text'] = '[field_uib_position]</br>';
+  $handler->display->display_options['fields']['field_uib_position']['hide_empty'] = TRUE;
   /* Field: User: Position (english) */
   $handler->display->display_options['fields']['field_uib_position_en']['id'] = 'field_uib_position_en';
   $handler->display->display_options['fields']['field_uib_position_en']['table'] = 'field_data_field_uib_position_en';
   $handler->display->display_options['fields']['field_uib_position_en']['field'] = 'field_uib_position_en';
   $handler->display->display_options['fields']['field_uib_position_en']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_position_en']['exclude'] = TRUE;
   /* Field: User: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
   $handler->display->display_options['fields']['mail']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['mail']['exclude'] = TRUE;
   /* Field: Field: Phone */
   $handler->display->display_options['fields']['field_uib_phone']['id'] = 'field_uib_phone';
   $handler->display->display_options['fields']['field_uib_phone']['table'] = 'field_data_field_uib_phone';
   $handler->display->display_options['fields']['field_uib_phone']['field'] = 'field_uib_phone';
   $handler->display->display_options['fields']['field_uib_phone']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_phone']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_phone']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_phone']['alter']['text'] = '[field_uib_phone]<br>';
+  $handler->display->display_options['fields']['field_uib_phone']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_uib_phone']['delta_offset'] = '0';
+  /* Field: User: Last name */
+  $handler->display->display_options['fields']['field_uib_last_name_1']['id'] = 'field_uib_last_name_1';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['table'] = 'field_data_field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['field'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['max_length'] = '1';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name_1']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="media">
+ [picture]
+  <div class="info">
+    <h2>[field_uib_first_name] [field_uib_last_name]</h2>
+    [field_uib_position]
+    [field_uib_phone]
+    [mail]
+  </div>
+</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   /* Sort criterion: User: Last name (field_uib_last_name) */
   $handler->display->display_options['sorts']['field_uib_last_name_value']['id'] = 'field_uib_last_name_value';
   $handler->display->display_options['sorts']['field_uib_last_name_value']['table'] = 'field_data_field_uib_last_name';
@@ -176,10 +177,48 @@ function uib_ansatte_views_default_views() {
     return TRUE;
   ';
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
+  /* Filter criterion: User: First name (field_uib_first_name) */
+  $handler->display->display_options['filters']['field_uib_first_name_value']['id'] = 'field_uib_first_name_value';
+  $handler->display->display_options['filters']['field_uib_first_name_value']['table'] = 'field_data_field_uib_first_name';
+  $handler->display->display_options['filters']['field_uib_first_name_value']['field'] = 'field_uib_first_name_value';
+  $handler->display->display_options['filters']['field_uib_first_name_value']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['filters']['field_uib_first_name_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_uib_first_name_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['operator_id'] = 'field_uib_first_name_value_op';
+  $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['label'] = 'First name';
+  $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['operator'] = 'field_uib_first_name_value_op';
+  $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['identifier'] = 'field_uib_first_name_value';
+  $handler->display->display_options['filters']['field_uib_first_name_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  /* Filter criterion: User: Last name (field_uib_last_name) */
+  $handler->display->display_options['filters']['field_uib_last_name_value']['id'] = 'field_uib_last_name_value';
+  $handler->display->display_options['filters']['field_uib_last_name_value']['table'] = 'field_data_field_uib_last_name';
+  $handler->display->display_options['filters']['field_uib_last_name_value']['field'] = 'field_uib_last_name_value';
+  $handler->display->display_options['filters']['field_uib_last_name_value']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['filters']['field_uib_last_name_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_uib_last_name_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['operator_id'] = 'field_uib_last_name_value_op';
+  $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['label'] = 'Last name';
+  $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['operator'] = 'field_uib_last_name_value_op';
+  $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['identifier'] = 'field_uib_last_name_value';
+  $handler->display->display_options['filters']['field_uib_last_name_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'personer';
   $handler->display->display_options['menu']['title'] = 'fak';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -233,13 +272,24 @@ function uib_ansatte_views_default_views() {
     t('next ›'),
     t('last »'),
     t('User entity referenced from field_uib_staff'),
-    t('Uid'),
     t('First name'),
     t('Last name'),
+    t('[field_uib_last_name]</br>'),
     t('Position'),
+    t('[field_uib_position]</br>'),
     t('Position (english)'),
     t('E-mail'),
     t('Phone'),
+    t('[field_uib_phone]<br>'),
+    t('<div class="media">
+ [picture]
+  <div class="info">
+    <h2>[field_uib_first_name] [field_uib_last_name]</h2>
+    [field_uib_position]
+    [field_uib_phone]
+    [mail]
+  </div>
+</div>'),
     t('All'),
     t('Ansatte hos %1'),
     t('Page'),
