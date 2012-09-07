@@ -219,7 +219,7 @@ function uib_ansatte_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'personer';
+  $handler->display->display_options['path'] = 'persons';
   $handler->display->display_options['menu']['title'] = 'fak';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
