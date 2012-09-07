@@ -128,3 +128,55 @@ function uib_feature_area_block_view($delta='') {
   //dsm($block);
   return $block;
 }
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function uib_feature_area_field_formatter_info() {
+  return array(
+    'uib_feature_area_link_feed' => array(
+      'label' => t('View as an rss feed'),
+      'field types' => array('link_field'),
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view()
+ */
+function uib_feature_area_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = array();
+
+   foreach ($items as $delta => $item) {
+    $content = @file_get_contents($item['url']);
+    if (!$content)
+      continue;
+    $elements[$delta] = array(
+      'list' => array(
+        '#title' => $item["title"],
+        '#items' => array(),
+        '#theme' => 'item_list',
+      ),
+    );
+    $xml = new SimpleXmlElement($content);
+    $limit = 5;
+    foreach ($xml->channel->item as $entry) {
+      $elements[$delta]['list']['#items'][] = l($entry->title, $entry->link) ;
+      if (--$limit == 0)
+        break;
+    }
+  }
+  return $elements;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function uib_feature_area_theme() {
+  return array(
+    'uib_feature_area_formatter_uib_feature_area_link_feed' => array(
+      'variables' => array('element' => NULL),
+    ),
+  );
+}
