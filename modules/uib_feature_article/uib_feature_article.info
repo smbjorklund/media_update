@@ -60,4 +60,3 @@ features[variable][] = menu_parent_uib_article
 features[variable][] = node_options_uib_article
 features[variable][] = node_preview_uib_article
 features[variable][] = node_submitted_uib_article
-features[views_view][] = uib_articles
