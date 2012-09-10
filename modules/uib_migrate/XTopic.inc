@@ -47,6 +47,9 @@ class XTopic extends stdClass {
    *   You might also provide a string on the form "username:$username" to look
    *   up users directly based on their UiB user name.
    *
+   *  Will throw an exception if a topic with the given id can't be found.
+   *  The exception will have a 'code' of 404 in that case.
+   *
    * @param $shallow
    *   If TRUE don't fetch related topics
    *
@@ -71,7 +74,7 @@ class XTopic extends stdClass {
     $xml = simplexml_load_file($url);
     $topic = $xml->topic;
     if (empty($topic)) {
-      throw new Exception("Topic $id not found");
+      throw new Exception("Topic $id not found", 404);
     }
     $this->id = (string)$topic['id'];
     $this->title = (string)$topic->title;

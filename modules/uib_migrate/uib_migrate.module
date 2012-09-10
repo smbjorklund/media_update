@@ -69,7 +69,16 @@ function uib_migrate__sync_w2_user($username) {
     uibx_log('No user with the given username exist');
     return;
   }
-  $w2u = new XTopic("username:$username");
+  try {
+    $w2u = new XTopic("username:$username");
+  }
+  catch (Exception $e) {
+    if ($e->getCode() == 404) {
+      uibx_log("Can't look up user $username in w2", "error");
+      return;
+    }
+    throw $e;
+  }
 
   $edit = array();
   if ($account->field_uib_slug['und'][0]['value'] != $w2u->slug) {
