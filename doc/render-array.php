@@ -1,6 +1,6 @@
 Drupal Render Arrays
 
-Render arrays a nested structures of arrays that describes HTML markup to be
+Render arrays are nested structures of arrays that describes HTML markup to be
 generated. A render array is converted into HTML by passing it to the
 drupal_render() function. This process is called rendering.  The activated theme
 is able to override the actual rendering that takes place.
@@ -15,13 +15,14 @@ The simplest case is a render array without any properties or children (the
 empty array).  It renders as the empty string.
 
 Next, a render array without any properties will render as the concatenation of
-the renderings of its children.  Since the order of items in an PHP array is
+the renderings of its children.  Since the order of items in a PHP array is
 deterministic so will the result of the rendering of the children be.  If some
 of the children have the '#weight' property set, then they will first be sorted
-accordingly before they are rendered.
+by the '#weight' values before they are rendered (children without '#weight' are
+treated as if they had a weight of 0 during sorting).
 
 The properties '#prefix' and '#suffix' can be added to any render array and will
-be treated as literal markup text that wraps the markup generated.
+be treated as literal markup text that wraps the markup otherwise generated.
 
 A render array with the property '#markup' will render as the corresponding
 value (which should be a string).  If there are any children of this array they
@@ -45,12 +46,12 @@ and '#items' like this:
   ),
 
 If the theme function isn't documented to actually process children, then they
-will generally be ignored if present.  The 'item_list' function will for instane
-ignore any children.
+will generally be ignored if present.  The theme_item_list() function will for
+instance ignore any children.
 
 The rendering result of '#markup', '#theme' or just the children when none of
 those apply, can be further processed by the list of functions provided by the
-'#theme_wrappers' property.  The rendering of '#markup', '#theme' or the
+'#theme_wrappers' property.  The earlier rendering of '#markup', '#theme' or the
 children will be provided to the wrapper function as the '#children' property.
 
 As a conveinience the '#type' property can be provided.  Each type name maps to
@@ -72,10 +73,11 @@ The '#type' of 'html_tag' will provide the default properties of:
     '#value' => NULL,
   )
 
-which ensures that the theme_html_tag() function is invoked to do the
-rendering and also make it optional to specify '#attributes' and '#value'.
-The types available are provided by the hook_element_info().  Most
-of the "standard" types are found in system_element_info().
+which ensures that the theme_html_tag() function is invoked to do the rendering
+and also make it optional to specify '#attributes' and '#value' properties that
+the theme_html_tag() function expects. The types available are provided by the
+hook_element_info().  Most of the "standard" types are provided by
+system_element_info().
 
 
 
