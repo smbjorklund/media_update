@@ -24,6 +24,7 @@ function uib_feature_article_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'field_uib_date',
+      1 => 'field_uib_event_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -26,6 +26,7 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
+features[field][] = node-uib_article-field_uib_event_type
 features[field][] = node-uib_article-field_uib_area
 features[field][] = node-uib_article-field_uib_article_type
 features[field][] = node-uib_article-field_uib_byline

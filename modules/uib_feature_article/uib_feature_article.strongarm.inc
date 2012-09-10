@@ -15,7 +15,17 @@ function uib_feature_article_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__uib_article';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
@@ -27,9 +37,9 @@ function uib_feature_article_strongarm() {
       ),
       'display' => array(
         'language' => array(
-          'teaser' => array(
-            'weight' => '0',
-            'visible' => FALSE,
+          'default' => array(
+            'weight' => '1',
+            'visible' => TRUE,
           ),
         ),
       ),
