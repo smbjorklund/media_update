@@ -220,8 +220,9 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'persons';
-  $handler->display->display_options['menu']['title'] = 'fak';
+  $handler->display->display_options['menu']['title'] = 'Ansatte';
   $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'area';
   $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: node page */
@@ -255,6 +256,11 @@ function uib_ansatte_views_default_views() {
   ';
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
   $handler->display->display_options['path'] = 'node/%/persons';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Ansatte';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'area';
+  $handler->display->display_options['menu']['context'] = 0;
   $translatables['ansatte'] = array(
     t('Master'),
     t('Ansatte'),
