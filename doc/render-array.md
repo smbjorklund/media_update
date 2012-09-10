@@ -2,8 +2,8 @@
 
 Render arrays are nested structures of arrays that describes HTML markup to be
 generated. A render array is converted into HTML by passing it to the
-drupal\_render() function. This process is called rendering.  The activated theme
-is able to override the actual rendering that takes place.
+[drupal\_render()](http://api.drupal.org/api/drupal/includes%21common.inc/function/drupal_render/7) function. This process is called rendering.  The activated theme
+is able to [override](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme/7) the actual rendering that takes place.
 
 The items of a render array with keys that start with '#' are called properties.
 Examples of properties are '#markup', '#prefix', '#theme' etc.  The properties
@@ -33,7 +33,7 @@ to the corresponing theme function or template. A render array can't both have
 the '#markup' and '#theme' property set.
 
 For instance if the '#theme' property has the value 'item\_list', then the
-theme\_item\_list() rendering function will be invoked.  The variables that the
+[theme\_item\_list()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_item_list/7) rendering function will be invoked.  The variables that the
 render function (or template) expects are picked up from the other properties.
 The theme\_item\_list() function is documented to take the parameters 'title' and
 'items' (among others).  These variables are provided by the properties '#title'
@@ -73,11 +73,13 @@ The '#type' of 'html\_tag' will provide the default properties of:
       '#value' => NULL,
     )
 
-which ensures that the theme\_html\_tag() function is invoked to do the rendering
+which ensures that the [theme\_html\_tag()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_html_tag/7) function is invoked to do the rendering
 and also make it optional to specify '#attributes' and '#value' properties that
 the theme\_html\_tag() function expects. The types available are provided by the
 hook\_element\_info().  Most of the "standard" types are provided by
-system\_element\_info().
+[system\_element\_info()](http://api.drupal.org/api/drupal/modules%21system%21system.module/function/system_element_info/7).
+
+More information about the render API is found in <http://drupal.org/node/930760>.
 
 
 
