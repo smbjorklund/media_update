@@ -13,6 +13,7 @@ class SebraPerson extends stdClass {
   /** Create a new SebraPerson object.
    *
    *  Will throw an exception if no user with the given name is known by Sebra.
+   *  The exception will have a 'code' of 404 in that case.
    *
    *  @param $id
    *    The UiB username of the person to fetch information about
@@ -21,7 +22,7 @@ class SebraPerson extends stdClass {
   public function __construct($id) {
     $person = uib_sebra__sws_get('person?id=' . $id);
     if (empty($person)) {
-      throw new Exception("Person $id not found");
+      throw new Exception("Person $id not found", 404);
     }
 
     $this->id = $id;

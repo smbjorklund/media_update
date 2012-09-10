@@ -138,8 +138,13 @@ function uib_sebra__sync_areas() {
       $staff = array();
       foreach ($area_doc->omraade->visninger->uibid as $uname) {
         $account = user_load_by_name($uname);
-        if (!$account)
+        if (!$account) {
           $account = uib_sebra__sync_user($uname);
+          if (!$account) {
+            uibx_log("Can't find user $uname from Sebra", "error");
+            continue;
+          }
+        }
         $staff['und'][]['target_id'] = $account->uid;
       }
       if (!isset($area->field_uib_staff) || $area->field_uib_staff != $staff) {
@@ -262,7 +267,15 @@ function uib_sebra__get_persons($type) {
 
 function uib_sebra__sync_user($username) {
   $account = user_load_by_name($username);
-  $u = new SebraPerson($username);
+  try {
+    $u = new SebraPerson($username);
+  }
+  catch(Exception $e) {
+    if ($e->getCode() == 404)
+      // Should we block the user before we return it then?
+      return $account;
+    throw $e;
+  }
 
   $phones = array();
   if (!empty($u->phone_office))
