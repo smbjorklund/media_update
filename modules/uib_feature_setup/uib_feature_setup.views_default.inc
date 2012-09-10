@@ -296,10 +296,10 @@ function uib_feature_setup_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['path'] = 'admin/content/users';
+  $handler->display->display_options['path'] = 'admin/people/bulk';
   $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Users';
-  $handler->display->display_options['menu']['description'] = 'Views powerd user administration.';
+  $handler->display->display_options['menu']['title'] = 'Bulk';
+  $handler->display->display_options['menu']['description'] = 'Views powered user administration.';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $translatables['users'] = array(
