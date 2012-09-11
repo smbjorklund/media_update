@@ -5,6 +5,7 @@ package = Features
 dependencies[] = ctools
 dependencies[] = strongarm
 dependencies[] = views
+dependencies[] = calendar
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
