@@ -92,12 +92,12 @@ function uib_calendar_views_default_views() {
     'multiple_to' => '',
   );
   /* Field: Content: Event type */
-  $handler->display->display_options['fields']['field_event_type']['id'] = 'field_event_type';
-  $handler->display->display_options['fields']['field_event_type']['table'] = 'field_data_field_event_type';
-  $handler->display->display_options['fields']['field_event_type']['field'] = 'field_event_type';
-  $handler->display->display_options['fields']['field_event_type']['label'] = '';
-  $handler->display->display_options['fields']['field_event_type']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_event_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_event_type']['id'] = 'field_uib_event_type';
+  $handler->display->display_options['fields']['field_uib_event_type']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['fields']['field_uib_event_type']['field'] = 'field_uib_event_type';
+  $handler->display->display_options['fields']['field_uib_event_type']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_event_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_event_type']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Date - end date (field_uib_date:value2) */
   $handler->display->display_options['sorts']['field_uib_date_value2']['id'] = 'field_uib_date_value2';
   $handler->display->display_options['sorts']['field_uib_date_value2']['table'] = 'field_data_field_uib_date';
@@ -131,20 +131,6 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_article_type_value']['value'] = array(
     'event' => 'event',
   );
-  /* Filter criterion: Content: Event type (field_event_type) */
-  $handler->display->display_options['filters']['field_event_type_value']['id'] = 'field_event_type_value';
-  $handler->display->display_options['filters']['field_event_type_value']['table'] = 'field_data_field_event_type';
-  $handler->display->display_options['filters']['field_event_type_value']['field'] = 'field_event_type_value';
-  $handler->display->display_options['filters']['field_event_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_type_value']['expose']['operator_id'] = 'field_event_type_value_op';
-  $handler->display->display_options['filters']['field_event_type_value']['expose']['label'] = 'Event';
-  $handler->display->display_options['filters']['field_event_type_value']['expose']['operator'] = 'field_event_type_value_op';
-  $handler->display->display_options['filters']['field_event_type_value']['expose']['identifier'] = 'field_event_type_value';
-  $handler->display->display_options['filters']['field_event_type_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_event_type_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
@@ -153,12 +139,12 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_uib_date_1',
+      'field' => 'field_uib_event_type',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
     1 => array(
-      'field' => 'field_event_type',
+      'field' => 'field_uib_date_1',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
@@ -193,7 +179,6 @@ function uib_calendar_views_default_views() {
     t('Content entity referenced from field_uib_area'),
     t('[field_uib_date] - [title]'),
     t('All'),
-    t('Event'),
     t('Page'),
     t('Block'),
   );
