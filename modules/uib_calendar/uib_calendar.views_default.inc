@@ -96,8 +96,11 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_uib_event_type']['table'] = 'field_data_field_uib_event_type';
   $handler->display->display_options['fields']['field_uib_event_type']['field'] = 'field_uib_event_type';
   $handler->display->display_options['fields']['field_uib_event_type']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_event_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_event_type']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_event_type']['alter']['text'] = '<h2>[field_uib_event_type]</h2>';
   $handler->display->display_options['fields']['field_uib_event_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_event_type']['element_wrapper_type'] = 'h2';
+  $handler->display->display_options['fields']['field_uib_event_type']['element_default_classes'] = FALSE;
   /* Sort criterion: Content: Date - end date (field_uib_date:value2) */
   $handler->display->display_options['sorts']['field_uib_date_value2']['id'] = 'field_uib_date_value2';
   $handler->display->display_options['sorts']['field_uib_date_value2']['table'] = 'field_data_field_uib_date';
@@ -149,6 +152,7 @@ function uib_calendar_views_default_views() {
       'rendered_strip' => 0,
     ),
   );
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -158,6 +162,45 @@ function uib_calendar_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_uib_date']['id'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['field'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_date']['settings'] = array(
+    'format_type' => 'time',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_uib_date] - [title]';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_uib_date_1']['id'] = 'field_uib_date_1';
+  $handler->display->display_options['fields']['field_uib_date_1']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date_1']['field'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date_1']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_date_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_date_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_date_1']['settings'] = array(
+    'format_type' => 'day_and_month',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   $handler->display->display_options['block_description'] = 'Kalender - det skjer!';
   $translatables['calendar'] = array(
     t('Master'),
@@ -178,6 +221,7 @@ function uib_calendar_views_default_views() {
     t('Beklager ingen arr.'),
     t('Content entity referenced from field_uib_area'),
     t('[field_uib_date] - [title]'),
+    t('<h2>[field_uib_event_type]</h2>'),
     t('All'),
     t('Page'),
     t('Block'),
