@@ -53,3 +53,8 @@
   -o-border-radius: 0 0 7px 7px;
   border-radius: 0 0 7px 7px;
 }
+
+/* line 48, ../sass/views-styles.scss */
+.view-ansatte {
+  float: right;
+}
