@@ -197,6 +197,21 @@ function uib_calendar_views_default_views() {
     2 => '2',
     1 => 0,
   );
+  /* Filter criterion: Content: Date -  start date (field_uib_date) */
+  $handler->display->display_options['filters']['field_uib_date_value_1']['id'] = 'field_uib_date_value_1';
+  $handler->display->display_options['filters']['field_uib_date_value_1']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['filters']['field_uib_date_value_1']['field'] = 'field_uib_date_value';
+  $handler->display->display_options['filters']['field_uib_date_value_1']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_uib_date_value_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['operator_id'] = 'field_uib_date_value_1_op';
+  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['label'] = 'Date';
+  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['operator'] = 'field_uib_date_value_1_op';
+  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['identifier'] = 'field_uib_date_value_1';
+  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  $handler->display->display_options['filters']['field_uib_date_value_1']['form_type'] = 'date_popup';
   $handler->display->display_options['path'] = 'node/%/kalender';
 
   /* Display: Block */
@@ -265,6 +280,7 @@ function uib_calendar_views_default_views() {
     t('All'),
     t('Page'),
     t('Event type'),
+    t('Date'),
     t('Block'),
   );
   $export['calendar'] = $view;
