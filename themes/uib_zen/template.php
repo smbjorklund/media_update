@@ -133,7 +133,7 @@ function uib_zen_preprocess_html(&$variables, $hook) {
   if (!$variables['user']->uid == '0') {
     $user = user_load($variables['user']->uid);
 
-    if ($user->field_grid['und'][0]['value'] == '1')
+    if (!empty($user->field_grid['und'][0]['value']) == '1')
       $variables['classes_array'][] = 'grid';
   }
 }
