@@ -128,15 +128,15 @@ function uib_zen_preprocess_maintenance_page(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function uib_zen_preprocess_html(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
 
-  // The body tag's classes are controlled by the $classes_array variable. To
-  // remove a class from $classes_array, use array_diff().
-  //$variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
+  if (!$variables['user']->uid == '0') {
+    $user = user_load($variables['user']->uid);
+
+    if ($user->field_grid['und'][0]['value'] == '1')
+      $variables['classes_array'][] = 'grid';
+  }
 }
-// */
 
 /**
  * Override or insert variables into the page templates.
@@ -162,11 +162,11 @@ function uib_zen_preprocess_page(&$variables, $hook) {
  */
 function uib_zen_preprocess_node(&$variables, $hook) {
 
-  if ($variables['type'] == 'area') {      
+  if ($variables['type'] == 'area') {
     if ($variables['field_uib_area_type']['0']['value'] == 'research group') {
       $variables ['classes_array'][] = t('research_g_node');
     }
-    
+
     if ($variables['field_uib_area_type']['0']['value'] == 'faculty') {
       $variables ['classes_array'][] = t('faculty_node');
     }
@@ -195,7 +195,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     $function($variables, $hook);
   }
 }
-// */
 
 /**
  * Override or insert variables into the comment templates.

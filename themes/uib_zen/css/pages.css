@@ -15,6 +15,10 @@ body {
   padding: 0;
 }
 
+body.grid {
+  background: url(../images/grid-2.png) center top repeat-y white;
+}
+
 /*
  * The skip-link link will be completely hidden until a user tabs to the link.
  * See the element-focusable rule in system.base.css.
