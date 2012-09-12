@@ -40,11 +40,11 @@ function uib_feature_user_field_default_fields() {
       'bundle' => 'user',
       'default_value' => array(
         0 => array(
-          'value' => 1,
+          'value' => 0,
         ),
       ),
       'deleted' => '0',
-      'description' => 'Display theme grid background.',
+      'description' => 'Do not display theme grid background on every page.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -56,7 +56,7 @@ function uib_feature_user_field_default_fields() {
       ),
       'entity_type' => 'user',
       'field_name' => 'field_grid',
-      'label' => 'Grid',
+      'label' => 'Remove grid',
       'required' => 0,
       'settings' => array(
         'user_register_form' => 0,
@@ -579,7 +579,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Display theme grid background.');
+  t('Do not display theme grid background on every page.');
   t('First name');
   t('Grid');
   t('ID w2');
