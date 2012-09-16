@@ -5,31 +5,30 @@ generated. A render array is converted into HTML by passing it to the
 [drupal\_render()](http://api.drupal.org/api/drupal/includes%21common.inc/function/drupal_render/7) function. This process is called rendering.  The activated theme
 is able to [override](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme/7) the actual rendering that takes place.
 
-The items of a render array with keys that start with '#' are called properties.
+The items of a render array with keys that start with '#' are called **properties**.
 Examples of properties are '#markup', '#prefix', '#theme' etc.  The properties
 determine how the array is processed during rendering.  Any other keys will
-reference the children of the render array.  The children should themselves be
+reference the **children** of the render array.  The children should themselves be
 render arrays, thus forming a recursive structure.
 
-The simplest case is a render array without any properties or children (the
-empty array).  It renders as the empty string.
+A render array without either the '#markup' or '#theme' property will
+render as the concatenation of the renderings of its children.  Since the order
+of items in a PHP array is deterministic so will the result of the rendering of
+the children be.  If at least one the children have the **'#weight'** property set,
+then they will first be numerically sorted by the '#weight' values before they
+are rendered (children without '#weight' are treated as if they had a weight of
+0 during sorting).
 
-Next, a render array without any properties will render as the concatenation of
-the renderings of its children.  Since the order of items in a PHP array is
-deterministic so will the result of the rendering of the children be.  If some
-of the children have the '#weight' property set, then they will first be sorted
-by the '#weight' values before they are rendered (children without '#weight' are
-treated as if they had a weight of 0 during sorting).
+The properties **'#prefix'** and **'#suffix'** can be added to any render array
+and will be treated as literal markup text that wraps the markup otherwise
+generated.
 
-The properties '#prefix' and '#suffix' can be added to any render array and will
-be treated as literal markup text that wraps the markup otherwise generated.
-
-A render array with the property '#markup' will render as the corresponding
+A render array with the property **'#markup'** will render as the corresponding
 value (which should be a string).  If there are any children of this array they
 will be ignored.
 
-A render array with the property '#theme' will pass responsiblity for rendering
-to the corresponing theme function or template. A render array can't both have
+A render array with the property **'#theme'** will pass responsibility for rendering
+to the corresponding theme function or template. A render array can't both have
 the '#markup' and '#theme' property set.
 
 For instance if the '#theme' property has the value 'item\_list', then the
@@ -49,12 +48,13 @@ If the theme function isn't documented to actually process children, then they
 will generally be ignored if present.  The theme\_item\_list() function will for
 instance ignore any children.
 
-The rendering result of '#markup', '#theme' or just the children when none of
-those apply, can be further processed by the list of functions provided by the
-'#theme\_wrappers' property.  The earlier rendering of '#markup', '#theme' or the
-children will be provided to the wrapper function as the '#children' property.
+The functions listed by the **'#theme\_wrappers'** property can further modify the
+rendering result. The wrappers should take the text found in '#children'
+property, modify it and return it. The '#children' property will be set up by
+the rendering machinery based on the earlier rendering of '#markup', '#theme',
+concatenated children, or earlier wrappers.
 
-As a conveinience the '#type' property can be provided.  Each type name maps to
+As a convenience the **'#type'** property can be provided.  Each type name maps to
 a set of default property values.  Often one of the defaults will include
 a '#theme' property with the same name as the '#type'.
 
@@ -62,7 +62,8 @@ For instance consider the render array:
 
     array(
       '#type' => 'html_tag',
-      '#tag' => 'br',
+      '#tag' => 'h1',
+      '#value' => 'Hello, world!',
     )
 
 The '#type' of 'html\_tag' will provide the default properties of:
@@ -73,15 +74,29 @@ The '#type' of 'html\_tag' will provide the default properties of:
       '#value' => NULL,
     )
 
-which ensures that the [theme\_html\_tag()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_html_tag/7) function is invoked to do the rendering
-and also make it optional to specify '#attributes' and '#value' properties that
-the theme\_html\_tag() function expects. The types available are provided by the
-hook\_element\_info().  Most of the "standard" types are provided by
+The result is that the following array ends up rendered:
+
+    array(
+      '#theme' => 'html_tag',
+      '#tag' => 'h1',
+      '#attributes' => array(),
+      '#value' => 'Hello, world!',
+    )
+
+which ensures that the
+[theme\_html\_tag()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_html_tag/7)
+function is invoked to do the rendering and also make it optional to specify
+'#attributes' and '#value' properties that the theme\_html\_tag() function
+expects.
+
+The render types available can be extended by the hook\_element\_info().  Most
+of the "standard" types are provided by
 [system\_element\_info()](http://api.drupal.org/api/drupal/modules%21system%21system.module/function/system_element_info/7).
 
 More information about the render API is found in <http://drupal.org/node/930760>.
 
 
+## Examples:
 
     <?php
     $aa = array(
