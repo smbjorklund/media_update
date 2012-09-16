@@ -96,97 +96,122 @@ of the "standard" types are provided by
 More information about the render API is found in <http://drupal.org/node/930760>.
 
 
-## Examples:
+## Howto
 
-    <?php
-    $aa = array(
-      array(
+This section just gives examples of how to set up render arrays to achieve
+various effects.  There are many ways to express the same thing.  The
+difference boils down to how easy it will be for the theme to override the output or
+for various alter hooks to manipulate the structure of what's to be rendered.
+
+### Just output some escaped text
+
+    array(
+        '#markup' => check_plain($text),
+    )
+
+See [check\_plain()](http://api.drupal.org/api/drupal/includes%21bootstrap.inc/function/check_plain/7) for more information.
+
+### Simple HTML elemenet
+
+    array(
+      '#markup' => '<h1>Hello, world!</h1>',
+    )
+
+    array(
+      '#prefix' => '<h1>',
+      '#markup' => 'Hello, world!',
+      '#suffix' => '</h1>',
+    )
+
+    array(
+      '#prefix' => '<h1>',
+      hello => array( '#markup' => t('Hello'),
+      comma => array( '#markup' => ', ',
+      world => array( '#markup' => t('Word'),
+      yeah  => array( '#markup' => '!',
+      '#suffix' => '</h1>',
+    )
+
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'h1',
+      '#attributes' => array(
+        'class' => array('greeting'),
       ),
+      '#value' => 'Hello, world!',
+    )
 
-      array(
-        '#markup' => '<h1>hello, world!</h1>',
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'img',
+      '#attributes' => array(
+        'src' => '...',
       ),
+    ),
 
-      array(
-        '#markup' => t('Hello, World!'),
-        '#prefix' => '<h1>',
-        '#suffix' => '</h1>',
+See [theme\_html\_tag()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_html_tag/7) for more information.
+
+### Wrap stuff in a &lt;div>
+
+    array(
+      '#prefix' => '<div class="level1">',
+      '#suffix' => '</div>',
+      'stuff' => array(
+        '#markup' => '...',
       ),
+    )
 
-      array(
-        '#type' => 'html_tag',
-        '#tag' => 'img',
-        '#attributes' => array('src' => '...'),
+    array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array('level1'),
       ),
-
-      array(
-        '#type' => 'html_tag',
-        '#tag' => 'h1',
-        '#value' => t('Hello, world!'),
+      'stuff' => array(
+        '#markup' => '...',
       ),
+    )
 
-      array(
-        '#theme' => 'item_list',
-        '#title' => 'Letters',
-        '#items' => array('a', 'b', 'c', 'd'),
+### List of stuff
+
+    array(
+      '#theme' => 'item_list',
+      '#title' => 'Letters',
+      '#items' => array('a', 'b', 'c', 'd'),
+    )
+
+See [theme\_item\_list()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_item_list/7) for more information.
+
+### A table
+
+    array(
+      '#theme' => 'table',
+      '#rows' => array(
+        array('a1', 'b1', 'c1'),
+        array('a2', 'b2', 'c2'),
       ),
+      '#empty' => 'no data',
+    )
 
-      array(
-        'hello' => array('#markup' => t('Hello')),
-        'comma' => array('#markup' => ', '),
-        'world' => array('#markup' => t('World!')),
+See [theme\_table()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_table/7) for more information.
+
+### A username
+
+    array(
+      '#theme' => 'username',
+      '#account' => user_load_by_name('gaa041'),
+    )
+
+See [theme\_username()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_username/7) for more information.
+
+### List of users
+
+    array(
+      '#theme' => 'user_list',
+      '#title' => t('Users'),
+      '#users' => array(
+        user_load_by_name('admin'),
+        user_load_by_name('gaa041'),
       ),
+    )
 
-      array(
-        '#prefix' => '<span>',
-        '#suffix' => '</span>',
-        'hello' => array('#markup' => t('Hello')),
-        'comma' => array('#markup' => ', '),
-        'world' => array('#markup' => t('World!')),
-      ),
-
-      array(
-        '#type' => 'container',
-        '#attributes' => array(),  // required even when empty
-        'hello' => array('#markup' => t('Hello')),
-        'comma' => array('#markup' => ', '),
-        'world' => array('#markup' => t('World!')),
-      ),
-
-      array(
-        '#type' => 'container',
-        '#attributes' => array('id' => 'ID', 'class' => array('foo', 'bar')),
-        'hello' => array('#markup' => t('Hello')),
-        'comma' => array('#markup' => ', '),
-        'world' => array('#markup' => t('World!')),
-      ),
-
-      array(
-        '#theme' => 'username',
-        '#account' => user_load_by_name('gaa041'),
-      ),
-
-      array(
-        '#theme' => 'user_list',
-        '#title' => t('Users'),
-        '#users' => array(
-          user_load_by_name('admin'),
-          user_load_by_name('gaa041'),
-        ),
-      ),
-
-      array(
-        '#theme' => 'table',
-        '#rows' => array(
-          array('a1', 'b1', 'c1'),
-          array('a2', 'b2', 'c2'),
-        ),
-        '#empty' => 'no data',
-      ),
-    );
-
-    #print_r($aa);
-    foreach ($aa as $a) {
-      print_r($a);
-      print_r(array('result' => render($a)));
-    }
+See [theme\_user\_list()](http://api.drupal.org/api/drupal/modules%21user%21user.module/function/theme_user_list/7) for more information.
