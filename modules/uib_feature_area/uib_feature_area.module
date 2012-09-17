@@ -42,6 +42,10 @@ function uib_feature_area_block_info() {
       'info' => t('Colophone'),
       'status' => TRUE,
     ),
+    'jobbnorge' => array(
+      'info' => t('Jobbnorge'),
+      'status' => TRUE,
+    ),
   );
 }
 
@@ -124,9 +128,53 @@ function uib_feature_area_block_view($delta='') {
       hide($block['content']['emergency']);
     }
     break;
+  case 'jobbnorge':
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $node = node_load(arg(1));
+      if ($node->type == 'area') {
+        $area = $node;
+      }
+      elseif (isset($node->field_uib_area)) {
+        $area = $node->field_uib_area['und'][0]['entity'];
+      }
+    }
+    if ($area) {
+      $place = node_load($area->field_uib_ou['und'][0]['target_id']);
+      if (empty($place->field_uib_jobbnorge_id['und']))
+       continue;
+      else
+       $feed = 'http://www.jobbnorge.no/joblist/joblistbuilder.ashx?id=821a69c9-7674-4e36-90f8-41e443b99064&depid=' . $place->field_uib_jobbnorge_id['und'][0]['value'];
+      if ($area->language == 'en')
+        $feed .= '&langid=2';
+      $block['subject'] = t('Open Positions');
+      $block['content'] = uib_feature_area__feed_format($feed,$title='',$limit=999);
+      }
+    break;
   }
   //dsm($block);
   return $block;
+}
+
+function uib_feature_area__feed_format($url, $title, $limit){
+  $items = array();
+  $content = @file_get_contents($url);
+    if (!$content){
+      return;
+    }
+    $items = array(
+      'list' => array(
+        '#title' => $title,
+        '#items' => array(),
+        '#theme' => 'item_list',
+      ),
+    );
+    $xml = new SimpleXmlElement($content);
+    foreach ($xml->channel->item as $entry) {
+      $items['list']['#items'][] = l($entry->title, $entry->link) ;
+      if (--$limit == 0)
+        break;
+    }
+  return $items;
 }
 
 /**
@@ -149,23 +197,8 @@ function uib_feature_area_field_formatter_view($entity_type, $entity, $field, $i
   $elements = array();
 
    foreach ($items as $delta => $item) {
-    $content = @file_get_contents($item['url']);
-    if (!$content)
-      continue;
-    $elements[$delta] = array(
-      'list' => array(
-        '#title' => $item["title"],
-        '#items' => array(),
-        '#theme' => 'item_list',
-      ),
-    );
-    $xml = new SimpleXmlElement($content);
-    $limit = 5;
-    foreach ($xml->channel->item as $entry) {
-      $elements[$delta]['list']['#items'][] = l($entry->title, $entry->link) ;
-      if (--$limit == 0)
-        break;
-    }
+    $elements[$delta] = uib_feature_area__feed_format(url($item['url'],$item),$item['title'],5);
+
   }
   return $elements;
 }
