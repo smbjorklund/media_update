@@ -107,7 +107,7 @@ function uib_feature_area_block_view($delta='') {
       elseif (isset($node->field_uib_area)) {
         $area = $node->field_uib_area['und'][0]['entity'];
       }
-      if ($area && isset($area->field_uib_ou['und'])) {
+      if (isset($area) && isset($area->field_uib_ou['und'])) {
         $place = node_load($area->field_uib_ou['und'][0]['target_id']);
         $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
         //dsm($place);
