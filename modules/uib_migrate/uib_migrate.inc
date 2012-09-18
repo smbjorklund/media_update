@@ -232,22 +232,22 @@ class NewsMigration extends XTopicToArticleMigration {
  */
 class EventMigration extends XTopicToArticleMigration {
   public $topic_type = 'event';
-  public $article_type= 'event';
+  public $article_type = 'event';
 
   public function prepareRow($row) {
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    $row->article_type = $row->type;
-
+    $row->article_type = 'event';
   }
 
   public function prepare($node, $row) {
     parent::prepare($node, $row);
     $node->field_uib_date['und'][0]['value'] = $row->start_date;
     $node->field_uib_date['und'][0]['value2'] = $row->end_date;
+    $node->field_uib_event_type['und'][0]['value'] = $row->article_type;
     //Prevent empty links instances
-    if (!empty($row->hjemmeside)){
+    if (!empty($row->hjemmeside)) {
           $node->field_uib_links['und'][0]['url'] = $row->hjemmeside;
           $node->field_uib_links['und'][0]['title'] = $row->lenketekst;
     }
