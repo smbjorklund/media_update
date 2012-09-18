@@ -161,19 +161,22 @@ function uib_feature_area__feed_format($url, $title, $limit){
     if (!$content){
       return;
     }
-    $items = array(
+    $xml = new SimpleXmlElement($content);
+    if($xml->channel->item){
+      $items = array(
       'list' => array(
         '#title' => $title,
         '#items' => array(),
         '#theme' => 'item_list',
-      ),
-    );
-    $xml = new SimpleXmlElement($content);
-    foreach ($xml->channel->item as $entry) {
-      $items['list']['#items'][] = l($entry->title, $entry->link) ;
-      if (--$limit == 0)
+        ),
+      );
+      foreach ($xml->channel->item as $entry) {
+       $items['list']['#items'][] = l($entry->title, $entry->link) ;
+       if (--$limit == 0)
         break;
+      }
     }
+
   return $items;
 }
 
