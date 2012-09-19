@@ -198,9 +198,13 @@ function uib_feature_area_field_formatter_info() {
  */
 function uib_feature_area_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
-
    foreach ($items as $delta => $item) {
-    $elements[$delta] = uib_feature_area__feed_format(url($item['url'],$item),$item['title'],5);
+    $url = url($item['url'],$item);
+      if (strpos($url, '#')){
+        $limit = explode('#',$url);
+      }
+      $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
+    $elements[$delta] = uib_feature_area__feed_format($url,$item['title'],$limit);
 
   }
   return $elements;
