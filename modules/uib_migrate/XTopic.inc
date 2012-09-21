@@ -1,6 +1,6 @@
 <?php
-
 /**
+ * @file
  * Representation of a ZTM Topic from w2.
  *
  * The old www.uib.no server's data is based on the ZTM Topic map model.
@@ -97,14 +97,14 @@ class XTopic extends stdClass {
       $this->site_lang = 'nb'; // Drupal uses nb/nn (bokmål/nynorsk)
     }
 
-    foreach ($topic->profiletext as $profiletext){
+    foreach ($topic->profiletext as $profiletext) {
       $this->profiletext .= (string)$profiletext;
-      if($profiletext["image_ref"] && $profiletext["href"] ){
-        $this->profiletext .= sprintf ("<a href='%s'><img src='%s'></a>",$profiletext['href'], $profiletext['image_ref']);
+      if ($profiletext["image_ref"] && $profiletext["href"] ) {
+        $this->profiletext .= sprintf("<a href='%s'><img src='%s'></a>", $profiletext['href'], $profiletext['image_ref']);
         $this->profileimages[] = (string)$profiletext["image_ref"];
       }
-      else if($profiletext["image_ref"]){
-        $this->profiletext .= sprintf ("<img src='%s'>", $profiletext['image_ref']);
+      elseif ($profiletext["image_ref"]) {
+        $this->profiletext .= sprintf("<img src='%s'>", $profiletext['image_ref']);
         $this->profileimages[] = (string)$profiletext["image_ref"];
       }
 
@@ -146,7 +146,7 @@ class XTopic extends stdClass {
       $xlink[(string)$x['name']][] = (string)$x['ref'];
     }
 
-    if(!empty($xlink['subordinate/hierarchical-relation/superordinate'])) {
+    if (!empty($xlink['subordinate/hierarchical-relation/superordinate'])) {
       $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][0];
       if (!$shallow) {
         $parent = new XTopic($this->nav_parent_id, TRUE, 'parent of ' . $id);
@@ -177,7 +177,7 @@ class XTopic extends stdClass {
     }
 
     if (isset($topic->{'workflow-transition'})) {
-      foreach ($topic->{'workflow-transition'} as $transition){
+      foreach ($topic->{'workflow-transition'} as $transition) {
         if ($transition['action'] == 'publish') {
           if ($transition['user']) {
             $this->author =  (string)$transition['user'];
@@ -207,7 +207,7 @@ class XTopic extends stdClass {
       $this->contacts = $xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
     }
 
-    if(!empty($xlink['omtaler/omtale/omtalt'])){
+    if (!empty($xlink['omtaler/omtale/omtalt'])) {
       $relatedprogrammes = array();
 
       foreach ($xlink['omtaler/omtale/omtalt'] as $programme) {
@@ -264,13 +264,13 @@ class XTopic extends stdClass {
 
       # Testimonial
       'name' => t('Name for testimonial'),
-      'position' =>t('Position for testimonial'),
-      'education' =>t('Education for testimonial'),
-      'exchange_place' =>t('Exchange place for testimonial'),
-      'exchange_text' =>t('Exchange text for testimonial'),
-      'quote' =>t('Quote for testimonial'),
-      'organization' =>t('Organization for testimonial'),
-      'related_programmes' =>t('Related studyprogrammes'),
+      'position' => t('Position for testimonial'),
+      'education' => t('Education for testimonial'),
+      'exchange_place' => t('Exchange place for testimonial'),
+      'exchange_text' => t('Exchange text for testimonial'),
+      'quote' => t('Quote for testimonial'),
+      'organization' => t('Organization for testimonial'),
+      'related_programmes' => t('Related studyprogrammes'),
 
       # User fields
       'uib-id' => t('Username at UiB'),
@@ -354,7 +354,9 @@ class XTopicListSource extends MigrateSource {
         $this->ids = array();
         while ($data = fgetcsv($fh)) {
           $id = $data[1];
-          if ($id == 'id') { continue; }  // skip header line
+          if ($id == 'id') { // skip header line
+            continue;
+          }
           $this->ids[] = $id;
         }
         fclose($fh);

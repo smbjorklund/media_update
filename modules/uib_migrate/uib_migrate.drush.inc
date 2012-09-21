@@ -1,9 +1,12 @@
 <?php
-
+/**
+ * @file
+ * @return [type] [description]
+ */
 function uib_migrate_drush_command() {
   $items['uib-migrate-build-menu'] = array(
     'description' => 'Recursive traversal of node starting at top level menu item',
-    'aliases' => array('uib-bm',),
+    'aliases' => array('uib-bm', ),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
     'arguments' => array(),
     'options' => array(),
@@ -37,7 +40,7 @@ function drush_uib_migrate_build_menu() {
       ->condition('depth', 2)
       ->execute();
 
-  foreach($result as $row) {
+  foreach ($result as $row) {
     list($empty, $nid) = explode('node/', $row->link_path);
     if (isset($nid)) {
       $node = node_load($nid);
@@ -65,7 +68,7 @@ function uib_migrate__build_menu_tree($node, $mlid, $depth) {
         ->condition('menu_name', 'area')
         ->condition('plid', $mlid)
         ->condition('link_path', 'node/' . $kid_nid);
-      foreach($result->execute() as $item) {
+      foreach ($result->execute() as $item) {
         $kid_mlid = $item->mlid;
       }
 

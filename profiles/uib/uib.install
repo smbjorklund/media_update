@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_install().
+ * @file Implements hook_install().
  *
  * Perform actions to set up the site for this profile.
  */
