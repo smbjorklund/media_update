@@ -162,7 +162,7 @@ function uib_feature_article_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(),
-        'type' => 'options_select',
+        'type' => 'options_buttons',
         'weight' => '1',
       ),
     ),
