@@ -1,8 +1,7 @@
 <?php
-
 /**
+ * @file
  * Information about a UiB organisation unit obtained from Sebra.
- *
  */
 class SebraPlace extends stdClass {
 

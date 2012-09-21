@@ -1,34 +1,36 @@
 <?php
-
+/**
+ * @file
+ */
 class UiBUserTestCase extends DrupalWebTestCase {
-    public static function getInfo() {
-	return array(
-	    'name' => 'User names',
-	    'description' => 'Test that user names are presented the way we want them',
-	    'group' => 'UiB',
-	);
-    }
+  public static function getInfo() {
+    return array(
+      'name' => 'User names',
+      'description' => 'Test that user names are presented the way we want them',
+      'group' => 'UiB',
+      );
+  }
 
-    protected $user_default;
-    protected $user_gisle;
+  protected $user_default;
+  protected $user_gisle;
 
-    public function setUp() {
-	parent::setUp('uib_feature_user');
+  public function setUp() {
+    parent::setUp('uib_feature_user');
 
-	# Set up some users
-	$this->user_default = $this->drupalCreateUser();
-	$this->user_gisle = $this->drupalCreateUser();
+    # Set up some users
+    $this->user_default = $this->drupalCreateUser();
+    $this->user_gisle = $this->drupalCreateUser();
 
-	$edit = array();
-	$edit['field_uib_first_name']['und'][0]['value'] = 'Gisle';
-	$edit['field_uib_last_name']['und'][0]['value'] = 'Aas';
-	user_save($this->user_gisle, $edit);
-    }
+    $edit = array();
+    $edit['field_uib_first_name']['und'][0]['value'] = 'Gisle';
+    $edit['field_uib_last_name']['und'][0]['value'] = 'Aas';
+    user_save($this->user_gisle, $edit);
+  }
 
-    function testFormatUsername() {
-	$this->assertEqual(format_username($this->user_default), '[' . $this->user_default->name . ']',
-	    'Default users should be formatted as their usernames');
-	$this->assertEqual(format_username($this->user_gisle), 'Gisle Aas',
-	    'Gisle should be formatted as a real name');
-    }
+  function testFormatUsername() {
+    $this->assertEqual(format_username($this->user_default), '[' . $this->user_default->name . ']',
+      'Default users should be formatted as their usernames');
+    $this->assertEqual(format_username($this->user_gisle), 'Gisle Aas',
+      'Gisle should be formatted as a real name');
+  }
 }
