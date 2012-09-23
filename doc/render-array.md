@@ -27,16 +27,19 @@ A render array with the property **'#markup'** will render as the corresponding
 value (which should be a string).  If there are any children of this array they
 will be ignored.
 
-A render array with the property **'#theme'** will pass responsibility for rendering
-to the corresponding theme function or template. A render array can't both have
-the '#markup' and '#theme' property set.
+A render array with the property **'#theme'** will pass responsibility for
+rendering to the corresponding theme function or template. The variables that
+the function expects are provided by other properties. If the theme function
+isn't documented to process children, then they will generally be ignored if
+present.
+
+A render array can't both have the '#markup' and '#theme' property set.
 
 For instance if the '#theme' property has the value 'item\_list', then the
-[theme\_item\_list()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_item_list/7) rendering function will be invoked.  The variables that the
-render function (or template) expects are picked up from the other properties.
-The theme\_item\_list() function is documented to take the parameters 'title' and
-'items' (among others).  These variables are provided by the properties '#title'
-and '#items' like this:
+[theme\_item\_list()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_item_list/7)
+function will be invoked.  This function expects the
+variables 'title' and 'items' (among others).  These are provided
+like this:
 
     array(
       '#theme' => 'item_list',
@@ -44,9 +47,7 @@ and '#items' like this:
       '#items' => array('a', 'b', 'c', 'd'),
     ),
 
-If the theme function isn't documented to actually process children, then they
-will generally be ignored if present.  The theme\_item\_list() function will for
-instance ignore any children.
+The theme\_item\_list() function will ignore any children present.
 
 The functions listed by the **'#theme\_wrappers'** property can further modify the
 rendering result. The wrappers should take the text found in '#children'
