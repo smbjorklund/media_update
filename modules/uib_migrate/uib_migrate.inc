@@ -521,12 +521,12 @@ function contact_epages_db() {
 
   if (!isset($edb)) {
     $other_database = array(
-                          'database' => 'ressider',
-                          'username' => 'ressider_admin',
-                          'password' => '',
-                          'host' => 'ressider.pg.uib.no',
-                          'driver' => 'pgsql',
-                          );
+      'database' => 'ressider',
+      'username' => 'ressider_admin',
+      'password' => '',
+      'host' => 'ressider.pg.uib.no',
+      'driver' => 'pgsql',
+    );
 
     require_once('/var/www/lib/php/uib/drupal/setup.php');
     uib_drupal_set_password($other_database);
@@ -535,6 +535,7 @@ function contact_epages_db() {
     $_edb = Database::getConnection('default', 'migrate_epages_db');
 
   }
+
   return $_edb;
 }
 
@@ -560,38 +561,38 @@ class EPagesMenuLinksMigration extends Migration {
     $this->destination = new MigrateDestinationMenuLinks();
 
     $this->map = new MigrateSQLMap($this->machineName,
-                                   MigrateDestinationMenuLinks::getKeySchema(),
-                                   MigrateDestinationMenuLinks::getKeySchema(),
-                                   'migrate_epages_db'
-                                   );
+                 MigrateDestinationMenuLinks::getKeySchema(),
+                 MigrateDestinationMenuLinks::getKeySchema(),
+                 'migrate_epages_db'
+    );
 
     $this->addSimpleMappings(array('link_path', 'router_path', 'link_title', 'module', 'hidden', 'external', 'has_children', 'expanded', 'weight'));
 
-    $this->addFieldMapping('menu_name') 
+    $this->addFieldMapping('menu_name')
       ->defaultValue('area');
 
     $this->addFieldMapping('plid', 'plid')
       ->sourceMigration('EPagesMenuLinks');
 
-    $this->addUnmigratedDestinations(array('options',
-                                           ));
+    $this->addUnmigratedDestinations(array('options'));
 
     // find destination parent area menu node (must already exist)
     $result = db_select('menu_links')
       ->fields('menu_links', array('mlid', 'link_path'))
       ->condition('menu_name', 'area')
       ->condition('link_title', 'Ansattsider');
-    
+
     $this->_top_menu_id = '';
     $this->_area_target_id = '';
-    foreach($result->execute() as $item) {
+    foreach ($result->execute() as $item) {
       $this->_top_menu_id = $item->mlid;
       list($empty, $this->_area_target_id) = explode('node/', $item->link_path);
       break;
     }
-    
+
     $_top_menu_id = $this->_top_menu_id;
     $_area_target_id = $this->_area_target_id;
+
     uibx_log("DEBUG top-menu-id: ".$this->_top_menu_id." target_id: ".$this->_area_target_id);
   }
 
@@ -608,13 +609,10 @@ class EPagesMenuLinksMigration extends Migration {
     list($empty, $nid) = explode('node/', $row->link_path);
     if (isset($nid)) {
       $_mem[$nid] = $entity->mlid;
+
       uibx_log("DEBUG mem entity ".$nid. " = ".$entity->mlid);
     }
-
-    // make sure uib_ou exists for this , create if not
-
   }
-
 }
 
 /**
@@ -644,23 +642,22 @@ class EPagesNodesMigration extends Migration {
     $this->destination = new MigrateDestinationNode('uib_article');
 
     $this->map = new MigrateSQLMap($this->machineName,
-                                   array(
-                                         'nid' => array(
-                                           'type' => 'int',
-                                           'unsigned' => TRUE,
-                                           'description' => 'ID of destination node',                                      'alias' => 'n',
-                                          )
-                                         ),
-                                   MigrateDestinationNode::getKeySchema(),
-                                   'migrate_epages_db'
-                                   );
-    
-    // allow migration to be runned multiple times - not tested - gives error
+                 array(
+                   'nid' => array(
+                     'type' => 'int',
+                     'unsigned' => TRUE,
+                     'description' => 'ID of destination node',
+                     'alias' => 'n',
+                   )
+                 ),
+                 MigrateDestinationNode::getKeySchema(),
+                 'migrate_epages_db'
+    );
+
+    // allow migration to be runned multiple times - not working - gives error
     //$this->highwaterField = array('name' => 'changed', 'alias' => 'n');
 
-
     // todo handle english translations
-
 
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('field_uib_article_type')
@@ -669,25 +666,24 @@ class EPagesNodesMigration extends Migration {
       ->defaultValue('nb');
     $this->addFieldMapping('created', 'created');
     $this->addFieldMapping('changed', 'changed');
-    $this->addFieldMapping('field_uib_lead'); // handled in prepare 
-    $this->addFieldMapping('field_uib_text'); // handled in prepare 
-    $this->addFieldMapping('field_uib_area'); // handled in prepare 
-    $this->addFieldMapping('uid'); // handled in prepare 
+    $this->addFieldMapping('field_uib_lead'); // handled in prepare
+    $this->addFieldMapping('field_uib_text'); // handled in prepare
+    $this->addFieldMapping('field_uib_area'); // handled in prepare
+    $this->addFieldMapping('uid'); // handled in prepare
 
-    $this->addUnmigratedDestinations(array('field_uib_w2_id', 
-                                           'field_uib_menu_title_w2', 
-                                           'field_uib_w2_path', 
-                                           'field_uib_date', 
-                                           'field_uib_links', 
-                                           'field_uib_kicker', 
-                                           'field_uib_w2_nav_parent_id', 
-                                           'field_uib_nav_weight',
-                                           'field_uib_byline',
-                                           'field_uib_location',
-                                           'field_uib_contacts',
-                                           'field_uib_text2',
-                                           ));
-
+    $this->addUnmigratedDestinations(array('field_uib_w2_id',
+        'field_uib_menu_title_w2',
+        'field_uib_w2_path',
+        'field_uib_date',
+        'field_uib_links',
+        'field_uib_kicker',
+        'field_uib_w2_nav_parent_id',
+        'field_uib_nav_weight',
+        'field_uib_byline',
+        'field_uib_location',
+        'field_uib_contacts',
+        'field_uib_text2',
+      ));
   }
 
   public function prepareRow($row) {
@@ -699,7 +695,7 @@ class EPagesNodesMigration extends Migration {
       ->fields('menu_links', array('mlid', 'link_path'))
       ->condition('menu_name', 'menu-ansattsider')
       ->condition('link_path', 'node/'.$row->nid);
-    
+
     if (($item = $result->execute()) === FALSE)
       return FALSE;
   }
@@ -712,11 +708,12 @@ class EPagesNodesMigration extends Migration {
 
     $edb = contact_epages_db();
 
-    // find field_uib_lead 
+    // find field_uib_lead
     $query = $edb->select('field_data_field_uib_lead', 'l')
       ->fields('l', array('field_uib_lead_value'))
       ->condition('l.entity_id', $row->nid, '=');
-    foreach($query->execute() as $item) {
+
+    foreach ($query->execute() as $item) {
       $entity->field_uib_lead['und'][0]['value'] = $item->field_uib_lead_value;
       break;
     }
@@ -725,15 +722,17 @@ class EPagesNodesMigration extends Migration {
     $query = $edb->select('field_data_field_uib_text', 't')
       ->fields('t', array('field_uib_text_value'))
       ->condition('t.entity_id', $row->nid, '=');
-    foreach($query->execute() as $item) {
+
+    foreach ($query->execute() as $item) {
       $entity->field_uib_text['und'][0]['value'] = $item->field_uib_text_value;
       break;
     }
 
     // find destination uid based on (user)name
-    $user = user_load_by_name($row->name);  
+    $user = user_load_by_name($row->name);
     if (!empty($user->uid))
       $entity->uid = $user->uid;
+
     uibx_log("DEBUG dest uid:".$user->uid." (".$row->name.")");
 
     // todo copy any images and file attachements connect to the source node
@@ -747,7 +746,7 @@ class EPagesNodesMigration extends Migration {
       );
       }
       }
-        
+
       if (!empty($row->attachments)) {
       foreach ($row->attachments as $file_id) {
       $file = xtopic_file($file_id);
@@ -765,12 +764,10 @@ class EPagesNodesMigration extends Migration {
 
     // use mem[nid] to map to new menu - modify menu link_path
     if (isset($_mem[$row->nid])) {
-
       $new_mlid = $_mem[$row->nid];
       $menu_link = menu_link_load($new_mlid);
       $menu_link['link_path'] = drupal_get_normal_path('node/'.$entity->nid);
       menu_link_save($menu_link);
     }
   }
-
 }
