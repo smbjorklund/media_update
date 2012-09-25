@@ -65,7 +65,7 @@ function uib_sebra__uib_ou_nid($place_id) {
       ->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'uib_ou')
       ->fieldCondition('field_uib_ou_id', 'value', $place_id, '=')
-      ->range(0,1)
+      ->range(0, 1)
       ->execute();
 
     if (!empty($result['node'])) {
@@ -135,6 +135,7 @@ function uib_sebra__sync_areas() {
         uibx_log("Can't get $sebra_id", 'error');
       }
       #print_r(array($nid, $sebra_id, $area_doc));
+      uib_sebra__sync_jobbnorge_id($area, $area_doc);
       $staff = array();
       foreach ($area_doc->omraade->visninger->uibid as $uname) {
         $account = user_load_by_name($uname);
@@ -161,6 +162,33 @@ function uib_sebra__sync_areas() {
     }
   }
   uibx_log("staff attribute unchanged for $unchanged areas");
+}
+
+/**
+ * Sync jobbnorge_id from område in Sebra to ou in w3.
+ *
+ */
+
+function uib_sebra__sync_jobbnorge_id($area, $area_doc) {
+  $place_id = (string)$area_doc->omraade->EIER_STED_KODE;
+  $jobbnorge_id = (string)$area_doc->omraade->JOBBNORGE_DEPID;
+  //uibx_log("jobbnorge $place_id => $jobbnorge_id");
+  if (isset($area->field_uib_ou['und'])) {
+    $nid = $area->field_uib_ou['und'][0]['target_id'];
+    $place = node_load($nid);
+    if ($place->field_uib_ou_id['und'][0]['value'] != $place_id) {
+      uibx_log("Mismatch for place code for /node/$nid $place_id");
+      return;
+    }
+    if ($place->field_uib_jobbnorge_id['und'][0]['value'] != $jobbnorge_id) {
+      $place->field_uib_jobbnorge_id['und'][0]['value'] = $jobbnorge_id;
+      node_save($place);
+      uibx_log("Updated jobbnorge_id for /node/$nid");
+    }
+  }
+  else {
+    uibx_log("No place set up for /node/$area->nid");
+  }
 }
 
 /**
@@ -270,7 +298,7 @@ function uib_sebra__sync_user($username) {
   try {
     $u = new SebraPerson($username);
   }
-  catch(Exception $e) {
+  catch (Exception $e) {
     if ($e->getCode() == 404)
       // Should we block the user before we return it then?
       return $account;

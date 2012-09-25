@@ -3,7 +3,7 @@
     $server = 'http://testbool.uib.no/';
     if (isset($build['field_uib_w2_path'])) {
       $w2_path = $build['field_uib_w2_path'][0]['#markup'];
-      $build['field_uib_w2_path'][0]['#markup'] = '<a href="'  . $server . $w2_path . '">' . $w2_path . '</a>';
+      $build['field_uib_w2_path'][0]['#markup'] = '<a href="' . $server . $w2_path . '">' . $w2_path . '</a>';
     }
     if (isset($build['field_uib_w2_id'])) {
       $w2_id =  $build['field_uib_w2_id'][0]['#markup'];

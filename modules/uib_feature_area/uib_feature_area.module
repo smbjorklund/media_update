@@ -147,33 +147,36 @@ function uib_feature_area_block_view($delta='') {
       if ($area->language == 'en')
         $feed .= '&langid=2';
       $block['subject'] = t('Open Positions');
-      $block['content'] = uib_feature_area__feed_format($feed,$title='',$limit=999);
+      $block['content'] = uib_feature_area__feed_format($feed, $title='', $limit = 999);
       }
     break;
   }
-  //dsm($block);
+
   return $block;
 }
 
-function uib_feature_area__feed_format($url, $title, $limit){
+function uib_feature_area__feed_format($url, $title, $limit) {
   $items = array();
   $content = @file_get_contents($url);
-    if (!$content){
+    if (!$content) {
       return;
     }
-    $items = array(
+    $xml = new SimpleXmlElement($content);
+    if ($xml->channel->item) {
+      $items = array(
       'list' => array(
         '#title' => $title,
         '#items' => array(),
         '#theme' => 'item_list',
-      ),
-    );
-    $xml = new SimpleXmlElement($content);
-    foreach ($xml->channel->item as $entry) {
-      $items['list']['#items'][] = l($entry->title, $entry->link) ;
-      if (--$limit == 0)
+        ),
+      );
+      foreach ($xml->channel->item as $entry) {
+       $items['list']['#items'][] = l($entry->title, $entry->link) ;
+       if (--$limit == 0)
         break;
+      }
     }
+
   return $items;
 }
 
@@ -195,11 +198,16 @@ function uib_feature_area_field_formatter_info() {
  */
 function uib_feature_area_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
-
    foreach ($items as $delta => $item) {
-    $elements[$delta] = uib_feature_area__feed_format(url($item['url'],$item),$item['title'],5);
+    $url = url($item['url'], $item);
+      if (strpos($url, '#')) {
+        $limit = explode('#', $url);
+      }
+      $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
+    $elements[$delta] = uib_feature_area__feed_format($url, $item['title'], $limit);
 
   }
+
   return $elements;
 }
 
