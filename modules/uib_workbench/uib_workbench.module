@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UIB Workbench feature.
+ */
+
+include_once 'uib_workbench.features.inc';
