@@ -16,7 +16,10 @@ function uib_webdesk_default_page_manager_pages() {
   $page->admin_title = 'UIB webdesk';
   $page->admin_description = '';
   $page->path = 'webdesk/';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'none',
     'title' => '',
