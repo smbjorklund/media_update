@@ -15,7 +15,7 @@ function uib_webdesk_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'UIB webdesk';
   $page->admin_description = '';
-  $page->path = 'webdesk';
+  $page->path = 'webdesk/';
   $page->access = array();
   $page->menu = array(
     'type' => 'none',
@@ -44,7 +44,7 @@ function uib_webdesk_default_page_manager_pages() {
   $handler->weight = 0;
   $handler->conf = array(
     'title' => 'Landing page',
-    'no_blocks' => 1,
+    'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',
@@ -96,26 +96,11 @@ function uib_webdesk_default_page_manager_pages() {
     $pane = new stdClass();
     $pane->pid = 'new-2';
     $pane->panel = 'right';
-    $pane->type = 'views';
-    $pane->subtype = 'uib_webdesk';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'uib_webdesk-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 1,
-      'nodes_per_page' => '100',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'default',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,

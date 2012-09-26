@@ -340,6 +340,11 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['inherit_panels_path'] = '1';
   $translatables['uib_webdesk'] = array(
     t('Master'),
     t('UIB webdesk'),
@@ -369,6 +374,8 @@ function uib_webdesk_views_default_views() {
     t('Author'),
     t('Post date'),
     t(' Is greater than or equal to '),
+    t('Content pane'),
+    t('View panes'),
   );
   $export['uib_webdesk'] = $view;
 
