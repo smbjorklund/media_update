@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UIB webdesk feature.
+ */
+
+include_once 'uib_webdesk.features.inc';

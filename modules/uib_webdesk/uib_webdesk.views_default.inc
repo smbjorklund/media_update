@@ -1,28 +1,28 @@
 <?php
 /**
  * @file
- * uib_workbench.views_default.inc
+ * uib_webdesk.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function uib_workbench_views_default_views() {
+function uib_webdesk_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'uib_workbench';
+  $view->name = 'uib_webdesk';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'UIB Workbench';
+  $view->human_name = 'UIB webdesk';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'UIB Workbench';
+  $handler->display->display_options['title'] = 'UIB webdesk';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -340,9 +340,9 @@ function uib_workbench_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  $translatables['uib_workbench'] = array(
+  $translatables['uib_webdesk'] = array(
     t('Master'),
-    t('UIB Workbench'),
+    t('UIB webdesk'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -370,7 +370,7 @@ function uib_workbench_views_default_views() {
     t('Post date'),
     t(' Is greater than or equal to '),
   );
-  $export['uib_workbench'] = $view;
+  $export['uib_webdesk'] = $view;
 
   return $export;
 }

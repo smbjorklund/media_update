@@ -1,26 +1,26 @@
 <?php
 /**
  * @file
- * uib_workbench.context.inc
+ * uib_webdesk.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function uib_workbench_context_default_contexts() {
+function uib_webdesk_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'workbench';
+  $context->name = 'webdesk';
   $context->description = 'Drop regons based on context';
   $context->tag = 'layout';
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'workbench' => 'workbench',
-        'workbench/*' => 'workbench/*',
+        'webdesk' => 'webdesk',
+        'webdesk/*' => 'webdesk/*',
       ),
     ),
   );
@@ -48,7 +48,7 @@ function uib_workbench_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Drop regons based on context');
   t('layout');
-  $export['workbench'] = $context;
+  $export['webdesk'] = $context;
 
   return $export;
 }

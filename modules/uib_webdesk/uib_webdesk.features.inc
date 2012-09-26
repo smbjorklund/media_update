@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_workbench.features.inc
+ * uib_webdesk.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function uib_workbench_ctools_plugin_api() {
+function uib_webdesk_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
@@ -21,6 +21,6 @@ function uib_workbench_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function uib_workbench_views_api() {
+function uib_webdesk_views_api() {
   return array("version" => "3.0");
 }
