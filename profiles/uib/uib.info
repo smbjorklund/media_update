@@ -10,7 +10,6 @@ dependencies[] = locale
 dependencies[] = translation
 dependencies[] = uib_migrate
 dependencies[] = uib_nomail
-dependencies[] = uib_theme_hack
 dependencies[] = uib_views
 dependencies[] = uib_ansatte
 dependencies[] = uib_calendar

@@ -1,4 +1,0 @@
-name = "UIB Theme hack"
-description = "Theme overrides needed, or mayby not by UIB"
-package = "UiB"
-core = 7.x
