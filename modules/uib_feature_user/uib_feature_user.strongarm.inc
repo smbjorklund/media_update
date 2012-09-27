@@ -21,14 +21,14 @@ function uib_feature_user_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_dimensions';
-  $strongarm->value = '85x85';
+  $strongarm->value = '800x800';
   $export['user_picture_dimensions'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_file_size';
-  $strongarm->value = '30';
+  $strongarm->value = '1000';
   $export['user_picture_file_size'] = $strongarm;
 
   $strongarm = new stdClass();

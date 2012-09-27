@@ -581,12 +581,12 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   // Included for use with string extractors like potx.
   t('Do not display theme grid background on every page.');
   t('First name');
-  t('Grid');
   t('ID w2');
   t('Last name');
   t('Phone');
   t('Position');
   t('Position (english)');
+  t('Remove grid');
   t('Slug');
   t('The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
 
