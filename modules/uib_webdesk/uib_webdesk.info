@@ -26,6 +26,7 @@ dependencies[] = path
 dependencies[] = shortcut
 dependencies[] = strongarm
 dependencies[] = taxonomy
+dependencies[] = uib_feature_setup
 dependencies[] = views
 dependencies[] = views_content
 features[context][] = webdesk
