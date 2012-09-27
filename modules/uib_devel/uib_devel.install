@@ -1,0 +1,43 @@
+<?php
+
+function uib_devel_install() {
+  uibx_log('Install');
+}
+
+function uib_devel_uninstall() {
+  uibx_log('Uninstall');
+}
+
+function uib_devel_enable() {
+  $roles = array_flip(user_roles());
+  $uids = array();
+  foreach (array(1, 2, 3) as $level) {
+    $u = new stdClass;
+    $u->name = "level$level";
+    $u->mail = "w3+level$level@it.uib.no";
+    $u->pass = "admin";
+    $u->status = 1;
+    $u->field_uib_first_name['und'][0]['value'] = "Testulf";
+    $u->field_uib_last_name['und'][0]['value'] = "Nivå $level";
+    $u->roles = array();
+    for ($i = $level; $i <= 3; $i++) {
+      $role_name = "level " . $i;
+      $u->roles[$roles[$role_name]] = $role_name;
+    }
+    user_save($u);
+    $uids[] = $u->uid;
+    $u = user_load($u->uid);
+  }
+  uibx_log("Created test users " . implode(', ', $uids));
+}
+
+function uib_devel_disable() {
+  $uids = array();
+  foreach (array(1, 2, 3) as $level) {
+    $u = user_load_by_name("level$level");
+    if ($u)
+      $uids[] = $u->uid;
+  }
+  user_delete_multiple($uids);
+  uibx_log("Removed test users " . implode(', ', $uids));
+}
