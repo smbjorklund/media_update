@@ -13,19 +13,14 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer shortcuts.
   $permissions['administer shortcuts'] = array(
     'name' => 'administer shortcuts',
-    'roles' => array(
-      0 => 'level 1',
-    ),
+    'roles' => array(),
     'module' => 'shortcut',
   );
 
   // Exported permission: customize shortcut links.
   $permissions['customize shortcut links'] = array(
     'name' => 'customize shortcut links',
-    'roles' => array(
-      0 => 'level 1',
-      1 => 'level 2',
-    ),
+    'roles' => array(),
     'module' => 'shortcut',
   );
 
@@ -33,7 +28,7 @@ function uib_webdesk_user_default_permissions() {
   $permissions['switch shortcut sets'] = array(
     'name' => 'switch shortcut sets',
     'roles' => array(
-      0 => 'level 1',
+      0 => 'level 3',
     ),
     'module' => 'shortcut',
   );

@@ -243,6 +243,16 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Author uid */
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'node';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'empty';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -258,10 +268,35 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'uib_article' => 'uib_article',
+    'uib_testimonial' => 'uib_testimonial',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Author uid */
+  $handler->display->display_options['filters']['uid']['id'] = 'uid';
+  $handler->display->display_options['filters']['uid']['table'] = 'node';
+  $handler->display->display_options['filters']['uid']['field'] = 'uid';
+  $handler->display->display_options['filters']['uid']['value'] = '';
+  $handler->display->display_options['filters']['uid']['group'] = 1;
+  $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Author';
+  $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
   /* Filter criterion: Content: Event type (field_uib_event_type) */
   $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
   $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
   $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_event_type_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator_id'] = 'field_uib_event_type_value_op';
   $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['label'] = 'Event type';
@@ -275,6 +310,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['field_uib_area_type_value']['id'] = 'field_uib_area_type_value';
   $handler->display->display_options['filters']['field_uib_area_type_value']['table'] = 'field_data_field_uib_area_type';
   $handler->display->display_options['filters']['field_uib_area_type_value']['field'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_area_type_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['operator_id'] = 'field_uib_area_type_value_op';
   $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['label'] = 'Type';
@@ -288,6 +324,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
   $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_article_type_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['operator_id'] = 'field_uib_article_type_value_op';
   $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['label'] = 'Article type';
@@ -297,25 +334,12 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Content: Author uid */
-  $handler->display->display_options['filters']['uid']['id'] = 'uid';
-  $handler->display->display_options['filters']['uid']['table'] = 'node';
-  $handler->display->display_options['filters']['uid']['field'] = 'uid';
-  $handler->display->display_options['filters']['uid']['value'] = '';
-  $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
-  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Author';
-  $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
-  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
-  $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-  );
   /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
   $handler->display->display_options['filters']['created']['operator'] = '>=';
+  $handler->display->display_options['filters']['created']['group'] = 1;
   $handler->display->display_options['filters']['created']['exposed'] = TRUE;
   $handler->display->display_options['filters']['created']['expose']['operator_id'] = 'created_op';
   $handler->display->display_options['filters']['created']['expose']['label'] = 'Post date';
@@ -331,6 +355,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['changed']['table'] = 'node';
   $handler->display->display_options['filters']['changed']['field'] = 'changed';
   $handler->display->display_options['filters']['changed']['operator'] = '<=';
+  $handler->display->display_options['filters']['changed']['group'] = 1;
   $handler->display->display_options['filters']['changed']['exposed'] = TRUE;
   $handler->display->display_options['filters']['changed']['expose']['operator_id'] = 'changed_op';
   $handler->display->display_options['filters']['changed']['expose']['label'] = 'Updated date';
@@ -343,7 +368,126 @@ function uib_webdesk_views_default_views() {
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'All content';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['inherit_panels_path'] = '1';
+
+  /* Display: Content pane uid */
+  $handler = $view->new_display('panel_pane', 'Content pane uid', 'panel_pane_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'My content';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'uib_article' => 'uib_article',
+    'uib_testimonial' => 'uib_testimonial',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Event type (field_uib_event_type) */
+  $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_uib_event_type_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator_id'] = 'field_uib_event_type_value_op';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['label'] = 'Event type';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator'] = 'field_uib_event_type_value_op';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['identifier'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  /* Filter criterion: Content: Type (field_uib_area_type) */
+  $handler->display->display_options['filters']['field_uib_area_type_value']['id'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['field'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_uib_area_type_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['operator_id'] = 'field_uib_area_type_value_op';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['operator'] = 'field_uib_area_type_value_op';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['identifier'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  /* Filter criterion: Content: Type (field_uib_article_type) */
+  $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_uib_article_type_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['operator_id'] = 'field_uib_article_type_value_op';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['label'] = 'Article type';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['operator'] = 'field_uib_article_type_value_op';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['identifier'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  /* Filter criterion: Content: Post date */
+  $handler->display->display_options['filters']['created']['id'] = 'created';
+  $handler->display->display_options['filters']['created']['table'] = 'node';
+  $handler->display->display_options['filters']['created']['field'] = 'created';
+  $handler->display->display_options['filters']['created']['operator'] = '>=';
+  $handler->display->display_options['filters']['created']['group'] = 1;
+  $handler->display->display_options['filters']['created']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['created']['expose']['operator_id'] = 'created_op';
+  $handler->display->display_options['filters']['created']['expose']['label'] = 'Post date';
+  $handler->display->display_options['filters']['created']['expose']['description'] = ' Is greater than or equal to ';
+  $handler->display->display_options['filters']['created']['expose']['operator'] = 'created_op';
+  $handler->display->display_options['filters']['created']['expose']['identifier'] = 'created';
+  $handler->display->display_options['filters']['created']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  /* Filter criterion: Content: Updated date */
+  $handler->display->display_options['filters']['changed']['id'] = 'changed';
+  $handler->display->display_options['filters']['changed']['table'] = 'node';
+  $handler->display->display_options['filters']['changed']['field'] = 'changed';
+  $handler->display->display_options['filters']['changed']['operator'] = '<=';
+  $handler->display->display_options['filters']['changed']['group'] = 1;
+  $handler->display->display_options['filters']['changed']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['changed']['expose']['operator_id'] = 'changed_op';
+  $handler->display->display_options['filters']['changed']['expose']['label'] = 'Updated date';
+  $handler->display->display_options['filters']['changed']['expose']['operator'] = 'changed_op';
+  $handler->display->display_options['filters']['changed']['expose']['identifier'] = 'changed';
+  $handler->display->display_options['filters']['changed']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  $handler->display->display_options['argument_input'] = array(
+    'uid' => array(
+      'type' => 'context',
+      'context' => 'token.current-user:uid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Content: Author uid',
+    ),
+  );
   $handler->display->display_options['inherit_panels_path'] = '1';
   $translatables['uib_webdesk'] = array(
     t('Master'),
@@ -367,15 +511,19 @@ function uib_webdesk_views_default_views() {
     t('Content'),
     t('Title'),
     t('Updated date'),
+    t('All'),
     t('Published'),
+    t('Author'),
     t('Event type'),
     t('Type'),
     t('Article type'),
-    t('Author'),
     t('Post date'),
     t(' Is greater than or equal to '),
     t('Content pane'),
+    t('All content'),
     t('View panes'),
+    t('Content pane uid'),
+    t('My content'),
   );
   $export['uib_webdesk'] = $view;
 
