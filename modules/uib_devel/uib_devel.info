@@ -1,0 +1,4 @@
+name = "UIB Development support"
+description = "Add stuff that make it easier to inspect the system"
+package = "UiB"
+core = 7.x
