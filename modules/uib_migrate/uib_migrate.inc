@@ -623,6 +623,52 @@ if ($_edb === FALSE) {
     }
   }
 
+  // Fetch file meta info from employee pages
+  function employee_file($item) {
+    $server = 'https://ansattsider.app.uib.no/sites/ansattsider.app.uib.no/';
+
+    if ($item->deleted)
+      return FALSE;
+
+    if (strpos($item->filemime, 'image') !== FALSE) {
+      $uri = 'files/field/image/';
+
+    } elseif (strpos($item->filemime, 'pdf') !== FALSE) {
+      $uri = 'files/attachments/';
+
+    } else {
+      die("Unknown file type: " . $item->filemime);
+    }
+
+    $basename = drupal_basename($item->uri);
+    $uri = $server.$uri.$basename;
+
+    $file = new stdClass();
+    $dirname = 'public://ansattsider/';
+    @drupal_mkdir($dirname, NULL, TRUE);
+    $filename = "$dirname/$basename";
+    $filename = file_destination($filename, FILE_EXISTS_RENAME);
+
+    if (!@copy($uri, $filename)) {
+      die("Could not copy file " . $uri . "\n");
+    }
+
+    //$file->field_uib_owner['und'][]['value'] = $xtopic->photographer;
+    //$file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
+    $file->field_uib_description['und'][]['value'] = $item->field_uib_files_description;
+
+    $file->filename = $item->filename;
+    $file->uri = $filename;
+    $file->uid = $item->uid;
+    $file->status = FILE_STATUS_PERMANENT;
+
+    file_save($file);
+    if (!$file->fid) {
+      die("Could not save file");
+    }
+    return $file;
+  }
+
   /**
    * Migrate employee-pages:nodes from tempsite
    *
@@ -739,28 +785,23 @@ if ($_edb === FALSE) {
 
       uibx_log("Created node $row->nid uid:$user->uid. ($row->name) \"$entity->title\"");
 
-      // todo copy any images and file attachements connect to the source node
-      /*
-        if (!empty($row->field_image)) {
-        foreach ($row->field_image as $file_id) {
-        $file = xtopic_file($file_id);
-        $node->field_uib_media['und'][] = array(
-        'fid' => $file->fid,
-        'display' => 1,
-        );
-        }
-        }
+      // copy any images and attachements (pfd) to the destination node
+      $query = $_edb->select('field_data_field_uib_files', 'f')
+        ->fields('f')
+        ->condition('f.entity_id', $row->nid, '=');
+      $query->join('file_managed', 'm', 'm.fid = f.field_uib_files_fid');
+      $query->addField('m', 'uid');
+      $query->addField('m', 'filename');
+      $query->addField('m', 'uri');
+      $query->addField('m', 'filemime');
 
-        if (!empty($row->attachments)) {
-        foreach ($row->attachments as $file_id) {
-        $file = xtopic_file($file_id);
-        $node->field_uib_files['und'][] = array(
-        'fid' => $file->fid,
-        'display' => 1,
+      foreach ($query->execute() as $item) {
+        $file = employee_file($item);
+        $entity->field_uib_media['und'][] = array(
+          'fid' => $file->fid,
+          'display' => 1,
         );
-        }
-        }
-      */
+      }
     }
 
     public function complete($entity, $row) {
