@@ -148,4 +148,5 @@ features[user_role][] = level 3
 features[variable][] = user_admin_role
 features[views_view][] = my_content
 features[views_view][] = uib_webdesk
+features[views_view][] = user_areas
 features[views_view][] = user_block

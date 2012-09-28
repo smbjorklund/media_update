@@ -658,6 +658,88 @@ function uib_webdesk_views_default_views() {
   $export['uib_webdesk'] = $view;
 
   $view = new view();
+  $view->name = 'user_areas';
+  $view->description = 'List areas and perhaps role added to the user on them.';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'User areas';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Areas';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'User does not belong to any area.';
+  $handler->display->display_options['empty']['area']['format'] = 'html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Content: Ansatte (field_uib_staff) */
+  $handler->display->display_options['arguments']['field_uib_staff_target_id']['id'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['arguments']['field_uib_staff_target_id']['table'] = 'field_data_field_uib_staff';
+  $handler->display->display_options['arguments']['field_uib_staff_target_id']['field'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['arguments']['field_uib_staff_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_uib_staff_target_id']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['field_uib_staff_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_staff_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_staff_target_id']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $translatables['user_areas'] = array(
+    t('Master'),
+    t('Areas'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('User does not belong to any area.'),
+    t('All'),
+    t('Content pane'),
+    t('View panes'),
+  );
+  $export['user_areas'] = $view;
+
+  $view = new view();
   $view->name = 'user_block';
   $view->description = 'Basic user account block. Used on main webdesk page.';
   $view->tag = 'webdesk, user';
@@ -678,6 +760,10 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_uib_staff_node']['id'] = 'reverse_field_uib_staff_node';
+  $handler->display->display_options['relationships']['reverse_field_uib_staff_node']['table'] = 'users';
+  $handler->display->display_options['relationships']['reverse_field_uib_staff_node']['field'] = 'reverse_field_uib_staff_node';
   /* Field: User: Picture */
   $handler->display->display_options['fields']['picture']['id'] = 'picture';
   $handler->display->display_options['fields']['picture']['table'] = 'users';
@@ -735,6 +821,21 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['link_to_view'] = '0';
   $translatables['user_block'] = array(
     t('Master'),
     t('more'),
@@ -750,9 +851,12 @@ function uib_webdesk_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('Content referencing User from field_uib_staff'),
     t('User image missing.'),
     t('Edit account'),
     t('All'),
+    t('Content pane'),
+    t('View panes'),
   );
   $export['user_block'] = $view;
 
