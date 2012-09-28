@@ -29,6 +29,7 @@ dependencies[] = taxonomy
 dependencies[] = uib_feature_setup
 dependencies[] = views
 dependencies[] = views_content
+dependencies[] = panels_ipe
 features[context][] = webdesk
 features[ctools][] = context:context:3
 features[ctools][] = page_manager:pages_default:1
