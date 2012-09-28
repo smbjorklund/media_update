@@ -711,7 +711,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['uid']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['uid']['alter']['text'] = 'Edit account';
   $handler->display->display_options['fields']['uid']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['uid']['alter']['path'] = 'user/[uid]/edit';
+  $handler->display->display_options['fields']['uid']['alter']['path'] = 'user/[uid]/edit?destination=webdesk';
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Sort criterion: User: Created date */
