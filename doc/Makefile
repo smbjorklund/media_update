@@ -1,11 +1,9 @@
 HTML = \
        index.html    \
-       content.html  \
        migrate.html  \
        spec.html     \
        style.html    \
        apache-local.html \
-       plan.html     \
        render-array.html \
        terms.html
 
