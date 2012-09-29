@@ -1,6 +1,3 @@
-[Index](index.html)
-***
-
 <style>
   /* Implement automatic numbering av sections */
   body { counter-reset: h2 h3; }
@@ -342,6 +339,3 @@ Varnish ➞ Apache ➞ Drupal ➞ PostgreSQL
 Flere Drupal instanser?
 
 Staging environment
-
-***
-[Index](index.html)

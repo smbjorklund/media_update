@@ -1,5 +1,3 @@
-[Index](index.html)
-***
 
 ## Migration workaround
 
@@ -11,6 +9,3 @@ Geocoding is currently performed by accessing Google API. Varnish (with a looong
 Add this line to your /etc/hosts file:
     
     2001:700:200:6::66 maps.googleapis.com
-
-***
-[Index](index.html)
