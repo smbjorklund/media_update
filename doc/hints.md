@@ -1,9 +1,11 @@
 
 ## Drush
 
-### alias d=bin/site-drush
+### Alias for site-drush
 
-You will grow tired of invoking `site-drush` the verbose way.
+You will grow tired of invoking `site-drush` the verbose way, so you might want to add this to your `~/.bashrc` file:
+
+    alias d=bin/site-drush
 
 
 ### Quick login from command line
