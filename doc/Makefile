@@ -6,6 +6,7 @@ HTML = \
        apache-local.html \
        render-array.html \
        blocks.html   \
+       repo.html     \
        repo-readme.html  \
        terms.html
 
