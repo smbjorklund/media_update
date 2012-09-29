@@ -5,6 +5,7 @@ HTML = \
        style.html    \
        apache-local.html \
        render-array.html \
+       blocks.html   \
        terms.html
 
 PYTHON = python
