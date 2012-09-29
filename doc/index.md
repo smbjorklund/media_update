@@ -18,7 +18,7 @@ You should know these:
 * [The code repository](repo.html)
 * [How to set up Apache for local development on OS X](apache-local.html)
 * [Reder Arrays](render-array.html)
-* [Data migration problems hints](migrate.html)
+* [Hints that's good to know](hints.html)
 * [Repo README](repo-readme.html)
 
 

@@ -1,6 +1,6 @@
 HTML = \
        index.html    \
-       migrate.html  \
+       hints.html  \
        spec.html     \
        style.html    \
        apache-local.html \
