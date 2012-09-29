@@ -6,7 +6,7 @@ run:
     git clone --recursive git@git.uib.no:site/w3.uib.no
 
 If this succeeds it will create a local directory called `w3.uib.no/` with the code.
-This requires that you are inside the UiB network and have the right permissions
+This requires that you are on the UiB network and have the right permissions
 set up.  Ask Gisle if you have trouble with this.
 
 You can also browse the code repo directly both from
@@ -19,7 +19,7 @@ used.  It's needed to get a complete runnable checkout with the full Drupal
 core and the contributed modules that we depend on.  Without `--recursive` you
 only get "our" code, which is fine if you only need to inspect it.
 
-## Layout
+## Two repos
 
 We use 2 repos.  The root repo contains our own code and documentation.  The
 directory `drupal/` in the root repo is a git submodule containing a UiB hosted
@@ -52,3 +52,65 @@ sites directory (matching the virtual host name).  Typically:
 
 This symlink is used by the various `bin/site-*` scripts to manipulate the
 activated site.
+
+## Layout
+
+The directories found at the root of the repo are:
+
+### `doc/`
+
+This is where we put development documentation about the code and
+the specifications we work from.
+
+We prefer to write the documentation in
+[markdown](http://daringfireball.net/projects/markdown).  Run `make` in this
+directory to convert it to HTML and then start browsing at `doc/index.html`.
+
+The `doc/doc/` directory is the place to drop off related MS-Word documents and
+such.
+
+### `bin/`
+
+Some handy scripts.  The handiest of those are `bin/site-drush` and
+`bin/reinstall`.
+
+### `etc/`
+
+Configuration files (used by the scripts). Not much used yet.
+
+### `drupal/`
+
+This is a git submodule that contains core Drupal 7 and all the modules
+that we depend on (found under `drupal/sites/all/modules/`).
+
+### `profiles/`
+
+Our custom profiles.  Currently there is only one; `profiles/uib/`.
+It's used when installing the site from scratch.
+It declares what modules need to be installed and some install code
+that set things up.
+
+### `modules/`
+
+Our custom modules.  Many of these written by
+[`features`](http://drupal.org/project/features).
+
+### `themes/`
+
+Our custom themes.  Currently there is only one; `themes/uib_zen/`
+based on the [Zen theme](http://drupal.org/project/zen).
+
+### `test-se/`
+
+This is a [Selenium](http://seleniumhq.org/) based test suite.  It contains
+scripts (written in Python) that will drive Firefox to visit the pages of the
+site and look for the expected content.
+
+This test suite runs automatically from [Jenkins when new stuff is
+pushed](http://float.uib.no/jenkins/) to the repo.
+
+### `area-walker/`
+
+A Python script to extract information about the content of w2.
+Used to get an overview of what kind of content is found under
+the different areas.
