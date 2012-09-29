@@ -1,6 +1,7 @@
 Oversikt over hvilke innholdsblokker de forskjellige fakultetene tar i bruk på fremsiden.
 
 Left sidebar (skal i utgangspunktet ikke være med)
+
 - Studiestart 2012 - HF
 - Ny student - MOFA
 - Dekanens blogg - HF, MATNAT
@@ -24,11 +25,13 @@ Left sidebar (skal i utgangspunktet ikke være med)
 - Nettavis for UiB - På Høyden - SV
 
 Middle
+
 - Velkommen - HF, MOFA, SV
 - Nyheter - HF, JUR, MATNAT, MOFA, PSYFA, SV
 - Quote - JUR MATNAT, MOFA, SV
 
 Right sidebar:
+
 - Kalender - HF, JUR, MATNAT, MOFA, SV
 - Nyheter - HF, JUR, MATNAT, MOFA
 - Nyheter (RSS-feed) - HF, JUR, MATNAT, PSYFA, MOFA
