@@ -50,3 +50,9 @@ and then run 'migrate-import' once more.  To migrate all data run:
 To see what kind of data is available for import you might run:
 
     bin/site-drush migrate-status
+
+If your a developer you probably also want to enable the 'uib_devel' module.
+This sets up some testing accounts and arrange for various conveniences
+for inspecting the site.  Just run:
+
+    bin/site-drush pm-enable --yes uib_devel
