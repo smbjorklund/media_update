@@ -5,4 +5,7 @@ HTML files and then visit 'index.html'.
 The .md files in this directory are written using the [markdown][] markup
 language.
 
+When you introduce a new .md-file you want to register the corresponding
+HTML file at the top of `Makefile` and provide a link to it from `index.md`.
+
 [markdown]: http://daringfireball.net/projects/markdown
