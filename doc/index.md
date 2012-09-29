@@ -1,10 +1,27 @@
-w3.uib.no documentation index
-================================
+# w3.uib.no documentation index
 
-* [Initial spesification](spec.html)
-* [Terminology](terms.html)
+### Standards
+
+You should know these:
+
 * [Coding style](style.html)
-* [Data migration](migrate.html)
+* [Terminology](terms.html)
+
+### Specifications and plans
+
+* [Ny funksjonalitet — Innspill fra pilotfakultetene](doc/pilot-ny-funksjonalitet.pdf)
+* [Blocks](blocks.html)
+* [Mindmap of stuff to consider](w3.uib.no.pdf)
+
+### Guides
+
 * [How to set up Apache for local development on OS X](apache-local.html)
 * [Reder Arrays](render-array.html)
-* [Blocks](blocks.html)
+* [Data migration problems hints](migrate.html)
+
+
+### Stale stuff
+
+... but not stale enough to just throw away
+
+* [Initial spesification](spec.html) as of early 2012
