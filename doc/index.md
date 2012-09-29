@@ -18,6 +18,7 @@ You should know these:
 * [How to set up Apache for local development on OS X](apache-local.html)
 * [Reder Arrays](render-array.html)
 * [Data migration problems hints](migrate.html)
+* [Repo README](repo-readme.html)
 
 
 ### Stale stuff
