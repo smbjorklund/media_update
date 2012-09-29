@@ -9,7 +9,7 @@
 
 # Spesifikasjon w3.uib.no
 
-Versjon ${DATE_VERSION}
+Versjon 2012-02-24
 
 > Siste oppdatert versjon av dette dokumentet er å finne på <https://float.uib.no/hudson/job/docs-w3/HTML/spec.html>.
 
