@@ -49,10 +49,8 @@ Store array oppsett skrives på formen:
       'fourth' => 4,
     );
 
-## GIT
-Generelle kjøreregler for bruk av GIT
+## Git commit message format
 
-### GIT commit message format
 Legger oss på omtreng samme linje som Linux kjernen og andre for å prøve å oppnå en ren og pen commit historie.
 Commit messages må ikke overstige 72 char. Skriv kort og konsis. Har man behov for en mere utfyllende commit message skal man benytte følgende format:
 
