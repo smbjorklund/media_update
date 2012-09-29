@@ -22,7 +22,7 @@ Hjelpefunksjoner i uib-modulen `uib_foo` får `uib_foo__` prefix (merk dobbel `_
 
 ## PHP, JS, CSS
 
-Generelt prøver vi følge standarden som Drupal core setter.
+Generelt prøver vi følge [standarden som Drupal core](http://drupal.org/coding-standards) setter.
 
 * Innrykk er 2 *&lt;space>*. Unngå *&lt;tab>* i filene og trailing whitespace.
 * PHP-filer starter med `<?php` men avsluttes ikke med `?>`. En `?>` på slutten av filen er risky fordi det ofte kan være trailing whitespace i fila og det medfører ukontrollert printing av whitespace når filen lastes.
