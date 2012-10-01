@@ -18,6 +18,7 @@ function uib_devel_enable() {
     $u->status = 1;
     $u->field_uib_first_name['und'][0]['value'] = "Testulf";
     $u->field_uib_last_name['und'][0]['value'] = "Nivå $level";
+    $u->field_grid['und'][0]['value'] = 1; # remove grid
     $u->roles = array();
     for ($i = $level; $i <= 3; $i++) {
       $role_name = "level " . $i;
