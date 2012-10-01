@@ -36,6 +36,9 @@ function uib_install() {
     ->condition('language', 'nb')
     ->execute();
 
+  // Start with no default shortcuts
+  menu_delete_links(SHORTCUT_DEFAULT_SET_NAME);
+
   // Install all our feature modules
   features_install_modules(array(
     'uib_feature_setup',
