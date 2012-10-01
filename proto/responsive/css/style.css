@@ -1,0 +1,444 @@
+html, body {
+	margin:0;
+	padding:0;
+}
+
+/* TRUDE */
+img.placeholder {
+  width: 100%;
+}
+
+
+#header  {
+  padding-bottom:5px;
+  border-bottom: 1px solid black;
+  height:180px;
+}
+
+#global_menu ul {
+  margin: 0 auto;
+  padding-bottom: 10px;
+  float: left;
+
+}
+
+#global_menu li {
+  float: left;
+  list-style: none;
+  margin-right: 15px;
+  margin-left: 0;
+}
+
+a {
+  font-family: helvetica, sans-serif;
+}
+
+h1  {
+  font-size: 1.2em;
+  margin-left: 110px;
+  border-left: solid 1px #800;
+  padding: 15px;
+  font-family: helvetica, sans-serif;
+  font-weight: normal;
+}
+
+h2  {
+  font-family: "times new roman";
+  color: #555;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+  font-weight: normal;
+  width: 170px;
+  float: left;
+  
+}
+
+
+#header_info {
+  width: 790px;
+  margin: 0 auto;
+}
+
+a.menu-link2,
+a.menu-anchor2 {
+   display: none;
+}
+
+a.menu-link2,
+a.menu-anchor2 {
+   display: block;
+}
+ 
+a.menu-anchor2 {
+   height:0;
+}
+
+#colophone  {
+  padding-top: 40px;
+  display: inline;
+}
+
+
+form#mobile-search  {
+  float: right;
+  width: 200px;
+  padding: 0;
+  margin: 0;
+}
+
+img.top-logo  {
+  margin-left:40px;
+  float: left;
+  margin-top:0px;
+}
+
+#content  {
+  width: 900px;
+  margin: 0 auto;
+}
+
+#main {
+  width: 700px;
+  float: left;
+  font-family: verdana;
+  font-size:12px;
+  line-height: 20px;
+  color: #333;
+  margin-right: 30px;
+}
+
+#sidebar  {
+  font-family: verdana;
+  font-size:11px;
+}
+
+h3  {
+  font-size: 18px;
+  font-family: verdana;
+  font-weight: normal;
+}
+
+/* =Navigation
+-------------------------------------------------------------- */
+
+.menu {
+  margin: auto;
+  width: 100%;
+}
+
+
+/* clip skip link for screen readers */
+.skip-link {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+}
+#access {
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow:visible;
+    z-index:100;
+}
+/* style the main menu 8*/
+.sf-menu{
+    border-top: none;
+}
+/* get rid of padding and margin off all ul's (not sure about using * here, could be better) */
+.sf-menu, .sf-menu * {
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+/* position all dropdowns off screen */
+.sf-menu ul {
+    position:absolute;
+    top:-999em;
+}
+/* style the main nav list items */
+.sf-menu li {
+  background: #e4e4df; /* Old browsers */
+  background: -moz-linear-gradient(top,  #e4e4df 48%, #d8d8d4 54%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(48%,#e4e4df), color-stop(54%,#d8d8d4)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #e4e4df 48%,#d8d8d4 54%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #e4e4df 48%,#d8d8d4 54%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #e4e4df 48%,#d8d8d4 54%); /* IE10+ */
+  background: linear-gradient(to bottom,  #e4e4df 48%,#d8d8d4 54%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e4df', endColorstr='#d8d8d4',GradientType=0 ); /* IE6-9 */
+  border-bottom: 1px solid #AFAEAC;
+  border-top:1px solid white;
+  float:left;
+  position:relative;
+  width: 20%;
+}
+/* change the main nav list items on hover */ 
+.sf-menu li:hover {
+  background: #d8d8d4;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e4df', endColorstr='#d8d8d4',GradientType=0 ); /* IE6-9 */
+
+    visibility:inherit; /* fixes IE7 'sticky bug' */
+}
+/* style all the links */
+.sf-menu a {
+    font-size: .8em;
+    color: #333;
+    display:block;
+    padding: 12px 0;
+    text-decoration: none;
+    text-indent: 12px;
+}
+/* style the first drop */
+.sf-menu li li, .sf-menu li li:hover{
+    background: none;
+    background-image: none;
+}
+/* add a larger text indent for the first drop links */
+
+/* add a larger text indent for the second drop links */
+.sf-menu li li li a{
+    text-indent: 36px;
+}
+/* add a larger text indent for the third drop links */
+.sf-menu li li li li a{
+    text-indent: 48px;
+}
+/* position first drop */
+.sf-menu li:hover ul {
+    top:auto; /* match top ul list item height */
+    position:relative;
+}
+/* make sure second drop is still off screen */
+ul.sf-menu li:hover li ul {
+    position: absolute;
+    top:-999em;
+}
+/* position second drop */
+ul.sf-menu li li:hover ul {
+    top:auto;
+    position:relative;
+
+}
+
+
+ul.sub-menu li {
+  width:100%;
+  font-size:12px;
+}
+
+
+form#mobile-search {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+
+#header_info {
+  max-width: auto;
+  width: auto;
+}
+
+#header {
+  position: relative !important;
+}
+
+  form#mobile-search {
+    display: inline;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}  
+
+form#top-search {
+  display: none;
+}
+
+img.top-logo {
+  float: left;
+  margin: 0;
+}
+
+h1 {
+  margin: 0 0 0 25px;
+  float: left;
+}
+  
+  #logo {
+    width: auto;
+    display: block;
+    float: left;
+    margin: 43px 0 0 40px;
+  }
+  
+  #content  {
+    width: 80%;
+  }
+  
+}
+
+@media only screen and (min-width: 480px) {
+}
+@media only screen and (max-width: 600px) {
+    /* set height so content isn't pushed down */
+    #access{
+        float: left;
+        height: 36px;
+        width: 100%;
+    }
+    /* set height so content isn't pushed down add z-index to keep drops above content */
+    .sf-menu{
+        height: 36px;
+        z-index: 1;
+        position: relative;
+        top: -210px;
+    }
+    /* restyle so main links are horizontally aligned */
+    .sf-menu li {
+        clear: none;
+        width: 100%; /* this will need to be adjusted for your needs */
+    }
+    /* new style for drop list items */
+    .sf-menu li li{
+        background: silver;
+        clear: left;
+        width: 100%;
+    }
+    /* reset text indent on all drop a tags and set the width to 100% */
+    .sf-menu li li a, .sf-menu li li li a, .sf-menu li li li li a{
+        text-indent: 12px;
+        width: 100%;
+    }
+    /* reposision and style the first drop */
+    .sf-menu li:hover ul{
+        background: #8D8D8D;
+        left: auto;
+        position: relative;
+        top: -1;
+        width: 100%;
+        z-index: 100;
+    }
+    /* reposision and style the second drop */
+    ul.sf-menu li li:hover ul{
+        background: #000;
+        position: absolute;
+        top: -1px;
+        left:100%;
+    }
+    #header  {
+      position: relative;
+      z-index:2;
+      background: #fff;
+      height:180px;
+    }
+    
+    .arrow-img  {
+      margin-left: 3px;
+      margin-top: 3px;
+    }
+    
+    .menu-button  {
+      background: silver;
+      padding: 5px;
+      position: absolute;
+      margin-left: 40px;
+      border-radius: 3px;
+      border: solid 1px #ACACAC;
+      -moz-box-shadow: inset 0 0 5px #B0B0B0;
+      -webkit-box-shadow: inset 0 0 5px#B0B0B0;
+      box-shadow: inner 0 0 5px #B0B0B0;
+      margin-top: 116px;
+      text-decoration: none;
+      font-size: 14px;
+      
+    }
+    
+    .menu-button a:link, a:visited  {
+      color: #333;
+      font-family: helvetica;
+    }
+    
+    form#top-search {
+      display: none;
+    }
+
+    
+    #header_info  {
+      width:100%;
+    }
+    
+    h1  {
+      margin-top:36px;
+    }
+    
+    
+
+    img.top-logo {
+      float: left;
+      margin: 0;
+    }
+
+    h1 {
+      margin: 0 0 0 25px;
+      float: left;
+    }
+
+      #logo {
+        width: auto;
+        display: block;
+        float: left;
+        margin-top: 50px;
+      }
+      
+      #content  {
+        width: 100%;
+      }
+
+    
+}
+@media only screen and (min-width: 600px) {
+    
+.menu-button
+  {
+    display:none;
+  }
+  
+  .menu {
+    width:100%;
+  }
+  
+}
+@media only screen and (min-width: 992px) {
+    header h1{
+        font-size: 1.2em;
+    }
+    /* bigger screen bigger nav */
+    #access{
+        height: 50px;
+    }
+    /* bigger screen bigger nav */
+    .sf-menu{
+        height: 50px;
+    }
+    /* bigger screen bigger font size and padding */
+    .sf-menu a {
+        font-size: 1em;
+        padding: 17px 0;
+    }
+
+}
+
+
+@media only screen and (max-width: 900px) {
+  #content  {
+    width: 80%;
+  }
+  
+  #main {
+    width: 100%;
+    float: none;
+  }
+}
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
+}
