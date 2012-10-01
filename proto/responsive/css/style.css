@@ -139,9 +139,15 @@ h3  {
     z-index:100;
 }
 /* style the main menu 8*/
-.sf-menu{
+.sf-menu {
     border-top: none;
 }
+
+ul.sf-menu li:hover > ul {
+  display: block;
+  position: absolute;
+}
+
 /* get rid of padding and margin off all ul's (not sure about using * here, could be better) */
 .sf-menu, .sf-menu * {
     margin:0;
@@ -214,6 +220,10 @@ ul.sf-menu li:hover li ul {
 ul.sf-menu li li:hover ul {
   top:auto;
   position:relative;
+}
+
+ul.sub-menu {
+  display: none;
 }
 
 ul.sub-menu li {
