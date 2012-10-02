@@ -170,6 +170,7 @@ h3  {
 ul.sf-menu li:hover > ul {
   display: block;
   background: silver;
+  position: absolute;
 }
 
 /* get rid of padding and margin off all ul's (not sure about using * here, could be better) */
