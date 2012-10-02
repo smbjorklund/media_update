@@ -3,7 +3,6 @@ html, body {
 	padding:0;
 }
 
-/* TRUDE */
 img.placeholder {
   width: 100%;
 }
@@ -30,7 +29,7 @@ img.placeholder {
 #global_menu li {
   float: left;
   list-style: none;
-  margin-right: 8px;
+  margin-right: 15px;
   margin-left: 0;
 }
 
@@ -38,7 +37,7 @@ img.placeholder {
   font-weight: bold;
   color: #333;
   text-decoration: none;
-  font-size: 9px;
+  font-size: 11px;
 }
 
 #global_menu li a:hover {
@@ -86,11 +85,6 @@ h4  {
 }
 
 #header_info {}
-
-#colophone  {
-  padding-top: 40px;
-  display: inline;
-}
 
 form#mobile-search  {
   float: right;
@@ -456,6 +450,55 @@ form#mobile-search {
   }
 }
 
+@media only screen and (max-width: 400px) {
+  #header {
+    height: 100px;
+  }
+  
+  .sf-menu {
+    top: -340px; 
+  }
+  
+  .menu-button  {
+  }
+  
+  img.top-logo  {
+    width: 10%;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  #logo {
+    margin-top: 15px;
+  }
+  
+  h1  {
+    border: none;
+    font-size: 12px;
+    margin-left: 0;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  #content  {
+    width: 90%;
+  }
+  
+  #global_menu ul {
+    padding-left: 15px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    float: none;
+  }
+  
+  #global_menu li {
+    margin-right: 6px;
+  }
+  
+  #global_menu li a {
+    font-size: 8px;
+  }
+}
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
 }
