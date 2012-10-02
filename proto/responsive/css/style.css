@@ -8,10 +8,17 @@ img.placeholder {
   width: 100%;
 }
 
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-#header  {
+#header {
   border-bottom: 1px solid silver;
   height:160px;
+  width: 900px;
+  margin: 0 auto;
 }
 
 
@@ -177,7 +184,7 @@ ul.sf-menu li:hover > ul {
 .sf-menu, .sf-menu * {
     margin:0;
     padding:0;
-    list-style:none;    
+    list-style:none;
 }
 /* position all dropdowns off screen */
 .sf-menu ul {
@@ -373,7 +380,7 @@ form#mobile-search {
       color: #333;
       font-family: helvetica;
     }
-    
+
     form#top-search {
       display: none;
     }
