@@ -116,7 +116,8 @@ abstract class XTopicToArticleMigration extends Migration {
       ->sourceMigration('User');
     $this->addFieldMapping('field_uib_kicker', 'stikktittel');
     $this->addFieldMapping('field_uib_lead', 'dc_description');
-    $this->addFieldMapping('field_uib_text', 'text');
+    $this->addFieldMapping('field_uib_text', 'text')
+      ->arguments(array('format' => 'simple_editor'));
     $this->addFieldMapping('field_uib_w2_nav_parent_id', 'nav_parent_id');
     $this->addFieldMapping('field_uib_nav_weight', 'nav_weight');
     $this->addFieldMapping('field_uib_area', 'site')
@@ -286,7 +287,8 @@ class TestimonialMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_id', 'id');
     $this->addFieldMapping('field_uib_w2_path', 'path');
     $this->addFieldMapping('field_uib_lead', 'dc_description');
-    $this->addFieldMapping('field_uib_text', 'text');
+    $this->addFieldMapping('field_uib_text', 'text')
+      ->arguments(array('format' => 'simple_editor'));
     $this->addFieldMapping('field_uib_position', 'stilling');
     $this->addFieldMapping('field_uib_education', 'utdanning');
     $this->addFieldMapping('field_uib_name', 'navn');
@@ -387,8 +389,10 @@ class AreaMigration extends Migration {
       ->sourceMigration('Area');
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
     //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
-    $this->addFieldMapping('field_uib_text', 'text');
-    $this->addFieldMapping('field_uib_text2', 'profiletext');
+    $this->addFieldMapping('field_uib_text', 'text')
+      ->arguments(array('format' => 'simple_editor'));
+    $this->addFieldMapping('field_uib_text2', 'profiletext')
+      ->arguments(array('format' => 'simple_editor'));
   }
 
   protected function createStub($migration, $source_id) {
