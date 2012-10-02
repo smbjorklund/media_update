@@ -25,13 +25,26 @@ function uib_webdesk_default_page_manager_pages() {
         'settings' => array(
           'rids' => array(
             0 => 5,
+            1 => 4,
+            2 => 3,
           ),
         ),
         'context' => 'logged-in-user',
         'not' => FALSE,
       ),
+      1 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => '',
+          'php' => 'global $user;
+          if ($user->uid == 1)
+          return TRUE;
+        ',
+        ),
+        'not' => FALSE,
+      ),
     ),
-    'logic' => 'and',
+    'logic' => 'or',
   );
   $page->menu = array(
     'type' => 'default tab',

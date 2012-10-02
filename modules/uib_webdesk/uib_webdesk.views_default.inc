@@ -258,7 +258,7 @@ function uib_webdesk_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'action::views_bulk_operations_modify_action' => array(
+    'action::views_bulk_operations_modwy_action' => array(
       'selected' => 0,
       'use_queue' => 0,
       'skip_confirmation' => 0,
