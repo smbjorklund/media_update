@@ -16,15 +16,14 @@ img.placeholder {
 
 #header {
   border-bottom: 1px solid silver;
-  height:160px;
   width: 900px;
   margin: 0 auto;
 }
 
 
 #global_menu ul {
-  margin: 0 auto;
-  padding-bottom: 10px;
+  padding: 0;
+  margin: 0;
   float: left;
 }
 
@@ -52,7 +51,7 @@ a {
 
 h1  {
   font-size: 1.2em;
-  margin-left: 110px;
+  margin:  0 0 0 60px;
   border-left: solid 1px #800;
   padding: 15px;
   font-family: helvetica, sans-serif;
@@ -86,11 +85,7 @@ h4  {
   margin-bottom: 0;
 }
 
-#header_info {
-  width: 790px;
-  margin: 0 auto;
-  float: left;
-}
+#header_info {}
 
 #colophone  {
   padding-top: 40px;
@@ -104,10 +99,8 @@ form#mobile-search  {
   margin: 0;
 }
 
-img.top-logo  {
-  margin-left:40px;
+#logo img  {
   float: left;
-  margin-top:0px;
 }
 
 #content  {
@@ -440,7 +433,6 @@ form#mobile-search {
     }
     /* bigger screen bigger nav */
     .sf-menu{
-        height: 50px;
         width: 900px;
         margin: 0 auto;
     }
