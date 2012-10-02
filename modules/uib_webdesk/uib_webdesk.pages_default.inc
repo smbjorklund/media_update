@@ -200,8 +200,18 @@ function uib_webdesk_default_page_manager_pages() {
         'context' => 'logged-in-user',
         'not' => FALSE,
       ),
+      1 => array(
+        'name' => 'php',
+        'settings' => array(
+          'description' => '',
+          'php' => 'global $user;
+            if ($user->uid == 1)
+              return TRUE;',
+        ),
+        'not' => FALSE,
+      ),
     ),
-    'logic' => 'and',
+    'logic' => 'or',
   );
   $page->menu = array(
     'type' => 'tab',
