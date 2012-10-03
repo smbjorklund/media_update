@@ -779,6 +779,7 @@ if ($_edb === FALSE) {
 
       foreach ($query->execute() as $item) {
         $entity->field_uib_text['und'][0]['value'] = $item->field_uib_text_value;
+        $entity->field_uib_text['und'][0]['format'] = 'simple_editor';
         break;
       }
 
