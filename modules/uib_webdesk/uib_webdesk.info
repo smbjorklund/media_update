@@ -30,6 +30,7 @@ dependencies[] = taxonomy
 dependencies[] = uib_feature_setup
 dependencies[] = views
 dependencies[] = views_content
+dependencies[] = better_exposed_filters
 features[context][] = webdesk
 features[ctools][] = context:context:3
 features[ctools][] = page_manager:pages_default:1
