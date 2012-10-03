@@ -44,6 +44,13 @@ function uib_feature_testimonial_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_uib_testimonial';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_uib_testimonial'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_uib_testimonial';
   $strongarm->value = '0';
   $export['language_content_type_uib_testimonial'] = $strongarm;
@@ -70,6 +77,7 @@ function uib_feature_testimonial_strongarm() {
   $strongarm->name = 'node_options_uib_testimonial';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_uib_testimonial'] = $strongarm;
 

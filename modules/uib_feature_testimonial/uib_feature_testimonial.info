@@ -34,6 +34,7 @@ features[node][] = uib_testimonial
 features[variable][] = field_bundle_settings_node__uib_testimonial
 features[variable][] = i18n_node_extended_uib_testimonial
 features[variable][] = i18n_node_options_uib_testimonial
+features[variable][] = i18n_sync_node_type_uib_testimonial
 features[variable][] = language_content_type_uib_testimonial
 features[variable][] = menu_options_uib_testimonial
 features[variable][] = menu_parent_uib_testimonial
