@@ -421,20 +421,6 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Content: Event type (field_uib_event_type) */
-  $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_uib_event_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator_id'] = 'field_uib_event_type_value_op';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['label'] = 'Event type';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator'] = 'field_uib_event_type_value_op';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['identifier'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-  );
   /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
@@ -446,6 +432,20 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['operator'] = 'field_uib_article_type_value_op';
   $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['identifier'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  /* Filter criterion: Content: Event type (field_uib_event_type) */
+  $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_uib_event_type_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator_id'] = 'field_uib_event_type_value_op';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['label'] = 'Event type';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator'] = 'field_uib_event_type_value_op';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['identifier'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
   );
@@ -520,20 +520,6 @@ function uib_webdesk_views_default_views() {
     'uib_testimonial' => 'uib_testimonial',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Event type (field_uib_event_type) */
-  $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_uib_event_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator_id'] = 'field_uib_event_type_value_op';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['label'] = 'Event type';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator'] = 'field_uib_event_type_value_op';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['identifier'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-  );
   /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
@@ -545,6 +531,20 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['operator'] = 'field_uib_article_type_value_op';
   $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['identifier'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
+  /* Filter criterion: Content: Event type (field_uib_event_type) */
+  $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_uib_event_type_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator_id'] = 'field_uib_event_type_value_op';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['label'] = 'Event type';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator'] = 'field_uib_event_type_value_op';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['identifier'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
   );
@@ -616,8 +616,8 @@ function uib_webdesk_views_default_views() {
     t('All'),
     t('Published'),
     t('Author'),
-    t('Event type'),
     t('Article type'),
+    t('Event type'),
     t('Post date'),
     t(' Is greater than or equal to '),
     t('Content pane'),
