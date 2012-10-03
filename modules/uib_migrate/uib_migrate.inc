@@ -398,7 +398,7 @@ class AreaMigration extends Migration {
   protected function createStub($migration, $source_id) {
     $node = new stdClass;
     $node->type = 'area';
-    $node->title = t('Area stub for') . $source_id[0];
+    $node->title = t('Area stub for ') . $source_id[0];
     $node->field_uib_w2_id['und'][0]['value'] = $source_id[0];
     node_save($node);
     return array($node->nid);
