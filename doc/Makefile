@@ -8,6 +8,7 @@ HTML = \
        blocks.html   \
        repo.html     \
        repo-readme.html  \
+       release1.html \
        terms.html
 
 PYTHON = python
