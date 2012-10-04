@@ -1,12 +1,14 @@
 #!/bin/sh
 
+# parameter 1 may be 'postgres' for postgres test installation
+
 test -L site || exit 1
 SITE=$(basename $(readlink site))
 
 set -x
 test -d drupal/sites/$SITE && mv drupal/sites/$SITE drupal/sites/$SITE-$(date +%Y%m%dT%H%M)
 
-if bin/site-install $SITE; then
+if bin/site-install $SITE $1; then
     bin/site-drush pm-enable --yes uib_devel
     bin/site-drush migrate-import --verbose --all
     bin/site-drush uib-migrate-build-menu --verbose
