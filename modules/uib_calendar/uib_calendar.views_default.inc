@@ -224,6 +224,7 @@ function uib_calendar_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_uib_date']['id'] = 'field_uib_date';
