@@ -27,3 +27,7 @@ function uib_feature_user_username_alter(&$name, $account) {
     }
   }
 }
+
+function uib_feature_user_user_login(&$edit, $account) {
+  $edit['redirect'] = 'webdesk';
+}
