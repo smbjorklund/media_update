@@ -77,7 +77,7 @@
 }
 
 /* Edit and delete button in the webdesk */
-/* line 73, ../sass/views-styles.scss */
+/* line 72, ../sass/views-styles.scss */
 .views-field-edit-node a, .views-field-delete-node a {
   padding-left: 1px;
   padding-right: 1px;
@@ -86,12 +86,12 @@
   opacity: .6;
 }
 
-/* line 81, ../sass/views-styles.scss */
+/* line 80, ../sass/views-styles.scss */
 .views-field-edit-node a {
   background: #005473;
 }
 
-/* line 85, ../sass/views-styles.scss */
+/* line 84, ../sass/views-styles.scss */
 .views-field-delete-node a {
   background: #AA0000;
   float: left;
@@ -99,23 +99,23 @@
 }
 
 /* Button hovers */
-/* line 93, ../sass/views-styles.scss */
+/* line 92, ../sass/views-styles.scss */
 .views-field-edit-node a:hover, .views-field-delete-node a:hover {
   opacity: 1;
   text-decoration: none !important;
 }
 
-/* line 98, ../sass/views-styles.scss */
+/* line 97, ../sass/views-styles.scss */
 .more-link a:visited {
   color: #fff !important;
 }
 
-/* line 102, ../sass/views-styles.scss */
+/* line 101, ../sass/views-styles.scss */
 #edit-status-wrapper, edit-uid-wrapper, #edit-field-uib-event-type-value-wrapper, #edit-created-wrapper {
   margin-bottom: 50px;
 }
 
-/* line 106, ../sass/views-styles.scss */
+/* line 105, ../sass/views-styles.scss */
 .bef-datepicker {
   padding: 8px;
   border: solid 1px #A2A2A2;
@@ -125,12 +125,12 @@
   color: #4D4D4D;
 }
 
-/* line 115, ../sass/views-styles.scss */
+/* line 114, ../sass/views-styles.scss */
 .vbo-views-form {
   background: #EEE;
 }
 
-/* line 119, ../sass/views-styles.scss */
+/* line 118, ../sass/views-styles.scss */
 table.cols-6 {
   width: 98%;
   margin: auto;
