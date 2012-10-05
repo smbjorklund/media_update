@@ -1,9 +1,17 @@
 #!/bin/sh
 
+# Second parameter may be 'postgres' for postgres test installation
+
 SITE_DIR=${1:-uib.no}
-PROFILE=${2:-uib}
-DATABASE=pgsql://user1:pass1@glory.uib.no/db1
-DATABASE=sqlite:sites/$SITE_DIR/files/site.db
+#PROFILE=${2:-uib}
+PROFILE="uib"
+#DATABASE=pgsql://user1:pass1@glory.uib.no/db1
+if [ "$2" = "postgres" ]; then
+	# Torstens postgres test installation
+	DATABASE=pgsql://postgres:20121004ATuib@localhost/db1
+else
+	DATABASE=sqlite:sites/$SITE_DIR/files/site.db
+fi
 
 cd drupal || exit 1
 
