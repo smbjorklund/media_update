@@ -105,6 +105,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['sorts']['field_uib_date_value2']['id'] = 'field_uib_date_value2';
   $handler->display->display_options['sorts']['field_uib_date_value2']['table'] = 'field_data_field_uib_date';
   $handler->display->display_options['sorts']['field_uib_date_value2']['field'] = 'field_uib_date_value2';
+  $handler->display->display_options['sorts']['field_uib_date_value2']['order'] = 'DESC';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
