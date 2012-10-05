@@ -60,32 +60,12 @@
 }
 
 /* Webdesk */
-/* line 53, ../sass/views-styles.scss */
-.panel-3col {
-  background: #fff;
-  border: solid 1px silver;
-}
-
-/* line 58, ../sass/views-styles.scss */
-h2.pane-title {
-  font-family: verdana;
-  border: none;
-  font-weight: normal;
-  text-transform: none;
-  color: #333;
-}
-
-/* line 66, ../sass/views-styles.scss */
-h3 {
-  font-weight: normal;
-  line-height: 1.5;
-  font-size: 1.2em;
-}
-
-/* line 72, ../sass/views-styles.scss */
+/* Buttons */
+/* More button in the "My content" section" */
+/* line 57, ../sass/views-styles.scss */
 .more-link a {
   padding: 4px 30px 4px 30px;
-  background: #CDCDCD;
+  background: #005473;
   border-radius: 4px;
   moz-border-radius: 4px;
   webkit-border-radius: 4px;
@@ -96,23 +76,46 @@ h3 {
   text-shadow: 1px 1px 1px #737373;
 }
 
+/* Edit and delete button in the webdesk */
+/* line 73, ../sass/views-styles.scss */
+.views-field-edit-node a, .views-field-delete-node a {
+  padding-left: 1px;
+  padding-right: 1px;
+  color: #fff !important;
+  line-height: 1.6em;
+  opacity: .6;
+}
+
+/* line 81, ../sass/views-styles.scss */
+.views-field-edit-node a {
+  background: #005473;
+}
+
 /* line 85, ../sass/views-styles.scss */
-.more-link a:hover {
-  opacity: .8;
+.views-field-delete-node a {
+  background: #AA0000;
+  float: left;
+  margin-right: 5px;
+}
+
+/* Button hovers */
+/* line 93, ../sass/views-styles.scss */
+.views-field-edit-node a:hover, .views-field-delete-node a:hover {
+  opacity: 1;
   text-decoration: none !important;
 }
 
-/* line 90, ../sass/views-styles.scss */
+/* line 98, ../sass/views-styles.scss */
 .more-link a:visited {
   color: #fff !important;
 }
 
-/* line 94, ../sass/views-styles.scss */
+/* line 102, ../sass/views-styles.scss */
 #edit-status-wrapper, edit-uid-wrapper, #edit-field-uib-event-type-value-wrapper, #edit-created-wrapper {
   margin-bottom: 50px;
 }
 
-/* line 98, ../sass/views-styles.scss */
+/* line 106, ../sass/views-styles.scss */
 .bef-datepicker {
   padding: 8px;
   border: solid 1px #A2A2A2;
@@ -120,4 +123,15 @@ h3 {
   box-shadow: 0px 1px 3px #D7D7D7 inset;
   font-size: 1.3em;
   color: #4D4D4D;
+}
+
+/* line 115, ../sass/views-styles.scss */
+.vbo-views-form {
+  background: #EEE;
+}
+
+/* line 119, ../sass/views-styles.scss */
+table.cols-6 {
+  width: 98%;
+  margin: auto;
 }
