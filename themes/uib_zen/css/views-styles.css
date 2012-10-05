@@ -54,7 +54,70 @@
   border-radius: 0 0 7px 7px;
 }
 
-/* line 48, ../sass/views-styles.scss */
+/* line 47, ../sass/views-styles.scss */
 .view-ansatte {
   float: right;
+}
+
+/* Webdesk */
+/* line 53, ../sass/views-styles.scss */
+.panel-3col {
+  background: #fff;
+  border: solid 1px silver;
+}
+
+/* line 58, ../sass/views-styles.scss */
+h2.pane-title {
+  font-family: verdana;
+  border: none;
+  font-weight: normal;
+  text-transform: none;
+  color: #333;
+}
+
+/* line 66, ../sass/views-styles.scss */
+h3 {
+  font-weight: normal;
+  line-height: 1.5;
+  font-size: 1.2em;
+}
+
+/* line 72, ../sass/views-styles.scss */
+.more-link a {
+  padding: 4px 30px 4px 30px;
+  background: #CDCDCD;
+  border-radius: 4px;
+  moz-border-radius: 4px;
+  webkit-border-radius: 4px;
+  border-bottom: solid 1px #AEAEAE;
+  border-top: solid 1px #E2E2E2;
+  margin-right: 10px;
+  color: #fff;
+  text-shadow: 1px 1px 1px #737373;
+}
+
+/* line 85, ../sass/views-styles.scss */
+.more-link a:hover {
+  opacity: .8;
+  text-decoration: none !important;
+}
+
+/* line 90, ../sass/views-styles.scss */
+.more-link a:visited {
+  color: #fff !important;
+}
+
+/* line 94, ../sass/views-styles.scss */
+#edit-status-wrapper, edit-uid-wrapper, #edit-field-uib-event-type-value-wrapper, #edit-created-wrapper {
+  margin-bottom: 50px;
+}
+
+/* line 98, ../sass/views-styles.scss */
+.bef-datepicker {
+  padding: 8px;
+  border: solid 1px #A2A2A2;
+  width: 90%;
+  box-shadow: 0px 1px 3px #D7D7D7 inset;
+  font-size: 1.3em;
+  color: #4D4D4D;
 }
