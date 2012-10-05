@@ -20,7 +20,7 @@ Hovedmålet med release 1 er:
 
 I prosessen er det åpnet for at pilotfakultene skal komme med
 [innspill](doc/pilot-ny-funksjonalitet.pdf) på hva de ønsker seg av
-funksjonalitet ut over det som w2 har idag.  Det vi har valgt
+funksjonalitet  w3 ut over det som w2 har idag.  Det vi har valgt
 å ta med i release 1 er:
 
 * webdesk med negativ kiphetsfaktor
@@ -28,12 +28,15 @@ funksjonalitet ut over det som w2 har idag.  Det vi har valgt
   "published" og "unpublished" på gitt tidspunkt)
 * temasider (må utdypes)
 
+Fokus for release 2 vil være å oppfylle flere av forslagene og sørge for
+at systemet fungerer godt for pilotfakultetene.
+
 Målet er i utgangspunktet å ikke fjerne funksjonalitet for *hf* og *jur* som
-allerede finnes i w2.  Det vil ikke alltid være mulig eller ønskelig av
+allerede finnes i w2, men det vil ikke alltid være mulig eller ønskelig av
 forskjellige grunner.  Noe vil bare være begrensninger så lenge vi kjører
 hybrid system med noen området betjent av w2 og noen av w3.
 
-Funksjonaliteten som vi ikke ønsker å videreføre er:
+Funksjonaliteten som vi *ikke* vil videreføre er:
 
 * menypunkt i tekstfeltene
 * mulighet for tabeller i tekstfeltene (skaper problemer for blinde og smale skjermer)
@@ -43,9 +46,11 @@ Funksjonaliteten som vi ikke ønsker å videreføre er:
 * facebook knapp
 * del.ici.us knapp
 * "skriv ut" knapp på artikkelsider
+* engelske områder får ny URL ("en" prefix)
+* artikler og filer får nye URLer
 
 Av [kravene til ansattsider](doc/kravspekk-ressurssider-for-ansatte.pdf) vil
-følgende ikke være oppfylt i release 1:
+følgende *ikke* være oppfylt i release 1:
 
 * interne kategorier for kalender
 * årshjul
@@ -68,7 +73,7 @@ Funksjoner som må forbedres senere:
 ## Fundament
 
 * git
-* kode- og navngivningsstandard
+* **kode- og navngivningsstandard**
 * **dokumentasjon**
 * **automatisk testing**
 * verktøy
@@ -78,6 +83,7 @@ Funksjoner som må forbedres senere:
   * moduler
   * **multilanguage**
   * layout mechanism (context and panels)
+* **vagrant setup**
 * sikkerhet
 
 ## Deployment
@@ -87,11 +93,13 @@ Krav:
 * driftbart
 * sikkerhet
 * robusthet
+* kontinutet
 * dokumentert
 
 Aktiviteter:
 
 * frontend (nginx, varnish (string)) i datarom 1
+  * redirect mechanisme
 * hot standby-frontend i datarom 2
 * applikasjonsserver (drupal - attilla  x2)
   * drush cron
@@ -119,10 +127,13 @@ Aktiviteter:
 * admin menu
 * shortcuts
 * listings of relevant content
+  * content of my areas (last modified first)
+  * my content (last modified first)
+  * **content about to be published/unpublished**
 * search for content based on various criteria
 * create and edit content
 * create and edit areas
-* place content in "the menu"
+* **place content in "the menu"**
 * rearrange "the menu"
 * shortcuts on normal view pages (edit button)
 
@@ -136,29 +147,27 @@ i fullbreddeversjonen.  På små skjermer kollapser denne ned til samme menyform
 som for andre områder.  Den ekspanderte menyen er et valg man kan gjøre pr område (bruker vi
 flagg modulen kan dette f.eks. også være noe brukere selv kan overstyre).
 
-* typer
+* type
 * meny
-* tekstsegmenter
+* **tekstsegmenter**
   * hovedtekst
   * warning
   * ...
-* knapper (reklameplakater)
+* **knapper (reklameplakater)**
 * colofon
-* knapper
-* hierakri blokk
+* **hierakri blokk**
 * rss
 * jobbnorge
-* kart
 * nyhetsliste
-  * rss feed (ut)
+  * **rss feed (ut)**
 * utvalgte nyheter
 * kalender
-* utvalgte hendelser
-* fleksibel layout (flere maler)
+* **utvalgte hendelser**
+* **fleksibel layout (flere maler)**
 
 Undersider (som ikke er lister):
 
-* kartside
+* **kartside**
 
 
 ## Artikkel
@@ -167,14 +176,14 @@ Undersider (som ikke er lister):
   * hendelse
   * nyhet
   * info
-* faktaboks
+* **faktaboks**
 * tittle, stikktittel, ingress
 * tekst
 * bilder
 * vedlegg
 * links
 * undersider (teaser-meny)
-* skedulert publisering
+* **skedulert publisering**
 * geo and addresses
 * dates
 
@@ -184,11 +193,11 @@ Undersider (som ikke er lister):
 * områder (etter type)
 * lister pr område
   * ansatte
-  * ansatte vitenskapelige
-  * ansatte administrative
-  * studieprogrammer 
-  * studieemner
-  * kalender
+  * **ansatte vitenskapelige**
+  * **ansatte administrative**
+  * **studieprogrammer** 
+  * **studieemner**
+  * **kalender**
   * nyheter
 
 ## Temaside
@@ -217,6 +226,7 @@ Målet med temasidene og funksjonaliteten som skal understøttes er enda uklart.
       * position
       * position\_en
       * phone
+      * **roles**
     * places
       * name
       * short name
@@ -228,13 +238,14 @@ Målet med temasidene og funksjonaliteten som skal understøttes er enda uklart.
       * jobbnorge\_id (hacked via sebra's areas)
     * area fields
       * staff
+      * **content managers**
   * w2
     * user fields
       * slug
       * picture
   * fs\_pres
-      * studieprogram
-      * emne
+      * **studieprogram**
+      * **emne**
 
 ## Migrations
 
@@ -244,7 +255,7 @@ Målet med temasidene og funksjonaliteten som skal understøttes er enda uklart.
     * News --> article (news)
     * Event -> article (event)
     * Testimonial -> testimonial
-    * ResearchTopic -> ...
+    * **ResearchTopic -> ...**
     * Area --> area
     * User --> user
     * images and files attached to the above
@@ -255,5 +266,7 @@ Målet med temasidene og funksjonaliteten som skal understøttes er enda uklart.
 
 ## Andre aktiviteter
 
-* bug hunt
-* testing
+* **full migration test**
+* **bug hunt**
+* **polish**
+* **testing**
