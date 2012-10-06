@@ -132,6 +132,152 @@ function uib_webdesk_views_default_views() {
   $export['my_content'] = $view;
 
   $view = new view();
+  $view->name = 'scheduled_content';
+  $view->description = 'List content if they are in a scheduled state';
+  $view->tag = 'webdesk';
+  $view->base_table = 'node';
+  $view->human_name = 'Scheduled content';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Scheduled content';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    4 => '4',
+    5 => '5',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'publish_on' => 'publish_on',
+    'unpublish_on' => 'unpublish_on',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'publish_on' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'unpublish_on' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Sorry mate. You got no scheduled content lurking.';
+  $handler->display->display_options['empty']['area']['format'] = 'plain_text';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Scheduler: Publish on */
+  $handler->display->display_options['fields']['publish_on']['id'] = 'publish_on';
+  $handler->display->display_options['fields']['publish_on']['table'] = 'scheduler';
+  $handler->display->display_options['fields']['publish_on']['field'] = 'publish_on';
+  $handler->display->display_options['fields']['publish_on']['date_format'] = 'short';
+  /* Field: Scheduler: Unpublish on */
+  $handler->display->display_options['fields']['unpublish_on']['id'] = 'unpublish_on';
+  $handler->display->display_options['fields']['unpublish_on']['table'] = 'scheduler';
+  $handler->display->display_options['fields']['unpublish_on']['field'] = 'unpublish_on';
+  $handler->display->display_options['fields']['unpublish_on']['date_format'] = 'short';
+  /* Field: Content: Delete link */
+  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['label'] = '';
+  $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  /* Sort criterion: Scheduler: Publish on */
+  $handler->display->display_options['sorts']['publish_on']['id'] = 'publish_on';
+  $handler->display->display_options['sorts']['publish_on']['table'] = 'scheduler';
+  $handler->display->display_options['sorts']['publish_on']['field'] = 'publish_on';
+  /* Sort criterion: Scheduler: Unpublish on */
+  $handler->display->display_options['sorts']['unpublish_on']['id'] = 'unpublish_on';
+  $handler->display->display_options['sorts']['unpublish_on']['table'] = 'scheduler';
+  $handler->display->display_options['sorts']['unpublish_on']['field'] = 'unpublish_on';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'OR',
+  );
+  /* Filter criterion: Scheduler: Publish on */
+  $handler->display->display_options['filters']['publish_on']['id'] = 'publish_on';
+  $handler->display->display_options['filters']['publish_on']['table'] = 'scheduler';
+  $handler->display->display_options['filters']['publish_on']['field'] = 'publish_on';
+  $handler->display->display_options['filters']['publish_on']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['publish_on']['group'] = 1;
+  /* Filter criterion: Scheduler: Unpublish on */
+  $handler->display->display_options['filters']['unpublish_on']['id'] = 'unpublish_on';
+  $handler->display->display_options['filters']['unpublish_on']['table'] = 'scheduler';
+  $handler->display->display_options['filters']['unpublish_on']['field'] = 'unpublish_on';
+  $handler->display->display_options['filters']['unpublish_on']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['unpublish_on']['group'] = 1;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['path'] = 'webdesk/scheduled';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Scheduled';
+  $handler->display->display_options['menu']['description'] = 'Content scheduled to change content state';
+  $handler->display->display_options['menu']['weight'] = '11';
+  $handler->display->display_options['menu']['context'] = 0;
+  $translatables['scheduled_content'] = array(
+    t('Master'),
+    t('Scheduled content'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Sorry mate. You got no scheduled content lurking.'),
+    t('Publish on'),
+    t('Unpublish on'),
+    t('Page'),
+  );
+  $export['scheduled_content'] = $view;
+
+  $view = new view();
   $view->name = 'uib_webdesk';
   $view->description = '';
   $view->tag = 'webdesk';

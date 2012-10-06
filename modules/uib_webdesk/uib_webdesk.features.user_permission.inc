@@ -235,6 +235,15 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: administer scheduler.
+  $permissions['administer scheduler'] = array(
+    'name' => 'administer scheduler',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'scheduler',
+  );
+
   // Exported permission: administer shortcuts.
   $permissions['administer shortcuts'] = array(
     'name' => 'administer shortcuts',
@@ -668,6 +677,17 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(),
     'module' => 'node',
+  );
+
+  // Exported permission: schedule (un)publishing of nodes.
+  $permissions['schedule (un)publishing of nodes'] = array(
+    'name' => 'schedule (un)publishing of nodes',
+    'roles' => array(
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
+    ),
+    'module' => 'scheduler',
   );
 
   // Exported permission: select account cancellation method.
