@@ -1,14 +1,17 @@
-# Release 1
 
-"Release 1" er også kalt "betaversjonen" av w3.
+
+> Dette dokumentet ble sist oppdatert ${DATE}.
+
+Dette dokumentet beskriver hva som vil inngå i første release
+av w3.
 
 "w3" er navnet på den nye løsningen for www.uib.no basert på Drupal.
-
 "w2" er navnet på den gamle løsning for www.uib.no basert på ZTM/Zope.
+"Release 1" er også kalt "betaversjonen" av w3.
 
 ## Mål
 
-Designe, utvikle og produksjonsette "betaversjonen" av w3 innen 2013.
+Designe, utvikle og produksjonsette release 1 av w3 innen 2013.
 
 Hovedmålet med release 1 er:
 
@@ -31,6 +34,8 @@ funksjonalitet  w3 ut over det som w2 har idag.  Det vi har valgt
 Fokus for release 2 vil være å oppfylle flere av forslagene og sørge for
 at systemet fungerer godt for pilotfakultetene.
 
+### «Mangler»
+
 Målet er i utgangspunktet å ikke fjerne funksjonalitet for *hf* og *jur* som
 allerede finnes i w2, men det vil ikke alltid være mulig eller ønskelig av
 forskjellige grunner.  Noe vil bare være begrensninger så lenge vi kjører
@@ -38,7 +43,7 @@ hybrid system med noen området betjent av w2 og noen av w3.
 
 Funksjonaliteten som vi *ikke* vil videreføre er:
 
-* menypunkt i tekstfeltene
+* menypunkt i tekstfeltene (&lt;h2> vil oppføre seg normalt)
 * mulighet for tabeller i tekstfeltene (skaper problemer for blinde og smale skjermer)
 * bobling av nyhetssaker oppover i hierarkiet av områder
 * profiltekst (erstattet av fleksible tekstblobber som kan dukke opp både her og der)
@@ -49,6 +54,24 @@ Funksjonaliteten som vi *ikke* vil videreføre er:
 * engelske områder får ny URL ("en" prefix)
 * artikler og filer får nye URLer
 
+Funsjonalitet fra w2 som vi vil implementere men ikke rekker å få med
+i release 1:
+
+* import av artikler fra andre områder (refpage)
+* importerte nav- og info-sider vil ikke kommer med i migrasjonen
+  (disse må manuelt byttes med lenker til w2 eller node refs)
+
+Begrensninger inntil hele www.uib.no er på samme platform:
+
+* mulighet for deling av artikler på kryss av systemene
+* exportert innhold fra hf/jur vil ikke vedlikeholdes
+* visning av innhold fra w3 på framsiden (så lenge den er w2)
+* hendelser registrert i w3 vil ikke vises i felleskalenderen
+* nyheter i w3 vil ikke dukke opp i nyhetsarkivet
+* forsinkelse fra personbilde blir oppdatert til det dukker opp i ansattlister
+* direkte fulltekstsøk (Google søk vil virke men kan være forsinket)
+
+
 Av [kravene til ansattsider](doc/kravspekk-ressurssider-for-ansatte.pdf) vil
 følgende *ikke* være oppfylt i release 1:
 
@@ -58,19 +81,14 @@ følgende *ikke* være oppfylt i release 1:
 * søk som inkluderer sider utenfor www.uib.no
 * integrasjon mot Visma (kurs som dukker opp i kalenderen)
 
-Begrensninger inntil hele www.uib.no er på samme platform:
-
-* mulighet for deling av artikler på kryss av systemene
-* visning av innhold fra w3 på framsiden (så lenge den er w2)
-* hendelser registrert i w3 vil ikke vises i felleskalenderen
-* forsinkelse fra personbilde blir oppdatert til det dukker opp i ansattlister
-* direkte fulltekstsøk (Google søk vil virke men kan være forsinket)
-
 Funksjoner som må forbedres senere:
 
 * man ser hele områdemenyen når man plasserer infosider
 
 ## Fundament
+
+Dette seksjonen handler om utvikling av rutiner og verktøystøtte for effektiv
+og robust videreutvikling av applikasjonen.
 
 * git
 * **kode- og navngivningsstandard**
@@ -98,10 +116,10 @@ Krav:
 
 Aktiviteter:
 
-* frontend (nginx, varnish (string)) i datarom 1
-  * redirect mechanisme
+* frontend (nginx, varnish — string)) i datarom 1
+  * redirect mekanisme
 * hot standby-frontend i datarom 2
-* applikasjonsserver (drupal - attilla  x2)
+* applikasjonsserver (drupal — attilla  x2)
   * drush cron
   * deployment via git
   * sikkerhetsoppdateringer (core, moduler)
@@ -116,9 +134,9 @@ Aktiviteter:
 "mobile first" og "content first"
 
 * skisser
-* responsivt design (3 bredder) for områder, artikler og lister (ikke webdesk)
-* prototyper
-* maler/css
+* **responsivt design (3 bredder) for områder, artikler og lister (ikke webdesk)**
+* **prototyper**
+* **maler/css**
 
 ## Webdesk
 
@@ -142,10 +160,9 @@ Aktiviteter:
 Det vil bare være én mal for områdesider.  Vi bytter ikke mal basert på "typen" til området.
 Feltet type brukes bare til å sortere og gruppere områder (f.eks. genererer en liste over all fakulteter).
 
-Ansattsidene skiller seg fra de andre områder med at de har en espandert meny
+Ansattsidene skiller seg fra de andre områder med at de har en ekspandert meny
 i fullbreddeversjonen.  På små skjermer kollapser denne ned til samme menyform
-som for andre områder.  Den ekspanderte menyen er et valg man kan gjøre pr område (bruker vi
-flagg modulen kan dette f.eks. også være noe brukere selv kan overstyre).
+som for andre områder.
 
 * type
 * meny
@@ -163,7 +180,7 @@ flagg modulen kan dette f.eks. også være noe brukere selv kan overstyre).
 * utvalgte nyheter
 * kalender
 * **utvalgte hendelser**
-* **fleksibel layout (flere maler)**
+* set path
 
 Undersider (som ikke er lister):
 
@@ -176,6 +193,7 @@ Undersider (som ikke er lister):
   * hendelse
   * nyhet
   * info
+* event_type
 * **faktaboks**
 * tittle, stikktittel, ingress
 * tekst
@@ -186,6 +204,7 @@ Undersider (som ikke er lister):
 * **skedulert publisering**
 * geo and addresses
 * dates
+* **autopath**
 
 
 ## Lister
@@ -259,6 +278,14 @@ Målet med temasidene og funksjonaliteten som skal understøttes er enda uklart.
     * Area --> area
     * User --> user
     * images and files attached to the above
+
+    * Create program to pick out all content of w2 belonging to *hf* and *jur* and
+      nothing else.  Run migration on this content only.
+    * **Vask av HTML tekst**
+      * relative lenker fikses opp
+      * tabeller fjernes
+      * unødvending markup fjernes
+
   * from ansattsider.app.uib.no (a Drupal app)
     * EP menu links --> menu links in the area menu
     * EP nodes --> article (info page)
@@ -266,7 +293,7 @@ Målet med temasidene og funksjonaliteten som skal understøttes er enda uklart.
 
 ## Andre aktiviteter
 
-* **full migration test**
+* **full migration test and verification**
 * **bug hunt**
 * **polish**
 * **testing**
