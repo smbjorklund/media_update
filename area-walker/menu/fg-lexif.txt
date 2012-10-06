@@ -1,10 +1,13 @@
    1  0 LexIF [2958673157286542861, forskningsgruppe]
    2  1   Forskning [2958673157286542970, navigationpage]
-   3  1   Prosjekter [2958673157286542978, navigationpage]
-   4  1   Publikasjoner [2958673157286542982, navigationpage]
-   5  1   Eksterne lenker [6508956357280548615, navigationpage]
-   6  1   Kontakt [2958673157286542974, navigationpage]
-   7  2     Medlemmer i forskergruppen [3172424566335446974, navigationpage]
+   3  2     Diverse aktiviteter [8016132888653243302, navigationpage]
+   4  3       Gjesteforelesninger [237520799258017061, article]
+   5  3       Kurs og seminarer [8016132888653243307, article]
+   6  1   Prosjekter [2958673157286542978, navigationpage]
+   7  1   Publikasjoner [2958673157286542982, navigationpage]
+   8  1   Eksterne lenker [6508956357280548615, navigationpage]
+   9  1   Kontakt [2958673157286542974, navigationpage]
+  10  2     Medlemmer i forskergruppen [3172424566335446974, navigationpage]
 
-Counter({'navigationpage': 6, 'forskningsgruppe': 1})
-max depth 2
+Counter({'navigationpage': 7, 'article': 2, 'forskningsgruppe': 1})
+max depth 3

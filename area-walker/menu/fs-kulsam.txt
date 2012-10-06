@@ -1,9 +1,9 @@
    1  0 Forskerskolen kultur og samfunn [5392139019163766998, forskerskole]
    2  1   Forskerskolen [5663634448576502871, navigationpage]
-   3  2     Velkommen til Forskerskolen kultur og samfunn [5146620535989822499, article, PENDING]
+   3  2     Velkommen til Forskerskolen kultur og samfunn [5146620535989822499, article, REJECTED]
    4  1   Forskning [5663634448576502877, navigationpage]
    5  1   Aktiviteter [3558354158211815346, navigationpage]
-   6  2     Aktiviteter 2009 [8282244633218109654, article, PENDING]
+   6  2     Aktiviteter 2009 [8282244633218109654, article, REJECTED]
    7  1   Ressurser [3091080888374277596, navigationpage]
    8  1   Kontakt [3091080888374277602, navigationpage]
 

@@ -29,19 +29,19 @@
   29  2     Opplæring i vitenskapsteori og etikk: PhD programmer [8694182018233308662, navigationpage]
   30  3       Ph.d. HF: VITHF900: 2013 [1322012074959716042, navigationpage]
   31  4         ### 3321472633653787501 does not exist!
-  32  4         Kurs i vitskapsteori og etikk v/HF UiB og BHH, 2013 [1191850145058368967, article]
+  32  4         Kurs i vitskapsteori og etikk v/HF UiB og NHH, 2013 [1191850145058368967, article]
   33  4         Course description for 2012 or earlier: VITHFPHD Theory of science and ethics  [4579254028668294159, article]
   34  4         Course description 2013: VITHF900 Theory of science and ethics  [3586697736948015587, article]
-  35  3       Ph.d. SV: VITSV900: 2012 [244140412208336243, article]
+  35  3       Ph.d. SV: VITSV900: 2013 [244140412208336243, article]
   36  3       Ph.d. PSY: PhD kurs 2012 [6601586819873765429, article]
   37  3       Ph.d. MOF: MEDMET1 2012: (Uker 6 og 7)(uke 46 og 47) [114958999712298497, article]
   38  3       Ph.d. MN: MNF490 (Høst 2012) [5334414355282491389, article]
   39  3       ### 4381069404449590764 does not exist!
-  40  2     ### 7408857741665196850 does not exist!
-  41  2     Nanoetikk 310 (Høst 2012) [828603614588303820, article]
-  42  2     Dannelsesemner våren 2012 [8672072529839151765, article]
-  43  2     BMED310: Vitskapsteori og forskningsetikk (Høst 2012: Masternivå) [4339719683805903426, article]
-  44  2     Grunnlagsproblem i fysikk, Vår 2012: PHYS210 [8963941476094849564, article]
+  40  2     Joint Course in Nanoetikk 310 and Biomed310 (Høst 2012) [828603614588303820, article]
+  41  2     Joint Course BioMED310: Vitskapsteori og forskningsetikk og Nanoetikk 310 (Høst 2012) [4339719683805903426, article]
+  42  2     Grunnlagsproblem i fysikk, Vår 2012: PHYS210 [8963941476094849564, article]
+  43  2     Dannelsesemner: høst 2012 [8672072529839151765, article]
+  44  2     Dannelsesemner Høst 2012: Sentrale spørsmål i forskning og samfunn: VIT212 Klima: Hva vet vi? Hva bør vi gjøre? [8332656989526799541, article]
   45  1   Seminarer [2387774195385345836, navigationpage]
   46  2     SVTs mailing list! [6002047069064086881, navigationpage]
   47  2     ### 8658154087524814270 does not exist!
@@ -60,5 +60,5 @@
   60  1   Kontakt [1056813904660501138, navigationpage]
   61  2     Kontaktinformasjon [1834640438954088284, article]
 
-Counter({'article': 39, 'navigationpage': 11, 'institutt': 1, 'displaylisting': 1})
+Counter({'article': 40, 'navigationpage': 11, 'institutt': 1, 'displaylisting': 1})
 max depth 4

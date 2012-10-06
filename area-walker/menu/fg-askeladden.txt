@@ -14,7 +14,7 @@
   14  2     Prosjektdeltakere og prosjekter  [331929065818089652, navigationpage]
   15  3       Kari Tenfjord [1188545899595916856, article]
   16  3       Anne Golden [6935591305909775742, article]
-  17  3       Jon Erik Hagen [8623566482569323272, article]
+  17  3       Jon Erik Hagen 05.05.1948-12.05.2012 [8623566482569323272, article]
   18  3       Grzegorz Skommer [4988043036342236758, article]
   19  3       Cecilie Carlsen [1839553615315034366, article]
   20  3       Ann-Kristin Helland [1722465453145888261, article]

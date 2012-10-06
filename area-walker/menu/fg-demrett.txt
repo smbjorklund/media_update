@@ -43,7 +43,6 @@
   43  2     Programstyre [4856334691004871262, article]
   44  2     Stipendiater [5426618057660719573, article]
   45  2     Ansattkatalog [8917329216099663884, displaylisting imported]
-  46  2     ### 4200135593214367627 does not exist!
 
 Counter({'article': 29, 'navigationpage': 14, 'forskningsgruppe': 1, 'displaylisting': 1})
 max depth 5

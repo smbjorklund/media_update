@@ -1,4 +1,4 @@
-   1  0 Strafferettssystemets funksjonalitet [85800601799901700, section exp:jur]
+   1  0 Strafferettssystemets funksjonalitet [85800601799901700, section exp:fg/straff exp:jur]
    2  1   Om satsingen [6675654243731294919, navigationpage]
    3  2     Om strafferettens funksjonalitet [6394933009500046903, article]
    4  2     Strukturen av prosjektet [7239539493864759534, article]
