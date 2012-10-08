@@ -1,17 +1,39 @@
-#!/bin/sh
+#!/bin/bash
 
-# Second parameter may be 'postgres' for postgres test installation
+# Parameters to this script
+
+# First parameter is site, eg. 'w3.uib.local'
+# The default setup uses sqlite for local test installation
+#
+# When using postgres for test, the
+# second parameter should be 'postgres', and
+# third parameter an optional postgres database name (default 'db1')
 
 SITE_DIR=${1:-uib.no}
 #PROFILE=${2:-uib}
 PROFILE="uib"
 #DATABASE=pgsql://user1:pass1@glory.uib.no/db1
+DATABASE=sqlite:sites/$SITE_DIR/files/site.db
 if [ "$2" = "postgres" ]; then
-	# Torstens postgres test installation
-	DATABASE=pgsql://postgres:20121004ATuib@localhost/db1
-else
-	DATABASE=sqlite:sites/$SITE_DIR/files/site.db
+	if [ -n "$3" ]; then
+		pgdb=$3
+	else
+		pgdb="db1"
+	fi
+	# Attempt to obtain information from postgres password file
+	pgpsw=$HOME/.pgpass
+	if [ -e $pgpsw ]; then
+       		pgpswln=`cat $pgpsw`
+       		pgpswlnm=`echo $pgpswln | sed 's/*/#/g'`
+        	declare -a arr=(`echo $pgpswlnm | sed 's/:/ /g'`)
+		DATABASE=pgsql://${arr[3]}:${arr[4]}@${arr[0]}/$pgdb
+	else
+		# Using a default statement
+		DATABASE=pgsql://postgres@localhost/$pgdb
+	fi
 fi
+# Save command line parameters for future reinstalls
+echo "$1 $2 $3" > sitecmdline
 
 cd drupal || exit 1
 
