@@ -60,6 +60,7 @@ i release 1:
 * import av artikler fra andre områder (refpage)
 * importerte nav- og info-sider vil ikke kommer med i migrasjonen
   (disse må manuelt byttes med lenker til w2 eller node refs)
+* arbeidskopi
 
 Begrensninger inntil hele www.uib.no er på samme platform:
 
@@ -75,11 +76,12 @@ Begrensninger inntil hele www.uib.no er på samme platform:
 Av [kravene til ansattsider](doc/kravspekk-ressurssider-for-ansatte.pdf) vil
 følgende *ikke* være oppfylt i release 1:
 
-* interne kategorier for kalender
 * årshjul
-* meny på artikkelsider
 * søk som inkluderer sider utenfor www.uib.no
 * integrasjon mot Visma (kurs som dukker opp i kalenderen)
+* konseptet "underområde" (det er bare ett område, men infosider)
+* egen kalender for underområde "kursoversikt"
+* snarveier pr "underområde" (vi har links pr infoside)
 
 Funksjoner som må forbedres senere:
 
