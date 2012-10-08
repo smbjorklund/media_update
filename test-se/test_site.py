@@ -29,5 +29,7 @@ class SiteTestCase(unittest.TestCase):
         self.driver.save_screenshot('org1.png')
         time.sleep(20)  # give firefox time to update the title
         self.driver.save_screenshot('org2.png');
+        time.sleep(30)  # give firefox time to update the title
+        self.driver.save_screenshot('org3.png');
         self.assertEqual(self.driver.title, "Organisasjonen | Universitetet i Bergen")
         self.driver.save_screenshot('infopage.png')
