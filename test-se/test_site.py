@@ -26,7 +26,8 @@ class SiteTestCase(unittest.TestCase):
         self.driver.find_element_by_link_text('Om fakultetet').click()
         self.driver.save_screenshot('om.png')
         self.driver.find_element_by_link_text('Organisasjonen').click()
-        self.driver.save_screenshot('org.png')
-        time.sleep(2)  # give firefox time to update the title
+        self.driver.save_screenshot('org1.png')
+        time.sleep(20)  # give firefox time to update the title
+        self.driver.save_screenshot('org2.png');
         self.assertEqual(self.driver.title, "Organisasjonen | Universitetet i Bergen")
         self.driver.save_screenshot('infopage.png')
