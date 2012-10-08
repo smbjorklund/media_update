@@ -269,6 +269,48 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['sorts']['field_uib_date_value2']['table'] = 'field_data_field_uib_date';
   $handler->display->display_options['sorts']['field_uib_date_value2']['field'] = 'field_uib_date_value2';
   $handler->display->display_options['block_description'] = 'Kalender - det skjer!';
+
+  /* Display: Attachment */
+  $handler = $view->new_display('attachment', 'Attachment', 'attachment_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Aktiviteter de kommende dager';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Date -  start date (field_uib_date) */
+  $handler->display->display_options['filters']['field_uib_date_value']['id'] = 'field_uib_date_value';
+  $handler->display->display_options['filters']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['filters']['field_uib_date_value']['field'] = 'field_uib_date_value';
+  $handler->display->display_options['filters']['field_uib_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_uib_date_value']['default_date'] = 'now +1 day';
+  /* Filter criterion: Content: Type (field_uib_article_type) */
+  $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['value'] = array(
+    'event' => 'event',
+  );
+  $handler->display->display_options['displays'] = array(
+    'page_1' => 'page_1',
+    'default' => 0,
+    'block_1' => 0,
+  );
+  $handler->display->display_options['attachment_position'] = 'after';
   $translatables['calendar'] = array(
     t('Master'),
     t('Kalender - det skjer!'),
@@ -294,6 +336,8 @@ function uib_calendar_views_default_views() {
     t('Event type'),
     t('Date'),
     t('Block'),
+    t('Attachment'),
+    t('Aktiviteter de kommende dager'),
   );
   $export['calendar'] = $view;
 
