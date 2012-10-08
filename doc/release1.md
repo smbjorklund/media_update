@@ -1,4 +1,4 @@
-
+# Release 1
 
 > Dette dokumentet ble sist oppdatert ${DATE}.
 
