@@ -616,12 +616,12 @@ if ($_edb === FALSE) {
     }
 
     public function complete($entity, $row) {
-      global $_mem;
+      global $_mem_menu;
 
       // save source mlid
       list($empty, $nid) = explode('node/', $row->link_path);
       if (isset($nid)) {
-        $_mem[$nid] = $entity->mlid;
+        $_mem_menu[$nid] = $entity->mlid;
       }
       uibx_log("Created menu link at depth $row->depth \"$row->link_title.\"");
     }
@@ -691,7 +691,7 @@ if ($_edb === FALSE) {
       $query->join('node_revision', 'nr', 'n.vid = nr.vid');
       $query->join('users', 'u', 'nr.uid = u.uid');
       $query->addField('u', 'name');
-      $query->orderBy('n.changed');
+      $query->orderBy('n.language DESC, n.changed');
 
       //uibx_log(dpm((string) $query));
 
@@ -711,15 +711,10 @@ if ($_edb === FALSE) {
                    'migrate_epages_db'
       );
 
-      // allow migration to be runned multiple times - not working - gives error
-      //$this->highwaterField = array('name' => 'changed', 'alias' => 'n');
-
-      // todo handle english translations
-
       $this->addFieldMapping('title', 'title');
       $this->addFieldMapping('field_uib_article_type')
         ->defaultValue('infopage');
-      $this->addFieldMapping('language')
+      $this->addFieldMapping('language') // also handled in prepare
         ->defaultValue('nb');
       $this->addFieldMapping('created', 'created');
       $this->addFieldMapping('changed', 'changed');
@@ -727,6 +722,7 @@ if ($_edb === FALSE) {
       $this->addFieldMapping('field_uib_text'); // handled in prepare
       $this->addFieldMapping('field_uib_area'); // handled in prepare
       $this->addFieldMapping('uid'); // handled in prepare
+      $this->addFieldMapping('tnid', 'tnid'); // handled in prepareRow
 
       $this->addUnmigratedDestinations(array('field_uib_w2_id',
           'field_uib_menu_title_w2',
@@ -746,18 +742,46 @@ if ($_edb === FALSE) {
     public function prepareRow($row) {
       global $_edb;
 
-      // check that source node is part of menu 'ansattsider'
-      $result = $_edb->select('menu_links')
+      $this->is_epage = FALSE;
+
+      // check that source node is part of menu 'ansattsider' or translated content
+      $query = $_edb->select('menu_links')
         ->fields('menu_links', array('mlid', 'link_path'))
         ->condition('menu_name', 'menu-ansattsider')
         ->condition('link_path', 'node/'.$row->nid);
+      foreach ($query->execute() as $item)
+        $this->is_epage = TRUE;
 
-      if (($item = $result->execute()) === FALSE)
+      // or check that source node is a translated content
+      if (!$this->is_epage) {
+        $query = $_edb->select('node', 'n')
+          ->fields('n', array('tnid'))
+          ->condition('n.nid', $row->nid, '=');
+        foreach ($query->execute() as $item) {
+
+          // check if it's a translated node (en)
+          if ($item->tnid != $row->nid && $item->tnid != '0') {
+
+            // check that tnid is part of menu 'ansattsider'
+            $query2 = $_edb->select('menu_links')
+              ->fields('menu_links')
+              ->condition('menu_name', 'menu-ansattsider')
+              ->condition('link_path', 'node/'.$item->tnid);
+            foreach ($query2->execute() as $item)
+              $this->is_epage = TRUE;
+          }
+          break;
+        }
+      }
+
+      if (!$this->is_epage) {
+        uibx_log("Skipping node $row->nid - not part of menu-ansattsider");
         return FALSE;
+      }
     }
 
     public function prepare($entity, $row) {
-      global $_edb, $_top_menu_id, $_area_target_id;
+      global $_edb, $_area_target_id, $_mem_node;
 
       // use area_target_id from destination 'ansattsider'
       $entity->field_uib_area['und'][0]['target_id'] = $_area_target_id;
@@ -788,8 +812,6 @@ if ($_edb === FALSE) {
       if (!empty($user->uid))
         $entity->uid = $user->uid;
 
-      uibx_log("Created node $row->nid uid:$user->uid. ($row->name) \"$entity->title\"");
-
       // copy any images and attachements (pfd) to the destination node
       $query = $_edb->select('field_data_field_uib_files', 'f')
         ->fields('f')
@@ -807,17 +829,37 @@ if ($_edb === FALSE) {
           'display' => 1,
         );
       }
+
+      // check if it's a translated node (en)
+      if ($row->tnid != $row->nid && $row->tnid != '0') {
+        // if translated node part of epage, update tnid to point to source node
+        if ($this->is_epage && isset($_mem_node[$row->tnid])) {
+          $entity->tnid = $_mem_node[$row->tnid];
+          $entity->language = 'en';
+        }
+      }
+
+      uibx_log("Created node $row->nid lang: $row->language uid: $user->uid ($row->name) \"$entity->title\"");
     }
 
     public function complete($entity, $row) {
-      global $_mem;
+      global $_mem_menu, $_mem_node;
 
-      // use mem[nid] to map to new menu - modify menu link_path
-      if (isset($_mem[$row->nid])) {
-        $new_mlid = $_mem[$row->nid];
+      // use mem_menu[row->nid] to map to new menu - modify menu link_path
+      if (isset($_mem_menu[$row->nid])) {
+        $new_mlid = $_mem_menu[$row->nid];
         $menu_link = menu_link_load($new_mlid);
         $menu_link['link_path'] = drupal_get_normal_path('node/'.$entity->nid);
         menu_link_save($menu_link);
+
+        // use mem_node[row->nid] to map to new node
+        $_mem_node[$row->nid] = $entity->nid;
+
+        // if source node tnid = nid, do the same for destination node
+        if ($row->tnid == $row->nid) {
+          $entity->tnid = $entity->nid;
+          node_save($entity);
+        }
       }
     }
   }
