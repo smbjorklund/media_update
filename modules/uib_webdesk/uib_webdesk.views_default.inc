@@ -784,6 +784,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['title_1']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Title';
+  $handler->display->display_options['filters']['title_1']['expose']['description'] = 'Contains';
   $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
@@ -1031,8 +1032,8 @@ function uib_webdesk_views_default_views() {
     t('Is less than or equal to'),
     t('Content pane'),
     t('All content'),
-    t('Area name'),
     t('Contains'),
+    t('Area name'),
     t('View panes'),
     t('Content pane uid'),
     t('My content'),
