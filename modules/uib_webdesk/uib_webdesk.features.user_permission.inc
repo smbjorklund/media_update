@@ -293,7 +293,7 @@ function uib_webdesk_user_default_permissions() {
   $permissions['administer url aliases'] = array(
     'name' => 'administer url aliases',
     'roles' => array(
-      0 => 'level 2',
+      0 => 'level 1',
     ),
     'module' => 'path',
   );
@@ -387,7 +387,7 @@ function uib_webdesk_user_default_permissions() {
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
     'roles' => array(
-      0 => 'level 2',
+      0 => 'level 1',
     ),
     'module' => 'path',
   );
