@@ -794,12 +794,11 @@ function uib_webdesk_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: Area name */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
   $handler->display->display_options['filters']['title']['relationship'] = 'field_uib_area_target_id';
-  $handler->display->display_options['filters']['title']['ui_name'] = 'Area name';
   $handler->display->display_options['filters']['title']['operator'] = 'contains';
   $handler->display->display_options['filters']['title']['group'] = 1;
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
@@ -807,7 +806,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Area name';
   $handler->display->display_options['filters']['title']['expose']['description'] = 'Contains';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'Area name';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
