@@ -1176,17 +1176,12 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['field_uib_last_name']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_uib_last_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_last_name']['element_wrapper_type'] = 'span';
-  /* Field: User: Uid */
-  $handler->display->display_options['fields']['uid']['id'] = 'uid';
-  $handler->display->display_options['fields']['uid']['table'] = 'users';
-  $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  $handler->display->display_options['fields']['uid']['label'] = '';
-  $handler->display->display_options['fields']['uid']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['uid']['alter']['text'] = 'Edit account';
-  $handler->display->display_options['fields']['uid']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['uid']['alter']['path'] = 'user/[uid]/edit?destination=webdesk';
-  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: User: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'users';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
@@ -1240,7 +1235,6 @@ function uib_webdesk_views_default_views() {
     t('last »'),
     t('Content referencing User from field_uib_staff'),
     t('User image missing.'),
-    t('Edit account'),
     t('All'),
     t('Content pane'),
     t('View panes'),
