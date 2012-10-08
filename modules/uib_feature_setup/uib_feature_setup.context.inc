@@ -21,6 +21,7 @@ function uib_feature_setup_context_default_contexts() {
       'values' => array(
         '~webdesk' => '~webdesk',
         '~webdesk/*' => '~webdesk/*',
+        '~node/*/edit' => '~node/*/edit',
         '*' => '*',
       ),
     ),
