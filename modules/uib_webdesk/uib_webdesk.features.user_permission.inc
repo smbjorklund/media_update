@@ -112,7 +112,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer content types.
   $permissions['administer content types'] = array(
     'name' => 'administer content types',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -182,7 +184,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer module filter.
   $permissions['administer module filter'] = array(
     'name' => 'administer module filter',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'module_filter',
   );
 
@@ -196,7 +200,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer nodes.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -270,7 +276,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer taxonomy.
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -284,7 +292,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer url aliases.
   $permissions['administer url aliases'] = array(
     'name' => 'administer url aliases',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 2',
+    ),
     'module' => 'path',
   );
 
@@ -342,7 +352,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: create area content.
   $permissions['create area content'] = array(
     'name' => 'create area content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -374,7 +386,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: create url aliases.
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 2',
+    ),
     'module' => 'path',
   );
 
@@ -390,7 +404,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: delete any area content.
   $permissions['delete any area content'] = array(
     'name' => 'delete any area content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -422,7 +438,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: delete own area content.
   $permissions['delete own area content'] = array(
     'name' => 'delete own area content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -454,14 +472,18 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: delete revisions.
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: delete terms in 1.
   $permissions['delete terms in 1'] = array(
     'name' => 'delete terms in 1',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -477,7 +499,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: edit any area content.
   $permissions['edit any area content'] = array(
     'name' => 'edit any area content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -518,7 +542,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: edit own area content.
   $permissions['edit own area content'] = array(
     'name' => 'edit own area content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -550,7 +576,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: edit terms in 1.
   $permissions['edit terms in 1'] = array(
     'name' => 'edit terms in 1',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -675,7 +703,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: revert revisions.
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 2',
+    ),
     'module' => 'node',
   );
 
@@ -846,7 +876,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: view own unpublished content.
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 3',
+    ),
     'module' => 'node',
   );
 
@@ -860,7 +892,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: view revisions.
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 3',
+    ),
     'module' => 'node',
   );
 
