@@ -3,7 +3,6 @@ from selenium import webdriver
 
 from os import readlink
 from os.path import basename
-import time
 
 class SiteTestCase(unittest.TestCase):
 
@@ -26,10 +25,6 @@ class SiteTestCase(unittest.TestCase):
         self.driver.find_element_by_link_text('Om fakultetet').click()
         self.driver.save_screenshot('om.png')
         self.driver.find_element_by_link_text('Organisasjonen').click()
-        self.driver.save_screenshot('org1.png')
-        time.sleep(20)  # give firefox time to update the title
-        self.driver.save_screenshot('org2.png');
-        time.sleep(30)  # give firefox time to update the title
-        self.driver.save_screenshot('org3.png');
+        self.driver.save_screenshot('org.png')
         self.assertEqual(self.driver.title, "Organisasjonen | Universitetet i Bergen")
         self.driver.save_screenshot('infopage.png')
