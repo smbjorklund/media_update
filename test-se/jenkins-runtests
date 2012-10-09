@@ -1,5 +1,7 @@
 #!/bin/sh
 
+PATH=$HOME/firefox:$PATH
+
 if [ ! -d mypy ]; then
     virtualenv --no-site-packages --distribute mypy
     mypy/bin/pip --quiet install -r requirements.txt
