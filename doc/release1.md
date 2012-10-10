@@ -27,6 +27,7 @@ funksjonalitet  w3 ut over det som w2 har idag.  Det vi har valgt
 å ta med i release 1 er:
 
 * webdesk med negativ kiphetsfaktor
+* faktaboks
 * artikler får aktiverings- og arkiveringsdato (bytter mellom tilstand
   "published" og "unpublished" på gitt tidspunkt)
 * temasider (må utdypes)
@@ -182,7 +183,7 @@ som for andre områder.
 * utvalgte nyheter
 * kalender
 * **utvalgte hendelser**
-* set path
+* path (using path alias to override path)
 
 Undersider (som ikke er lister):
 
@@ -203,7 +204,7 @@ Undersider (som ikke er lister):
 * vedlegg
 * links
 * undersider (teaser-meny)
-* **skedulert publisering**
+* skedulert publisering
 * geo and addresses
 * dates
 * **autopath**
