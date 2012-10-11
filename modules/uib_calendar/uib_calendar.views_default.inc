@@ -141,8 +141,8 @@ function uib_calendar_views_default_views() {
     'event' => 'event',
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page_1');
+  /* Display: Main calendar page */
+  $handler = $view->new_display('page', 'Main calendar page', 'page_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
@@ -258,7 +258,7 @@ function uib_calendar_views_default_views() {
     1 => 0,
   );
   $handler->display->display_options['filters']['field_uib_date_value_1']['form_type'] = 'date_popup';
-  $handler->display->display_options['path'] = 'node/%/kalender';
+  $handler->display->display_options['path'] = 'node/%/calendar';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
@@ -456,6 +456,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_uib_date.field_uib_date_value' => 'field_data_field_uib_date.field_uib_date_value',
   );
@@ -512,6 +513,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['granularity'] = 'week';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_uib_date.field_uib_date_value' => 'field_data_field_uib_date.field_uib_date_value',
@@ -571,6 +573,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['granularity'] = 'day';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_uib_date.field_uib_date_value' => 'field_data_field_uib_date.field_uib_date_value',
@@ -597,7 +600,7 @@ function uib_calendar_views_default_views() {
     t('[field_uib_date] - [title]'),
     t('<h2>[field_uib_event_type]</h2>'),
     t('All'),
-    t('Page'),
+    t('Main calendar page'),
     t('[field_uib_date] - [title] ([field_uib_event_type])'),
     t('Event type'),
     t('Date'),
