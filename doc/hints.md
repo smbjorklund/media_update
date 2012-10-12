@@ -22,6 +22,19 @@ You will grow tired of invoking `site-drush` the verbose way, so you might want 
 We use for our files and throw-away databases, so avoiding the "Are you sure?"
 prompts is really handy.
 
+## Postgres
+
+We will deploy with postgres as our database.  Since the postgres team has no come up
+with a test database server where we can create and destroy databases at will, we have
+set up our own at glory.uib.no.  On that server you can log in with the username 'user1'.
+
+If you create youself a `~/.pgpass` file with this content:
+
+    glory.uib.no:5432:*:user1:pass1
+
+You will be able to log into that server with 'psql -h glory.uib.no -U user1' and it should
+also work to run `site-install w3.uib.local postgres` to set up a new drupal instance on postgres.
+
 
 ## Migration
 
