@@ -66,6 +66,8 @@ i release 1:
 * import av artikler fra andre områder (refpage)
 * importerte nav- og info-sider vil ikke kommer med i migrasjonen
   (disse må manuelt byttes med lenker til w2 eller node refs)
+* aksessbegrensinger pr område
+* media handling
 * arbeidskopi
 
 Begrensninger inntil hele www.uib.no er på samme platform:
@@ -149,13 +151,13 @@ Aktiviteter:
 ## Webdesk
 
 * establish roles and permissings (level 1 .. 4)
-* establish "content managers" per area
+* **establish "content managers" per area**
 * admin menu
 * shortcuts
 * listings of relevant content
   * content of my areas (last modified first)
   * my content (last modified first)
-  * **content about to be published/unpublished**
+  * content about to be published/unpublished
 * search for content based on various criteria
 * create and edit content
 * create and edit areas
