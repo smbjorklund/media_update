@@ -248,7 +248,8 @@ class EventMigration extends XTopicToArticleMigration {
   public function prepare($node, $row) {
     parent::prepare($node, $row);
     $node->field_uib_date['und'][0]['value'] = $row->start_date;
-    $node->field_uib_date['und'][0]['value2'] = $row->end_date;
+    if (!empty($row->end_date))
+      $node->field_uib_date['und'][0]['value2'] = $row->end_date;
     $node->field_uib_event_type['und'][0]['value'] = $row->type;
     //Prevent empty links instances
     if (!empty($row->hjemmeside)) {
