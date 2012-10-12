@@ -32,6 +32,11 @@ funksjonalitet  w3 ut over det som w2 har idag.  Det vi har valgt
   "published" og "unpublished" på gitt tidspunkt)
 * temasider (må utdypes)
 
+Basert på [tilbakemeldingene](doc/hf-fakultetskonferansen.txt) fra HFs
+fakultetskonferanse i oktober 2011 tar vi med:
+
+* støtte for å legge til egen logo på områdesiden
+
 Fokus for release 2 vil være å oppfylle flere av forslagene og sørge for
 at systemet fungerer godt for pilotfakultetene.
 

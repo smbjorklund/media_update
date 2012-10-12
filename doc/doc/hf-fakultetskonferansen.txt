@@ -1,0 +1,40 @@
+From: Sonja Irene Dyrkorn <Sonja.Dyrkorn@hf.uib.no>
+To: Agnete Larsson Gullaksen <Agnete.Gullaksen@adm.uib.no>, Hans-Petter
+ Isaksen <Hans-Petter.Isaksen@adm.uib.no>
+CC: Gisle Aas <Gisle.Aas@adm.uib.no>, Said Berg <Said.Berg@adm.uib.no>,
+	=?iso-8859-1?Q?Henrik_T=F8ndel?= <Henrik.Tondel@adm.uib.no>
+ate: Thu, 4 Oct 2012 12:53:22 +0200
+Subject: oppsummering fra fakultetskonferanse
+
+Hei,
+
+På møtet i går orienterte jeg kort om innspillene som kom på
+fakultetskonferansen tidligere i uken. Det kom innspill både til
+funksjonalitet, roller og organisering. Kort oppsummert var innspillene som
+følger:
+
+a) presentasjon av to utkast til forside-mal. Tilbakemeldinger fra noen miljøer
+er at de fremdeles ønsker å kunne ha nyheter noe i fokus, mens andre var vel
+fornøyd med at nyhetsfokuset var blitt noe nedtonet. Er det mulig å lage et
+sett med forsidemaler som man kan velge blant alt etter hvilket fokus man
+ønsker?
+
+b) temasider. Tilbakemelding tyder på at noen miljøer også ønsker å bruke
+temasidemaler til f.eks synliggjøring av tverrfaglige satsningsområder (må ikke
+forveksles med prosjektsider). 
+
+c) Griegakademiet må få logoen sin på sine sidemaler. Gjerne til høyre for
+instituttnavnet (uglen står til venstre)
+
+d) det er gjennomgående et ønske om å ha (minst) én nivå 2-bruker på hver
+enhet. Her må fakultetet gå gjennom ressurs- og kompetansebehov
+
+e) opplæringsplan må foreligge så snart som mulig, og inneholde kursing både
+i webdesken, men også «skriving for web» osv. 
+
+f) fakultetet går sannsynligvis i retning en større prosjektrigging i forkant
+av lansering for å få informasjon og sider utbygd på en tilfredsstillende måte
+
+
+mvh Sonja
+
