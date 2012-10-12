@@ -52,8 +52,8 @@ Funksjonaliteten som vi *ikke* vil videreføre er:
 * facebook knapp
 * del.ici.us knapp
 * "skriv ut" knapp på artikkelsider
-* engelske områder får ny URL ("en" prefix)
-* artikler og filer får nye URLer
+* engelske områder får ny URL (alle får "en" prefix og droppr "en" suffix hvis de hadde det)
+* artikler og filer får nye URLer (autopath generert)
 
 Funsjonalitet fra w2 som vi vil implementere men ikke rekker å få med
 i release 1:
