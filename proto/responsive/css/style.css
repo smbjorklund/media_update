@@ -3,8 +3,15 @@ html, body {
 	padding:0;
 }
 
-img.placeholder {
+img {
   width: 100%;
+}
+
+.post p, .post2 p {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .clearfix:after {
@@ -14,7 +21,6 @@ img.placeholder {
 }
 
 #header {
-  border-bottom: 1px solid silver;
   width: 900px;
   margin: 0 auto;
 }
@@ -66,24 +72,9 @@ h2  {
   border-top: 1px solid silver;
   border-bottom: 1px solid silver;
   font-weight: normal;
-  width: 170px;
+  width: 100%;
   float: left;
 }
-
-h4  {
-  font-family: "times new roman";
-  color: #555;
-  text-transform: uppercase;
-  font-size: 15px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border-top: 1px solid silver;
-  border-bottom: 1px solid silver;
-  font-weight: normal;
-  margin-bottom: 0;
-}
-
-#header_info {}
 
 form#mobile-search  {
   float: right;
@@ -114,6 +105,8 @@ form#mobile-search  {
 #sidebar  {
   font-family: verdana;
   font-size:11px;
+  width: 170px;
+  float: left;
 }
 
 #sidebar a  {
@@ -133,22 +126,43 @@ h3  {
   font-family: verdana;
   font-weight: normal;
   padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  float: left;
 }
 
-#header-bottom  {
-  height: 50px;
+
+.article  {
+  height: auto;
+  margin-top: 27px;
+}
+
+.post, .post2, .p {
   width: 100%;
-  background: blue;
-  margin-top: 100px;
+  height: 100px;
+  background: silver; 
+}
+
+.post {
+  margin-top: 36px;
+}
+
+#bilde  {
+  height: 100px;
+  width: 40%;
+  background: #B3B3B3;
+  float: left;
+}
+
+#tekst  {
+  background: #A2A2A2;
+  height: 100px;
+  width: 60%;
+  float: left;
 }
 
 /* =Navigation
 -------------------------------------------------------------- */
-
-.menu {
-  margin: auto;
-  width: 100%;
-}
 
 #access {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -164,7 +178,6 @@ h3  {
 ul.sf-menu li:hover > ul {
   display: block;
   background: silver;
-  position: absolute;
 }
 
 /* get rid of padding and margin off all ul's (not sure about using * here, could be better) */
@@ -227,17 +240,6 @@ ul.sf-menu li:hover > ul {
     position:relative;
 }
 
-/* make sure second drop is still off screen */
-ul.sf-menu li:hover li ul {
-    position: absolute;
-    top:-999em;
-}
-
-/* position second drop */
-ul.sf-menu li li:hover ul {
-  top:auto;
-  position:relative;
-}
 
 ul.sub-menu {
   display: none;
@@ -252,173 +254,7 @@ form#mobile-search {
   display: none;
 }
 
-@media only screen and (max-width: 768px) {
-  #header_info {
-    max-width: auto;
-    width: auto;
-  }
-
-  #header {
-    position: relative !important;
-    width: 100%;
-  }
-
-  form#mobile-search {
-    display: inline;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
-
-  form#top-search {
-    display: none;
-  }
-
-  img.top-logo {
-    float: left;
-    margin: 0;
-  }
-
-  h1 {
-    margin: 0 0 0 25px;
-    float: left;
-  }
-
-  #logo {
-    width: auto;
-    display: block;
-    float: left;
-    margin: 43px 0 0 40px;
-  }
-
-  #content  {
-    width: 80%;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-}
-@media only screen and (max-width: 600px) {
-    /* set height so content isn't pushed down */
-    #access {
-        float: left;
-        height: 36px;
-        width: 100%;
-    }
-
-    /* set height so content isn't pushed down add z-index to keep drops above content */
-    .sf-menu  {
-        height: 36px;
-        z-index: 1;
-        position: relative;
-        top: -210px;
-    }
-
-    /* restyle so main links are horizontally aligned */
-    .sf-menu li {
-        clear: none;
-        width: 100%; /* this will need to be adjusted for your needs */
-    }
-
-    /* new style for drop list items */
-    .sf-menu li li{
-        background: silver;
-        clear: left;
-        width: 100%;
-        position: relative;
-    }
-
-    /* reposision and style the first drop */
-    .sf-menu li:hover ul{
-        background: #8D8D8D;
-        left: auto;
-        position: relative;
-        top: -1;
-        width: 100%;
-        z-index: 100;
-    }
-
-    #header  {
-      width: 100%;
-      z-index:2;
-      background: #fff;
-      height:180px;
-    }
-
-    .arrow-img  {
-      margin-left: 3px;
-      margin-top: 3px;
-    }
-
-    .menu-button  {
-      background: silver;
-      padding: 3px;
-      border-radius: 3px;
-      border: solid 1px #ACACAC;
-      -moz-box-shadow: inset 0 0 5px #B0B0B0;
-      -webkit-box-shadow: inset 0 0 5px#B0B0B0;
-      box-shadow: inset 0 0 5px #B0B0B0;
-      text-decoration: none;
-      font-size: 10px;
-      margin-left: 30px;
-    }
-
-    .menu-button a:link  {
-      color: #333;
-      font-family: helvetica;
-    }
-
-    form#top-search {
-      display: none;
-    }
-
-    #header_info  {
-      width:100%;
-      height: 140px;
-    }
-
-    h1  {
-      margin-top:36px;
-    }
-
-    img.top-logo {
-      float: left;
-      margin: 0;
-    }
-
-    h1 {
-      margin: 0 0 0 25px;
-      float: left;
-    }
-
-    #logo {
-      width: auto;
-      display: block;
-      float: left;
-    }
-
-    #content  {
-      width: 100%;
-    }
-
-    #global_menu li a {
-      font-size: 8px;
-    }
-}
-
-@media only screen and (min-width: 601px) {
-
-.menu-button
-  {
-    display: none;
-  }
-
-  .menu {
-    width:100%;
-  }
-}
-
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 910px) { /* Desktop */
     header h1{
         font-size: 1.2em;
     }
@@ -436,11 +272,70 @@ form#mobile-search {
         font-size: 1em;
         padding: 17px 0;
     }
+
+    .menu-button  {
+      display: none;
+    }
+    
+    #column-1 {
+      width: 50%;
+      float: left;
+    }
+    
+    #column-2 {
+      width: 50%;
+      float: left;
+    }
+    
+    img.top-logo {
+      float: left;
+      margin: 0;
+      width: 5%;
+    }
+    
+    .article-header {
+      height: 30px;
+      width: 100%;
+    }
+    
+    .date {
+      float: right;
+    }
+    
+    #ingress  {
+      margin-top: 75px;
+    }
+    
+    #ingress  p {
+      font-weight: bold;
+    }
+    
+    #article-body {
+      width: 70%;
+      float: left;
+    }
+    
+    #article-sidebar  {
+      width: 30%;
+      background: silver;
+      float: left;
+      height: auto;
+    }
+    
+    .byline {
+      text-transform: uppercase;
+    }
+    
+    .latest-update  {
+      float: right;
+      margin-right: 10px;
+      font-style: italic;
+    }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 910px) {
   #content  {
-    width: 80%;
+    width: 95%;
   }
 
   #main {
@@ -449,67 +344,265 @@ form#mobile-search {
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 910px) { /* TABLETS */
+  #header_info {
+    max-width: auto;
+    width: auto;
+    float: left;
+  }
+
   #header {
-    height: 100px;
+    position: relative !important;
     width: 100%;
+    height: 70px;
   }
 
-  .sf-menu {
-    top: -340px;
-  }
-
-  .menu-button  {
-    margin-left: 30px;
-    top: 65px;
-  }
-
-  img.top-logo  {
-    width: 10%;
-    margin-top: 0;
-    padding-top: 0;
-  }
-
-  #logo {
-    margin-top: 15px;
-    width: 100%;
-  }
-
-  h1  {
-    border: none;
-    font-size: 12px;
-    margin-left: 0;
-    margin-top: 0;
-    padding-top: 0;
-  }
-
-  #content  {
-    width: 90%;
-  }
-
-  #global_menu ul {
-    padding-left: 15px;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    float: none;
+  form#mobile-search {
     display: inline;
+    position: absolute;
+    right: 0;
+  }
+
+  form#top-search {
+    display: none;
+  }
+
+  img.top-logo {
+    float: left;
+    margin: 0;
+    width: 10%;
+  }
+
+  h1 {
+    margin: 0 0 0 25px;
+    float: left;
+    font-size: 16px;
+
+  }
+
+  .post, .post2  {
+    background: silver;
     width: 100%;
+    height: 100px;  
+  }
+  
+  #main-middle  {
+    width: 70%;
+    float: left;
+  }
+/*  
+  #main-bottom  {
+    margin-top: 480px;
+    width: 50%;
+  }*/
+  
+  .post {
+    margin-top: 36px;
+  }
+  
+  #bilde  {
+    height: 100px;
+    width: 40%;
+    background: #B3B3B3;
+    float: left;
+  }
+  
+  #tekst  {
+    background: #A2A2A2;
+    height: 100px;
+    width: 60%;
+    float: left;
   }
 
-  #global_menu li {
-    margin-right: 6px;
+  #sidebar  {
+    width: 30%;
+    float: left;
   }
 
-  #global_menu li a {
-    font-size: 8px;
+  #sidebar  {
+    margin-top: 15px;
+  }
+  
+  #article-sidebar  {
+    height: auto;
+    background: silver;
   }
 
-  #header_info  {
-    width: 100%;
-    background: red;
-    height: 25px;
+
+@media only screen and (min-width: 480px) {
+}
+@media only screen and (max-width: 640px) and (min-width: 320px){ /* Mobile *
+    /* set height so content isn't pushed down */
+    #access {
+      float: left;
+      height: 6px;
+      width: 100%;
+    }
+
+    /* set height so content isn't pushed down add z-index to keep drops above content */
+    .sf-menu  {
+      height: 36px;
+      z-index: 1;
+      position: relative;
+      top: -210px;
+    }
+
+    /* restyle so main links are horizontally aligned */
+    .sf-menu li {
+      clear: none;
+      width: 100%; /* this will need to be adjusted for your needs */
+    }
+
+    /* new style for drop list items */
+    .sf-menu li li{
+      background: silver;
+      clear: left;
+      width: 100%;
+      position: relative;
+    }
+
+    /* reposision and style the first drop */
+    .sf-menu li:hover ul{
+      background: #8D8D8D;
+      left: auto;
+      position: relative;
+      top: -1;
+      width: 100%;
+      z-index: 100;
+    }
+
+    #header  {
+      width: 100%;
+      z-index:2;
+      background: #fff;
+      border-bottom: solid 1px silver;
+      padding-bottom: 5px;
+      height: 70px;
+    }
+
+    .menu-button  {
+      background: #e4e4df;
+      padding: 5px 50px 5px 50px;
+      border-radius: 3px;
+      border: solid 1px #ACACAC;
+      text-decoration: none;
+      font-size: 12px;
+      margin-left: 22px;
+      }
+
+    .menu-button a:link  {
+      color: #333;
+      font-family: helvetica;
+    }
+
+    form#top-search {
+      display: none;
+    }
+
+    #header_info  {
+      width:100%;
+    }
+
+
+    h1 {
+      float: left;
+      font-size: 14px !important;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      border-left: solid 1px #800;
+      margin-left: 0;
+      margin-top: 0;
+      margin-bottom: 27px;
+    }
+
+    #content  {
+      width: 90%;
+    }
+    
+    #main {
+      width: 100%;
+    }
+
+    #global_menu li a {
+      font-size: 8px;
+    }
+    
+    .post, .post2 {
+      background: silver;
+      width: 100%;
+      height: 100px;
+    }
+    
+    .post {
+      margin-top: 36px;
+    }
+    
+    #bilde  {
+      height: 100px;
+      width: 40%;
+      background: #B3B3B3;
+      float: left;
+    }
+    
+    #tekst  {
+      background: #A2A2A2;
+      height: 100px;
+      width: 60%;
+      float: left;
+    }
+
+    img.top-logo  {
+      width: 9%;
+      margin-top: 0;
+      padding-top: 0;
+      margin-right: 15px;
+      margin-left: 40px;
+    }
+
+    #global_menu ul {
+      padding-left: 15px;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      float: none;
+      display: inline;
+      width: 100%;
+    }
+
+    #global_menu li {
+      margin-right: 6px;
+    }
+
+    #header_info  {
+      width: 100%;
+  /*  background: red; */
+      height: 25px;
+      margin-left: 30px;
+    }
+    
+    #main-middle  {
+      width: 100%;
+    }
+    
+    #sidebar  {
+      width: 100%;
+    }
+
+}
+
+@media only screen and (min-width: 601px) {
+
+.menu-button
+  {
+    display: none;
+  }
+
+  .menu {
+    width:100%;
   }
 }
 
+
+
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
+}
 }
