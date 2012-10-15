@@ -575,8 +575,7 @@ if ($_edb === FALSE) {
 
       $this->map = new MigrateSQLMap($this->machineName,
                    MigrateDestinationMenuLinks::getKeySchema(),
-                   MigrateDestinationMenuLinks::getKeySchema(),
-                   'migrate_epages_db'
+                   MigrateDestinationMenuLinks::getKeySchema()
       );
 
       $this->addSimpleMappings(array('link_path', 'router_path', 'link_title', 'module', 'hidden', 'external', 'has_children', 'expanded', 'weight'));
@@ -707,8 +706,7 @@ if ($_edb === FALSE) {
                        'alias' => 'n',
                      )
                    ),
-                   MigrateDestinationNode::getKeySchema(),
-                   'migrate_epages_db'
+                   MigrateDestinationNode::getKeySchema()
       );
 
       $this->addFieldMapping('title', 'title');
