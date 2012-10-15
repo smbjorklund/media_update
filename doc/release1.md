@@ -127,17 +127,18 @@ Krav:
 Aktiviteter:
 
 * frontend (nginx, varnish — string)) i datarom 1
-  * redirect mekanisme
+  * proxy mekanisme (nywww.uib.no)
 * hot standby-frontend i datarom 2
-* applikasjonsserver (drupal — attilla  x2)
-  * drush cron
+* applikasjonsserver (drupal — attilla, attika)
   * deployment via git
+  * drush cron
   * sikkerhetsoppdateringer (core, moduler)
 * database og fillager (postgres, netapp nfs)
+* stresstesting
 
 * staging-miljø
-  * teststring
-  * testattilla
+  * teststring as www.test.uib.no
+  * attillatest
 
 ## Design og UX
 
