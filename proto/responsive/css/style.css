@@ -140,7 +140,7 @@ h3  {
 .post, .post2, .p {
   width: 100%;
   height: 100px;
-  background: silver; 
+  background: silver;
 }
 
 .post {
@@ -281,51 +281,51 @@ form#mobile-search {
       width: 50%;
       float: left;
     }
-    
+
     #column-2 {
       width: 50%;
       float: left;
     }
-    
+
     img.top-logo {
       float: left;
       margin: 0;
       width: 5%;
     }
-    
+
     .article-header {
       height: 30px;
       width: 100%;
     }
-    
+
     .date {
       float: right;
     }
-    
+
     #ingress  {
       margin-top: 75px;
     }
-    
+
     #ingress  p {
       font-weight: bold;
     }
-    
+
     #article-body {
       width: 70%;
       float: left;
     }
-    
+
     #article-sidebar  {
       width: 30%;
       background: silver;
       float: left;
       height: auto;
     }
-    
+
     .byline {
       text-transform: uppercase;
     }
-    
+
     .latest-update  {
       float: right;
       margin-right: 10px;
@@ -383,30 +383,30 @@ form#mobile-search {
   .post, .post2  {
     background: silver;
     width: 100%;
-    height: 100px;  
+    height: 100px;
   }
-  
+
   #main-middle  {
     width: 70%;
     float: left;
   }
-/*  
+/*
   #main-bottom  {
     margin-top: 480px;
     width: 50%;
   }*/
-  
+
   .post {
     margin-top: 36px;
   }
-  
+
   #bilde  {
     height: 100px;
     width: 40%;
     background: #B3B3B3;
     float: left;
   }
-  
+
   #tekst  {
     background: #A2A2A2;
     height: 100px;
@@ -422,7 +422,7 @@ form#mobile-search {
   #sidebar  {
     margin-top: 15px;
   }
-  
+
   #article-sidebar  {
     height: auto;
     background: silver;
@@ -518,7 +518,7 @@ form#mobile-search {
     #content  {
       width: 90%;
     }
-    
+
     #main {
       width: 100%;
     }
@@ -526,24 +526,24 @@ form#mobile-search {
     #global_menu li a {
       font-size: 8px;
     }
-    
+
     .post, .post2 {
       background: silver;
       width: 100%;
       height: 100px;
     }
-    
+
     .post {
       margin-top: 36px;
     }
-    
+
     #bilde  {
       height: 100px;
       width: 40%;
       background: #B3B3B3;
       float: left;
     }
-    
+
     #tekst  {
       background: #A2A2A2;
       height: 100px;
@@ -582,11 +582,10 @@ form#mobile-search {
     #main-middle  {
       width: 100%;
     }
-    
+
     #sidebar  {
       width: 100%;
     }
-
 }
 
 @media only screen and (min-width: 601px) {
