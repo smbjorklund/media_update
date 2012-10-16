@@ -286,6 +286,16 @@ form#mobile-search {
       width: 50%;
       float: left;
     }
+    
+    .column-1-narrow  {
+      width: 30%;
+      float: left;
+    }
+    
+    .column-2-wide  {
+      width: 70%;
+      float: left;
+    }
 
     img.top-logo {
       float: left;
