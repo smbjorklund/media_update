@@ -27,7 +27,8 @@ funksjonalitet  w3 ut over det som w2 har idag.  Det vi har valgt
 å ta med i release 1 er:
 
 * webdesk med negativ kiphetsfaktor
-* faktaboks
+* ny felles områdemal med nye frihetsgrader
+* artikler får faktaboks
 * artikler får aktiverings- og arkiveringsdato (bytter mellom tilstand
   "published" og "unpublished" på gitt tidspunkt)
 * temasider (må utdypes)
@@ -51,21 +52,23 @@ Funksjonaliteten som vi *ikke* vil videreføre er:
 
 * menypunkt i tekstfeltene (&lt;h2> vil oppføre seg normalt)
 * mulighet for tabeller i tekstfeltene (skaper problemer for blinde og smale skjermer)
-* bobling av nyhetssaker oppover i hierarkiet av områder
 * profiltekst (erstattet av fleksible tekstblobber som kan dukke opp både her og der)
 * "tips en venn"
-* facebook knapp
 * del.ici.us knapp
 * "skriv ut" knapp på artikkelsider
 * engelske områder får ny URL (alle får "en" prefix og droppr "en" suffix hvis de hadde det)
 * artikler og filer får nye URLer (autopath generert)
+* URLer under hf og jur som områder som var proxet til w1 forsvinner
+* www.hf.uib.no og www.jur.uib.no avvikles (proxes til w1); det finnes kanskje også tilsvarende statiske siter for instituttene
 
 Funsjonalitet fra w2 som vi vil implementere men ikke rekker å få med
 i release 1:
 
+* bobling av nyhetssaker/kalenderoppføringer oppover i hierarkiet av områder
 * import av artikler fra andre områder (refpage)
 * importerte nav- og info-sider vil ikke kommer med i migrasjonen
   (disse må manuelt byttes med lenker til w2 eller node refs)
+* ingen link tilbake fra personsider til temasider
 * aksessbegrensinger pr område
 * media handling
 * arbeidskopi
@@ -78,20 +81,22 @@ Begrensninger inntil hele www.uib.no er på samme platform:
 * hendelser registrert i w3 vil ikke vises i felleskalenderen
 * nyheter i w3 vil ikke dukke opp i nyhetsarkivet
 * forsinkelse fra personbilde blir oppdatert til det dukker opp i ansattlister
-* direkte fulltekstsøk (Google søk vil virke men kan være forsinket)
+* direkte fulltekstsøk fra webdesk (Google søk vil virke men kan være forsinket)
 
 
 Av [kravene til ansattsider](doc/kravspekk-ressurssider-for-ansatte.pdf) vil
 følgende *ikke* være oppfylt i release 1:
 
 * årshjul
+* RTS-553 advarsel feltet
 * søk som inkluderer sider utenfor www.uib.no
 * integrasjon mot Visma (kurs som dukker opp i kalenderen)
 * konseptet "underområde" (det er bare ett område, men infosider)
 * egen kalender for underområde "kursoversikt"
 * snarveier pr "underområde" (vi har links pr infoside)
+* egen brødsmulesti for "underområde" i tittellinja
 
-Funksjoner som må forbedres senere:
+Ny funksjonalitet som vi utsetter å perfeksjonere:
 
 * man ser hele områdemenyen når man plasserer infosider
 
@@ -146,8 +151,17 @@ Aktiviteter:
 
 * skisser
 * **responsivt design (3 bredder) for områder, artikler og lister (ikke webdesk)**
-* **prototyper**
-* **maler/css**
+
+* **RTS-605 prototyper (responsivt design)**
+  * områdeside fakultet
+  * områdeside institutt
+  * områdeside ansattsider
+  * artikkelside
+
+* **maler/css for uib_zen**
+  * RTS-610 identifisere struktur i designet (klasser)
+  * RTS-546 webdesk styling
+  * RTS-392 article header should show information about area
 
 ## Webdesk
 
