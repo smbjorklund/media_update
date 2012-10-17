@@ -23,8 +23,8 @@ Hovedmålet med release 1 er:
 
 I prosessen er det åpnet for at pilotfakultene skal komme med
 [innspill](doc/pilot-ny-funksjonalitet.pdf) på hva de ønsker seg av
-funksjonalitet  w3 ut over det som w2 har idag.  Det vi har valgt
-å ta med i release 1 er:
+funksjonalitet  w3 ut over det som w2 har idag.  Det vi tar
+med i release 1 er:
 
 * webdesk med negativ kiphetsfaktor
 * ny felles områdemal med nye frihetsgrader
@@ -52,13 +52,13 @@ Funksjonaliteten som vi *ikke* vil videreføre er:
 
 * menypunkt i tekstfeltene (&lt;h2> vil oppføre seg normalt)
 * mulighet for tabeller i tekstfeltene (skaper problemer for blinde og smale skjermer)
-* profiltekst (erstattet av fleksible tekstblobber som kan dukke opp både her og der)
+* profiltekst (byttet ut med en andre tekstbobler)
 * "tips en venn"
 * del.ici.us knapp
 * "skriv ut" knapp på artikkelsider
 * engelske områder får ny URL (alle får "en" prefix og droppr "en" suffix hvis de hadde det)
 * artikler og filer får nye URLer (autopath generert)
-* URLer under hf og jur som områder som var proxet til w1 forsvinner
+* URLer under uib.no/hf og uib.no/jur som områder som var proxet til w1 forsvinner
 * www.hf.uib.no og www.jur.uib.no avvikles (proxes til w1); det finnes kanskje også tilsvarende statiske siter for instituttene
 
 Funsjonalitet fra w2 som vi vil implementere men ikke rekker å få med
