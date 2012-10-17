@@ -126,12 +126,6 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Date -  start date (field_uib_date) */
-  $handler->display->display_options['filters']['field_uib_date_value']['id'] = 'field_uib_date_value';
-  $handler->display->display_options['filters']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
-  $handler->display->display_options['filters']['field_uib_date_value']['field'] = 'field_uib_date_value';
-  $handler->display->display_options['filters']['field_uib_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_uib_date_value']['default_date'] = 'now';
   /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
@@ -221,6 +215,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_date_value']['id'] = 'field_uib_date_value';
   $handler->display->display_options['filters']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
   $handler->display->display_options['filters']['field_uib_date_value']['field'] = 'field_uib_date_value';
+  $handler->display->display_options['filters']['field_uib_date_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_date_value']['default_date'] = 'now';
   /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
@@ -229,10 +224,12 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_article_type_value']['value'] = array(
     'event' => 'event',
   );
+  $handler->display->display_options['filters']['field_uib_article_type_value']['group'] = 1;
   /* Filter criterion: Content: Event type (field_uib_event_type) */
   $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
   $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
   $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_event_type_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator_id'] = 'field_uib_event_type_value_op';
   $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['label'] = 'Event type';
@@ -242,26 +239,17 @@ function uib_calendar_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Content: Date -  start date (field_uib_date) */
-  $handler->display->display_options['filters']['field_uib_date_value_1']['id'] = 'field_uib_date_value_1';
-  $handler->display->display_options['filters']['field_uib_date_value_1']['table'] = 'field_data_field_uib_date';
-  $handler->display->display_options['filters']['field_uib_date_value_1']['field'] = 'field_uib_date_value';
-  $handler->display->display_options['filters']['field_uib_date_value_1']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_uib_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['operator_id'] = 'field_uib_date_value_1_op';
-  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['label'] = 'Date';
-  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['operator'] = 'field_uib_date_value_1_op';
-  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['identifier'] = 'field_uib_date_value_1';
-  $handler->display->display_options['filters']['field_uib_date_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-  );
-  $handler->display->display_options['filters']['field_uib_date_value_1']['form_type'] = 'date_popup';
   $handler->display->display_options['path'] = 'node/%/calendar';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Date */
@@ -420,7 +408,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'calendar_style';
   $handler->display->display_options['style_options']['name_size'] = '3';
   $handler->display->display_options['style_options']['mini'] = '1';
-  $handler->display->display_options['style_options']['with_weekno'] = '1';
+  $handler->display->display_options['style_options']['with_weekno'] = '0';
   $handler->display->display_options['style_options']['multiday_theme'] = '1';
   $handler->display->display_options['style_options']['theme_style'] = '1';
   $handler->display->display_options['style_options']['max_items'] = '0';
@@ -479,8 +467,9 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['style_options']['mini'] = '0';
   $handler->display->display_options['style_options']['with_weekno'] = '0';
   $handler->display->display_options['style_options']['multiday_theme'] = '1';
-  $handler->display->display_options['style_options']['theme_style'] = '1';
+  $handler->display->display_options['style_options']['theme_style'] = '0';
   $handler->display->display_options['style_options']['max_items'] = '0';
+  $handler->display->display_options['style_options']['groupby_times'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
@@ -538,8 +527,9 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['style_options']['mini'] = '0';
   $handler->display->display_options['style_options']['with_weekno'] = '0';
   $handler->display->display_options['style_options']['multiday_theme'] = '1';
-  $handler->display->display_options['style_options']['theme_style'] = '1';
+  $handler->display->display_options['style_options']['theme_style'] = '0';
   $handler->display->display_options['style_options']['max_items'] = '0';
+  $handler->display->display_options['style_options']['groupby_times'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
@@ -587,7 +577,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['link_display'] = 'page_4';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
-  $handler->display->display_options['pager']['options']['link_format'] = 'clean';
+  $handler->display->display_options['pager']['options']['date_id'] = 'datemini';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'calendar_style';
   $handler->display->display_options['style_options']['name_size'] = '2';
@@ -654,7 +644,6 @@ function uib_calendar_views_default_views() {
     t('Main calendar page'),
     t('[field_uib_date] - [title] ([field_uib_event_type])'),
     t('Event type'),
-    t('Date'),
     t('Block'),
     t('Attachment'),
     t('Aktiviteter de kommende dager'),
