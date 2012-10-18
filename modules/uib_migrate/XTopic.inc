@@ -301,6 +301,7 @@ class XTopicListSource extends MigrateSource {
   private $count;
   private $offset;
   private $ids;
+  private $w2AreaSubset;
 
   /**
    * Create a new listing object.
@@ -322,6 +323,21 @@ class XTopicListSource extends MigrateSource {
     if ($type == 'area' || $type == 'event') {
       $this->listUrl .= '&allinstances';
     }
+    if (function_exists('drush_get_option')) {
+      $area_subset_filename = drush_get_option('area_subset');
+      if (!empty($area_subset_filename)) {
+        // If supplied, read a file that contains an explicit list of areas which are to be migrated
+        $this->w2AreaSubset = file(dirname(__FILE__) . DIRECTORY_SEPARATOR . $area_subset_filename);
+        for ($i=count($this->w2AreaSubset)-1; $i>=0; $i--) {
+          $this->w2AreaSubset[$i] = trim($this->w2AreaSubset[$i]); // strip line ends
+          if (empty($this->w2AreaSubset[$i])) {
+            array_splice($this->w2AreaSubset,$i,1); // remove empty lines
+          } elseif (substr($this->w2AreaSubset[$i],0,1)=='#') {
+            array_splice($this->w2AreaSubset,$i,1); // discard comment lines
+          }
+        }
+      }
+    }
   }
 
   public function __toString() {
@@ -333,9 +349,11 @@ class XTopicListSource extends MigrateSource {
   }
 
   private function moreIds() {
-    // Force a limited set of source stuff to be available to
-    // speed up debugging during developemnt
-    if (1) {
+   if (1) {
+      // Force a limited set of source stuff to be available to
+      // speed up debugging during development
+
+      // Check if a list of ids were specified on the command line with the option --serial
       if (function_exists('drush_get_option')) {
         $serial = drush_get_option('serial');
         if ($serial) {
@@ -345,7 +363,9 @@ class XTopicListSource extends MigrateSource {
           return;
         }
       }
-      // Look for xtopic CSV files as alternative indexes
+      // Else, look for xtopic CSV files as alternative indexes
+      // Used if the 'uib_test_dir' variable was set to a local subdirectory
+      // Else, no limited set of ids will be used
       $csv_file = dirname(__FILE__) . '/'
         . variable_get('uib_test_dir', 'test-jur') . '/'
         . $this->type . '.csv';
@@ -367,6 +387,8 @@ class XTopicListSource extends MigrateSource {
       }
     }
 
+    // No limiting set of ids was found
+    // Go get all ids in sets of 50
     $url = $this->listUrl . "&limit=50&offset=$this->offset";
     uibx_log('GET ' . $url);
     $xml = simplexml_load_file($url);
@@ -375,11 +397,12 @@ class XTopicListSource extends MigrateSource {
       $this->count = $range[1];
     }
 
+    // Get list of ids to ignore
     static $bad_apple;
     if (!isset($bad_apple)) {
       $bad_apple = array();
       foreach (file(dirname(__FILE__) . '/etc/bad-apples.txt') as $line) {
-        $line = explode('#', $line, 2);  # ignore trailing comments
+        $line = explode('#', $line, 2);  // ignore trailing comments
         $id = trim($line[0]);
         if ($id)
           $bad_apple[$id] = TRUE;
@@ -387,16 +410,36 @@ class XTopicListSource extends MigrateSource {
     }
 
     $ids = array();
+    $cntr = 0;
     foreach ($xml->topic as $t) {
+      $cntr++;
       $id = (string)$t['id'];
+      // Check if this id is to be ignored
       if (isset($bad_apple[$id])) {
         uibx_log("Bad apple $id, skipped", 'warning');
         continue;
       }
+      // Check if there is a limiting set of areas 
+      // and if the current record is within this set
+      if (!empty($this->w2AreaSubset)) {
+        $path = (string)$t['path'];
+        $notInSubset = TRUE;
+        foreach ($this->w2AreaSubset as $subsetArea) {
+          $path = ltrim($path, "/");
+          if (substr($path, 0, strlen($subsetArea)) == $subsetArea) {
+            $notInSubset = FALSE;
+            //uibx_log("$subsetArea found in " . substr($path, 0, 35) . "...", 'notice');
+            break;
+          }
+        }
+        if ($notInSubset) {
+          continue;
+        }
+      }
       $ids[] = $id;
     }
     $this->ids = $ids;
-    $this->offset += count($ids);
+    $this->offset += $cntr;
   }
 
   public function performRewind() {
@@ -416,7 +459,7 @@ class XTopicListSource extends MigrateSource {
    * Returns the next XTopic object.
    */
   public function getNextRow() {
-    if (!$this->ids && $this->offset < $this->count) {
+    while (!$this->ids && $this->offset < $this->count) {
       $this->moreIds();
     }
     if ($this->ids) {
