@@ -9,6 +9,7 @@ HTML = \
        repo.html     \
        repo-readme.html  \
        release1.html \
+       area.html \
        terms.html
 
 PYTHON = python
