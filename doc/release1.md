@@ -58,7 +58,7 @@ Funksjonaliteten som vi *ikke* vil videreføre er:
 * "skriv ut" knapp på artikkelsider
 * engelske områder får ny URL (alle får "en" prefix og droppr "en" suffix hvis de hadde det)
 * artikler og filer får nye URLer (autopath generert)
-* URLer under uib.no/hf og uib.no/jur som områder som var proxet til w1 forsvinner
+* URLer under uib.no/hf og uib.no/jur områdene som var proxet til w1 forsvinner
 * www.hf.uib.no og www.jur.uib.no avvikles (proxes til w1); det finnes kanskje også tilsvarende statiske siter for instituttene
 
 Funsjonalitet fra w2 som vi vil implementere men ikke rekker å få med
