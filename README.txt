@@ -47,6 +47,14 @@ and then run 'migrate-import' once more.  To migrate all data run:
 
     bin/site-drush vset uib_test_dir ALL
 
+To migrate all data for certain areas only:
+
+	List the areas (one on each line) in a text file and put the file in the 
+	modules/uib_migrate/ folder. Then run:
+
+	bin/site-drush vset uib_test_dir ALL
+	bin/site-drush migrate-import --verbose --all --strict=0 --area_subset=your_file_name
+
 To see what kind of data is available for import you might run:
 
     bin/site-drush migrate-status
