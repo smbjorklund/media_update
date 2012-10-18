@@ -1,0 +1,4 @@
+name = "UIB Employee Pages"
+description = "Prepare for migration of employee pages"
+package = "UiB"
+core = 7.x
