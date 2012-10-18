@@ -7,7 +7,7 @@ img {
   width: 100%;
 }
 
-.post p, .post2 p {
+.area-block-image-and-text p, .area-block p {
   color: #fff;
   font-size: 16px;
   text-transform: uppercase;
@@ -25,27 +25,27 @@ img {
   margin: 0 auto;
 }
 
-#global_menu ul {
+#global-menu ul {
   padding: 0;
   margin: 0;
   float: left;
 }
 
-#global_menu li {
+#global-menu li {
   float: left;
   list-style: none;
   margin-right: 15px;
   margin-left: 0;
 }
 
-#global_menu li a {
+#global-menu li a {
   font-weight: bold;
   color: #333;
   text-decoration: none;
   font-size: 11px;
 }
 
-#global_menu li a:hover {
+#global-menu li a:hover {
   text-decoration: underline;
 }
 
@@ -137,24 +137,24 @@ h3  {
   margin-top: 27px;
 }
 
-.post, .post2, .p {
+.area-block-image-and-text, .area-block, .p {
   width: 100%;
   height: 100px;
   background: silver;
 }
 
-.post {
+.area-block-image-and-text {
   margin-top: 36px;
 }
 
-#bilde  {
+.top-image-field  {
   height: 100px;
   width: 40%;
   background: #B3B3B3;
   float: left;
 }
 
-#tekst  {
+.top-text-field  {
   background: #A2A2A2;
   height: 100px;
   width: 60%;
@@ -237,7 +237,7 @@ ul.sf-menu li:hover > ul {
 /* position first drop */
 .sf-menu li:hover ul {
     top:auto; /* match top ul list item height */
-    position:relative;
+    position:absolute;
 }
 
 
@@ -277,12 +277,12 @@ form#mobile-search {
       display: none;
     }
 
-    #column-1 {
+    .column-1 {
       width: 50%;
       float: left;
     }
 
-    #column-2 {
+    .column-2 {
       width: 50%;
       float: left;
     }
@@ -308,24 +308,24 @@ form#mobile-search {
       width: 100%;
     }
 
-    .date {
+    .article-date {
       float: right;
     }
 
-    #ingress  {
+    .ingress  {
       margin-top: 75px;
     }
 
-    #ingress  p {
+    .ingress  p {
       font-weight: bold;
     }
 
-    #article-body {
+    .article-body {
       width: 70%;
       float: left;
     }
 
-    #article-sidebar  {
+    .article-sidebar  {
       width: 30%;
       background: silver;
       float: left;
@@ -336,7 +336,7 @@ form#mobile-search {
       text-transform: uppercase;
     }
 
-    .latest-update  {
+    .article-latest-update  {
       float: right;
       margin-right: 10px;
       font-style: italic;
@@ -355,7 +355,7 @@ form#mobile-search {
 }
 
 @media only screen and (max-width: 910px) { /* TABLETS */
-  #header_info {
+  #header-info {
     max-width: auto;
     width: auto;
     float: left;
@@ -390,7 +390,7 @@ form#mobile-search {
 
   }
 
-  .post, .post2  {
+  .area-block-image-and-text, .area-block  {
     background: silver;
     width: 100%;
     height: 100px;
@@ -406,18 +406,18 @@ form#mobile-search {
     width: 50%;
   }*/
 
-  .post {
+  .area-block-image-and-text {
     margin-top: 36px;
   }
 
-  #bilde  {
+  .top-image-field  {
     height: 100px;
     width: 40%;
     background: #B3B3B3;
     float: left;
   }
 
-  #tekst  {
+  .top-text-field  {
     background: #A2A2A2;
     height: 100px;
     width: 60%;
@@ -433,7 +433,7 @@ form#mobile-search {
     margin-top: 15px;
   }
 
-  #article-sidebar  {
+  .article-sidebar  {
     height: auto;
     background: silver;
   }
@@ -509,7 +509,7 @@ form#mobile-search {
       display: none;
     }
 
-    #header_info  {
+    #header-info  {
       width:100%;
     }
 
@@ -533,28 +533,28 @@ form#mobile-search {
       width: 100%;
     }
 
-    #global_menu li a {
+    #global-menu li a {
       font-size: 8px;
     }
 
-    .post, .post2 {
+    .area-block-image-and-text, .area-block {
       background: silver;
       width: 100%;
       height: 100px;
     }
 
-    .post {
+    .area-block-image-and-text {
       margin-top: 36px;
     }
 
-    #bilde  {
+    .top-image-field  {
       height: 100px;
       width: 40%;
       background: #B3B3B3;
       float: left;
     }
 
-    #tekst  {
+    .top-text-field  {
       background: #A2A2A2;
       height: 100px;
       width: 60%;
@@ -569,7 +569,7 @@ form#mobile-search {
       margin-left: 40px;
     }
 
-    #global_menu ul {
+    #global-menu ul {
       padding-left: 15px;
       padding-bottom: 0;
       margin-bottom: 0;
@@ -578,11 +578,11 @@ form#mobile-search {
       width: 100%;
     }
 
-    #global_menu li {
+    #global-menu li {
       margin-right: 6px;
     }
 
-    #header_info  {
+    #header-info  {
       width: 100%;
   /*  background: red; */
       height: 25px;
