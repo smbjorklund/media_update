@@ -75,13 +75,18 @@ function uib_migrate__build_menu_tree($node, $mlid, $depth) {
       if (!isset($kid_mlid)) {
         // Create menu link
         $link_title = $kid_node->field_uib_menu_title_w2['und'][0]['value'];
+        if (!empty($kid_node->field_uib_nav_weight['und'][0]['value'])) {
+          $link_weight = $kid_node->field_uib_nav_weight['und'][0]['value'];
+        } else {
+          $link_weight = 0;
+        }
         if (!$link_title)
           $link_title = $kid_node->title;
         $menu_link = array(
           'menu_name' => 'area',
           'link_path' => 'node/' . $kid_nid,
           'link_title' => $link_title,
-          'weight' => $kid_node->field_uib_nav_weight['und'][0]['value'],
+          'weight' => $link_weight,
           'plid' => $mlid,
         );
         $kid_mlid = menu_link_save($menu_link);
