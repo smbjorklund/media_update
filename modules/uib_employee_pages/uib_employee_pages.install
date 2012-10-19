@@ -59,28 +59,3 @@ function uib_employee_pages_enable() {
     uibx_log("Created area (node+menu) $link_title nid: $node->nid mid: $mlid");
   }
 }
-
-/**
- * Implements hook_disable.
- *
- * remove 'Ansattsider' area regardless of anything is refering to it or not
- */
-function uib_employee_pages_disable() {
-
-  foreach (array('Ansattsider', 'Employee pages') as $link_title) {
-
-    $query = db_select('menu_links')
-      ->fields('menu_links', array('mlid', 'link_path'))
-      ->condition('menu_name', 'area')
-      ->condition('link_title', $link_title);
-
-    // remove node + menu
-    foreach ($query->execute() as $item) {
-      list($empty, $nid) = explode('node/', $item->link_path);
-      node_delete($nid);
-      menu_link_delete($item->mlid);
-      uibx_log("Removed area (node+menu) $link_title nid: $nid mid: $item->mlid");
-      break;
-    }
-  }
-}
