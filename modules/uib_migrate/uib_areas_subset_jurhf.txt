@@ -1,4 +1,5 @@
 # jur
+jur
 prosjekt/srf
 fg/forvrett
 fg/erstatning
@@ -16,6 +17,7 @@ fg/formuerett
 fs/rettsvitenskap
 
 # jur/en
+jur/en
 rg/property
 rg/resource
 rg/demlaw
@@ -33,6 +35,7 @@ rg/pil
 rg/legalculture
 
 # hf
+hf
 fremmedsprak
 prosjekt/vitenskapshistorie
 fg/btts
@@ -92,6 +95,7 @@ fs/lingfil
 fg/demrett
 
 # hf/en
+hf/en
 skok/en
 svt/en
 rg/natureculture
