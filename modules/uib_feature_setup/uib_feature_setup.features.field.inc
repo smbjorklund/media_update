@@ -127,7 +127,7 @@ function uib_feature_setup_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'max_length' => '255',
+        'max_length' => '1024',
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -500,7 +500,7 @@ function uib_feature_setup_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'max_length' => '255',
+        'max_length' => '1024',
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -873,7 +873,7 @@ function uib_feature_setup_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'max_length' => '255',
+        'max_length' => '1024',
       ),
       'translatable' => '0',
       'type' => 'text',
