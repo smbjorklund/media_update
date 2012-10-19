@@ -33,8 +33,10 @@ function uib_employee_pages_enable() {
     ->range(0, 1)
     ->execute()
     ->rowCount();
-  if ($result)
+  if ($result) {
+    uibx_log("Area 'ansattsider' exists, skipping", 'warning');
     return;
+  }
 
   // create node + menu connection for both lang: nb, en
   foreach ($data as $d) {
