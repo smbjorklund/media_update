@@ -37,7 +37,7 @@ function uib_install() {
 
   // Install all our feature modules
   features_install_modules(array(
-    'uib_feature_setup',
+    'uib_setup',
     'uib_feature_area',
     'uib_feature_article',
     'uib_feature_testimonial',

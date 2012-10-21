@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.features.menu_links.inc
+ * uib_setup.features.menu_links.inc
  */
 
 /**
  * Implements hook_menu_default_menu_links().
  */
-function uib_feature_setup_menu_default_menu_links() {
+function uib_setup_menu_default_menu_links() {
   $menu_links = array();
 
   // Exported menu link: management:webdesk

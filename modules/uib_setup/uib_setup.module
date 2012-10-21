@@ -4,12 +4,12 @@
  * Code for the UiB Setup feature.
  */
 
-include_once 'uib_feature_setup.features.inc';
+include_once 'uib_setup.features.inc';
 
 /**
  * Implements hook_menu_alter().
  */
-function uib_feature_setup_menu_alter(&$items) {
+function uib_setup_menu_alter(&$items) {
   // PI-884 Disable the "Request New Password" tab
   $items['user/password']['access callback'] = FALSE;
 }
@@ -18,13 +18,13 @@ function uib_feature_setup_menu_alter(&$items) {
  * Implements hook_language_negotiation_info().
  */
 
-function uib_feature_setup_language_negotiation_info() {
+function uib_setup_language_negotiation_info() {
   return array(
     'uib-rules' => array(
       'callbacks' => array(
-        'language' => 'uib_feature_setup__language_callback',
+        'language' => 'uib_setup__language_callback',
       ),
-      'file' => drupal_get_path('module', 'uib_feature_setup') . '/uib_feature_setup.module',
+      'file' => drupal_get_path('module', 'uib_setup') . '/uib_setup.module',
       'name' => t('UiB rules'),
       'description' => t('UiB custom rules for mapping URLs to language. Currently it just forces Norwegian and is expected to be enabled after URL prefix mapping.'),
       'cache' => 0,
@@ -35,7 +35,7 @@ function uib_feature_setup_language_negotiation_info() {
 /**
  * Force Norwegian language for most URLs
  */
-function uib_feature_setup__language_callback($languages) {
+function uib_setup__language_callback($languages) {
   $lang = 'nb';
   if (isset($languages[$lang]->enabled) && $languages[$lang]->enabled) {
     return $lang;

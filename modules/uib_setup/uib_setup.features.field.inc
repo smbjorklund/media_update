@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.features.field.inc
+ * uib_setup.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function uib_feature_setup_field_default_fields() {
+function uib_setup_field_default_fields() {
   $fields = array();
 
   // Exported field: 'file-audio-field_uib_copyright'.

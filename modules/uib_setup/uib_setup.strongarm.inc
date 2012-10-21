@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.strongarm.inc
+ * uib_setup.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function uib_feature_setup_strongarm() {
+function uib_setup_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
@@ -121,9 +121,9 @@ function uib_feature_setup_strongarm() {
     ),
     'uib-rules' => array(
       'callbacks' => array(
-        'language' => 'uib_feature_setup__language_callback',
+        'language' => 'uib_setup__language_callback',
       ),
-      'file' => 'sites/all/modules/uib/uib_feature_setup/uib_feature_setup.module',
+      'file' => 'sites/all/modules/uib/uib_setup/uib_setup.module',
       'cache' => 0,
     ),
     'language-default' => array(

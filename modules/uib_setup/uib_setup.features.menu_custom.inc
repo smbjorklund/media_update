@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.features.menu_custom.inc
+ * uib_setup.features.menu_custom.inc
  */
 
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function uib_feature_setup_menu_default_menu_custom() {
+function uib_setup_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: management.
