@@ -548,7 +548,7 @@ if (file_exists($setup_file)) {
     Database::addConnectionInfo('migrate_epages_db', 'default', $other_database);
     $_edb = Database::getConnection('default', 'migrate_epages_db');
   } catch(Exception $e) {
-    uibx_log("err: ".$e->getMessage(), 'warning');
+    uibx_log($e->getMessage(), 'error');
   }
 }
 
