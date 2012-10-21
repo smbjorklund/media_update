@@ -92,17 +92,17 @@ function uib_feature_setup_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'language_default';
   $strongarm->value = (object) array(
-    'language' => 'nb',
-    'name' => 'Norwegian',
-    'native' => 'Norsk',
+    'language' => 'en',
+    'name' => 'English',
+    'native' => 'English',
     'direction' => '0',
-    'enabled' => '1',
-    'plurals' => '2',
-    'formula' => '($n!=1)',
+    'enabled' => 1,
+    'plurals' => '0',
+    'formula' => '',
     'domain' => '',
-    'prefix' => '',
+    'prefix' => 'en',
     'weight' => '0',
-    'javascript' => 'ARBAAqtbgVO7ZlZZAW6KduVq0yEcrrsoGcqFk2wbzuA',
+    'javascript' => '',
   );
   $export['language_default'] = $strongarm;
 

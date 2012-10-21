@@ -31,10 +31,6 @@ function uib_install() {
     ->fields(array('prefix' => 'en'))
     ->condition('language', 'en')
     ->execute();
-  db_update('languages')
-    ->fields(array('prefix' => ''))
-    ->condition('language', 'nb')
-    ->execute();
 
   // Start with no default shortcuts
   menu_delete_links(SHORTCUT_DEFAULT_SET_NAME);
