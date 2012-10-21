@@ -31,12 +31,12 @@ function uib_feature_article_views_api() {
 function uib_feature_article_node_info() {
   $items = array(
     'uib_article' => array(
-      'name' => t('Artikkel'),
+      'name' => t('Article'),
       'base' => 'node_content',
-      'description' => t('Norsk beskrivelse manger her.'),
+      'description' => t('Articles is the main content type.  We use it for news, events and pages.  Articles belong to areas.'),
       'has_title' => '1',
-      'title_label' => t('Tittel'),
-      'help' => t('Norsk beskrivelse manger her.'),
+      'title_label' => t('Title'),
+      'help' => '',
     ),
   );
   return $items;
