@@ -57,6 +57,11 @@ To see what kind of data is available for import you might run:
 
     bin/site-drush migrate-status
 
+To enable the Norwegian interface translations run (it's not part of the regular
+install since it's quite slow):
+
+    bin/update-norsk
+
 If your a developer you probably also want to enable the 'uib_devel' module.
 This sets up some testing accounts and arrange for various conveniences
 for inspecting the site.  Just run:
