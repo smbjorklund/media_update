@@ -119,6 +119,13 @@ function uib_feature_setup_strongarm() {
       ),
       'file' => 'includes/locale.inc',
     ),
+    'uib-rules' => array(
+      'callbacks' => array(
+        'language' => 'uib_feature_setup__language_callback',
+      ),
+      'file' => 'sites/all/modules/uib/uib_feature_setup/uib_feature_setup.module',
+      'cache' => 0,
+    ),
     'language-default' => array(
       'callbacks' => array(
         'language' => 'language_from_default',
@@ -225,6 +232,7 @@ function uib_feature_setup_strongarm() {
     'locale-session' => '-6',
     'locale-user' => '-4',
     'locale-browser' => '-2',
+    'uib-rules' => '0',
     'language-default' => '10',
   );
   $export['locale_language_providers_weight_language'] = $strongarm;
