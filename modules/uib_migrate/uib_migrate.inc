@@ -553,7 +553,7 @@ if (file_exists($setup_file)) {
 }
 
 if ($_edb === FALSE) {
-  uibx_log("EPagesMigration can't connect to source database - skipping", 'warning');
+  uibx_log("EPagesMigration can't connect to source database - skipping");
 
 } else {
 
