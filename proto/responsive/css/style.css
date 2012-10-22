@@ -20,6 +20,10 @@ img {
   clear: both;
 }
 
+.byline {
+  text-transform: uppercase;
+}
+
 #header {
   width: 900px;
   margin: 0 auto;
@@ -258,6 +262,7 @@ form#mobile-search {
     header h1{
         font-size: 1.2em;
     }
+    
     /* bigger screen bigger nav */
     #access{
         height: 50px;
@@ -397,7 +402,12 @@ form#mobile-search {
   }
 
   #main-middle  {
-    width: 70%;
+    width: 100%;
+    float: left;
+  }
+
+  .column-1, .column-2 {
+    width: 50%;
     float: left;
   }
 /*
@@ -431,11 +441,28 @@ form#mobile-search {
 
   #sidebar  {
     margin-top: 15px;
+    width: 100%;
   }
+
+  .sidebar-calender, .rss-feed, .utvalgt-hendelse {
+    width: 48%;
+    float: left;
+  }
+
+  .sidebar-calender, .utvalgt-hendelse  {
+    margin-right: 2%;
+  }
+
+  .article-body {
+     width: 70%;
+     float: left;
+   }
 
   .article-sidebar  {
     height: auto;
     background: silver;
+    float: left;
+    width: 30%;
   }
 
 
@@ -596,6 +623,22 @@ form#mobile-search {
     #sidebar  {
       width: 100%;
     }
+
+    .sidebar-calender, .rss-feed, .utvalgt-hendelse {
+      width: 100%;
+    }
+
+    .column-1, .column-2  {
+      width: 100%;
+    }
+
+    .article-body {
+      width: 100%;
+    }
+
+    .article-sidebar  {
+      width: 100%;
+    }
 }
 
 @media only screen and (min-width: 601px) {
@@ -609,7 +652,6 @@ form#mobile-search {
     width:100%;
   }
 }
-
 
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
