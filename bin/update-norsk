@@ -1,0 +1,4 @@
+#!/bin/sh
+
+bin/site-drush en --yes l10n_update
+bin/site-drush l10n-update

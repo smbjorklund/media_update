@@ -47,9 +47,20 @@ and then run 'migrate-import' once more.  To migrate all data run:
 
     bin/site-drush vset uib_test_dir ALL
 
+To migrate all data for certain areas only; list the areas (one on each line)
+in a text file and put the file in the modules/uib_migrate/ folder. Then run:
+
+    bin/site-drush vset uib_test_dir ALL
+    bin/site-drush migrate-import --verbose --all --strict=0 --area_subset=your_file_name
+
 To see what kind of data is available for import you might run:
 
     bin/site-drush migrate-status
+
+To enable the Norwegian interface translations run (it's not part of the regular
+install since it's quite slow):
+
+    bin/update-norsk
 
 If your a developer you probably also want to enable the 'uib_devel' module.
 This sets up some testing accounts and arrange for various conveniences

@@ -27,4 +27,3 @@ class SiteTestCase(unittest.TestCase):
         self.driver.find_element_by_link_text('Organisasjonen').click()
         self.driver.save_screenshot('org.png')
         self.assertEqual(self.driver.title, "Organisasjonen | Universitetet i Bergen")
-        self.driver.save_screenshot('infopage.png')

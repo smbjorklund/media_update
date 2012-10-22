@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.strongarm.inc
+ * uib_setup.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function uib_feature_setup_strongarm() {
+function uib_setup_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
@@ -48,6 +48,41 @@ function uib_feature_setup_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_check_disabled';
+  $strongarm->value = 0;
+  $export['l10n_update_check_disabled'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_check_frequency';
+  $strongarm->value = '0';
+  $export['l10n_update_check_frequency'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_check_mode';
+  $strongarm->value = '2';
+  $export['l10n_update_check_mode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_download_store';
+  $strongarm->value = 'sites/all/translations';
+  $export['l10n_update_download_store'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_import_mode';
+  $strongarm->value = '1';
+  $export['l10n_update_import_mode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_count';
   $strongarm->value = 2;
   $export['language_count'] = $strongarm;
@@ -57,17 +92,17 @@ function uib_feature_setup_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'language_default';
   $strongarm->value = (object) array(
-    'language' => 'nb',
-    'name' => 'Norwegian',
-    'native' => 'Norsk',
+    'language' => 'en',
+    'name' => 'English',
+    'native' => 'English',
     'direction' => '0',
-    'enabled' => '1',
-    'plurals' => '2',
-    'formula' => '($n!=1)',
+    'enabled' => 1,
+    'plurals' => '0',
+    'formula' => '',
     'domain' => '',
-    'prefix' => '',
+    'prefix' => 'en',
     'weight' => '0',
-    'javascript' => 'ARBAAqtbgVO7ZlZZAW6KduVq0yEcrrsoGcqFk2wbzuA',
+    'javascript' => '',
   );
   $export['language_default'] = $strongarm;
 
@@ -83,6 +118,13 @@ function uib_feature_setup_strongarm() {
         'url_rewrite' => 'locale_language_url_rewrite_url',
       ),
       'file' => 'includes/locale.inc',
+    ),
+    'uib-rules' => array(
+      'callbacks' => array(
+        'language' => 'uib_setup__language_callback',
+      ),
+      'file' => 'sites/all/modules/uib/uib_setup/uib_setup.module',
+      'cache' => 0,
     ),
     'language-default' => array(
       'callbacks' => array(
@@ -190,6 +232,7 @@ function uib_feature_setup_strongarm() {
     'locale-session' => '-6',
     'locale-user' => '-4',
     'locale-browser' => '-2',
+    'uib-rules' => '0',
     'language-default' => '10',
   );
   $export['locale_language_providers_weight_language'] = $strongarm;

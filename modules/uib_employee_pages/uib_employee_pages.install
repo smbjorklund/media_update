@@ -1,0 +1,65 @@
+<?php
+/**
+ * @file
+ * Install, update, and uninstall functions for the Employee pages module.
+ */
+
+function uib_employee_pages_install() {
+  uibx_log('Install');
+}
+
+function uib_employee_pages_uninstall() {
+  uibx_log('Uninstall');
+}
+
+/**
+ * Implements hook_enable.
+ *
+ * add 'Ansattsider' as area connected to sebra place (519)
+ */
+function uib_employee_pages_enable() {
+
+  $data = array(
+    array('nb', 'Ansattsider'),
+    array('en', 'Employee pages')
+  );
+  $sebra_place = '519';
+
+  // if already exists do nothing
+  $query = db_select('menu_links')
+    ->fields('menu_links', array('mlid'))
+    ->condition('menu_name', 'area')
+    ->condition('link_title', $data[0][1]);
+  $exists = FALSE;
+  foreach ($query->execute() as $item) {
+    $exists = TRUE;
+    break;
+  }
+  if ($exists) {
+    uibx_log("Area 'ansattsider' exists, skipping");
+    return;
+  }
+
+  // create node + menu connection for both lang: nb, en
+  foreach ($data as $d) {
+    list($lang, $link_title) = $d;
+
+    $node = new stdClass;
+    $node->type = 'area';
+    $node->uid = 1;
+    $node->language = $lang;
+    $node->title = $link_title;
+    $node->field_uib_sebra_id = $sebra_place;
+    $node->field_uib_text['und'][0]['format'] = 'simple_editor';
+    node_save($node);
+
+    $menu_link = array(
+      'menu_name' => 'area',
+      'link_path' => 'node/' . $node->nid,
+      'link_title' => $link_title,
+      'plid' => 0
+    );
+    $mlid = menu_link_save($menu_link);
+    uibx_log("Created area (node+menu) $link_title nid: $node->nid mid: $mlid");
+  }
+}

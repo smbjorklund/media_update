@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.features.filter.inc
+ * uib_setup.features.filter.inc
  */
 
 /**
  * Implements hook_filter_default_formats().
  */
-function uib_feature_setup_filter_default_formats() {
+function uib_setup_filter_default_formats() {
   $formats = array();
 
   // Exported format: Advanced editor.

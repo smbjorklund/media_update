@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.file_default_displays.inc
+ * uib_setup.file_default_displays.inc
  */
 
 /**
  * Implements hook_file_default_displays().
  */
-function uib_feature_setup_file_default_displays() {
+function uib_setup_file_default_displays() {
   $export = array();
 
   $file_display = new stdClass();

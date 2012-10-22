@@ -31,17 +31,13 @@ function uib_install() {
     ->fields(array('prefix' => 'en'))
     ->condition('language', 'en')
     ->execute();
-  db_update('languages')
-    ->fields(array('prefix' => ''))
-    ->condition('language', 'nb')
-    ->execute();
 
   // Start with no default shortcuts
   menu_delete_links(SHORTCUT_DEFAULT_SET_NAME);
 
   // Install all our feature modules
   features_install_modules(array(
-    'uib_feature_setup',
+    'uib_setup',
     'uib_feature_area',
     'uib_feature_article',
     'uib_feature_testimonial',

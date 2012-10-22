@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.features.field.inc
+ * uib_setup.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function uib_feature_setup_field_default_fields() {
+function uib_setup_field_default_fields() {
   $fields = array();
 
   // Exported field: 'file-audio-field_uib_copyright'.
@@ -127,7 +127,7 @@ function uib_feature_setup_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'max_length' => '255',
+        'max_length' => '1024',
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -500,7 +500,7 @@ function uib_feature_setup_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'max_length' => '255',
+        'max_length' => '1024',
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -873,7 +873,7 @@ function uib_feature_setup_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'max_length' => '255',
+        'max_length' => '1024',
       ),
       'translatable' => '0',
       'type' => 'text',

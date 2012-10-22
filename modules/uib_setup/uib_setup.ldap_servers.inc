@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.ldap_servers.inc
+ * uib_setup.ldap_servers.inc
  */
 
 /**
  * Implements hook_default_ldap_servers().
  */
-function uib_feature_setup_default_ldap_servers() {
+function uib_setup_default_ldap_servers() {
   $export = array();
 
   $ldap_servers_conf = new stdClass();

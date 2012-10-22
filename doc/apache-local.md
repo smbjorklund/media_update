@@ -7,7 +7,8 @@ First you need to enable Apache and PHP.  For Mac OS X 10.7 "Lion" and older
 Apache is enabled from "System Preferences >> Sharing >> Web sharing".  This
 will start up Apache and set up the _~/Sites_ directory mapped to
 <http://localhost/~username/>.  For "Mountain Lion" the is no GUI to enable
-apache, so you would just have to enable it manually.
+apache, so you would just have to enable it manually (or install a third party
+[Web sharing preference pane](http://clickontyler.com/blog/2012/02/web-sharing-mountain-lion/)).
 
 The configuration files for Apache is found in the _/etc/apache2_ directory.
 

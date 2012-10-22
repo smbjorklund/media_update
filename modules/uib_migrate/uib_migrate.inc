@@ -247,9 +247,12 @@ class EventMigration extends XTopicToArticleMigration {
 
   public function prepare($node, $row) {
     parent::prepare($node, $row);
-    $node->field_uib_date['und'][0]['value'] = $row->start_date;
-    if (!empty($row->end_date))
+    if (!empty($row->start_date)) {
+      $node->field_uib_date['und'][0]['value'] = $row->start_date;
+    }
+    if (!empty($row->end_date)) {
       $node->field_uib_date['und'][0]['value2'] = $row->end_date;
+    }
     $node->field_uib_event_type['und'][0]['value'] = $row->type;
     //Prevent empty links instances
     if (!empty($row->hjemmeside)) {
@@ -545,12 +548,12 @@ if (file_exists($setup_file)) {
     Database::addConnectionInfo('migrate_epages_db', 'default', $other_database);
     $_edb = Database::getConnection('default', 'migrate_epages_db');
   } catch(Exception $e) {
-    uibx_log("err: ".$e->getMessage(), 'warning');
+    uibx_log($e->getMessage(), 'error');
   }
 }
 
 if ($_edb === FALSE) {
-  uibx_log("EPagesMigation can't connect to source database - skipping", 'warning');
+  uibx_log("EPagesMigration can't connect to source database - skipping");
 
 } else {
 

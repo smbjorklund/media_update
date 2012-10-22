@@ -39,17 +39,19 @@ function uib_feature_area_views_api() {
 function uib_feature_area_node_info() {
   $items = array(
     'area' => array(
-      'name' => t('Område'),
+      'name' => t('Area'),
       'base' => 'node_content',
-      'description' => t('Norsk beskrivelse mangler.'),
+      'description' => t('The site is divided into areas.  All content belongs to areas.'),
       'has_title' => '1',
-      'title_label' => t('Navn'),
-      'help' => t('Norsk beskrivelse mangler.'),
+      'title_label' => t('Title'),
+      'help' => '',
     ),
     'uib_ou' => array(
       'name' => t('Organisational Unit'),
       'base' => 'node_content',
-      'description' => t('This matches the places as defined by PAGA and Sebra.'),
+      'description' => t('Organisational Units matches the places as defined by PAGA and Sebra.  Places are idenitifed by a 6-digit place ID. These nodes and their fields are automatically updated from Sebra.
+
+All areas belong to a single organisational unit.'),
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',

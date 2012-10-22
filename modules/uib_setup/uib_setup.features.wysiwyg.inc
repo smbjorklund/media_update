@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_setup.features.wysiwyg.inc
+ * uib_setup.features.wysiwyg.inc
  */
 
 /**
  * Implements hook_wysiwyg_default_profiles().
  */
-function uib_feature_setup_wysiwyg_default_profiles() {
+function uib_setup_wysiwyg_default_profiles() {
   $profiles = array();
 
   // Exported profile: advanced_editor
