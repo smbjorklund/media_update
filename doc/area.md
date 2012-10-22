@@ -1,24 +1,69 @@
-# Area content
+# Page layout
 
-The area page contains 3 regions.
+The page is divided into 4 regions.  We call them:
+
+* Header
+* Content
+* Sidebar
+* Footer
+
+The layout within the *Content* region will vary depending on what kind of content we are looking at.
+The other regions will contain content filled in from the area that the content belongs to.
+
+We will lay them out like this (for fullwidth, tablet and mobile displays):
+
+<img src="img/page-regions.jpg" alt="diagram of the page regions in the fullwidth, tablet and narrow configuration">
+
+## Header region
+
+* Field: area.title
+* Field: area.logo\_image: image
+* Field: area.meny_style (popup, expanded, hidden)
+
+## Sidebar region
+
+The boxes inside all take the full width of the region and are layed own in this sequence.
+
+### Box1:
+
+* Field: area\_parents
+
+### Box2:
+
+* View: last calendar entries (except utstilling)
+* View: last calendar entries (utstilling only)
+
+### Box3:
+
+* View: last news
+
+### Box4:
+
+* Block: jobbnorge
+
+### Box5:
+
+* Block: rss
+
+## Footer region
+
+### Box1 (colophone)
+
+* Field: area.ou.*
+
+
+# Area content layout
+
+The content region for areas are divided into 3 sub-regions.
 We call them:
 
 * Profile
-* Center
-* Footer
-* Sidebar (right)
-
-Above the *profile* we have the *header* (with the menu).  Below the *footer* we have the *colophone (footer)*.
+* Middle
+* Bottom
 
 We will lay them out like this:
 
 <img src="img/area-regions.jpg" alt="diagram of the regions in the fullwidth, tablet and narrow configuration">
-
-## Header region
-
-* Field: title
-* Field: logo\_image: image
-* Field: meny_style (popup, expanded, hidden)
 
 ## Profile region
 
@@ -47,7 +92,7 @@ Special rule: (with &lt;li> sections styled as multicols in fullwidth and tablet
 
 * Field: profiled_articles[0-4]: ref article
 
-## Center region
+## Middle region
 
 The boxes inside this region take half width and area layed
 out with "float: left".
@@ -88,41 +133,12 @@ just drive if from the class attribute.
 * selected\_testimonial: ref testimonial
 
 
-## Footer
+## Bottom region
 
 The boxes inside take the full width of the region:
 
 ### Box1:
 
-* Field: footerimage
-* Field: footertext: htmltext
+* Field: bottom\_image
+* Field: bottom\_text: htmltext
 
-
-## Sidebar
-
-The boxes inside all take the full width of the region and are layed own in this sequence.
-
-### Box1:
-
-* Field: area\_parents
-
-### Box2:
-
-* View: last calendar entries (except utstilling)
-* View: last calendar entries (utstilling only)
-
-### Box3:
-
-* View: last news
-
-### Box4:
-
-* Block: jobbnorge
-
-### Box5:
-
-* Block: rss
-
-## Colophone
-
-* Field: ou
