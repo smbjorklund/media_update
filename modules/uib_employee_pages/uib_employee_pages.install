@@ -26,15 +26,17 @@ function uib_employee_pages_enable() {
   $sebra_place = '519';
 
   // if already exists do nothing
-  $result = db_select('menu_links')
+  $query = db_select('menu_links')
     ->fields('menu_links', array('mlid'))
     ->condition('menu_name', 'area')
-    ->condition('link_title', $data[0][1])
-    ->range(0, 1)
-    ->execute()
-    ->rowCount();
-  if ($result) {
-    uibx_log("Area 'ansattsider' exists, skipping", 'warning');
+    ->condition('link_title', $data[0][1]);
+  $exists = FALSE;
+  foreach ($query->execute() as $item) {
+    $exists = TRUE;
+    break;
+  }
+  if ($exists) {
+    uibx_log("Area 'ansattsider' exists, skipping");
     return;
   }
 
