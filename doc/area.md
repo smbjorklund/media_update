@@ -18,27 +18,32 @@ We will lay them out like this:
 
 * Field: title
 * Field: logo\_image: image
+* Field: meny_style (popup, expanded, hidden)
 
 ## Profile region
 
 The boxes inside take the full width of the region:
 
-Box1:
+### Box1:
 
 * Field: profileimage
 * Field: profiletext: htmltext
 
+Social media buttons:
+
 * Field: twitter\_id
 * Field: facebook\_id
+* Field: youtube\_id
 * Field: vimeo\_id
+* Field: google+\_id
 
-Box2:
+### Box2:
 
 * Field: secondarytext: htmltext
 
 Special rule: (with &lt;li> sections styled as multicols in fullwidth and tablet version)
 
-Box3:
+### Box3:
 
 * Field: profiled_articles[0-4]: ref article
 
@@ -47,16 +52,18 @@ Box3:
 The boxes inside this region take half width and area layed
 out with "float: left".
 
-Box1:
+### Box1:
 
 * View: list kid institutes
 * Field: link_section*
 
+<pre>
     title: text
     links*:
         title
         url
         class
+</pre>
 
 * Field: boxed_links: bool
 
@@ -64,19 +71,19 @@ Some hack to to create individual buttons out of this structure.
 For instance if the "title" is empty then lay out the links as buttons, or
 just drive if from the class attribute.
 
-Box2:
+### Box2:
 
 * Field: messages*: ref artikkel
 
-Box3:
+### Box3:
 
 * Field: tertiary\_text: htmltext
 
-Box4:
+### Box4:
 
 * Field: show\_staff: bool
 
-Box5:
+### Box5:
 
 * selected\_testimonial: ref testimonial
 
@@ -85,7 +92,7 @@ Box5:
 
 The boxes inside take the full width of the region:
 
-Box1:
+### Box1:
 
 * Field: footerimage
 * Field: footertext: htmltext
@@ -95,24 +102,24 @@ Box1:
 
 The boxes inside all take the full width of the region and are layed own in this sequence.
 
-Box1:
+### Box1:
 
 * Field: area\_parents
 
-Box2:
+### Box2:
 
 * View: last calendar entries (except utstilling)
 * View: last calendar entries (utstilling only)
 
-Box3:
+### Box3:
 
 * View: last news
 
-Box4:
+### Box4:
 
 * Block: jobbnorge
 
-Box5:
+### Box5:
 
 * Block: rss
 
