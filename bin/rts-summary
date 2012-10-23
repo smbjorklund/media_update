@@ -1,0 +1,57 @@
+#!/usr/bin/perl
+
+use strict;
+use LWP::UserAgent;
+use URI;
+use URI::QueryParam;
+use JSON qw(from_json);
+
+binmode(STDOUT, ":utf8");
+
+my $ua = LWP::UserAgent->new;
+$ua->show_progress(1);
+
+sub w3_issues {
+    my $status = shift || "open";
+
+    my $u = URI->new('https://rts.uib.no');
+    $u->path("issues.json");
+    $u->query_param(key => '28578d440599e5e0a0a95039ddbaa71caf2bbb6b');
+    $u->query_param(project_id => 'w3');
+    $u->query_param(status_id => $status);
+    $u->query_param(limit => 999);
+
+    my $res = $ua->get($u);
+    die $res->status_line unless $res->is_success;
+
+    my $data = from_json($res->content);
+    die unless $data;
+    die unless $data->{total_count} == scalar(@{$data->{issues}});
+
+    return @{$data->{issues}};
+}
+
+my %count;
+
+sub count_issues {
+    my $status = shift || die;
+    for my $issue (w3_issues($status)) {
+	#next unless $issue->{id} eq "637";
+	$count{$status}++;
+	my $release = $issue->{fixed_version}{name} || "na";
+	$count{release}{$release}{$status}++;
+	if (exists $issue->{estimated_hours}) {
+	    $count{release}{$release}{estimated_hours}{$status} += $issue->{estimated_hours};
+	}
+	else {
+	    $count{release}{$release}{unestimated}{$status}++;
+	}
+	#use Data::Dump; dd $issue; last;
+    }
+}
+
+count_issues("open");
+count_issues("closed");
+
+use Data::Dump; dd \%count;
+
