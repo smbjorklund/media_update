@@ -41,8 +41,11 @@ function drush_uib_migrate_build_menu() {
       ->execute();
 
   foreach ($result as $row) {
-    list($empty, $nid) = explode('node/', $row->link_path);
-    if (isset($nid)) {
+    $result = explode('node/', $row->link_path);
+
+    // link_path may contain 'http://#'
+    if (count($result) > 1) {
+      list($empty, $nid) = $result;
       $node = node_load($nid);
       uib_migrate__build_menu_tree($node, $row->mlid, 1);
     }
