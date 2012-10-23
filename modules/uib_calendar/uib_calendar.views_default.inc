@@ -241,8 +241,8 @@ function uib_calendar_views_default_views() {
   );
   $handler->display->display_options['path'] = 'node/%/calendar';
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
+  /* Display: Area calendar block */
+  $handler = $view->new_display('block', 'Area calendar block', 'block_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
@@ -324,6 +324,23 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_date_value']['field'] = 'field_uib_date_value';
   $handler->display->display_options['filters']['field_uib_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_uib_date_value']['default_date'] = 'now';
+  /* Filter criterion: Content: Event type (field_uib_event_type) */
+  $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['value'] = array(
+    'arrangement' => 'arrangement',
+    'disputas' => 'disputas',
+    'foredrag' => 'foredrag',
+    'frist' => 'frist',
+    'gjesteforelesning' => 'gjesteforelesning',
+    'konferanse' => 'konferanse',
+    'konsert' => 'konsert',
+    'kurs' => 'kurs',
+    'midler_stipend' => 'midler_stipend',
+    'proveforelesning' => 'proveforelesning',
+    'seminar' => 'seminar',
+  );
   $handler->display->display_options['block_description'] = 'Kalender - det skjer!';
 
   /* Display: Month */
@@ -635,6 +652,99 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_date_value']['field'] = 'field_uib_date_value';
   $handler->display->display_options['filters']['field_uib_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_uib_date_value']['default_date'] = 'now +1 day';
+
+  /* Display: Exhibitions  */
+  $handler = $view->new_display('block', 'Exhibitions ', 'block_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Exhibitions ';
+  $handler->display->display_options['display_description'] = 'List all events of type exhibitions ';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_uib_date']['id'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['field'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_date']['settings'] = array(
+    'format_type' => 'time',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_uib_date] - [title]';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_uib_date_1']['id'] = 'field_uib_date_1';
+  $handler->display->display_options['fields']['field_uib_date_1']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date_1']['field'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date_1']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_date_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_date_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_date_1']['settings'] = array(
+    'format_type' => 'day_and_month',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Event type */
+  $handler->display->display_options['fields']['field_uib_event_type']['id'] = 'field_uib_event_type';
+  $handler->display->display_options['fields']['field_uib_event_type']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['fields']['field_uib_event_type']['field'] = 'field_uib_event_type';
+  $handler->display->display_options['fields']['field_uib_event_type']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_event_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_event_type']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_event_type']['alter']['text'] = '<h2>[field_uib_event_type]</h2>';
+  $handler->display->display_options['fields']['field_uib_event_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_event_type']['element_wrapper_type'] = 'h2';
+  $handler->display->display_options['fields']['field_uib_event_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type (field_uib_article_type) */
+  $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['value'] = array(
+    'event' => 'event',
+  );
+  /* Filter criterion: Content: Event type (field_uib_event_type) */
+  $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['value'] = array(
+    'utstilling' => 'utstilling',
+  );
+  /* Filter criterion: Content: Date - end date (field_uib_date:value2) */
+  $handler->display->display_options['filters']['field_uib_date_value2']['id'] = 'field_uib_date_value2';
+  $handler->display->display_options['filters']['field_uib_date_value2']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['filters']['field_uib_date_value2']['field'] = 'field_uib_date_value2';
+  $handler->display->display_options['filters']['field_uib_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_uib_date_value2']['default_date'] = 'now';
+  $handler->display->display_options['block_description'] = 'Exhibitions ';
   $translatables['calendar'] = array(
     t('Master'),
     t('Kalender - det skjer!'),
@@ -659,12 +769,14 @@ function uib_calendar_views_default_views() {
     t('Main calendar page'),
     t('[field_uib_date] - [title] ([field_uib_event_type])'),
     t('Event type'),
-    t('Block'),
+    t('Area calendar block'),
     t('Month'),
     t('Week'),
     t('Day'),
     t('Mini calendar'),
     t('Upcoming events'),
+    t('Exhibitions '),
+    t('List all events of type exhibitions '),
   );
   $export['calendar'] = $view;
 
