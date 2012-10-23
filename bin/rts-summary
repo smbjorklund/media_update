@@ -21,14 +21,28 @@ sub w3_issues {
     $u->query_param(status_id => $status);
     $u->query_param(limit => 999);
 
-    my $res = $ua->get($u);
-    die $res->status_line unless $res->is_success;
+    my @issues;
+    my $total_count;
 
-    my $data = from_json($res->content);
-    die unless $data;
-    die unless $data->{total_count} == scalar(@{$data->{issues}});
+    do {
+	$u->query_param('offset' => scalar(@issues)) if @issues;
 
-    return @{$data->{issues}};
+	my $res = $ua->get($u);
+	die $res->status_line unless $res->is_success;
+
+	my $data = from_json($res->content);
+	die unless $data;
+
+	$total_count = $data->{total_count}
+	    unless defined $total_count;
+
+	my $issues = delete $data->{issues};
+	#use Data::Dump; dd $data;
+
+	push(@issues, @$issues);
+    } while @issues < $total_count;
+
+    return @issues;
 }
 
 my %count;
