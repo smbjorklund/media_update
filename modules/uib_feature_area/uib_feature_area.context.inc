@@ -29,17 +29,23 @@ function uib_feature_area_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-area_kids-block' => array(
-          'module' => 'views',
-          'delta' => 'area_kids-block',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'views-calendar-block_1' => array(
           'module' => 'views',
           'delta' => 'calendar-block_1',
           'region' => 'sidebar_second',
           'weight' => '-10',
+        ),
+        'views-calendar-block_4' => array(
+          'module' => 'views',
+          'delta' => 'calendar-block_4',
+          'region' => 'sidebar_second',
+          'weight' => '-9',
+        ),
+        'views-area_kids-block' => array(
+          'module' => 'views',
+          'delta' => 'area_kids-block',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
         ),
       ),
     ),
