@@ -238,6 +238,13 @@ function uib_calendar_views_default_views() {
     'proveforelesning' => 'proveforelesning',
     'seminar' => 'seminar',
   );
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
   $handler->display->display_options['block_description'] = 'Kalender - det skjer!';
 
   /* Display: Month */
@@ -392,6 +399,10 @@ function uib_calendar_views_default_views() {
     4 => 0,
     3 => 0,
   );
+  $handler->display->display_options['filters']['field_uib_event_type_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_event_type_value']['group_info']['label'] = 'Event type (field_uib_event_type)';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['group_info']['identifier'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['group_info']['remember'] = FALSE;
   $handler->display->display_options['path'] = 'node/%/calendar';
 
   /* Display: Day */
