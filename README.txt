@@ -30,7 +30,7 @@ its own git repo.
 
 The 'doc' directory contains further information you might want to read first.
 
-To fill up the site with some content, migrate data from testbool by invoking
+To fill up the site with some content, migrate data from teststring by invoking
 a command like this one:
 
     bin/site-drush migrate-import --verbose --all
