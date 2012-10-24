@@ -164,6 +164,10 @@ function uib_calendar_views_default_views() {
       ),
     ),
   );
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '30';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -237,6 +241,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_date_value']['id'] = 'field_uib_date_value';
   $handler->display->display_options['filters']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
   $handler->display->display_options['filters']['field_uib_date_value']['field'] = 'field_uib_date_value';
+  $handler->display->display_options['filters']['field_uib_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_uib_date_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_date_value']['default_date'] = 'now';
   /* Filter criterion: Content: Type (field_uib_article_type) */
