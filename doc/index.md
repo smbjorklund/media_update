@@ -21,7 +21,12 @@ You should know these:
 * [How to set up Apache for local development on OS X](apache-local.html)
 * [Reder Arrays](render-array.html)
 * [Hints that's good to know](hints.html)
+
+### The code
+
 * [Repo README](repo-readme.html)
+* [Git](https://rts.uib.no/projects/w3/repository) and [cgit](https://git.uib.no/cgit/site/w3.uib.no.git/tree/)
+* [API docs](api/)
 
 
 ### Stale stuff
