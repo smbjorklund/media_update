@@ -15,12 +15,12 @@ class XTopic extends stdClass {
   /**
    * Returns the URL of the server to read xtopic documents from.
    *
-   * This defaults to 'testbool.uib.no', but you can override this by setting
+   * This defaults to 'teststring.uib.no', but you can override this by setting
    * the 'uib_w2_server' configuration variable.
    */
   public static function url($path='topicmap/@@xtopic') {
     if (is_null(self::$w2_server)) {
-      self::$w2_server = variable_get('uib_w2_server', 'testbool.uib.no');
+      self::$w2_server = variable_get('uib_w2_server', 'teststring.uib.no');
     }
     return 'http://' . self::$w2_server . '/' . $path;
   }

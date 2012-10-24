@@ -51,7 +51,7 @@ class XTopic(object):
                 yield scope
 
 class XTopic_UserAgent(uib.web.UserAgent):
-    prefix = "http://testbool.uib.no/"
+    prefix = "http://teststring.uib.no/"
 
     def get(self, url):
         if not url.startswith(("http:", "https")):
