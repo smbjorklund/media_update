@@ -19,7 +19,8 @@ function uib_calendar_context_default_contexts() {
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'calendar:page_1' => 'calendar:page_1',
+        'calendar:page_2' => 'calendar:page_2',
+        'calendar:page_4' => 'calendar:page_4',
       ),
     ),
   );
