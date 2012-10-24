@@ -10,9 +10,11 @@ HTML = \
        repo-readme.html  \
        release1.html \
        area.html \
+       mockups/index.html \
        terms.html
 
 PYTHON = python
+PERL = perl
 BOOTSTRAP_PY = bootstrap.py
 
 .SUFFIXES: .md .html
@@ -22,6 +24,9 @@ BOOTSTRAP_PY = bootstrap.py
 	bin/python htmlify.py $< >$@
 
 all: bin/python $(HTML)
+
+mockups/index.html: mockups/mkindex
+	$(PERL) mockups/mkindex
 
 bin/python: bin/buildout
 	bin/buildout
