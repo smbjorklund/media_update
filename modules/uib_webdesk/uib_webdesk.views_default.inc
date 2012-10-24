@@ -1065,7 +1065,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'User does not belong to any area.';
+  $handler->display->display_options['empty']['area']['content'] = 'You are not content manager for any areas.';
   $handler->display->display_options['empty']['area']['format'] = 'html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -1084,15 +1084,15 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Content: Ansatte (field_uib_staff) */
-  $handler->display->display_options['arguments']['field_uib_staff_target_id']['id'] = 'field_uib_staff_target_id';
-  $handler->display->display_options['arguments']['field_uib_staff_target_id']['table'] = 'field_data_field_uib_staff';
-  $handler->display->display_options['arguments']['field_uib_staff_target_id']['field'] = 'field_uib_staff_target_id';
-  $handler->display->display_options['arguments']['field_uib_staff_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_uib_staff_target_id']['default_argument_type'] = 'current_user';
-  $handler->display->display_options['arguments']['field_uib_staff_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_uib_staff_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_uib_staff_target_id']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Content: Content Manager (field_uib_content_manager) */
+  $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['id'] = 'field_uib_content_manager_target_id';
+  $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['table'] = 'field_data_field_uib_content_manager';
+  $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['field'] = 'field_uib_content_manager_target_id';
+  $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1120,7 +1120,7 @@ function uib_webdesk_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('User does not belong to any area.'),
+    t('You are not content manager for any areas.'),
     t('All'),
     t('Content pane'),
     t('View panes'),
