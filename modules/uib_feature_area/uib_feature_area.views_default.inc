@@ -403,8 +403,8 @@ function uib_feature_area_views_default_views() {
     'news' => 'news',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Area recent news block */
+  $handler = $view->new_display('block', 'Area recent news block', 'block');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
@@ -471,6 +471,15 @@ function uib_feature_area_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_area_target_id']['validate_options']['types'] = array(
     'area' => 'area',
   );
+  /* Contextual filter: Content: Created year + month */
+  $handler->display->display_options['arguments']['created_year_month']['id'] = 'created_year_month';
+  $handler->display->display_options['arguments']['created_year_month']['table'] = 'node';
+  $handler->display->display_options['arguments']['created_year_month']['field'] = 'created_year_month';
+  $handler->display->display_options['arguments']['created_year_month']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['created_year_month']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['created_year_month']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['created_year_month']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['created_year_month']['specify_validation'] = TRUE;
   $handler->display->display_options['path'] = 'node/%/news-archive';
 
   /* Display: Feed */
@@ -495,6 +504,35 @@ function uib_feature_area_views_default_views() {
     'area' => 'area',
   );
   $handler->display->display_options['path'] = 'node/%/rss.xml';
+
+  /* Display: Date and year selector */
+  $handler = $view->new_display('block', 'Date and year selector', 'block_date_selector');
+  $handler->display->display_options['display_description'] = 'Select news by month and year';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Area (field_uib_area) */
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Content: Created year + month */
+  $handler->display->display_options['arguments']['created_year_month']['id'] = 'created_year_month';
+  $handler->display->display_options['arguments']['created_year_month']['table'] = 'node';
+  $handler->display->display_options['arguments']['created_year_month']['field'] = 'created_year_month';
+  $handler->display->display_options['arguments']['created_year_month']['default_action'] = 'summary';
+  $handler->display->display_options['arguments']['created_year_month']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['created_year_month']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['created_year_month']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['created_year_month']['summary_options']['base_path'] = 'node/%/news-archive';
+  $handler->display->display_options['arguments']['created_year_month']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['created_year_month']['specify_validation'] = TRUE;
   $translatables['recent_news'] = array(
     t('Master'),
     t('Recent news'),
@@ -505,9 +543,11 @@ function uib_feature_area_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('All'),
-    t('Block'),
+    t('Area recent news block'),
     t('News archive'),
     t('Feed'),
+    t('Date and year selector'),
+    t('Select news by month and year'),
   );
   $export['recent_news'] = $view;
 
