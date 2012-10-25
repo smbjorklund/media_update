@@ -21,6 +21,8 @@ img {
 
 EOT
 
-for (<*.png>) {
-     print "<a href='$_' alt='$_'><img src='$_'></a>\n";
+for my $png (sort <*.png>) {
+    print <<EOT
+<a href="$png"><img src="$png" title="$png"></a>
+EOT
 }
