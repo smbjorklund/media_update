@@ -299,7 +299,6 @@ Målet med temasidene og funksjonaliteten som skal understøttes er enda uklart.
     * News --> article (news)
     * Event -> article (event)
     * Testimonial -> testimonial
-    * **ResearchTopic -> ...**
     * Area --> area
     * User --> user
     * images and files attached to the above

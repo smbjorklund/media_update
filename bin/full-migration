@@ -23,9 +23,6 @@ echo >>$LOG
 $DRUSH migrate-import $VERBOSE $ROLLBACK Area 2>&1 | tee -a $LOG
 timestamp
 
-$DRUSH migrate-import $VERBOSE $ROLLBACK ResearchTopic 2>&1 | tee -a $LOG
-timestamp
-
 $DRUSH migrate-import $VERBOSE $ROLLBACK Testimonial 2>&1 | tee -a $LOG
 timestamp
 
