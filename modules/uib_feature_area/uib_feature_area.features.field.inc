@@ -332,7 +332,95 @@ function uib_feature_area_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '14',
+        'weight' => '15',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-area-field_uib_logo'.
+  $fields['node-area-field_uib_logo'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_logo',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'deleted' => '0',
+      'description' => 'Areas might provide their own logo image.  It will then be included in the header.  The logo ought to be about 128x128 pixels and have a transparent background.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => 13,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_logo',
+      'label' => 'Logo',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => 'logo',
+        'file_extensions' => 'png',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'browser_plugins' => array(
+            'library' => 0,
+            'media_default--media_browser_1' => 0,
+            'media_default--media_browser_my_files' => 0,
+            'upload' => 'upload',
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '16',
       ),
     ),
   );
@@ -411,11 +499,11 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -505,11 +593,11 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -521,6 +609,74 @@ function uib_feature_area_field_default_fields() {
         ),
         'type' => 'media_generic',
         'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-area-field_uib_menu_style'.
+  $fields['node-area-field_uib_menu_style'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_menu_style',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'popup' => 'popup',
+          'expanded' => 'expanded',
+          'hidden' => 'hidden',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => array(
+        0 => array(
+          'value' => 'popup',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_menu_style',
+      'label' => 'Menu style',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '17',
       ),
     ),
   );
@@ -764,6 +920,75 @@ function uib_feature_area_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-area-field_uib_show_staff'.
+  $fields['node-area-field_uib_show_staff'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_show_staff',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => array(
+        0 => array(
+          'value' => 1,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_show_staff',
+      'label' => 'Show staff',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '14',
       ),
     ),
   );
@@ -1719,6 +1944,7 @@ function uib_feature_area_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Areas might provide their own logo image.  It will then be included in the header.  The logo ought to be about 128x128 pixels and have a transparent background.');
   t('Content Manager');
   t('Fax');
   t('Feed');
@@ -1728,8 +1954,10 @@ function uib_feature_area_field_default_fields() {
   t('Jobbnorge ID');
   t('List of users that should manage content for this area.  The users must also be set up with level 2 or level 3 access for content management to be possible.');
   t('Location');
+  t('Logo');
   t('Mail domain');
   t('Main image');
+  t('Menu style');
   t('Parents');
   t('Phone');
   t('Place');
@@ -1738,6 +1966,7 @@ function uib_feature_area_field_default_fields() {
   t('Sebra ID');
   t('Secondary text');
   t('Short name');
+  t('Show staff');
   t('Staff');
   t('Text');
   t('Type');
