@@ -78,14 +78,12 @@
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
     <?php endif; ?>
 
-    <?php if ($site_name || $site_slogan): ?>
+     <?php
+      // Modified to print name of area instead of site-name
+      // The varible 'page_title_link' is setup in template.php and contains the area name in an url
+      if ($site_name || $site_slogan || $page_title_link): ?>
       <hgroup id="name-and-slogan">
-        <?php if ($site_name): ?>
-          <h1 id="site-name">
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-          </h1>
-        <?php endif; ?>
-
+      <h1 id="site-name"><?php print $page_title_link; ?></h1>
         <?php if ($site_slogan): ?>
           <h2 id="site-slogan"><?php print $site_slogan; ?></h2>
         <?php endif; ?>
@@ -120,7 +118,11 @@
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
-        <h1 class="title" id="page-title"><?php print $title; ?></h1>
+        <?php if ($title != $page_title):
+          // Modified to print title only if different from area title
+          ?>
+          <h1 class="title" id="page-title"><?php print $title; ?></h1>
+        <?php endif; ?>
       <?php endif; ?>
       <?php print render($page['content_top']); ?>
       <?php print render($title_suffix); ?>

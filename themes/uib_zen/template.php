@@ -146,9 +146,56 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function uib_zen_preprocess_page(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
+  /**
+  * Setup variables for handling of current area
+  *   'area'
+  *    pointer to relevant area node object. Empty if no relevant area present
+  *   'page_title'
+  *    Area title to be used. Defaults to site name if no relevant area present
+  *   'page_title_link'
+  *    Full url to area home. Defaults to front page if no relevant area present
+  *    Corresponding modifications to use page_title and page_title_link were made in page.tpl.php
+  */
+  $variables['area'] = "";
+  $variables['page_title'] = $variables['site_name'];
+  $variables['page_title_link'] = l($variables['site_name'], $variables['front_page'], array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
+
+  if (isset($variables['node'])) {
+    $node = $variables['node'];
+  }
+  elseif (arg(0) == 'node' && is_numeric(arg(1))) {
+    // if no node present, load node from information in url
+     $node = node_load(arg(1));
+  }
+  if (isset($node)) {
+    if ($node->type == 'area') {
+      // if content is of type 'area' use its title and node id
+      $variables['area'] = $node;
+      $variables['page_title'] = $node->title;
+      $variables['page_title_link'] = l($node->title, 'node/' . $node->nid, array('attributes' => array('title' => $node->title . " " . t('Home'))));
+    }
+    else {
+      // if content is of other type ('article', 'testimonial'),
+      // use title of its referenced area and its node id
+      // -- get the referenced area from the node object
+      $belongs_to = $node->field_uib_area['und'][0];
+      if (isset($belongs_to['entity'])) {
+        // if the entity object is present, use it
+        $referenced_area = $belongs_to['entity'];
+      }
+      else {
+        // if the entity object is not present, load the object by using
+        // the node id throught the node_load function
+        $referenced_area = node_load($belongs_to['target_id']);
+      }
+      if (isset($referenced_area->title)) {
+        $variables['area'] = $referenced_area;
+        $variables['page_title'] = $referenced_area->title;
+        $variables['page_title_link'] = l(check_plain($referenced_area->title), 'node/' . $referenced_area->nid, array('attributes' => array('title' => check_plain($referenced_area->title) . " " . t('Home'))));
+      }
+    }
+  }
 }
 // */
 
