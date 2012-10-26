@@ -77,11 +77,18 @@ The boxes inside take the full width of the region:
 
 Social media buttons:
 
-* Field: twitter\_id
-* Field: facebook\_id
-* Field: youtube\_id
-* Field: vimeo\_id
-* Field: google+\_id
+* Field: social_media*: string
+
+We represent social media with simple text fields where users enter the URL of
+the service to link to or short forms like `"twitter:gisle"`,
+`"facebook:34234134143"`, `"vimeo:234234234"`, etc.  The presentation code will
+figure out which icons to use for these, and expand the URL if needed.  It
+would also skip those not recognized.
+
+> Gisle did consider using the [socialmedia
+module](http://drupal.org/project/socialmedia) for this, but it only support
+a single site wide profile (+ user profiles).  The user profile part might be
+a cool feature to enable at some point.
 
 ### Box2:
 
