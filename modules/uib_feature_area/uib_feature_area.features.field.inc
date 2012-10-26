@@ -639,11 +639,11 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -723,91 +723,6 @@ function uib_feature_area_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '17',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-area-field_uib_newslist'.
-  $fields['node-area-field_uib_newslist'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '5',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_uib_newslist',
-      'foreign keys' => array(
-        'node' => array(
-          'columns' => array(
-            'target_id' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'entityreference',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'handler' => 'views',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'views-select-list' => array(
-              'status' => 0,
-            ),
-          ),
-          'view' => array(
-            'args' => array(),
-            'display_name' => 'entityreference_1',
-            'view_name' => 'newslist',
-          ),
-        ),
-        'handler_submit' => 'Change handler',
-        'target_type' => 'node',
-      ),
-      'translatable' => '0',
-      'type' => 'entityreference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'area',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '9',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_uib_newslist',
-      'label' => 'Hilighted news',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'entityreference',
-        'settings' => array(
-          'match_operator' => 'CONTAINS',
-          'path' => '',
-          'size' => '60',
-        ),
-        'type' => 'entityreference_autocomplete',
-        'weight' => '10',
       ),
     ),
   );
@@ -2460,7 +2375,6 @@ function uib_feature_area_field_default_fields() {
   t('Content Manager');
   t('Fax');
   t('Feed');
-  t('Hilighted news');
   t('ID w2');
   t('Illustration that goes together with the bottom text.');
   t('Inline images');
