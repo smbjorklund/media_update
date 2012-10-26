@@ -14,6 +14,7 @@ dependencies[] = uib_nomail
 dependencies[] = uib_views
 dependencies[] = uib_ansatte
 dependencies[] = uib_calendar
+dependencies[] = uib_newsarchive
 dependencies[] = uib_webdesk
 dependencies[] = migrate_ui
 dependencies[] = views_ui
