@@ -51,7 +51,6 @@ features[field][] = node-area-field_uib_secondary_text
 features[field][] = node-area-field_uib_show_staff
 features[field][] = node-area-field_uib_staff
 features[field][] = node-area-field_uib_tertiary_text
-features[field][] = node-area-field_uib_text
 features[field][] = node-area-field_uib_text2
 features[field][] = node-area-field_uib_w2_id
 features[field][] = node-uib_ou-field_uib_fax

@@ -359,10 +359,10 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('field_uib_area_parents', 'area_parent_ids')
       ->sourceMigration('Area');
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
-    $this->addFieldMapping('field_uib_text', 'text')
+    $this->addFieldMapping('field_uib_primary_text', 'text')
       ->arguments(array('format' => 'simple_editor'));
     $this->addFieldMapping('field_uib_text2', 'profiletext')
-      ->arguments(array('format' => 'simple_editor'));
+      ->arguments(array('format' => 'plain_text'));
   }
 
   protected function createStub($migration, $source_id) {
