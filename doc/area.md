@@ -71,8 +71,9 @@ The boxes inside take the full width of the region:
 
 ### Box1:
 
-* Field: profileimage
-* Field: profiletext: htmltext
+* Field: profile\_image
+* Field: profile\_video
+* Field: profile\_text: htmltext
 
 Social media buttons:
 
