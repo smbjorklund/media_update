@@ -65,15 +65,15 @@ We will lay them out like this:
 
 <img src="img/area-regions.jpg" alt="diagram of the regions in the fullwidth, tablet and narrow configuration">
 
-## Profile region
+## Top region
 
 The boxes inside take the full width of the region:
 
 ### Box1:
 
-* Field: profile\_image
-* Field: profile\_video
-* Field: profile\_text: htmltext
+* Field: primary\_image
+* Field: primary\_video
+* Field: primary\_text: htmltext
 
 Social media buttons:
 
@@ -92,13 +92,13 @@ a cool feature to enable at some point.
 
 ### Box2:
 
-* Field: secondarytext: htmltext
+* Field: secondary\_text: htmltext
 
 Special rule: (with &lt;li> sections styled as multicols in fullwidth and tablet version)
 
 ### Box3:
 
-* Field: profiled_articles[0-4]: ref article
+* Field: profiled\_articles[0-4]: ref article
 
 ## Middle region
 
@@ -108,7 +108,7 @@ out with "float: left".
 ### Box1:
 
 * View: list kid institutes
-* Field: link_section*
+* Field: link\_section*
 
 <pre>
     title: text
@@ -126,7 +126,7 @@ just drive if from the class attribute.
 
 ### Box2:
 
-* Field: messages*: ref artikkel
+* Field: profiled\_messages*: ref artikkel
 
 ### Box3:
 
@@ -138,7 +138,7 @@ just drive if from the class attribute.
 
 ### Box5:
 
-* selected\_testimonial: ref testimonial
+* Field: profiled\_testimonial: ref testimonial
 
 
 ## Bottom region
