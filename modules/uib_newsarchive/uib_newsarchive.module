@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UiB newsarchive feature.
+ */
+
+include_once 'uib_newsarchive.features.inc';

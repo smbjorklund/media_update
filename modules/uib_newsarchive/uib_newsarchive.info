@@ -1,0 +1,11 @@
+name = UiB newsarchive
+description = Newsarchive views
+core = 7.x
+package = Features
+version = 7.x-0.1
+project = uib_newsarchive
+dependencies[] = context
+dependencies[] = ctools
+features[context][] = newsarchive
+features[ctools][] = context:context:3
+features[features_api][] = api:1
