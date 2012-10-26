@@ -19,8 +19,8 @@ You will grow tired of invoking `site-drush` the verbose way, so you might want 
     <?php
     $options['yes'] = TRUE;
 
-We use for our files and throw-away databases, so avoiding the "Are you sure?"
-prompts is really handy.
+We use git for our files and throw-away databases, so it usually doesn't matter if drush overwrite
+some files.  Skipping manual confirmation on all the "Are you sure?" prompts is a time saver.
 
 ## Postgres
 
