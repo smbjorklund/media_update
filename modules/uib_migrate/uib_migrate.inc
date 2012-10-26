@@ -359,7 +359,6 @@ class AreaMigration extends Migration {
     $this->addFieldMapping('field_uib_area_parents', 'area_parent_ids')
       ->sourceMigration('Area');
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
-    //$this->addFieldMapping('field_uib_main_media', 'media'); // It's not main_media!
     $this->addFieldMapping('field_uib_text', 'text')
       ->arguments(array('format' => 'simple_editor'));
     $this->addFieldMapping('field_uib_text2', 'profiletext')
@@ -397,7 +396,7 @@ class AreaMigration extends Migration {
 
     if (isset($row->media)) {
       $file = xtopic_file($row->media[0]);
-      $term->field_uib_main_media['und'][0] = array(
+      $term->field_uib_primary_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,
       );
