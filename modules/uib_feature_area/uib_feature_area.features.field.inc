@@ -173,6 +173,146 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-area-field_uib_bottom_media'.
+  $fields['node-area-field_uib_bottom_media'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_bottom_media',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'deleted' => '0',
+      'description' => 'Illustration that goes together with the bottom text.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => 21,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_bottom_media',
+      'label' => 'Bottom image',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'png jpg',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '23',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-area-field_uib_bottom_text'.
+  $fields['node-area-field_uib_bottom_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_bottom_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Use this if you just have to get the last word in any conversation.  You might also decorate this one with an image.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 20,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_bottom_text',
+      'label' => 'Bottom text',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '22',
+      ),
+    ),
+  );
+
   // Exported field: 'node-area-field_uib_content_manager'.
   $fields['node-area-field_uib_content_manager'] = array(
     'field_config' => array(
@@ -499,11 +639,11 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -593,11 +733,11 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -855,6 +995,146 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-area-field_uib_primary_media'.
+  $fields['node-area-field_uib_primary_media'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_primary_media',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => 16,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_primary_media',
+      'label' => 'Primary image',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'png jpg',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-area-field_uib_primary_text'.
+  $fields['node-area-field_uib_primary_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_primary_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'This is the primary profile text on the page.  Use this for basic contact information.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 17,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_primary_text',
+      'label' => 'Primary text',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '19',
+      ),
+    ),
+  );
+
   // Exported field: 'node-area-field_uib_sebra_id'.
   $fields['node-area-field_uib_sebra_id'] = array(
     'field_config' => array(
@@ -920,6 +1200,73 @@ function uib_feature_area_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-area-field_uib_secondary_text'.
+  $fields['node-area-field_uib_secondary_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_secondary_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The is the secondary profile text.  Used for information to students.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_secondary_text',
+      'label' => 'Secondary text',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '20',
       ),
     ),
   );
@@ -1075,6 +1422,73 @@ function uib_feature_area_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-area-field_uib_tertiary_text'.
+  $fields['node-area-field_uib_tertiary_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_tertiary_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Used for profile text that isn\'t that important.  Will show up somewhere in the middle of the page.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_tertiary_text',
+      'label' => 'Tertiary text',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '21',
+      ),
+    ),
+  );
+
   // Exported field: 'node-area-field_uib_text'.
   $fields['node-area-field_uib_text'] = array(
     'field_config' => array(
@@ -1126,7 +1540,7 @@ function uib_feature_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_text',
-      'label' => 'Text',
+      'label' => 'w2 main text',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -1194,7 +1608,7 @@ function uib_feature_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_text2',
-      'label' => 'Secondary text',
+      'label' => 'w2 profile text',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -1945,11 +2359,14 @@ function uib_feature_area_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Areas might provide their own logo image.  It will then be included in the header.  The logo ought to be about 128x128 pixels and have a transparent background.');
+  t('Bottom image');
+  t('Bottom text');
   t('Content Manager');
   t('Fax');
   t('Feed');
   t('Hilighted news');
   t('ID w2');
+  t('Illustration that goes together with the bottom text.');
   t('Inline images');
   t('Jobbnorge ID');
   t('List of users that should manage content for this area.  The users must also be set up with level 2 or level 3 access for content management to be possible.');
@@ -1963,14 +2380,22 @@ function uib_feature_area_field_default_fields() {
   t('Place');
   t('Place ID');
   t('Postal Address');
+  t('Primary image');
+  t('Primary text');
   t('Sebra ID');
   t('Secondary text');
   t('Short name');
   t('Show staff');
   t('Staff');
-  t('Text');
+  t('Tertiary text');
+  t('The is the secondary profile text.  Used for information to students.');
+  t('This is the primary profile text on the page.  Use this for basic contact information.');
   t('Type');
+  t('Use this if you just have to get the last word in any conversation.  You might also decorate this one with an image.');
+  t('Used for profile text that isn\'t that important.  Will show up somewhere in the middle of the page.');
   t('Visit Address');
+  t('w2 main text');
+  t('w2 profile text');
 
   return $fields;
 }
