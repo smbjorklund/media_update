@@ -382,31 +382,6 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_article_type_value']['value'] = array(
     'event' => 'event',
   );
-  /* Filter criterion: Content: Event type (field_uib_event_type) */
-  $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator_id'] = 'field_uib_event_type_value_op';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['label'] = 'Event type (field_uib_event_type)';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator'] = 'field_uib_event_type_value_op';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['identifier'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    5 => 0,
-    4 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_uib_event_type_value']['group_info']['label'] = 'Event type (field_uib_event_type)';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['group_info']['identifier'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['group_info']['remember'] = FALSE;
-  $handler->display->display_options['filters']['field_uib_event_type_value']['group_info']['group_items'] = array(
-    1 => array(),
-    2 => array(),
-    3 => array(),
-  );
   /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
@@ -547,23 +522,6 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['value'] = array(
     'event' => 'event',
-  );
-  /* Filter criterion: Content: Event type (field_uib_event_type) */
-  $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator_id'] = 'field_uib_event_type_value_op';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['label'] = 'Event type (field_uib_event_type)';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['operator'] = 'field_uib_event_type_value_op';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['identifier'] = 'field_uib_event_type_value';
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_event_type_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    5 => 0,
-    4 => 0,
-    3 => 0,
   );
   /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
@@ -804,7 +762,6 @@ function uib_calendar_views_default_views() {
     t('Area calendar block'),
     t('[field_uib_date] - [title] ([field_uib_event_type])'),
     t('Month'),
-    t('Event type (field_uib_event_type)'),
     t('Day'),
     t('Mini calendar'),
     t('Exhibitions '),
