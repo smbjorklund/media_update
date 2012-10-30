@@ -279,6 +279,7 @@ function uib_calendar_views_default_views() {
   );
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
+  $handler->display->display_options['pager']['options']['link_format'] = 'clean';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -366,6 +367,16 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_uib_date.field_uib_date_value' => 'field_data_field_uib_date.field_uib_date_value',
   );
+  /* Contextual filter: Content: Event type (field_uib_event_type) */
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['limit'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -548,7 +559,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['style_options']['with_weekno'] = '0';
   $handler->display->display_options['style_options']['multiday_theme'] = '1';
   $handler->display->display_options['style_options']['theme_style'] = '1';
-  $handler->display->display_options['style_options']['max_items'] = '0';
+  $handler->display->display_options['style_options']['max_items'] = '1';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
@@ -738,6 +749,70 @@ function uib_calendar_views_default_views() {
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
   $handler->display->display_options['block_description'] = 'Exhibitions ';
+
+  /* Display: Event filter */
+  $handler = $view->new_display('block', 'Event filter', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_uib_area_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'area' => 'area',
+  );
+  /* Contextual filter: Date: Date (node) */
+  $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
+  $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'php';
+  $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
+    'field_data_field_uib_date.field_uib_date_value' => 'field_data_field_uib_date.field_uib_date_value',
+  );
+  /* Contextual filter: Content: Event type (field_uib_event_type) */
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['default_action'] = 'summary';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['limit'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type (field_uib_article_type) */
+  $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['value'] = array(
+    'event' => 'event',
+  );
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
   $translatables['calendar'] = array(
     t('Master'),
     t('Kalender - det skjer!'),
@@ -767,6 +842,7 @@ function uib_calendar_views_default_views() {
     t('Exhibitions '),
     t('List all events of type exhibitions '),
     t('Date -  start date (field_uib_date)'),
+    t('Event filter'),
   );
   $export['calendar'] = $view;
 
