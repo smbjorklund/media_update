@@ -168,24 +168,35 @@ h3  {
 /* =Navigation
 -------------------------------------------------------------- */
 
-#access {
+#access, #access-2 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     overflow: visible;
     z-index: 100;
 }
 
 /* style the main menu 8*/
-.sf-menu {
+.sf-menu, .sf-menu-2 {
     border-top: none;
 }
 
-ul.sf-menu li:hover > ul {
+.sf-menu-2  {
+  width: 70%;
+  margin-left: 150px;
+  list-style: none;
+}
+
+.sf-menu-2 ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.sf-menu li:hover > ul, ul.sf-menu-2 li:hover > ul {
   display: block;
   background: silver;
 }
 
 /* get rid of padding and margin off all ul's (not sure about using * here, could be better) */
-.sf-menu, .sf-menu * {
+.sf-menu, .sf-menu-2 .sf-menu * {
   margin:0;
   padding:0;
   list-style:none;
@@ -195,6 +206,10 @@ ul.sf-menu li:hover > ul {
 .sf-menu ul {
   position:absolute;
   top:-999em;
+}
+
+.sf-menu-2  {
+  
 }
 
 /* style the main nav list items */
@@ -214,8 +229,17 @@ ul.sf-menu li:hover > ul {
   width: 20%;
 }
 
+.sf-menu-2 li {
+  background: #D9D6FF;
+  float:left;
+  position:relative;
+  width: 20%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 /* change the main nav list items on hover */
-.sf-menu li:hover {
+.sf-menu li:hover, .sf-menu-2 li:hover {
   background: #d8d8d4;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e4df', endColorstr='#d8d8d4',GradientType=0 ); /* IE6-9 */
 
@@ -233,13 +257,13 @@ ul.sf-menu li:hover > ul {
 }
 
 /* style the first drop */
-.sf-menu li li, .sf-menu li li:hover{
+.sf-menu li li, .sf-menu li li:hover, .sf-menu-2 li li, .sf-menu-2 li li:hover{
     background: none;
     background-image: none;
 }
 
 /* position first drop */
-.sf-menu li:hover ul {
+.sf-menu li:hover ul, .sf-menu-2 li:hover ul {
     top:auto; /* match top ul list item height */
     position:absolute;
 }
@@ -249,7 +273,7 @@ ul.sub-menu {
   display: none;
 }
 
-ul.sub-menu li {
+ul.sub-menu li, ul.sub-menu-2 li {
   width:100%;
   font-size:12px;
 }
