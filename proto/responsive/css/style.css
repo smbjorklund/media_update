@@ -132,7 +132,6 @@ h3  {
   padding-top: 0;
   margin-top: 0;
   margin-bottom: 0;
-  float: left;
 }
 
 
@@ -181,7 +180,7 @@ h3  {
 
 .sf-menu-2  {
   width: 70%;
-  margin-left: 150px;
+  margin-left: 10%;
   list-style: none;
 }
 
@@ -260,7 +259,7 @@ ul.sf-menu li:hover > ul, ul.sf-menu-2 li:hover > ul {
 }
 
 /* position first drop */
-.sf-menu li:hover ul, .sf-menu-2 li:hover ul {
+.sf-menu li:hover ul {
     top:auto; /* match top ul list item height */
     position:absolute;
 }
@@ -409,11 +408,20 @@ form#mobile-search {
     width: 10%;
   }
 
+  .sf-menu-2  {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .sf-menu-2 a  {
+    font-size: 11px;
+  }
+
   h1 {
     margin: 0 0 0 25px;
     float: left;
     font-size: 16px;
-
   }
 
   .area-block-image-and-text, .area-block  {
@@ -431,11 +439,6 @@ form#mobile-search {
     width: 50%;
     float: left;
   }
-/*
-  #main-bottom  {
-    margin-top: 480px;
-    width: 50%;
-  }*/
 
   .area-block-image-and-text {
     margin-top: 36px;
@@ -495,7 +498,7 @@ form#mobile-search {
     }
 
     /* set height so content isn't pushed down add z-index to keep drops above content */
-    .sf-menu  {
+    .sf-menu {
       height: 36px;
       z-index: 1;
       position: relative;
@@ -503,7 +506,7 @@ form#mobile-search {
     }
 
     /* restyle so main links are horizontally aligned */
-    .sf-menu li {
+    .sf-menu li, .sf-menu-2 li {
       clear: none;
       width: 100%; /* this will need to be adjusted for your needs */
     }
