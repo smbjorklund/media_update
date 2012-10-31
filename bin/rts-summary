@@ -39,12 +39,12 @@ print join(",", map $_ || 0,
     $count{closed},
     $count{release}{na}{open},
     $count{release}{na}{closed},
-    $count{release}{R1}{open},
-    $count{release}{R1}{closed},
-    $count{release}{R1}{unestimated}{open},
-    $count{release}{R1}{unestimated}{closed},
-    $count{release}{R1}{estimated_hours}{open},
-    $count{release}{R1}{estimated_hours}{closed},
+    $count{release}{'R1.fc'}{open},
+    $count{release}{'R1.fc'}{closed},
+    $count{release}{'R1.fc'}{unestimated}{open},
+    $count{release}{'R1.fc'}{unestimated}{closed},
+    $count{release}{'R1.fc'}{estimated_hours}{open},
+    $count{release}{'R1.fc'}{estimated_hours}{closed},
 ), "\n";
 
 
