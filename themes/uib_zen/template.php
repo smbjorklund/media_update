@@ -157,6 +157,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   *    Full url to area home. Defaults to front page if no relevant area present
   *    Corresponding modifications to use page_title and page_title_link were made in page.tpl.php
   */
+  
   $variables['area'] = "";
   $variables['page_title'] = $variables['site_name'];
   $variables['page_title_link'] = l($variables['site_name'], $variables['front_page'], array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
@@ -195,6 +196,9 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         $variables['page_title_link'] = l(check_plain($referenced_area->title), 'node/' . $referenced_area->nid, array('attributes' => array('title' => check_plain($referenced_area->title) . " " . t('Home'))));
       }
     }
+  }
+  if (isset($variables['node'])) {
+    $variables['uib_menu_style'] = 'uib_menu_style_' . $variables['node']->field_uib_menu_style['und'][0]['value'];
   }
 }
 // */

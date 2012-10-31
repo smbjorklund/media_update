@@ -136,7 +136,8 @@
       <?php print $feed_icons; ?>
     </div><!-- /#content -->
 
-    <div id="navigation">
+    <div id="navigation"<?php // Modified in order to pick upp class style for uib navigation menu, $uib_menu_style set in template.php
+      if (!empty($uib_menu_style)): ?> class="<?php print $uib_menu_style; ?>"<?php endif; ?>>
 
       <?php if ($main_menu): ?>
         <nav id="main-menu" role="navigation">
