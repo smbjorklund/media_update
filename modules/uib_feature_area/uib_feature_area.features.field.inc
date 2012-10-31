@@ -639,11 +639,11 @@ function uib_feature_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -677,6 +677,7 @@ function uib_feature_area_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
+          'dropdown' => 'dropdown',
           'popup' => 'popup',
           'expanded' => 'expanded',
           'hidden' => 'hidden',
@@ -690,7 +691,7 @@ function uib_feature_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => array(
         0 => array(
-          'value' => 'popup',
+          'value' => 'dropdown',
         ),
       ),
       'deleted' => '0',
