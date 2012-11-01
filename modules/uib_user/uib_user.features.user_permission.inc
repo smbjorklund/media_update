@@ -15,6 +15,7 @@ function uib_user_user_default_permissions() {
     'name' => 'access user profiles',
     'roles' => array(
       0 => 'anonymous user',
+      1 => 'authenticated user',
     ),
     'module' => 'user',
   );
