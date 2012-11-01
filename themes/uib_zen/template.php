@@ -240,13 +240,14 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     }
   }
 
-
+  /*
   // Optionally, run node-type-specific preprocess functions, like
   // uib_zen_preprocess_node_page() or uib_zen_preprocess_node_story().
   $function = __FUNCTION__ . '_' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
   }
+  */
 }
 
 /**
