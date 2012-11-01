@@ -175,6 +175,8 @@ function uib_zen_preprocess_page(&$variables, $hook) {
       $variables['area'] = $node;
       $variables['page_title'] = $node->title;
       $variables['page_title_link'] = l($node->title, 'node/' . $node->nid, array('attributes' => array('title' => $node->title . " " . t('Home'))));
+      // set menu style
+      $variables['uib_menu_style'] = 'uib_menu_style_' . $variables['node']->field_uib_menu_style['und'][0]['value'];
     }
     else {
       // if content is of other type ('article', 'testimonial'),
@@ -194,11 +196,10 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         $variables['area'] = $referenced_area;
         $variables['page_title'] = $referenced_area->title;
         $variables['page_title_link'] = l(check_plain($referenced_area->title), 'node/' . $referenced_area->nid, array('attributes' => array('title' => check_plain($referenced_area->title) . " " . t('Home'))));
+        // set menu style as for referenced area
+        $variables['uib_menu_style'] = 'uib_menu_style_' . $referenced_area->field_uib_menu_style['und'][0]['value'];
       }
     }
-  }
-  if (isset($variables['node'])) {
-    $variables['uib_menu_style'] = 'uib_menu_style_' . $variables['node']->field_uib_menu_style['und'][0]['value'];
   }
 }
 // */
