@@ -118,6 +118,10 @@ function uib_sebra__create_uib_ou($place_id) {
  * Sync the 'field_uib_staff' of all areas that define a 'field_uib_sebra_id'.
  */
 function uib_sebra__sync_areas() {
+
+  // fetch all roles for all areas
+  $all_area_roles = uib_sebra__sws_get('omraaderoller');
+
   $query = new EntityFieldQuery;
   $query = $query
     ->entityCondition('entity_type', 'node')
@@ -125,17 +129,22 @@ function uib_sebra__sync_areas() {
     ;
   $result = $query->execute();
 
-  $unchanged = 0;
+  $staff_unchanged = 0;
+  $content_manager_unchanged = 0;
   foreach (array_keys($result['node']) as $nid) {
+    $edit_p = FALSE;
     $area = node_load($nid);
-    $sebra_id = $area->field_uib_sebra_id['und'][0]['value'];
-    if ($sebra_id) {
+
+    if (isset($area->field_uib_sebra_id['und'])) {
+      $sebra_id = $area->field_uib_sebra_id['und'][0]['value'];
       $area_doc = uib_sebra__sws_get("omraader?omraadekode=$sebra_id");
       if (empty($area_doc)) {
         uibx_log("Can't get $sebra_id", 'error');
       }
-      #print_r(array($nid, $sebra_id, $area_doc));
+
+      //print_r(array($nid, $sebra_id, $area_doc));
       uib_sebra__sync_jobbnorge_id($area, $area_doc);
+
       $staff = array();
       foreach ($area_doc->omraade->visninger->uibid as $uname) {
         $account = user_load_by_name($uname);
@@ -150,25 +159,80 @@ function uib_sebra__sync_areas() {
       }
       if (!isset($area->field_uib_staff) || $area->field_uib_staff != $staff) {
         $area->field_uib_staff = $staff;
-        node_save($area);
-        uibx_log("Updated staff setting area /node/$nid");
+        $edit_p = TRUE;
+        uibx_log("Updating staff setting area /node/$nid");
       }
       else {
-        $unchanged++;
+        $staff_unchanged++;
       }
+
+      $content_manager = array();
+      $area_roles = uib_sebra__get_area_roles($all_area_roles, $sebra_id);
+      foreach ($area_roles as $uname) {
+        $account = user_load_by_name($uname);
+        if (!$account) {
+          $account = uib_sebra__sync_user($uname);
+          if (!$account) {
+            uibx_log("Can't find user $uname from Sebra", "error");
+            continue;
+          }
+        }
+        $content_manager['und'][]['target_id'] = $account->uid;
+      }
+      if (!isset($area->field_uib_content_manager) || $area->field_uib_content_manager != $content_manager) {
+        $area->field_uib_content_manager = $content_manager;
+        $edit_p = TRUE;
+        uibx_log("Updating content_manager setting area /node/$nid");
+      }
+      else {
+        $content_manager_unchanged++;
+      }
+
+      if ($edit_p)
+        node_save($area);
     }
     else {
       uibx_log("No sebra_id for /node/$nid", 'warning');
     }
   }
-  uibx_log("staff attribute unchanged for $unchanged areas");
+  uibx_log("staff attribute unchanged for $staff_unchanged areas");
+  uibx_log("content_manager attribute unchanged for $content_manager_unchanged areas");
+}
+
+/**
+ * Get area roles with the given sebra_id
+ *
+ * Returns array with usernames with roles: "Redaktør" or "Innholdsprodusent"
+ * for a given area (sebra_id)
+ */
+function uib_sebra__get_area_roles($all_area_roles, $sebra_id) {
+  $result = array();
+  if (!empty($all_area_roles->administrator)) {
+
+    foreach ($all_area_roles->administrator as $admin) {
+      $username = (string)$admin['id'];
+
+      foreach ($admin->role as $role) {
+        $role_group = (string)$role['group'];
+
+        foreach ($role->omraade_kode as $area_code) {
+          if ((string)$area_code != $sebra_id)
+            continue;
+
+          if ($role_group == 'Redaktør' || $role_group == 'Innholdsprodusent') {
+            array_push($result, $username);
+          }
+        }
+      }
+    }
+  }
+  return $result;
 }
 
 /**
  * Sync jobbnorge_id from område in Sebra to ou in w3.
  *
  */
-
 function uib_sebra__sync_jobbnorge_id($area, $area_doc) {
   $place_id = (string)$area_doc->omraade->EIER_STED_KODE;
   $jobbnorge_id = (string)$area_doc->omraade->JOBBNORGE_DEPID;
@@ -284,6 +348,40 @@ function uib_sebra__get_persons($type) {
 }
 
 /**
+ * Add uid to content_manager on areas
+ *
+ * Returns true if adding to content_manager, else false
+ */
+function uib_sebra__add_content_manager($content_manager_areas, $uid) {
+
+  $res = FALSE;
+  foreach ($content_manager_areas as $sebra_id) {
+    $query = new EntityFieldQuery;
+    $query = $query
+      ->entityCondition('entity_type', 'node')
+      ->propertyCondition('type', 'area')
+      ->fieldCondition('field_uib_sebra_id', 'value', $sebra_id, '=');
+    $result = $query->execute();
+
+    if (isset($result['node'])) {
+      foreach (array_keys($result['node']) as $nid) {
+
+        $area = node_load($nid);
+        $needle = array('target_id'=>$uid);
+        if ( !in_array($needle, $area->field_uib_content_manager['und']) ) {
+          $area->field_uib_content_manager['und'][]['target_id'] = $uid;
+          node_save($area);
+
+          uibx_log("debug added to cm: nid: $nid uid: $uid");
+          $res = TRUE;
+        }
+      }
+    }
+  }
+  return $res;
+}
+
+/**
  * Syncronice the given user with Sebra.  If the user did not already exist in
  * the Drupal database it will be created.  If it exist, this function will
  * figure out if any attributes need to be changed and if so update the user.
@@ -327,13 +425,15 @@ function uib_sebra__sync_user($username) {
       $edit['field_uib_position_en']['und'][0]['value'] = $u->position_name_en;
     if ($account->field_uib_phone != $phones)
       $edit['field_uib_phone'] = $phones;
+    if ($account->roles != $u->roles)
+      $edit['roles'] = $u->roles;
 
     if (empty($edit)) {
-      uibx_log("No change for $username <$account->mail>");
+      uibx_log("No user field change for $username <$account->mail>");
     }
     else {
       user_save($account, $edit);
-      uibx_log("Updated fields for $username <$account->mail>");
+      uibx_log("Updated user fields for $username <$account->mail>");
     }
   }
   else {
@@ -348,8 +448,17 @@ function uib_sebra__sync_user($username) {
     $account->field_uib_position['und'][0]['value'] = $u->position_name_no;
     $account->field_uib_position_en['und'][0]['value'] = $u->position_name_en;
     $account->field_uib_phone = $phones;
+    $account->roles = $u->roles;
     user_save($account);
     uibx_log("Created user $account->uid for $username <$u->email>");
   }
+
+  // Just add uid to content_manager on areas.
+  // A full run of sync_users will remove stale uids from content_manager
+  if (uib_sebra__add_content_manager($u->content_manager_areas, $account->uid))
+    uibx_log("Content manager - updated for user $account->uid for $username <$u->email>");
+  else
+    uibx_log("Content manager - no change for user $account->uid for $username <$u->email>");
+
   return $account;
 }

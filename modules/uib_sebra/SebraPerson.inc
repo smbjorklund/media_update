@@ -64,9 +64,39 @@ class SebraPerson extends stdClass {
       }
     }
 
-    if (0) {
-      $roles = uib_sebra__sws_get('omraaderoller?id=' . $id);
-      //...
+    $area_roles = uib_sebra__sws_get('omraaderoller?id=' . $id);
+    $this->content_manager_areas = array();
+    $user_roles = user_roles();
+    $this->roles = array();
+    $this->roles[DRUPAL_AUTHENTICATED_RID] = $user_roles[DRUPAL_AUTHENTICATED_RID];
+    $user_roles = array_flip($user_roles);
+    if (!empty($area_roles->administrator)) {
+      foreach ($area_roles->administrator->role as $role) {
+        $role_group = (string)$role['group'];
+
+        // map "Redaktør" to "Level 2" user (implies also level 3),
+        // map "Innholdsprodusent" to a "Level 3" user
+        if ($role_group == 'Redaktør') {
+          $role_name = 'level 2';
+          $this->roles[$user_roles[$role_name]] = $role_name;
+          $role_name = 'level 3';
+          $this->roles[$user_roles[$role_name]] = $role_name;
+        }
+        elseif ($role_group == 'Innholdsprodusent') {
+          $role_name = 'level 3';
+          $this->roles[$user_roles[$role_name]] = $role_name;
+        }
+        else {
+          continue;
+        }
+
+        foreach ($role->omraade_kode as $area_code) {
+          array_push($this->content_manager_areas, (string)$area_code);
+        }
+      }
+
+      // make sure the array is unique
+      $this->content_manager_areas = array_unique($this->content_manager_areas);
     }
   }
 }
