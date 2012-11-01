@@ -129,7 +129,9 @@ function uib_webdesk_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array();
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
@@ -139,11 +141,23 @@ function uib_webdesk_default_page_manager_pages() {
     $pane = new stdClass();
     $pane->pid = 'new-3';
     $pane->panel = 'middle';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'uib_webdesk-panel_pane_1';
+    $pane->type = 'menu_tree';
+    $pane->subtype = 'menu-webdesk';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'menu_name' => 'menu-webdesk',
+      'parent_mlid' => 'menu-webdesk:0',
+      'title_link' => 0,
+      'admin_title' => '',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => 0,
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -156,6 +170,24 @@ function uib_webdesk_default_page_manager_pages() {
     $display->panels['middle'][0] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'uib_webdesk-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-4'] = $pane;
+    $display->panels['middle'][1] = 'new-4';
+    $pane = new stdClass();
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'my_content-panel_pane_1';
@@ -170,8 +202,8 @@ function uib_webdesk_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][0] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][0] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -269,7 +301,7 @@ function uib_webdesk_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'top';
     $pane->type = 'views_panes';
     $pane->subtype = 'uib_webdesk-panel_pane_2';
@@ -284,8 +316,8 @@ function uib_webdesk_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][0] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][0] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
