@@ -23,7 +23,7 @@ function uib_employee_pages_enable() {
     array('nb', 'Ansattsider'),
     array('en', 'Employee pages')
   );
-  $sebra_place = '519';
+  $sebra_id = '519';
 
   // if already exists do nothing
   $query = db_select('menu_links')
@@ -49,7 +49,7 @@ function uib_employee_pages_enable() {
     $node->uid = 1;
     $node->language = $lang;
     $node->title = $link_title;
-    $node->field_uib_sebra_id = $sebra_place;
+    $node->field_uib_sebra_id['und'][0]['value'] = $sebra_id;
     $node->field_uib_text['und'][0]['format'] = 'simple_editor';
     node_save($node);
 
