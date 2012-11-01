@@ -93,6 +93,7 @@ function uib_migrate__sync_w2_user($username) {
     if ($file && (empty($account->picture) || $account->picture->fid != $file->fid)) {
       $file->status = FILE_STATUS_PERMANENT; // fake it since xtopic_file doesn't really load the file object
       $edit['picture'] = $file;
+      file_usage_add($file, 'user', 'user', $account->uid);
     }
   }
 
