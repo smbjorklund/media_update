@@ -42,6 +42,9 @@ function uib_setup_wysiwyg_default_profiles() {
         'paste' => array(
           'pasteword' => 1,
         ),
+        'table' => array(
+          'tablecontrols' => 1,
+        ),
         'drupal' => array(
           'media' => 1,
         ),
