@@ -30,7 +30,6 @@ dependencies[] = shortcut
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = uib_setup
-dependencies[] = uib_user_edit
 dependencies[] = views
 dependencies[] = views_content
 features[context][] = webdesk

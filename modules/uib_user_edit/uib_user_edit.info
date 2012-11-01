@@ -1,4 +1,0 @@
-name = "UIB user profile edit link"
-description = "Link users to w2 profile page. This module is only intended to used until user profiles are moved into Drupal."
-package = "UiB"
-core = 7.x
