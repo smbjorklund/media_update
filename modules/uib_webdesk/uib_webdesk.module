@@ -5,3 +5,15 @@
  */
 
 include_once 'uib_webdesk.features.inc';
+
+/**
+* Implements hook_admin_menu_output_alter
+*/
+function uib_webdesk_admin_menu_output_alter(&$content) {
+  global $user;
+  if ( (in_array('level 2', array_values($user->roles))) || (in_array('level 3', array_values($user->roles))) ) {
+    // Do not let users at level 2 and level 3 see these admin menu items
+    $content['menu']['admin/help']['#access'] = FALSE;
+    $content['menu']['admin/index']['#access'] = FALSE;
+  }
+}
