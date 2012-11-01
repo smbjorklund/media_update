@@ -41,6 +41,6 @@ function uib_install() {
     'uib_feature_area',
     'uib_feature_article',
     'uib_feature_testimonial',
-    'uib_feature_user'
+    'uib_user'
     ));
 }

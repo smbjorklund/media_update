@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_user.features.field.inc
+ * uib_user.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function uib_feature_user_field_default_fields() {
+function uib_user_field_default_fields() {
   $fields = array();
 
   // Exported field: 'user-user-field_grid'.
