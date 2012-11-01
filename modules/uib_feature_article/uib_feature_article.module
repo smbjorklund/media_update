@@ -5,3 +5,31 @@
  */
 
 include_once 'uib_feature_article.features.inc';
+
+/**
+ * Implements hook_form_alter
+ */
+
+function uib_feature_article_form_alter(&$form, &$form_state, $form_id) {
+    if ($form_id == "uib_article_node_form"){
+        // Hiding $form['language']
+        hide($form['language']);
+    }
+}
+
+/**
+ * Implements hook_node_submit
+ *
+ * todo: Dont set language if field_uib_area has not changed
+ */
+
+function uib_feature_article_node_submit($node, $form, &$form_state) {
+    if ($form["#form_id"] == "uib_article_node_form") {
+        $areanid = $node->field_uib_area['und'][0]['target_id'];
+        if (isset($areanid)){
+          $area = node_load($areanid);
+          if(isset($area->language))
+            $node->language = $area->language;
+        }
+    }
+}
