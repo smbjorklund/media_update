@@ -19,7 +19,7 @@ function xtopic_cleanup($text) {
  *    same Drupal object.  If not a new file object is created and stored
  *    in the Drupal database and then returned.
  */
-function xtopic_file($id) {
+function xtopic_file($id, $uid) {
   // Check if we already have a 'file' migrated from the same id, if so return it
   $query = new EntityFieldQuery;
   $result = $query
@@ -70,7 +70,7 @@ function xtopic_file($id) {
   $file->field_uib_w2_id['und'][]['value'] = $id;
   $file->filename = $xtopic->title;
   $file->uri = $filename;
-  $file->uid = 1;
+  $file->uid = $uid;
   $file->status = FILE_STATUS_PERMANENT;
   file_save($file);
   if (!$file->fid) {
@@ -142,7 +142,7 @@ abstract class XTopicToArticleMigration extends Migration {
 
   public function prepare($node, $row) {
     if (isset($row->main_media)) {
-      $file = xtopic_file($row->main_media);
+      $file = xtopic_file($row->main_media, $node->uid);
       $node->field_uib_main_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,
@@ -151,7 +151,7 @@ abstract class XTopicToArticleMigration extends Migration {
 
     if (!empty($row->media)) {
       foreach ($row->media as $file_id) {
-        $file = xtopic_file($file_id);
+        $file = xtopic_file($file_id, $node->uid);
         $node->field_uib_media['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
@@ -161,7 +161,7 @@ abstract class XTopicToArticleMigration extends Migration {
 
     if (!empty($row->attachments)) {
       foreach ($row->attachments as $file_id) {
-        $file = xtopic_file($file_id);
+        $file = xtopic_file($file_id, $node->uid);
         $node->field_uib_files['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
@@ -320,7 +320,7 @@ class TestimonialMigration extends Migration {
 
     if (!empty($row->media)) {
       foreach ($row->media as $file_id) {
-        $file = xtopic_file($file_id);
+        $file = xtopic_file($file_id, $node->uid);
         $node->field_uib_media['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
@@ -395,7 +395,7 @@ class AreaMigration extends Migration {
     }
 
     if (isset($row->media)) {
-      $file = xtopic_file($row->media[0]);
+      $file = xtopic_file($row->media[0], $node->uid);
       $term->field_uib_primary_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,
@@ -404,7 +404,7 @@ class AreaMigration extends Migration {
 
     if (isset($row->profileimages)) {
       foreach ($row->profileimages as $file_id) {
-        $file = xtopic_file($file_id);
+        $file = xtopic_file($file_id, $node->uid);
         $term->field_uib_media['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
