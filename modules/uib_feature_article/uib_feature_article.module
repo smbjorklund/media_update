@@ -14,6 +14,15 @@ function uib_feature_article_form_alter(&$form, &$form_state, $form_id) {
     if ($form_id == "uib_article_node_form"){
         // Hiding $form['language']
         hide($form['language']);
+
+        $states_event = array(
+            'visible' => array(
+            ':input[name="field_uib_article_type[und]"]' => array('value' => 'event'),
+            ),
+        );
+        //Fields to be hidden if event is not chosen
+        $form['field_uib_event_type']['#states'] = $states_event;
+        $form['field_uib_date']['#states'] = $states_event;
     }
 }
 
