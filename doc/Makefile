@@ -11,7 +11,8 @@ HTML = \
        release1.html \
        area.html \
        mockups/index.html \
-       terms.html
+       terms.html \
+       server-setup.html
 
 PYTHON = python
 PERL = perl
