@@ -438,13 +438,12 @@ function uib_feature_testimonial_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_media',
-      'label' => 'Inline images',
+      'label' => 'Photo',
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'entity_translation_sync' => FALSE,
         'file_directory' => '',
-        'file_extensions' => 'txt',
+        'file_extensions' => 'png jpg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -456,6 +455,7 @@ function uib_feature_testimonial_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
+            0 => 0,
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
@@ -464,6 +464,7 @@ function uib_feature_testimonial_field_default_fields() {
           'browser_plugins' => array(
             'library' => 0,
             'media_default--media_browser_1' => 0,
+            'media_default--media_browser_my_files' => 0,
             'upload' => 0,
           ),
           'progress_indicator' => 'throbber',
@@ -1048,11 +1049,11 @@ function uib_feature_testimonial_field_default_fields() {
   t('Exchange place');
   t('Exchange text');
   t('ID w2');
-  t('Inline images');
   t('Lead');
   t('Name');
   t('Organization');
   t('Path w2');
+  t('Photo');
   t('Position');
   t('Quote');
   t('Related studyprogrammes');
