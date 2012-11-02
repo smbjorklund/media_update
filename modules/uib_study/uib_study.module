@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Study feature.
+ */
+
+include_once 'uib_study.features.inc';
