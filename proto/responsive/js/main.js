@@ -6,3 +6,11 @@ jQuery(document).ready(function($){
     });
 
 });
+jQuery(document).ready(function($){
+  $(".menu-button").toggle(function(e){
+      $(".sf-menu-2").animate({top:'100px'});
+    }, function(e){
+      $(".sf-menu-2").animate({top:'-800'});
+    });
+
+});
