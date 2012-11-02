@@ -193,7 +193,7 @@ class NavPageMigration extends InfoPageMigration {
     $node = new stdClass;
     $node->type = $this->destination->getBundle();
     $node->uid = 1;
-    $node->title = t('Navigation stub for') . $source_id[0];
+    $node->title = t('Navigation stub for @id', array('@id' => $source_id[0]));
     $node->field_uib_w2_id['und'][0]['value'] = $source_id[0];
     node_save($node);
     return array($node->nid);
@@ -368,7 +368,7 @@ class AreaMigration extends Migration {
   protected function createStub($migration, $source_id) {
     $node = new stdClass;
     $node->type = 'area';
-    $node->title = t('Area stub for ') . $source_id[0];
+    $node->title = t('Area stub for @id', array('@id' => $source_id[0]));
     $node->field_uib_w2_id['und'][0]['value'] = $source_id[0];
     node_save($node);
     return array($node->nid);
@@ -481,7 +481,7 @@ class UserMigration extends Migration {
 
   protected function createStub($migration, $source_id) {
     $user = new stdClass;
-    $user->name = t('User stub for') . $source_id[0];
+    $user->name = t('User stub for @id', array('@id' => $source_id[0]));
     $user->mail = 'nobody@uib.no';
     $user->status = 0;
     $user->field_uib_w2_id['und'][0]['value'] = $source_id[0];
