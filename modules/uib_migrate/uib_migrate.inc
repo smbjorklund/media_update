@@ -639,7 +639,6 @@ if ($_edb === FALSE) {
     if (!$file->fid) {
       die("Could not save file");
     }
-    file_usage_add($file, 'user', 'user', $item->uid);
 
     return $file;
   }
