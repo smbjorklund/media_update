@@ -4,4 +4,4 @@
  * Code for the UiB Feature Testimonial feature.
  */
 
-include_once 'uib_feature_testimonial.features.inc';
+include_once 'uib_testimonial.features.inc';

@@ -40,7 +40,7 @@ function uib_install() {
     'uib_setup',
     'uib_area',
     'uib_feature_article',
-    'uib_feature_testimonial',
+    'uib_testimonial',
     'uib_user'
     ));
 }

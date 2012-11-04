@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_testimonial.features.inc
+ * uib_testimonial.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function uib_feature_testimonial_ctools_plugin_api() {
+function uib_testimonial_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
@@ -17,7 +17,7 @@ function uib_feature_testimonial_ctools_plugin_api() {
 /**
  * Implements hook_node_info().
  */
-function uib_feature_testimonial_node_info() {
+function uib_testimonial_node_info() {
   $items = array(
     'uib_testimonial' => array(
       'name' => t('Testimonial'),

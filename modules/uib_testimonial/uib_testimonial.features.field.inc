@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_testimonial.features.field.inc
+ * uib_testimonial.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function uib_feature_testimonial_field_default_fields() {
+function uib_testimonial_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-uib_testimonial-field_uib_area'.
