@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_area.strongarm.inc
+ * uib_area.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function uib_feature_area_strongarm() {
+function uib_area_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

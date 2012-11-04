@@ -29,8 +29,8 @@ function uib_setup_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'uib_feature_area-colophon' => array(
-          'module' => 'uib_feature_area',
+        'uib_area-colophon' => array(
+          'module' => 'uib_ure_area',
           'delta' => 'colophon',
           'region' => 'footer',
           'weight' => '-10',

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_area.features.field.inc
+ * uib_area.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function uib_feature_area_field_default_fields() {
+function uib_area_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-area-field_uib_area_parents'.
@@ -432,9 +432,9 @@ function uib_feature_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'uib_feature_area',
+          'module' => 'uib_area',
           'settings' => array(),
-          'type' => 'uib_feature_area_link_feed',
+          'type' => 'uib_area_link_feed',
           'weight' => '8',
         ),
         'teaser' => array(

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_area.context.inc
+ * uib_area.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function uib_feature_area_context_default_contexts() {
+function uib_area_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_area.features.inc
+ * uib_area.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function uib_feature_area_ctools_plugin_api() {
+function uib_area_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
@@ -29,14 +29,14 @@ function uib_feature_area_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function uib_feature_area_views_api() {
+function uib_area_views_api() {
   return array("version" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function uib_feature_area_node_info() {
+function uib_area_node_info() {
   $items = array(
     'area' => array(
       'name' => t('Area'),

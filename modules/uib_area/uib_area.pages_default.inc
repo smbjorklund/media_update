@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_area.pages_default.inc
+ * uib_area.pages_default.inc
  */
 
 /**
  * Implements hook_default_page_manager_handlers().
  */
-function uib_feature_area_default_page_manager_handlers() {
+function uib_area_default_page_manager_handlers() {
   $export = array();
 
   $handler = new stdClass();
@@ -206,7 +206,7 @@ function uib_feature_area_default_page_manager_handlers() {
     $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'block';
-    $pane->subtype = 'uib_feature_area-jobbnorge';
+    $pane->subtype = 'uib_area-jobbnorge';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

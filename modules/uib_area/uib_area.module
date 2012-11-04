@@ -4,13 +4,13 @@
  * Code for the UiB Feature Area feature.
  */
 
-include_once 'uib_feature_area.features.inc';
+include_once 'uib_area.features.inc';
 
 /**
  * Implements hook_menu_block_blocks
  */
 
-function uib_feature_area_menu_block_blocks() {
+function uib_area_menu_block_blocks() {
   return array(
     'top-area-menu' => array(
       'menu_name'   => 'area',
@@ -36,7 +36,7 @@ function uib_feature_area_menu_block_blocks() {
  * Implements hook_block_info().
  */
 
-function uib_feature_area_block_info() {
+function uib_area_block_info() {
   return array(
     'colophon' => array(
       'info' => t('Colophone'),
@@ -54,7 +54,7 @@ function uib_feature_area_block_info() {
  * Implements hook_block_view().
  */
 
-function uib_feature_area_block_view($delta='') {
+function uib_area_block_view($delta='') {
   $block = array();
   switch ($delta) {
   case 'colophon':
@@ -148,7 +148,7 @@ function uib_feature_area_block_view($delta='') {
       if ($area->language == 'en')
         $feed .= '&langid=2';
       $block['subject'] = t('Open Positions');
-      $block['content'] = uib_feature_area__feed_format($feed, $title='', $limit = 999);
+      $block['content'] = uib_area__feed_format($feed, $title='', $limit = 999);
       }
     break;
   }
@@ -156,7 +156,7 @@ function uib_feature_area_block_view($delta='') {
   return $block;
 }
 
-function uib_feature_area__feed_format($url, $title, $limit) {
+function uib_area__feed_format($url, $title, $limit) {
   $items = array();
   $content = @file_get_contents($url);
     if (!$content) {
@@ -184,9 +184,9 @@ function uib_feature_area__feed_format($url, $title, $limit) {
 /**
  * Implements hook_field_formatter_info().
  */
-function uib_feature_area_field_formatter_info() {
+function uib_area_field_formatter_info() {
   return array(
-    'uib_feature_area_link_feed' => array(
+    'uib_area_link_feed' => array(
       'label' => t('View as an rss feed'),
       'field types' => array('link_field'),
       'multiple values' => FIELD_BEHAVIOR_DEFAULT,
@@ -197,7 +197,7 @@ function uib_feature_area_field_formatter_info() {
 /**
  * Implements hook_field_formatter_view()
  */
-function uib_feature_area_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+function uib_area_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
    foreach ($items as $delta => $item) {
     $url = url($item['url'], $item);
@@ -205,7 +205,7 @@ function uib_feature_area_field_formatter_view($entity_type, $entity, $field, $i
         $limit = explode('#', $url);
       }
       $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
-    $elements[$delta] = uib_feature_area__feed_format($url, $item['title'], $limit);
+    $elements[$delta] = uib_area__feed_format($url, $item['title'], $limit);
 
   }
 
@@ -215,9 +215,9 @@ function uib_feature_area_field_formatter_view($entity_type, $entity, $field, $i
 /**
  * Implements hook_theme().
  */
-function uib_feature_area_theme() {
+function uib_area_theme() {
   return array(
-    'uib_feature_area_formatter_uib_feature_area_link_feed' => array(
+    'uib_area_formatter_uib_area_link_feed' => array(
       'variables' => array('element' => NULL),
     ),
   );

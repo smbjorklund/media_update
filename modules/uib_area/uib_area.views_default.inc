@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_area.views_default.inc
+ * uib_area.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function uib_feature_area_views_default_views() {
+function uib_area_views_default_views() {
   $export = array();
 
   $view = new view();

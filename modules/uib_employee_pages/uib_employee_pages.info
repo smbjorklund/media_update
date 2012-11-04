@@ -3,4 +3,4 @@ description = "Prepare for migration of employee pages"
 package = "UiB"
 core = 7.x
 dependencies[] = uibx
-dependencies[] = uib_feature_area
+dependencies[] = uib_area
