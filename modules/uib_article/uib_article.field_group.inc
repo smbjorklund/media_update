@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_article.field_group.inc
+ * uib_article.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function uib_feature_article_field_group_info() {
+function uib_article_field_group_info() {
   $export = array();
 
   $field_group = new stdClass();

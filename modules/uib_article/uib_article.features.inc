@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_article.features.inc
+ * uib_article.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function uib_feature_article_ctools_plugin_api() {
+function uib_article_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
@@ -21,14 +21,14 @@ function uib_feature_article_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function uib_feature_article_views_api() {
+function uib_article_views_api() {
   return array("version" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function uib_feature_article_node_info() {
+function uib_article_node_info() {
   $items = array(
     'uib_article' => array(
       'name' => t('Article'),

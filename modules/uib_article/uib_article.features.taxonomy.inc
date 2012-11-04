@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_article.features.taxonomy.inc
+ * uib_article.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function uib_feature_article_taxonomy_default_vocabularies() {
+function uib_article_taxonomy_default_vocabularies() {
   return array(
     'research_topic_no' => array(
       'name' => 'Research Topic',

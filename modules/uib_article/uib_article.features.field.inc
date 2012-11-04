@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * uib_feature_article.features.field.inc
+ * uib_article.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function uib_feature_article_field_default_fields() {
+function uib_article_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-uib_article-field_uib_area'.

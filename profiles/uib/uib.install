@@ -39,7 +39,7 @@ function uib_install() {
   features_install_modules(array(
     'uib_setup',
     'uib_area',
-    'uib_feature_article',
+    'uib_article',
     'uib_testimonial',
     'uib_user'
     ));
