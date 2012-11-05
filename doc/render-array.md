@@ -7,8 +7,8 @@ is able to [override](http://api.drupal.org/api/drupal/includes%21theme.inc/func
 
 The items of a render array with keys that start with '#' are called **properties**.
 Examples of properties are '#markup', '#prefix', '#theme' etc.  The properties
-determine how the array is processed during rendering.  Any other keys will
-reference the **children** of the render array.  The children should themselves be
+determine how the array is processed during rendering.  Any other keys correspond
+to the **children** of the render array.  The children should themselves be
 render arrays, thus forming a recursive structure.
 
 A render array without either the '#markup' or '#theme' property will
