@@ -42,9 +42,6 @@ function uib_testimonial_field_default_fields() {
             ),
           ),
           'sort' => array(
-            'direction' => 'ASC',
-            'field' => 'field_uib_area_parents:target_id',
-            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -455,8 +452,8 @@ function uib_testimonial_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
+            0 => 0,
             'default' => 0,
             'image' => 'image',
             'video' => 0,

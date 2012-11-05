@@ -121,3 +121,30 @@
 .uib_kicker_date {
   float: right;
 }
+
+#uib-article-node-form .group-information, .group-uib-links, .group-specific-field {
+  background: #e5e5e5;
+  border: solid 1px #999999;
+  padding: 20px;
+}
+
+#uib-article-node-form .group-details {
+  background: #fff;
+  border: solid 1px #999999;
+  padding: 10px;
+}
+
+#uib-article-node-form h3 {
+  color: #666666;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+#uib-article-node-form .fieldset-title  {
+  font-size: 15px;
+  color: #2162a0;
+}
+
+#uib-article-node-form  {
+  color: #666666;
+}

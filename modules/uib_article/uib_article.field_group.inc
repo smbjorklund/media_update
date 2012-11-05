@@ -13,23 +13,222 @@ function uib_article_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_uib_dato|node|uib_article|form';
-  $field_group->group_name = 'group_uib_dato';
+  $field_group->identifier = 'group_advanced|node|uib_article|form';
+  $field_group->group_name = 'group_advanced';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_article';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Dates',
+    'label' => 'Advanced',
+    'weight' => '30',
+    'children' => array(
+      0 => 'field_uib_menu_title_w2',
+      1 => 'field_uib_nav_weight',
+      2 => 'field_uib_w2_id',
+      3 => 'field_uib_w2_nav_parent_id',
+      4 => 'field_uib_w2_path',
+      5 => 'group_uib_dato',
+      6 => 'group_uib_geo',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Advanced',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_advanced|node|uib_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_details|node|uib_article|form';
+  $field_group->group_name = 'group_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'uib_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_specific_field';
+  $field_group->data = array(
+    'label' => 'Detaljer',
+    'weight' => '30',
+    'children' => array(
+      0 => 'field_uib_byline',
+      1 => 'field_uib_kicker',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => 'open',
+      'instance_settings' => array(
+        'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_details|node|uib_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_factbox|node|uib_article|form';
+  $field_group->group_name = 'group_factbox';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'uib_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Factbox',
     'weight' => '10',
+    'children' => array(
+      0 => 'field_uib_fact_box',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Factbox',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_factbox|node|uib_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_information|node|uib_article|form';
+  $field_group->group_name = 'group_information';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'uib_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Information',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_uib_area',
+      1 => 'field_uib_lead',
+      2 => 'field_uib_text',
+      3 => 'title',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => 'open',
+      'instance_settings' => array(
+        'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_information|node|uib_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_media|node|uib_article|form';
+  $field_group->group_name = 'group_media';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'uib_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Media',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_uib_main_media',
+      1 => 'field_uib_media',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => 'open',
+      'instance_settings' => array(
+        'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_media|node|uib_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_specific_field|node|uib_article|form';
+  $field_group->group_name = 'group_specific_field';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'uib_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Spesifikke felt for innholdstype',
+    'weight' => '11',
+    'children' => array(
+      0 => 'group_details',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => 'open',
+      'instance_settings' => array(
+        'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_specific_field|node|uib_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_uib_dato|node|uib_article|form';
+  $field_group->group_name = 'group_uib_dato';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'uib_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_advanced';
+  $field_group->data = array(
+    'label' => 'Dates',
+    'weight' => '12',
     'children' => array(
       0 => 'field_uib_date',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
         'required_fields' => 1,
       ),
@@ -45,19 +244,23 @@ function uib_article_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_article';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_advanced';
   $field_group->data = array(
     'label' => 'GEO and addresses',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_uib_contacts',
       1 => 'field_uib_location',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
         'required_fields' => 1,
       ),
@@ -76,15 +279,20 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Links',
-    'weight' => '11',
+    'weight' => '9',
     'children' => array(
-      0 => 'field_uib_links',
+      0 => 'field_uib_files',
+      1 => 'field_uib_links',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
         'required_fields' => 1,
       ),
@@ -103,17 +311,17 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Media and attachments',
-    'weight' => '13',
-    'children' => array(
-      0 => 'field_uib_files',
-      1 => 'field_uib_main_media',
-      2 => 'field_uib_media',
-    ),
-    'format_type' => 'tab',
+    'weight' => '14',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
         'required_fields' => 1,
       ),
@@ -132,19 +340,17 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'W2 and meta data',
-    'weight' => '14',
-    'children' => array(
-      0 => 'field_uib_menu_title_w2',
-      1 => 'field_uib_nav_weight',
-      2 => 'field_uib_w2_id',
-      3 => 'field_uib_w2_nav_parent_id',
-      4 => 'field_uib_w2_path',
-    ),
-    'format_type' => 'tab',
+    'weight' => '15',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
         'required_fields' => 1,
       ),

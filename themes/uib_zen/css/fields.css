@@ -13,12 +13,12 @@
 /*
  * Field wrappers when the Fences module is enabled.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\0000321}}
+/* line 21, ../sass/fields.scss */
 .field-label {
   /* The optional label for a field. */
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\0000324}}
+/* line 24, ../sass/fields.scss */
 .field-FIELDNAME {
   /* Underscores in field name are replaced with dashes. */
 }
@@ -27,7 +27,7 @@
  * If you don't use the Fences module, that's fine. Really. I think. Just use
  * these selectors instead:
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\0000333}}
+/* line 33, ../sass/fields.scss */
 .field {
   /* Wrapper for any field. */
 }
@@ -35,7 +35,7 @@
 /*
  * Field types (Core)
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\0000343}}
+/* line 43, ../sass/fields.scss */
 .field-name-field-uib-lead {
   font-weight: bold;
   /* font-size:.8125; */
@@ -44,7 +44,7 @@
 /*
  * Field types (Contrib)
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\0000388}}
+/* line 88, ../sass/fields.scss */
 .field-type-datetime {
   /* Always use "datetime" when creating new CCK date fields. "date" and "datestamp" are legacy types. */
 }
@@ -52,26 +52,58 @@
 /*
  * Named fields
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\00003110}}
+/* line 110, ../sass/fields.scss */
 .field-name-field-FIELDNAME {
   /* Underscores in field name are replaced with dashes. */
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\00003113}}
+/* line 113, ../sass/fields.scss */
 .field-name-field-uib-kicker {
   /* Format for uib news kicker */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\00003114}}
+/* line 114, ../sass/fields.scss */
 .field-name-field-uib-kicker .field-items {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\00003118}}
+/* line 118, ../sass/fields.scss */
 .uib_kicker_text {
   float: left;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ter062\/www\/w3\.uib\.no\/themes\/uib_zen\/sass\/fields\.scss}line{font-family:\00003121}}
+/* line 121, ../sass/fields.scss */
 .uib_kicker_date {
   float: right;
+}
+
+/* line 125, ../sass/fields.scss */
+#uib-article-node-form .group-information, .group-uib-links, .group-specific-field {
+  background: #e5e5e5;
+  border: solid 1px #999999;
+  padding: 20px;
+}
+
+/* line 131, ../sass/fields.scss */
+#uib-article-node-form .group-details {
+  background: #fff;
+  border: solid 1px #999999;
+  padding: 10px;
+}
+
+/* line 137, ../sass/fields.scss */
+#uib-article-node-form h3 {
+  color: #666666;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+/* line 143, ../sass/fields.scss */
+#uib-article-node-form .fieldset-title {
+  font-size: 15px;
+  color: #2162a0;
+}
+
+/* line 148, ../sass/fields.scss */
+#uib-article-node-form {
+  color: #666666;
 }

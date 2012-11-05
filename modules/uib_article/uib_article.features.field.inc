@@ -42,9 +42,6 @@ function uib_article_field_default_fields() {
             ),
           ),
           'sort' => array(
-            'direction' => 'ASC',
-            'field' => 'field_uib_area_parents:target_id',
-            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -61,7 +58,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Dette er et eksempel på hjelpetekst på grå bakgrunn. ',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -95,7 +92,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '4',
+        'weight' => '3',
       ),
     ),
   );
@@ -118,6 +115,7 @@ function uib_article_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
+          'default' => 'default',
           'news' => 'news',
           'infopage' => 'info page',
           'event' => 'event',
@@ -131,11 +129,11 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => array(
         0 => array(
-          'value' => 'news',
+          'value' => 'default',
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Dette er et eksempel på hjelpetekst på hvit bakgrunn. ',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -253,7 +251,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '5',
+        'weight' => '9',
       ),
     ),
   );
@@ -577,7 +575,7 @@ function uib_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '9',
+        'weight' => '12',
       ),
     ),
   );
@@ -668,7 +666,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '17',
+        'weight' => '20',
       ),
     ),
   );
@@ -739,7 +737,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '10',
       ),
     ),
   );
@@ -810,7 +808,7 @@ function uib_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '5',
       ),
     ),
   );
@@ -895,7 +893,7 @@ function uib_article_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '8',
+        'weight' => '21',
       ),
     ),
   );
@@ -1226,7 +1224,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '24',
+        'weight' => '17',
       ),
     ),
   );
@@ -1291,7 +1289,7 @@ function uib_article_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '25',
+        'weight' => '18',
       ),
     ),
   );
@@ -1361,7 +1359,7 @@ function uib_article_field_default_fields() {
           'rows' => '10',
         ),
         'type' => 'text_textarea',
-        'weight' => '8',
+        'weight' => '6',
       ),
     ),
   );
@@ -1432,7 +1430,7 @@ function uib_article_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '21',
+        'weight' => '14',
       ),
     ),
   );
@@ -1503,7 +1501,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '23',
+        'weight' => '16',
       ),
     ),
   );
@@ -1574,7 +1572,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '22',
+        'weight' => '15',
       ),
     ),
   );
@@ -1586,6 +1584,8 @@ function uib_article_field_default_fields() {
   t('Byline');
   t('Contacts');
   t('Date');
+  t('Dette er et eksempel på hjelpetekst på grå bakgrunn. ');
+  t('Dette er et eksempel på hjelpetekst på hvit bakgrunn. ');
   t('Event type');
   t('Fact box');
   t('ID w2');

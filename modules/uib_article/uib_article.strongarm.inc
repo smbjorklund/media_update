@@ -29,7 +29,7 @@ function uib_article_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '3',
+          'weight' => '4',
         ),
         'language' => array(
           'weight' => '0',
