@@ -278,6 +278,7 @@ class XTopic extends stdClass {
       'fornavn' => t('First name'),
       'etternavn' => t('Last name'),
       'stilling' => t('Position at UiB'),
+      'stillingskode' => t('Employee code'),
     );
   }
 
@@ -423,8 +424,8 @@ class XTopicListSource extends MigrateSource {
         uibx_log("Bad apple $id, skipped", 'warning');
         continue;
       }
-      // Check if there is a limiting set of areas 
-      // and if the current record is within this set
+      // Check if there is a limiting set of areas
+      // and if the current record is within this set.
       if (!empty($this->w2AreaSubset)) {
         $path = (string)$t['path'];
         $notInSubset = TRUE;

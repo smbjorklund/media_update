@@ -68,7 +68,63 @@ function uib_user_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '11',
+        'weight' => '14',
+      ),
+    ),
+  );
+
+  // Exported field: 'user-user-field_uib_employee_code'.
+  $fields['user-user-field_uib_employee_code'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_employee_code',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 10,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_uib_employee_code',
+      'label' => 'Employee code',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '10',
       ),
     ),
   );
@@ -249,7 +305,7 @@ function uib_user_field_default_fields() {
         'module' => 'phone',
         'settings' => array(),
         'type' => 'phone_textfield',
-        'weight' => '5',
+        'weight' => '8',
       ),
     ),
   );
@@ -439,7 +495,7 @@ function uib_user_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '12',
       ),
     ),
   );
@@ -508,7 +564,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'size' => '16',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '13',
       ),
     ),
   );
@@ -572,7 +628,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '11',
       ),
     ),
   );
@@ -580,6 +636,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   // Translatables
   // Included for use with string extractors like potx.
   t('Do not display theme grid background on every page.');
+  t('Employee code');
   t('First name');
   t('ID w2');
   t('Last name');
