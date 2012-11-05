@@ -109,3 +109,15 @@
 
 .field-name-field-FIELDNAME { /* Underscores in field name are replaced with dashes. */
 }
+
+.field-name-field-uib-kicker { /* Format for uib news kicker */
+  .field-items {
+    width: 100%;
+  }
+}
+.uib_kicker_text {
+  float: left;
+}
+.uib_kicker_date {
+  float: right;
+}
