@@ -246,7 +246,7 @@ function uib_webdesk_default_page_manager_pages() {
     'logic' => 'or',
   );
   $page->menu = array(
-    'type' => 'tab',
+    'type' => 'none',
     'title' => 'My content',
     'name' => 'navigation',
     'weight' => '10',

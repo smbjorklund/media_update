@@ -249,11 +249,11 @@ function uib_webdesk_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'webdesk/scheduled';
-  $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Scheduled';
   $handler->display->display_options['menu']['description'] = 'Content scheduled to change content state';
   $handler->display->display_options['menu']['weight'] = '11';
   $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['tab_options']['weight'] = '0';
   $translatables['scheduled_content'] = array(
     t('Master'),
     t('Scheduled content'),
