@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * @file
  * Page Styling
@@ -9,12 +10,12 @@
 /*
  * Body
  */
-/* line 17, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000317}}
 body.grid {
   background: url(../images/grid-2.png);
 }
 
-/* line 21, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000321}}
 body {
   margin: 0;
   padding: 0;
@@ -24,11 +25,11 @@ body {
  * The skip-link link will be completely hidden until a user tabs to the link.
  * See the element-focusable rule in system.base.css.
  */
-/* line 34, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000334}}
 #skip-link {
   margin: 0;
 }
-/* line 38, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000338}}
 #skip-link a,
 #skip-link a:visited {
   display: block;
@@ -41,7 +42,7 @@ body {
 /*
  * Header
  */
-/* line 51, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000351}}
 #header {
   background-image: url("../images/bergenmuseum.png");
   background-repeat: no-repeat;
@@ -49,7 +50,7 @@ body {
   height: 200px;
 }
 
-/* line 58, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000358}}
 #logo {
   /* Wrapping link for logo */
   float: left;
@@ -57,19 +58,19 @@ body {
   margin: 10px 0 0 0;
   padding: 0;
 }
-/* line 63, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000363}}
 #logo img {
   vertical-align: bottom;
   height: 70px;
 }
 
-/* line 69, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000369}}
 #name-and-slogan {
   /* Wrapper for website name and slogan */
   float: left;
 }
 
-/* line 73, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000373}}
 #site-name {
   /* The name of the website */
   margin: 20px, 0 0 0;
@@ -80,27 +81,27 @@ body {
   padding: 20px;
   margin-left: 20px;
 }
-/* line 84, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000384}}
 #site-name a:link,
 #site-name a:visited {
   text-decoration: none;
   font-weight: normal;
   color: #333333;
 }
-/* line 91, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000391}}
 #site-name a:hover,
 #site-name a:focus {
   text-decoration: underline;
 }
 
-/* line 96, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\0000396}}
 #site-slogan {
   /* The slogan (or tagline) of a website */
   margin: 0;
   font-size: 1em;
 }
 
-/* line 102, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003102}}
 .region-header {
   /* Wrapper for any blocks placed in the header region */
   clear: both;
@@ -110,12 +111,12 @@ body {
 /*
  * Main (container for everything else)
  */
-/* line 113, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003113}}
 #main a {
   color: #005473;
   text-decoration: none;
 }
-/* line 116, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003116}}
 #main a:hover {
   text-decoration: underline;
 }
@@ -123,22 +124,22 @@ body {
 /*
  * Content
  */
-/* line 124, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003124}}
 #content {
   margin-top: 80px;
   /* Gir plass til menyen, skal fjernes når vi finner en bedre løsning på menyen */
 }
 
-/* line 131, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003131}}
 .breadcrumb {
   /* The path to the current page in the form of a list of links */
 }
-/* line 132, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003132}}
 .breadcrumb ol {
   margin: 0;
   padding: 0;
 }
-/* line 136, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003136}}
 .breadcrumb li {
   display: inline;
   list-style-type: none;
@@ -146,14 +147,14 @@ body {
   padding: 0;
 }
 
-/* line 144, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003144}}
 h1.title {
   color: #333333;
   font-weight: normal;
   font-size: 1.5em;
 }
 
-/* line 154, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003154}}
 h2.node-title,
 h2.block-title,
 h2.title,
@@ -162,37 +163,37 @@ h3.title {
   /* Comment title */
 }
 
-/* line 158, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003158}}
 tr.even {
   /* Some tables have rows marked even or odd. */
   /* background-color: #eee; */
   /* Drupal core uses a #eee background */
 }
 
-/* line 162, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003162}}
 tr.odd {
   /* background-color: #eee; */
   /* Drupal core uses a #eee background */
 }
 
-/* line 166, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003166}}
 div.messages {
   /* Important messages (status, warning, and error) for the user. See also the declarations in messages.css. */
   margin: 1.5em 0;
   /* Drupal core uses "6px 0" margin */
 }
-/* line 169, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003169}}
 div.messages ul {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-/* line 175, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003175}}
 div.status {
   /* Normal priority messages */
 }
 
-/* line 179, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003179}}
 div.warning,
 tr.warning {
   /* Medium priority messages */
@@ -200,53 +201,53 @@ tr.warning {
   /* Drupal core uses: 1px solid #f0c020 */
 }
 
-/* line 184, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003184}}
 div.error,
 tr.error {
   /* High priority messages. See also the .error declaration below. */
 }
 
-/* line 187, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003187}}
 .error {
   /* Errors that are separate from div.messages status messages. */
   /* color: #e55; */
   /* Drupal core uses a #e55 background */
 }
 
-/* line 191, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003191}}
 .warning {
   /* Warnings that are separate from div.messages status messages. */
   /* color: #e09010; */
   /* Drupal core uses a #e09010 background */
 }
 
-/* line 195, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003195}}
 .tabs {
   /* See also the tabs.css file. */
 }
 
-/* line 198, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003198}}
 .region-help {
   /* Help text on a page */
 }
 
-/* line 201, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003201}}
 .more-help-link {
   /* Link to more help */
 }
 
-/* line 204, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003204}}
 .region-content {
   /* Wrapper for the actual page content */
 }
 
-/* line 207, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003207}}
 ul.inline {
   /* List of links generated by theme_links() */
   display: inline;
   padding: 0;
 }
-/* line 211, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003211}}
 ul.inline li {
   display: inline;
   list-style-type: none;
@@ -254,30 +255,30 @@ ul.inline li {
   /* LTR */
 }
 
-/* line 217, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003217}}
 span.field-label {
   /* The inline field label used by the Fences module */
   padding: 0 1em 0 0;
   /* LTR */
 }
 
-/* line 221, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003221}}
 .item-list .pager {
   /* A list of page numbers when more than 1 page of content is available */
   padding: 0;
 }
-/* line 224, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003224}}
 .item-list .pager li {
   /* Each page number in the pager list */
   padding: 0 0.5em;
 }
 
-/* line 229, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003229}}
 .feed-icon {
   /* The link to the RSS or Atom feed for the current list of content */
 }
 
-/* line 232, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003232}}
 .more-link {
   /* Aggregator, blog, and forum more link */
 }
@@ -300,7 +301,13 @@ span.field-label {
 /*
  * Page bottom
  */
-/* line 266, ../sass/pages.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003266}}
 .region-bottom {
   /* Wrapper for any blocks placed in the page bottom region */
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/agnete\/Sites\/w3\.uib\.no\/themes\/uib_zen\/sass\/pages\.scss}line{font-family:\00003269}}
+div.add-or-remove-shortcuts {
+  overflow: hidden;
+  padding: 5px 0;
 }
