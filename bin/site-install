@@ -66,6 +66,14 @@ chmod u+w . settings.php
 find files -type d | xargs chmod 777
 find files -type f | xargs chmod 666
 
+cat <<'EOT' >>settings.php
+
+/**
+  * Even more PHP settings.
+  */
+ini_set('memory_limit', '256M');
+EOT
+
 cat <<'EOT' >>drushrc.php
 <?php
 $options['structure-tables'] = array(
