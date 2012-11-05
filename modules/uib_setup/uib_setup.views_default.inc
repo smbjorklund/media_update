@@ -34,17 +34,25 @@ function uib_setup_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '100';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'views_bulk_operations' => 'views_bulk_operations',
     'uid' => 'uid',
     'name' => 'name',
     'field_uib_first_name' => 'field_uib_first_name',
     'field_uib_last_name' => 'field_uib_last_name',
     'mail' => 'mail',
     'rid' => 'rid',
+    'created' => 'created',
     'access' => 'access',
     'login' => 'login',
+    'edit_node' => 'edit_node',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'views_bulk_operations' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'uid' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
@@ -85,6 +93,13 @@ function uib_setup_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'created' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'access' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
@@ -95,6 +110,11 @@ function uib_setup_views_default_views() {
     'login' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -216,6 +236,11 @@ function uib_setup_views_default_views() {
   $handler->display->display_options['fields']['rid']['id'] = 'rid';
   $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
   $handler->display->display_options['fields']['rid']['field'] = 'rid';
+  /* Field: User: Created date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'users';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
   /* Field: User: Last access */
   $handler->display->display_options['fields']['access']['id'] = 'access';
   $handler->display->display_options['fields']['access']['table'] = 'users';
@@ -323,6 +348,7 @@ function uib_setup_views_default_views() {
     t('Last name'),
     t('E-mail'),
     t('Roles'),
+    t('Created date'),
     t('Last access'),
     t('Last login'),
     t('Active'),
