@@ -66,7 +66,7 @@ We prefer to write the documentation in
 [markdown](http://daringfireball.net/projects/markdown).  Run `make` in this
 directory to convert it to HTML and then start browsing at `doc/index.html`.
 
-The `doc/doc/` directory is the place to drop off related MS-Word documents and
+The `doc/doc/` directory is the place to drop off related MS-Word documents, PDFs, and
 such.
 
 ### `bin/`
@@ -89,6 +89,10 @@ Our custom profiles.  Currently there is only one; `profiles/uib/`.
 It's used when installing the site from scratch.
 It declares what modules need to be installed and some install code
 that set things up.
+
+### `proto/`
+
+Static HTML prototypes; responsive design, etc.
 
 ### `modules/`
 
