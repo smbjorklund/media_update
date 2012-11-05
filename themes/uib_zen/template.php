@@ -239,6 +239,28 @@ function uib_zen_preprocess_node(&$variables, $hook) {
          $variables ['classes_array'][] = t('unit_node');
       }
     }
+    // Handle articles
+    if ($variables['type'] == 'uib_article') {
+      if ($variables['field_uib_article_type'][0]['value'] == 'news') {
+        // Setup kicker
+        // -- First determine which date to set
+        if ($variables['node']->created < $variables['node']->revision_timestamp) {
+          $up_date = format_date($variables['node']->revision_timestamp,'medium');
+        }
+        else {
+          $up_date = format_date($variables['node']->created,'medium');
+        }
+        if (empty($variables['field_uib_kicker'][0]['value'])) {
+          $variables['content']['field_uib_kicker'][0]['text'] = array('#markup' => t('news')); // set default value for kicker in news articles
+          // -- set a class on date for styling
+          $variables['content']['field_uib_kicker'][0]['date'] = array('#markup' => " <span class=\"uib_kicker_date\">" . $up_date . "</span>");
+        }
+        else {
+          // -- set a class on date for styling
+          $variables['content']['field_uib_kicker'][0]['#markup'] .= " <span class=\"uib_kicker_date\">" . $up_date . "</span>";
+        }
+      }
+    }
   }
 
   /*
