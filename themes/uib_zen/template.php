@@ -197,7 +197,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         $variables['page_title'] = $referenced_area->title;
         $variables['page_title_link'] = l(check_plain($referenced_area->title), 'node/' . $referenced_area->nid, array('attributes' => array('title' => check_plain($referenced_area->title) . " " . t('Home'))));
         // set menu style as for referenced area
-        $variables['uib_menu_style'] = 'uib_menu_style_' . $referenced_area->field_uib_menu_style['und'][0]['value'];
+        $variables['uib_menu_style'] = 'uib-menu-style-' . $referenced_area->field_uib_menu_style['und'][0]['value'];
       }
     }
   }
