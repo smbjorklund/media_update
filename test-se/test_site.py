@@ -5,9 +5,7 @@ from os import readlink
 from os.path import basename
 from selenium.webdriver.common.keys import Keys
 
-
-class SiteTestCase(unittest.TestCase):
-
+class TestCase(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(10)
@@ -16,6 +14,8 @@ class SiteTestCase(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
+
+class SiteTestCase(TestCase):
     def test_homepage(self):
         self.driver.get(self.site_url)
         self.assertEqual(self.driver.title, "Welcome to Universitetet i Bergen | Universitetet i Bergen")
@@ -30,16 +30,7 @@ class SiteTestCase(unittest.TestCase):
         self.driver.save_screenshot('org.png')
         self.assertEqual(self.driver.title, "Organisasjonen | Universitetet i Bergen")
 
-class WebdeskTestCase(unittest.TestCase):
-
-    def setUp(self):
-        self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(10)
-        self.site_url = 'http://' + basename(readlink('../site'))
-
-    def tearDown(self):
-        self.driver.quit()
-
+class WebdeskTestCase(TestCase):
     def test_webdesk(self):
         self.driver.get(self.site_url + '/user')
         self.assertEqual(self.driver.title, "User account | Universitetet i Bergen")
