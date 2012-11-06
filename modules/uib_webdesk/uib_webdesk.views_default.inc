@@ -436,6 +436,11 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Sorry sailor. Your search/site contain no content.';
   $handler->display->display_options['empty']['area']['format'] = 'html';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['label'] = 'Author of content';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
   $handler->display->display_options['relationships']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
@@ -584,6 +589,11 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['field_uib_area']['settings'] = array(
     'link' => 0,
   );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
@@ -1016,10 +1026,12 @@ function uib_webdesk_views_default_views() {
     t('last »'),
     t('No content'),
     t('Sorry sailor. Your search/site contain no content.'),
+    t('Author of content'),
     t('Content entity referenced from field_uib_area'),
     t('Content'),
     t('Title'),
     t('Area'),
+    t('Name'),
     t('Updated date'),
     t('All'),
     t('Published'),
