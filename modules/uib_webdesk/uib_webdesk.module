@@ -17,3 +17,17 @@ function uib_webdesk_admin_menu_output_alter(&$content) {
     $content['menu']['admin/index']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_form_alter
+ */
+
+function uib_webdesk_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == "views_exposed_form"){
+    $form['field_uib_event_type_value']['#states'] = array(
+      'enabled' => array(
+        ':input[name="field_uib_article_type_value"]' => array('value' => 'event'),
+       ),
+    );
+  }
+}
