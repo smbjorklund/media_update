@@ -17,7 +17,7 @@ function uib_setup_wysiwyg_default_profiles() {
     'settings' => array(
       'default' => 1,
       'user_choose' => 0,
-      'show_toggle' => 1,
+      'show_toggle' => 0,
       'theme' => 'advanced',
       'language' => 'en',
       'buttons' => array(
@@ -39,6 +39,9 @@ function uib_setup_wysiwyg_default_profiles() {
           'copy' => 1,
           'removeformat' => 1,
           'help' => 1,
+        ),
+        'autosave' => array(
+          'autosave' => 1,
         ),
         'fullscreen' => array(
           'fullscreen' => 1,
