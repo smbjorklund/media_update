@@ -115,7 +115,6 @@ function uib_article_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'default' => 'default',
           'news' => 'news',
           'infopage' => 'info page',
           'event' => 'event',
@@ -127,11 +126,7 @@ function uib_article_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'uib_article',
-      'default_value' => array(
-        0 => array(
-          'value' => 'default',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => 'Dette er et eksempel på hjelpetekst på hvit bakgrunn. ',
       'display' => array(
