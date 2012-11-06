@@ -818,6 +818,8 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'use text format advanced_editor',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'filter',
   );
@@ -825,26 +827,8 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: use text format full_html.
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
-    'roles' => array(),
-    'module' => 'filter',
-  );
-
-  // Exported permission: use text format html.
-  $permissions['use text format html'] = array(
-    'name' => 'use text format html',
-    'roles' => array(
-      0 => 'level 3',
-    ),
-    'module' => 'filter',
-  );
-
-  // Exported permission: use text format simple_editor.
-  $permissions['use text format simple_editor'] = array(
-    'name' => 'use text format simple_editor',
     'roles' => array(
       0 => 'level 1',
-      1 => 'level 2',
-      2 => 'level 3',
     ),
     'module' => 'filter',
   );

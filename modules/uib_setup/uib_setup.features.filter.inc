@@ -76,7 +76,7 @@ function uib_setup_filter_default_formats() {
     'format' => 'html',
     'name' => 'Simple HTML',
     'cache' => '1',
-    'status' => '1',
+    'status' => '0',
     'weight' => '-9',
     'filters' => array(
       'filter_html' => array(
@@ -139,7 +139,7 @@ function uib_setup_filter_default_formats() {
     'format' => 'simple_editor',
     'name' => 'Simple editor',
     'cache' => '1',
-    'status' => '1',
+    'status' => '0',
     'weight' => '-8',
     'filters' => array(
       'filter_html' => array(
