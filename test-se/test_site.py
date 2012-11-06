@@ -45,7 +45,7 @@ class WebdeskTestCase(TestCase):
         self.driver.find_element_by_id("edit-field-uib-area-und-0-target-id").send_keys(Keys.DOWN)
         self.driver.find_element_by_id("edit-field-uib-kicker-und-0-value").send_keys("Fint")
         self.driver.find_element_by_id("edit-field-uib-lead-und-0-value").send_keys("November var en meget fin .....")
-        self.driver.find_element_by_id("edit-field-uib-text-und-0-value").send_keys("Fulltekst")
+        #self.driver.find_element_by_id("edit-field-uib-text-und-0-value").send_keys("Fulltekst")
         self.driver.find_element_by_id("edit-field-uib-links-und-0-title").send_keys("Said Berg")
         self.driver.find_element_by_id("edit-field-uib-links-und-0-url").send_keys("http://www.uib.no/personer/Said.Berg")
         self.driver.find_element_by_id("edit-field-uib-fact-box-und-0-value").send_keys("Fakta om saken")
