@@ -259,6 +259,32 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $variables['content']['field_uib_kicker'][0]['#markup'] = "";
         }
         $variables['content']['field_uib_kicker'][0]['date'] = array('#markup' => "<div class=\"uib_kicker_date\">" . $up_date . "</div>");
+
+        // Byline
+        $uib_news_byline = "";
+        $byline_nrof_authors = count($variables['field_uib_byline']);
+        if ($byline_nrof_authors > 0) {
+          $uib_news_byline = t('By') . ' ';
+          $glue = "";
+          // join authors into a single line
+          for($i = 0; $i < $byline_nrof_authors; $i++) {
+            $uib_news_byline .= $glue . $variables['content']['field_uib_byline'][$i]['#markup'];
+            if ($i == $byline_nrof_authors - 2) {
+              $glue = ' ' . t('and') . ' '; // not comma between last names
+            }
+            else {
+              $glue = ', '; // comma between names
+            }
+          }
+          hide($variables['content']['field_uib_byline']);
+          $variables['content']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
+        }
+      }
+      else {
+        // In articles of other types than 'news': Ensure that no byline is shown
+        if (!empty($variables['content']['field_uib_byline'])) {
+          hide($variables['content']['field_uib_byline']);
+        }
       }
     }
   }
