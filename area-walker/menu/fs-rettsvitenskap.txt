@@ -1,4 +1,4 @@
-   1  0 Forskerskolen i rettsvitenskap [8206698655763108720, forskerskole exp:jur exp:jur]
+   1  0 Forskerskolen i rettsvitenskap [8206698655763108720, forskerskole exp:jur]
    2  1   Forskerskolen [6092181293618624796, navigationpage]
    3  2     Reglement for forskerskolen i rettsvitenskap [3762240222458981639, article]
    4  2     Ph.d.-programmet i rettsvitenskap [754642057327985727, navigationpage]

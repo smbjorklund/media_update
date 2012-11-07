@@ -20,7 +20,7 @@
   20  3       Masterprogram i utøvende musikk eller komposisjon [1357188401362252302, navigationpage exp:utdanning]
   21  4         Studieretning klassisk utøvende, master [5010372117953617371, article]
   22  4         Studieretning komposisjon, master [8930663392821548411, article]
-  23  4         Studieretning Nordic Master in Folk Music [569886785021336978, navigationpage]
+  23  4         Nordic Master in Folk Music [569886785021336978, navigationpage]
   24  5           ### 2626399826024896164 does not exist!
   25  5           ### 8374469906569785175 does not exist!
   26  4         Opptaksreglement for Masterprogram i utøvende musikk eller komposisjon [5391938713037466182, article]
@@ -100,7 +100,6 @@
  100  2     Hvem underviser i hva på Griegakademiet? [2945563627974052728, navigationpage, DUPLICATE #90]
  101  2     Hvem gjør hva i administrasjonen? [5468480219712265482, article]
  102  2     Kontakt oss:  [2021722487280222758, article]
- 103  2     <Infoside uten navn> [7120377724550689676, article, PRIVATE]
 
-Counter({'article': 60, 'navigationpage': 23, 'institutt': 1, 'Studieprogramlister': 1, 'displaylisting': 1})
+Counter({'article': 59, 'navigationpage': 23, 'institutt': 1, 'Studieprogramlister': 1, 'displaylisting': 1})
 max depth 5
