@@ -33,11 +33,11 @@ class SiteTestCase(TestCase):
 class WebdeskTestCase(TestCase):
     def test_webdesk(self):
         self.driver.get(self.site_url + '/user')
-        self.assertEqual(self.driver.title, "User account | Universitetet i Bergen")
         self.driver.find_element_by_id("edit-name").send_keys("level2")
         self.driver.find_element_by_id("edit-pass").send_keys("admin")
         self.driver.find_element_by_id("edit-submit").submit()
         self.driver.save_screenshot('login.png')
+
         self.driver.find_element_by_link_text('Add content').click()
         self.driver.find_element_by_id("edit-field-uib-article-type-und-news").click()
         self.driver.find_element_by_id("edit-title").send_keys("En solskinnsdag i Bergen")
@@ -45,18 +45,20 @@ class WebdeskTestCase(TestCase):
         self.driver.find_element_by_id("edit-field-uib-area-und-0-target-id").send_keys(Keys.DOWN)
         self.driver.find_element_by_id("edit-field-uib-kicker-und-0-value").send_keys("Fint")
         self.driver.find_element_by_id("edit-field-uib-lead-und-0-value").send_keys("November var en meget fin .....")
-        #self.driver.find_element_by_id("edit-field-uib-text-und-0-value").send_keys("Fulltekst")
+        self.driver.execute_script("jQuery('#edit-field-uib-text-und-0-value_ifr').contents().find('p').html('Hovedtekst')")
         self.driver.find_element_by_id("edit-field-uib-links-und-0-title").send_keys("Said Berg")
         self.driver.find_element_by_id("edit-field-uib-links-und-0-url").send_keys("http://www.uib.no/personer/Said.Berg")
         self.driver.find_element_by_id("edit-field-uib-fact-box-und-0-value").send_keys("Fakta om saken")
         self.driver.find_element_by_id("edit-submit").submit()
         self.driver.save_screenshot('created_article.png')
+
         self.driver.find_element_by_link_text('Webdesk').click()
         self.driver.find_element_by_link_text('En solskinnsdag i Bergen').click()
         self.driver.find_element_by_link_text('Edit').click()
         self.driver.find_element_by_id("edit-title").clear()
         self.driver.find_element_by_id("edit-title").send_keys("Regn i Bergen")
         self.driver.find_element_by_id("edit-submit").submit()
+
         self.driver.save_screenshot('edit_article.png')
         self.driver.find_element_by_link_text('Webdesk').click()
         self.driver.find_element_by_link_text('delete').click()
