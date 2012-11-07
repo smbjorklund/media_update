@@ -18,6 +18,7 @@ dependencies[] = geofield_map
 dependencies[] = link
 dependencies[] = list
 dependencies[] = media
+dependencies[] = media_vimeo
 dependencies[] = menu_block
 dependencies[] = number
 dependencies[] = options
