@@ -73,14 +73,14 @@ function uib_user_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_uib_employee_code'.
-  $fields['user-user-field_uib_employee_code'] = array(
+  // Exported field: 'user-user-field_uib_position_code'.
+  $fields['user-user-field_uib_position_code'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_uib_employee_code',
+      'field_name' => 'field_uib_position_code',
       'foreign keys' => array(),
       'indexes' => array(),
       'locked' => '0',
@@ -109,8 +109,8 @@ function uib_user_field_default_fields() {
         ),
       ),
       'entity_type' => 'user',
-      'field_name' => 'field_uib_employee_code',
-      'label' => 'Employee code',
+      'field_name' => 'field_uib_position_code',
+      'label' => 'Position code',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -636,7 +636,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   // Translatables
   // Included for use with string extractors like potx.
   t('Do not display theme grid background on every page.');
-  t('Employee code');
+  t('Position code');
   t('First name');
   t('ID w2');
   t('Last name');

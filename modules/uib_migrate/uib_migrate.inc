@@ -467,7 +467,7 @@ class UserMigration extends Migration {
     $this->addFieldMapping('field_uib_last_name', 'etternavn');
     $this->addFieldMapping('field_uib_position', 'stilling');
     $this->addFieldMapping('field_uib_slug', 'slug');
-    $this->addFieldMapping('field_uib_employee_code', 'stillingskode');
+    $this->addFieldMapping('field_uib_position_code', 'stillingskode');
   }
 
   public function prepareRow($row) {
