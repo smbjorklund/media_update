@@ -5,8 +5,8 @@
  *
  * SebraPerson is a stdClass object with the following attributes: id,
  * first_name, last_name, email, sex, phone_office, phone_mobile,
- * visit_address_*, person_type, place_code, postion_code, position_name_no,
- * position_name_en, position_category.  Attributes might be missing.
+ * visit_address_*, person_type, place_code, position_name_no, position_name_en,
+ * position_code, position_category.  Attributes might be missing.
  */
 
 class SebraPerson extends stdClass {
@@ -48,9 +48,9 @@ class SebraPerson extends stdClass {
     if (!empty($staff)) {
       $this->person_type = 'staff';
       $this->place_code = (string)$staff->place;
-      $this->position_code = (string)$staff->code;
       $this->position_name_no = (string)$staff->title;
       $this->position_name_en = (string)$staff->title_english;
+      $this->position_code = (string)$staff->code;
       $this->position_category = (string)$staff->title_category;
     }
     else {
