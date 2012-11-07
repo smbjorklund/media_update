@@ -177,6 +177,8 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'administer menu',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'menu',
   );
