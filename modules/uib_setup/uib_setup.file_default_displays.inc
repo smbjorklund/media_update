@@ -62,5 +62,27 @@ function uib_setup_file_default_displays() {
   );
   $export['image__default__file_image'] = $file_display;
 
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'video__default__media_vimeo_image';
+  $file_display->weight = -48;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'image_style' => '',
+  );
+  $export['video__default__media_vimeo_image'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'video__default__media_vimeo_video';
+  $file_display->weight = -49;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'width' => '400',
+    'height' => '225',
+    'autoplay' => 0,
+  );
+  $export['video__default__media_vimeo_video'] = $file_display;
+
   return $export;
 }
