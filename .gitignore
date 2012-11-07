@@ -3,3 +3,4 @@
 /.vagrant
 /sitecmdline
 /doc/api/
+.DS_Store
