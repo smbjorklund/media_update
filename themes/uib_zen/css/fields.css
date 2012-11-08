@@ -84,26 +84,61 @@
 }
 
 /* line 131, ../sass/fields.scss */
+.group-information, .group-specific-field, .group-advanced {
+  width: 60%;
+  float: left;
+}
+
+/* line 136, ../sass/fields.scss */
+.group-uib-links, .group-factbox, .group-media {
+  width: 30%;
+  float: left;
+}
+
+/* line 141, ../sass/fields.scss */
+.vertical-tabs {
+  position: absolute;
+}
+
+/* line 145, ../sass/fields.scss */
 #uib-article-node-form .group-details {
   background: #fff;
   border: solid 1px #999999;
   padding: 10px;
 }
 
-/* line 137, ../sass/fields.scss */
+/* line 151, ../sass/fields.scss */
 #uib-article-node-form h3 {
   color: #666666;
   font-weight: normal;
   font-size: 16px;
 }
 
-/* line 143, ../sass/fields.scss */
+/* line 157, ../sass/fields.scss */
 #uib-article-node-form .fieldset-title {
   font-size: 15px;
   color: #2162a0;
 }
 
-/* line 148, ../sass/fields.scss */
+/* line 162, ../sass/fields.scss */
 #uib-article-node-form {
   color: #666666;
+}
+
+/* Buttons  in create content */
+/* line 167, ../sass/fields.scss */
+#uib-article-node-form .button, .field-add-more-submit {
+  padding: 5px 10px 5px 10px;
+  background: #2162a0;
+  border: solid 1px #184878;
+  border-radius: 3px;
+  webkit-border-radius: 3px;
+  color: #fff;
+}
+
+/* line 176, ../sass/fields.scss */
+#uib-article-node-form label {
+  width: 120px;
+  display: block;
+  float: left;
 }

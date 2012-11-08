@@ -128,6 +128,20 @@
   padding: 20px;
 }
 
+.group-information, .group-specific-field, .group-advanced  {
+  width: 60%;
+  float: left;
+}
+
+.group-uib-links, .group-factbox, .group-media  {
+  width: 30%;
+  float: left;
+}
+
+.vertical-tabs  {
+  position: absolute;
+}
+
 #uib-article-node-form .group-details {
   background: #fff;
   border: solid 1px #999999;
@@ -147,4 +161,20 @@
 
 #uib-article-node-form  {
   color: #666666;
+}
+
+/* Buttons  in create content */
+#uib-article-node-form .button, .field-add-more-submit  {
+  padding: 5px 10px 5px 10px;
+  background: #2162a0;
+  border: solid 1px #184878;
+  border-radius: 3px;
+  webkit-border-radius: 3px;
+  color: #fff;
+}
+
+#uib-article-node-form label  {
+  width: 120px;
+  display: block;
+  float: left;
 }

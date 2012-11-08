@@ -16,7 +16,7 @@
   }
 
   label { /* The label for a form element */
-    display: block;
+    display: inline;
     font-weight: normal;
     font-size:1.2em;
     margin-bottom:5px;
@@ -185,4 +185,12 @@ td.menu-disabled {
 #edit-title:hover, .form-autocomplete:hover, #edit-field-uib-kicker-und-0-value:hover, .text-full:hover {
   border-color: #787878; 
 	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 4px;
+}
+
+.form-field-type-long-text {
+  display: inline-block;
+}
+
+.button launcher a  {
+  padding: 10px;
 }
