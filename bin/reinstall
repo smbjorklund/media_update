@@ -1,13 +1,26 @@
 #!/bin/sh
 
+# syntax reinstall [--discard] [postgres] [databasename]
+# if --discard is given as first arg, skips backup of database+site
+
 test -L site || exit 1
 SITE=$(basename $(readlink site))
+BACKUP=true
+if [ "$1" = "--discard" ]; then
+    BACKUP=false
+    shift
+    echo "Skipping backup of database+site"
+fi
 
 set -x
 #test -d drupal/sites/$SITE && mv drupal/sites/$SITE drupal/sites/$SITE-$(date +%Y%m%dT%H%M)
 if [ -d drupal/sites/$SITE ]; then
-	bin/sql-dump
-	mv drupal/sites/$SITE drupal/sites/$SITE-$(date +%Y%m%dT%H%M)
+    if $BACKUP ; then
+        bin/sql-dump
+	      mv drupal/sites/$SITE drupal/sites/$SITE-$(date +%Y%m%dT%H%M)
+    else
+        rm -rf drupal/sites/$SITE
+    fi
 fi
 
 if [ -e sitecmdline ];then
