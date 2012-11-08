@@ -24,6 +24,13 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
         ':input[name="field_uib_article_type[und]"]' => array('value' => 'event'),
        ),
     );
+
+    // Hide all fields with "w2" in name
+    foreach ($form as $field_key => $field_value) {
+      if (mb_stripos($field_key, 'w2',0,'utf-8') !== FALSE) {
+        hide($form[$field_key]);
+      }
+    }
   }
 }
 
