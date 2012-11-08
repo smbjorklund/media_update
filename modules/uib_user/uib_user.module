@@ -29,7 +29,12 @@ function uib_user_username_alter(&$name, $account) {
 }
 
 function uib_user_user_login(&$edit, $account) {
-  $edit['redirect'] = 'webdesk';
+  if ( (in_array('level 1', $account->roles, TRUE)) || (in_array('level 2', $account->roles, TRUE)) || (in_array('level 3', $account->roles, TRUE)) ) {
+    $edit['redirect'] = 'webdesk';
+  }
+  else {
+    $edit['redirect'] = '<front>';
+  }
 }
 
 /**
