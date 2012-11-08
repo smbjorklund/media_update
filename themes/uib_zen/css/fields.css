@@ -89,43 +89,51 @@
 }
 
 /* line 134, ../sass/fields.scss */
-.group-uib-links, .group-factbox, .group-media {
-  width: 33%;
-  float: left;
+.group_sidebar {
+  width: 35%;
+  float: right;
   background: #e5e5e5;
+  border-left: solid 1px #999999;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #CECECE;
 }
 
-/* line 140, ../sass/fields.scss */
+/* line 143, ../sass/fields.scss */
+.group-uib-links {
+  padding-left: 0;
+}
+
+/* line 147, ../sass/fields.scss */
 div.vertical-tabs {
   display: none;
 }
 
-/* line 144, ../sass/fields.scss */
+/* line 151, ../sass/fields.scss */
 #uib-article-node-form .group-details {
   background: #fff;
   border: solid 1px #999999;
 }
 
-/* line 149, ../sass/fields.scss */
+/* line 156, ../sass/fields.scss */
 #uib-article-node-form h3 {
   color: #666666;
   font-weight: normal;
   font-size: 16px;
 }
 
-/* line 155, ../sass/fields.scss */
+/* line 162, ../sass/fields.scss */
 #uib-article-node-form .fieldset-title {
   font-size: 15px;
   color: #2162a0;
 }
 
-/* line 160, ../sass/fields.scss */
+/* line 167, ../sass/fields.scss */
 #uib-article-node-form {
   color: #666666;
 }
 
 /* Buttons  in create content */
-/* line 165, ../sass/fields.scss */
+/* line 172, ../sass/fields.scss */
 #uib-article-node-form .button, .field-add-more-submit {
   padding: 5px 10px 5px 10px;
   background: #2162a0;
@@ -135,14 +143,21 @@ div.vertical-tabs {
   color: #fff;
 }
 
-/* line 174, ../sass/fields.scss */
+/* line 181, ../sass/fields.scss */
 #uib-article-node-form label {
-  width: 120px;
+  width: 80px;
   display: block;
   float: left;
 }
 
-/* line 180, ../sass/fields.scss */
-#node-uib-article-form {
+/* line 187, ../sass/fields.scss */
+div.link-field-column {
+  float: none;
+  width: 48%;
+}
+
+/* Save and preview button */
+/* line 195, ../sass/fields.scss */
+.form-submit {
   float: left;
 }
