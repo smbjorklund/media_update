@@ -121,31 +121,29 @@
 .uib-kicker-date {
   float: right;
 }
-
+/* Webdesk */
 #uib-article-node-form .group-information, .group-uib-links, .group-specific-field {
-  background: #e5e5e5;
-  border: solid 1px #999999;
   padding: 20px;
 }
 
 .group-information, .group-specific-field, .group-advanced  {
-  width: 60%;
+  width: 55%;
   float: left;
 }
 
 .group-uib-links, .group-factbox, .group-media  {
-  width: 30%;
+  width: 33%;
   float: left;
+  background: #e5e5e5;
 }
 
-.vertical-tabs  {
-  position: absolute;
+div.vertical-tabs {
+  display: none;
 }
 
 #uib-article-node-form .group-details {
   background: #fff;
   border: solid 1px #999999;
-  padding: 10px;
 }
 
 #uib-article-node-form h3 {
@@ -176,5 +174,9 @@
 #uib-article-node-form label  {
   width: 120px;
   display: block;
+  float: left;
+}
+
+#node-uib-article-form  {
   float: left;
 }
