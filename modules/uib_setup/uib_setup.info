@@ -15,6 +15,7 @@ dependencies[] = ldap_authentication
 dependencies[] = ldap_servers
 dependencies[] = media
 dependencies[] = media_vimeo
+dependencies[] = media_youtube
 dependencies[] = menu
 dependencies[] = strongarm
 dependencies[] = views

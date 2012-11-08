@@ -1040,6 +1040,7 @@ function uib_article_field_default_fields() {
           'allowed_schemes' => array(
             'public' => 'public',
             'vimeo' => 'vimeo',
+            'youtube' => 'youtube',
           ),
           'allowed_types' => array(
             'audio' => 0,
