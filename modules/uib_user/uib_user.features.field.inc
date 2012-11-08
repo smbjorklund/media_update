@@ -73,62 +73,6 @@ function uib_user_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_uib_position_code'.
-  $fields['user-user-field_uib_position_code'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_uib_position_code',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'user',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => 10,
-        ),
-      ),
-      'entity_type' => 'user',
-      'field_name' => 'field_uib_position_code',
-      'label' => 'Position code',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => 0,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '10',
-      ),
-    ),
-  );
-
   // Exported field: 'user-user-field_uib_first_name'.
   $fields['user-user-field_uib_first_name'] = array(
     'field_config' => array(
@@ -370,6 +314,123 @@ function uib_user_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'user-user-field_uib_position_category'.
+  $fields['user-user-field_uib_position_category'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_position_category',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'staff' => 'staff',
+          'faculty' => 'faculty',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => array(
+        0 => array(
+          'value' => 'faculty',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 11,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_uib_position_category',
+      'label' => 'Position category',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '15',
+      ),
+    ),
+  );
+
+  // Exported field: 'user-user-field_uib_position_code'.
+  $fields['user-user-field_uib_position_code'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_position_code',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 10,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_uib_position_code',
+      'label' => 'Position code',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '10',
       ),
     ),
   );
@@ -636,13 +697,14 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   // Translatables
   // Included for use with string extractors like potx.
   t('Do not display theme grid background on every page.');
-  t('Position code');
   t('First name');
   t('ID w2');
   t('Last name');
   t('Phone');
   t('Position');
   t('Position (english)');
+  t('Position category');
+  t('Position code');
   t('Remove grid');
   t('Slug');
   t('The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
