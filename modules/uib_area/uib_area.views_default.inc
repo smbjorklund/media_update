@@ -176,7 +176,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Main image */
+  /* Field: Content: Main media */
   $handler->display->display_options['fields']['field_uib_main_media']['id'] = 'field_uib_main_media';
   $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
   $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
@@ -193,7 +193,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
-  /* Field: Content: Main image */
+  /* Field: Content: Main media */
   $handler->display->display_options['fields']['field_uib_main_media_1']['id'] = 'field_uib_main_media_1';
   $handler->display->display_options['fields']['field_uib_main_media_1']['table'] = 'field_data_field_uib_main_media';
   $handler->display->display_options['fields']['field_uib_main_media_1']['field'] = 'field_uib_main_media';
@@ -240,7 +240,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
-  /* Filter criterion: Content: Main image (field_uib_main_media:fid) */
+  /* Filter criterion: Content: Main media (field_uib_main_media:fid) */
   $handler->display->display_options['filters']['field_uib_main_media_fid']['id'] = 'field_uib_main_media_fid';
   $handler->display->display_options['filters']['field_uib_main_media_fid']['table'] = 'field_data_field_uib_main_media';
   $handler->display->display_options['filters']['field_uib_main_media_fid']['field'] = 'field_uib_main_media_fid';

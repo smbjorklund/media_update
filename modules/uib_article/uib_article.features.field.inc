@@ -1024,11 +1024,10 @@ function uib_article_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_main_media',
-      'label' => 'Main image',
+      'label' => 'Main media',
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'entity_translation_sync' => FALSE,
         'file_directory' => 'media',
         'file_extensions' => 'txt',
         'max_filesize' => '',
@@ -1040,16 +1039,19 @@ function uib_article_field_default_fields() {
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
+            'vimeo' => 'vimeo',
           ),
           'allowed_types' => array(
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
-            'video' => 0,
+            'video' => 'video',
           ),
           'browser_plugins' => array(
             'library' => 0,
             'media_default--media_browser_1' => 0,
+            'media_default--media_browser_my_files' => 0,
+            'media_internet' => 0,
             'upload' => 0,
           ),
           'progress_indicator' => 'throbber',
@@ -1589,7 +1591,7 @@ function uib_article_field_default_fields() {
   t('Lead');
   t('Links');
   t('Location');
-  t('Main image');
+  t('Main media');
   t('Menu title w2');
   t('Parent ID w2');
   t('Path w2');
