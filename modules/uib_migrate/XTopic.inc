@@ -279,6 +279,7 @@ class XTopic extends stdClass {
       'etternavn' => t('Last name'),
       'stilling' => t('Position at UiB'),
       'stillingskode' => t('Position code'),
+      'stillingskategori' => t('Position category'),
     );
   }
 
