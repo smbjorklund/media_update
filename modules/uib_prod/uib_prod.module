@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the uib_prod feature.
+ */
+
+include_once 'uib_prod.features.inc';
