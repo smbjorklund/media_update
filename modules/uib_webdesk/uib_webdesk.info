@@ -1,7 +1,7 @@
 name = UIB Webdesk
 description = UIB editorial interface
 core = 7.x
-package = Features
+package = UiB
 php = 5.2.4
 version = 7.x-1.0-beta1
 project = uib_webdesk
@@ -12,7 +12,6 @@ dependencies[] = context
 dependencies[] = contextual
 dependencies[] = ctools
 dependencies[] = devel
-dependencies[] = features
 dependencies[] = field_group
 dependencies[] = file_entity
 dependencies[] = geocoder

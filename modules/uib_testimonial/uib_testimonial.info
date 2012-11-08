@@ -1,13 +1,12 @@
 name = UiB Feature Testimonial
 description = Define testimonials
 core = 7.x
-package = Features
+package = UiB
 php = 5.2.4
 version = 7.x-0.1
 project = uib_testimonial
 dependencies[] = ctools
 dependencies[] = entityreference
-dependencies[] = features
 dependencies[] = file
 dependencies[] = file_entity
 dependencies[] = media

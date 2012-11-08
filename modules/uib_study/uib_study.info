@@ -1,12 +1,11 @@
 name = Study
 description = Information about courses and study programs
 core = 7.x
-package = Features
+package = UiB
 version = 7.x-1.0
 project = uib_study
 dependencies[] = ctools
 dependencies[] = entityreference
-dependencies[] = features
 dependencies[] = field_sql_storage
 dependencies[] = list
 dependencies[] = node

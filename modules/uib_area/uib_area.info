@@ -1,7 +1,7 @@
 name = UiB Feature Area
 description = Provides the area and area_type taxonomies.  Organisational units.
 core = 7.x
-package = Features
+package = UiB
 php = 5.2.4
 version = 7.x-0.1
 project = uib_area
@@ -9,7 +9,6 @@ dependencies[] = addressfield
 dependencies[] = context
 dependencies[] = ctools
 dependencies[] = entityreference
-dependencies[] = features
 dependencies[] = field_group
 dependencies[] = file
 dependencies[] = file_entity

@@ -1,0 +1,4 @@
+name = "UIB context"
+description = "Context hacks"
+package = "UiB"
+core = 7.x

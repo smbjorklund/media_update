@@ -1,7 +1,7 @@
 name = UIB_calendar
 description = Calendar listings and formats
 core = 7.x
-package = Features
+package = UiB
 php = 5.2.4
 dependencies[] = calendar
 dependencies[] = context

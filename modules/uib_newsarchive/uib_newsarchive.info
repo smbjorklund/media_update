@@ -1,7 +1,7 @@
 name = UiB newsarchive
 description = Newsarchive views
 core = 7.x
-package = Features
+package = UiB
 version = 7.x-0.1
 project = uib_newsarchive
 dependencies[] = context

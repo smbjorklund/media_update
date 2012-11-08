@@ -1,8 +1,7 @@
 name = Redirect
 core = 7.x
-package = Features
+package = UiB
 php = 5.2.4
-dependencies[] = features
 dependencies[] = redirect
 dependencies[] = strongarm
 dependencies[] = uib_setup
