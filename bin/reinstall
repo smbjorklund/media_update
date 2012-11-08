@@ -26,15 +26,15 @@ fi
 if [ -e sitecmdline ];then
    read -r CMDLINE < sitecmdline
 	if bin/site-install $CMDLINE; then
-		bin/site-drush pm-enable --yes uib_devel
 		bin/site-drush migrate-import --verbose --all
 		bin/site-drush uib-migrate-build-menu --verbose
+		bin/site-drush pm-enable --yes uib_devel
    fi
 else
    if bin/site-install $SITE $1 $2; then
-      bin/site-drush pm-enable --yes uib_devel
       bin/site-drush migrate-import --verbose --all
       bin/site-drush uib-migrate-build-menu --verbose
+      bin/site-drush pm-enable --yes uib_devel
    fi
 fi
 
