@@ -639,11 +639,11 @@ function uib_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -871,7 +871,7 @@ function uib_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_primary_media',
-      'label' => 'Primary image',
+      'label' => 'Primary media',
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
@@ -2409,7 +2409,7 @@ function uib_area_field_default_fields() {
   t('Place');
   t('Place ID');
   t('Postal Address');
-  t('Primary image');
+  t('Primary media');
   t('Primary text');
   t('Profiled articles');
   t('Profiled messages');
