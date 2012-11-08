@@ -39,7 +39,9 @@ class WebdeskTestCase(TestCase):
         self.driver.save_screenshot('login.png')
 
         self.driver.find_element_by_link_text('Add content').click()
-        self.driver.find_element_by_id("edit-field-uib-article-type-und-news").click()
+        self.driver.find_element_by_id("edit-field-uib-article-type-und").click()
+        self.driver.find_element_by_id("edit-field-uib-article-type-und").send_keys(Keys.DOWN)
+        self.driver.find_element_by_id("edit-field-uib-article-type-und").send_keys(Keys.ENTER)
         self.driver.find_element_by_id("edit-title").send_keys("En solskinnsdag i Bergen")
         self.driver.find_element_by_id("edit-field-uib-area-und-0-target-id").send_keys("Det juridiske fakultet")
         self.driver.find_element_by_id("edit-field-uib-area-und-0-target-id").send_keys(Keys.DOWN)
