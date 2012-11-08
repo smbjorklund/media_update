@@ -19,7 +19,6 @@ dependencies[] = menu
 dependencies[] = module_filter
 dependencies[] = page_manager
 dependencies[] = panels
-dependencies[] = panels_ipe
 dependencies[] = path
 dependencies[] = scheduler
 dependencies[] = shortcut

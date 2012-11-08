@@ -9,4 +9,5 @@ dependencies[] = views_ui
 dependencies[] = context_ui
 dependencies[] = help
 dependencies[] = devel
+dependencies[] = panels_ipe
 dependencies[] = coder_review
