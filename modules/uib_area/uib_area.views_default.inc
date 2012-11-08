@@ -99,6 +99,140 @@ function uib_area_views_default_views() {
   $export['area_kids'] = $view;
 
   $view = new view();
+  $view->name = 'area_map';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Area map';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Area map';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_uib_ou_node']['id'] = 'reverse_field_uib_ou_node';
+  $handler->display->display_options['relationships']['reverse_field_uib_ou_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_uib_ou_node']['field'] = 'reverse_field_uib_ou_node';
+  $handler->display->display_options['relationships']['reverse_field_uib_ou_node']['required'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_uib_ou_node';
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title]
+[field_uib_visit_address]
+';
+  /* Field: Content: Location */
+  $handler->display->display_options['fields']['field_uib_geo']['id'] = 'field_uib_geo';
+  $handler->display->display_options['fields']['field_uib_geo']['table'] = 'field_data_field_uib_geo';
+  $handler->display->display_options['fields']['field_uib_geo']['field'] = 'field_uib_geo';
+  $handler->display->display_options['fields']['field_uib_geo']['empty'] = 'No coordinates';
+  $handler->display->display_options['fields']['field_uib_geo']['click_sort_column'] = 'wkt';
+  $handler->display->display_options['fields']['field_uib_geo']['type'] = 'geofield_map_map';
+  $handler->display->display_options['fields']['field_uib_geo']['settings'] = array(
+    'geofield_map_width' => '100%',
+    'geofield_map_height' => '300px',
+    'geofield_map_zoom' => '8',
+    'geofield_map_controltype' => 'default',
+    'geofield_map_mtc' => 'standard',
+    'geofield_map_pancontrol' => 1,
+    'geofield_map_maptype' => 'map',
+    'geofield_map_baselayers_map' => 1,
+    'geofield_map_baselayers_satellite' => 1,
+    'geofield_map_baselayers_hybrid' => 1,
+    'geofield_map_baselayers_physical' => 0,
+    'geofield_map_scale' => 0,
+    'geofield_map_overview' => 0,
+    'geofield_map_overview_opened' => 0,
+    'geofield_map_scrollwheel' => 0,
+    'geofield_map_draggable' => 0,
+    'geofield_map_streetview_show' => 0,
+  );
+  /* Field: Content: Visit Address */
+  $handler->display->display_options['fields']['field_uib_visit_address']['id'] = 'field_uib_visit_address';
+  $handler->display->display_options['fields']['field_uib_visit_address']['table'] = 'field_data_field_uib_visit_address';
+  $handler->display->display_options['fields']['field_uib_visit_address']['field'] = 'field_uib_visit_address';
+  $handler->display->display_options['fields']['field_uib_visit_address']['click_sort_column'] = 'country';
+  $handler->display->display_options['fields']['field_uib_visit_address']['settings'] = array(
+    'use_widget_handlers' => 1,
+    'format_handlers' => array(
+      'address' => 'address',
+    ),
+  );
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'reverse_field_uib_ou_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'area' => 'area',
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'uib_ou' => 'uib_ou',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['path'] = 'node/%/map';
+  $translatables['area_map'] = array(
+    t('Master'),
+    t('Area map'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Content referencing Content from field_uib_ou'),
+    t('Title'),
+    t('[title]
+[field_uib_visit_address]
+'),
+    t('Location'),
+    t('No coordinates'),
+    t('Visit Address'),
+    t('All'),
+    t('Page'),
+  );
+  $export['area_map'] = $view;
+
+  $view = new view();
   $view->name = 'area_slideshow';
   $view->description = '';
   $view->tag = 'default';
