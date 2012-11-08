@@ -1,6 +1,6 @@
 name = UiB Sebra integration
 description = "Syncronize data with Sebra"
-package = "UIB"
+package = UiB
 core = 7.x
 dependencies[] = uibx
 dependencies[] = job_scheduler
