@@ -135,13 +135,17 @@
   width: 35%;
   float: right;
   background: #e5e5e5;
-  border-left:solid 1px #999999;
-  border-top:solid 1px #fff;
-  border-bottom: solid 1px #CECECE;
+  border:solid 1px #C0C0C0;  
 }
 
 .group-uib-links  {
   padding-left: 0;
+}
+
+.group_factbox, .group_uib_links, .group-media  {
+  border-top:solid 1px #F2F2F2;
+  border-bottom: solid 1px #C0C0C0;
+  padding: 5px;
 }
 
 #uib-article-node-form .group-details {
@@ -182,9 +186,22 @@
 
 div.link-field-column  {
   float: none;
-  width: 48%;
+  width: 68%;
 }
 
+.link-field-subrow  {
+  width: 285px;
+}
+
+table.field-multiple-drag {
+  padding: 0;
+}
+
+.vertical-tabs  {
+  float: left;
+  display: block;
+  min-width: 400px;
+}
 
 /* Save and preview button */
 

@@ -93,42 +93,47 @@
   width: 35%;
   float: right;
   background: #e5e5e5;
-  border-left: solid 1px #999999;
-  border-top: solid 1px #fff;
-  border-bottom: solid 1px #CECECE;
+  border: solid 1px #C0C0C0;
 }
 
-/* line 143, ../sass/fields.scss */
+/* line 141, ../sass/fields.scss */
 .group-uib-links {
   padding-left: 0;
 }
 
-/* line 147, ../sass/fields.scss */
+/* line 145, ../sass/fields.scss */
+.group_factbox, .group_uib_links, .group-media {
+  border-top: solid 1px #F2F2F2;
+  border-bottom: solid 1px #C0C0C0;
+  padding: 5px;
+}
+
+/* line 151, ../sass/fields.scss */
 #uib-article-node-form .group-details {
   background: #fff;
   border: solid 1px #999999;
 }
 
-/* line 152, ../sass/fields.scss */
+/* line 156, ../sass/fields.scss */
 #uib-article-node-form h3 {
   color: #666666;
   font-weight: normal;
   font-size: 16px;
 }
 
-/* line 158, ../sass/fields.scss */
+/* line 162, ../sass/fields.scss */
 #uib-article-node-form .fieldset-title {
   font-size: 15px;
   color: #2162a0;
 }
 
-/* line 163, ../sass/fields.scss */
+/* line 167, ../sass/fields.scss */
 #uib-article-node-form {
   color: #666666;
 }
 
 /* Buttons  in create content */
-/* line 168, ../sass/fields.scss */
+/* line 172, ../sass/fields.scss */
 #uib-article-node-form .button, .field-add-more-submit {
   padding: 5px 10px 5px 10px;
   background: #2162a0;
@@ -138,21 +143,38 @@
   color: #fff;
 }
 
-/* line 177, ../sass/fields.scss */
+/* line 181, ../sass/fields.scss */
 #uib-article-node-form label {
   width: 80px;
   display: block;
   float: left;
 }
 
-/* line 183, ../sass/fields.scss */
+/* line 187, ../sass/fields.scss */
 div.link-field-column {
   float: none;
-  width: 48%;
+  width: 68%;
+}
+
+/* line 192, ../sass/fields.scss */
+.link-field-subrow {
+  width: 285px;
+}
+
+/* line 196, ../sass/fields.scss */
+table.field-multiple-drag {
+  padding: 0;
+}
+
+/* line 200, ../sass/fields.scss */
+.vertical-tabs {
+  float: left;
+  display: block;
+  min-width: 400px;
 }
 
 /* Save and preview button */
-/* line 191, ../sass/fields.scss */
+/* line 208, ../sass/fields.scss */
 .form-submit {
   float: left;
 }
