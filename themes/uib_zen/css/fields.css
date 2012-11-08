@@ -162,11 +162,6 @@ div.link-field-column {
 }
 
 /* line 196, ../sass/fields.scss */
-table.field-multiple-drag {
-  padding: 0;
-}
-
-/* line 200, ../sass/fields.scss */
 .vertical-tabs {
   float: left;
   display: block;
@@ -174,7 +169,7 @@ table.field-multiple-drag {
 }
 
 /* Save and preview button */
-/* line 208, ../sass/fields.scss */
+/* line 204, ../sass/fields.scss */
 .form-submit {
   float: left;
 }
