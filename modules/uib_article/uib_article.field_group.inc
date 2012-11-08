@@ -21,7 +21,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced',
-    'weight' => '30',
+    'weight' => '6',
     'children' => array(
       0 => 'field_uib_menu_title_w2',
       1 => 'field_uib_nav_weight',
@@ -55,7 +55,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_specific_field';
   $field_group->data = array(
     'label' => 'Detaljer',
-    'weight' => '30',
+    'weight' => '7',
     'children' => array(
       0 => 'field_uib_byline',
       1 => 'field_uib_kicker',
@@ -84,10 +84,10 @@ function uib_article_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_article';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Factbox',
-    'weight' => '10',
+    'weight' => '7',
     'children' => array(
       0 => 'field_uib_fact_box',
     ),
@@ -150,10 +150,10 @@ function uib_article_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_article';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Media',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_uib_main_media',
       1 => 'field_uib_media',
@@ -177,6 +177,39 @@ function uib_article_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_sidebar|node|uib_article|form';
+  $field_group->group_name = 'group_sidebar';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'uib_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sidebar',
+    'weight' => '3',
+    'children' => array(
+      0 => 'group_factbox',
+      1 => 'group_media',
+      2 => 'group_uib_links',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => 'open',
+      'instance_settings' => array(
+        'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_sidebar|node|uib_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_specific_field|node|uib_article|form';
   $field_group->group_name = 'group_specific_field';
   $field_group->entity_type = 'node';
@@ -185,7 +218,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Spesifikke felt for innholdstype',
-    'weight' => '11',
+    'weight' => '5',
     'children' => array(
       0 => 'group_details',
     ),
@@ -247,7 +280,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_advanced';
   $field_group->data = array(
     'label' => 'GEO and addresses',
-    'weight' => '13',
+    'weight' => '14',
     'children' => array(
       0 => 'field_uib_contacts',
       1 => 'field_uib_location',
@@ -276,10 +309,10 @@ function uib_article_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_article';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Links',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_uib_files',
       1 => 'field_uib_links',
@@ -311,7 +344,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Media and attachments',
-    'weight' => '14',
+    'weight' => '7',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -340,7 +373,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'W2 and meta data',
-    'weight' => '15',
+    'weight' => '8',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
