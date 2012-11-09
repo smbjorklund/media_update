@@ -90,7 +90,7 @@ class Walker(object):
             return
         line = topic.title()
         line += ' ['
-        if self.show_ids:
+        if self.args.ids:
             line += topic.id() + ', '
         t = topic.topic_type()
         if t:
@@ -168,7 +168,7 @@ for area in args.area:
         sys.exit(1)
     areas.append(t)
 
-walker = Walker(show_ids=args.ids, ua=ua, args=args)
+walker = Walker(ua=ua, args=args)
 for area in areas:
     walker.walk(area)
 
