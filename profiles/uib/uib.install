@@ -35,13 +35,4 @@ function uib_install() {
   // Start with no default shortcuts
   menu_delete_links(SHORTCUT_DEFAULT_SET_NAME);
 
-  // Install all our feature modules
-  features_install_modules(array(
-    'uib_setup',
-    'uib_area',
-    'uib_article',
-    'uib_study',
-    'uib_testimonial',
-    'uib_user'
-    ));
 }
