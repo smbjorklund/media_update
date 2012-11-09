@@ -1,6 +1,8 @@
 #!/bin/sh
 
-for u in astie gaa041 edpck; do 
+for u in astie gaa041 edpck; do
     bin/site-drush uib-sync-w2-user $u
     bin/site-drush uib-sebra-user $u
 done
+
+bin/site-drush uib-sebra-areas
