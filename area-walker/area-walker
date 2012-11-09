@@ -123,6 +123,9 @@ class Walker(object):
         if self.args.published and topic.state() != 'published':
             return
 
+        if depth == 0:
+            self.site = topic.site()
+
         self.xprint(topic, depth)
 
         if depth > self.max_depth:
@@ -150,19 +153,24 @@ arg_parser.add_argument('--ids', action='store_true', help='print the ids of the
 arg_parser.add_argument('--published', action='store_true', help='only show published stuff')
 arg_parser.add_argument('--areas', action='store_true', help='walk sub areas instead of menues')
 arg_parser.add_argument('--path-only', action='store_true', help='only print paths')
-arg_parser.add_argument('area', default='it', nargs='?', help='area path to start traversing (default is "it")')
+arg_parser.add_argument('area', nargs='+', help='area path to start traversing')
 
 args = arg_parser.parse_args()
 
+areas = []
 ua = XTopic_UserAgent()
-area = ua.get_xtopic_by_path(args.area)
-if area is None:
-    import sys
-    sys.stderr.write('No such area: ' + repr(args.area) + '\n')
-    sys.exit(1)
 
-walker = Walker(site=area.site(), show_ids=args.ids, ua=ua, args=args)
-walker.walk(area)
+for area in args.area:
+    t = ua.get_xtopic_by_path(area)
+    if t is None:
+        import sys
+        sys.stderr.write('No such area: ' + repr(area) + '\n')
+        sys.exit(1)
+    areas.append(t)
+
+walker = Walker(show_ids=args.ids, ua=ua, args=args)
+for area in areas:
+    walker.walk(area)
 
 if not args.path_only:
     print
