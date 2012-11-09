@@ -5,7 +5,7 @@ use strict;
 my $host = "www.uib.no";
 $host = "void:8098";
 
-my @prefixes = ("hf", "ahkr", "fof", "fremmedsprak", "lle", "grieg", "jur");
+my @prefixes = ("hf", "ahkr", "fof", "fremmedsprak", "lle", "grieg", "jur", "skok", "svt", "cms");
 my @types = ("infopage", "newsitem", "testimonial");
 
 for my $prefix (@prefixes) {
