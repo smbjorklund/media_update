@@ -218,13 +218,34 @@ form.node-area-form {
 .views-field-delete-node  {
   background: url('../images/delete.png');
   background-repeat: no-repeat;
+  display: inline;
 }
 
 .views-field-edit-node  {
   background: url('../images/edit.png');
   background-repeat: no-repeat;
+  display: inline;
 }
 
 .views-field-delete-node a, .views-field-edit-node a  {
   margin-left: 18px;
+}
+
+.pane-my-content-panel-pane-1 {
+  background: url('../images/my-content.png');
+  background-repeat: no-repeat;
+}
+
+.pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2 {
+  margin-left: 18px;
+}
+
+.pane-scheduled-content {
+  background: url('../images/scheduled-content.png');
+  background-repeat: no-repeat;
+}
+
+.pane-uib-webdesk-panel-pane-1  {
+  background: url('../images/all-content.png');
+  background-repeat: no-repeat;
 }

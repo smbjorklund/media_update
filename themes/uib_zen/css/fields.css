@@ -190,15 +190,40 @@ form.node-area-form {
 .views-field-delete-node {
   background: url("../images/delete.png");
   background-repeat: no-repeat;
+  display: inline;
 }
 
-/* line 223, ../sass/fields.scss */
+/* line 224, ../sass/fields.scss */
 .views-field-edit-node {
   background: url("../images/edit.png");
   background-repeat: no-repeat;
+  display: inline;
 }
 
-/* line 228, ../sass/fields.scss */
+/* line 230, ../sass/fields.scss */
 .views-field-delete-node a, .views-field-edit-node a {
   margin-left: 18px;
+}
+
+/* line 234, ../sass/fields.scss */
+.pane-my-content-panel-pane-1 {
+  background: url("../images/my-content.png");
+  background-repeat: no-repeat;
+}
+
+/* line 239, ../sass/fields.scss */
+.pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2 {
+  margin-left: 18px;
+}
+
+/* line 243, ../sass/fields.scss */
+.pane-scheduled-content {
+  background: url("../images/scheduled-content.png");
+  background-repeat: no-repeat;
+}
+
+/* line 248, ../sass/fields.scss */
+.pane-uib-webdesk-panel-pane-1 {
+  background: url("../images/all-content.png");
+  background-repeat: no-repeat;
 }
