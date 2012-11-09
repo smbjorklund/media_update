@@ -166,11 +166,11 @@ function uib_ansatte_views_default_views() {
     $node = drupal_get_normal_path($argument, $language = NULL);
 
     if ($argument == $node) {
-      dd (\'Node not found\');
+      uibx_log(\'Node not found\');
     }
 
     if ($argument != $node) {
-      dd (\'node: \' . $node);
+      uibx_log(\'node: \' . $node);
       $nid = substr(strrchr($node, "/"), 1);
     }
 
@@ -244,11 +244,11 @@ function uib_ansatte_views_default_views() {
     $node = drupal_get_normal_path($argument, $language = NULL);
 
     if ($argument == $node) {
-      dd (\'Node not found\');
+      uibx_log(\'Node not found\');
     }
 
     if ($argument != $node) {
-      dd (\'node: \' . $node);
+      uibx_log(\'node: \' . $node);
       $nid = substr(strrchr($node, "/"), 1);
     }
 
