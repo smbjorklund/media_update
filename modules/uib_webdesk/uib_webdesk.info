@@ -10,6 +10,7 @@ dependencies[] = better_exposed_filters
 dependencies[] = context
 dependencies[] = contextual
 dependencies[] = ctools
+dependencies[] = features
 dependencies[] = field_group
 dependencies[] = file_entity
 dependencies[] = geocoder
