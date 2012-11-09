@@ -85,6 +85,9 @@ class Walker(object):
         print '%4d %2d %s%s' % (self.count, depth, '  ' * depth, line.encode('UTF-8'))
 
     def xprint(self, topic, depth):
+        if self.args.path_only:
+            print topic.path()
+            return
         line = topic.title()
         line += ' ['
         if self.show_ids:
@@ -146,6 +149,7 @@ arg_parser = argparse.ArgumentParser(description='Walk the navigation menus of a
 arg_parser.add_argument('--ids', action='store_true', help='print the ids of the listed topics')
 arg_parser.add_argument('--published', action='store_true', help='only show published stuff')
 arg_parser.add_argument('--areas', action='store_true', help='walk sub areas instead of menues')
+arg_parser.add_argument('--path-only', action='store_true', help='only print paths')
 arg_parser.add_argument('area', default='it', nargs='?', help='area path to start traversing (default is "it")')
 
 args = arg_parser.parse_args()
@@ -160,6 +164,7 @@ if area is None:
 walker = Walker(site=area.site(), show_ids=args.ids, ua=ua, args=args)
 walker.walk(area)
 
-print
-print walker.type_counter
-print 'max depth', walker.max_depth
+if not args.path_only:
+    print
+    print walker.type_counter
+    print 'max depth', walker.max_depth
