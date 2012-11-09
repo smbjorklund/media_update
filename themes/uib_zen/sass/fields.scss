@@ -199,11 +199,32 @@ div.link-field-column  {
 .vertical-tabs  {
   float: left;
   display: block;
-  min-width: 400px;
+  min-width: 800px;
+  margin-left: 180px;
 }
 
 /* Save and preview button */
 
 .form-submit {
   float: left;
+}
+
+/* Create area */
+form.node-area-form {
+  padding: 20px;
+}
+
+/* Delete and save button Webdesk */
+.views-field-delete-node  {
+  background: url('../images/delete.png');
+  background-repeat: no-repeat;
+}
+
+.views-field-edit-node  {
+  background: url('../images/edit.png');
+  background-repeat: no-repeat;
+}
+
+.views-field-delete-node a, .views-field-edit-node a  {
+  margin-left: 18px;
 }

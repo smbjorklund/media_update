@@ -169,11 +169,36 @@ div.link-field-column {
 .vertical-tabs {
   float: left;
   display: block;
-  min-width: 400px;
+  min-width: 800px;
+  margin-left: 180px;
 }
 
 /* Save and preview button */
-/* line 207, ../sass/fields.scss */
+/* line 208, ../sass/fields.scss */
 .form-submit {
   float: left;
+}
+
+/* Create area */
+/* line 213, ../sass/fields.scss */
+form.node-area-form {
+  padding: 20px;
+}
+
+/* Delete and save button Webdesk */
+/* line 218, ../sass/fields.scss */
+.views-field-delete-node {
+  background: url("../images/delete.png");
+  background-repeat: no-repeat;
+}
+
+/* line 223, ../sass/fields.scss */
+.views-field-edit-node {
+  background: url("../images/edit.png");
+  background-repeat: no-repeat;
+}
+
+/* line 228, ../sass/fields.scss */
+.views-field-delete-node a, .views-field-edit-node a {
+  margin-left: 18px;
 }

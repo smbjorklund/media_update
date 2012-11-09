@@ -67,25 +67,6 @@
   text-shadow: 1px 1px 1px #737373;
 }
 
-/* Edit and delete button in the webdesk */
-
-.views-field-edit-node a, .views-field-delete-node a  {
-  padding-left: 1px;
-  padding-right: 1px;
-  color: #fff !important;
-  line-height: 1.6em;
-  opacity: .6;
-}
-
-.views-field-edit-node a {
-  background: $base-blue;
-}
-
-.views-field-delete-node a  {
-  background: #AA0000;
-  float: left;
-  margin-right: 5px;
-}
 
 /* Button hovers */
 
