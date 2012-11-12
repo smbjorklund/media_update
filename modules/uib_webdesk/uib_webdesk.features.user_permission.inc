@@ -77,6 +77,15 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: add media from remote sources.
+  $permissions['add media from remote sources'] = array(
+    'name' => 'add media from remote sources',
+    'roles' => array(
+      0 => 'level 3',
+    ),
+    'module' => 'media_internet',
+  );
+
   // Exported permission: administer actions.
   $permissions['administer actions'] = array(
     'name' => 'administer actions',
