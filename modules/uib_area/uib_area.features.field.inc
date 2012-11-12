@@ -639,11 +639,11 @@ function uib_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -1861,7 +1861,7 @@ function uib_area_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'geocoder',
+        'module' => 'geofield',
         'settings' => array(
           'delta_handling' => 'default',
           'geocoder_field' => 'field_uib_visit_address',
@@ -1879,7 +1879,7 @@ function uib_area_field_default_fields() {
             ),
           ),
         ),
-        'type' => 'geocoder',
+        'type' => 'geofield_latlon',
         'weight' => '10',
       ),
     ),
