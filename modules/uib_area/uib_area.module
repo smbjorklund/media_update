@@ -222,3 +222,43 @@ function uib_area_theme() {
     ),
   );
 }
+
+/**
+ * Implements hook_node_presave
+ */
+
+function uib_area_node_presave($node) {
+  // obtain full list of parent areas
+  $parent_node_id_list = array();
+  if (!empty($node->field_uib_area_parents['und'])) {
+    foreach ($node->field_uib_area_parents['und'] as $parent) {
+      uib_area__get_parentage($parent['target_id'], $parent_node_id_list);
+    }
+    // remove duplicate area node ids if present
+    $cleaned_node_id_list = array();
+    foreach ($parent_node_id_list as $pnid) {
+      if (!in_array($pnid, $cleaned_node_id_list)) {
+        $cleaned_node_id_list[] = $pnid;
+      }
+    }
+    // update node with cleaned full list
+    $node->field_uib_area_parents['und'] = array();
+    for($i = 0; $i < count($cleaned_node_id_list); $i++) {
+      $node->field_uib_area_parents['und'][$i] = array('target_id' => $cleaned_node_id_list[$i]);
+    }
+  }
+}
+
+/**
+* Function to recursively get uib_area parent_ids
+*/
+function uib_area__get_parentage($parent_node_id, &$parent_ids) {
+  $parent_ids[] = $parent_node_id;
+  if ($parent_node = node_load($parent_node_id)) {
+    if (!empty($parent_node->field_uib_area_parents['und'])) {
+      foreach ($parent_node->field_uib_area_parents['und'] as $this_parent) {
+        uib_area__get_parentage($this_parent['target_id'],$parent_ids);
+     }
+    }
+  }
+}
