@@ -176,7 +176,12 @@ function uib_zen_preprocess_page(&$variables, $hook) {
       $variables['page_title'] = $node->title;
       $variables['page_title_link'] = l($node->title, 'node/' . $node->nid, array('attributes' => array('title' => $node->title . " " . t('Home'))));
       // set menu style
-      $variables['uib_menu_style'] = 'uib_menu_style_' . $variables['node']->field_uib_menu_style['und'][0]['value'];
+      if (empty($variables['node'])) {
+        $variables['uib_menu_style'] = 'uib-menu-style-' . $node->field_uib_menu_style['und'][0]['value'];
+      }
+      else {
+        $variables['uib_menu_style'] = 'uib-menu-style-' . $variables['node']->field_uib_menu_style['und'][0]['value'];
+      }
     }
     else {
       // if content is of other type ('article', 'testimonial'),
