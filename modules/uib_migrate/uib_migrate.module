@@ -29,6 +29,7 @@ function uib_migrate_cron_job_scheduler_info() {
 }
 
 function uib_migrate__w2_sync($job) {
+  module_load_include('inc', 'uib_migrate');
   uibx_log("W2 SYNC start");
   uib_migrate__sync_w2_users(100);
   uibx_log("W2 SYNC done");
