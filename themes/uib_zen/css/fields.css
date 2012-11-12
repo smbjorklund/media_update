@@ -247,6 +247,7 @@ form.node-area-form {
 }
 
 /* line 259, ../sass/fields.scss */
+/* line 255, ../sass/fields.scss */
 .pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2, .page-webdesk ul.menu li a {
   margin-left: 18px;
 }
@@ -264,12 +265,14 @@ form.node-area-form {
 }
 
 /* line 273, ../sass/fields.scss */
+/* line 269, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   background: url("../images/add.png");
   background-repeat: no-repeat;
 }
 
 /* line 278, ../sass/fields.scss */
+/* line 274, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   list-style: none;
 }
