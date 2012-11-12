@@ -185,7 +185,7 @@ form.node-area-form {
   padding: 20px;
 }
 
-/* Delete and save button Webdesk */
+/*  Icons in Webdesk */
 /* line 218, ../sass/fields.scss */
 .views-field-delete-node {
   background: url("../images/delete.png");
@@ -212,7 +212,7 @@ form.node-area-form {
 }
 
 /* line 239, ../sass/fields.scss */
-.pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2 {
+.pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2, li.menu-mlid-270 a {
   margin-left: 18px;
 }
 
@@ -226,4 +226,15 @@ form.node-area-form {
 .pane-uib-webdesk-panel-pane-1 {
   background: url("../images/all-content.png");
   background-repeat: no-repeat;
+}
+
+/* line 253, ../sass/fields.scss */
+li.menu-mlid-270 {
+  background: url("../images/add.png");
+  background-repeat: no-repeat;
+}
+
+/* line 258, ../sass/fields.scss */
+ul li.menu-mlid-270 {
+  list-style: none;
 }
