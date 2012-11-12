@@ -124,6 +124,9 @@
 /* Webdesk - everything above this comment is drupal default and has not yet been motified. */
 
 /* Create article */
+#uib-article-node-form  {
+  margin: 0 auto;
+}
 
 #uib-article-node-form .group-information, .group-uib-links, .group-specific-field {
   padding: 20px;
@@ -135,14 +138,12 @@
 
 .form-item-field-uib-event-type-und {
   width: 400px;
-  float: left;
 }
 
 .group_sidebar  {
   width: 35%;
   float: right;
   background: #e5e5e5;
-  border:solid 1px #C0C0C0; 
   background: rgb(244,244,244); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(244,244,244,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,244,244,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
@@ -180,6 +181,7 @@
 
 .form-field-name-field-uib-article-type {
   width: 55%;
+  float: left;
 }
 
 /* Buttons  in create content */
