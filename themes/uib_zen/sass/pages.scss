@@ -56,6 +56,13 @@ body {
   height: 200px;
 }
 
+/* Do not show header when adding articles */
+.page-node-add-uib-article {
+  #header {
+    display:none;
+  }
+}
+
 #logo { /* Wrapping link for logo */
   float: left; /* LTR */
   margin: 10px 0 0 0;
@@ -245,6 +252,15 @@ span.field-label { /* The inline field label used by the Fences module */
 
 .region-sidebar-second {
 }
+
+/* Do not show sidebar when adding article */
+
+.page-node-add-uib-article {
+  .region-sidebar-second {
+   display:none;
+  }
+}
+
 
 /*
  * Footer
