@@ -10,10 +10,10 @@
 function uib_setup_filter_default_formats() {
   $formats = array();
 
-  // Exported format: Advanced editor.
+  // Exported format: Basic HTML.
   $formats['advanced_editor'] = array(
     'format' => 'advanced_editor',
-    'name' => 'Advanced editor',
+    'name' => 'Basic HTML',
     'cache' => '1',
     'status' => '1',
     'weight' => '-10',
@@ -44,7 +44,7 @@ function uib_setup_filter_default_formats() {
     'name' => 'Full HTML',
     'cache' => '1',
     'status' => '1',
-    'weight' => '-9',
+    'weight' => '-8',
     'filters' => array(
       'filter_autop' => array(
         'weight' => '0',
@@ -119,7 +119,7 @@ function uib_setup_filter_default_formats() {
     'name' => 'Plain text',
     'cache' => '1',
     'status' => '1',
-    'weight' => '-8',
+    'weight' => '-7',
     'filters' => array(
       'filter_html_escape' => array(
         'weight' => '0',
@@ -128,6 +128,29 @@ function uib_setup_filter_default_formats() {
       ),
       'filter_autop' => array(
         'weight' => '2',
+        'status' => '1',
+        'settings' => array(),
+      ),
+    ),
+  );
+
+  // Exported format: Restricted HTML.
+  $formats['restricted_html'] = array(
+    'format' => 'restricted_html',
+    'name' => 'Restricted HTML',
+    'cache' => '1',
+    'status' => '1',
+    'weight' => '-9',
+    'filters' => array(
+      'filter_url' => array(
+        'weight' => '0',
+        'status' => '1',
+        'settings' => array(
+          'filter_url_length' => '72',
+        ),
+      ),
+      'filter_htmlcorrector' => array(
+        'weight' => '10',
         'status' => '1',
         'settings' => array(),
       ),

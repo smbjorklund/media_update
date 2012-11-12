@@ -810,6 +810,17 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'filter',
   );
 
+  // Exported permission: use text format restricted_html.
+  $permissions['use text format restricted_html'] = array(
+    'name' => 'use text format restricted_html',
+    'roles' => array(
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
+    ),
+    'module' => 'filter',
+  );
+
   // Exported permission: view file.
   $permissions['view file'] = array(
     'name' => 'view file',
