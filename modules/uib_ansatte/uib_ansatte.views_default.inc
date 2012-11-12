@@ -177,6 +177,21 @@ function uib_ansatte_views_default_views() {
     return TRUE;
   ';
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
+  /* Contextual filter: User: Position category (field_uib_position_category) */
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['id'] = 'field_uib_position_category_value';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['table'] = 'field_data_field_uib_position_category';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['field'] = 'field_uib_position_category_value';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['title'] = '%2 at %1';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['validate']['fail'] = 'ignore';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['limit'] = '0';
   /* Filter criterion: User: First name (field_uib_first_name) */
   $handler->display->display_options['filters']['field_uib_first_name_value']['id'] = 'field_uib_first_name_value';
   $handler->display->display_options['filters']['field_uib_first_name_value']['table'] = 'field_data_field_uib_first_name';
@@ -219,7 +234,52 @@ function uib_ansatte_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'persons';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['title'] = 'Ansatte hos %1';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['nid']['validate_options']['code'] = 'global $base_url;
+    $node = drupal_get_normal_path($argument, $language = NULL);
+
+    if ($argument == $node) {
+      uibx_log(\'Node not found\');
+    }
+
+    if ($argument != $node) {
+      uibx_log(\'node: \' . $node);
+      $nid = substr(strrchr($node, "/"), 1);
+    }
+
+    return TRUE;
+  ';
+  $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
+  /* Contextual filter: User: Position category (field_uib_position_category) */
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['id'] = 'field_uib_position_category_value';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['table'] = 'field_data_field_uib_position_category';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['field'] = 'field_uib_position_category_value';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['exception']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['exception']['title'] = 'All staff';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['title'] = '%2 at %1';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['validate']['fail'] = 'ignore';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['limit'] = '0';
+  $handler->display->display_options['path'] = 'persons/%/%';
   $handler->display->display_options['menu']['title'] = 'Ansatte';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'area';
@@ -255,6 +315,25 @@ function uib_ansatte_views_default_views() {
     return TRUE;
   ';
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
+  /* Contextual filter: User: Position category (field_uib_position_category) */
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['id'] = 'field_uib_position_category_value';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['table'] = 'field_data_field_uib_position_category';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['field'] = 'field_uib_position_category_value';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['exception']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['exception']['title'] = 'All employees at %1';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['title'] = '%2 at %1';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['breadcrumb_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['breadcrumb'] = '%1';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['default_argument_options']['argument'] = 'all';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['validate']['fail'] = 'summary';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['limit'] = '0';
   $handler->display->display_options['path'] = 'node/%/persons';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Ansatte';
@@ -298,8 +377,12 @@ function uib_ansatte_views_default_views() {
 </div>'),
     t('All'),
     t('Ansatte hos %1'),
+    t('%2 at %1'),
     t('Page'),
+    t('All staff'),
     t('node page'),
+    t('All employees at %1'),
+    t('%1'),
   );
   $export['ansatte'] = $view;
 
