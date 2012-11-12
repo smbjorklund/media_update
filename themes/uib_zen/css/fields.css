@@ -85,88 +85,116 @@
 
 /* line 132, ../sass/fields.scss */
 .group-information, .group-specific-field, .group-advanced {
-  width: 55%;
+  width: 400px;
+}
+
+/* line 136, ../sass/fields.scss */
+.form-item-field-uib-event-type-und {
+  width: 400px;
   float: left;
 }
 
-/* line 137, ../sass/fields.scss */
+/* line 141, ../sass/fields.scss */
 .group_sidebar {
   width: 35%;
   float: right;
   background: #e5e5e5;
   border: solid 1px #C0C0C0;
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e5e5e5));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4 0%, #e5e5e5 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e5e5e5',GradientType=0 );
+  /* IE6-9 */
 }
 
-/* line 144, ../sass/fields.scss */
+/* line 157, ../sass/fields.scss */
 .group-uib-links {
   padding-left: 0;
 }
 
-/* line 148, ../sass/fields.scss */
+/* line 161, ../sass/fields.scss */
 .group_factbox, .group_uib_links, .group-media {
   border-top: solid 1px #F2F2F2;
-  border-bottom: solid 1px #C0C0C0;
+  border-bottom: solid 1px #CBCBCB;
   padding: 5px;
 }
 
-/* line 154, ../sass/fields.scss */
-#uib-article-node-form .group-details {
-  background: #fff;
-  border: solid 1px #999999;
-}
-
-/* line 159, ../sass/fields.scss */
+/* line 167, ../sass/fields.scss */
 #uib-article-node-form h3 {
   color: #666666;
   font-weight: normal;
   font-size: 16px;
 }
 
-/* line 165, ../sass/fields.scss */
+/* line 173, ../sass/fields.scss */
 #uib-article-node-form .fieldset-title {
   font-size: 15px;
   color: #2162a0;
 }
 
-/* line 170, ../sass/fields.scss */
+/* line 178, ../sass/fields.scss */
 #uib-article-node-form {
   color: #666666;
 }
 
-/* line 174, ../sass/fields.scss */
+/* line 182, ../sass/fields.scss */
 .form-field-name-field-uib-article-type {
-  float: left;
   width: 55%;
 }
 
 /* Buttons  in create content */
-/* line 180, ../sass/fields.scss */
+/* line 187, ../sass/fields.scss */
 #uib-article-node-form .button, .field-add-more-submit {
-  padding: 5px 10px 5px 10px;
+  padding: 2px 7px 2px 7px;
   background: #2162a0;
-  border: solid 1px #184878;
-  border-radius: 3px;
-  webkit-border-radius: 3px;
-  color: #fff;
+  border: solid 1px #1D5996;
+  color: #ECEFFB;
+  background: #3c6e9e;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #3c6e9e 0%, #22629e 50%, #195d9e 51%, #2162a0 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3c6e9e), color-stop(50%, #22629e), color-stop(51%, #195d9e), color-stop(100%, #2162a0));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #3c6e9e 0%, #22629e 50%, #195d9e 51%, #2162a0 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #3c6e9e 0%, #22629e 50%, #195d9e 51%, #2162a0 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #3c6e9e 0%, #22629e 50%, #195d9e 51%, #2162a0 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #3c6e9e 0%, #22629e 50%, #195d9e 51%, #2162a0 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3c6e9e', endColorstr='#2162a0',GradientType=0 );
+  /* IE6-9 */
 }
 
-/* line 189, ../sass/fields.scss */
+/* line 203, ../sass/fields.scss */
 #uib-article-node-form label {
   width: 80px;
 }
 
-/* line 193, ../sass/fields.scss */
+/* line 207, ../sass/fields.scss */
 div.link-field-column {
   float: none;
   width: 68%;
 }
 
-/* line 198, ../sass/fields.scss */
+/* line 212, ../sass/fields.scss */
 .link-field-subrow {
-  width: 285px;
+  width: 265px;
 }
 
-/* line 202, ../sass/fields.scss */
+/* line 216, ../sass/fields.scss */
 .vertical-tabs {
   float: left;
   display: block;
@@ -175,67 +203,67 @@ div.link-field-column {
 }
 
 /* Save and preview button */
-/* line 211, ../sass/fields.scss */
+/* line 225, ../sass/fields.scss */
 .form-submit {
   float: left;
 }
 
 /* Create area node */
-/* line 216, ../sass/fields.scss */
+/* line 230, ../sass/fields.scss */
 form.node-area-form {
   padding: 20px;
 }
 
 /*  Icons in Webdesk */
-/* line 221, ../sass/fields.scss */
+/* line 235, ../sass/fields.scss */
 .views-field-delete-node {
   background: url("../images/delete.png");
   background-repeat: no-repeat;
   display: inline;
 }
 
-/* line 227, ../sass/fields.scss */
+/* line 241, ../sass/fields.scss */
 .views-field-edit-node {
   background: url("../images/edit.png");
   background-repeat: no-repeat;
   display: inline;
 }
 
-/* line 233, ../sass/fields.scss */
+/* line 247, ../sass/fields.scss */
 .views-field-delete-node a, .views-field-edit-node a {
   margin-left: 18px;
 }
 
-/* line 237, ../sass/fields.scss */
+/* line 251, ../sass/fields.scss */
 .pane-my-content-panel-pane-1 {
   background: url("../images/my-content.png");
   background-repeat: no-repeat;
 }
 
-/* line 242, ../sass/fields.scss */
+/* line 256, ../sass/fields.scss */
 .pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2, li.menu-mlid-270 a {
   margin-left: 18px;
 }
 
-/* line 246, ../sass/fields.scss */
+/* line 260, ../sass/fields.scss */
 .pane-scheduled-content {
   background: url("../images/scheduled-content.png");
   background-repeat: no-repeat;
 }
 
-/* line 251, ../sass/fields.scss */
+/* line 265, ../sass/fields.scss */
 .pane-uib-webdesk-panel-pane-1 {
   background: url("../images/all-content.png");
   background-repeat: no-repeat;
 }
 
-/* line 256, ../sass/fields.scss */
+/* line 270, ../sass/fields.scss */
 li.menu-mlid-270 {
   background: url("../images/add.png");
   background-repeat: no-repeat;
 }
 
-/* line 261, ../sass/fields.scss */
+/* line 275, ../sass/fields.scss */
 ul li.menu-mlid-270 {
   list-style: none;
 }
