@@ -164,20 +164,16 @@ td.menu-disabled {
   background: #ccc;
 }
 
-/* RTS418 - node forms Trude */
-/* line 159, ../sass/forms.scss */
+/* Webdesk - everything above this comment has yet been motified.  */
+/* Border around nodes in the webdesk */
+/* line 161, ../sass/forms.scss */
 #uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form {
   border: solid 1px silver;
   box-shadow: 0px 1px 3px #D7D7D7;
 }
 
-/* line 164, ../sass/forms.scss */
-.form-type-radio {
-  display: inline;
-  padding-right: 15px;
-}
-
-/* line 169, ../sass/forms.scss */
+/* Sets the style for fields */
+/* line 167, ../sass/forms.scss */
 #edit-title, .form-autocomplete, #edit-field-uib-kicker-und-0-value {
   padding: 8px;
   border: solid 1px #A2A2A2;
@@ -187,25 +183,35 @@ td.menu-disabled {
   color: #4D4D4D;
 }
 
-/* line 178, ../sass/forms.scss */
+/* line 176, ../sass/forms.scss */
 .text-full {
   box-shadow: 0px 1px 3px #D7D7D7 inset;
   border: solid 1px #A2A2A2;
   color: #4D4D4D;
 }
 
-/* line 184, ../sass/forms.scss */
+/* line 182, ../sass/forms.scss */
 #edit-title:hover, .form-autocomplete:hover, #edit-field-uib-kicker-und-0-value:hover, .text-full:hover {
   border-color: #787878;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 4px;
 }
 
-/* line 189, ../sass/forms.scss */
+/* line 187, ../sass/forms.scss */
 .form-field-type-long-text {
   display: inline-block;
 }
 
-/* line 193, ../sass/forms.scss */
+/* Select media buttons */
+/* line 192, ../sass/forms.scss */
 .button launcher a {
   padding: 10px;
+}
+
+/* Webdesk title */
+/* line 197, ../sass/forms.scss */
+.panel-3col h2 {
+  text-transform: none;
+  font-family: helvetica, sans-serif;
+  font-weight: normal;
+  border: none;
 }

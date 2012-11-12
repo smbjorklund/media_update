@@ -154,18 +154,16 @@ td.menu-disabled {
   background: #ccc;
 }
 
-/* RTS418 - node forms Trude */
+/* Webdesk - everything above this comment has yet been motified.  */
 
+
+/* Border around nodes in the webdesk */
 #uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form {
   border: solid 1px silver;
   box-shadow: 0px 1px 3px #D7D7D7;
 }
 
-.form-type-radio  {
-  display: inline;
-  padding-right: 15px;
-}
-
+/* Sets the style for fields */
 #edit-title, .form-autocomplete, #edit-field-uib-kicker-und-0-value {
   padding: 8px;
   border: solid 1px #A2A2A2;
@@ -190,6 +188,15 @@ td.menu-disabled {
   display: inline-block;
 }
 
+/* Select media buttons */
 .button launcher a  {
   padding: 10px;
+}
+
+/* Webdesk title */
+.panel-3col h2  {
+  text-transform: none;
+  font-family: helvetica, sans-serif;
+  font-weight: normal;
+  border: none;
 }

@@ -121,7 +121,10 @@
 .uib-kicker-date {
   float: right;
 }
-/* Webdesk */
+/* Webdesk - everything above this comment is drupal default and has not yet been motified. */
+
+/* Create article */
+
 #uib-article-node-form .group-information, .group-uib-links, .group-specific-field {
   padding: 20px;
 }
@@ -209,7 +212,7 @@ div.link-field-column  {
   float: left;
 }
 
-/* Create area */
+/* Create area node */
 form.node-area-form {
   padding: 20px;
 }
