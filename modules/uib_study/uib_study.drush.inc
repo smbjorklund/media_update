@@ -42,6 +42,7 @@ function drush_uib_study_uib_sync_fs() {
     // look for fag belonging to this ou
     $fspres_oid = implode('.', array('184', (int)$o1, (int)$o2));
     $fspres_url = "http://fs_pres.app.uib.no/sted/$fspres_oid/info.json";
+    uibx_log('GET ' . $fspres_url);
 
     $res = drupal_http_request($fspres_url);
     if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
@@ -61,6 +62,9 @@ function drush_uib_study_uib_sync_fs() {
 
 function uib_study__update_study($type, $study, $nid) {
   //print_r(array($type, $study, $nid));
+  $no_path_prefix = $type == 'course' ? 'emne' : 'studieprogram';
+  $en_path_prefix = $type == 'course' ? $type : 'studyprogramme';
+
   $query = new EntityFieldQuery;
   $result = $query
     ->entityCondition('entity_type', 'node')
@@ -74,6 +78,10 @@ function uib_study__update_study($type, $study, $nid) {
     $node->status = 1;
     $node->revision = 0;
     $node->language = 'nb';
+    $node->path = array(
+      'alias' => $no_path_prefix . '/' . $study['id'],
+      'language' => 'nb',
+    );
     $node->title = $study['title_no'];
     $node->field_uib_study_code['und'][0]['value'] = $study['id'];
     $node->field_uib_ou['und'][0]['target_id'] = $nid;
@@ -90,6 +98,10 @@ function uib_study__update_study($type, $study, $nid) {
     $en_node->revision = 0;
     $en_node->language = 'en';
     $en_node->tnid = $node->nid;
+    $en_node->path = array(
+      'alias' => $en_path_prefix . '/' . $study['id'],
+      'language' => 'en',
+    );
     $en_node->title = $study['title_en'];
     $en_node->field_uib_study_code['und'][0]['value'] = $study['id'];
     $en_node->field_uib_ou['und'][0]['target_id'] = $nid;
