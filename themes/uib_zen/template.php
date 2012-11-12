@@ -245,10 +245,10 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         // Setup kicker
         // -- First determine which date to set
         if ($variables['node']->created < $variables['node']->revision_timestamp) {
-          $up_date = format_date($variables['node']->revision_timestamp,'medium');
+          $up_date = format_date($variables['node']->revision_timestamp, 'medium');
         }
         else {
-          $up_date = format_date($variables['node']->created,'medium');
+          $up_date = format_date($variables['node']->created, 'medium');
         }
         if (empty($variables['field_uib_kicker'][0]['value'])) {
           // set default value for kicker in news articles
@@ -267,7 +267,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $uib_news_byline = t('By') . ' ';
           $glue = "";
           // join authors into a single line
-          for($i = 0; $i < $byline_nrof_authors; $i++) {
+          for ($i = 0; $i < $byline_nrof_authors; $i++) {
             $uib_news_byline .= $glue . $variables['content']['field_uib_byline'][$i]['#markup'];
             if ($i == $byline_nrof_authors - 2) {
               $glue = ' ' . t('and') . ' '; // not comma between last names

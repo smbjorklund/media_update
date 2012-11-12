@@ -367,7 +367,7 @@ function uib_sebra__add_content_manager($content_manager_areas, $uid) {
       foreach (array_keys($result['node']) as $nid) {
 
         $area = node_load($nid);
-        $needle = array('target_id'=>$uid);
+        $needle = array('target_id' => $uid);
         if ( !isset($area->field_uib_content_manager['und']) ||
           !in_array($needle, $area->field_uib_content_manager['und']) ) {
 

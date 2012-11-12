@@ -333,12 +333,14 @@ class XTopicListSource extends MigrateSource {
           for ($i=count($this->w2AreaSubset)-1; $i>=0; $i--) {
             $this->w2AreaSubset[$i] = trim($this->w2AreaSubset[$i]); // strip line ends
             if (empty($this->w2AreaSubset[$i])) {
-              array_splice($this->w2AreaSubset,$i,1); // remove empty lines
-            } elseif (substr($this->w2AreaSubset[$i],0,1)=='#') {
-              array_splice($this->w2AreaSubset,$i,1); // discard comment lines
+              array_splice($this->w2AreaSubset, $i, 1); // remove empty lines
+            }
+            elseif (substr($this->w2AreaSubset[$i], 0, 1)=='#') {
+              array_splice($this->w2AreaSubset, $i, 1); // discard comment lines
             }
           }
-        } else {
+        }
+        else {
           uibx_log("Unable to read area list: \"$area_subset_filename\". Terminating!", 'error');
           exit;
         }

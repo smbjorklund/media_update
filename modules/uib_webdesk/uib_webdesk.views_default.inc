@@ -1130,7 +1130,7 @@ function uib_webdesk_views_default_views() {
     t('Article type'),
     t('Event type'),
     t('Post date'),
-    t(' Is greater than or equal to '),
+    t('Is greater than or equal to'),
     t('Is less than or equal to'),
     t('Content pane'),
     t('All content'),

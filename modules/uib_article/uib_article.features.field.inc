@@ -1581,8 +1581,8 @@ function uib_article_field_default_fields() {
   t('Byline');
   t('Contacts');
   t('Date');
-  t('Dette er et eksempel på hjelpetekst på grå bakgrunn. ');
-  t('Dette er et eksempel på hjelpetekst på hvit bakgrunn. ');
+  t('Dette er et eksempel på hjelpetekst på grå bakgrunn.');
+  t('Dette er et eksempel på hjelpetekst på hvit bakgrunn.');
   t('Event type');
   t('Fact box');
   t('ID w2');

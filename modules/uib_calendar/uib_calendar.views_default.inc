@@ -839,8 +839,8 @@ function uib_calendar_views_default_views() {
     t('Month'),
     t('Day'),
     t('Mini calendar'),
-    t('Exhibitions '),
-    t('List all events of type exhibitions '),
+    t('Exhibitions'),
+    t('List all events of type exhibitions'),
     t('Date -  start date (field_uib_date)'),
     t('Event filter'),
   );

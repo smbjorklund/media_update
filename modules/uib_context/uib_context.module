@@ -11,7 +11,7 @@ function uib_context_context_plugins() {
   $plugins = array();
   $plugins['uib_area'] = array(
     'handler' => array(
-      'path' => drupal_get_path('module', 'uib_context') .'/plugins',
+      'path' => drupal_get_path('module', 'uib_context') . '/plugins',
       'file' => 'uib_context_condition_area.inc',
       'class' => 'uib_area',
       'parent' => 'context_condition',
@@ -20,7 +20,7 @@ function uib_context_context_plugins() {
 
   $plugins['uib_area_reaction'] = array(
     'handler' => array(
-      'path' => drupal_get_path('module', 'uib_context') .'/plugins',
+      'path' => drupal_get_path('module', 'uib_context') . '/plugins',
       'file' => 'uib_context_reaction_area.inc',
       'class' => 'uib_area_reaction',
       'parent' => 'context_reaction',

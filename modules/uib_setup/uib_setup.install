@@ -1,8 +1,11 @@
 <?php
 
 /**
- * Implements hook_install()
- */
+* @file
+* uib_setup.install
+*
+* Implements hook_install()
+*/
 function uib_setup_install() {
   foreach (array('d.m.y', 'd.m.Y', 'd.m.Y - H.s') as $format) {
     system_date_format_save(array(

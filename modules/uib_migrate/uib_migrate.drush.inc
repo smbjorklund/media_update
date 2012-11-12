@@ -80,7 +80,8 @@ function uib_migrate__build_menu_tree($node, $mlid, $depth) {
         $link_title = $kid_node->field_uib_menu_title_w2['und'][0]['value'];
         if (!empty($kid_node->field_uib_nav_weight['und'][0]['value'])) {
           $link_weight = $kid_node->field_uib_nav_weight['und'][0]['value'];
-        } else {
+        }
+        else {
           $link_weight = 0;
         }
         if (!$link_title)

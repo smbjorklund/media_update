@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * uib_devel.install
+ */
 
 function uib_devel_install() {
   uibx_log('Install');

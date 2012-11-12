@@ -1,6 +1,7 @@
 <?php
 /**
- *
+ * @file
+ * uib_context_condition_area.inc
  */
 class uib_area extends context_condition {
   function condition_values() {

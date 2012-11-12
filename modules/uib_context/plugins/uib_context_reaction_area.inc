@@ -1,6 +1,7 @@
 <?php
 /**
- *
+ * @file
+ * uib_context_reaction_area.inc
  */
 class uib_area_reaction extends context_reaction {
   function options_form($context) {

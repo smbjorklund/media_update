@@ -516,7 +516,7 @@ if (file_exists($setup_file)) {
   try {
     Database::addConnectionInfo('migrate_epages_db', 'default', $other_database);
     $_edb = Database::getConnection('default', 'migrate_epages_db');
-  } catch(Exception $e) {
+  } catch (Exception $e) {
     uibx_log($e->getMessage(), 'error');
   }
 }
@@ -524,7 +524,8 @@ if (file_exists($setup_file)) {
 if ($_edb === FALSE) {
   uibx_log("EPagesMigration can't connect to source database - skipping");
 
-} else {
+}
+else {
 
   /**
    * Migrate employee-pages:menus from tempsite
@@ -608,15 +609,17 @@ if ($_edb === FALSE) {
     if (strpos($item->filemime, 'image') !== FALSE) {
       $uri = 'files/field/image/';
 
-    } elseif (strpos($item->filemime, 'pdf') !== FALSE) {
+    }
+    elseif (strpos($item->filemime, 'pdf') !== FALSE) {
       $uri = 'files/attachments/';
 
-    } else {
+    }
+    else {
       die("Unknown file type: " . $item->filemime);
     }
 
     $basename = drupal_basename($item->uri);
-    $uri = $server.$uri.$basename;
+    $uri = $server . $uri . $basename;
 
     $file = new stdClass();
     $dirname = 'public://ansattsider/';
@@ -719,7 +722,7 @@ if ($_edb === FALSE) {
       $query = $_edb->select('menu_links')
         ->fields('menu_links', array('mlid', 'link_path'))
         ->condition('menu_name', 'menu-ansattsider')
-        ->condition('link_path', 'node/'.$row->nid);
+        ->condition('link_path', 'node/' . $row->nid);
       foreach ($query->execute() as $item)
         $this->is_epage = TRUE;
 
@@ -737,7 +740,7 @@ if ($_edb === FALSE) {
             $query2 = $_edb->select('menu_links')
               ->fields('menu_links')
               ->condition('menu_name', 'menu-ansattsider')
-              ->condition('link_path', 'node/'.$item->tnid);
+              ->condition('link_path', 'node/' . $item->tnid);
             foreach ($query2->execute() as $item)
               $this->is_epage = TRUE;
           }
@@ -820,7 +823,7 @@ if ($_edb === FALSE) {
       if (isset($_mem_menu[$row->nid])) {
         $new_mlid = $_mem_menu[$row->nid];
         $menu_link = menu_link_load($new_mlid);
-        $menu_link['link_path'] = drupal_get_normal_path('node/'.$entity->nid);
+        $menu_link['link_path'] = drupal_get_normal_path('node/' . $entity->nid);
         menu_link_save($menu_link);
 
         // use mem_node[row->nid] to map to new node
