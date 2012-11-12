@@ -7,6 +7,7 @@ version = 7.x-0.1
 project = uib_testimonial
 dependencies[] = ctools
 dependencies[] = entityreference
+dependencies[] = features
 dependencies[] = file
 dependencies[] = file_entity
 dependencies[] = media

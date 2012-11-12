@@ -560,7 +560,7 @@ function uib_article_field_default_fields() {
       'label' => 'Fact box',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1345,7 +1345,6 @@ function uib_article_field_default_fields() {
       'label' => 'Text',
       'required' => 0,
       'settings' => array(
-        'entity_translation_sync' => FALSE,
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
@@ -1581,8 +1580,8 @@ function uib_article_field_default_fields() {
   t('Byline');
   t('Contacts');
   t('Date');
-  t('Dette er et eksempel på hjelpetekst på grå bakgrunn.');
-  t('Dette er et eksempel på hjelpetekst på hvit bakgrunn.');
+  t('Dette er et eksempel på hjelpetekst på grå bakgrunn. ');
+  t('Dette er et eksempel på hjelpetekst på hvit bakgrunn. ');
   t('Event type');
   t('Fact box');
   t('ID w2');
