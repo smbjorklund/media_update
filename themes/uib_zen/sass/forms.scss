@@ -164,14 +164,14 @@ td.menu-disabled {
 }
 
 /* Sets the style for fields */
-#edit-title, .form-autocomplete, #edit-field-uib-kicker-und-0-valume, .text-full {
+  #edit-title, .form-autocomplete, #edit-field-uib-kicker-und-0-valume, .text-full {
   padding: 8px;
   border: solid 1px #A2A2A2;
   width: 70%;
   box-shadow: 0px 1px 3px #D7D7D7 inset; 
   font-size: 1.3em;
   color: #4D4D4D;
-  margin-left: 85px;
+  margin-left: 55px;
 }
 
 .text-full  {
@@ -203,4 +203,28 @@ td.menu-disabled {
   border: none;
 }
 
-/* Sidebar title */
+/* Advanced */
+#node_uib_article_form_group_advanced {
+  width: 99%;
+  padding-left: 0;
+  margin-left: 0;
+  background: #e5e5e5;
+  border:solid 1px #C0C0C0;
+  background: rgb(244,244,244); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(244,244,244,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,244,244,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(244,244,244,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+}
+
+#node_uib_article_form_group_advanced legend {
+  background-color: #fff;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.group_uib_geo  {
+  width: 500px;
+}

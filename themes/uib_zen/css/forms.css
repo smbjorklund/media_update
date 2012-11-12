@@ -181,7 +181,7 @@ td.menu-disabled {
   box-shadow: 0px 1px 3px #D7D7D7 inset;
   font-size: 1.3em;
   color: #4D4D4D;
-  margin-left: 85px;
+  margin-left: 55px;
 }
 
 /* line 177, ../sass/forms.scss */
@@ -218,4 +218,38 @@ td.menu-disabled {
   border: none;
 }
 
-/* Sidebar title */
+/* Advanced */
+/* line 207, ../sass/forms.scss */
+#node_uib_article_form_group_advanced {
+  width: 99%;
+  padding-left: 0;
+  margin-left: 0;
+  background: #e5e5e5;
+  border: solid 1px #C0C0C0;
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e5e5e5));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4 0%, #e5e5e5 100%);
+  /* W3C */
+}
+
+/* line 222, ../sass/forms.scss */
+#node_uib_article_form_group_advanced legend {
+  background-color: #fff;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* line 228, ../sass/forms.scss */
+.group_uib_geo {
+  width: 500px;
+}
