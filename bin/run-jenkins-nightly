@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# shell script run from jenkins.uib.no
+
+# remove the old site
+sudo /var/www/sbin/drupal-w3-test-cleanup
+
+# uses postgres db (jenkins-nightly) on glory
+bin/site-install w3.test.uib.no postgres jenkins-nightly
+
+# import most (all?) of jur/hr
+bin/site-drush --yes vset uib_test_dir ALL
+bin/site-drush mi --all --verbose --strict=0 --area_subset=uib_areas_subset_jurhf.txt
+
+# build menu
+bin/site-drush uib-migrate-build-menu --verbose
+
+# enable uib_prod
+bin/site-drush pm-enable --yes uib_prod
+
+# sync some users, areas from sebra, etc
+bin/update-some-stuff
