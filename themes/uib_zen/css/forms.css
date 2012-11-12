@@ -220,36 +220,21 @@ td.menu-disabled {
 
 /* Advanced */
 /* line 207, ../sass/forms.scss */
-#node_uib_article_form_group_advanced {
-  width: 99%;
+#node_uib_article_form_group_advanced .fieldset-wrapper {
   padding-left: 0;
   margin-left: 0;
   background: #e5e5e5;
-  border: solid 1px #C0C0C0;
-  background: #f4f4f4;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e5e5e5));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #f4f4f4 0%, #e5e5e5 100%);
-  /* W3C */
+  padding-bottom: 10px;
+  width: 100%;
 }
 
-/* line 222, ../sass/forms.scss */
-#node_uib_article_form_group_advanced legend {
-  background-color: #fff;
-  margin-bottom: 20px;
-  display: block;
+/* line 215, ../sass/forms.scss */
+.field-group-fieldset {
+  width: 100%;
+  padding: 0;
 }
 
-/* line 228, ../sass/forms.scss */
+/* line 220, ../sass/forms.scss */
 .group_uib_geo {
   width: 500px;
 }

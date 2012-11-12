@@ -311,6 +311,5 @@ span.field-label {
 /* line 279, ../sass/pages.scss */
 div.add-or-remove-shortcuts {
   overflow: hidden;
-  *zoom: 1;
   padding: 5px 0;
 }

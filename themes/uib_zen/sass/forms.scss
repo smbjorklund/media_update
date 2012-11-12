@@ -204,25 +204,17 @@ td.menu-disabled {
 }
 
 /* Advanced */
-#node_uib_article_form_group_advanced {
-  width: 99%;
+#node_uib_article_form_group_advanced .fieldset-wrapper {
   padding-left: 0;
   margin-left: 0;
   background: #e5e5e5;
-  border:solid 1px #C0C0C0;
-  background: rgb(244,244,244); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(244,244,244,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,244,244,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(244,244,244,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+  padding-bottom: 10px;
+  width: 100%;
 }
 
-#node_uib_article_form_group_advanced legend {
-  background-color: #fff;
-  margin-bottom: 20px;
-  display: block;
+.field-group-fieldset {
+  width: 100%;
+  padding: 0;
 }
 
 .group_uib_geo  {

@@ -89,7 +89,7 @@
 }
 
 /* line 135, ../sass/fields.scss */
-.group-information, .group-specific-field, .group-advanced {
+.group-information, .group-specific-field {
   width: 580px;
 }
 
@@ -98,11 +98,24 @@
   width: 400px;
 }
 
+/* Sidebar */
 /* line 143, ../sass/fields.scss */
 .group_sidebar {
   width: 35%;
   float: right;
   background: #e5e5e5;
+}
+
+/* line 150, ../sass/fields.scss */
+.group-uib-links {
+  padding-left: 0;
+}
+
+/* line 154, ../sass/fields.scss */
+.group_factbox, .group_uib_links, .group-media {
+  border-top: solid 1px #F2F2F2;
+  border-bottom: solid 1px #CBCBCB;
+  padding: 5px;
   background: #f4f4f4;
   /* Old browsers */
   background: -moz-linear-gradient(top, #f4f4f4 0%, #e5e5e5 100%);
@@ -121,44 +134,32 @@
   /* IE6-9 */
 }
 
-/* line 157, ../sass/fields.scss */
-.group-uib-links {
-  padding-left: 0;
-}
-
-/* line 161, ../sass/fields.scss */
-.group_factbox, .group_uib_links, .group-media {
-  border-top: solid 1px #F2F2F2;
-  border-bottom: solid 1px #CBCBCB;
-  padding: 5px;
-}
-
-/* line 167, ../sass/fields.scss */
+/* line 168, ../sass/fields.scss */
 #uib-article-node-form h3 {
   color: #666666;
   font-weight: normal;
   font-size: 16px;
 }
 
-/* line 173, ../sass/fields.scss */
+/* line 174, ../sass/fields.scss */
 #uib-article-node-form .fieldset-title {
   font-size: 15px;
   color: #2162a0;
 }
 
-/* line 178, ../sass/fields.scss */
+/* line 179, ../sass/fields.scss */
 #uib-article-node-form {
   color: #666666;
 }
 
-/* line 182, ../sass/fields.scss */
+/* line 183, ../sass/fields.scss */
 .form-field-name-field-uib-article-type {
   width: 55%;
   float: left;
 }
 
 /* Buttons  in create content */
-/* line 188, ../sass/fields.scss */
+/* line 189, ../sass/fields.scss */
 #uib-article-node-form .button, .field-add-more-submit {
   padding: 2px 7px 2px 7px;
   background: #2162a0;
@@ -182,23 +183,23 @@
   /* IE6-9 */
 }
 
-/* line 204, ../sass/fields.scss */
+/* line 205, ../sass/fields.scss */
 #uib-article-node-form label {
   width: 80px;
 }
 
-/* line 208, ../sass/fields.scss */
+/* line 209, ../sass/fields.scss */
 div.link-field-column {
   float: none;
   width: 68%;
 }
 
-/* line 213, ../sass/fields.scss */
+/* line 214, ../sass/fields.scss */
 .link-field-subrow {
   width: 265px;
 }
 
-/* line 217, ../sass/fields.scss */
+/* line 218, ../sass/fields.scss */
 .vertical-tabs {
   float: left;
   display: block;
@@ -207,67 +208,67 @@ div.link-field-column {
 }
 
 /* Save and preview button */
-/* line 226, ../sass/fields.scss */
+/* line 227, ../sass/fields.scss */
 .form-submit {
   float: left;
 }
 
 /* Create area node */
-/* line 231, ../sass/fields.scss */
+/* line 232, ../sass/fields.scss */
 form.node-area-form {
   padding: 20px;
 }
 
 /*  Icons in Webdesk */
-/* line 236, ../sass/fields.scss */
+/* line 237, ../sass/fields.scss */
 .views-field-delete-node {
   background: url("../images/delete.png");
   background-repeat: no-repeat;
   display: inline;
 }
 
-/* line 242, ../sass/fields.scss */
+/* line 243, ../sass/fields.scss */
 .views-field-edit-node {
   background: url("../images/edit.png");
   background-repeat: no-repeat;
   display: inline;
 }
 
-/* line 248, ../sass/fields.scss */
+/* line 249, ../sass/fields.scss */
 .views-field-delete-node a, .views-field-edit-node a {
   margin-left: 18px;
 }
 
-/* line 252, ../sass/fields.scss */
+/* line 253, ../sass/fields.scss */
 .pane-my-content-panel-pane-1 {
   background: url("../images/my-content.png");
   background-repeat: no-repeat;
 }
 
-/* line 257, ../sass/fields.scss */
+/* line 258, ../sass/fields.scss */
 .pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2, li.menu-mlid-270 a {
   margin-left: 18px;
 }
 
-/* line 261, ../sass/fields.scss */
+/* line 262, ../sass/fields.scss */
 .pane-scheduled-content {
   background: url("../images/scheduled-content.png");
   background-repeat: no-repeat;
 }
 
-/* line 266, ../sass/fields.scss */
+/* line 267, ../sass/fields.scss */
 .pane-uib-webdesk-panel-pane-1 {
   background: url("../images/all-content.png");
   background-repeat: no-repeat;
 }
 
-/* line 271, ../sass/fields.scss */
+/* line 272, ../sass/fields.scss */
 li.menu-mlid-270 {
   background: url("../images/add.png");
   background-repeat: no-repeat;
 }
 
-/* line 276, ../sass/fields.scss */
+/* line 277, ../sass/fields.scss */
 ul li.menu-mlid-270 {
   list-style: none;
 }
