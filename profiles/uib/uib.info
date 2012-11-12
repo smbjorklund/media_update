@@ -12,6 +12,7 @@ dependencies[] = uib_setup
 dependencies[] = uib_area
 dependencies[] = uib_article
 dependencies[] = uib_testimonial
+dependencies[] = uib_study
 dependencies[] = uib_user
 dependencies[] = uib_employee_pages
 dependencies[] = uib_migrate
