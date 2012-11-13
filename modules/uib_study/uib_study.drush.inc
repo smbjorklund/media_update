@@ -13,13 +13,21 @@ function uib_study_drush_command() {
 }
 
 function drush_uib_study_uib_sync_fs() {
+  // Find out what study_codes are in use
+  $unused_codes = array();
+  $result = db_select('field_data_field_uib_study_code', 'c')
+    ->fields('c', array('entity_id', 'field_uib_study_code_value'))
+    ->execute();
+  foreach ($result as $row) {
+    $unused_codes[$row->field_uib_study_code_value][] = $row->entity_id;
+  }
+
+  // Find what Organization Units we have
   $query = new EntityFieldQuery;
   $result = $query
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'uib_ou')
     ->execute();
-
-  //print_r($result);
 
   $ou_id = array();
   foreach (array_keys($result['node']) as $nid) {
@@ -27,7 +35,6 @@ function drush_uib_study_uib_sync_fs() {
     //print_r($ou);
     $ou_id[$nid] = $ou->field_uib_ou_id['und'][0]['value'];
   }
-  //print_r($ou_id);
 
   // let's process these then
   foreach ($ou_id as $nid => $oid) {
@@ -49,14 +56,25 @@ function drush_uib_study_uib_sync_fs() {
       $data = drupal_json_decode($res->data);
       foreach ($data['emner_fag'] as $emne) {
         uib_study__update_study('course', $emne, $nid);
+        unset($unused_codes[$emne['id']]);
       }
       foreach ($data['studieprogrammer_fag'] as $program) {
         uib_study__update_study('program', $program, $nid);
+        unset($unused_codes[$program['id']]);
       }
     }
     else {
       uibx_log("GET $fspres_url: " . $res->code . ' ' . $res->status_message, 'warning');
     }
+  }
+
+  $nodes_to_delete = array();
+  foreach ($unused_codes as $code => $nids) {
+    array_splice($nodes_to_delete, count($nodes_to_delete), 0, $nids);
+    uibx_log("Deleting nodes for $code");
+  }
+  if ($nodes_to_delete) {
+    node_delete_multiple($nodes_to_delete);
   }
 }
 
