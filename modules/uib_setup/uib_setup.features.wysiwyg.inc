@@ -91,7 +91,7 @@ function uib_setup_wysiwyg_default_profiles() {
           'autosave' => 1,
         ),
         'paste' => array(
-          'pastetext' => 1,
+          'pasteword' => 1,
         ),
         'table' => array(
           'tablecontrols' => 1,
@@ -132,6 +132,10 @@ function uib_setup_wysiwyg_default_profiles() {
           'numlist' => 1,
           'link' => 1,
           'unlink' => 1,
+          'formatselect' => 1,
+        ),
+        'paste' => array(
+          'pasteword' => 1,
         ),
       ),
       'toolbar_loc' => 'top',
