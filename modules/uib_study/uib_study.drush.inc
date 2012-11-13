@@ -83,6 +83,8 @@ function uib_study__update_study($type, $study, $nid) {
       'language' => 'nb',
     );
     $node->title = $study['title_no'];
+    if (empty($node->title))
+      $node->title = $study['id'];
     $node->field_uib_study_code['und'][0]['value'] = $study['id'];
     $node->field_uib_ou['und'][0]['target_id'] = $nid;
     node_save($node);
@@ -103,6 +105,8 @@ function uib_study__update_study($type, $study, $nid) {
       'language' => 'en',
     );
     $en_node->title = $study['title_en'];
+    if (empty($en_node->title))
+      $en_node->title = $study['id'];
     $en_node->field_uib_study_code['und'][0]['value'] = $study['id'];
     $en_node->field_uib_ou['und'][0]['target_id'] = $nid;
     node_save($en_node);
@@ -114,6 +118,8 @@ function uib_study__update_study($type, $study, $nid) {
   foreach ($nodes as $node) {
     $edit = FALSE;
     $title = ($node->language == 'nb') ? $study['title_no'] : $study['title_en'];
+    if (empty($title))
+      $title = $study['id'];
     if ($node->title != $title) {
       $node->title = $title;
       $edit = TRUE;
