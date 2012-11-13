@@ -77,33 +77,32 @@
 }
 
 /* Button hovers */
-/* line 73, ../sass/views-styles.scss */
+/* line 72, ../sass/views-styles.scss */
 .views-field-edit-node a:hover, .views-field-delete-node a:hover {
   opacity: 1;
   text-decoration: none !important;
 }
 
-/* line 78, ../sass/views-styles.scss */
+/* line 77, ../sass/views-styles.scss */
 .more-link a:visited {
   color: #fff !important;
 }
 
-/* line 82, ../sass/views-styles.scss */
+/* line 81, ../sass/views-styles.scss */
 .bef-datepicker {
-  padding: 8px;
+  padding: 4px;
   border: solid 1px #A2A2A2;
-  width: 90%;
   box-shadow: 0px 1px 3px #D7D7D7 inset;
   font-size: 1.3em;
   color: #4D4D4D;
 }
 
-/* line 91, ../sass/views-styles.scss */
+/* line 89, ../sass/views-styles.scss */
 .vbo-views-form {
   background: #EEE;
 }
 
-/* line 95, ../sass/views-styles.scss */
+/* line 93, ../sass/views-styles.scss */
 table.cols-6 {
   width: 98%;
   margin: auto;

@@ -163,8 +163,8 @@ td.menu-disabled {
 }
 
 /* Sets the style for fields */
-  #edit-title, .form-autocomplete, #edit-field-uib-kicker-und-0-valume, .text-full {
-  padding: 8px;
+  #edit-title, #edit-title-1, .form-autocomplete, #edit-field-uib-kicker-und-0-valume, .text-full {
+  padding: 4px;
   border: solid 1px #A2A2A2;
   width: 70%;
   box-shadow: 0px 1px 3px #D7D7D7 inset; 
@@ -182,17 +182,28 @@ td.menu-disabled {
   border-color: #787878; 
 	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 4px;
 }
-
 .form-field-type-long-text {
   display: inline-block;
 }
-
+.views-exposed-form .views-exposed-widget {
+    float: none;
+}
+#edit-changed-wrapper, #edit-created-wrapper, #edit-field-uib-article-type-value-wrapper, #edit-field-uib-event-type-value-wrapper {
+  display: inline-block;
+}
+#edit-field-uib-event-type-value-wrapper {
+  width: 50%;
+}
 /* Select media buttons */
 .edit-field-uib-files-und-0 {
   padding: 10px;
   background: red;
 }
 
+.views-exposed-form .views-widget {
+  
+  
+}
 /* Webdesk title */
 .panel-3col h2  {
   text-transform: none;
