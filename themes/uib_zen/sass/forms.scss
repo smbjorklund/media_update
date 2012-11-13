@@ -31,17 +31,16 @@
     color: #aa0000;
   }
 
-.description { /* The descriptive help text (separate from the label) */
-    font-size: .9em;
-    color:#999999;
-    margin-top:3px;
-  }
-
   .form-checkboxes & ,
   .form-radios & { /* Pack groups of checkboxes and radio buttons closer together */
     margin: 0; /* Drupal core uses "0.4em 0" */
   }
 }
+.description { /* The descriptive help text (separate from the label) */
+    font-size: .9em;
+    color:#999999;
+    margin-top:3px;
+  }
 
 .form-submit { /* The submit button */
 }
@@ -171,7 +170,6 @@ td.menu-disabled {
   box-shadow: 0px 1px 3px #D7D7D7 inset; 
   font-size: 1.3em;
   color: #4D4D4D;
-  margin-left: 55px;
 }
 
 .text-full  {
