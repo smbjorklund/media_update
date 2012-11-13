@@ -339,18 +339,19 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_main_media_1']['settings'] = array(
     'file_view_mode' => 'media_preview',
   );
-  /* Contextual filter: Content: Area (field_uib_area) */
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['validate']['type'] = 'node';
-  $handler->display->display_options['arguments']['field_uib_area_target_id']['validate_options']['types'] = array(
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'reverse_field_uib_profiled_article_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
     'area' => 'area',
   );
   /* Filter criterion: Content: Published */
