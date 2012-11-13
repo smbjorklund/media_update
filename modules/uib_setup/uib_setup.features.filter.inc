@@ -10,13 +10,41 @@
 function uib_setup_filter_default_formats() {
   $formats = array();
 
-  // Exported format: Basic HTML.
+  // Exported format: Advanced editor.
   $formats['advanced_editor'] = array(
     'format' => 'advanced_editor',
-    'name' => 'Basic HTML',
+    'name' => 'Advanced editor',
     'cache' => '1',
     'status' => '1',
     'weight' => '-10',
+    'filters' => array(
+      'filter_url' => array(
+        'weight' => '0',
+        'status' => '1',
+        'settings' => array(
+          'filter_url_length' => '72',
+        ),
+      ),
+      'media_filter' => array(
+        'weight' => '2',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'filter_htmlcorrector' => array(
+        'weight' => '10',
+        'status' => '1',
+        'settings' => array(),
+      ),
+    ),
+  );
+
+  // Exported format: Basic HTML.
+  $formats['basic_html'] = array(
+    'format' => 'basic_html',
+    'name' => 'Basic HTML',
+    'cache' => '1',
+    'status' => '1',
+    'weight' => '0',
     'filters' => array(
       'filter_url' => array(
         'weight' => '0',

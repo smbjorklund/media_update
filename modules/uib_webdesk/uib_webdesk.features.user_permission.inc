@@ -801,6 +801,17 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'filter',
   );
 
+  // Exported permission: use text format basic_html.
+  $permissions['use text format basic_html'] = array(
+    'name' => 'use text format basic_html',
+    'roles' => array(
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
+    ),
+    'module' => 'filter',
+  );
+
   // Exported permission: use text format full_html.
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
