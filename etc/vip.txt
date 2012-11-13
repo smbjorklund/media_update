@@ -1,0 +1,11 @@
+# This file lists the very important user ids of those that are synced first
+
+agu075  # Agnete
+astie   # Ingrid
+edpck   # Cato
+gaa041  # Gisle
+sbe004  # Said
+sbj051  # Stein Magne
+sle068  # Sissel
+ter062  # Torstein
+tle063  # Trude

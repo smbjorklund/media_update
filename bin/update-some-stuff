@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for u in astie gaa041 edpck; do
+for u in $(sed 's/#.*//' etc/vip.txt); do
     bin/site-drush uib-sync-w2-user $u
     bin/site-drush uib-sebra-user $u
 done
