@@ -6,3 +6,4 @@ for u in astie gaa041 edpck; do
 done
 
 bin/site-drush uib-sebra-areas
+bin/site-drush uib-sync-fs
