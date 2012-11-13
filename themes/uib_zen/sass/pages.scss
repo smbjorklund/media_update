@@ -9,7 +9,6 @@
 
 @import "base";
 
-
 /*
  * Body
  */
@@ -24,7 +23,8 @@ body {
   background: #fff;
 }
 
-#page {
+.page-webdesk #page {
+  background-color: lighten($light-grey, 6%);
 }
 
 /*

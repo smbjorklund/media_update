@@ -252,8 +252,7 @@ form.node-area-form {
 }
 
 .pane-my-content-panel-pane-1 {
-  background: url('../images/my-content.png');
-  background-repeat: no-repeat;
+  background: url('../images/my-content.png') no-repeat 0 5px;
 }
 
 .pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2, .page-webdesk ul.menu li a {
@@ -261,13 +260,18 @@ form.node-area-form {
 }
 
 .pane-scheduled-content {
-  background: url('../images/scheduled-content.png');
-  background-repeat: no-repeat;
+  background: url('../images/scheduled-content.png') no-repeat 0 5px;
 }
-
+.pane-menu-webdesk ul.menu {
+  padding-left: 0;  
+}
+.pane-uib-webdesk-panel-pane-1 h2 {
+  
+}
 .pane-uib-webdesk-panel-pane-1  {
-  background: url('../images/all-content.png');
-  background-repeat: no-repeat;
+  background: url('../images/all-content.png') no-repeat 0 5px;
+  border-top: $medium-grey;
+  border-bottom: $medium-grey;
 }
 
 .page-webdesk ul.menu li {
