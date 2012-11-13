@@ -187,22 +187,24 @@ function uib_zen_preprocess_page(&$variables, $hook) {
       // if content is of other type ('article', 'testimonial'),
       // use title of its referenced area and its node id
       // -- get the referenced area from the node object
-      $belongs_to = $node->field_uib_area['und'][0];
-      if (isset($belongs_to['entity'])) {
-        // if the entity object is present, use it
-        $referenced_area = $belongs_to['entity'];
-      }
-      else {
-        // if the entity object is not present, load the object by using
-        // the node id throught the node_load function
-        $referenced_area = node_load($belongs_to['target_id']);
-      }
-      if (isset($referenced_area->title)) {
-        $variables['area'] = $referenced_area;
-        $variables['page_title'] = $referenced_area->title;
-        $variables['page_title_link'] = l(check_plain($referenced_area->title), 'node/' . $referenced_area->nid, array('attributes' => array('title' => check_plain($referenced_area->title) . " " . t('Home'))));
-        // set menu style as for referenced area
-        $variables['uib_menu_style'] = 'uib-menu-style-' . $referenced_area->field_uib_menu_style['und'][0]['value'];
+      if (isset($node->field_uib_area)) {
+        $belongs_to = $node->field_uib_area['und'][0];
+        if (isset($belongs_to['entity'])) {
+          // if the entity object is present, use it
+          $referenced_area = $belongs_to['entity'];
+        }
+        else {
+          // if the entity object is not present, load the object by using
+          // the node id throught the node_load function
+          $referenced_area = node_load($belongs_to['target_id']);
+        }
+        if (isset($referenced_area->title)) {
+          $variables['area'] = $referenced_area;
+          $variables['page_title'] = $referenced_area->title;
+          $variables['page_title_link'] = l(check_plain($referenced_area->title), 'node/' . $referenced_area->nid, array('attributes' => array('title' => check_plain($referenced_area->title) . " " . t('Home'))));
+          // set menu style as for referenced area
+          $variables['uib_menu_style'] = 'uib-menu-style-' . $referenced_area->field_uib_menu_style['und'][0]['value'];
+        }
       }
     }
   }
