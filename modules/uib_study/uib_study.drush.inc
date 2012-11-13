@@ -60,8 +60,8 @@ function drush_uib_study_uib_sync_fs() {
   }
 }
 
-function uib_study__update_study($type, $study, $nid) {
-  //print_r(array($type, $study, $nid));
+function uib_study__update_study($type, $study, $ou_nid) {
+  //print_r(array($type, $study, $ou_nid));
   $no_path_prefix = $type == 'course' ? 'emne' : 'studieprogram';
   $en_path_prefix = $type == 'course' ? $type : 'studyprogramme';
 
@@ -86,7 +86,7 @@ function uib_study__update_study($type, $study, $nid) {
     if (empty($node->title))
       $node->title = $study['id'];
     $node->field_uib_study_code['und'][0]['value'] = $study['id'];
-    $node->field_uib_ou['und'][0]['target_id'] = $nid;
+    $node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
     node_save($node);
 
     // set tnid
@@ -108,7 +108,7 @@ function uib_study__update_study($type, $study, $nid) {
     if (empty($en_node->title))
       $en_node->title = $study['id'];
     $en_node->field_uib_study_code['und'][0]['value'] = $study['id'];
-    $en_node->field_uib_ou['und'][0]['target_id'] = $nid;
+    $en_node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
     node_save($en_node);
     uibx_log("Created $type " . $study['id'] . " as node " . $node->nid);
     return;
@@ -124,8 +124,8 @@ function uib_study__update_study($type, $study, $nid) {
       $node->title = $title;
       $edit = TRUE;
     }
-    if ($node->field_uib_ou['und'][0]['target_id'] != $nid) {
-      $node->field_uib_ou['und'][0]['target_id'] = $nid;
+    if ($node->field_uib_ou['und'][0]['target_id'] != $ou_nid) {
+      $node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
       $edit = TRUE;
     }
 
