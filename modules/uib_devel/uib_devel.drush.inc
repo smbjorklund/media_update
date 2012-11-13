@@ -11,6 +11,13 @@ function uib_devel_drush_command() {
     'arguments' => array(),
     'options' => array(),
   );
+  $items['uib-devel-create-content'] = array(
+    'description' => 'Create content for /jur',
+    'aliases' => array('uib-ct', ),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(),
+    'options' => array(),
+  );
   return $items;
 }
 
@@ -38,5 +45,53 @@ function drush_uib_devel_fill_area() {
     //$area->field_uib_profiled_article['und'][3]['target_id'] =  'xx';
     node_save($area);
     //print_r($area); 
+  }
+}
+
+function drush_uib_devel_create_content() {
+  $path = drupal_get_normal_path('jur');
+  $areaid =  explode('/', $path);
+  if (is_numeric($areaid[1])){
+    $node = new stdClass;
+    $node->type = 'uib_article';
+    $node->title = 'En fint seminar om Jur';
+    $node->language = 'nb';
+    $node->field_uib_area['und'][0]['target_id'] = $areaid[1];
+    $node->field_uib_article_type['und'][0]['value'] = 'event';
+    $node->field_uib_event_type['und'][0]['value'] = 'seminar';
+    $node->field_uib_date['und'][0]['value'] = date("Y-m-d H:i:s");
+    node_save($node);
+
+    $node = new stdClass;
+    $node->type = 'uib_article';
+    $node->title = 'Foredrag om Lasse';
+    $node->language = 'nb';
+    $node->field_uib_area['und'][0]['target_id'] = $areaid[1];
+    $node->field_uib_article_type['und'][0]['value'] = 'event';
+    $node->field_uib_event_type['und'][0]['value'] = 'foredrag';
+    $node->field_uib_date['und'][0]['value'] = date("Y-m-d H:i:s", strtotime("+2 hour"));
+    node_save($node);
+
+    $node = new stdClass;
+    $node->type = 'uib_article';
+    $node->title = 'Vi synger julen inn';
+    $node->language = 'nb';
+    $node->field_uib_area['und'][0]['target_id'] = $areaid[1];
+    $node->field_uib_article_type['und'][0]['value'] = 'event';
+    $node->field_uib_event_type['und'][0]['value'] = 'seminar';
+    $node->field_uib_date['und'][0]['value'] = date("Y-m-d H:i:s", strtotime("+4 hour"));
+    node_save($node);
+
+    $node = new stdClass;
+    $node->type = 'uib_article';
+    $node->title = 'Kunstutstilling';
+    $node->language = 'nb';
+    $node->field_uib_area['und'][0]['target_id'] = $areaid[1];
+    $node->field_uib_article_type['und'][0]['value'] = 'event';
+    $node->field_uib_event_type['und'][0]['value'] = 'utstilling';
+    $node->field_uib_date['und'][0]['value'] = date("Y-m-d H:i:s");
+    $node->field_uib_date['und'][0]['value2'] = date("Y-m-d H:i:s", strtotime("+1 week"));
+    node_save($node);
+
   }
 }
