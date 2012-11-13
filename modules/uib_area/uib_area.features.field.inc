@@ -1230,7 +1230,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '23',
+        'weight' => '24',
       ),
     ),
   );
@@ -1366,7 +1366,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '18',
+        'weight' => '25',
       ),
     ),
   );
