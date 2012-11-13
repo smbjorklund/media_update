@@ -790,17 +790,6 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'panels',
   );
 
-  // Exported permission: use text format advanced_editor.
-  $permissions['use text format advanced_editor'] = array(
-    'name' => 'use text format advanced_editor',
-    'roles' => array(
-      0 => 'level 1',
-      1 => 'level 2',
-      2 => 'level 3',
-    ),
-    'module' => 'filter',
-  );
-
   // Exported permission: use text format basic_html.
   $permissions['use text format basic_html'] = array(
     'name' => 'use text format basic_html',

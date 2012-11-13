@@ -15,8 +15,8 @@ function uib_setup_filter_default_formats() {
     'format' => 'advanced_editor',
     'name' => 'Advanced editor',
     'cache' => '1',
-    'status' => '1',
-    'weight' => '-10',
+    'status' => '0',
+    'weight' => '-9',
     'filters' => array(
       'filter_url' => array(
         'weight' => '0',
@@ -44,7 +44,7 @@ function uib_setup_filter_default_formats() {
     'name' => 'Basic HTML',
     'cache' => '1',
     'status' => '1',
-    'weight' => '0',
+    'weight' => '-10',
     'filters' => array(
       'filter_url' => array(
         'weight' => '0',
