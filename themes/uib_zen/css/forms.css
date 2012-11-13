@@ -208,24 +208,40 @@ td.menu-disabled {
 }
 
 /* line 191, ../sass/forms.scss */
+.views-exposed-form .views-exposed-widget .form-submit {
+  margin: 0 0 1.6em;
+}
+
+/* line 194, ../sass/forms.scss */
+html.js input.form-autocomplete {
+  background-position: 100% 8px;
+}
+
+/* line 197, ../sass/forms.scss */
+html.js input.throbbing {
+  background-position: 100% -12px;
+  /* LTR */
+}
+
+/* line 200, ../sass/forms.scss */
 #edit-changed-wrapper, #edit-created-wrapper, #edit-field-uib-article-type-value-wrapper, #edit-field-uib-event-type-value-wrapper {
   display: inline-block;
 }
 
-/* line 194, ../sass/forms.scss */
+/* line 203, ../sass/forms.scss */
 #edit-field-uib-event-type-value-wrapper {
   width: 50%;
 }
 
 /* Select media buttons */
-/* line 198, ../sass/forms.scss */
+/* line 207, ../sass/forms.scss */
 .edit-field-uib-files-und-0 {
   padding: 10px;
   background: red;
 }
 
 /* Webdesk title */
-/* line 208, ../sass/forms.scss */
+/* line 217, ../sass/forms.scss */
 .panel-3col h2 {
   text-transform: none;
   font-family: helvetica, sans-serif;
@@ -234,7 +250,7 @@ td.menu-disabled {
 }
 
 /* Advanced */
-/* line 216, ../sass/forms.scss */
+/* line 225, ../sass/forms.scss */
 #node_uib_article_form_group_advanced .fieldset-wrapper {
   padding-left: 0;
   margin-left: 0;
@@ -243,13 +259,13 @@ td.menu-disabled {
   width: 100%;
 }
 
-/* line 224, ../sass/forms.scss */
+/* line 233, ../sass/forms.scss */
 .field-group-fieldset {
   width: 100%;
   padding: 0;
 }
 
-/* line 229, ../sass/forms.scss */
+/* line 238, ../sass/forms.scss */
 .group_uib_geo {
   width: 500px;
 }

@@ -188,6 +188,15 @@ td.menu-disabled {
 .views-exposed-form .views-exposed-widget {
     float: none;
 }
+.views-exposed-form .views-exposed-widget .form-submit {
+  margin: 0 0 1.6em;
+}
+html.js input.form-autocomplete {
+    background-position: 100% 8px;
+}
+html.js input.throbbing {
+  background-position: 100% -12px; /* LTR */
+}
 #edit-changed-wrapper, #edit-created-wrapper, #edit-field-uib-article-type-value-wrapper, #edit-field-uib-event-type-value-wrapper {
   display: inline-block;
 }
