@@ -41,11 +41,17 @@ function uib_area_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-9',
         ),
+        'views-recent_news-block' => array(
+          'module' => 'views',
+          'delta' => 'recent_news-block',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+        ),
         'views-area_kids-block' => array(
           'module' => 'views',
           'delta' => 'area_kids-block',
           'region' => 'sidebar_second',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
       ),
     ),
