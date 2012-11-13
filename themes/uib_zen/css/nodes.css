@@ -91,3 +91,18 @@
   text-align: center;
   word-wrap: break-word;
 }
+
+/* Area page */
+/* line 68, ../sass/nodes.scss */
+.field-name-field-uib-primary-media {
+  float: left;
+}
+
+/* line 72, ../sass/nodes.scss */
+.field-name-field-uib-primary-text {
+  height: 238px;
+  background: #DCDCDC;
+  width: 440px;
+  margin-left: 10px;
+  float: left;
+}
