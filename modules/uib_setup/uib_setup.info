@@ -66,6 +66,7 @@ features[variable][] = date_first_day
 features[variable][] = date_format_long
 features[variable][] = date_format_medium
 features[variable][] = date_format_short
+features[variable][] = file_private_path
 features[variable][] = i18n_node_default_language_none
 features[variable][] = l10n_update_check_disabled
 features[variable][] = l10n_update_check_frequency

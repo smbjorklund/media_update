@@ -10,6 +10,7 @@
 # third parameter an optional postgres database name (default '<user>-db1')
 #
 # Or you can set DATABASE as an enviroment variable before calling this script
+echo $PWD
 
 SITE_DIR=${1:-uib.no}
 #PROFILE=${2:-uib}
@@ -46,6 +47,9 @@ if [ -e sites/$SITE_DIR ]; then
     echo "drupal/sites/$SITE_DIR already exists, aborting."
     exit 1
 fi
+
+mkdir -p ../var/private || exit 1
+chmod 777 ../var/private || exit 1
 
 set -x
 drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --site-mail="w3@it.uib.no" --site-name="Universitetet i Bergen" --account-name=admin --account-mail="w3@it.uib.no" --account-pass=admin --clean-url --verbose --yes || exit 1

@@ -6,6 +6,8 @@
 test -L site || exit 1
 SITE=$(basename $(readlink site))
 BACKUP=true
+rm -fr var/private
+
 if [ "$1" = "--discard" ]; then
     BACKUP=false
     shift
