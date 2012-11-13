@@ -44,7 +44,7 @@ function drush_uib_devel_fill_area() {
     //$area->field_uib_profiled_article['und'][2]['target_id'] =  'xx';
     //$area->field_uib_profiled_article['und'][3]['target_id'] =  'xx';
     node_save($area);
-    //print_r($area); 
+    drush_log('Filled area content for /jur');
   }
 }
 
@@ -93,5 +93,6 @@ function drush_uib_devel_create_content() {
     $node->field_uib_date['und'][0]['value2'] = date("Y-m-d H:i:s", strtotime("+1 week"));
     node_save($node);
 
+    drush_log('Created 4 events for /jur');
   }
 }
