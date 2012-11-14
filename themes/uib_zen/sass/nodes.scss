@@ -92,14 +92,6 @@
   margin-right: 10px;
 }
 
-.field-name-field-uib-profiled-testimonial  {
-  width: 40%;
-}
-
-.field-name-field-uib-tertiary-text {
-  width: 40%;
-}
-
 .node-area {
   width: 660px;
   
@@ -119,7 +111,7 @@
 
 
 
-.field-name-field-uib-w2-id, .field-name-field-uib-copyright, .field-name-field-uib-owner { /* Temporaily fix */
+.field-name-field-uib-w2-id, .field-name-field-uib-copyright, .field-name-field-uib-owner { /* Temporarily fix */
   display: none;
 }
 
@@ -131,13 +123,16 @@
 
 
 .field-name-field-uib-profiled-article {
-  float: left;
   width: 100%;
   margin-bottom: 20px;
+  border-bottom: solid 1px silver;
 }
 
 .group-two-column {
-  float: left;
+  width: 50%;
+  background: $light-grey;
+  margin-bottom: 20px;
+  padding: 10px;
 }
 
 .page-node-4  {

@@ -126,60 +126,53 @@
 }
 
 /* line 95, ../sass/nodes.scss */
-.field-name-field-uib-profiled-testimonial {
-  width: 40%;
-}
-
-/* line 99, ../sass/nodes.scss */
-.field-name-field-uib-tertiary-text {
-  width: 40%;
-}
-
-/* line 103, ../sass/nodes.scss */
 .node-area {
   width: 660px;
 }
-/* line 106, ../sass/nodes.scss */
+/* line 98, ../sass/nodes.scss */
 .node-area p {
   color: #333;
   font-family: verdana, sans-serif;
 }
-/* line 110, ../sass/nodes.scss */
+/* line 102, ../sass/nodes.scss */
 .node-area a {
   color: #005473;
 }
-/* line 114, ../sass/nodes.scss */
+/* line 106, ../sass/nodes.scss */
 .node-area h4 {
   margin: 0;
   padding: 0;
 }
 
-/* line 122, ../sass/nodes.scss */
+/* line 114, ../sass/nodes.scss */
 .field-name-field-uib-w2-id, .field-name-field-uib-copyright, .field-name-field-uib-owner {
-  /* Temporaily fix */
+  /* Temporarily fix */
   display: none;
 }
 
-/* line 126, ../sass/nodes.scss */
+/* line 118, ../sass/nodes.scss */
 .field-name-field-uib-secondary-text {
   width: 100%;
   float: left;
   margin-bottom: 20px;
 }
 
-/* line 133, ../sass/nodes.scss */
+/* line 125, ../sass/nodes.scss */
 .field-name-field-uib-profiled-article {
-  float: left;
   width: 100%;
   margin-bottom: 20px;
+  border-bottom: solid 1px silver;
 }
 
-/* line 139, ../sass/nodes.scss */
+/* line 131, ../sass/nodes.scss */
 .group-two-column {
-  float: left;
+  width: 50%;
+  background: #e5e5e5;
+  margin-bottom: 20px;
+  padding: 10px;
 }
 
-/* line 143, ../sass/nodes.scss */
+/* line 138, ../sass/nodes.scss */
 .page-node-4 {
   width: 890px;
   margin: 0 auto;
