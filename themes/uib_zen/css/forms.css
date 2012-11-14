@@ -168,13 +168,15 @@ td.menu-disabled {
 /* Webdesk - everything above this comment has yet been motified.  */
 /* Border around nodes in the webdesk */
 /* line 160, ../sass/forms.scss */
-#uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form {
-  border: solid 1px silver;
+#uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form, .page-webdesk #main {
+  border: solid 1px #999999;
   box-shadow: 0px 1px 3px #D7D7D7;
+  color: #666666;
+  display: inline-block;
 }
 
 /* Sets the style for fields */
-/* line 166, ../sass/forms.scss */
+/* line 168, ../sass/forms.scss */
 #edit-title, #edit-title-1, .form-autocomplete, #edit-field-uib-kicker-und-0-valume, .text-full {
   padding: 4px;
   border: solid 1px #A2A2A2;
@@ -184,64 +186,64 @@ td.menu-disabled {
   color: #4D4D4D;
 }
 
-/* line 175, ../sass/forms.scss */
+/* line 177, ../sass/forms.scss */
 .text-full {
   box-shadow: 0px 1px 3px #D7D7D7 inset;
   border: solid 1px #A2A2A2;
   color: #4D4D4D;
 }
 
-/* line 181, ../sass/forms.scss */
+/* line 183, ../sass/forms.scss */
 #edit-title:hover, .form-autocomplete:hover, #edit-field-uib-kicker-und-0-value:hover, .text-full:hover {
   border-color: #787878;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 4px;
 }
 
-/* line 185, ../sass/forms.scss */
+/* line 187, ../sass/forms.scss */
 .form-field-type-long-text {
   display: inline-block;
 }
 
-/* line 188, ../sass/forms.scss */
+/* line 190, ../sass/forms.scss */
 .views-exposed-form .views-exposed-widget {
   float: none;
 }
 
-/* line 191, ../sass/forms.scss */
+/* line 193, ../sass/forms.scss */
 .views-exposed-form .views-exposed-widget .form-submit {
   margin: 0 0 1.6em;
 }
 
-/* line 194, ../sass/forms.scss */
+/* line 196, ../sass/forms.scss */
 html.js input.form-autocomplete {
   background-position: 100% 8px;
 }
 
-/* line 197, ../sass/forms.scss */
+/* line 199, ../sass/forms.scss */
 html.js input.throbbing {
   background-position: 100% -12px;
   /* LTR */
 }
 
-/* line 200, ../sass/forms.scss */
+/* line 202, ../sass/forms.scss */
 #edit-changed-wrapper, #edit-created-wrapper, #edit-field-uib-article-type-value-wrapper, #edit-field-uib-event-type-value-wrapper {
   display: inline-block;
 }
 
-/* line 203, ../sass/forms.scss */
+/* line 205, ../sass/forms.scss */
 #edit-field-uib-event-type-value-wrapper {
   width: 50%;
 }
 
 /* Select media buttons */
-/* line 207, ../sass/forms.scss */
+/* line 209, ../sass/forms.scss */
 .edit-field-uib-files-und-0 {
   padding: 10px;
   background: red;
 }
 
 /* Webdesk title */
-/* line 217, ../sass/forms.scss */
+/* line 219, ../sass/forms.scss */
 .panel-3col h2 {
   text-transform: none;
   font-family: helvetica, sans-serif;
@@ -250,7 +252,7 @@ html.js input.throbbing {
 }
 
 /* Advanced */
-/* line 225, ../sass/forms.scss */
+/* line 227, ../sass/forms.scss */
 #node_uib_article_form_group_advanced .fieldset-wrapper {
   padding-left: 0;
   margin-left: 0;
@@ -259,13 +261,12 @@ html.js input.throbbing {
   width: 100%;
 }
 
-/* line 233, ../sass/forms.scss */
+/* line 235, ../sass/forms.scss */
 .field-group-fieldset {
-  width: 100%;
   padding: 0;
 }
 
-/* line 238, ../sass/forms.scss */
+/* line 239, ../sass/forms.scss */
 .group_uib_geo {
   width: 500px;
 }
