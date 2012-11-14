@@ -57,6 +57,7 @@ features[field][] = node-area-field_uib_profiled_testimonial
 features[field][] = node-area-field_uib_sebra_id
 features[field][] = node-area-field_uib_secondary_text
 features[field][] = node-area-field_uib_show_staff
+features[field][] = node-area-field_uib_social_media
 features[field][] = node-area-field_uib_staff
 features[field][] = node-area-field_uib_tertiary_text
 features[field][] = node-area-field_uib_text2

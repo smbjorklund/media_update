@@ -866,11 +866,11 @@ function uib_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -1720,6 +1720,101 @@ function uib_area_field_default_fields() {
         ),
         'type' => 'options_onoff',
         'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-area-field_uib_social_media'.
+  $fields['node-area-field_uib_social_media'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_social_media',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Add ids for the social media links that are desired.  Use strings like "twitter:uib", "youtube:uib", "facebook:uib", etc.  If the kind of service isn\'t supported no icon will show until support is added.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 23,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_social_media',
+      'label' => 'Social media',
+      'required' => 0,
+      'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 'basic_html',
+            'full_html' => 'full_html',
+            'plain_text' => 'plain_text',
+            'restricted_html' => 'restricted_html',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-9',
+              ),
+              'full_html' => array(
+                'weight' => '-7',
+              ),
+              'plain_text' => array(
+                'weight' => '-10',
+              ),
+              'restricted_html' => array(
+                'weight' => '-8',
+              ),
+            ),
+          ),
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '30',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '27',
       ),
     ),
   );
@@ -2729,6 +2824,7 @@ function uib_area_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add ids for the social media links that are desired.  Use strings like "twitter:uib", "youtube:uib", "facebook:uib", etc.  If the kind of service isn\'t supported no icon will show until support is added.');
   t('Add the testimonial that will display on the area page');
   t('Areas might provide their own logo image.  It will then be included in the header.  The logo ought to be about 128x128 pixels and have a transparent background.');
   t('Bottom image');
@@ -2762,6 +2858,7 @@ function uib_area_field_default_fields() {
   t('Select which articles show up in the slide show');
   t('Short name');
   t('Show staff');
+  t('Social media');
   t('Staff');
   t('Tertiary text');
   t('The is the secondary profile text.  Used for information to students.');
