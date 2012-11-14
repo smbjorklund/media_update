@@ -106,3 +106,9 @@
   margin-left: 10px;
   float: left;
 }
+
+/* line 80, ../sass/nodes.scss */
+.field-name-field-uib-bottom-text {
+  width: 470px;
+  float: right;
+}
