@@ -305,3 +305,18 @@ function uib_area__get_current() {
   }
   return $current_area;
 }
+
+/**
+* Function that returns the node id of the current uib_area
+*
+* If no area reference is found, the function returns NULL.
+*/
+function uib_area__get_current_nid() {
+  $a = uib_area__get_current();
+  if (!empty($a)) {
+    return $a->nid;
+  }
+  else {
+    return NULL;
+  }
+}
