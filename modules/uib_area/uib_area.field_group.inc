@@ -28,15 +28,16 @@ function uib_area_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'two_column',
       'instance_settings' => array(
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_two_column|node|area|default'] = $field_group;
