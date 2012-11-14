@@ -70,8 +70,7 @@
 }
 
 .field-name-field-uib-primary-text {
-  height: 238px;
-  background: #DCDCDC;
+  height: 220px;
   width: 40%;
   margin-left: 10px;
   float: left;
@@ -97,4 +96,32 @@
 
 .field-name-field-uib-tertiary-text {
   width: 40%;
+}
+
+.node-area p  {
+  color: #333;
+  font-family: verdana, sans-serif;
+}
+
+.node-area a  {
+  color: #005473;
+}
+
+.field-name-field-uib-w2-id, .field-name-field-uib-copyright, .field-name-field-uib-owner { /* Temporaily fix */
+  display: none;
+}
+
+.field-name-field-uib-secondary-text {
+  width: 100%;
+  float: left;
+}
+
+.field-name-field-uib-profiled-article {
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.group-two-column {
+  float: left;
 }
