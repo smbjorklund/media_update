@@ -103,45 +103,29 @@ function uib_area_block_view($delta='') {
         '#value' => t('Director of Communications'),
       ),
     );
-    if (arg(0) == 'node' && is_numeric(arg(1))) {
-      $node = node_load(arg(1));
-      if ($node->type == 'area') {
-        $area = $node;
+    $area = uib_area__get_current();
+    if ($area && isset($area->field_uib_ou['und'])) {
+      $place = node_load($area->field_uib_ou['und'][0]['target_id']);
+      $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
+      //dsm($place);
+      $block['content']['responsible_this_page']['#value'] = $place->title;
+      if (isset($place->field_uib_phone)) {
+        $block['content']['phone']['#value'] =
+          $place->field_uib_phone['und'][0]['value'];
       }
-      elseif (isset($node->field_uib_area)) {
-        $area = $node->field_uib_area['und'][0]['entity'];
+      if (isset($place->field_uib_fax)) {
+        $block['content']['fax']['#value'] =
+          $place->field_uib_fax['und'][0]['value'];
       }
-      if (isset($area) && isset($area->field_uib_ou['und'])) {
-        $place = node_load($area->field_uib_ou['und'][0]['target_id']);
-        $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
-        //dsm($place);
-        $block['content']['responsible_this_page']['#value'] = $place->title;
-        if (isset($place->field_uib_phone)) {
-          $block['content']['phone']['#value'] =
-            $place->field_uib_phone['und'][0]['value'];
-        }
-        if (isset($place->field_uib_fax)) {
-          $block['content']['fax']['#value'] =
-            $place->field_uib_fax['und'][0]['value'];
-        }
-        if (isset($place->field_uib_mail_domain)) {
-          $block['content']['contact']['#value'] =
-            'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
-        }
+      if (isset($place->field_uib_mail_domain)) {
+        $block['content']['contact']['#value'] =
+          'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
       }
-      hide($block['content']['emergency']);
     }
+    hide($block['content']['emergency']);
     break;
   case 'jobbnorge':
-    if (arg(0) == 'node' && is_numeric(arg(1))) {
-      $node = node_load(arg(1));
-      if ($node->type == 'area') {
-        $area = $node;
-      }
-      elseif (isset($node->field_uib_area)) {
-        $area = $node->field_uib_area['und'][0]['entity'];
-      }
-    }
+    $area = uib_area__get_current();
     $whitelist = array('faculty', 'unit', 'institute');
     if ($area && in_array($area->field_uib_area_type['und'][0]['value'], $whitelist)) {
       $place = node_load($area->field_uib_ou['und'][0]['target_id']);
@@ -290,4 +274,31 @@ function uib_area__get_parentage($parent_node_id, &$parent_ids) {
      }
     }
   }
+}
+
+/**
+* Function to obtain [and keep] reference to current uib_area
+*    as indicated by node id in URL, or in the field_uib_area
+*    of that node. That node is loaded if necessary.
+*
+* If no area reference is found, the function returns NULL.
+*/
+function uib_area__get_current() {
+  static $current_area;
+  if (!isset($current_area)) {
+    // obtain area from node indicated in url
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $node = node_load(arg(1));
+      if ($node->type == 'area') {
+        $current_area = $node;
+      }
+      elseif (isset($node->field_uib_area['und'][0]['entity'])) {
+        $current_area = $node->field_uib_area['und'][0]['entity'];
+      }
+      else {
+        $current_area = NULL;
+      }
+    }
+  }
+  return $current_area;
 }
