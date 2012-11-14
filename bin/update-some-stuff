@@ -7,3 +7,4 @@ done
 
 bin/site-drush uib-sebra-areas
 bin/site-drush uib-sync-fs
+bin/site-drush l10n-update
