@@ -53,6 +53,12 @@ function uib_area_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-7',
         ),
+        'uib_area-feed' => array(
+          'module' => 'uib_area',
+          'delta' => 'feed',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
