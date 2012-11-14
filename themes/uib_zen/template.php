@@ -149,64 +149,26 @@ function uib_zen_preprocess_html(&$variables, $hook) {
 function uib_zen_preprocess_page(&$variables, $hook) {
   /**
   * Setup variables for handling of current area
-  *   'area'
-  *    pointer to relevant area node object. Empty if no relevant area present
   *   'page_title'
   *    Area title to be used. Defaults to site name if no relevant area present
   *   'page_title_link'
   *    Full url to area home. Defaults to front page if no relevant area present
-  *    Corresponding modifications to use page_title and page_title_link were made in page.tpl.php
+  *    Corresponding modifications to use page_title and page_title_link are found in page.tpl.php
   */
-  
-  $variables['area'] = "";
-  $variables['page_title'] = $variables['site_name'];
+  $variables['page_title'] = $variables['site_name']; // defaults
   $variables['page_title_link'] = l($variables['site_name'], $variables['front_page'], array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
-
-  if (isset($variables['node'])) {
-    $node = $variables['node'];
+  $current_area = uib_area__get_current(); // get ref to current area node object
+  if ($current_area) {
+      // use the title of current area
+      $variables['page_title'] = $current_area->title;
+      $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
   }
-  elseif (arg(0) == 'node' && is_numeric(arg(1))) {
-    // if no node present, load node from information in url
-     $node = node_load(arg(1));
+  // set menu style. Use current node's menu style as default with area node as fallback
+  if (!empty($variables['node']->field_uib_menu_style['und'][0]['value'])) {
+    $variables['uib_menu_style'] = 'uib-menu-style-' . $variables['node']->field_uib_menu_style['und'][0]['value'];
   }
-  if (isset($node)) {
-    if ($node->type == 'area') {
-      // if content is of type 'area' use its title and node id
-      $variables['area'] = $node;
-      $variables['page_title'] = $node->title;
-      $variables['page_title_link'] = l($node->title, 'node/' . $node->nid, array('attributes' => array('title' => $node->title . " " . t('Home'))));
-      // set menu style
-      if (empty($variables['node'])) {
-        $variables['uib_menu_style'] = 'uib-menu-style-' . $node->field_uib_menu_style['und'][0]['value'];
-      }
-      else {
-        $variables['uib_menu_style'] = 'uib-menu-style-' . $variables['node']->field_uib_menu_style['und'][0]['value'];
-      }
-    }
-    else {
-      // if content is of other type ('article', 'testimonial'),
-      // use title of its referenced area and its node id
-      // -- get the referenced area from the node object
-      if (isset($node->field_uib_area)) {
-        $belongs_to = $node->field_uib_area['und'][0];
-        if (isset($belongs_to['entity'])) {
-          // if the entity object is present, use it
-          $referenced_area = $belongs_to['entity'];
-        }
-        else {
-          // if the entity object is not present, load the object by using
-          // the node id throught the node_load function
-          $referenced_area = node_load($belongs_to['target_id']);
-        }
-        if (isset($referenced_area->title)) {
-          $variables['area'] = $referenced_area;
-          $variables['page_title'] = $referenced_area->title;
-          $variables['page_title_link'] = l(check_plain($referenced_area->title), 'node/' . $referenced_area->nid, array('attributes' => array('title' => check_plain($referenced_area->title) . " " . t('Home'))));
-          // set menu style as for referenced area
-          $variables['uib_menu_style'] = 'uib-menu-style-' . $referenced_area->field_uib_menu_style['und'][0]['value'];
-        }
-      }
-    }
+  elseif (isset($current_area->field_uib_menu_style['und'][0]['value'])) {
+    $variables['uib_menu_style'] = 'uib-menu-style-' . $current_area->field_uib_menu_style['und'][0]['value'];
   }
 }
 // */
