@@ -430,9 +430,8 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'uib_area',
           'settings' => array(),
-          'type' => 'uib_area_link_feed',
+          'type' => 'hidden',
           'weight' => '8',
         ),
         'teaser' => array(
