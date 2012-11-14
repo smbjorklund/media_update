@@ -102,13 +102,34 @@
 .field-name-field-uib-primary-text {
   height: 238px;
   background: #DCDCDC;
-  width: 440px;
+  width: 40%;
   margin-left: 10px;
   float: left;
 }
 
 /* line 80, ../sass/nodes.scss */
+.field-name-field-uib-bottom-media {
+  float: left;
+}
+
+/* line 84, ../sass/nodes.scss */
 .field-name-field-uib-bottom-text {
-  width: 470px;
+  width: 50%;
   float: right;
+}
+
+/* line 89, ../sass/nodes.scss */
+.field-name-field-uib-profiled-testimonial img {
+  float: left;
+  margin-right: 10px;
+}
+
+/* line 94, ../sass/nodes.scss */
+.field-name-field-uib-profiled-testimonial {
+  width: 40%;
+}
+
+/* line 98, ../sass/nodes.scss */
+.field-name-field-uib-tertiary-text {
+  width: 40%;
 }

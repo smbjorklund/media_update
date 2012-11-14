@@ -72,12 +72,29 @@
 .field-name-field-uib-primary-text {
   height: 238px;
   background: #DCDCDC;
-  width: 440px;
+  width: 40%;
   margin-left: 10px;
   float: left;
 }
 
+.field-name-field-uib-bottom-media  {
+  float: left;
+}
+
 .field-name-field-uib-bottom-text {
-  width: 470px;
+  width: 50%;
   float: right;
+}
+
+.field-name-field-uib-profiled-testimonial img {
+  float: left;
+  margin-right: 10px;
+}
+
+.field-name-field-uib-profiled-testimonial  {
+  width: 40%;
+}
+
+.field-name-field-uib-tertiary-text {
+  width: 40%;
 }
