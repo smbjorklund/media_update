@@ -39,7 +39,7 @@ function uib_area_menu_block_blocks() {
 function uib_area_block_info() {
   return array(
     'colophon' => array(
-      'info' => t('Colophone'),
+      'info' => t('Colophon'),
       'status' => TRUE,
     ),
     'jobbnorge' => array(
@@ -62,7 +62,7 @@ function uib_area_block_view($delta='') {
   $block = array();
   switch ($delta) {
   case 'colophon':
-    $block['subject'] = t('Colophone');
+    $block['subject'] = t('Colophon');
     $block['content'] = array(
       'name' => array(
         '#type' => 'html_tag',

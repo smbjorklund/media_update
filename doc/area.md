@@ -47,7 +47,7 @@ The boxes inside all take the full width of the region and are layed own in this
 
 ## Footer region
 
-### Box1 (colophone)
+### Box1 (colophon)
 
 * Field: area.ou.*
 
