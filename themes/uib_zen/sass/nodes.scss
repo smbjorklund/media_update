@@ -98,6 +98,7 @@
   p  {
     color: #333;
     font-family: verdana, sans-serif;
+    margin: 0;
   }
    a  {
     color: $base-blue;
@@ -119,6 +120,11 @@
   width: 100%;
   float: left;
   margin-bottom: 20px;
+  
+  li {
+    width: 160px;
+    float: left;
+  }
 }
 
 
