@@ -64,11 +64,30 @@ function uib_webdesk_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-48',
   );
+  // Exported menu link: menu-webdesk:webdesk/all-content
+  $menu_links['menu-webdesk:webdesk/all-content'] = array(
+    'menu_name' => 'menu-webdesk',
+    'link_path' => 'webdesk/all-content',
+    'router_path' => 'webdesk/all-content',
+    'link_title' => 'Find content',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'This is where you find all content',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '0',
+  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Add Organisational Unit');
   t('Add area');
   t('Add content');
+  t('Find content');
 
 
   return $menu_links;
