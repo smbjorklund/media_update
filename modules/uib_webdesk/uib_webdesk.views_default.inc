@@ -673,6 +673,10 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
   /* Field: Content: Area */
   $handler->display->display_options['fields']['field_uib_area']['id'] = 'field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['table'] = 'field_data_field_uib_area';
@@ -707,16 +711,6 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Author uid */
-  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
-  $handler->display->display_options['arguments']['uid']['table'] = 'node';
-  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
-  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
-  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'empty';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1099,6 +1093,11 @@ function uib_webdesk_views_default_views() {
     ),
   );
   $handler->display->display_options['inherit_panels_path'] = '1';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['path'] = 'webdesk/all-content';
   $translatables['uib_webdesk'] = array(
     t('Master'),
     t('UIB webdesk'),
@@ -1121,16 +1120,16 @@ function uib_webdesk_views_default_views() {
     t('Content entity referenced from field_uib_area'),
     t('Content'),
     t('Title'),
+    t('Type'),
     t('Area'),
     t('Name'),
     t('Updated date'),
-    t('All'),
     t('Published'),
     t('Author'),
     t('Article type'),
     t('Event type'),
     t('Post date'),
-    t('Is greater than or equal to'),
+    t(' Is greater than or equal to '),
     t('Is less than or equal to'),
     t('Content pane'),
     t('All content'),
@@ -1139,6 +1138,7 @@ function uib_webdesk_views_default_views() {
     t('View panes'),
     t('Content pane uid'),
     t('My content'),
+    t('Page'),
   );
   $export['uib_webdesk'] = $view;
 
