@@ -66,11 +66,8 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => 1,
-          ),
-          'type' => 'entityreference_label',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -144,9 +141,8 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
+          'type' => 'hidden',
           'weight' => '7',
         ),
         'teaser' => array(
@@ -210,7 +206,7 @@ function uib_area_field_default_fields() {
       'description' => 'Illustration that goes together with the bottom text.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'file_entity',
           'settings' => array(
             'file_view_mode' => 'default',
@@ -282,7 +278,7 @@ function uib_area_field_default_fields() {
       'description' => 'Use this if you just have to get the last word in any conversation.  You might also decorate this one with an image.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -516,7 +512,7 @@ function uib_area_field_default_fields() {
       'description' => 'Areas might provide their own logo image.  It will then be included in the header.  The logo ought to be about 128x128 pixels and have a transparent background.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
@@ -608,11 +604,8 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'file_entity',
-          'settings' => array(
-            'file_view_mode' => 'default',
-          ),
-          'type' => 'file_rendered',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -641,11 +634,11 @@ function uib_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -701,9 +694,8 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
+          'type' => 'hidden',
           'weight' => '14',
         ),
         'teaser' => array(
@@ -783,11 +775,8 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => 1,
-          ),
-          'type' => 'entityreference_label',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -856,7 +845,7 @@ function uib_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'file_entity',
           'settings' => array(
             'file_view_mode' => 'default',
@@ -946,7 +935,7 @@ function uib_area_field_default_fields() {
       'description' => 'This is the primary profile text on the page.  Use this for basic contact information.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1029,7 +1018,7 @@ function uib_area_field_default_fields() {
       'description' => 'Select which articles show up in the slide show',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
             'link' => FALSE,
@@ -1115,7 +1104,7 @@ function uib_area_field_default_fields() {
       'description' => 'Select the articles that will display in the "Messages" box',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
             'link' => FALSE,
@@ -1201,7 +1190,7 @@ function uib_area_field_default_fields() {
       'description' => 'Add the testimonial that will display on the area page',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
             'links' => 1,
@@ -1275,9 +1264,8 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -1341,7 +1329,7 @@ function uib_area_field_default_fields() {
       'description' => 'The is the secondary profile text.  Used for information to students.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1412,9 +1400,8 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
+          'type' => 'hidden',
           'weight' => '15',
         ),
         'teaser' => array(
@@ -1559,7 +1546,7 @@ function uib_area_field_default_fields() {
       'description' => 'Used for profile text that isn\'t that important.  Will show up somewhere in the middle of the page.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1698,9 +1685,8 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '2',
         ),
         'teaser' => array(

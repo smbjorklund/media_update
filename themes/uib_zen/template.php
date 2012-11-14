@@ -222,27 +222,27 @@ function uib_zen_preprocess_page(&$variables, $hook) {
 function uib_zen_preprocess_node(&$variables, $hook) {
   if ($variables['page']) { // only preprocess if node is rendered in page mode
     if ($variables['type'] == 'area') {
-      if ($variables['field_uib_area_type']['0']['value'] == 'research group') {
+      if ($variables['field_uib_area_type']['und']['0']['value'] == 'research group') {
         $variables ['classes_array'][] = t('research_g_node');
       }
 
-      if ($variables['field_uib_area_type']['0']['value'] == 'faculty') {
+      if ($variables['field_uib_area_type']['und']['0']['value'] == 'faculty') {
         $variables ['classes_array'][] = t('faculty_node');
       }
 
-      if ($variables['field_uib_area_type']['0']['value'] == 'institute') {
+      if ($variables['field_uib_area_type']['und']['0']['value'] == 'institute') {
         $variables ['classes_array'][] = t('institute_node');
       }
 
-      if ($variables['field_uib_area_type']['0']['value'] == 'research school') {
+      if ($variables['field_uib_area_type']['und']['0']['value'] == 'research school') {
         $variables ['classes_array'][] = t('research_s_node');
       }
 
-      if ($variables['field_uib_area_type']['0']['value'] == 'section') {
+      if ($variables['field_uib_area_type']['und']['0']['value'] == 'section') {
         $variables ['classes_array'][] = t('section_node');
       }
 
-      if ($variables['field_uib_area_type']['0']['value'] == 'unit') {
+      if ($variables['field_uib_area_type']['und']['0']['value'] == 'unit') {
          $variables ['classes_array'][] = t('unit_node');
       }
     }
