@@ -104,7 +104,7 @@
 }
 
 .node-area a  {
-  color: #005473;
+  color: $base-blue;
 }
 
 .field-name-field-uib-w2-id, .field-name-field-uib-copyright, .field-name-field-uib-owner { /* Temporaily fix */
@@ -114,7 +114,9 @@
 .field-name-field-uib-secondary-text {
   width: 100%;
   float: left;
+  margin-bottom: 20px;
 }
+
 
 .field-name-field-uib-profiled-article {
   float: left;
