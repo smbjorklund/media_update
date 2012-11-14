@@ -50,7 +50,7 @@ function uib_area_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
-            'weight' => '13',
+            'weight' => '19',
             'visible' => FALSE,
           ),
         ),
