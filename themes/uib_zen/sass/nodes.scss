@@ -87,9 +87,15 @@
   float: right;
 }
 
-.field-name-field-uib-profiled-testimonial img {
-  float: left;
-  margin-right: 10px;
+.field-name-field-uib-profiled-testimonial {
+  background: url('../images/fade-to-right-bg.png');
+  background-repeat: repeat-y;
+  background-position: right;
+
+  img {
+    float: left;
+    margin-right: 10px;
+  }
 }
 
 .node-area {
@@ -135,8 +141,7 @@
 }
 
 .group-two-column {
-  width: 50%;
-  background: $light-grey;
+  width: 40%;
   margin-bottom: 20px;
   padding: 10px;
 }
