@@ -21,6 +21,7 @@ dependencies[] = strongarm
 dependencies[] = views
 dependencies[] = views_bulk_operations
 dependencies[] = wysiwyg
+dependencies[] = better_formats
 features[context][] = colofon
 features[context][] = navigation
 features[ctools][] = context:context:3

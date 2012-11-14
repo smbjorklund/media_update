@@ -537,7 +537,12 @@ function uib_article_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'uib_article',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => '',
+          'format' => 'plain_text',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -560,6 +565,32 @@ function uib_article_field_default_fields() {
       'label' => 'Fact box',
       'required' => 0,
       'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 0,
+            'full_html' => 'full_html',
+            'plain_text' => 0,
+            'restricted_html' => 'restricted_html',
+          ),
+          'allowed_formats_toggle' => 1,
+          'default_order_toggle' => 1,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-49',
+              ),
+              'full_html' => array(
+                'weight' => '-48',
+              ),
+              'plain_text' => array(
+                'weight' => '-47',
+              ),
+              'restricted_html' => array(
+                'weight' => '-50',
+              ),
+            ),
+          ),
+        ),
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
@@ -1322,7 +1353,12 @@ function uib_article_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'uib_article',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => '',
+          'format' => 'plain_text',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -1345,6 +1381,32 @@ function uib_article_field_default_fields() {
       'label' => 'Text',
       'required' => 0,
       'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 'basic_html',
+            'full_html' => 'full_html',
+            'plain_text' => 0,
+            'restricted_html' => 0,
+          ),
+          'allowed_formats_toggle' => 1,
+          'default_order_toggle' => 1,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-50',
+              ),
+              'full_html' => array(
+                'weight' => '-48',
+              ),
+              'plain_text' => array(
+                'weight' => '-47',
+              ),
+              'restricted_html' => array(
+                'weight' => '-49',
+              ),
+            ),
+          ),
+        ),
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
