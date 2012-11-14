@@ -61,9 +61,22 @@ function drush_uib_devel_fill_area() {
       ->range(0, 1);
     $result = $query->execute();
     if(!empty($result['node'])){
-      $testimonial = array_shift(array_values($result['node']))->nid;
       $area->field_uib_profiled_testimonial['und'][]['target_id'] = current($result['node'])->nid;
     }
+
+    $query = new EntityFieldQuery;
+    $query = $query
+      ->entityCondition('entity_type', 'file')
+      ->propertyCondition('type', 'image')
+      ->range(0, 1);
+    $result = $query->execute();
+    if(!empty($result['file'])){
+      $area->field_uib_bottom_media['und'][0] = array(
+        'fid' => current($result['file'])->fid,
+        'display' => 1,
+      );
+    }
+
 
     node_save($area);
     drush_log('Filled area content for /jur');
