@@ -46,6 +46,10 @@ function uib_area_block_info() {
       'info' => t('Jobbnorge'),
       'status' => TRUE,
     ),
+    'feed' => array(
+      'info' => t('Feed'),
+      'status' => TRUE,
+    ),
   );
 }
 
@@ -150,6 +154,31 @@ function uib_area_block_view($delta='') {
       $block['subject'] = t('Open Positions');
       $block['content'] = uib_area__feed_format($feed, $title='', $limit = 999);
       }
+    break;
+  case 'feed':
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $node = node_load(arg(1));
+      if ($node->type == 'area') {
+        $area = $node;
+      }
+      elseif (isset($node->field_uib_area)) {
+        $area = $node->field_uib_area['und'][0]['entity'];
+      }
+    }
+    if($area){
+      $elements = array();
+      if(!empty($area->field_uib_feed['und'])){
+        foreach ($area->field_uib_feed['und'] as $delta => $item) {
+          $url = url($item['url'], $item);
+          if (strpos($url, '#')) {
+            $limit = explode('#', $url);
+          }
+          $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
+          $elements[$delta] = uib_area__feed_format($url, $item['title'], $limit);
+        }
+      }
+    $block['content'] = $elements;
+    }
     break;
   }
 
