@@ -141,12 +141,18 @@
 }
 
 .group-two-column {
-  width: 40%;
+  width: 45%;
   margin-bottom: 20px;
   padding: 10px;
+  float: left;
 }
 
 .page-node-4  {
   width: 890px;
   margin: 0 auto;
+}
+
+.node-area .field-collection-container  {
+  width: 50%;
+  float: left;
 }

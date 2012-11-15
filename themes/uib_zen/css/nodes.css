@@ -178,13 +178,20 @@
 
 /* line 143, ../sass/nodes.scss */
 .group-two-column {
-  width: 40%;
+  width: 45%;
   margin-bottom: 20px;
   padding: 10px;
+  float: left;
 }
 
-/* line 149, ../sass/nodes.scss */
+/* line 150, ../sass/nodes.scss */
 .page-node-4 {
   width: 890px;
   margin: 0 auto;
+}
+
+/* line 155, ../sass/nodes.scss */
+.node-area .field-collection-container {
+  width: 50%;
+  float: left;
 }
