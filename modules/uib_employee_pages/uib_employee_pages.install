@@ -15,13 +15,13 @@ function uib_employee_pages_uninstall() {
 /**
  * Implements hook_enable.
  *
- * add 'Ansattsider' as area connected to sebra place (519)
+ * add 'For ansatte' as area connected to sebra place (519)
  */
 function uib_employee_pages_enable() {
 
   $data = array(
-    array('nb', 'Ansattsider', 'foransatte'),
-    array('en', 'Employee pages', 'foremployees')
+    array('nb', 'For ansatte', 'foransatte'),
+    array('en', 'For employees', 'foremployees')
   );
   $sebra_id = '519';
 
@@ -36,7 +36,7 @@ function uib_employee_pages_enable() {
     break;
   }
   if ($exists) {
-    uibx_log("Area 'ansattsider' exists, skipping");
+    uibx_log("Area 'for ansatte' exists, skipping");
     return;
   }
 

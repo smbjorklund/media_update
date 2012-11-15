@@ -565,7 +565,7 @@ else {
       $result = db_select('menu_links')
         ->fields('menu_links', array('mlid', 'link_path'))
         ->condition('menu_name', 'area')
-        ->condition('link_title', 'Ansattsider');
+        ->condition('link_title', 'For ansatte');
 
       $this->_top_menu_id = '';
       $this->_area_target_id = '';
