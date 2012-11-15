@@ -375,12 +375,6 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['publish_on']['field'] = 'publish_on';
   $handler->display->display_options['fields']['publish_on']['label'] = 'Publish';
   $handler->display->display_options['fields']['publish_on']['date_format'] = 'short';
-  /* Field: Scheduler: Unpublish on */
-  $handler->display->display_options['fields']['unpublish_on']['id'] = 'unpublish_on';
-  $handler->display->display_options['fields']['unpublish_on']['table'] = 'scheduler';
-  $handler->display->display_options['fields']['unpublish_on']['field'] = 'unpublish_on';
-  $handler->display->display_options['fields']['unpublish_on']['label'] = 'Unpublish';
-  $handler->display->display_options['fields']['unpublish_on']['date_format'] = 'short';
   /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
@@ -557,10 +551,10 @@ function uib_webdesk_views_default_views() {
     t('last »'),
     t('Sorry mate. You got no scheduled content lurking.'),
     t('Publish'),
-    t('Unpublish'),
     t('All'),
     t('Page'),
     t('Title'),
+    t('Unpublish'),
     t('Author'),
     t('Area'),
     t('Block'),

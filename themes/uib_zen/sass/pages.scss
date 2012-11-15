@@ -57,10 +57,13 @@ body {
 }
 
 /* Do not show header when adding articles */
-.page-node-add-uib-article {
+.page-node-add-uib-article, .page-webdesk {
   #header {
     display:none;
   }
+}
+.page-webdesk #main {
+  margin: 20px 0;
 }
 
 #logo { /* Wrapping link for logo */
