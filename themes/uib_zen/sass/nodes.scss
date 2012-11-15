@@ -97,7 +97,7 @@
 }
 
 .node-area {
-  width: 660px;
+  width: 630px;
 
   p  {
     color: #333;
@@ -111,6 +111,9 @@
   h4  {
     margin: 0;
     padding: 0;
+    font-size: 1.2em;
+    color: #333;
+    font-weight: normal;
   }
 
   h2  {
@@ -134,20 +137,23 @@
   float: left;
   margin-bottom: 20px;
   background: #F5F5F5;
+  background-position: right;
+  background-repeat: no-repeat;
   webkit-border-radius: 2px;
   moz-border-radius: 2px;
   border-radius: 2px;
   padding-bottom: 15px;
 
-   ul{
+  ul {
   list-style-type:none;
   margin-top: 0;
   }
+
   li {
   float:left;
   margin: 10px 0 0 0;
   padding: 0 10px 0 0;
-  width:199px;
+  width:190px;
   }
 }
 
