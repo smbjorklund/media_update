@@ -207,8 +207,13 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'unit') {
          $variables ['classes_array'][] = t('unit_node');
       }
-      unset($variables['content']['field_uib_profiled_article']);
-      $variables['content']['field_uib_profiled_article'][]['#markup'] = views_embed_view('area_slideshow','default', $variables['nid']);
+      if(isset($variables['content']['field_uib_profiled_article'])) {
+        $weight = $variables['content']['field_uib_profiled_article']['#weight'];
+        unset($variables['content']['field_uib_profiled_article']);
+        $variables['content']['field_uib_profiled_article'][]['#markup'] = views_embed_view('area_slideshow','default', $variables['nid']);
+        $variables['content']['field_uib_profiled_article']['#weight'] = $weight;
+      }
+
     }
 
     // Handle articles
