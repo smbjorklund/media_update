@@ -21,7 +21,7 @@ function uib_area_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'two_column',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_uib_profiled_testimonial',
       1 => 'field_uib_tertiary_text',
@@ -53,7 +53,7 @@ function uib_area_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Two column',
-    'weight' => '18',
+    'weight' => '19',
     'children' => array(
       0 => 'field_uib_profiled_testimonial',
       1 => 'field_uib_secondary_text',
