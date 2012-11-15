@@ -50,7 +50,7 @@ class WebdeskTestCase(TestCase):
         self.driver.execute_script("jQuery('#edit-field-uib-text-und-0-value_ifr').contents().find('p').html('Hovedtekst')")
         self.driver.find_element_by_id("edit-field-uib-links-und-0-title").send_keys("Said Berg")
         self.driver.find_element_by_id("edit-field-uib-links-und-0-url").send_keys("http://www.uib.no/personer/Said.Berg")
-        self.driver.find_element_by_id("edit-field-uib-fact-box-und-0-value").send_keys("Fakta om saken")
+        self.driver.execute_script("jQuery('#edit-field-uib-fact-box-und-0-value_ifr').contents().find('p').html('Fakta om saken')")
         self.driver.find_element_by_id("edit-submit").submit()
         self.driver.save_screenshot('created_article.png')
 
