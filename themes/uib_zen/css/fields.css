@@ -250,24 +250,30 @@ form.node-area-form {
 }
 
 /* line 260, ../sass/fields.scss */
-.pane-menu-webdesk ul.menu {
+.pane-menu-webdesk .menu {
   padding-left: 0;
+  font-size: 1.1em;
 }
 
-/* line 266, ../sass/fields.scss */
+/* line 267, ../sass/fields.scss */
 .pane-uib-webdesk-panel-pane-1 {
   background: url("../images/all-content.png") no-repeat 0 5px;
   border-top: #999999;
   border-bottom: #999999;
 }
 
-/* line 272, ../sass/fields.scss */
+/* line 273, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   background: url("../images/add.png");
   background-repeat: no-repeat;
 }
 
-/* line 277, ../sass/fields.scss */
+/* line 278, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   list-style: none;
+}
+
+/* line 281, ../sass/fields.scss */
+.page-webdesk #main #content {
+  margin-top: 0;
 }

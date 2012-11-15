@@ -170,7 +170,7 @@ function uib_webdesk_default_page_manager_pages() {
     $display->panels['middle'][0] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
-    $pane->panel = 'right';
+    $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'my_content-panel_pane_1';
     $pane->shown = TRUE;
@@ -182,10 +182,10 @@ function uib_webdesk_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $display->content['new-4'] = $pane;
-    $display->panels['right'][0] = 'new-4';
+    $display->panels['middle'][1] = 'new-4';
     $pane = new stdClass();
     $pane->pid = 'new-5';
     $pane->panel = 'right';
@@ -215,10 +215,10 @@ function uib_webdesk_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 0;
     $pane->locks = array();
     $display->content['new-5'] = $pane;
-    $display->panels['right'][1] = 'new-5';
+    $display->panels['right'][0] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
