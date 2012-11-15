@@ -235,15 +235,20 @@ html.js input.throbbing {
   width: 50%;
 }
 
+/* line 208, ../sass/forms.scss */
+#views-exposed-form-uib-webdesk-page-1 #edit-field-uib-event-type-value-wrapper {
+  width: 20%;
+}
+
 /* Select media buttons */
-/* line 209, ../sass/forms.scss */
+/* line 212, ../sass/forms.scss */
 .edit-field-uib-files-und-0 {
   padding: 10px;
   background: red;
 }
 
 /* Webdesk title */
-/* line 219, ../sass/forms.scss */
+/* line 217, ../sass/forms.scss */
 .panel-3col h2 {
   text-transform: none;
   font-family: helvetica, sans-serif;
@@ -252,7 +257,7 @@ html.js input.throbbing {
 }
 
 /* Advanced */
-/* line 227, ../sass/forms.scss */
+/* line 225, ../sass/forms.scss */
 #node_uib_article_form_group_advanced .fieldset-wrapper {
   padding-left: 0;
   margin-left: 0;
@@ -261,12 +266,12 @@ html.js input.throbbing {
   width: 100%;
 }
 
-/* line 235, ../sass/forms.scss */
+/* line 233, ../sass/forms.scss */
 .field-group-fieldset {
   padding: 0;
 }
 
-/* line 239, ../sass/forms.scss */
+/* line 237, ../sass/forms.scss */
 .group_uib_geo {
   width: 500px;
 }
