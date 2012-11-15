@@ -67,6 +67,7 @@ function uib_employee_pages_enable() {
       node_save($node);
     } else {
       $node->tnid = $save_nid;
+      node_save($node);
     }
 
     $menu_link = array(
