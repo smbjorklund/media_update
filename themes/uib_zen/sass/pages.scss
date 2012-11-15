@@ -158,7 +158,9 @@ h2.comment-form, /* Comment form heading */
 h3.title { /* Comment title */
   
 }
-
+.view-area-slideshow {
+  clear: both;
+}
 tr.even { /* Some tables have rows marked even or odd. */
   /* background-color: #eee; */ /* Drupal core uses a #eee background */
 }
