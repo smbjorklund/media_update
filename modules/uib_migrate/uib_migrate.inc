@@ -117,7 +117,7 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('field_uib_kicker', 'stikktittel');
     $this->addFieldMapping('field_uib_lead', 'dc_description');
     $this->addFieldMapping('field_uib_text', 'text')
-      ->arguments(array('format' => 'simple_editor'));
+      ->arguments(array('format' => 'basic_html'));
     $this->addFieldMapping('field_uib_w2_nav_parent_id', 'nav_parent_id');
     $this->addFieldMapping('field_uib_nav_weight', 'nav_weight');
     $this->addFieldMapping('field_uib_area', 'site')
@@ -291,7 +291,7 @@ class TestimonialMigration extends Migration {
     $this->addFieldMapping('field_uib_w2_path', 'path');
     $this->addFieldMapping('field_uib_lead', 'dc_description');
     $this->addFieldMapping('field_uib_text', 'text')
-      ->arguments(array('format' => 'simple_editor'));
+      ->arguments(array('format' => 'basic_html'));
     $this->addFieldMapping('field_uib_position', 'stilling');
     $this->addFieldMapping('field_uib_education', 'utdanning');
     $this->addFieldMapping('field_uib_name', 'navn');
@@ -360,7 +360,7 @@ class AreaMigration extends Migration {
       ->sourceMigration('Area');
     $this->addFieldMapping('field_uib_ou'); // handled in 'prepare'
     $this->addFieldMapping('field_uib_primary_text', 'text')
-      ->arguments(array('format' => 'simple_editor'));
+      ->arguments(array('format' => 'restricted_html'));
     $this->addFieldMapping('field_uib_text2', 'profiletext')
       ->arguments(array('format' => 'plain_text'));
   }
@@ -777,7 +777,7 @@ else {
 
       foreach ($query->execute() as $item) {
         $entity->field_uib_text['und'][0]['value'] = $item->field_uib_text_value;
-        $entity->field_uib_text['und'][0]['format'] = 'simple_editor';
+        $entity->field_uib_text['und'][0]['format'] = 'basic_html';
         break;
       }
 
