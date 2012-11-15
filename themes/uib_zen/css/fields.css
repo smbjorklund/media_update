@@ -217,16 +217,16 @@ form.node-area-form {
 /*  Icons in Webdesk */
 /* line 233, ../sass/fields.scss */
 .views-field-delete-node {
-  background: url("../images/delete.png");
-  background-repeat: no-repeat;
-  display: inline;
+  background: url("../images/delete.png") no-repeat;
+  display: inline-block;
+  margin-left: 12px;
 }
 
 /* line 239, ../sass/fields.scss */
 .views-field-edit-node {
-  background: url("../images/edit.png");
-  background-repeat: no-repeat;
-  display: inline;
+  background: url("../images/edit.png") no-repeat;
+  display: inline-block;
+  margin-left: 12px;
 }
 
 /* line 245, ../sass/fields.scss */

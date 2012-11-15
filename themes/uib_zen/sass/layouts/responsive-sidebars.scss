@@ -48,6 +48,10 @@ $zen-auto-include-item-base: false;
   margin-right: auto;
   max-width: 1200px;
 }
+.page-webdesk #main {
+  position: relative;
+  width: 100%;  
+}
 
 /*
  * Apply the shared properties of grid items in a single, efficient ruleset.
