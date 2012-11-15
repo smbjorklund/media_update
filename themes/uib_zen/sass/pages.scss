@@ -23,10 +23,6 @@ body {
   background: #fff;
 }
 
-.page-webdesk #main {
-  background-color: lighten($light-grey, 6%);
-}
-
 /*
  * The skip-link link will be completely hidden until a user tabs to the link.
  * See the element-focusable rule in system.base.css.
@@ -53,17 +49,6 @@ body {
   background-image:url('../images/bergenmuseum.png');
   background-repeat: no-repeat;
   background-position: right;
-  height: 200px;
-}
-
-/* Do not show header when adding articles */
-.page-node-add-uib-article, .page-webdesk {
-  #header {
-    display:none;
-  }
-}
-.page-webdesk #main {
-  margin: 20px 0;
 }
 
 #logo { /* Wrapping link for logo */
@@ -114,11 +99,32 @@ body {
   clear: both; /* Clear the logo */
 }
 
+/* Header: Styling for Webdesk */
+
+.page-node-add-uib-article, .page-webdesk {
+  #name-and-slogan {
+    display: none;
+  }
+  #logo {
+    display: none;
+  }
+}
+
+
+
+
 /*
  * Main (container for everything else)
  */
 
 #main {
+}
+
+/* Main: Styling for Webdesk */
+
+.page-webdesk #main {
+  background-color: lighten($light-grey, 6%);
+  margin: 20px 0;
 }
 
 /*
