@@ -29,35 +29,41 @@ function uib_area_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-calendar-block_1' => array(
-          'module' => 'views',
-          'delta' => 'calendar-block_1',
+        'uib_area-area_parents' => array(
+          'module' => 'uib_area',
+          'delta' => 'area_parents',
           'region' => 'sidebar_second',
           'weight' => '-10',
-        ),
-        'views-calendar-block_4' => array(
-          'module' => 'views',
-          'delta' => 'calendar-block_4',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
-        ),
-        'views-recent_news-block' => array(
-          'module' => 'views',
-          'delta' => 'recent_news-block',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
-        ),
-        'views-area_kids-block' => array(
-          'module' => 'views',
-          'delta' => 'area_kids-block',
-          'region' => 'sidebar_second',
-          'weight' => '-7',
         ),
         'uib_area-feed' => array(
           'module' => 'uib_area',
           'delta' => 'feed',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-9',
+        ),
+        'views-calendar-block_1' => array(
+          'module' => 'views',
+          'delta' => 'calendar-block_1',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+        ),
+        'views-calendar-block_4' => array(
+          'module' => 'views',
+          'delta' => 'calendar-block_4',
+          'region' => 'sidebar_second',
+          'weight' => '-7',
+        ),
+        'views-recent_news-block' => array(
+          'module' => 'views',
+          'delta' => 'recent_news-block',
+          'region' => 'sidebar_second',
+          'weight' => '-6',
+        ),
+        'views-area_kids-block' => array(
+          'module' => 'views',
+          'delta' => 'area_kids-block',
+          'region' => 'sidebar_second',
+          'weight' => '-5',
         ),
       ),
     ),

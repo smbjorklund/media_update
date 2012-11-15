@@ -50,6 +50,10 @@ function uib_area_block_info() {
       'info' => t('Feed'),
       'status' => TRUE,
     ),
+    'area_parents' => array(
+      'info' => t('Area parents'),
+      'status' => TRUE,
+    ),
   );
 }
 
@@ -164,8 +168,28 @@ function uib_area_block_view($delta='') {
     $block['content'] = $elements;
     }
     break;
+  case 'area_parents': // A block to display a linked list to parents of current area [if any]
+    $block['subject'] = t('Belongs to');
+    $area = uib_area__get_current();
+    if (!empty($area->field_uib_area_parents['und'])) {
+      // Setup an SQL query to get parent titles from node ids listed
+      $nlist = array();
+      $query = 'SELECT nid, title FROM {node} WHERE ';
+      $glue = "";
+      for ($i=0; $i < count($area->field_uib_area_parents['und']); $i++) {
+        $nlist[":nid$i"] = $area->field_uib_area_parents['und'][$i]['target_id'];
+        $query .= $glue . " nid = :nid$i";
+        $glue = " OR";
+      }
+      $result = db_query($query, $nlist);
+      // Setup each parental area node title on a separate line with link 
+      foreach ($result as $record) {
+        $title = t($record->title);
+        $block['content'][$title]['#markup'] = l($title, 'node/' . $record->nid) . '<br>';
+      }
+    }
+    break;
   }
-
   return $block;
 }
 
