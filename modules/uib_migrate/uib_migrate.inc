@@ -561,6 +561,9 @@ else {
 
       $this->addUnmigratedDestinations(array('options'));
 
+      // make sure parent area for both languages exists
+      create_employee_areas();
+
       // find destination parent area menu node (must already exist)
       $result = db_select('menu_links')
         ->fields('menu_links', array('mlid', 'link_path'))
@@ -596,6 +599,71 @@ else {
         $_mem_menu[$nid] = $entity->mlid;
       }
       uibx_log("Created menu link at depth $row->depth \"$row->link_title.\"");
+    }
+  }
+
+  // add 'For ansatte' as area connected to sebra place (519)
+  function create_employee_areas() {
+
+    $data = array(
+      array('nb', 'For ansatte', 'foransatte'),
+      array('en', 'For employees', 'foremployees')
+    );
+    $sebra_id = '519';
+
+    // if already exists do nothing
+    $query = db_select('menu_links')
+      ->fields('menu_links', array('mlid'))
+      ->condition('menu_name', 'area')
+      ->condition('link_title', $data[0][1]);
+    $exists = FALSE;
+    foreach ($query->execute() as $item) {
+      $exists = TRUE;
+      break;
+    }
+    if ($exists) {
+      uibx_log("Area 'for ansatte' exists, skipping");
+      return;
+    }
+
+    // create node + menu connection for both lang: nb, en
+    foreach ($data as $d) {
+      list($lang, $link_title, $path) = $d;
+
+      $node = new stdClass;
+      $node->type = 'area';
+      $node->uid = 1;
+      $node->status = 1;
+      $node->revision = 0;
+      $node->language = $lang;
+      $node->title = $link_title;
+      $node->path = array(
+        'alias' => $path,
+        'language' => $lang,
+      );
+      $node->field_uib_area_type['und'][0]['value'] = 'section';
+      $node->field_uib_sebra_id['und'][0]['value'] = $sebra_id;
+      $node->field_uib_primary_text['und'][0]['format'] = 'restricted_html';
+      node_save($node);
+
+      // set tnid to nid if lang 'nb'
+      if ($lang == "nb") {
+        $node->tnid = $node->nid;
+        $save_nid = $node->nid;
+        node_save($node);
+      } else {
+        $node->tnid = $save_nid;
+        node_save($node);
+      }
+
+      $menu_link = array(
+        'menu_name' => 'area',
+        'link_path' => 'node/' . $node->nid,
+        'link_title' => $link_title,
+        'plid' => 0
+      );
+      $mlid = menu_link_save($menu_link);
+      uibx_log("Created area (node+menu) $link_title nid: $node->nid mid: $mlid");
     }
   }
 
