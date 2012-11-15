@@ -72,7 +72,7 @@
 
 .field-name-field-uib-primary-text {
   height: 220px;
-  width: 45%;
+  width: 48%;
   margin-left: 10px;
   float: left;
 }
@@ -83,14 +83,12 @@
 }
 
 .field-name-field-uib-bottom-text {
-  width: 45%;
-  float: right;
+  width: 48%;
+  float: left;
+  margin-left: 10px;
 }
 
 .field-name-field-uib-profiled-testimonial {
-  background: url('../images/fade-to-right-bg.png');
-  background-repeat: repeat-y;
-  background-position: right;
 
   img {
     float: left;
@@ -100,7 +98,7 @@
 
 .node-area {
   width: 660px;
-  
+
   p  {
     color: #333;
     font-family: verdana, sans-serif;
@@ -109,10 +107,19 @@
    a  {
     color: $base-blue;
   }
-  
+
   h4  {
     margin: 0;
     padding: 0;
+  }
+
+  h2  {
+  text-transform: none;
+  border: none;  
+  font-weight: normal;
+  font-family: verdana, sans-serif;
+  margin: 0;
+  padding: 0;
   }
 }
 
@@ -126,9 +133,13 @@
   width: 100%;
   float: left;
   margin-bottom: 20px;
-  
+  background: #F5F5F5;
+  webkit-border-radius: 2px;
+  moz-border-radius: 2px;
+  border-radius: 2px;
+
   li {
-    width: 160px;
+    width: 190px;
     float: left;
   }
 }
@@ -137,14 +148,14 @@
 .field-name-field-uib-profiled-article {
   width: 100%;
   margin-bottom: 20px;
+  padding-bottom: 20px;
   border-bottom: solid 1px silver;
 }
 
 .group-two-column {
-  width: 45%;
-  margin-bottom: 20px;
-  padding: 10px;
+  width: 48%;
   float: left;
+  margin-left: 10px;
 }
 
 .page-node-4  {
@@ -155,4 +166,18 @@
 .node-area .field-collection-container  {
   width: 50%;
   float: left;
+  border: none;
+}
+
+.field-name-field-uib-link-section {
+  border: none;
+  background: #F5F5F5;
+  webkit-border-radius: 2px;
+  moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.node-area .field-collection-view {
+  border: none;
 }
