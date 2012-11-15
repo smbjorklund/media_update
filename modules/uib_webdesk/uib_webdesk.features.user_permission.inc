@@ -584,6 +584,41 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: enter area revision log entry.
+  $permissions['enter area revision log entry'] = array(
+    'name' => 'enter area revision log entry',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: enter uib_article revision log entry.
+  $permissions['enter uib_article revision log entry'] = array(
+    'name' => 'enter uib_article revision log entry',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: enter uib_ou revision log entry.
+  $permissions['enter uib_ou revision log entry'] = array(
+    'name' => 'enter uib_ou revision log entry',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: enter uib_study revision log entry.
+  $permissions['enter uib_study revision log entry'] = array(
+    'name' => 'enter uib_study revision log entry',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: enter uib_testimonial revision log entry.
+  $permissions['enter uib_testimonial revision log entry'] = array(
+    'name' => 'enter uib_testimonial revision log entry',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
   // Exported permission: flush caches.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
@@ -684,6 +719,218 @@ function uib_webdesk_user_default_permissions() {
       0 => 'level 1',
     ),
     'module' => 'features',
+  );
+
+  // Exported permission: override area authored by option.
+  $permissions['override area authored by option'] = array(
+    'name' => 'override area authored by option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override area authored on option.
+  $permissions['override area authored on option'] = array(
+    'name' => 'override area authored on option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override area promote to front page option.
+  $permissions['override area promote to front page option'] = array(
+    'name' => 'override area promote to front page option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override area published option.
+  $permissions['override area published option'] = array(
+    'name' => 'override area published option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override area revision option.
+  $permissions['override area revision option'] = array(
+    'name' => 'override area revision option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override area sticky option.
+  $permissions['override area sticky option'] = array(
+    'name' => 'override area sticky option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_article authored by option.
+  $permissions['override uib_article authored by option'] = array(
+    'name' => 'override uib_article authored by option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_article authored on option.
+  $permissions['override uib_article authored on option'] = array(
+    'name' => 'override uib_article authored on option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_article promote to front page option.
+  $permissions['override uib_article promote to front page option'] = array(
+    'name' => 'override uib_article promote to front page option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_article published option.
+  $permissions['override uib_article published option'] = array(
+    'name' => 'override uib_article published option',
+    'roles' => array(
+      0 => 'level 2',
+    ),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_article revision option.
+  $permissions['override uib_article revision option'] = array(
+    'name' => 'override uib_article revision option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_article sticky option.
+  $permissions['override uib_article sticky option'] = array(
+    'name' => 'override uib_article sticky option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_ou authored by option.
+  $permissions['override uib_ou authored by option'] = array(
+    'name' => 'override uib_ou authored by option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_ou authored on option.
+  $permissions['override uib_ou authored on option'] = array(
+    'name' => 'override uib_ou authored on option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_ou promote to front page option.
+  $permissions['override uib_ou promote to front page option'] = array(
+    'name' => 'override uib_ou promote to front page option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_ou published option.
+  $permissions['override uib_ou published option'] = array(
+    'name' => 'override uib_ou published option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_ou revision option.
+  $permissions['override uib_ou revision option'] = array(
+    'name' => 'override uib_ou revision option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_ou sticky option.
+  $permissions['override uib_ou sticky option'] = array(
+    'name' => 'override uib_ou sticky option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_study authored by option.
+  $permissions['override uib_study authored by option'] = array(
+    'name' => 'override uib_study authored by option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_study authored on option.
+  $permissions['override uib_study authored on option'] = array(
+    'name' => 'override uib_study authored on option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_study promote to front page option.
+  $permissions['override uib_study promote to front page option'] = array(
+    'name' => 'override uib_study promote to front page option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_study published option.
+  $permissions['override uib_study published option'] = array(
+    'name' => 'override uib_study published option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_study revision option.
+  $permissions['override uib_study revision option'] = array(
+    'name' => 'override uib_study revision option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_study sticky option.
+  $permissions['override uib_study sticky option'] = array(
+    'name' => 'override uib_study sticky option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_testimonial authored by option.
+  $permissions['override uib_testimonial authored by option'] = array(
+    'name' => 'override uib_testimonial authored by option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_testimonial authored on option.
+  $permissions['override uib_testimonial authored on option'] = array(
+    'name' => 'override uib_testimonial authored on option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_testimonial promote to front page option.
+  $permissions['override uib_testimonial promote to front page option'] = array(
+    'name' => 'override uib_testimonial promote to front page option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_testimonial published option.
+  $permissions['override uib_testimonial published option'] = array(
+    'name' => 'override uib_testimonial published option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_testimonial revision option.
+  $permissions['override uib_testimonial revision option'] = array(
+    'name' => 'override uib_testimonial revision option',
+    'roles' => array(),
+    'module' => 'override_node_options',
+  );
+
+  // Exported permission: override uib_testimonial sticky option.
+  $permissions['override uib_testimonial sticky option'] = array(
+    'name' => 'override uib_testimonial sticky option',
+    'roles' => array(),
+    'module' => 'override_node_options',
   );
 
   // Exported permission: revert revisions.
@@ -869,6 +1116,60 @@ function uib_webdesk_user_default_permissions() {
       2 => 'level 3',
     ),
     'module' => 'filter',
+  );
+
+  // Exported permission: view any unpublished area content.
+  $permissions['view any unpublished area content'] = array(
+    'name' => 'view any unpublished area content',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished content.
+  $permissions['view any unpublished content'] = array(
+    'name' => 'view any unpublished content',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished uib_article content.
+  $permissions['view any unpublished uib_article content'] = array(
+    'name' => 'view any unpublished uib_article content',
+    'roles' => array(
+      0 => 'level 2',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished uib_ou content.
+  $permissions['view any unpublished uib_ou content'] = array(
+    'name' => 'view any unpublished uib_ou content',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished uib_study content.
+  $permissions['view any unpublished uib_study content'] = array(
+    'name' => 'view any unpublished uib_study content',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished uib_testimonial content.
+  $permissions['view any unpublished uib_testimonial content'] = array(
+    'name' => 'view any unpublished uib_testimonial content',
+    'roles' => array(
+      0 => 'level 2',
+    ),
+    'module' => 'view_unpublished',
   );
 
   // Exported permission: view file.
