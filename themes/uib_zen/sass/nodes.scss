@@ -68,24 +68,21 @@
 .field-name-field-uib-primary-media {
   float: left;
   width: 50%;
+  margin-right: 10px;
 }
 
 .field-name-field-uib-primary-text {
-  height: 220px;
-  width: 48%;
-  margin-left: 10px;
-  float: left;
+  overflow: auto;
 }
 
 .field-name-field-uib-bottom-media  {
   float: left;
   width: 50%;
+  margin-right: 10px;
 }
 
 .field-name-field-uib-bottom-text {
-  width: 48%;
-  float: left;
-  margin-left: 10px;
+  overflow: auto;
 }
 
 .field-name-field-uib-profiled-testimonial {

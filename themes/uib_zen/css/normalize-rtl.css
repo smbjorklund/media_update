@@ -1,36 +1,235 @@
-/* normalize-rtl.css - RTL language extension of normalize.scss. */
-/* =============================================================================
-   Lists
-   ========================================================================== */
-/*
- * Addresses margins set differently in IE6/7
+/**
+ * @file
+ * Node Styling
+ *
+ * Style anything that isn't in the $content variable.
  */
-/* line 14, ../sass/normalize-rtl.scss */
-dd {
-  margin: 0 30px 0 0;
+/* line 11, ../sass/nodes.scss */
+.node {
+  /* Node wrapper */
+}
+/* line 13, ../sass/nodes.scss */
+.preview .node {
+  /* Preview of the content before submitting new or updated content */
+  /* background-color: #ffffea; */
+  /* Drupal core uses a #ffffea background */
+}
+/* line 17, ../sass/nodes.scss */
+.node .node-title {
+  /* Node title */
+}
+/* line 20, ../sass/nodes.scss */
+.node .user-picture {
+  /* The picture of the node author */
+}
+/* line 23, ../sass/nodes.scss */
+.node .submitted {
+  /* The "posted by" information */
+  text-transform: uppercase;
+}
+/* line 27, ../sass/nodes.scss */
+.node .content {
+  /* Node's content wrapper */
+}
+/* line 30, ../sass/nodes.scss */
+.node ul.links {
+  /* Node links. See also the ul.links declaration in the pages.css. */
+}
+
+/* line 35, ../sass/nodes.scss */
+.node-promoted {
+  /* A node that has been promoted to the front page */
+}
+
+/* line 38, ../sass/nodes.scss */
+.node-sticky {
+  /* A sticky node (displayed before others in a list) */
+}
+
+/* line 41, ../sass/nodes.scss */
+.node-by-viewer {
+  /* A node created by the current user */
+}
+
+/* line 44, ../sass/nodes.scss */
+.node-teaser {
+  /* A node displayed as teaser */
 }
 
 /*
- * Addresses paddings set differently in IE6/7
+ * All nodes are given a node-FOO class that describes the type of content that
+ * it is. If you create a new content type called "my-custom-type", it will
+ * receive a "node-my-custom-type" class.
  */
-/* line 25, ../sass/normalize-rtl.scss */
-menu,
-ol,
-ul,
-.item-list ul {
-  padding: 0 30px 0 0;
+/* line 53, ../sass/nodes.scss */
+.node-page {
+  /* Page content node */
 }
 
-/* =============================================================================
-   Forms
-   ========================================================================== */
-/*
- * 3. Corrects alignment displayed oddly in IE6/7
- */
-/* =============================================================================
-   Tables
-   ========================================================================== */
-/* line 48, ../sass/normalize-rtl.scss */
-th {
-  text-align: right;
+/* line 56, ../sass/nodes.scss */
+.node-article {
+  /* Article content node */
+}
+
+/* line 59, ../sass/nodes.scss */
+.node-unpublished {
+  /* Unpublished nodes */
+  /* background-color: #fff4f4; */
+  /* Drupal core uses a #fff4f4 background */
+}
+/* line 62, ../sass/nodes.scss */
+.node-unpublished p.unpublished {
+  /* The word "Unpublished" displayed underneath the content. */
+  height: 0;
+  overflow: visible;
+  color: #d8d8d8;
+  font-size: 75px;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* Area page */
+/* line 68, ../sass/nodes.scss */
+.field-name-field-uib-primary-media {
+  float: left;
+  width: 50%;
+}
+
+/* line 73, ../sass/nodes.scss */
+.field-name-field-uib-primary-text {
+  height: 220px;
+  width: 48%;
+  margin-left: 10px;
+  float: left;
+}
+
+/* line 80, ../sass/nodes.scss */
+.field-name-field-uib-bottom-media {
+  float: left;
+  width: 50%;
+}
+
+/* line 85, ../sass/nodes.scss */
+.field-name-field-uib-bottom-text {
+  width: 48%;
+  float: left;
+  margin-left: 10px;
+}
+
+/* line 93, ../sass/nodes.scss */
+.field-name-field-uib-profiled-testimonial img {
+  float: left;
+  margin-right: 10px;
+}
+
+/* line 99, ../sass/nodes.scss */
+.node-area {
+  width: 630px;
+}
+/* line 102, ../sass/nodes.scss */
+.node-area p {
+  color: #333;
+  font-family: verdana, sans-serif;
+  margin: 0;
+}
+/* line 107, ../sass/nodes.scss */
+.node-area a {
+  color: #005473;
+}
+/* line 111, ../sass/nodes.scss */
+.node-area h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+  color: #333;
+  font-weight: normal;
+}
+/* line 119, ../sass/nodes.scss */
+.node-area h2 {
+  text-transform: none;
+  border: none;
+  font-weight: normal;
+  font-family: verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 131, ../sass/nodes.scss */
+.field-name-field-uib-w2-id, .field-name-field-uib-copyright, .field-name-field-uib-owner {
+  /* Temporarily fix */
+  display: none;
+}
+
+/* line 135, ../sass/nodes.scss */
+.field-name-field-uib-secondary-text {
+  width: 100%;
+  float: left;
+  margin-bottom: 20px;
+  background: #F5F5F5;
+  background-position: right;
+  background-repeat: no-repeat;
+  webkit-border-radius: 2px;
+  moz-border-radius: 2px;
+  border-radius: 2px;
+  padding-bottom: 15px;
+}
+/* line 147, ../sass/nodes.scss */
+.field-name-field-uib-secondary-text ul {
+  list-style-type: none;
+  margin-top: 0;
+}
+/* line 152, ../sass/nodes.scss */
+.field-name-field-uib-secondary-text li {
+  float: left;
+  margin: 10px 0 0 0;
+  padding: 0 10px 0 0;
+  width: 190px;
+}
+
+/* line 161, ../sass/nodes.scss */
+.field-name-field-uib-profiled-article {
+  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px silver;
+}
+
+/* line 168, ../sass/nodes.scss */
+.group-two-column {
+  width: 48%;
+  float: left;
+  margin-left: 10px;
+}
+
+/* line 174, ../sass/nodes.scss */
+.page-node-2 {
+  /* This node changes, and should be replaced with a main wrapper when the time comes. */
+  width: 890px;
+  margin: 0 auto;
+}
+
+/* line 179, ../sass/nodes.scss */
+.node-area .field-collection-container {
+  width: 50%;
+  float: left;
+  border: none;
+}
+
+/* line 185, ../sass/nodes.scss */
+.field-name-field-uib-link-section {
+  border: none;
+  background: #F5F5F5;
+  webkit-border-radius: 2px;
+  moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+/* line 194, ../sass/nodes.scss */
+.node-area .field-collection-view {
+  border: none;
 }
