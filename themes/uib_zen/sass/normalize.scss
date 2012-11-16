@@ -159,15 +159,17 @@ body {
  */
 
 a:link {
-  color: $base-gray;
+  color: $base-blue;
+  text-decoration: none;
 }
 
 a:visited {
-  color: $base-gray;
+  color: $base-blue;
 }
 
 a:hover,
 a:focus {
+  text-decoration: underline;
 }
 
 a:active {
