@@ -150,6 +150,7 @@ function uib_setup_strongarm() {
     'uib-rules' => array(
       'callbacks' => array(
         'language' => 'uib_setup__language_callback',
+        'url_rewrite' => 'uib_setup__url_rewrite_callback',
       ),
       'file' => 'sites/all/modules/uib/uib_setup/uib_setup.module',
       'cache' => 0,
