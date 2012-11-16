@@ -33,7 +33,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: access all views.
   $permissions['access all views'] = array(
     'name' => 'access all views',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'views',
   );
 
@@ -66,14 +68,18 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: access site in maintenance mode.
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'system',
   );
 
   // Exported permission: access site reports.
   $permissions['access site reports'] = array(
     'name' => 'access site reports',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'system',
   );
 
@@ -89,7 +95,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer actions.
   $permissions['administer actions'] = array(
     'name' => 'administer actions',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'system',
   );
 
@@ -195,7 +203,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer modules.
   $permissions['administer modules'] = array(
     'name' => 'administer modules',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'system',
   );
 
@@ -239,7 +249,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer permissions.
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'user',
   );
 
@@ -264,7 +276,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer site configuration.
   $permissions['administer site configuration'] = array(
     'name' => 'administer site configuration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'system',
   );
 
@@ -287,7 +301,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer themes.
   $permissions['administer themes'] = array(
     'name' => 'administer themes',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'system',
   );
 
@@ -312,21 +328,27 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: administer views.
   $permissions['administer views'] = array(
     'name' => 'administer views',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'views',
   );
 
   // Exported permission: block IP addresses.
   $permissions['block IP addresses'] = array(
     'name' => 'block IP addresses',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'system',
   );
 
   // Exported permission: bypass node access.
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -373,7 +395,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: create uib_ou content.
   $permissions['create uib_ou content'] = array(
     'name' => 'create uib_ou content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -426,7 +450,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: delete any uib_ou content.
   $permissions['delete any uib_ou content'] = array(
     'name' => 'delete any uib_ou content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -461,7 +487,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: delete own uib_ou content.
   $permissions['delete own uib_ou content'] = array(
     'name' => 'delete own uib_ou content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -524,7 +552,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: edit any uib_ou content.
   $permissions['edit any uib_ou content'] = array(
     'name' => 'edit any uib_ou content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -568,7 +598,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: edit own uib_ou content.
   $permissions['edit own uib_ou content'] = array(
     'name' => 'edit own uib_ou content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 1',
+    ),
     'module' => 'node',
   );
 
