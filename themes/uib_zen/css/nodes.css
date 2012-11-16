@@ -198,13 +198,17 @@
 }
 
 /* Two column */
-/* line 163, ../sass/nodes.scss */
+/* line 166, ../sass/nodes.scss */
 .group-two-column {
   width: 100%;
-  float: left;
 }
 
-/* line 168, ../sass/nodes.scss */
+/* line 170, ../sass/nodes.scss */
+.group-two-column .field {
+  margin-bottom: 10px;
+}
+
+/* line 174, ../sass/nodes.scss */
 .field-name-field-uib-link-section {
   border: none;
   background: #F5F5F5;
@@ -214,22 +218,22 @@
   padding: 5px;
 }
 
-/* line 177, ../sass/nodes.scss */
+/* line 183, ../sass/nodes.scss */
 .node-area .field-collection-view {
   border: none;
 }
 
-/* line 181, ../sass/nodes.scss */
+/* line 187, ../sass/nodes.scss */
 .field-name-field-uib-profiled-testimonial {
   width: 48%;
 }
-/* line 184, ../sass/nodes.scss */
+/* line 190, ../sass/nodes.scss */
 .field-name-field-uib-profiled-testimonial img {
   float: left;
   margin-right: 10px;
 }
 
-/* line 190, ../sass/nodes.scss */
+/* line 196, ../sass/nodes.scss */
 .field-name-field-uib-tertiary-text {
   width: 48%;
   float: left;

@@ -159,10 +159,16 @@
   border: none;
 }
 
+.field-name-field-uib-bottom-text {
+}
+
 /* Two column */
 .group-two-column {
   width: 100%;
-  float: left;
+}
+
+.group-two-column .field {
+  margin-bottom: 10px;
 }
 
 .field-name-field-uib-link-section {
