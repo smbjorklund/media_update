@@ -13,9 +13,9 @@
  * Body
  */
 
-body.grid {
+/*body.grid {
   background: url(../images/grid-2.png);
-}
+}*/
  
 body {
   margin: 0;
@@ -101,11 +101,17 @@ body {
 
 /* Header: Styling for Webdesk */
 
-.page-node-add-uib-article, .page-webdesk {
+.page-node-add-uib-article, .page-webdesk, .page-node-add-area{
   #name-and-slogan {
     display: none;
   }
   #logo {
+    display: none;
+  }
+  #header {
+    background-image: none;
+  }
+  #block-locale-language h2{
     display: none;
   }
 }
@@ -124,15 +130,16 @@ body {
 
 .page-webdesk #main {
   background-color: lighten($light-grey, 6%);
-  margin: 20px 0;
 }
 
 /*
  * Content
  */
-
 #content {
   margin-top: 80px; /* Gir plass til menyen, skal fjernes når vi finner en bedre løsning på menyen */
+}
+.section-node-add #content {
+  margin-top: 0; 
 }
 
 .region-highlighted {
