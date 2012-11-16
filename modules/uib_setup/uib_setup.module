@@ -23,6 +23,7 @@ function uib_setup_language_negotiation_info() {
     'uib-rules' => array(
       'callbacks' => array(
         'language' => 'uib_setup__language_callback',
+        'url_rewrite' => 'uib_setup__url_rewrite_callback',
       ),
       'file' => drupal_get_path('module', 'uib_setup') . '/uib_setup.module',
       'name' => t('UiB rules'),
@@ -41,4 +42,13 @@ function uib_setup__language_callback($languages) {
     return $lang;
   }
   return FALSE;
+}
+
+/**
+ * Forcibly removing Norwegian language prefix in url
+ */
+function uib_setup__url_rewrite_callback (&$path, &$options) {
+  if ($options['prefix'] == 'nb/') {
+    $options['prefix'] = "";
+  }
 }
