@@ -112,40 +112,35 @@
   margin-right: 10px;
 }
 
-/* line 84, ../sass/nodes.scss */
-.field-name-field-uib-bottom-text {
-  overflow: auto;
-}
-
-/* line 90, ../sass/nodes.scss */
+/* line 89, ../sass/nodes.scss */
 .field-name-field-uib-profiled-testimonial img {
   float: left;
   margin-right: 10px;
 }
 
-/* line 96, ../sass/nodes.scss */
+/* line 95, ../sass/nodes.scss */
 .node-area {
   width: 630px;
 }
-/* line 99, ../sass/nodes.scss */
+/* line 98, ../sass/nodes.scss */
 .node-area p {
   color: #333;
   font-family: verdana, sans-serif;
   margin: 0;
 }
-/* line 104, ../sass/nodes.scss */
+/* line 103, ../sass/nodes.scss */
 .node-area a {
   color: #005473;
 }
-/* line 108, ../sass/nodes.scss */
+/* line 107, ../sass/nodes.scss */
 .node-area h4 {
-  margin: 0;
+  margin: 0 0 10px 0;
   padding: 0;
   font-size: 1.2em;
   color: #333;
   font-weight: normal;
 }
-/* line 116, ../sass/nodes.scss */
+/* line 115, ../sass/nodes.scss */
 .node-area h2 {
   text-transform: none;
   border: none;
@@ -155,39 +150,38 @@
   padding: 0;
 }
 
-/* line 128, ../sass/nodes.scss */
-.field-name-field-uib-w2-id, .field-name-field-uib-copyright, .field-name-field-uib-owner {
-  /* Temporarily fix */
-  display: none;
-}
-
-/* line 132, ../sass/nodes.scss */
+/* line 125, ../sass/nodes.scss */
 .field-name-field-uib-secondary-text {
   width: 100%;
   float: left;
-  margin-bottom: 20px;
+  margin: 20px 0 20px 0;
   background: #F5F5F5;
-  background-position: right;
-  background-repeat: no-repeat;
   webkit-border-radius: 2px;
   moz-border-radius: 2px;
   border-radius: 2px;
   padding-bottom: 15px;
 }
-/* line 144, ../sass/nodes.scss */
+/* line 135, ../sass/nodes.scss */
 .field-name-field-uib-secondary-text ul {
   list-style-type: none;
   margin-top: 0;
 }
-/* line 149, ../sass/nodes.scss */
+/* line 140, ../sass/nodes.scss */
 .field-name-field-uib-secondary-text li {
   float: left;
   margin: 10px 0 0 0;
   padding: 0 10px 0 0;
   width: 190px;
 }
+/* line 147, ../sass/nodes.scss */
+.field-name-field-uib-secondary-text h4, .field-name-field-uib-secondary-text p {
+  margin-left: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 30px;
+}
 
-/* line 158, ../sass/nodes.scss */
+/* line 156, ../sass/nodes.scss */
 .field-name-field-uib-profiled-article {
   width: 100%;
   margin-bottom: 20px;
@@ -195,28 +189,28 @@
   border-bottom: solid 1px silver;
 }
 
-/* line 165, ../sass/nodes.scss */
+/* line 163, ../sass/nodes.scss */
 .group-two-column {
   width: 48%;
   float: left;
   margin-left: 10px;
 }
 
-/* line 171, ../sass/nodes.scss */
+/* line 169, ../sass/nodes.scss */
 .page-node-2 {
   /* This node changes, and should be replaced with a main wrapper when the time comes. */
   width: 890px;
   margin: 0 auto;
 }
 
-/* line 176, ../sass/nodes.scss */
+/* line 174, ../sass/nodes.scss */
 .node-area .field-collection-container {
   width: 50%;
   float: left;
   border: none;
 }
 
-/* line 182, ../sass/nodes.scss */
+/* line 180, ../sass/nodes.scss */
 .field-name-field-uib-link-section {
   border: none;
   background: #F5F5F5;
@@ -226,7 +220,7 @@
   padding: 5px;
 }
 
-/* line 191, ../sass/nodes.scss */
+/* line 189, ../sass/nodes.scss */
 .node-area .field-collection-view {
   border: none;
 }
