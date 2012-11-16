@@ -521,9 +521,31 @@ if (file_exists($setup_file)) {
   }
 }
 
+// if not try to connect to postgres on glory
+if ($_edb === FALSE) {
+  $setup_file = $_SERVER['HOME'].'/.pgpass';
+  if (file_exists($setup_file)) {
+    $content = file_get_contents($setup_file);
+    list($dum, $dum, $dum, $dum, $pw) = explode(':', $content);
+
+    $other_database = array(
+      'database' => 'ressider',
+      'username' => 'user1',
+      'password' => $pw,
+      'host' => 'glory.uib.no',
+      'driver' => 'pgsql',
+    );
+    try {
+      Database::addConnectionInfo('migrate_epages_db', 'default', $other_database);
+      $_edb = Database::getConnection('default', 'migrate_epages_db');
+    } catch (Exception $e) {
+      uibx_log($e->getMessage(), 'error');
+    }
+  }
+}
+
 if ($_edb === FALSE) {
   uibx_log("EPagesMigration can't connect to source database - skipping");
-
 }
 else {
 
