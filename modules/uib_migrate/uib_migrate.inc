@@ -568,7 +568,7 @@ else {
       $result = db_select('menu_links')
         ->fields('menu_links', array('mlid', 'link_path'))
         ->condition('menu_name', 'area')
-        ->condition('link_title', 'For ansatte');
+        ->condition('link_title', 'Ansattsider');
 
       $this->_top_menu_id = '';
       $this->_area_target_id = '';
@@ -602,12 +602,12 @@ else {
     }
   }
 
-  // add 'For ansatte' as area connected to sebra place (519)
+  // add 'Ansattsider' as area connected to sebra place (519)
   function create_employee_areas() {
 
     $data = array(
-      array('nb', 'For ansatte', 'foransatte'),
-      array('en', 'For employees', 'foremployees')
+      array('nb', 'Ansattsider', 'foransatte'),
+      array('en', 'Employee Pages', 'foremployees')
     );
     $sebra_id = '519';
 
@@ -622,7 +622,7 @@ else {
       break;
     }
     if ($exists) {
-      uibx_log("Area 'for ansatte' exists, skipping");
+      // do nothing
       return;
     }
 
