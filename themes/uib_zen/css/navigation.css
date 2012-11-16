@@ -94,3 +94,8 @@ li a.active {
 ul.language-switcher-locale-url li {
   display: inline;
 }
+
+#admin-menu {
+  margin: 0;
+  padding: 0;
+}
