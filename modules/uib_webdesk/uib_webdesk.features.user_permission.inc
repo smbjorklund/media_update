@@ -356,6 +356,7 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'create area content',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -408,6 +409,7 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'delete any area content',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -442,6 +444,7 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'delete own area content',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -476,6 +479,7 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -503,6 +507,7 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'edit any area content',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -546,6 +551,7 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'edit own area content',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -745,7 +751,9 @@ function uib_webdesk_user_default_permissions() {
   // Exported permission: override area published option.
   $permissions['override area published option'] = array(
     'name' => 'override area published option',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'level 2',
+    ),
     'module' => 'override_node_options',
   );
 
@@ -1126,6 +1134,7 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'view any unpublished area content',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'view_unpublished',
   );
