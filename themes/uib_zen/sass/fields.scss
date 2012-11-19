@@ -124,8 +124,11 @@
 /* Webdesk - everything above this comment is drupal default and has not yet been motified. */
 
 /* Create article */
-#uib-article-node-form  {
+#uib-article-node-form,
+#area-node-form,
+#uib-testimonial-node-form {
   margin: 0 auto;
+  width: 96%;
 }
 
 #uib-article-node-form .group-information, .group-uib-links, .group-specific-field {
@@ -224,8 +227,8 @@ div.link-field-column  {
   float: left;
 }
 
-/* Create area node */
-form.node-area-form {
+/* Create node */
+.page-node-add form {
   padding: 20px;
 }
 

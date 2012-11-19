@@ -48,7 +48,8 @@ $zen-auto-include-item-base: false;
   margin-right: auto;
   max-width: 1200px;
 }
-.page-webdesk #main {
+.page-webdesk #main,
+.page-add-node #main {
   position: relative;
   width: 100%;  
 }

@@ -2,16 +2,19 @@
  * @file
  * Form Styling
  */
+/* line 9, ../sass/forms.scss */
 .form-item {
   /* Wrapper for a form element (or group of form elements) and its label */
   margin: 1.5em 0;
 }
+/* line 14, ../sass/forms.scss */
 .form-item input.error,
 .form-item textarea.error,
 .form-item select.error {
   /* Highlight the form elements that caused a form submission error */
   border: 1px solid #c00;
 }
+/* line 18, ../sass/forms.scss */
 .form-item label {
   /* The label for a form element */
   display: inline;
@@ -19,21 +22,25 @@
   font-size: 1.2em;
   margin-bottom: 5px;
 }
+/* line 25, ../sass/forms.scss */
 .form-item label.option {
   /* The label for a radio button or checkbox */
   display: inline;
   font-weight: normal;
 }
+/* line 30, ../sass/forms.scss */
 .form-item .form-required {
   /* The part of the label that indicates a required field */
   color: #aa0000;
 }
+/* line 35, ../sass/forms.scss */
 .form-checkboxes .form-item, .form-radios .form-item {
   /* Pack groups of checkboxes and radio buttons closer together */
   margin: 0;
   /* Drupal core uses "0.4em 0" */
 }
 
+/* line 39, ../sass/forms.scss */
 .description {
   /* The descriptive help text (separate from the label) */
   font-size: .9em;
@@ -41,20 +48,24 @@
   margin-top: 3px;
 }
 
+/* line 45, ../sass/forms.scss */
 .form-submit {
   /* The submit button */
 }
 
+/* line 50, ../sass/forms.scss */
 .container-inline div,
 .container-inline label {
   /* Inline labels and form divs */
   display: inline;
 }
 
+/* line 55, ../sass/forms.scss */
 .tips {
   /* Tips for Drupal's input formats */
 }
 
+/* line 58, ../sass/forms.scss */
 a.button {
   /* Buttons used by contrib modules like Media */
   -webkit-appearance: button;
@@ -65,6 +76,7 @@ a.button {
 /*
  * Password confirmation
  */
+/* line 67, ../sass/forms.scss */
 .password-parent,
 .confirm-parent {
   margin: 0;
@@ -73,6 +85,7 @@ a.button {
 /*
  * Search (search-block-form.tpl.php)
  */
+/* line 75, ../sass/forms.scss */
 #block-search-form {
   /* Wrapper for the search form */
 }
@@ -80,6 +93,7 @@ a.button {
 /*
  * Drupal's default login form block
  */
+/* line 82, ../sass/forms.scss */
 #user-login-form {
   text-align: left;
   /* LTR */
@@ -90,11 +104,13 @@ a.button {
    * styling of list items.
    */
 }
+/* line 92, ../sass/forms.scss */
 #user-login-form ul {
   /* OpenID creates a new ul above the login form's links. */
   margin-bottom: 0;
   /* Position OpenID's ul next to the rest of the links. */
 }
+/* line 97, ../sass/forms.scss */
 html.js #user-login-form li.openid-link,
 #user-login-form li.openid-link {
   /* The "Log in using OpenID" link. */
@@ -103,11 +119,13 @@ html.js #user-login-form li.openid-link,
   /* LTR */
   /* Un-do some of the padding on the ul list. */
 }
+/* line 102, ../sass/forms.scss */
 #user-login-form li.user-link {
   /* The "Cancel OpenID login" link. */
   margin-top: 1.5em;
 }
 
+/* line 107, ../sass/forms.scss */
 #user-login ul {
   margin: 1.5em 0;
 }
@@ -118,6 +136,7 @@ html.js #user-login-form li.openid-link,
  * We overrode these styles in normalize.css, but restore them for the admin
  * section of the site.
  */
+/* line 119, ../sass/forms.scss */
 form th {
   text-align: left;
   /* LTR */
@@ -125,12 +144,15 @@ form th {
   /* LTR */
   border-bottom: 3px solid #ccc;
 }
+/* line 125, ../sass/forms.scss */
 form tbody {
   border-top: 1px solid #ccc;
 }
+/* line 129, ../sass/forms.scss */
 form tr.even {
   background-color: #fff;
 }
+/* line 133, ../sass/forms.scss */
 form table .item-list ul {
   margin: 0;
 }
@@ -138,13 +160,15 @@ form table .item-list ul {
 /*
  * Drupal core wrongly puts this in system.menus.css. Since we override that, add it back.
  */
+/* line 152, ../sass/forms.scss */
 td.menu-disabled {
   background: #ccc;
 }
 
 /* Webdesk - everything above this comment has yet been motified.  */
 /* Border around nodes in the webdesk */
-#uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form, .page-webdesk #main {
+/* line 160, ../sass/forms.scss */
+#uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form {
   border: solid 1px #999999;
   box-shadow: 0px 1px 3px #D7D7D7;
   color: #666666;
@@ -152,6 +176,7 @@ td.menu-disabled {
 }
 
 /* Sets the style for fields */
+/* line 168, ../sass/forms.scss */
 #edit-title, #edit-title-1, .form-autocomplete, #edit-field-uib-kicker-und-0-valume, .text-full {
   padding: 4px;
   border: solid 1px #A2A2A2;
@@ -161,57 +186,69 @@ td.menu-disabled {
   color: #4D4D4D;
 }
 
+/* line 177, ../sass/forms.scss */
 .text-full {
   box-shadow: 0px 1px 3px #D7D7D7 inset;
   border: solid 1px #A2A2A2;
   color: #4D4D4D;
 }
 
+/* line 183, ../sass/forms.scss */
 #edit-title:hover, .form-autocomplete:hover, #edit-field-uib-kicker-und-0-value:hover, .text-full:hover {
   border-color: #787878;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 4px;
 }
 
+/* line 187, ../sass/forms.scss */
 .form-field-type-long-text {
   display: inline-block;
 }
 
+/* line 190, ../sass/forms.scss */
 .views-exposed-form .views-exposed-widget {
   float: none;
 }
 
+/* line 193, ../sass/forms.scss */
 .views-exposed-form .views-exposed-widget .form-submit {
   margin: 0 0 1.6em;
 }
 
+/* line 196, ../sass/forms.scss */
 html.js input.form-autocomplete {
   background-position: 100% 8px;
 }
 
+/* line 199, ../sass/forms.scss */
 html.js input.throbbing {
   background-position: 100% -12px;
   /* LTR */
 }
 
+/* line 202, ../sass/forms.scss */
 #edit-changed-wrapper, #edit-created-wrapper, #edit-field-uib-article-type-value-wrapper, #edit-field-uib-event-type-value-wrapper {
   display: inline-block;
 }
 
+/* line 205, ../sass/forms.scss */
 #edit-field-uib-event-type-value-wrapper {
   width: 50%;
 }
 
+/* line 208, ../sass/forms.scss */
 #views-exposed-form-uib-webdesk-page-1 #edit-field-uib-event-type-value-wrapper {
   width: 20%;
 }
 
 /* Select media buttons */
+/* line 212, ../sass/forms.scss */
 .edit-field-uib-files-und-0 {
   padding: 10px;
   background: red;
 }
 
 /* Webdesk title */
+/* line 217, ../sass/forms.scss */
 .panel-3col h2 {
   text-transform: none;
   font-family: helvetica, sans-serif;
@@ -220,6 +257,7 @@ html.js input.throbbing {
 }
 
 /* Advanced */
+/* line 225, ../sass/forms.scss */
 #node_uib_article_form_group_advanced .fieldset-wrapper {
   padding-left: 0;
   margin-left: 0;
@@ -228,10 +266,12 @@ html.js input.throbbing {
   width: 100%;
 }
 
+/* line 233, ../sass/forms.scss */
 .field-group-fieldset {
   padding: 0;
 }
 
+/* line 237, ../sass/forms.scss */
 .group_uib_geo {
   width: 500px;
 }

@@ -101,7 +101,8 @@ body {
 
 /* Header: Styling for Webdesk */
 
-.page-node-add-uib-article, .page-webdesk, .page-node-add-area{
+.page-node-add,
+.page-webdesk{
   #name-and-slogan {
     display: none;
   }
@@ -114,10 +115,15 @@ body {
   #block-locale-language h2{
     display: none;
   }
+  .region-sidebar-second {
+   display:none;
+  }
 }
-
-
-
+.page-node-add.sidebar-second #content {
+    float: none;
+    margin: 0;
+    width: 100%;
+}
 
 /*
  * Main (container for everything else)
@@ -128,8 +134,12 @@ body {
 
 /* Main: Styling for Webdesk */
 
-.page-webdesk #main {
+.page-webdesk #main,
+.page-node-add #main {
   background-color: lighten($light-grey, 6%);
+  border: 1px solid #999;
+  box-shadow: 0 1px 3px #D7D7D7;
+  color: #666;
 }
 
 /*
@@ -269,14 +279,6 @@ span.field-label { /* The inline field label used by the Fences module */
  */
 
 .region-sidebar-second {
-}
-
-/* Do not show sidebar when adding article */
-
-.page-node-add-uib-article {
-  .region-sidebar-second {
-   display:none;
-  }
 }
 
 
