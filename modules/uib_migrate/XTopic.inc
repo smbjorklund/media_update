@@ -27,11 +27,18 @@ class XTopic extends stdClass {
   private static function type_map($w2_type) {
     static $type_map = array(
       'avdeling' => 'unit',
+      'fag' => 'disipline',
+      'fagressurser-ub' => 'disipline resource ub',
       'fakultet' => 'faculty',
+      'forside' => 'front page',
       'forskerskole' => 'research school',
       'forskningsgruppe' => 'research group',
       'institutt' => 'institute',
+      'prosjekt' => 'project',  # not used, but defined in Sebra
       'seksjon' => 'section',
+      'studiemulighet' => 'study option', # not used, but defined in Sebra
+      'tema-indeks' => 'focus area index', # not used, but defined in Sebra
+      'tema' => 'focus area',
     );
     if (isset($type_map[$w2_type]))
       return $type_map[$w2_type];

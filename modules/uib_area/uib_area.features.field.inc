@@ -264,6 +264,7 @@ function uib_area_field_default_fields() {
           'research group' => 'research group',
           'research school' => 'research school',
           'section' => 'section',
+          'disipline' => 'disipline',
         ),
         'allowed_values_function' => '',
       ),
