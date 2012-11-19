@@ -5,7 +5,6 @@
 /*
  * Drupal's default login form block
  */
-/* line 13, ../sass/forms-rtl.scss */
 #user-login-form {
   text-align: right;
   /*
@@ -15,7 +14,6 @@
    * styling of list items.
    */
 }
-/* line 24, ../sass/forms-rtl.scss */
 html.js #user-login-form li.openid-link,
 #user-login-form li.openid-link {
   /* The "Log in using OpenID" link. */
@@ -30,7 +28,6 @@ html.js #user-login-form li.openid-link,
  * We overrode these styles in html-elements.css, but restore them for the admin
  * section of the site.
  */
-/* line 38, ../sass/forms-rtl.scss */
 form th {
   text-align: right;
   padding-left: 1em;
