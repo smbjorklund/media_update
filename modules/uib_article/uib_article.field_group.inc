@@ -61,11 +61,15 @@ function uib_article_field_group_info() {
       1 => 'field_uib_files',
       2 => 'field_uib_links',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
       ),
     ),
