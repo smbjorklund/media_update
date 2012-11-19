@@ -146,7 +146,7 @@ td.menu-disabled {
 /* Border around nodes in the webdesk */
 #uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form {
   border: solid 1px #999999;
-  box-shadow: 0px 1px 3px #D7D7D7;
+  box-shadow: 0px 1px 3px #d7d7d7;
   color: #666666;
   display: inline-block;
 }
@@ -154,9 +154,9 @@ td.menu-disabled {
 /* Sets the style for fields */
 #edit-title, #edit-title-1, .form-autocomplete, #edit-field-uib-kicker-und-0-valume, .text-full {
   padding: 4px;
-  border: solid 1px #A2A2A2;
+  border: solid 1px #a2a2a2;
   width: 70%;
-  box-shadow: 0px 1px 3px #D7D7D7 inset;
+  box-shadow: 0px 1px 3px #d7d7d7 inset;
   font-size: 1.3em;
   color: #4D4D4D;
 }
@@ -208,7 +208,7 @@ html.js input.throbbing {
 /* Select media buttons */
 .edit-field-uib-files-und-0 {
   padding: 10px;
-  background: red;
+  background: #f00;
 }
 
 /* Webdesk title */

@@ -125,7 +125,7 @@
   width: 100%;
   float: left;
   margin: 20px 0 20px 0;
-  background: #F5F5F5;
+  background: #f5f5f5;
   webkit-border-radius: 2px;
   moz-border-radius: 2px;
   border-radius: 2px;
@@ -152,19 +152,19 @@
   width: 100%;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: solid 1px silver;
+  border-bottom: solid 1px #c0c0c0;
 }
 
 .page-node-2 {
   /* This node changes, and should be replaced with a main wrapper when the time comes. */
-  width: 890px;
   margin: 0 auto;
+  width: 890px;
 }
 
 .node-area .field-collection-container {
-  width: 50%;
-  float: left;
   border: none;
+  float: left;
+  width: 50%;
 }
 
 /* Two column */
@@ -177,11 +177,11 @@
 }
 
 .field-name-field-uib-link-section {
+  background: #f5f5f5;
   border: none;
-  background: #F5F5F5;
-  webkit-border-radius: 2px;
-  moz-border-radius: 2px;
   border-radius: 2px;
+  moz-border-radius: 2px;
+  webkit-border-radius: 2px;
   padding: 5px;
 }
 
@@ -195,8 +195,8 @@
 }
 
 .field-name-field-uib-tertiary-text {
-  width: 48%;
   float: left;
+  width: 48%;
 }
 
 /* Article page */
@@ -206,10 +206,10 @@
 }
 
 .field-name-field-uib-kicker {
-  border-top: 1px solid silver;
-  border-bottom: 1px solid silver;
-  text-transform: uppercase;
-  width: 100%;
+  border-top: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
   font-family: "times new roman" serif;
   font-size: 1.2em;
+  text-transform: uppercase;
+  width: 100%;
 }
