@@ -23,8 +23,9 @@ function uib_area_field_group_info() {
     'label' => 'two_column',
     'weight' => '6',
     'children' => array(
-      0 => 'field_uib_profiled_testimonial',
-      1 => 'field_uib_tertiary_text',
+      0 => 'field_uib_link_section',
+      1 => 'field_uib_profiled_testimonial',
+      2 => 'field_uib_tertiary_text',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -55,8 +56,9 @@ function uib_area_field_group_info() {
     'label' => 'Two column',
     'weight' => '19',
     'children' => array(
-      0 => 'field_uib_profiled_testimonial',
-      1 => 'field_uib_secondary_text',
+      0 => 'field_uib_link_section',
+      1 => 'field_uib_profiled_testimonial',
+      2 => 'field_uib_secondary_text',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

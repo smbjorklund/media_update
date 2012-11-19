@@ -866,11 +866,11 @@ function uib_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -1459,7 +1459,7 @@ function uib_area_field_default_fields() {
             'view_mode' => 'teaser',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '20',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1484,7 +1484,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '24',
+        'weight' => '19',
       ),
     ),
   );
@@ -1650,7 +1650,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '25',
+        'weight' => '20',
       ),
     ),
   );
@@ -1943,7 +1943,7 @@ function uib_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '19',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
