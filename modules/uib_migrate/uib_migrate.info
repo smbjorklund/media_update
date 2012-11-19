@@ -6,5 +6,6 @@ dependencies[] = migrate
 dependencies[] = uibx
 dependencies[] = uib_article
 dependencies[] = uib_sebra
+dependencies[] = uib_redirect
 files[] = uib_migrate.inc
 files[] = XTopic.inc

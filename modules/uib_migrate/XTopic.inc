@@ -81,6 +81,7 @@ class XTopic extends stdClass {
     $this->state = (string)$topic['state'];
     $this->path = substr($topic['path'], 1);
     $this->path = preg_replace('/\\/en($|\\/)/', '$1', $this->path);
+    $this->url = substr($topic['url'], 1);
     $this->slug = basename($this->path);
     $this->type = XTopic::type_map((string)$topic->type['name']);
 

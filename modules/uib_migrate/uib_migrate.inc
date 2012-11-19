@@ -177,6 +177,24 @@ abstract class XTopicToArticleMigration extends Migration {
 class InfoPageMigration extends XTopicToArticleMigration {
   public $topic_type = 'infopage';
   public $article_type = 'infopage';
+
+  public function complete($node, $row) {
+     if(!empty($row->url)) {
+      // Setup redirects for w2 urls to w3 nodes
+      $redirect = new stdClass();
+      redirect_object_prepare($redirect);
+      $redirect->source = $row->url;
+      $redirect->redirect = 'node/' . $node->nid;
+      // Check if the redirect exists before saving.
+      $hash = redirect_hash($redirect);
+      if (!redirect_load_by_hash($hash)) {
+        redirect_save($redirect);
+        uibx_log('Redirect created for ' . $row->url . ' -> node/' . $node->nid);
+      } else {
+        uibx_log('Redirect ' . $row->url . ' -> node/' . $node->nid . ' already existed');
+      }
+    }
+  }
 }
 
 /**
@@ -200,6 +218,7 @@ class NavPageMigration extends InfoPageMigration {
   }
 
   public function complete($node, $row) {
+    parent::complete($node, $row); // perform complete function of parent
     if (isset($row->menu_top_entry)) {
       // Determine the menu_link of the corresponding area
       $result = db_select('menu_links')
