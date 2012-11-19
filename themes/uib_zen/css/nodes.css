@@ -198,3 +198,18 @@
   width: 48%;
   float: left;
 }
+
+/* Article page */
+.node-type-uib-article #content {
+  width: 650px;
+  /* should be 630px but something is stealing 20px */
+}
+
+.field-name-field-uib-kicker {
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+  text-transform: uppercase;
+  width: 100%;
+  font-family: "times new roman" serif;
+  font-size: 1.2em;
+}
