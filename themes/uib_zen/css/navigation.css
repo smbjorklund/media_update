@@ -79,6 +79,11 @@ li a.active {
  * Drupal core has limited ways in which it can display its menus. To get around
  * these limitations, see http://drupal.org/project/menu_block
  */
+#admin-menu {
+  margin: 0;
+  padding: 0;
+}
+
 /* UiB lists */
 ul.language-switcher-locale-url li {
   display: inline;
