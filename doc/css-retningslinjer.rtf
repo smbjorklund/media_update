@@ -1,0 +1,109 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf340
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 LucidaGrande;\f2\fmodern\fcharset0 Courier;
+\f3\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid1\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid3\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw16840\paperh23820\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs36 \cf0 \ul \ulc0 Retningslinjer for css-kode w3\
+\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural
+\ls1\ilvl0\cf0 \ulnone {\listtext	
+\f1 \uc0\u9642 
+\f0 	}
+\fs24 All css-kode skrives i scss-filen. Kj\'f8r "compass watch" i terminalen, og sassfilen kompileres til ordnin\'e6r css. Veldig viktig for \'e5 v\'e6re i sync at ingen skriver kode i css-filene.\
+\ls1\ilvl0
+\fs36 {\listtext	
+\f1 \uc0\u9642 
+\f0 	}
+\fs24 Bruk sass-syntax s\'e5 mye som mulig. i _base.scss ligger alle deklarasjoner. Bruk denne filen n\'e5r du deklarer egen kode. Sett deg inn i hva som ligger her fra f\'f8r og hvordan det brukes.\
+\ls1\ilvl0
+\fs36 {\listtext	
+\f1 \uc0\u9642 
+\f0 	}
+\fs24 list css-egenskaper alfabetisk ex\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}body \{\
+{\listtext	\uc0\u8259 	}color: ;\
+{\listtext	\uc0\u8259 	}display:;\
+{\listtext	\uc0\u8259 	}width:;\
+{\listtext	\uc0\u8259 	}\}\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural
+\ls1\ilvl0
+\fs36 \cf0 {\listtext	
+\f1 \uc0\u9642 
+\f0 	}
+\fs24 bruk kortform n\'e5r du kan, eks:
+\fs36 \
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural
+\ls1\ilvl1
+\fs20 \cf0 {\listtext	\uc0\u8259 	}
+\f2 margin-top:1em;
+\f3 \
+\pard\tx940\tx1440\tx1700\pardeftab720\li1440\fi-1440
+\ls1\ilvl1
+\f2 \cf0 {\listtext	\uc0\u8259 	}margin-right:0;
+\f3 \
+\ls1\ilvl1
+\f2 {\listtext	\uc0\u8259 	}margin-bottom:2em;
+\f3 \
+\ls1\ilvl1
+\f2 {\listtext	\uc0\u8259 	}margin-left:0.5em;
+\f3\fs24 \
+\pard\tx1660\tx2160\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li2160\fi-2160\pardirnatural
+\ls1\ilvl2
+\f0\fs36 \cf0 {\listtext	\uc0\u8259 	}
+\fs24 skrives som:
+\fs36 \
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}
+\f2\fs20 margin:1em 0 2em 0.5em;\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural
+\ls1\ilvl0
+\f0\fs36 \cf0 {\listtext	
+\f1 \uc0\u9642 
+\f0 	}
+\fs24 oppgi alltid farger i css med hexkoder, #000000\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural
+\ls1\ilvl1
+\fs36 \cf0 {\listtext	\uc0\u8259 	}
+\fs24 forkort disse n\'e5r du kan: #000\
+\ls1\ilvl1
+\fs36 {\listtext	\uc0\u8259 	}
+\fs24 bruk sm\'e5 bokstaver: #e5e5e5\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural
+\ls1\ilvl0
+\fs36 \cf0 {\listtext	
+\f1 \uc0\u9642 
+\f0 	}
+\fs24 s\'f8rg for at ny kode spesifiseres godt nok, slik at dine endringer ikke trer i kraft andre steder enn intendert, ex\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural
+\ls1\ilvl1
+\fs36 \cf0 {\listtext	\uc0\u8259 	}
+\fs24 #content kan befinne seg p\'e5 flere setder enn akkurat den siden du ser p\'e5. Om det er sidespesifikk style du legger til, definer dette ved: \
+{\listtext	\uc0\u8259 	}.body-class #content \{\}\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural
+\ls1\ilvl0
+\fs36 \cf0 {\listtext	
+\f1 \uc0\u9642 
+\f0 	}
+\fs24 bruk space etter egenskaper:\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural
+\ls1\ilvl1
+\fs36 \cf0 {\listtext	\uc0\u8259 	}
+\fs24 ex
+\fs36 : 
+\f2\fs24 font-weight: bold\
+\ls1\ilvl1
+\f0\fs36 {\listtext	\uc0\u8259 	}
+\fs24 og ikke:
+\fs36  
+\f2\fs24 font-weight:bold\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural
+\ls1\ilvl0
+\f0\fs36 \cf0 {\listtext	
+\f1 \uc0\u9642 
+\f0 	}\ul \
+}
