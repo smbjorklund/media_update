@@ -523,8 +523,8 @@ if (file_exists($setup_file)) {
 
 // if not try to connect to postgres on glory
 if ($_edb === FALSE) {
-  $setup_file = $_SERVER['HOME'].'/.pgpass';
-  if (file_exists($setup_file)) {
+  $setup_file = isset($_SERVER['HOME'])?$_SERVER['HOME'].'/.pgpass':'';
+  if (!empty($setup_file) && file_exists($setup_file)) {
     $content = file_get_contents($setup_file);
     list($dum, $dum, $dum, $dum, $pw) = explode(':', $content);
 
