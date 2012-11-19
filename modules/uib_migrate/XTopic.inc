@@ -28,7 +28,6 @@ class XTopic extends stdClass {
     static $type_map = array(
       'fakultet' => 'faculty',
       'institutt' => 'institute',
-      'enhet' => 'unit',
       'avdeling' => 'unit',
       'forskningsgruppe' => 'research group',
       'forskerskole' => 'research school',
