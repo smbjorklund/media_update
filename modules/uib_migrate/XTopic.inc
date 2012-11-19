@@ -26,13 +26,19 @@ class XTopic extends stdClass {
   }
   private static function type_map($w2_type) {
     static $type_map = array(
-      'fakultet' => 'faculty',
-      'institutt' => 'institute',
-      'enhet' => 'unit',
       'avdeling' => 'unit',
-      'forskningsgruppe' => 'research group',
+      'fag' => 'disipline',
+      'fagressurser-ub' => 'disipline resource ub',
+      'fakultet' => 'faculty',
+      'forside' => 'front page',
       'forskerskole' => 'research school',
+      'forskningsgruppe' => 'research group',
+      'institutt' => 'institute',
+      'prosjekt' => 'project',  # not used, but defined in Sebra
       'seksjon' => 'section',
+      'studiemulighet' => 'study option', # not used, but defined in Sebra
+      'tema-indeks' => 'focus area index', # not used, but defined in Sebra
+      'tema' => 'focus area',
     );
     if (isset($type_map[$w2_type]))
       return $type_map[$w2_type];
@@ -81,6 +87,7 @@ class XTopic extends stdClass {
     $this->state = (string)$topic['state'];
     $this->path = substr($topic['path'], 1);
     $this->path = preg_replace('/\\/en($|\\/)/', '$1', $this->path);
+    $this->url = substr($topic['url'], 1);
     $this->slug = basename($this->path);
     $this->type = XTopic::type_map((string)$topic->type['name']);
 

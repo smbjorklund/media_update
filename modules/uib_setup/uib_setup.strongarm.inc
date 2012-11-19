@@ -323,7 +323,7 @@ function uib_setup_strongarm() {
     'zen_breadcrumb' => 'yes',
     'zen_breadcrumb_separator' => ' › ',
     'zen_breadcrumb_home' => 1,
-    'zen_breadcrumb_trailing' => 0,
+    'zen_breadcrumb_trailing' => 1,
     'zen_breadcrumb_title' => 0,
     'zen_skip_link_anchor' => 'main-menu',
     'zen_skip_link_text' => 'Jump to navigation',
@@ -333,7 +333,7 @@ function uib_setup_strongarm() {
       'meta' => 'meta',
     ),
     'zen_rebuild_registry' => 0,
-    'zen_wireframes' => 1,
+    'zen_wireframes' => 0,
   );
   $export['theme_uib_zen_settings'] = $strongarm;
 
