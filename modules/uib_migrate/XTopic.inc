@@ -26,11 +26,11 @@ class XTopic extends stdClass {
   }
   private static function type_map($w2_type) {
     static $type_map = array(
-      'fakultet' => 'faculty',
-      'institutt' => 'institute',
       'avdeling' => 'unit',
-      'forskningsgruppe' => 'research group',
+      'fakultet' => 'faculty',
       'forskerskole' => 'research school',
+      'forskningsgruppe' => 'research group',
+      'institutt' => 'institute',
       'seksjon' => 'section',
     );
     if (isset($type_map[$w2_type]))
