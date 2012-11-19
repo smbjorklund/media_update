@@ -57,9 +57,11 @@ function uib_article_field_group_info() {
     'label' => 'article-factbox',
     'weight' => '23',
     'children' => array(
-      0 => 'field_uib_fact_box',
-      1 => 'field_uib_files',
-      2 => 'field_uib_links',
+      0 => 'field_uib_contacts',
+      1 => 'field_uib_fact_box',
+      2 => 'field_uib_files',
+      3 => 'field_uib_links',
+      4 => 'field_uib_media',
     ),
     'format_type' => 'div',
     'format_settings' => array(
