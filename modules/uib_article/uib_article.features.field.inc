@@ -549,7 +549,7 @@ function uib_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '20',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -645,9 +645,11 @@ function uib_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'file_rendered',
           'weight' => '13',
         ),
         'teaser' => array(
