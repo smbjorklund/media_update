@@ -35,6 +35,19 @@ If you create youself a `~/.pgpass` file with this content:
 You will be able to log into that server with 'psql -h glory.uib.no -U user1' and it should
 also work to run `site-install w3.uib.local postgres` to set up a new drupal instance on postgres.
 
+## Git
+
+Unngå unødvendige "Merge branch ..." commits i historien.  Kjør denne kommandoen én gang:
+
+    git config branch.master.rebase true
+
+Alternativet er å huske å bruke 'git pull --rebase' hver gang.
+
+Andre anbefalte konfigurasjoner:
+
+    git config --global alias.co checkout
+    git config --global color.ui auto
+    git config --global core.pager less -+S
 
 ## Migration
 
