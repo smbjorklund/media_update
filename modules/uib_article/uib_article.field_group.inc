@@ -81,6 +81,40 @@ function uib_article_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_article_sidebar|node|uib_article|default';
+  $field_group->group_name = 'group_article_sidebar';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'uib_article';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'article-sidebar',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_uib_contacts',
+      1 => 'field_uib_fact_box',
+      2 => 'field_uib_files',
+      3 => 'field_uib_links',
+      4 => 'field_uib_media',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_article_sidebar|node|uib_article|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_details|node|uib_article|form';
   $field_group->group_name = 'group_details';
   $field_group->entity_type = 'node';
