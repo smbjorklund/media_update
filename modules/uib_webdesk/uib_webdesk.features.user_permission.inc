@@ -512,15 +512,6 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete terms in 1.
-  $permissions['delete terms in 1'] = array(
-    'name' => 'delete terms in 1',
-    'roles' => array(
-      0 => 'level 1',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: display drupal links.
   $permissions['display drupal links'] = array(
     'name' => 'display drupal links',
@@ -611,15 +602,6 @@ function uib_webdesk_user_default_permissions() {
       0 => 'level 3',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: edit terms in 1.
-  $permissions['edit terms in 1'] = array(
-    'name' => 'edit terms in 1',
-    'roles' => array(
-      0 => 'level 1',
-    ),
-    'module' => 'taxonomy',
   );
 
   // Exported permission: enter area revision log entry.
