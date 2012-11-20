@@ -319,7 +319,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
-    'file_view_mode' => 'media_large',
+    'file_view_mode' => 'full_width_image',
   );
   /* Field: Content: Lead */
   $handler->display->display_options['fields']['field_uib_lead']['id'] = 'field_uib_lead';
@@ -337,7 +337,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_main_media_1']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_uib_main_media_1']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_uib_main_media_1']['settings'] = array(
-    'file_view_mode' => 'media_preview',
+    'file_view_mode' => 'wide_thumbnail',
   );
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
