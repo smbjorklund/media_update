@@ -421,16 +421,6 @@ class AreaMigration extends Migration {
       );
     }
 
-    if (isset($row->profileimages)) {
-      foreach ($row->profileimages as $file_id) {
-        $file = xtopic_file($file_id, $node->uid);
-        $term->field_uib_media['und'][] = array(
-          'fid' => $file->fid,
-          'display' => 1,
-        );
-      }
-    }
-    //print_r($term);
   }
 
   public function complete($node, $row) {
