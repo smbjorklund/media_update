@@ -18,4 +18,4 @@ dropdb -h glory -U user1 ressider
 # (re)store db on glory
 pg_restore -v -e --no-owner --no-acl -h glory -U user1 --create --dbname=template1 -L /tmp/ressider.elements /tmp/dump.ressider.sql.restore
 
-echo "DONE!"
+echo "done copy ressider to glory"

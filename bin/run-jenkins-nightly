@@ -5,6 +5,9 @@
 # remove the old site
 sudo /var/www/sbin/drupal-w3-test-cleanup
 
+# make sure we have updated ressider copied to glory
+bin/pg-copy-ressider.sh
+
 # uses postgres db (jenkins-nightly) on glory
 bin/site-install w3.test.uib.no postgres jenkins-nightly
 
