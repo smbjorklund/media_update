@@ -378,7 +378,6 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'create area content',
     'roles' => array(
       0 => 'level 1',
-      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -433,7 +432,6 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'delete any area content',
     'roles' => array(
       0 => 'level 1',
-      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -470,7 +468,6 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'delete own area content',
     'roles' => array(
       0 => 'level 1',
-      1 => 'level 2',
     ),
     'module' => 'node',
   );
