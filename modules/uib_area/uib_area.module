@@ -344,3 +344,18 @@ function uib_area__get_current_nid() {
     return NULL;
   }
 }
+
+/**
+* Implements hook_entity_info_alter().
+* Custom view modes for files
+*/
+function uib_area_entity_info_alter(&$entity_info) {
+  $entity_info['file']['view modes']['full_width_image'] = array(
+    'label' => t('Full width image (16:9)'),
+    'custom settings' => TRUE,
+  );
+  $entity_info['file']['view modes']['wide_thumbnail'] = array(
+    'label' => t('Wide thumbnail'),
+    'custom settings' => TRUE,
+  );
+}
