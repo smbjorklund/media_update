@@ -55,7 +55,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'article-factbox',
-    'weight' => '23',
+    'weight' => '13',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -83,15 +83,13 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'article-main',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_uib_byline',
       1 => 'field_uib_date',
       2 => 'field_uib_event_type',
-      3 => 'field_uib_kicker',
-      4 => 'field_uib_lead',
-      5 => 'field_uib_main_media',
-      6 => 'field_uib_text',
+      3 => 'field_uib_lead',
+      4 => 'field_uib_text',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -120,7 +118,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'article-sidebar',
-    'weight' => '13',
+    'weight' => '8',
     'children' => array(
       0 => 'field_uib_contacts',
       1 => 'field_uib_fact_box',
