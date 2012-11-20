@@ -545,20 +545,27 @@ if ($_edb === FALSE) {
   $setup_file = isset($_SERVER['HOME'])?$_SERVER['HOME'].'/.pgpass':'';
   if (!empty($setup_file) && file_exists($setup_file)) {
     $content = file_get_contents($setup_file);
-    list($dum, $dum, $dum, $dum, $pw) = explode(':', $content);
+    foreach (explode("\n", $content) as $line) {
+      if (empty($line))
+        continue;
 
-    $other_database = array(
-      'database' => 'ressider',
-      'username' => 'user1',
-      'password' => $pw,
-      'host' => 'glory.uib.no',
-      'driver' => 'pgsql',
-    );
-    try {
-      Database::addConnectionInfo('migrate_epages_db', 'default', $other_database);
-      $_edb = Database::getConnection('default', 'migrate_epages_db');
-    } catch (Exception $e) {
-      uibx_log($e->getMessage(), 'error');
+      list($dum, $dum, $dum, $user, $pw) = explode(':', $line);
+      if ($user == 'user1') {
+        $other_database = array(
+          'database' => 'ressider',
+          'username' => 'user1',
+          'password' => $pw,
+          'host' => 'glory.uib.no',
+          'driver' => 'pgsql',
+        );
+        try {
+          Database::addConnectionInfo('migrate_epages_db', 'default', $other_database);
+          $_edb = Database::getConnection('default', 'migrate_epages_db');
+        } catch (Exception $e) {
+          uibx_log($e->getMessage(), 'error');
+        }
+        break;
+      }
     }
   }
 }
