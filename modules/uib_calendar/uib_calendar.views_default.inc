@@ -22,7 +22,7 @@ function uib_calendar_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Kalender - det skjer!';
+  $handler->display->display_options['title'] = 'Calendar — What\'s up!';
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['link_display'] = 'page_1';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -45,7 +45,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Beklager ingen arr.';
+  $handler->display->display_options['empty']['area']['content'] = 'Sorry, no events';
   $handler->display->display_options['empty']['area']['format'] = 'html';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
@@ -245,7 +245,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
-  $handler->display->display_options['block_description'] = 'Kalender - det skjer!';
+  $handler->display->display_options['block_description'] = 'Calendar — What\'s up!';
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_2');
@@ -776,6 +776,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
   $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'php';
+  $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_uib_date.field_uib_date_value' => 'field_data_field_uib_date.field_uib_date_value',
   );
@@ -815,7 +816,7 @@ function uib_calendar_views_default_views() {
   );
   $translatables['calendar'] = array(
     t('Master'),
-    t('Kalender - det skjer!'),
+    t('Calendar — What\'s up!'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -829,7 +830,7 @@ function uib_calendar_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Beklager ingen arr.'),
+    t('Sorry, no events'),
     t('Content entity referenced from field_uib_area'),
     t('[field_uib_date] - [title]'),
     t('<h2>[field_uib_event_type]</h2>'),
@@ -839,8 +840,8 @@ function uib_calendar_views_default_views() {
     t('Month'),
     t('Day'),
     t('Mini calendar'),
-    t('Exhibitions'),
-    t('List all events of type exhibitions'),
+    t('Exhibitions '),
+    t('List all events of type exhibitions '),
     t('Date -  start date (field_uib_date)'),
     t('Event filter'),
   );
