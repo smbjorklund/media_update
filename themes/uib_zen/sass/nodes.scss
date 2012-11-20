@@ -213,10 +213,10 @@
 
 .group-article-main {
   width: 415px;
-  margin-right: 5px;
+  float: left;
+  margin-right: 15px;
 }
 
 .group-article-sidebar  {
-  width: 200px;
-  float: left;
+  overflow: auto;
 }
