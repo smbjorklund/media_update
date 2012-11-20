@@ -56,13 +56,7 @@ function uib_article_field_group_info() {
   $field_group->data = array(
     'label' => 'article-factbox',
     'weight' => '23',
-    'children' => array(
-      0 => 'field_uib_contacts',
-      1 => 'field_uib_fact_box',
-      2 => 'field_uib_files',
-      3 => 'field_uib_links',
-      4 => 'field_uib_media',
-    ),
+    'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -99,12 +93,16 @@ function uib_article_field_group_info() {
       5 => 'field_uib_main_media',
       6 => 'field_uib_text',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'article-main',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -132,15 +130,16 @@ function uib_article_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'article-sidebar',
       'instance_settings' => array(
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_article_sidebar|node|uib_article|default'] = $field_group;
