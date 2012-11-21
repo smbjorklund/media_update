@@ -49,9 +49,6 @@ function uib_area_strongarm() {
         'language' => array(
           'weight' => '0',
         ),
-        'redirect' => array(
-          'weight' => '30',
-        ),
       ),
       'display' => array(
         'language' => array(

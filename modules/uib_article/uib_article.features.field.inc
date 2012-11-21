@@ -132,10 +132,9 @@ function uib_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '12',
+          'type' => 'hidden',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
