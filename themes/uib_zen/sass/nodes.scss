@@ -212,11 +212,14 @@
 }
 
 .group-article-main {
-  width: 415px;
+  width: 65%;
+  margin-right: 5%;
   float: left;
-  margin-right: 15px;
+  margin-top: 40px;
 }
 
 .group-article-sidebar  {
-  overflow: auto;
+  width: 30%;
+  float: right;
+  margin-top: 40px;
 }
