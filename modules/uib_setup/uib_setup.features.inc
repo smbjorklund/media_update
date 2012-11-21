@@ -53,8 +53,8 @@ function uib_setup_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '670',
-          'height' => '377',
+          'width' => '630',
+          'height' => '354',
         ),
         'weight' => '1',
       ),
