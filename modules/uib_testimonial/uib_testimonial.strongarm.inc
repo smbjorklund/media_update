@@ -21,6 +21,9 @@ function uib_testimonial_strongarm() {
         'title' => array(
           'weight' => '0',
         ),
+        'redirect' => array(
+          'weight' => '16',
+        ),
       ),
       'display' => array(),
     ),
