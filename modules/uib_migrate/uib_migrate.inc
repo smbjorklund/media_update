@@ -726,6 +726,7 @@ else {
 
     $basename = drupal_basename($item->uri);
     $uri = $server . $uri . $basename;
+    $uri = str_replace(' ', '%20', $uri);
 
     $file = new stdClass();
     $dirname = 'public://ansattsider/';
