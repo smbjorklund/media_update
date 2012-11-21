@@ -24,7 +24,7 @@ function uib_testimonial_node_info() {
       'base' => 'node_content',
       'description' => t('Testimonials from former students collects quotes about how UiB changed the life of thousands for the better.  Testimonials also demonstrate the wonderful career that former UiB is destined to have.'),
       'has_title' => '1',
-      'title_label' => t('Tittel'),
+      'title_label' => t('Title'),
       'help' => '',
     ),
   );
