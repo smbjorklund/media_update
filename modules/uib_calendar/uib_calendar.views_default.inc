@@ -642,11 +642,10 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_uib_date']['table'] = 'field_data_field_uib_date';
   $handler->display->display_options['fields']['field_uib_date']['field'] = 'field_uib_date';
   $handler->display->display_options['fields']['field_uib_date']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_date']['settings'] = array(
-    'format_type' => 'time',
-    'fromto' => 'value',
+    'format_type' => 'short',
+    'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
@@ -656,7 +655,6 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['text'] = '[field_uib_date] - [title]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
