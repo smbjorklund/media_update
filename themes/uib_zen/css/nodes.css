@@ -94,25 +94,25 @@
   margin-right: 10px;
 }
 
-.node-area {
-  width: 630px;
+.node-area #content {
+  width: 71%;
 }
-.node-area p {
+.node-area #content p {
   color: #333;
   font-family: verdana, sans-serif;
   margin: 0;
 }
-.node-area a {
+.node-area #content a {
   color: #005473;
 }
-.node-area h4 {
+.node-area #content h4 {
   margin: 0 0 10px 0;
   padding: 0;
   font-size: 1.2em;
   color: #333;
   font-weight: normal;
 }
-.node-area h2 {
+.node-area #content h2 {
   text-transform: none;
   border: none;
   font-weight: normal;
