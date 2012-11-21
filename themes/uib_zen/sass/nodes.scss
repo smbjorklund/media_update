@@ -72,7 +72,6 @@
 }
 
 .field-name-field-uib-primary-text {
-  overflow: auto;
 }
 
 .field-name-field-uib-bottom-media  {
@@ -81,9 +80,7 @@
   margin-right: 10px;
 }
 
-.node-area #content{
-  width: 71%;
-
+.node-area #content {
   p  {
     color: #333;
     font-family: verdana, sans-serif;
@@ -130,7 +127,7 @@
   float:left;
   margin: 10px 0 0 0;
   padding: 0 10px 0 0;
-  width:190px;
+  width:180px;
   }
 
   h4, p  {
@@ -148,9 +145,9 @@
   border-bottom: solid 1px #c0c0c0;
 }
 
-.page-node-2  { /* This node changes, and should be replaced with a main wrapper when the time comes. */
-  margin: 0 auto;
-  width: 890px;
+.node-2  { /* This node changes, and should be replaced with a main wrapper when the time comes. */
+  width: 91%;
+  padding: 0;
 }
 
 .node-area .field-collection-container  {
@@ -198,8 +195,11 @@
 }
 
 /* Article page */
-#content .node-uib-article {
-  width: 650px; /* should be 630px but something is stealing 20px */
+.node-uib-article {
+  width: 630px;
+  .submitted  { /* Hide submitted by */
+    display: none;
+  }
 }
 
 .field-name-field-uib-kicker, .group-article-sidebar .field-label  {
