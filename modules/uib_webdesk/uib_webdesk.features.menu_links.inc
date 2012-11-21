@@ -51,7 +51,7 @@ function uib_webdesk_menu_default_menu_links() {
     'menu_name' => 'menu-webdesk',
     'link_path' => 'node/add/uib-ou',
     'router_path' => 'node/add/uib-ou',
-    'link_title' => 'Add Organisational Unit',
+    'link_title' => 'Add organisational unit',
     'options' => array(
       'attributes' => array(
         'title' => 'This is where you add organisational unit',
@@ -63,6 +63,24 @@ function uib_webdesk_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-48',
+  );
+  // Exported menu link: menu-webdesk:node/add/uib-testimonial
+  $menu_links['menu-webdesk:node/add/uib-testimonial'] = array(
+    'menu_name' => 'menu-webdesk',
+    'link_path' => 'node/add/uib-testimonial',
+    'router_path' => 'node/add/uib-testimonial',
+    'link_title' => 'Add testimonial',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '0',
   );
   // Exported menu link: menu-webdesk:webdesk/all-content
   $menu_links['menu-webdesk:webdesk/all-content'] = array(
@@ -84,9 +102,10 @@ function uib_webdesk_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add Organisational Unit');
   t('Add area');
   t('Add content');
+  t('Add organisational unit');
+  t('Add testimonial');
   t('Find content');
 
 

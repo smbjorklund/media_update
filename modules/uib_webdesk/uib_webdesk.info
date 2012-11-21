@@ -42,6 +42,7 @@ features[menu_custom][] = menu-webdesk
 features[menu_links][] = menu-webdesk:node/add/area
 features[menu_links][] = menu-webdesk:node/add/uib-article
 features[menu_links][] = menu-webdesk:node/add/uib-ou
+features[menu_links][] = menu-webdesk:node/add/uib-testimonial
 features[menu_links][] = menu-webdesk:webdesk/all-content
 features[page_manager_pages][] = uib_webdesk
 features[page_manager_pages][] = uib_webdesk_user
