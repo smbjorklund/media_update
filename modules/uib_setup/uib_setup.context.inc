@@ -98,7 +98,7 @@ function uib_setup_context_default_contexts() {
           'module' => 'locale',
           'delta' => 'language',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'menu_block-top-area-menu' => array(
           'module' => 'menu_block',
