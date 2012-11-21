@@ -213,7 +213,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         $variables['content']['field_uib_profiled_article'][]['#markup'] = views_embed_view('area_slideshow','default', $variables['nid']);
         $variables['content']['field_uib_profiled_article']['#weight'] = $weight;
       }
-       $variables['content']['group_two_column']['field_uib_kids']['#markup'] = views_embed_view('area_kids', 'block', $variables['nid']);
+       $variables['content']['group_two_column']['field_uib_kids']['#markup'] = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
        $variables['content']['group_two_column']['field_uib_kids']['#weight'] = -99;
 
     }
