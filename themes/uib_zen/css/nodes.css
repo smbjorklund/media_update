@@ -4,54 +4,43 @@
  *
  * Style anything that isn't in the $content variable.
  */
-/* line 11, ../sass/nodes.scss */
 .node {
   /* Node wrapper */
 }
-/* line 13, ../sass/nodes.scss */
 .preview .node {
   /* Preview of the content before submitting new or updated content */
   /* background-color: #ffffea; */
   /* Drupal core uses a #ffffea background */
 }
-/* line 17, ../sass/nodes.scss */
 .node .node-title {
   /* Node title */
 }
-/* line 20, ../sass/nodes.scss */
 .node .user-picture {
   /* The picture of the node author */
 }
-/* line 23, ../sass/nodes.scss */
 .node .submitted {
   /* The "posted by" information */
   text-transform: uppercase;
 }
-/* line 27, ../sass/nodes.scss */
 .node .content {
   /* Node's content wrapper */
 }
-/* line 30, ../sass/nodes.scss */
 .node ul.links {
   /* Node links. See also the ul.links declaration in the pages.css. */
 }
 
-/* line 35, ../sass/nodes.scss */
 .node-promoted {
   /* A node that has been promoted to the front page */
 }
 
-/* line 38, ../sass/nodes.scss */
 .node-sticky {
   /* A sticky node (displayed before others in a list) */
 }
 
-/* line 41, ../sass/nodes.scss */
 .node-by-viewer {
   /* A node created by the current user */
 }
 
-/* line 44, ../sass/nodes.scss */
 .node-teaser {
   /* A node displayed as teaser */
 }
@@ -61,23 +50,19 @@
  * it is. If you create a new content type called "my-custom-type", it will
  * receive a "node-my-custom-type" class.
  */
-/* line 53, ../sass/nodes.scss */
 .node-page {
   /* Page content node */
 }
 
-/* line 56, ../sass/nodes.scss */
 .node-article {
   /* Article content node */
 }
 
-/* line 59, ../sass/nodes.scss */
 .node-unpublished {
   /* Unpublished nodes */
   /* background-color: #fff4f4; */
   /* Drupal core uses a #fff4f4 background */
 }
-/* line 62, ../sass/nodes.scss */
 .node-unpublished p.unpublished {
   /* The word "Unpublished" displayed underneath the content. */
   height: 0;
@@ -93,40 +78,33 @@
 }
 
 /* Area page */
-/* line 68, ../sass/nodes.scss */
 .field-name-field-uib-primary-media {
   float: left;
   width: 50%;
   margin-right: 10px;
 }
 
-/* line 74, ../sass/nodes.scss */
 .field-name-field-uib-primary-text {
   overflow: auto;
 }
 
-/* line 78, ../sass/nodes.scss */
 .field-name-field-uib-bottom-media {
   float: left;
   width: 50%;
   margin-right: 10px;
 }
 
-/* line 84, ../sass/nodes.scss */
 .node-area {
   width: 630px;
 }
-/* line 87, ../sass/nodes.scss */
 .node-area p {
   color: #333;
   font-family: verdana, sans-serif;
   margin: 0;
 }
-/* line 92, ../sass/nodes.scss */
 .node-area a {
   color: #005473;
 }
-/* line 96, ../sass/nodes.scss */
 .node-area h4 {
   margin: 0 0 10px 0;
   padding: 0;
@@ -134,7 +112,6 @@
   color: #333;
   font-weight: normal;
 }
-/* line 104, ../sass/nodes.scss */
 .node-area h2 {
   text-transform: none;
   border: none;
@@ -144,7 +121,6 @@
   padding: 0;
 }
 
-/* line 114, ../sass/nodes.scss */
 .field-name-field-uib-secondary-text {
   width: 100%;
   float: left;
@@ -155,19 +131,16 @@
   border-radius: 2px;
   padding-bottom: 15px;
 }
-/* line 124, ../sass/nodes.scss */
 .field-name-field-uib-secondary-text ul {
   list-style-type: none;
   margin-top: 0;
 }
-/* line 129, ../sass/nodes.scss */
 .field-name-field-uib-secondary-text li {
   float: left;
   margin: 10px 0 0 0;
   padding: 0 10px 0 0;
   width: 190px;
 }
-/* line 136, ../sass/nodes.scss */
 .field-name-field-uib-secondary-text h4, .field-name-field-uib-secondary-text p {
   margin-left: 30px;
   margin-top: 10px;
@@ -175,7 +148,6 @@
   margin-right: 30px;
 }
 
-/* line 144, ../sass/nodes.scss */
 .field-name-field-uib-profiled-article {
   width: 100%;
   margin-bottom: 20px;
@@ -183,14 +155,12 @@
   border-bottom: solid 1px #c0c0c0;
 }
 
-/* line 151, ../sass/nodes.scss */
 .page-node-2 {
   /* This node changes, and should be replaced with a main wrapper when the time comes. */
   margin: 0 auto;
   width: 890px;
 }
 
-/* line 156, ../sass/nodes.scss */
 .node-area .field-collection-container {
   border: none;
   float: left;
@@ -198,17 +168,14 @@
 }
 
 /* Two column */
-/* line 166, ../sass/nodes.scss */
 .group-two-column {
   width: 100%;
 }
 
-/* line 170, ../sass/nodes.scss */
 .group-two-column .field {
   margin-bottom: 10px;
 }
 
-/* line 174, ../sass/nodes.scss */
 .field-name-field-uib-link-section {
   background: #f5f5f5;
   border: none;
@@ -218,32 +185,27 @@
   padding: 5px;
 }
 
-/* line 183, ../sass/nodes.scss */
 .node-area .field-collection-view {
   border: none;
 }
 
-/* line 189, ../sass/nodes.scss */
 .field-name-field-uib-profiled-testimonial img {
   float: left;
   margin-right: 10px;
 }
 
-/* line 195, ../sass/nodes.scss */
 .field-name-field-uib-tertiary-text {
   float: left;
   width: 48%;
 }
 
 /* Article page */
-/* line 201, ../sass/nodes.scss */
 #content .node-uib-article {
   width: 650px;
   /* should be 630px but something is stealing 20px */
 }
 
-/* line 205, ../sass/nodes.scss */
-.field-name-field-uib-kicker {
+.field-name-field-uib-kicker, .group-article-sidebar .field-label {
   border-top: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;
   font-family: "times new roman" serif;
@@ -252,7 +214,6 @@
   width: 100%;
 }
 
-/* line 214, ../sass/nodes.scss */
 .group-article-main {
   width: 65%;
   margin-right: 5%;
@@ -260,9 +221,17 @@
   margin-top: 40px;
 }
 
-/* line 221, ../sass/nodes.scss */
 .group-article-sidebar {
   width: 30%;
   float: right;
   margin-top: 40px;
+}
+
+.field-name-field-uib-fact-box {
+  background: #f0f4f5;
+  padding: 10px;
+  line-height: 14px;
+}
+.field-name-field-uib-fact-box p {
+  font-size: .9em;
 }

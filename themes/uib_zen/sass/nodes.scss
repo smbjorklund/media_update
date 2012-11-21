@@ -202,7 +202,7 @@
   width: 650px; /* should be 630px but something is stealing 20px */
 }
 
-.field-name-field-uib-kicker  {
+.field-name-field-uib-kicker, .group-article-sidebar .field-label  {
   border-top: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;
   font-family: "times new roman" serif;
@@ -222,4 +222,14 @@
   width: 30%;
   float: right;
   margin-top: 40px;
+}
+
+.field-name-field-uib-fact-box  {
+  background: #f0f4f5;
+  padding: 10px;
+  line-height: 14px;
+  
+  p {
+    font-size: .9em;
+  }
 }
