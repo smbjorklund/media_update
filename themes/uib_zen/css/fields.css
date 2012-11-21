@@ -238,45 +238,50 @@ div.link-field-column {
 }
 
 /* line 252, ../sass/fields.scss */
-.pane-my-content-panel-pane-1 {
-  background: url("../images/my-content.png") no-repeat 0 5px;
+.pane-my-content-panel-pane-1 h2 {
+  background: url("../images/my-content.png") no-repeat 0 4px;
 }
 
 /* line 256, ../sass/fields.scss */
-.pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2, .page-webdesk ul.menu li a {
+.pane-uib-webdesk-panel-pane-1 h2, .page-webdesk ul.menu li a {
   margin-left: 18px;
 }
 
-/* line 260, ../sass/fields.scss */
-.pane-scheduled-content {
-  background: url("../images/scheduled-content.png") no-repeat 0 5px;
+/* line 259, ../sass/fields.scss */
+.pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2 {
+  padding: 0 0 0 20px;
 }
 
 /* line 263, ../sass/fields.scss */
+.pane-scheduled-content h2 {
+  background: url("../images/scheduled-content.png") no-repeat 0 4px;
+}
+
+/* line 266, ../sass/fields.scss */
 .pane-menu-webdesk .menu {
   padding-left: 0;
   font-size: 1.1em;
 }
 
-/* line 270, ../sass/fields.scss */
+/* line 273, ../sass/fields.scss */
 .pane-uib-webdesk-panel-pane-1 {
   background: url("../images/all-content.png") no-repeat 0 5px;
   border-top: #999999;
   border-bottom: #999999;
 }
 
-/* line 276, ../sass/fields.scss */
+/* line 279, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   background: url("../images/add.png");
   background-repeat: no-repeat;
 }
 
-/* line 281, ../sass/fields.scss */
+/* line 284, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   list-style: none;
 }
 
-/* line 284, ../sass/fields.scss */
+/* line 287, ../sass/fields.scss */
 .page-webdesk #main #content {
   margin-top: 0;
 }

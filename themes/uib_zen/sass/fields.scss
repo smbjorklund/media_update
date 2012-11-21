@@ -249,16 +249,19 @@ div.link-field-column  {
   margin-left: 18px;
 }
 
-.pane-my-content-panel-pane-1 {
-  background: url('../images/my-content.png') no-repeat 0 5px;
+.pane-my-content-panel-pane-1 h2{
+  background: url('../images/my-content.png') no-repeat 0 4px;
 }
 
-.pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2, .pane-uib-webdesk-panel-pane-1 h2, .page-webdesk ul.menu li a {
+.pane-uib-webdesk-panel-pane-1 h2, .page-webdesk ul.menu li a {
   margin-left: 18px;
 }
+.pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2 {
+  padding: 0 0 0 20px;
+}
 
-.pane-scheduled-content {
-  background: url('../images/scheduled-content.png') no-repeat 0 5px;
+.pane-scheduled-content h2 {
+  background: url('../images/scheduled-content.png') no-repeat 0 4px;
 }
 .pane-menu-webdesk .menu {
   padding-left: 0;
