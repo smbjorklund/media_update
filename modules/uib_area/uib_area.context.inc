@@ -59,12 +59,6 @@ function uib_area_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-6',
         ),
-        'views-area_kids-block' => array(
-          'module' => 'views',
-          'delta' => 'area_kids-block',
-          'region' => 'sidebar_second',
-          'weight' => '-5',
-        ),
       ),
     ),
   );
