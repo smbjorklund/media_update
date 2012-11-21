@@ -693,7 +693,7 @@ function uib_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_link_section',
-      'label' => 'Links',
+      'label' => 'Relevant links',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -867,11 +867,11 @@ function uib_area_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -2852,6 +2852,7 @@ function uib_area_field_default_fields() {
   t('Profiled articles');
   t('Profiled messages');
   t('Profiled testimonial');
+  t('Relevant links');
   t('Sebra ID');
   t('Secondary text');
   t('Select the articles that will display in the "Messages" box');

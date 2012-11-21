@@ -891,7 +891,7 @@ function uib_article_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_links',
-      'label' => 'Links',
+      'label' => 'Relevant links',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -905,7 +905,6 @@ function uib_article_field_default_fields() {
           'url_cutoff' => '80',
         ),
         'enable_tokens' => 1,
-        'entity_translation_sync' => FALSE,
         'title' => 'required',
         'title_maxlength' => '128',
         'title_value' => '',
@@ -1639,12 +1638,12 @@ function uib_article_field_default_fields() {
   t('Inline images');
   t('Kicker');
   t('Lead');
-  t('Links');
   t('Location');
   t('Main media');
   t('Menu title w2');
   t('Parent ID w2');
   t('Path w2');
+  t('Relevant links');
   t('Text');
   t('Type');
   t('Weight');
