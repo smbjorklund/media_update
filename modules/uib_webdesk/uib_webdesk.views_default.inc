@@ -298,17 +298,16 @@ function uib_webdesk_views_default_views() {
   $view->description = 'List content if they are in a scheduled state';
   $view->tag = 'webdesk';
   $view->base_table = 'node';
-  $view->human_name = 'Scheduled content';
+  $view->human_name = 'My scheduled content';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Scheduled content';
+  $handler->display->display_options['title'] = 'My scheduled content';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'view own unpublished content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -360,15 +359,23 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Sorry mate. You got no scheduled content lurking.';
   $handler->display->display_options['empty']['area']['format'] = 'plain_text';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['label'] = 'Author of content';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
+  $handler->display->display_options['relationships']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
+  $handler->display->display_options['relationships']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Scheduler: Publish on */
   $handler->display->display_options['fields']['publish_on']['id'] = 'publish_on';
   $handler->display->display_options['fields']['publish_on']['table'] = 'scheduler';
@@ -399,7 +406,8 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
-  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
@@ -441,12 +449,6 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['unpublish_on']['field'] = 'unpublish_on';
   $handler->display->display_options['fields']['unpublish_on']['label'] = 'Unpublish';
   $handler->display->display_options['fields']['unpublish_on']['date_format'] = 'short';
-  /* Field: Content: Author uid */
-  $handler->display->display_options['fields']['uid']['id'] = 'uid';
-  $handler->display->display_options['fields']['uid']['table'] = 'node';
-  $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  $handler->display->display_options['fields']['uid']['label'] = 'Author';
-  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   /* Field: Content: Area */
   $handler->display->display_options['fields']['field_uib_area']['id'] = 'field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['table'] = 'field_data_field_uib_area';
@@ -485,7 +487,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
@@ -535,7 +537,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $translatables['scheduled_content'] = array(
     t('Master'),
-    t('Scheduled content'),
+    t('My scheduled content'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -549,13 +551,13 @@ function uib_webdesk_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Sorry mate. You got no scheduled content lurking.'),
+    t('Author of content'),
+    t('Content entity referenced from field_uib_area'),
+    t('Title'),
     t('Publish'),
     t('All'),
     t('Page'),
-    t('Title'),
     t('Unpublish'),
-    t('Author'),
     t('Area'),
     t('Block'),
   );
