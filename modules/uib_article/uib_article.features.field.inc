@@ -1058,7 +1058,7 @@ function uib_article_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'file_directory' => 'media',
-        'file_extensions' => 'txt',
+        'file_extensions' => 'png jpeg jpg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -1067,8 +1067,10 @@ function uib_article_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
+            'private' => 0,
             'public' => 'public',
             'vimeo' => 'vimeo',
+            'youtube' => 0,
           ),
           'allowed_types' => array(
             'audio' => 0,
@@ -1152,9 +1154,8 @@ function uib_article_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'entity_translation_sync' => FALSE,
         'file_directory' => 'media',
-        'file_extensions' => 'jpg png',
+        'file_extensions' => 'jpg png jpeg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -1163,7 +1164,10 @@ function uib_article_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
+            'private' => 0,
             'public' => 'public',
+            'vimeo' => 0,
+            'youtube' => 0,
           ),
           'allowed_types' => array(
             'audio' => 0,
@@ -1174,6 +1178,8 @@ function uib_article_field_default_fields() {
           'browser_plugins' => array(
             'library' => 0,
             'media_default--media_browser_1' => 0,
+            'media_default--media_browser_my_files' => 0,
+            'media_internet' => 0,
             'upload' => 0,
           ),
           'progress_indicator' => 'throbber',
