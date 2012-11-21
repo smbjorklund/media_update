@@ -359,3 +359,33 @@ function uib_area_entity_info_alter(&$entity_info) {
     'custom settings' => TRUE,
   );
 }
+
+/**
+ * Implements hook_form_alter
+ */
+function uib_area_form_alter(&$form, &$form_state, $form_id) {
+  if (in_array('level 2', $GLOBALS['user']->roles, TRUE)) {
+    // Hide some fields for level 2 users
+    if (isset($form['field_uib_w2_id'])) {
+      hide($form['field_uib_w2_id']); // ID w2
+    }
+    if (isset($form['field_uib_sebra_id'])) {
+      hide($form['field_uib_sebra_id']); // Sebra ID
+    }    
+    if (isset($form['field_uib_area_type'])) {
+      hide($form['field_uib_area_type']); // Type
+    }
+    if (isset($form['field_uib_menu_style'])) {
+      hide($form['field_uib_menu_style']); // Menu style
+    }
+    if (isset($form['field_uib_show_staff'])) {
+      hide($form['field_uib_show_staff']); // Show staff
+    }
+    if (isset($form['field_uib_staff'])) {
+      hide($form['field_uib_staff']); // Staff
+    }
+    if (isset($form['field_uib_content_manager'])) {
+      hide($form['field_uib_content_manager']); // Content Manager
+    }
+  }
+}
