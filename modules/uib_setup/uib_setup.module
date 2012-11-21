@@ -15,6 +15,13 @@ function uib_setup_menu_alter(&$items) {
 }
 
 /**
+ * Implements hook_block_view_MODULE_DELTA_alter().
+ */
+function uib_setup_block_view_locale_language_alter(&$data, $block) {
+   unset($data['subject']);
+}
+
+/**
  * Implements hook_language_negotiation_info().
  */
 
