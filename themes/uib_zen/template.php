@@ -220,7 +220,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
     // Handle articles
     if ($variables['type'] == 'uib_article') {
-      if ($variables['field_uib_article_type'][0]['value'] == 'news') {
+        if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
         // Setup kicker
         // -- First determine which date to set
         if ($variables['node']->created < $variables['node']->revision_timestamp) {
@@ -229,7 +229,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         else {
           $up_date = format_date($variables['node']->created, 'medium');
         }
-        if (empty($variables['field_uib_kicker'][0]['value'])) {
+        if (empty($variables['node']->field_uib_kicker['und'][0]['value'])) {
           // set default value for kicker in news articles
           $variables['content']['field_uib_kicker'][0]['text'] = array('#markup' => "<div class=\"uib-kicker-text\">" . t('news') . "</div>");
         }
@@ -241,13 +241,13 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
         // Byline
         $uib_news_byline = "";
-        $byline_nrof_authors = count($variables['field_uib_byline']);
+        $byline_nrof_authors = count($variables['field_uib_byline']['und']);
         if ($byline_nrof_authors > 0) {
           $uib_news_byline = t('By') . ' ';
           $glue = "";
           // join authors into a single line
           for ($i = 0; $i < $byline_nrof_authors; $i++) {
-            $uib_news_byline .= $glue . $variables['content']['field_uib_byline'][$i]['#markup'];
+            $uib_news_byline .= $glue . $variables['content']['group_article_main']['field_uib_byline'][$i]['#markup'];
             if ($i == $byline_nrof_authors - 2) {
               $glue = ' ' . t('and') . ' '; // not comma between last names
             }
@@ -255,8 +255,8 @@ function uib_zen_preprocess_node(&$variables, $hook) {
               $glue = ', '; // comma between names
             }
           }
-          hide($variables['content']['field_uib_byline']);
-          $variables['content']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
+          hide($variables['content']['group_article_main']['field_uib_byline']);
+          $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
         }
       }
       else {
