@@ -15,14 +15,14 @@ function uib_ansatte_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Ansatte';
+  $view->human_name = 'Staff';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Ansatte';
+  $handler->display->display_options['title'] = 'Staff';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -155,7 +155,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
   $handler->display->display_options['arguments']['nid']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['title'] = 'Ansatte hos %1';
+  $handler->display->display_options['arguments']['nid']['title'] = 'Staff at %1';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
@@ -240,7 +240,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
   $handler->display->display_options['arguments']['nid']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['title'] = 'Ansatte hos %1';
+  $handler->display->display_options['arguments']['nid']['title'] = 'Staff at %1';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
@@ -280,7 +280,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_position_category_value']['validate']['fail'] = 'ignore';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['limit'] = '0';
   $handler->display->display_options['path'] = 'persons/%/%';
-  $handler->display->display_options['menu']['title'] = 'Ansatte';
+  $handler->display->display_options['menu']['title'] = 'Staff';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'area';
   $handler->display->display_options['menu']['context'] = 0;
@@ -294,7 +294,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
   $handler->display->display_options['arguments']['nid']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['title'] = 'Ansatte hos %1';
+  $handler->display->display_options['arguments']['nid']['title'] = 'Staff at %1';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
@@ -335,14 +335,13 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_position_category_value']['validate']['fail'] = 'summary';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['limit'] = '0';
   $handler->display->display_options['path'] = 'node/%/persons';
-  $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Ansatte';
+  $handler->display->display_options['menu']['title'] = 'Staff';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'area';
   $handler->display->display_options['menu']['context'] = 0;
   $translatables['ansatte'] = array(
     t('Master'),
-    t('Ansatte'),
+    t('Staff'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -376,7 +375,7 @@ function uib_ansatte_views_default_views() {
   </div>
 </div>'),
     t('All'),
-    t('Ansatte hos %1'),
+    t('Staff at %1'),
     t('%2 at %1'),
     t('Page'),
     t('All staff'),
