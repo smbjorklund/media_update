@@ -209,7 +209,11 @@ function uib_area__feed_format($url, $title, $limit) {
         ),
       );
       foreach ($xml->channel->item as $entry) {
-       $items['list']['#items'][] = l($entry->title, $entry->link) ;
+       $pubDate = $entry->pubDate;
+       $pubDate = strftime("%Y-%m-%d", strtotime($pubDate));
+       if(!empty($pubDate))
+         $entry->title .= '('.$pubDate .')';
+       $items['list']['#items'][] = l($entry->title, $entry->link);
        if (--$limit == 0)
         break;
       }
