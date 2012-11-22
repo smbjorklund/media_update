@@ -196,10 +196,6 @@
 .node-uib-article {
   width: 630px;
 }
-.node-uib-article .submitted {
-  /* Hide submitted by */
-  display: none;
-}
 
 .field-name-field-uib-kicker, .group-article-sidebar .field-label {
   border-top: 1px solid #c0c0c0;
