@@ -1,0 +1,8 @@
+<?php
+/**
+* Implements hook_admin_paths_alter().
+*/
+function uib_media_admin_paths_alter(&$paths) {
+  // Don't treat as admin path otherwise admin theme loads when modal appears.
+  $paths['media/*/edit/*'] = FALSE;
+}
