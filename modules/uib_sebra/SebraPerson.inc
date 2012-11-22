@@ -50,7 +50,7 @@ class SebraPerson extends stdClass {
       $this->place_code = (string)$staff->place;
       $this->position_name_no = (string)$staff->title;
       $this->position_name_en = (string)$staff->title_english;
-      $this->position_code = (string)$staff->code;
+      $this->position_code = (int)$staff->code;
       $this->position_category = (string)$staff->title_category;
     }
     else {
