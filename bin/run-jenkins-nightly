@@ -22,4 +22,4 @@ bin/site-drush uib-migrate-build-menu --verbose
 bin/site-drush pm-enable --yes uib_prod
 
 # sync some users, areas from sebra, etc
-bin/update-some-stuff
+sh -x bin/update-some-stuff
