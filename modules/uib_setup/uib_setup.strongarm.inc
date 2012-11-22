@@ -495,7 +495,7 @@ function uib_setup_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'uib_sws_url';
-  $strongarm->value = 'http://attila.uib.no/sws/';
+  $strongarm->value = 'http://testbool.uib.no/sws/';
   $export['uib_sws_url'] = $strongarm;
 
   $strongarm = new stdClass();
