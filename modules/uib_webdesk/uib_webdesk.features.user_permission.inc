@@ -14,7 +14,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['access administration menu'] = array(
     'name' => 'access administration menu',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'admin_menu',
   );
@@ -60,7 +62,8 @@ function uib_webdesk_user_default_permissions() {
   $permissions['access contextual links'] = array(
     'name' => 'access contextual links',
     'roles' => array(
-      0 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'contextual',
   );
@@ -87,7 +90,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['add media from remote sources'] = array(
     'name' => 'add media from remote sources',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'media_internet',
   );
@@ -268,7 +273,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['administer shortcuts'] = array(
     'name' => 'administer shortcuts',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'shortcut',
   );
@@ -386,7 +393,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['create uib_article content'] = array(
     'name' => 'create uib_article content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -404,7 +413,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['create uib_testimonial content'] = array(
     'name' => 'create uib_testimonial content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -422,7 +433,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['customize shortcut links'] = array(
     'name' => 'customize shortcut links',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'shortcut',
   );
@@ -440,7 +453,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['delete any uib_article content'] = array(
     'name' => 'delete any uib_article content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -458,7 +473,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['delete any uib_testimonial content'] = array(
     'name' => 'delete any uib_testimonial content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -476,7 +493,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['delete own uib_article content'] = array(
     'name' => 'delete own uib_article content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -494,7 +513,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['delete own uib_testimonial content'] = array(
     'name' => 'delete own uib_testimonial content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -532,7 +553,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['edit any uib_article content'] = array(
     'name' => 'edit any uib_article content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -550,7 +573,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['edit any uib_testimonial content'] = array(
     'name' => 'edit any uib_testimonial content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -559,7 +584,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['edit file'] = array(
     'name' => 'edit file',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'file_entity',
   );
@@ -578,7 +605,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['edit own uib_article content'] = array(
     'name' => 'edit own uib_article content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -596,7 +625,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['edit own uib_testimonial content'] = array(
     'name' => 'edit own uib_testimonial content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -763,7 +794,8 @@ function uib_webdesk_user_default_permissions() {
   $permissions['override area published option'] = array(
     'name' => 'override area published option',
     'roles' => array(
-      0 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'override_node_options',
   );
@@ -807,7 +839,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['override uib_article published option'] = array(
     'name' => 'override uib_article published option',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'override_node_options',
   );
@@ -935,7 +969,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['override uib_testimonial published option'] = array(
     'name' => 'override uib_testimonial published option',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'override_node_options',
   );
@@ -958,7 +994,8 @@ function uib_webdesk_user_default_permissions() {
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
     'roles' => array(
-      0 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -1035,7 +1072,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['switch shortcut sets'] = array(
     'name' => 'switch shortcut sets',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'shortcut',
   );
@@ -1051,8 +1090,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['translate content'] = array(
     'name' => 'translate content',
     'roles' => array(
-      0 => 'level 2',
-      1 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'translation',
   );
@@ -1163,7 +1203,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['view any unpublished uib_article content'] = array(
     'name' => 'view any unpublished uib_article content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'view_unpublished',
   );
@@ -1190,7 +1232,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['view any unpublished uib_testimonial content'] = array(
     'name' => 'view any unpublished uib_testimonial content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'view_unpublished',
   );
@@ -1209,7 +1253,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -1225,7 +1271,9 @@ function uib_webdesk_user_default_permissions() {
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
     'roles' => array(
-      0 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -1234,7 +1282,8 @@ function uib_webdesk_user_default_permissions() {
   $permissions['view the administration theme'] = array(
     'name' => 'view the administration theme',
     'roles' => array(
-      0 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'system',
   );
