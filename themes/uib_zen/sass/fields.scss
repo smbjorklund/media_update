@@ -126,17 +126,19 @@
 /* Create article */
 #uib-article-node-form,
 #area-node-form,
-#uib-testimonial-node-form {
-  margin: 0 auto;
-  width: 96%;
+#uib-testimonial-node-form,
+#uib-ou-node-form {
+  background: #fff;
+  margin: 0 0 20px 0;
+  width: 95%;
 }
 
-#uib-article-node-form .group-information, .group-uib-links, .group-specific-field {
+.group-uib-links{
   padding: 20px;
 }
 
 .group-information, .group-specific-field  {
-  width: 550px;
+  width: 530px;
 }
 
 .form-item-field-uib-event-type-und {
@@ -210,14 +212,17 @@ div.link-field-column  {
   width: 68%;
 }
 
-.link-field-subrow  {
+.link-field-subrow {
   width: 265px;
+}
+#uib-article-node-form .link-field-subrow {
+  width: 248px;
 }
 
 .vertical-tabs  {
   float: left;
   display: block;
-  min-width: 800px;
+  min-width: 650px;
   margin-left: 180px;
 }
 

@@ -78,43 +78,45 @@
 
 /* Webdesk - everything above this comment is drupal default and has not yet been motified. */
 /* Create article */
-/* line 129, ../sass/fields.scss */
+/* line 130, ../sass/fields.scss */
 #uib-article-node-form,
 #area-node-form,
-#uib-testimonial-node-form {
-  margin: 0 auto;
-  width: 96%;
+#uib-testimonial-node-form,
+#uib-ou-node-form {
+  background: #fff;
+  margin: 0 0 20px 0;
+  width: 95%;
 }
 
-/* line 134, ../sass/fields.scss */
-#uib-article-node-form .group-information, .group-uib-links, .group-specific-field {
+/* line 136, ../sass/fields.scss */
+.group-uib-links {
   padding: 20px;
 }
 
-/* line 138, ../sass/fields.scss */
+/* line 140, ../sass/fields.scss */
 .group-information, .group-specific-field {
-  width: 550px;
+  width: 530px;
 }
 
-/* line 142, ../sass/fields.scss */
+/* line 144, ../sass/fields.scss */
 .form-item-field-uib-event-type-und {
   width: 400px;
 }
 
 /* Sidebar */
-/* line 146, ../sass/fields.scss */
+/* line 148, ../sass/fields.scss */
 .group_sidebar {
   width: 35%;
   float: right;
   background: #e5e5e5;
 }
 
-/* line 153, ../sass/fields.scss */
+/* line 155, ../sass/fields.scss */
 .group-uib-links {
   padding-left: 0;
 }
 
-/* line 157, ../sass/fields.scss */
+/* line 159, ../sass/fields.scss */
 .group_factbox, .group_uib_links, .group-media {
   border-top: solid 1px #F2F2F2;
   border-bottom: solid 1px #CBCBCB;
@@ -137,27 +139,27 @@
   /* IE6-9 */
 }
 
-/* line 171, ../sass/fields.scss */
+/* line 173, ../sass/fields.scss */
 #uib-article-node-form h3 {
   color: #666666;
   font-weight: normal;
   font-size: 16px;
 }
 
-/* line 177, ../sass/fields.scss */
+/* line 179, ../sass/fields.scss */
 #uib-article-node-form .fieldset-title {
   font-size: 15px;
   color: #2162a0;
 }
 
-/* line 182, ../sass/fields.scss */
+/* line 184, ../sass/fields.scss */
 .form-field-name-field-uib-article-type {
   width: 55%;
   float: left;
 }
 
 /* Buttons  in create content */
-/* line 188, ../sass/fields.scss */
+/* line 190, ../sass/fields.scss */
 #uib-article-node-form .button, .field-add-more-submit {
   padding: 2px 7px 2px 7px;
   background: #2162a0;
@@ -181,107 +183,112 @@
   /* IE6-9 */
 }
 
-/* line 204, ../sass/fields.scss */
+/* line 206, ../sass/fields.scss */
 #uib-article-node-form label {
   width: 80px;
 }
 
-/* line 208, ../sass/fields.scss */
+/* line 210, ../sass/fields.scss */
 div.link-field-column {
   float: none;
   width: 68%;
 }
 
-/* line 213, ../sass/fields.scss */
+/* line 215, ../sass/fields.scss */
 .link-field-subrow {
   width: 265px;
 }
 
-/* line 217, ../sass/fields.scss */
+/* line 218, ../sass/fields.scss */
+#uib-article-node-form .link-field-subrow {
+  width: 248px;
+}
+
+/* line 222, ../sass/fields.scss */
 .vertical-tabs {
   float: left;
   display: block;
-  min-width: 800px;
+  min-width: 650px;
   margin-left: 180px;
 }
 
 /* Save and preview button */
-/* line 226, ../sass/fields.scss */
+/* line 231, ../sass/fields.scss */
 .form-submit {
   float: left;
 }
 
 /* Create node */
-/* line 231, ../sass/fields.scss */
+/* line 236, ../sass/fields.scss */
 .page-node-add form {
   padding: 20px;
 }
 
 /*  Icons in Webdesk */
-/* line 236, ../sass/fields.scss */
+/* line 241, ../sass/fields.scss */
 .views-field-delete-node {
   background: url("../images/delete.png") no-repeat;
   display: inline-block;
   margin-left: 12px;
 }
 
-/* line 242, ../sass/fields.scss */
+/* line 247, ../sass/fields.scss */
 .views-field-edit-node {
   background: url("../images/edit.png") no-repeat;
   display: inline-block;
   margin-left: 12px;
 }
 
-/* line 248, ../sass/fields.scss */
+/* line 253, ../sass/fields.scss */
 .views-field-delete-node a, .views-field-edit-node a {
   margin-left: 18px;
 }
 
-/* line 252, ../sass/fields.scss */
+/* line 257, ../sass/fields.scss */
 .pane-my-content-panel-pane-1 h2 {
   background: url("../images/my-content.png") no-repeat 0 4px;
 }
 
-/* line 256, ../sass/fields.scss */
+/* line 261, ../sass/fields.scss */
 .pane-uib-webdesk-panel-pane-1 h2, .page-webdesk ul.menu li a {
   margin-left: 18px;
 }
 
-/* line 259, ../sass/fields.scss */
+/* line 264, ../sass/fields.scss */
 .pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2 {
   padding: 0 0 0 20px;
 }
 
-/* line 263, ../sass/fields.scss */
+/* line 268, ../sass/fields.scss */
 .pane-scheduled-content h2 {
   background: url("../images/scheduled-content.png") no-repeat 0 4px;
 }
 
-/* line 266, ../sass/fields.scss */
+/* line 271, ../sass/fields.scss */
 .pane-menu-webdesk .menu {
   padding-left: 0;
   font-size: 1.1em;
 }
 
-/* line 273, ../sass/fields.scss */
+/* line 278, ../sass/fields.scss */
 .pane-uib-webdesk-panel-pane-1 {
   background: url("../images/all-content.png") no-repeat 0 5px;
   border-top: #999999;
   border-bottom: #999999;
 }
 
-/* line 279, ../sass/fields.scss */
+/* line 284, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   background: url("../images/add.png");
   background-repeat: no-repeat;
 }
 
-/* line 284, ../sass/fields.scss */
+/* line 289, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   list-style: none;
 }
 
-/* line 287, ../sass/fields.scss */
+/* line 292, ../sass/fields.scss */
 .page-webdesk #main #content {
   margin-top: 0;
 }
