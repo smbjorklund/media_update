@@ -193,6 +193,11 @@ function uib_area_block_view($delta='') {
   return $block;
 }
 
+function uib_area_change_to_h2($markup, $element) {
+  $markup = preg_replace('/<h3(.*?)>(.*?)<\/h3>/','<h2\1>\2</h2>', $markup);
+  return $markup;
+}
+
 function uib_area__feed_format($url, $title, $limit) {
   $items = array();
   $content = @file_get_contents($url);
@@ -206,6 +211,7 @@ function uib_area__feed_format($url, $title, $limit) {
         '#title' => $title,
         '#items' => array(),
         '#theme' => 'item_list',
+        '#post_render' => array('uib_area_change_to_h2'),
         ),
       );
       foreach ($xml->channel->item as $entry) {
