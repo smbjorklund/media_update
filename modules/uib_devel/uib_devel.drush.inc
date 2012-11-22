@@ -4,14 +4,14 @@
  * @return [type] [description]
  */
 function uib_devel_drush_command() {
-  $items['uib-devel-fill-area'] = array(
-    'description' => 'Fill all area content, /jur is the chosen area',
+  $items['uib-fill-area'] = array(
+    'description' => 'Fill /jur area fields with content',
     'aliases' => array('uib-ac', ),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
     'arguments' => array(),
     'options' => array(),
   );
-  $items['uib-devel-create-content'] = array(
+  $items['uib-create-content'] = array(
     'description' => 'Create content for /jur',
     'aliases' => array('uib-ct', ),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
@@ -21,7 +21,7 @@ function uib_devel_drush_command() {
   return $items;
 }
 
-function drush_uib_devel_fill_area() {
+function drush_uib_devel_uib_fill_area() {
   $path = drupal_get_normal_path('jur');
   $areaid =  explode('/', $path);
   if (is_numeric($areaid[1])){
@@ -83,7 +83,7 @@ function drush_uib_devel_fill_area() {
   }
 }
 
-function drush_uib_devel_create_content() {
+function drush_uib_devel_uib_create_content() {
   $path = drupal_get_normal_path('jur');
   $areaid =  explode('/', $path);
   if (is_numeric($areaid[1])){
