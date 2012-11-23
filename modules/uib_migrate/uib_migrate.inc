@@ -700,6 +700,7 @@ else {
         'language' => $lang,
       );
       $node->field_uib_area_type['und'][0]['value'] = 'section';
+      $node->field_uib_menu_style['und'][0]['value'] = 'expanded';
       $node->field_uib_sebra_id['und'][0]['value'] = $sebra_id;
       $node->field_uib_primary_text['und'][0]['format'] = 'restricted_html';
       node_save($node);
