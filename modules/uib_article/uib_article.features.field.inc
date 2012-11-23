@@ -58,7 +58,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Dette er et eksempel på hjelpetekst på grå bakgrunn. ',
+      'description' => 'Here you should type which area this content belongs to',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -128,7 +128,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Dette er et eksempel på hjelpetekst på hvit bakgrunn. ',
+      'description' => 'Select which content type you want to create. Choose between info page, event or news article.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -208,7 +208,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This is the author of the content. If left empty the creator of the content becomes the author.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -472,7 +472,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Choose what type of event you are creating.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1030,7 +1030,7 @@ function uib_article_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'uib_article',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This is the large picture at the top.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1130,7 +1130,7 @@ function uib_article_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'uib_article',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'These are the small images in the sidebar. You can add several.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1634,12 +1634,12 @@ function uib_article_field_default_fields() {
   t('Area');
   t('Attachments');
   t('Byline');
+  t('Choose what type of event you are creating.');
   t('Contacts');
   t('Date');
-  t('Dette er et eksempel på hjelpetekst på grå bakgrunn. ');
-  t('Dette er et eksempel på hjelpetekst på hvit bakgrunn. ');
   t('Event type');
   t('Fact box');
+  t('Here you should type which area this content belongs to');
   t('ID w2');
   t('Inline images');
   t('Kicker');
@@ -1650,7 +1650,11 @@ function uib_article_field_default_fields() {
   t('Parent ID w2');
   t('Path w2');
   t('Relevant links');
+  t('Select which content type you want to create. Choose between info page, event or news article.');
   t('Text');
+  t('These are the small images in the sidebar. You can add several.');
+  t('This is the author of the content. If left empty the creator of the content becomes the author.');
+  t('This is the large picture at the top.');
   t('Type');
   t('Weight');
 
