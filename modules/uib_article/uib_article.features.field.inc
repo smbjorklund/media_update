@@ -58,7 +58,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Dette er et eksempel på hjelpetekst på grå bakgrunn. ',
+      'description' => 'Here you should type which area this content belongs to',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -128,7 +128,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Dette er et eksempel på hjelpetekst på hvit bakgrunn. ',
+      'description' => 'Select which content type you want to create. Choose between info page, event or news article.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -208,7 +208,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This is the author of the content. If left empty the creator of the content becomes the author.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -440,14 +440,14 @@ function uib_article_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'arrangement' => 'Arrangement',
-          'disputas' => 'Disputas',
-          'foredrag' => 'Foredrag',
-          'frist' => 'Frist',
-          'gjesteforelesning' => 'Gjesteforelesning',
-          'konferanse' => 'Konferanse',
-          'konsert' => 'Konsert',
-          'kurs' => 'Kurs',
+          'event' => 'Arrangement',
+          'disputation' => 'Disputas',
+          'lecture' => 'Foredrag',
+          'deadline' => 'Frist',
+          'guest_lecturer' => 'Gjesteforelesning',
+          'conference' => 'Konferanse',
+          'consert' => 'Konsert',
+          'course' => 'Kurs',
           'course_economy' => 'Kurs - økonomi',
           'course_leadership' => 'Kurs - ledelse',
           'course_language' => 'Kurs - språk',
@@ -458,10 +458,10 @@ function uib_article_field_default_fields() {
           'course_faculty_development' => 'Kurs - universitetspedagogikk',
           'course_it' => 'Kurs - IT',
           'course_hms' => 'Kurs - HMS',
-          'midler_stipend' => 'Midler og stipend',
-          'proveforelesning' => 'Prøveforelesning',
+          'grant' => 'Midler og stipend',
+          'trial_lecture' => 'Prøveforelesning',
           'seminar' => 'Seminar',
-          'utstilling' => 'Utstilling',
+          'exhibition' => 'Utstilling',
         ),
         'allowed_values_function' => '',
       ),
@@ -472,7 +472,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Choose what type of event you are creating.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1030,7 +1030,7 @@ function uib_article_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'uib_article',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This is the large picture at the top.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1130,7 +1130,7 @@ function uib_article_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'uib_article',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'These are the small images in the sidebar. You can add several.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1150,7 +1150,7 @@ function uib_article_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_media',
-      'label' => 'Inline images',
+      'label' => 'Small images',
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
@@ -1634,14 +1634,13 @@ function uib_article_field_default_fields() {
   t('Area');
   t('Attachments');
   t('Byline');
+  t('Choose what type of event you are creating.');
   t('Contacts');
   t('Date');
-  t('Dette er et eksempel på hjelpetekst på grå bakgrunn. ');
-  t('Dette er et eksempel på hjelpetekst på hvit bakgrunn. ');
   t('Event type');
   t('Fact box');
+  t('Here you should type which area this content belongs to');
   t('ID w2');
-  t('Inline images');
   t('Kicker');
   t('Lead');
   t('Location');
@@ -1650,7 +1649,12 @@ function uib_article_field_default_fields() {
   t('Parent ID w2');
   t('Path w2');
   t('Relevant links');
+  t('Select which content type you want to create. Choose between info page, event or news article.');
+  t('Small images');
   t('Text');
+  t('These are the small images in the sidebar. You can add several.');
+  t('This is the author of the content. If left empty the creator of the content becomes the author.');
+  t('This is the large picture at the top.');
   t('Type');
   t('Weight');
 

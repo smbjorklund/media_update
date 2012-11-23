@@ -264,6 +264,26 @@ class EventMigration extends XTopicToArticleMigration {
     }
   }
 
+  private static function type_map($w2_type) {
+    static $type_map = array(
+      'arrangement' => 'event',
+      'disputas' => 'disputation',
+      'foredrag' => 'lecture',
+      'frist' => 'deadline',
+      'gjesteforelesning' => 'guest_lecturer',
+      'konferanse' => 'conference',
+      'konsert' => 'consert',
+      'kurs' => 'course',
+      'midler og stipend' => 'grant',
+      'proveforelesning' => 'trial_lecture',
+      'seminar' => 'seminar',
+      'utstilling' => 'exhibition',
+    );
+    if (isset($type_map[$w2_type]))
+      return $type_map[$w2_type];
+    return $w2_type;
+  }
+
   public function prepare($node, $row) {
     parent::prepare($node, $row);
     if (!empty($row->start_date)) {
@@ -272,7 +292,7 @@ class EventMigration extends XTopicToArticleMigration {
     if (!empty($row->end_date)) {
       $node->field_uib_date['und'][0]['value2'] = $row->end_date;
     }
-    $node->field_uib_event_type['und'][0]['value'] = $row->type;
+    $node->field_uib_event_type['und'][0]['value'] = self::type_map((string)$row->type);
     //Prevent empty links instances
     if (!empty($row->hjemmeside)) {
           $node->field_uib_links['und'][0]['url'] = $row->hjemmeside;
@@ -680,6 +700,7 @@ else {
         'language' => $lang,
       );
       $node->field_uib_area_type['und'][0]['value'] = 'section';
+      $node->field_uib_menu_style['und'][0]['value'] = 'expanded';
       $node->field_uib_sebra_id['und'][0]['value'] = $sebra_id;
       $node->field_uib_primary_text['und'][0]['format'] = 'restricted_html';
       node_save($node);

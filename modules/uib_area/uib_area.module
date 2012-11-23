@@ -26,7 +26,8 @@ function uib_area_menu_block_blocks() {
       'admin_title' => 'Page level area menu',
       'follow'      => 1,
       'level'       => 4,
-      'depth'       => 1,
+      'depth'       => 2,
+      'expanded'    => 1,
     ),
   );
 }
@@ -182,7 +183,7 @@ function uib_area_block_view($delta='') {
         $glue = " OR";
       }
       $result = db_query($query, $nlist);
-      // Setup each parental area node title on a separate line with link 
+      // Setup each parental area node title on a separate line with link
       foreach ($result as $record) {
         $title = t($record->title);
         $block['content'][$title]['#markup'] = l($title, 'node/' . $record->nid) . '<br>';
@@ -381,7 +382,7 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
     }
     if (isset($form['field_uib_sebra_id'])) {
       hide($form['field_uib_sebra_id']); // Sebra ID
-    }    
+    }
     if (isset($form['field_uib_area_type'])) {
       hide($form['field_uib_area_type']); // Type
     }

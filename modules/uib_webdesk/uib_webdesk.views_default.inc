@@ -122,6 +122,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
     'field_uib_area' => 'field_uib_area',
+    'status' => 'status',
     'edit_node' => 'edit_node',
     'delete_node' => 'delete_node',
   );
@@ -138,6 +139,13 @@ function uib_webdesk_views_default_views() {
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'status' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-center',
       'separator' => '',
       'empty_column' => 0,
     ),
