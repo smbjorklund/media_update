@@ -148,12 +148,6 @@
   border-bottom: solid 1px #c0c0c0;
 }
 
-.node-2 {
-  /* This node changes, and should be replaced with a main wrapper when the time comes. */
-  width: 91%;
-  padding: 0;
-}
-
 .node-area .field-collection-container {
   border: none;
   float: left;
@@ -193,10 +187,6 @@
 }
 
 /* Article page */
-.node-uib-article {
-  width: 630px;
-}
-
 .field-name-field-uib-kicker, .group-article-sidebar .field-label {
   border-top: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;

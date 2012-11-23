@@ -146,9 +146,10 @@ body {
 /*
  * Content
  */
-#content {
-  margin-top: 80px; /* Gir plass til menyen, skal fjernes når vi finner en bedre løsning på menyen */
+.sidebar-second #content {
+  width: 73%;
 }
+
 .section-node-add #content {
   margin-top: 0; 
 }
