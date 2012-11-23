@@ -1150,7 +1150,7 @@ function uib_article_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_media',
-      'label' => 'Inline images',
+      'label' => 'Small images',
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
@@ -1641,7 +1641,6 @@ function uib_article_field_default_fields() {
   t('Fact box');
   t('Here you should type which area this content belongs to');
   t('ID w2');
-  t('Inline images');
   t('Kicker');
   t('Lead');
   t('Location');
@@ -1651,6 +1650,7 @@ function uib_article_field_default_fields() {
   t('Path w2');
   t('Relevant links');
   t('Select which content type you want to create. Choose between info page, event or news article.');
+  t('Small images');
   t('Text');
   t('These are the small images in the sidebar. You can add several.');
   t('This is the author of the content. If left empty the creator of the content becomes the author.');
