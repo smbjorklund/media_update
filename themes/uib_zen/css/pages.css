@@ -42,7 +42,7 @@ body {
  * Header
  */
 /* line 48, ../sass/pages.scss */
-#header {
+.front #header {
   background-image: url("../images/bergenmuseum.png");
   background-repeat: no-repeat;
   background-position: right;
