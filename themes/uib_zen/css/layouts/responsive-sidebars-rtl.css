@@ -21,13 +21,13 @@
      by setting a max-width. */
   margin-left: auto;
   margin-right: auto;
-  max-width: 890px;
+  max-width: 910px;
 }
 
 .page-webdesk #main,
 .page-add-node #main {
   position: relative;
-  width: 100%;
+  width: 890px;
 }
 
 /*
@@ -193,8 +193,8 @@
     /* Span 4 columns, starting in 2nd column from left. */
     float: right;
     width: 80%;
-    margin-right: 20%;
-    margin-left: -100%;
+    margin-right: 0%;
+    margin-left: -80%;
   }
   .sidebar-first .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
@@ -212,6 +212,18 @@
     float: right;
     width: 80%;
     margin-right: 0%;
+    margin-left: -80%;
+  }
+  .sidebar-second .group-article-main {
+    float: right;
+    width: 60%;
+    margin-right: 0%;
+    margin-left: -60%;
+  }
+  .sidebar-second .group-article-sidebar {
+    float: right;
+    width: 20%;
+    margin-right: 60%;
     margin-left: -80%;
   }
   .sidebar-second .region-sidebar-second {

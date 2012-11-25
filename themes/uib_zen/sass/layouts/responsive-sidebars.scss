@@ -12,7 +12,7 @@
 @import "base";
 
 
-// We are going to create a 980px wide, 5 column grid with 20px gutters between
+// We are going to create a 910px wide, 5 column grid with 20px gutters between
 // columns (applied as 10px of left/right padding on each column).
 $zen-column-count:  5;
 $zen-gutter-width:  20px;
@@ -46,12 +46,12 @@ $zen-auto-include-item-base: false;
      by setting a max-width. */
   margin-left: auto;
   margin-right: auto;
-  max-width: 890px;
+  max-width: 910px;
 }
 .page-webdesk #main,
 .page-add-node #main {
   position: relative;
-  width: 100%;  
+  width: 890px;  
 }
 
 /*
@@ -176,7 +176,7 @@ $zen-auto-include-item-base: false;
 
   .sidebar-first {
     #content { /* Span 4 columns, starting in 2nd column from left. */
-      @include zen-grid-item(4, 2);
+      @include zen-grid-item(4, 1);
     }
 
     .region-sidebar-first { /* Span 1 column, starting in 1st column from left. */
@@ -192,7 +192,15 @@ $zen-auto-include-item-base: false;
     #content { /* Span 4 columns, starting in 1st column from left. */
       @include zen-grid-item(4, 1);
     }
-
+    
+    .group-article-main {
+      @include zen-grid-item (3, 1)
+    }
+    
+    .group-article-sidebar  {
+      @include zen-grid-item (1, 4)
+    }
+  
     .region-sidebar-second { /* Span 1 column, starting in 5th column from left. */
       @include zen-grid-item(1, 5);
     }

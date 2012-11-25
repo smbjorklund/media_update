@@ -196,19 +196,18 @@
   width: 100%;
 }
 
-.group-article-main {
+/*.group-article-main {
   width: 65%;
   margin-right: 5%;
   float: left;
   margin-top: 40px;
 }
 
-.group-article-sidebar {
+.group-article-sidebar  {
   width: 30%;
   float: right;
   margin-top: 40px;
-}
-
+}*/
 .field-name-field-uib-fact-box {
   background: #f0f4f5;
   padding: 10px;
