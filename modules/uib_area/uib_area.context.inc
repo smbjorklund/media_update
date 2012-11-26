@@ -31,12 +31,6 @@ function uib_area_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'menu-menu-global-menu' => array(
-          'module' => 'menu',
-          'delta' => 'menu-global-menu',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
         'uib_area-area_parents' => array(
           'module' => 'uib_area',
           'delta' => 'area_parents',
