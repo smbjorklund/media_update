@@ -85,6 +85,10 @@
           ?>
         </nav>
         <div id="global-searchform">
+          <form method="get" action="http://www.uib.no/search">
+            <input type="text" id="searchField" name="q" value="" autocomplete="off">
+            <input type="submit" value="Search">
+          </form>
         </div>
       </div>
     <?php endif; ?>
