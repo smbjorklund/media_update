@@ -117,3 +117,13 @@
     display: none;
   }
 }
+
+/* Changed font size on date in calender block in sidebar */
+#block-views-calendar-block-1 h3  {
+  font-size: 1em;
+}
+
+/* Sets a smaller font size for sidebar */
+.sidebar-second .region-sidebar-second a {
+  font-size: .9em;
+}
