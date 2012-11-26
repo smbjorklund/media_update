@@ -40,6 +40,12 @@ function uib_article_strongarm() {
         'language' => array(
           'weight' => '0',
         ),
+        'path' => array(
+          'weight' => '30',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'language' => array(

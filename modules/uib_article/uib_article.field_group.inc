@@ -154,7 +154,7 @@ function uib_article_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_specific_field';
   $field_group->data = array(
-    'label' => 'Detaljer',
+    'label' => 'Details',
     'weight' => '7',
     'children' => array(
       0 => 'field_uib_byline',
@@ -162,16 +162,17 @@ function uib_article_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'Details',
       'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '1',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
-        'required_fields' => 1,
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_details|node|uib_article|form'] = $field_group;
@@ -186,19 +187,19 @@ function uib_article_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
-    'label' => 'Factbox',
+    'label' => 'Fact box',
     'weight' => '7',
     'children' => array(
       0 => 'field_uib_fact_box',
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Factbox',
+      'label' => 'Fact box',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
         'description' => '',
-        'show_label' => '1',
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
@@ -317,23 +318,24 @@ function uib_article_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Spesifikke felt for innholdstype',
+    'label' => 'Specific fields based on type',
     'weight' => '5',
     'children' => array(
       0 => 'group_details',
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'Specific fields based on type',
       'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '1',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
-        'required_fields' => 1,
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_specific_field|node|uib_article|form'] = $field_group;

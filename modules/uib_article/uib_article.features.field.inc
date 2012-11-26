@@ -472,7 +472,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Choose what type of event you are creating.',
+      'description' => 'Choose which type of event you are creating.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1030,7 +1030,7 @@ function uib_article_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'uib_article',
       'deleted' => '0',
-      'description' => 'This is the large picture at the top.',
+      'description' => 'This is the large image/video at the top.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1634,7 +1634,7 @@ function uib_article_field_default_fields() {
   t('Area');
   t('Attachments');
   t('Byline');
-  t('Choose what type of event you are creating.');
+  t('Choose which type of event you are creating.');
   t('Contacts');
   t('Date');
   t('Event type');
@@ -1654,7 +1654,7 @@ function uib_article_field_default_fields() {
   t('Text');
   t('These are the small images in the sidebar. You can add several.');
   t('This is the author of the content. If left empty the creator of the content becomes the author.');
-  t('This is the large picture at the top.');
+  t('This is the large image/video at the top.');
   t('Type');
   t('Weight');
 
