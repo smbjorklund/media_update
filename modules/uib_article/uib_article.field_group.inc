@@ -120,11 +120,13 @@ function uib_article_field_group_info() {
     'label' => 'article-sidebar',
     'weight' => '4',
     'children' => array(
-      0 => 'field_uib_contacts',
-      1 => 'field_uib_fact_box',
-      2 => 'field_uib_files',
-      3 => 'field_uib_links',
-      4 => 'field_uib_media',
+      0 => 'field_uib_area',
+      1 => 'field_uib_contacts',
+      2 => 'field_uib_fact_box',
+      3 => 'field_uib_files',
+      4 => 'field_uib_links',
+      5 => 'field_uib_location',
+      6 => 'field_uib_media',
     ),
     'format_type' => 'div',
     'format_settings' => array(

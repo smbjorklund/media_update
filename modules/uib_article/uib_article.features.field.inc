@@ -67,7 +67,7 @@ function uib_article_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '6',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -963,7 +963,7 @@ function uib_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '5',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
