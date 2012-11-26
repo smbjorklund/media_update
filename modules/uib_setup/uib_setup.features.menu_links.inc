@@ -44,7 +44,7 @@ function uib_setup_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-44',
   );
   // Exported menu link: menu-global-menu:http://www.uib.no/about
   $menu_links['menu-global-menu:http://www.uib.no/about'] = array(
@@ -62,7 +62,7 @@ function uib_setup_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '5',
+    'weight' => '-46',
   );
   // Exported menu link: menu-global-menu:http://www.uib.no/education
   $menu_links['menu-global-menu:http://www.uib.no/education'] = array(
@@ -80,7 +80,7 @@ function uib_setup_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-50',
   );
   // Exported menu link: menu-global-menu:http://www.uib.no/international
   $menu_links['menu-global-menu:http://www.uib.no/international'] = array(
@@ -98,7 +98,7 @@ function uib_setup_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '3',
+    'weight' => '-48',
   );
   // Exported menu link: menu-global-menu:http://www.uib.no/news
   $menu_links['menu-global-menu:http://www.uib.no/news'] = array(
@@ -116,7 +116,7 @@ function uib_setup_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '4',
+    'weight' => '-47',
   );
   // Exported menu link: menu-global-menu:http://www.uib.no/research
   $menu_links['menu-global-menu:http://www.uib.no/research'] = array(
@@ -134,7 +134,7 @@ function uib_setup_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '1',
+    'weight' => '-49',
   );
   // Exported menu link: menu-global-menu:http://www.uib.no/ub/en
   $menu_links['menu-global-menu:http://www.uib.no/ub/en'] = array(
@@ -152,7 +152,7 @@ function uib_setup_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '6',
+    'weight' => '-45',
   );
   // Translatables
   // Included for use with string extractors like potx.
