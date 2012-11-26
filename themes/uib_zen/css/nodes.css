@@ -84,10 +84,12 @@
   margin-right: 10px;
 }
 
-.field-name-field-uib-bottom-media {
-  float: left;
-  width: 50%;
-  margin-right: 10px;
+.field-name-field-uib-primary-text {
+  width: 48%;
+  float: right;
+}
+.field-name-field-uib-primary-text h4 {
+  margin-top: 0;
 }
 
 .node-area #content p {
@@ -132,7 +134,7 @@
   float: left;
   margin: 10px 0 0 0;
   padding: 0 10px 0 0;
-  width: 180px;
+  width: 210px;
 }
 .field-name-field-uib-secondary-text h4, .field-name-field-uib-secondary-text p {
   margin-left: 30px;
@@ -154,9 +156,25 @@
   width: 50%;
 }
 
+.field-name-field-uib-bottom-text {
+  width: 70%;
+  float: right;
+}
+
+.field-name-field-uib-bottom-text h4, .field-name-field-uib-tertiary-text h4 {
+  margin-top: 0;
+}
+
+.field-name-field-uib-bottom-media {
+  float: left;
+  width: 28%;
+  margin-right: 10px;
+}
+
 /* Two column */
 .group-two-column {
   width: 100%;
+  margin-top: 10px;
 }
 
 .group-two-column .field {
@@ -176,6 +194,9 @@
   border: none;
 }
 
+.field-name-field-uib-profiled-testimonial {
+  width: 48%;
+}
 .field-name-field-uib-profiled-testimonial img {
   float: left;
   margin-right: 10px;
@@ -194,20 +215,10 @@
   font-size: 1.2em;
   text-transform: uppercase;
   width: 100%;
-}
-
-/*.group-article-main {
-  width: 65%;
-  margin-right: 5%;
   float: left;
-  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
-.group-article-sidebar  {
-  width: 30%;
-  float: right;
-  margin-top: 40px;
-}*/
 .field-name-field-uib-fact-box {
   background: #f0f4f5;
   padding: 10px;
@@ -215,4 +226,8 @@
 }
 .field-name-field-uib-fact-box p {
   font-size: .9em;
+}
+
+.group-article-sidebar, .group-article-main {
+  margin-top: 30px;
 }
