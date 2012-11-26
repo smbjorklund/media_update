@@ -67,7 +67,7 @@ function uib_testimonial_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '32',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -143,7 +143,7 @@ function uib_testimonial_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '33',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -221,7 +221,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '23',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -292,7 +292,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '25',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -363,7 +363,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '26',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -433,7 +433,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '29',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -509,7 +509,7 @@ function uib_testimonial_field_default_fields() {
             'file_view_mode' => 'media_preview',
           ),
           'type' => 'file_rendered',
-          'weight' => '21',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -604,7 +604,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '20',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -676,7 +676,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '24',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -747,7 +747,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '27',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -818,7 +818,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '22',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -890,7 +890,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '28',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1058,10 +1058,9 @@ function uib_testimonial_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '31',
+          'type' => 'hidden',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1129,10 +1128,9 @@ function uib_testimonial_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '30',
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',

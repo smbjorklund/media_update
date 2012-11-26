@@ -66,8 +66,6 @@ function uib_testimonial_field_group_info() {
       9 => 'field_uib_position',
       10 => 'field_uib_quote',
       11 => 'field_uib_related_programmes',
-      12 => 'field_uib_w2_id',
-      13 => 'field_uib_w2_path',
     ),
     'format_type' => 'div',
     'format_settings' => array(
