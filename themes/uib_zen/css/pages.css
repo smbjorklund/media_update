@@ -250,6 +250,11 @@ ul.inline li {
   /* LTR */
 }
 
+.item-list ul {
+  /* Removes the padding on lists in sidebar */
+  padding: 0;
+}
+
 span.field-label {
   /* The inline field label used by the Fences module */
   padding: 0 1em 0 0;
