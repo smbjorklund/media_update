@@ -214,18 +214,6 @@
     margin-right: 0%;
     margin-left: -80%;
   }
-  .sidebar-second .group-article-main {
-    float: right;
-    width: 60%;
-    margin-right: 0%;
-    margin-left: -60%;
-  }
-  .sidebar-second .group-article-sidebar {
-    float: right;
-    width: 20%;
-    margin-right: 60%;
-    margin-left: -80%;
-  }
   .sidebar-second .region-sidebar-second {
     /* Span 1 column, starting in 5th column from left. */
     float: right;
@@ -256,6 +244,21 @@
     float: right;
     width: 20%;
     margin-right: 80%;
+    margin-left: -100%;
+  }
+}
+@media all and (min-width: 960px) {
+  .group-article-main {
+    float: right;
+    width: 75%;
+    margin-right: 0%;
+    margin-left: -75%;
+  }
+
+  .group-article-sidebar {
+    float: right;
+    width: 25%;
+    margin-right: 75%;
     margin-left: -100%;
   }
 }

@@ -28,6 +28,7 @@ nav,
 section,
 summary {
   display: block;
+  border: solid 1px red;
 }
 
 /*

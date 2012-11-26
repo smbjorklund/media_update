@@ -187,24 +187,16 @@ $zen-auto-include-item-base: false;
   /*
    * The layout when there is only one sidebar, the right one.
    */
+   .sidebar-second {
+     #content { /* Span 4 columns, starting in 1st column from left. */
+       @include zen-grid-item(4, 1);
+     }
 
-  .sidebar-second {
-    #content { /* Span 4 columns, starting in 1st column from left. */
-      @include zen-grid-item(4, 1);
-    }
-    
-    .group-article-main {
-      @include zen-grid-item (3, 1)
-    }
-    
-    .group-article-sidebar  {
-      @include zen-grid-item (1, 4)
-    }
-  
-    .region-sidebar-second { /* Span 1 column, starting in 5th column from left. */
-      @include zen-grid-item(1, 5);
-    }
-  }
+     .region-sidebar-second { /* Span 1 column, starting in 5th column from left. */
+       @include zen-grid-item(1, 5);
+     }
+   }
+
 
   /*
    * The layout when there are two sidebars.
@@ -224,3 +216,16 @@ $zen-auto-include-item-base: false;
     }
   }
 }
+
+@media all and (min-width: 960px) {
+  $zen-column-count: 4;
+
+       .group-article-main {
+       @include zen-grid-item (3, 1)
+     }
+
+     .group-article-sidebar  {
+       @include zen-grid-item (1, 4)
+     }
+}
+
