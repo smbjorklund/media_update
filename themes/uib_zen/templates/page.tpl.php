@@ -73,19 +73,21 @@
 <div id="page">
 
   <header id="header" role="banner">
-    <div id="global-header">
-      <nav id="global-menu">
-        <?php print theme('links__menu-global-menu', array(
-          'links' => $global_menu,
-          'attributes' => array(
-            'class' => array('links','global-menu'),
-            ),
-          ));
-        ?>
-      </nav>
-      <div id="global-searchform">
+    <?php if (isset($global_menu)): ?>
+      <div id="global-header">
+        <nav id="global-menu">
+          <?php print theme('links__menu-global-menu', array(
+            'links' => $global_menu,
+            'attributes' => array(
+              'class' => array('links','global-menu'),
+              ),
+            ));
+          ?>
+        </nav>
+        <div id="global-searchform">
+        </div>
       </div>
-    </div>
+    <?php endif; ?>
 
 
     <?php if ($logo): ?>

@@ -155,12 +155,15 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   *    Full url to area home. Defaults to front page if no relevant area present
   *    Corresponding modifications to use page_title and page_title_link are found in page.tpl.php
   */
-  if ($variables['language']->language == 'nb') {
-    $variables['global_menu'] = menu_navigation_links('menu-global-menu-no');
+  if (arg(0) == 'node' && arg(1) != 'add'){
+    if ($variables['language']->language == 'nb') {
+      $variables['global_menu'] = menu_navigation_links('menu-global-menu-no');
+    }
+    else {
+      $variables['global_menu'] = menu_navigation_links('menu-global-menu');
+    }
   }
-  else {
-    $variables['global_menu'] = menu_navigation_links('menu-global-menu');
-  }
+
   $variables['page_title'] = $variables['site_name']; // defaults
   $variables['page_title_link'] = l($variables['site_name'], $variables['front_page'], array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
   $current_area = uib_area__get_current(); // get ref to current area node object
