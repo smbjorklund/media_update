@@ -118,3 +118,37 @@ li a.active {
 ul.language-switcher-locale-url li {
   display: inline;
 }
+
+#logo {
+  clear: both;
+}
+
+.global-menu {
+  float:left;
+  padding:0;
+}
+.global-menu li {
+  float: left;
+  display: inline;
+}
+.global-menu li a {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 12px;
+}
+
+.global-menu li a:hover {
+  background-color: #616161;
+  color: white;
+}
+.global-menu a.current  {
+  background-color: #a00;
+  color: white;
+}
+.global-menu a.current:hover {
+  background-color: #a00;
+  color: white;
+}

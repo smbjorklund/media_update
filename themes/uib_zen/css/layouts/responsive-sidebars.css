@@ -89,16 +89,16 @@
   .sidebar-first #content {
     /* Span 2 columns, starting in 2nd column from left. */
     float: left;
-    width: 66.66667%;
-    margin-left: 33.33333%;
+    width: 66.667%;
+    margin-left: 33.333%;
     margin-right: -100%;
   }
   .sidebar-first .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: left;
-    width: 33.33333%;
+    width: 33.333%;
     margin-left: 0%;
-    margin-right: -33.33333%;
+    margin-right: -33.333%;
   }
 
   /*
@@ -107,15 +107,15 @@
   .sidebar-second #content {
     /* Span 2 columns, starting in 1st column from left. */
     float: left;
-    width: 66.66667%;
+    width: 66.667%;
     margin-left: 0%;
-    margin-right: -66.66667%;
+    margin-right: -66.667%;
   }
   .sidebar-second .region-sidebar-second {
     /* Span 1 column, starting in 3rd column from left. */
     float: left;
-    width: 33.33333%;
-    margin-left: 66.66667%;
+    width: 33.333%;
+    margin-left: 66.667%;
     margin-right: -100%;
   }
 
@@ -125,16 +125,16 @@
   .two-sidebars #content {
     /* Span 2 columns, starting in 2nd column from left. */
     float: left;
-    width: 66.66667%;
-    margin-left: 33.33333%;
+    width: 66.667%;
+    margin-left: 33.333%;
     margin-right: -100%;
   }
   .two-sidebars .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: left;
-    width: 33.33333%;
+    width: 33.333%;
     margin-left: 0%;
-    margin-right: -33.33333%;
+    margin-right: -33.333%;
   }
   .two-sidebars .region-sidebar-second {
     /* Start a new row and span all 3 columns. */
@@ -158,23 +158,23 @@
   .two-sidebars .region-sidebar-second .block:nth-child(3n+1) {
     /* Span 1 column, starting in the 1st column from left. */
     float: left;
-    width: 33.33333%;
+    width: 33.333%;
     margin-left: 0%;
-    margin-right: -33.33333%;
+    margin-right: -33.333%;
     clear: left;
   }
   .two-sidebars .region-sidebar-second .block:nth-child(3n+2) {
     /* Span 1 column, starting in the 2nd column from left. */
     float: left;
-    width: 33.33333%;
-    margin-left: 33.33333%;
-    margin-right: -66.66667%;
+    width: 33.333%;
+    margin-left: 33.333%;
+    margin-right: -66.667%;
   }
   .two-sidebars .region-sidebar-second .block:nth-child(3n) {
     /* Span 1 column, starting in the 3rd column from left. */
     float: left;
-    width: 33.33333%;
-    margin-left: 66.66667%;
+    width: 33.333%;
+    margin-left: 66.667%;
     margin-right: -100%;
   }
 }
@@ -255,6 +255,28 @@
     float: left;
     width: 25%;
     margin-left: 75%;
+    margin-right: -100%;
+  }
+}
+@media all and (min-width: 960px) {
+  #global-header {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+  }
+
+  #global-menu {
+    float: left;
+    width: 80%;
+    margin-left: 0%;
+    margin-right: -80%;
+  }
+
+  #global-searchform {
+    float: left;
+    width: 20%;
+    margin-left: 80%;
     margin-right: -100%;
   }
 }

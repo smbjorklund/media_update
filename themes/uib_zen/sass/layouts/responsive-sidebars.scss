@@ -229,3 +229,19 @@ $zen-auto-include-item-base: false;
      }
 }
 
+@media all and (min-width: 960px) {
+  $zen-column-count: 5;
+
+       #global-header {
+       @include zen-grid-item (5, 1)
+     }
+       #global-menu {
+       @include zen-grid-item (4, 1)
+     }
+
+       #global-searchform  {
+       @include zen-grid-item (1, 5)
+     }
+
+}
+
