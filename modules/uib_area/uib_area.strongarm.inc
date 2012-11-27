@@ -44,10 +44,16 @@ function uib_area_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
         'language' => array(
           'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '11',
+        ),
+        'redirect' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(

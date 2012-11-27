@@ -235,7 +235,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -306,7 +306,7 @@ function uib_area_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -400,7 +400,7 @@ function uib_area_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '22',
+        'weight' => '14',
       ),
     ),
   );
@@ -498,7 +498,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '21',
+        'weight' => '15',
       ),
     ),
   );
@@ -579,7 +579,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '9',
+        'weight' => '7',
       ),
     ),
   );
@@ -618,7 +618,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Adds a rss feed to the right sidebar',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -635,7 +635,7 @@ function uib_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_feed',
-      'label' => 'Feed',
+      'label' => 'Rss feed',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -661,7 +661,7 @@ function uib_area_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '12',
+        'weight' => '8',
       ),
     ),
   );
@@ -810,7 +810,7 @@ function uib_area_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '13',
+        'weight' => '11',
       ),
     ),
   );
@@ -869,12 +869,12 @@ function uib_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_media',
-      'label' => 'Inline images',
+      'label' => 'w2 profile images',
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
         'file_directory' => '',
-        'file_extensions' => 'txt',
+        'file_extensions' => 'png jpeg jpg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -883,25 +883,28 @@ function uib_area_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
+            'private' => 0,
             'public' => 'public',
+            'vimeo' => 0,
+            'youtube' => 0,
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
             'media_default--media_browser_1' => 0,
             'media_default--media_browser_my_files' => 0,
+            'media_internet' => 0,
             'upload' => 0,
           ),
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '6',
+        'weight' => '3',
       ),
     ),
   );
@@ -969,7 +972,7 @@ function uib_area_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '14',
+        'weight' => '10',
       ),
     ),
   );
@@ -1055,7 +1058,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -1149,7 +1152,7 @@ function uib_area_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '15',
+        'weight' => '10',
       ),
     ),
   );
@@ -1247,7 +1250,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '16',
+        'weight' => '11',
       ),
     ),
   );
@@ -1332,7 +1335,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '17',
+        'weight' => '13',
       ),
     ),
   );
@@ -1384,7 +1387,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Select the articles that will display in the "Messages" box',
+      'description' => 'Select the articles that will display in the "Messages" box on the "For Employees" area',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1418,7 +1421,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '23',
+        'weight' => '9',
       ),
     ),
   );
@@ -1505,7 +1508,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '19',
+        'weight' => '20',
       ),
     ),
   );
@@ -1573,7 +1576,7 @@ function uib_area_field_default_fields() {
           'size' => '5',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '7',
       ),
     ),
   );
@@ -1671,7 +1674,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '20',
+        'weight' => '12',
       ),
     ),
   );
@@ -1739,7 +1742,7 @@ function uib_area_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '11',
+        'weight' => '9',
       ),
     ),
   );
@@ -1834,7 +1837,7 @@ function uib_area_field_default_fields() {
           'size' => '30',
         ),
         'type' => 'text_textfield',
-        'weight' => '24',
+        'weight' => '14',
       ),
     ),
   );
@@ -1916,7 +1919,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '10',
+        'weight' => '8',
       ),
     ),
   );
@@ -2014,7 +2017,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '20',
+        'weight' => '19',
       ),
     ),
   );
@@ -2108,7 +2111,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '4',
       ),
     ),
   );
@@ -2178,7 +2181,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -2846,15 +2849,14 @@ function uib_area_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Add ids for the social media links that are desired.  Use strings like "twitter:uib", "youtube:uib", "facebook:uib", etc.  If the kind of service isn\'t supported no icon will show until support is added.');
   t('Add the testimonial that will display on the area page');
+  t('Adds a rss feed to the right sidebar');
   t('Areas might provide their own logo image.  It will then be included in the header.  The logo ought to be about 128x128 pixels and have a transparent background.');
   t('Bottom image');
   t('Bottom text');
   t('Content Manager');
   t('Fax');
-  t('Feed');
   t('ID w2');
   t('Illustration that goes together with the bottom text.');
-  t('Inline images');
   t('Jobbnorge ID');
   t('Links');
   t('List of users that should manage content for this area.  The users must also be set up with level 2 or level 3 access for content management to be possible.');
@@ -2873,9 +2875,10 @@ function uib_area_field_default_fields() {
   t('Profiled messages');
   t('Profiled testimonial');
   t('Relevant links');
+  t('Rss feed');
   t('Sebra ID');
   t('Secondary text');
-  t('Select the articles that will display in the "Messages" box');
+  t('Select the articles that will display in the "Messages" box on the "For Employees" area');
   t('Select which articles show up in the slide show');
   t('Short name');
   t('Show staff');
@@ -2889,6 +2892,7 @@ function uib_area_field_default_fields() {
   t('Use this if you just have to get the last word in any conversation.  You might also decorate this one with an image.');
   t('Used for profile text that isn\'t that important.  Will show up somewhere in the middle of the page.');
   t('Visit Address');
+  t('w2 profile images');
   t('w2 profile text');
 
   return $fields;
