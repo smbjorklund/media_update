@@ -117,6 +117,9 @@ li a.active {
 ul.language-switcher-locale-url li {
   display: inline;
 }
+ul.language-switcher-locale-url li.active {
+  display: none;
+}
 
 #logo {
   clear: both;
