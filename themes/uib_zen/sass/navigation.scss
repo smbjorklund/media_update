@@ -51,7 +51,6 @@ li a.active {
 #navigation {
   overflow: visible;  /* Sometimes you want to prevent overlapping with main div. */
   clear: both;
-  position: absolute;
 
   .block {
     margin-bottom: 0;
@@ -151,4 +150,107 @@ ul.language-switcher-locale-url li {
 .global-menu a.current:hover {
   background-color: #a00;
   color: white;
+}
+
+.uib-menu-style-dropdown {
+  background: #F1F1EF;
+  padding: 0 !important;
+
+  .menu {
+    padding: 0;
+    margin: 0;
+  }
+  .menu li {
+    display: block;
+    float: left;
+    width: 20%;
+    background: url("../images/site-menu-bg.png") repeat-x scroll center top transparent;
+  }
+  .menu a {
+    color: #333;
+    text-decoration: none;
+  }
+  .menu li a {
+    display: block;
+    line-height: 3em;
+  }
+  .menu .menu li {
+    width: 100%;
+    font-size: 90%;
+    background: none;
+  }
+  .menu .menu {
+    //display: none;
+  }
+  .menu li a {
+    border-left: 1px solid #B9B9B7;
+    font-size: 1em;
+    line-height: 2.5;
+    overflow: hidden;
+    padding:0 0 0 1em;
+  }
+  .menu li.first a {
+    border-left: none;
+  }
+  .menu li:hover ul {
+    display: block;
+  }
+  .menu .menu {
+    float: left;
+    margin-top: 10px;
+    width: 100%;
+    display: none;
+}
+  .menu .menu li
+  {
+    margin-right: 0;
+}
+  .menu .menu a {
+    border-left: medium none;
+    font-size: 100%;
+    line-height: 1.7em;
+    margin-right: 1em;
+    padding: 0.4em 0 0.4em 1em;
+}
+  .menu li.last .menu li {
+    width: 17em;
+}
+  .menu .menu a {
+    border-bottom: 1px solid #C8D2D4;
+}
+  .menu .menu a:hover {
+    background-color: #AA0000;
+    background-image: none;
+    color: #FFFFFF;
+  }
+}
+
+.uib-menu-style-expanded {
+  background: #F1F1EF;
+  padding: 6px;
+
+  .menu li a {
+    font-weight: bold;
+    color: #000;
+  }
+  .menu li {
+    float: left;
+    width: 20%;
+  }
+  .menu .menu li {
+    width: 100%;
+  }
+  .menu .menu li a {
+    color: #005473;
+    font-weight: normal;
+  }
+  .menu .menu {
+    margin-top: 6px;
+  }
+  ul li.expanded {
+    list-style: none;
+  }
+  ul li.leaf {
+    list-style: none;
+  }
 }
