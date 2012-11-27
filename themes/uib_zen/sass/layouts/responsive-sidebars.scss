@@ -214,7 +214,7 @@ $zen-auto-include-item-base: false;
     }
   }
 }
-
+/* Article page */
 @media all and (min-width: 960px) {
   $zen-column-count: 4;
 
@@ -227,6 +227,7 @@ $zen-auto-include-item-base: false;
      }
 }
 
+/* Global header */
 @media all and (min-width: 960px) {
   $zen-column-count: 5;
 
@@ -246,6 +247,7 @@ $zen-auto-include-item-base: false;
 
 }
 
+/* Area page */
 @media all and (min-width: 960px) {
   $zen-column-count: 4;
 
@@ -253,7 +255,7 @@ $zen-auto-include-item-base: false;
        @include zen-grid-item (2, 1)
      }
        .field-name-field-uib-primary-text {
-       @include zen-grid-item (2, 3)
+       @include zen-grid-item (2, 1)
      }
 
        .field-name-secondary-text {
