@@ -29,9 +29,17 @@ function uib_area_menu_block_blocks() {
       'depth'       => 2,
       'expanded'    => 1,
     ),
+    'page-area-brief-menu' => array(
+      'menu_name'   => 'area',
+      'title_link'  => FALSE,
+      'admin_title' => 'Page area brief menu',
+      'follow'      => 1,
+      'level'       => 2,
+      'depth'       => 1,
+      'expanded'    => 1,
+    ),
   );
 }
-
 
 /**
  * Implements hook_block_info().
@@ -55,6 +63,11 @@ function uib_area_block_info() {
       'info' => t('Area parents'),
       'status' => TRUE,
     ),
+      'area_children' => array(
+      'info' => t('Area children teasers'),
+      'status' => TRUE,
+    ),
+
   );
 }
 
@@ -187,6 +200,56 @@ function uib_area_block_view($delta='') {
       foreach ($result as $record) {
         $title = t($record->title);
         $block['content'][$title]['#markup'] = l($title, 'node/' . $record->nid) . '<br>';
+      }
+    }
+    break;
+  case 'area_children': // A block to display a list of teasers of children [nodes only] to current node
+    $block['subject'] = t('Next in line');
+    $config = menu_block_get_config('page-area-brief-menu');
+    $data = menu_tree_build($config);
+    if (!empty($data['content'])) {
+      foreach ($data['content']['#content'] as $key => $menu_item) {
+        if (is_numeric($key)) {
+          if (substr($menu_item['#href'],0,4) == 'node') {
+            $teaser_text = '';
+            $tmp = explode('/',$menu_item['#href']);
+            $node_id = trim($tmp[1]);
+            $query = 'SELECT type, title FROM {node} WHERE nid = :nid';
+            $result = db_query($query, array(':nid' => $node_id));
+            foreach ($result as $record) {
+              $node_type = $record->type;
+              $node_title = $record->title;
+            }
+          $entity_type = 'node';
+          if ($node_type == 'area') {
+            $result = db_select('field_revision_field_uib_primary_text', 'f')
+              ->fields('f', array('field_uib_primary_text_value'))
+              ->condition('entity_type', $entity_type)
+              ->condition('bundle', 'uib_area')
+              ->condition('entity_id', $node_id)
+              ->execute()
+              ->fetchCol();
+              if (!empty($result[1])) {
+                $teaser_text = $result[1];
+              }
+            }
+          else { // article or testimonial
+            $result = db_select('field_revision_field_uib_lead', 'f')
+              ->fields('f', array('field_uib_lead_value'))
+              ->condition('entity_type', $entity_type)
+              ->condition('bundle', 'uib_article')
+              ->condition('entity_id', $node_id)
+              ->execute()
+              ->fetchCol();
+              if (!empty($result[1])) {
+                $teaser_text = $result[1];
+              }
+             }
+            $node_title = t($node_title);
+            $block['content'][$node_title]['#markup'] = '<div class="uib-child-teaser">' . l($node_title, $menu_item['#href']) . '<br>';
+            $block['content'][$node_title . '_text']['#markup'] = $teaser_text . '</div>';
+          }
+        }
       }
     }
     break;
