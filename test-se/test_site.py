@@ -26,9 +26,9 @@ class SiteTestCase(TestCase):
         self.driver.find_element_by_link_text('Det juridiske fakultet').click()
         self.driver.find_element_by_link_text('Om fakultetet').click()
         self.driver.save_screenshot('om.png')
-        self.driver.find_element_by_link_text('Organisasjonen').click()
-        self.driver.save_screenshot('org.png')
-        self.assertEqual(self.driver.title, "Organisasjonen | Universitetet i Bergen")
+        #self.driver.find_element_by_link_text('Organisasjonen').click()
+        #self.driver.save_screenshot('org.png')
+        #self.assertEqual(self.driver.title, "Organisasjonen | Universitetet i Bergen")
 
 class WebdeskTestCase(TestCase):
     def test_webdesk(self):
