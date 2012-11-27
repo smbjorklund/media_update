@@ -93,16 +93,16 @@
   .sidebar-first #content {
     /* Span 2 columns, starting in 2nd column from left. */
     float: right;
-    width: 66.667%;
-    margin-right: 33.333%;
+    width: 66.66667%;
+    margin-right: 33.33333%;
     margin-left: -100%;
   }
   .sidebar-first .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: right;
-    width: 33.333%;
+    width: 33.33333%;
     margin-right: 0%;
-    margin-left: -33.333%;
+    margin-left: -33.33333%;
   }
 
   /*
@@ -111,15 +111,15 @@
   .sidebar-second #content {
     /* Span 2 columns, starting in 1st column from left. */
     float: right;
-    width: 66.667%;
+    width: 66.66667%;
     margin-right: 0%;
-    margin-left: -66.667%;
+    margin-left: -66.66667%;
   }
   .sidebar-second .region-sidebar-second {
     /* Span 1 column, starting in 3rd column from left. */
     float: right;
-    width: 33.333%;
-    margin-right: 66.667%;
+    width: 33.33333%;
+    margin-right: 66.66667%;
     margin-left: -100%;
   }
 
@@ -129,16 +129,16 @@
   .two-sidebars #content {
     /* Span 2 columns, starting in 2nd column from left. */
     float: right;
-    width: 66.667%;
-    margin-right: 33.333%;
+    width: 66.66667%;
+    margin-right: 33.33333%;
     margin-left: -100%;
   }
   .two-sidebars .region-sidebar-first {
     /* Span 1 column, starting in 1st column from left. */
     float: right;
-    width: 33.333%;
+    width: 33.33333%;
     margin-right: 0%;
-    margin-left: -33.333%;
+    margin-left: -33.33333%;
   }
   .two-sidebars .region-sidebar-second {
     /* Start a new row and span all 3 columns. */
@@ -162,23 +162,23 @@
   .two-sidebars .region-sidebar-second .block:nth-child(3n+1) {
     /* Span 1 column, starting in the 1st column from left. */
     float: right;
-    width: 33.333%;
+    width: 33.33333%;
     margin-right: 0%;
-    margin-left: -33.333%;
+    margin-left: -33.33333%;
     clear: right;
   }
   .two-sidebars .region-sidebar-second .block:nth-child(3n+2) {
     /* Span 1 column, starting in the 2nd column from left. */
     float: right;
-    width: 33.333%;
-    margin-right: 33.333%;
-    margin-left: -66.667%;
+    width: 33.33333%;
+    margin-right: 33.33333%;
+    margin-left: -66.66667%;
   }
   .two-sidebars .region-sidebar-second .block:nth-child(3n) {
     /* Span 1 column, starting in the 3rd column from left. */
     float: right;
-    width: 33.333%;
-    margin-right: 66.667%;
+    width: 33.33333%;
+    margin-right: 66.66667%;
     margin-left: -100%;
   }
 }
@@ -281,6 +281,49 @@
     float: right;
     width: 20%;
     margin-right: 80%;
+    margin-left: -100%;
+  }
+}
+@media all and (min-width: 960px) {
+  .field-name-field-uib-primary-media {
+    float: right;
+    width: 50%;
+    margin-right: 0%;
+    margin-left: -50%;
+  }
+
+  .field-name-field-uib-primary-text {
+    float: right;
+    width: 50%;
+    margin-right: 50%;
+    margin-left: -100%;
+  }
+
+  .field-name-secondary-text {
+    float: right;
+    width: 100%;
+    margin-right: 0%;
+    margin-left: -100%;
+  }
+
+  .field-name-profiled-article {
+    float: right;
+    width: 100%;
+    margin-right: 0%;
+    margin-left: -100%;
+  }
+
+  .field-name-field-uib-bottom-media {
+    float: right;
+    width: 25%;
+    margin-right: 0%;
+    margin-left: -25%;
+  }
+
+  .field-name-field-uib-bottom-text {
+    float: right;
+    width: 75%;
+    margin-right: 25%;
     margin-left: -100%;
   }
 }
