@@ -136,8 +136,11 @@
   padding: 0 10px 0 0;
   width: 210px;
 }
-.field-name-field-uib-secondary-text h4, .field-name-field-uib-secondary-text p {
+.field-name-field-uib-secondary-text p {
   margin: 10px, 30px, 10px, 30px;
+}
+.field-name-field-uib-secondary-text h4 {
+  margin-left: 30px;
 }
 
 .field-name-field-uib-profiled-article {
