@@ -235,7 +235,11 @@ ul.language-switcher-locale-url li.active {
   .menu li a {
     font-weight: bold;
     color: #000;
+    &:hover{
+      text-decoration: none;
+    }
   }
+  
   .menu li {
     float: left;
     width: 20%;
@@ -246,6 +250,9 @@ ul.language-switcher-locale-url li.active {
   .menu .menu li a {
     color: #005473;
     font-weight: normal;
+    &:hover{
+      text-decoration: underline;
+    }
   }
   .menu .menu {
     margin-top: 6px;

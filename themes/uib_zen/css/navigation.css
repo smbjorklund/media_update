@@ -206,6 +206,9 @@ ul.language-switcher-locale-url li.active {
   font-weight: bold;
   color: #000;
 }
+.uib-menu-style-expanded .menu li a:hover {
+  text-decoration: none;
+}
 .uib-menu-style-expanded .menu li {
   float: left;
   width: 20%;
@@ -216,6 +219,9 @@ ul.language-switcher-locale-url li.active {
 .uib-menu-style-expanded .menu .menu li a {
   color: #005473;
   font-weight: normal;
+}
+.uib-menu-style-expanded .menu .menu li a:hover {
+  text-decoration: underline;
 }
 .uib-menu-style-expanded .menu .menu {
   margin-top: 6px;
