@@ -160,6 +160,32 @@ $zen-auto-include-item-base: false;
         float: none;
       }
     }
+    
+    /* Article tablet */
+    @media all and (min-width: 480px) and (max-width: 959px) {
+
+    $zen-column-count: 4;
+
+    #content  {
+        float: none;
+      }
+
+      .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
+        @include zen-grid-item (4, 1);
+      }
+
+      .region-sidebar-second {
+        float: none;
+      }
+    }
+    
+    .group-article-main {
+      @include zen-grid-item (3, 1)
+    }
+    
+    .group-article-sidebar  {
+      @include zen-grid-item (1, 4)
+    }
   }
 
   /*

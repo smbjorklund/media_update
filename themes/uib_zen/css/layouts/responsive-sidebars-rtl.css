@@ -108,6 +108,7 @@
    */
   .sidebar-second {
     /* Area tablet */
+    /* Article tablet */
   }
   .sidebar-second #content {
     /* Span 2 columns, starting in 1st column from left. */
@@ -123,6 +124,19 @@
     margin-right: 0%;
     margin-left: -100%;
   }
+  .sidebar-second .group-article-main {
+    float: right;
+    width: 75%;
+    margin-right: 0%;
+    margin-left: -75%;
+  }
+  .sidebar-second .group-article-sidebar {
+    float: right;
+    width: 25%;
+    margin-right: 75%;
+    margin-left: -100%;
+  }
+
   /*
    * The layout when there are two sidebars.
    */
@@ -212,7 +226,21 @@
     float: none;
   }
 }
-
+@media all and (min-width: 480px) and (max-width: 959px) and (min-width: 480px) and (max-width: 959px) {
+  .sidebar-second #content {
+    float: none;
+  }
+  .sidebar-second .region-sidebar-second {
+    /* Span 1 column, starting in 3rd column from left. */
+    float: right;
+    width: 100%;
+    margin-right: 0%;
+    margin-left: -100%;
+  }
+  .sidebar-second .region-sidebar-second {
+    float: none;
+  }
+}
 /* Area tablet */
 @media all and (min-width: 480px) and (max-width: 959px) {
   /*
