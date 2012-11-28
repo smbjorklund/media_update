@@ -38,7 +38,7 @@ function uib_testimonial_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_article_main|node|uib_testimonial|default'] = $field_group;
@@ -78,7 +78,7 @@ function uib_testimonial_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_article_sidebar|node|uib_testimonial|default'] = $field_group;
