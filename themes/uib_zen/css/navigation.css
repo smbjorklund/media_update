@@ -96,9 +96,15 @@ ul.language-switcher-locale-url li.active {
   clear: both;
 }
 
-.global-menu {
-  float: left;
-  padding: 0;
+/**
+ * Global menu stuff
+ */
+#global-header {
+  margin: 12px 0 0 0;
+}
+
+#global-header ul {
+  margin: 0;
 }
 
 .global-menu li {
@@ -112,7 +118,7 @@ ul.language-switcher-locale-url li.active {
   text-decoration: none;
   color: #333;
   display: block;
-  padding: 12px;
+  padding: 12px 8px 0 12px;
 }
 
 .global-menu li a:hover {
