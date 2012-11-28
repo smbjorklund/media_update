@@ -207,14 +207,16 @@
 
 /* Article page */
 .field-name-field-uib-kicker, .group-article-sidebar .field-label {
-  border-top: 1px solid #c0c0c0;
-  border-bottom: 1px solid #c0c0c0;
-  font-family: "times new roman" serif;
-  font-size: 1.2em;
+  border-top: 1px solid #c8d1d5;
+  border-bottom: 1px solid #c8d1d5;
+  font-family: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   text-transform: uppercase;
+  color: #555;
+  font-weight: normal;
+  font-size: 1.2em;
+  font-family: "times new roman" serif;
+  line-height: 1.2em;
   width: 100%;
-  float: left;
-  margin-bottom: 10px;
 }
 
 .field-name-field-uib-fact-box {
