@@ -22,7 +22,8 @@ function uib_setup_context_default_contexts() {
         '~webdesk' => '~webdesk',
         '~webdesk/*' => '~webdesk/*',
         '~node/*/edit' => '~node/*/edit',
-        '*' => '*',
+        '~node/*/delete' => '~node/*/delete',
+        '~node/add/*' => '~node/add/*',
       ),
     ),
   );
@@ -30,7 +31,7 @@ function uib_setup_context_default_contexts() {
     'block' => array(
       'blocks' => array(
         'uib_area-colophon' => array(
-          'module' => 'uib_ure_area',
+          'module' => 'uib_area',
           'delta' => 'colophon',
           'region' => 'footer',
           'weight' => '-10',
