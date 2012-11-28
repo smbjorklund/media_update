@@ -239,3 +239,24 @@
   float: left;
   clear: both;
 }
+
+/* Testimonial */
+
+.view-mode-full .field-name-field-uib-quote  {
+  font-size: 1.8em;
+  line-height: 1.4em;
+  width: 90%;
+  margin: 20px auto 20px auto;
+  font-style: italic;
+  font-family: "times new roman" serif;
+  &:before{ content: '"'; float: left; font-size: 2em;}
+  &:after{ content: '"'; float: right; font-size: 2em; margin-right: 200px;}
+
+  .field-label {
+    display: none;
+  }
+  
+.field-name-field-uib-profiled-testimonial {
+  font-size: 1em;
+}  
+}
