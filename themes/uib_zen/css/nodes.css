@@ -229,3 +229,8 @@
 .group-article-sidebar, .group-article-main {
   margin-top: 30px;
 }
+
+.group-article-main {
+  float: left;
+  clear: both;
+}
