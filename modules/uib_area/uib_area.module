@@ -80,7 +80,7 @@ function uib_area_block_view($delta='') {
   $block = array();
   switch ($delta) {
   case 'colophon':
-    $block['subject'] = t('Colophon');
+    $block['subject'] = NULL;
     $block['content'] = array(
       'name' => array(
         '#type' => 'html_tag',
