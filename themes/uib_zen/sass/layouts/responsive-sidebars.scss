@@ -93,11 +93,13 @@ $zen-auto-include-item-base: false;
   }
 }
 
+
+/* Tablet */
 @media all and (min-width: 480px) and (max-width: 959px) {
   /*
    * Use 3 grid columns for smaller screens.
    */
-  $zen-column-count: 3;
+  $zen-column-count: 4;
 
   /*
    * The layout when there is only one sidebar, the left one.
@@ -119,11 +121,44 @@ $zen-auto-include-item-base: false;
 
   .sidebar-second {
     #content { /* Span 2 columns, starting in 1st column from left. */
-      @include zen-grid-item(2, 1);
+      @include zen-grid-item(4, 1);
     }
 
     .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
-      @include zen-grid-item(1, 3);
+      @include zen-grid-item(4, 1);
+    }
+    
+    
+    /* Area tablet */
+    @media all and (min-width: 480px) and (max-width: 959px) {
+
+    $zen-column-count: 4;
+
+    #content  {
+        float: none;
+      }
+
+      .field-name-field-uib-secondary-text {
+        li {
+          width:30%;
+        }
+      }
+
+      .field-name-field-uib-bottom-media  {
+        @include zen-grid-item (1, 1)
+      }
+
+      .field-name-field-uib-bottom-text {
+        @include zen-grid-item (3, 2)
+      }
+
+      .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
+        @include zen-grid-item(4, 1);
+      }
+
+      .region-sidebar-second {
+        float: none;
+      }
     }
   }
 
@@ -162,6 +197,16 @@ $zen-auto-include-item-base: false;
   }
 }
 
+/* Area tablet */
+@media all and (min-width: 480px) and (max-width: 959px) {
+  /*
+   * Use 3 grid columns for smaller screens.
+   */
+  $zen-column-count: 3;
+}
+
+
+/* Desktop */
 @media all and (min-width: 960px) {
   /*
    * Use 5 grid columns for larger screens.
