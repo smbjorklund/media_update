@@ -31,17 +31,17 @@ function uib_area_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'uib_area-area_children' => array(
+          'module' => 'uib_area',
+          'delta' => 'area_children',
+          'region' => 'content',
+          'weight' => '10',
+        ),
         'uib_area-area_parents' => array(
           'module' => 'uib_area',
           'delta' => 'area_parents',
           'region' => 'sidebar_second',
           'weight' => '-10',
-        ),
-        'uib_area-area_children' => array(
-          'module' => 'uib_area',
-          'delta' => 'area_children',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
         ),
         'menu_block-page-area-brief-menu' => array(
           'module' => 'menu_block',

@@ -34,7 +34,7 @@ function uib_area_menu_block_blocks() {
       'title_link'  => FALSE,
       'admin_title' => 'Page area brief menu',
       'follow'      => 1,
-      'level'       => 2,
+      'level'       => 3,
       'depth'       => 1,
       'expanded'    => 1,
     ),
@@ -63,8 +63,8 @@ function uib_area_block_info() {
       'info' => t('Area parents'),
       'status' => TRUE,
     ),
-      'area_children' => array(
-      'info' => t('Area children teasers'),
+      'node_children' => array(
+      'info' => t('Node children teasers'),
       'status' => TRUE,
     ),
 
@@ -203,8 +203,8 @@ function uib_area_block_view($delta='') {
       }
     }
     break;
-  case 'area_children': // A block to display a list of teasers of children [nodes only] to current node
-    $block['subject'] = t('Next in line');
+  case 'node_children': // A block to display a list of teasers of children [nodes only] to current node
+    $block['subject'] = t('Next pages');
     $config = menu_block_get_config('page-area-brief-menu');
     $data = menu_tree_build($config);
     if (!empty($data['content'])) {
