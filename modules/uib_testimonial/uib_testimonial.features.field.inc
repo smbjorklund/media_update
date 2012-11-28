@@ -818,7 +818,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -965,7 +965,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
