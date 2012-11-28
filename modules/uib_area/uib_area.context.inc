@@ -31,11 +31,11 @@ function uib_area_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'uib_area-area_children' => array(
+        'uib_area-node_children' => array(
           'module' => 'uib_area',
-          'delta' => 'area_children',
+          'delta' => 'node_children',
           'region' => 'content',
-          'weight' => '10',
+          'weight' => '9',
         ),
         'uib_area-area_parents' => array(
           'module' => 'uib_area',
