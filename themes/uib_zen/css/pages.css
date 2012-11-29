@@ -298,6 +298,12 @@ span.field-label {
  */
 .region-bottom {
   /* Wrapper for any blocks placed in the page bottom region */
+  background-color: #f2f2f2;
+  max-width: 100%;
+  -webkit-box-shadow: inset 0px 2px 8px 0px #B3B3B3;
+  box-shadow: inset 0px 2px 8px 0px #B3B3B3;
+  font-size: .8em;
+  margin-top: 30px;
 }
 
 div.add-or-remove-shortcuts {

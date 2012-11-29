@@ -132,3 +132,27 @@
 .sidebar-second .region-sidebar-second a {
   font-size: .9em;
 }
+
+/* Colophone styling */
+#block-uib-area-colophon {
+  max-width: 910px;
+  margin: 0 auto;
+  padding: 20px 0 40px 0;
+  background-image: url('../images/logo-grey.png');
+  background-repeat: no-repeat;
+  background-position: top-left;
+  background-position: 40px 35px;
+
+  .block-title { 
+    display: none;
+  }
+
+  h3  {
+    font-size: 1em;
+    margin-left: 150px;
+  }
+
+  span {
+    margin-left: 150px;
+  }
+}
