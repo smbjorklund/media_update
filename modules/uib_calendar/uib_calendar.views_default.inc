@@ -110,7 +110,8 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
   $handler->display->display_options['arguments']['nid']['relationship'] = 'field_uib_area_target_id';
   $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'php';
+  $handler->display->display_options['arguments']['nid']['default_argument_options']['code'] = 'return uib_area__get_current_nid();';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
@@ -721,7 +722,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
   $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
   $handler->display->display_options['filters']['field_uib_event_type_value']['value'] = array(
-    'utstilling' => 'utstilling',
+    'exhibition' => 'exhibition',
   );
   /* Filter criterion: Content: Date - end date (field_uib_date:value2) */
   $handler->display->display_options['filters']['field_uib_date_value2']['id'] = 'field_uib_date_value2';
