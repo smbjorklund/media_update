@@ -13,12 +13,10 @@
 /*
  * Field wrappers when the Fences module is enabled.
  */
-/* line 21, ../sass/fields.scss */
 .field-label {
   /* The optional label for a field. */
 }
 
-/* line 24, ../sass/fields.scss */
 .field-FIELDNAME {
   /* Underscores in field name are replaced with dashes. */
 }
@@ -27,7 +25,6 @@
  * If you don't use the Fences module, that's fine. Really. I think. Just use
  * these selectors instead:
  */
-/* line 33, ../sass/fields.scss */
 .field {
   /* Wrapper for any field. */
 }
@@ -35,7 +32,6 @@
 /*
  * Field types (Core)
  */
-/* line 43, ../sass/fields.scss */
 .field-name-field-uib-lead {
   font-weight: bold;
   /* font-size:.8125; */
@@ -44,7 +40,6 @@
 /*
  * Field types (Contrib)
  */
-/* line 88, ../sass/fields.scss */
 .field-type-datetime {
   /* Always use "datetime" when creating new CCK date fields. "date" and "datestamp" are legacy types. */
 }
@@ -52,33 +47,27 @@
 /*
  * Named fields
  */
-/* line 110, ../sass/fields.scss */
 .field-name-field-FIELDNAME {
   /* Underscores in field name are replaced with dashes. */
 }
 
-/* line 113, ../sass/fields.scss */
 .field-name-field-uib-kicker {
   /* Format for uib news kicker */
 }
-/* line 114, ../sass/fields.scss */
 .field-name-field-uib-kicker .field-items {
   width: 100%;
 }
 
-/* line 118, ../sass/fields.scss */
 .uib-kicker-text {
   float: left;
 }
 
-/* line 121, ../sass/fields.scss */
 .uib-kicker-date {
   float: right;
 }
 
 /* Webdesk - everything above this comment is drupal default and has not yet been motified. */
 /* Create article */
-/* line 130, ../sass/fields.scss */
 #uib-article-node-form,
 #area-node-form,
 #uib-testimonial-node-form,
@@ -88,35 +77,29 @@
   width: 95%;
 }
 
-/* line 136, ../sass/fields.scss */
 .group-uib-links {
   padding: 20px;
 }
 
-/* line 140, ../sass/fields.scss */
 .group-information, .group-specific-field {
-  width: 530px;
+  width: 65%;
 }
 
-/* line 144, ../sass/fields.scss */
 .form-item-field-uib-event-type-und {
   width: 400px;
 }
 
 /* Sidebar */
-/* line 148, ../sass/fields.scss */
 .group_sidebar {
   width: 35%;
   float: right;
   background: #e5e5e5;
 }
 
-/* line 155, ../sass/fields.scss */
 .group-uib-links {
   padding-left: 0;
 }
 
-/* line 159, ../sass/fields.scss */
 .group_factbox, .group_uib_links, .group-media {
   border-top: solid 1px #F2F2F2;
   border-bottom: solid 1px #CBCBCB;
@@ -139,27 +122,23 @@
   /* IE6-9 */
 }
 
-/* line 173, ../sass/fields.scss */
 #uib-article-node-form h3 {
   color: #666666;
   font-weight: normal;
   font-size: 16px;
 }
 
-/* line 179, ../sass/fields.scss */
 #uib-article-node-form .fieldset-title {
   font-size: 15px;
   color: #2162a0;
 }
 
-/* line 184, ../sass/fields.scss */
 .form-field-name-field-uib-article-type {
   width: 55%;
   float: left;
 }
 
 /* Buttons  in create content */
-/* line 190, ../sass/fields.scss */
 #uib-article-node-form .button, .field-add-more-submit {
   padding: 2px 7px 2px 7px;
   background: #2162a0;
@@ -183,28 +162,23 @@
   /* IE6-9 */
 }
 
-/* line 206, ../sass/fields.scss */
 #uib-article-node-form label {
   width: 80px;
 }
 
-/* line 210, ../sass/fields.scss */
 div.link-field-column {
   float: none;
   width: 68%;
 }
 
-/* line 215, ../sass/fields.scss */
 .link-field-subrow {
   width: 265px;
 }
 
-/* line 218, ../sass/fields.scss */
 #uib-article-node-form .link-field-subrow {
   width: 248px;
 }
 
-/* line 222, ../sass/fields.scss */
 .vertical-tabs {
   float: left;
   display: block;
@@ -213,82 +187,68 @@ div.link-field-column {
 }
 
 /* Save and preview button */
-/* line 231, ../sass/fields.scss */
 .form-submit {
   float: left;
 }
 
 /* Create node */
-/* line 236, ../sass/fields.scss */
 .page-node-add form {
   padding: 20px;
 }
 
 /*  Icons in Webdesk */
-/* line 241, ../sass/fields.scss */
 .views-field-delete-node {
   background: url("../images/delete.png") no-repeat;
   display: inline-block;
   margin-left: 12px;
 }
 
-/* line 247, ../sass/fields.scss */
 .views-field-edit-node {
   background: url("../images/edit.png") no-repeat;
   display: inline-block;
   margin-left: 12px;
 }
 
-/* line 253, ../sass/fields.scss */
 .views-field-delete-node a, .views-field-edit-node a {
   margin-left: 18px;
 }
 
-/* line 257, ../sass/fields.scss */
 .pane-my-content-panel-pane-1 h2 {
   background: url("../images/my-content.png") no-repeat 0 4px;
 }
 
-/* line 261, ../sass/fields.scss */
 .pane-uib-webdesk-panel-pane-1 h2, .page-webdesk ul.menu li a {
   margin-left: 18px;
 }
 
-/* line 264, ../sass/fields.scss */
 .pane-my-content-panel-pane-1 h2, .pane-scheduled-content h2 {
   padding: 0 0 0 20px;
 }
 
-/* line 268, ../sass/fields.scss */
 .pane-scheduled-content h2 {
   background: url("../images/scheduled-content.png") no-repeat 0 4px;
 }
 
-/* line 271, ../sass/fields.scss */
 .pane-menu-webdesk .menu {
   padding-left: 0;
   font-size: 1.1em;
 }
 
-/* line 278, ../sass/fields.scss */
 .pane-uib-webdesk-panel-pane-1 {
   background: url("../images/all-content.png") no-repeat 0 5px;
   border-top: #999999;
   border-bottom: #999999;
 }
 
-/* line 284, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   background: url("../images/add.png");
   background-repeat: no-repeat;
 }
 
-/* line 289, ../sass/fields.scss */
 .page-webdesk ul.menu li {
   list-style: none;
 }
 
-/* line 292, ../sass/fields.scss */
 .page-webdesk #main #content {
   margin-top: 0;
 }
