@@ -287,23 +287,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
   */
 }
 
-function uib_zen_menu_link(array $variables) {
-  if (isset($variables['element']['#bid']['delta'])) {
-    if ($variables['element']['#bid']['delta'] == 'top-area-menu')  {
-      $element = $variables['element'];
-      $sub_menu = '';
-      if ($element['#below']) {
-        $sub_menu = drupal_render($element['#below']);
-      }
-      if ($element['#original_link']['depth'] == 2)
-        $output = '<a href="#">'.$element["#title"].'</a> ';
-      else
-        $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-    }
-    return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
-  }
 
-}
 /**
  * Override or insert variables into the comment templates.
  *
