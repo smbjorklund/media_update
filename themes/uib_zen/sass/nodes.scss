@@ -256,8 +256,11 @@
   .field-label {
     display: none;
   }
-  
-.field-name-field-uib-quote {
+}
+
+.node-area .field-name-field-uib-quote  {
   font-size: 1em;
-}  
+  &:before{display: none};
+  &:after{display: none}
+
 }

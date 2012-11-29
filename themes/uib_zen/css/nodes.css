@@ -262,6 +262,13 @@
 .view-mode-full .field-name-field-uib-quote .field-label {
   display: none;
 }
-.view-mode-full .field-name-field-uib-quote .field-name-field-uib-quote {
+
+.node-area .field-name-field-uib-quote {
   font-size: 1em;
+}
+.node-area .field-name-field-uib-quote:before {
+  display: none;
+}
+.node-area .field-name-field-uib-quote:after {
+  display: none;
 }
