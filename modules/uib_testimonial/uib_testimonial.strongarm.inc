@@ -38,7 +38,10 @@ function uib_testimonial_strongarm() {
           'weight' => '0',
         ),
         'redirect' => array(
-          'weight' => '16',
+          'weight' => '7',
+        ),
+        'path' => array(
+          'weight' => '8',
         ),
       ),
       'display' => array(),

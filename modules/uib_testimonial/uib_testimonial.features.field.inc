@@ -167,15 +167,15 @@ function uib_testimonial_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
-          'increment' => 15,
+          'increment' => '15',
           'input_format' => 'Y-m-d H:i:s',
           'input_format_custom' => '',
           'label_position' => 'above',
           'text_parts' => array(),
-          'year_range' => '-3:+3',
+          'year_range' => '1900:+0',
         ),
-        'type' => 'date_text',
-        'weight' => '11',
+        'type' => 'date_select',
+        'weight' => '12',
       ),
     ),
   );
@@ -246,7 +246,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '16',
       ),
     ),
   );
@@ -317,7 +317,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '17',
       ),
     ),
   );
@@ -388,7 +388,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '18',
       ),
     ),
   );
@@ -558,7 +558,7 @@ function uib_testimonial_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '15',
+        'weight' => '13',
       ),
     ),
   );
@@ -630,7 +630,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -701,7 +701,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '15',
       ),
     ),
   );
@@ -772,7 +772,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '14',
       ),
     ),
   );
@@ -844,7 +844,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '3',
       ),
     ),
   );
@@ -915,7 +915,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '19',
       ),
     ),
   );
@@ -1015,7 +1015,7 @@ function uib_testimonial_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -1085,7 +1085,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '6',
       ),
     ),
   );
@@ -1155,7 +1155,7 @@ function uib_testimonial_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '5',
       ),
     ),
   );
