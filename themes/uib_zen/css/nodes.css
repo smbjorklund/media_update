@@ -265,6 +265,7 @@
 
 .node-area .field-name-field-uib-quote {
   font-size: 1em;
+  width: 100%;
 }
 .node-area .field-name-field-uib-quote:before {
   display: none;
