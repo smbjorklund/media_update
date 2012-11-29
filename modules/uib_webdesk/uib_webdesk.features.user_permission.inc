@@ -580,17 +580,6 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit file.
-  $permissions['edit file'] = array(
-    'name' => 'edit file',
-    'roles' => array(
-      0 => 'level 1',
-      1 => 'level 2',
-      2 => 'level 3',
-    ),
-    'module' => 'file_entity',
-  );
-
   // Exported permission: edit own area content.
   $permissions['edit own area content'] = array(
     'name' => 'edit own area content',
@@ -1237,16 +1226,6 @@ function uib_webdesk_user_default_permissions() {
       2 => 'level 3',
     ),
     'module' => 'view_unpublished',
-  );
-
-  // Exported permission: view file.
-  $permissions['view file'] = array(
-    'name' => 'view file',
-    'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
-    ),
-    'module' => 'file_entity',
   );
 
   // Exported permission: view own unpublished content.
