@@ -202,4 +202,6 @@
 
 </div><!-- /#page -->
 
-<?php print render($page['bottom']); ?>
+<div id="bottom-region-wrapper">
+  <?php print render($page['bottom']); ?>
+</div>
