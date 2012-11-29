@@ -1045,7 +1045,7 @@ function uib_article_field_default_fields() {
           'label' => 'hidden',
           'module' => 'file_entity',
           'settings' => array(
-            'file_view_mode' => 'media_preview',
+            'file_view_mode' => 'preview',
           ),
           'type' => 'file_rendered',
           'weight' => '0',
