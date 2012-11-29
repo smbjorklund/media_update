@@ -48,11 +48,11 @@ function uib_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -124,11 +124,11 @@ function uib_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'field_collection_item',
