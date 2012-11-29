@@ -33,7 +33,7 @@ function uib_setup_context_default_contexts() {
         'uib_area-colophon' => array(
           'module' => 'uib_area',
           'delta' => 'colophon',
-          'region' => 'footer',
+          'region' => 'bottom',
           'weight' => '-10',
         ),
       ),
