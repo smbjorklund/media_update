@@ -339,3 +339,13 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (3, 2)
   }
 }
+
+
+/* Bottom region */
+@media all and (min-width: 960px) {
+  $zen-column-count: 4;
+
+  .region-bottom .block {
+     @include zen-grid-item (2, 2, left)
+  }
+}

@@ -202,6 +202,6 @@
 
 </div><!-- /#page -->
 
-<div id="bottom-region-wrapper">
+<div id="bottom-region-wrapper" class="clearfix">
   <?php print render($page['bottom']); ?>
 </div>

@@ -399,3 +399,12 @@
     margin-right: -100%;
   }
 }
+/* Bottom region */
+@media all and (min-width: 960px) {
+  .region-bottom .block {
+    float: left;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: -75%;
+  }
+}
