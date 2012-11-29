@@ -35,7 +35,7 @@ function uib_testimonial_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '2',
         ),
         'redirect' => array(
           'weight' => '7',
