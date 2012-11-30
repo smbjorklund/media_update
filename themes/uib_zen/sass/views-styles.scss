@@ -94,60 +94,85 @@ table.cols-6  {
 /*Area slideshow*/
 .view-area-slideshow{
   position: relative;
-}
-#transparent {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  height: 35%;
-  background: #000;
-  filter: alpha(opacity=60);
-  opacity: 0.6;
-  -moz-opacity: 0.6;
-}
-#slidecontent {
-  color: #fff;
-  position: absolute;
-  bottom: 27%;
-  left: 10px;
-}
-#slidecontent h2 {
-  color: #fff;
-}
-#widget_pager_bottom_area_slideshow-default {
-  position: absolute;
-  z-index: 10;
-  bottom: 0;
-  left: 7%;
-}
-.views-slideshow-pager-field-item {
-  float: left;
-  padding: 10px;
-}
-#views_slideshow_controls_text_previous_area_slideshow-default {
-  height: 0px;
-  padding-top: 26px;
-  position: absolute;
-  bottom: 10%;
-  overflow: hidden;
-  left: 0;
-  z-index: 100;
-  background: url(../images/arrow_left.png)  no-repeat scroll 50% transparent;
-}
-#views_slideshow_controls_text_next_area_slideshow-default {
-  height: 0;
-  padding-top: 26px;
-  overflow: hidden;
-  position: absolute;
-  bottom: 10%;
-  right: 0;
-  z-index: 100;
-  background: url(../images/arrow_right.png) no-repeat scroll -6px 50% transparent ;
-}
-#views_slideshow_controls_text_pause_area_slideshow-default{
-  display: none;
-}
-.views-slideshow-pager-fields .active img{
-  border: 2px solid #fff;
+  p {
+    margin: 0;
+  }
+  .lead {
+    width: 50%;
+    float: left;
+    
+  }
+  
+  .ciclepager {
+    padding: 4px;
+  }
+  .eventdata {
+    width: 30%;
+    float: right;
+  }
+  
+  #transparent {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 35%;
+    background: #000;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    -moz-opacity: 0.6;
+  }
+  
+  #slidecontent {
+    color: #fff;
+    position: absolute;
+    bottom: 2%;
+    left: 6%;
+    
+    h3 {
+      color: #fff;
+    }
+  }
+
+
+  #widget_pager_bottom_area_slideshow-default {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 7%;
+  }
+  
+  .views-slideshow-pager-field-item {
+    float: left;
+    padding: 10px;
+  }
+  
+  #views_slideshow_controls_text_previous_area_slideshow-default {
+    height: 0px;
+    padding-top: 26px;
+    position: absolute;
+    bottom: 10%;
+    overflow: hidden;
+    left: 0;
+    z-index: 100;
+    background: url(../images/arrow_left.png)  no-repeat scroll 0% transparent;
+  }
+  #views_slideshow_controls_text_next_area_slideshow-default {
+    height: 0;
+    padding-top: 26px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 10%;
+    right: 0;
+    z-index: 100;
+    background: url(../images/arrow_right.png) no-repeat scroll 0% transparent ;
+  }
+
+  #views_slideshow_controls_text_pause_area_slideshow-default{
+    display: none;
+  }
+  .views-slideshow-pager-fields .active img{
+    border: 2px solid #fff;
+  }
+
 }

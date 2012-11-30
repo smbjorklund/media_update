@@ -177,10 +177,13 @@ function uib_area_views_default_views() {
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['type'] = 'views_slideshow_pager_fields';
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['views_slideshow_pager_fields_fields'] = array(
+    'field_uib_lead' => 0,
     'field_uib_main_media' => 0,
     'title' => 0,
     'field_uib_main_media_1' => 0,
+    'nid' => 0,
   );
+  $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['enable'] = 1;
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_slide_counter']['weight'] = '1';
@@ -188,9 +191,11 @@ function uib_area_views_default_views() {
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['type'] = 'views_slideshow_pager_fields';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['views_slideshow_pager_fields_fields'] = array(
-    'field_uib_main_media_1' => 'field_uib_main_media_1',
+    'nid' => 'nid',
+    'field_uib_lead' => 0,
     'field_uib_main_media' => 0,
     'title' => 0,
+    'field_uib_main_media_1' => 0,
   );
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
@@ -211,6 +216,15 @@ function uib_area_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_uib_profiled_article_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_uib_profiled_article_node']['field'] = 'reverse_field_uib_profiled_article_node';
   $handler->display->display_options['relationships']['reverse_field_uib_profiled_article_node']['required'] = TRUE;
+  /* Field: Content: Lead */
+  $handler->display->display_options['fields']['field_uib_lead']['id'] = 'field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_lead']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['max_length'] = '120';
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
   /* Field: Content: Main media */
   $handler->display->display_options['fields']['field_uib_main_media']['id'] = 'field_uib_main_media';
   $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
@@ -222,19 +236,6 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
     'file_view_mode' => 'full_width_image',
   );
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '<div id="transparent"></div>
-<div id="slidecontent">
-<h2>[title]</h2>
-</div>';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Main media */
   $handler->display->display_options['fields']['field_uib_main_media_1']['id'] = 'field_uib_main_media_1';
   $handler->display->display_options['fields']['field_uib_main_media_1']['table'] = 'field_data_field_uib_main_media';
@@ -247,6 +248,61 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_main_media_1']['settings'] = array(
     'file_view_mode' => 'wide_thumbnail',
   );
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['text'] = '<span class="ciclepager"></span>';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_uib_date']['id'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['field'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Location */
+  $handler->display->display_options['fields']['field_uib_location']['id'] = 'field_uib_location';
+  $handler->display->display_options['fields']['field_uib_location']['table'] = 'field_data_field_uib_location';
+  $handler->display->display_options['fields']['field_uib_location']['field'] = 'field_uib_location';
+  $handler->display->display_options['fields']['field_uib_location']['exclude'] = TRUE;
+  /* Field: Content: Event type */
+  $handler->display->display_options['fields']['field_uib_event_type']['id'] = 'field_uib_event_type';
+  $handler->display->display_options['fields']['field_uib_event_type']['table'] = 'field_data_field_uib_event_type';
+  $handler->display->display_options['fields']['field_uib_event_type']['field'] = 'field_uib_event_type';
+  $handler->display->display_options['fields']['field_uib_event_type']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_event_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_event_type']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_event_type']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<div id="transparent"></div>
+<div id="slidecontent">
+<h3>[title]</h3>
+<p class="lead">[field_uib_lead]</p>
+<div class="eventdata">
+<p>[field_uib_event_type]</p>
+<p>[field_uib_date]</p>
+<p>[field_uib_location]</p>
+</div>
+</div>';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -302,9 +358,17 @@ function uib_area_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Content referencing Content from field_uib_profiled_article'),
+    t('<span class="ciclepager"></span>'),
+    t('Location'),
     t('<div id="transparent"></div>
 <div id="slidecontent">
-<h2>[title]</h2>
+<h3>[title]</h3>
+<p class="lead">[field_uib_lead]</p>
+<div class="eventdata">
+<p>[field_uib_event_type]</p>
+<p>[field_uib_date]</p>
+<p>[field_uib_location]</p>
+</div>
 </div>'),
     t('All'),
     t('Area slideshow block'),

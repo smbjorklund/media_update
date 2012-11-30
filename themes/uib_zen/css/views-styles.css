@@ -94,8 +94,21 @@ table.cols-6 {
 .view-area-slideshow {
   position: relative;
 }
-
-#transparent {
+.view-area-slideshow p {
+  margin: 0;
+}
+.view-area-slideshow .lead {
+  width: 50%;
+  float: left;
+}
+.view-area-slideshow .ciclepager {
+  padding: 4px;
+}
+.view-area-slideshow .eventdata {
+  width: 30%;
+  float: right;
+}
+.view-area-slideshow #transparent {
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -106,31 +119,26 @@ table.cols-6 {
   opacity: 0.6;
   -moz-opacity: 0.6;
 }
-
-#slidecontent {
+.view-area-slideshow #slidecontent {
   color: #fff;
   position: absolute;
-  bottom: 27%;
-  left: 10px;
+  bottom: 2%;
+  left: 6%;
 }
-
-#slidecontent h2 {
+.view-area-slideshow #slidecontent h3 {
   color: #fff;
 }
-
-#widget_pager_bottom_area_slideshow-default {
+.view-area-slideshow #widget_pager_bottom_area_slideshow-default {
   position: absolute;
   z-index: 10;
   bottom: 0;
   left: 7%;
 }
-
-.views-slideshow-pager-field-item {
+.view-area-slideshow .views-slideshow-pager-field-item {
   float: left;
   padding: 10px;
 }
-
-#views_slideshow_controls_text_previous_area_slideshow-default {
+.view-area-slideshow #views_slideshow_controls_text_previous_area_slideshow-default {
   height: 0px;
   padding-top: 26px;
   position: absolute;
@@ -138,10 +146,9 @@ table.cols-6 {
   overflow: hidden;
   left: 0;
   z-index: 100;
-  background: url(../images/arrow_left.png) no-repeat scroll 50% transparent;
+  background: url(../images/arrow_left.png) no-repeat scroll 0% transparent;
 }
-
-#views_slideshow_controls_text_next_area_slideshow-default {
+.view-area-slideshow #views_slideshow_controls_text_next_area_slideshow-default {
   height: 0;
   padding-top: 26px;
   overflow: hidden;
@@ -149,13 +156,11 @@ table.cols-6 {
   bottom: 10%;
   right: 0;
   z-index: 100;
-  background: url(../images/arrow_right.png) no-repeat scroll -6px 50% transparent;
+  background: url(../images/arrow_right.png) no-repeat scroll 0% transparent;
 }
-
-#views_slideshow_controls_text_pause_area_slideshow-default {
+.view-area-slideshow #views_slideshow_controls_text_pause_area_slideshow-default {
   display: none;
 }
-
-.views-slideshow-pager-fields .active img {
+.view-area-slideshow .views-slideshow-pager-fields .active img {
   border: 2px solid #fff;
 }
