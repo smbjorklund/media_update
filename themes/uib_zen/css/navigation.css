@@ -137,7 +137,6 @@ ul.language-switcher-locale-url li.active {
 }
 
 .uib-menu-style-dropdown {
-  background: #F1F1EF;
   padding: 0 !important;
 }
 .uib-menu-style-dropdown .menu {
@@ -178,9 +177,12 @@ ul.language-switcher-locale-url li.active {
 }
 .uib-menu-style-dropdown .menu .menu {
   float: left;
-  margin-top: 10px;
-  width: 100%;
+  width: 20%;
+  position: absolute;
+  padding-top: 10px;
   display: none;
+  background: #F1F1EF;
+  z-index: 1;
 }
 .uib-menu-style-dropdown .menu .menu li {
   margin-right: 0;
@@ -189,7 +191,6 @@ ul.language-switcher-locale-url li.active {
   border-left: medium none;
   font-size: 100%;
   line-height: 1.7em;
-  margin-right: 1em;
   padding: 0.4em 0 0.4em 1em;
 }
 .uib-menu-style-dropdown .menu li.last .menu li {

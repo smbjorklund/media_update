@@ -164,7 +164,7 @@ ul.language-switcher-locale-url li.active {
 }
 
 .uib-menu-style-dropdown {
-  background: #F1F1EF;
+  //background: #F1F1EF;
   padding: 0 !important;
 
   .menu {
@@ -190,9 +190,7 @@ ul.language-switcher-locale-url li.active {
     font-size: 90%;
     background: none;
   }
-  .menu .menu {
-    //display: none;
-  }
+
   .menu li a {
     border-left: 1px solid #B9B9B7;
     font-size: 1em;
@@ -208,9 +206,12 @@ ul.language-switcher-locale-url li.active {
   }
   .menu .menu {
     float: left;
-    margin-top: 10px;
-    width: 100%;
+    width: 20%;
+    position: absolute;
+    padding-top: 10px;
     display: none;
+    background: #F1F1EF;
+    z-index: 1;
 }
   .menu .menu li
   {
@@ -220,7 +221,6 @@ ul.language-switcher-locale-url li.active {
     border-left: medium none;
     font-size: 100%;
     line-height: 1.7em;
-    margin-right: 1em;
     padding: 0.4em 0 0.4em 1em;
 }
   .menu li.last .menu li {
