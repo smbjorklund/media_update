@@ -16,7 +16,8 @@
  * Center the page.
  */
 #page,
-.region-bottom {
+.region-bottom,
+#global-header {
   /* For screen sizes larger than 1200px, prevent excessively long lines of text
      by setting a max-width. */
   margin-left: auto;
@@ -196,7 +197,7 @@
     margin-left: -75%;
   }
 }
-@media all and (min-width: 480px) and (max-width: 959px) and (min-width: 480px) and (max-width: 959px) {
+@media all and (min-width: 480px) and (max-width: 959px) and all and (min-width: 480px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
   }
@@ -226,7 +227,7 @@
     float: none;
   }
 }
-@media all and (min-width: 480px) and (max-width: 959px) and (min-width: 480px) and (max-width: 959px) {
+@media all and (min-width: 480px) and (max-width: 959px) and all and (min-width: 480px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
   }
@@ -331,24 +332,17 @@
 }
 /* Global header */
 @media all and (min-width: 960px) {
-  #global-header {
-    float: right;
-    width: 100%;
-    margin-right: 0%;
-    margin-left: -100%;
-  }
-
   #global-menu {
     float: right;
-    width: 80%;
+    width: 60%;
     margin-right: 0%;
-    margin-left: -80%;
+    margin-left: -60%;
   }
 
   #global-searchform {
     float: right;
-    width: 20%;
-    margin-right: 80%;
+    width: 40%;
+    margin-right: 60%;
     margin-left: -100%;
   }
 

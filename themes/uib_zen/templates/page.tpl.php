@@ -69,30 +69,31 @@
  * @see template_process()
  */
 ?>
+<div id="top-region-wrapper">
+  <?php if (isset($global_menu)): ?>
+    <div id="global-header">
+      <nav id="global-menu">
+        <?php print theme('links__menu-global-menu', array(
+          'links' => $global_menu,
+          'attributes' => array(
+            'class' => array('links','global-menu'),
+          ),
+        ));
+        ?>
+      </nav>
+      <div id="global-searchform">
+        <form method="get" action="http://www.uib.no/search">
+          <input type="text" id="searchField" name="q" value="" autocomplete="off">
+          <input type="submit" value="Search">
+        </form>
+      </div>
+    </div>
+  <?php endif; ?>
+</div>
 
 <div id="page">
 
   <header id="header" role="banner">
-    <?php if (isset($global_menu)): ?>
-      <div id="global-header">
-        <nav id="global-menu">
-          <?php print theme('links__menu-global-menu', array(
-            'links' => $global_menu,
-            'attributes' => array(
-              'class' => array('links','global-menu'),
-              ),
-            ));
-          ?>
-        </nav>
-        <div id="global-searchform">
-          <form method="get" action="http://www.uib.no/search">
-            <input type="text" id="searchField" name="q" value="" autocomplete="off">
-            <input type="submit" value="Search">
-          </form>
-        </div>
-      </div>
-    <?php endif; ?>
-
 
     <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>

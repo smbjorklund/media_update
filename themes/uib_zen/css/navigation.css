@@ -99,12 +99,19 @@ ul.language-switcher-locale-url li.active {
 /**
  * Global menu stuff
  */
-#global-header {
-  margin: 12px 0 0 0;
+#top-region-wrapper {
+  background: url("../images/globalmenygradient.png") repeat-x scroll center bottom transparent;
+  float: left;
+  width: 100%;
 }
 
 #global-header ul {
   margin: 0;
+  padding: 0;
+}
+
+#global-searchform {
+  padding: 14px 0 0 30px;
 }
 
 .global-menu li {
@@ -118,7 +125,8 @@ ul.language-switcher-locale-url li.active {
   text-decoration: none;
   color: #333;
   display: block;
-  padding: 12px 8px 0 12px;
+  padding: 18px 8px 10px 12px;
+  font-size: 11px;
 }
 
 .global-menu li a:hover {

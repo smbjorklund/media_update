@@ -41,7 +41,8 @@ $zen-auto-include-item-base: false;
  */
 
 #page,
-.region-bottom {
+.region-bottom,
+#global-header {
   /* For screen sizes larger than 1200px, prevent excessively long lines of text
      by setting a max-width. */
   margin-left: auto;
@@ -302,14 +303,12 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 960px) {
   $zen-column-count: 5;
 
-  #global-header {
-    @include zen-grid-item (5, 1)
-  }
+
   #global-menu {
-    @include zen-grid-item (4, 1)
+    @include zen-grid-item (3, 1)
   }
   #global-searchform  {
-    @include zen-grid-item (1, 5)
+    @include zen-grid-item (2, 4)
   }
   #navigation  {
     @include zen-grid-item (5, 1)
