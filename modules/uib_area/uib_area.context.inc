@@ -29,6 +29,7 @@ function uib_area_context_default_contexts() {
     ),
     'views' => array(
       'values' => array(
+        'area_map' => 'area_map',
         'calendar' => 'calendar',
         'recent_news:page_1' => 'recent_news:page_1',
       ),
