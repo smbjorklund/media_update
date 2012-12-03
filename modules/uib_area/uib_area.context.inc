@@ -27,6 +27,12 @@ function uib_area_context_default_contexts() {
         'node_form' => '0',
       ),
     ),
+    'views' => array(
+      'values' => array(
+        'calendar' => 'calendar',
+        'recent_news:page_1' => 'recent_news:page_1',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
