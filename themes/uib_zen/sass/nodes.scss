@@ -288,3 +288,17 @@
   &:after{display: none};
 
 }
+
+/* General styling for description, copyright and photographer */
+.field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
+  font-size: .8em;
+  
+  .field-label {
+    font-weight: normal;
+    border: none;
+    text-transform: none;
+    font-family: verdana, sans-serif;
+    font-size: .9em;
+    color: #333;
+  }
+}
