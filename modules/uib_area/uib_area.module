@@ -444,7 +444,7 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
     'field_uib_w2_id', // ID w2
     'field_uib_sebra_id', // Sebra ID
     'field_uib_area_type', // Type
-    'title', // Title
+    //'title', // Title
     'field_uib_area_parents', // Parents
     'field_uib_ou', // Place
     );
