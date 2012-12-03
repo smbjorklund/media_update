@@ -244,6 +244,28 @@
    * Use 3 grid columns for smaller screens.
    */
 }
+/* Mobile */
+@media all and (min-width: 310px) and (max-width: 720px) {
+  #global-menu ul li a {
+    font-size: 7px;
+    padding: 18px 4px 10px 4px;
+  }
+
+  .menu-block-wrapper ul.menu li {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    float: none;
+  }
+  .menu-block-wrapper ul.menu li .menu {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    position: relative;
+  }
+}
 /* Desktop */
 @media all and (min-width: 960px) {
   /*
