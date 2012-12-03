@@ -246,35 +246,32 @@
 .view-mode-full .field-name-field-uib-quote  {
   font-size: 1.8em;
   line-height: 1.4em;
-  width: auto;
+  width: 80%;
   display: block;
   position: relative;
   font-style: italic;
   font-family: "Times New Roman", Serif;
   clear: none;
-  margin-left: 70px;
-  background: red;
+  margin: 30px auto 30px auto;
 
 
   &:before  {
     content: "\201C";
     position: absolute;
-    font-size: 80px;
+    font-size: 100px;
     font-family: "Times New Roman", Serif;
-    left: 0;
-    top: 0;
-    background: blue;
+    left: -60px;
+    top: 30px;
   }
   
   &:after {
-    font-size: 80px;
+    font-size: 100px;
     line-height: auto;
     content: "\201D";
     position: absolute;
     bottom: 0;
     right: 0;
     font-family: "Times New Roman", Serif;
-    background: blue;
   }
 
   .field-label {
@@ -285,6 +282,8 @@
 .node-area .field-name-field-uib-quote  {
   font-size: 1em;
   width: 100%;
+  font-style: normal;
+  font-family: verdana, sans-serif;
   &:before{display: none};
   &:after{display: none};
 
