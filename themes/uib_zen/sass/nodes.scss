@@ -246,12 +246,36 @@
 .view-mode-full .field-name-field-uib-quote  {
   font-size: 1.8em;
   line-height: 1.4em;
-  width: 90%;
-  margin: 20px auto 20px auto;
+  width: auto;
+  display: block;
+  position: relative;
   font-style: italic;
-  font-family: "times new roman" serif;
-  &:before{ content: '"'; float: left; font-size: 2em;}
-  &:after{ content: '"'; float: right; font-size: 2em; margin-right: 200px;}
+  font-family: "Times New Roman", Serif;
+  clear: none;
+  margin-left: 70px;
+  background: red;
+
+
+  &:before  {
+    content: "\201C";
+    position: absolute;
+    font-size: 80px;
+    font-family: "Times New Roman", Serif;
+    left: 0;
+    top: 0;
+    background: blue;
+  }
+  
+  &:after {
+    font-size: 80px;
+    line-height: auto;
+    content: "\201D";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-family: "Times New Roman", Serif;
+    background: blue;
+  }
 
   .field-label {
     display: none;
