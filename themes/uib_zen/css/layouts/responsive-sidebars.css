@@ -222,6 +222,9 @@
   .sidebar-second .region-sidebar-second {
     float: none;
   }
+  .sidebar-second .region-bottom {
+    width: 100%;
+  }
 }
 @media all and (min-width: 480px) and (max-width: 959px) and all and (min-width: 480px) and (max-width: 959px) {
   .sidebar-second #content {
@@ -237,12 +240,6 @@
   .sidebar-second .region-sidebar-second {
     float: none;
   }
-}
-/* Area tablet */
-@media all and (min-width: 480px) and (max-width: 959px) {
-  /*
-   * Use 3 grid columns for smaller screens.
-   */
 }
 /* Mobile */
 @media all and (min-width: 310px) and (max-width: 720px) {
@@ -263,7 +260,15 @@
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
+    display: none;
     position: relative;
+  }
+  .menu-block-wrapper ul.menu li:hover .menu {
+    display: block;
+  }
+
+  .region-bottom {
+    width: 100% !important;
   }
 }
 /* Desktop */

@@ -160,6 +160,9 @@ $zen-auto-include-item-base: false;
       .region-sidebar-second {
         float: none;
       }
+      .region-bottom {
+        width: 100%;
+      }
     }
 
     /* Article tablet */
@@ -224,14 +227,6 @@ $zen-auto-include-item-base: false;
   }
 }
 
-/* Area tablet */
-@media all and (min-width: 480px) and (max-width: 959px) {
-  /*
-   * Use 3 grid columns for smaller screens.
-   */
-  $zen-column-count: 3;
-}
-
 /* Mobile */
 @media all and (min-width: 310px) and (max-width: 720px) {
 
@@ -243,15 +238,25 @@ $zen-auto-include-item-base: false;
       padding: 18px 4px 10px 4px
     }
   }
-  .menu-block-wrapper ul.menu li {
-    @include zen-grid-item(1, 1);
-    float: none;
-
-    .menu {
+  .menu-block-wrapper ul.menu {
+    li {
       @include zen-grid-item(1, 1);
-      position: relative;
+      float: none;
+
+      .menu {
+        @include zen-grid-item(1, 1);
+        display: none;
+        position: relative;
+      }
+    }
+    li:hover .menu {
+      display: block;
     }
   }
+
+  .region-bottom {
+        width: 100% !important;
+      }
 }
 
 /* Desktop */
