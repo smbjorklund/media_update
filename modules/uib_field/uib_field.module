@@ -1,0 +1,18 @@
+<?php
+/**
+* Implements  hook_field_attach_view_alter()
+*/
+function uib_field_field_attach_view_alter(&$output, $context) {
+  foreach ($output as $key => $item) {
+    // Check before displaying if field is empty and hide it if it is.
+    // Used to stop an empty label to appear when field is empty
+    if (substr($key, 0 , 6) == 'field_') {
+      if (isset($item['#items']['0']['value']) AND empty($item['#items']['0']['value'])) {
+        hide($output[$key]); // hide empty text fields
+      }
+      elseif (isset($item['#items']['0']['entity']) AND empty($item['#items']['0']['entity'])) {
+        hide($output[$key]); // hide fields with lacking entities (unclear if such exist)
+      }
+    }
+  }
+}

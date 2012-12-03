@@ -229,7 +229,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
     // Handle articles
     if ($variables['type'] == 'uib_article') {
-        if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
+      if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
         // Setup kicker
         // -- First determine which date to set
         if ($variables['node']->created < $variables['node']->revision_timestamp) {
@@ -273,6 +273,26 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         if (!empty($variables['content']['field_uib_byline'])) {
           hide($variables['content']['field_uib_byline']);
         }
+      }
+      // Ensure that the labels of some fields, which are shown in the
+      // main content sidebar, are not show when the fields contain no data
+      if (empty($variables['node']->field_uib_location['und'][0]['value'])) {
+        hide($variables['content']['group_article_sidebar']['field_uib_location']);
+      }
+      if (empty($variables['node']->field_uib_fact_box['und'][0]['value'])) {
+        hide($variables['content']['group_article_sidebar']['field_uib_fact_box']);
+      }
+      if (empty($variables['field_uib_area']['und'][0]['entity'])) {
+         hide($variables['content']['group_article_sidebar']['field_uib_area']);
+      }
+      if (empty($variables['node']->field_uib_media['und'][0]['uri'])) {
+        hide($variables['content']['group_article_sidebar']['field_uib_media']);
+      }
+      elseif (empty($variables['node']->field_uib_media['und'][0]['field_uib_copyright']['und'][0]['value'])) {
+        hide($variables['content']['group_article_sidebar']['field_uib_media'][0]['field_uib_copyright']);
+      }
+      elseif (empty($variables['node']->field_uib_media['und'][0]['field_uib_owner']['und'][0]['value'])) {
+        hide($variables['content']['group_article_sidebar']['field_uib_media'][0]['field_uib_owner']);
       }
     }
   }
