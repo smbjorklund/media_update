@@ -444,7 +444,7 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
     'field_uib_w2_id', // ID w2
     'field_uib_sebra_id', // Sebra ID
     'field_uib_area_type', // Type
-    //'title', // Title
+    'title', // Title
     'field_uib_area_parents', // Parents
     'field_uib_ou', // Place
     );
@@ -457,7 +457,7 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
     'field_uib_menu_style', // Menu style
     'field_uib_logo', // Logo
     );
-  if (in_array('level 2', $GLOBALS['user']->roles, TRUE) OR in_array('level 3', $GLOBALS['user']->roles, TRUE)) {
+  if ( (in_array('level 2', $GLOBALS['user']->roles, TRUE) OR in_array('level 3', $GLOBALS['user']->roles, TRUE)) AND (!in_array('level 1', $GLOBALS['user']->roles, TRUE)) ) {
     // Hide some fields for level 2 and level 3 users
     foreach ($not_for_level_2 as $l2) {
       if (isset($form[$l2])) {
