@@ -438,37 +438,39 @@ function uib_area_entity_info_alter(&$entity_info) {
  * Implements hook_form_alter
  */
 function uib_area_form_alter(&$form, &$form_state, $form_id) {
-   // list of fields that should be hidden (in forms) from
-  // both level 3 and level 2 users
-  $not_for_level_2 = array(
-    'field_uib_w2_id', // ID w2
-    'field_uib_sebra_id', // Sebra ID
-    'field_uib_area_type', // Type
-    'title', // Title
-    'field_uib_area_parents', // Parents
-    'field_uib_ou', // Place
-    );
-  // list of fields that should be hidden (in forms) from
-  // level 3 users
-  $not_for_level_3 = array(
-    'field_uib_content_manager', // Content Manager
-    'field_uib_staff', // Staff
-    'field_uib_show_staff', // Show staff
-    'field_uib_menu_style', // Menu style
-    'field_uib_logo', // Logo
-    );
-  if ( (in_array('level 2', $GLOBALS['user']->roles, TRUE) OR in_array('level 3', $GLOBALS['user']->roles, TRUE)) AND (!in_array('level 1', $GLOBALS['user']->roles, TRUE)) ) {
-    // Hide some fields for level 2 and level 3 users
-    foreach ($not_for_level_2 as $l2) {
-      if (isset($form[$l2])) {
-        hide($form[$l2]);
+  if ($form_id == 'area_node_form') {
+    // list of fields that should be hidden (in area node form) from
+    // both level 3 and level 2 users
+    $not_for_level_2 = array(
+      'field_uib_w2_id', // ID w2
+      'field_uib_sebra_id', // Sebra ID
+      'field_uib_area_type', // Type
+      'title', // Title
+      'field_uib_area_parents', // Parents
+      'field_uib_ou', // Place
+      );
+    // list of fields that should be hidden from
+    // level 3 users
+    $not_for_level_3 = array(
+      'field_uib_content_manager', // Content Manager
+      'field_uib_staff', // Staff
+      'field_uib_show_staff', // Show staff
+      'field_uib_menu_style', // Menu style
+      'field_uib_logo', // Logo
+      );
+    if ( (in_array('level 2', $GLOBALS['user']->roles, TRUE) OR in_array('level 3', $GLOBALS['user']->roles, TRUE)) AND (!in_array('level 1', $GLOBALS['user']->roles, TRUE)) ) {
+      // Hide some fields for level 2 and level 3 users
+      foreach ($not_for_level_2 as $l2) {
+        if (isset($form[$l2])) {
+          hide($form[$l2]);
+        }
       }
-    }
-    if (! in_array('level 2', $GLOBALS['user']->roles, TRUE)) {
-      // Hide some additional fields for level 3 users
-      foreach ($not_for_level_3 as $l3) {
-        if (isset($form[$l3])) {
-          hide($form[$l3]);
+      if (! in_array('level 2', $GLOBALS['user']->roles, TRUE)) {
+        // Hide some additional fields for level 3 users
+        foreach ($not_for_level_3 as $l3) {
+          if (isset($form[$l3])) {
+            hide($form[$l3]);
+          }
         }
       }
     }
