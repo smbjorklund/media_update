@@ -128,6 +128,35 @@ function drush_uib_devel_uib_create_content() {
     $node->field_uib_date['und'][0]['value2'] = date("Y-m-d H:i:s", strtotime("+1 week"));
     node_save($node);
 
-    drush_log('Created 4 events for /jur');
+    $node = new stdClass;
+    $node->type = 'uib_article';
+    $node->title = 'En artikkel med alle felt';
+    $node->language = 'nb';
+    $node->field_uib_area['und'][0]['target_id'] = $areaid[1];
+    $node->field_uib_article_type['und'][0]['value'] = 'news';
+    $node->field_uib_lead['und'][0]['value'] = 'Dignissim molestie luctus vel ligula consectetuer Nam maecenas pellentesque pellentesque class, cras sapien sociis aptent faucibus pharetra pede venenatis egestas eget';
+    $node->field_uib_kicker['und'][0]['value'] = 'SFF2012';
+    $node->field_uib_fact_box['und'][0]['value'] = 'Fakta om saken';
+    $node->field_uib_text['und'][0]['value'] = 'Dignissim molestie luctus vel ligula consectetuer Dignissim molestie luctus vel ligula consectetuer Dignissim molestie luctus vel ligula consectetuer Dignissim molestie luctus vel ligula consectetuer Dignissim molestie luctus vel ligula consectetuer Dignissim molestie luctus vel ligula consectetuer';
+
+    $query = new EntityFieldQuery;
+    $query = $query
+      ->entityCondition('entity_type', 'file')
+      ->propertyCondition('type', 'image')
+      ->range(0, 1);
+    $result = $query->execute();
+    if(!empty($result['file'])){
+      $node->field_uib_main_media['und'][0] = array(
+        'fid' => current($result['file'])->fid,
+        'display' => 1,
+      );
+      $node->field_uib_media['und'][0] = array(
+        'fid' => current($result['file'])->fid,
+        'display' => 1,
+      );
+    }
+    node_save($node);
+
+    drush_log('Created 4 events and 1 news for /jur');
   }
 }
