@@ -18,7 +18,7 @@ function uib_area_menu_block_blocks() {
       'admin_title' => 'Top level area menu',
       'depth'       => 2,
       'expanded'    => 1,
-      'parent_mlid' => uib_area__get_current_mlid(),
+      'parent_mlid' => uib_area__get_menustart(),
     ),
     'page-area-menu' => array(
       'menu_name'   => 'area',
@@ -432,9 +432,11 @@ function uib_area__get_current_nid() {
 function uib_area__get_current_menu_link() {
   $ar = uib_area__get_current();
   if (! empty($ar)) {
-    $menu_link = menu_link_get_preferred('node/' . $ar->nid, 'area');
-    if (!empty($menu_link)) {
-      return $menu_link;
+    if (!empty($ar->nid)) {
+      $menu_link = menu_link_get_preferred('node/' . $ar->nid, 'area');
+      if (!empty($menu_link)) {
+        return $menu_link;
+      }
     }
   }
   return NULL;
@@ -451,6 +453,27 @@ function uib_area__get_current_mlid() {
     return $menu_link['mlid'];
   }
   return NULL;
+}
+
+/**
+* Function that returns the menu link item id which is to be used
+* as a starting point for the top level area menu block.
+*
+* The function may not return something that evaluates to FALSE,
+* because this will result in a menu containing the full area menu.
+* Instead, this fix will return 1 upon failure which will
+* result in an empty menu.
+*
+*/
+function uib_area__get_menustart() {
+  $mlid = uib_area__get_current_mlid();
+  if ($mlid > 0) {
+    return $mlid;
+  }
+  else {
+    return 1;
+  }
+
 }
 
 /**
