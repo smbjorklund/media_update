@@ -16,9 +16,9 @@ function uib_area_menu_block_blocks() {
       'menu_name'   => 'area',
       'title_link'  => FALSE,
       'admin_title' => 'Top level area menu',
-      'level'       => 2,
       'depth'       => 2,
       'expanded'    => 1,
+      'parent_mlid' => uib_area__get_current_mlid(),
     ),
     'page-area-menu' => array(
       'menu_name'   => 'area',
@@ -125,7 +125,6 @@ function uib_area_block_view($delta='') {
     if ($area && isset($area->field_uib_ou['und'])) {
       $place = node_load($area->field_uib_ou['und'][0]['target_id']);
       $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
-      //dsm($place);
       $block['content']['responsible_this_page']['#value'] = $place->title;
       if (isset($place->field_uib_phone)) {
         $block['content']['phone']['#value'] =
@@ -417,6 +416,22 @@ function uib_area__get_current_nid() {
   else {
     return NULL;
   }
+}
+
+/**
+* Function that returns the menu item id of the current uib_area
+*
+* If no area reference or no menu link is found, the function returns NULL.
+*/
+function uib_area__get_current_mlid() {
+  $ar = uib_area__get_current();
+  if (! empty($ar)) {
+    $menu_link = menu_link_get_preferred('node/' . $ar->nid, 'area');
+    if (!empty($menu_link)) {
+      return $menu_link['mlid'];
+    }
+  }
+  return NULL;
 }
 
 /**
