@@ -193,7 +193,7 @@
     margin-right: -75%;
   }
 }
-@media all and (min-width: 480px) and (max-width: 959px) and all and (min-width: 480px) and (max-width: 959px) {
+@media all and (min-width: 480px) and (max-width: 959px) and (min-width: 480px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
   }
@@ -226,7 +226,7 @@
     width: 100%;
   }
 }
-@media all and (min-width: 480px) and (max-width: 959px) and all and (min-width: 480px) and (max-width: 959px) {
+@media all and (min-width: 480px) and (max-width: 959px) and (min-width: 480px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
   }
@@ -417,6 +417,16 @@
     float: left;
     width: 75%;
     margin-left: 25%;
+    margin-right: -100%;
+  }
+}
+/* Calendar */
+@media all and (min-width: 960px) {
+  .view-display-id-block_2 {
+    /* Calender */
+    float: left;
+    width: 100%;
+    margin-left: 0%;
     margin-right: -100%;
   }
 }

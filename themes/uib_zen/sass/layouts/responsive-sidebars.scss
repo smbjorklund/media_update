@@ -364,6 +364,15 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (3, 2)
   }
 }
+/* Calendar */
+@media all and (min-width: 960px) {
+  $zen-column-count: 4;
+
+  .view-display-id-block_2  { /* Calender */
+    @include zen-grid-item (4, 1)
+  }
+
+}
 
 
 /* Bottom region */
