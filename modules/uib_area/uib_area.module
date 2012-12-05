@@ -29,15 +29,6 @@ function uib_area_menu_block_blocks() {
       'depth'       => 2,
       'expanded'    => 1,
     ),
-    'page-area-brief-menu' => array(
-      'menu_name'   => 'area',
-      'title_link'  => FALSE,
-      'admin_title' => 'Page area brief menu',
-      'follow'      => 1,
-      'level'       => 3,
-      'depth'       => 1,
-      'expanded'    => 1,
-    ),
   );
 }
 
@@ -79,178 +70,180 @@ function uib_area_block_info() {
 function uib_area_block_view($delta='') {
   $block = array();
   switch ($delta) {
-  case 'colophon':
-    $block['subject'] = NULL;
-    $block['content'] = array(
-      'name' => array(
-        '#type' => 'html_tag',
-        '#tag' => 'h3',
-        '#value' => t('University of Bergen'),
-      ),
-      'address' => array(
-        '#theme' => 'key_value',
-        '#key' => t('Address'),
-        '#value' => 'Postboks 7800, 5020 BERGEN',
-      ),
-      'phone' => array(
-        '#theme' => 'key_value',
-        '#key' => t('Phone'),
-        '#value' => '+47 55 58 00 00',
-      ),
-      'fax' => array(
-        '#theme' => 'key_value',
-        '#key' => t('Fax'),
-      ),
-      'emergency' => array(
-        '#theme' => 'key_value',
-        '#key' => t('24-hour security hotline'),
-        '#value' => '+47 55 58 80 81',
-      ),
-      'responsible_this_page' => array(
-        '#theme' => 'key_value',
-        '#key' => t('Responsible for this page'),
-      ),
-      'contact' => array(
-        '#theme' => 'key_value',
-        '#key' => t('Contact'),
-        '#value' => 'post@uib.no',
-      ),
-      'responsible' => array(
-        '#theme' => 'key_value',
-        '#key' => t('Responsible'),
-        '#value' => t('Director of Communications'),
-      ),
-    );
-    $area = uib_area__get_current();
-    if ($area && isset($area->field_uib_ou['und'])) {
-      $place = node_load($area->field_uib_ou['und'][0]['target_id']);
-      $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
-      $block['content']['responsible_this_page']['#value'] = $place->title;
-      if (isset($place->field_uib_phone)) {
-        $block['content']['phone']['#value'] =
-          $place->field_uib_phone['und'][0]['value'];
-      }
-      if (isset($place->field_uib_fax)) {
-        $block['content']['fax']['#value'] =
-          $place->field_uib_fax['und'][0]['value'];
-      }
-      if (isset($place->field_uib_mail_domain)) {
-        $block['content']['contact']['#value'] =
-          'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
-      }
-    }
-    hide($block['content']['emergency']);
-    break;
-  case 'jobbnorge':
-    $area = uib_area__get_current();
-    $whitelist = array('faculty', 'unit', 'institute');
-    if ($area && in_array($area->field_uib_area_type['und'][0]['value'], $whitelist)) {
-      $place = node_load($area->field_uib_ou['und'][0]['target_id']);
-      if (empty($place->field_uib_jobbnorge_id['und']))
-       continue;
-      else
-       $feed = 'http://www.jobbnorge.no/joblist/joblistbuilder.ashx?id=821a69c9-7674-4e36-90f8-41e443b99064&depid=' . $place->field_uib_jobbnorge_id['und'][0]['value'];
-      if ($area->language == 'en')
-        $feed .= '&langid=2';
-      $block['subject'] = t('Open Positions');
-      $block['content'] = uib_area__feed_format($feed, $title='', $limit = 999);
-      }
-    break;
-  case 'feed':
-    if (arg(0) == 'node' && is_numeric(arg(1))) {
-      $node = node_load(arg(1));
-      if ($node->type == 'area') {
-        $area = $node;
-      }
-      elseif (isset($node->field_uib_area)) {
-        $area = $node->field_uib_area['und'][0]['entity'];
-      }
-    }
-    if($area){
-      $elements = array();
-      if(!empty($area->field_uib_feed['und'])){
-        foreach ($area->field_uib_feed['und'] as $delta => $item) {
-          $url = url($item['url'], $item);
-          if (strpos($url, '#')) {
-            $limit = explode('#', $url);
-          }
-          $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
-          $elements[$delta] = uib_area__feed_format($url, $item['title'], $limit);
+    case 'colophon':
+      $block['subject'] = NULL;
+      $block['content'] = array(
+        'name' => array(
+          '#type' => 'html_tag',
+          '#tag' => 'h3',
+          '#value' => t('University of Bergen'),
+        ),
+        'address' => array(
+          '#theme' => 'key_value',
+          '#key' => t('Address'),
+          '#value' => 'Postboks 7800, 5020 BERGEN',
+        ),
+        'phone' => array(
+          '#theme' => 'key_value',
+          '#key' => t('Phone'),
+          '#value' => '+47 55 58 00 00',
+        ),
+        'fax' => array(
+          '#theme' => 'key_value',
+          '#key' => t('Fax'),
+        ),
+        'emergency' => array(
+          '#theme' => 'key_value',
+          '#key' => t('24-hour security hotline'),
+          '#value' => '+47 55 58 80 81',
+        ),
+        'responsible_this_page' => array(
+          '#theme' => 'key_value',
+          '#key' => t('Responsible for this page'),
+        ),
+        'contact' => array(
+          '#theme' => 'key_value',
+          '#key' => t('Contact'),
+          '#value' => 'post@uib.no',
+        ),
+        'responsible' => array(
+          '#theme' => 'key_value',
+          '#key' => t('Responsible'),
+          '#value' => t('Director of Communications'),
+        ),
+      );
+      $area = uib_area__get_current();
+      if ($area && isset($area->field_uib_ou['und'])) {
+        $place = node_load($area->field_uib_ou['und'][0]['target_id']);
+        $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
+        $block['content']['responsible_this_page']['#value'] = $place->title;
+        if (isset($place->field_uib_phone)) {
+          $block['content']['phone']['#value'] =
+            $place->field_uib_phone['und'][0]['value'];
+        }
+        if (isset($place->field_uib_fax)) {
+          $block['content']['fax']['#value'] =
+            $place->field_uib_fax['und'][0]['value'];
+        }
+        if (isset($place->field_uib_mail_domain)) {
+          $block['content']['contact']['#value'] =
+            'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
         }
       }
-    $block['content'] = $elements;
-    }
-    break;
-  case 'area_parents': // A block to display a linked list to parents of current area [if any]
-    $block['subject'] = t('Belongs to');
-    $area = uib_area__get_current();
-    if (!empty($area->field_uib_area_parents['und'])) {
-      // Setup an SQL query to get parent titles from node ids listed
-      $nlist = array();
-      $query = 'SELECT nid, title FROM {node} WHERE ';
-      $glue = "";
-      for ($i=0; $i < count($area->field_uib_area_parents['und']); $i++) {
-        $nlist[":nid$i"] = $area->field_uib_area_parents['und'][$i]['target_id'];
-        $query .= $glue . " nid = :nid$i";
-        $glue = " OR";
+      hide($block['content']['emergency']);
+      break;
+    case 'jobbnorge':
+      $area = uib_area__get_current();
+      $whitelist = array('faculty', 'unit', 'institute');
+      if ($area && in_array($area->field_uib_area_type['und'][0]['value'], $whitelist)) {
+        $place = node_load($area->field_uib_ou['und'][0]['target_id']);
+        if (empty($place->field_uib_jobbnorge_id['und']))
+         continue;
+        else
+         $feed = 'http://www.jobbnorge.no/joblist/joblistbuilder.ashx?id=821a69c9-7674-4e36-90f8-41e443b99064&depid=' . $place->field_uib_jobbnorge_id['und'][0]['value'];
+        if ($area->language == 'en')
+          $feed .= '&langid=2';
+        $block['subject'] = t('Open Positions');
+        $block['content'] = uib_area__feed_format($feed, $title='', $limit = 999);
+        }
+      break;
+    case 'feed':
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $node = node_load(arg(1));
+        if ($node->type == 'area') {
+          $area = $node;
+        }
+        elseif (isset($node->field_uib_area)) {
+          $area = $node->field_uib_area['und'][0]['entity'];
+        }
       }
-      $result = db_query($query, $nlist);
-      // Setup each parental area node title on a separate line with link
-      foreach ($result as $record) {
-        $title = t($record->title);
-        $block['content'][$title]['#markup'] = l($title, 'node/' . $record->nid) . '<br>';
+      if($area){
+        $elements = array();
+        if(!empty($area->field_uib_feed['und'])){
+          foreach ($area->field_uib_feed['und'] as $delta => $item) {
+            $url = url($item['url'], $item);
+            if (strpos($url, '#')) {
+              $limit = explode('#', $url);
+            }
+            $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
+            $elements[$delta] = uib_area__feed_format($url, $item['title'], $limit);
+          }
+        }
+      $block['content'] = $elements;
       }
-    }
-    break;
-  case 'node_children': // A block to display a list of teasers of children [nodes only] to current node
-    $block['subject'] = t('Next pages');
-    $config = menu_block_get_config('page-area-brief-menu');
-    $data = menu_tree_build($config);
-    if (!empty($data['content'])) {
-      foreach ($data['content']['#content'] as $key => $menu_item) {
-        if (is_numeric($key)) {
-          if (substr($menu_item['#href'],0,4) == 'node') {
-            $teaser_text = '';
-            $tmp = explode('/',$menu_item['#href']);
-            $node_id = trim($tmp[1]);
-            $query = 'SELECT type, title FROM {node} WHERE nid = :nid';
+      break;
+    case 'area_parents': // A block to display a linked list to parents of current area [if any]
+      $block['subject'] = t('Belongs to');
+      $area = uib_area__get_current();
+      if (!empty($area->field_uib_area_parents['und'])) {
+        // Setup an SQL query to get parent titles from node ids listed
+        $nlist = array();
+        $query = 'SELECT nid, title FROM {node} WHERE ';
+        $glue = "";
+        for ($i=0; $i < count($area->field_uib_area_parents['und']); $i++) {
+          $nlist[":nid$i"] = $area->field_uib_area_parents['und'][$i]['target_id'];
+          $query .= $glue . " nid = :nid$i";
+          $glue = " OR";
+        }
+        $result = db_query($query, $nlist);
+        // Setup each parental area node title on a separate line with link
+        foreach ($result as $record) {
+          $title = t($record->title);
+          $block['content'][$title]['#markup'] = l($title, 'node/' . $record->nid) . '<br>';
+        }
+      }
+      break;
+    case 'node_children': // A block to display a list of teasers of children [nodes only] to current node
+      $block['subject'] = t('Next pages');
+      $menu_link = menu_link_get_preferred(uib_area__get_current_node(), 'area'); // get menu link of the current node
+      if (empty($menu_link)) {
+        $menu_link = uib_area__get_current_menu_link(); // get menu link of current area
+      }
+      $items = menu_navigation_links('area', $menu_link['depth']);
+      if (!empty($items)) {
+        foreach ($items as $menu_item) {
+          $node_title = $menu_item['title'];
+          $teaser_text = '';
+          $tmp = explode('/',$menu_item['href']);
+          $entity_type = trim($tmp[0]);
+          if ($entity_type == 'node') {
+            $node_id = intval($tmp[1]); // cast to integer, just to be sure
+            $query = 'SELECT type FROM {node} WHERE nid = :nid'; // get node type
             $result = db_query($query, array(':nid' => $node_id));
             foreach ($result as $record) {
               $node_type = $record->type;
-              $node_title = $record->title;
             }
-          $entity_type = 'node';
-          if ($node_type == 'area') {
-            $result = db_select('field_revision_field_uib_primary_text', 'f')
-              ->fields('f', array('field_uib_primary_text_value'))
-              ->condition('entity_type', $entity_type)
-              ->condition('bundle', 'uib_area')
-              ->condition('entity_id', $node_id)
-              ->execute()
-              ->fetchCol();
-              if (!empty($result[1])) {
-                $teaser_text = $result[1];
+            // get teaser text
+            if ($node_type == 'area') {
+              $result = db_select('field_revision_field_uib_primary_text', 'f')
+                ->fields('f', array('field_uib_primary_text_value'))
+                ->condition('entity_type', $entity_type)
+                ->condition('bundle', 'uib_area')
+                ->condition('entity_id', $node_id)
+                ->execute()
+                ->fetchCol();
+                if (!empty($result[1])) {
+                  $teaser_text = $result[1];
+                }
               }
+            else { // article (uib_article) or testimonial
+              $result = db_select('field_revision_field_uib_lead', 'f')
+                ->fields('f', array('field_uib_lead_value'))
+                ->condition('entity_type', $entity_type)
+                ->condition('bundle', 'uib_article')
+                ->condition('entity_id', $node_id)
+                ->execute()
+                ->fetchCol();
+                if (!empty($result[1])) {
+                  $teaser_text = $result[1];
+                }
             }
-          else { // article or testimonial
-            $result = db_select('field_revision_field_uib_lead', 'f')
-              ->fields('f', array('field_uib_lead_value'))
-              ->condition('entity_type', $entity_type)
-              ->condition('bundle', 'uib_article')
-              ->condition('entity_id', $node_id)
-              ->execute()
-              ->fetchCol();
-              if (!empty($result[1])) {
-                $teaser_text = $result[1];
-              }
-             }
             $node_title = t($node_title);
-            $block['content'][$node_title]['#markup'] = '<div class="uib-child-teaser">' . l($node_title, $menu_item['#href']) . '<br>';
+            $block['content'][$node_title]['#markup'] = '<div class="uib-child-teaser">' . l($node_title, $menu_item['href']) . '<br>';
             $block['content'][$node_title . '_text']['#markup'] = $teaser_text . '</div>';
           }
         }
       }
-    }
     break;
   }
   return $block;
@@ -404,6 +397,19 @@ function uib_area__get_current() {
 }
 
 /**
+* Function to get current node address
+*    as indicated by node id in URL
+*
+* If no node reference is found in URL, the function returns NULL.
+*/
+function uib_area__get_current_node() {
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    return arg(0) . '/' . arg(1);
+  }
+  return NULL;
+}
+
+/**
 * Function that returns the node id of the current uib_area
 *
 * If no area reference is found, the function returns NULL.
@@ -419,17 +425,30 @@ function uib_area__get_current_nid() {
 }
 
 /**
-* Function that returns the menu item id of the current uib_area
+* Function that returns the menu link for the current uib_area
 *
 * If no area reference or no menu link is found, the function returns NULL.
 */
-function uib_area__get_current_mlid() {
+function uib_area__get_current_menu_link() {
   $ar = uib_area__get_current();
   if (! empty($ar)) {
     $menu_link = menu_link_get_preferred('node/' . $ar->nid, 'area');
     if (!empty($menu_link)) {
-      return $menu_link['mlid'];
+      return $menu_link;
     }
+  }
+  return NULL;
+}
+
+/**
+* Function that returns the menu link item id of the current uib_area
+*
+* If no menu link is found, the function returns NULL.
+*/
+function uib_area__get_current_mlid() {
+  $menu_link = uib_area__get_current_menu_link();
+  if (!empty($menu_link)) {
+    return $menu_link['mlid'];
   }
   return NULL;
 }
