@@ -180,12 +180,10 @@ table.cols-6  {
 /* Calendar */
 
 .view-display-id-block_3 { /* Calendar category */
-  float: none;
-  width: 40%;
+  float: left;
 }
 
 .view-display-id-page_2 { /* Calendar feed */
-  margin-bottom: 30px;
   
   .view-header h3 {
     font-weight: normal;
@@ -208,7 +206,6 @@ table.cols-6  {
 .view-display-id-block_2  { /* Calendar */
   float: none;
   margin-left: 0;
-  width: 100%;
   
   .view-header h3  {
     font-weight: normal;

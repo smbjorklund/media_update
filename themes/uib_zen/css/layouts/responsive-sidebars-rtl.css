@@ -429,23 +429,23 @@
   .view-display-id-block_2 {
     /* Calender */
     float: right;
-    width: 80%;
+    width: 100%;
     margin-right: 0%;
-    margin-left: -80%;
+    margin-left: -100%;
   }
 
   .view-display-id-block_3 {
     float: right;
-    width: 40%;
+    width: 50%;
     margin-right: 0%;
-    margin-left: -40%;
+    margin-left: -50%;
   }
 
   .view-display-id-page_2 {
     float: right;
-    width: 40%;
-    margin-right: 40%;
-    margin-left: -80%;
+    width: 50%;
+    margin-right: 50%;
+    margin-left: -100%;
   }
 }
 /* Bottom region */
