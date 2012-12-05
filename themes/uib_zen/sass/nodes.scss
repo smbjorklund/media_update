@@ -153,25 +153,20 @@
   width: 50%;
 }
 
-/*.field-name-field-uib-bottom-text {
-  width: 70%;
-  float: right;
-}*/
-
 .field-name-field-uib-bottom-text h4, .field-name-field-uib-tertiary-text h4 {
   margin-top: 0;
 }
 
-/*.field-name-field-uib-bottom-media  {
-  float: left;
-  width: 28%;
-  margin-right: 10px;
-}*/
+.field-name-field-uib-bottom-media  {
+  clear: both;
+}
+
 
 /* Two column */
 .group-two-column {
   width: 100%;
   margin-top: 10px;
+  float: none;
 }
 
 .group-two-column .field {
@@ -193,9 +188,9 @@
 
 .field-name-field-uib-profiled-testimonial {
   width: 48%;
+  float: right;
 
   img {
-    float: left;
     margin-right: 10px;
   }
 }
