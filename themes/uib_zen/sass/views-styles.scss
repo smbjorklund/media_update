@@ -220,18 +220,22 @@ table.cols-6  {
   
   .mini-day-on  {
     padding: 5px;
-    background-color: silver;
+    background-color: #DFDFDF;
   }
   
   .has-no-events  {
-    background-color: #DFDFDF;
+    background-color: #F1F1F1;
   }
   
   .date-nav {
     padding-bottom: 0;
   }
   
-  li.date-prev  {
-    background: none;
+  .has-no-events, .mini-day-on {
+    padding: 10px;
+  }
+  
+  .calendar-calendar td {
+    text-align: center;
   }
 }

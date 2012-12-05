@@ -366,7 +366,7 @@ $zen-auto-include-item-base: false;
 }
 /* Calendar */
 @media all and (min-width: 960px) {
-  $zen-column-count: 4;
+  $zen-column-count: 5;
 
   .view-display-id-block_2  { /* Calender */
     @include zen-grid-item (4, 1)

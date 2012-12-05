@@ -204,14 +204,17 @@ table.cols-6 {
 }
 .view-display-id-block_2 .mini-day-on {
   padding: 5px;
-  background-color: silver;
+  background-color: #DFDFDF;
 }
 .view-display-id-block_2 .has-no-events {
-  background-color: #DFDFDF;
+  background-color: #F1F1F1;
 }
 .view-display-id-block_2 .date-nav {
   padding-bottom: 0;
 }
-.view-display-id-block_2 li.date-prev {
-  background: none;
+.view-display-id-block_2 .has-no-events, .view-display-id-block_2 .mini-day-on {
+  padding: 10px;
+}
+.view-display-id-block_2 .calendar-calendar td {
+  text-align: center;
 }
