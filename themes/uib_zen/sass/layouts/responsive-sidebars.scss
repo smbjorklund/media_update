@@ -371,7 +371,14 @@ $zen-auto-include-item-base: false;
   .view-display-id-block_2  { /* Calender */
     @include zen-grid-item (4, 1)
   }
-
+  
+  .view-display-id-block_3  {
+    @include zen-grid-item (2, 1)
+  }
+  
+  .view-display-id-page_2  {
+    @include zen-grid-item (2, 3)
+  }
 }
 
 

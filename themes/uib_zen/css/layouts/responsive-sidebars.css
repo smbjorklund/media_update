@@ -429,6 +429,20 @@
     margin-left: 0%;
     margin-right: -100%;
   }
+
+  .view-display-id-block_3 {
+    float: left;
+    width: 50%;
+    margin-left: 0%;
+    margin-right: -50%;
+  }
+
+  .view-display-id-page_2 {
+    float: left;
+    width: 50%;
+    margin-left: 50%;
+    margin-right: -100%;
+  }
 }
 /* Bottom region */
 @media all and (min-width: 960px) {
