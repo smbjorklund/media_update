@@ -193,6 +193,9 @@ ul.language-switcher-locale-url li.active {
 .uib-menu-style-dropdown .menu li:hover ul {
   display: block;
 }
+.uib-menu-style-dropdown .menu li a {
+  border-left: 1px solid #b9b9b7;
+}
 .uib-menu-style-dropdown .menu .menu {
   width: 14em;
   position: absolute;

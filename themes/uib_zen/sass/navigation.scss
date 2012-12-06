@@ -218,6 +218,9 @@ ul.language-switcher-locale-url li.active {
       &:hover ul {
       display: block;
       }
+      a {
+        border-left: 1px solid #B9B9B7
+      }
     }
      .menu {
       width: 14em;
