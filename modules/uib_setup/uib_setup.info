@@ -95,6 +95,7 @@ features[filter][] = html
 features[filter][] = plain_text
 features[filter][] = restricted_html
 features[filter][] = simple_editor
+features[image][] = content_sidebar
 features[image][] = full_width_16_9
 features[image][] = wide_thumbnail
 features[ldap_servers][] = uib_ldap
