@@ -152,40 +152,27 @@ ul.language-switcher-locale-url li.active {
   margin: 0;
 }
 .uib-menu-style-dropdown .menu li {
-  display: block;
   float: left;
   width: 20%;
+  margin: 0;
+  list-style: none !important;
   background: url("../images/site-menu-bg.png") repeat-x scroll center top transparent;
 }
-.uib-menu-style-dropdown .menu a {
-  color: #333;
-  text-decoration: none;
-}
-.uib-menu-style-dropdown .menu li a {
+.uib-menu-style-dropdown .menu li:hover ul {
   display: block;
-  line-height: 3em;
-}
-.uib-menu-style-dropdown .menu .menu li {
-  width: 100%;
-  font-size: 90%;
-  background: none;
 }
 .uib-menu-style-dropdown .menu li a {
   border-left: 1px solid #B9B9B7;
   font-size: 1em;
   line-height: 2.5;
-  overflow: hidden;
   padding: 0 0 0 1em;
-}
-.uib-menu-style-dropdown .menu li.first a {
-  border-left: none;
-}
-.uib-menu-style-dropdown .menu li:hover ul {
   display: block;
+  color: #333;
+  text-decoration: none;
 }
 .uib-menu-style-dropdown .menu .menu {
   float: left;
-  width: 20%;
+  width: 15em;
   position: absolute;
   padding-top: 10px;
   display: none;
@@ -193,19 +180,17 @@ ul.language-switcher-locale-url li.active {
   z-index: 1;
 }
 .uib-menu-style-dropdown .menu .menu li {
-  margin-right: 0;
+  width: 15em;
+  font-size: 90%;
+  background: none;
 }
 .uib-menu-style-dropdown .menu .menu a {
+  border-bottom: 1px solid #C8D2D4;
   border-left: medium none;
   font-size: 100%;
   line-height: 1.7em;
   padding: 0.4em 0 0.4em 1em;
-}
-.uib-menu-style-dropdown .menu li.last .menu li {
-  width: 17em;
-}
-.uib-menu-style-dropdown .menu .menu a {
-  border-bottom: 1px solid #C8D2D4;
+  width: 15em;
 }
 .uib-menu-style-dropdown .menu .menu a:hover {
   background-color: #AA0000;
@@ -217,6 +202,11 @@ ul.language-switcher-locale-url li.active {
   background: #F1F1EF;
   padding: 6px;
 }
+.uib-menu-style-expanded .menu li {
+  float: left;
+  width: 20%;
+  list-style: none;
+}
 .uib-menu-style-expanded .menu li a {
   font-weight: bold;
   color: #000;
@@ -224,12 +214,10 @@ ul.language-switcher-locale-url li.active {
 .uib-menu-style-expanded .menu li a:hover {
   text-decoration: none;
 }
-.uib-menu-style-expanded .menu li {
-  float: left;
-  width: 20%;
-}
 .uib-menu-style-expanded .menu .menu li {
   width: 100%;
+  font-size: 90%;
+  background: none;
 }
 .uib-menu-style-expanded .menu .menu li a {
   color: #005473;
@@ -237,13 +225,4 @@ ul.language-switcher-locale-url li.active {
 }
 .uib-menu-style-expanded .menu .menu li a:hover {
   text-decoration: underline;
-}
-.uib-menu-style-expanded .menu .menu {
-  margin-top: 6px;
-}
-.uib-menu-style-expanded ul li.expanded {
-  list-style: none;
-}
-.uib-menu-style-expanded ul li.leaf {
-  list-style: none;
 }
