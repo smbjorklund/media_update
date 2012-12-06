@@ -215,3 +215,10 @@ table.cols-6 {
 .view-display-id-block_2 .calendar-calendar td {
   text-align: center;
 }
+
+.view-display-id-page_1 .view-content {
+  float: right;
+}
+.view-display-id-page_1 .view-content h3 {
+  font-size: 2em;
+}

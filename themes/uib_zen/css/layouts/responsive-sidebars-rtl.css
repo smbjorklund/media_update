@@ -467,6 +467,22 @@
     margin-left: -100%;
   }
 }
+/* Newsarchive */
+@media all and (min-width: 960px) {
+  #block-views-recent-news-block-date-selector {
+    float: right;
+    width: 25%;
+    margin-right: 0%;
+    margin-left: -25%;
+  }
+
+  .view-display-id-page_1 {
+    float: right;
+    width: 75%;
+    margin-right: 25%;
+    margin-left: -100%;
+  }
+}
 /* Bottom region */
 @media all and (min-width: 960px) {
   .region-bottom .block {

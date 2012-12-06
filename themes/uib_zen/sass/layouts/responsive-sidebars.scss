@@ -400,6 +400,20 @@ $zen-auto-include-item-base: false;
   }
 }
 
+/* Newsarchive */
+@media all and (min-width: 960px) {
+  $zen-column-count: 4;
+
+  #block-views-recent-news-block-date-selector  {
+    @include zen-grid-item (1, 1)
+  }
+
+  .view-display-id-page_1 {
+    @include zen-grid-item (3, 2)
+  }
+
+}
+
 
 /* Bottom region */
 @media all and (min-width: 960px) {
