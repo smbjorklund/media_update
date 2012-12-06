@@ -144,21 +144,21 @@ ul.language-switcher-locale-url li.active {
   color: white;
 }
 
-.menu {
+.menu-block-top-area-menu .menu {
   padding: 0;
   margin: 0;
 }
-.menu li {
+.menu-block-top-area-menu .menu li {
   float: left;
   width: 20%;
   margin: 0;
   list-style: none !important;
   background: url("../images/site-menu-bg.png") repeat-x scroll center top transparent;
 }
-.menu li:hover ul {
+.menu-block-top-area-menu .menu li:hover ul {
   display: block;
 }
-.menu li a {
+.menu-block-top-area-menu .menu li a {
   font-size: 1em;
   line-height: 2.5;
   padding: 0 0 0 1em;
@@ -166,17 +166,17 @@ ul.language-switcher-locale-url li.active {
   color: #333;
   text-decoration: none;
 }
-.menu .menu {
+.menu-block-top-area-menu .menu .menu {
   padding: 0;
   float: left;
   z-index: 1;
 }
-.menu .menu li {
+.menu-block-top-area-menu .menu .menu li {
   width: 100%;
   font-size: 90%;
   background: none;
 }
-.menu .menu a {
+.menu-block-top-area-menu .menu .menu a {
   font-size: 100%;
   line-height: 1.7em;
   padding: 0.4em 0 0.4em 1em;

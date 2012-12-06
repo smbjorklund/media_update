@@ -169,8 +169,8 @@ ul.language-switcher-locale-url li.active {
   background-color: #a00;
   color: white;
 }
-
-.menu {
+.menu-block-top-area-menu {
+  .menu {
     padding: 0;
     margin: 0;
     li {
@@ -208,6 +208,7 @@ ul.language-switcher-locale-url li.active {
       }
     }
   }
+}
 
 .uib-menu-style-dropdown{
   padding: 0 !important;
