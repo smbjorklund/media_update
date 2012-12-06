@@ -12,6 +12,114 @@ function uib_setup_file_default_displays() {
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
+  $file_display->name = 'image__area_bottom__file_field_file_default';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['image__area_bottom__file_field_file_default'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__area_bottom__file_field_file_rendered';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = array(
+    'file_view_mode' => 'default',
+  );
+  $export['image__area_bottom__file_field_file_rendered'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__area_bottom__file_field_file_table';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['image__area_bottom__file_field_file_table'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__area_bottom__file_field_file_url_plain';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['image__area_bottom__file_field_file_url_plain'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__area_bottom__file_field_media_large_icon';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['image__area_bottom__file_field_media_large_icon'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__area_bottom__file_image';
+  $file_display->weight = 0;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'image_style' => 'area_bottom',
+    'alt' => '[file:field_file_image_alt_text]',
+    'title' => '[file:field_file_image_title_text]',
+  );
+  $export['image__area_bottom__file_image'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__content_sidebar__file_field_file_default';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['image__content_sidebar__file_field_file_default'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__content_sidebar__file_field_file_rendered';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = array(
+    'file_view_mode' => 'default',
+  );
+  $export['image__content_sidebar__file_field_file_rendered'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__content_sidebar__file_field_file_table';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['image__content_sidebar__file_field_file_table'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__content_sidebar__file_field_file_url_plain';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['image__content_sidebar__file_field_file_url_plain'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__content_sidebar__file_field_media_large_icon';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['image__content_sidebar__file_field_media_large_icon'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__content_sidebar__file_image';
+  $file_display->weight = 0;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'image_style' => 'content_sidebar',
+    'alt' => '[file:field_file_image_alt_text]',
+    'title' => '[file:field_file_image_title_text]',
+  );
+  $export['image__content_sidebar__file_image'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
   $file_display->name = 'image__default__file_field_file_default';
   $file_display->weight = 0;
   $file_display->status = FALSE;
@@ -59,6 +167,8 @@ function uib_setup_file_default_displays() {
   $file_display->status = TRUE;
   $file_display->settings = array(
     'image_style' => 'large',
+    'alt' => '[file:field_file_image_alt_text]',
+    'title' => '[file:field_file_image_title_text]',
   );
   $export['image__default__file_image'] = $file_display;
 
