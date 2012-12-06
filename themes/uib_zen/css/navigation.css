@@ -144,25 +144,21 @@ ul.language-switcher-locale-url li.active {
   color: white;
 }
 
-.uib-menu-style-dropdown {
-  padding: 0 !important;
-}
-.uib-menu-style-dropdown .menu {
+.menu {
   padding: 0;
   margin: 0;
 }
-.uib-menu-style-dropdown .menu li {
+.menu li {
   float: left;
   width: 20%;
   margin: 0;
   list-style: none !important;
   background: url("../images/site-menu-bg.png") repeat-x scroll center top transparent;
 }
-.uib-menu-style-dropdown .menu li:hover ul {
+.menu li:hover ul {
   display: block;
 }
-.uib-menu-style-dropdown .menu li a {
-  border-left: 1px solid #B9B9B7;
+.menu li a {
   font-size: 1em;
   line-height: 2.5;
   padding: 0 0 0 1em;
@@ -170,27 +166,46 @@ ul.language-switcher-locale-url li.active {
   color: #333;
   text-decoration: none;
 }
-.uib-menu-style-dropdown .menu .menu {
+.menu .menu {
+  padding: 0;
   float: left;
-  width: 15em;
-  position: absolute;
-  padding-top: 10px;
-  display: none;
-  background: #F1F1EF;
   z-index: 1;
 }
-.uib-menu-style-dropdown .menu .menu li {
-  width: 15em;
+.menu .menu li {
+  width: 100%;
   font-size: 90%;
   background: none;
+}
+.menu .menu a {
+  font-size: 100%;
+  line-height: 1.7em;
+  padding: 0.4em 0 0.4em 1em;
+  width: 100%;
+}
+
+.uib-menu-style-dropdown {
+  padding: 0 !important;
+}
+.uib-menu-style-dropdown .menu {
+  padding: 0;
+  margin: 0;
+}
+.uib-menu-style-dropdown .menu li:hover ul {
+  display: block;
+}
+.uib-menu-style-dropdown .menu .menu {
+  width: 14em;
+  position: absolute;
+  display: none;
+  background: #F1F1EF;
+}
+.uib-menu-style-dropdown .menu .menu li {
+  background: #F1F1EF;
 }
 .uib-menu-style-dropdown .menu .menu a {
   border-bottom: 1px solid #C8D2D4;
   border-left: medium none;
-  font-size: 100%;
-  line-height: 1.7em;
-  padding: 0.4em 0 0.4em 1em;
-  width: 15em;
+  background: #F1F1EF;
 }
 .uib-menu-style-dropdown .menu .menu a:hover {
   background-color: #AA0000;
@@ -206,6 +221,7 @@ ul.language-switcher-locale-url li.active {
   float: left;
   width: 20%;
   list-style: none;
+  background: none;
 }
 .uib-menu-style-expanded .menu li a {
   font-weight: bold;
@@ -213,6 +229,9 @@ ul.language-switcher-locale-url li.active {
 }
 .uib-menu-style-expanded .menu li a:hover {
   text-decoration: none;
+}
+.uib-menu-style-expanded .menu .menu {
+  display: block;
 }
 .uib-menu-style-expanded .menu .menu li {
   width: 100%;

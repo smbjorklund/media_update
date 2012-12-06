@@ -242,11 +242,30 @@ $zen-auto-include-item-base: false;
     li {
       @include zen-grid-item(1, 1);
       float: none;
+      width: 100%;
+        a {
+          font-weight: normal;
+        }
 
       .menu {
         @include zen-grid-item(1, 1);
         display: none;
         position: relative;
+        li {
+          background: none;
+        }
+        a {
+          width: 100%;
+          background: none;
+          border-bottom: 1px solid #C8D2D4;
+          border-left: medium none;
+          background: #F1F1EF;
+          &:hover {
+            background-color: #AA0000;
+            background-image: none;
+            color: #FFFFFF;
+          }
+        }
       }
     }
     li:hover .menu {

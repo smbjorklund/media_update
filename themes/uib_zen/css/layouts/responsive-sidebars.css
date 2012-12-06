@@ -254,6 +254,10 @@
     margin-left: 0%;
     margin-right: -100%;
     float: none;
+    width: 100%;
+  }
+  .menu-block-wrapper ul.menu li a {
+    font-weight: normal;
   }
   .menu-block-wrapper ul.menu li .menu {
     float: left;
@@ -262,6 +266,21 @@
     margin-right: -100%;
     display: none;
     position: relative;
+  }
+  .menu-block-wrapper ul.menu li .menu li {
+    background: none;
+  }
+  .menu-block-wrapper ul.menu li .menu a {
+    width: 100%;
+    background: none;
+    border-bottom: 1px solid #C8D2D4;
+    border-left: medium none;
+    background: #F1F1EF;
+  }
+  .menu-block-wrapper ul.menu li .menu a:hover {
+    background-color: #AA0000;
+    background-image: none;
+    color: #FFFFFF;
   }
   .menu-block-wrapper ul.menu li:hover .menu {
     display: block;

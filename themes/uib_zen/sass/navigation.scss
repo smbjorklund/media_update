@@ -170,10 +170,7 @@ ul.language-switcher-locale-url li.active {
   color: white;
 }
 
-
-.uib-menu-style-dropdown{
-  padding: 0 !important;
-  .menu {
+.menu {
     padding: 0;
     margin: 0;
     li {
@@ -186,7 +183,6 @@ ul.language-switcher-locale-url li.active {
           display: block;
         }
       a {
-        border-left: 1px solid #B9B9B7;
         font-size: 1em;
         line-height: 2.5;
         padding:0 0 0 1em;
@@ -196,25 +192,45 @@ ul.language-switcher-locale-url li.active {
       }
     }
      .menu {
+      padding:0;
       float: left;
-      width: 15em;
-      position: absolute;
-      padding-top: 10px;
-      display: none;
-      background: #F1F1EF;
       z-index: 1;
       li {
-        width: 15em;
+        width: 100%;
         font-size: 90%;
         background: none;
       }
       a {
-        border-bottom: 1px solid #C8D2D4;
-        border-left: medium none;
         font-size: 100%;
         line-height: 1.7em;
         padding: 0.4em 0 0.4em 1em;
-        width: 15em;
+        width: 100%;
+      }
+    }
+  }
+
+.uib-menu-style-dropdown{
+  padding: 0 !important;
+  .menu {
+    padding: 0;
+    margin: 0;
+    li {
+      &:hover ul {
+      display: block;
+      }
+    }
+     .menu {
+      width: 14em;
+      position: absolute;
+      display: none;
+      background: #F1F1EF;
+      li {
+        background: #F1F1EF;
+      }
+      a {
+        border-bottom: 1px solid #C8D2D4;
+        border-left: medium none;
+        background: #F1F1EF;
         &:hover {
           background-color: #AA0000;
           background-image: none;
@@ -233,6 +249,7 @@ ul.language-switcher-locale-url li.active {
       float: left;
       width: 20%;
       list-style: none;
+      background: none;
       a {
         font-weight: bold;
         color: #000;
@@ -242,6 +259,7 @@ ul.language-switcher-locale-url li.active {
       }
     }
     .menu {
+      display: block;
       li {
         width: 100%;
         font-size: 90%;
