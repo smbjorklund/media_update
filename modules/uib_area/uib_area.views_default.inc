@@ -802,13 +802,13 @@ function uib_area_views_default_views() {
   $handler->display->display_options['link_display'] = 'page_1';
 
   /* Display: News archive */
-  $handler = $view->new_display('page', 'News archive', 'page_1');
+  $handler = $view->new_display('page', 'News archive', 'newsarchive');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'News archive';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '30';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
@@ -893,6 +893,7 @@ function uib_area_views_default_views() {
 
   /* Display: Date and year selector */
   $handler = $view->new_display('block', 'Date and year selector', 'block_date_selector');
+  $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['display_description'] = 'Select news by month and year';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
