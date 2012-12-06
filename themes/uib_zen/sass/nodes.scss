@@ -241,7 +241,7 @@
 .view-mode-full .field-name-field-uib-quote  {
   font-size: 1.8em;
   line-height: 1.4em;
-  width: 80%;
+  width: 75%;
   display: block;
   position: relative;
   font-style: italic;
@@ -256,17 +256,8 @@
     font-size: 100px;
     font-family: "Times New Roman", Serif;
     left: -60px;
-    top: 30px;
-  }
-  
-  &:after {
-    font-size: 100px;
-    line-height: auto;
-    content: "\201D";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-family: "Times New Roman", Serif;
+    top: 20px;
+    color: #7F7F7F;
   }
 
   .field-label {
