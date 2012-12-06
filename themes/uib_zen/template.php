@@ -373,3 +373,14 @@ function uib_zen_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+
+/**
+ * template_preprocess_region()
+ * @param $variables
+ *
+ */
+function uib_zen_preprocess_region(&$variables) {
+  if (isset($variables['region']) == 'content_top') {
+    $variables['classes_array'][] = 'clearfix';
+  }
+}
