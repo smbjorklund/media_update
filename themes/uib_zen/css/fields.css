@@ -217,7 +217,7 @@ div.link-field-column {
   background: url("../images/my-content.png") no-repeat 0 4px;
 }
 
-.pane-uib-webdesk-panel-pane-1 h2, .page-webdesk ul.menu li a {
+.pane-uib-webdesk-panel-pane-1 h2 {
   margin-left: 18px;
 }
 
@@ -241,12 +241,7 @@ div.link-field-column {
 }
 
 .page-webdesk ul.menu li {
-  background: url("../images/add.png");
-  background-repeat: no-repeat;
-}
-
-.page-webdesk ul.menu li {
-  list-style: none;
+  margin: 0 0 0 18px;
 }
 
 .page-webdesk #main #content {
