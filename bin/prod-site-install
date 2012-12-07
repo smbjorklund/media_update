@@ -21,7 +21,6 @@ if [ -e sites/$SITE_DIR ]; then
 fi
 
 mkdir -p ../var/private || exit 1
-chmod 777 ../var/private || exit 1
 
 set -x
 drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --site-mail="w3@it.uib.no" --site-name="Universitetet i Bergen" --account-name=admin --account-mail="w3@it.uib.no" --account-pass=admin --clean-url --verbose --yes || exit 1
@@ -41,8 +40,6 @@ cd sites/$SITE_DIR || exit 1
 chmod u+w . settings.php
 
 # todo fix correct owner|perm
-find files -type d | xargs chmod 777
-find files -type f | xargs chmod 666
 
 cat <<'EOT' >>settings.php
 
