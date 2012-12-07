@@ -4,7 +4,14 @@
 
 # First parameter is site, eg. 'w3.uib.no'
 # set DATABASE as an enviroment variable before calling this script
+
+if [ "$1" = "" ]; then
+  echo First parameter is site, eg. 'w3.uib.no'
+  echo set DATABASE as an enviroment variable before calling this script
+  exit 1
+fi
 echo $PWD
+FILE_DIR='/nettapp_w3/sites'
 
 SITE_DIR=${1:-uib.no}
 PROFILE="uib"
@@ -13,14 +20,21 @@ if [ "$DATABASE" = "" ]; then
   exit 1
 fi
 
-cd drupal || exit 1
+if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
+  ln -s /nettapp_w3/sites/$SITE_DIR/files .   || ( echo Can not find $FILE_DIR/$SITE_DIR/files   ; exit 1 )
+  ln -s /nettapp_w3/sites/$SITE_DIR/private . || ( echo Can not find $FILE_DIR/$SITE_DIR/private ; exit 1 )
+else
+  mkdir --verbose -p ../var/private || exit 1
+  mkdir --verbose -p ../var/files   || exit 1
+  sudo chown -R apache:apache ../var/files ../var/private
+fi
+
+cd drupal || ( echo No drupal-dir ; exit 1 )
 
 if [ -e sites/$SITE_DIR ]; then
     echo "drupal/sites/$SITE_DIR already exists, aborting."
     exit 1
 fi
-
-mkdir -p ../var/private || exit 1
 
 set -x
 drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --site-mail="w3@it.uib.no" --site-name="Universitetet i Bergen" --account-name=admin --account-mail="w3@it.uib.no" --account-pass=admin --clean-url --verbose --yes || exit 1
