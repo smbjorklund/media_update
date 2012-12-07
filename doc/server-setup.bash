@@ -21,7 +21,7 @@ exclude=postgresql*
 #gpgcheck = 0
 EOF
 yum clean all
-yum install -yq postgresql91.x86_64 postgresql91-libs.x86_64
-yum install -yq munin-node git
-yum install -yq httpd php php-pgsql php-domxml-php4-php5 php-gd php-mbstring php-ldap
-yum install -yq no.uib.it-drush-7x no.uib.it-php.uib
+yum install -y -q postgresql91.x86_64 postgresql91-libs.x86_64
+yum install -y -q munin-node git
+yum install -y -q httpd php php-pgsql php-domxml-php4-php5 php-gd php-mbstring php-ldap
+yum install -y -q no.uib.it-drush-7x no.uib.it-php.uib
