@@ -1,0 +1,90 @@
+#!/bin/bash
+
+# Parameters to this script
+
+# First parameter is site, eg. 'w3.uib.no'
+# set DATABASE as an enviroment variable before calling this script
+echo $PWD
+
+SITE_DIR=${1:-uib.no}
+PROFILE="uib"
+if [ "$DATABASE" = "" ]; then
+  echo "DATABASE missing as environment. Use export DATABASE=pgsql://w3_admin:PWD@w3.pg.uib.no/w3"
+  exit 1
+fi
+
+cd drupal || exit 1
+
+if [ -e sites/$SITE_DIR ]; then
+    echo "drupal/sites/$SITE_DIR already exists, aborting."
+    exit 1
+fi
+
+mkdir -p ../var/private || exit 1
+chmod 777 ../var/private || exit 1
+
+set -x
+drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --site-mail="w3@it.uib.no" --site-name="Universitetet i Bergen" --account-name=admin --account-mail="w3@it.uib.no" --account-pass=admin --clean-url --verbose --yes || exit 1
+
+# The installer sometimes override variables that we try to enforce with uib_setup.
+# Fix that by explictly reverting those changes.
+drush -l http://$SITE_DIR features-revert --yes uib_setup
+
+cat <<EOT >sites/default/settings.php
+No default site.  You need to visit <a href="http://$SITE_DIR">$SITE_DIR</a> instead.
+<?php
+exit;
+EOT
+
+cd sites/$SITE_DIR || exit 1
+
+chmod u+w . settings.php
+
+# todo fix correct owner|perm
+find files -type d | xargs chmod 777
+find files -type f | xargs chmod 666
+
+cat <<'EOT' >>settings.php
+
+/**
+  * Even more PHP settings.
+  */
+ini_set('memory_limit', '256M');
+EOT
+
+cat <<'EOT' >>drushrc.php
+<?php
+$options['structure-tables'] = array(
+    'common' => array(
+       'cache', 'cache_block', 'cache_bootstrap', 'cache_field', 'cache_filter',
+       'cache_form', 'cache_image', 'cache_menu', 'cache_page', 'cache_path', 'cache_update',
+       'history', 'sessions', 'watchdog',
+    ),
+);
+EOT
+(cd ../../.. && rm -f site && ln -s drupal/sites/$SITE_DIR site)
+
+# todo: do we need this on prod?
+# (cd ../../.. && bin/sql-dump $SITE_DIR)
+#git init
+#git add settings.php drushrc.php dump.sql
+#git commit -m "site-install"
+#git branch -m master site/$SITE_DIR
+#git remote add origin git@git.uib.no:site/w3.uib.no.git
+#set +x
+#echo "Run 'cd site && git push origin site/$SITE_DIR' to upload"
+
+cd ../../..
+
+# import all of jur/hr
+bin/site-drush --yes vset uib_test_dir ALL
+bin/site-drush mi --all --verbose --strict=0 --area_subset=uib_areas_subset_jurhf.txt
+
+# build menu
+bin/site-drush uib-migrate-build-menu --verbose
+
+# enable uib_prod
+bin/site-drush pm-enable --yes uib_prod
+
+# sync some users, areas from sebra, etc
+sh -x bin/update-some-stuff
