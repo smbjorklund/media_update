@@ -545,6 +545,7 @@ function uib_webdesk_user_default_permissions() {
     'roles' => array(
       0 => 'level 1',
       1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -586,6 +587,7 @@ function uib_webdesk_user_default_permissions() {
     'roles' => array(
       0 => 'level 1',
       1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
