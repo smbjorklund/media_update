@@ -351,7 +351,7 @@ function uib_area_field_default_fields() {
           'label' => 'hidden',
           'module' => 'file_entity',
           'settings' => array(
-            'file_view_mode' => 'default',
+            'file_view_mode' => 'area_bottom',
           ),
           'type' => 'file_rendered',
           'weight' => '7',
