@@ -31,7 +31,7 @@ function uib_area_context_default_contexts() {
       'values' => array(
         'area_map' => 'area_map',
         'calendar' => 'calendar',
-        'recent_news:page_1' => 'recent_news:page_1',
+        'recent_news:newsarchive' => 'recent_news:newsarchive',
       ),
     ),
   );
@@ -49,12 +49,6 @@ function uib_area_context_default_contexts() {
           'delta' => 'area_parents',
           'region' => 'sidebar_second',
           'weight' => '-10',
-        ),
-        'menu_block-page-area-brief-menu' => array(
-          'module' => 'menu_block',
-          'delta' => 'page-area-brief-menu',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
         ),
         'views-calendar-block_1' => array(
           'module' => 'views',
