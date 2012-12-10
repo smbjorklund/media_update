@@ -408,6 +408,9 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 960px) {
   $zen-column-count: 4;
 
+  .field-name-field-uib-important-message {
+    @include zen-grid-item (4, 1)
+  }
   .field-name-field-uib-primary-media {
      @include zen-grid-item (2, 1)
   }
@@ -426,6 +429,7 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2)
   }
+
 }
 /* Calendar */
 @media all and (min-width: 960px) {
@@ -439,7 +443,7 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (2, 1)
   }
   
-  .view-display-id-page_2  {
+  .view-display-id-page_4, .view-display-id-page_2  {
     @include zen-grid-item (2, 3)
   }
 }
