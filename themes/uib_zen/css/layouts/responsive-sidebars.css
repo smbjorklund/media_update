@@ -77,8 +77,109 @@
     width: 100%;
   }
 }
+/* Mobile */
+@media all and (min-width: 250px) and (max-width: 720px) {
+  #global-menu ul li a {
+    font-size: 7px;
+    padding: 18px 4px 10px 4px;
+  }
+
+  .menu-block-wrapper ul.menu li {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    float: none;
+    width: 100%;
+  }
+  .menu-block-wrapper ul.menu li a {
+    font-weight: normal;
+  }
+  .menu-block-wrapper ul.menu li .menu {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    display: none;
+    position: relative;
+  }
+  .menu-block-wrapper ul.menu li .menu li {
+    background: none;
+  }
+  .menu-block-wrapper ul.menu li .menu a {
+    width: 100%;
+    background: none;
+    border-bottom: 1px solid #C8D2D4;
+    border-left: medium none;
+    background: #F1F1EF;
+  }
+  .menu-block-wrapper ul.menu li .menu a:hover {
+    background-color: #AA0000;
+    background-image: none;
+    color: #FFFFFF;
+  }
+  .menu-block-wrapper ul.menu li:hover .menu {
+    display: block;
+  }
+
+  .region-bottom {
+    width: 100% !important;
+  }
+}
+/* Area mobile */
+@media all and (min-width: 250px) and (max-width: 720px) {
+  .field-name-field-uib-primary-media {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    width: 100%;
+  }
+
+  .field-name-field-uib-primary-text {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    float: none;
+  }
+
+  .field-name-secondary-text {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+  }
+
+  .field-name-profiled-article {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+  }
+
+  .field-name-field-uib-bottom-media {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+  }
+
+  .field-name-field-uib-bottom-text {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-left: 100%;
+    margin-right: -200%;
+  }
+}
 /* Tablet */
-@media all and (min-width: 480px) and (max-width: 959px) {
+@media all and (min-width: 720px) and (max-width: 959px) {
   /*
    * Use 3 grid columns for smaller screens.
    */
@@ -193,7 +294,7 @@
     margin-right: -75%;
   }
 }
-@media all and (min-width: 480px) and (max-width: 959px) and all and (min-width: 480px) and (max-width: 959px) {
+@media all and (min-width: 720px) and (max-width: 959px) and (min-width: 720px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
   }
@@ -214,6 +315,7 @@
   }
   .sidebar-second .region-sidebar-second {
     /* Span 1 column, starting in 3rd column from left. */
+    clear: left;
     float: left;
     width: 100%;
     margin-left: 0%;
@@ -226,7 +328,7 @@
     width: 100%;
   }
 }
-@media all and (min-width: 480px) and (max-width: 959px) and all and (min-width: 480px) and (max-width: 959px) {
+@media all and (min-width: 720px) and (max-width: 959px) and (min-width: 720px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
   }
@@ -239,55 +341,6 @@
   }
   .sidebar-second .region-sidebar-second {
     float: none;
-  }
-}
-/* Mobile */
-@media all and (min-width: 250px) and (max-width: 720px) {
-  #global-menu ul li a {
-    font-size: 7px;
-    padding: 18px 4px 10px 4px;
-  }
-
-  .menu-block-wrapper ul.menu li {
-    float: left;
-    width: 100%;
-    margin-left: 0%;
-    margin-right: -100%;
-    float: none;
-    width: 100%;
-  }
-  .menu-block-wrapper ul.menu li a {
-    font-weight: normal;
-  }
-  .menu-block-wrapper ul.menu li .menu {
-    float: left;
-    width: 100%;
-    margin-left: 0%;
-    margin-right: -100%;
-    display: none;
-    position: relative;
-  }
-  .menu-block-wrapper ul.menu li .menu li {
-    background: none;
-  }
-  .menu-block-wrapper ul.menu li .menu a {
-    width: 100%;
-    background: none;
-    border-bottom: 1px solid #C8D2D4;
-    border-left: medium none;
-    background: #F1F1EF;
-  }
-  .menu-block-wrapper ul.menu li .menu a:hover {
-    background-color: #AA0000;
-    background-image: none;
-    color: #FFFFFF;
-  }
-  .menu-block-wrapper ul.menu li:hover .menu {
-    display: block;
-  }
-
-  .region-bottom {
-    width: 100% !important;
   }
 }
 /* Desktop */
