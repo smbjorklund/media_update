@@ -44,6 +44,7 @@ features[field][] = node-area-field_uib_bottom_media
 features[field][] = node-area-field_uib_bottom_text
 features[field][] = node-area-field_uib_content_manager
 features[field][] = node-area-field_uib_feed
+features[field][] = node-area-field_uib_important_message
 features[field][] = node-area-field_uib_link_section
 features[field][] = node-area-field_uib_logo
 features[field][] = node-area-field_uib_media

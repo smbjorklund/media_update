@@ -216,6 +216,7 @@ function uib_area_field_group_info() {
       2 => 'field_uib_profiled_article',
       3 => 'field_uib_secondary_text',
       4 => 'field_uib_social_media',
+      5 => 'field_uib_important_message',
     ),
     'format_type' => 'div',
     'format_settings' => array(

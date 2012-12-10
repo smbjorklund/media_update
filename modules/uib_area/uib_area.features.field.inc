@@ -666,6 +666,99 @@ function uib_area_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-area-field_uib_important_message'.
+  $fields['node-area-field_uib_important_message'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_important_message',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'area',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '24',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_important_message',
+      'label' => 'Important message',
+      'required' => 0,
+      'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 0,
+            'full_html' => 'full_html',
+            'plain_text' => 0,
+            'restricted_html' => 'restricted_html',
+          ),
+          'allowed_formats_toggle' => 1,
+          'default_order_toggle' => 1,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-49',
+              ),
+              'full_html' => array(
+                'weight' => '-48',
+              ),
+              'plain_text' => array(
+                'weight' => '-47',
+              ),
+              'restricted_html' => array(
+                'weight' => '-50',
+              ),
+            ),
+          ),
+        ),
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '3',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '21',
+      ),
+    ),
+  );
+
   // Exported field: 'node-area-field_uib_link_section'.
   $fields['node-area-field_uib_link_section'] = array(
     'field_config' => array(
@@ -691,7 +784,7 @@ function uib_area_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'field_collection',
           'settings' => array(
             'add' => 'Add',
@@ -1152,7 +1245,7 @@ function uib_area_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '10',
+        'weight' => '22',
       ),
     ),
   );
@@ -1250,7 +1343,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '11',
+        'weight' => '23',
       ),
     ),
   );
@@ -1335,7 +1428,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '13',
+        'weight' => '25',
       ),
     ),
   );
@@ -1674,7 +1767,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '12',
+        'weight' => '24',
       ),
     ),
   );
@@ -1837,7 +1930,7 @@ function uib_area_field_default_fields() {
           'size' => '30',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '26',
       ),
     ),
   );
@@ -2857,6 +2950,7 @@ function uib_area_field_default_fields() {
   t('Fax');
   t('ID w2');
   t('Illustration that goes together with the bottom text.');
+  t('Important message');
   t('Jobbnorge ID');
   t('Links');
   t('List of users that should manage content for this area.  The users must also be set up with level 2 or level 3 access for content management to be possible.');
