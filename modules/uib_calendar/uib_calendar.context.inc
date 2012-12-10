@@ -30,14 +30,14 @@ function uib_calendar_context_default_contexts() {
         'views-calendar-block_2' => array(
           'module' => 'views',
           'delta' => 'calendar-block_2',
-          'region' => 'content_top',
-          'weight' => '-19',
+          'region' => 'content',
+          'weight' => '-10',
         ),
         'views-calendar-block_3' => array(
           'module' => 'views',
           'delta' => 'calendar-block_3',
-          'region' => 'content_top',
-          'weight' => '-18',
+          'region' => 'content',
+          'weight' => '-9',
         ),
       ),
     ),
