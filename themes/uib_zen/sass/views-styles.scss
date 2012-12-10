@@ -181,6 +181,11 @@ table.cols-6  {
 
 .view-display-id-block_3 { /* Calendar category */
   float: left;
+  
+  .item-list ul li  {
+    float: left;
+    width: 120px;
+  }
 }
 
 .view-display-id-page_2 { /* Calendar feed */
