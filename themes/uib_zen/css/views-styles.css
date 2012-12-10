@@ -197,6 +197,10 @@ table.cols-6 {
   right: 290px;
 }
 
+.view .date-nav-wrapper .date-heading h3 {
+  font-size: 1em;
+}
+
 .view-display-id-block_2 {
   /* Calendar */
   float: none;
