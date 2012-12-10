@@ -188,7 +188,8 @@ table.cols-6  {
   }
 }
 
-.view-display-id-page_2 { /* Calendar feed */
+.view-display-id-page_2, .view-display-id-page_4 { /* Calendar feed */
+  margin-top: 15px;
   
   .view-header h3 {
     font-weight: normal;

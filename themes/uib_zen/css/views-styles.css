@@ -175,23 +175,24 @@ table.cols-6 {
   width: 120px;
 }
 
-.view-display-id-page_2 {
+.view-display-id-page_2, .view-display-id-page_4 {
   /* Calendar feed */
+  margin-top: 15px;
 }
-.view-display-id-page_2 .view-header h3 {
+.view-display-id-page_2 .view-header h3, .view-display-id-page_4 .view-header h3 {
   font-weight: normal;
   padding-bottom: 0;
 }
-.view-display-id-page_2 .date-nav {
+.view-display-id-page_2 .date-nav, .view-display-id-page_4 .date-nav {
   padding-bottom: 0;
 }
-.view-display-id-page_2 .date-prev li {
+.view-display-id-page_2 .date-prev li, .view-display-id-page_4 .date-prev li {
   background: red;
 }
-.view-display-id-page_2 .view-content h3 {
+.view-display-id-page_2 .view-content h3, .view-display-id-page_4 .view-content h3 {
   font-weight: normal;
 }
-.view-display-id-page_2 .date-nav-wrapper .date-prev {
+.view-display-id-page_2 .date-nav-wrapper .date-prev, .view-display-id-page_4 .date-nav-wrapper .date-prev {
   left: 0;
   right: 290px;
 }
