@@ -20,6 +20,10 @@ if [ "$DATABASE" = "" ]; then
   exit 1
 fi
 
+find . -type d | xargs chmod g+s .
+chgrp ansatt .
+chmod -R g+w .
+
 if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
   ln -s /nettapp_w3/sites/$SITE_DIR/files .   || ( echo Can not find $FILE_DIR/$SITE_DIR/files   ; exit 1 )
   ln -s /nettapp_w3/sites/$SITE_DIR/private . || ( echo Can not find $FILE_DIR/$SITE_DIR/private ; exit 1 )
