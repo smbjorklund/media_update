@@ -9,6 +9,35 @@ function xtopic_cleanup($text) {
 }
 
 /**
+ * Fixes urls in the format ala: '../../../../fof/..'
+ *
+ * @param $text
+ *
+ * @returns modified text
+ *
+ */
+function xtopic_fixuri($text) {
+  global $tot_count_uri;
+
+  if (!isset($tot_count_uri))
+    $tot_count_uri = 0;
+
+  $host = 'www.uib.no';
+	$search=array('/ href="(\.\.\/)+(.+)/i',     // match ' href=(../)+'
+		      );
+	$replace=array(" href=\"http://$host/\\2",   // prepend ' href="http://$host/'
+		   );
+
+	$res = preg_replace($search, $replace, $text, -1, $count);
+
+  if ($count) {
+    $tot_count_uri += $count;
+    uibx_log("Fixed $tot_count_uri uris in text blocks");
+  }
+  return $res;
+}
+
+/**
  * Returns the Drupal file object matching the given XTopic file object.
  *
  * @param $id
@@ -137,6 +166,8 @@ abstract class XTopicToArticleMigration extends Migration {
     if (isset($row->text)) {
       $clean_text = xtopic_cleanup($row->text);
       $row->text = $clean_text;
+
+      $row->text = xtopic_fixuri($row->text);
     }
   }
 
@@ -417,6 +448,13 @@ class AreaMigration extends Migration {
     if ($row->state != 'published') {
       return FALSE;
     }
+
+    if (isset($row->profiletext)) {
+      $row->profiletext = xtopic_fixuri($row->profiletext);
+    }
+    if (isset($row->text)) {
+      $row->text = xtopic_fixuri($row->text);
+    }
   }
 
   public function prepare($term, $row) {
@@ -440,7 +478,6 @@ class AreaMigration extends Migration {
         'display' => 1,
       );
     }
-
   }
 
   public function complete($node, $row) {
