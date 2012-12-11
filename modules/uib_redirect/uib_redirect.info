@@ -1,4 +1,4 @@
-name = Redirect
+name = UiB Redirect
 core = 7.x
 package = UiB
 php = 5.2.4
