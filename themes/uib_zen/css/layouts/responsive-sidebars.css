@@ -79,9 +79,45 @@
 }
 /* Mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
-  #global-menu ul li a {
+  #global-header {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+  }
+  #global-header #global-menu ul li a {
     font-size: 7px;
     padding: 18px 4px 10px 4px;
+  }
+  #global-header #global-searchform form {
+    float: left !important;
+  }
+  #global-header #global-searchform form input[type='text'] {
+    background: #ededed url(../../images/search.png) no-repeat 1px;
+    background-size: 18px 19px;
+    width: 12px;
+    padding-left: 10px;
+    color: transparent;
+    cursor: pointer;
+  }
+  #global-header #global-searchform form input[type='text']:hover {
+    background-color: #fff;
+  }
+  #global-header #global-searchform form input[type='image'] {
+    display: none;
+  }
+  #global-header #global-searchform form input[type='text']:focus {
+    width: 60px;
+    padding-left: 32px;
+    color: #000;
+    background-color: #fff;
+    cursor: auto;
+  }
+  #global-header #global-searchform form input:-moz-placeholder {
+    color: transparent;
+  }
+  #global-header #global-searchform form input::-webkit-input-placeholder {
+    color: transparent;
   }
 
   .menu-block-wrapper ul.menu li {
@@ -322,7 +358,7 @@
     margin-right: -75%;
   }
 }
-@media all and (min-width: 720px) and (max-width: 959px) and (min-width: 720px) and (max-width: 959px) {
+@media all and (min-width: 720px) and (max-width: 959px) and all and (min-width: 720px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
     max-width: 722px;
@@ -375,7 +411,7 @@
     width: 100%;
   }
 }
-@media all and (min-width: 720px) and (max-width: 959px) and (min-width: 720px) and (max-width: 959px) {
+@media all and (min-width: 720px) and (max-width: 959px) and all and (min-width: 720px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
   }
