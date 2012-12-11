@@ -23,6 +23,7 @@ dependencies[] = pathauto
 dependencies[] = strongarm
 dependencies[] = token
 dependencies[] = uib_field
+dependencies[] = uib_h2tabs
 dependencies[] = uib_media
 dependencies[] = views
 dependencies[] = views_bulk_operations

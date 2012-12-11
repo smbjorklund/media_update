@@ -1,0 +1,92 @@
+<?php
+/**
+ * @file
+ * Module file for uib_h2tabs
+ */
+
+/**
+ * Implements hook_filter_info().
+ *
+  */
+function uib_h2tabs_filter_info() {
+  $filters['filter_h2'] = array(
+    'title' => t('h2 to tabs in articles'),
+    'description' => t('Headers of type &lt;h2&gt; will be replaced with tabs.'),
+    'prepare callback' => '_uib_h2tabs_filter_h2_prepare',
+    'process callback' => '_uib_h2tabs_filter_h2_process',
+    'tips callback' => '_uib_h2tabs_filter_h2_tips',
+  );
+  return $filters;
+}
+
+/**
+ * prepare callback.
+ *
+ */
+function _uib_h2tabs_filter_h2_prepare($text, $filter) {
+  return $text; // do not prepare
+}
+
+/**
+ * process callback.
+ *
+ * do the real filtering. Note that themes/uib_zen/sass/nodes.scss has corresponding formatting
+ */
+function _uib_h2tabs_filter_h2_process($text, $filter) {
+  // Make sure that we are dealing with an uib_article
+  $node_type = uib_area__get_node_type();
+  if ($node_type == 'uib_article') {
+    // Recode markup
+    $h2s = array();
+    $e = preg_match_all('/<h2.*?>(.*?)<\/h2>/', $text, $h2s, PREG_OFFSET_CAPTURE);
+    if ($e !== FALSE) {
+      $hits_index = count($h2s[1]) -1;
+      // Table of contents
+      $toc = "<ul>
+        ";
+      for ($i = 0; $i < $hits_index; $i++) {
+        $javascript = "javascript: ";
+        for ($j = 0; $j < $hits_index; $j++) {
+          if ($j == $i) {
+            $javascript .= "document.getElementById('tab$j').style.display = 'block';";
+          }
+          else {
+            $javascript .= "document.getElementById('tab$j').style.display = 'none';";
+          }
+        }
+        $toc .= "<li id=\"t$i\"><a href=\"#t$i\" onclick=\"$javascript\">" . $h2s[1][$i][0] . "</a></li>
+        ";
+      }
+      $toc .= "</ul>
+      ";
+      // Tabs contents
+      $tabs_contents = '';
+      for ($i = $hits_index; $i >= 0; $i--) { // loop backwards through hits
+        $add_markup = "<div id=\"tab$i\">
+        ";
+        // Use the content of the h2, i.e. the contents of the first captured pattern
+        $pos_match = $h2s[0][$i][1]; // position of match in text
+        $pos_after = $h2s[0][$i][1] + strlen($h2s[0][$i][0]); // position in text after matched h2
+        $add_markup .= substr($text,$pos_after);
+        $text = substr($text, 0 ,$pos_match); // remove this portion from text
+        $add_markup .= "
+        </div>
+        ";
+        $tabs_contents = $add_markup . $tabs_contents;
+      }
+      return $text . "
+        <div class=\"uib-tabs-container\">
+        " . $toc . $tabs_contents . "
+        </div>";
+    }
+  }
+  return $text;
+}
+
+/**
+ * Filter tips callback for time filter.
+ *
+ */
+function _uib_h2tabs_filter_h2_tips($filter, $format, $long = FALSE) {
+  return t('<em>&lt;h2&gt;</em> is replaced with tabs.');
+}

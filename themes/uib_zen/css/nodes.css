@@ -287,3 +287,38 @@
   font-size: 1em;
   color: #333;
 }
+
+/* styles for tabs recoded from <h2> headers [module uib_h2tabs] */
+.uib-tabs-container {
+  width: 100%;
+}
+.uib-tabs-container ul {
+  list-style: none;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #C8D2D4;
+  padding: 0 0 10px 0;
+}
+.uib-tabs-container ul li {
+  display: inline;
+}
+.uib-tabs-container ul li > a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  color: #AA0000;
+  background-color: #FFFFFF;
+}
+.uib-tabs-container ul li > a:hover {
+  color: #FFFFFF;
+  background-color: #555555;
+}
+.uib-tabs-container ul > li:target > a {
+  color: #FFFFFF;
+  background-color: #AA0000;
+}
+.uib-tabs-container > div {
+  display: none;
+  background-color: #FFFFFF;
+}
+
+/* end of styles for tabs */

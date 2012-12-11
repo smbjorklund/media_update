@@ -410,6 +410,30 @@ function uib_area__get_current_node() {
 }
 
 /**
+* Function to get the node type of an indicated node ('node/nid'), or
+*    the current node as indicated by node id in URL
+*
+* If no node or node type is found, the function returns NULL.
+*/
+function uib_area__get_node_type($node = NULL) {
+  if (empty($node)) {
+    $node = uib_area__get_current_node();
+  }
+  if (!empty($node)) {
+    $tmp = explode('/',$node);
+    if (is_numeric($tmp[1])) {
+      $query = 'SELECT type FROM {node} WHERE nid = :nid'; // get node type
+      $result = db_query($query, array(':nid' => $tmp[1]));
+      foreach ($result as $record) {
+        return $record->type;
+      }
+    }
+  }
+  return NULL;
+}
+
+
+/**
 * Function that returns the node id of the current uib_area
 *
 * If no area reference is found, the function returns NULL.
