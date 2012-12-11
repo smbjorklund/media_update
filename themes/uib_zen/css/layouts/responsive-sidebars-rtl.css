@@ -82,7 +82,7 @@
   }
 }
 /* Mobile */
-@media all and (min-width: 250px) and (max-width: 720px) {
+@media all and (min-width: 240px) and (max-width: 720px) {
   #global-menu ul li a {
     font-size: 7px;
     padding: 18px 4px 10px 4px;
@@ -131,7 +131,7 @@
   }
 }
 /* Area mobile */
-@media all and (min-width: 250px) and (max-width: 720px) {
+@media all and (min-width: 240px) and (max-width: 720px) {
   .field-name-field-uib-primary-media {
     clear: right;
     float: right;
@@ -298,7 +298,7 @@
     margin-left: -75%;
   }
 }
-@media all and (min-width: 720px) and (max-width: 959px) and all and (min-width: 720px) and (max-width: 959px) {
+@media all and (min-width: 720px) and (max-width: 959px) and (min-width: 720px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
   }
@@ -332,7 +332,7 @@
     width: 100%;
   }
 }
-@media all and (min-width: 720px) and (max-width: 959px) and all and (min-width: 720px) and (max-width: 959px) {
+@media all and (min-width: 720px) and (max-width: 959px) and (min-width: 720px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
   }

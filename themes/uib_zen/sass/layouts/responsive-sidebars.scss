@@ -97,7 +97,7 @@ $zen-auto-include-item-base: false;
 
 
 /* Mobile */
-@media all and (min-width: 250px) and (max-width: 720px) {
+@media all and (min-width: 240px) and (max-width: 720px) {
 
   $zen-column-count: 1;
 
@@ -148,7 +148,7 @@ $zen-auto-include-item-base: false;
 }
 
 /* Area mobile */
-@media all and (min-width: 250px) and (max-width: 720px) {
+@media all and (min-width: 240px) and (max-width: 720px) {
   $zen-column-count: 1;
   
   .field-name-field-uib-primary-media {
