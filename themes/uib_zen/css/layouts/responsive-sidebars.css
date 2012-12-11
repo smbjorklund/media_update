@@ -181,7 +181,7 @@
 /* Tablet */
 @media all and (min-width: 720px) and (max-width: 959px) {
   /*
-   * Use 3 grid columns for smaller screens.
+   * Use 4 grid columns for smaller screens.
    */
   /*
    * The layout when there is only one sidebar, the left one.
@@ -221,6 +221,7 @@
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
+    max-width: 722px;
   }
   .sidebar-second .group-article-main {
     float: left;
@@ -297,6 +298,23 @@
 @media all and (min-width: 720px) and (max-width: 959px) and (min-width: 720px) and (max-width: 959px) {
   .sidebar-second #content {
     float: none;
+    max-width: 722px;
+    margin: auto;
+  }
+  .sidebar-second .field-name-field-uib-primary-media {
+    float: left;
+    width: 50%;
+    margin-left: 0%;
+    margin-right: -50%;
+  }
+  .sidebar-second .field-name-field-uib-primary-text {
+    float: left;
+    width: 50%;
+    margin-left: 50%;
+    margin-right: -100%;
+  }
+  .sidebar-second .field-name-field-uib-secondary-text {
+    clear: left;
   }
   .sidebar-second .field-name-field-uib-secondary-text li {
     width: 30%;

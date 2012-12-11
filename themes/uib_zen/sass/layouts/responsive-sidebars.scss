@@ -190,8 +190,9 @@ $zen-auto-include-item-base: false;
 /* Tablet */
 @media all and (min-width: 720px) and (max-width: 959px) {
   /*
-   * Use 3 grid columns for smaller screens.
+   * Use 4 grid columns for smaller screens.
    */
+  $zen-gutter-width:  20px;
   $zen-column-count: 4;
 
   /*
@@ -215,10 +216,12 @@ $zen-auto-include-item-base: false;
   .sidebar-second {
     #content { /* Span 2 columns, starting in 1st column from left. */
       @include zen-grid-item(4, 1);
+      
     }
 
     .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
       @include zen-grid-item(4, 1);
+      max-width: 722px;
     }
 
 
@@ -229,20 +232,32 @@ $zen-auto-include-item-base: false;
 
     #content  {
         float: none;
+        max-width: 722px;
+        margin: auto;
       }
-
+      
+      .field-name-field-uib-primary-media  {
+        @include zen-grid-item (2, 1);
+      }
+      
+      .field-name-field-uib-primary-text {
+        @include zen-grid-item (2, 3);
+      }
+      
       .field-name-field-uib-secondary-text {
+        @include zen-clear();
+
         li {
           width:30%;
         }
       }
 
       .field-name-field-uib-bottom-media  {
-        @include zen-grid-item (1, 1)
+        @include zen-grid-item (1, 1);
       }
 
       .field-name-field-uib-bottom-text {
-        @include zen-grid-item (3, 2)
+        @include zen-grid-item (3, 2);
       }
 
       .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
@@ -252,6 +267,7 @@ $zen-auto-include-item-base: false;
 
       .region-sidebar-second {
         float: none;
+
       }
       .region-bottom {
         width: 100%;
