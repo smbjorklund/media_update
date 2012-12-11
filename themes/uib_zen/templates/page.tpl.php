@@ -83,8 +83,10 @@
       </nav>
       <div id="global-searchform">
         <form method="get" action="http://www.uib.no/search">
-          <input type="text" id="searchField" name="q" value="" autocomplete="off">
-          <input type="submit" value="Search">
+          <div class="searchbox">
+            <p><input type="text" id="searchField" name="q" value="" autocomplete="off"></p>
+            <p><input type="image" src="<?php echo  drupal_get_path('theme', 'uib_zen'); ?>/images/submit.gif" value="Search"></p>
+          </div>
         </form>
       </div>
     </div>

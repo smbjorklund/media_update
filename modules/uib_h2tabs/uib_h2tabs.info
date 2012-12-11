@@ -1,0 +1,5 @@
+name = UIB_h2tabs
+description = Contains recodings for article second level headers to tabs
+package = UiB
+core = 7.x
+dependencies[] = uib_area

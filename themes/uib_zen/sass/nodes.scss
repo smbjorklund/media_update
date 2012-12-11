@@ -74,7 +74,7 @@
 .field-name-field-uib-primary-text {
   width: 48%;
   float: left;
-  
+
   h4  {
     margin-top: 0;
   }
@@ -101,7 +101,7 @@
 
   h2  {
   text-transform: none;
-  border: none;  
+  border: none;
   font-weight: normal;
   font-family: verdana, sans-serif;
   margin: 0;
@@ -112,7 +112,7 @@
 .field-name-field-uib-secondary-text {
   width: 100%;
   float: left;
-  margin: 20px 0 20px 0;
+  margin: 15px 0 20px 0;
   background: #f5f5f5;
   webkit-border-radius: 2px;
   moz-border-radius: 2px;
@@ -134,7 +134,7 @@
   p  {
     margin: 10px, 30px, 10px, 30px;
   }
-  
+
   h4  {
     margin-left: 30px;
   }
@@ -173,6 +173,7 @@
   margin-bottom: 10px;
 }
 
+/*
 .field-name-field-uib-link-section {
   background: #f5f5f5;
   border: none;
@@ -181,24 +182,25 @@
   webkit-border-radius: 2px;
   padding: 5px;
 }
-
+*/
 .node-area .field-collection-view {
   border: none;
-}   
+}
 
-.field-name-field-uib-profiled-testimonial {
+/*.field-name-field-uib-profiled-testimonial {
   width: 48%;
   float: right;
 
   img {
     margin-right: 10px;
+    float: left;
   }
 }
 
 .field-name-field-uib-tertiary-text {
   float: left;
   width: 48%;
-}
+}*/
 
 /* Article page */
 
@@ -221,7 +223,7 @@
   background: #f0f4f5;
   padding: 10px;
   line-height: 14px;
-  
+
   p {
     font-size: .9em;
   }
@@ -278,7 +280,7 @@
 /* General styling for description, copyright and photographer */
 .field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
   font-size: .8em;
-  
+
   .field-label {
     font-weight: normal;
     border: none;
@@ -288,3 +290,45 @@
     color: #333;
   }
 }
+
+/* styles for tabs recoded from <h2> headers [module uib_h2tabs] */
+.uib-tabs-container{
+  width: 100%;
+
+  ul {
+    list-style: none;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #C8D2D4;
+    padding: 0 0 10px 0;
+
+    li {
+      display: inline;
+    }
+
+    li > a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 5px 10px;
+      color: #AA0000;
+      background-color: #FFFFFF;
+    }
+    li > a:hover {
+      color: #FFFFFF;
+      background-color: #555555;
+    }
+
+    > li:not(:target) > a {
+    }
+
+    > li:target > a {
+      color: #FFFFFF;
+      background-color: #AA0000;
+    }
+  }
+
+  > div {
+    display: none;
+    background-color: #FFFFFF;
+  }
+}
+/* end of styles for tabs */

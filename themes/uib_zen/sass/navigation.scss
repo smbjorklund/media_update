@@ -140,8 +140,22 @@ ul.language-switcher-locale-url li.active {
 }
 
 #global-searchform {
-  padding: 14px 0 0 30px;
+  padding:4px 0 0 0;
+  p {
+    float: left;
+  }
+  form {
+    float:right;
+    #searchField {
+      background-color: #FCFCFC;
+      border: 1px solid #D0D0D0;
+      padding: 9px 0 0 30px;
+    }
+    input[type="image"] {
+    }
+  }
 }
+
 .global-menu li {
   float: left;
   display: inline;

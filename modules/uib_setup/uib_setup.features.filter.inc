@@ -72,6 +72,11 @@ function uib_setup_filter_default_formats() {
         'status' => '1',
         'settings' => array(),
       ),
+      'filter_h2' => array(
+        'weight' => '15',
+        'status' => '1',
+        'settings' => array(),
+      ),
     ),
   );
 
