@@ -267,7 +267,6 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_position_category_value']['table'] = 'field_data_field_uib_position_category';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['field'] = 'field_uib_position_category_value';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['relationship'] = 'field_uib_staff_target_id';
-  $handler->display->display_options['arguments']['field_uib_position_category_value']['default_action'] = 'empty';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['exception']['title_enable'] = TRUE;
   $handler->display->display_options['arguments']['field_uib_position_category_value']['exception']['title'] = 'All staff';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['title_enable'] = TRUE;
@@ -279,7 +278,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_position_category_value']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['field_uib_position_category_value']['validate']['fail'] = 'ignore';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['limit'] = '0';
-  $handler->display->display_options['path'] = 'persons/%/%';
+  $handler->display->display_options['path'] = 'persons';
   $handler->display->display_options['menu']['title'] = 'Staff';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'area';
