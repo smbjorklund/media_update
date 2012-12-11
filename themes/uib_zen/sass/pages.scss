@@ -16,7 +16,7 @@
 /*body.grid {
   background: url(../images/grid-2.png);
 }*/
- 
+
 body {
   margin: 0;
   padding: 0;
@@ -54,7 +54,7 @@ body {
 #logo { /* Wrapping link for logo */
   float: left; /* LTR */
   margin: 10px 0 0 0;
-  padding: 0; 
+  padding: 0;
 
   img {
     vertical-align: bottom;
@@ -70,7 +70,7 @@ body {
   margin: 20px, 0 0 0;
   font-size: 1.5em;
   line-height: 1.5em;
-  
+
   /* den røde streken mellom logo og tittel i header */
   border-left: 1px #AA0000 solid;
   padding: 20px;
@@ -92,7 +92,7 @@ body {
 #site-slogan { /* The slogan (or tagline) of a website */
   margin: 0;
   font-size: 1em;
-  
+
 }
 
 .region-header { /* Wrapper for any blocks placed in the header region */
@@ -148,7 +148,7 @@ body {
  */
 
 .section-node-add #content {
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 .region-highlighted {
@@ -178,7 +178,7 @@ h2.block-title, /* Block title */
 h2.title, /* Comment section heading */
 h2.comment-form, /* Comment form heading */
 h3.title { /* Comment title */
-  
+
 }
 .view-area-slideshow {
   clear: both;
@@ -189,6 +189,10 @@ tr.even { /* Some tables have rows marked even or odd. */
 
 tr.odd {
   /* background-color: #eee; */ /* Drupal core uses a #eee background */
+}
+
+td {
+  margin: 0 0 0 12px;
 }
 
 div.messages { /* Important messages (status, warning, and error) for the user. See also the declarations in messages.css. */
@@ -289,7 +293,7 @@ span.field-label { /* The inline field label used by the Fences module */
  * Footer
  */
 
-#footer {  
+#footer {
 }
 
 /*
@@ -315,7 +319,7 @@ span.field-label { /* The inline field label used by the Fences module */
 }
 
 #bottom-region-wrapper  {
- max-width: 100%; 
+ max-width: 100%;
  -webkit-box-shadow: inset 0px 2px 8px 0px #B3B3B3;
  box-shadow: inset 0px 2px 8px 0px #B3B3B3;
  padding: 30px 0 30px 0;
