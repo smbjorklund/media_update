@@ -100,6 +100,7 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 240px) and (max-width: 720px) {
 
   $zen-column-count: 1;
+  
 
   #global-menu {
     ul li a{
@@ -154,12 +155,10 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-primary-media {
      @include zen-clear();
      @include zen-grid-item (1, 1);
-     width: 100%;
   }
   .field-name-field-uib-primary-text {
      @include zen-clear();
      @include zen-grid-item (1, 1);
-     float: none;
      
   }
   .field-name-secondary-text {
@@ -179,9 +178,29 @@ $zen-auto-include-item-base: false;
   }
   .field-name-field-uib-bottom-text {
     @include zen-clear();
-    @include zen-grid-item (1, 2);
-    
+    @include zen-grid-item (1, 1);
   }
+  
+  .field-name-field-uib-link-section {
+    @include zen-clear();
+    @include zen-grid-item (1, 1);
+    float: none;
+    width: 100%;
+  }
+
+  .field-name-field-uib-profiled-testimonial {
+    @include zen-clear();
+    @include zen-grid-item (1, 1);
+    float: none;
+  }
+
+  .field-name-field-uib-tertiary-text {
+    @include zen-clear();
+    @include zen-grid-item (1, 1);
+    float: none;
+    width: 100%;
+  }
+  
 }
  
 
@@ -192,7 +211,6 @@ $zen-auto-include-item-base: false;
   /*
    * Use 4 grid columns for smaller screens.
    */
-  $zen-gutter-width:  20px;
   $zen-column-count: 4;
 
   /*
@@ -238,10 +256,12 @@ $zen-auto-include-item-base: false;
       
       .field-name-field-uib-primary-media  {
         @include zen-grid-item (2, 1);
+        padding-right: 10px;
       }
       
       .field-name-field-uib-primary-text {
         @include zen-grid-item (2, 3);
+        padding-left: 10px;
       }
       
       .field-name-field-uib-secondary-text {
@@ -445,6 +465,30 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2)
   }
+  
+  .field-name-field-uib-link-section {
+    background: #f5f5f5;
+    border: none;
+    border-radius: 2px;
+    moz-border-radius: 2px;
+    webkit-border-radius: 2px;
+    padding: 5px;
+  }
+  
+  .field-name-field-uib-profiled-testimonial {
+    width: 48%;
+    float: right;
+
+    img {
+      margin-right: 10px;
+      float: left;
+    }
+  }
+  
+  .field-name-field-uib-tertiary-text {
+    float: left;
+    width: 48%;
+  }
 
 }
 /* Calendar */
@@ -462,6 +506,7 @@ $zen-auto-include-item-base: false;
   .view-display-id-page_4, .view-display-id-page_2  {
     @include zen-grid-item (2, 3)
   }
+  
 }
 
 /* Newsarchive */

@@ -119,7 +119,7 @@
 .field-name-field-uib-secondary-text {
   width: 100%;
   float: left;
-  margin: 20px 0 20px 0;
+  margin: 15px 0 20px 0;
   background: #f5f5f5;
   webkit-border-radius: 2px;
   moz-border-radius: 2px;
@@ -175,6 +175,7 @@
   margin-bottom: 10px;
 }
 
+/*
 .field-name-field-uib-link-section {
   background: #f5f5f5;
   border: none;
@@ -183,25 +184,25 @@
   webkit-border-radius: 2px;
   padding: 5px;
 }
-
+*/
 .node-area .field-collection-view {
   border: none;
 }
 
-.field-name-field-uib-profiled-testimonial {
+/*.field-name-field-uib-profiled-testimonial {
   width: 48%;
   float: right;
-}
-.field-name-field-uib-profiled-testimonial img {
-  margin-right: 10px;
-  float: left;
+
+  img {
+    margin-right: 10px;
+    float: left;
+  }
 }
 
 .field-name-field-uib-tertiary-text {
   float: left;
   width: 48%;
-}
-
+}*/
 /* Article page */
 .field-name-field-uib-kicker, .group-article-sidebar .field-label {
   border-top: 1px solid #c8d1d5;

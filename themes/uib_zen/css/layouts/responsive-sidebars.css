@@ -134,7 +134,6 @@
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    width: 100%;
   }
 
   .field-name-field-uib-primary-text {
@@ -143,7 +142,6 @@
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    float: none;
   }
 
   .field-name-secondary-text {
@@ -174,8 +172,37 @@
     clear: left;
     float: left;
     width: 100%;
-    margin-left: 100%;
-    margin-right: -200%;
+    margin-left: 0%;
+    margin-right: -100%;
+  }
+
+  .field-name-field-uib-link-section {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    float: none;
+    width: 100%;
+  }
+
+  .field-name-field-uib-profiled-testimonial {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    float: none;
+  }
+
+  .field-name-field-uib-tertiary-text {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    float: none;
+    width: 100%;
   }
 }
 /* Tablet */
@@ -306,12 +333,14 @@
     width: 50%;
     margin-left: 0%;
     margin-right: -50%;
+    padding-right: 10px;
   }
   .sidebar-second .field-name-field-uib-primary-text {
     float: left;
     width: 50%;
     margin-left: 50%;
     margin-right: -100%;
+    padding-left: 10px;
   }
   .sidebar-second .field-name-field-uib-secondary-text {
     clear: left;
@@ -515,6 +544,29 @@
     width: 75%;
     margin-left: 25%;
     margin-right: -100%;
+  }
+
+  .field-name-field-uib-link-section {
+    background: #f5f5f5;
+    border: none;
+    border-radius: 2px;
+    moz-border-radius: 2px;
+    webkit-border-radius: 2px;
+    padding: 5px;
+  }
+
+  .field-name-field-uib-profiled-testimonial {
+    width: 48%;
+    float: right;
+  }
+  .field-name-field-uib-profiled-testimonial img {
+    margin-right: 10px;
+    float: left;
+  }
+
+  .field-name-field-uib-tertiary-text {
+    float: left;
+    width: 48%;
   }
 }
 /* Calendar */
