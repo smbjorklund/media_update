@@ -188,8 +188,12 @@ table.cols-6  {
   }
 }
 
+#block-views-calendar-block-3 { /* Aligns calendar category and calendar feed */
+  height: 1px;
+  float: left;
+}
+
 .view-display-id-page_2, .view-display-id-page_4 { /* Calendar feed */
-  margin-top: 15px;
   
   .view-header h3 {
     font-weight: normal;
@@ -215,7 +219,7 @@ table.cols-6  {
 }
 
 .view .date-nav-wrapper .date-heading h3 {
-  font-size: 1em;
+  font-size: 1.1em;
 }
 
 .view-display-id-block_2  { /* Calendar */
