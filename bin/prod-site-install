@@ -12,7 +12,10 @@ if [ "$1" = "" ]; then
 fi
 echo $PWD
 FILE_DIR='/nettapp_w3/sites'
-
+VERBOSE=' --verbose '
+if [ "$2" = "-q" ]; then 
+  VERBOSE=' ' 
+fi
 SITE_DIR=${1:-uib.no}
 PROFILE="uib"
 if [ "$DATABASE" = "" ]; then
@@ -41,7 +44,7 @@ if [ -e sites/$SITE_DIR ]; then
 fi
 
 set -x
-drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --site-mail="w3@it.uib.no" --site-name="Universitetet i Bergen" --account-name=admin --account-mail="w3@it.uib.no" --account-pass=admin --clean-url --verbose --yes || exit 1
+drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --site-mail="w3@it.uib.no" --site-name="Universitetet i Bergen" --account-name=admin --account-mail="w3@it.uib.no" --account-pass=admin --clean-url $VERBOSE --yes || exit 1
 
 # run compass to create css
 (cd ../themes/uib_zen && compass clean && compass compile -c config-prod.rb)
@@ -96,10 +99,10 @@ cd ../../..
 
 # import all of jur/hr
 bin/site-drush --yes vset uib_test_dir ALL
-bin/site-drush mi --all --verbose --strict=0 --area_subset=uib_areas_subset_jurhf.txt
+bin/site-drush mi --all $VERBOSE --strict=0 --area_subset=uib_areas_subset_jurhf.txt
 
 # build menu
-bin/site-drush uib-migrate-build-menu --verbose
+bin/site-drush uib-migrate-build-menu $VERBOSE
 
 # enable uib_prod
 bin/site-drush pm-enable --yes uib_prod
