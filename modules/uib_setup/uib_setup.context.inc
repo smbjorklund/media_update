@@ -113,12 +113,6 @@ function uib_setup_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'menu_block-page-area-menu' => array(
-          'module' => 'menu_block',
-          'delta' => 'page-area-menu',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
       ),
     ),
   );

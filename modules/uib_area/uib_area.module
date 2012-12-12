@@ -194,11 +194,12 @@ function uib_area_block_view($delta='') {
       }
       break;
     case 'node_children': // A block to display a list of teasers of children [nodes only] to current node
-      $block['subject'] = t('Next pages');
+      $block['subject'] = "";
       $menu_link = menu_link_get_preferred(uib_area__get_current_node(), 'area'); // get menu link of the current node
       if (empty($menu_link)) {
         $menu_link = uib_area__get_current_menu_link(); // get menu link of current area
       }
+      //dsm($menu_link);
       $items = menu_navigation_links('area', $menu_link['depth']);
       if (!empty($items)) {
         foreach ($items as $menu_item) {
@@ -238,8 +239,17 @@ function uib_area_block_view($delta='') {
                   $teaser_text = $result[1];
                 }
             }
+            $children_classes_array = array('uib-child-teaser');
+            // Check if the node has children
+            $child_menu_link = menu_link_get_preferred($menu_item['href'], 'area');
+            if (! empty($child_menu_link)) {
+              if ($child_menu_link['has_children']) {
+                $children_classes_array[] = 'uib-child-has-children';
+              }
+            }
             $node_title = t($node_title);
-            $block['content'][$node_title]['#markup'] = '<div class="uib-child-teaser">' . l($node_title, $menu_item['href']) . '<br>';
+            $children_classes = implode(' ', $children_classes_array);
+            $block['content'][$node_title]['#markup'] = "<div class=\"$children_classes\">" . l($node_title, $menu_item['href']) . '<br>';
             $block['content'][$node_title . '_text']['#markup'] = $teaser_text . '</div>';
           }
         }
