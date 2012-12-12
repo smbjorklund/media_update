@@ -21,6 +21,8 @@ function uib_area_context_default_contexts() {
       'values' => array(
         'foransatte' => 'foransatte',
         'foransatte/*' => 'foransatte/*',
+        'en/foremployees' => 'en/foremployees',
+        'en/foremployees/*' => 'en/foremployees/*',
       ),
     ),
   );
@@ -145,6 +147,8 @@ function uib_area_context_default_contexts() {
       'values' => array(
         '~foransatte' => '~foransatte',
         '~foransatte/*' => '~foransatte/*',
+        '~en/foremployees' => '~en/foremployees',
+        '~en/foremployees/*' => '~en/foremployees/*',
       ),
     ),
   );
