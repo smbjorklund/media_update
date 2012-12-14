@@ -951,11 +951,29 @@ else {
       if (!empty($user->uid))
         $entity->uid = $user->uid;
 
-      // copy any images and attachements (pfd) to the destination node
+      // copy attachements (pdf) to the destination node
       $query = $_edb->select('field_data_field_uib_files', 'f')
         ->fields('f')
         ->condition('f.entity_id', $row->nid, '=');
       $query->join('file_managed', 'm', 'm.fid = f.field_uib_files_fid');
+      $query->addField('m', 'uid');
+      $query->addField('m', 'filename');
+      $query->addField('m', 'uri');
+      $query->addField('m', 'filemime');
+
+      foreach ($query->execute() as $item) {
+        $file = employee_file($item);
+        $entity->field_uib_media['und'][] = array(
+          'fid' => $file->fid,
+          'display' => 1,
+        );
+      }
+
+      // copy any images to the destination node
+      $query = $_edb->select('field_data_field_image', 'f')
+        ->fields('f')
+        ->condition('f.entity_id', $row->nid, '=');
+      $query->join('file_managed', 'm', 'm.fid = f.field_image_fid');
       $query->addField('m', 'uid');
       $query->addField('m', 'filename');
       $query->addField('m', 'uri');
