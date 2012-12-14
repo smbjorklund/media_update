@@ -26,7 +26,7 @@ function uib_area_menu_block_blocks() {
       'admin_title' => 'Page level area menu',
       'follow'      => 1,
       'level'       => 4,
-      'depth'       => 2,
+      'depth'       => 1,
       'expanded'    => 1,
     ),
   );

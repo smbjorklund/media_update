@@ -330,8 +330,8 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-link-section {
         @include zen-grid-item (2, 1);
-        
-        
+
+
         background: #f5f5f5;
         border: none;
         border-radius: 2px;
@@ -342,7 +342,7 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-profiled-testimonial {
         @include zen-grid-item (2, 3);
-        
+
 
         img {
           margin-right: 10px;
@@ -352,7 +352,7 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-tertiary-text {
         @include zen-grid-item (2, 3);
-        
+
       }
     }
 
@@ -536,7 +536,7 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-link-section {
     @include zen-grid-item (2, 1);
-    
+
     background: #f5f5f5;
     border: none;
     border-radius: 2px;
@@ -568,6 +568,26 @@ $zen-auto-include-item-base: false;
     padding: 1em;
     width: 48%;
   }
+
+  /* Employee pages */
+  .section-foransatte {
+    #block-menu-block-page-area-menu {
+      @include zen-grid-item (1, 4);
+      li.has-children {
+        background-color:#efefef; /* Change this to show an image instead ? */
+      }
+    }
+
+    .field-name-field-uib-lead {
+      @include zen-grid-item (3, 1);
+    }
+
+    .field-name-field-uib-text {
+      @include zen-grid-item (3, 1);
+      @include zen-clear();
+    }
+  }
+
 }
 
 /* Calendar */
