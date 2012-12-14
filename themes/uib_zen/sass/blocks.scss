@@ -120,27 +120,3 @@
 /*.region-bottom .block > * {
   margin-left: 50px;
 }*/
-
-/* Area "teaser" block */
-
-#block-uib-area-node-children {
-  background-color: #f5f5f5;
-  float: left;
-  margin: 1em 1em 1em 0;
-  padding: 1em;
-  width: 48%;
-}
-
-/* Menu-block 'page-area-menu' on employee pages */
-
-.section-foransatte {
-  #block-menu-block-page-area-menu {
-      float: right;
-      .expanded {
-      float: none;
-      .menu {
-        display: none;
-      }
-    }
-  }
-}
