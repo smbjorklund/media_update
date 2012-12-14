@@ -100,7 +100,6 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 240px) and (max-width: 720px) {
 
   $zen-column-count: 1;
-  
 
 #global-header {
     @include zen-grid-item (1, 1);
@@ -187,54 +186,6 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 240px) and (max-width: 720px) {
   $zen-column-count: 1;
   
-  .field-name-field-uib-primary-media {
-     @include zen-clear();
-     @include zen-grid-item (1, 1);
-  }
-  .field-name-field-uib-primary-text {
-     @include zen-clear();
-     @include zen-grid-item (1, 1);
-     
-  }
-  .field-name-secondary-text {
-     @include zen-clear();
-     @include zen-grid-item (1, 1);
-     
-  }
-  .field-name-profiled-article {
-    @include zen-clear();
-    @include zen-grid-item (1, 1);
-    
-  }
-  .field-name-field-uib-bottom-media  {
-    @include zen-clear();
-    @include zen-grid-item (1, 1);
-    
-  }
-  .field-name-field-uib-bottom-text {
-    @include zen-clear();
-    @include zen-grid-item (1, 1);
-  }
-  
-  .field-name-field-uib-link-section {
-    @include zen-clear();
-    @include zen-grid-item (1, 1);
-    float: none;
-    width: 100%;
-  }
-
-  .field-name-field-uib-profiled-testimonial {
-    @include zen-clear();
-    @include zen-grid-item (1, 1);
-    float: none;
-  }
-
-  .field-name-field-uib-tertiary-text {
-    @include zen-clear();
-    @include zen-grid-item (1, 1);
-    float: none;
-    width: 100%;
-  }
   
 }
  
@@ -274,6 +225,8 @@ $zen-auto-include-item-base: false;
 
     .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
       @include zen-grid-item(4, 1);
+      @include zen-clear();
+      margin: auto;
       max-width: 722px;
     }
 
@@ -283,7 +236,7 @@ $zen-auto-include-item-base: false;
 
     $zen-column-count: 4;
 
-    #content  {
+    #content, .sidebars  {
         float: none;
         max-width: 722px;
         margin: auto;
@@ -327,6 +280,30 @@ $zen-auto-include-item-base: false;
       .region-bottom {
         width: 100%;
       }
+      
+      .field-name-field-uib-link-section {
+        background: #f5f5f5;
+        border: none;
+        border-radius: 2px;
+        moz-border-radius: 2px;
+        webkit-border-radius: 2px;
+        padding: 5px;
+      }
+
+      .field-name-field-uib-profiled-testimonial {
+        width: 48%;
+        float: right;
+
+        img {
+          margin-right: 10px;
+          float: left;
+        }
+      }
+
+      .field-name-field-uib-tertiary-text {
+        float: left;
+        width: 48%;
+      }
     }
 
     /* Article tablet */
@@ -344,6 +321,7 @@ $zen-auto-include-item-base: false;
 
       .region-sidebar-second {
         float: none;
+        
       }
     }
 
@@ -500,7 +478,6 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2)
   }
-  
   .field-name-field-uib-link-section {
     background: #f5f5f5;
     border: none;
@@ -509,7 +486,7 @@ $zen-auto-include-item-base: false;
     webkit-border-radius: 2px;
     padding: 5px;
   }
-  
+
   .field-name-field-uib-profiled-testimonial {
     width: 48%;
     float: right;
@@ -519,12 +496,11 @@ $zen-auto-include-item-base: false;
       float: left;
     }
   }
-  
+
   .field-name-field-uib-tertiary-text {
     float: left;
     width: 48%;
   }
-
 }
 /* Calendar */
 @media all and (min-width: 960px) {
@@ -555,7 +531,6 @@ $zen-auto-include-item-base: false;
   .view-display-id-newsarchive {
     @include zen-grid-item (3, 2)
   }
-
 }
 
 
