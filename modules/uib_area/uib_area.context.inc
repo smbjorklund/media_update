@@ -33,7 +33,7 @@ function uib_area_context_default_contexts() {
           'module' => 'menu_block',
           'delta' => 'page-area-menu',
           'region' => 'content',
-          'weight' => '-23',
+          'weight' => '-10',
         ),
         'system-main' => array(
           'module' => 'system',
