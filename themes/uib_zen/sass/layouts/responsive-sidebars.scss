@@ -529,6 +529,10 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-primary-text {
      @include zen-grid-item (2, 3);
      margin-right: 10px;
+     
+     p {
+       margin-top: 0;
+     }
   }
 
   .field-name-secondary-text {
@@ -582,6 +586,9 @@ $zen-auto-include-item-base: false;
   }
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2);
+    p {
+       margin-top: 0;
+     }
   }
 
   /* Area "teaser" block */
