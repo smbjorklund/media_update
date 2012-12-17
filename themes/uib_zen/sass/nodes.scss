@@ -199,7 +199,6 @@
   clear: none;
   margin: 30px auto 30px auto;
 
-
   &:before  {
     content: "\201C";
     position: absolute;
@@ -222,7 +221,6 @@
   font-family: verdana, sans-serif;
   &:before{display: none};
   &:after{display: none};
-
 }
 
 /* General styling for description, copyright and photographer */

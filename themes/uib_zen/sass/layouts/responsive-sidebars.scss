@@ -94,8 +94,6 @@ $zen-auto-include-item-base: false;
   }
 }
 
-
-
 /* Mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
 
@@ -190,29 +188,29 @@ $zen-auto-include-item-base: false;
      @include zen-clear();
      @include zen-grid-item (1, 1);
   }
-  
+
   .field-name-field-uib-primary-text {
      @include zen-clear();
      @include zen-grid-item (1, 1);
      float: none;
      clear: both;
-
   }
+
   .field-name-secondary-text {
      @include zen-clear();
      @include zen-grid-item (1, 1);
-
   }
+
   .field-name-profiled-article {
     @include zen-clear();
     @include zen-grid-item (1, 1);
-
   }
+
   .field-name-field-uib-bottom-media  {
     @include zen-clear();
     @include zen-grid-item (1, 1);
-
   }
+
   .field-name-field-uib-bottom-text {
     @include zen-clear();
     @include zen-grid-item (1, 1);
@@ -334,7 +332,7 @@ $zen-auto-include-item-base: false;
          @include zen-grid-item (2, 1);
          @include zen-clear();
        }
-      
+
       .field-name-field-uib-link-section {
         @include zen-grid-item (2, 1);
 
@@ -361,7 +359,7 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-tertiary-text {
         @include zen-grid-item (2, 3);
-        
+
         clear: none;
         float: none;
       }
@@ -430,8 +428,6 @@ $zen-auto-include-item-base: false;
   }
 }
 
-
-
 /* Desktop */
 @media all and (min-width: 960px) {
   /*
@@ -465,7 +461,6 @@ $zen-auto-include-item-base: false;
        @include zen-grid-item(1, 5);
      }
    }
-
 
   /*
    * The layout when there are two sidebars.
@@ -502,7 +497,6 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 960px) {
   $zen-column-count: 5;
 
-
   #global-menu {
     @include zen-grid-item (3, 1)
   }
@@ -529,7 +523,7 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-primary-text {
      @include zen-grid-item (2, 3);
      margin-right: 10px;
-     
+
      p {
        margin-top: 0;
      }
@@ -547,7 +541,6 @@ $zen-auto-include-item-base: false;
      @include zen-grid-item (2, 1);
      @include zen-clear();
    }
-
 
    .field-name-field-uib-link-section {
      @include zen-grid-item (2, 1);
@@ -643,13 +636,6 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 960px) {
   $zen-column-count: 4;
 
-  #block-views-recent-news-block-date-selector  {
-    @include zen-grid-item (1, 1)
-  }
-
-  .view-display-id-newsarchive {
-    @include zen-grid-item (3, 2)
-  }
 }
 
 
