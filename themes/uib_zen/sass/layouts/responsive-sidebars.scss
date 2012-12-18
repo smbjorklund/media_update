@@ -540,6 +540,8 @@ $zen-auto-include-item-base: false;
   .view-faculty-departments-kids  {
      @include zen-grid-item (2, 1);
      @include zen-clear();
+     
+     margin-bottom: 20px;
    }
 
    .field-name-field-uib-link-section {
