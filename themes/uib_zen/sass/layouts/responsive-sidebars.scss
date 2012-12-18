@@ -180,21 +180,6 @@ $zen-auto-include-item-base: false;
       }
 }
 
-/* Employee page mobile */
-/*@media all and (min-width: 240px) and (max-width: 720px) {
-  $zen-column-count: 1;
-  
-  .view-recent-news .view-content {
-    @include zen-clear();
-    @include zen-grid-item (4, 1);
-  }
-  
-  .block-views-recent-news-block-date-selector  {
-    @include zen-clear();
-    @include zen-grid-item (4, 1);
-  }
-}*/
-
 /* Area mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
   $zen-column-count: 1;
