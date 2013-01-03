@@ -248,7 +248,22 @@ $zen-auto-include-item-base: false;
 }
 
 
+/* Newsarchive mobile */
+@media all and (min-width: 240px) and (max-width: 720px) {
+  $zen-column-count: 1;
 
+  .view-display-id-block_3, .view-display-id-page_2, .view-display-id-page_4 {
+    @include zen-grid-item (1, 1)
+  }
+  
+  .view-display-id-page_2 {
+    @include zen-grid-item (1, 1)
+  }
+  
+  .view-display-id-page_4 {
+    @include zen-grid-item (1, 1)
+  }
+}
 
 /* Tablet */
 @media all and (min-width: 720px) and (max-width: 959px) {
@@ -647,13 +662,6 @@ $zen-auto-include-item-base: false;
   }
 
 }
-
-/* Newsarchive */
-@media all and (min-width: 960px) {
-  $zen-column-count: 4;
-
-}
-
 
 /* Bottom region */
 @media all and (min-width: 960px) {
