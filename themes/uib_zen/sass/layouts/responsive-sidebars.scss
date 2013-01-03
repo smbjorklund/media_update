@@ -349,11 +349,14 @@ $zen-auto-include-item-base: false;
       .field-name-field-uib-profiled-testimonial {
         @include zen-grid-item (2, 3);
         @include zen-clear();
+        float: none;
+        clear: none;
 
 
         img {
           margin-right: 10px;
           float: left;
+          clear: none;
         }
       }
 
