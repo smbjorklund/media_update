@@ -99,6 +99,11 @@ $zen-auto-include-item-base: false;
 
   $zen-column-count: 1;
 
+  h1#site-name  {
+     font-size: 15px;
+     padding: 10px 0 0 10px;
+   }
+
 #global-header {
     @include zen-grid-item (1, 1);
     #global-menu {
@@ -111,12 +116,13 @@ $zen-auto-include-item-base: false;
       form {
         float:left !important;
         input[type='text'] {
-          background: #ededed url(../../images/search.png) no-repeat 1px ;
-          background-size: 18px 19px;
-	  width: 12px;
-	  padding-left: 10px;
-	  color: transparent;
-	  cursor: pointer;
+        background: #ededed url(../../images/search.png) no-repeat 1px;
+        background-size: 18px 19px;
+	      width: 100%;
+	      padding-right: 30px;
+	      margin-left: 10px;
+	      color: transparent;
+	      cursor: pointer;
         }
         input[type='text']:hover {
           background-color: #fff;
@@ -125,8 +131,8 @@ $zen-auto-include-item-base: false;
           display: none;
         }
         input[type='text']:focus {
-	  width: 60px;
-	  padding-left: 32px;
+	  width: 100%;
+	  padding: 4px 0 4px 22px;
 	  color: #000;
 	  background-color: #fff;
 	  cursor: auto;
@@ -226,6 +232,11 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     @include zen-grid-item (1, 1);
     float: none;
+    
+    img {
+      float: left;
+      margin-right: 10px;
+    }
   }
 
   .field-name-field-uib-tertiary-text {
@@ -331,6 +342,7 @@ $zen-auto-include-item-base: false;
       .view-faculty-departments-kids  {
          @include zen-grid-item (2, 1);
          @include zen-clear();
+         margin-bottom: 10px;
        }
 
       .field-name-field-uib-link-section {
@@ -543,7 +555,6 @@ $zen-auto-include-item-base: false;
   .view-faculty-departments-kids  {
      @include zen-grid-item (2, 1);
      @include zen-clear();
-     
      margin-bottom: 10px;
    }
 
