@@ -165,7 +165,6 @@ td.menu-disabled {
   width: 90%;
 }
 
-
 /* Border around nodes in the webdesk */
 #uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form {
   border: solid 1px $medium-grey;
@@ -194,35 +193,45 @@ td.menu-disabled {
   border-color: #787878; 
 	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 4px;
 }
+
 .form-field-type-long-text {
   display: inline-block;
 }
+
 .views-exposed-form .views-exposed-widget {
     float: none;
 }
+
 .views-exposed-form .views-exposed-widget .form-submit {
   margin: 0 0 1.6em;
 }
+
 html.js input.form-autocomplete {
     background-position: 100% 8px;
 }
+
 html.js input.throbbing {
   background-position: 100% -12px; /* LTR */
 }
+
 #edit-changed-wrapper, #edit-created-wrapper, #edit-field-uib-article-type-value-wrapper, #edit-field-uib-event-type-value-wrapper {
   display: inline-block;
 }
+
 #edit-field-uib-event-type-value-wrapper {
   width: 50%;
 }
+
 #views-exposed-form-uib-webdesk-page-1 #edit-field-uib-event-type-value-wrapper {
   width: 20%;
 }
+
 /* Select media buttons */
 .edit-field-uib-files-und-0 {
   padding: 10px;
   background: #f00;
 }
+
 /* Webdesk title */
 .panel-3col h2  {
   text-transform: none;

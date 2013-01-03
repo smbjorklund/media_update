@@ -70,9 +70,7 @@ body {
   margin: 20px, 0 0 0;
   font-size: 1.5em;
   line-height: 1.5em;
-
-  /* den røde streken mellom logo og tittel i header */
-  border-left: 1px #AA0000 solid;
+  border-left: 1px #AA0000 solid; /* the red line between logo and title in header */
   padding: 20px;
   margin-left: 20px;
 
@@ -92,7 +90,6 @@ body {
 #site-slogan { /* The slogan (or tagline) of a website */
   margin: 0;
   font-size: 1em;
-
 }
 
 .region-header { /* Wrapper for any blocks placed in the header region */
@@ -288,7 +285,6 @@ span.field-label { /* The inline field label used by the Fences module */
 
 .region-sidebar-second {
 }
-
 
 /*
  * Footer
