@@ -824,23 +824,39 @@ function uib_area_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created_1']['id'] = 'created_1';
+  $handler->display->display_options['fields']['created_1']['table'] = 'node';
+  $handler->display->display_options['fields']['created_1']['field'] = 'created';
+  $handler->display->display_options['fields']['created_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['created_1']['date_format'] = 'medium';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] ([created_1])';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['created']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'F Y';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Lead */
+  $handler->display->display_options['fields']['field_uib_lead']['id'] = 'field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
+  /* Field: Content: Main media */
+  $handler->display->display_options['fields']['field_uib_main_media']['id'] = 'field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_main_media']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
+    'file_view_mode' => 'teaser',
+  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Area (field_uib_area) */
   $handler->display->display_options['arguments']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
@@ -932,6 +948,8 @@ function uib_area_views_default_views() {
     t('All'),
     t('Area recent news block'),
     t('News archive'),
+    t('Post date'),
+    t('[title] ([created_1])'),
     t('Feed'),
     t('Date and year selector'),
     t('Select news by month and year'),
