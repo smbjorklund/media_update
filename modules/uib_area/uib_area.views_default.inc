@@ -830,6 +830,17 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['created_1']['field'] = 'created';
   $handler->display->display_options['fields']['created_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['created_1']['date_format'] = 'medium';
+  /* Field: Content: Main media */
+  $handler->display->display_options['fields']['field_uib_main_media']['id'] = 'field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_main_media']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
+    'file_view_mode' => 'teaser',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -846,17 +857,6 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
-  /* Field: Content: Main media */
-  $handler->display->display_options['fields']['field_uib_main_media']['id'] = 'field_uib_main_media';
-  $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
-  $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
-  $handler->display->display_options['fields']['field_uib_main_media']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_main_media']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
-  $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
-    'file_view_mode' => 'teaser',
-  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Area (field_uib_area) */
   $handler->display->display_options['arguments']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
