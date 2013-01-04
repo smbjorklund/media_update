@@ -36,8 +36,8 @@ function uib_calendar_context_default_contexts() {
         'views-calendar-block_3' => array(
           'module' => 'views',
           'delta' => 'calendar-block_3',
-          'region' => 'content_top',
-          'weight' => '-9',
+          'region' => 'content',
+          'weight' => '-10',
         ),
       ),
     ),
