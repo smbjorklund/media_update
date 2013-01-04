@@ -255,63 +255,16 @@ table.cols-6  {
 }
 
 /* News archive */
-.uib-newsarchive-section, .uib-ansatte-section, .view-ansatte  {
-  background: #f5f5f5;
-  webkit-border-radius: 2px;
-  moz-border-radius: 2px;
-  border-radius: 2px;
-  width: 324px;
-  margin:10px 10px 0 0;
+.view-recent-news img  {
   float: left;
-  padding: 10px;
-  overflow: hidden; /* temporary fix - needs a show/hide jquery */
-
-  h3  {
-    font-family: $times;
-    color: #333;
-    padding: 0;
-    margin: 0;
-  }
+  margin-right: 20px;
 }
 
-.uib-newsarchive-section  {
-  height: 200px;
+
+.view-recent-news .views-field-title  {
+  margin-bottom: 10px;
 }
 
-.uib-ansatte-section {
-  height: 400px;
-  overflow: hidden; /* Temporary fix - needs a show/hide script */
-
-  h2  {
-    border-top: none;
-    font-family:$helvetica;
-    text-transform: none;
-    font-weight: bold;
-  }
-}
-
-.view-recent-news {
-  width: 100%;
-  float: left;
-  margin: 0 0 20px 0;
-
-  ul {
-  list-style-type:none;
-  margin-top: 0;
-  }
-
-  li {
-  float:left;
-  margin: 10px 0 0 0;
-  padding: 0 10px 0 0;
-  width:230px;
-  }
-
-  p  {
-    padding: 10px;
-  }
-
-  h4  {
-    margin-left: 30px;
-  }
+.view-recent-news .views-field-field-uib-lead {
+  min-height: 150px;
 }
