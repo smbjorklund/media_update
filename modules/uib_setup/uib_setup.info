@@ -21,6 +21,7 @@ dependencies[] = media_vimeo
 dependencies[] = media_youtube
 dependencies[] = menu
 dependencies[] = pathauto
+dependencies[] = subpathauto
 dependencies[] = strongarm
 dependencies[] = token
 dependencies[] = uib_field
