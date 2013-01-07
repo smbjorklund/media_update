@@ -216,6 +216,8 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-bottom-media  {
     @include zen-clear();
     @include zen-grid-item (1, 1);
+    
+    img {width: 80%; margin: 0 auto;}
   }
 
   .field-name-field-uib-bottom-text {
