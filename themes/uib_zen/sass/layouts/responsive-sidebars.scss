@@ -198,8 +198,9 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-primary-text {
      @include zen-clear();
      @include zen-grid-item (1, 1);
-     float: none;
+     float: none !important;
      clear: both;
+     width: 100% !important;
   }
 
   .field-name-secondary-text {
