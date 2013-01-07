@@ -247,7 +247,6 @@ $zen-auto-include-item-base: false;
   }
 }
 
-
 /* Calendar mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
   $zen-column-count: 1;
@@ -575,6 +574,11 @@ $zen-auto-include-item-base: false;
        margin-top: 0;
      }
   }
+
+  .field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
+    @include zen-clear();
+  }
+
 
   .field-name-secondary-text {
      @include zen-grid-item (4, 1);

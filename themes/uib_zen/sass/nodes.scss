@@ -98,11 +98,12 @@
 .field-name-field-uib-secondary-text {
   width: 100%;
   float: left;
-  margin: 0 0 20px 0;
+  margin: 20px 0 20px 0;
   background: #f5f5f5;
   webkit-border-radius: 2px;
   moz-border-radius: 2px;
   border-radius: 2px;
+  padding-bottom: 20px;
 
   ul {
   list-style-type:none;
@@ -123,6 +124,15 @@
   h4  {
     margin-left: 30px;
   }
+}
+
+.field-name-field-uib-primary-text h4 {
+  margin-top: 0;
+}
+
+.field-name-field-uib-primary-text {
+  width: 47%;
+  float: right;
 }
 
 .field-name-field-uib-profiled-article {
