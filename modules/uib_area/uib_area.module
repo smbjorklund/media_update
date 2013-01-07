@@ -148,15 +148,7 @@ function uib_area_block_view($delta='') {
         }
       break;
     case 'feed':
-      if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $node = node_load(arg(1));
-        if ($node->type == 'area') {
-          $area = $node;
-        }
-        elseif (isset($node->field_uib_area)) {
-          $area = $node->field_uib_area['und'][0]['entity'];
-        }
-      }
+      $area = uib_area__get_current();
       if($area){
         $elements = array();
         if(!empty($area->field_uib_feed['und'])){
