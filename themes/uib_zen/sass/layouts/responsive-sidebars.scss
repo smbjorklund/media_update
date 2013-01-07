@@ -423,6 +423,7 @@ $zen-auto-include-item-base: false;
     }
   }
  
+  /* Calendar tablet */
   @media all and (min-width: 720px) and (max-width: 959px) {
 
   $zen-column-count: 4;
@@ -660,46 +661,6 @@ $zen-auto-include-item-base: false;
   }
 
 }
-
-/* Calendar desktop */
-@media all and (min-width: 960px) {
-  $zen-column-count: 4;
-
-  .view-display-id-block_2  { /* Calender */
-    @include zen-grid-item (4, 1)
-  }
-
-  .view-display-id-block_3  { /* Category */
-    @include zen-grid-item (2, 1)
-  }
-
-  .view-display-id-page_2  { /* Feed */
-    @include zen-grid-item (2, 3)
-  }
-
-}
-
-/* News archive - needs a wrapper around each news element */
-/*@media all and (min-width: 960px) {
-  $zen-column-count: 4;
-
-  .view-recent-news {
-    @include zen-clear();
-    @include zen-grid-item (4, 1)
-  }
-  .view-recent-news img  {
-    @include zen-grid-item (1, 1);
-  }
-
-
-  .view-recent-news .views-field-title  {
-  @include zen-grid-item (3, 2)
-  }
-
-  .view-recent-news .views-field-field-uib-lead {
-  @include zen-grid-item (3, 2)
-  }
-}*/
 
 /* Bottom region */
 @media all and (min-width: 960px) {
