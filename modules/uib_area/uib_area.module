@@ -560,3 +560,92 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 }
+
+/**
+* Function that adds a number of alias paths to an area node
+*
+* Adds a number of project specific aliases for area nodes (if they do not exist)
+* These aliases correspond to views paths in the views "Staff", "Area map", "Recent news"
+*/
+function uib_area__create_area_aliases($node_nid, $node_alias, $language) {
+  if (!empty($node_nid) AND !empty($node_alias)) {
+    $uib_area_aliases = array(
+      '/persons',
+      '/persons/faculty',
+      '/map',
+      '/news-archive',
+    );
+    $node_url = 'node/' . intval($node_nid);
+    foreach ($uib_area_aliases as $pa) {
+      $source_url = $node_url . $pa;
+      $new_alias_url = $node_alias . $pa;
+      if (empty($language)) {
+        $new_path = array('source' => $source_url, 'alias' => $new_alias_url); // will create alias for all languages
+      }
+      else {
+        $new_path = array('source' => $source_url, 'alias' => $new_alias_url, 'language' => $language);
+      }
+      if ($existing_alias = path_load($source_url)) { // Check if alias exists
+        if ($existing_alias['alias'] != $new_alias_url) {
+          path_save($new_path);
+        }
+      }
+      else {
+        path_save($new_path);
+      }
+    }
+
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+* Function that deletes a number of alias paths from an area node
+*
+* cf. the function uib_area__create_area_aliases() that creates them.
+*/
+function uib_area__remove_area_aliases($node_nid) {
+  if (!empty($node_nid)) {
+    $node_url = 'node/' . intval($node_nid);
+    $uib_area_aliases = array(
+      '/persons',
+      '/persons/faculty',
+      '/map',
+      '/news-archive',
+    );
+    foreach ($uib_area_aliases as $pa) {
+      $source_url = $node_url . $pa;
+      if ($existing = path_load($source_url)) { // Check if alias exists
+        path_delete($existing['pid']); // remove it
+      }
+    }
+  } else {
+    return FALSE;
+  }
+}
+
+/**
+ * Implements hook_node_insert(
+ */
+function uib_area_node_insert($node) {
+   uib_area__create_area_aliases($node->nid, $node->path['alias'], $node->language);
+}
+
+/**
+ * Implements hook_node_update(
+ */
+function uib_area_node_update($node) {
+  // add uib area aliases if the node path was changed
+  // any previous aliases will remain
+  uib_area__create_area_aliases($node->nid, $node->path['alias'], $node->language);
+}
+
+/**
+ * Implements hook_node_delete(
+ */
+function uib_area_node_delete($node) {
+  // remove uib area aliases
+  uib_area__remove_area_aliases($node->nid);
+}

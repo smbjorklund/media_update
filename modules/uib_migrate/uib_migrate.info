@@ -5,6 +5,7 @@ core = 7.x
 dependencies[] = migrate
 dependencies[] = uibx
 dependencies[] = uib_article
+dependencies[] = uib_area
 dependencies[] = uib_sebra
 dependencies[] = uib_redirect
 files[] = uib_migrate.inc

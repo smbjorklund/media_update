@@ -481,11 +481,14 @@ class AreaMigration extends Migration {
   }
 
   public function complete($node, $row) {
-    // Set tnid; can't map it directly because we can't map to ourself
+     // Set tnid; can't map it directly because we can't map to ourself
     $node->tnid = $row->no_site == $row->id ? $node->nid :
       $this->handleSourceMigration('Area', array($row->no_site), NULL, $this);
+    $node_alias = $node->path['alias']; // keep this
     unset($node->path);  // avoids setting the alias twice
     node_save($node);
+    // Add project specific aliases for the node
+    uib_area__create_area_aliases($node->nid, $node_alias, $node->language);
 
     $weight = array_search($row->type, array(
       'fakultet', 'institutt', 'enhet',
