@@ -105,7 +105,8 @@ table.cols-6  {
   }
 
   .ciclepager {
-    padding: 4px;
+    padding: 3px;
+    background-color: silver;
   }
 
   .eventdata {
@@ -177,10 +178,6 @@ table.cols-6  {
 
   .views-slideshow-pager-fields .active img{
     border: 2px solid #fff;
-  }
-  
-  .views-slideshow-pager-field-item .circlepager{
-  background-color: blue;
   }
 }
 

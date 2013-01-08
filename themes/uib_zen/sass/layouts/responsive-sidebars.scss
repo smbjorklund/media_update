@@ -250,6 +250,26 @@ $zen-auto-include-item-base: false;
     float: none;
     width: 100%;
   }
+  
+  /* Slideshow mobile */
+  
+  /* Area slideshow */
+  
+  .view-area-slideshow, .views-field-field-uib-main-media  {
+    @include zen-grid-item (1, 1)
+  }
+  
+  #slidecontent {
+    height: 58px
+    
+    h3  {
+    font-size: 14px;
+    margin-top: 0;
+    }
+  }
+  .lead {
+    display: none;
+  }
 }
 
 /* Calendar mobile */
