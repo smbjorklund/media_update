@@ -41,7 +41,7 @@ function uib_article_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '-20',
         ),
         'redirect' => array(
           'weight' => '30',

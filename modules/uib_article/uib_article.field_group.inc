@@ -23,8 +23,8 @@ function uib_article_field_group_info() {
     'label' => 'Advanced',
     'weight' => '6',
     'children' => array(
-      0 => 'field_uib_menu_title_w2',
-      1 => 'field_uib_nav_weight',
+      0 => 'field_uib_nav_weight',
+      1 => 'field_uib_menu_title_w2',
       2 => 'field_uib_w2_id',
       3 => 'field_uib_w2_nav_parent_id',
       4 => 'field_uib_w2_path',
