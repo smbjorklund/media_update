@@ -237,7 +237,7 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     @include zen-grid-item (1, 1);
     float: none;
-    
+
     img {
       float: left;
       margin-right: 10px;
@@ -250,20 +250,16 @@ $zen-auto-include-item-base: false;
     float: none;
     width: 100%;
   }
-  
-  /* Slideshow mobile */
-  
-  /* Area slideshow */
-  
+
+  /* Slideshow mobile */  
   .view-area-slideshow, .views-field-field-uib-main-media  {
     @include zen-grid-item (1, 1)
   }
-  
+
   #slidecontent {
     height: 36px;
     margin-left: 20px;
 
-    
     h3  {
     font-size: 10px;
     margin-top: 0;
@@ -330,7 +326,6 @@ $zen-auto-include-item-base: false;
       max-width: 722px;
     }
 
-
     /* Area tablet */
     @media all and (min-width: 720px) and (max-width: 959px) {
 
@@ -389,8 +384,6 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-link-section {
         @include zen-grid-item (2, 1);
-
-
         background: #f5f5f5;
         border: none;
         border-radius: 2px;
@@ -406,7 +399,6 @@ $zen-auto-include-item-base: false;
         float: none;
         clear: none;
 
-
         img {
           margin-right: 10px;
           float: left;
@@ -416,7 +408,6 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-tertiary-text {
         @include zen-grid-item (2, 3);
-
         clear: none;
         float: none;
       }
@@ -562,6 +553,7 @@ $zen-auto-include-item-base: false;
   .group-article-main {
     @include zen-grid-item (3, 1)
   }
+
   .group-article-sidebar  {
     @include zen-grid-item (1, 4)
   }
@@ -607,7 +599,6 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
   }
 
-
   .field-name-secondary-text {
      @include zen-grid-item (4, 1);
   }
@@ -624,7 +615,6 @@ $zen-auto-include-item-base: false;
 
    .field-name-field-uib-link-section {
      @include zen-grid-item (2, 1);
-
      background: #f5f5f5;
      border: none;
      border-radius: 2px;
@@ -636,7 +626,6 @@ $zen-auto-include-item-base: false;
    .field-name-field-uib-tertiary-text {
      @include zen-grid-item (2, 3);
      @include zen-clear();
-
      float: none;
      clear: none;
    }
@@ -644,7 +633,6 @@ $zen-auto-include-item-base: false;
    .field-name-field-uib-profiled-testimonial {
      @include zen-grid-item (2, 3);
      @include zen-clear();
-
      float: none;
      clear: none;
 
@@ -657,6 +645,7 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-bottom-media  {
     @include zen-grid-item (1, 1);
   }
+
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2);
     p {
