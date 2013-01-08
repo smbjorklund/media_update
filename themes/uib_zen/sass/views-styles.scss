@@ -100,8 +100,10 @@ table.cols-6  {
   }
 
   .lead {
-    width: 50%;
+    width: 70%;
     float: left;
+    margin-top: 0;
+    margin-bottom: 20px;
   }
 
   .ciclepager {
@@ -138,6 +140,8 @@ table.cols-6  {
 
     h3 {
       color: #fff;
+      margin-bottom: 0;
+      padding-top: 0;
     }
   }
 
