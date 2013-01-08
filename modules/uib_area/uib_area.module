@@ -434,6 +434,21 @@ function uib_area__get_node_type($node = NULL) {
   return NULL;
 }
 
+/**
+* Function to find the OU nid referenced from an the current area
+*
+*
+* If no area is found, the function returns NULL.
+*/
+function uib_area__get_ou_nid() {
+  $area = uib_area__get_current();
+  if(!empty($area)){
+    $ounid = $area->field_uib_ou['und'][0]['target_id'];
+    return $ounid;
+  }
+  else
+    return NULL;
+}
 
 /**
 * Function that returns the node id of the current uib_area
