@@ -226,18 +226,9 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
   $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
   $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
+  $handler->display->display_options['filters']['field_uib_event_type_value']['operator'] = 'not';
   $handler->display->display_options['filters']['field_uib_event_type_value']['value'] = array(
-    'arrangement' => 'arrangement',
-    'disputas' => 'disputas',
-    'foredrag' => 'foredrag',
-    'frist' => 'frist',
-    'gjesteforelesning' => 'gjesteforelesning',
-    'konferanse' => 'konferanse',
-    'konsert' => 'konsert',
-    'kurs' => 'kurs',
-    'midler_stipend' => 'midler_stipend',
-    'proveforelesning' => 'proveforelesning',
-    'seminar' => 'seminar',
+    'exhibition' => 'exhibition',
   );
   /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
