@@ -95,6 +95,7 @@ function drush_uib_devel_uib_create_content() {
     $node->field_uib_article_type['und'][0]['value'] = 'event';
     $node->field_uib_event_type['und'][0]['value'] = 'seminar';
     $node->field_uib_date['und'][0]['value'] = date("Y-m-d H:i:s");
+    $node->field_uib_date['und'][0]['value2'] = date("Y-m-d H:i:s", strtotime("+4 hour"));
     node_save($node);
 
     $node = new stdClass;
@@ -105,6 +106,7 @@ function drush_uib_devel_uib_create_content() {
     $node->field_uib_article_type['und'][0]['value'] = 'event';
     $node->field_uib_event_type['und'][0]['value'] = 'lecture';
     $node->field_uib_date['und'][0]['value'] = date("Y-m-d H:i:s", strtotime("+2 hour"));
+    $node->field_uib_date['und'][0]['value2'] = date("Y-m-d H:i:s", strtotime("+6 hour"));
     node_save($node);
 
     $node = new stdClass;
@@ -115,6 +117,7 @@ function drush_uib_devel_uib_create_content() {
     $node->field_uib_article_type['und'][0]['value'] = 'event';
     $node->field_uib_event_type['und'][0]['value'] = 'seminar';
     $node->field_uib_date['und'][0]['value'] = date("Y-m-d H:i:s", strtotime("+4 hour"));
+    $node->field_uib_date['und'][0]['value2'] = date("Y-m-d H:i:s", strtotime("+14 hour"));
     node_save($node);
 
     $node = new stdClass;
