@@ -630,7 +630,7 @@ function uib_area__remove_area_aliases($node_nid) {
  * Implements hook_node_insert(
  */
 function uib_area_node_insert($node) {
-  if ($node->type == 'area') {
+  if ($node->type == 'area' && isset($node->path['alias'])) {
     uib_area__create_area_aliases($node->nid, $node->path['alias'], $node->language);
   }
 }
@@ -639,7 +639,7 @@ function uib_area_node_insert($node) {
  * Implements hook_node_update(
  */
 function uib_area_node_update($node) {
-  if ($node->type == 'area') {
+  if ($node->type == 'area' && isset($node->path['alias'])) {
     // add uib area aliases if the node path was changed
     // any previous aliases will remain
     uib_area__create_area_aliases($node->nid, $node->path['alias'], $node->language);
