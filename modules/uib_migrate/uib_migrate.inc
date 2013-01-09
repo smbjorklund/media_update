@@ -944,7 +944,9 @@ else {
         ->condition('t.entity_id', $row->nid, '=');
 
       foreach ($query->execute() as $item) {
-        $entity->field_uib_text['und'][0]['value'] = $item->field_uib_text_value;
+        // convert newline to br
+        $text = str_replace("\n", "<br>", $item->field_uib_text_value);
+        $entity->field_uib_text['und'][0]['value'] = $text;
         $entity->field_uib_text['und'][0]['format'] = 'basic_html';
         break;
       }
