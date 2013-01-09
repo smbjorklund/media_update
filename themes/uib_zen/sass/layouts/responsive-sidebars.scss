@@ -680,7 +680,14 @@ $zen-auto-include-item-base: false;
       @include zen-clear();
     }
   }
-
+} 
+  /* Persons list */
+  @media all and (min-width: 960px) {
+    $zen-column-count: 4;
+    
+    .view-ansatte {
+      @include zen-grid-item (4, 1)
+    }
 }
 
 /* Bottom region */
