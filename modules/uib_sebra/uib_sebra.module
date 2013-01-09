@@ -146,16 +146,21 @@ function uib_sebra__sync_areas() {
       uib_sebra__sync_jobbnorge_id($area, $area_doc);
 
       $staff = array();
-      foreach ($area_doc->omraade->visninger->uibid as $uname) {
-        $account = user_load_by_name($uname);
-        if (!$account) {
-          $account = uib_sebra__sync_user($uname);
+      if (isset($area_doc->omraade)) {
+        foreach ($area_doc->omraade->visninger->uibid as $uname) {
+          $account = user_load_by_name($uname);
           if (!$account) {
-            uibx_log("Can't find user $uname from Sebra", "error");
-            continue;
+            $account = uib_sebra__sync_user($uname);
+            if (!$account) {
+              uibx_log("Can't find user $uname from Sebra", "error");
+              continue;
+            }
           }
+          $staff['und'][]['target_id'] = $account->uid;
         }
-        $staff['und'][]['target_id'] = $account->uid;
+      }
+      else {
+        uibx_log("Sebra area $sebra_id empty", 'warning');
       }
       if (!isset($area->field_uib_staff) || $area->field_uib_staff != $staff) {
         $area->field_uib_staff = $staff;
@@ -465,4 +470,66 @@ function uib_sebra__sync_user($username) {
     uibx_log("Content manager - no change for user $account->uid for $username <$u->email>");
 
   return $account;
+}
+
+
+function uib_sebra__area_diff($list = TRUE) {
+  $sebra_areas_not_in_w3 = array();
+  $sebra_areas_in_w3 = array();
+  $sebra_areas_confirmed = array();
+  $sebra_areas_unconfirmed = array();
+  // Get all sebra areas in w3
+  $query = 'SELECT entity_id, field_uib_sebra_id_value FROM {field_data_field_uib_sebra_id} WHERE deleted = :false';
+  $result = db_query($query, array(':false' => 0));
+  foreach ($result as $record) {
+    if (!empty($record->field_uib_sebra_id_value)) {
+      $sebra_areas_in_w3[$record->field_uib_sebra_id_value] = $record->entity_id;
+    }
+  }
+  // Get all sebra areas
+  $sebra_areas = uib_sebra__sws_get('omraader');
+  foreach ($sebra_areas->omraade as $omr) {
+    $sebra_area_code = (string)$omr->OMRAADEKODE;
+    $area_info = uib_sebra__sws_get('omraader?omraadekode=' . $omr->OMRAADEKODE);
+    if (!empty($area_info->STATUS)) {
+      var_dump($area_info);
+    }
+    if (!empty($sebra_areas_in_w3[$sebra_area_code])) {
+      // area is in w3
+      $sebra_areas_confirmed[$sebra_area_code] = array($sebra_areas_in_w3[$sebra_area_code], $omr->OMRAADE_NAVN);
+    }
+    else {
+      // area is not in w3
+      $sebra_areas_not_in_w3[$sebra_area_code] = $omr->OMRAADE_NAVN;
+    }
+  }
+  echo count($sebra_areas_not_in_w3), ' sebra area(s) NOT FOUND in w3', PHP_EOL;
+  if ($list) {
+    foreach ($sebra_areas_not_in_w3 as $ei => $ar) {
+      echo $ar, ' [sebra id: ', $ei, ']', PHP_EOL;
+    }
+  }
+  echo PHP_EOL,count($sebra_areas_confirmed),' sebra area(s) FOUND in w3',PHP_EOL;
+  foreach ($sebra_areas_confirmed as $ei => $ar) {
+    echo $ar[1], ' [sebra id: ', $ei, '] [entity id: ', $ar[0], ']', PHP_EOL;
+  }
+  foreach ($sebra_areas_in_w3 as $si => $ei) {
+    if (empty($sebra_areas_confirmed[$si])) {
+      $sebra_areas_unconfirmed[$si] = $ei;
+    }
+  }
+  // leftovers
+  if (count($sebra_areas_unconfirmed) > 0) {
+    echo PHP_EOL, count($sebra_areas_unconfirmed), ' area(s) in w3 missing in sebra:', PHP_EOL;
+    foreach ($sebra_areas_unconfirmed as $si => $ei) {
+      $query = 'SELECT title FROM {node} WHERE nid = :eid';
+      $result = db_query($query, array(':eid' => $ei));
+      foreach ($result as $record) {
+        if (!empty($record->title)) {
+          $unconf_title = $record->title;
+        }
+      }
+      echo $unconf_title, ' [sebra id: ', $si, ', entity id: ', $ei, ']', PHP_EOL;
+    }
+  }
 }

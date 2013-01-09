@@ -40,7 +40,13 @@ function uib_sebra_drush_command() {
     ),
     'required-arguments' => TRUE,
   );
-  return $items;
+  $items['uib-sebra-areadiff'] = array(
+    'description' => 'Show a list of areas in sebra are not in the Drupal database, and which are',
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(),
+    'options' => array(),
+  );
+ return $items;
 }
 
 function drush_uib_sebra_places() {
@@ -64,4 +70,8 @@ function drush_uib_sebra_user($user) {
 function drush_uib_sebra_users() {
   $limit = (int)drush_get_option('limit', 5);
   uib_sebra__sync_users($limit);
+}
+
+function drush_uib_sebra_areadiff() {
+  uib_sebra__area_diff();
 }
