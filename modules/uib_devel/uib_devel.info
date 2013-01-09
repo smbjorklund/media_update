@@ -2,7 +2,6 @@ name = "UIB Development support"
 description = "Add stuff that make it easier to inspect the system"
 package = UiB
 core = 7.x
-dependencies[] = uib_webdesk
 dependencies[] = field_ui
 dependencies[] = migrate_ui
 dependencies[] = views_ui
