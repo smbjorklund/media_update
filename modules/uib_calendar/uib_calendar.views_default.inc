@@ -22,7 +22,7 @@ function uib_calendar_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Calendar — What\'s up!';
+  $handler->display->display_options['title'] = 'Calendar';
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['link_display'] = 'page_1';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -237,7 +237,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
-  $handler->display->display_options['block_description'] = 'Calendar — What\'s up!';
+  $handler->display->display_options['block_description'] = 'Calendar';
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_2');
@@ -811,7 +811,7 @@ function uib_calendar_views_default_views() {
   );
   $translatables['calendar'] = array(
     t('Master'),
-    t('Calendar — What\'s up!'),
+    t('Calendar'),
     t('more'),
     t('Apply'),
     t('Reset'),
