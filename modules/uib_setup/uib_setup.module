@@ -81,4 +81,9 @@ function uib_setup_entity_info_alter(&$entity_info) {
     'label' => t('Content sidebar'),
     'custom settings' => TRUE,
   );
+  $entity_info['file']['view modes']['content_main'] = array(
+    'label' => t('Content main'),
+    'custom settings' => TRUE,
+  );
 }
+
