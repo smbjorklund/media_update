@@ -655,3 +655,16 @@ function uib_area_node_delete($node) {
     uib_area__remove_area_aliases($node->nid);
   }
 }
+
+/**
+* Function to check if the current node page is an employee page
+*/
+function uib_area__is_employee_page() {
+  $node = uib_area__get_current();
+  if (isset($node->field_uib_sebra_id['und'][0]['value'])) {
+    if ($node->field_uib_sebra_id['und'][0]['value'] == 519) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}

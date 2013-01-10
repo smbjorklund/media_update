@@ -36,3 +36,16 @@ function uib_views_views_bulk_operations_form_alter(&$form, &$form_state, $vbo) 
     }
   }
 }
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function uib_views_block_view_alter(&$data, $block) {
+  if (!empty($data['subject'])) {
+    if ($data['subject'] == 'Recent news') {
+      if (uib_area__is_employee_page()) {
+        $data['subject'] = 'Messages';
+      }
+    }
+  }
+}
