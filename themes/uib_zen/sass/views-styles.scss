@@ -193,13 +193,35 @@ table.cols-6  {
     font-weight: normal;
   }
 
+  .mini {
+    padding: 0px;
+  }
+
   .mini-day-on  {
-    padding: 5px;
-    background-color: #DFDFDF;
+    background-color: #F1F1F1;
   }
 
   .has-no-events  {
     background-color: #F1F1F1;
+  }
+
+  .today {
+    .mini-day-on {
+      background: #BB5200;
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  .has-events {
+    a {
+      color: #BB5200;
+      text-decoration: none;
+    }
+    .calendar-empty {
+      background: #F1F1F1;
+    }
   }
 
   .date-nav {
