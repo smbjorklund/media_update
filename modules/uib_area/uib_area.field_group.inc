@@ -88,10 +88,11 @@ function uib_area_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_uib_content_manager',
-      1 => 'field_uib_logo',
-      2 => 'field_uib_menu_style',
-      3 => 'field_uib_show_staff',
-      4 => 'field_uib_staff',
+      1 => 'field_uib_important_message',
+      2 => 'field_uib_logo',
+      3 => 'field_uib_menu_style',
+      4 => 'field_uib_show_staff',
+      5 => 'field_uib_staff',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -216,7 +217,6 @@ function uib_area_field_group_info() {
       2 => 'field_uib_profiled_article',
       3 => 'field_uib_secondary_text',
       4 => 'field_uib_social_media',
-      5 => 'field_uib_important_message',
     ),
     'format_type' => 'div',
     'format_settings' => array(

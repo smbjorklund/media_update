@@ -754,7 +754,7 @@ function uib_area_field_default_fields() {
           'rows' => '3',
         ),
         'type' => 'text_textarea',
-        'weight' => '21',
+        'weight' => '12',
       ),
     ),
   );
