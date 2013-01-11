@@ -179,6 +179,16 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   elseif (isset($current_area->field_uib_menu_style['und'][0]['value'])) {
     $variables['uib_menu_style'] = 'uib-menu-style-' . $current_area->field_uib_menu_style['und'][0]['value'];
   }
+
+  // Create a variable that indicates whether we are in EDIT mode or not
+  $suggestions = theme_get_suggestions(arg(), 'page');
+  $variables['uib_node_edit_mode'] = '';
+  if ($suggestions) {
+    if (in_array('page__node__edit', $suggestions)) {
+      $variables['uib_node_edit_mode'] = 'edit';
+    }
+  }
+
 }
 // */
 

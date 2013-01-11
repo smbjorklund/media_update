@@ -69,6 +69,7 @@
  * @see template_process()
  */
 ?>
+<?php if ($variables['uib_node_edit_mode'] != 'edit'): ?>
 <div id="top-region-wrapper">
   <?php if (isset($global_menu)): ?>
     <div id="global-header">
@@ -92,9 +93,10 @@
     </div>
   <?php endif; ?>
 </div>
-
+<?php endif; ?>
 <div id="page">
 
+  <?php if ($variables['uib_node_edit_mode'] != 'edit'): ?>
   <header id="header" role="banner">
 
     <?php if ($logo): ?>
@@ -159,6 +161,7 @@
       <?php print render($page['navigation']); ?>
 
   </div><!-- /#navigation -->
+  <?php endif; ?>
 
   <div id="main">
 
