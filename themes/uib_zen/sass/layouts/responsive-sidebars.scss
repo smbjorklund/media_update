@@ -255,6 +255,12 @@ $zen-auto-include-item-base: false;
   .view-area-slideshow, .views-field-field-uib-main-media  {
     @include zen-grid-item (1, 1)
   }
+  
+  #widget_pager_bottom_area_slideshow-default {
+    left: 9%;
+    top: 83%;
+  }
+  
 
   #slidecontent {
     height: 36px;
@@ -690,6 +696,19 @@ $zen-auto-include-item-base: false;
     }
 }
 
+/* Slideshow */
+  @media all and (min-width: 960px) {
+    .view-area-slideshow, .views-field-field-uib-main-media  {
+      @include zen-grid-item (4, 1)
+    }
+
+    #widget_pager_bottom_area_slideshow-default {
+      left: 5%;
+      top: 90%;
+    }
+    
+  }
+ 
 /* Bottom region */
 @media all and (min-width: 960px) {
   $zen-column-count: 4;
