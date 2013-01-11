@@ -293,6 +293,15 @@ $zen-auto-include-item-base: false;
       @include zen-grid-item (1, 3);
     }
   }
+
+/* Persons mobile */
+@media all and (min-width: 240px) and (max-width: 720px) {
+  .view-ansatte {
+    margin-left: 0;
+  }
+}  
+  
+  
 /* Tablet */
 @media all and (min-width: 720px) and (max-width: 959px) {
   /*
@@ -463,6 +472,21 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (2, 3);
   }
 }
+
+    /* Persons list tablet */
+    @media all and (min-width: 720px) and (max-width: 959px) {
+      $zen-column-count: 4;
+      .view-ansatte {
+        margin-left: 0;
+      }
+
+      .uib-ansatte-section {
+        @include zen-clear();
+        @include zen-grid-item (4, 1)
+      }
+  }
+
+
   /*
    * The layout when there are two sidebars.
    */
@@ -690,7 +714,8 @@ $zen-auto-include-item-base: false;
   @media all and (min-width: 960px) {
     $zen-column-count: 4;
     
-    .view-ansatte {
+    .uib-ansatte-section {
+      @include zen-clear();
       @include zen-grid-item (4, 1)
     }
 }
