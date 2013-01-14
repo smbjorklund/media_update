@@ -641,34 +641,38 @@ $zen-auto-include-item-base: false;
      @include zen-clear();
      margin-bottom: 10px;
    }
+   
+   .group_two_column  {
+     @include zen-grid-item (4, 1);
 
-   .field-name-field-uib-link-section {
-     @include zen-grid-item (2, 1);
-     @include zen-clear();
-     background: #f5f5f5;
-     border: none;
-     border-radius: 2px;
-     moz-border-radius: 2px;
-     webkit-border-radius: 2px;
-     width: 100%;
-   }
+      .field-name-field-uib-link-section {
+       @include zen-grid-item (2, 1);
+       @include zen-clear();
+       background: #f5f5f5;
+       border: none;
+       border-radius: 2px;
+       moz-border-radius: 2px;
+       webkit-border-radius: 2px;
+       width: 100%;
+     }
 
-   .field-name-field-uib-tertiary-text {
-     @include zen-grid-item (2, 3);
-    }
+     .field-name-field-uib-tertiary-text {
+       @include zen-grid-item (2, 3);
+       @include zen-clear();
+      }
 
-   .field-name-field-uib-profiled-testimonial {
-     @include zen-grid-item (2, 3);
-     @include zen-clear();
-     float: none;
-     clear: none;
+     .field-name-field-uib-profiled-testimonial {
+       @include zen-grid-item (2, 3);
+       @include zen-clear();
+       float: none;
+       clear: none;
 
-     img {
-       margin-right: 10px;
-       float: left;
+       img {
+         margin-right: 10px;
+         float: left;
+       }
      }
    }
-
   .field-name-field-uib-bottom-media  {
     @include zen-grid-item (1, 1);
   }
