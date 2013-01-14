@@ -297,6 +297,13 @@ function uib_setup_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_override_parent_selector';
+  $strongarm->value = 1;
+  $export['menu_override_parent_selector'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_blog_pattern';
   $strongarm->value = 'blogs/[user:name]';
   $export['pathauto_blog_pattern'] = $strongarm;
@@ -562,7 +569,7 @@ function uib_setup_strongarm() {
     'stumbleupon' => 0,
     'twitter' => 1,
     'pingthis' => 0,
-    'reddit' => 0,
+    'reddit' => 1,
     'slashdot' => 0,
     'newsvine' => 0,
     'furl' => 0,
@@ -570,7 +577,7 @@ function uib_setup_strongarm() {
     'myspace' => 0,
     'google' => 0,
     'yahoo' => 0,
-    'linkedin' => 0,
+    'linkedin' => 1,
     'technorati' => 0,
     'technorati_favorite' => 0,
     'icerocket' => 0,
@@ -589,7 +596,7 @@ function uib_setup_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'service_links_style';
-  $strongarm->value = '3';
+  $strongarm->value = '2';
   $export['service_links_style'] = $strongarm;
 
   $strongarm = new stdClass();
