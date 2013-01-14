@@ -128,10 +128,12 @@ sh -x bin/update-some-stuff
 #Password have timed out. Create a tmp-file
 TMPFile='TMP.fixprem.sh'
 echo "#!/bin/bash" >$TMPFile
-echo "sudo chown -R apache:apache /nettapp_w3/sites/$SITE_DIR || exit 1 ">>$TMPFile
 if [ $(grep "^w3-drupal:" /etc/passwd | wc -l ) -eq 1 ] ;then 
   echo "#Setting w3-drupal as file-owner...">>$TMPFile
   echo "find . -user $(whoami) -exec chown w3-drupal:ansatt {} \;">>$TMPFile
 fi
+
+echo "#Apache needs RW....">>$TMPFile
+echo "sudo chown -R apache:apache /nettapp_w3/sites/$SITE_DIR || exit 1 ">>$TMPFile
 echo "Run ./$TMPFile to fix file ownership"
 chmod a+x $TMPFile
