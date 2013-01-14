@@ -644,6 +644,7 @@ $zen-auto-include-item-base: false;
 
    .field-name-field-uib-link-section {
      @include zen-grid-item (2, 1);
+     @include zen-clear();
      background: #f5f5f5;
      border: none;
      border-radius: 2px;
@@ -654,10 +655,8 @@ $zen-auto-include-item-base: false;
 
    .field-name-field-uib-tertiary-text {
      @include zen-grid-item (2, 3);
-     @include zen-clear();
-     float: none;
-     clear: none;
-   }
+     margin-left: 14px;
+    }
 
    .field-name-field-uib-profiled-testimonial {
      @include zen-grid-item (2, 3);
