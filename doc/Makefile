@@ -1,5 +1,6 @@
 HTML = \
        index.html    \
+       drupal-deploy.html    \
        hints.html  \
        spec.html     \
        style.html    \

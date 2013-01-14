@@ -18,6 +18,7 @@ You should know these:
 
 ### Guides
 
+* [Deploy Drupal into production](drupal-deploy.html)
 * [The code repository](repo.html)
 * [How to set up Apache for local development on OS X](apache-local.html)
 * [Reder Arrays](render-array.html)
