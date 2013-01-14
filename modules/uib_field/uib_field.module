@@ -16,3 +16,60 @@ function uib_field_field_attach_view_alter(&$output, $context) {
     }
   }
 }
+
+
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function uib_field_field_formatter_info() {
+  return array(
+    'socialmedia_formatter' => array( //Machine name of the formatter
+      'label' => t('Social Media Links'),
+      'field types' => array('text'), //This will only be available to text fields
+      'description' => t('Format a text of a specific format into social media links'),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function uib_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $recognized_social_media = array( // media name => array ( site url, default user)
+    'facebook' => array('http://facebook.com/', 'universitetetibergen'),
+    'twitter' => array('http://twitter.com/', 'uib'),
+    'mailto' => array('mailto:', 'aktuelt@uib.no'),
+    'youtube' => array('http://youtube.com/', 'unibergen'),
+    'flickr' => array('http://flickr.com/', 'photos/unibergen/sets'),
+    'vimeo' => array('http://vimeo.com/', 'uib'),
+  );
+  foreach ($items as $delta => $item) {
+    $sm = explode(':', $item['safe_value']);
+    $sm_name = array_shift($sm);
+    $sm_name = trim($sm_name);
+    $sm_data = implode(':', $sm);
+    if (!empty($recognized_social_media[$sm_name])) {
+      $sm_url = $recognized_social_media[$sm_name][0];
+      if (!empty($sm_data)) {
+        $sm_url .= $sm_data;
+      }
+      else {
+        $sm_url .= $recognized_social_media[$sm_name][1]; // use default
+      }
+      $options = array(
+        'html'  => TRUE,
+        'attributes'  => array(
+          'class' => array("$sm_name"),
+          ),
+        );
+      if ($sm_name != 'mailto') {
+        $options['attributes']['title'] = t("Follow us on") . " " . ucfirst($sm_name);
+      }
+      $element[]['#markup'] = l($sm_name, $sm_url, $options);
+    }
+  }
+  return $element;
+}
