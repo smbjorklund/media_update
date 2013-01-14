@@ -4,7 +4,6 @@
 
 # First parameter is site, eg. 'w3.uib.no'
 # set DATABASE as an enviroment variable before calling this script
-
 if [ "$1" = "" ]; then
   echo First parameter is site, eg. 'w3.uib.no'
   echo set DATABASE as an enviroment variable before calling this script
@@ -22,19 +21,10 @@ if [ "$DATABASE" = "" ]; then
   echo "DATABASE missing as environment. Use export DATABASE=pgsql://w3_admin:PWD@w3.pg.uib.no/w3"
   exit 1
 fi
-
+umask 002
 find . -type d | xargs chmod g+s .
 chgrp ansatt .
 chmod -R g+w .
-
-if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
-  ln -s /nettapp_w3/sites/$SITE_DIR/files .   || ( echo Can not find $FILE_DIR/$SITE_DIR/files   ; exit 1 )
-  ln -s /nettapp_w3/sites/$SITE_DIR/private . || ( echo Can not find $FILE_DIR/$SITE_DIR/private ; exit 1 )
-else
-  mkdir --verbose -p ../var/private || exit 1
-  mkdir --verbose -p ../var/files   || exit 1
-  sudo chown -R apache:apache ../var/files ../var/private
-fi
 
 cd drupal || ( echo No drupal-dir ; exit 1 )
 
@@ -42,6 +32,25 @@ if [ -e sites/$SITE_DIR ]; then
     echo "drupal/sites/$SITE_DIR already exists, aborting."
     exit 1
 fi
+
+if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
+  sudo mkdir -p /nettapp_w3/sites/$SITE_DIR || exit 1 
+  sudo chmod g+ws /nettapp_w3/sites/$SITE_DIR
+  sudo mkdir -p /nettapp_w3/sites/$SITE_DIR/files || exit 1 
+  sudo mkdir -p  /nettapp_w3/sites/$SITE_DIR/private || exit 1 
+  sudo chmod -R g+w /nettapp_w3/sites || exit 1
+  sudo chown -R  $(whoami):apache /nettapp_w3/sites/$SITE_DIR || exit 1 
+  mkdir --verbose -p ../var || exit 1
+  mkdir --verbose -p  sites/$SITE_DIR  || ( echo Can not find $FILE_DIR/$SITE_DIR/files or unable to create target ; exit 1 )
+  ln -s /nettapp_w3/sites/$SITE_DIR/files sites/$SITE_DIR/files  || ( echo Can not find $FILE_DIR/$SITE_DIR/files or unable to create target ; exit 1 )
+  ln -s /nettapp_w3/sites/$SITE_DIR/private ../var/private || ( echo Can not find $FILE_DIR/$SITE_DIR/private or unable to create target; exit 1 )
+  sleep 3
+else
+  mkdir --verbose -p ../var/private || exit 1
+  mkdir --verbose -p ../var/files   || exit 1
+  sudo chown -R apache:apache ../var/private
+fi
+
 
 set -x
 drush site-install $PROFILE --db-url=$DATABASE --sites-subdir=$SITE_DIR --site-name=$SITE_DIR --site-mail="w3@it.uib.no" --site-name="Universitetet i Bergen" --account-name=admin --account-mail="w3@it.uib.no" --account-pass=admin --clean-url $VERBOSE --yes || exit 1
@@ -97,6 +106,12 @@ EOT
 
 cd ../../..
 
+if [ "$2" = "--no-import" ]; then 
+	#This if-sentence is for testruns
+	sudo chown -R apache:apache /nettapp_w3/sites/$SITE_DIR || exit 1 
+	exit 0
+fi
+
 # import all of jur/hr
 bin/site-drush --yes vset uib_test_dir ALL
 bin/site-drush mi --all $VERBOSE --strict=0 --area_subset=uib_areas_subset_jurhf.txt
@@ -109,3 +124,14 @@ bin/site-drush pm-enable --yes uib_prod
 
 # sync some users, areas from sebra, etc
 sh -x bin/update-some-stuff
+
+#Password have timed out. Create a tmp-file
+TMPFile='TMP.fixprem.sh'
+echo "#!/bin/bash" >$TMPFile
+echo "sudo chown -R apache:apache /nettapp_w3/sites/$SITE_DIR || exit 1 ">>$TMPFile
+if [ $(grep "^w3-drupal:" /etc/passwd | wc -l ) -eq 1 ] ;then 
+  echo "#Setting w3-drupal as file-owner...">>$TMPFile
+  echo "find . -user $(whoami) -exec chown w3-drupal:ansatt {} \;">>$TMPFile
+fi
+echo "Run ./$TMPFile to fix file ownership"
+chmod a+x $TMPFile
