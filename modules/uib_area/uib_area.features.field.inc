@@ -1878,9 +1878,9 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'uib_field',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'socialmedia_formatter',
           'weight' => '12',
         ),
         'teaser' => array(

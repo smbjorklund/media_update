@@ -28,6 +28,7 @@ dependencies[] = page_manager
 dependencies[] = panels
 dependencies[] = phone
 dependencies[] = strongarm
+dependencies[] = uib_field
 dependencies[] = views
 features[context][] = ansattside_blocks
 features[context][] = area_blocks
