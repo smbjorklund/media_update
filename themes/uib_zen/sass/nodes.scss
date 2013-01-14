@@ -251,6 +251,15 @@
   }
 }
 
+.field-name-field-uib-copyright .field-label, .field-name-field-uib-owner .field-label {
+  margin-top: 5px;
+}
+
+.field-name-field-uib-copyright .field-items, .field-name-field-uib-owner .field-items {
+  margin-bottom: 2px;
+}
+
+
 /* styles for tabs recoded from <h2> headers [module uib_h2tabs] */
 .uib-tabs-container{
   width: 100%;
