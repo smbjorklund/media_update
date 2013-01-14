@@ -655,7 +655,6 @@ $zen-auto-include-item-base: false;
 
    .field-name-field-uib-tertiary-text {
      @include zen-grid-item (2, 3);
-     margin-left: 14px;
     }
 
    .field-name-field-uib-profiled-testimonial {
