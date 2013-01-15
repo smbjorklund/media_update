@@ -273,7 +273,6 @@ table.cols-6  {
       font-weight: bold;
       font-size: 1.1em;
       text-transform: none;
-      
     }
 
     .media  {
@@ -281,6 +280,7 @@ table.cols-6  {
       margin-left: 20px;
       float: left;
       min-height: 120px;
+      border-top: solid 1px #e0dede;
 
       .user-picture {
         float: left;

@@ -518,11 +518,11 @@ $zen-auto-include-item-base: false;
 
   #block-views-calendar-block-3.view-display-id-block_3  { /* Category */
     @include zen-clear();
-    @include zen-grid-item (2, 1);
+    @include zen-grid-item (4, 1);
   }
 
   .view-display-id-page_2  { /* Feed */
-    @include zen-grid-item (2, 3);
+    @include zen-grid-item (4, 1);
   }
 }
 
