@@ -78,7 +78,7 @@ function uib_setup_image_default_styles() {
         'data' => array(
           'width' => '708',
           'height' => '',
-          'upscale' => 0,
+          'upscale' => 1,
         ),
         'weight' => '1',
       ),
@@ -89,7 +89,7 @@ function uib_setup_image_default_styles() {
   $styles['content_sidebar'] = array(
     'name' => 'content_sidebar',
     'effects' => array(
-      3 => array(
+      2 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -101,7 +101,7 @@ function uib_setup_image_default_styles() {
         'data' => array(
           'width' => '177',
           'height' => '',
-          'upscale' => 0,
+          'upscale' => 1,
         ),
         'weight' => '1',
       ),
