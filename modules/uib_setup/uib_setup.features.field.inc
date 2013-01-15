@@ -51,6 +51,12 @@ function uib_setup_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'area_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'content_main' => array(
           'label' => 'above',
           'settings' => array(),
@@ -174,6 +180,12 @@ function uib_setup_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'area_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'content_main' => array(
           'label' => 'above',
           'settings' => array(),
@@ -292,6 +304,12 @@ function uib_setup_field_default_fields() {
       'description' => '',
       'display' => array(
         'area_bottom' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'area_main' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -421,6 +439,12 @@ function uib_setup_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'area_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'content_main' => array(
           'label' => 'above',
           'settings' => array(),
@@ -539,6 +563,12 @@ function uib_setup_field_default_fields() {
       'description' => '',
       'display' => array(
         'area_bottom' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'area_main' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -668,6 +698,12 @@ function uib_setup_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'area_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'content_main' => array(
           'label' => 'above',
           'settings' => array(),
@@ -787,6 +823,12 @@ function uib_setup_field_default_fields() {
       'description' => '',
       'display' => array(
         'area_bottom' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'area_main' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -917,6 +959,12 @@ function uib_setup_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'area_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'content_main' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1034,6 +1082,12 @@ function uib_setup_field_default_fields() {
       'description' => '',
       'display' => array(
         'area_bottom' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'area_main' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1162,6 +1216,12 @@ function uib_setup_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'area_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'content_main' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1280,6 +1340,12 @@ function uib_setup_field_default_fields() {
       'description' => '',
       'display' => array(
         'area_bottom' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'area_main' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1404,6 +1470,12 @@ function uib_setup_field_default_fields() {
       'description' => '',
       'display' => array(
         'area_bottom' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'area_main' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
