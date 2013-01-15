@@ -1803,7 +1803,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => array(
         0 => array(
-          'value' => 1,
+          'value' => 0,
         ),
       ),
       'deleted' => '0',
