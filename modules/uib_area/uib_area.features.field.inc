@@ -1395,7 +1395,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Select which articles show up in the slide show',
+      'description' => 'Select which articles show up in the slide show, large image is required for your article to appear in the slideshow.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -2974,7 +2974,7 @@ function uib_area_field_default_fields() {
   t('Sebra ID');
   t('Secondary text');
   t('Select the articles that will display in the "Messages" box on the "For Employees" area');
-  t('Select which articles show up in the slide show');
+  t('Select which articles show up in the slide show, large image is required for your article to appear in the slideshow.');
   t('Short name');
   t('Show staff');
   t('Social media');
