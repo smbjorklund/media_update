@@ -294,6 +294,35 @@ $zen-auto-include-item-base: false;
     }
   }
 
+@media all and(min-width: 240px) and (max-width: 720px) {
+  $zen-column-count: 1;
+
+  .view-recent-news .views-row {
+    @include zen-clear();
+  }
+
+  .view-recent-news img  {
+    @include zen-grid-item (1, 1);
+    @include zen-clear();
+  }
+
+
+  .view-display-id-newsarchive  .views-field-title  {
+    @include zen-grid-item (1, 1);
+    @include zen-clear();
+    margin-bottom: 10px;
+    float: none;
+    padding-left: 15px;
+  }
+
+  .view-display-id-newsarchive  .views-field-field-uib-lead {
+    @include zen-grid-item (1, 1);
+    @include zen-clear();
+    min-height: 115px;
+    padding-left: 15px;
+  }
+}
+
 /* Persons mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
   .view-ansatte {
@@ -467,15 +496,14 @@ $zen-auto-include-item-base: false;
       @include zen-grid-item (1, 1);
     }
 
-
-    .view-recent-news .views-field-title  {
+    .view-display-id-newsarchive .views-field-title  {
       @include zen-grid-item (3, 2);
       margin-bottom: 10px;
       float: none;
       padding-left: 15px;
     }
 
-    .view-recent-news .views-field-field-uib-lead {
+    .view-display-id-newsarchive .views-field-field-uib-lead {
       @include zen-grid-item (3, 2);
       min-height: 115px;
       padding-left: 15px;
@@ -628,14 +656,14 @@ $zen-auto-include-item-base: false;
   }
 
 
-  .view-recent-news .views-field-title  {
+  .view-display-id-newsarchive  .views-field-title  {
     @include zen-grid-item (3, 2);
     margin-bottom: 10px;
     float: none;
     padding-left: 15px;
   }
 
-  .view-recent-news .views-field-field-uib-lead {
+  .view-display-id-newsarchive  .views-field-field-uib-lead {
     @include zen-grid-item (3, 2);
     min-height: 115px;
     padding-left: 15px;
@@ -684,6 +712,7 @@ $zen-auto-include-item-base: false;
 
   .field-name-secondary-text {
      @include zen-grid-item (4, 1);
+     @include zen-clear();
   }
 
   .field-name-profiled-article {
