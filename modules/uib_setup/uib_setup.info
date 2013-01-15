@@ -150,6 +150,7 @@ features[image][] = area_main
 features[image][] = content_main
 features[image][] = content_sidebar
 features[image][] = full_width_16_9
+features[image][] = user_thumbnail
 features[image][] = wide_thumbnail
 features[ldap_servers][] = uib_ldap
 features[menu_custom][] = management
