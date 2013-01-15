@@ -1102,7 +1102,6 @@ return TRUE;';
   $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
   $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
   $handler->display->display_options['fields']['field_uib_main_media']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_main_media']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_main_media']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
@@ -1114,7 +1113,6 @@ return TRUE;';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['text'] = '[title] ([created_1])';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
@@ -1125,12 +1123,6 @@ return TRUE;';
   $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_lead']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_lead']['alter']['text'] = '<div class="recent-news-wrapper">
-[field_uib_main_media]
-[title]
-[field_uib_lead]
-</div>';
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Area (field_uib_area) */
@@ -1225,11 +1217,6 @@ return TRUE;';
     t('News archive'),
     t('Post date'),
     t('[title] ([created_1])'),
-    t('<div class="recent-news-wrapper">
-[field_uib_main_media]
-[title]
-[field_uib_lead]
-</div>'),
     t('Feed'),
     t('Date and year selector'),
     t('Select news by month and year'),
