@@ -461,7 +461,6 @@ $zen-auto-include-item-base: false;
 
     .view-recent-news .views-row {
       @include zen-clear();
-      border-bottom: 1px solid silver;
     }
 
     .view-recent-news img  {
