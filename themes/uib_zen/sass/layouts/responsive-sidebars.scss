@@ -312,14 +312,12 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     margin-bottom: 10px;
     float: none;
-    padding-left: 15px;
   }
 
   .view-display-id-newsarchive  .views-field-field-uib-lead {
     @include zen-grid-item (1, 1);
     @include zen-clear();
     min-height: 115px;
-    padding-left: 15px;
   }
 }
 
