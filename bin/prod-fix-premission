@@ -7,6 +7,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 chmod -R g+wrs /nettapp_w3/sites/w3.uib.no/ 
 chown -R apache:apache /nettapp_w3/sites/w3.uib.no/ 
+chown -R apache:apache /var/www/w3.uib.no/drupal/sites/all/translations/
 chown -R w3-drupal /var/www/w3.uib.no
 chgrp -R ansatt /var/www/w3.uib.no/.git
 chmod -R g+swr /var/www/w3.uib.no/.git
