@@ -1103,6 +1103,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
   $handler->display->display_options['fields']['field_uib_main_media']['label'] = '';
   $handler->display->display_options['fields']['field_uib_main_media']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_main_media']['empty'] = '<img src="/sites/all/themes/uib/uib_zen/images/bergenmuseum.png">';
   $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
@@ -1216,6 +1217,7 @@ return TRUE;';
     t('Area recent news block'),
     t('News archive'),
     t('Post date'),
+    t('<img src="/sites/all/themes/uib/uib_zen/images/bergenmuseum.png">'),
     t('[title] ([created_1])'),
     t('Feed'),
     t('Date and year selector'),
