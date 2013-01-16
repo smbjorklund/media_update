@@ -130,6 +130,9 @@ body {
 }
 
 /* Main: Styling for Webdesk */
+ .page-webdesk #page {
+  max-width: 1020px;
+}
 .page-webdesk {
   background-color: lighten($light-grey, 4%);
 }
@@ -165,6 +168,9 @@ body {
     color: #fff;
     text-transform:capitalize;
   }
+}
+.page-webdesk .panel-col .inside {
+  margin: 0 15px;
 }
 
 /*
