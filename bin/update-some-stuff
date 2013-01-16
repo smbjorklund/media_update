@@ -7,4 +7,4 @@ done
 
 bin/site-drush --verbose uib-sebra-areas
 bin/site-drush --verbose uib-sync-fs
-bin/site-drush --verbose l10n-update
+bin/update-norsk
