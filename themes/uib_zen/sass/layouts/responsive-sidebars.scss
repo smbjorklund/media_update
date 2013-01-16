@@ -725,7 +725,9 @@ $zen-auto-include-item-base: false;
    
    .group_two_column  {
      @include zen-grid-item (4, 1);
-
+     border-bottom: 2px solid #C8BEB4;
+     padding-bottom: 10px;  
+      
       .field-name-field-uib-link-section {
        @include zen-grid-item (2, 1);
        @include zen-clear();
@@ -749,10 +751,27 @@ $zen-auto-include-item-base: false;
        @include zen-clear();
        float: none;
        clear: none;
+       background: #004573;
+       padding: 2%;
+       width: 46%;
+       border-radius: 3px;
 
+       header {
+         height: 1px;
+       }
        img {
          margin-right: 10px;
          float: left;
+       }
+       
+       a, .node-uib-testimonial {
+         color: #fff;
+         text-shadow: 1px 1px 3px #002F54;
+         filter: dropshadow(color=#002542, offx=1, offy=1);
+       } 
+       
+       .node-uib-testimonial .node-title {
+         border: none;
        }
      }
    }
