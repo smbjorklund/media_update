@@ -692,6 +692,7 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-primary-media {
      @include zen-grid-item (2, 1);
+     @include zen-clear();
   }
 
   .field-name-field-uib-primary-text {
@@ -707,9 +708,9 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
   }
 
-  .field-name-secondary-text {
+  .field-name-field-uib-secondary-text {
      @include zen-grid-item (4, 1);
-     @include zen-clear();
+     clear: both;
   }
 
   .field-name-profiled-article {

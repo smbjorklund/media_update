@@ -235,9 +235,10 @@ h2 {
 }
 
 h3 {
-  @include adjust-font-size-to( $h3-font-size );
-  @include leader(1, $h3-font-size);
-  @include trailer(1, $h3-font-size);
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+  font-size: 1.5em;
 }
 
 h4 {

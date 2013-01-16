@@ -118,11 +118,15 @@
   }
 
   p  {
-    padding: 10px;
+    padding: 0 30px 0 30px;
   }
 
   h4  {
     margin-left: 30px;
+  }
+  
+  h3 {
+    margin: 30px 0 0 30px;
   }
 }
 
@@ -131,7 +135,6 @@
 }
 
 .field-name-field-uib-primary-text {
-  width: 47%;
   float: right;
 }
 
