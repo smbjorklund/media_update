@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
+if [ "$(id -u)" != "0" ]; then
+   echo "This script must be run as root" 1>&2
+   exit 2
+fi
+chmod -R g+wrs /nettapp_w3/sites/w3.uib.no/ 
+chown -R apache:apache /nettapp_w3/sites/w3.uib.no/ 
+chown -R w3-drupal /var/www/w3.uib.no
+chgrp -R ansatt /var/www/w3.uib.no/.git
+chmod -R g+swr /var/www/w3.uib.no/.git
+else 
+echo "This script must be on attila.uib.no or attika.uib.no" 1>&2
+exit 1
+fi
