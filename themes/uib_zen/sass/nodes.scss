@@ -168,6 +168,10 @@
   clear: both;
 }
 
+.field-collection-item-field-uib-link-section .field-name-field-uib-title {
+  font-weight: bold;
+}
+
 /* Article page */
 .field-name-field-uib-kicker, .group-article-sidebar .field-label  {
   border-top: $sidebar-border;
@@ -239,6 +243,7 @@
   &:before{display: none};
   &:after{display: none};
 }
+
 
 /* General styling for description, copyright and photographer */
 .field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
