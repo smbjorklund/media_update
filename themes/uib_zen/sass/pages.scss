@@ -143,10 +143,10 @@ body {
   display: none;
 }
 .page-webdesk .pane-user-areas-panel-pane-1 {
-  margin-top: 59px;
+  margin-top: 58px;
 }
 .page-webdesk .pane-scheduled-content {
-  margin-top: 95px;
+  margin-top: 94px;
 }
 .page-webdesk h2 {
   font-size: 1.7em;
@@ -154,6 +154,17 @@ body {
 }
 .pane-menu-webdesk h2 {
   display: none;
+}
+.page-webdesk .more-link {
+  background: #1760a4;
+  border: 1px solid #000000;
+  float: right;
+  padding: 4px 10px;
+  width: 35px;
+  a {
+    color: #fff;
+    text-transform:capitalize;
+  }
 }
 
 /*
