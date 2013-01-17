@@ -22,7 +22,6 @@ dependencies[] = media
 dependencies[] = media_vimeo
 dependencies[] = media_youtube
 dependencies[] = menu
-dependencies[] = menuperformance
 dependencies[] = pathauto
 dependencies[] = strongarm
 dependencies[] = token
