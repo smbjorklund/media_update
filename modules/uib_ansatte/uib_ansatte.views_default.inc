@@ -287,6 +287,97 @@ function uib_ansatte_views_default_views() {
   /* Display: node page */
   $handler = $view->new_display('page', 'node page', 'page_2');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h2';
+  /* Field: User: Picture */
+  $handler->display->display_options['fields']['picture']['id'] = 'picture';
+  $handler->display->display_options['fields']['picture']['table'] = 'users';
+  $handler->display->display_options['fields']['picture']['field'] = 'picture';
+  $handler->display->display_options['fields']['picture']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['picture']['label'] = '';
+  $handler->display->display_options['fields']['picture']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['picture']['empty'] = '<span class="user-picture"><img src="/sites/all/themes/uib/uib_zen/images/person.png"></span>';
+  $handler->display->display_options['fields']['picture']['hide_empty'] = TRUE;
+  /* Field: User: First name */
+  $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['field'] = 'field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_first_name']['exclude'] = TRUE;
+  /* Field: User: Last name */
+  $handler->display->display_options['fields']['field_uib_last_name']['id'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['table'] = 'field_data_field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['field'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name']['alter']['text'] = '[field_uib_last_name]</br>';
+  /* Field: Field: Position */
+  $handler->display->display_options['fields']['field_uib_position']['id'] = 'field_uib_position';
+  $handler->display->display_options['fields']['field_uib_position']['table'] = 'field_data_field_uib_position';
+  $handler->display->display_options['fields']['field_uib_position']['field'] = 'field_uib_position';
+  $handler->display->display_options['fields']['field_uib_position']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_position']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_position']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_position']['alter']['text'] = '[field_uib_position]</br>';
+  $handler->display->display_options['fields']['field_uib_position']['hide_empty'] = TRUE;
+  /* Field: User: Position (english) */
+  $handler->display->display_options['fields']['field_uib_position_en']['id'] = 'field_uib_position_en';
+  $handler->display->display_options['fields']['field_uib_position_en']['table'] = 'field_data_field_uib_position_en';
+  $handler->display->display_options['fields']['field_uib_position_en']['field'] = 'field_uib_position_en';
+  $handler->display->display_options['fields']['field_uib_position_en']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_position_en']['exclude'] = TRUE;
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['mail']['exclude'] = TRUE;
+  /* Field: Field: Phone */
+  $handler->display->display_options['fields']['field_uib_phone']['id'] = 'field_uib_phone';
+  $handler->display->display_options['fields']['field_uib_phone']['table'] = 'field_data_field_uib_phone';
+  $handler->display->display_options['fields']['field_uib_phone']['field'] = 'field_uib_phone';
+  $handler->display->display_options['fields']['field_uib_phone']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_phone']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_phone']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_phone']['alter']['text'] = '[field_uib_phone]<br>';
+  $handler->display->display_options['fields']['field_uib_phone']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_phone']['delta_offset'] = '0';
+  /* Field: User: Last name */
+  $handler->display->display_options['fields']['field_uib_last_name_1']['id'] = 'field_uib_last_name_1';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['table'] = 'field_data_field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['field'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['max_length'] = '1';
+  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name_1']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="media">
+ [picture]
+  <div class="info">
+    <h2>[field_uib_first_name] [field_uib_last_name]</h2>
+    [field_uib_position]
+    [field_uib_phone]
+    [mail]
+  </div>
+</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -379,6 +470,7 @@ function uib_ansatte_views_default_views() {
     t('Page'),
     t('All staff'),
     t('node page'),
+    t('<span class="user-picture"><img src="/sites/all/themes/uib/uib_zen/images/person.png"></span>'),
     t('All employees at %1'),
     t('%1'),
   );
