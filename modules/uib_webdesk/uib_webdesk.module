@@ -15,22 +15,12 @@ function uib_webdesk_admin_menu_output_alter(&$content) {
     // Do not let users at level 2 and level 3 see these admin menu items
     $content['menu']['admin/help']['#access'] = FALSE;
     $content['menu']['admin/index']['#access'] = FALSE;
-    // Remove access to some admin menu items concerning menus for level2 and 3 users
-    $content['menu']['admin/structure']['admin/structure/menu']['admin/structure/menu/add']['#access'] = FALSE;
-    $content['menu']['admin/structure']['admin/structure/menu']['admin/structure/menu/settings']['#access'] = FALSE;
-    $content['menu']['admin/structure']['admin/structure/menu']['admin/structure/menu/manage/devel']['#access'] = FALSE;
-    $content['menu']['admin/structure']['admin/structure/menu']['admin/structure/menu/manage/main-menu']['#access'] = FALSE;
-    $content['menu']['admin/structure']['admin/structure/menu']['admin/structure/menu/manage/management']['#access'] = FALSE;
-    $content['menu']['admin/structure']['admin/structure/menu']['admin/structure/menu/manage/navigation']['#access'] = FALSE;
-    $content['menu']['admin/structure']['admin/structure/menu']['admin/structure/menu/manage/user-menu']['#access'] = FALSE;
-    $content['menu']['admin/structure']['admin/structure/menu']['admin/structure/menu/manage/menu-webdesk']['#access'] = FALSE;
   }
 }
 
 /**
  * Implements hook_form_alter
  */
-
 function uib_webdesk_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == "views_exposed_form") {
     $form['created']['#size'] = 20;

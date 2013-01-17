@@ -113,6 +113,17 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'panels',
   );
 
+  // Exported permission: administer area menu items.
+  $permissions['administer area menu items'] = array(
+    'name' => 'administer area menu items',
+    'roles' => array(
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
   // Exported permission: administer content translations.
   $permissions['administer content translations'] = array(
     'name' => 'administer content translations',
@@ -129,6 +140,13 @@ function uib_webdesk_user_default_permissions() {
       0 => 'level 1',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: administer devel menu items.
+  $permissions['administer devel menu items'] = array(
+    'name' => 'administer devel menu items',
+    'roles' => array(),
+    'module' => 'menu_admin_per_menu',
   );
 
   // Exported permission: administer features.
@@ -185,15 +203,62 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'locale',
   );
 
+  // Exported permission: administer main-menu menu items.
+  $permissions['administer main-menu menu items'] = array(
+    'name' => 'administer main-menu menu items',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: administer management menu items.
+  $permissions['administer management menu items'] = array(
+    'name' => 'administer management menu items',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
   // Exported permission: administer menu.
   $permissions['administer menu'] = array(
     'name' => 'administer menu',
     'roles' => array(
       0 => 'level 1',
+    ),
+    'module' => 'menu',
+  );
+
+  // Exported permission: administer menu-global-menu menu items.
+  $permissions['administer menu-global-menu menu items'] = array(
+    'name' => 'administer menu-global-menu menu items',
+    'roles' => array(
+      0 => 'level 1',
       1 => 'level 2',
       2 => 'level 3',
     ),
-    'module' => 'menu',
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: administer menu-global-menu-no menu items.
+  $permissions['administer menu-global-menu-no menu items'] = array(
+    'name' => 'administer menu-global-menu-no menu items',
+    'roles' => array(
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: administer menu-webdesk menu items.
+  $permissions['administer menu-webdesk menu items'] = array(
+    'name' => 'administer menu-webdesk menu items',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'menu_admin_per_menu',
   );
 
   // Exported permission: administer module filter.
@@ -212,6 +277,15 @@ function uib_webdesk_user_default_permissions() {
       0 => 'level 1',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: administer navigation menu items.
+  $permissions['administer navigation menu items'] = array(
+    'name' => 'administer navigation menu items',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'menu_admin_per_menu',
   );
 
   // Exported permission: administer nodes.
@@ -321,6 +395,15 @@ function uib_webdesk_user_default_permissions() {
       0 => 'level 1',
     ),
     'module' => 'path',
+  );
+
+  // Exported permission: administer user-menu menu items.
+  $permissions['administer user-menu menu items'] = array(
+    'name' => 'administer user-menu menu items',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'menu_admin_per_menu',
   );
 
   // Exported permission: administer users.
