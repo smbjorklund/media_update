@@ -280,8 +280,10 @@ table.cols-6  {
       width: 47%;
       margin-left: 20px;
       float: left;
-      min-height: 120px;
+      height: 150px;
       border-top: solid 1px #e0dede;
+      border-bottom: solid 1px #e0dede;
+      
 
       .user-picture {
         float: left;
