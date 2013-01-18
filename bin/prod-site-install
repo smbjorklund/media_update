@@ -33,7 +33,7 @@ if [ -e sites/$SITE_DIR ]; then
     exit 1
 fi
 
-if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
+if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$|^attilatest.uib.no$)' | wc -l) -gt 0 ] ;then
   sudo mkdir -p /nettapp_w3/sites/$SITE_DIR || exit 1 
   sudo chmod g+ws /nettapp_w3/sites/$SITE_DIR
   sudo mkdir -p /nettapp_w3/sites/$SITE_DIR/files || exit 1 
@@ -46,6 +46,8 @@ if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;t
   ln -s /nettapp_w3/sites/$SITE_DIR/private ../var/private || ( echo Can not find $FILE_DIR/$SITE_DIR/private or unable to create target; exit 1 )
   sleep 3
 else
+  echo "Not running on (^attila.uib.no$|^attika.uib.no$|^attilatest.uib.no$)"
+  sleep 5
   mkdir --verbose -p ../var/private || exit 1
   mkdir --verbose -p ../var/files   || exit 1
   sudo chown -R apache:apache ../var/private
@@ -126,14 +128,4 @@ bin/site-drush pm-enable --yes uib_prod
 sh -x bin/update-some-stuff
 
 #Password have timed out. Create a tmp-file
-TMPFile='TMP.fixprem.sh'
-echo "#!/bin/bash" >$TMPFile
-if [ $(grep "^w3-drupal:" /etc/passwd | wc -l ) -eq 1 ] ;then 
-  echo "#Setting w3-drupal as file-owner...">>$TMPFile
-  echo "find . -user $(whoami) -exec chown w3-drupal:ansatt {} \;">>$TMPFile
-fi
-
-echo "#Apache needs RW....">>$TMPFile
-echo "sudo chown -R apache:apache /nettapp_w3/sites/$SITE_DIR || exit 1 ">>$TMPFile
-echo "Run ./$TMPFile to fix file ownership"
-chmod a+x $TMPFile
+echo run bin/prod-fix-premission

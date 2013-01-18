@@ -9,8 +9,15 @@ if [ $(id w3-drupal | grep apache |wc -l ) -eq 0 ];then
   echo "User w3-drupal must exist, and be a memeber of apache" 1>&2
   exit  3 
 fi
-chmod -R g+wrs /nettapp_w3/sites/w3.uib.no/ 
-chown -R apache:apache /nettapp_w3/sites/w3.uib.no/ 
+
+if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
+site='w3.uib.no'
+else
+site=$(hostname)
+fi
+
+chmod -R g+wrs /nettapp_w3/sites/$site/ 
+chown -R apache:apache /nettapp_w3/sites/$site/ 
 chown -R apache:apache /var/www/w3.uib.no/drupal/sites/all/translations/
 chown -R w3-drupal /var/www/w3.uib.no
 chgrp -R ansatt /var/www/w3.uib.no/.git
