@@ -1,28 +1,28 @@
 #!/bin/bash
 
 if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$|^attilatest.uib.no$)' | wc -l) -gt 0 ] ;then
-if [ "$(id -u)" != "0" ]; then
-   echo "This script must be run as root" 1>&2
-   exit 2
-fi
-if [ $(id w3-drupal | grep apache |wc -l ) -eq 0 ];then 
-  echo "User w3-drupal must exist, and be a memeber of apache" 1>&2
-  exit  3 
-fi
+  if [ "$(id -u)" != "0" ]; then
+    echo "This script must be run as root" 1>&2
+    exit 2
+  fi
+  if [ $(id w3-drupal | grep apache |wc -l ) -eq 0 ];then 
+    echo "User w3-drupal must exist, and be a memeber of apache" 1>&2
+    exit  3 
+  fi
 
-if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
-site='w3.uib.no'
-else
-site=$(hostname)
-fi
+  if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
+    site='w3.uib.no'
+  else
+    site=$(hostname)
+  fi
 
-chmod -R g+wrs /nettapp_w3/sites/$site/ 
-chown -R apache:apache /nettapp_w3/sites/$site/ 
-chown -R apache:apache /var/www/w3.uib.no/drupal/sites/all/translations/
-chown -R w3-drupal /var/www/w3.uib.no
-chgrp -R ansatt /var/www/w3.uib.no/.git
-chmod -R g+swr /var/www/w3.uib.no/.git
+  chmod -R g+wrs /nettapp_w3/sites/$site/ 
+  chown -R apache:apache /nettapp_w3/sites/$site/ 
+  chown -R apache:apache /var/www/w3.uib.no/drupal/sites/all/translations/
+  chown -R w3-drupal /var/www/w3.uib.no
+  find /var/www/w3.uib.no/ -name '.git' -type d -exec chgrp -R ansatt {} \;
+  find /var/www/w3.uib.no/ -name '.git' -type d -exec chmod -R g+swr  {} \;
 else 
-echo "This script must be on attila.uib.no or attika.uib.no" 1>&2
-exit 1
+  echo "This script must be on attila.uib.no or attika.uib.no" 1>&2
+  exit 1
 fi
