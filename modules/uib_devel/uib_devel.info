@@ -10,3 +10,4 @@ dependencies[] = help
 dependencies[] = devel
 dependencies[] = panels_ipe
 dependencies[] = coder_review
+dependencies[] = dblog
