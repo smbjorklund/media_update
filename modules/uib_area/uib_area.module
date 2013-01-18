@@ -262,7 +262,10 @@ function uib_area__feed_format($url, $title, $limit) {
     if (!$content) {
       return;
     }
-    $xml = new SimpleXmlElement($content);
+    $xml = @simplexml_load_string($content);
+    if ($xml === FALSE) {
+      return;
+    }
     if ($xml->channel->item) {
       $items = array(
       'list' => array(
