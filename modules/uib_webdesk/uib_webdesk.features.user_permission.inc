@@ -142,13 +142,6 @@ function uib_webdesk_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: administer devel menu items.
-  $permissions['administer devel menu items'] = array(
-    'name' => 'administer devel menu items',
-    'roles' => array(),
-    'module' => 'menu_admin_per_menu',
-  );
-
   // Exported permission: administer features.
   $permissions['administer features'] = array(
     'name' => 'administer features',

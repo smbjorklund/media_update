@@ -42,7 +42,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Oppførsel ved ingen resultater: Global: Tekstområde */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -50,18 +50,18 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Sorry sailor. Your search/site contain no content.';
   $handler->display->display_options['empty']['area']['format'] = 'html';
-  /* Relasjon: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
   $handler->display->display_options['relationships']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
   $handler->display->display_options['relationships']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
-  /* Felt: Innhold: Tittel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Innhold: Area */
+  /* Field: Content: Area */
   $handler->display->display_options['fields']['field_uib_area']['id'] = 'field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['table'] = 'field_data_field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['field'] = 'field_uib_area';
@@ -69,29 +69,29 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['field_uib_area']['settings'] = array(
     'link' => 0,
   );
-  /* Felt: Innhold: Publisert */
+  /* Field: Content: Published */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Felt: Innhold: Rediger lenke */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Felt: Innhold: Slett lenke */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['label'] = '';
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Innhold: Innleggsdato */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Innhold: Author uid */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -102,7 +102,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'empty';
-  /* Filter criterion: Innhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -259,23 +259,23 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Innhold: Tittel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Innhold: Type */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['field_uib_article_type']['id'] = 'field_uib_article_type';
   $handler->display->display_options['fields']['field_uib_article_type']['table'] = 'field_data_field_uib_article_type';
   $handler->display->display_options['fields']['field_uib_article_type']['field'] = 'field_uib_article_type';
-  /* Felt: Innhold: Innleggsdato */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['date_format'] = 'long';
-  /* Felt: Innhold: Area */
+  /* Field: Content: Area */
   $handler->display->display_options['fields']['field_uib_area']['id'] = 'field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['table'] = 'field_data_field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['field'] = 'field_uib_area';
@@ -283,18 +283,18 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['field_uib_area']['settings'] = array(
     'link' => 0,
   );
-  /* Felt: Innhold: Publisert */
+  /* Field: Content: Published */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Felt: Innhold: Rediger lenke */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Felt: Innhold: Slett lenke */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -319,17 +319,18 @@ function uib_webdesk_views_default_views() {
     t('last »'),
     t('No content'),
     t('Sorry sailor. Your search/site contain no content.'),
-    t('Innhold entity referenced from field_uib_area'),
-    t('Tittel'),
+    t('Content entity referenced from field_uib_area'),
+    t('Title'),
     t('Area'),
-    t('Publisert'),
+    t('Published'),
     t('Alle'),
     t('My simple content'),
     t('View panes'),
     t('Block'),
     t('Page'),
+    t('more'),
     t('Type'),
-    t('Innleggsdato'),
+    t('Post date'),
   );
   $export['my_content'] = $view;
 
@@ -402,55 +403,55 @@ function uib_webdesk_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Oppførsel ved ingen resultater: Global: Tekstområde */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['format'] = 'plain_text';
-  /* Relasjon: Innhold: Forfatter */
+  /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['label'] = 'Author of content';
-  /* Relasjon: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
   $handler->display->display_options['relationships']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
   $handler->display->display_options['relationships']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
-  /* Felt: Innhold: Tittel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Tidsplanlegger: Publiser på */
+  /* Field: Scheduler: Publish on */
   $handler->display->display_options['fields']['publish_on']['id'] = 'publish_on';
   $handler->display->display_options['fields']['publish_on']['table'] = 'scheduler';
   $handler->display->display_options['fields']['publish_on']['field'] = 'publish_on';
   $handler->display->display_options['fields']['publish_on']['label'] = 'Publish';
   $handler->display->display_options['fields']['publish_on']['date_format'] = 'short';
-  /* Felt: Innhold: Slett lenke */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['label'] = '';
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
-  /* Felt: Innhold: Rediger lenke */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Tidsplanlegger: Publiser på */
+  /* Sort criterion: Scheduler: Publish on */
   $handler->display->display_options['sorts']['publish_on']['id'] = 'publish_on';
   $handler->display->display_options['sorts']['publish_on']['table'] = 'scheduler';
   $handler->display->display_options['sorts']['publish_on']['field'] = 'publish_on';
-  /* Sorteringskriterium: Tidsplanlegger: Avpubliser på */
+  /* Sort criterion: Scheduler: Unpublish on */
   $handler->display->display_options['sorts']['unpublish_on']['id'] = 'unpublish_on';
   $handler->display->display_options['sorts']['unpublish_on']['table'] = 'scheduler';
   $handler->display->display_options['sorts']['unpublish_on']['field'] = 'unpublish_on';
-  /* Contextual filter: Innhold: Author uid */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -463,13 +464,13 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'OR',
   );
-  /* Filter criterion: Tidsplanlegger: Publiser på */
+  /* Filter criterion: Scheduler: Publish on */
   $handler->display->display_options['filters']['publish_on']['id'] = 'publish_on';
   $handler->display->display_options['filters']['publish_on']['table'] = 'scheduler';
   $handler->display->display_options['filters']['publish_on']['field'] = 'publish_on';
   $handler->display->display_options['filters']['publish_on']['operator'] = 'not empty';
   $handler->display->display_options['filters']['publish_on']['group'] = 1;
-  /* Filter criterion: Tidsplanlegger: Avpubliser på */
+  /* Filter criterion: Scheduler: Unpublish on */
   $handler->display->display_options['filters']['unpublish_on']['id'] = 'unpublish_on';
   $handler->display->display_options['filters']['unpublish_on']['table'] = 'scheduler';
   $handler->display->display_options['filters']['unpublish_on']['field'] = 'unpublish_on';
@@ -480,25 +481,25 @@ function uib_webdesk_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Innhold: Tittel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Tidsplanlegger: Publiser på */
+  /* Field: Scheduler: Publish on */
   $handler->display->display_options['fields']['publish_on']['id'] = 'publish_on';
   $handler->display->display_options['fields']['publish_on']['table'] = 'scheduler';
   $handler->display->display_options['fields']['publish_on']['field'] = 'publish_on';
   $handler->display->display_options['fields']['publish_on']['label'] = 'Publish';
   $handler->display->display_options['fields']['publish_on']['date_format'] = 'short';
-  /* Felt: Tidsplanlegger: Avpubliser på */
+  /* Field: Scheduler: Unpublish on */
   $handler->display->display_options['fields']['unpublish_on']['id'] = 'unpublish_on';
   $handler->display->display_options['fields']['unpublish_on']['table'] = 'scheduler';
   $handler->display->display_options['fields']['unpublish_on']['field'] = 'unpublish_on';
   $handler->display->display_options['fields']['unpublish_on']['label'] = 'Unpublish';
   $handler->display->display_options['fields']['unpublish_on']['date_format'] = 'short';
-  /* Felt: Innhold: Area */
+  /* Field: Content: Area */
   $handler->display->display_options['fields']['field_uib_area']['id'] = 'field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['table'] = 'field_data_field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['field'] = 'field_uib_area';
@@ -506,13 +507,13 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['field_uib_area']['settings'] = array(
     'link' => 1,
   );
-  /* Felt: Innhold: Rediger lenke */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Felt: Innhold: Slett lenke */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -602,11 +603,12 @@ function uib_webdesk_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Author of content'),
-    t('Innhold entity referenced from field_uib_area'),
-    t('Tittel'),
+    t('Content entity referenced from field_uib_area'),
+    t('Title'),
     t('Publish'),
     t('Alle'),
     t('Page'),
+    t('more'),
     t('Unpublish'),
     t('Area'),
     t('Block'),
@@ -772,7 +774,7 @@ function uib_webdesk_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Oppførsel ved ingen resultater: Global: Tekstområde */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -780,16 +782,16 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Sorry sailor. Your search/site contain no content.';
   $handler->display->display_options['empty']['area']['format'] = 'html';
-  /* Relasjon: Innhold: Forfatter */
+  /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['label'] = 'Author of content';
-  /* Relasjon: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
   $handler->display->display_options['relationships']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
   $handler->display->display_options['relationships']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
-  /* Felt: Bulk operations: Innhold */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -919,58 +921,58 @@ function uib_webdesk_views_default_views() {
       'postpone_processing' => 0,
     ),
   );
-  /* Felt: Innhold: Tittel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Innhold: Type */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
-  /* Felt: Innhold: Area */
+  /* Field: Content: Area */
   $handler->display->display_options['fields']['field_uib_area']['id'] = 'field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['table'] = 'field_data_field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['field'] = 'field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['settings'] = array(
     'link' => 0,
   );
-  /* Felt: Bruker: Navn */
+  /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  /* Felt: Innhold: Oppdatert dato */
+  /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['date_format'] = 'long';
-  /* Felt: Innhold: Rediger lenke */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Felt: Innhold: Slett lenke */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['label'] = '';
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Innhold: Innleggsdato */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Innhold: Author uid */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
   $handler->display->display_options['arguments']['uid']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
-  /* Filter criterion: Innhold: Publisert */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -985,7 +987,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -994,7 +996,7 @@ function uib_webdesk_views_default_views() {
     'uib_testimonial' => 'uib_testimonial',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Innhold: Author uid */
+  /* Filter criterion: Content: Author uid */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'node';
   $handler->display->display_options['filters']['uid']['field'] = 'uid';
@@ -1009,7 +1011,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Type (field_uib_article_type) */
+  /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
   $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
@@ -1023,7 +1025,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Event type (field_uib_event_type) */
+  /* Filter criterion: Content: Event type (field_uib_event_type) */
   $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
   $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
   $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
@@ -1037,7 +1039,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Innleggsdato */
+  /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
@@ -1053,7 +1055,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Oppdatert dato */
+  /* Filter criterion: Content: Updated date */
   $handler->display->display_options['filters']['changed']['id'] = 'changed';
   $handler->display->display_options['filters']['changed']['table'] = 'node';
   $handler->display->display_options['filters']['changed']['field'] = 'changed';
@@ -1072,7 +1074,7 @@ function uib_webdesk_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: Innhold: Tittel */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -1090,7 +1092,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Innhold: Publisert */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1105,7 +1107,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1114,7 +1116,7 @@ function uib_webdesk_views_default_views() {
     'uib_testimonial' => 'uib_testimonial',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Innhold: Author uid */
+  /* Filter criterion: Content: Author uid */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'node';
   $handler->display->display_options['filters']['uid']['field'] = 'uid';
@@ -1129,7 +1131,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Tittel */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['table'] = 'node';
   $handler->display->display_options['filters']['title_1']['field'] = 'title';
@@ -1148,7 +1150,7 @@ function uib_webdesk_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: Innhold: Tittel */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -1168,7 +1170,7 @@ function uib_webdesk_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: Innhold: Type (field_uib_article_type) */
+  /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
   $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
@@ -1182,7 +1184,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Event type (field_uib_event_type) */
+  /* Filter criterion: Content: Event type (field_uib_event_type) */
   $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
   $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
   $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
@@ -1196,7 +1198,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Innleggsdato */
+  /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
@@ -1212,7 +1214,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Oppdatert dato */
+  /* Filter criterion: Content: Updated date */
   $handler->display->display_options['filters']['changed']['id'] = 'changed';
   $handler->display->display_options['filters']['changed']['table'] = 'node';
   $handler->display->display_options['filters']['changed']['field'] = 'changed';
@@ -1245,16 +1247,16 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relasjon: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
   $handler->display->display_options['relationships']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
   $handler->display->display_options['relationships']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
-  /* Relasjon: Innhold: Forfatter */
+  /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Innhold: Author uid */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -1265,7 +1267,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Innhold: Publisert */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1280,7 +1282,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Tittel */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -1298,7 +1300,7 @@ function uib_webdesk_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: Innhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1307,7 +1309,7 @@ function uib_webdesk_views_default_views() {
     'uib_testimonial' => 'uib_testimonial',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Innhold: Type (field_uib_article_type) */
+  /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
   $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
@@ -1321,7 +1323,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Event type (field_uib_event_type) */
+  /* Filter criterion: Content: Event type (field_uib_event_type) */
   $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
   $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
   $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
@@ -1335,7 +1337,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Innleggsdato */
+  /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
@@ -1351,7 +1353,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Oppdatert dato */
+  /* Filter criterion: Content: Updated date */
   $handler->display->display_options['filters']['changed']['id'] = 'changed';
   $handler->display->display_options['filters']['changed']['table'] = 'node';
   $handler->display->display_options['filters']['changed']['field'] = 'changed';
@@ -1450,7 +1452,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Bulk operations: Innhold */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -1580,40 +1582,40 @@ function uib_webdesk_views_default_views() {
       'postpone_processing' => 0,
     ),
   );
-  /* Felt: Innhold: Tittel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Innhold: Type */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['field_uib_article_type']['id'] = 'field_uib_article_type';
   $handler->display->display_options['fields']['field_uib_article_type']['table'] = 'field_data_field_uib_article_type';
   $handler->display->display_options['fields']['field_uib_article_type']['field'] = 'field_uib_article_type';
-  /* Felt: Innhold: Area */
+  /* Field: Content: Area */
   $handler->display->display_options['fields']['field_uib_area']['id'] = 'field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['table'] = 'field_data_field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['field'] = 'field_uib_area';
   $handler->display->display_options['fields']['field_uib_area']['settings'] = array(
     'link' => 0,
   );
-  /* Felt: Bruker: Navn */
+  /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  /* Felt: Innhold: Oppdatert dato */
+  /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['date_format'] = 'long';
-  /* Felt: Innhold: Rediger lenke */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Felt: Innhold: Slett lenke */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -1621,7 +1623,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Innhold: Publisert */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1636,7 +1638,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1645,7 +1647,7 @@ function uib_webdesk_views_default_views() {
     'uib_testimonial' => 'uib_testimonial',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Innhold: Tittel */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -1663,7 +1665,7 @@ function uib_webdesk_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: Innhold: Author uid */
+  /* Filter criterion: Content: Author uid */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'node';
   $handler->display->display_options['filters']['uid']['field'] = 'uid';
@@ -1678,7 +1680,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Type (field_uib_article_type) */
+  /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
   $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
@@ -1692,7 +1694,7 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Innhold: Event type (field_uib_event_type) */
+  /* Filter criterion: Content: Event type (field_uib_event_type) */
   $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
   $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
   $handler->display->display_options['filters']['field_uib_event_type_value']['field'] = 'field_uib_event_type_value';
@@ -1726,13 +1728,13 @@ function uib_webdesk_views_default_views() {
     t('No content'),
     t('Sorry sailor. Your search/site contain no content.'),
     t('Author of content'),
-    t('Innhold entity referenced from field_uib_area'),
-    t('Innhold'),
-    t('Tittel'),
+    t('Content entity referenced from field_uib_area'),
+    t('Content'),
+    t('Title'),
     t('Type'),
     t('Area'),
-    t('Navn'),
-    t('Oppdatert dato'),
+    t('Name'),
+    t('Updated date'),
     t('Alle'),
     t('Publisert'),
     t('Forfatter'),
@@ -1740,15 +1742,18 @@ function uib_webdesk_views_default_views() {
     t('Event type'),
     t('Innleggsdato'),
     t(' Is greater than or equal to '),
+    t('Oppdatert dato'),
     t('Er mindre enn eller lik'),
+    t('Tittel'),
     t('Content pane'),
     t('All content'),
+    t('more'),
     t('Inneholder'),
     t('Area name'),
     t('View panes'),
     t('Content pane uid'),
     t('My content'),
-    t('forfatter'),
+    t('author'),
     t('Page'),
   );
   $export['uib_webdesk'] = $view;
@@ -1782,31 +1787,31 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Oppførsel ved ingen resultater: Global: Tekstområde */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'You are not content manager for any areas.';
   $handler->display->display_options['empty']['area']['format'] = 'html';
-  /* Felt: Innhold: Tittel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Innhold: Rediger lenke */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Innhold: Tittel */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Innhold: Content Manager (field_uib_content_manager) */
+  /* Contextual filter: Content: Content Manager (field_uib_content_manager) */
   $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['id'] = 'field_uib_content_manager_target_id';
   $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['table'] = 'field_data_field_uib_content_manager';
   $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['field'] = 'field_uib_content_manager_target_id';
@@ -1816,7 +1821,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Innhold: Publisert */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1846,6 +1851,7 @@ function uib_webdesk_views_default_views() {
     t('You are not content manager for any areas.'),
     t('Alle'),
     t('Content pane'),
+    t('more'),
     t('View panes'),
   );
   $export['user_areas'] = $view;
@@ -1878,11 +1884,11 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relasjon: Entity Reference: Referencing entity */
+  /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_uib_staff_node']['id'] = 'reverse_field_uib_staff_node';
   $handler->display->display_options['relationships']['reverse_field_uib_staff_node']['table'] = 'users';
   $handler->display->display_options['relationships']['reverse_field_uib_staff_node']['field'] = 'reverse_field_uib_staff_node';
-  /* Felt: Bruker: Bilde */
+  /* Field: User: Picture */
   $handler->display->display_options['fields']['picture']['id'] = 'picture';
   $handler->display->display_options['fields']['picture']['table'] = 'users';
   $handler->display->display_options['fields']['picture']['field'] = 'picture';
@@ -1891,7 +1897,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['picture']['empty'] = 'User image missing.';
   $handler->display->display_options['fields']['picture']['link_photo_to_profile'] = FALSE;
   $handler->display->display_options['fields']['picture']['image_style'] = 'medium';
-  /* Felt: Bruker: First name */
+  /* Field: User: First name */
   $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['field'] = 'field_uib_first_name';
@@ -1899,7 +1905,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['field_uib_first_name']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_uib_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_first_name']['element_wrapper_type'] = 'span';
-  /* Felt: Bruker: Last name */
+  /* Field: User: Last name */
   $handler->display->display_options['fields']['field_uib_last_name']['id'] = 'field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['table'] = 'field_data_field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['field'] = 'field_uib_last_name';
@@ -1907,18 +1913,18 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['field_uib_last_name']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_uib_last_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_last_name']['element_wrapper_type'] = 'span';
-  /* Felt: Bruker: Rediger lenke */
+  /* Field: User: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'users';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Bruker: Dato opprettet */
+  /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Bruker: Uid */
+  /* Contextual filter: User: Uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'users';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -1928,7 +1934,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Bruker: Aktiv */
+  /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1941,7 +1947,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Bruker: Bilde */
+  /* Field: User: Picture */
   $handler->display->display_options['fields']['picture']['id'] = 'picture';
   $handler->display->display_options['fields']['picture']['table'] = 'users';
   $handler->display->display_options['fields']['picture']['field'] = 'picture';
@@ -1950,13 +1956,13 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['picture']['empty'] = 'User image missing.';
   $handler->display->display_options['fields']['picture']['link_photo_to_profile'] = FALSE;
   $handler->display->display_options['fields']['picture']['image_style'] = 'user_thumbnail';
-  /* Felt: Bruker: Uid */
+  /* Field: User: Uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Felt: Bruker: First name */
+  /* Field: User: First name */
   $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['field'] = 'field_uib_first_name';
@@ -1965,7 +1971,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['field_uib_first_name']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_uib_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_first_name']['element_wrapper_type'] = 'span';
-  /* Felt: Bruker: Last name */
+  /* Field: User: Last name */
   $handler->display->display_options['fields']['field_uib_last_name']['id'] = 'field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['table'] = 'field_data_field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['field'] = 'field_uib_last_name';
@@ -2000,10 +2006,11 @@ function uib_webdesk_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Innhold referencing Bruker from field_uib_staff'),
+    t('Content referencing User from field_uib_staff'),
     t('User image missing.'),
     t('Alle'),
     t('Content pane'),
+    t('more'),
     t('Uid'),
     t('<a href="/user/[uid]/edit">[field_uib_first_name] [field_uib_last_name]</a>
 '),

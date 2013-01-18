@@ -60,7 +60,6 @@ features[user_permission][] = administer advanced pane settings
 features[user_permission][] = administer area menu items
 features[user_permission][] = administer content translations
 features[user_permission][] = administer content types
-features[user_permission][] = administer devel menu items
 features[user_permission][] = administer features
 features[user_permission][] = administer fieldgroups
 features[user_permission][] = administer file types
