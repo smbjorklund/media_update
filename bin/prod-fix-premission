@@ -1,9 +1,13 @@
 #!/bin/bash
 
-if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$)' | wc -l) -gt 0 ] ;then
+if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$|^attilatest.uib.no$)' | wc -l) -gt 0 ] ;then
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root" 1>&2
    exit 2
+fi
+if [ $(id w3-drupal | grep apache |wc -l ) -eq 0 ];then 
+  echo "User w3-drupal must exist, and be a memeber of apache" 1>&2
+  exit  3 
 fi
 chmod -R g+wrs /nettapp_w3/sites/w3.uib.no/ 
 chown -R apache:apache /nettapp_w3/sites/w3.uib.no/ 
