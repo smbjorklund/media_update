@@ -1889,6 +1889,41 @@ function uib_webdesk_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: Picture */
+  $handler->display->display_options['fields']['picture']['id'] = 'picture';
+  $handler->display->display_options['fields']['picture']['table'] = 'users';
+  $handler->display->display_options['fields']['picture']['field'] = 'picture';
+  $handler->display->display_options['fields']['picture']['label'] = '';
+  $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['picture']['empty'] = 'User image missing.';
+  $handler->display->display_options['fields']['picture']['link_photo_to_profile'] = FALSE;
+  $handler->display->display_options['fields']['picture']['image_style'] = 'user_thumbnail';
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: User: First name */
+  $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['field'] = 'field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_first_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_first_name']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_uib_first_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_first_name']['element_wrapper_type'] = 'span';
+  /* Field: User: Last name */
+  $handler->display->display_options['fields']['field_uib_last_name']['id'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['table'] = 'field_data_field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['field'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_last_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name']['alter']['text'] = '<a href="/user/[uid]/edit">[field_uib_first_name] [field_uib_last_name]</a>
+';
+  $handler->display->display_options['fields']['field_uib_last_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_last_name']['element_wrapper_type'] = 'span';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -1918,6 +1953,9 @@ function uib_webdesk_views_default_views() {
     t('User image missing.'),
     t('All'),
     t('Content pane'),
+    t('Uid'),
+    t('<a href="/user/[uid]/edit">[field_uib_first_name] [field_uib_last_name]</a>
+'),
     t('View panes'),
   );
   $export['user_block'] = $view;
