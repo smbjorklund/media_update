@@ -343,7 +343,7 @@ function uib_zen_menu_link(array $variables) {
     $sub_menu = drupal_render($element['#below']);
   }
 
-  if (($variables['element']['#bid']['delta'] == 'top-area-menu') && ($element['#original_link']['depth'] == 2))
+  if (isset($variables['element']['#bid']) && ($variables['element']['#bid']['delta'] == 'top-area-menu') && ($element['#original_link']['depth'] == 2))
     $output = '<a href="#">'.$element["#title"].'</a> ';
   else
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
