@@ -400,8 +400,6 @@ $zen-auto-include-item-base: false;
       }
 
       .view-faculty-departments-kids  {
-         @include zen-grid-item (2, 1);
-         @include zen-clear();
          margin-bottom: 10px;
        }
 
@@ -684,9 +682,8 @@ $zen-auto-include-item-base: false;
   }
 
   .view-faculty-departments-kids  {
-     @include zen-grid-item (2, 1);
-     @include zen-clear();
      margin-bottom: 10px;
+     float: none;
    }
    
    .group_two_column  {
