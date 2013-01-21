@@ -317,6 +317,12 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         hide($variables['content']['group_article_sidebar']['field_uib_media'][0]['field_uib_owner']);
       }
     }
+
+    if (in_array($variables['title'], array('Ansattsider'))) {
+      drupal_add_js(drupal_get_path('theme', 'uib_zen').'/js/hide_links.js',
+        array('group' => JS_THEME,)
+      );
+    }
   }
 
   /*
