@@ -13,13 +13,13 @@
           $('<div class="more_links">Flere linker</div>')
         );
       $('.more_links').click(function() {
-          $('.field-name-field-uib-link-section')
-          .find('.field-collection-item-field-uib-link-section')
-          .find('.field-item:gt(5)')
-          .show()
-          .end();
-          $(this).remove();
-          })
+        $('.field-name-field-uib-link-section')
+        .find('.field-collection-item-field-uib-link-section')
+        .find('.field-item:gt(5)')
+        .show()
+        .end();
+        $(this).remove();
+        })
     }
   }
 })(jQuery);
