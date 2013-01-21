@@ -318,7 +318,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       }
     }
 
-    if (in_array($variables['title'], array('Ansattsider'))) {
+    if (in_array($variables['title'], array('Ansattsider', 'Employee Pages'))) {
       drupal_add_js(drupal_get_path('theme', 'uib_zen').'/js/hide_links.js',
         array('group' => JS_THEME,)
       );
