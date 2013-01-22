@@ -20,8 +20,23 @@ exclude=postgresql*
 #[some-unsigned-custom-channel]
 #gpgcheck = 0
 EOF
+
+#Seting up logging
+cat << EOF > /etc/rsyslog.d/drupal.conf
+local0.*                                                -/var/log/drupal.log
+EOF
+cat << EOF > /etc/logrotate.d/drupal
+/var/log/drupal.log
+{
+    sharedscripts
+    postrotate
+	/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+    endscript
+}
+EOF
 yum clean all
 yum install -y -q postgresql91.x86_64 postgresql91-libs.x86_64
 yum install -y -q munin-node git
 yum install -y -q httpd php php-pgsql php-domxml-php4-php5 php-gd php-mbstring php-ldap
 yum install -y -q no.uib.it-drush-7x no.uib.it-php.uib
+
