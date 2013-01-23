@@ -177,7 +177,7 @@ td.menu-disabled {
   #edit-title, #edit-title-1, .form-autocomplete, #edit-field-uib-kicker-und-0-valume, .text-full {
   padding: 4px;
   border: solid 1px #a2a2a2;
-  width: 95%;
+  width: 98%;
   box-shadow: 0px 1px 3px #d7d7d7 inset; 
   font-size: 1.3em;
   color: #4D4D4D;
@@ -242,15 +242,31 @@ html.js input.throbbing {
 
 /* Advanced */
 #node_uib_article_form_group_advanced .fieldset-wrapper {
-  padding-left: 0;
   margin-left: 0;
   background: #e5e5e5;
-  padding-bottom: 10px;
-  width: 100%;
 }
 
 .field-group-fieldset {
   padding: 0;
+}
+
+.group-uib-dato {
+  width: 80%;
+}
+
+.form-field-name-field-uib-date {
+  width: 90%;
+  
+  .start-date-wrapper {
+    width: 40%;
+    background-color: red;
+  }
+  
+  .end-date-wrapper {
+    width: 40%;
+    float: right;
+    background-color: red;
+  }
 }
 
 .group_uib_geo  {

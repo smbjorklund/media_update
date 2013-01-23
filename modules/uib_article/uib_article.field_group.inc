@@ -23,13 +23,14 @@ function uib_article_field_group_info() {
     'label' => 'Advanced',
     'weight' => '6',
     'children' => array(
-      0 => 'field_uib_menu_title_w2',
-      1 => 'field_uib_nav_weight',
-      2 => 'field_uib_w2_id',
-      3 => 'field_uib_w2_nav_parent_id',
-      4 => 'field_uib_w2_path',
-      5 => 'group_uib_dato',
-      6 => 'group_uib_geo',
+      0 => 'field_uib_date',
+      1 => 'field_uib_menu_title_w2',
+      2 => 'field_uib_nav_weight',
+      3 => 'field_uib_w2_id',
+      4 => 'field_uib_w2_nav_parent_id',
+      5 => 'field_uib_w2_path',
+      6 => 'group_uib_dato',
+      7 => 'group_uib_geo',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -354,22 +355,21 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_advanced';
   $field_group->data = array(
     'label' => 'Dates',
-    'weight' => '12',
-    'children' => array(
-      0 => 'field_uib_date',
-    ),
+    'weight' => '15',
+    'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'Dates',
       'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
-        'required_fields' => 1,
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_uib_dato|node|uib_article|form'] = $field_group;
@@ -385,23 +385,24 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_advanced';
   $field_group->data = array(
     'label' => 'GEO and addresses',
-    'weight' => '14',
+    'weight' => '17',
     'children' => array(
       0 => 'field_uib_contacts',
       1 => 'field_uib_location',
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'GEO and addresses',
       'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
-        'required_fields' => 1,
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_uib_geo|node|uib_article|form'] = $field_group;

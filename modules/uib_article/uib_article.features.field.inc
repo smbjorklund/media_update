@@ -417,7 +417,7 @@ function uib_article_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '14',
+        'weight' => '16',
       ),
     ),
   );
@@ -1255,7 +1255,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '18',
+        'weight' => '21',
       ),
     ),
   );
@@ -1314,7 +1314,7 @@ function uib_article_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '19',
+        'weight' => '22',
       ),
     ),
   );
@@ -1484,7 +1484,7 @@ function uib_article_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '15',
+        'weight' => '18',
       ),
     ),
   );
@@ -1554,7 +1554,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '17',
+        'weight' => '20',
       ),
     ),
   );
@@ -1624,7 +1624,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '16',
+        'weight' => '19',
       ),
     ),
   );
