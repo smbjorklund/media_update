@@ -151,7 +151,7 @@
 #uib-ou-node-form {
   background: #fff;
   margin: 0 0 20px 0;
-  width: 95%;
+  width: 100%;
 }
 
 .group-uib-links{
@@ -159,7 +159,7 @@
 }
 
 .group-information, .group-specific-field  {
-  width: 65%;
+  width: 60%;
 }
 
 .form-item-field-uib-event-type-und {
@@ -212,7 +212,7 @@
 }
 
 #uib-article-node-form label  {
-  width: 80px;
+  display: block;
 }
 
 div.link-field-column  {
