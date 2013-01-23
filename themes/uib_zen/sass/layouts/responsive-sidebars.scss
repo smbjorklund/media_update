@@ -689,7 +689,7 @@ $zen-auto-include-item-base: false;
    .group_two_column  {
      @include zen-grid-item (4, 1);
      @include zen-clear();
-     padding-bottom: 20px;
+     padding-bottom: 30px;
 
       .field-name-field-uib-link-section {
        @include zen-grid-item (2, 1);
