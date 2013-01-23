@@ -688,8 +688,8 @@ $zen-auto-include-item-base: false;
    
    .group_two_column  {
      @include zen-grid-item (4, 1);
-     border-bottom: 2px solid #C8BEB4;
-     padding-bottom: 30px;
+     @include zen-clear();
+     padding-bottom: 20px;
 
       .field-name-field-uib-link-section {
        @include zen-grid-item (2, 1);
@@ -744,6 +744,7 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2);
+    @include zen-clear();
     p {
        margin-top: 0;
      }
