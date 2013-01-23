@@ -363,7 +363,7 @@ function uib_article_field_default_fields() {
           'year' => 'year',
         ),
         'timezone_db' => 'UTC',
-        'todate' => 'optional',
+        'todate' => 'required',
         'tz_handling' => 'utc',
       ),
       'translatable' => '0',
