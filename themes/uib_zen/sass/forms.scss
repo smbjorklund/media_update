@@ -36,9 +36,9 @@
     margin: 0; /* Drupal core uses "0.4em 0" */
   }
 }
-.description { /* The descriptive help text (separate from the label) */
-    font-size: .9em;
-    color:#999999;
+.form-item .description { /* The descriptive help text (separate from the label) */
+    color:#6A6A6A;
+    font-size: 1em;
     margin-top:3px;
   }
 
@@ -250,22 +250,15 @@ html.js input.throbbing {
   padding: 0;
 }
 
-.group-uib-dato {
-  width: 80%;
-}
-
 .form-field-name-field-uib-date {
-  width: 90%;
   
   .start-date-wrapper {
     width: 40%;
-    background-color: red;
   }
   
   .end-date-wrapper {
     width: 40%;
     float: right;
-    background-color: red;
   }
 }
 
