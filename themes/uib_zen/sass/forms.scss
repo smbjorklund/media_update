@@ -231,6 +231,10 @@ html.js input.throbbing {
   width: 20%;
 }
 
+.field-uib-links-value {
+  position: absolute;
+}
+
 /* Select media buttons */
 .edit-field-uib-files-und-0 {
   padding: 10px;
@@ -249,17 +253,25 @@ html.js input.throbbing {
 #node_uib_article_form_group_advanced .fieldset-wrapper {
   margin-left: 0;
   background: #e5e5e5;
+  width: 860px;
+  
+  #edit-field-uib-contacts-und-autocomplete {
+    width: 650px;
+  }
 }
 
-.field-group-fieldset {
-  padding: 0;
-}
-
-.group_uib_geo  {
-  width: 500px;
-}
 
 /* W2 fields testimonial */
 .form-field-name-field-uib-w2-path, .form-field-name-field-uib-w2-id  {
   display: none;
+}
+
+/* Second table is appearing in the relevant link section */
+table.sticky-header {
+  display: none;
+}
+
+/* Webdesk - all content */
+#views-form-uib-webdesk-page-1 td {
+  padding: 10px 0 10px 0;
 }
