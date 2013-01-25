@@ -293,8 +293,6 @@ function uib_article_field_group_info() {
       1 => 'field_uib_links',
       2 => 'field_uib_media',
       3 => 'group_factbox',
-      4 => 'group_media',
-      5 => 'group_uib_links',
     ),
     'format_type' => 'div',
     'format_settings' => array(
