@@ -225,8 +225,9 @@ function uib_article_field_group_info() {
     'children' => array(
       0 => 'field_uib_area',
       1 => 'field_uib_lead',
-      2 => 'field_uib_text',
-      3 => 'title',
+      2 => 'field_uib_main_media',
+      3 => 'field_uib_text',
+      4 => 'title',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -256,11 +257,8 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Media',
-    'weight' => '9',
-    'children' => array(
-      0 => 'field_uib_main_media',
-      1 => 'field_uib_media',
-    ),
+    'weight' => '13',
+    'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Media',
@@ -291,9 +289,12 @@ function uib_article_field_group_info() {
     'label' => 'Sidebar',
     'weight' => '3',
     'children' => array(
-      0 => 'group_factbox',
-      1 => 'group_media',
-      2 => 'group_uib_links',
+      0 => 'field_uib_files',
+      1 => 'field_uib_links',
+      2 => 'field_uib_media',
+      3 => 'group_factbox',
+      4 => 'group_media',
+      5 => 'group_uib_links',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -418,11 +419,8 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Links',
-    'weight' => '8',
-    'children' => array(
-      0 => 'field_uib_files',
-      1 => 'field_uib_links',
-    ),
+    'weight' => '12',
+    'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Links',

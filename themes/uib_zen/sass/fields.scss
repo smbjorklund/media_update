@@ -165,6 +165,13 @@
 .form-item-field-uib-event-type-und {
   width: 400px;
 }
+
+.form-field-name-field-uib-main-media {
+  padding: 15px 0 15px 0;
+  border-top: solid 1px #f2f2f2;
+  border-bottom: solid 1px #f2f2f2;
+}
+
 /* Sidebar */
 .group_sidebar  {
   width: 35%;
@@ -181,10 +188,40 @@
   padding-left: 0;
 }
 
-.group_factbox, .group_uib_links, .group-media  {
+.group_factbox {
   border-top:solid 1px #F2F2F2;
   border-bottom: solid 1px #CBCBCB;
   padding: 5px;
+}
+
+.form-field-name-field-uib-files, .form-field-name-field-uib-links, .form-field-name-field-uib-media{
+  border-top: solid 1px #f2f2f2;
+  border-bottom: solid 1px #cbcbcb;
+  padding: 15px 7px 15px 7px;
+}
+
+.form-field-name-field-uib-links {
+
+  .link-field-subrow {
+  width: 263px;
+  height: 150px;
+  margin-top: 20px;
+  white-space: normal;
+  }
+  tr.odd .form-item, tr.even .form-item {
+    white-space: normal;
+  }
+  .description {
+    width: 260px;
+    margin-top: 10px;
+  }
+  div.link-field-column .form-text {
+    width: 220px;
+  }
+  
+  .link-field-url {
+    margin-top: 10px;
+  }
 }
 
 #uib-article-node-form h3 {
@@ -213,13 +250,6 @@
 div.link-field-column  {
   float: none;
   width: 68%;
-}
-
-.link-field-subrow {
-  width: 265px;
-}
-#uib-article-node-form .link-field-subrow {
-  width: 248px;
 }
 
 .vertical-tabs  {
