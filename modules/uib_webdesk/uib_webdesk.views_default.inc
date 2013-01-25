@@ -1680,6 +1680,24 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
+  /* Filter criterion: Content: Area (field_uib_area) */
+  $handler->display->display_options['filters']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
+  $handler->display->display_options['filters']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
+  $handler->display->display_options['filters']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
+  $handler->display->display_options['filters']['field_uib_area_target_id']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_uib_area_target_id']['group'] = 1;
+  $handler->display->display_options['filters']['field_uib_area_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['operator_id'] = 'field_uib_area_target_id_op';
+  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['label'] = 'Area';
+  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['operator'] = 'field_uib_area_target_id_op';
+  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['identifier'] = 'field_uib_area_target_id';
+  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    4 => 0,
+    3 => 0,
+  );
   /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
   $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
@@ -1783,10 +1801,13 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Synkende';
   $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elementer per side';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['style_plugin'] = 'table';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -1832,6 +1853,64 @@ function uib_webdesk_views_default_views() {
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mer';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'edit_node' => 'edit_node',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['link_to_view'] = '0';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '30';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elementer per side';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
+  $handler->display->display_options['path'] = 'webdesk/area';
   $translatables['user_areas'] = array(
     t('Master'),
     t('Areas'),
@@ -1851,8 +1930,9 @@ function uib_webdesk_views_default_views() {
     t('You are not content manager for any areas.'),
     t('Alle'),
     t('Content pane'),
-    t('more'),
     t('View panes'),
+    t('Page'),
+    t('more'),
   );
   $export['user_areas'] = $view;
 

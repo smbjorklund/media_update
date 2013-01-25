@@ -154,9 +154,7 @@
   width: 100%;
 }
 
-.group-uib-links{
-  padding: 20px;
-}
+
 
 .group-information, .group-specific-field  {
   width: 60%;
@@ -178,14 +176,24 @@
   float: right;
   background: #e5e5e5;
   border: solid 1px #CBCBCB;
-  
+  padding-left: 7px;
+
   .tabledrag-toggle-weight {
     display: none;
+  }
+
+  .text-full {
+    width: 295px;
+  }
+
+  #field-uib-related-programmes-add-more-wrapper .text-full {
+    width: 260px;
   }
 }
 
 .group-uib-links  {
   padding-left: 0;
+  padding: 20px;
 }
 
 .group_factbox {
