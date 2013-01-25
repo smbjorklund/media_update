@@ -143,16 +143,17 @@ function uib_testimonial_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'Sidebar',
       'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
-        'required_fields' => 1,
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_sidebar|node|uib_testimonial|form'] = $field_group;
