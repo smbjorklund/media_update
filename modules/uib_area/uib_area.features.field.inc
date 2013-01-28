@@ -1892,7 +1892,7 @@ function uib_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_social_media',
-      'label' => 'Follow us on',
+      'label' => 'Follow us',
       'required' => 0,
       'settings' => array(
         'better_formats' => array(
@@ -2949,7 +2949,7 @@ function uib_area_field_default_fields() {
   t('Bottom text');
   t('Content Manager');
   t('Fax');
-  t('Follow us on');
+  t('Follow us');
   t('ID w2');
   t('Illustration that goes together with the bottom text.');
   t('Important message');
