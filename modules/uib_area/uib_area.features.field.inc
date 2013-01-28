@@ -386,12 +386,11 @@ function uib_area_field_default_fields() {
           ),
           'allowed_types' => array(
             'audio' => 0,
-            'default' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 'library',
             'media_default--media_browser_1' => 'media_default--media_browser_1',
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 0,
@@ -434,14 +433,9 @@ function uib_area_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'area',
-      'default_value' => array(
-        0 => array(
-          'value' => '',
-          'format' => 'restricted_html',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Use this if you just have to get the last word in any conversation.  You might also decorate this one with an image.',
+      'description' => 'This field is shown at the bottom of the area front page. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -548,7 +542,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'List of users that should manage content for this area.  The users must also be set up with level 2 or level 3 access for content management to be possible.',
+      'description' => 'List of users that can manage content for this area. This list is managed from SEBRA and new users need to added there. ',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -772,7 +766,7 @@ function uib_area_field_default_fields() {
       'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
-        'hide_blank_items' => TRUE,
+        'hide_blank_items' => 1,
         'path' => '',
       ),
       'translatable' => '0',
@@ -782,7 +776,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Adds a link list to the area front page. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1191,7 +1185,7 @@ function uib_area_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'area',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'The primary media is the image/video at the top of the area front page. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1232,12 +1226,11 @@ function uib_area_field_default_fields() {
           ),
           'allowed_types' => array(
             'audio' => 0,
-            'default' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 'video',
           ),
           'browser_plugins' => array(
-            'library' => 'library',
             'media_default--media_browser_1' => 'media_default--media_browser_1',
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 'media_internet',
@@ -1280,14 +1273,9 @@ function uib_area_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'area',
-      'default_value' => array(
-        0 => array(
-          'value' => '',
-          'format' => 'restricted_html',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'This is the primary profile text on the page.  Use this for basic contact information.',
+      'description' => 'This is the primary profile text on the page. Keep it short and focus on useful information like a basic description and contact info.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1395,7 +1383,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Select which articles show up in the slide show, large image is required for your article to appear in the slideshow.',
+      'description' => 'Select which articles show up in the slide show, a large image is required for your article to appear in the slideshow.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1567,7 +1555,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Add the testimonial that will display on the area page',
+      'description' => 'Add a testimonial that will be featured on the front page. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1704,14 +1692,9 @@ function uib_area_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'area',
-      'default_value' => array(
-        0 => array(
-          'value' => '',
-          'format' => 'restricted_html',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'The is the secondary profile text.  Used for information to students.',
+      'description' => 'This is the secondary profile text. Use this for information that is often accessed. Think about what information is important at different times of the year. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -2047,14 +2030,9 @@ function uib_area_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'area',
-      'default_value' => array(
-        0 => array(
-          'value' => '',
-          'format' => 'restricted_html',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Used for profile text that isn\'t that important.  Will show up somewhere in the middle of the page.',
+      'description' => 'Information put in this field will be shown in the middle of the area front page. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -2149,7 +2127,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This field contains the text that was known as "profiltekster" in the old version and was shown on the left side of the area page. ',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2941,8 +2919,9 @@ function uib_area_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add a testimonial that will be featured on the front page. ');
   t('Add ids for the social media links that are desired.  Use strings like "twitter:uib", "youtube:uib", "facebook:uib", etc.  If the kind of service isn\'t supported no icon will show until support is added.');
-  t('Add the testimonial that will display on the area page');
+  t('Adds a link list to the area front page. ');
   t('Adds a rss feed to the right sidebar');
   t('Areas might provide their own logo image.  It will then be included in the header.  The logo ought to be about 128x128 pixels and have a transparent background.');
   t('Bottom image');
@@ -2953,9 +2932,10 @@ function uib_area_field_default_fields() {
   t('ID w2');
   t('Illustration that goes together with the bottom text.');
   t('Important message');
+  t('Information put in this field will be shown in the middle of the area front page. ');
   t('Jobbnorge ID');
   t('Links');
-  t('List of users that should manage content for this area.  The users must also be set up with level 2 or level 3 access for content management to be possible.');
+  t('List of users that can manage content for this area. This list is managed from SEBRA and new users need to added there. ');
   t('Location');
   t('Logo');
   t('Mail domain');
@@ -2975,17 +2955,18 @@ function uib_area_field_default_fields() {
   t('Sebra ID');
   t('Secondary text');
   t('Select the articles that will display in the "Messages" box on the "For Employees" area');
-  t('Select which articles show up in the slide show, large image is required for your article to appear in the slideshow.');
+  t('Select which articles show up in the slide show, a large image is required for your article to appear in the slideshow.');
   t('Short name');
   t('Show staff');
   t('Staff');
   t('Tertiary text');
-  t('The is the secondary profile text.  Used for information to students.');
-  t('This is the primary profile text on the page.  Use this for basic contact information.');
+  t('The primary media is the image/video at the top of the area front page. ');
+  t('This field contains the text that was known as "profiltekster" in the old version and was shown on the left side of the area page. ');
+  t('This field is shown at the bottom of the area front page. ');
+  t('This is the primary profile text on the page. Keep it short and focus on useful information like a basic description and contact info.');
+  t('This is the secondary profile text. Use this for information that is often accessed. Think about what information is important at different times of the year. ');
   t('Title');
   t('Type');
-  t('Use this if you just have to get the last word in any conversation.  You might also decorate this one with an image.');
-  t('Used for profile text that isn\'t that important.  Will show up somewhere in the middle of the page.');
   t('Visit Address');
   t('w2 profile images');
   t('w2 profile text');
