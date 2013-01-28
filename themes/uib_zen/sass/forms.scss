@@ -253,10 +253,6 @@ html.js input.throbbing {
 #node_uib_article_form_group_advanced .fieldset-wrapper {
   margin-left: 0;
   background: #e5e5e5;
-  
-  #edit-field-uib-contacts-und-autocomplete {
-    width: 50% !important;
-  }
 
   .start-date-wrapper,  .end-date-wrapper {
     width: 865px;
@@ -279,7 +275,40 @@ table.sticky-header {
   display: none;
 }
 
-/* Webdesk - all content */
+/* Webdesk - find content */
 #views-form-uib-webdesk-page-1 td {
   padding: 10px 0 10px 0;
+}
+
+.page-webdesk-all-content {
+  #main {
+    background-color: #fff;
+    border: solid 1px #C9C9C9;
+    box-shadow: 0px 1px 3px #d7d7d7;
+  }
+
+  .views-exposed-widgets {
+    width: 50%;
+  }
+
+  .view-content {
+    width: 100%;
+  }
+
+  .views-table.cols-8 {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .views-field-delete-node  {
+    background: url('../images/delete.png') no-repeat;
+    display: inline-block;
+    background-position: 0 10px;
+  }
+
+  .views-field-edit-node  {
+    background: url('../images/edit.png') no-repeat;
+    display: inline-block;
+    background-position: 0 10px;
+  }
 }

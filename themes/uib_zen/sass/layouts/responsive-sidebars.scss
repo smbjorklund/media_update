@@ -753,7 +753,6 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2);
-    @include zen-clear();
     p {
        margin-top: 0;
      }
