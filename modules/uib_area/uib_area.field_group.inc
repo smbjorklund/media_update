@@ -28,16 +28,17 @@ function uib_area_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'Bottom section',
       'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
-        'required_fields' => 1,
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_bottom_section|node|area|form'] = $field_group;
@@ -125,16 +126,17 @@ function uib_area_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'Middle section',
       'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
-        'required_fields' => 1,
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_middle_section|node|area|form'] = $field_group;
@@ -157,16 +159,17 @@ function uib_area_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'Other',
       'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
-        'required_fields' => 1,
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_other|node|area|form'] = $field_group;
@@ -220,16 +223,17 @@ function uib_area_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'Top section',
       'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
-        'required_fields' => 1,
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_top_section|node|area|form'] = $field_group;
