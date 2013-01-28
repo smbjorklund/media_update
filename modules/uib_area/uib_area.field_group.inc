@@ -58,10 +58,11 @@ function uib_area_field_group_info() {
     'children' => array(
       0 => 'field_uib_area_parents',
       1 => 'field_uib_area_type',
-      2 => 'field_uib_ou',
-      3 => 'field_uib_sebra_id',
-      4 => 'field_uib_w2_id',
-      5 => 'title',
+      2 => 'field_uib_menu_style',
+      3 => 'field_uib_ou',
+      4 => 'field_uib_sebra_id',
+      5 => 'field_uib_w2_id',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -91,9 +92,8 @@ function uib_area_field_group_info() {
       0 => 'field_uib_content_manager',
       1 => 'field_uib_important_message',
       2 => 'field_uib_logo',
-      3 => 'field_uib_menu_style',
-      4 => 'field_uib_show_staff',
-      5 => 'field_uib_staff',
+      3 => 'field_uib_show_staff',
+      4 => 'field_uib_staff',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
