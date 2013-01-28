@@ -133,7 +133,7 @@ body {
  .page-webdesk #page {
   max-width: 1020px;
 }
-.page-webdesk {
+.page-webdesk, .page-node-add {
   background-color: lighten($light-grey, 4%);
 }
 .page-webdesk #main,

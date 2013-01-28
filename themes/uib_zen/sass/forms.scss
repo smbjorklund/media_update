@@ -168,7 +168,7 @@ td.menu-disabled {
 
 /* Border around nodes in the webdesk */
 #uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form {
-  border: solid 1px #A4A4A4;
+  border: solid 1px #C9C9C9;
   box-shadow: 0px 1px 3px #d7d7d7;
   color: #666666;
   display: inline-block;
@@ -253,11 +253,19 @@ html.js input.throbbing {
 #node_uib_article_form_group_advanced .fieldset-wrapper {
   margin-left: 0;
   background: #e5e5e5;
-  width: 860px;
   
   #edit-field-uib-contacts-und-autocomplete {
-    width: 650px;
+    width: 50% !important;
   }
+
+  .start-date-wrapper,  .end-date-wrapper {
+    width: 865px;
+  }
+}
+
+.group-advanced {
+  margin-left: 0;
+  padding-left: 0;
 }
 
 
