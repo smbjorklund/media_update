@@ -62,7 +62,7 @@ function uib_area_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
-            'weight' => '23',
+            'weight' => '21',
             'visible' => FALSE,
           ),
         ),

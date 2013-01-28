@@ -249,7 +249,7 @@ function uib_area_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'two_column',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_uib_link_section',
       1 => 'field_uib_profiled_testimonial',

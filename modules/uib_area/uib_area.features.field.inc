@@ -209,7 +209,7 @@ function uib_area_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -285,7 +285,7 @@ function uib_area_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -354,7 +354,7 @@ function uib_area_field_default_fields() {
             'file_view_mode' => 'area_bottom',
           ),
           'type' => 'file_rendered',
-          'weight' => '9',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -448,7 +448,7 @@ function uib_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '10',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -554,7 +554,7 @@ function uib_area_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '21',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -624,7 +624,7 @@ function uib_area_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -952,7 +952,7 @@ function uib_area_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1045,7 +1045,7 @@ function uib_area_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '24',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1126,7 +1126,7 @@ function uib_area_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1404,7 +1404,7 @@ function uib_area_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1490,7 +1490,7 @@ function uib_area_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '11',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1646,7 +1646,7 @@ function uib_area_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1813,7 +1813,7 @@ function uib_area_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '25',
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1881,7 +1881,7 @@ function uib_area_field_default_fields() {
           'module' => 'uib_field',
           'settings' => array(),
           'type' => 'socialmedia_formatter',
-          'weight' => '12',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1988,7 +1988,7 @@ function uib_area_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '22',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2155,7 +2155,7 @@ function uib_area_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '20',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2250,7 +2250,7 @@ function uib_area_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',

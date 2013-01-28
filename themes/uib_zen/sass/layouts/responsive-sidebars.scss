@@ -676,6 +676,16 @@ $zen-auto-include-item-base: false;
      @include zen-grid-item (4, 1);
      clear: both;
   }
+  
+  .field-name-field-uib-social-media {
+    @include zen-clear();
+    
+    .field-item {
+      float: left;
+      margin-right: 20px;
+      height: 35px;
+    }
+  }
 
   .field-name-profiled-article {
     @include zen-grid-item (4, 1);
