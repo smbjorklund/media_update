@@ -724,7 +724,7 @@ $zen-auto-include-item-base: false;
        @include zen-clear();
        float: none;
        clear: none;
-       background: #004573;
+       background: #e5e5e5;
        padding: 2%;
        width: 46%;
        border-radius: 3px;
@@ -738,9 +738,8 @@ $zen-auto-include-item-base: false;
        }
        
        a, .node-uib-testimonial {
-         color: #fff;
-         text-shadow: 1px 1px 3px #002F54;
-         filter: dropshadow(color=#002542, offx=1, offy=1);
+         color: #333;
+         margin-top: 0;
        } 
        
        .node-uib-testimonial .node-title {
