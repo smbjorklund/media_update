@@ -275,7 +275,7 @@ table.sticky-header {
   display: none;
 }
 
-/* Webdesk - find content */
+/* Webdesk - all content */
 #views-form-uib-webdesk-page-1 td {
   padding: 10px 0 10px 0;
 }
@@ -286,7 +286,7 @@ table.sticky-header {
     border: solid 1px #C9C9C9;
     box-shadow: 0px 1px 3px #d7d7d7;
   }
-
+  
   .views-exposed-widgets {
     width: 50%;
   }
@@ -299,7 +299,7 @@ table.sticky-header {
     width: 100%;
     margin: 0 auto;
   }
-
+  
   .views-field-delete-node  {
     background: url('../images/delete.png') no-repeat;
     display: inline-block;
@@ -309,6 +309,5 @@ table.sticky-header {
   .views-field-edit-node  {
     background: url('../images/edit.png') no-repeat;
     display: inline-block;
-    background-position: 0 10px;
   }
 }
