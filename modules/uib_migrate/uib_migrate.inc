@@ -77,6 +77,9 @@ function xtopic_file($id, $uid) {
   $file = new stdClass();
 
   $basename = drupal_basename($uri);
+  if(function_exists('transliteration_clean_filename')) {
+    $basename = transliteration_clean_filename($basename, 'nb');
+  }
   $hash = strtolower(substr($basename, 0, 2));
   $dirname = 'public://w2/' . $hash;
   @drupal_mkdir($dirname, NULL, TRUE);
@@ -100,13 +103,18 @@ function xtopic_file($id, $uid) {
   $tmp_title = $xtopic->title;
   $longest_expected_title = 100; // If the title is too long, treat it as description if possible
   if (mb_strlen($tmp_title, 'UTF-8') > $longest_expected_title) {
-     if (empty($file->field_uib_description['und'])) {
+    if (empty($file->field_uib_description['und'])) {
       $file->field_uib_description['und'][]['value'] = $tmp_title;
+      uibx_log('Title of file copied to description: ' . $xtopic->title, 'warning');
     }
     if (mb_strlen($tmp_title, 'UTF-8') > 255) {
       $tmp_title = mb_substr($tmp_title, 0, 255, 'UTF-8'); // if title is > 255 it causes an error in postgresql
-      uibx_log('Title shortened to 255 chars: ' . $xtopic->title, 'warning');
+      uibx_log('Title of file right-trimmed to 255 chars: ' . $xtopic->title, 'warning');
     }
+  }
+  $tmp_title = trim($tmp_title);
+  if (empty($tmp_title) OR $tmp_title == '.') {
+    $tmp_title = $basename; // fix for stupid or empty titles
   }
   $file->filename = $tmp_title;
   $file->uri = $filename;
@@ -799,9 +807,12 @@ else {
     $basename = drupal_basename($item->uri);
     $uri = $server . $uri . $basename;
     $uri = str_replace(' ', '%20', $uri);
+    if(function_exists('transliteration_clean_filename')) {
+      $basename = transliteration_clean_filename($basename, 'nb');
+    }
 
     $file = new stdClass();
-    $dirname = 'public://ansattsider/';
+    $dirname = 'public://ansattsider';
     @drupal_mkdir($dirname, NULL, TRUE);
     $filename = "$dirname/$basename";
     $filename = file_destination($filename, FILE_EXISTS_RENAME);
