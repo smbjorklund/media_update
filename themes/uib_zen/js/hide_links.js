@@ -3,7 +3,7 @@
     attach: function (context, settings) {
       $('.field-name-field-uib-link-section')
         .find('.field-collection-item-field-uib-link-section')
-        .find('.field-item:gt(5):not(last-child)')
+        .find('.field-item:gt(12):not(last-child)')
         .hide();
       $('.field-name-field-uib-link-section')
         .find('.field-collection-item-field-uib-link-section')
@@ -15,7 +15,7 @@
       $('.more_links').click(function() {
         $('.field-name-field-uib-link-section')
         .find('.field-collection-item-field-uib-link-section')
-        .find('.field-item:gt(5)')
+        .find('.field-item:gt(12)')
         .show()
         .end();
         $(this).remove();
