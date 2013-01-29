@@ -97,7 +97,18 @@ function xtopic_file($id, $uid) {
     $file->field_uib_description['und'][]['value'] = $xtopic->dc_description;
   }
   $file->field_uib_w2_id['und'][]['value'] = $id;
-  $file->filename = $xtopic->title;
+  $tmp_title = $xtopic->title;
+  $longest_expected_title = 100; // If the title is too long, treat it as description if possible
+  if (mb_strlen($tmp_title, 'UTF-8') > $longest_expected_title) {
+     if (empty($file->field_uib_description['und'])) {
+      $file->field_uib_description['und'][]['value'] = $tmp_title;
+    }
+    if (mb_strlen($tmp_title, 'UTF-8') > 255) {
+      $tmp_title = mb_substr($tmp_title, 0, 255, 'UTF-8'); // if title is > 255 it causes an error in postgresql
+      uibx_log('Title shortened to 255 chars: ' . $xtopic->title, 'warning');
+    }
+  }
+  $file->filename = $tmp_title;
   $file->uri = $filename;
   $file->uid = $uid;
   $file->status = FILE_STATUS_PERMANENT;
