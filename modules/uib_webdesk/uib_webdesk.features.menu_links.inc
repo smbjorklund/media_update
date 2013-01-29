@@ -26,7 +26,7 @@ function uib_webdesk_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-48',
+    'weight' => '-47',
   );
   // Exported menu link: menu-webdesk:node/add/uib-article
   $menu_links['menu-webdesk:node/add/uib-article'] = array(
@@ -80,7 +80,7 @@ function uib_webdesk_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-47',
+    'weight' => '-48',
   );
   // Translatables
   // Included for use with string extractors like potx.
