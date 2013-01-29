@@ -107,7 +107,7 @@ function uib_setup_wysiwyg_default_profiles() {
       'remove_linebreaks' => 1,
       'apply_source_formatting' => 0,
       'paste_auto_cleanup_on_paste' => 0,
-      'block_formats' => 'p,h3,h4',
+      'block_formats' => 'p,h2,h3,h4',
       'css_setting' => 'theme',
       'css_path' => '',
       'css_classes' => '',
