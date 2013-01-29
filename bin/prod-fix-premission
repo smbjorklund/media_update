@@ -1,5 +1,9 @@
 #!/bin/bash
-
+baseDir='/var/www/w3.uib.no'
+if ! [ -d $baseDir ] ;then 
+    echo "$baseDir do not exist" 1>&2
+    exit  4 
+fi
 if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$|^attilatest.uib.no$)' | wc -l) -gt 0 ] ;then
   if [ "$(id -u)" != "0" ]; then
     echo "This script must be run as root" 1>&2
@@ -18,10 +22,10 @@ if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$|^attilatest.uib.no$)'
 
   chmod -R g+wrs /nettapp_w3/sites/$site/ 
   chown -R apache:apache /nettapp_w3/sites/$site/ 
-  chown -R apache:apache /var/www/w3.uib.no/drupal/sites/all/translations/
-  chown -R w3-drupal /var/www/w3.uib.no
-  find /var/www/w3.uib.no/ -name '.git' -type d -exec chgrp -R ansatt {} \;
-  find /var/www/w3.uib.no/ -name '.git' -type d -exec chmod -R g+swr  {} \;
+  chown -R apache:apache $baseDir/drupal/sites/all/translations/
+  chown -R w3-drupal  $baseDir
+  find $baseDir -name '.git' -type d -exec chgrp -R ansatt {} \;
+  find $baseDir -name '.git' -type d -exec chmod -R g+swr  {} \;
 else 
   echo "This script must be on attila.uib.no or attika.uib.no" 1>&2
   exit 1
