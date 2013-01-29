@@ -193,11 +193,21 @@
 
 .field-name-field-uib-fact-box  {
   background: #f0f4f5;
-  padding: 10px;
   line-height: 14px;
+  border-top: solid silver 1px;
 
   p {
     font-size: .9em;
+    padding: 10px;
+  }
+
+  h3 {
+    color: #aa0000;
+    font-size: 1em;
+    font-weight: bold;
+    width: 167px;
+    border-bottom: solid 1px silver;
+    padding: 4px 0 4px 10px;
   }
 }
 
