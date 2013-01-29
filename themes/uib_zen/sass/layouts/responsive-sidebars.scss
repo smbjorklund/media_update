@@ -302,6 +302,15 @@ $zen-auto-include-item-base: false;
   }
 }
 
+@media all and (min-width: 240px) and (max-width: 720px) {
+  $zen-column-count: 1;
+  #block-uib-area-colophon {
+    @include zen-grid-item (1, 1);
+    @include zen-clear();
+    margin: 100px 0 0 45px;
+  }
+}
+
 /* Persons mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
   .view-ansatte {
@@ -502,6 +511,13 @@ $zen-auto-include-item-base: false;
       }
   }
 
+  @media all and (min-width: 720px) and (max-width: 959px) {
+    $zen-column-count: 4;
+    
+    #block-uib-area-colophon {
+      @include zen-grid-item (3, 2)
+    }
+  }
 
   /*
    * The layout when there are two sidebars.
