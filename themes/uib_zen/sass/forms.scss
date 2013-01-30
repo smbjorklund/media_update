@@ -161,9 +161,15 @@ td.menu-disabled {
 
 /* Webdesk  */
 
-/* Testimonial text field */
+/* Testimonial */
 .node-uib_testimonial-form  {
   width: 90%;
+}
+
+#edit-field-uib-birth-year {
+  border-top: none;
+  border-left: none;
+  border-right: solid  1px #e5e5e5;
 }
 
 /* Border around nodes in the webdesk */

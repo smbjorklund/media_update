@@ -231,6 +231,10 @@
   .link-field-url {
     margin-top: 10px;
   }
+  
+  .field-label-hidden .field-collection-description {
+    display: none;
+  }
 }
 
 #uib-article-node-form h3 {
@@ -250,7 +254,8 @@
 
 /* Buttons  in create content */
 #uib-article-node-form .button, .field-add-more-submit  {
-  padding: 2px 7px 2px 7px;
+  padding: 2px 4px 2px 4px;
+  display: block;
 }
 
 #uib-article-node-form label  {
