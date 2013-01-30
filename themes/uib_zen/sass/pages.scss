@@ -358,3 +358,21 @@ div.add-or-remove-shortcuts {
     @include clearfix;
     padding: 5px 0;
 }
+
+/* Delete page */
+.page-node-delete {
+  #navigation, #block-locale-language {
+    display: none;
+  }
+
+  #edit-submit {
+    padding: 2px 15px 2px 15px;
+    margin-right: 10px;
+    background-color: #aa0000;
+    color: #fff;
+    border: solid 2px #7C0000;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
