@@ -376,7 +376,7 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-primary-text {
         @include zen-grid-item (2, 3);
-        padding-left: 10px;
+        padding-left: 3px;
       }
 
       .field-name-field-uib-secondary-text {
@@ -408,6 +408,10 @@ $zen-auto-include-item-base: false;
         width: 100%;
       }
 
+      .group_two_column {
+        @include zen-clear();
+      }
+
       .view-faculty-departments-kids  {
          margin-bottom: 10px;
        }
@@ -421,6 +425,7 @@ $zen-auto-include-item-base: false;
         webkit-border-radius: 2px;
         padding: 5px;
         width: 100%;
+        padding-right: 10px;
       }
 
       .field-name-field-uib-profiled-testimonial {
@@ -428,18 +433,38 @@ $zen-auto-include-item-base: false;
         @include zen-clear();
         float: none;
         clear: none;
+        width: 45%;
+        background: #e5e5e5;
+        padding: 2%;
+        width: 46%;
+        border-radius: 3px;
+        margin-left: 51%;
 
-        img {
-          margin-right: 10px;
-          float: left;
-          clear: none;
+        header {
+          height: 1px;
         }
+
+        a, .node-uib-testimonial {
+          color: #333;
+          margin-top: 0;
+        }
+
+        .node-uib-testimonial .node-title {
+          border: none;
+        }
+
+      img {
+        margin-right: 10px;
+        float: left;
+        clear: none;
       }
+    }
 
       .field-name-field-uib-tertiary-text {
         @include zen-grid-item (2, 3);
         clear: none;
         float: none;
+        padding-left: 10px;
       }
     }
 
@@ -712,55 +737,57 @@ $zen-auto-include-item-base: false;
      float: none;
    }
    
-   .group_two_column  {
+  .group_two_column  {
      @include zen-grid-item (4, 1);
      @include zen-clear();
      padding-bottom: 30px;
+     .field-name-field-uib-link-section {
+     @include zen-grid-item (2, 1);
+     @include zen-clear();
+     background: #f5f5f5;
+     border: none;
+     border-radius: 2px;
+     moz-border-radius: 2px;
+     webkit-border-radius: 2px;
+     width: 100%;
+     padding-right: 10px;
+   }
 
-      .field-name-field-uib-link-section {
-       @include zen-grid-item (2, 1);
-       @include zen-clear();
-       background: #f5f5f5;
-       border: none;
-       border-radius: 2px;
-       moz-border-radius: 2px;
-       webkit-border-radius: 2px;
-       width: 100%;
+  .field-name-field-uib-tertiary-text {
+    @include zen-grid-item (2, 3);
+    @include zen-clear();
+    clear: none;
+    float: none;
+    padding-left: 10px;
+   }
+
+   .field-name-field-uib-profiled-testimonial {
+     @include zen-grid-item (2, 3);
+     @include zen-clear();
+     float: none;
+     clear: none;
+     background: #e5e5e5;
+     padding: 2%;
+     width: 46%;
+     border-radius: 3px;
+     margin-left: 51%;
+
+     header {
+       height: 1px;
+     }
+     img {
+       margin-right: 10px;
+       float: left;
      }
 
-     .field-name-field-uib-tertiary-text {
-       @include zen-grid-item (2, 3);
-       @include zen-clear();
-       clear: none;
-       float: none;
-      }
+     a, .node-uib-testimonial {
+       color: #333;
+       margin-top: 0;
+     }
 
-     .field-name-field-uib-profiled-testimonial {
-       @include zen-grid-item (2, 3);
-       @include zen-clear();
-       float: none;
-       clear: none;
-       background: #e5e5e5;
-       padding: 2%;
-       width: 46%;
-       border-radius: 3px;
-
-       header {
-         height: 1px;
-       }
-       img {
-         margin-right: 10px;
-         float: left;
-       }
-       
-       a, .node-uib-testimonial {
-         color: #333;
-         margin-top: 0;
-       } 
-       
-       .node-uib-testimonial .node-title {
-         border: none;
-       }
+     .node-uib-testimonial .node-title {
+       border: none;
+     }
      }
    }
   .field-name-field-uib-bottom-media  {
