@@ -1,5 +1,21 @@
 #!/bin/bash
-baseDir='/var/www/w3.uib.no'
+kurs=0
+# Print out help, then exit
+if [ "$1" == "--help" ];then 
+  echo "Fixes file permission to Drupal"
+  echo "-------------------------------"
+  echo "Staging and prod: $0 "
+  echo "Course sever: $0 kurs"
+  exit 0
+fi
+if [ "$1" == "kurs" ];then
+  baseDir='/var/www/w3-kurs.uib.no'
+  kurs=1
+else
+  baseDir='/var/www/w3.uib.no'
+fi
+
+# Stop script if baseDir does not exist
 if ! [ -d $baseDir ] ;then 
     echo "$baseDir do not exist" 1>&2
     exit  4 
@@ -18,6 +34,11 @@ if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$|^attilatest.uib.no$)'
     site='w3.uib.no'
   else
     site=$(hostname)
+  fi
+  
+  #Change site-name if the target is course-mode is invoked
+  if [ $kurs ] ;then
+    site='w3-kurs.test.uib.no'
   fi
 
   chmod -R g+wrs /nettapp_w3/sites/$site/ 
