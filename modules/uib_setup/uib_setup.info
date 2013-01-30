@@ -226,6 +226,7 @@ features[variable][] = pathauto_node_uib_testimonial_pattern
 features[variable][] = pathauto_punctuation_hyphen
 features[variable][] = pathauto_taxonomy_term_pattern
 features[variable][] = pathauto_user_pattern
+features[variable][] = scheduler_date_format
 features[variable][] = service_links_append_to_url
 features[variable][] = service_links_category_types
 features[variable][] = service_links_category_vocs

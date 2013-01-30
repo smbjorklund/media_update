@@ -444,6 +444,13 @@ function uib_setup_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_date_format';
+  $strongarm->value = 'd.m.Y H:i:s';
+  $export['scheduler_date_format'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'service_links_append_to_url';
   $strongarm->value = '';
   $export['service_links_append_to_url'] = $strongarm;
