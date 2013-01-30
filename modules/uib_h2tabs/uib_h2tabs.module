@@ -44,9 +44,9 @@ function _uib_h2tabs_filter_h2_process($text, $filter) {
       // Table of contents
       $toc = "<ul>
         ";
-      for ($i = 0; $i < $hits_index; $i++) {
+      for ($i = 0; $i <= $hits_index; $i++) {
         $javascript = "javascript: ";
-        for ($j = 0; $j < $hits_index; $j++) {
+        for ($j = 0; $j <= $hits_index; $j++) {
           if ($j == $i) {
             $javascript .= "document.getElementById('tab$j').style.display = 'block';";
           }
