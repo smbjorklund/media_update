@@ -189,6 +189,11 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     }
   }
 
+  if ($variables['node']->type == 'area') {
+    $nid = $variables['node']->nid;
+    $variables['page']['bottom']['field_uib_logo'] = $variables['page']['content']['system_main']['content']['nodes'][$nid]['field_uib_logo'];
+    unset($variables['page']['content']['system_main']['content']['nodes'][$nid]['field_uib_logo']);
+  }
 }
 // */
 
