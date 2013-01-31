@@ -272,7 +272,10 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
         // Byline
         $uib_news_byline = "";
-        $byline_nrof_authors = count($variables['field_uib_byline']['und']);
+        $byline_nrof_authors = 0;
+        if (isset($variables['field_uib_byline']['und'])) {
+          $byline_nrof_authors = count($variables['field_uib_byline']['und']);
+        }
         if ($byline_nrof_authors > 0) {
           $uib_news_byline = t('By') . ' ';
           $glue = "";
