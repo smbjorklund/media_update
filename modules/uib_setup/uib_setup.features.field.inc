@@ -584,14 +584,13 @@ function uib_setup_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
         'content_sidebar' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '3',
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'default' => array(
           'label' => 'inline',
@@ -709,16 +708,18 @@ function uib_setup_field_default_fields() {
           'weight' => 0,
         ),
         'content_main' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'text_default',
+          'weight' => '1',
         ),
         'content_sidebar' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'text_default',
+          'weight' => '1',
         ),
         'default' => array(
           'label' => 'above',
@@ -846,10 +847,11 @@ function uib_setup_field_default_fields() {
           'weight' => 0,
         ),
         'content_main' => array(
-          'label' => 'above',
+          'label' => 'inline',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'text_default',
+          'weight' => '2',
         ),
         'content_sidebar' => array(
           'label' => 'inline',
@@ -910,9 +912,35 @@ function uib_setup_field_default_fields() {
       ),
       'entity_type' => 'file',
       'field_name' => 'field_uib_owner',
-      'label' => 'Photographer',
+      'label' => 'Photo',
       'required' => 0,
       'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 'basic_html',
+            'full_html' => 'full_html',
+            'plain_text' => 'plain_text',
+            'restricted_html' => 'restricted_html',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-9',
+              ),
+              'full_html' => array(
+                'weight' => '-7',
+              ),
+              'plain_text' => array(
+                'weight' => '-10',
+              ),
+              'restricted_html' => array(
+                'weight' => '-8',
+              ),
+            ),
+          ),
+        ),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -980,13 +1008,13 @@ function uib_setup_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
         'content_sidebar' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => '3',
         ),
         'default' => array(
           'label' => 'inline',
@@ -1585,7 +1613,7 @@ function uib_setup_field_default_fields() {
   t('Copyright');
   t('Description');
   t('ID w2');
-  t('Photographer');
+  t('Photo');
   t('Producer');
 
   return $fields;
