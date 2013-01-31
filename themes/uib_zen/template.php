@@ -338,7 +338,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
   }
   else {
     if ($variables['type'] == 'uib_testimonial') {
-      unset($variables['title']);
+      $variables['title'] = '';
     }
   }
 
