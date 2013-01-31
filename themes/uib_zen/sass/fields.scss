@@ -194,8 +194,18 @@
   }
 }
 
-.group-uib-links, .group_uib_geo, .form-field-name-field-uib-nav-weight  {
-  padding: 20px;
+.group-uib-links {
+  padding: 10px;
+}
+
+.group_uib_geo {
+  border-top: 1px solid #f2f2f2;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.form-field-name-field-uib-contacts {
+  width: 300px;
 }
 
 .group_factbox {
@@ -238,6 +248,23 @@
   }
 }
 
+#field-uib-date-add-more-wrapper {
+  border-bottom: 1px solid silver;
+  border-top: 1px solid #f2f2f2;
+  
+  legend {
+    display: none
+  }
+  
+  .date-padding {
+    padding-left: 0;
+  }
+  
+  fieldset.form-wrapper {
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
 #uib-article-node-form h3 {
   color: #666666;
   font-weight: normal;

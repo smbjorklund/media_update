@@ -157,10 +157,7 @@ function uib_article_field_group_info() {
   $field_group->data = array(
     'label' => 'Details',
     'weight' => '7',
-    'children' => array(
-      0 => 'field_uib_byline',
-      1 => 'field_uib_kicker',
-    ),
+    'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Details',
@@ -221,13 +218,17 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Information',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_uib_area',
-      1 => 'field_uib_lead',
-      2 => 'field_uib_main_media',
-      3 => 'field_uib_text',
-      4 => 'title',
+      1 => 'field_uib_article_type',
+      2 => 'field_uib_byline',
+      3 => 'field_uib_event_type',
+      4 => 'field_uib_kicker',
+      5 => 'field_uib_lead',
+      6 => 'field_uib_main_media',
+      7 => 'field_uib_text',
+      8 => 'title',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -254,10 +255,10 @@ function uib_article_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_article';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_sidebar';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Media',
-    'weight' => '13',
+    'weight' => '10',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -287,12 +288,14 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sidebar',
-    'weight' => '3',
+    'weight' => '0',
     'children' => array(
       0 => 'field_uib_files',
       1 => 'field_uib_links',
       2 => 'field_uib_media',
       3 => 'group_factbox',
+      4 => 'group_uib_dato',
+      5 => 'group_uib_geo',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -322,7 +325,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Specific fields based on type',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'group_details',
     ),
@@ -351,11 +354,13 @@ function uib_article_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_article';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_advanced';
+  $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Dates',
-    'weight' => '15',
-    'children' => array(),
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_uib_date',
+    ),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Dates',
@@ -381,10 +386,10 @@ function uib_article_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_article';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_advanced';
+  $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'GEO and addresses',
-    'weight' => '17',
+    'weight' => '12',
     'children' => array(
       0 => 'field_uib_contacts',
       1 => 'field_uib_location',
@@ -414,10 +419,10 @@ function uib_article_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_article';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_sidebar';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Links',
-    'weight' => '12',
+    'weight' => '9',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(

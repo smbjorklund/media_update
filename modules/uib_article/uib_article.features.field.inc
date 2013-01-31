@@ -67,7 +67,7 @@ function uib_article_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '19',
+          'weight' => '25',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -92,7 +92,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '3',
+        'weight' => '5',
       ),
     ),
   );
@@ -155,7 +155,7 @@ function uib_article_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '1',
+        'weight' => '3',
       ),
     ),
   );
@@ -307,7 +307,7 @@ function uib_article_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '15',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -385,7 +385,7 @@ function uib_article_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '20',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -479,7 +479,7 @@ function uib_article_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '21',
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -500,7 +500,7 @@ function uib_article_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '2',
+        'weight' => '4',
       ),
     ),
   );
@@ -649,7 +649,7 @@ function uib_article_field_default_fields() {
             'file_view_mode' => 'default',
           ),
           'type' => 'file_rendered',
-          'weight' => '14',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -691,7 +691,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -762,7 +762,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '7',
       ),
     ),
   );
@@ -833,7 +833,7 @@ function uib_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '6',
+        'weight' => '10',
       ),
     ),
   );
@@ -880,7 +880,7 @@ function uib_article_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '16',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -917,7 +917,7 @@ function uib_article_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -963,7 +963,7 @@ function uib_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '18',
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1088,7 +1088,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '5',
+        'weight' => '8',
       ),
     ),
   );
@@ -1139,7 +1139,7 @@ function uib_article_field_default_fields() {
             'file_view_mode' => 'content_sidebar',
           ),
           'type' => 'file_rendered',
-          'weight' => '13',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1185,7 +1185,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '11',
+        'weight' => '8',
       ),
     ),
   );
@@ -1255,7 +1255,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '21',
+        'weight' => '15',
       ),
     ),
   );
@@ -1314,7 +1314,7 @@ function uib_article_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '22',
+        'weight' => '16',
       ),
     ),
   );
@@ -1350,12 +1350,7 @@ function uib_article_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'uib_article',
-      'default_value' => array(
-        0 => array(
-          'value' => '',
-          'format' => 'plain_text',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -1411,10 +1406,10 @@ function uib_article_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '10',
+          'rows' => '20',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '11',
       ),
     ),
   );
@@ -1484,7 +1479,7 @@ function uib_article_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '18',
+        'weight' => '12',
       ),
     ),
   );
@@ -1554,7 +1549,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '20',
+        'weight' => '14',
       ),
     ),
   );
@@ -1624,7 +1619,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '19',
+        'weight' => '13',
       ),
     ),
   );
