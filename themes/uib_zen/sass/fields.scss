@@ -200,12 +200,15 @@
 
 .group_uib_geo {
   border-top: 1px solid #f2f2f2;
-  padding-left: 0;
-  margin-left: 0;
+  margin-left: 10px;
+
+  .text-full {
+    width: 284px;
+  }
 }
 
 .form-field-name-field-uib-contacts {
-  width: 300px;
+  width: 290px;
 }
 
 .group_factbox {
@@ -247,24 +250,21 @@
     display: none;
   }
 }
-
-#field-uib-date-add-more-wrapper {
-  border-bottom: 1px solid silver;
-  border-top: 1px solid #f2f2f2;
-  
-  legend {
-    display: none
-  }
-  
-  .date-padding {
-    padding-left: 0;
-  }
-  
+.form-field-name-field-uib-date {
   fieldset.form-wrapper {
-    padding-left: 0;
     margin-left: 0;
+    padding-left: 0;
+  }
+
+  legend {
+    display: none;
   }
 }
+
+.form-field-type-datetime {
+  border-bottom: 1px solid #cbcbcb;
+}
+
 #uib-article-node-form h3 {
   color: #666666;
   font-weight: normal;
