@@ -28,24 +28,6 @@ function uib_setup_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-50',
   );
-  // Exported menu link: menu-global-menu-no:http://www.uib.no/om/kontakt/sentral-kontaktinformasjon
-  $menu_links['menu-global-menu-no:http://www.uib.no/om/kontakt/sentral-kontaktinformasjon'] = array(
-    'menu_name' => 'menu-global-menu-no',
-    'link_path' => 'http://www.uib.no/om/kontakt/sentral-kontaktinformasjon',
-    'router_path' => '',
-    'link_title' => 'Kontakt',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-44',
-  );
   // Exported menu link: menu-global-menu-no:http://www.uib.no/aktuelt
   $menu_links['menu-global-menu-no:http://www.uib.no/aktuelt'] = array(
     'menu_name' => 'menu-global-menu-no',
@@ -153,24 +135,6 @@ function uib_setup_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-50',
-  );
-  // Exported menu link: menu-global-menu:http://www.uib.no/about/contact-us/contact
-  $menu_links['menu-global-menu:http://www.uib.no/about/contact-us/contact'] = array(
-    'menu_name' => 'menu-global-menu',
-    'link_path' => 'http://www.uib.no/about/contact-us/contact',
-    'router_path' => '',
-    'link_title' => 'Contact',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-44',
   );
   // Exported menu link: menu-global-menu:http://www.uib.no/about
   $menu_links['menu-global-menu:http://www.uib.no/about'] = array(
@@ -285,12 +249,10 @@ function uib_setup_menu_default_menu_links() {
   t('About UiB');
   t('Aktuelt');
   t('Bibliotek');
-  t('Contact');
   t('Education');
   t('Forskning');
   t('Internasjonal');
   t('International');
-  t('Kontakt');
   t('Library');
   t('News');
   t('Om UiB');
