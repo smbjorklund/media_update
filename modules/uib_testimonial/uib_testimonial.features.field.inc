@@ -951,12 +951,7 @@ function uib_testimonial_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'uib_testimonial',
-      'default_value' => array(
-        0 => array(
-          'value' => '',
-          'format' => 'plain_text',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -1012,7 +1007,7 @@ function uib_testimonial_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'rows' => '18',
         ),
         'type' => 'text_textarea',
         'weight' => '5',

@@ -488,11 +488,11 @@ $zen-auto-include-item-base: false;
     }
 
     .group-article-main {
-      @include zen-grid-item (3, 1)
+      @include zen-grid-item (3, 1);
     }
 
     .group-article-sidebar  {
-      @include zen-grid-item (1, 4)
+      @include zen-grid-item (1, 4);
     }
   }
  

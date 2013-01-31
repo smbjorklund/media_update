@@ -1406,7 +1406,7 @@ function uib_article_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '20',
+          'rows' => '30',
         ),
         'type' => 'text_textarea',
         'weight' => '11',
