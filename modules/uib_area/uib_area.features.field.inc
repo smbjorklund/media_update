@@ -853,9 +853,11 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'file_rendered',
           'weight' => '0',
         ),
         'teaser' => array(
