@@ -235,8 +235,6 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'administer menu-global-menu menu items',
     'roles' => array(
       0 => 'level 1',
-      1 => 'level 2',
-      2 => 'level 3',
     ),
     'module' => 'menu_admin_per_menu',
   );
@@ -246,8 +244,6 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'administer menu-global-menu-no menu items',
     'roles' => array(
       0 => 'level 1',
-      1 => 'level 2',
-      2 => 'level 3',
     ),
     'module' => 'menu_admin_per_menu',
   );
@@ -676,6 +672,8 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'edit any files',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'file_entity',
   );
