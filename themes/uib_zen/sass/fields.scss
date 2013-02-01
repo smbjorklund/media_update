@@ -227,6 +227,21 @@
   border-top: solid 1px #f2f2f2;
   border-bottom: solid 1px #cbcbcb;
   padding: 15px 7px 15px 0px;
+
+  legend {
+    font-weight: normal;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  fieldset {
+    padding-left: 5px;
+  }
+
+  label {
+    display: none;
+  }
 }
 
 .form-field-name-field-uib-links {
