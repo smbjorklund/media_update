@@ -64,6 +64,52 @@
   }
 }
 
+/* Area sidebar */
+.view-recent-news {
+  .more-link {
+    font-weight: bold;
+    float: left;
+    margin: 5px 0 5px 0;
+  }
+
+  .more-link:before {
+    content: '→';
+    color: #005473;
+  }
+}
+
+.view-id-calendar {
+  .more-link a {
+    font-weight: bold;
+    float: left;
+    color:#d95900;
+    margin: 5px 0 5px 0;
+  }
+
+  .more-link:before {
+    content: '→';
+    float: left;
+    margin: 6px 5px 5px 0;
+    color:#d95900;
+  }
+}
+
+.view-calendar .field-content .date-display-single {
+    font-weight: bold;
+    color: #D95900;
+}
+
+.view-content h3  {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.view-calendar .view-content a  {
+  color: #333;
+}
+
 /* Area page */
 .node-area #content {
 
