@@ -1260,65 +1260,6 @@ function uib_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_article-field_uib_nav_weight'.
-  $fields['node-uib_article-field_uib_nav_weight'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_uib_nav_weight',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-      ),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'uib_article',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '11',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_uib_nav_weight',
-      'label' => 'Weight',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '16',
-      ),
-    ),
-  );
-
   // Exported field: 'node-uib_article-field_uib_text'.
   $fields['node-uib_article-field_uib_text'] = array(
     'field_config' => array(
@@ -1651,7 +1592,6 @@ function uib_article_field_default_fields() {
   t('This is the author of the content. If left empty the creator of the content becomes the author.');
   t('This is the large image/video at the top.');
   t('Type');
-  t('Weight');
 
   return $fields;
 }
