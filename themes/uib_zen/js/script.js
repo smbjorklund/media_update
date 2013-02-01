@@ -13,14 +13,10 @@
 (function ($, Drupal, window, document, undefined) {
   Drupal.behaviors.uib_zen = {
     attach: function (context, settings) {
-  jQuery('#mobile-menu').click(function() {
-    jQuery('#navigation').toggle('slow', function() {
-    });
-  });
+      jQuery('#mobile-menu').click(function() {
+        jQuery('#navigation').toggle('slow', function() {
+        });
+      });
     }
   }
-
-
-
-
 })(jQuery, Drupal, this, this.document);
