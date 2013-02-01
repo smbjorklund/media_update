@@ -11,9 +11,16 @@
 // - http://drupal.org/node/1446420
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
+  Drupal.behaviors.uib_zen = {
+    attach: function (context, settings) {
+  jQuery('#mobile-menu').click(function() {
+    jQuery('#navigation').toggle('slow', function() {
+    });
+  });
+    }
+  }
 
 
-// Place your code here.
 
 
 })(jQuery, Drupal, this, this.document);

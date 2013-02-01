@@ -54,6 +54,9 @@ $zen-auto-include-item-base: false;
   width: 890px;
 }
 
+#mobile-menu {
+  display: none;
+}
 /*
  * Apply the shared properties of grid items in a single, efficient ruleset.
  */
@@ -111,7 +114,11 @@ $zen-auto-include-item-base: false;
         padding: 18px 4px 10px 4px
       }
     }
+    #global-menu {
+      display: none;
+    }
     #global-searchform {
+      width: 50%;
       form {
         float:left !important;
         input[type='text'] {
@@ -129,18 +136,28 @@ $zen-auto-include-item-base: false;
         input[type='image'] {
           display: none;
         }
-        input[type='text']:focus {
-	  width: 100%;
-	  padding: 4px 0 4px 22px;
-	  color: #000;
-	  background-color: #fff;
-	  cursor: auto;
-        }
         input:-moz-placeholder {
           color: transparent;
         }
         input::-webkit-input-placeholder {
 	  color: transparent;
+        }
+        .searchbox {
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+    #mobile-menu {
+      display: block;
+      float: right;
+      ul {
+        li {
+          width: 40px;
+          border-top: 3px solid #005473;
+          height: 10px;
+          margin:0 6px 0 0;
         }
       }
     }
@@ -179,7 +196,37 @@ $zen-auto-include-item-base: false;
       display: block;
     }
   }
-
+  #header {
+    margin: 6px;
+    #logo {
+      height: auto;
+      width: 30%;
+    }
+    #name-and-slogan {
+      #site-name {
+        margin:20px 0 0 0;
+        border: none;
+        font-size: 14px;
+      }
+    }
+    #block-locale-language {
+      ul {
+        padding: 0;
+        margin: 0;
+        li {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+  .node-type-area {
+    .breadcrumb {
+      display: none;
+      }
+    }
+  #navigation {
+    display: none;
+  }
   .region-bottom {
         width: 100% !important;
       }
