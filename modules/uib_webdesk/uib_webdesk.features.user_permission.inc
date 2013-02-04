@@ -1232,7 +1232,6 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'translate interface',
     'roles' => array(
       0 => 'level 1',
-      1 => 'level 2',
     ),
     'module' => 'locale',
   );
