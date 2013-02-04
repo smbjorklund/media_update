@@ -72,10 +72,9 @@ function xtopic_file($id, $uid) {
   else {
     die("Unknown file type: " . $xtopic->type);
   }
+
   $uri = XTopic::url($uri);
-
   $file = new stdClass();
-
   $basename = drupal_basename($uri);
   if(function_exists('transliteration_clean_filename')) {
     $basename = transliteration_clean_filename($basename, 'nb');
@@ -86,8 +85,16 @@ function xtopic_file($id, $uid) {
   $filename = "$dirname/$basename";
   $filename = file_destination($filename, FILE_EXISTS_RENAME);
 
-  if (!@copy($uri, $filename)) {
-    die("Could not copy file " . $uri . "\n");
+  $opts = array(
+    'http' => array(
+      'timeout => 20'
+      )
+    );
+  $context = stream_context_create($opts);
+
+  if (!@copy($uri, $filename, $context)) {
+    $errors = error_get_last();
+    die("Failed to copy file $uri to $filename - " . $errors['message'] . "\n");
   }
 
   if (isset($xtopic->photographer)) {

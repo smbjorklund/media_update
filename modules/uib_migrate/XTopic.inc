@@ -77,157 +77,178 @@ class XTopic extends stdClass {
     }
     uibx_log($log_msg);
 
-    $xml = simplexml_load_file($url);
-    $topic = $xml->topic;
-    if (empty($topic)) {
-      throw new Exception("Topic $id not found", 404);
-    }
-    $this->id = (string)$topic['id'];
-    $this->title = (string)$topic->title;
-    $this->state = (string)$topic['state'];
-    $this->path = substr($topic['path'], 1);
-    $this->path = preg_replace('/\\/en($|\\/)/', '$1', $this->path);
-    $this->url = substr($topic['url'], 1);
-    $this->slug = basename($this->path);
-    $this->type = XTopic::type_map((string)$topic->type['name']);
+    // W2 workaround. Cachemiss or simply just slow.
+    $opts = array(
+      'http' => array(
+        'timeout => 240'
+        )
+      );
+    $context = stream_context_create($opts);
+    $fhandle = fopen($url, 'r', FALSE, $context);
+    $contents = '';
 
-    $site = (string)$topic->site['ref'];
-    $this->is_site = $site == $id;
-    if ($this->is_site) {
-      $this->no_site = (string)$topic->site['no_site'] or $this->no_site = $site;
-    }
-    else {
-      $this->site = $site;
-    }
-    $this->site_lang = (string)$topic->site['lang'];
-    if ($this->site_lang == 'no') {
-      $this->site_lang = 'nb'; // Drupal uses nb/nn (bokmål/nynorsk)
-    }
+    if ($fhandle) {
+      while (!feof($fhandle)) {
+        $contents .= fread($fhandle, 8192);
+      }
+      fclose($fhandle);
+      $xml = simplexml_load_string($contents);
+      $topic = $xml->topic;
+      if (empty($topic)) {
+        throw new Exception("Topic $id not found", 404);
+      }
+      $this->id = (string)$topic['id'];
+      $this->title = (string)$topic->title;
+      $this->state = (string)$topic['state'];
+      $this->path = substr($topic['path'], 1);
+      $this->path = preg_replace('/\\/en($|\\/)/', '$1', $this->path);
+      $this->url = substr($topic['url'], 1);
+      $this->slug = basename($this->path);
+      $this->type = XTopic::type_map((string)$topic->type['name']);
 
-    foreach ($topic->profiletext as $profiletext) {
-      $this->profiletext .= (string)$profiletext;
-      if ($profiletext["image_ref"] && $profiletext["href"] ) {
-        $this->profiletext .= sprintf("<a href='%s'><img src='%s'></a>", $profiletext['href'], $profiletext['image_ref']);
-        $this->profileimages[] = (string)$profiletext["image_ref"];
-      }
-      elseif ($profiletext["image_ref"]) {
-        $this->profiletext .= sprintf("<img src='%s'>", $profiletext['image_ref']);
-        $this->profileimages[] = (string)$profiletext["image_ref"];
-      }
-
-    }
-    foreach ($topic->field as $field) {
-      if ($field['name'] == 'psi') {
-        $value = (string)$field;
-        $this->{$field['name']}[] = $value;
-        $arr = explode('?omraadekode=', $value);
-        if (count($arr) == 2) {
-          $this->omraadekode = preg_replace('/_en$/', '', $arr[1]);
-        }
-      }
-      elseif ($field['name'] == 'menuorder') {
-        // We only care about the version of 'menuorder' that's scoped with
-        // the current site.
-        if ((string)$field['scope'] != (string)$topic->site['ref']) {
-          continue;
-        }
-        $this->menuorder = (string)$field;
-      }
-      elseif ($field['name'] == 'original') {
-        $start7 = substr($field, 0, 7);
-        if ($start7 == 'http://' || $start7 == 'https:/')
-          continue;
-        $this->original = (string)$field;
+      $site = (string)$topic->site['ref'];
+      $this->is_site = $site == $id;
+      if ($this->is_site) {
+        $this->no_site = (string)$topic->site['no_site'] or $this->no_site = $site;
       }
       else {
-        $fname = $field['name'];
-        if ($field['scope']) {
-          $fname .= ':' . $field['scope'];
-        }
-        $this->$fname = (string)$field;
+        $this->site = $site;
       }
-    }
+      $this->site_lang = (string)$topic->site['lang'];
+      if ($this->site_lang == 'no') {
+        $this->site_lang = 'nb'; // Drupal uses nb/nn (bokmål/nynorsk)
+      }
 
-    $xlink = array();
-    foreach ($topic->xlink as $x) {
-      $xlink[(string)$x['name']][] = (string)$x['ref'];
-    }
-
-    if (!empty($xlink['subordinate/hierarchical-relation/superordinate'])) {
-      $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][0];
-      if (!$shallow) {
-        $parent = new XTopic($this->nav_parent_id, TRUE, 'parent of ' . $id);
-        //$this->parent = $parent;
-        if (isset($parent->menuorder)) {
-          $menu_order = $parent->menuorder;
-          $menu_order = drupal_json_decode($menu_order);
-          $idx = array_search($this->id, $menu_order);
-          if ($idx !== FALSE)
-            $this->nav_weight = $idx;
+      foreach ($topic->profiletext as $profiletext) {
+        $this->profiletext .= (string)$profiletext;
+        if ($profiletext["image_ref"] && $profiletext["href"] ) {
+          $this->profiletext .= sprintf("<a href='%s'><img src='%s'></a>", $profiletext['href'], $profiletext['image_ref']);
+          $this->profileimages[] = (string)$profiletext["image_ref"];
         }
-        if (!isset($this->nav_weight)) {
-          uibx_log("Can't find $this->id in the menu of its parent $this->nav_parent_id", 'warning');
+        elseif ($profiletext["image_ref"]) {
+          $this->profiletext .= sprintf("<img src='%s'>", $profiletext['image_ref']);
+          $this->profileimages[] = (string)$profiletext["image_ref"];
+        }
+
+      }
+      foreach ($topic->field as $field) {
+        if ($field['name'] == 'psi') {
+          $value = (string)$field;
+          $this->{$field['name']}[] = $value;
+          $arr = explode('?omraadekode=', $value);
+          if (count($arr) == 2) {
+            $this->omraadekode = preg_replace('/_en$/', '', $arr[1]);
+          }
+        }
+        elseif ($field['name'] == 'menuorder') {
+          // We only care about the version of 'menuorder' that's scoped with
+          // the current site.
+          if ((string)$field['scope'] != (string)$topic->site['ref']) {
+            continue;
+          }
+          $this->menuorder = (string)$field;
+        }
+        elseif ($field['name'] == 'original') {
+          $start7 = substr($field, 0, 7);
+          if ($start7 == 'http://' || $start7 == 'https:/')
+            continue;
+          $this->original = (string)$field;
+        }
+        else {
+          $fname = $field['name'];
+          if ($field['scope']) {
+            $fname .= ':' . $field['scope'];
+          }
+          $this->$fname = (string)$field;
         }
       }
-      if ($this->nav_parent_id == $topic->site['ref']) {
-        unset($this->nav_parent_id);
-        $this->menu_top_entry = TRUE;
+
+      $xlink = array();
+      foreach ($topic->xlink as $x) {
+        $xlink[(string)$x['name']][] = (string)$x['ref'];
       }
-    }
 
-    if (!empty($xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
-      $this->area_parent_ids =  $xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
-    }
+      if (!empty($xlink['subordinate/hierarchical-relation/superordinate'])) {
+        $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][0];
+        if (!$shallow) {
+          $parent = new XTopic($this->nav_parent_id, TRUE, 'parent of ' . $id);
+          //$this->parent = $parent;
+          if (isset($parent->menuorder)) {
+            $menu_order = $parent->menuorder;
+            $menu_order = drupal_json_decode($menu_order);
+            $idx = array_search($this->id, $menu_order);
+            if ($idx !== FALSE)
+              $this->nav_weight = $idx;
+          }
+          if (!isset($this->nav_weight)) {
+            uibx_log("Can't find $this->id in the menu of its parent $this->nav_parent_id", 'warning');
+          }
+        }
+        if ($this->nav_parent_id == $topic->site['ref']) {
+          unset($this->nav_parent_id);
+          $this->menu_top_entry = TRUE;
+        }
+      }
 
-    if (!empty($xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
-      $this->byline =  $xlink['er_skrevet_av/forfatterskap/har_skrevet'];
-    }
+      if (!empty($xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
+        $this->area_parent_ids =  $xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
+      }
 
-    if (isset($topic->{'workflow-transition'})) {
-      foreach ($topic->{'workflow-transition'} as $transition) {
-        if ($transition['action'] == 'publish') {
-          if ($transition['user']) {
-            $this->author =  (string)$transition['user'];
+      if (!empty($xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
+        $this->byline =  $xlink['er_skrevet_av/forfatterskap/har_skrevet'];
+      }
+
+      if (isset($topic->{'workflow-transition'})) {
+        foreach ($topic->{'workflow-transition'} as $transition) {
+          if ($transition['action'] == 'publish') {
+            if ($transition['user']) {
+              $this->author =  (string)$transition['user'];
+            }
           }
         }
       }
-    }
 
-    if (!empty($xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
-      $this->main_media = $xlink['decorated/stort_hovedtekstbilde/decoration'][0];
-    }
-
-    if (!empty($xlink['decorated/personbilde/decoration'])) { // Main image for users
-      // Can reuse safely reuse main_media here
-      $this->main_media = $xlink['decorated/personbilde/decoration'][0];
-    }
-
-    if (!empty($xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
-      $this->media = $xlink['decorated/hovedtekstbilde/decoration'];
-    }
-
-    if (!empty($xlink['has_attachment/vedlegg/attachment'])) {
-      $this->attachments = $xlink['has_attachment/vedlegg/attachment'];
-    }
-
-    if (!empty($xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'])) {
-      $this->contacts = $xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
-    }
-
-    if (!empty($xlink['omtaler/omtale/omtalt'])) {
-      $relatedprogrammes = array();
-
-      foreach ($xlink['omtaler/omtale/omtalt'] as $programme) {
-        $omtalt = new XTopic($programme, TRUE, 'omtalt');
-        if ($omtalt->type == 'studieprogram') {
-          $relatedprogrammes[] = $omtalt->studieprogramkode;
-        }
-        else {
-          uibx_log("Relation (omtalt) to $omtalt->type dropped", 'warning');
-        }
+      if (!empty($xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
+        $this->main_media = $xlink['decorated/stort_hovedtekstbilde/decoration'][0];
       }
 
-      $this->related_programmes = $relatedprogrammes;
+      if (!empty($xlink['decorated/personbilde/decoration'])) { // Main image for users
+        // Can reuse safely reuse main_media here
+        $this->main_media = $xlink['decorated/personbilde/decoration'][0];
+      }
+
+      if (!empty($xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
+        $this->media = $xlink['decorated/hovedtekstbilde/decoration'];
+      }
+
+      if (!empty($xlink['has_attachment/vedlegg/attachment'])) {
+        $this->attachments = $xlink['has_attachment/vedlegg/attachment'];
+      }
+
+      if (!empty($xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'])) {
+        $this->contacts = $xlink['har_kontaktperson/kontaktperson/er_kontaktperson_for'];
+      }
+
+      if (!empty($xlink['omtaler/omtale/omtalt'])) {
+        $relatedprogrammes = array();
+
+        foreach ($xlink['omtaler/omtale/omtalt'] as $programme) {
+          $omtalt = new XTopic($programme, TRUE, 'omtalt');
+          if ($omtalt->type == 'studieprogram') {
+            $relatedprogrammes[] = $omtalt->studieprogramkode;
+          }
+          else {
+            uibx_log("Relation (omtalt) to $omtalt->type dropped", 'warning');
+          }
+        }
+
+        $this->related_programmes = $relatedprogrammes;
+      }
+    }
+    else {
+      $info = stream_get_meta_data($fhandle);
+      var_dump($info);
+      die('Oh horro failed to open connection');
     }
   }
 
@@ -405,56 +426,73 @@ class XTopicListSource extends MigrateSource {
     // No limiting set of ids was found
     // Go get all ids in sets of 50
     $url = $this->listUrl . "&limit=50&offset=$this->offset";
+    $opts = array(
+      'http' => array(
+        'timeout => 240'
+        )
+      );
     uibx_log('GET ' . $url);
-    $xml = simplexml_load_file($url);
-    if ($this->offset == 0) {
-      $range = explode('/', $xml['range']);
-      $this->count = $range[1];
-    }
 
-    // Get list of ids to ignore
-    static $bad_apple;
-    if (!isset($bad_apple)) {
-      $bad_apple = array();
-      foreach (file(dirname(__FILE__) . '/etc/bad-apples.txt') as $line) {
-        $line = explode('#', $line, 2);  // ignore trailing comments
-        $id = trim($line[0]);
-        if ($id)
-          $bad_apple[$id] = TRUE;
-      }
-    }
+    $context = stream_context_create($opts);
+    $fhandle = fopen($url, 'r', FALSE, $context);
+    $contents = '';
 
-    $ids = array();
-    $cntr = 0;
-    foreach ($xml->topic as $t) {
-      $cntr++;
-      $id = (string)$t['id'];
-      // Check if this id is to be ignored
-      if (isset($bad_apple[$id])) {
-        uibx_log("Bad apple $id, skipped", 'warning');
-        continue;
+    if ($fhandle) {
+      while (!feof($fhandle)) {
+        $contents .= fread($fhandle, 8192);
       }
-      // Check if there is a limiting set of areas
-      // and if the current record is within this set.
-      if (!empty($this->w2AreaSubset)) {
-        $path = (string)$t['path'];
-        $notInSubset = TRUE;
-        foreach ($this->w2AreaSubset as $subsetArea) {
-          $path = ltrim($path, "/");
-          if (substr($path, 0, strlen($subsetArea)) == $subsetArea) {
-            $notInSubset = FALSE;
-            //uibx_log("$subsetArea found in " . substr($path, 0, 35) . "...", 'notice');
-            break;
-          }
+      fclose($fhandle);
+      $xml = simplexml_load_string($contents);
+
+      if ($this->offset == 0) {
+        $range = explode('/', $xml['range']);
+        $this->count = $range[1];
+      }
+
+      // Get list of ids to ignore
+      static $bad_apple;
+      if (!isset($bad_apple)) {
+        $bad_apple = array();
+        foreach (file(dirname(__FILE__) . '/etc/bad-apples.txt') as $line) {
+          $line = explode('#', $line, 2);  // ignore trailing comments
+          $id = trim($line[0]);
+          if ($id)
+            $bad_apple[$id] = TRUE;
         }
-        if ($notInSubset) {
+      }
+
+      $ids = array();
+      $cntr = 0;
+      foreach ($xml->topic as $t) {
+        $cntr++;
+        $id = (string)$t['id'];
+        // Check if this id is to be ignored
+        if (isset($bad_apple[$id])) {
+          uibx_log("Bad apple $id, skipped", 'warning');
           continue;
         }
+        // Check if there is a limiting set of areas
+        // and if the current record is within this set.
+        if (!empty($this->w2AreaSubset)) {
+          $path = (string)$t['path'];
+          $notInSubset = TRUE;
+          foreach ($this->w2AreaSubset as $subsetArea) {
+            $path = ltrim($path, "/");
+            if (substr($path, 0, strlen($subsetArea)) == $subsetArea) {
+              $notInSubset = FALSE;
+              //uibx_log("$subsetArea found in " . substr($path, 0, 35) . "...", 'notice');
+              break;
+            }
+          }
+          if ($notInSubset) {
+            continue;
+          }
+        }
+        $ids[] = $id;
       }
-      $ids[] = $id;
+      $this->ids = $ids;
+      $this->offset += $cntr;
     }
-    $this->ids = $ids;
-    $this->offset += $cntr;
   }
 
   public function performRewind() {
