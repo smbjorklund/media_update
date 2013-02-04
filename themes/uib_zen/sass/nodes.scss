@@ -237,9 +237,13 @@
   margin: 20px 0 5px 0;
 }
 
-.group-article-sidebar ul {
+.group-article-sidebar ul, .field-name-field-uib-primary-text ul, .field-name-field-uib-text ul, .field-name-field-uib-tertiary-text ul, .field-name-field-uib-tertiary-text-ul {
     list-style-type: square;
   }
+
+#block-uib-area-feed ul {
+  list-style-type: none;
+}
 
 .field-name-field-uib-fact-box  {
   background: #f0f4f5;

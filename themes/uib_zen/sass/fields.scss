@@ -393,9 +393,8 @@ div.link-field-column  {
     }
   }
   
-  li.first {float: left}
-  li.leaf.menu-mlid-299 {margin-left: 35px}
-  li.leaf.menu-mlid-337 {float: right}
+  li.first {float: left; margin-right: 35px;}
+  li.last{float: right}
 }
 
 .page-webdesk #main #content {
