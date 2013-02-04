@@ -23,21 +23,24 @@ function uib_article_field_group_info() {
     'label' => 'Advanced',
     'weight' => '6',
     'children' => array(
-      0 => 'field_uib_w2_path',
-      1 => 'field_uib_nav_weight',
-      2 => 'field_uib_menu_title_w2',
-      3 => 'field_uib_w2_id',
-      4 => 'field_uib_w2_nav_parent_id',
+      0 => 'field_uib_menu_title_w2',
+      1 => 'field_uib_w2_id',
+      2 => 'field_uib_w2_nav_parent_id',
+      3 => 'field_uib_w2_path',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Advanced',
       'instance_settings' => array(
-        'required_fields' => 1,
+        'required_fields' => 0,
         'classes' => '',
         'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_advanced|node|uib_article|form'] = $field_group;
