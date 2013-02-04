@@ -37,7 +37,7 @@ if [ $( hostname | egrep '(^attila.uib.no$|^attika.uib.no$|^attilatest.uib.no$)'
   fi
   
   #Change site-name if the target is course-mode is invoked
-  if [ $kurs ] ;then
+  if [ $kurs -eq 1 ] ;then
     site='w3-kurs.test.uib.no'
   fi
 
