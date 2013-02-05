@@ -20,7 +20,7 @@ class XTopic extends stdClass {
    */
   public static function url($path='topicmap/@@xtopic') {
     if (is_null(self::$w2_server)) {
-      self::$w2_server = variable_get('uib_w2_server', 'teststring.uib.no');
+      self::$w2_server = variable_get('uib_w2_server', 'w2-data.test.uib.no');
     }
     return 'http://' . self::$w2_server . '/' . $path;
   }
