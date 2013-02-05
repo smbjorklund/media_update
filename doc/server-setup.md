@@ -23,7 +23,7 @@
 	yum clean all
 	yum install -y postgresql91.x86_64 postgresql91-libs.x86_64
 	yum install -y munin-node git
-	yum install -y httpd php php-pgsql php-domxml-php4-php5 php-gd php-mbstring php-ldap
+	yum install -y httpd php php-pgsql php-domxml-php4-php5 php-gd php-mbstring php-ldap php-xml
 	yum install -y no.uib.it-drush-7x no.uib.it-php.uib
 
 ### Drush

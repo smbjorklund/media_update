@@ -37,6 +37,6 @@ EOF
 yum clean all
 yum install -y -q postgresql91.x86_64 postgresql91-libs.x86_64
 yum install -y -q munin-node git
-yum install -y -q httpd php php-pgsql php-domxml-php4-php5 php-gd php-mbstring php-ldap
+yum install -y -q httpd php php-pgsql php-domxml-php4-php5 php-gd php-mbstring php-ldap php-xml
 yum install -y -q no.uib.it-drush-7x no.uib.it-php.uib
 
