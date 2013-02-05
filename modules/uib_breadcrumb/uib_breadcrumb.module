@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * @file
+ * Implement hook_menu_breadcrumb_alter().
+ *
+ * w3/w2 mixed mode setting. This module is to be turned off and removed as
+ * soon as we have migrated all of w2 into w3.
+ */
+function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
+  $active_trail[0]['href'] = 'http://uib.no';
+}

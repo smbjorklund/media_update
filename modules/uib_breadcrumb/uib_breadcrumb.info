@@ -1,0 +1,4 @@
+name = "UIB breadcrumb"
+description = "Override the default breadcrumb 'home'. This module should be turned off and removed as soon as we have no longer run in w2/w3 mixed mode."
+package = UiB
+core = 7.x
