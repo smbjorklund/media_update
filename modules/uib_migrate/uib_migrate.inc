@@ -87,12 +87,12 @@ function xtopic_file($id, $uid) {
 
   $opts = array(
     'http' => array(
-      'timeout => 20'
+      'timeout' => 20
       )
     );
   $context = stream_context_create($opts);
 
-  if (!@copy($uri, $filename, $context)) {
+  if (!copy($uri, $filename, $context)) {
     $errors = error_get_last();
     die("Failed to copy file $uri to $filename - " . $errors['message'] . "\n");
   }
