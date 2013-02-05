@@ -26,6 +26,7 @@ dependencies[] = pathauto
 dependencies[] = strongarm
 dependencies[] = token
 dependencies[] = transliteration
+dependencies[] = uib_breadcrumb
 dependencies[] = uib_field
 dependencies[] = uib_h2tabs
 dependencies[] = uib_media
