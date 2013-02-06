@@ -306,8 +306,16 @@ table.sticky-header {
   }
 
   #edit-submit-uib-webdesk {
-    padding: 8px 20px 8px 20px;
+    padding: 10px 10px 10px 10px;
     margin: 20px 0 30px 0;
-    color: #005473;
+    background-color: #005473;
+    border: solid 1px #00374C;
+    color: #fff;
+    height: 40px;
+    width: 70px;
+    
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
