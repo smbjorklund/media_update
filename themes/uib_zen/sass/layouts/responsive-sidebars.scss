@@ -320,6 +320,19 @@ $zen-auto-include-item-base: false;
     display: none;
   }
 
+  #block-uib-area-node-children {
+    @include zen-grid-item (1, 1);
+    background-color: #f5f5f5;
+    margin: 1em 1em 1em 0;
+    padding: 1em;
+
+    .uib-child-teaser {
+      float: left;
+      line-height: 1.5em;
+      width: 100%;
+    }
+  }
+
 }
 
 @media all and(min-width: 240px) and (max-width: 720px) {
@@ -512,6 +525,23 @@ $zen-auto-include-item-base: false;
         clear: none;
         float: none;
         padding-left: 10px;
+      }
+    }
+
+    @media all and (min-width: 720px) and (max-width: 959px) {
+      #block-uib-area-node-children {
+        @include zen-grid-item (4, 1);
+        background-color: #f5f5f5;
+        margin: 1em 1em 1em 0;
+        padding: 1em;
+        width: 97%;
+
+        .uib-child-teaser {
+          width: 48%;
+          float: left;
+          line-height: 1.5em;
+          margin-right: 1%;
+        }
       }
     }
 
@@ -877,11 +907,18 @@ $zen-auto-include-item-base: false;
 
   /* Area "teaser" block */
   #block-uib-area-node-children {
-    @include zen-grid-item (2, 1);
+    @include zen-grid-item (4, 1);
     background-color: #f5f5f5;
     margin: 1em 1em 1em 0;
     padding: 1em;
-    width: 48%;
+    width: 97%;
+    
+    .uib-child-teaser {
+      width: 48%;
+      float: left;
+      line-height: 1.5em;
+      margin-right: 1%;
+    }
   }
 
   /* Employee pages */
