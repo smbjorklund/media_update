@@ -15,9 +15,9 @@ function uib_area_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_entity_types';
   $strongarm->value = array(
-    'taxonomy_term' => 'taxonomy_term',
+    'file' => 'file',
     'node' => 0,
-    'file' => 0,
+    'taxonomy_term' => 0,
     'user' => 0,
   );
   $export['entity_translation_entity_types'] = $strongarm;

@@ -34,6 +34,7 @@ function uib_article_field_default_fields() {
       'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'handler' => 'base',
         'handler_settings' => array(
           'behaviors' => array(
@@ -81,6 +82,7 @@ function uib_article_field_default_fields() {
       'label' => 'Area',
       'required' => 1,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -120,6 +122,7 @@ function uib_article_field_default_fields() {
           'event' => 'event',
         ),
         'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_text',
@@ -148,6 +151,7 @@ function uib_article_field_default_fields() {
       'label' => 'Type',
       'required' => 1,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -403,6 +407,7 @@ function uib_article_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -464,6 +469,7 @@ function uib_article_field_default_fields() {
           'exhibition' => 'Exhibition',
         ),
         'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_text',
@@ -493,6 +499,7 @@ function uib_article_field_default_fields() {
       'label' => 'Event type',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -528,7 +535,9 @@ function uib_article_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -588,6 +597,7 @@ function uib_article_field_default_fields() {
             ),
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
@@ -905,6 +915,7 @@ function uib_article_field_default_fields() {
           'url_cutoff' => '80',
         ),
         'enable_tokens' => 1,
+        'entity_translation_sync' => FALSE,
         'title' => 'required',
         'title_maxlength' => '128',
         'title_value' => '',
@@ -1057,6 +1068,7 @@ function uib_article_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => 'media',
         'file_extensions' => 'png jpeg jpg',
         'max_filesize' => '',
@@ -1154,6 +1166,7 @@ function uib_article_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
+        'entity_translation_sync' => FALSE,
         'file_directory' => 'media',
         'file_extensions' => 'jpg png jpeg',
         'max_filesize' => '',
@@ -1340,6 +1353,7 @@ function uib_article_field_default_fields() {
             ),
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),

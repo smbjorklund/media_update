@@ -32,6 +32,7 @@ function uib_user_field_default_fields() {
           1 => '',
         ),
         'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_boolean',
@@ -59,6 +60,7 @@ function uib_user_field_default_fields() {
       'label' => 'Remove grid',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => 0,
       ),
       'widget' => array(
@@ -97,6 +99,7 @@ function uib_user_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -121,6 +124,7 @@ function uib_user_field_default_fields() {
       'label' => 'First name',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => 0,
       ),
@@ -160,6 +164,7 @@ function uib_user_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -184,6 +189,7 @@ function uib_user_field_default_fields() {
       'label' => 'Last name',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => 0,
       ),
@@ -239,6 +245,7 @@ function uib_user_field_default_fields() {
       'settings' => array(
         'ca_phone_parentheses' => 1,
         'ca_phone_separator' => '-',
+        'entity_translation_sync' => FALSE,
         'phone_country_code' => 0,
         'phone_default_country_code' => '1',
         'phone_int_max_length' => '15',
@@ -303,6 +310,7 @@ function uib_user_field_default_fields() {
       'label' => 'Position',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => 0,
       ),
@@ -340,6 +348,7 @@ function uib_user_field_default_fields() {
           'faculty' => 'faculty',
         ),
         'allowed_values_function' => '',
+        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_text',
@@ -367,6 +376,7 @@ function uib_user_field_default_fields() {
       'label' => 'Position category',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => 0,
       ),
       'widget' => array(
@@ -391,7 +401,9 @@ function uib_user_field_default_fields() {
       'indexes' => array(),
       'locked' => '0',
       'module' => 'number',
-      'settings' => array(),
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'number_integer',
     ),
@@ -419,6 +431,7 @@ function uib_user_field_default_fields() {
       'label' => 'Position code',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max' => '',
         'min' => '',
         'prefix' => '',
@@ -459,6 +472,7 @@ function uib_user_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -483,6 +497,7 @@ function uib_user_field_default_fields() {
       'label' => 'Position (english)',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => 0,
       ),
@@ -522,6 +537,7 @@ function uib_user_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '255',
       ),
       'translatable' => '0',
@@ -546,6 +562,7 @@ function uib_user_field_default_fields() {
       'label' => 'Slug',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => 0,
       ),
@@ -585,6 +602,7 @@ function uib_user_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'max_length' => '16',
       ),
       'translatable' => '0',
@@ -615,6 +633,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
       'label' => 'User Domain',
       'required' => 1,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => 1,
       ),
@@ -679,6 +698,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
       'label' => 'ID w2',
       'required' => 0,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => 0,
       ),
