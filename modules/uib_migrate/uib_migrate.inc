@@ -93,8 +93,8 @@ function xtopic_file($id, $uid) {
   $context = stream_context_create($opts);
 
   if (!copy($uri, $filename, $context)) {
-    $errors = error_get_last();
-    die("Failed to copy file $uri to $filename - " . $errors['message'] . "\n");
+    print_r(error_get_last());
+    die("Failed to copy file $uri to $filename\n");
   }
 
   if (isset($xtopic->photographer)) {

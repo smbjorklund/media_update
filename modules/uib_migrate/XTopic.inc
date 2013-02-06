@@ -80,7 +80,7 @@ class XTopic extends stdClass {
     // W2 workaround. Cachemiss or simply just slow.
     $opts = array(
       'http' => array(
-        'timeout => 240'
+        'timeout' => 240
         )
       );
     $context = stream_context_create($opts);
@@ -248,7 +248,7 @@ class XTopic extends stdClass {
     else {
       $info = stream_get_meta_data($fhandle);
       var_dump($info);
-      die('Oh horro failed to open connection');
+      die('Oh horror. Failed to open XTopic connection.');
     }
   }
 
@@ -428,7 +428,7 @@ class XTopicListSource extends MigrateSource {
     $url = $this->listUrl . "&limit=50&offset=$this->offset";
     $opts = array(
       'http' => array(
-        'timeout => 240'
+        'timeout' => 240
         )
       );
     uibx_log('GET ' . $url);
