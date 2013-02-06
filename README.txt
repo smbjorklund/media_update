@@ -25,13 +25,11 @@ Replace 'w3.uib.local' with whatever hostname you set up.  Visit the site
 in a browser to verify that the site works.  The site will be set up with
 an 'admin' user with the obvious password.
 
-It will also create a symlink at 'site' linking to the site. The 'site' will be
-its own git repo.
+It will also create a symlink at 'site' linking to the site. The 'site' will be its own git repo.
 
 The 'doc' directory contains further information you might want to read first.
 
-To fill up the site with some content, migrate data from teststring by invoking
-a command like this one:
+To fill up the site with some content, migrate data from teststring by invoking a command like this one:
 
     bin/site-drush migrate-import --verbose --all
     bin/site-drush uib-migrate-build-menu --verbose
@@ -47,18 +45,22 @@ and then run 'migrate-import' once more.  To migrate all data run:
 
     bin/site-drush vset uib_test_dir ALL
 
-To migrate all data for certain areas only; list the areas (one on each line)
-in a text file and put the file in the modules/uib_migrate/ folder. Then run:
+To migrate all data for certain area. Create a text file containing a list of areas (one on each line). Store the file in  modules/uib_migrate/ folder. Then run:
 
     bin/site-drush vset uib_test_dir ALL
     bin/site-drush migrate-import --verbose --all --strict=0 --area_subset=your_file_name
+
+Example: Migrate all content of jur and hf to your site but running:
+
+    bin/site-drush vset uib_test_dir ALL
+    bin/site-drush migrate-import --verbose --all --strict=0 --area_subset=uib_areas_subset_jurhf.txt
+    bin/site-drush uib-migrate-build-menu --verbose
 
 To see what kind of data is available for import you might run:
 
     bin/site-drush migrate-status
 
-To enable the Norwegian interface translations run (it's not part of the regular
-install since it's quite slow):
+To enable the Norwegian interface translations run (it's not part of the regular install since it's quite slow):
 
     bin/update-norsk
 
