@@ -60,3 +60,7 @@ Geocoding is currently performed by accessing Google API. Varnish (with a looong
 Add this line to your /etc/hosts file:
     
     2001:700:200:6::66 maps.googleapis.com
+### Avoid getting PHP nesten level error running with xdebug
+
+    ini_set('xdebug.max_nesting_level', 200);
+
