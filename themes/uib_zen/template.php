@@ -303,6 +303,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           }
           hide($variables['content']['group_article_main']['field_uib_byline']);
           $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
+        } else {
+          if (isset ($variables['node']->name)) {
+            $uib_news_byline = t('By') . ' ' . $variables['node']->name;
+            $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => '<div class="uib-news-byline">' . $uib_news_byline . "</div>");
+          }
         }
       }
       else {
