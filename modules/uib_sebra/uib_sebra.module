@@ -406,6 +406,7 @@ function uib_sebra__sync_user($username) {
     $u = new SebraPerson($username);
   }
   catch (Exception $e) {
+    uibx_log("Error creating SebraPerson " . $e->getMessage() . " " . $e->getCode(), 'warning');
     if ($e->getCode() == 404)
       // Should we block the user before we return it then?
       return $account;
@@ -422,8 +423,10 @@ function uib_sebra__sync_user($username) {
     $edit = array();
     if ($account->mail != $u->email)
       $edit['mail'] = $u->email;
-    if ($account->status != 1)
+    if ($account->status != 1) {
       $edit['status'] = 1;
+      uibx_log("User blocked, trying to fix that ...........................");
+    }
     if (isset($account->field_uib_first_name['und'][0]['value']) != $u->first_name)
       $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
     if (isset($account->field_uib_last_name['und'][0]['value']) != $u->last_name)
@@ -432,8 +435,16 @@ function uib_sebra__sync_user($username) {
       $edit['field_uib_position']['und'][0]['value'] = $u->position_name_no;
     if (isset($account->field_uib_position_en['und'][0]['value']) != $u->position_name_en)
       $edit['field_uib_position_en']['und'][0]['value'] = $u->position_name_en;
-    if (isset($account->field_uib_position_code['und'][0]['value']) != $u->position_code)
-      $edit['field_uib_position_code']['und'][0]['value'] = $u->position_code;
+    if (isset($u->position_code)) {
+      if (isset($account->field_uib_position_code['und'][0]['value'])) {
+        if ($account->field_uib_position_code['und'][0]['value'] != $u->position_code) {
+          $edit['field_uib_position_code']['und'][0]['value'] = $u->position_code;
+        }
+      }
+      else {
+        $edit['field_uib_position_code']['und'][0]['value'] = $u->position_code;
+      }
+    }
     if (isset($account->field_uib_position_category['und'][0]['value']) != $u->position_category)
       $edit['field_uib_position_category']['und'][0]['value'] = $u->position_category;
     if (isset($account->field_uib_phone) != $phones)
