@@ -444,6 +444,7 @@ function uib_zen_preprocess_block(&$variables, $hook) {
     'block-views-recent-news-block',
     'block-uib-area-area-parents',
     'block-views-faculties-block-1',
+    'block-uib-area-jobbnorge',
   );
   $orange_block = array(
     'block-views-calendar-block-1',
