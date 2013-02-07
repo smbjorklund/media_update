@@ -249,6 +249,10 @@ function uib_sebra__sync_jobbnorge_id($area, $area_doc) {
       uibx_log("Mismatch for place code for /node/$nid $place_id");
       return;
     }
+    if ( !is_numeric($jobbnorge_id) ) {
+      uibx_log("jobbnorge_id not numeric for place code for /node/$nid");
+      return;
+    }
     if ($place->field_uib_jobbnorge_id['und'][0]['value'] != $jobbnorge_id) {
       $place->field_uib_jobbnorge_id['und'][0]['value'] = $jobbnorge_id;
       node_save($place);
