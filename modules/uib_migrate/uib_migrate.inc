@@ -282,6 +282,16 @@ class NavPageMigration extends InfoPageMigration {
     return array($node->nid);
   }
 
+  public function prepareRow($row) {
+    // Do not import navigation pages that lack site (i.e. connection to area).
+    // Navigation pages are treated as articles and those should be connected to areas.
+    // Navigation pages without site info also cause database errors in postgres.
+    if (empty($row->site)) {
+      uibx_log("Rejected NavPage without site info: " . $row->title . ". XTopic id: " . $row->id, 'warning');
+      return FALSE;
+    }
+  }
+
   public function complete($node, $row) {
     parent::complete($node, $row); // perform complete function of parent
     if (isset($row->menu_top_entry)) {
@@ -296,6 +306,10 @@ class NavPageMigration extends InfoPageMigration {
       }
 
       // Create top level area menu link
+      if (empty($row->nav_weight)) {
+        $row->nav_weight = 0; // Empty weights cause postgres errors/warnings
+        uibx_log("Set empty menu link nav_weight to zero", 'notice');
+      }
       $menu_link = array(
         'menu_name' => 'area',
         'link_path' => drupal_get_normal_path('node/' . $node->nid),
@@ -493,7 +507,7 @@ class AreaMigration extends Migration {
 
   public function prepare($term, $row) {
     if (isset($row->placeid)) {
-      // Check if we already have a 'uib_ou' node with the given placeid
+    // Check if we already have a 'uib_ou' node with the given placeid
       $nid = uib_sebra__uib_ou_nid($row->placeid);
       if ($nid) {
         $term->field_uib_ou['und'][0]['target_id'] = $nid;
@@ -532,7 +546,9 @@ class AreaMigration extends Migration {
     if ($weight === FALSE) {
       $weight = 99;
     }
-
+    if (! is_integer($weight)) {
+      $weight = 99;
+    }
     $menu_link = array(
       'menu_name' => 'area',
       'link_path' => drupal_get_normal_path('node/' . $node->nid),
