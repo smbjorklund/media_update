@@ -429,3 +429,50 @@ function uib_zen_preprocess_region(&$variables) {
     $variables['classes_array'][] = 'clearfix';
   }
 }
+
+/**
+* Override or insert variables into the block template
+*
+* @param $variables
+*   An array of varibales to pass to the theme template
+* @param $hook
+*   The name of the template being rendered
+*/
+function uib_zen_preprocess_block(&$variables, $hook) {
+  //arrays containg block_html_id of blocks where the title is getting colored squares
+  $blue_block = array(
+    'block-views-recent-news-block',
+    'block-uib-area-area-parents',
+  );
+  $orange_block = array(
+    'block-views-calendar-block-1',
+  );
+  if (in_array ($variables['block_html_id'], $blue_block)) {
+    $variables['classes_array'][] = 'blue-block';
+    $variables['block']->subject = '<span></span>' . $variables['block']->subject;
+  }
+  if (in_array ($variables['block_html_id'], $orange_block)) {
+    $variables['classes_array'][] = 'orange-block';
+    $variables['block']->subject = '<span></span>' . $variables['block']->subject;
+  }
+}
+
+/**
+* Override or insert variables into the field template
+*
+* @param $variables
+*   A array of variables to pass to the theme template
+* @param $hook
+*   The name of the template being rendered
+*/
+function uib_zen_preprocess_field (&$variables, $hook) {
+  //arrays containg field_name_css of blocks where the title is getting colored squares
+  $blue_block = array(
+    'field-uib-area',
+    'field-uib-files',
+  );
+  if (in_array($variables['field_name_css'], $blue_block)) {
+    $variables['classes_array'][] = 'blue-block';
+    $variables['label'] = '<span></span>' . $variables['label'];
+  }
+}
