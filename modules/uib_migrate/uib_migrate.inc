@@ -105,10 +105,12 @@ function xtopic_file($id, $uid) {
   }
   if (isset($xtopic->dc_description)) {
     $file->field_uib_description['en'][]['value'] = $xtopic->dc_description;
-    // Populate image files title with something useful.
+    // Populate image files title and ALT attribute with something useful.
     if ($xtopic->type == 'image') {
       $title = truncate_utf8($xtopic->dc_description, 200, $wordsafe = TRUE, $add_ellipsis = TRUE, $min_wordsafe_length = 1);
       $file->field_file_image_title_text['en'][]['value'] = $title;
+      $alt = truncate_utf8($xtopic->dc_description, 80, $wordsafe = TRUE, $add_ellipsis = TRUE, $min_wordsafe_length = 1);
+      $file->field_file_image_alt_text['und'][]['value'] = $alt;
     }
   }
 
