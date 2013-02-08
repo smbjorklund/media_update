@@ -244,8 +244,9 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         $variables['content']['field_uib_profiled_article'][]['#markup'] = views_embed_view('area_slideshow','default', $variables['nid']);
         $variables['content']['field_uib_profiled_article']['#weight'] = $weight;
       }
-       $variables['content']['field_uib_kids']['#markup'] = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
-       $variables['content']['field_uib_kids']['#weight'] = 6;
+
+       $variables['content']['group_two_column']['field_uib_kids']['#markup'] = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
+       $variables['content']['group_two_column']['field_uib_kids']['#weight'] = -1;
 
        if ($variables['field_uib_show_staff']['und'][0]['value'] == 1) {
         $variables['content']['field_uib_front_staff']['#markup'] = views_embed_view('ansatte', 'page_1', $variables['nid']);

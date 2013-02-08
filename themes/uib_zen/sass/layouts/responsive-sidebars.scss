@@ -816,7 +816,7 @@ $zen-auto-include-item-base: false;
      @include zen-grid-item (2, 1);
      @include zen-clear();
      margin-bottom: 10px;
-     float: none;
+     float: left;
      padding: 15px;
      background: #f5f5f5;
      border: none;
