@@ -170,7 +170,7 @@
   h4  {
     margin-left: 30px;
   }
-  
+
   h3 {
     margin: 30px 0 0 30px;
   }
@@ -368,14 +368,18 @@
     > li:not(:target) > a {
     }
 
-    > li:target > a {
+    > li:target > a, li > a.startup {
       color: #FFFFFF;
       background-color: #AA0000;
     }
   }
 
-  > div {
+  > .uib-hidden {
     display: none;
+  }
+
+  > .uib-selected {
     background-color: #FFFFFF;
+    display: block;
   }
 }

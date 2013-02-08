@@ -46,15 +46,18 @@ function _uib_h2tabs_filter_h2_process($text, $filter) {
         ";
       for ($i = 0; $i <= $hits_index; $i++) {
         $javascript = "javascript: ";
+        $javascript .= "document.getElementById('t0').childNodes[0].removeAttribute('class');";
         for ($j = 0; $j <= $hits_index; $j++) {
           if ($j == $i) {
-            $javascript .= "document.getElementById('tab$j').style.display = 'block';";
+            $javascript .= "document.getElementById('tab$j').className = 'uib-selected';";
           }
           else {
-            $javascript .= "document.getElementById('tab$j').style.display = 'none';";
+            $javascript .= "document.getElementById('tab$j').className = 'uib-hidden';";
           }
         }
-        $toc .= "<li id=\"t$i\"><a href=\"#t$i\" onclick=\"$javascript\">" . $h2s[1][$i][0] . "</a></li>
+        $toc .= "<li id=\"t$i\"><a href=\"#t$i\" ";
+        $toc .= ($i == 0) ? "class=\"startup\" " : "";
+        $toc .= "onclick=\"$javascript\">" . $h2s[1][$i][0] . "</a></li>
         ";
       }
       $toc .= "</ul>
@@ -62,7 +65,9 @@ function _uib_h2tabs_filter_h2_process($text, $filter) {
       // Tabs contents
       $tabs_contents = '';
       for ($i = $hits_index; $i >= 0; $i--) { // loop backwards through hits
-        $add_markup = "<div id=\"tab$i\">
+        $add_markup = "<div id=\"tab$i\" class=\"uib-";
+        $add_markup .= ($i == 0) ? 'selected' : 'hidden';
+        $add_markup .= "\">
         ";
         // Use the content of the h2, i.e. the contents of the first captured pattern
         $pos_match = $h2s[0][$i][1]; // position of match in text
