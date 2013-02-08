@@ -51,10 +51,9 @@ function uib_sebra__sws_url($path) {
 function uib_sebra__sws_get($path) {
   $url = uib_sebra__sws_url($path);
   uibx_log('GET ' . $url);
-  $object = @simplexml_load_file($url);
+  $object = simplexml_load_file($url);
   return $object;
 }
-
 
 /**
  * Look up the node id of the organisation unit with the given $place_id.
@@ -118,7 +117,6 @@ function uib_sebra__create_uib_ou($place_id) {
  * Sync the 'field_uib_staff' of all areas that define a 'field_uib_sebra_id'.
  */
 function uib_sebra__sync_areas() {
-
   // fetch all roles for all areas
   $all_area_roles = uib_sebra__sws_get('omraaderoller');
 
@@ -141,10 +139,7 @@ function uib_sebra__sync_areas() {
       if (empty($area_doc)) {
         uibx_log("Can't get $sebra_id", 'error');
       }
-
-      //print_r(array($nid, $sebra_id, $area_doc));
       uib_sebra__sync_jobbnorge_id($area, $area_doc);
-
       $staff = array();
       if (isset($area_doc->omraade)) {
         foreach ($area_doc->omraade->visninger->uibid as $uname) {
