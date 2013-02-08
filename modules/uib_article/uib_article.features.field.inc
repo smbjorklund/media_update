@@ -451,7 +451,7 @@ function uib_article_field_default_fields() {
           'deadline' => 'Deadline',
           'guest_lecturer' => 'Guest lecture',
           'conference' => 'Conference',
-          'consert' => 'Consert',
+          'consert' => 'Concert',
           'course' => 'Course',
           'course_economy' => 'Course - economy',
           'course_leadership' => 'Course - leadership',
