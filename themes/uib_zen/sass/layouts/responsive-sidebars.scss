@@ -311,8 +311,8 @@ $zen-auto-include-item-base: false;
   }
 
   #slidecontent {
-    height: 36px;
-    margin-left: 20px;
+    top: 80%;
+    left: 10%;
 
     h3  {
     font-size: 10px;
@@ -530,6 +530,20 @@ $zen-auto-include-item-base: false;
         padding-left: 10px;
       }
     }
+
+    /* Slideshow */
+    @media all and (min-width: 720px) and (max-width: 959px){
+     .view-area-slideshow {
+       .views-slideshow-pager-fields {
+         left: 33px;
+       }
+
+       #slidecontent {
+         bottom: 6%;
+         left: 6%;
+       }
+     }
+   }
 
     @media all and (min-width: 720px) and (max-width: 959px) {
       #block-uib-area-node-children {
@@ -965,6 +979,10 @@ $zen-auto-include-item-base: false;
       top: 90%;
     }
 
+    #slidecontent {
+      bottom: 2%;
+      left: 6%;
+    }
   }
 
 /* Bottom region */
