@@ -86,7 +86,7 @@
         <form method="get" action="http://www.uib.no/search">
           <div class="searchbox">
             <p><input type="text" id="searchField" name="q" value="" autocomplete="off"></p>
-            <p><input type="image" src="<?php print base_path() . drupal_get_path('theme', 'uib_zen'); ?>/images/submit.gif" value="Search"></p>
+            <p><input alt="Submit" type="image" src="<?php print base_path() . drupal_get_path('theme', 'uib_zen'); ?>/images/submit.gif" value="Search"></p>
           </div>
         </form>
       </div>
