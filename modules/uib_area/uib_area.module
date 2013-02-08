@@ -208,30 +208,30 @@ function uib_area_block_view($delta='') {
             }
             // get teaser text
             if ($node_type == 'area') {
-              $result = db_select('field_revision_field_uib_primary_text', 'f')
+              $result = db_select('field_data_field_uib_primary_text', 'f')
                 ->fields('f', array('field_uib_primary_text_value'))
                 ->condition('entity_type', $entity_type)
                 ->condition('bundle', 'uib_area')
                 ->condition('entity_id', $node_id)
                 ->execute()
                 ->fetchCol();
-                if (!empty($result[1])) {
-                  $teaser_text = $result[1];
+                if (!empty($result[0])) {
+                  $teaser_text = $result[0];
                 }
               }
             else { // article (uib_article) or testimonial
-              $result = db_select('field_revision_field_uib_lead', 'f')
+              $result = db_select('field_data_field_uib_lead', 'f')
                 ->fields('f', array('field_uib_lead_value'))
                 ->condition('entity_type', $entity_type)
                 ->condition('bundle', 'uib_article')
                 ->condition('entity_id', $node_id)
                 ->execute()
                 ->fetchCol();
-                if (!empty($result[1])) {
-                  $teaser_text = $result[1];
+                if (!empty($result[0])) {
+                  $teaser_text = $result[0];
                 }
             }
-            $children_classes_array = array('uib-child-teaser');
+             $children_classes_array = array('uib-child-teaser');
             // Check if the node has children
             $child_menu_link = menu_link_get_preferred($menu_item['href'], 'area');
             if (! empty($child_menu_link)) {
