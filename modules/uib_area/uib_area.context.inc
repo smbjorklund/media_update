@@ -74,6 +74,7 @@ function uib_area_context_default_contexts() {
         'ansatte' => 'ansatte',
         'area_map' => 'area_map',
         'calendar' => 'calendar',
+        'courses' => 'courses',
         'recent_news:newsarchive' => 'recent_news:newsarchive',
       ),
     ),
