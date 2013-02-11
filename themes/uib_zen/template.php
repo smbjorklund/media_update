@@ -266,7 +266,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
     // Handle articles
     if ($variables['type'] == 'uib_article') {
-      if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
+       if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
         // Setup kicker
         // -- First determine which date to set
         if ($variables['node']->created < $variables['node']->revision_timestamp) {
@@ -338,6 +338,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       }
       elseif (empty($variables['node']->field_uib_media['und'][0]['field_uib_owner']['und'][0]['value'])) {
         hide($variables['content']['group_article_sidebar']['field_uib_media'][0]['field_uib_owner']);
+      }
+
+      // Do not show related area on employee pages [RTS 1225]
+      if (stripos($variables['node_url'],'foransatte') !== FALSE OR stripos($variables['node_url'],'foremployees') !== FALSE) {
+         hide($variables['content']['group_article_sidebar']['field_uib_area']);
       }
     }
 
