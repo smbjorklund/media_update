@@ -471,6 +471,7 @@ function uib_webdesk_user_default_permissions() {
     'name' => 'create area content',
     'roles' => array(
       0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
