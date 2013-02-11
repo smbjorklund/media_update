@@ -81,7 +81,9 @@ function _uib_h2tabs_filter_h2_process($text, $filter) {
       }
       return $text . "
         <div class=\"uib-tabs-container\">
-        " . $toc . $tabs_contents . "
+        " . $toc . "<div class=\"tabs-content\">" .
+        $tabs_contents . "
+        </div>
         </div>";
     }
   }
