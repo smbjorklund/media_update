@@ -378,7 +378,7 @@ function uib_area_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'entity_translation_sync' => FALSE,
-        'file_directory' => '',
+        'file_directory' => 'media',
         'file_extensions' => 'png jpg jpeg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
@@ -989,7 +989,7 @@ function uib_area_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'entity_translation_sync' => FALSE,
-        'file_directory' => '',
+        'file_directory' => 'media',
         'file_extensions' => 'png jpeg jpg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
@@ -1006,12 +1006,11 @@ function uib_area_field_default_fields() {
           ),
           'allowed_types' => array(
             'audio' => 0,
-            'default' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 0,
             'media_default--media_browser_1' => 0,
             'media_default--media_browser_my_files' => 0,
             'media_internet' => 0,
@@ -1243,7 +1242,7 @@ function uib_area_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'entity_translation_sync' => FALSE,
-        'file_directory' => '',
+        'file_directory' => 'media',
         'file_extensions' => 'png jpg jpeg',
         'max_filesize' => '',
         'user_register_form' => FALSE,

@@ -34,6 +34,7 @@ function uib_testimonial_field_default_fields() {
       'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'handler' => 'base',
         'handler_settings' => array(
           'behaviors' => array(
@@ -81,6 +82,7 @@ function uib_testimonial_field_default_fields() {
       'label' => 'Area',
       'required' => 1,
       'settings' => array(
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -112,6 +114,7 @@ function uib_testimonial_field_default_fields() {
       'settings' => array(
         'cache_count' => '4',
         'cache_enabled' => 0,
+        'entity_translation_sync' => FALSE,
         'granularity' => array(
           'day' => 0,
           'hour' => 0,
@@ -161,6 +164,7 @@ function uib_testimonial_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -527,7 +531,8 @@ function uib_testimonial_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'file_directory' => '',
+        'entity_translation_sync' => FALSE,
+        'file_directory' => 'media',
         'file_extensions' => 'png jpg jpeg',
         'max_filesize' => '',
         'user_register_form' => FALSE,
@@ -544,12 +549,11 @@ function uib_testimonial_field_default_fields() {
           ),
           'allowed_types' => array(
             'audio' => 0,
-            'default' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 'library',
             'media_default--media_browser_1' => 'media_default--media_browser_1',
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 0,
@@ -1000,6 +1004,7 @@ function uib_testimonial_field_default_fields() {
             ),
           ),
         ),
+        'entity_translation_sync' => FALSE,
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
