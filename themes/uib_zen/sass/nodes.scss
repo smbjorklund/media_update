@@ -374,11 +374,11 @@
     }
   }
 
-  > .uib-hidden {
+  .tabs-content > .uib-hidden {
     display: none;
   }
 
-  > .uib-selected {
+  .tabs-content > .uib-selected {
     background-color: #FFFFFF;
     display: block;
   }
