@@ -87,7 +87,7 @@ $zen-auto-include-item-base: false;
 
 @media all and (min-width: 480px) {
   #main {
-    padding-top: 3em; /* Move all the children of #main down to make room. */
+    padding-top: 0;
     position: relative;
     clear:both;
   }
@@ -706,6 +706,7 @@ $zen-auto-include-item-base: false;
        @include zen-grid-item(1, 5);
        background-image: url('../../images/fade-to-left-bg.png');
        background-repeat: repeat-y;
+       line-height: 1.8em;
      }
    }
 
@@ -725,6 +726,13 @@ $zen-auto-include-item-base: false;
     .region-sidebar-second { /* Span 1 column, starting in 5th column from left. */
       @include zen-grid-item(1, 5);
     }
+  }
+}
+
+@media all and (min-width:960px) {
+  $zen-column-count: 4;
+  .node-type-area {
+    @include zen-grid-item (4, 1)
   }
 }
 
@@ -799,6 +807,7 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-primary-text {
      @include zen-grid-item (2, 3);
      margin-right: 10px;
+     width: 49%;
 
      p {
        margin-top: 0;
@@ -882,6 +891,7 @@ $zen-auto-include-item-base: false;
     clear: none;
     float: none;
     padding-left: 10px;
+    width: 49%;
    }
 
    .field-name-field-uib-profiled-testimonial {
@@ -891,7 +901,7 @@ $zen-auto-include-item-base: false;
      clear: none;
      background: #f5f5f5;
      padding: 2%;
-     width: 46%;
+     width: 45%;
      border-radius: 3px;
      margin-left: 51%;
 

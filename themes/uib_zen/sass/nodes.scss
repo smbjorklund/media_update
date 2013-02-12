@@ -343,7 +343,7 @@
   width: 100%;
 
   ul {
-    list-style: none;
+    list-style-type: square;
     margin-bottom: 5px;
     border-bottom: 1px solid #C8D2D4;
     padding: 0 0 10px 0;
@@ -381,5 +381,20 @@
   .tabs-content > .uib-selected {
     background-color: #FFFFFF;
     display: block;
+  }
+
+  .tabs-content {
+    ul li {
+      display: block;
+      list-style-type: square;
+    }
+
+    li {
+      display: inline;
+    }
+
+   a {
+      padding: 0;
+    }
   }
 }
