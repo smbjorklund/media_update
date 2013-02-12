@@ -154,14 +154,6 @@ function uib_setup_strongarm() {
       ),
       'file' => 'includes/locale.inc',
     ),
-    'uib-rules' => array(
-      'callbacks' => array(
-        'language' => 'uib_setup__language_callback',
-        'url_rewrite' => 'uib_setup__url_rewrite_callback',
-      ),
-      'file' => 'sites/all/modules/uib/uib_setup/uib_setup.module',
-      'cache' => 0,
-    ),
     'language-default' => array(
       'callbacks' => array(
         'language' => 'language_from_default',
@@ -180,6 +172,11 @@ function uib_setup_strongarm() {
         'language' => 'locale_language_from_interface',
       ),
       'file' => 'includes/locale.inc',
+    ),
+    'language-default' => array(
+      'callbacks' => array(
+        'language' => 'language_from_default',
+      ),
     ),
   );
   $export['language_negotiation_language_content'] = $strongarm;
@@ -282,6 +279,7 @@ function uib_setup_strongarm() {
     'locale-session' => '-6',
     'locale-user' => '-4',
     'locale-browser' => '-2',
+    'uib-rules' => '0',
     'locale-interface' => '8',
     'language-default' => '10',
   );
