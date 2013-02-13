@@ -2,4 +2,4 @@
 cd /var/www/w3.uib.no
 #Needs to be run 2x times (due to bugs in sebra)
 nice -n 20 su w3-drupal -c 'bin/site-drush uib-sebra-users --limit=0' 2>>/tmp/sebra-import.$(date -I).log
-nice -n 20 su w3-drupal -c 'bin/site-drush uib-sebra-users --limit=0' 2>>/tmp/sebra-improt.$(date -I).log
+nice -n 20 su w3-drupal -c 'bin/site-drush uib-sebra-users --limit=0' 2>>/tmp/sebra-import.$(date -I).log
