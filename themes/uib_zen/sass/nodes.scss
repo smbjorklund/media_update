@@ -239,6 +239,10 @@
   margin: 20px 0 5px 0;
 }
 
+.node-type-uib-testimonial .field-name-field-uib-media .field-label {
+  display: none;
+}
+
 .group-article-sidebar ul, .field-name-field-uib-primary-text ul, .field-name-field-uib-text ul, .field-name-field-uib-tertiary-text ul, .field-name-field-uib-tertiary-text ul, .field-name-field-uib-bottom-text ul {
     list-style-type: square;
   }
@@ -304,6 +308,10 @@
   .field-label {
     display: none;
   }
+
+  .group_article_sidebar .field-name-field-name-field-uib-media .field-label {
+    display: none;
+  }
 }
 
 .node-area .field-name-field-uib-quote  {
@@ -327,6 +335,10 @@
     font-family: verdana, sans-serif;
     font-size: 1em;
     color: #333;
+  }
+  
+  .field-items {
+    margin-top: 2px;
   }
 }
 

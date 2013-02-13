@@ -811,7 +811,10 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (3, 1)
   }
   #global-searchform  {
-    @include zen-grid-item (2, 4)
+    @include zen-grid-item (2, 4);
+    p {
+      margin-top: 10px;
+    }
   }
   #navigation  {
     @include zen-grid-item (5, 1)
@@ -1005,8 +1008,13 @@ $zen-auto-include-item-base: false;
       @include zen-grid-item (4, 1)
     }
 }
-
-
+/* Breadcrumb */
+@media all and (min-width: 960px) {
+  $zen-column-count: 5;
+  nav.breadcrumb {
+    @include zen-grid-item (5, 1);
+  }
+}
 /* Slideshow */
   @media all and (min-width: 960px) {
     .view-area-slideshow, .views-field-field-uib-main-media  {

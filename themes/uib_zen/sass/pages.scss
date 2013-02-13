@@ -199,6 +199,10 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    color: #aa0000;
+  }
+  a {
+    color: #aa0000;
   }
 }
 
@@ -378,13 +382,17 @@ div.add-or-remove-shortcuts {
   }
 }
 /* Adding a double border on all blocks and fields in area and article sidebar */
-.region-sidebar-second .block >*  {
+.region-sidebar-second .block >*, .group_article_sidebar .field >*  {
   border-bottom-style: double;
   border-color: #c8d1d5;
 
   a {
     margin-bottom: 8px;
   }
+}
+
+.group_article_sidebar .field-items {
+  width: 100%;
 }
 
 #block-views-recent-news-block .view-recent-news {
