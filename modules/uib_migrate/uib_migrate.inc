@@ -243,6 +243,10 @@ class InfoPageMigration extends XTopicToArticleMigration {
   public $topic_type = 'infopage';
   public $article_type = 'infopage';
 
+  public function prepareRow($row) {
+    parent::prepareRow($row); // perform method of parent
+  }
+
   public function complete($node, $row) {
      if(!empty($row->url)) {
       // Setup redirects for w2 urls to w3 nodes
@@ -283,6 +287,7 @@ class NavPageMigration extends InfoPageMigration {
   }
 
   public function prepareRow($row) {
+    parent::prepareRow($row); // perform method of parent
     // Do not import navigation pages that lack site (i.e. connection to area).
     // Navigation pages are treated as articles and those should be connected to areas.
     // Navigation pages without site info also cause database errors in postgres.
