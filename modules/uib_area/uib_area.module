@@ -535,6 +535,7 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
       'title', // Title
       'field_uib_area_parents', // Parents
       'field_uib_ou', // Place
+      'field_uib_menu_style', // Menu style
       );
     // list of fields that should be hidden from
     // level 3 users
@@ -542,7 +543,6 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
       'field_uib_content_manager', // Content Manager
       'field_uib_staff', // Staff
       'field_uib_show_staff', // Show staff
-      'field_uib_menu_style', // Menu style
       'field_uib_logo', // Logo
       'field_uib_important_message', // Important message
       );
