@@ -438,7 +438,6 @@ $zen-auto-include-item-base: false;
       @include zen-clear();
       margin: auto;
       max-width: 722px;
-      line-height: 1.8em;
     }
 
 
@@ -451,6 +450,10 @@ $zen-auto-include-item-base: false;
         float: none;
         max-width: 722px;
         margin: auto;
+
+        li {
+          margin-bottom: 8px;
+        }
       }
 
       .field-name-field-uib-primary-media  {
@@ -727,8 +730,11 @@ $zen-auto-include-item-base: false;
        @include zen-grid-item(1, 5);
        background-image: url('../../images/fade-to-left-bg.png');
        background-repeat: repeat-y;
-       line-height: 1.8em;
-     }
+
+       li {
+         margin-bottom: 8px;
+       }
+      }
    }
 
   /*
