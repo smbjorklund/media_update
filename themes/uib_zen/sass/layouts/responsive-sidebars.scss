@@ -126,7 +126,7 @@ $zen-auto-include-item-base: false;
         background-size: 18px 19px;
 	      width: 100%;
 	      padding-right: 30px;
-	      margin-left: 10px;
+	      margin: 10px 0  0 10px;
 	      color: transparent;
 	      cursor: pointer;
         }
@@ -167,12 +167,12 @@ $zen-auto-include-item-base: false;
         -webkit-border-radius: 2px;
         padding: 10px 5px 2px 10px;
         border-radius: 2px;
-        margin:0 10px 10px 0;
+        margin:0 15px 10px 0;
 
         li {
           width: 30px;
           border-top: 3px solid #005473;
-          height: 6px;
+          height: 4px;
           margin:0 6px 0 0;
           padding-top: 2px;
           border-radius: 1px;
