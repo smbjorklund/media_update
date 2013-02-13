@@ -244,7 +244,9 @@ class InfoPageMigration extends XTopicToArticleMigration {
   public $article_type = 'infopage';
 
   public function prepareRow($row) {
-    parent::prepareRow($row); // perform method of parent
+    if (parent::prepareRow($row) === FALSE) {
+      return FALSE;
+    }
   }
 
   public function complete($node, $row) {
@@ -287,7 +289,9 @@ class NavPageMigration extends InfoPageMigration {
   }
 
   public function prepareRow($row) {
-    parent::prepareRow($row); // perform method of parent
+    if (parent::prepareRow($row) === FALSE) {
+      return FALSE;
+    }
     // Do not import navigation pages that lack site (i.e. connection to area).
     // Navigation pages are treated as articles and those should be connected to areas.
     // Navigation pages without site info also cause database errors in postgres.
