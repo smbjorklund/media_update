@@ -155,7 +155,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   *    Full url to area home. Defaults to front page if no relevant area present
   *    Corresponding modifications to use page_title and page_title_link are found in page.tpl.php
   */
-  if (arg(0) == 'node' && arg(1) != 'add'){
+  if (arg(0) == 'node' && arg(1) != 'add') {
     if ($variables['language']->language == 'nb') {
       $variables['global_menu'] = menu_navigation_links('menu-global-menu-no');
     }
@@ -238,10 +238,10 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'unit') {
          $variables ['classes_array'][] = t('unit_node');
       }
-      if(isset($variables['content']['field_uib_profiled_article'])) {
+      if (isset($variables['content']['field_uib_profiled_article'])) {
         $weight = $variables['content']['field_uib_profiled_article']['#weight'];
         unset($variables['content']['field_uib_profiled_article']);
-        $variables['content']['field_uib_profiled_article'][]['#markup'] = views_embed_view('area_slideshow','default', $variables['nid']);
+        $variables['content']['field_uib_profiled_article'][]['#markup'] = views_embed_view('area_slideshow', 'default', $variables['nid']);
         $variables['content']['field_uib_profiled_article']['#weight'] = $weight;
       }
       $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
@@ -306,7 +306,8 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           }
           hide($variables['content']['group_article_main']['field_uib_byline']);
           $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
-        } else {
+        }
+        else {
           if (isset ($variables['node']->name)) {
             $uib_news_byline = t('By') . ' ' . $variables['node']->name;
             $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => '<div class="uib-news-byline">' . $uib_news_byline . "</div>");
@@ -341,14 +342,14 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       }
 
       // Do not show related area on employee pages [RTS 1225]
-      if (stripos($variables['node_url'],'foransatte') !== FALSE OR stripos($variables['node_url'],'foremployees') !== FALSE) {
+      if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
          hide($variables['content']['group_article_sidebar']['field_uib_area']);
       }
     }
 
     if (in_array($variables['title'], array('Ansattsider', 'Employee Pages'))) {
-      drupal_add_js(drupal_get_path('theme', 'uib_zen').'/js/hide_links.js',
-        array('group' => JS_THEME,)
+      drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/hide_links.js',
+        array('group' => JS_THEME, )
       );
     }
   }
@@ -377,7 +378,7 @@ function uib_zen_menu_link(array $variables) {
   }
 
   if (isset($variables['element']['#bid']) && ($variables['element']['#bid']['delta'] == 'top-area-menu') && ($element['#original_link']['depth'] == 2))
-    $output = '<a href="#">'.$element["#title"].'</a> ';
+    $output = '<a href="#">' . $element["#title"] . '</a> ';
   else
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
@@ -483,7 +484,7 @@ function uib_zen_preprocess_block(&$variables, $hook) {
 * @param $hook
 *   The name of the template being rendered
 */
-function uib_zen_preprocess_field (&$variables, $hook) {
+function uib_zen_preprocess_field(&$variables, $hook) {
   //arrays containg field_name_css of blocks where the title is getting colored squares
   $blue_block = array(
     'field-uib-area',
