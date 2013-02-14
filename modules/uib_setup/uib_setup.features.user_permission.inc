@@ -311,45 +311,35 @@ function uib_setup_user_default_permissions() {
   // Exported permission: administer menu-webdesk menu items.
   $permissions['administer menu-webdesk menu items'] = array(
     'name' => 'administer menu-webdesk menu items',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'menu_admin_per_menu',
   );
 
   // Exported permission: administer module filter.
   $permissions['administer module filter'] = array(
     'name' => 'administer module filter',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'module_filter',
   );
 
   // Exported permission: administer modules.
   $permissions['administer modules'] = array(
     'name' => 'administer modules',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'system',
   );
 
   // Exported permission: administer navigation menu items.
   $permissions['administer navigation menu items'] = array(
     'name' => 'administer navigation menu items',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'menu_admin_per_menu',
   );
 
   // Exported permission: administer nodes.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -391,18 +381,14 @@ function uib_setup_user_default_permissions() {
   // Exported permission: administer permissions.
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'user',
   );
 
   // Exported permission: administer scheduler.
   $permissions['administer scheduler'] = array(
     'name' => 'administer scheduler',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'scheduler',
   );
 
@@ -410,10 +396,9 @@ function uib_setup_user_default_permissions() {
   $permissions['administer shortcuts'] = array(
     'name' => 'administer shortcuts',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'shortcut',
   );
@@ -421,9 +406,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: administer site configuration.
   $permissions['administer site configuration'] = array(
     'name' => 'administer site configuration',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'system',
   );
 
@@ -437,36 +420,28 @@ function uib_setup_user_default_permissions() {
   // Exported permission: administer taxonomy.
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
   // Exported permission: administer themes.
   $permissions['administer themes'] = array(
     'name' => 'administer themes',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'system',
   );
 
   // Exported permission: administer url aliases.
   $permissions['administer url aliases'] = array(
     'name' => 'administer url aliases',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'path',
   );
 
   // Exported permission: administer user-menu menu items.
   $permissions['administer user-menu menu items'] = array(
     'name' => 'administer user-menu menu items',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'menu_admin_per_menu',
   );
 
@@ -474,8 +449,7 @@ function uib_setup_user_default_permissions() {
   $permissions['administer users'] = array(
     'name' => 'administer users',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
+      0 => 'level 1',
     ),
     'module' => 'user',
   );
@@ -483,18 +457,14 @@ function uib_setup_user_default_permissions() {
   // Exported permission: administer views.
   $permissions['administer views'] = array(
     'name' => 'administer views',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'views',
   );
 
   // Exported permission: block IP addresses.
   $permissions['block IP addresses'] = array(
     'name' => 'block IP addresses',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'system',
   );
 
@@ -508,9 +478,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: bypass node access.
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -539,9 +507,8 @@ function uib_setup_user_default_permissions() {
   $permissions['create area content'] = array(
     'name' => 'create area content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -550,10 +517,9 @@ function uib_setup_user_default_permissions() {
   $permissions['create files'] = array(
     'name' => 'create files',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'file_entity',
   );
@@ -562,10 +528,9 @@ function uib_setup_user_default_permissions() {
   $permissions['create uib_article content'] = array(
     'name' => 'create uib_article content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -573,9 +538,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: create uib_ou content.
   $permissions['create uib_ou content'] = array(
     'name' => 'create uib_ou content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -590,10 +553,9 @@ function uib_setup_user_default_permissions() {
   $permissions['create uib_testimonial content'] = array(
     'name' => 'create uib_testimonial content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -601,9 +563,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: create url aliases.
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'path',
   );
 
@@ -611,10 +571,9 @@ function uib_setup_user_default_permissions() {
   $permissions['customize shortcut links'] = array(
     'name' => 'customize shortcut links',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'shortcut',
   );
@@ -622,18 +581,14 @@ function uib_setup_user_default_permissions() {
   // Exported permission: delete any area content.
   $permissions['delete any area content'] = array(
     'name' => 'delete any area content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
   // Exported permission: delete any files.
   $permissions['delete any files'] = array(
     'name' => 'delete any files',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'file_entity',
   );
 
@@ -641,10 +596,9 @@ function uib_setup_user_default_permissions() {
   $permissions['delete any uib_article content'] = array(
     'name' => 'delete any uib_article content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -652,9 +606,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: delete any uib_ou content.
   $permissions['delete any uib_ou content'] = array(
     'name' => 'delete any uib_ou content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -669,10 +621,9 @@ function uib_setup_user_default_permissions() {
   $permissions['delete any uib_testimonial content'] = array(
     'name' => 'delete any uib_testimonial content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -680,9 +631,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: delete own area content.
   $permissions['delete own area content'] = array(
     'name' => 'delete own area content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -690,10 +639,9 @@ function uib_setup_user_default_permissions() {
   $permissions['delete own files'] = array(
     'name' => 'delete own files',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'file_entity',
   );
@@ -702,10 +650,9 @@ function uib_setup_user_default_permissions() {
   $permissions['delete own uib_article content'] = array(
     'name' => 'delete own uib_article content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -713,9 +660,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: delete own uib_ou content.
   $permissions['delete own uib_ou content'] = array(
     'name' => 'delete own uib_ou content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -730,10 +675,9 @@ function uib_setup_user_default_permissions() {
   $permissions['delete own uib_testimonial content'] = array(
     'name' => 'delete own uib_testimonial content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -742,9 +686,8 @@ function uib_setup_user_default_permissions() {
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -752,9 +695,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: display drupal links.
   $permissions['display drupal links'] = array(
     'name' => 'display drupal links',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'admin_menu',
   );
 
@@ -762,10 +703,9 @@ function uib_setup_user_default_permissions() {
   $permissions['edit any area content'] = array(
     'name' => 'edit any area content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -774,10 +714,9 @@ function uib_setup_user_default_permissions() {
   $permissions['edit any files'] = array(
     'name' => 'edit any files',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'file_entity',
   );
@@ -786,10 +725,9 @@ function uib_setup_user_default_permissions() {
   $permissions['edit any uib_article content'] = array(
     'name' => 'edit any uib_article content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -797,9 +735,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: edit any uib_ou content.
   $permissions['edit any uib_ou content'] = array(
     'name' => 'edit any uib_ou content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -814,10 +750,9 @@ function uib_setup_user_default_permissions() {
   $permissions['edit any uib_testimonial content'] = array(
     'name' => 'edit any uib_testimonial content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -826,10 +761,9 @@ function uib_setup_user_default_permissions() {
   $permissions['edit own area content'] = array(
     'name' => 'edit own area content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -838,10 +772,9 @@ function uib_setup_user_default_permissions() {
   $permissions['edit own files'] = array(
     'name' => 'edit own files',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'file_entity',
   );
@@ -850,10 +783,9 @@ function uib_setup_user_default_permissions() {
   $permissions['edit own uib_article content'] = array(
     'name' => 'edit own uib_article content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -861,9 +793,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: edit own uib_ou content.
   $permissions['edit own uib_ou content'] = array(
     'name' => 'edit own uib_ou content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -878,10 +808,9 @@ function uib_setup_user_default_permissions() {
   $permissions['edit own uib_testimonial content'] = array(
     'name' => 'edit own uib_testimonial content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -924,18 +853,14 @@ function uib_setup_user_default_permissions() {
   // Exported permission: execute php code.
   $permissions['execute php code'] = array(
     'name' => 'execute php code',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'devel',
   );
 
   // Exported permission: flush caches.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'admin_menu',
   );
 
@@ -1026,18 +951,14 @@ function uib_setup_user_default_permissions() {
   // Exported permission: manage features.
   $permissions['manage features'] = array(
     'name' => 'manage features',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'features',
   );
 
   // Exported permission: migration information.
   $permissions['migration information'] = array(
     'name' => 'migration information',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'migrate_ui',
   );
 
@@ -1073,9 +994,8 @@ function uib_setup_user_default_permissions() {
   $permissions['override area published option'] = array(
     'name' => 'override area published option',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'override_node_options',
   );
@@ -1119,10 +1039,9 @@ function uib_setup_user_default_permissions() {
   $permissions['override uib_article published option'] = array(
     'name' => 'override uib_article published option',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'override_node_options',
   );
@@ -1250,10 +1169,9 @@ function uib_setup_user_default_permissions() {
   $permissions['override uib_testimonial published option'] = array(
     'name' => 'override uib_testimonial published option',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'override_node_options',
   );
@@ -1276,9 +1194,8 @@ function uib_setup_user_default_permissions() {
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -1287,10 +1204,9 @@ function uib_setup_user_default_permissions() {
   $permissions['schedule (un)publishing of nodes'] = array(
     'name' => 'schedule (un)publishing of nodes',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'scheduler',
   );
@@ -1312,36 +1228,28 @@ function uib_setup_user_default_permissions() {
   // Exported permission: show format selection for file.
   $permissions['show format selection for file'] = array(
     'name' => 'show format selection for file',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'better_formats',
   );
 
   // Exported permission: show format selection for node.
   $permissions['show format selection for node'] = array(
     'name' => 'show format selection for node',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'better_formats',
   );
 
   // Exported permission: show format selection for taxonomy_term.
   $permissions['show format selection for taxonomy_term'] = array(
     'name' => 'show format selection for taxonomy_term',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'better_formats',
   );
 
   // Exported permission: show format selection for user.
   $permissions['show format selection for user'] = array(
     'name' => 'show format selection for user',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'better_formats',
   );
 
@@ -1363,10 +1271,9 @@ function uib_setup_user_default_permissions() {
   $permissions['switch shortcut sets'] = array(
     'name' => 'switch shortcut sets',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'shortcut',
   );
@@ -1374,18 +1281,14 @@ function uib_setup_user_default_permissions() {
   // Exported permission: switch users.
   $permissions['switch users'] = array(
     'name' => 'switch users',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'devel',
   );
 
   // Exported permission: toggle field translatability.
   $permissions['toggle field translatability'] = array(
     'name' => 'toggle field translatability',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'entity_translation',
   );
 
@@ -1399,9 +1302,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: translate any entity.
   $permissions['translate any entity'] = array(
     'name' => 'translate any entity',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'entity_translation',
   );
 
@@ -1409,10 +1310,9 @@ function uib_setup_user_default_permissions() {
   $permissions['translate content'] = array(
     'name' => 'translate content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'translation',
   );
@@ -1421,10 +1321,9 @@ function uib_setup_user_default_permissions() {
   $permissions['translate file entities'] = array(
     'name' => 'translate file entities',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'entity_translation',
   );
@@ -1432,9 +1331,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: translate interface.
   $permissions['translate interface'] = array(
     'name' => 'translate interface',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'locale',
   );
 
@@ -1456,10 +1353,9 @@ function uib_setup_user_default_permissions() {
   $permissions['use bigmenu'] = array(
     'name' => 'use bigmenu',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'bigmenu',
   );
@@ -1503,10 +1399,9 @@ function uib_setup_user_default_permissions() {
   $permissions['use text format basic_html'] = array(
     'name' => 'use text format basic_html',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'filter',
   );
@@ -1514,9 +1409,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: use text format full_html.
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'filter',
   );
 
@@ -1524,10 +1417,9 @@ function uib_setup_user_default_permissions() {
   $permissions['use text format restricted_html'] = array(
     'name' => 'use text format restricted_html',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'filter',
   );
@@ -1536,9 +1428,8 @@ function uib_setup_user_default_permissions() {
   $permissions['view any unpublished area content'] = array(
     'name' => 'view any unpublished area content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'view_unpublished',
   );
@@ -1546,9 +1437,7 @@ function uib_setup_user_default_permissions() {
   // Exported permission: view any unpublished content.
   $permissions['view any unpublished content'] = array(
     'name' => 'view any unpublished content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'view_unpublished',
   );
 
@@ -1556,10 +1445,9 @@ function uib_setup_user_default_permissions() {
   $permissions['view any unpublished uib_article content'] = array(
     'name' => 'view any unpublished uib_article content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'view_unpublished',
   );
@@ -1567,18 +1455,14 @@ function uib_setup_user_default_permissions() {
   // Exported permission: view any unpublished uib_ou content.
   $permissions['view any unpublished uib_ou content'] = array(
     'name' => 'view any unpublished uib_ou content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'view_unpublished',
   );
 
   // Exported permission: view any unpublished uib_study content.
   $permissions['view any unpublished uib_study content'] = array(
     'name' => 'view any unpublished uib_study content',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'view_unpublished',
   );
 
@@ -1586,10 +1470,9 @@ function uib_setup_user_default_permissions() {
   $permissions['view any unpublished uib_testimonial content'] = array(
     'name' => 'view any unpublished uib_testimonial content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'view_unpublished',
   );
@@ -1597,18 +1480,14 @@ function uib_setup_user_default_permissions() {
   // Exported permission: view code review.
   $permissions['view code review'] = array(
     'name' => 'view code review',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'coder_review',
   );
 
   // Exported permission: view code review all.
   $permissions['view code review all'] = array(
     'name' => 'view code review all',
-    'roles' => array(
-      0 => 'admin',
-    ),
+    'roles' => array(),
     'module' => 'coder_review',
   );
 
@@ -1626,10 +1505,9 @@ function uib_setup_user_default_permissions() {
   $permissions['view own files'] = array(
     'name' => 'view own files',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'file_entity',
   );
@@ -1638,10 +1516,9 @@ function uib_setup_user_default_permissions() {
   $permissions['view own private files'] = array(
     'name' => 'view own private files',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'file_entity',
   );
@@ -1650,10 +1527,9 @@ function uib_setup_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -1669,10 +1545,9 @@ function uib_setup_user_default_permissions() {
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -1681,9 +1556,8 @@ function uib_setup_user_default_permissions() {
   $permissions['view the administration theme'] = array(
     'name' => 'view the administration theme',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
+      0 => 'level 1',
+      1 => 'level 2',
     ),
     'module' => 'system',
   );

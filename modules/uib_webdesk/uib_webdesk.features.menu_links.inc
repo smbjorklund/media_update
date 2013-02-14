@@ -10,6 +10,24 @@
 function uib_webdesk_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: management:webdesk
+  $menu_links['management:webdesk'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'webdesk',
+    'router_path' => 'webdesk',
+    'link_title' => 'Webdesk',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-50',
+  );
   // Exported menu link: menu-webdesk:node/add/area
   $menu_links['menu-webdesk:node/add/area'] = array(
     'menu_name' => 'menu-webdesk',
@@ -88,6 +106,7 @@ function uib_webdesk_menu_default_menu_links() {
   t('Add content');
   t('Add testimonial');
   t('Find content');
+  t('Webdesk');
 
 
   return $menu_links;
