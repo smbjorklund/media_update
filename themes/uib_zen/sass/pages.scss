@@ -410,6 +410,16 @@ div.add-or-remove-shortcuts {
   }
 }
 
+#block-views-calendar-block-1 .view-id-calendar {
+  border-bottom-style: none;
+
+  .more-link {
+    border-bottom-style: double;
+    border-color: #c8d1d5;
+    height: 32px;
+  }
+}
+
 #block-views-recent-news-block .views-row  {
   margin-bottom: 8px;
 }
