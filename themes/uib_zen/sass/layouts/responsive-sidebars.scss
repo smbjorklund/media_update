@@ -391,6 +391,7 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (1, 1);
     @include zen-clear();
     margin: 100px 0 0 45px;
+    width: auto;
   }
 }
 
@@ -583,6 +584,9 @@ $zen-auto-include-item-base: false;
           line-height: 1.5em;
           margin-right: 1%;
         }
+      }
+      #block-uib-area-colophon {
+      width: auto;
       }
     }
 
