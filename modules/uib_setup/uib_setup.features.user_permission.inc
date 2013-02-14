@@ -14,7 +14,7 @@ function uib_setup_user_default_permissions() {
   $permissions['administer entity translation'] = array(
     'name' => 'administer entity translation',
     'roles' => array(
-      0 => 'admin',
+      0 => 'level 1',
     ),
     'module' => 'entity_translation',
   );
@@ -23,7 +23,7 @@ function uib_setup_user_default_permissions() {
   $permissions['toggle field translatability'] = array(
     'name' => 'toggle field translatability',
     'roles' => array(
-      0 => 'admin',
+      0 => 'level 1',
     ),
     'module' => 'entity_translation',
   );
@@ -32,7 +32,7 @@ function uib_setup_user_default_permissions() {
   $permissions['translate any entity'] = array(
     'name' => 'translate any entity',
     'roles' => array(
-      0 => 'admin',
+      0 => 'level 1',
     ),
     'module' => 'entity_translation',
   );
@@ -41,10 +41,9 @@ function uib_setup_user_default_permissions() {
   $permissions['translate file entities'] = array(
     'name' => 'translate file entities',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'entity_translation',
   );
@@ -53,10 +52,9 @@ function uib_setup_user_default_permissions() {
   $permissions['use bigmenu'] = array(
     'name' => 'use bigmenu',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
+      0 => 'level 1',
+      1 => 'level 2',
+      2 => 'level 3',
     ),
     'module' => 'bigmenu',
   );
