@@ -57,7 +57,7 @@ function _uib_h2tabs_filter_h2_process($text, $filter) {
         }
         $toc .= "<li id=\"t$i\"><a href=\"#t$i\" ";
         $toc .= ($i == 0) ? "class=\"startup\" " : "";
-        $toc .= "onclick=\"$javascript\">" . $h2s[1][$i][0] . "</a></li>
+        $toc .= "onclick=\"$javascript return false;\">" . $h2s[1][$i][0] . "</a></li>
         ";
       }
       $toc .= "</ul>
