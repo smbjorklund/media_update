@@ -26,7 +26,7 @@ if (in_array('level 1', $user->roles) || in_array('level 2', $user->roles))
   $user_role = FALSE;
 ?>
 
-<table <?php if ($classes) ? print 'class="'. $classes . '" ' : ''; } ?><?php print $attributes; ?>>
+<table <?php print ($classes) ? 'class="'. $classes . '" ' : ''; ?><?php print $attributes; ?>>
   <?php if (!empty($title)) : ?>
     <caption><?php print $title; ?></caption>
   <?php endif; ?>
@@ -36,12 +36,12 @@ if (in_array('level 1', $user->roles) || in_array('level 2', $user->roles))
         <?php foreach ($header as $field => $label): ?>
 
           <?php if (!$user_role): ?>
-            <th <?php if ($header_classes[$field]) ? print 'class="'. $header_classes[$field] . '" ' : ''; ?>>
+            <th <?php print ($header_classes[$field]) ? 'class="' . $header_classes[$field] . '" ' : ''; ?>>
               <?php print $label; ?>
             </th>
           <?php else: ?>
             <?php if ($header_classes[$field] != 'views-field views-field-views-bulk-operations'): ?>
-              <th <?php if ($header_classes[$field]) ? print 'class="'. $header_classes[$field] . '" ' : ''; ?>>
+              <th <?php print 'class="' . ($header_classes[$field]) ? $header_classes[$field] : '' . '"'; ?>>
                 <?php print $label; ?>
               </th>
             <?php endif; ?>
@@ -52,15 +52,15 @@ if (in_array('level 1', $user->roles) || in_array('level 2', $user->roles))
   <?php endif; ?>
   <tbody>
     <?php foreach ($rows as $row_count => $row): ?>
-      <tr <?php if ($row_classes[$row_count]) ? print 'class="' . implode(' ', $row_classes[$row_count]) .'"' : ''; ?>>
+      <tr <?php print ($row_classes[$row_count]) ? 'class="' . implode(' ', $row_classes[$row_count]) . '"' : ''; ?>>
         <?php foreach ($row as $field => $content): ?>
           <?php if (!$user_role): ?>
-            <td <?php if ($field_classes[$field][$row_count]) ? print 'class="'. $field_classes[$field][$row_count] . '" ' : ''; ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
+            <td <?php print 'class="' . ($field_classes[$field][$row_count]) ? $field_classes[$field][$row_count] : '' . '"'; ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
               <?php print $content; ?>
             </td>
           <?php else: ?>
             <?php if ($field_classes[$field][$row_count] != 'views-field views-field-views-bulk-operations'): ?>
-              <td <?php if ($field_classes[$field][$row_count]) ? print 'class="'. $field_classes[$field][$row_count] . '" ' : ''; ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
+              <td <?php print ($field_classes[$field][$row_count]) ? 'class="' . $field_classes[$field][$row_count] . '" ' : ''; ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
                 <?php print $content; ?>
               </td>
             <?php endif; ?>
