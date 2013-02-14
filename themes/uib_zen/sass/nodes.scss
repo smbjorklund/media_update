@@ -69,9 +69,10 @@
   .more-link {
     font-weight: bold;
     float: left;
-    margin: 5px 0 5px 0;
+    margin: 5px 0 15px 0;
     width: 100%;
     text-align: left;
+    padding-bottom: 8px;
   }
 
   .more-link:before {
@@ -409,6 +410,8 @@
 
    a {
       padding: 0;
+      &:hover {text-decoration: underline;color: #aa0000;
+      background-color: #fff;}
     }
   }
 }
