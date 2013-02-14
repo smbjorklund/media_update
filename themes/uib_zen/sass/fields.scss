@@ -333,14 +333,20 @@ div.link-field-column  {
 }
 
 /*  Icons in Webdesk */
-.views-field-delete-node  {
+.views-field-delete-node a  {
   background: url('../images/delete.png') no-repeat;
   display: inline-block;
+  background-position: -1px 1px;
+  width: 50px;
+  padding-left: 19px;
 }
 
-.views-field-edit-node  {
+.views-field-edit-node a  {
   background: url('../images/edit.png') no-repeat;
   display: inline-block;
+  background-position: -1px 1px;
+  width: 50px;
+  padding-left: 19px;
 }
 
 .views-field-delete-node a, .views-field-edit-node a  {

@@ -266,7 +266,8 @@ $zen-auto-include-item-base: false;
      @include zen-grid-item (1, 1);
      float: none !important;
      clear: both;
-     width: 100% !important;
+     width: 100%;
+     padding: 0;
   }
 
   .field-name-secondary-text {
@@ -841,7 +842,7 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-primary-text {
      @include zen-grid-item (2, 3);
-     margin-right: 10px;
+     padding-left: 10px;
      width: 49%;
 
      p {
