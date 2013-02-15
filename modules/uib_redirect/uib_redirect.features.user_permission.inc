@@ -13,7 +13,10 @@ function uib_redirect_user_default_permissions() {
   // Exported permission: administer redirects.
   $permissions['administer redirects'] = array(
     'name' => 'administer redirects',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'admin',
+      1 => 'level 1',
+    ),
     'module' => 'redirect',
   );
 
