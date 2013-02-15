@@ -42,7 +42,7 @@ function _uib_h2tabs_filter_h2_process($text, $filter) {
     if ($e !== FALSE) {
       $hits_index = count($h2s[1]) -1;
       // Table of contents
-      $toc = "<ul>
+      $toc = "<ul class=\"uib-tabs-list\">
         ";
       for ($i = 0; $i <= $hits_index; $i++) {
         $javascript = "javascript: ";
