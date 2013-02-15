@@ -367,7 +367,7 @@ $zen-auto-include-item-base: false;
 
   #widget_pager_bottom_area_slideshow-default {
     left: 9%;
-    top: 83%;
+    top: 81%
   }
 
   #slidecontent {
@@ -375,8 +375,8 @@ $zen-auto-include-item-base: false;
     left: 10%;
 
     h3  {
-    font-size: 10px;
-    margin-top: 0;
+    font-size: 8px;
+    margin-top: -5px;
     }
   }
   .lead {
@@ -635,6 +635,14 @@ $zen-auto-include-item-base: false;
        #slidecontent {
          bottom: 6%;
          left: 6%;
+
+         h3 {
+           color: #fff;
+           margin-bottom: 10px;
+           paddin-top: 0;
+           font-size: 1.5em;
+           font-weight: normal;
+         }
        }
      }
    }
@@ -1123,7 +1131,8 @@ $zen-auto-include-item-base: false;
 /* Slideshow */
   @media all and (min-width: 960px) {
     .view-area-slideshow, .views-field-field-uib-main-media  {
-      @include zen-grid-item (4, 1)
+      @include zen-grid-item (4, 1);
+      width: 100%;
     }
 
     #widget_pager_bottom_area_slideshow-default {
@@ -1134,6 +1143,14 @@ $zen-auto-include-item-base: false;
     #slidecontent {
       bottom: 2%;
       left: 6%;
+
+      h3 {
+        color: #fff;
+        margin-bottom: 10px;
+        paddin-top: 0;
+        font-size: 1.5em;
+        font-weight: normal;
+      }
     }
   }
 

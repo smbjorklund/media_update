@@ -132,14 +132,6 @@ table.cols-6  {
   #slidecontent {
     color: #fff;
     position: absolute;
-
-    h3 {
-      color: #fff;
-      margin-bottom: 10px;
-      paddin-top: 0;
-      font-size: 1.5em;
-      font-weight: normal;
-    }
   }
 
   #widget_pager_bottom_area_slideshow-default {
@@ -151,6 +143,10 @@ table.cols-6  {
   .views-slideshow-pager-field-item {
     float: left;
     padding: 10px;
+
+    .views_slideshow_active_pager_field_item {
+      border: solid 1px red;
+    }
   }
 
   #views_slideshow_controls_text_previous_area_slideshow-default {

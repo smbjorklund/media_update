@@ -423,3 +423,9 @@ div.add-or-remove-shortcuts {
 #block-views-recent-news-block .views-row  {
   margin-bottom: 8px;
 }
+
+/* Wysiwyg styling */
+.page-node-edit .node-area-type .form-item-field-uib-secondary-text-und-0-value #edit-field-uib-secondary-text-und-0-value ul li {
+  width: 250px;
+  float: left;
+}
