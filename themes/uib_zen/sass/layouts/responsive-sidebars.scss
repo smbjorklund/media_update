@@ -569,7 +569,7 @@ $zen-auto-include-item-base: false;
       .field-name-field-uib-profiled-message {
         @include zen-grid-item (2, 3);
         float: none;
-        padding-left: 10px;
+        padding-left: 10px
       }
 
       .node-area .field-collection-container  {

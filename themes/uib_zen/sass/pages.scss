@@ -429,3 +429,11 @@ div.add-or-remove-shortcuts {
   width: 250px;
   float: left;
 }
+
+.node-type-uib-article table , .node-type-uib-testimonial table {
+  width: 100%;
+
+  td {
+    border: solid 1px silver;
+  }
+}
