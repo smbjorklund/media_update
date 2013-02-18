@@ -71,15 +71,6 @@ function uib_setup_user_default_permissions() {
     'module' => 'contextual',
   );
 
-  // Exported permission: access devel information.
-  $permissions['access devel information'] = array(
-    'name' => 'access devel information',
-    'roles' => array(
-      0 => 'admin',
-    ),
-    'module' => 'devel',
-  );
-
   // Exported permission: access service links.
   $permissions['access service links'] = array(
     'name' => 'access service links',
@@ -179,13 +170,6 @@ function uib_setup_user_default_permissions() {
       0 => 'admin',
     ),
     'module' => 'context_ui',
-  );
-
-  // Exported permission: administer devel menu items.
-  $permissions['administer devel menu items'] = array(
-    'name' => 'administer devel menu items',
-    'roles' => array(),
-    'module' => 'menu_admin_per_menu',
   );
 
   // Exported permission: administer entity translation.
@@ -937,13 +921,6 @@ function uib_setup_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
-  // Exported permission: execute php code.
-  $permissions['execute php code'] = array(
-    'name' => 'execute php code',
-    'roles' => array(),
-    'module' => 'devel',
-  );
-
   // Exported permission: flush caches.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
@@ -1384,16 +1361,6 @@ function uib_setup_user_default_permissions() {
       3 => 'level 3',
     ),
     'module' => 'shortcut',
-  );
-
-  // Exported permission: switch users.
-  $permissions['switch users'] = array(
-    'name' => 'switch users',
-    'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-    ),
-    'module' => 'devel',
   );
 
   // Exported permission: toggle field translatability.
