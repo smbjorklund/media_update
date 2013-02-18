@@ -74,7 +74,11 @@ function uib_setup_user_default_permissions() {
   // Exported permission: access service links.
   $permissions['access service links'] = array(
     'name' => 'access service links',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'admin',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
     'module' => 'service_links',
   );
 
@@ -576,7 +580,6 @@ function uib_setup_user_default_permissions() {
     'roles' => array(
       0 => 'admin',
       1 => 'level 1',
-      2 => 'level 2',
     ),
     'module' => 'node',
   );
@@ -1056,7 +1059,9 @@ function uib_setup_user_default_permissions() {
   // Exported permission: import media.
   $permissions['import media'] = array(
     'name' => 'import media',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'admin',
+    ),
     'module' => 'media',
   );
 
@@ -1553,7 +1558,6 @@ function uib_setup_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       0 => 'admin',
-      1 => 'level 1',
     ),
     'module' => 'filter',
   );
