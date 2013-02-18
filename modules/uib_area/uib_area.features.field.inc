@@ -1517,7 +1517,7 @@ function uib_area_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '10',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1606,7 +1606,7 @@ function uib_area_field_default_fields() {
             'view_mode' => 'teaser',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2094,7 +2094,7 @@ function uib_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',

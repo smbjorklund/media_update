@@ -252,8 +252,9 @@ function uib_area_field_group_info() {
     'weight' => '7',
     'children' => array(
       0 => 'field_uib_link_section',
-      1 => 'field_uib_profiled_testimonial',
-      2 => 'field_uib_tertiary_text',
+      1 => 'field_uib_profiled_message',
+      2 => 'field_uib_profiled_testimonial',
+      3 => 'field_uib_tertiary_text',
     ),
     'format_type' => 'div',
     'format_settings' => array(
