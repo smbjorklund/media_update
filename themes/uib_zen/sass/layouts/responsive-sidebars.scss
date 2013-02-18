@@ -848,8 +848,6 @@ $zen-auto-include-item-base: false;
 
      .region-sidebar-second { /* Span 1 column, starting in 5th column from left. */
        @include zen-grid-item(1, 5);
-       background-image: url('../../images/fade-to-left-bg.png');
-       background-repeat: repeat-y;
 
        li {
          margin-bottom: 8px;
@@ -873,6 +871,15 @@ $zen-auto-include-item-base: false;
     .region-sidebar-second { /* Span 1 column, starting in 5th column from left. */
       @include zen-grid-item(1, 5);
     }
+  }
+}
+
+/* Sidebar background img */
+@media all and (min-width: 960px) {
+  .one-sidebar #main, .sidebar-second #main {
+    background-image: url('../../images/fade-to-left-bg.png');
+    background-repeat: repeat-y;
+    background-position: 728px, 0;
   }
 }
 
