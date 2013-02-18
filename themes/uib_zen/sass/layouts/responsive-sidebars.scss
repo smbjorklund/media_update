@@ -309,6 +309,20 @@ $zen-auto-include-item-base: false;
      }
   }
 
+  .field-name-field-uib-profiled-message {
+    @include zen-grid-item (1, 1);
+    margin-bottom: 10px;
+  }
+
+  .group_two_column .field-collection-container {
+    width: 100%;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 2px;
+    moz-border-radius: 2px;
+    webkit-border-radius: 2px;
+  }
+
   .field-name-profiled-article {
     @include zen-clear();
     @include zen-grid-item (1, 1);
@@ -556,7 +570,17 @@ $zen-auto-include-item-base: false;
         @include zen-grid-item (2, 3);
         float: none;
         padding-left: 10px;
-        
+      }
+
+      .node-area .field-collection-container  {
+        @include zen-grid-item (4, 1);
+        border: none;
+        float: left;
+        width: 48%;
+        background: #f5f5f5;
+        border-radius: 2px;
+        moz-border-radius: 2px;
+        webkit-border-radius: 2px;
       }
 
       .field-name-field-uib-bottom-media  {
@@ -991,6 +1015,13 @@ $zen-auto-include-item-base: false;
       margin-right: 20px;
       height: 35px;
     }
+  }
+
+  .node-area .field-collection-container  {
+    @include zen-grid-item (4, 1);
+    border: none;
+    float: left;
+    width: 48%;
   }
 
   .field-name-profiled-article {
