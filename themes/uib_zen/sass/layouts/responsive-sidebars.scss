@@ -451,6 +451,28 @@ $zen-auto-include-item-base: false;
   }
 }
 
+/* Courses  mobile*/
+@media all and (min-width: 240px) and (max-width: 720px) {
+  $zen-column-count: 1;
+
+  .view-courses {
+    @include zen-grid-item (1, 1);
+    .views-row {
+      width: 97%;
+      height: 110px;
+      float: left;
+      margin: 0 10px 10px 0;
+      background-color: #efefef;
+      padding: 10px 10px 0 10px;
+    }
+
+    a {
+      font-size: 1.4em;
+      line-height: 2em;
+    }
+  }
+}
+
 /* Persons mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
   .view-ansatte {
@@ -776,6 +798,28 @@ $zen-auto-include-item-base: false;
         @include zen-clear();
         @include zen-grid-item (4, 1)
       }
+  }
+
+  /* Courses  tablet*/
+  @media all and (min-width: 720px) and (max-width: 959px) {
+    $zen-column-count: 4;
+
+    .view-courses {
+      @include zen-grid-item (4, 1);
+      .views-row {
+        width: 300px;
+        height: 110px;
+        float: left;
+        margin: 0 10px 10px 0;
+        background-color: #efefef;
+        padding: 10px 10px 0 10px;
+      }
+
+      a {
+        font-size: 1.4em;
+        line-height: 2em;
+      }
+    }
   }
 
   @media all and (min-width: 720px) and (max-width: 959px) {
@@ -1235,6 +1279,28 @@ $zen-auto-include-item-base: false;
       }
     }
   }
+
+/* Courses */ 
+@media all and (min-width: 960px) {
+  $zen-column-count: 4;
+ 
+  .view-courses {
+    @include zen-grid-item (4, 1);
+    .views-row {
+      width: 324px;
+      height: 110px;
+      float: left;
+      margin: 0 10px 10px 0;
+      background-color: #efefef;
+      padding: 10px 10px 0 10px;
+    }
+
+    a {
+      font-size: 1.4em;
+      line-height: 2em;
+    }
+  }
+}
 
 /* Bottom region */
 @media all and (min-width: 960px) {
