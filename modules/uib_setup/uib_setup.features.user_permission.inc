@@ -474,6 +474,51 @@ function uib_setup_user_default_permissions() {
     'module' => 'views',
   );
 
+  // Exported permission: assign admin role.
+  $permissions['assign admin role'] = array(
+    'name' => 'assign admin role',
+    'roles' => array(
+      0 => 'admin',
+    ),
+    'module' => 'role_delegation',
+  );
+
+  // Exported permission: assign all roles.
+  $permissions['assign all roles'] = array(
+    'name' => 'assign all roles',
+    'roles' => array(
+      0 => 'admin',
+    ),
+    'module' => 'role_delegation',
+  );
+
+  // Exported permission: assign level 1 role.
+  $permissions['assign level 1 role'] = array(
+    'name' => 'assign level 1 role',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'role_delegation',
+  );
+
+  // Exported permission: assign level 2 role.
+  $permissions['assign level 2 role'] = array(
+    'name' => 'assign level 2 role',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'role_delegation',
+  );
+
+  // Exported permission: assign level 3 role.
+  $permissions['assign level 3 role'] = array(
+    'name' => 'assign level 3 role',
+    'roles' => array(
+      0 => 'level 1',
+    ),
+    'module' => 'role_delegation',
+  );
+
   // Exported permission: block IP addresses.
   $permissions['block IP addresses'] = array(
     'name' => 'block IP addresses',
