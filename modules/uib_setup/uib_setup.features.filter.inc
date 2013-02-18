@@ -46,8 +46,13 @@ function uib_setup_filter_default_formats() {
     'status' => '1',
     'weight' => '-9',
     'filters' => array(
+      'filter_h2' => array(
+        'weight' => '-50',
+        'status' => '1',
+        'settings' => array(),
+      ),
       'filter_html' => array(
-        'weight' => '-10',
+        'weight' => '-49',
         'status' => '1',
         'settings' => array(
           'allowed_html' => '<br> <p> <a> <strong> <em> <ul> <li> <ol> <h2> <h3> <h4> <blockquote> <table> <tbody> <tr> <td>',
@@ -56,24 +61,19 @@ function uib_setup_filter_default_formats() {
         ),
       ),
       'filter_url' => array(
-        'weight' => '0',
+        'weight' => '-46',
         'status' => '1',
         'settings' => array(
           'filter_url_length' => '72',
         ),
       ),
       'media_filter' => array(
-        'weight' => '2',
+        'weight' => '-44',
         'status' => '1',
         'settings' => array(),
       ),
       'filter_htmlcorrector' => array(
-        'weight' => '10',
-        'status' => '1',
-        'settings' => array(),
-      ),
-      'filter_h2' => array(
-        'weight' => '15',
+        'weight' => '-43',
         'status' => '1',
         'settings' => array(),
       ),
