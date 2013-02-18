@@ -1514,7 +1514,7 @@ function uib_area_field_default_fields() {
           'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
-            'link' => FALSE,
+            'link' => 1,
           ),
           'type' => 'entityreference_label',
           'weight' => '7',
