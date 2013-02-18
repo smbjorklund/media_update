@@ -766,6 +766,10 @@ $zen-auto-include-item-base: false;
       $zen-column-count: 4;
       .view-ansatte {
         margin-left: 0;
+
+        .media {
+          width: 324px;
+        }
       }
 
       .uib-ansatte-section {
@@ -900,6 +904,17 @@ $zen-auto-include-item-base: false;
 
   .group-article-sidebar  {
     @include zen-grid-item (1, 4)
+  }
+}
+
+@media all and (min-width: 960px) {
+  $zen-column-count: 4;
+  .view-ansatte {
+    margin-left: 0;
+
+    .media {
+      width: 324px;
+    }
   }
 }
 
