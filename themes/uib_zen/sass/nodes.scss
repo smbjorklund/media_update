@@ -198,8 +198,12 @@
   margin: 20px 0 5px 0;
 }
 
-.node-type-uib-testimonial .field-name-field-uib-media .field-label {
-  display: none;
+.node-type-uib-testimonial {
+  .field-name-field-uib-media, .field-name-field-uib-lead, .field-name-field-uib-text {
+    .field-label {
+      display: none;
+    }
+  }
 }
 
 .group-article-sidebar ul, .field-name-field-uib-primary-text ul, .field-name-field-uib-text ul, .field-name-field-uib-tertiary-text ul, .field-name-field-uib-tertiary-text ul, .field-name-field-uib-bottom-text ul {

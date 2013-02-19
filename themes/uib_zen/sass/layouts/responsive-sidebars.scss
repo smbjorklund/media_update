@@ -591,7 +591,8 @@ $zen-auto-include-item-base: false;
       .field-name-field-uib-profiled-message {
         @include zen-grid-item (2, 3);
         float: none;
-        padding-left: 10px
+        padding-left: 10px;
+        margin-bottom: 10px;
       }
 
       .node-area .field-collection-container  {
@@ -1148,6 +1149,7 @@ $zen-auto-include-item-base: false;
      float: none;
      padding-left: 10px;
      width: 49%;
+     margin-bottom: 10px;
    }
 
   .field-name-field-uib-tertiary-text {
