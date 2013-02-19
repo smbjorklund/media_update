@@ -1250,6 +1250,7 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 5;
   nav.breadcrumb {
     @include zen-grid-item (5, 1);
+    float: none;
   }
 }
 /* Slideshow */
