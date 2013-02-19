@@ -22,7 +22,6 @@ dependencies[] = uib_newsarchive
 dependencies[] = uib_webdesk
 dependencies[] = views_slideshow
 dependencies[] = views_slideshow_cycle
-dependencies[] = shortcut
 dependencies[] = admin_menu_toolbar
 dependencies[] = diff
 dependencies[] = module_filter

@@ -401,18 +401,6 @@ function uib_setup_user_default_permissions() {
     'module' => 'scheduler',
   );
 
-  // Exported permission: administer shortcuts.
-  $permissions['administer shortcuts'] = array(
-    'name' => 'administer shortcuts',
-    'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
-    ),
-    'module' => 'shortcut',
-  );
-
   // Exported permission: administer site configuration.
   $permissions['administer site configuration'] = array(
     'name' => 'administer site configuration',
@@ -636,18 +624,6 @@ function uib_setup_user_default_permissions() {
       1 => 'level 1',
     ),
     'module' => 'path',
-  );
-
-  // Exported permission: customize shortcut links.
-  $permissions['customize shortcut links'] = array(
-    'name' => 'customize shortcut links',
-    'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
-    ),
-    'module' => 'shortcut',
   );
 
   // Exported permission: delete any area content.
@@ -1390,18 +1366,6 @@ function uib_setup_user_default_permissions() {
     'name' => 'show more format tips link',
     'roles' => array(),
     'module' => 'better_formats',
-  );
-
-  // Exported permission: switch shortcut sets.
-  $permissions['switch shortcut sets'] = array(
-    'name' => 'switch shortcut sets',
-    'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
-    ),
-    'module' => 'shortcut',
   );
 
   // Exported permission: toggle field translatability.

@@ -6,7 +6,7 @@
  * Perform actions to set up the site for this profile.
  */
 function uib_install() {
-    // Set the default and admin themes
+  // Set the default and admin themes
   echo "Changing theme settings\n";
   variable_set("theme_default", "uib_zen");
   variable_set("admin_theme", "seven");
@@ -31,8 +31,4 @@ function uib_install() {
     ->fields(array('prefix' => 'en'))
     ->condition('language', 'en')
     ->execute();
-
-  // Start with no default shortcuts
-  menu_delete_links(SHORTCUT_DEFAULT_SET_NAME);
-
 }
