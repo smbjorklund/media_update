@@ -24,9 +24,10 @@ function uib_webdesk_default_page_manager_pages() {
         'name' => 'role',
         'settings' => array(
           'rids' => array(
-            0 => 5,
-            1 => 4,
-            2 => 3,
+            0 => 64272948,
+            1 => 170699807,
+            2 => 74573517,
+            3 => 176168899,
           ),
         ),
         'context' => 'logged-in-user',

@@ -7,7 +7,6 @@ version = 7.x-1.0-beta1
 project = uib_webdesk
 dependencies[] = context
 dependencies[] = features
-
 dependencies[] = page_manager
 dependencies[] = uib_setup
 dependencies[] = views

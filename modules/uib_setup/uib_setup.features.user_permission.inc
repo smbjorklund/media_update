@@ -478,15 +478,6 @@ function uib_setup_user_default_permissions() {
     'module' => 'views',
   );
 
-  // Exported permission: assign admin role.
-  $permissions['assign admin role'] = array(
-    'name' => 'assign admin role',
-    'roles' => array(
-      0 => 'admin',
-    ),
-    'module' => 'role_delegation',
-  );
-
   // Exported permission: assign all roles.
   $permissions['assign all roles'] = array(
     'name' => 'assign all roles',
