@@ -177,8 +177,8 @@ class XTopic extends stdClass {
           }
           elseif (isset($parent->site) and !($this->is_site)) {
             if ($this->site == $parent->site) {
-                $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][$i];
-                continue;
+              $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][$i];
+              continue;
             }
           }
         }
