@@ -62,12 +62,9 @@ function uib_article_field_default_fields() {
       'description' => 'Here you should type which area this content belongs to',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '25',
         ),
         'teaser' => array(
