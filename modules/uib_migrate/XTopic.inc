@@ -170,15 +170,17 @@ class XTopic extends stdClass {
 
       if (!empty($xlink['subordinate/hierarchical-relation/superordinate'])) {
         foreach ($xlink['subordinate/hierarchical-relation/superordinate'] as $i => $parent_id) {
-          $parent = new XTopic($parent_id, TRUE, 'parent_of ' . $this->id);
-          if ($parent->is_site) {
-            $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][$i];
-            continue;
-          }
-          elseif (isset($parent->site) and !($this->is_site)) {
-            if ($this->site == $parent->site) {
+          if (!$shallow) {
+            $parent = new XTopic($parent_id, TRUE, 'parent_of ' . $this->id);
+            if ($parent->is_site) {
               $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][$i];
               continue;
+            }
+            elseif (isset($parent->site) and !($this->is_site)) {
+              if ($this->site == $parent->site) {
+                $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][$i];
+                continue;
+              }
             }
           }
         }
