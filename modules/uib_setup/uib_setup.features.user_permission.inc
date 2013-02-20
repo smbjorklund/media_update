@@ -1536,6 +1536,7 @@ function uib_setup_user_default_permissions() {
       0 => 'admin',
       1 => 'level 1',
       2 => 'level 2',
+      3 => 'level 3',
     ),
     'module' => 'view_unpublished',
   );
