@@ -199,9 +199,8 @@ $zen-auto-include-item-base: false;
           background: none;
         }
         a {
-          width: 100%;
+          width: 90%;
           background: none;
-          border-bottom: 1px solid #C8D2D4;
           border-left: medium none;
           background: #F1F1EF;
           &:hover {
@@ -358,6 +357,7 @@ $zen-auto-include-item-base: false;
      border-radius: 2px;
      moz-border-radius: 2px;
      webkit-border-radius: 2px;
+     width: 90%;
    }
 
   .field-name-field-uib-profiled-testimonial {
@@ -708,7 +708,7 @@ $zen-auto-include-item-base: false;
       }
     }
 
-    /* Slideshow */
+    /* Slideshow tablet */
     @media all and (min-width: 720px) and (max-width: 959px){
      .view-area-slideshow {
        .views-slideshow-pager-fields {
