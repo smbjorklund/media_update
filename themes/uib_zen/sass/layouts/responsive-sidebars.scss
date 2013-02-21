@@ -281,17 +281,17 @@ $zen-auto-include-item-base: false;
      padding-bottom: 20px;
 
      ul {
-     @include zen-clear();
-     list-style-type:none;
-     margin-top: 0;
-     display: block;
+       @include zen-clear();
+       list-style-type:none;
+       margin-top: 0;
+       display: block;
      }
 
      li {
-     float: left;
-     margin: 10px 0 0 0;
-     padding: 0 10px 0 0;
-     width:210px;
+       float: left;
+       margin: 10px 0 0 0;
+       padding: 0 10px 0 0;
+       width:210px;
      }
 
      p  {
@@ -413,7 +413,7 @@ $zen-auto-include-item-base: false;
   }
 
 }
-
+/* News archive mobile */
 @media all and(min-width: 240px) and (max-width: 720px) {
   $zen-column-count: 1;
 
@@ -761,6 +761,21 @@ $zen-auto-include-item-base: false;
   @media all and (min-width: 720px) and (max-width: 959px) {
     $zen-column-count: 4;
 
+    #block-views-recent-news-block-date-selector {
+
+      ul {
+      list-style-type:none;
+      margin-top: 0;
+      }
+
+      li {
+      float:left;
+      margin: 10px 0 0 0;
+      padding: 0 10px 0 0;
+      width:210px;
+      }
+    }
+
     .view-recent-news .views-row {
       @include zen-clear();
     }
@@ -772,6 +787,7 @@ $zen-auto-include-item-base: false;
     .view-display-id-newsarchive .views-field-title  {
       @include zen-grid-item (3, 2);
       margin-bottom: 10px;
+      margin-top: 20px;
       float: none;
       padding-left: 15px;
     }
@@ -967,6 +983,21 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 960px) {
   $zen-column-count: 4;
 
+  #block-views-recent-news-block-date-selector {
+
+    ul {
+    list-style-type:none;
+    margin-top: 0;
+    }
+
+    li {
+    float:left;
+    margin: 10px 0 0 0;
+    padding: 0 10px 0 0;
+    width:210px;
+    }
+  }
+
   .view-recent-news .views-row {
     @include zen-clear();
   }
@@ -979,6 +1010,7 @@ $zen-auto-include-item-base: false;
   .view-display-id-newsarchive  .views-field-title  {
     @include zen-grid-item (3, 2);
     margin-bottom: 10px;
+    margin-top: 20px;
     float: none;
     padding-left: 15px;
   }
@@ -1096,25 +1128,25 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (4, 1);
   }
 
-  .view-faculty-departments-kids  {
-     @include zen-grid-item (2, 1);
-     @include zen-clear();
-     margin-bottom: 10px;
-     float: left;
-     padding: 15px;
-     background: #f5f5f5;
-     border: none;
-     border-radius: 2px;
-     moz-border-radius: 2px;
-     webkit-border-radius: 2px;
-     width: 45%;
-   }
-
   .group_two_column  {
      @include zen-grid-item (4, 1);
      @include zen-clear();
      padding-bottom: 30px;
      float: none;
+     
+     .view-faculty-departments-kids  {
+        @include zen-grid-item (2, 1);
+        @include zen-clear();
+        margin-bottom: 10px;
+        float: left;
+        padding: 15px;
+        background: #f5f5f5;
+        border: none;
+        border-radius: 2px;
+        moz-border-radius: 2px;
+        webkit-border-radius: 2px;
+        width: 45%;
+      }
 
      .field-name-field-uib-link-section {
        @include zen-grid-item (2, 1);

@@ -384,7 +384,7 @@ div.add-or-remove-shortcuts {
 }
 
 /* Adding a double border on all blocks and fields in area and article sidebar */
-.region-sidebar-second .block >*, .group_article_sidebar .field >*  {
+.region-sidebar-second .block >*, .group_article_sidebar .field >* {
   border-bottom-style: double;
   border-color: #c8d1d5;
 
@@ -408,6 +408,10 @@ div.add-or-remove-shortcuts {
       width: 200px;
     }
   }
+}
+
+.region-sidebar-second .block #block-uib-area-area-parents .block-uib-area a {
+ border-bottom: none;
 }
 
 #block-views-calendar-block-1 .view-id-calendar {
