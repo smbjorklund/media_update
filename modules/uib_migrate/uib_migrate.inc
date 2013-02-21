@@ -104,12 +104,12 @@ function xtopic_file($id, $uid) {
     $file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
   }
   if (isset($xtopic->dc_description)) {
-    $file->field_uib_description['und'][]['value'] = $xtopic->dc_description;
+    $file->field_uib_description['fund'][]['value'] = $xtopic->dc_description;
     // Populate image files title and ALT attribute with something useful.
     if ($xtopic->type == 'image') {
-      $title = truncate_utf8($xtopic->dc_description, 200, $wordsafe = TRUE, $add_ellipsis = TRUE, $min_wordsafe_length = 1);
+      $title = truncate_utf8($xtopic->dc_description, 200, TRUE, TRUE, 1);
       $file->field_file_image_title_text['und'][]['value'] = $title;
-      $alt = truncate_utf8($xtopic->dc_description, 80, $wordsafe = TRUE, $add_ellipsis = TRUE, $min_wordsafe_length = 1);
+      $alt = truncate_utf8($xtopic->dc_description, 80, TRUE, TRUE, 1);
       $file->field_file_image_alt_text['und'][]['value'] = $alt;
     }
   }
@@ -123,8 +123,8 @@ function xtopic_file($id, $uid) {
       uibx_log('Title of file copied to description: ' . $xtopic->title, 'warning');
     }
     if (mb_strlen($tmp_title, 'UTF-8') > 255) {
-      $tmp_title = mb_substr($tmp_title, 0, 255, 'UTF-8'); // if title is > 255 it causes an error in postgresql
-      uibx_log('Title of file right-trimmed to 255 chars: ' . $xtopic->title, 'warning');
+       $tmp_title = truncate_utf8($xtopic->dc_description, 250, TRUE, TRUE, 1); // if title is > 255 it causes an error in postgresql
+      uibx_log('Title of file right-truncated to 250 chars: ' . $xtopic->title, 'warning');
     }
   }
   $tmp_title = trim($tmp_title);
