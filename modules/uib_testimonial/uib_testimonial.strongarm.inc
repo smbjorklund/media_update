@@ -98,7 +98,8 @@ function uib_testimonial_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_uib_testimonial';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_uib_testimonial'] = $strongarm;
 
