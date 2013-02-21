@@ -512,6 +512,12 @@ $zen-auto-include-item-base: false;
   }
 }
 
+/* calendar mobile */
+@media all and (min-width: 240px) and (max-width: 720px) {
+  .view-id-calendar .pager {
+      display: none;
+  }
+}
 
 /* Tablet */
 @media all and (min-width: 720px) and (max-width: 959px) {
@@ -786,6 +792,7 @@ $zen-auto-include-item-base: false;
 
     .group-article-main {
       @include zen-grid-item (3, 1);
+      width: 72%;
     }
 
     .group-article-sidebar  {
