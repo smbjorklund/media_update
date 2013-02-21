@@ -497,6 +497,21 @@ $zen-auto-include-item-base: false;
   }
 }
 
+/* Article mobile */
+@media all and (min-width: 240px) and (max-width: 720px) {
+  .group_article_main  {
+    @include zen-grid-item (1, 1);
+    @include zen-clear();
+    float: none;
+    width: 100%;
+  }
+
+  .group_article_sidebar {
+    @include zen-grid-item (1, 1);
+    @include zen-clear();
+  }
+}
+
 
 /* Tablet */
 @media all and (min-width: 720px) and (max-width: 959px) {
@@ -981,7 +996,8 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 4;
 
   .group-article-main {
-    @include zen-grid-item (3, 1)
+    @include zen-grid-item (3, 1);
+    width: 73%;
   }
 
   .group-article-sidebar  {
