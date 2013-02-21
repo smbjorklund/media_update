@@ -246,8 +246,8 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       }
       $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
       if (stripos($tmp_block_html, 'view-content') !== FALSE) { // display only if any content present
-        $variables['content']['field_uib_kids']['#markup'] = $tmp_block_html;
-        $variables['content']['field_uib_kids']['#weight'] = 6;
+        $variables['content']['group_two_column']['field_uib_kids']['#markup'] = $tmp_block_html;
+        $variables['content']['group_two_column']['field_uib_kids']['#weight'] = 6;
       }
 
        if ($variables['field_uib_show_staff']['und'][0]['value'] == 1) {

@@ -348,6 +348,18 @@ $zen-auto-include-item-base: false;
     float: none;
   }
 
+  .view-faculty-departments-kids  {
+     @include zen-grid-item (1, 1);
+     @include zen-clear();
+     margin-bottom: 10px;
+     padding: 15px;
+     background: #f5f5f5;
+     border: none;
+     border-radius: 2px;
+     moz-border-radius: 2px;
+     webkit-border-radius: 2px;
+   }
+
   .field-name-field-uib-profiled-testimonial {
     @include zen-clear();
     @include zen-grid-item (1, 1);
@@ -629,10 +641,19 @@ $zen-auto-include-item-base: false;
 
       .group_two_column {
         @include zen-clear();
-      }
-
-      .view-faculty-departments-kids  {
-         margin-bottom: 10px;
+        .view-faculty-departments-kids  {
+           @include zen-grid-item (2, 1);
+           @include zen-clear();
+           margin-bottom: 10px;
+           float: left;
+           padding: 15px;
+           background: #f5f5f5;
+           border: none;
+           border-radius: 2px;
+           moz-border-radius: 2px;
+           webkit-border-radius: 2px;
+           width: 45%;
+         }
        }
 
       .field-name-field-uib-link-section {
