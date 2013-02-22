@@ -319,10 +319,16 @@ class NavPageMigration extends InfoPageMigration {
         $row->nav_weight = 0; // Empty weights cause postgres errors/warnings
         uibx_log("Set empty menu link nav_weight to zero", 'notice');
       }
+      if (!empty($node->field_uib_menu_title_w2['und'][0]['value'])) {
+        $link_title = $node->field_uib_menu_title_w2['und'][0]['value'];
+      }
+      else {
+        $link_title = $node->title;
+      }
       $menu_link = array(
         'menu_name' => 'area',
         'link_path' => drupal_get_normal_path('node/' . $node->nid),
-        'link_title' => $node->title,
+        'link_title' => $link_title,
         'weight' => $row->nav_weight,
         'plid' => $area_mlid,
       );
