@@ -321,7 +321,6 @@ features[user_permission][] = geocoder_service_handler_yahoo
 features[user_permission][] = geocoder_service_handler_yandex
 features[user_permission][] = import media
 features[user_permission][] = manage features
-features[user_permission][] = migration information
 features[user_permission][] = notify of path changes
 features[user_permission][] = override area authored by option
 features[user_permission][] = override area authored on option

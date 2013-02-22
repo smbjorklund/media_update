@@ -20,3 +20,5 @@ features[user_permission][] = access devel information
 features[user_permission][] = administer devel menu items
 features[user_permission][] = execute php code
 features[user_permission][] = switch users
+
+features[user_permission][] = migration information
