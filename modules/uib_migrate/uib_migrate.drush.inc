@@ -57,7 +57,7 @@ function uib_migrate__build_menu_tree($node, $mlid, $depth) {
   $query = new EntityFieldQuery;
   $result = $query
     ->entityCondition('entity_type', 'node')
-    ->fieldCondition('field_uib_w2_nav_parent_id', 'value', $w2id, '=')
+    ->fieldCondition('field_uib_w2_nav_parent_id', 'value', $w2id, 'CONTAINS')
     ->execute();
   if (!empty($result['node'])) {
     foreach (array_keys($result['node']) as $kid_nid) {

@@ -169,41 +169,32 @@ class XTopic extends stdClass {
       }
 
       if (!empty($xlink['subordinate/hierarchical-relation/superordinate'])) {
-        foreach ($xlink['subordinate/hierarchical-relation/superordinate'] as $i => $parent_id) {
+        if (count($xlink['subordinate/hierarchical-relation/superordinate']) > 1) {
+          $this->nav_parent_id = implode(',',$xlink['subordinate/hierarchical-relation/superordinate']);
+        }
+        else {
+          $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][0];
+        }
+        $nav_parent_ids = explode(',', $this->nav_parent_id);
+        foreach ($nav_parent_ids as $parent_id) {
           if (!$shallow) {
-            $parent = new XTopic($parent_id, TRUE, 'parent_of ' . $this->id);
-            if ($parent->is_site) {
-              $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][$i];
-              continue;
+            $parent = new XTopic($parent_id, TRUE, 'parent of ' . $id);
+            //$this->parent = $parent;
+            if (isset($parent->menuorder)) {
+              $menu_order = $parent->menuorder;
+              $menu_order = drupal_json_decode($menu_order);
+              $idx = array_search($this->id, $menu_order);
+              if ($idx !== FALSE)
+                $this->nav_weight = $idx;
             }
-            elseif (isset($parent->site) and !($this->is_site)) {
-              if ($this->site == $parent->site) {
-                $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][$i];
-                continue;
-              }
+            if (!isset($this->nav_weight)) {
+              uibx_log("Can't find $this->id in the menu of its parent $this->nav_parent_id", 'warning');
             }
           }
-        }
-
-        if (!isset($this->nav_parent_id)) $this->nav_parent_id = $xlink['subordinate/hierarchical-relation/superordinate'][0];
-
-        if (!$shallow) {
-          $parent = new XTopic($this->nav_parent_id, TRUE, 'parent of ' . $id);
-          //$this->parent = $parent;
-          if (isset($parent->menuorder)) {
-            $menu_order = $parent->menuorder;
-            $menu_order = drupal_json_decode($menu_order);
-            $idx = array_search($this->id, $menu_order);
-            if ($idx !== FALSE)
-              $this->nav_weight = $idx;
+          if ($parent_id == $topic->site['ref']) {
+            unset($parent_id);
+            $this->menu_top_entry = TRUE;
           }
-          if (!isset($this->nav_weight)) {
-            uibx_log("Can't find $this->id in the menu of its parent $this->nav_parent_id", 'warning');
-          }
-        }
-        if ($this->nav_parent_id == $topic->site['ref']) {
-          unset($this->nav_parent_id);
-          $this->menu_top_entry = TRUE;
         }
       }
 
