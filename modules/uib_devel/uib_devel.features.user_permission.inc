@@ -43,5 +43,12 @@ function uib_devel_user_default_permissions() {
     'module' => 'devel',
   );
 
+  // Exported permission: migration information.
+  $permissions['migration information'] = array(
+    'name' => 'migration information',
+    'roles' => array(),
+    'module' => 'migrate_ui',
+  );
+
   return $permissions;
 }
