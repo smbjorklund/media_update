@@ -185,7 +185,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Fact box',
-    'weight' => '7',
+    'weight' => '12',
     'children' => array(
       0 => 'field_uib_fact_box',
     ),
@@ -388,7 +388,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'GEO and addresses',
-    'weight' => '12',
+    'weight' => '16',
     'children' => array(
       0 => 'field_uib_contacts',
       1 => 'field_uib_location',

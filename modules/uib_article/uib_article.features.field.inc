@@ -605,7 +605,7 @@ function uib_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '9',
+        'weight' => '12',
       ),
     ),
   );
@@ -698,7 +698,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
-        'weight' => '9',
+        'weight' => '14',
       ),
     ),
   );
@@ -925,7 +925,7 @@ function uib_article_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '10',
+        'weight' => '15',
       ),
     ),
   );
@@ -1195,7 +1195,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '8',
+        'weight' => '13',
       ),
     ),
   );
