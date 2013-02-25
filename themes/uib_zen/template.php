@@ -345,12 +345,13 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
          hide($variables['content']['group_article_sidebar']['field_uib_area']);
       }
-    }
-    if (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container')) {
+
+      if (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container')) {
         drupal_add_library('system' , 'ui.tabs');
         drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js',
           array('group' => JS_THEME, )
-       );
+        );
+      }
     }
 
     if (in_array($variables['title'], array('Ansattsider', 'Employee Pages'))) {
