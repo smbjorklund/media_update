@@ -698,7 +698,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -925,7 +925,7 @@ function uib_article_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
@@ -1195,7 +1195,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );

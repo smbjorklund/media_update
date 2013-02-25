@@ -24,10 +24,10 @@ function uib_article_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'field_uib_menu_title_w2',
-      1 => 'field_uib_w2_id',
-      2 => 'field_uib_w2_nav_parent_id',
-      3 => 'field_uib_w2_path',
-      4 => 'field_uib_nav_weight',
+      1 => 'field_uib_nav_weight',
+      2 => 'field_uib_w2_id',
+      3 => 'field_uib_w2_nav_parent_id',
+      4 => 'field_uib_w2_path',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -186,7 +186,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Fact box',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_uib_fact_box',
     ),
@@ -389,7 +389,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'GEO and addresses',
-    'weight' => '16',
+    'weight' => '12',
     'children' => array(
       0 => 'field_uib_contacts',
       1 => 'field_uib_location',
