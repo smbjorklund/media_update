@@ -308,7 +308,7 @@ function uib_article_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '21',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -386,7 +386,7 @@ function uib_article_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '22',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
