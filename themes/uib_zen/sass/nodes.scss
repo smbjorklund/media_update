@@ -315,64 +315,19 @@
 
 
 /* styles for tabs recoded from <h2> headers [module uib_h2tabs] */
-.uib-tabs-container{
-  width: 100%;
-
-  ul {
-    list-style-type: square;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #C8D2D4;
-    padding: 0 0 10px 0;
-
-    li {
-      display: inline;
-    }
-
-    li > a {
-      text-decoration: none;
-      display: inline-block;
-      padding: 5px 10px;
-      color: #AA0000;
-      background-color: #FFFFFF;
-    }
-
-    li > a:hover {
-      color: #FFFFFF;
-      background-color: #555555;
-    }
-
-    > li:not(:target) > a {
-    }
-
-    > li:target > a, li > a.startup {
-      color: #FFFFFF;
-      background-color: #AA0000;
-    }
+.uib-tabs-container {
+  border: none;
+  .ui-widget-header {
+    background: none;
+    border: none;
   }
-
-  .tabs-content > .uib-hidden {
-    display: none;
+  li.ui-state-active {
+    background: #aa0000;
+    border-radius: 0;
+    border: none;
+    a {color: #fff;}
   }
-
-  .tabs-content > .uib-selected {
-    background-color: #FFFFFF;
-    display: block;
-  }
-
-  .tabs-content {
-    ul li {
-      display: block;
-      list-style-type: square;
-    }
-
-    li {
-      display: inline;
-    }
-
-   a {
-      padding: 0;
-      &:hover {text-decoration: underline;color: #aa0000;
-      background-color: #fff;}
-    }
+  li.ui-state-default {
+    border-radius: 0;
   }
 }
