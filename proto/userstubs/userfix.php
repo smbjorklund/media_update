@@ -9,6 +9,7 @@ require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
 $be_verbose = TRUE; // Info is displayed along the way if set to TRUE
+$limit = 40; // run no more stubs than limit
 // book-keeping
 $stub_cnt = 0;
 $corresponding_users = 0;
@@ -46,8 +47,8 @@ if (isset($result)) {
       ->condition('name', $uib_user_name, '=')
       ->execute();
 
-      unset($local_user);
-     if (isset($usrez)) {
+    unset($local_user);
+    if (isset($usrez)) {
       foreach ($usrez as $local_user) {
       }
       if (!empty($local_user->uid)) {
@@ -147,6 +148,10 @@ if (isset($result)) {
         $deleted_stubs++;
 
         $fixed_users[$local_user->uid] = $uib_user_name;
+
+        if ($deleted_stubs >= $limit) {
+          break;
+        }
       }
     }
   } //  End foreach user stub
