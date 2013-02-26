@@ -606,13 +606,32 @@ class UserMigration extends Migration {
   }
 
   public function prepareRow($row) {
+    // Check if user already exists
+    $result = db_select('users', 'f')
+      ->fields('f', array('uid'))
+      ->condition('name', $row->{'uib-id'}, '=')
+      ->execute();
+    if (isset($result)) {
+      // -- the user was found
+      $local_user = $result->fetchAssoc();
+      if (!empty($local_user)) {
+        uibx_log("The user " . $row->{'uib-id'} . "[" . $local_user['uid'] . "] $row->id was already present", 'warning');
+        $existing_user = user_load($local_user['uid']);
+        // update existing user with w2 id, to make sure it is there
+        // The user may have been added by uib-sebra-users sync, and
+        // in those cases w2 id will be lacking
+        $existing_user->field_uib_w2_id['und'][0]['value'] = $row->id;
+        user_save($existing_user);
+        return FALSE;
+      }
+    }
+    // Check if psi is valid
     $valid_psi_prefix = "http://sebra.fd.uib.no/person?uid=";
     foreach ($row->psi as $psi) {
-      if (substr($psi, 0, strlen($valid_psi_prefix)) === $valid_psi_prefix)
-        return TRUE;
+      if (substr($psi, 0, strlen($valid_psi_prefix)) !== $valid_psi_prefix)
+        uibx_log("Ignored user $row->id: Bad PSI", 'warning');
+        return FALSE;
     }
-    uibx_log("Ignored user $row->id: Bad PSI", 'warning');
-    return FALSE;
   }
 
   protected function createStub($migration, $source_id) {
