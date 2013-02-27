@@ -70,11 +70,16 @@ function uib_article_node_submit($node, $form, &$form_state) {
         $node->language = $area->language;
         if (strstr($form['#action'], 'uib-article?translation')) {
           $translatesets = translation_node_get_translations($area->tnid);
+          dsm($translatesets);
           if ($area->language == 'en') {
             $translatedid = $translatesets['nb']->nid;
+            $node->language = 'nb';
+            dsm($translatedid);
           }
-          else {
+          else if ($area->language == 'nb') {
             $translatedid = $translatesets['en']->nid;
+            $node->language = 'en';
+            dsm($translatedid);
           }
         $node->field_uib_area['und'][0]['target_id'] = $translatedid;
         }
