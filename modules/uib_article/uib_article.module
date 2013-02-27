@@ -51,6 +51,9 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
       if (mb_stripos($field_key, 'w2', 0, 'utf-8') !== FALSE) {
         hide($form[$field_key]);
       }
+      if ($field_key ==  'field_uib_nav_weight') {
+        hide($form[$field_key]);
+      }
     }
   }
 }
