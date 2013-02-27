@@ -175,9 +175,17 @@ table.cols-6  {
     display: none;
   }
 
-  .views-slideshow-pager-fields .active img{
-    border: 2px solid #fff;
+  .views-content-nid {
+    height: 10px;
   }
+}
+
+#widget_pager_bottom_area_slideshow-default .active {
+  background-color: #000;
+  border: solid 1px #595959;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 0px 2px 10px 2px;
 }
 
 /* Calendar */
