@@ -1300,22 +1300,12 @@ return TRUE;';
   /* Display: Research groups */
   $handler = $view->new_display('page', 'Research groups', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Parents (field_uib_area_parents) */
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['id'] = 'field_uib_area_parents_target_id';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['table'] = 'field_data_field_uib_area_parents';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['field'] = 'field_uib_area_parents_target_id';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['title'] = 'Resarch schools at %1';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['path'] = 'node/%/research-groups';
 
   /* Display: Research schools */
   $handler = $view->new_display('page', 'Research schools', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Research schools';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Parents (field_uib_area_parents) */
@@ -1323,8 +1313,6 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['table'] = 'field_data_field_uib_area_parents';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['field'] = 'field_uib_area_parents_target_id';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['title'] = 'Research schools at %1';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['summary']['format'] = 'default_summary';
@@ -1363,6 +1351,8 @@ return TRUE;';
 
   /* Display: Disciplines */
   $handler = $view->new_display('page', 'Disciplines', 'page_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Disciplines';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Parents (field_uib_area_parents) */
@@ -1370,8 +1360,6 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['table'] = 'field_data_field_uib_area_parents';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['field'] = 'field_uib_area_parents_target_id';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['title'] = 'Disciplines at %1';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_uib_area_parents_target_id']['summary']['format'] = 'default_summary';
@@ -1417,11 +1405,8 @@ return TRUE;';
     t('Asc'),
     t('Desc'),
     t('All'),
-    t('Resarch schools at %1'),
     t('Research schools'),
-    t('Research schools at %1'),
     t('Disciplines'),
-    t('Disciplines at %1'),
   );
   $export['research_groups'] = $view;
 
