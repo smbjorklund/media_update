@@ -93,6 +93,9 @@ cms
 fs/cms
 fs/lingfil
 fg/demrett
+fg/middelalderstudier
+fg/mellomalderfilologi
+fg/del-texto-turismo
 
 # hf/en
 hf/en
@@ -152,3 +155,6 @@ rg/uganda
 rg/cs_abc
 rg/nnlts
 rg/sprak-s
+rg/medievalstudies
+rg/medievalphilology
+rg/text-tourism-text
