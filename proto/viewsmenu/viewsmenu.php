@@ -47,7 +47,7 @@ $query_researchgroups_en = $query_researchgroups_en
     ->entityCondition('entity_type', 'node')
     ->propertyCondition('type', 'area')
     ->propertyCondition('language', 'en')
-    ->fieldCondition('field_uib_area_type','value', 'researchgroups', '=')
+    ->fieldCondition('field_uib_area_type','value', 'research group', '=')
     ->range(0, 200);
 
 $result_rg = $query_researchgroups_en->execute();
@@ -55,7 +55,7 @@ $result_rg = $query_researchgroups_en->execute();
 foreach ($result_rg as $areas) {
   foreach ($areas as $area) {
     $menu_link = menu_link_get_preferred('node/' . $area->nid, 'area');
-    add_views_to_menu($menu_link,'en','researchgroups',$area->nid);
+    add_views_to_menu($menu_link,'en','researchgroup',$area->nid);
   }
 }
 
@@ -98,15 +98,15 @@ $query_researchgroups_nb = $query_researchgroups_nb
     ->entityCondition('entity_type', 'node')
     ->propertyCondition('type', 'area')
     ->propertyCondition('language', 'nb')
-    ->fieldCondition('field_uib_area_type','value', 'researchgroups', '=')
+    ->fieldCondition('field_uib_area_type','value', 'research group', '=')
     ->range(0, 200);
 
-$result_rg_nb = $query_faculty->execute();
+$result_rg_nb = $query_researchgroups_nb->execute();
 
 foreach ($result_rg_nb as $areas) {
   foreach ($areas as $area) {
     $menu_link = menu_link_get_preferred('node/' . $area->nid, 'area');
-    add_views_to_menu($menu_link,'nb','researchgroups',$area->nid);
+    add_views_to_menu($menu_link,'nb','researchgroup',$area->nid);
   }
 }
 
@@ -131,6 +131,11 @@ function add_views_to_menu($menulink,$language,$areatype,$nid) {
             'Master programmes' => 'master-programmes',
             'One year programmes' => 'one-year-programmes',
           ),
+          'Research' => array (
+            'Research groups' => 'research-groups',
+            'Research schools' => 'research-schools',
+            'Disciplines' => 'disciplines',
+          ),
         );
       }
       else if ($language == "nb") {
@@ -145,6 +150,11 @@ function add_views_to_menu($menulink,$language,$areatype,$nid) {
             'Bachelorprogram' => 'bachelor-programmes',
             'Masterprogram' => 'master-programmes',
             'Arstudium' => 'one-year-programmes',
+          ),
+          'Forskning' => array (
+            'Forskergrupper' => 'research-groups',
+            'Forskerskoler' => 'research-schools',
+            'Fag' => 'disciplines',
           ),
         );
       }
@@ -162,6 +172,12 @@ function add_views_to_menu($menulink,$language,$areatype,$nid) {
             'Bachelor programmes' => 'bachelor-programmes',
             'Master programmes' => 'master-programmes',
             'One year programmes' => 'one-year-programmes',
+            'Disciplines' => 'disciplines',
+          ),
+          'Research' => array (
+            'Research groups' => 'research-groups',
+            'Research schools' => 'research-schools',
+            'Disciplines' => 'disciplines',
           ),
         );
       }
@@ -177,11 +193,17 @@ function add_views_to_menu($menulink,$language,$areatype,$nid) {
             'Bachelorprogram' => 'bachelor-programmes',
             'Masterprogram' => 'master-programmes',
             'Arstudium' => 'one-year-programmes',
+            'Fag' => 'disciplines',
+          ),
+          'Forskning' => array (
+            'Forskergrupper' => 'research-groups',
+            'Forskerskoler' => 'research-schools',
+            'Fag' => 'disciplines',
           ),
         );
       }
     }
-    else if ($areatype == "researchgroups") {
+    else if ($areatype == "researchgroup") {
       if ($language == "en") {
         $views_list = array(
          'Contact' => array(
@@ -273,8 +295,36 @@ function add_views_to_menu($menulink,$language,$areatype,$nid) {
           }
         }
         else if ($menuitem['link']['link_title'] == 'Research') {
+          if (isset($views_list['Research'])) {
+            foreach ($views_list['Research'] as $delta => $view) {
+              if (!in_array($delta,$subsubitems)) {
+                $menu_link = array(
+                 'menu_name' => 'area',
+                 'link_path' => 'node/' . $nid . '/' .  $view,
+                 'link_title' => $delta,
+                 'weight' => -50,
+                 'plid' => $menuitem['link']['mlid'],
+                );
+                menu_link_save($menu_link);
+              }
+            }  
+          }
         }
         else if ($menuitem['link']['link_title'] == 'Forskning') {
+          if (isset($views_list['Forskning'])) {
+            foreach ($views_list['Forskning'] as $delta => $view) {
+              if (!in_array($delta,$subsubitems)) {
+                $menu_link = array(
+                 'menu_name' => 'area',
+                 'link_path' => 'node/' . $nid . '/' .  $view,
+                 'link_title' => $delta,
+                 'weight' => -50,
+                 'plid' => $menuitem['link']['mlid'],
+                );
+                menu_link_save($menu_link);
+              }
+            }  
+          }
         }
       }
     }
