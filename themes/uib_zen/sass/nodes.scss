@@ -298,7 +298,7 @@
     font-size: 1em;
     color: #333;
   }
-  
+
   .field-items {
     margin-top: 2px;
   }
@@ -330,4 +330,14 @@
   li.ui-state-default {
     border-radius: 0;
   }
+}
+
+/**
+ * Menu Browser styling (http://drupal.org/project/menuux)
+ */
+#fmenu-browser {
+  height: 280px;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-width: none;
 }
