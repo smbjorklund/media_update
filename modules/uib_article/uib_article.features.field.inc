@@ -186,18 +186,17 @@ function uib_article_field_default_fields() {
       'module' => 'entityreference',
       'settings' => array(
         'entity_translation_sync' => FALSE,
-        'handler' => 'views',
+        'handler' => 'base',
         'handler_settings' => array(
           'behaviors' => array(
             'views-select-list' => array(
               'status' => 0,
             ),
           ),
-          'view' => array(
-            'args' => array(),
-            'display_name' => 'entityreference_1',
-            'view_name' => 'users',
+          'sort' => array(
+            'type' => 'none',
           ),
+          'target_bundles' => array(),
         ),
         'handler_submit' => 'Change handler',
         'target_type' => 'user',
