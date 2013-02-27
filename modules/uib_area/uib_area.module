@@ -585,6 +585,9 @@ function uib_area__create_area_aliases($node_nid, $node_alias, $language) {
         '/bachelor-programmes',
         '/master-programmes',
         '/one-year-programmes',
+        '/research-groups',
+        '/research-schools',
+        '/disciplines',
       );
       $node_url = 'node/' . intval($node_nid);
       foreach ($uib_area_aliases as $pa) {
