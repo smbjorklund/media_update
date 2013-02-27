@@ -273,7 +273,7 @@ $zen-auto-include-item-base: false;
      @include zen-clear();
      @include zen-grid-item (1, 1);
      margin: 20px 0 20px 0;
-     background-color: #f5f5f5;
+     background-color: #F1F1EF;
      webkit-border-radius: 2px;
      moz-border-radius: 2px;
      border-radius: 2px;
@@ -315,7 +315,7 @@ $zen-auto-include-item-base: false;
 
   .group_two_column .field-collection-container {
     width: 100%;
-    background: #f5f5f5;
+    background: #F1F1EF;
     border: none;
     border-radius: 2px;
     moz-border-radius: 2px;
@@ -352,7 +352,7 @@ $zen-auto-include-item-base: false;
      @include zen-clear();
      margin-bottom: 10px;
      padding: 15px;
-     background: #f5f5f5;
+     background: #F1F1EF;
      border: none;
      border-radius: 2px;
      moz-border-radius: 2px;
@@ -364,7 +364,7 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     @include zen-grid-item (1, 1);
     float: none;
-    background-color: #f5f5f5;
+    background-color: #F1F1EF;
     padding: 5px;
     border-radius: 2px;
     -moz-border-radius: 2px;
@@ -413,7 +413,7 @@ $zen-auto-include-item-base: false;
 
   #block-uib-area-node-children {
     @include zen-grid-item (1, 1);
-    background-color: #f5f5f5;
+    background-color: #F1F1EF;
     margin: 1em 1em 1em 0;
     padding: 1em;
 
@@ -490,7 +490,7 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 240px) and (max-width: 720px) {
   .view-ansatte {
     margin-left: 0;
-    background-color: #f5f5f5;
+    background-color: #F1F1EF;
 
     .media {
       width: 96%;
@@ -589,7 +589,7 @@ $zen-auto-include-item-base: false;
         width: 100%;
         float: left;
         margin: 20px 0 20px 0;
-        background: #f5f5f5;
+        background: #F1F1EF;
         webkit-border-radius: 2px;
         moz-border-radius: 2px;
         border-radius: 2px;
@@ -634,7 +634,7 @@ $zen-auto-include-item-base: false;
         border: none;
         float: left;
         width: 48%;
-        background: #f5f5f5;
+        background: #F1F1EF;
         border-radius: 2px;
         moz-border-radius: 2px;
         webkit-border-radius: 2px;
@@ -669,7 +669,7 @@ $zen-auto-include-item-base: false;
            margin-bottom: 10px;
            float: left;
            padding: 15px;
-           background: #f5f5f5;
+           background: #F1F1EF;
            border: none;
            border-radius: 2px;
            moz-border-radius: 2px;
@@ -680,7 +680,7 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-link-section {
         @include zen-grid-item (2, 1);
-        background: #f5f5f5;
+        background: #F1F1EF;
         border: none;
         border-radius: 2px;
         moz-border-radius: 2px;
@@ -696,7 +696,7 @@ $zen-auto-include-item-base: false;
         float: none;
         clear: none;
         width: 45%;
-        background: #f5f5f5;
+        background: #F1F1EF;
         padding: 2%;
         width: 46%;
         border-radius: 3px;
@@ -755,7 +755,7 @@ $zen-auto-include-item-base: false;
     @media all and (min-width: 720px) and (max-width: 959px) {
       #block-uib-area-node-children {
         @include zen-grid-item (4, 1);
-        background-color: #f5f5f5;
+        background-color: #F1F1EF;
         margin: 1em 1em 1em 0;
         padding: 1em;
         width: 97%;
@@ -1120,7 +1120,7 @@ $zen-auto-include-item-base: false;
      width: 100%;
      float: left;
      margin: 20px 0 20px 0;
-     background: #f5f5f5;
+     background: #F1F1EF;
      webkit-border-radius: 2px;
      moz-border-radius: 2px;
      border-radius: 2px;
@@ -1186,7 +1186,7 @@ $zen-auto-include-item-base: false;
         margin-bottom: 10px;
         float: left;
         padding: 15px;
-        background: #f5f5f5;
+        background: #F1F1EF;
         border: none;
         border-radius: 2px;
         moz-border-radius: 2px;
@@ -1197,7 +1197,7 @@ $zen-auto-include-item-base: false;
      .field-name-field-uib-link-section {
        @include zen-grid-item (2, 1);
        @include zen-clear();
-       background: #f5f5f5;
+       background: #F1F1EF;
        border: none;
        border-radius: 2px;
        moz-border-radius: 2px;
@@ -1244,7 +1244,7 @@ $zen-auto-include-item-base: false;
      @include zen-clear();
      float: none;
      clear: none;
-     background: #f5f5f5;
+     background: #F1F1EF;
      padding: 2%;
      width: 45%;
      border-radius: 3px;
@@ -1282,7 +1282,7 @@ $zen-auto-include-item-base: false;
   /* Area "teaser" block */
   #block-uib-area-node-children {
     @include zen-grid-item (4, 1);
-    background-color: #f5f5f5;
+    background-color: #F1F1EF;
     margin: 1em 1em 1em 0;
     padding: 1em;
     width: 97%;
