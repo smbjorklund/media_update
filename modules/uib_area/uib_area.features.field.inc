@@ -1455,7 +1455,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '25',
+        'weight' => '26',
       ),
     ),
   );
@@ -1910,7 +1910,7 @@ function uib_area_field_default_fields() {
       'description' => 'Add ids for the social media links that are desired.  Use strings like "twitter:uib", "youtube:uib", "facebook:uib", etc.  If the kind of service isn\'t supported no icon will show until support is added.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'uib_field',
           'settings' => array(),
           'type' => 'socialmedia_formatter',
@@ -1965,7 +1965,7 @@ function uib_area_field_default_fields() {
           'size' => '30',
         ),
         'type' => 'text_textfield',
-        'weight' => '26',
+        'weight' => '25',
       ),
     ),
   );
