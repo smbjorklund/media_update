@@ -163,6 +163,9 @@ function uib_zen_preprocess_page(&$variables, $hook) {
       $variables['global_menu'] = menu_navigation_links('menu-global-menu');
     }
   }
+  if (isset($variables['page']['header']['locale_language'])) {
+    $variables['extra_language'] = $variables['page']['header']['locale_language'];
+  }
 
   $variables['page_title'] = $variables['site_name']; // defaults
   $variables['page_title_link'] = l($variables['site_name'], '<front>', array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
@@ -255,7 +258,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
                 $variables['content']['field_uib_front_staff']['#weight'] = 12;
 
        }
-
+       
       // Hide "relevant links section" if empty [RTS-1073]
       if (isset($variables['content']['group_two_column']['field_uib_link_section']['#items'])) {
         if (empty($variables['content']['group_two_column']['field_uib_link_section']['#items'][0]['value'])) {
@@ -263,7 +266,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         }
       }
     }
-
+  
     // Handle articles
     if ($variables['type'] == 'uib_article') {
        if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {

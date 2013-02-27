@@ -82,6 +82,24 @@
         ));
         ?>
       </nav>
+      <div id="mobile-name-and-slogan">
+      <?php if ($logo): ?>
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+      <?php endif; ?>
+
+       <?php
+        // Modified to print name of area instead of site-name
+        // The varible 'page_title_link' is setup in template.php and contains the area name in an url
+        if ($site_name || $site_slogan || $page_title_link): ?>
+        <hgroup id="name-and-slogan-mobile">
+        <h1 id="site-name"><?php print $page_title_link; ?></h1>
+          <?php if ($site_slogan): ?>
+            <h2 id="mobile-site-slogan"><?php print $site_slogan; ?></h2>
+          <?php endif; ?>
+        </hgroup><!-- /#name-and-slogan -->
+      </div><!-- end #mobile-name-and-slogan -->
+      <?php endif; ?>
+      <div id="menu-search-mobile-wrapper">
       <div id="global-searchform">
         <form method="get" action="http://www.uib.no/search">
           <div class="searchbox">
@@ -105,9 +123,8 @@
 
   <?php if ($variables['uib_node_edit_mode'] != 'edit'): ?>
   <header id="header" role="banner">
-
     <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo large-screens"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
     <?php endif; ?>
 
      <?php
@@ -169,7 +186,8 @@
 
   </div><!-- /#navigation -->
   <?php endif; ?>
-
+  <div id="desktop-tablet-language">
+  <?php print render($extra_language); ?></div>
   <div id="main">
 
     <div id="content" class="column" role="main">
