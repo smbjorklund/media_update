@@ -259,9 +259,7 @@ $zen-auto-include-item-base: false;
       display: none;
       }
     }
-  #navigation {
-    display: none;
-  }
+
   .region-bottom {
     width: 100% !important;
   }
@@ -274,6 +272,10 @@ $zen-auto-include-item-base: false;
   }
 
   #block-locale-language {
+    display: none;
+  }
+
+  #navigation {
     display: none;
   }
 }
@@ -565,6 +567,10 @@ $zen-auto-include-item-base: false;
 
     .region-sidebar-first { /* Span 1 column, starting in 1st column from left. */
       @include zen-grid-item(1, 1);
+    }
+
+    #navigation {
+      display: block;
     }
   }
 

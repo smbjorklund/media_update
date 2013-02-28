@@ -256,9 +256,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
        if ($variables['field_uib_show_staff']['und'][0]['value'] == 1) {
         $variables['content']['field_uib_front_staff']['#markup'] = views_embed_view('ansatte', 'page_1', $variables['nid']);
                 $variables['content']['field_uib_front_staff']['#weight'] = 12;
-
        }
-       
       // Hide "relevant links section" if empty [RTS-1073]
       if (isset($variables['content']['group_two_column']['field_uib_link_section']['#items'])) {
         if (empty($variables['content']['group_two_column']['field_uib_link_section']['#items'][0]['value'])) {
@@ -266,7 +264,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         }
       }
     }
-  
     // Handle articles
     if ($variables['type'] == 'uib_article') {
        if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
@@ -349,7 +346,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
          hide($variables['content']['group_article_sidebar']['field_uib_area']);
       }
 
-      if (isset($variables['field_uib_text']['und']) && (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container'))) {
+      if (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container')) {
         drupal_add_library('system' , 'ui.tabs');
         drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js',
           array('group' => JS_THEME, )
