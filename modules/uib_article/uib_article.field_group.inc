@@ -57,7 +57,7 @@ function uib_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'article-factbox',
-    'weight' => '7',
+    'weight' => '5',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -88,8 +88,7 @@ function uib_article_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_uib_byline',
-      1 => 'field_uib_lead',
-      2 => 'field_uib_text',
+      1 => 'field_uib_text',
     ),
     'format_type' => 'div',
     'format_settings' => array(
