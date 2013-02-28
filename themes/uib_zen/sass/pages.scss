@@ -166,11 +166,11 @@ body {
   background: #005473;
   border: 1px solid #013649;
   float: right;
-  padding: 4px 26px 4px 10px;
-  width: 35px;
   a {
     color: #fff;
     text-transform:capitalize;
+    padding: 10px 20px;
+    display: inline-block;
   }
 }
 .page-webdesk .panel-col .inside {
