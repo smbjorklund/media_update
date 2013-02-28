@@ -12,6 +12,8 @@ include_once 'uib_article.features.inc';
 
 function uib_article_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == "uib_article_node_form") {
+    // Extra save button
+    $form['extra_save'] = $form['actions']['submit'];
     // Hiding $form['language']
     hide($form['language']);
     if (strstr($form['#action'], 'uib-article?translation')) {
