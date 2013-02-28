@@ -1818,13 +1818,6 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_uib_content_manager_target_id']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
@@ -1864,6 +1857,8 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
