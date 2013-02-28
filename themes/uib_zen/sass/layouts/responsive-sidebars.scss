@@ -307,6 +307,7 @@ $zen-auto-include-item-base: false;
      moz-border-radius: 2px;
      border-radius: 2px;
      padding-bottom: 20px;
+     box-shadow: $box-shadow;
 
      ul {
        @include zen-clear();
@@ -401,6 +402,7 @@ $zen-auto-include-item-base: false;
     -webkit-border-radius: 2px;
     margin-right: 10px;
     width: 97%;
+    box-shadow: $box-shadow;
 
     img {
       float: left;
@@ -655,6 +657,7 @@ $zen-auto-include-item-base: false;
         moz-border-radius: 2px;
         border-radius: 2px;
         padding-bottom: 20px;
+        box-shadow: $box-shadow;
 
         ul {
         @include zen-clear();
@@ -699,6 +702,7 @@ $zen-auto-include-item-base: false;
         border-radius: 2px;
         moz-border-radius: 2px;
         webkit-border-radius: 2px;
+        box-shadow: $box-shadow;
       }
 
       .field-name-field-uib-bottom-media  {
@@ -736,6 +740,7 @@ $zen-auto-include-item-base: false;
            moz-border-radius: 2px;
            webkit-border-radius: 2px;
            width: 45%;
+           box-shadow: $box-shadow;
          }
        }
 
@@ -762,6 +767,7 @@ $zen-auto-include-item-base: false;
         width: 46%;
         border-radius: 3px;
         margin-left: 51%;
+        box-shadow: $box-shadow;
 
         header {
           height: 1px;
@@ -1218,6 +1224,7 @@ $zen-auto-include-item-base: false;
      moz-border-radius: 2px;
      border-radius: 2px;
      padding-bottom: 20px;
+     box-shadow: $box-shadow;
 
      ul {
        @include zen-clear();
@@ -1342,6 +1349,7 @@ $zen-auto-include-item-base: false;
      width: 45%;
      border-radius: 3px;
      margin-left: 51%;
+     box-shadow: $box-shadow;
 
      header {
        height: 1px;
