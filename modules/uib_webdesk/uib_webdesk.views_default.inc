@@ -84,6 +84,8 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['label'] = '';
+  $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -321,7 +323,6 @@ function uib_webdesk_views_default_views() {
     t('Title'),
     t('Area'),
     t('Published'),
-    t('Delete link'),
     t('Alle'),
     t('My simple content'),
     t('View panes'),
@@ -1583,6 +1584,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Author';
   /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
@@ -1746,6 +1748,7 @@ function uib_webdesk_views_default_views() {
     t('My content'),
     t('author'),
     t('Page'),
+    t('Author'),
   );
   $export['uib_webdesk'] = $view;
 
