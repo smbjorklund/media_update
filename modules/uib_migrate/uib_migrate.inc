@@ -104,7 +104,7 @@ function xtopic_file($id, $uid) {
     $file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
   }
   if (isset($xtopic->dc_description)) {
-    $file->field_uib_description['fund'][]['value'] = $xtopic->dc_description;
+    $file->field_uib_description['und'][]['value'] = $xtopic->dc_description;
     // Populate image files title and ALT attribute with something useful.
     if ($xtopic->type == 'image') {
       $title = truncate_utf8($xtopic->dc_description, 200, TRUE, TRUE, 1);
