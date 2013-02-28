@@ -346,7 +346,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
          hide($variables['content']['group_article_sidebar']['field_uib_area']);
       }
 
-      if (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container')) {
+      if (isset($variables['field_uib_text']['und']) && (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container'))) {
         drupal_add_library('system' , 'ui.tabs');
         drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js',
           array('group' => JS_THEME, )
