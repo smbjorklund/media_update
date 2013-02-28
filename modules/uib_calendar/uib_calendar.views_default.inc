@@ -144,6 +144,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'View full calendar';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
@@ -769,7 +770,6 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
   $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'php';
-  $handler->display->display_options['arguments']['date_argument']['default_argument_options']['code'] = 'if (isset($_GET["date"])) {return $_GET["date"];} else {return date_format(date_now(), "Y-m");}';
   $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_uib_date.field_uib_date_value' => 'field_data_field_uib_date.field_uib_date_value',
@@ -830,6 +830,7 @@ function uib_calendar_views_default_views() {
     t('<h2>[field_uib_event_type]</h2>'),
     t('All'),
     t('Area calendar block'),
+    t('View full calendar'),
     t('[field_uib_date] - [title] ([field_uib_event_type])'),
     t('Month'),
     t('Day'),
