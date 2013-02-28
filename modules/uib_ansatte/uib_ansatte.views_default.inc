@@ -126,6 +126,13 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_uib_last_name_1']['element_label_colon'] = FALSE;
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -134,7 +141,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="media">
  [picture]
   <div class="info">
-    <h2>[field_uib_first_name] [field_uib_last_name]</h2>
+    <h2><a href="user/[uid]">[field_uib_first_name] [field_uib_last_name]</a></h2>
     [field_uib_position]
     [field_uib_phone]
     [mail]
@@ -363,6 +370,13 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_uib_last_name_1']['element_label_colon'] = FALSE;
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -371,7 +385,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="media">
  [picture]
   <div class="info">
-    <h2>[field_uib_first_name] [field_uib_last_name]</h2>
+    <h2><a href="user/[uid]">[field_uib_first_name] [field_uib_last_name]</a></h2>
     [field_uib_position]
     [field_uib_phone]
     [mail]
@@ -455,10 +469,11 @@ function uib_ansatte_views_default_views() {
     t('E-mail'),
     t('Phone'),
     t('[field_uib_phone]<br>'),
+    t('Uid'),
     t('<div class="media">
  [picture]
   <div class="info">
-    <h2>[field_uib_first_name] [field_uib_last_name]</h2>
+    <h2><a href="user/[uid]">[field_uib_first_name] [field_uib_last_name]</a></h2>
     [field_uib_position]
     [field_uib_phone]
     [mail]
