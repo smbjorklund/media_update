@@ -562,6 +562,24 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
         }
       }
     }
+    $form['field_uib_area_parents']['#states'] = array(
+      'required' => array(
+        ':input[name="field_uib_area_type[und]"]' => array('value' => 'discipline'),
+       ),
+    );
+  }
+}
+
+/**
+* Implements hook_node_validate
+*/
+function uib_area_node_validate($node, $form, &$form_state){
+  if ($form['#form_id'] == 'area_node_form') {
+    if ($form['field_uib_area_type']['und']['#value'] == 'discipline') {
+      if (empty($form['field_uib_area_parents']['und'][0]['target_id']['#value'])) {
+        form_set_error('field_uib_area_parents', t('Area parent is required'));
+      }
+    }
   }
 }
 
