@@ -70,7 +70,7 @@ function uib_setup_image_default_styles() {
   $styles['area_main'] = array(
     'name' => 'area_main',
     'effects' => array(
-      3 => array(
+      1 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -81,7 +81,7 @@ function uib_setup_image_default_styles() {
         'name' => 'image_scale',
         'data' => array(
           'width' => '354',
-          'height' => '199',
+          'height' => '266',
           'upscale' => 1,
         ),
         'weight' => '2',
