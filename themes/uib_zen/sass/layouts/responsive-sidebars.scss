@@ -356,6 +356,7 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (1, 1);
   }
 
+  
   .field-name-field-uib-bottom-media  {
     @include zen-clear();
     @include zen-grid-item (1, 1);
@@ -877,7 +878,7 @@ $zen-auto-include-item-base: false;
       float:left;
       margin: 10px 0 0 0;
       padding: 0 10px 0 0;
-      width:210px;
+      width:160px;
       }
     }
 
@@ -1115,7 +1116,7 @@ $zen-auto-include-item-base: false;
     float:left;
     margin: 10px 0 0 0;
     padding: 0 10px 0 0;
-    width:210px;
+    width:160px;
     }
   }
 

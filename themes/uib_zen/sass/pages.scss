@@ -419,7 +419,7 @@ div.add-or-remove-shortcuts {
   }
 }
 
-#block-views-recent-news-block .views-row  {
+#block-views-recent-news-block .views-row, .view-calendar .views-row  {
   margin-bottom: 8px;
 }
 
@@ -435,4 +435,13 @@ div.add-or-remove-shortcuts {
   td {
     border: solid 1px silver;
   }
+}
+.view-id-recent_news ul.views-summary {
+  display: inline-block;
+  padding: 0 0 20px 20px;
+  background: $light-grey;
+  box-shadow: $medium-grey 1px 1px 5px;
+}
+.view-display-id-newsarchive span {
+  font-size: 1.3em;
 }

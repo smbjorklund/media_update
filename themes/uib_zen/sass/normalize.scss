@@ -221,7 +221,7 @@ h1 {
 h2 {
   @include adjust-font-size-to( $h2-font-size );
   @include leader(1, $h2-font-size);
-  @include trailer(1, $h2-font-size);
+  @include trailer(.5, $h2-font-size);
   border-top: $sidebar-border;
   border-bottom: $sidebar-border;
   font-family: $font-body;

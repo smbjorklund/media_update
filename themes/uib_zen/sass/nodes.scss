@@ -112,6 +112,11 @@
 .view-calendar .view-content a  {
   color: #333;
 }
+.view-calendar .views-summary a  {
+  color: $blue;
+  text-transform: capitalize;
+  font-size: 1.1em;
+}
 
 /* Area page */
 .node-area #content {
