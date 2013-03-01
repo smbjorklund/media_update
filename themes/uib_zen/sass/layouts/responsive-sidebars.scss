@@ -1261,6 +1261,23 @@ $zen-auto-include-item-base: false;
       float: left;
       margin-right: 20px;
       height: 35px;
+      width: 100px;
+
+      .twitter {
+        background-image: url('../../images/twitter.png');
+        background-repeat: no-repeat;
+        padding: 8px 0 10px 35px;
+      }
+      .youtube {
+        background-image: url('../../images/youtube.png');
+        background-repeat: no-repeat;
+        padding: 8px 0 10px 35px;
+      }
+      .facebook {
+        background-image: url('../../images/facebook.png');
+        background-repeat: no-repeat;
+        padding: 8px 0 10px 35px;
+      }
     }
   }
 
