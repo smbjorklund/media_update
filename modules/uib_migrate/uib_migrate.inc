@@ -249,6 +249,13 @@ class InfoPageMigration extends XTopicToArticleMigration {
     }
   }
 
+  public function prepare($node, $row) {
+    parent::prepare($node, $row);
+    $node->menu = array(
+      'enabled' => TRUE,
+    );
+  }
+
   public function complete($node, $row) {
      if(!empty($row->url)) {
       // Setup redirects for w2 urls to w3 nodes
@@ -304,35 +311,47 @@ class NavPageMigration extends InfoPageMigration {
   public function complete($node, $row) {
     parent::complete($node, $row); // perform complete function of parent
     if (isset($row->menu_top_entry)) {
-      // Determine the menu_link of the corresponding area
-      $result = db_select('menu_links')
-        ->fields('menu_links', array('mlid', 'link_path'))
+      $result = db_select('menu_links', 'ml')
+        ->fields('ml', array('mlid'))
         ->condition('menu_name', 'area')
-        ->condition('link_path', 'node/' . $node->field_uib_area['und'][0]['target_id'])
-        ->condition('depth', 1);
-      foreach ($result->execute() as $item) {
-        $area_mlid = $item->mlid;
+        ->condition('link_path', 'node/' . $node->nid)
+        ->condition('depth', 2)
+        ->execute();
+      $update = FALSE;
+      foreach($result as $item) {
+        $update = TRUE;
       }
+      if (!$update) {
+        // Determine the menu_link of the corresponding area
+        $result = db_select('menu_links')
+          ->fields('menu_links', array('mlid', 'link_path'))
+          ->condition('menu_name', 'area')
+          ->condition('link_path', 'node/' . $node->field_uib_area['und'][0]['target_id'])
+          ->condition('depth', 1);
+        foreach ($result->execute() as $item) {
+          $area_mlid = $item->mlid;
+        }
 
-      // Create top level area menu link
-      if (empty($row->nav_weight)) {
-        $row->nav_weight = 0; // Empty weights cause postgres errors/warnings
-        uibx_log("Set empty menu link nav_weight to zero", 'notice');
+        // Create top level area menu link
+        if (empty($row->nav_weight)) {
+          $row->nav_weight = 0; // Empty weights cause postgres errors/warnings
+          uibx_log("Set empty menu link nav_weight to zero", 'notice');
+        }
+        if (!empty($node->field_uib_menu_title_w2['und'][0]['value'])) {
+          $link_title = $node->field_uib_menu_title_w2['und'][0]['value'];
+        }
+        else {
+          $link_title = $node->title;
+        }
+        $menu_link = array(
+          'menu_name' => 'area',
+          'link_path' => drupal_get_normal_path('node/' . $node->nid),
+          'link_title' => $link_title,
+          'weight' => $row->nav_weight,
+          'plid' => $area_mlid,
+        );
+        menu_link_save($menu_link);
       }
-      if (!empty($node->field_uib_menu_title_w2['und'][0]['value'])) {
-        $link_title = $node->field_uib_menu_title_w2['und'][0]['value'];
-      }
-      else {
-        $link_title = $node->title;
-      }
-      $menu_link = array(
-        'menu_name' => 'area',
-        'link_path' => drupal_get_normal_path('node/' . $node->nid),
-        'link_title' => $link_title,
-        'weight' => $row->nav_weight,
-        'plid' => $area_mlid,
-      );
-      menu_link_save($menu_link);
     }
   }
 }
