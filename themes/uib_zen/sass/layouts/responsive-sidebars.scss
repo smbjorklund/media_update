@@ -325,7 +325,7 @@ $zen-auto-include-item-base: false;
 
      p  {
        @include zen-clear();
-       padding: 20px 20px 0 20px;
+       padding: 0px 20px 0 20px;
        display: block;
      }
 
@@ -674,7 +674,7 @@ $zen-auto-include-item-base: false;
 
         p  {
           @include zen-clear();
-          padding: 20px 20px 0 20px;
+          padding: 0px 20px 0 20px;
         }
 
         h4  {
@@ -1241,7 +1241,7 @@ $zen-auto-include-item-base: false;
 
      p  {
        @include zen-clear();
-       padding: 20px 20px 0 20px;
+       padding: 0px 20px 0 20px;
      }
 
      h4  {
