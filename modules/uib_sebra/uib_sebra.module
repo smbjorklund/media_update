@@ -21,7 +21,6 @@ function uib_sebra__sync($job) {
   uibx_log("SEBRA SYNC start");
   uib_sebra__sync_places(10);
   uib_sebra__sync_areas();
-  uib_sebra__sync_users(100);
   uibx_log("SEBRA SYNC done");
 }
 
