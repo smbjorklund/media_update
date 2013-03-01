@@ -551,7 +551,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__file_field_file_default';
-  $file_display->weight = 0;
+  $file_display->weight = -41;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['video__content_main__file_field_file_default'] = $file_display;
@@ -559,7 +559,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__file_field_file_rendered';
-  $file_display->weight = 0;
+  $file_display->weight = -42;
   $file_display->status = FALSE;
   $file_display->settings = array(
     'file_view_mode' => 'default',
@@ -569,7 +569,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__file_field_file_table';
-  $file_display->weight = 0;
+  $file_display->weight = -45;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['video__content_main__file_field_file_table'] = $file_display;
@@ -577,7 +577,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__file_field_file_url_plain';
-  $file_display->weight = 0;
+  $file_display->weight = -46;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['video__content_main__file_field_file_url_plain'] = $file_display;
@@ -585,7 +585,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__file_field_media_large_icon';
-  $file_display->weight = 0;
+  $file_display->weight = -43;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['video__content_main__file_field_media_large_icon'] = $file_display;
@@ -593,7 +593,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__file_image';
-  $file_display->weight = 0;
+  $file_display->weight = -44;
   $file_display->status = FALSE;
   $file_display->settings = array(
     'image_style' => '',
@@ -605,7 +605,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__media_vimeo_image';
-  $file_display->weight = 0;
+  $file_display->weight = -48;
   $file_display->status = TRUE;
   $file_display->settings = array(
     'image_style' => '',
@@ -615,7 +615,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__media_vimeo_video';
-  $file_display->weight = 0;
+  $file_display->weight = -47;
   $file_display->status = TRUE;
   $file_display->settings = array(
     'width' => '708',
@@ -627,28 +627,28 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__media_youtube_image';
-  $file_display->weight = 0;
+  $file_display->weight = -49;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => '',
+    'image_style' => 'content_main',
   );
   $export['video__content_main__media_youtube_image'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__content_main__media_youtube_video';
-  $file_display->weight = 0;
+  $file_display->weight = -50;
   $file_display->status = TRUE;
   $file_display->settings = array(
     'width' => '708',
-    'height' => '',
-    'theme' => 'dark',
+    'height' => '398',
+    'theme' => 'light',
     'color' => 'red',
     'autohide' => '2',
     'autoplay' => 0,
     'loop' => 0,
     'showinfo' => 1,
-    'modestbranding' => 0,
+    'modestbranding' => 1,
     'rel' => 0,
     'nocookie' => 0,
     'protocol_specify' => 0,
@@ -729,6 +729,8 @@ function uib_setup_file_default_displays() {
   $file_display->status = FALSE;
   $file_display->settings = array(
     'image_style' => '',
+    'alt' => '[file:field_file_image_alt_text]',
+    'title' => '[file:field_file_image_title_text]',
   );
   $export['video__full_width_image__file_image'] = $file_display;
 
@@ -758,9 +760,9 @@ function uib_setup_file_default_displays() {
   $file_display->api_version = 1;
   $file_display->name = 'video__full_width_image__media_youtube_image';
   $file_display->weight = 0;
-  $file_display->status = FALSE;
+  $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => '',
+    'image_style' => 'full_width_16_9',
   );
   $export['video__full_width_image__media_youtube_image'] = $file_display;
 
