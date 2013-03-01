@@ -642,7 +642,7 @@ function uib_setup_file_default_displays() {
   $file_display->settings = array(
     'width' => '708',
     'height' => '398',
-    'theme' => 'light',
+    'theme' => 'dark',
     'color' => 'red',
     'autohide' => '2',
     'autoplay' => 0,
