@@ -203,6 +203,33 @@
   margin: 20px 0 5px 0;
 }
 
+.field-name-field-uib-main-media {
+  background-color: #F1F1EF;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #DEDFDD;
+
+  .field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
+    font-size: .8em;
+    margin: 0 10px 0 10px;
+
+    .field-label {
+      font-weight: normal;
+      border: none;
+      text-transform: none;
+      font-family: verdana, sans-serif;
+      font-size: 1em;
+      color: #333;
+    }
+
+    .field-items {
+      margin-top: 2px;
+    }
+  }
+}
+
+
+
 .node-type-uib-testimonial {
   .field-name-field-uib-media, .field-name-field-uib-lead, .field-name-field-uib-text {
     .field-label {
@@ -220,7 +247,7 @@
 }
 
 .field-name-field-uib-fact-box  {
-  background: #f0f4f5;
+  background: #F1F1EF;
   line-height: 14px;
   border-top: solid silver 1px;
   padding-bottom: 5px;
@@ -292,22 +319,6 @@
 
 
 /* General styling for description, copyright and photographer */
-.field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
-  font-size: .8em;
-
-  .field-label {
-    font-weight: normal;
-    border: none;
-    text-transform: none;
-    font-family: verdana, sans-serif;
-    font-size: 1em;
-    color: #333;
-  }
-
-  .field-items {
-    margin-top: 2px;
-  }
-}
 
 .group-article-sidebar .field-name-field-uib-copyright .field-label, .field-name-field-uib-owner .field-label {
   margin-top: 2px;
