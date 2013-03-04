@@ -383,8 +383,7 @@ div.add-or-remove-shortcuts {
 }
 
 /* Adding a double border on all blocks and fields in area and article sidebar */
-.region-sidebar-second .block >*, .group_article_sidebar .field >* {
-  border-bottom-style: double;
+.region-sidebar-second .block >* {
   border-color: #c8d1d5;
 
   a {
@@ -418,7 +417,11 @@ div.add-or-remove-shortcuts {
     height: 32px;
   }
 }
+#block-uib-area-area-parents,#block-uib-area-jobbnorge {
+  border-bottom-style: double;
+  border-color: #c8d1d5;
 
+}
 #block-views-recent-news-block .views-row, .view-calendar .views-row  {
   margin-bottom: 8px;
 }
