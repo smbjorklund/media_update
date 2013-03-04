@@ -333,7 +333,7 @@
 }
 
 
-/* styles for tabs recoded from <h2> headers [module uib_h2tabs] */
+/* styles for tabs recoded from <h2> headers */
 .uib-tabs-container {
   border: none;
   .ui-widget-header {
@@ -342,9 +342,9 @@
   }
   li.ui-state-active {
     background: #aa0000;
-    border-radius: 0;
-    border: none;
-    a {color: #fff;}
+    a {
+      color: #fff;
+    }
   }
   li.ui-state-default {
     border-radius: 0;
