@@ -53,12 +53,12 @@ body {
 
 .logo { /* Wrapping link for logo */
   float: left; /* LTR */
-  margin: 10px 0 0 0;
+  margin: 5px 0 0 0;
   padding: 0;
 
   img {
     vertical-align: bottom;
-    height: 70px;
+    height: 7.3em;
   }
 }
 
@@ -71,7 +71,7 @@ body {
   font-size: 1.5em;
   line-height: 1.5em;
   border-left: 1px #AA0000 solid; /* the red line between logo and title in header */
-  padding: 20px;
+  padding: 20px 20px 20px 16px;
 
   a:link,
   a:visited {
