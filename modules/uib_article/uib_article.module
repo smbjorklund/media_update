@@ -68,6 +68,10 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
 
 function uib_article_node_submit($node, $form, &$form_state) {
   if ($form["#form_id"] == "uib_article_node_form") {
+    if(isset($_GET['destination'])) {
+          unset($_GET['destination']);
+    }
+
     $areanid = $node->field_uib_area['und'][0]['target_id'];
     if (isset($areanid)) {
       $area = node_load($areanid);
