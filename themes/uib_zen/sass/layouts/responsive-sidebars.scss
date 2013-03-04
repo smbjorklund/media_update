@@ -1273,24 +1273,27 @@ $zen-auto-include-item-base: false;
 
     .field-item {
       float: left;
-      margin-right: 20px;
-      height: 35px;
-      width: 100px;
+      margin-left: 10px;
+      height: 25px;
+      width: 90px;
 
       .twitter {
         background-image: url('../../images/twitter.png');
         background-repeat: no-repeat;
-        padding: 8px 0 10px 35px;
+        background-position: 0 4px;
+        padding: 8px 0 10px 30px;
       }
       .youtube {
         background-image: url('../../images/youtube.png');
         background-repeat: no-repeat;
-        padding: 8px 0 10px 35px;
+        background-position: 0 4px;
+        padding: 8px 0 10px 30px;
       }
       .facebook {
         background-image: url('../../images/facebook.png');
         background-repeat: no-repeat;
-        padding: 8px 0 10px 35px;
+        background-position: 0 4px;
+        padding: 8px 0 10px 30px;
       }
     }
   }
