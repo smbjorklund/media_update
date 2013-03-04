@@ -642,7 +642,7 @@ class AreaMigration extends Migration {
     }
   }
 
-  public function prepare($node, $row) {
+  public function prepare($term, $row) {
     if (isset($row->placeid)) {
     // Check if we already have a 'uib_ou' node with the given placeid
       $nid = uib_sebra__uib_ou_nid($row->placeid);
@@ -657,7 +657,7 @@ class AreaMigration extends Migration {
     }
 
     if (isset($row->media)) {
-      $file = xtopic_file($row->media[0], $node->uid, $row->site_lang);
+      $file = xtopic_file($row->media[0], $term->uid, $row->site_lang);
       $term->field_uib_primary_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,
