@@ -1104,6 +1104,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
   $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
   $handler->display->display_options['fields']['field_uib_main_media']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_main_media']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_main_media']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_main_media']['empty'] = '<img src="/sites/all/themes/uib/uib_zen/images/uib-placeholder.png">';
   $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
@@ -1111,6 +1112,22 @@ return TRUE;';
   $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
     'file_view_mode' => 'teaser',
   );
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['text'] = '[field_uib_main_media]';
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1126,6 +1143,11 @@ return TRUE;';
   $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['max_length'] = '400';
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['more_link'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['more_link_text'] = 'Read more';
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['more_link_path'] = '[path]';
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Area (field_uib_area) */
@@ -1227,7 +1249,9 @@ return TRUE;';
     t('last »'),
     t('Post date'),
     t('<img src="/sites/all/themes/uib/uib_zen/images/uib-placeholder.png">'),
+    t('[field_uib_main_media]'),
     t('[title] ([created_1])'),
+    t('Read more'),
     t('Feed'),
     t('Date and year selector'),
     t('Select news by month and year'),
