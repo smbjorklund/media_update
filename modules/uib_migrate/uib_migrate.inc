@@ -676,14 +676,21 @@ class AreaMigration extends Migration {
     uib_area__create_area_aliases($node->nid, $node_alias, $node->language);
 
     $weight = array_search($row->type, array(
-      'fakultet', 'institutt', 'enhet',
+      'fakultet',
+      'faculty',
+      'institutt',
+      'institute',
+      'enhet',
       'section',
-      'forskningsgruppe', 'forskerskole',
+      'forskningsgruppe',
+      'research group',
+      'forskerskole',
+      'research school',
     ));
     if ($weight === FALSE) {
       $weight = 99;
     }
-    if (! is_integer($weight)) {
+    if (!is_integer($weight)) {
       $weight = 99;
     }
     $menu_link = array(
