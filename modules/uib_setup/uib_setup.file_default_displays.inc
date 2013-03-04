@@ -441,7 +441,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__file_field_file_default';
-  $file_display->weight = 0;
+  $file_display->weight = -41;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['video__area_main__file_field_file_default'] = $file_display;
@@ -449,7 +449,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__file_field_file_rendered';
-  $file_display->weight = 0;
+  $file_display->weight = -42;
   $file_display->status = FALSE;
   $file_display->settings = array(
     'file_view_mode' => 'default',
@@ -459,7 +459,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__file_field_file_table';
-  $file_display->weight = 0;
+  $file_display->weight = -45;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['video__area_main__file_field_file_table'] = $file_display;
@@ -467,7 +467,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__file_field_file_url_plain';
-  $file_display->weight = 0;
+  $file_display->weight = -46;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['video__area_main__file_field_file_url_plain'] = $file_display;
@@ -475,7 +475,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__file_field_media_large_icon';
-  $file_display->weight = 0;
+  $file_display->weight = -43;
   $file_display->status = FALSE;
   $file_display->settings = '';
   $export['video__area_main__file_field_media_large_icon'] = $file_display;
@@ -483,7 +483,7 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__file_image';
-  $file_display->weight = 0;
+  $file_display->weight = -44;
   $file_display->status = FALSE;
   $file_display->settings = array(
     'image_style' => '',
@@ -495,17 +495,17 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__media_vimeo_image';
-  $file_display->weight = 0;
+  $file_display->weight = -48;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => '',
+    'image_style' => 'area_main',
   );
   $export['video__area_main__media_vimeo_image'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__media_vimeo_video';
-  $file_display->weight = 0;
+  $file_display->weight = -49;
   $file_display->status = TRUE;
   $file_display->settings = array(
     'width' => '354',
@@ -517,17 +517,17 @@ function uib_setup_file_default_displays() {
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__media_youtube_image';
-  $file_display->weight = 0;
+  $file_display->weight = -47;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => '',
+    'image_style' => 'area_main',
   );
   $export['video__area_main__media_youtube_image'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
   $file_display->name = 'video__area_main__media_youtube_video';
-  $file_display->weight = 0;
+  $file_display->weight = -50;
   $file_display->status = TRUE;
   $file_display->settings = array(
     'width' => '354',
@@ -537,7 +537,7 @@ function uib_setup_file_default_displays() {
     'autohide' => '2',
     'autoplay' => 0,
     'loop' => 0,
-    'showinfo' => 1,
+    'showinfo' => 0,
     'modestbranding' => 0,
     'rel' => 0,
     'nocookie' => 0,
@@ -647,8 +647,8 @@ function uib_setup_file_default_displays() {
     'autohide' => '2',
     'autoplay' => 0,
     'loop' => 0,
-    'showinfo' => 1,
-    'modestbranding' => 1,
+    'showinfo' => 0,
+    'modestbranding' => 0,
     'rel' => 0,
     'nocookie' => 0,
     'protocol_specify' => 0,
