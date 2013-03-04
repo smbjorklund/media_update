@@ -278,6 +278,10 @@ $zen-auto-include-item-base: false;
   #navigation {
     display: none;
   }
+
+  #name-and-slogan-mobile {
+    padding-top: 1px;
+  }
 }
 
 /* Area mobile */
@@ -1276,6 +1280,7 @@ $zen-auto-include-item-base: false;
       margin-left: 10px;
       height: 25px;
       width: 90px;
+      text-transform: capitalize;
 
       .twitter {
         background-image: url('../../images/twitter.png');
