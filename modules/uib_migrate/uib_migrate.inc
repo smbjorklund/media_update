@@ -48,8 +48,13 @@ function xtopic_fixuri($text) {
  *    same Drupal object.  If not a new file object is created and stored
  *    in the Drupal database and then returned.
  */
-function xtopic_file($id, $uid) {
-  // Check if we already have a 'file' migrated from the same id, if so return it
+function xtopic_file($id, $uid, $parent_lang = 'nb') {
+  if (empty($parent_lang)) {
+    $parent_lang = 'nb';
+  }
+  // Check if we already have a 'file' migrated from the same id
+  // If so, load the file object properly to make it possible to update it below
+  $file_exists = FALSE;
   $query = new EntityFieldQuery;
   $result = $query
     ->entityCondition('entity_type', 'file')
@@ -58,7 +63,9 @@ function xtopic_file($id, $uid) {
     ->execute();
   if (!empty($result['file'])) {
     $res = array_values($result['file']);
-    return $res[0]; // will be a stdClass object with 'fid' set, which is good enough
+    $file = file_load($res[0]->fid);
+    $file_exists = TRUE;
+    uibx_log('Updating metadata for existing file: fid=' . $file->fid, 'notice');
   }
 
   // Fetch file meta info from w2
@@ -68,13 +75,28 @@ function xtopic_file($id, $uid) {
   }
   elseif ($xtopic->type == 'file') {
     $uri = $xtopic->file;
+    $file_mime_type = file_get_mimetype($uri); // defaults to "application/octet-stream" for unknowns
+    // Attempt to divide w2 files of type "file" into Drupal file types
+    $tmp = explode('/', $file_mime_type);
+    $media_content_type = trim($tmp[0]);
+    if ($media_content_type == 'audio') {
+      $xtopic->type = 'audio';
+    }
+    elseif ($media_content_type == 'video') {
+      $xtopic->type = 'video';
+    }
+    else {
+      $xtopic->type = 'document';
+    }
   }
   else {
     die("Unknown file type: " . $xtopic->type);
   }
 
   $uri = XTopic::url($uri);
-  $file = new stdClass();
+  if (!$file_exists) {
+    $file = new stdClass();
+  }
   $basename = drupal_basename($uri);
   if(function_exists('transliteration_clean_filename')) {
     $basename = transliteration_clean_filename($basename, 'nb');
@@ -83,7 +105,12 @@ function xtopic_file($id, $uid) {
   $dirname = 'public://w2/' . $hash;
   @drupal_mkdir($dirname, NULL, TRUE);
   $filename = "$dirname/$basename";
-  $filename = file_destination($filename, FILE_EXISTS_RENAME);
+  if ($file_exists) {
+    $filename = file_destination($filename, FILE_EXISTS_REPLACE);
+  }
+  else {
+    $filename = file_destination($filename, FILE_EXISTS_RENAME);
+  }
 
   $opts = array(
     'http' => array(
@@ -91,57 +118,141 @@ function xtopic_file($id, $uid) {
       )
     );
   $context = stream_context_create($opts);
-
-  if (!copy($uri, $filename, $context)) {
-    print_r(error_get_last());
-    die("Failed to copy file $uri to $filename\n");
+  if (!$file_exists) {
+    if (!copy($uri, $filename, $context)) {
+      print_r(error_get_last());
+      die("Failed to copy file $uri to $filename\n");
+    }
   }
 
   if (isset($xtopic->photographer)) {
-    $file->field_uib_owner['und'][]['value'] = $xtopic->photographer;
+    if (!empty($file->field_uib_owner['und'])) {
+      if ($file->field_uib_owner['und'][0]['value'] != $xtopic->photographer) {
+        $file->field_uib_owner['und'][]['value'] = $xtopic->photographer;
+      }
+    }
+    else {
+      $file->field_uib_owner['und'][]['value'] = $xtopic->photographer;
+    }
   }
   if (isset($xtopic->{1351138798041054899})) {
-    $file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
+    if (!empty($file->field_uib_copyright['und'])) {
+      if ($file->field_uib_copyright['und'][0]['value'] != $xtopic->{1351138798041054899}) {
+        $file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
+      }
+    }
+    else {
+      $file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
+    }
   }
   if (isset($xtopic->dc_description)) {
-    $file->field_uib_description['und'][]['value'] = $xtopic->dc_description;
+    if (isset($file->field_uib_description[$parent_lang])) {
+      if ($file->field_uib_description[$parent_lang][0]['value'] != $xtopic->dc_description) {
+        $file->field_uib_description[$parent_lang][]['value'] = $xtopic->dc_description;
+      }
+    }
+    elseif (isset($file->field_uib_description['und'])) { // fix for previous erroneously migrated descriptions
+      $file->field_uib_description[$parent_lang][]['value'] = $xtopic->dc_description;
+      unset($file->field_uib_description['und']);
+    }
+    else {
+      $file->field_uib_description[$parent_lang][]['value'] = $xtopic->dc_description;
+    }
+
     // Populate image files title and ALT attribute with something useful.
     if ($xtopic->type == 'image') {
-      $title = truncate_utf8($xtopic->dc_description, 200, TRUE, TRUE, 1);
-      $file->field_file_image_title_text['und'][]['value'] = $title;
-      $alt = truncate_utf8($xtopic->dc_description, 80, TRUE, TRUE, 1);
-      $file->field_file_image_alt_text['und'][]['value'] = $alt;
+      $title = truncate_utf8($file->field_uib_description[$parent_lang][0]['value'], 200, TRUE, TRUE, 1);
+      if (isset($file->field_file_image_title_text[$parent_lang])) {
+        if ($file->field_file_image_title_text[$parent_lang][0]['value'] != $title) {
+          $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
+        }
+      }
+      elseif (isset($file->field_file_image_title_text['und'])) { // fix for previous erroneously migrated titles
+        $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
+        unset($file->field_file_image_title_text['und']);
+      }
+      else {
+        $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
+      }
+      $alt = truncate_utf8($file->field_uib_description[$parent_lang][0]['value'], 80, TRUE, TRUE, 1);
+      if (isset($file->field_file_image_alt_text['und'])) {
+        if ($file->field_file_image_alt_text['und'][0]['value'] != $alt) {
+          $file->field_file_image_alt_text['und'][]['value'] = $alt;
+        }
+      }
+      else {
+        $file->field_file_image_alt_text['und'][]['value'] = $alt;
+      }
     }
   }
-
   $file->field_uib_w2_id['und'][]['value'] = $id;
   $tmp_title = $xtopic->title;
-  $longest_expected_title = 100; // If the title is too long, treat it as description if possible
+  $longest_expected_title = 100; // If the title is very long, treat it as description if possible
   if (mb_strlen($tmp_title, 'UTF-8') > $longest_expected_title) {
-    if (empty($file->field_uib_description['und'])) {
-      $file->field_uib_description['und'][]['value'] = $tmp_title;
-      uibx_log('Title of file copied to description: ' . $xtopic->title, 'warning');
-    }
-    if (mb_strlen($tmp_title, 'UTF-8') > 255) {
-       $tmp_title = truncate_utf8($xtopic->dc_description, 250, TRUE, TRUE, 1); // if title is > 255 it causes an error in postgresql
-      uibx_log('Title of file right-truncated to 250 chars: ' . $xtopic->title, 'warning');
+    if (empty($file->field_uib_description[$parent_lang])) { // only if description is empty
+      $file->field_uib_description[$parent_lang][]['value'] = $tmp_title;
+      uibx_log('Long title of file copied to previously empty description: ' . $xtopic->title, 'warning');
     }
   }
+  if (mb_strlen($tmp_title, 'UTF-8') > 255) {
+    $tmp_title = truncate_utf8($xtopic->title, 250, TRUE, TRUE, 1); // if title is > 255 it causes an error in postgresql
+    uibx_log('Title of file right-truncated to 250 chars: ' . $xtopic->title, 'warning');
+  }
+
   $tmp_title = trim($tmp_title);
   if (empty($tmp_title) OR $tmp_title == '.') {
     $tmp_title = $basename; // fix for stupid or empty titles
   }
-  $file->filename = $tmp_title;
-  $file->uri = $filename;
+  if (!empty($file->filename)) {
+    if ($file->filename != $tmp_title) {
+      $file->filename = $tmp_title;
+    }
+  } else {
+    $file->filename = $tmp_title;
+  }
+  if (!$file_exists) {
+    $file->uri = $filename;
+  }
   $file->uid = $uid;
   $file->status = FILE_STATUS_PERMANENT;
+  if (!empty($file->type)) {
+    if ($file->type != $xtopic->type) {
+      $file->type = $xtopic->type; // Set bundle
+    }
+  }
+  else {
+    $file->type = $xtopic->type; // Set bundle
+  }
+  // init entity translation
+  if ($xtopic->type != 'document') {
+    if ($file_exists) {
+      // check if translation has been initialized for this file
+      $result = db_select('entity_translation', 'f')
+      ->fields('f', array('entity_id'))
+      ->condition('entity_id', $file->fid, '=')
+      ->condition('entity_type', 'file', '=')
+      ->execute();
+      if ($result->rowCount() == 0) {
+        $et = entity_translation_get_handler('file', $file);
+        $translation = array('language' => $parent_lang, 'status' => 1);
+        $et->setTranslation($translation);
+        $et->setOriginalLanguage($parent_lang);
+      }
+    }
+    $et = entity_translation_get_handler('file', $file);
+    $translation = array('language' => $parent_lang, 'status' => 1);
+    $et->setTranslation($translation);
+    $et->setOriginalLanguage($parent_lang);
+  }
   file_save($file);
   if (!$file->fid) {
     die("Could not save file");
   }
   else {  //Touch timestamp to preserve timestamps from legacy system (w2).
-    $file->timestamp = strtotime($xtopic->created);
-    drupal_write_record('file_managed', $file, 'fid');
+    if (!$file_exists) {
+      $file->timestamp = strtotime($xtopic->created);
+      drupal_write_record('file_managed', $file, 'fid');
+    }
   }
   return $file;
 }
@@ -207,7 +318,7 @@ abstract class XTopicToArticleMigration extends Migration {
 
   public function prepare($node, $row) {
     if (isset($row->main_media)) {
-      $file = xtopic_file($row->main_media, $node->uid);
+      $file = xtopic_file($row->main_media, $node->uid, $row->site_lang);
       $node->field_uib_main_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,
@@ -216,7 +327,7 @@ abstract class XTopicToArticleMigration extends Migration {
 
     if (!empty($row->media)) {
       foreach ($row->media as $file_id) {
-        $file = xtopic_file($file_id, $node->uid);
+        $file = xtopic_file($file_id, $node->uid, $row->site_lang);
         $node->field_uib_media['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
@@ -226,7 +337,7 @@ abstract class XTopicToArticleMigration extends Migration {
 
     if (!empty($row->attachments)) {
       foreach ($row->attachments as $file_id) {
-        $file = xtopic_file($file_id, $node->uid);
+        $file = xtopic_file($file_id, $node->uid, $row->site_lang);
         $node->field_uib_files['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
@@ -464,7 +575,7 @@ class TestimonialMigration extends Migration {
 
     if (!empty($row->media)) {
       foreach ($row->media as $file_id) {
-        $file = xtopic_file($file_id, $node->uid);
+        $file = xtopic_file($file_id, $node->uid, $row->site_lang);
         $node->field_uib_media['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
@@ -531,7 +642,7 @@ class AreaMigration extends Migration {
     }
   }
 
-  public function prepare($term, $row) {
+  public function prepare($node, $row) {
     if (isset($row->placeid)) {
     // Check if we already have a 'uib_ou' node with the given placeid
       $nid = uib_sebra__uib_ou_nid($row->placeid);
@@ -546,7 +657,7 @@ class AreaMigration extends Migration {
     }
 
     if (isset($row->media)) {
-      $file = xtopic_file($row->media[0], $node->uid);
+      $file = xtopic_file($row->media[0], $node->uid, $row->site_lang);
       $term->field_uib_primary_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,
