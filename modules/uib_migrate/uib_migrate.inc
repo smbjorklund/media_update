@@ -251,9 +251,11 @@ class InfoPageMigration extends XTopicToArticleMigration {
 
   public function prepare($node, $row) {
     parent::prepare($node, $row);
-    $node->menu = array(
-      'enabled' => TRUE,
-    );
+    if (drush_get_option('update')) {
+      $node->menu = array(
+        'enabled' => TRUE,
+      );
+    }
   }
 
   public function complete($node, $row) {
@@ -311,17 +313,7 @@ class NavPageMigration extends InfoPageMigration {
   public function complete($node, $row) {
     parent::complete($node, $row); // perform complete function of parent
     if (isset($row->menu_top_entry)) {
-      $result = db_select('menu_links', 'ml')
-        ->fields('ml', array('mlid'))
-        ->condition('menu_name', 'area')
-        ->condition('link_path', 'node/' . $node->nid)
-        ->condition('depth', 2)
-        ->execute();
-      $update = FALSE;
-      foreach($result as $item) {
-        $update = TRUE;
-      }
-      if (!$update) {
+      if (!drush_get_option('update')) {
         // Determine the menu_link of the corresponding area
         $result = db_select('menu_links')
           ->fields('menu_links', array('mlid', 'link_path'))
