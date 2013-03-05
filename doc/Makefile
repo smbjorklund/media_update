@@ -1,26 +1,29 @@
 HTML = \
-       index.html    \
-       drupal-deploy.html    \
-       hints.html  \
-       spec.html     \
-       style.html    \
-       apache-local.html \
-       render-array.html \
-       blocks.html   \
-       repo.html     \
-       repo-readme.html  \
-       release1.html \
-       area.html \
-       mockups/index.html \
-       terms.html \
-       server-setup.html
+  apache-local.html \
+  area.html \
+  blocks.html \
+  course_site-w3-kurs.uib.no.html \
+  drupal-deploy.html \
+  drupal-sync-course-site.html \
+  drupal-update.html \
+  hints.html \
+  index.html \
+  release1.html \
+  render-array.html \
+  repo-readme.html \
+  repo.html \
+  server-setup.html \
+  spec.html \
+  style.html \
+  terms.html \
+  w3_server_layout.html \
 
 PYTHON = python
 PERL = perl
 BOOTSTRAP_PY = bootstrap.py
 
 .SUFFIXES: .md .html
-.PHONY: clean realclean
+.PHONY: makefile clean realclean
 
 .md.html:
 	bin/python htmlify.py $< >$@
@@ -35,6 +38,10 @@ bin/python: bin/buildout
 
 bin/buildout: $(BOOTSTRAP_PY)
 	$(PYTHON) $(BOOTSTRAP_PY)
+
+makefile:
+	$(PERL) update-makefile.pl >Makefile.new
+	mv Makefile.new Makefile
 
 clean:
 	rm -f $(HTML)
