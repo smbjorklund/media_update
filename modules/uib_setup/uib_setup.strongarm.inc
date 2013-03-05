@@ -42,7 +42,7 @@ function uib_setup_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_format_long';
-  $strongarm->value = 'd.m.Y - H.s';
+  $strongarm->value = 'd.m.Y - H.i';
   $export['date_format_long'] = $strongarm;
 
   $strongarm = new stdClass();
