@@ -275,7 +275,7 @@ $zen-auto-include-item-base: false;
 /* Hide desktop and tablet header */
 @media all and (min-width: 240px) and (max-width: 720px) {
   #name-and-slogan, .logo.large-screens {
-    display: none;
+    display: block;
   }
 
   #block-locale-language {
