@@ -291,14 +291,15 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '<div id="transparent"></div>
-<div id="slidecontent">
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="transparent">
+<div class="slidecontent">
 <h3>[title]</h3>
 <p class="lead">[field_uib_lead]</p>
 <div class="eventdata">
 <p>[field_uib_event_type]</p>
 <p>[field_uib_date]</p>
 <p>[field_uib_location]</p>
+</div>
 </div>
 </div>';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
@@ -361,14 +362,15 @@ function uib_area_views_default_views() {
     t('Content referencing Content from field_uib_profiled_article'),
     t('<span class="ciclepager"></span>'),
     t('Location'),
-    t('<div id="transparent"></div>
-<div id="slidecontent">
+    t('<div class="transparent">
+<div class="slidecontent">
 <h3>[title]</h3>
 <p class="lead">[field_uib_lead]</p>
 <div class="eventdata">
 <p>[field_uib_event_type]</p>
 <p>[field_uib_date]</p>
 <p>[field_uib_location]</p>
+</div>
 </div>
 </div>'),
     t('All'),

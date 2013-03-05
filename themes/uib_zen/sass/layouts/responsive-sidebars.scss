@@ -428,7 +428,7 @@ $zen-auto-include-item-base: false;
   /* Slideshow mobile */
   .view-area-slideshow, .views-field-field-uib-main-media  {
     @include zen-grid-item (1, 1);
-    h.view-area-slideshow #slidecontent {
+    h.view-area-slideshow .slidecontent {
       bottom: 20%;
     }
   }
@@ -438,7 +438,7 @@ $zen-auto-include-item-base: false;
     top: 81%
   }
 
-  #slidecontent {
+  .slidecontent {
     top: 80%;
     left: 10%;
 
@@ -605,7 +605,7 @@ $zen-auto-include-item-base: false;
     /* mobile header fixes*/
     @media all and (min-width: 720px) and (max-width: 959px) {
       #mobile-name-and-slogan {
-        display: none;
+        display: block;
       }
 
       #block-locale-language--2 {
@@ -821,7 +821,7 @@ $zen-auto-include-item-base: false;
          left: 33px;
        }
 
-       #slidecontent {
+       .slidecontent {
          bottom: 6%;
          left: 6%;
 
@@ -1493,16 +1493,15 @@ $zen-auto-include-item-base: false;
       margin: 3px 0 0;
     }
 
-    #slidecontent {
-      bottom: 2%;
+    .slidecontent {
+      bottom: 8%;
       left: 6%;
 
       h3 {
         color: #fff;
-        margin-bottom: 10px;
-        paddin-top: 0;
-        font-size: 1.5em;
-        font-weight: normal;
+        margin-bottom: 10px !important;
+        font-size: 1.5em !important;
+        font-weight: normal !important;
       }
     }
   }

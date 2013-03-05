@@ -120,19 +120,17 @@ table.cols-6  {
     float: right;
   }
 
-  #transparent {
+  .transparent {
     position: absolute;
     bottom: 4px;
     left: 0px;
-    width: 100%;
+    width: 708px;
     height: 30%;
-    background: #000;
-    filter: alpha(opacity=80);
-    opacity: 0.8;
-    -moz-opacity: 0.8;
+    background-color: rgba(0,0,0,0.8)
+
   }
 
-  #slidecontent {
+  .slidecontent {
     color: #fff;
     position: absolute;
   }
