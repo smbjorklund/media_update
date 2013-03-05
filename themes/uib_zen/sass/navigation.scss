@@ -240,6 +240,8 @@ ul.language-switcher-locale-url li.active {
   .menu {
     padding: 0;
     margin: 0;
+    z-index: 99;
+    position: relative;
     li {
       &:hover ul {
       display: block;

@@ -312,8 +312,7 @@ $zen-auto-include-item-base: false;
      border-radius: 2px;
      padding-bottom: 20px;
      box-shadow: $box-shadow;
-     -moz-box-shadow: $box-shadow;
-     -webkit-box-shadow: $box-shadow;
+
 
      ul {
        @include zen-clear();
@@ -409,8 +408,6 @@ $zen-auto-include-item-base: false;
     margin-right: 10px;
     width: 97%;
     box-shadow: $box-shadow;
-    -moz-box-shadow: $box-shadow;
-    -webkit-box-shadow: $box-shadow;
 
     img {
       float: left;
@@ -666,8 +663,6 @@ $zen-auto-include-item-base: false;
         border-radius: 2px;
         padding-bottom: 20px;
         box-shadow: $box-shadow;
-        -moz-box-shadow: $box-shadow;
-        -webkit-box-shadow: $box-shadow;
 
         ul {
         @include zen-clear();
@@ -713,8 +708,6 @@ $zen-auto-include-item-base: false;
         moz-border-radius: 2px;
         webkit-border-radius: 2px;
         box-shadow: $box-shadow;
-        -moz-box-shadow: $box-shadow;
-        -webkit-box-shadow: $box-shadow;
       }
 
       .field-name-field-uib-bottom-media  {
@@ -753,8 +746,6 @@ $zen-auto-include-item-base: false;
            webkit-border-radius: 2px;
            width: 45%;
            box-shadow: $box-shadow;
-           -moz-box-shadow: $box-shadow;
-           -webkit-box-shadow: $box-shadow;
          }
        }
 
@@ -782,8 +773,6 @@ $zen-auto-include-item-base: false;
         border-radius: 3px;
         margin-left: 51%;
         box-shadow: $box-shadow;
-        -moz-box-shadow: $box-shadow;
-        -webkit-box-shadow: $box-shadow;
 
         header {
           height: 1px;
@@ -1242,8 +1231,6 @@ $zen-auto-include-item-base: false;
      border-radius: 2px;
      padding-bottom: 20px;
      box-shadow: $box-shadow;
-     -moz-box-shadow: $box-shadow;
-    -webkit-box-shadow: $box-shadow;
 
      ul {
        @include zen-clear();
@@ -1390,8 +1377,6 @@ $zen-auto-include-item-base: false;
      border-radius: 3px;
      margin-left: 51%;
      box-shadow: $box-shadow;
-     -moz-box-shadow: $box-shadow;
-     -webkit-box-shadow: $box-shadow;
 
      header {
        height: 1px;
@@ -1519,6 +1504,7 @@ $zen-auto-include-item-base: false;
       margin: 0 10px 10px 0;
       background-color: #efefef;
       padding: 10px 10px 0 10px;
+      box-shadow: $box-shadow;
     }
 
     a {
