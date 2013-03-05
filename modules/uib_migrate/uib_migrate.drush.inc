@@ -50,6 +50,7 @@ function drush_uib_migrate_build_menu() {
       uib_migrate__build_menu_tree($node, $row->mlid, 1);
     }
   }
+  menu_cache_clear_all();
 }
 
 function uib_migrate__build_menu_tree($node, $mlid, $depth) {
