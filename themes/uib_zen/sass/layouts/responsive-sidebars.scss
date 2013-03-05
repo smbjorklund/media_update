@@ -275,7 +275,7 @@ $zen-auto-include-item-base: false;
 /* Hide desktop and tablet header */
 @media all and (min-width: 240px) and (max-width: 720px) {
   #name-and-slogan, .logo.large-screens {
-    display: block;
+    display: none;
   }
 
   #block-locale-language {
@@ -894,6 +894,7 @@ $zen-auto-include-item-base: false;
 
     .view-recent-news .views-row {
       @include zen-clear();
+      width: 95%;
     }
 
     .view-recent-news img  {
@@ -1139,6 +1140,7 @@ $zen-auto-include-item-base: false;
 
   .view-recent-news .views-row {
     @include zen-clear();
+    width: 95%;
   }
 
   .view-recent-news img  {
