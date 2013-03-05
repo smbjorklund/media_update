@@ -312,7 +312,9 @@ mark {
  * Addresses margins set differently in IE6/7
  */
 
-p,
+p {
+  margin: .5em 0;
+}
 pre {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
   margin: rhythm(1) 0;
