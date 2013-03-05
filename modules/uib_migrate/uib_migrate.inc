@@ -663,6 +663,12 @@ class AreaMigration extends Migration {
         'display' => 1,
       );
     }
+
+    if (drush_get_option('update')) {
+      $term->menu = array(
+        'enabled' => TRUE,
+      );
+    }
   }
 
   public function complete($node, $row) {
