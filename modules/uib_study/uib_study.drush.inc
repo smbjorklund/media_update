@@ -5,7 +5,7 @@
  */
 function uib_study_drush_command() {
   $items['uib-sync-fs'] = array(
-    'description' => 'Syncronise with fs_pres.app.uib.no',
+    'description' => 'Syncronise with fs-pres.app.uib.no',
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
     'arguments' => array(),
   );
@@ -48,7 +48,7 @@ function drush_uib_study_uib_sync_fs() {
 
     // look for fag belonging to this ou
     $fspres_oid = implode('.', array('184', (int)$o1, (int)$o2));
-    $fspres_url = "http://fs_pres.app.uib.no/sted/$fspres_oid/info.json";
+    $fspres_url = "http://fs-pres.app.uib.no/sted/$fspres_oid/info.json";
     uibx_log('GET ' . $fspres_url);
 
     $res = drupal_http_request($fspres_url);
