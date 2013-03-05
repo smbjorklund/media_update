@@ -33,7 +33,13 @@ if (isset($result)) {
     $tmp = explode(" ", $record->name); // disentangle stub w2 id from stub name
     $w2_id = trim($tmp[3]);
     unset($w2u);
-    $w2u = new XTopic($w2_id); // Get uib user name for this user from w2
+    try {
+      $w2u = new XTopic($w2_id); // Get uib user name for this user from w2
+    }
+    catch (Exception $e) {
+      $w2_fails++;
+      continue; // can't go any further if user name can't be looked up
+    }
     if (empty($w2u->{'uib-id'})) {
       $w2_fails++;
       continue; // can't go any further if user name can't be looked up
