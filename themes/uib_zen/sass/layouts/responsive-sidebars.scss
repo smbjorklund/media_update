@@ -265,6 +265,13 @@ $zen-auto-include-item-base: false;
   }
 
 
+/* content */
+@media all and (min-width: 240px) and (max-width: 720px) {
+  #content {
+     margin-top: 20px;
+   }
+}
+
 /* Hide desktop and tablet header */
 @media all and (min-width: 240px) and (max-width: 720px) {
   #name-and-slogan, .logo.large-screens {
@@ -307,9 +314,7 @@ $zen-auto-include-item-base: false;
      @include zen-grid-item (1, 1);
      margin: 20px 0 20px 0;
      background-color: #F1F1EF;
-     webkit-border-radius: 2px;
-     moz-border-radius: 2px;
-     border-radius: 2px;
+     border-radius: $border-radius;
      padding-bottom: 20px;
      box-shadow: $box-shadow;
 
@@ -352,9 +357,7 @@ $zen-auto-include-item-base: false;
     width: 100%;
     background: #F1F1EF;
     border: none;
-    border-radius: 2px;
-    moz-border-radius: 2px;
-    webkit-border-radius: 2px;
+    border-radius: $border-radius;
   }
 
   .field-name-profiled-article {
@@ -390,9 +393,8 @@ $zen-auto-include-item-base: false;
      padding: 15px;
      background: #F1F1EF;
      border: none;
-     border-radius: 2px;
-     moz-border-radius: 2px;
-     webkit-border-radius: 2px;
+     box-shadow: $box-shadow;
+     border-radius: $border-radius;
      width: 90%;
    }
 
@@ -402,9 +404,7 @@ $zen-auto-include-item-base: false;
     float: none;
     background-color: #F1F1EF;
     padding: 5px;
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
+    border-radius: $border-radius;
     margin-right: 10px;
     width: 97%;
     box-shadow: $box-shadow;
@@ -599,6 +599,12 @@ $zen-auto-include-item-base: false;
       max-width: 722px;
     }
 
+    /* Content */
+    @media ann and (min-width: 720px) and (max-width: 959) {
+      #content {
+         margin-top: 20px;
+       }
+    }
     /* mobile header fixes*/
     @media all and (min-width: 720px) and (max-width: 959px) {
       #mobile-name-and-slogan {
@@ -658,9 +664,7 @@ $zen-auto-include-item-base: false;
         float: left;
         margin: 20px 0 20px 0;
         background: #F1F1EF;
-        webkit-border-radius: 2px;
-        moz-border-radius: 2px;
-        border-radius: 2px;
+        border-radius: $border-radius;
         padding-bottom: 20px;
         box-shadow: $box-shadow;
 
@@ -704,9 +708,7 @@ $zen-auto-include-item-base: false;
         float: left;
         width: 48%;
         background: #F1F1EF;
-        border-radius: 2px;
-        moz-border-radius: 2px;
-        webkit-border-radius: 2px;
+        border-radius: $border-radius;
         box-shadow: $box-shadow;
       }
 
@@ -741,9 +743,7 @@ $zen-auto-include-item-base: false;
            padding: 15px;
            background: #F1F1EF;
            border: none;
-           border-radius: 2px;
-           moz-border-radius: 2px;
-           webkit-border-radius: 2px;
+           border-radius: $border-radius;
            width: 45%;
            box-shadow: $box-shadow;
          }
@@ -753,9 +753,7 @@ $zen-auto-include-item-base: false;
         @include zen-grid-item (2, 1);
         background: #F1F1EF;
         border: none;
-        border-radius: 2px;
-        moz-border-radius: 2px;
-        webkit-border-radius: 2px;
+        border-radius: $border-radius;
         padding: 5px;
         width: 100%;
         padding-right: 10px;
@@ -770,7 +768,7 @@ $zen-auto-include-item-base: false;
         background: #F1F1EF;
         padding: 2%;
         width: 46%;
-        border-radius: 3px;
+        border-radius: $border-radius;
         margin-left: 51%;
         box-shadow: $box-shadow;
 
@@ -1072,6 +1070,13 @@ $zen-auto-include-item-base: false;
   }
 }
 
+/* Content */
+@media all and (min-width: 960px) {
+  #content {
+    margin-top: 20px;
+  }
+}
+
 /* Sidebar background img */
 @media all and (min-width: 960px) {
   .one-sidebar #main, .sidebar-second #main {
@@ -1226,9 +1231,7 @@ $zen-auto-include-item-base: false;
      float: left;
      margin: 20px 0 20px 0;
      background: #F1F1EF;
-     webkit-border-radius: 2px;
-     moz-border-radius: 2px;
-     border-radius: 2px;
+     border-radius: $border-radius;
      padding-bottom: 20px;
      box-shadow: $box-shadow;
 
@@ -1312,12 +1315,11 @@ $zen-auto-include-item-base: false;
         @include zen-clear();
         margin-bottom: 10px;
         float: left;
+        box-shadow: $box-shadow;
         padding: 15px;
         background: #F1F1EF;
         border: none;
-        border-radius: 2px;
-        moz-border-radius: 2px;
-        webkit-border-radius: 2px;
+        border-radius: $border-radius;
         width: 45%;
       }
 
@@ -1326,9 +1328,7 @@ $zen-auto-include-item-base: false;
        @include zen-clear();
        background: #F1F1EF;
        border: none;
-       border-radius: 2px;
-       moz-border-radius: 2px;
-       webkit-border-radius: 2px;
+       border-radius: $border-radius;
        width: 100%;
        padding-right: 10px;
 
@@ -1374,7 +1374,7 @@ $zen-auto-include-item-base: false;
      background: #F1F1EF;
      padding: 2%;
      width: 45%;
-     border-radius: 3px;
+     border-radius: $border-radius;
      margin-left: 51%;
      box-shadow: $box-shadow;
 
