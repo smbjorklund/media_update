@@ -608,7 +608,7 @@ $zen-auto-include-item-base: false;
     /* mobile header fixes*/
     @media all and (min-width: 720px) and (max-width: 959px) {
       #mobile-name-and-slogan {
-        display: block;
+        display: none;
       }
 
       #block-locale-language--2 {
