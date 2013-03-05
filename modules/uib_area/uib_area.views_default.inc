@@ -1112,7 +1112,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
-    'file_view_mode' => 'teaser',
+    'file_view_mode' => 'wide_thumbnail',
   );
   /* Field: Content: Link */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';

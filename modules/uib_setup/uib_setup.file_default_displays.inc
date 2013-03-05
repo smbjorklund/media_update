@@ -867,6 +867,8 @@ function uib_setup_file_default_displays() {
   $file_display->status = FALSE;
   $file_display->settings = array(
     'image_style' => '',
+    'alt' => '[file:field_file_image_alt_text]',
+    'title' => '[file:field_file_image_title_text]',
   );
   $export['video__wide_thumbnail__file_image'] = $file_display;
 
@@ -888,7 +890,14 @@ function uib_setup_file_default_displays() {
   $file_display->settings = array(
     'width' => '560',
     'height' => '340',
+    'color' => '',
+    'protocol' => 'http://',
     'autoplay' => 0,
+    'loop' => 0,
+    'title' => 1,
+    'byline' => 1,
+    'portrait' => 1,
+    'api' => 0,
   );
   $export['video__wide_thumbnail__media_vimeo_video'] = $file_display;
 
@@ -896,9 +905,9 @@ function uib_setup_file_default_displays() {
   $file_display->api_version = 1;
   $file_display->name = 'video__wide_thumbnail__media_youtube_image';
   $file_display->weight = 0;
-  $file_display->status = FALSE;
+  $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => '',
+    'image_style' => 'wide_thumbnail',
   );
   $export['video__wide_thumbnail__media_youtube_image'] = $file_display;
 

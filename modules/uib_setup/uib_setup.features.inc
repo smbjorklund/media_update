@@ -184,7 +184,7 @@ function uib_setup_image_default_styles() {
   $styles['wide_thumbnail'] = array(
     'name' => 'wide_thumbnail',
     'effects' => array(
-      2 => array(
+      3 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -194,10 +194,10 @@ function uib_setup_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '125',
-          'height' => '70',
+          'width' => '177',
+          'height' => '125',
         ),
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
