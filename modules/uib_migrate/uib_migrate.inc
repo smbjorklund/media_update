@@ -703,13 +703,15 @@ class AreaMigration extends Migration {
     if (!is_integer($weight)) {
       $weight = 99;
     }
-    $menu_link = array(
-      'menu_name' => 'area',
-      'link_path' => drupal_get_normal_path('node/' . $node->nid),
-      'link_title' => $node->title,
-      'weight' => $weight,
-    );
-    menu_link_save($menu_link);
+    if (!drush_get_option('update')) {
+      $menu_link = array(
+        'menu_name' => 'area',
+        'link_path' => drupal_get_normal_path('node/' . $node->nid),
+        'link_title' => $node->title,
+        'weight' => $weight,
+      );
+      menu_link_save($menu_link);
+    }
   }
 }
 
