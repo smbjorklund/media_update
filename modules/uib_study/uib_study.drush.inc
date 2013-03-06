@@ -54,13 +54,17 @@ function drush_uib_study_uib_sync_fs() {
     $res = drupal_http_request($fspres_url);
     if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
       $data = drupal_json_decode($res->data);
-      foreach ($data['emner_fag'] as $emne) {
-        uib_study__update_study('course', $emne, $nid);
-        unset($unused_codes[$emne['id']]);
+      if (isset($data['emner_fag'])) {
+        foreach ($data['emner_fag'] as $emne) {
+          uib_study__update_study('course', $emne, $nid);
+          unset($unused_codes[$emne['id']]);
+        }
       }
-      foreach ($data['studieprogrammer_fag'] as $program) {
-        uib_study__update_study('program', $program, $nid);
-        unset($unused_codes[$program['id']]);
+      if (isset($data['studieprogrammer_fag'])) {
+        foreach ($data['studieprogrammer_fag'] as $program) {
+          uib_study__update_study('program', $program, $nid);
+          unset($unused_codes[$program['id']]);
+        }
       }
     }
     else {
