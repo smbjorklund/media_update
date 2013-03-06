@@ -52,7 +52,7 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
   if (empty($parent_lang)) {
     $parent_lang = 'nb';
   }
-  // Check if we already have a 'file' migrated from the same id
+   // Check if we already have a 'file' migrated from the same id
   // If so, load the file object properly to make it possible to update it below
   $file_exists = FALSE;
   $query = new EntityFieldQuery;
@@ -65,7 +65,6 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     $res = array_values($result['file']);
     $file = file_load($res[0]->fid);
     $file_exists = TRUE;
-    uibx_log('Updating metadata for existing file: fid=' . $file->fid, 'notice');
   }
 
   // Fetch file meta info from w2
@@ -125,6 +124,10 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     }
   }
 
+  $nr_of_descr = count($file->field_uib_description);
+  $removed_und_descr = FALSE;
+  $nr_of_titles = count($file->field_file_image_title_text);
+  $removed_und_title = FALSE;
   if (isset($xtopic->photographer)) {
     if (!empty($file->field_uib_owner['und'])) {
       if ($file->field_uib_owner['und'][0]['value'] != $xtopic->photographer) {
@@ -154,6 +157,7 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     elseif (isset($file->field_uib_description['und'])) { // fix for previous erroneously migrated descriptions
       $file->field_uib_description[$parent_lang][]['value'] = $xtopic->dc_description;
       unset($file->field_uib_description['und']);
+      $removed_und_descr = TRUE;
     }
     else {
       $file->field_uib_description[$parent_lang][]['value'] = $xtopic->dc_description;
@@ -170,6 +174,7 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
       elseif (isset($file->field_file_image_title_text['und'])) { // fix for previous erroneously migrated titles
         $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
         unset($file->field_file_image_title_text['und']);
+        $removed_und_title = TRUE;
       }
       else {
         $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
@@ -223,37 +228,38 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
   else {
     $file->type = $xtopic->type; // Set bundle
   }
+
   // init entity translation
   if ($xtopic->type != 'document') {
     if ($file_exists) {
-      // check if translation has been initialized for this file
-      $result = db_select('entity_translation', 'f')
-      ->fields('f', array('entity_id'))
-      ->condition('entity_id', $file->fid, '=')
-      ->condition('entity_type', 'file', '=')
-      ->execute();
-      if ($result->rowCount() == 0) {
+      // check that translation has been initialized for this file
+      if ($nr_of_descr < 2 && $nr_of_titles < 2 && ($removed_und_title || $removed_und_descr)) {
         $et = entity_translation_get_handler('file', $file);
         $translation = array('language' => $parent_lang, 'status' => 1);
         $et->setTranslation($translation);
         $et->setOriginalLanguage($parent_lang);
       }
     }
-    $et = entity_translation_get_handler('file', $file);
-    $translation = array('language' => $parent_lang, 'status' => 1);
-    $et->setTranslation($translation);
-    $et->setOriginalLanguage($parent_lang);
+    else {
+      $et = entity_translation_get_handler('file', $file);
+      $translation = array('language' => $parent_lang, 'status' => 1);
+      $et->setTranslation($translation);
+      $et->setOriginalLanguage($parent_lang);
+    }
   }
+
   file_save($file);
   if (!$file->fid) {
     die("Could not save file");
   }
-  else {  //Touch timestamp to preserve timestamps from legacy system (w2).
+  else {
     if (!$file_exists) {
+      //Touch timestamp to preserve timestamps from legacy system (w2).
       $file->timestamp = strtotime($xtopic->created);
       drupal_write_record('file_managed', $file, 'fid');
     }
   }
+  uibx_log('Updated metadata for existing file: fid=' . $file->fid . ', entity lang=' . entity_language('file',$file), 'notice');
   return $file;
 }
 
