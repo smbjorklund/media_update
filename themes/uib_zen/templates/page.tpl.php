@@ -92,7 +92,7 @@
         // The varible 'page_title_link' is setup in template.php and contains the area name in an url
         if ($site_name || $site_slogan || $page_title_link): ?>
         <hgroup id="name-and-slogan-mobile">
-        <h1 id="site-name"><?php print $page_title_link; ?></h1>
+        <h1 class="site-name"><?php print $page_title_link; ?></h1>
           <?php if ($site_slogan): ?>
             <h2 id="mobile-site-slogan"><?php print $site_slogan; ?></h2>
           <?php endif; ?>
@@ -133,7 +133,7 @@
       // The varible 'page_title_link' is setup in template.php and contains the area name in an url
       if ($site_name || $site_slogan || $page_title_link): ?>
       <hgroup id="name-and-slogan">
-      <h1 id="site-name"><?php print $page_title_link; ?></h1>
+      <h1 class="site-name"><?php print $page_title_link; ?></h1>
         <?php if ($site_slogan): ?>
           <h2 id="site-slogan"><?php print $site_slogan; ?></h2>
         <?php endif; ?>

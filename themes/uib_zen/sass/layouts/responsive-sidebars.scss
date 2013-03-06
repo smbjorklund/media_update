@@ -101,7 +101,7 @@ $zen-auto-include-item-base: false;
 
   $zen-column-count: 1;
 
-  h1#site-name  {
+  h1.site-name  {
      font-size: 15px;
      padding: 20px 0 20px 10px;
      margin-left: 100px;
@@ -615,7 +615,7 @@ $zen-auto-include-item-base: false;
         display: none;
       }
 
-      #site-name {
+      .site-name {
         margin-left: 20px;
       }
     }
@@ -1066,7 +1066,7 @@ $zen-auto-include-item-base: false;
     display: none;
   }
 
-  #site-name {
+  .site-name {
     margin-left: 7px;
   }
 }
