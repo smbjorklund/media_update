@@ -130,6 +130,8 @@ function uib_setup_wysiwyg_default_profiles() {
           'italic' => 1,
           'bullist' => 1,
           'numlist' => 1,
+          'undo' => 1,
+          'redo' => 1,
           'link' => 1,
           'unlink' => 1,
           'formatselect' => 1,

@@ -183,7 +183,7 @@ function uib_setup_filter_default_formats() {
         'weight' => '-10',
         'status' => '1',
         'settings' => array(
-          'allowed_html' => '<br> <p> <a> <strong> <em> <ul> <li> <ol> <h2> <h3> <h4> ',
+          'allowed_html' => '<br> <p> <a> <strong> <em> <ul> <li> <ol> <h3> <h4> ',
           'filter_html_help' => 0,
           'filter_html_nofollow' => 0,
         ),
