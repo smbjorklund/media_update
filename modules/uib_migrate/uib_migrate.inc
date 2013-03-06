@@ -665,9 +665,7 @@ class AreaMigration extends Migration {
     }
 
     if (drush_get_option('update')) {
-      $term->menu = array(
-        'enabled' => TRUE,
-      );
+      $term->menu['enabled'] = TRUE;
     }
   }
 
