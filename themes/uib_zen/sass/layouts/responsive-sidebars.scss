@@ -1278,6 +1278,12 @@ $zen-auto-include-item-base: false;
         background-position: 0 4px;
         padding: 8px 0 10px 30px;
       }
+      .vimeo {
+        background-image: url('../../images/vimeo.png');
+        background-repeat: no-repeat;
+        background-position: 0 4px;
+        padding: 8px 0 10px 30px;
+      }
       .youtube {
         background-image: url('../../images/youtube.png');
         background-repeat: no-repeat;
@@ -1523,6 +1529,7 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(1, 2, left)
   }
 }
+
 .view-area-slideshow img {
   max-width: 708px;
 }
