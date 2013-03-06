@@ -118,6 +118,7 @@
     </div>
   <?php endif; ?>
 </div>
+</div>
 <?php endif; ?>
 <div id="page">
 
