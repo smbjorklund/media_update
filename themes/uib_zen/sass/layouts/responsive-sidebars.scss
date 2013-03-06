@@ -1217,10 +1217,6 @@ $zen-auto-include-item-base: false;
      @include zen-grid-item (2, 3);
      padding-left: 10px;
      width: 49%;
-
-     p {
-       margin-top: 0;
-     }
   }
 
   .field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
@@ -1406,9 +1402,6 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2);
-    p {
-       margin-top: 0;
-     }
   }
 
   /* Area "teaser" block */
