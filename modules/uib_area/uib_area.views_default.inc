@@ -1225,6 +1225,7 @@ return TRUE;';
   $handler->display->display_options['arguments']['created_year_month']['field'] = 'created_year_month';
   $handler->display->display_options['arguments']['created_year_month']['default_action'] = 'summary';
   $handler->display->display_options['arguments']['created_year_month']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['created_year_month']['summary']['sort_order'] = 'desc';
   $handler->display->display_options['arguments']['created_year_month']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['created_year_month']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['created_year_month']['summary_options']['base_path'] = 'node/%/news-archive';
