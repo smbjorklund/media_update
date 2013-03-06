@@ -429,7 +429,6 @@ $zen-auto-include-item-base: false;
       bottom: 20%;
     }
   }
-
   #widget_pager_bottom_area_slideshow-default {
     left: 9%;
     top: 81%
@@ -1523,4 +1522,7 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-logo {
     @include zen-grid-item(1, 2, left)
   }
+}
+.view-area-slideshow img {
+  max-width: 708px;
 }

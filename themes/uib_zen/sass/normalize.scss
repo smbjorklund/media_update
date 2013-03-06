@@ -347,7 +347,6 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-
 /*
  * 1. Addresses CSS quotes not supported in IE6/7
  * 2. Addresses quote property not supported in S4
@@ -466,6 +465,7 @@ img {
   /* Responsive images */
   /* @todo Add responsive embedded video. */
   height: auto;
+  max-width: 100%
 }
 
 /*
