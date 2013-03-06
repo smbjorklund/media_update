@@ -18,10 +18,7 @@ function uib_sebra_cron_job_scheduler_info() {
 }
 
 function uib_sebra__sync($job) {
-  uibx_log("SEBRA SYNC start");
-  uib_sebra__sync_places(10);
-  uib_sebra__sync_areas();
-  uibx_log("SEBRA SYNC done");
+  uibx_log("This function is depricated");
 }
 
 function uib_sebra__sync_places($limit) {

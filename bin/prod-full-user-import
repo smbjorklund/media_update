@@ -1,5 +1,12 @@
 #!/bin/bash
 cd /var/www/w3.uib.no
-#Needs to be run 2x times (due to bugs in sebra)
+#Needs to be run 2x times (due to bugs in sebra, first run filles cache)
+date +'%H:%M ----------------------------------------------' >>/tmp/sebra-import.$(date -I).log
+nice -n 20 su w3-drupal -c 'bin/site-drush uib-sebra-areas' 2>>/tmp/sebra-import.$(date -I).log
+nice -n 20 su w3-drupal -c 'bin/site-drush uib-sebra-areas' 2>>/tmp/sebra-import.$(date -I).log
+date +'%H:%M ----------------------------------------------' >>/tmp/sebra-import.$(date -I).log
+nice -n 20 su w3-drupal -c 'bin/site-drush uib-sebra-places' 2>>/tmp/sebra-import.$(date -I).log
+nice -n 20 su w3-drupal -c 'bin/site-drush uib-sebra-places' 2>>/tmp/sebra-import.$(date -I).log
+date +'%H:%M ----------------------------------------------' >>/tmp/sebra-import.$(date -I).log
 nice -n 20 su w3-drupal -c 'bin/site-drush uib-sebra-users --limit=0' 2>>/tmp/sebra-import.$(date -I).log
 nice -n 20 su w3-drupal -c 'bin/site-drush uib-sebra-users --limit=0' 2>>/tmp/sebra-import.$(date -I).log
