@@ -413,3 +413,32 @@ div.link-field-column  {
 #edit-publish-on, #edit-unpublish-on {
     float: none;
 }
+
+.field-name-field-uib-social-media .field-item {
+  float: left;
+  margin-left: 10px;
+  height: 25px;
+  width: 90px;
+  text-transform: capitalize;
+
+  .twitter {
+    background-repeat: no-repeat;
+    background-position: 0 4px;
+    padding: 8px 0 10px 30px;
+  }
+  .vimeo {
+    background-repeat: no-repeat;
+    background-position: 0 4px;
+    padding: 8px 0 10px 30px;
+  }
+  .youtube {
+    background-repeat: no-repeat;
+    background-position: 0 4px;
+    padding: 8px 0 10px 30px;
+  }
+  .facebook {
+    background-repeat: no-repeat;
+    background-position: 0 4px;
+    padding: 8px 0 10px 30px;
+  }
+}
