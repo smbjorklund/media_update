@@ -41,7 +41,7 @@ function drush_uib_study_uib_sync_fs() {
     $o1 = substr($oid, 0, 2);
     $o2 = substr($oid, 2, 2);
     $o3 = substr($oid, 4, 2);
-    if ($o2 >= '20')
+    if ($o1 >= '20') # optimize; no need to look at adm/misc places
       continue;
     if ($o3 != '00')
       continue;  # not an institute
