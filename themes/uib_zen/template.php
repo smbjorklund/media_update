@@ -199,6 +199,10 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         $variables['page']['header']['field_uib_logo'] = $variables['page']['content']['system_main']['content']['nodes'][$nid]['field_uib_logo'];
         unset($variables['page']['content']['system_main']['content']['nodes'][$nid]['field_uib_logo']);
       }
+      if (isset($variables['page']['content']['system_main']['nodes'][$nid]['field_uib_logo'])) {
+        $variables['page']['header']['field_uib_logo'] = $variables['page']['content']['system_main']['nodes'][$nid]['field_uib_logo'];
+        unset($variables['page']['content']['system_main']['nodes'][$nid]['field_uib_logo']);
+      }
       if (isset($variables['page']['content']['uib_area_node_children'])) {
         unset($variables['page']['content']['uib_area_node_children']);
       }
