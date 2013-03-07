@@ -124,10 +124,6 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     }
   }
 
-  $nr_of_descr = count($file->field_uib_description);
-  $removed_und_descr = FALSE;
-  $nr_of_titles = count($file->field_file_image_title_text);
-  $removed_und_title = FALSE;
   if (isset($xtopic->photographer)) {
     if (!empty($file->field_uib_owner['und'])) {
       if ($file->field_uib_owner['und'][0]['value'] != $xtopic->photographer) {
@@ -157,7 +153,6 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     elseif (isset($file->field_uib_description['und'])) { // fix for previous erroneously migrated descriptions
       $file->field_uib_description[$parent_lang][]['value'] = $xtopic->dc_description;
       unset($file->field_uib_description['und']);
-      $removed_und_descr = TRUE;
     }
     else {
       $file->field_uib_description[$parent_lang][]['value'] = $xtopic->dc_description;
@@ -174,7 +169,6 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
       elseif (isset($file->field_file_image_title_text['und'])) { // fix for previous erroneously migrated titles
         $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
         unset($file->field_file_image_title_text['und']);
-        $removed_und_title = TRUE;
       }
       else {
         $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
@@ -231,21 +225,10 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
 
   // init entity translation
   if ($xtopic->type != 'document') {
-    if ($file_exists) {
-      // check that translation has been initialized for this file
-      if ($nr_of_descr < 2 && $nr_of_titles < 2 && ($removed_und_title || $removed_und_descr)) {
-        $et = entity_translation_get_handler('file', $file);
-        $translation = array('language' => $parent_lang, 'status' => 1);
-        $et->setTranslation($translation);
-        $et->setOriginalLanguage($parent_lang);
-      }
-    }
-    else {
-      $et = entity_translation_get_handler('file', $file);
-      $translation = array('language' => $parent_lang, 'status' => 1);
-      $et->setTranslation($translation);
-      $et->setOriginalLanguage($parent_lang);
-    }
+    $et = entity_translation_get_handler('file', $file);
+    $translation = array('language' => $parent_lang, 'status' => 1);
+    $et->setTranslation($translation);
+    $et->setOriginalLanguage($parent_lang); // set original language
   }
 
   file_save($file);
