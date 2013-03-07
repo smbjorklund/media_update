@@ -191,7 +191,9 @@ function uib_area_block_view($delta='') {
       if (empty($menu_link)) {
         $menu_link = uib_area__get_current_menu_link(); // get menu link of current area
       }
-      //dsm($menu_link);
+      if (empty($menu_link)) {
+        return $block; // Returns an empty block if area is not in the Area menu
+      }
       $items = menu_navigation_links('area', $menu_link['depth']);
       if (!empty($items)) {
         foreach ($items as $menu_item) {
