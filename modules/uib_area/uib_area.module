@@ -136,7 +136,9 @@ function uib_area_block_view($delta='') {
       $area = uib_area__get_current();
       $whitelist = array('faculty', 'unit', 'institute');
       if ($area && in_array($area->field_uib_area_type['und'][0]['value'], $whitelist)) {
-        $place = node_load($area->field_uib_ou['und'][0]['target_id']);
+        if (!empty($area->field_uib_ou['und'])) {
+          $place = node_load($area->field_uib_ou['und'][0]['target_id']);
+        }
         if (empty($place->field_uib_jobbnorge_id['und']))
          continue;
         else
