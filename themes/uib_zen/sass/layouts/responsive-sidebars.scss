@@ -679,7 +679,8 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-primary-media  {
         @include zen-grid-item (2, 1);
-        padding-right: 10px;
+        width: 47%;
+        margin-left: 53%;
       }
 
       .field-name-field-uib-primary-text {
@@ -763,6 +764,7 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-bottom-text {
         @include zen-grid-item (3, 2);
+        margin-left: 27%;
       }
 
       .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
@@ -809,12 +811,10 @@ $zen-auto-include-item-base: false;
         @include zen-clear();
         float: none;
         clear: none;
-        width: 45%;
-        background: #F1F1EF;
-        padding: 2%;
+        margin-left: 53%;
         width: 46%;
+        background: #F1F1EF;
         border-radius: $border-radius;
-        margin-left: 51%;
         box-shadow: $box-shadow;
 
         header {
@@ -831,18 +831,18 @@ $zen-auto-include-item-base: false;
           border: none;
         }
 
-      img {
-        margin-right: 10px;
-        float: left;
-        clear: none;
-      }
+        img {
+          margin: 10px 10px 10px 10px;
+          float: left;
+        }
     }
 
       .field-name-field-uib-tertiary-text {
         @include zen-grid-item (2, 3);
         clear: none;
         float: none;
-        padding-left: 10px;
+        margin-left: 55%;
+        width: 45%;
       }
     }
 
@@ -1260,8 +1260,8 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-primary-text {
      @include zen-grid-item (2, 3);
-     padding-left: 10px;
-     width: 49%;
+     width: 47%;
+     margin-left: 53%;
   }
 
   .field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
@@ -1321,12 +1321,15 @@ $zen-auto-include-item-base: false;
       background-image: url('../../images/youtube.png');
     }
   }
-
+/* the important overrides a value from field collection.theme.css */
   .node-area .field-collection-container  {
     @include zen-grid-item (4, 1);
     border: none;
     float: left;
     width: 48%;
+    .field-item {
+      margin-bottom: 7px !important
+    }
   }
 
   .field-name-profiled-article {
@@ -1336,7 +1339,7 @@ $zen-auto-include-item-base: false;
   .group_two_column  {
      @include zen-grid-item (4, 1);
      @include zen-clear();
-     padding-bottom: 30px;
+     padding-bottom: 15px;
      float: none;
      
      .view-faculty-departments-kids  {
@@ -1362,7 +1365,6 @@ $zen-auto-include-item-base: false;
        padding-right: 10px;
 
        .field-collection-view {
-         border-bottom: 10px solid #fff;
          width: 100%;
          padding-left: 0;
          margin-left: 0;
@@ -1370,7 +1372,7 @@ $zen-auto-include-item-base: false;
        }
 
        .field-item {
-         margin-bottom: 0;
+         margin-bottom: 7px;
        }
 
        .entity-field-collection-item {
@@ -1391,8 +1393,8 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     clear: none;
     float: none;
-    padding-left: 10px;
-    width: 49%;
+    margin-left: 53%;
+    width: 46%;
    }
 
    .field-name-field-uib-profiled-testimonial {
@@ -1401,24 +1403,25 @@ $zen-auto-include-item-base: false;
      float: none;
      clear: none;
      background: #F1F1EF;
-     padding: 2%;
-     width: 45%;
+     margin-left: 53%;
+     width: 46%;
      border-radius: $border-radius;
-     margin-left: 51%;
      box-shadow: $box-shadow;
 
      header {
        height: 1px;
      }
      img {
-       margin-right: 10px;
+       margin: 10px 10px 10px 10px;
        float: left;
      }
 
      a, .node-uib-testimonial {
        color: #333;
-       margin-top: 0;
        display: inline-block;
+     }
+     .field-name-field-uib-name {
+       margin-top: 10px;
      }
 
      .node-uib-testimonial .node-title {
@@ -1432,6 +1435,7 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2);
+    margin-left: 27%;
   }
 
   /* Area "teaser" block */

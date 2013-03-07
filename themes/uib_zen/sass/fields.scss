@@ -414,7 +414,10 @@ div.link-field-column  {
     float: none;
 }
 
-.field-name-field-uib-social-media .field-item {
+.field-name-field-uib-social-media {
+  padding: 10px 0 27px 0;
+
+.field-item {
   float: left;
   margin-left: 10px;
   height: 25px;
@@ -441,4 +444,5 @@ div.link-field-column  {
     background-position: 0 4px;
     padding: 8px 0 10px 30px;
   }
+}
 }
