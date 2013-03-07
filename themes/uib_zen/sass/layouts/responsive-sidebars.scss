@@ -758,13 +758,16 @@ $zen-auto-include-item-base: false;
         box-shadow: $box-shadow;
       }
 
+      .group-bottom-wrapper {
+        @include zen-grid-item (4, 1);
+        @include zen-clear();
+      }
       .field-name-field-uib-bottom-media  {
         @include zen-grid-item (1, 1);
       }
 
       .field-name-field-uib-bottom-text {
         @include zen-grid-item (3, 2);
-        margin-left: 27%;
       }
 
       .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
@@ -1429,13 +1432,16 @@ $zen-auto-include-item-base: false;
      }
      }
    }
+  .group-bottom-wrapper {
+    @include zen-grid-item (4, 1);
+    @include zen-clear();
+  }
   .field-name-field-uib-bottom-media  {
     @include zen-grid-item (1, 1);
   }
 
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2);
-    margin-left: 27%;
   }
 
   /* Area "teaser" block */

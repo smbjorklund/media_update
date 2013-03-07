@@ -362,7 +362,7 @@ function uib_area_field_default_fields() {
             'file_view_mode' => 'area_bottom',
           ),
           'type' => 'file_rendered',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -453,7 +453,7 @@ function uib_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1067,7 +1067,7 @@ function uib_area_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '22',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',

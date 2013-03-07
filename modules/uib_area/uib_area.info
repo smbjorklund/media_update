@@ -76,6 +76,7 @@ features[field][] = node-uib_ou-field_uib_phone
 features[field][] = node-uib_ou-field_uib_postal_address
 features[field][] = node-uib_ou-field_uib_visit_address
 features[field_group][] = group_bottom_section|node|area|form
+features[field_group][] = group_bottom_wrapper|node|area|default
 features[field_group][] = group_level_1|node|area|form
 features[field_group][] = group_management|node|area|form
 features[field_group][] = group_middle_section|node|area|form
