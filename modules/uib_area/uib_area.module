@@ -390,18 +390,21 @@ function uib_area__get_current() {
   if (!isset($current_area)) {
     // obtain area from node indicated in url
     if (arg(0) == 'node' && is_numeric(arg(1))) {
-      $node = node_load(arg(1));
-      if ($node->type == 'area') {
-        $current_area = $node;
-      }
-      elseif (isset($node->field_uib_area['und'][0]['entity'])) {
-        $current_area = $node->field_uib_area['und'][0]['entity'];
-      }
-      elseif (!empty($node->field_uib_area['und'][0]['target_id'])) {
-        $current_area = node_load($node->field_uib_area['und'][0]['target_id']);
-      }
-      else {
-        $current_area = NULL;
+      $nn = intval(arg(1));
+      $node = node_load($nn);
+      if (!empty($node)) {
+        if ($node->type == 'area') {
+          $current_area = $node;
+        }
+        elseif (isset($node->field_uib_area['und'][0]['entity'])) {
+          $current_area = $node->field_uib_area['und'][0]['entity'];
+        }
+        elseif (!empty($node->field_uib_area['und'][0]['target_id'])) {
+          $current_area = node_load($node->field_uib_area['und'][0]['target_id']);
+        }
+        else {
+          $current_area = NULL;
+        }
       }
     }
   }
