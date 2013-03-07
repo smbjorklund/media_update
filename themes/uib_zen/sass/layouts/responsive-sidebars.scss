@@ -638,7 +638,6 @@ $zen-auto-include-item-base: false;
   .sidebar-second {
     #content { /* Span 2 columns, starting in 1st column from left. */
       @include zen-grid-item(4, 1);
-
     }
 
     .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
@@ -648,12 +647,6 @@ $zen-auto-include-item-base: false;
       max-width: 722px;
     }
 
-    /* Content */
-    @media ann and (min-width: 720px) and (max-width: 959) {
-      #content {
-         margin-top: 20px;
-       }
-    }
     /* mobile header fixes*/
     @media all and (min-width: 720px) and (max-width: 959px) {
       #mobile-name-and-slogan {
@@ -700,7 +693,7 @@ $zen-auto-include-item-base: false;
       .field-name-field-uib-primary-media  {
         @include zen-grid-item (2, 1);
         width: 47%;
-        margin-left: 53%;
+        margin-left: 0%;
       }
 
       .field-name-field-uib-primary-text {
