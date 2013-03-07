@@ -1655,23 +1655,25 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Content: Area (field_uib_area) */
-  $handler->display->display_options['filters']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
-  $handler->display->display_options['filters']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
-  $handler->display->display_options['filters']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
-  $handler->display->display_options['filters']['field_uib_area_target_id']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_uib_area_target_id']['group'] = 1;
-  $handler->display->display_options['filters']['field_uib_area_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['operator_id'] = 'field_uib_area_target_id_op';
-  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['label'] = 'Area';
-  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['operator'] = 'field_uib_area_target_id_op';
-  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['identifier'] = 'field_uib_area_target_id';
-  $handler->display->display_options['filters']['field_uib_area_target_id']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['table'] = 'node';
+  $handler->display->display_options['filters']['title_1']['field'] = 'title';
+  $handler->display->display_options['filters']['title_1']['relationship'] = 'field_uib_area_target_id';
+  $handler->display->display_options['filters']['title_1']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title_1']['group'] = 1;
+  $handler->display->display_options['filters']['title_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
+  $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Area';
+  $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    5 => 0,
-    4 => 0,
-    3 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
   );
   /* Filter criterion: Content: Type (field_uib_article_type) */
   $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
