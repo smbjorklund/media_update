@@ -351,17 +351,37 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-social-media {
     @include zen-clear();
+    .field-label {
+      float: none;
+      margin-bottom: 10px;
+    }
     .twitter {
       background-image: url('../../images/twitter.png');
+      margin-bottom: 10px;
+      .field-item {
+          float: none;
+        }
     }
     .facebook {
       background-image: url('../../images/facebook.png');
+      .field-item {
+        margin-bottom: 10px;
+        float: none;
+      }
     }
     .vimeo {
       background-image: url('../../images/vimeo.png');
+      .field-item {
+        margin-bottom: 10px;
+        float: none;
+      }
     }
     .youtube {
       background-image: url('../../images/youtube.png');
+      .field-item {
+        margin-bottom: 10px;
+        float: none;
+      }
     }
   }
 
@@ -727,6 +747,9 @@ $zen-auto-include-item-base: false;
 
       .field-name-field-uib-social-media {
         @include zen-clear();
+        .field-item {
+          float: left;
+        }
         .twitter {
           background-image: url('../../images/twitter.png');
         }
@@ -1311,6 +1334,9 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-social-media {
     @include zen-clear();
+    .field-item {
+      float: left;
+    }
     .twitter {
       background-image: url('../../images/twitter.png');
     }
