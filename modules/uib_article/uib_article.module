@@ -59,6 +59,14 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
         hide($form[$field_key]);
       }
     }
+    if ($form['#node_edit_form']) {
+      if (!empty($form['menu']['#weight']) AND !empty($form['scheduler_settings']['#weight'])) {
+        // Reordering tabs by switching their weights. cf. RTS-1016
+        $tmp_weight = $form['menu']['#weight'];
+        $form['menu']['#weight'] = $form['scheduler_settings']['#weight'];
+        $form['scheduler_settings']['#weight'] = $tmp_weight;
+      }
+    }
   }
 }
 
