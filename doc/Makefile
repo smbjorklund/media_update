@@ -17,6 +17,7 @@ HTML = \
   style.html \
   terms.html \
   w3_server_layout.html \
+  local-production.html \
 
 PYTHON = python
 PERL = perl
