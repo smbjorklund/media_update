@@ -13,6 +13,7 @@ dependencies[] = features
 dependencies[] = field_group
 dependencies[] = file
 dependencies[] = file_entity
+dependencies[] = i18n_field
 dependencies[] = link
 dependencies[] = list
 dependencies[] = media

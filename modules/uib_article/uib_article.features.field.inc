@@ -478,9 +478,9 @@ function uib_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'list',
+          'module' => 'i18n_field',
           'settings' => array(),
-          'type' => 'list_default',
+          'type' => 'i18n_list_default',
           'weight' => '24',
         ),
         'teaser' => array(
