@@ -47,7 +47,7 @@ function drush_uib_migrate_build_menu() {
     if (count($result) > 1) {
       list($empty, $nid) = $result;
       $node = node_load($nid);
-      uib_migrate__build_menu_tree($node, $row->mlid, 1);
+      uib_migrate__build_menu_tree($node, $row->mlid, 3);
     }
   }
   menu_cache_clear_all();
@@ -55,6 +55,10 @@ function drush_uib_migrate_build_menu() {
 
 function uib_migrate__build_menu_tree($node, $mlid, $depth) {
   $w2id = $node->field_uib_w2_id['und'][0]['value'];
+  if (empty($w2id)) {
+    drush_log('Skipping menu link not created in migration for node ' . $node->nid);
+    return;
+  }
   $query = new EntityFieldQuery;
   $result = $query
     ->entityCondition('entity_type', 'node')
@@ -76,15 +80,20 @@ function uib_migrate__build_menu_tree($node, $mlid, $depth) {
         $kid_mlid = $item->mlid;
       }
 
-      $link_title = $kid_node->field_uib_menu_title_w2['und'][0]['value'];
       if (!empty($kid_node->field_uib_nav_weight['und'][0]['value'])) {
         $link_weight = $kid_node->field_uib_nav_weight['und'][0]['value'];
       }
       else {
         $link_weight = 0;
       }
-      if (!$link_title)
+
+      if (!empty($kid_node->field_uib_menu_title_w2['und'][0]['value'])) {
+        $link_title = $kid_node->field_uib_menu_title_w2['und'][0]['value'];
+      }
+      else {
         $link_title = $kid_node->title;
+      }
+
       $menu_link = array(
         'menu_name' => 'area',
         'link_path' => 'node/' . $kid_nid,
