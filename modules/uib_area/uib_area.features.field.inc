@@ -77,7 +77,7 @@ function uib_area_field_default_fields() {
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
-        'validate_url' => 1,
+        'validate_url' => 0,
       ),
       'widget' => array(
         'active' => 0,
