@@ -1,26 +1,5 @@
 <?php
 
-function uib_sebra_cron_job_scheduler_info() {
-  return array(
-    'sebra_sync' => array(
-      'queue name' => 'sebra_sync',
-      'worker callback' => 'uib_sebra__sync',
-      'jobs' => array(
-        array(
-          'type' => 'sebra',
-          'id' => 0,
-          'period' => 60*60,
-          'periodic' => TRUE,
-        ),
-      ),
-    ),
-  );
-}
-
-function uib_sebra__sync($job) {
-  uibx_log("This function is depricated");
-}
-
 function uib_sebra__sync_places($limit) {
   $places = uib_sebra__sws_get('places?status=aktiv');
 

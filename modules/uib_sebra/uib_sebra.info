@@ -3,6 +3,5 @@ description = "Syncronize data with Sebra"
 package = UiB
 core = 7.x
 dependencies[] = uibx
-dependencies[] = job_scheduler
 files[] = SebraPlace.inc
 files[] = SebraPerson.inc
