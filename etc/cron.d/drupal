@@ -1,0 +1,6 @@
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=w3@it.uib.no
+HOME=/
+31 * * * * root run-parts /var/www/w3.uib.no/etc/cron.hourly
+1 6 * * * root run-parts /var/www/w3.uib.no/etc/cron.daily
