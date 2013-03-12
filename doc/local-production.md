@@ -9,8 +9,8 @@ Quickest way of getting all your files and keeping them in sync with production 
 
 ## Postgres configuration
 First time you set this up you also need to create two postgres users in your local database.
-* w3_user Regular user with no drop permission etc.
-* w3_admin User Drupal run as locally.
+* w3\_user Regular user with no drop permission etc.
+* w3\_admin User Drupal run as locally.
 
 ### Grab the nightly database backup
     rsync -aihH user-name@attilatest:/prod_nettapp_w3/pg_dump/w3.uib.no.sql your-preferred-download-directory
