@@ -553,14 +553,14 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
       // Hide some fields for level 2 and level 3 users
       foreach ($not_for_level_2 as $l2) {
         if (isset($form[$l2])) {
-          hide($form[$l2]);
+          $form[$l2]['#access'] = FALSE;
         }
       }
       if (! in_array('level 2', $GLOBALS['user']->roles, TRUE)) {
         // Hide some additional fields for level 3 users
         foreach ($not_for_level_3 as $l3) {
           if (isset($form[$l3])) {
-            hide($form[$l3]);
+            $form[$l3]['#access'] = FALSE;
           }
         }
       }
