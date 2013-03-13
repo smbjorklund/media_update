@@ -222,7 +222,7 @@ function uib_area_block_view($delta='') {
               $result = db_select('field_data_field_uib_lead', 'f')
                 ->fields('f', array('field_uib_lead_value'))
                 ->condition('entity_type', $entity_type)
-                ->condition('bundle', 'uib_article')
+                ->condition('bundle', $node_type)
                 ->condition('entity_id', $node_id)
                 ->execute()
                 ->fetchCol();
