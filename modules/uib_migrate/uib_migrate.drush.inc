@@ -20,6 +20,12 @@ function uib_migrate_drush_command() {
     ),
     'required-arguments' => TRUE,
   );
+  $items['uib-migrate-menu-clean-up'] = array(
+    'description' => 'Removes items that are not area from depth 1 in menu_links',
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(),
+    'options' => array(),
+  );
   return $items;
 }
 
@@ -116,5 +122,44 @@ function uib_migrate__build_menu_tree($node, $mlid, $depth) {
 
       uib_migrate__build_menu_tree($kid_node, $kid_mlid, $depth+1);
     }
+  }
+}
+
+function drush_uib_migrate_menu_clean_up() {
+  uib_migrate_menu_clean_up();
+}
+
+function uib_migrate_menu_clean_up($deleted=0, $first_run=TRUE, $last_run=0) {
+  $result = db_select('menu_links', 'ml')
+    ->fields('ml', array('mlid', 'link_path'))
+    ->condition('menu_name', 'area')
+    ->condition('depth', 1)
+    ->execute();
+  $this_run = 0;
+  if ($last_run > 0 or $first_run) {
+    foreach ($result as $item) {
+      $nid = substr($item->link_path, 5);
+      try {
+        $node = node_load($nid);
+        if ($node->type != 'area') {
+          drush_log('Found menu item at depth 1 for node ' . $node->nid . ' of node type ' . $node->type);
+          menu_link_delete($item->mlid);
+          $this_run++;
+          drush_log('Deleted menu_link for node ' . $node->nid);
+        }
+      }
+      catch (Exception $e) {
+        drush_log('Caught exception : ' . $e->getMessage());
+        menu_link_delete($item->mlid);
+        $this_run++;
+        drush_log('Deleted menu_link for node ' . $node->nid);
+      }
+    }
+    drush_log('This run deleted ' . $this_run . ' menu links');
+    uib_migrate_menu_clean_up($deleted + $this_run, FALSE, $this_run);
+  }
+  else {
+    menu_cache_clear_all();
+    drush_log('This script has deleted ' . $deleted . ' menu links' );
   }
 }
