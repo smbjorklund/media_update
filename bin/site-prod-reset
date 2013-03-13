@@ -9,7 +9,7 @@ PGUSER="user1"
 test -L site || exit 1
 SITE=$(basename $(readlink site))
 
-rsync -aih --delete attilatest:/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/
+rsync --rltDih --delete attilatest:/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/
 find site/files -type d | xargs chmod 777
 find site/files -type f | xargs chmod 666
 
