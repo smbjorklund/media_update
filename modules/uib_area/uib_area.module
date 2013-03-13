@@ -246,10 +246,8 @@ function uib_area_block_view($delta='') {
             $node_title = t($node_title);
             $children_classes = implode(' ', $children_classes_array);
             $block['content'][$node_title]['#markup'] = "<div class=\"$children_classes\">" . '<h3>'. l($node_title, $menu_item['href']) . '</h3>';
-            if (strlen($teaser_text) > 200) {
-              $teaser_text = truncate_utf8($teaser_text, 200) . '...';
-            }
-            $block['content'][$node_title . '_text']['#markup'] = '<p>' . $teaser_text . '</p><span>'. l(t('Les mer'), $menu_item['href']) .'</span></div>';
+            $teaser_text = truncate_utf8($teaser_text, 203, TRUE, TRUE);
+            $block['content'][$node_title . '_text']['#markup'] = '<p>' . $teaser_text . '</p><span>'. l(t('Read more'), $menu_item['href']) .'</span></div>';
           }
         }
       }
