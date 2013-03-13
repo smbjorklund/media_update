@@ -21,6 +21,7 @@ You should know these:
 * [Deploy Drupal into production](drupal-deploy.html)
 * [The code repository](repo.html)
 * [How to set up Apache for local development on OS X](apache-local.html)
+* [How to get a copy of the production database](local-production.html)
 * [Reder Arrays](render-array.html)
 * [Hints that's good to know](hints.html)
 
