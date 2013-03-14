@@ -110,6 +110,9 @@ function uib_study__update_study($type, $study, $ou_nid) {
       $node->title = $study['id'];
     $node->field_uib_study_type['und'][0]['value'] = $type;
     $node->field_uib_study_code['und'][0]['value'] = $study['id'];
+    if (isset($study['category'])) {
+        $node->field_uib_study_category['und'][0]['value'] = $study['category'];
+    }
     $node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
     node_save($node);
 
@@ -152,6 +155,14 @@ function uib_study__update_study($type, $study, $ou_nid) {
     if ($node->field_uib_ou['und'][0]['target_id'] != $ou_nid) {
       $node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
       $edit = TRUE;
+    }
+    if (isset($study['category'])) {
+      if (!isset($node->field_uib_study_category['und'][0]['value']) ||
+        $node->field_uib_study_category['und'][0]['value'] != $study['category'])
+      {
+        $node->field_uib_study_category['und'][0]['value'] = $study['category'];
+        $edit = TRUE;
+      }
     }
 
     if ($edit) {
