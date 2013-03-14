@@ -27,6 +27,8 @@
 
 #block-locale-language {
     float: right;
+    position: relative;
+    z-index: 1;
 }
 
 #block-aggregator-category-1 { /* Block for the latest news items in the first category */
