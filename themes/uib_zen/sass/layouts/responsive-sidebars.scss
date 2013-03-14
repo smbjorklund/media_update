@@ -843,7 +843,8 @@ $zen-auto-include-item-base: false;
         border-radius: $border-radius;
         padding: 5px;
         width: 100%;
-        padding-right: 15px;
+        padding-right: 25px;
+        box-shadow: $box-shadow;
       }
 
       .field-name-field-uib-profiled-testimonial {
