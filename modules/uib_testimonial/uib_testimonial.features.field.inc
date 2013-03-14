@@ -59,7 +59,7 @@ function uib_testimonial_field_default_fields() {
       'bundle' => 'uib_testimonial',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Here you should type which area this content belongs to',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -501,7 +501,7 @@ function uib_testimonial_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'uib_testimonial',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'A small image in the sidebar. ',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -555,6 +555,7 @@ function uib_testimonial_field_default_fields() {
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 0,
             'upload' => 'upload',
+            'youtube' => 0,
           ),
           'progress_indicator' => 'throbber',
         ),
@@ -812,7 +813,7 @@ function uib_testimonial_field_default_fields() {
       'bundle' => 'uib_testimonial',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'The quote that will be highlighted in the middle of the page and all the places this testimonial is featured. ',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -834,6 +835,32 @@ function uib_testimonial_field_default_fields() {
       'label' => 'Quote',
       'required' => 0,
       'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 'basic_html',
+            'full_html' => 'full_html',
+            'plain_text' => 'plain_text',
+            'restricted_html' => 'restricted_html',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-9',
+              ),
+              'full_html' => array(
+                'weight' => '-7',
+              ),
+              'plain_text' => array(
+                'weight' => '-10',
+              ),
+              'restricted_html' => array(
+                'weight' => '-8',
+              ),
+            ),
+          ),
+        ),
         'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -1159,11 +1186,13 @@ function uib_testimonial_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('A small image in the sidebar. ');
   t('Area');
   t('Birth year');
   t('Education');
   t('Exchange place');
   t('Exchange text');
+  t('Here you should type which area this content belongs to');
   t('ID w2');
   t('Lead');
   t('Name');
@@ -1174,6 +1203,7 @@ function uib_testimonial_field_default_fields() {
   t('Quote');
   t('Related studyprogrammes');
   t('Text');
+  t('The quote that will be highlighted in the middle of the page and all the places this testimonial is featured. ');
 
   return $fields;
 }

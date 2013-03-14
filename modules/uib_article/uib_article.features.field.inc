@@ -208,7 +208,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'This is the author of the content. If left empty the creator of the content becomes the author.',
+      'description' => 'Add the author of the content. Use UiB usernames to search for people.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -281,9 +281,6 @@ function uib_article_field_default_fields() {
             ),
           ),
           'sort' => array(
-            'direction' => 'ASC',
-            'field' => 'field_uib_first_name:value',
-            'property' => 'uid',
             'type' => 'none',
           ),
           'target_bundles' => array(),
@@ -298,7 +295,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'The person to contact for information related to the event. Use UiB usernames to search for people. ',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -372,7 +369,7 @@ function uib_article_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'uib_article',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Every event must have both a start date and an end date. Remember to fill out both date fields and time fields.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -539,14 +536,9 @@ function uib_article_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'uib_article',
-      'default_value' => array(
-        0 => array(
-          'value' => '',
-          'format' => 'plain_text',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Use this field for short facts related to the article. Use "Heading 3" to create a suitable header for the fact box. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -736,7 +728,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This is a short category title which highlights the subject of the article. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -757,6 +749,32 @@ function uib_article_field_default_fields() {
       'label' => 'Kicker',
       'required' => 0,
       'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 'basic_html',
+            'full_html' => 'full_html',
+            'plain_text' => 'plain_text',
+            'restricted_html' => 'restricted_html',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-9',
+              ),
+              'full_html' => array(
+                'weight' => '-7',
+              ),
+              'plain_text' => array(
+                'weight' => '-10',
+              ),
+              'restricted_html' => array(
+                'weight' => '-8',
+              ),
+            ),
+          ),
+        ),
         'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -879,7 +897,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Add several relevant links to the text in these fields. It it possible to use  <a href="http://w3docs.h.uib.no/?q=node/16">internal links</a> when linking to pages within www.uib.no.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -963,7 +981,7 @@ function uib_article_field_default_fields() {
       'bundle' => 'uib_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'The address for the location of the event. ',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -984,6 +1002,32 @@ function uib_article_field_default_fields() {
       'label' => 'Location',
       'required' => 0,
       'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 'basic_html',
+            'full_html' => 'full_html',
+            'plain_text' => 'plain_text',
+            'restricted_html' => 'restricted_html',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-9',
+              ),
+              'full_html' => array(
+                'weight' => '-7',
+              ),
+              'plain_text' => array(
+                'weight' => '-10',
+              ),
+              'restricted_html' => array(
+                'weight' => '-8',
+              ),
+            ),
+          ),
+        ),
         'entity_translation_sync' => FALSE,
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -1636,6 +1680,8 @@ function uib_article_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add several relevant links to the text in these fields. It it possible to use  <a href="http://w3docs.h.uib.no/?q=node/16">internal links</a> when linking to pages within www.uib.no.');
+  t('Add the author of the content. Use UiB usernames to search for people.');
   t('Area');
   t('Attachments');
   t('Byline');
@@ -1643,6 +1689,7 @@ function uib_article_field_default_fields() {
   t('Contacts');
   t('Date');
   t('Event type');
+  t('Every event must have both a start date and an end date. Remember to fill out both date fields and time fields.');
   t('Fact box');
   t('Here you should type which area this content belongs to');
   t('ID w2');
@@ -1657,10 +1704,13 @@ function uib_article_field_default_fields() {
   t('Select which content type you want to create. Choose between info page, event or news article.');
   t('Small images');
   t('Text');
+  t('The address for the location of the event. ');
+  t('The person to contact for information related to the event. Use UiB usernames to search for people. ');
   t('These are the small images in the sidebar. You can add several.');
-  t('This is the author of the content. If left empty the creator of the content becomes the author.');
+  t('This is a short category title which highlights the subject of the article. ');
   t('This is the large image/video at the top.');
   t('Type');
+  t('Use this field for short facts related to the article. Use "Heading 3" to create a suitable header for the fact box. ');
   t('Weight');
 
   return $fields;

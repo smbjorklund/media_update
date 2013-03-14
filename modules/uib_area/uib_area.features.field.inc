@@ -709,7 +709,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Use this field for important messages that requires the immediate attention of the reader like for instance in case of a crisis or other important events. ',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -796,7 +796,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Adds a link list to the area front page. ',
+      'description' => 'Adds a link list to the area front page. It it possible to use  <a href="http://w3docs.h.uib.no/?q=node/16">internal links</a> when linking to pages within www.uib.no.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -873,7 +873,7 @@ function uib_area_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'area',
       'deleted' => '0',
-      'description' => 'Areas might provide their own logo image.  It will then be included in the header.  The logo ought to be about 128x128 pixels and have a transparent background.',
+      'description' => 'Areas might provide their own logo image.  It will be included in the header.  The logo ought to be about 80x80 pixels and have a transparent background.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -908,19 +908,23 @@ function uib_area_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
+            'private' => 0,
             'public' => 'public',
+            'vimeo' => 0,
+            'youtube' => 0,
           ),
           'allowed_types' => array(
             'audio' => 0,
-            'default' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 0,
             'media_default--media_browser_1' => 0,
             'media_default--media_browser_my_files' => 0,
+            'media_internet' => 0,
             'upload' => 'upload',
+            'youtube' => 0,
           ),
           'progress_indicator' => 'throbber',
         ),
@@ -1907,7 +1911,7 @@ function uib_area_field_default_fields() {
       'bundle' => 'area',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Add ids for the social media links that are desired.  Use strings like "twitter:uib", "youtube:uib", "facebook:uib", etc.  If the kind of service isn\'t supported no icon will show until support is added.',
+      'description' => 'Add ids for the social media links that are desired.  Use strings like twitter:uib, youtube:unibergen, facebook:universitetetibergen, vimeo:uib and flickr:unibergen. Replace "uib" with the desired account. ',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -2977,10 +2981,10 @@ function uib_area_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a testimonial that will be featured on the front page. ');
-  t('Add ids for the social media links that are desired.  Use strings like "twitter:uib", "youtube:uib", "facebook:uib", etc.  If the kind of service isn\'t supported no icon will show until support is added.');
-  t('Adds a link list to the area front page. ');
+  t('Add ids for the social media links that are desired.  Use strings like twitter:uib, youtube:unibergen, facebook:universitetetibergen, vimeo:uib and flickr:unibergen. Replace "uib" with the desired account. ');
+  t('Adds a link list to the area front page. It it possible to use  <a href="http://w3docs.h.uib.no/?q=node/16">internal links</a> when linking to pages within www.uib.no.');
   t('Adds a rss feed to the right sidebar');
-  t('Areas might provide their own logo image.  It will then be included in the header.  The logo ought to be about 128x128 pixels and have a transparent background.');
+  t('Areas might provide their own logo image.  It will be included in the header.  The logo ought to be about 80x80 pixels and have a transparent background.');
   t('Bottom image');
   t('Bottom text');
   t('Content Manager');
@@ -3024,6 +3028,7 @@ function uib_area_field_default_fields() {
   t('This is the secondary profile text. Use this for information that is often accessed. Think about what information is important at different times of the year. ');
   t('Title');
   t('Type');
+  t('Use this field for important messages that requires the immediate attention of the reader like for instance in case of a crisis or other important events. ');
   t('Visit Address');
   t('w2 profile images');
   t('w2 profile text');
