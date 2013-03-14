@@ -388,6 +388,13 @@ $zen-auto-include-item-base: false;
         float: none;
       }
     }
+    .flickr {
+      background-image: url('../../images/flickr.png');
+      .field-item {
+        margin-bottom: 10px;
+        float: none;
+      }
+    }
   }
 
   .field-name-field-uib-profiled-message {
@@ -774,6 +781,9 @@ $zen-auto-include-item-base: false;
           background-image: url('../../images/vimeo.png');
         }
         .youtube {
+          background-image: url('../../images/youtube.png');
+        }
+        .flickr {
           background-image: url('../../images/youtube.png');
         }
       }
@@ -1363,6 +1373,9 @@ $zen-auto-include-item-base: false;
     }
     .youtube {
       background-image: url('../../images/youtube.png');
+    }
+    .flickr {
+      background-image: url('../../images/flickr.png');
     }
   }
 /* the important overrides a value from field collection.theme.css */

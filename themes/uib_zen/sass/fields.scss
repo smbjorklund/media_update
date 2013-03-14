@@ -423,22 +423,7 @@ div.link-field-column  {
   width: 100px;
   text-transform: capitalize;
 
-  .twitter {
-    background-repeat: no-repeat;
-    background-position: 0 4px;
-    padding: 8px 0 10px 30px;
-  }
-  .vimeo {
-    background-repeat: no-repeat;
-    background-position: 0 4px;
-    padding: 8px 0 10px 30px;
-  }
-  .youtube {
-    background-repeat: no-repeat;
-    background-position: 0 4px;
-    padding: 8px 0 10px 30px;
-  }
-  .facebook {
+  .twitter, .vimeo, .youtube, .facebook, .flickr {
     background-repeat: no-repeat;
     background-position: 0 4px;
     padding: 8px 0 10px 30px;
