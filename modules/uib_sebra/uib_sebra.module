@@ -418,13 +418,13 @@ function uib_sebra__sync_user($username) {
       $edit['status'] = 1;
       uibx_log("User blocked, trying to fix that ...........................");
     }
-    if (isset($account->field_uib_first_name['und'][0]['value']) != $u->first_name)
+    if ($account->field_uib_first_name['und'][0]['value'] != $u->first_name)
       $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
-    if (isset($account->field_uib_last_name['und'][0]['value']) != $u->last_name)
+    if ($account->field_uib_last_name['und'][0]['value'] != $u->last_name)
       $edit['field_uib_last_name']['und'][0]['value'] = $u->last_name;
-    if (isset($account->field_uib_position['und'][0]['value']) != $u->position_name_no)
+    if ($account->field_uib_position['und'][0]['value'] != $u->position_name_no)
       $edit['field_uib_position']['und'][0]['value'] = $u->position_name_no;
-    if (isset($account->field_uib_position_en['und'][0]['value']) != $u->position_name_en)
+    if ($account->field_uib_position_en['und'][0]['value'] != $u->position_name_en)
       $edit['field_uib_position_en']['und'][0]['value'] = $u->position_name_en;
     if (isset($u->position_code)) {
       if (isset($account->field_uib_position_code['und'][0]['value'])) {
@@ -436,11 +436,11 @@ function uib_sebra__sync_user($username) {
         $edit['field_uib_position_code']['und'][0]['value'] = $u->position_code;
       }
     }
-    if (isset($account->field_uib_position_category['und'][0]['value']) != $u->position_category)
+    if ($account->field_uib_position_category['und'][0]['value'] != $u->position_category)
       $edit['field_uib_position_category']['und'][0]['value'] = $u->position_category;
-    if (isset($account->field_uib_phone) != $phones)
+    if ($account->field_uib_phone != $phones)
       $edit['field_uib_phone'] = $phones;
-    if (isset($account->roles) != $u->roles)
+    if ($account->roles != $u->roles)
       $edit['roles'] = $u->roles;
 
     if (empty($edit)) {
