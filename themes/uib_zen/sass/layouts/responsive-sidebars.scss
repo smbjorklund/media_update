@@ -272,6 +272,13 @@ $zen-auto-include-item-base: false;
    }
 }
 
+/* Hide extra logo */
+@media all and (min-width: 240px) and (max-width: 720px) {
+    .field-name-field-uib-logo {
+      display: none;
+  }
+}
+
 /* Hide desktop and tablet header */
 @media all and (min-width: 240px) and (max-width: 720px) {
   #name-and-slogan, .logo.large-screens {
