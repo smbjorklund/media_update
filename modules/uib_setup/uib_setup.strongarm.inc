@@ -449,6 +449,20 @@ function uib_setup_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_extra_info';
+  $strongarm->value = 'Use these fields to decide when to publish or unpublish an article. You must fill in both date and time. NB! It is only possible to publish on whole hours. I.e. The syntax 14:00:00 will publish an article at two o\'clock while 14:15:45 will publish at three o\'clock.';
+  $export['scheduler_extra_info'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_field_type';
+  $strongarm->value = 'date_popup';
+  $export['scheduler_field_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'scheduler_publish_enable_uib_article';
   $strongarm->value = 1;
   $export['scheduler_publish_enable_uib_article'] = $strongarm;
