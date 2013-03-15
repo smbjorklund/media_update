@@ -97,10 +97,6 @@ function uib_area_block_view($delta='') {
           '#key' => t('24-hour security hotline'),
           '#value' => '+47 55 58 80 81',
         ),
-        'responsible_this_page' => array(
-          '#theme' => 'key_value',
-          '#key' => t('Responsible for this page'),
-        ),
         'contact' => array(
           '#theme' => 'key_value',
           '#key' => t('Contact'),
@@ -116,7 +112,6 @@ function uib_area_block_view($delta='') {
       if ($area && isset($area->field_uib_ou['und'])) {
         $place = node_load($area->field_uib_ou['und'][0]['target_id']);
         $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
-        $block['content']['responsible_this_page']['#value'] = $place->title;
         if (isset($place->field_uib_phone)) {
           $block['content']['phone']['#value'] =
             $place->field_uib_phone['und'][0]['value'];
