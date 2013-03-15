@@ -463,6 +463,8 @@ function uib_sebra__sync_user($username) {
     $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
     $account->field_uib_position['und'][0]['value'] = $u->position_name_no;
     $account->field_uib_position_en['und'][0]['value'] = $u->position_name_en;
+    $account->field_uib_position_code['und'][0]['value'] = $u->position_code;
+    $account->field_uib_position_category['und'][0]['value'] = $u->position_category;
     $account->field_uib_phone = $phones;
     $account->roles = $u->roles;
     user_save($account);
