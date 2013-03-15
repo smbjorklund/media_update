@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Fix up the old 'position' entries.
+ */
+function uib_sebra_update_7000() {
+  $n = db_update('field_data_field_uib_position')
+    ->fields(array(
+      'language' => 'nb',
+    ))
+    ->condition('language', 'und')
+    ->execute();
+  uibx_log("Fixed language for $n position field values");
+
+  /* Must also explictly delete fields that are gone from the feature */
+  field_delete_field('field_uib_position_en');
+}

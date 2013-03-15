@@ -448,71 +448,6 @@ function uib_user_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_uib_position_en'.
-  $fields['user-user-field_uib_position_en'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_uib_position_en',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'user',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '3',
-        ),
-      ),
-      'entity_type' => 'user',
-      'field_name' => 'field_uib_position_en',
-      'label' => 'Position (english)',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'text_processing' => '0',
-        'user_register_form' => 0,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '4',
-      ),
-    ),
-  );
-
   // Exported field: 'user-user-field_uib_slug'.
   $fields['user-user-field_uib_slug'] = array(
     'field_config' => array(
@@ -722,7 +657,6 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Last name');
   t('Phone');
   t('Position');
-  t('Position (english)');
   t('Position category');
   t('Position code');
   t('Remove grid');

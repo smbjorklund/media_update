@@ -422,10 +422,10 @@ function uib_sebra__sync_user($username) {
       $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
     if ($account->field_uib_last_name['und'][0]['value'] != $u->last_name)
       $edit['field_uib_last_name']['und'][0]['value'] = $u->last_name;
-    if ($account->field_uib_position['und'][0]['value'] != $u->position_name_no)
-      $edit['field_uib_position']['und'][0]['value'] = $u->position_name_no;
-    if ($account->field_uib_position_en['und'][0]['value'] != $u->position_name_en)
-      $edit['field_uib_position_en']['und'][0]['value'] = $u->position_name_en;
+    if ($account->field_uib_position['nb'][0]['value'] != $u->position_name_no)
+      $edit['field_uib_position']['nb'][0]['value'] = $u->position_name_no;
+    if ($account->field_uib_position['en'][0]['value'] != $u->position_name_en)
+      $edit['field_uib_position']['en'][0]['value'] = $u->position_name_en;
     if ($account->field_uib_position_code['und'][0]['value'] != $u->position_code)
       $edit['field_uib_position_code']['und'][0]['value'] = $u->position_code;
     if ($account->field_uib_position_category['und'][0]['value'] != $u->position_category)
@@ -453,8 +453,8 @@ function uib_sebra__sync_user($username) {
     $account->field_uib_user_domain['und'][0]['value'] = 'uib';
     $account->field_uib_first_name['und'][0]['value'] = $u->first_name;
     $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
-    $account->field_uib_position['und'][0]['value'] = $u->position_name_no;
-    $account->field_uib_position_en['und'][0]['value'] = $u->position_name_en;
+    $account->field_uib_position['nb'][0]['value'] = $u->position_name_no;
+    $account->field_uib_position['en'][0]['value'] = $u->position_name_en;
     $account->field_uib_position_code['und'][0]['value'] = $u->position_code;
     $account->field_uib_position_category['und'][0]['value'] = $u->position_category;
     $account->field_uib_phone = $phones;
