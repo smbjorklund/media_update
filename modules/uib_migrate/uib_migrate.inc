@@ -41,12 +41,17 @@ function xtopic_fixuri($text) {
  * Returns the Drupal file object matching the given XTopic file object.
  *
  * @param $id
- *    XTopic $id.  The $id must reference an XTopic object of type 'file'.
+ *   XTopic $id. The $id must reference an XTopic object of type 'file'.
+ * @param $uid
+ *   User id to the file entity.
+ * @param $parent_lang
+ *   File entity language and it's translatable fields will get this set.
+ *   Defaults to nb (Norwegian bokmål).
  *
- * @returns
- *    A Drupal file object.  If the file has been seen before return the
- *    same Drupal object.  If not a new file object is created and stored
- *    in the Drupal database and then returned.
+ * @return
+ *   A Drupal file object. Return existing file object if file exist.
+ *   Non existing file object is created and stored (file_save) before
+ *   returning the file object.
  */
 function xtopic_file($id, $uid, $parent_lang = 'nb') {
   if (empty($parent_lang)) {
