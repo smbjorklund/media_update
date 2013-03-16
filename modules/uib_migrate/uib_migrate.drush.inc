@@ -26,6 +26,12 @@ function uib_migrate_drush_command() {
     'arguments' => array(),
     'options' => array(),
   );
+  $items['uib-migrate-update-files'] = array(
+    'description' => 'Updating all files from w2',
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(),
+    'options' => array(),
+  );
   return $items;
 }
 
@@ -162,4 +168,107 @@ function uib_migrate_menu_clean_up($deleted=0, $first_run=TRUE, $last_run=0) {
     menu_cache_clear_all();
     drush_log('This script has deleted ' . $deleted . ' menu links' );
   }
+}
+
+function drush_uib_migrate_update_files() {
+  module_load_include('inc', 'uib_migrate');
+  $bundles = array('uib_article', 'area', 'uib-testimonial');
+  $fields = array('field_uib_media', 'field_uib_primary_media', 'field_uib_main_media');
+
+  /**
+   * Get all nodes using files.
+   *
+   * @return array of node ID (nid)
+   */
+  function get_nid__($bundle, $field) {
+    $query = new EntityFieldQuery;
+    $result =  $query
+      ->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', $bundle)
+      ->fieldCondition($field, 'fid', FALSE, '!=')
+      // ->range(0,4000)
+      ->execute();
+
+    if (isset($result['node'])) {
+      return $items_nids = array_keys($result['node']);
+    }
+    else {
+      return FALSE;
+    }
+  }
+
+  /**
+   * Get all fid
+   *
+   * @return array of file information.
+   */
+  function file_info__($items) {
+   $media_items = array();
+
+    foreach ($items as $key => $files) {
+      if (isset($files->field_uib_primary_media['und'])) {
+        $primary_media = $files->field_uib_primary_media['und'];
+        $result = file_set__($primary_media, $files->language);
+        if ( $result)
+          $media_items[] = $result;
+      }
+      if (isset($files->field_uib_media['und'])) {
+        $media = $files->field_uib_media['und'];
+        $result = file_set__($media, $files->language);
+        if ( $result)
+          $media_items[] = $result;
+      }
+      if (isset($files->field_uib_main_media['und'])) {
+        $main_media = $files->field_uib_main_media['und'];
+        $result = file_set__($main_media, $files->language);
+        if ( $result)
+          $media_items[] = $result;
+      }
+    }
+    return $media_items;
+  }
+
+  /**
+   * Populate file array with data if it have a w2id (have been migrated).
+   * @param $media
+   *   File entry to write.
+   *
+   * @param $language
+   *  Language to populate file entry with.
+   *
+   * @return array of file entries or FALSE if no w2 ID was found.
+   */
+  function file_set__($media, $language) {
+    $file = FALSE;
+    foreach ($media as $media_item) {
+      if (isset($media_item['field_uib_w2_id']['und'][0]['safe_value'])) {
+          $file['fid'] = $media_item['fid'];
+          $file['w2id'] = $media_item['field_uib_w2_id']['und'][0]['safe_value'];
+          $file['language'] = $language;
+          $file['uid'] = $media_item['uid'];
+      }
+    }
+    return $file;
+  }
+
+  foreach ($bundles as $bundle) {
+    foreach ($fields as $field) {
+      $nid = get_nid__($bundle, $field);
+      if (!$nid) {
+        uibx_log($bundle . ' contained no files of the type ' . $field);
+      }
+      else {
+        uibx_log('Found nodes, processing: ' . $bundle . ' ' . $field);
+        $items = entity_load('node', $nid);
+        $files = file_info__($items);
+        if ($files) {
+          foreach ($files as $key => $value) {
+            uibx_log('w2 ID: ' . $value['w2id'] . ' uID: ' . $value['uid']  . ' fID: '  . $value['fid'] . ' LANG: ' . $value['language']);
+            xtopic_file($value['w2id'], $value['uid'], $value['language']);
+          }
+        }
+      }
+    }
+  }
+  return TRUE;
 }
