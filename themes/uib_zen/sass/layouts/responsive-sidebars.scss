@@ -500,6 +500,9 @@ $zen-auto-include-item-base: false;
       bottom: 20%;
     }
   }
+  .view-area-slideshow .views-slideshow-pager-fields {
+    display: none;
+  }
   #widget_pager_bottom_area_slideshow-default {
     left: 9%;
     top: 81%
@@ -511,7 +514,7 @@ $zen-auto-include-item-base: false;
 
     h3  {
     font-size: 8px;
-    margin-top: -5px;
+    margin-top: -25px;
     }
   }
   .lead {
@@ -943,24 +946,45 @@ $zen-auto-include-item-base: false;
 
     /* Slideshow tablet */
     @media all and (min-width: 720px) and (max-width: 959px){
-     .view-area-slideshow {
-       .views-slideshow-pager-fields {
-         left: 33px;
-       }
+      .view-area-slideshow .transparent {
+        position: absolute;
+        bottom: 4px;
+        left: 0px;
+        width: 708px;
+        height: 30%;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
 
-       .slidecontent {
-         bottom: 6%;
-         left: 6%;
+      .view-area-slideshow img {
+        max-width: 708px;
+      }
 
-         h3 {
-           color: #fff;
-           margin-bottom: 10px;
-           paddin-top: 0;
-           font-size: 1.5em;
-           font-weight: normal;
-         }
-       }
-     }
+      .view-area-slideshow, .views-field-field-uib-main-media  {
+        @include zen-grid-item (4, 1);
+        width: 100%;
+
+        .media {
+          width: 47%;
+        }
+      }
+
+      #widget_pager_bottom_area_slideshow-default {
+        left: 40%;
+        top: 90%;
+        margin: 3px 0 0;
+      }
+
+      .slidecontent {
+        bottom: 8%;
+        left: 6%;
+
+        h3 {
+          color: #fff;
+          margin-bottom: 10px !important;
+          font-size: 1.5em !important;
+          font-weight: normal !important;
+        }
+      }
    }
 
     @media all and (min-width: 720px) and (max-width: 959px) {
@@ -1354,21 +1378,6 @@ $zen-auto-include-item-base: false;
 @media all and (min-width: 960px) {
   $zen-column-count: 4;
 
-
-  .view-area-slideshow .transparent {
-    position: absolute;
-    bottom: 4px;
-    left: 0px;
-    width: 708px;
-    height: 30%;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-
-  .view-area-slideshow img {
-    max-width: 708px;
-  }
-
   .field-name-field-uib-important-message {
     @include zen-grid-item (4, 1);
   }
@@ -1622,6 +1631,19 @@ $zen-auto-include-item-base: false;
 }
 /* Slideshow */
   @media all and (min-width: 960px) {
+    .view-area-slideshow .transparent {
+      position: absolute;
+      bottom: 4px;
+      left: 0px;
+      width: 708px;
+      height: 30%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .view-area-slideshow img {
+      max-width: 708px;
+    }
+
     .view-area-slideshow, .views-field-field-uib-main-media  {
       @include zen-grid-item (4, 1);
       width: 100%;
