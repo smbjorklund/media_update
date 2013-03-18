@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Delete the uib_position_en field
+ */
+function uib_user_update_7000() {
+  /* Must also explictly delete fields that are gone from the feature */
+  field_delete_field('field_uib_position_en');
+}
