@@ -440,8 +440,8 @@ function uib_sebra__sync_user($username) {
     }
     else {
       user_save($account, $edit);
-      // uibx_log('Update-'.print_r($edit,true));
       uibx_log("Updated user fields for $username <$account->mail>");
+      uibx_log('Update-'.print_r($edit,true));
     }
   }
   else {
