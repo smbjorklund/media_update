@@ -158,8 +158,5 @@ function uib_study__update_study($type, $study, $ou_nid) {
       node_save($node);
       uibx_log("$type " . $study['id'] . " updated");
     }
-    else {
-      uibx_log("$type " . $study['id'] . " unchanged");
-    }
   }
 }
