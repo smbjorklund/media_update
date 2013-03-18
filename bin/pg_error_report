@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+# This script is suitable to run the output from 'psql --echo-queries 2>&1'.
+# It will then extract the errors and warnings together with the statements
+# that cause these.
+
+use strict;
+
+my $stmt = "";
+while (<>) {
+    if (/^\w+:/) {
+	print "\n";
+	print $stmt;
+	print;
+    }
+    elsif (/^\s/ || /^\);/) {
+	$stmt .= $_;
+    }
+    else {
+	$stmt = $_;
+    }
+}
