@@ -5,10 +5,15 @@
 # that cause these.
 
 use strict;
+use Getopt::Long qw(GetOptions);
+GetOptions(
+    'ignore-drop' => \my $ignore_drop,
+) || die;
 
 my $stmt = "";
 while (<>) {
     if (/^\w+:/) {
+	next if $ignore_drop && $stmt =~ /^DROP / || $stmt =~ /^ALTER TABLE .* DROP /;
 	print "\n";
 	print $stmt;
 	print;
