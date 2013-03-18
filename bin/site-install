@@ -81,16 +81,7 @@ cat <<'EOT' >>settings.php
 ini_set('memory_limit', '256M');
 EOT
 
-cat <<'EOT' >>drushrc.php
-<?php
-$options['structure-tables'] = array(
-    'common' => array(
-       'cache', 'cache_block', 'cache_bootstrap', 'cache_field', 'cache_filter',
-       'cache_form', 'cache_image', 'cache_menu', 'cache_page', 'cache_path', 'cache_update',
-       'history', 'sessions', 'watchdog',
-    ),
-);
-EOT
+ln -s ../../../etc/drushrc.php .
 (cd ../../.. && rm -f site && ln -s drupal/sites/$SITE_DIR site)
 (cd ../../.. && bin/sql-dump $SITE_DIR)
 
