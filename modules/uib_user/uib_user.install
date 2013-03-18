@@ -7,3 +7,12 @@ function uib_user_update_7000() {
   /* Must also explictly delete fields that are gone from the feature */
   field_delete_field('field_uib_position_en');
 }
+
+/**
+* Update the collation used to sort employees by their last name
+*/
+function uib_user_update_7001() {
+  if (db_driver() == 'pgsql') {
+    db_query('ALTER TABLE field_data_field_uib_last_name ALTER COLUMN field_uib_last_name_value TYPE character varying(255) COLLATE "no_NO"');
+  }
+}
