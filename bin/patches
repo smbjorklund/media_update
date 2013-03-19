@@ -1,0 +1,22 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my %rts;
+
+open(my $git, "git branch --remote |") || die;
+while (<$git>) {
+    next unless m,^\s+origin/rts/(\d+),;
+    $rts{$1} = {}
+}
+close($git);
+
+for my $rts (sort { $a <=> $b } keys %rts) {
+    print "\nRTS-$rts  https://rts.uib.no/issues/$rts\n\n";
+
+    open($git, "git log --oneline master..origin/rts/$rts |") || die;
+    while (<$git>) {
+	s/\s+RTS-\#?$rts\s+/ | /;
+        print "  $_";
+    }
+}
