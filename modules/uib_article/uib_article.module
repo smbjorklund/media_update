@@ -36,6 +36,9 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
       'visible' => array(
         ':input[name="field_uib_article_type[und]"]' => array('value' => 'event'),
        ),
+      'required' => array(
+        ':input[name="field_uib_article_type[und]"]' => array('value' => 'event'),
+       ),
     );
 
     $form['field_uib_contacts']['#states'] = array(
@@ -113,6 +116,9 @@ function uib_article_node_validate($node, $form, &$form_state) {
     if ($form['field_uib_article_type']['und']['#value'] == 'event') {
       if ($form['field_uib_event_type']['und']['#value'] == '_none') {
         form_set_error('field_uib_event_type[und]', t('Event type is required'));
+      }
+      if ($node->field_uib_date['und'][0]['value'] === NULL or $node->field_uib_date['und'][0]['value2'] === NULL) {
+        form_set_error('field_uib_date', t('A start and an end date is required'));
       }
     }
   }
