@@ -1,47 +1,43 @@
 /**
  * @file
+ *
  * Form Styling
  */
 
 @import "base";
 
-
 .form-item { /* Wrapper for a form element (or group of form elements) and its label */
   margin: 1.5em 0;
-
   input.error,
   textarea.error,
   select.error { /* Highlight the form elements that caused a form submission error */
     border: 1px solid #c00;
   }
-
   label { /* The label for a form element */
+    color: #333;
     display: inline;
     font-weight: normal;
-    font-size:1.2em;
-    margin-bottom:5px;
-    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 5px;
   }
-
   label.option { /* The label for a radio button or checkbox */
     display: inline;
     font-weight: normal;
   }
-
   .form-required { /* The part of the label that indicates a required field */
     color: #aa0000;
   }
-
   .form-checkboxes & ,
   .form-radios & { /* Pack groups of checkboxes and radio buttons closer together */
     margin: 0; /* Drupal core uses "0.4em 0" */
   }
 }
+
 .form-item .description { /* The descriptive help text (separate from the label) */
-    color:#6A6A6A;
-    font-size: 1em;
-    margin-top:3px;
-  }
+  color: #6A6A6A;
+  font-size: 1em;
+  margin-top: 3px;
+}
 
 .form-submit { /* The submit button */
 }
@@ -52,12 +48,16 @@
     display: inline;
   }
 }
+
 .view-uib-webdesk .form-select {
   display: block;
 }
-.view-uib-webdesk #edit-submit--2, .view-uib-webdesk #edit-submit-uib-webdesk {
+
+.view-uib-webdesk #edit-submit--2,
+.view-uib-webdesk #edit-submit-uib-webdesk {
   margin: 10px 0 0;
 }
+
 .tips { /* Tips for Drupal's input formats */
 }
 
@@ -68,7 +68,6 @@ a.button { /* Buttons used by contrib modules like Media */
 /*
  * Password confirmation
  */
-
 .password-parent,
 .confirm-parent {
   margin: 0;
@@ -77,14 +76,12 @@ a.button { /* Buttons used by contrib modules like Media */
 /*
  * Search (search-block-form.tpl.php)
  */
-
 #block-search-form { /* Wrapper for the search form */
 }
 
 /*
  * Drupal's default login form block
  */
-
 #user-login-form {
   text-align: left; /* LTR */
 
@@ -94,7 +91,6 @@ a.button { /* Buttons used by contrib modules like Media */
    * The default styling for the OpenID login link seems to assume Garland's
    * styling of list items.
    */
-
   ul { /* OpenID creates a new ul above the login form's links. */
     margin-bottom: 0; /* Position OpenID's ul next to the rest of the links. */
   }
@@ -104,7 +100,6 @@ a.button { /* Buttons used by contrib modules like Media */
     margin-top: 1.5em;
     margin-left: -20px; /* LTR */ /* Un-do some of the padding on the ul list. */
   }
-
   li.user-link { /* The "Cancel OpenID login" link. */
     margin-top: 1.5em;
   }
@@ -120,22 +115,18 @@ a.button { /* Buttons used by contrib modules like Media */
  * We overrode these styles in normalize.css, but restore them for the admin
  * section of the site.
  */
-
 form {
   th {
     text-align: left; /* LTR */
     padding-right: 1em; /* LTR */
     border-bottom: 3px solid #ccc;
   }
-
   tbody {
     border-top: 1px solid #ccc;
   }
-
   tr.even {
     background-color: #fff;
   }
-
   table .item-list ul {
     margin: 0;
   }
@@ -152,9 +143,9 @@ form {
 }
 
 /*
- * Drupal core wrongly puts this in system.menus.css. Since we override that, add it back.
+ * Drupal core wrongly puts this in system.menus.css. Since we override that,
+ * add it back.
  */
-
 td.menu-disabled {
   background: #ccc;
 }
@@ -166,7 +157,7 @@ td.menu-disabled {
 
 
 /* Testimonial */
-.node-uib_testimonial-form  {
+.node-uib_testimonial-form {
   width: 90%;
 }
 
@@ -177,19 +168,26 @@ td.menu-disabled {
 }
 
 /* Border around nodes in the webdesk */
-#uib-article-node-form, #area-node-form, #uib-ou-node-form, #uib-testimonial-node-form {
+#uib-article-node-form,
+#area-node-form,
+#uib-ou-node-form,
+#uib-testimonial-node-form {
   border: solid 1px #C9C9C9;
-  box-shadow: 0px 1px 3px #d7d7d7;
+  box-shadow: 0 1px 3px #d7d7d7;
   color: #666666;
   display: inline-block;
 }
 
 /* Sets the style for fields */
-  #edit-title, #edit-title-1, .form-autocomplete, #edit-field-uib-kicker-und-0-valume, .text-full {
+#edit-title,
+#edit-title-1,
+.form-autocomplete,
+#edit-field-uib-kicker-und-0-valume,
+.text-full {
   padding: 4px;
   border: solid 1px #a2a2a2;
   width: 98%;
-  box-shadow: 0px 1px 3px #d7d7d7 inset; 
+  box-shadow: 0 1px 3px #d7d7d7 inset;
   font-size: 1em;
   color: #4D4D4D;
 }
@@ -199,14 +197,17 @@ td.menu-disabled {
 }
 
 .text-full  {
-  box-shadow: 0px 1px 3px #D7D7D7 inset;
+  box-shadow: 0 1px 3px #D7D7D7 inset;
   border: solid 1px #A2A2A2;
   color: #4D4D4D;
 }
 
-#edit-title:hover, .form-autocomplete:hover, #edit-field-uib-kicker-und-0-value:hover, .text-full:hover{
-  border-color: #787878; 
-	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 4px;
+#edit-title:hover,
+#edit-field-uib-kicker-und-0-value:hover,
+.form-autocomplete:hover,
+.text-full:hover {
+  border-color: #787878;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 0 4px;
 }
 
 .form-field-type-long-text {
@@ -214,7 +215,7 @@ td.menu-disabled {
 }
 
 .views-exposed-form .views-exposed-widget {
-    float: none;
+  float: none;
 }
 
 .views-exposed-form .views-exposed-widget .form-submit {
@@ -222,14 +223,17 @@ td.menu-disabled {
 }
 
 html.js input.form-autocomplete {
-    background-position: 100% 8px;
+  background-position: 100% 8px;
 }
 
 html.js input.throbbing {
   background-position: 100% -12px; /* LTR */
 }
 
-#edit-changed-wrapper, #edit-created-wrapper, #edit-field-uib-article-type-value-wrapper, #edit-field-uib-event-type-value-wrapper {
+#edit-changed-wrapper,
+#edit-created-wrapper,
+#edit-field-uib-article-type-value-wrapper,
+#edit-field-uib-event-type-value-wrapper {
   display: inline-block;
 }
 
@@ -252,7 +256,7 @@ html.js input.throbbing {
 }
 
 /* Webdesk title */
-.panel-3col h2  {
+.panel-3col h2 {
   text-transform: none;
   font-family: helvetica, sans-serif;
   font-weight: normal;
@@ -260,7 +264,8 @@ html.js input.throbbing {
 }
 
 /* W2 fields testimonial */
-.form-field-name-field-uib-w2-path, .form-field-name-field-uib-w2-id  {
+.form-field-name-field-uib-w2-path,
+.form-field-name-field-uib-w2-id {
   display: none;
 }
 
@@ -273,38 +278,33 @@ table.sticky-header {
 #views-form-uib-webdesk-page-1 td {
   padding: 10px 0 10px 0;
 }
+
 .page-webdesk-all-content {
   #main {
     background-color: #fff;
     border: solid 1px #C9C9C9;
-    box-shadow: 0px 1px 3px #d7d7d7;
+    box-shadow: 0 1px 3px #d7d7d7;
   }
-  
   .views-exposed-widgets {
     width: 50%;
   }
-
   .view-content {
     width: 100%;
   }
-
   .views-table {
     width: 100%;
     margin: 0 auto;
   }
-  
   .views-field-delete-node  {
     background: url('../images/delete.png') no-repeat;
     display: inline-block;
     background-position: 0 10px;
   }
-
   .views-field-edit-node  {
     background: url('../images/edit.png') no-repeat;
     display: inline-block;
     background-position: 0 10px;
   }
-
   #edit-submit-uib-webdesk {
     padding: 10px 10px 10px 10px;
     margin: 20px 0 30px 0;
@@ -313,7 +313,6 @@ table.sticky-header {
     color: #fff;
     height: 40px;
     width: 70px;
-    
     &:hover {
       text-decoration: underline;
     }
@@ -324,7 +323,8 @@ table.sticky-header {
 .page-webdesk-area table {
   width: 100%;
   border: solid #DBDBDB 1px;
-  .odd, .even {
+  .odd,
+  .even {
     background: #fff;
     td {
       padding: 5px;

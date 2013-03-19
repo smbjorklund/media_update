@@ -121,7 +121,7 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
   -ms-text-size-adjust: 100%; /* 2 */
   /* Establishes a vertical rhythm unit using $base-line-height. */
-  @include adjust-leading-to(1);  
+  @include adjust-leading-to(1);
 }
 
 /*
@@ -144,8 +144,8 @@ textarea {
  */
 
 body {
-  margin: 0;  
-  
+  margin: 0;
+
 }
 
 
@@ -465,7 +465,7 @@ img {
   /* Responsive images */
   /* @todo Add responsive embedded video. */
   height: auto;
-  max-width: 100%
+  max-width: 100%;
 }
 
 /*
