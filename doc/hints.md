@@ -24,16 +24,57 @@ some files.  Skipping manual confirmation on all the "Are you sure?" prompts is 
 
 ## Postgres
 
-We will deploy with postgres as our database.  Since the postgres team has no come up
-with a test database server where we can create and destroy databases at will, we have
-set up our own at glory.uib.no.  On that server you can log in with the username 'user1'.
+### Setup database on glory.uib.no
+We will deploy with postgres as our database.  Since the postgres team has no come up with a test database server where we can create and destroy databases at will, we have set up our own at glory.uib.no. On that server you can log in with the username 'user1'.
 
 If you create youself a `~/.pgpass` file with this content:
 
     glory.uib.no:5432:*:user1:pass1
 
-You will be able to log into that server with 'psql -h glory.uib.no -U user1' and it should
-also work to run `site-install w3.uib.local postgres` to set up a new drupal instance on postgres.
+You will be able to log into that server with 'psql -h glory.uib.no -U user1' and it should also work to run `site-install w3.uib.local postgres` to set up a new drupal instance on postgres.
+
+### Running into resource limitation in your local sandbox
+Example. You try to drop all your database tables from drush.
+
+    bin/site-drush sql-drop
+    Do you really want to drop all tables? (y/n): y
+    psql:/private/tmp/drush_bGSS68:1: WARNING:  out of shared memory
+    psql:/private/tmp/drush_bGSS68:1: ERROR:  out of shared memory
+    HINT:  You might need to increase max_locks_per_transaction.
+
+#### Locate your database config
+Postgresql installed with homebrew is normally found at
+
+    /usr/local/var/postgres/postgresql.conf
+
+Locate your increase max_locks_per_transaction entry, a higher number like 128 might be sutible. Changing this require that you restart your database server.
+
+#### Running out of kernel space (SHMMAX)
+Starting your database might now throw an error:
+
+    FATAL:  could not create shared memory segment: Invalid argument
+    DETAIL:  Failed system call was shmget(key=5432001, size=4390912, 03600).
+    HINT:  This error usually means that PostgreSQL's request for a
+    shared memory segment exceeded your kernel's SHMMAX parameter.
+
+    You can either reduce the request size or reconfigure the kernel
+    with larger SHMMAX. To reduce the request size (currently
+    4390912 bytes), reduce PostgreSQL's shared memory usage, perhaps
+    by reducing shared_buffers or max_connections.
+
+    If the request size is already small, it's possible that it is
+    less than your kernel's SHMMIN parameter, in which case raising
+    the request size or reconfiguring SHMMIN is called for.
+
+You can locally test this by running the following:
+
+    sudo sysctl -w kern.sysv.shmall=65536
+    sudo sysctl -w kern.sysv.shmmax=16777216
+
+To permantly add this to your computer (OS X), add the following to your /etc/sysctl.conf. Create the file if you don't allready have it.
+
+      kern.sysv.shmall=65536
+      kern.sysv.shmmax=16777216
 
 ## Git
 
