@@ -614,6 +614,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_uib_study_category']['label'] = '';
   $handler->display->display_options['fields']['field_uib_study_category']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_study_category']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_study_category']['type'] = 'i18n_list_default';
   $handler->display->display_options['path'] = 'node/%/study-programmes';
 
   /* Display: Masterprogrammes */
