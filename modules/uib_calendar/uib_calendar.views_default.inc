@@ -100,6 +100,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_uib_event_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_event_type']['element_wrapper_type'] = 'h2';
   $handler->display->display_options['fields']['field_uib_event_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_event_type']['type'] = 'i18n_list_default';
   /* Sort criterion: Content: Date - end date (field_uib_date:value2) */
   $handler->display->display_options['sorts']['field_uib_date_value2']['id'] = 'field_uib_date_value2';
   $handler->display->display_options['sorts']['field_uib_date_value2']['table'] = 'field_data_field_uib_date';
@@ -311,6 +312,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_uib_event_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_event_type']['element_wrapper_type'] = 'h2';
   $handler->display->display_options['fields']['field_uib_event_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_event_type']['type'] = 'i18n_list_default';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -462,6 +464,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_uib_event_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_event_type']['element_wrapper_type'] = 'h2';
   $handler->display->display_options['fields']['field_uib_event_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_event_type']['type'] = 'i18n_list_default';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -679,6 +682,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_uib_event_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_event_type']['element_wrapper_type'] = 'h2';
   $handler->display->display_options['fields']['field_uib_event_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_event_type']['type'] = 'i18n_list_default';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -784,6 +788,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_event_type_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_uib_event_type_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_uib_event_type_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_uib_event_type_value']['summary']['human'] = TRUE;
   $handler->display->display_options['arguments']['field_uib_event_type_value']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['field_uib_event_type_value']['limit'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
