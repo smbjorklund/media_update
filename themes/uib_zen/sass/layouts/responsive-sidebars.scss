@@ -600,6 +600,10 @@ $zen-auto-include-item-base: false;
       padding: 10px 10px 0 10px;
     }
 
+    h3 {
+      clear: both;
+    }
+
     a {
       font-size: 1.4em;
       line-height: 2em;
@@ -1111,6 +1115,10 @@ $zen-auto-include-item-base: false;
         margin: 0 10px 10px 0;
         background-color: #efefef;
         padding: 10px 10px 0 10px;
+      }
+
+      h3 {
+	clear: both;
       }
 
       a {
@@ -1686,6 +1694,10 @@ $zen-auto-include-item-base: false;
       background-color: #efefef;
       padding: 10px 10px 0 10px;
       box-shadow: $box-shadow;
+    }
+
+    h3 {
+      clear: both;
     }
 
     a {
