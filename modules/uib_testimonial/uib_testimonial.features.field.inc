@@ -504,7 +504,7 @@ function uib_testimonial_field_default_fields() {
       'description' => 'A small image in the sidebar. ',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'file_entity',
           'settings' => array(
             'file_view_mode' => 'content_sidebar',
