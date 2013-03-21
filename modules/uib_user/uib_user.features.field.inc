@@ -52,7 +52,7 @@ function uib_user_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 9,
+          'weight' => '9',
         ),
       ),
       'entity_type' => 'user',
@@ -70,7 +70,7 @@ function uib_user_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -256,7 +256,7 @@ function uib_user_field_default_fields() {
         'module' => 'phone',
         'settings' => array(),
         'type' => 'phone_textfield',
-        'weight' => '8',
+        'weight' => '10',
       ),
     ),
   );
@@ -321,7 +321,7 @@ function uib_user_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -368,7 +368,7 @@ function uib_user_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 11,
+          'weight' => '11',
         ),
       ),
       'entity_type' => 'user',
@@ -384,7 +384,7 @@ function uib_user_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
@@ -423,7 +423,7 @@ function uib_user_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 10,
+          'weight' => '10',
         ),
       ),
       'entity_type' => 'user',
@@ -443,7 +443,7 @@ function uib_user_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -489,7 +489,7 @@ function uib_user_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '6',
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'user',
@@ -508,7 +508,97 @@ function uib_user_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'user-user-field_uib_sort_name'.
+  $fields['user-user-field_uib_sort_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_sort_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_uib_sort_name',
+      'label' => 'Sort name',
+      'required' => 0,
+      'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 'basic_html',
+            'full_html' => 'full_html',
+            'plain_text' => 'plain_text',
+            'restricted_html' => 'restricted_html',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-9',
+              ),
+              'full_html' => array(
+                'weight' => '-7',
+              ),
+              'plain_text' => array(
+                'weight' => '-10',
+              ),
+              'restricted_html' => array(
+                'weight' => '-8',
+              ),
+            ),
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'text_processing' => '0',
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '3',
       ),
     ),
   );
@@ -579,7 +669,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'size' => '16',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -644,7 +734,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -661,6 +751,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Position code');
   t('Remove grid');
   t('Slug');
+  t('Sort name');
   t('The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
 
 The domain \'local\' is for local users.  The domain \'uib\' is for used for usernames allocated by Sebra. ');

@@ -22,6 +22,7 @@ features[field][] = user-user-field_uib_position
 features[field][] = user-user-field_uib_position_category
 features[field][] = user-user-field_uib_position_code
 features[field][] = user-user-field_uib_slug
+features[field][] = user-user-field_uib_sort_name
 features[field][] = user-user-field_uib_user_domain
 features[field][] = user-user-field_uib_w2_id
 features[user_permission][] = access user profiles
