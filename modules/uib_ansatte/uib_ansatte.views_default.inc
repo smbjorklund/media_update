@@ -282,12 +282,6 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_position']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_position']['alter']['text'] = '[field_uib_position]</br>';
   $handler->display->display_options['fields']['field_uib_position']['hide_empty'] = TRUE;
-  /* Field: User: Position (english) */
-  $handler->display->display_options['fields']['field_uib_position_en']['id'] = 'field_uib_position_en';
-  $handler->display->display_options['fields']['field_uib_position_en']['table'] = 'field_data_field_uib_position_en';
-  $handler->display->display_options['fields']['field_uib_position_en']['field'] = 'field_uib_position_en';
-  $handler->display->display_options['fields']['field_uib_position_en']['relationship'] = 'field_uib_staff_target_id';
-  $handler->display->display_options['fields']['field_uib_position_en']['exclude'] = TRUE;
   /* Field: User: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
@@ -433,12 +427,6 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_position']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_position']['alter']['text'] = '[field_uib_position]</br>';
   $handler->display->display_options['fields']['field_uib_position']['hide_empty'] = TRUE;
-  /* Field: User: Position (english) */
-  $handler->display->display_options['fields']['field_uib_position_en']['id'] = 'field_uib_position_en';
-  $handler->display->display_options['fields']['field_uib_position_en']['table'] = 'field_data_field_uib_position_en';
-  $handler->display->display_options['fields']['field_uib_position_en']['field'] = 'field_uib_position_en';
-  $handler->display->display_options['fields']['field_uib_position_en']['relationship'] = 'field_uib_staff_target_id';
-  $handler->display->display_options['fields']['field_uib_position_en']['exclude'] = TRUE;
   /* Field: User: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
