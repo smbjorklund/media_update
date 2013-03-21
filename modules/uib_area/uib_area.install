@@ -10,3 +10,21 @@ function uib_area_install() {
     'description' => 'All areas should have a top level entry in this menu.  Under the area this menu is used for the main organization of content',
   ));
 }
+
+/**
+ * Update aliases for areas already present
+ */
+function uib_area_update_7000() {
+  // get all area nodes
+  $result = db_select('node', 'f')
+    ->fields('f', array('nid', 'language'))
+    ->condition('type', 'area')
+    ->execute();
+  foreach ($result as $row) {
+    $node_path = 'node/' . $row->nid;
+    $node_alias = path_load($node_path); // get existing alias from node
+    if (!empty($node_alias['alias'])) {
+      uib_area__create_area_aliases($row->nid, $node_alias['alias'], $row->language); // create aliases that do not already exist
+    }
+  }
+}
