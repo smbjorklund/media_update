@@ -668,9 +668,16 @@ function uib_area__create_area_aliases($node_nid, $node_alias, $language) {
         else {
           $new_path = array('source' => $source_url, 'alias' => $new_alias_url, 'language' => $language);
         }
-        if ($existing_alias = path_load($source_url)) { // Check if alias exists
-          if ($existing_alias['alias'] != $new_alias_url) {
+        if ($existing_alias = path_load($source_url)) { // get existing alias
+           if ($existing_alias['alias'] != $new_alias_url) {
+            // Alias exists for the source, but different one than this
             path_save($new_path);
+          }
+          elseif (!empty($language)) {
+            if ($existing_alias['language'] != $language) {
+              // Alias exists, but not for this language
+              path_save($new_path);
+            }
           }
         }
         else {
