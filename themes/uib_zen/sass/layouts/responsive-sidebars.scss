@@ -990,7 +990,7 @@ $zen-auto-include-item-base: false;
 
         h3 {
           color: #fff;
-          margin-bottom: 10px !important;
+          margin-bottom: 20px !important;
           font-size: 1.5em !important;
           font-weight: normal !important;
         }
@@ -1652,6 +1652,11 @@ $zen-auto-include-item-base: false;
       width: 708px;
       height: 30%;
       background-color: rgba(0, 0, 0, 0.8);
+      .slidecontent {
+        &:hover {
+        text-decoration: underline;
+        }
+      }
     }
 
     .view-area-slideshow img {
@@ -1679,7 +1684,7 @@ $zen-auto-include-item-base: false;
 
       h3 {
         color: #fff;
-        margin-bottom: 10px !important;
+        margin-bottom: 15px !important;
         font-size: 1.5em !important;
         font-weight: normal !important;
       }
