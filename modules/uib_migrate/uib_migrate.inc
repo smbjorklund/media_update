@@ -71,7 +71,8 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     $res = array_values($result['file']);
     $file = file_load($res[0]->fid);
     $file_exists = TRUE;
-    if (! drush_get_option('force')) { // Check if we are forcing update of *field data* from w2
+    // Check if we are forcing update of *field data* from w2.
+    if (!drush_get_option('force')) {
       return $file;
     }
     uibx_log('Forcing file metadata update from w2: fid=' . $file->fid, 'notice');
@@ -111,7 +112,7 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     // setup file origin and destination paths for new file
     $uri = XTopic::url($uri); // origin
     $basename = drupal_basename($uri);
-    if(function_exists('transliteration_clean_filename')) {
+    if (function_exists('transliteration_clean_filename')) {
       $basename = transliteration_clean_filename($basename, 'nb');
     }
     $hash = strtolower(substr($basename, 0, 2));
@@ -188,8 +189,8 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     die("Could not save file");
   }
   else {
-    //Touch timestamp to preserve timestamps from legacy system (w2).
-    // This is performed also for existing files when metadata update from w2 is performed
+    // Touch timestamp to preserve timestamps from legacy system (w2).
+    // This is performed also for existing files when metadata update from w2 is performed.
     $file->timestamp = strtotime($xtopic->created);
     drupal_write_record('file_managed', $file, 'fid');
   }

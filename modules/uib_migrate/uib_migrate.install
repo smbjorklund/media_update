@@ -24,7 +24,7 @@ function uib_migrate_update_7000() {
     foreach ($result as $row) {
       $file = file_load($row->{$field[$i]});
       // Fix drupal file type if previous migration
-      // had saved audio as document
+      // had saved audio as document.
       $tmp = explode('/', $file->filemime);
       $media_content_type = trim($tmp[0]);
       if ($file->type != $media_content_type) {
