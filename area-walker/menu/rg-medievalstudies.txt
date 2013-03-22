@@ -1,0 +1,9 @@
+   1  0 Centre for Medieval Studies - Topography and networks of the Middle Ages [8113398911060754976, forskningsgruppe]
+   2  1   Research [8578436509406663729, navigationpage]
+   3  1   Projects [8578436509406663721, navigationpage]
+   4  1   Publications [8578436509406663725, navigationpage]
+   5  1   Contact us [8578436509406663717, navigationpage]
+   6  2     Faculty and staff [2058392382913149328, displaylisting imported]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1, 'displaylisting': 1})
+max depth 2

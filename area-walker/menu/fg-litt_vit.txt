@@ -1,4 +1,4 @@
-   1  0 Litteratur og vitenskap [5656253015567411150, forskningsgruppe]
+   1  0 Forskergruppen Litteratur og vitenskap [5656253015567411150, forskningsgruppe]
    2  1   Forskning [8344119316660751425, navigationpage]
    3  2     Presentasjon av forskningsområdet [4309537192153597114, article]
    4  2     ### 4677516321772138650 does not exist!

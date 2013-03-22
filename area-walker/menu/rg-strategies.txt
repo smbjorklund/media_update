@@ -1,0 +1,8 @@
+   1  0 Research Group Conditions and Strategies for Developing Language Competences [9000625789282784966, forskningsgruppe]
+   2  1   Research [8544677591987428438, navigationpage]
+   3  1   Projects [8544677591987428430, navigationpage]
+   4  1   Publications [8544677591987428434, navigationpage]
+   5  1   Contact us [8544677591987428426, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

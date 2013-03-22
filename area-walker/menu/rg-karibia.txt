@@ -1,0 +1,12 @@
+   1  0 Research Group The Caribbean: Identities and Conflicts [6850643199866398156, forskningsgruppe exp:research/global]
+   2  1   Research [6635366466516229075, navigationpage]
+   3  2     About us [7417790120049410443, article]
+   4  2     Seminars [90313133680193363, article]
+   5  1   Projects [6635366466516229067, navigationpage]
+   6  1   Publications [6635366466516229071, navigationpage]
+   7  1   Contact us [6635366466516229063, navigationpage]
+   8  2     Address [4467094391935863961, article]
+   9  2     Members [7912909200745710604, article]
+
+Counter({'navigationpage': 4, 'article': 4, 'forskningsgruppe': 1})
+max depth 2

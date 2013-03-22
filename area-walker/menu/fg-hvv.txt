@@ -1,4 +1,4 @@
-   1  0 Helse-, velferd- og vitenskapshistorie [5656253015567410940, forskningsgruppe exp:ahkr]
+   1  0 Forskergruppen Helse-, velferd- og vitenskapshistorie [5656253015567410940, forskningsgruppe exp:ahkr]
    2  1   Forskning [6742909957895418969, navigationpage]
    3  2     Om gruppen [4725021670019045310, article]
    4  2     Ressurser [9092963803619623604, article]

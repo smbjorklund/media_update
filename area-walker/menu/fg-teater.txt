@@ -1,4 +1,4 @@
-   1  0 Teater. Scene og scenisk uttrykk [7833789259207351505, forskningsgruppe]
+   1  0 Forskergruppen Teater og scenisk uttrykk [7833789259207351505, forskningsgruppe]
    2  1   Forskning [399123665644168920, navigationpage]
    3  2     ### 3562631666573452396 does not exist!
    4  2     ### 207410795842383532 does not exist!

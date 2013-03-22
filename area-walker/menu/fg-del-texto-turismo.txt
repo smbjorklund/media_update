@@ -1,0 +1,15 @@
+   1  0 Forskergruppen Del texto al turismo y del turismo al texto [1956825242483578161, forskningsgruppe]
+   2  1   Información [1956825242483578260, navigationpage]
+   3  2     Descripcíón del proyecto [2950022477982622997, navigationpage]
+   4  3       Workshop en Bergen octubre del 2012 [1804847807373525766, article]
+   5  3       Subproyectos [654554251837726133, article]
+   6  3       Integrantes [7270605067829849411, article]
+   7  1   Prosjekter [1956825242483578268, navigationpage]
+   8  2     Menypunkt [2950022477982623002, navigationpage]
+   9  1   Publikasjoner [1956825242483578272, navigationpage]
+  10  2     Menypunkt [3021914397614467583, navigationpage]
+  11  1   Kontakt [1956825242483578264, navigationpage]
+  12  2     Menypunkt [2950022477982623012, navigationpage]
+
+Counter({'navigationpage': 8, 'article': 3, 'forskningsgruppe': 1})
+max depth 3

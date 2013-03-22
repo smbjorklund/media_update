@@ -1,0 +1,20 @@
+   1  0 Research Group Nordic Network for Literary Transculturation Studies [4324677889445945390, forskningsgruppe]
+   2  1   Research [4324677889445945424, navigationpage]
+   3  2     Network background [4226267782529847871, article]
+   4  2     Framework and Objectives [1001051485308611241, article]
+   5  1   Projects [4324677889445945416, navigationpage]
+   6  2     2010 [4226267782529847862, article]
+   7  2     Second symposium: Helsinki 2011 [5900348022781522331, article]
+   8  2     CONFERENCE: “Transculturation and Aesthetics”  [8664495483054610029, article]
+   9  1   Publications [4324677889445945420, navigationpage]
+  10  2     Publications [1022862723799931316, article]
+  11  2     Teaching [3416177434381532242, article]
+  12  1   Other events [3245698969655884768, navigationpage]
+  13  2     Related conferences and projects [6065758450819869672, article]
+  14  2     Local research groups in the Network [2735638359637404638, article]
+  15  1   Contact us [4324677889445945412, navigationpage]
+  16  2      Contact [4051883607650544601, article]
+  17  2     Members [3765572474617282110, article]
+
+Counter({'article': 11, 'navigationpage': 5, 'forskningsgruppe': 1})
+max depth 2

@@ -1,9 +1,0 @@
-   1  0 Mediterran kunst [7284157476832731445, forskningsgruppe]
-   2  1   Forskning [4277900189865642318, navigationpage]
-   3  2     Forskningsprosjekter i utvalg [5631356737102210856, article]
-   4  2     Akiviteter 2008 [5631356737102210866, article]
-   5  1   ### 6484033680487660205 does not exist!
-   6  1   Publikasjoner [6484033680487660213, navigationpage]
-
-Counter({'navigationpage': 2, 'article': 2, 'forskningsgruppe': 1})
-max depth 2

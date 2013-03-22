@@ -1,0 +1,8 @@
+   1  0 Research Group History, Rhetoric and Reception [8314982073342080062, forskningsgruppe]
+   2  1   Research [8314982073342080733, navigationpage]
+   3  1   Projects [8314982073342080725, navigationpage]
+   4  1   Publications [8314982073342080729, navigationpage]
+   5  1   Contact us [8314982073342080721, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

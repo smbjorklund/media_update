@@ -1,8 +1,0 @@
-   1  0 Tekst, diskurs og fagkommunikasjon [5656253015567411070, forskningsgruppe]
-   2  1   Forskning [4365429833675078834, navigationpage]
-   3  1   Prosjekter [4365429833675078840, navigationpage]
-   4  1   Publikasjoner [2976135879476660559, navigationpage]
-   5  1   Kontakt [2976135879476660565, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

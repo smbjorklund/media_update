@@ -1,0 +1,11 @@
+   1  0 Bergen Transculturation Studies Seminar [5476787350635827780, forskningsgruppe]
+   2  1   Research [5476787350635827966, navigationpage]
+   3  2     Transculturation studies  [3285954130607312559, article]
+   4  1   Projects [5476787350635827958, navigationpage]
+   5  2     Transculturation studies seminar, fall 2011 [8046999507857685995, article]
+   6  1   Publications [5476787350635827962, navigationpage]
+   7  1   Contact us [5476787350635827954, navigationpage]
+   8  2     Contact information [4541963206643844740, article]
+
+Counter({'navigationpage': 4, 'article': 3, 'forskningsgruppe': 1})
+max depth 2

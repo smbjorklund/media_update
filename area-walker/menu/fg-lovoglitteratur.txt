@@ -1,4 +1,4 @@
-   1  0 Rett, retorikk og litteratur [5656253015567411040, forskningsgruppe]
+   1  0 Forskergruppen Rett, retorikk og litteratur [5656253015567411040, forskningsgruppe]
    2  1   Forskning [4324459002338829346, navigationpage]
    3  2     Nordisk nettverk for rett og litteratur [8903484389750042174, article]
    4  1   Prosjekter [4324459002338829352, navigationpage]

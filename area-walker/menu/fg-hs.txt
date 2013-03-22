@@ -7,12 +7,12 @@
    7  2     Publikasjoner [5003348309440120022, article]
    8  2     Utvalgte publikasjoner, Henriette Sinding Aasen [4241913333704988292, article]
    9  1   Undervisning [1303703994818902599, navigationpage]
-  10  2     Spesialemner [5164985349689298792, article]
-  11  2     Emnebank - masteroppgaver [1365112325656436003, article]
-  12  1   Kontakt [8808977958598831083, navigationpage]
-  13  2     Ansattkatalog [8917329216099663884, displaylisting imported]
-  14  2     Medlemmer [7426895659504152395, article]
-  15  2     Fagområde og aktiviteter [6513400557242614753, article]
+  10  2     Autonomi og tvang i helse- og sosialsektoren [8010708243141643870, emne imported]
+  11  2     Health and Human Rights in the Welfare State [1461507268052255427, emne imported]
+  12  2     Rett til helsehjelp og sosiale ytingar [210659212400203084, emne imported]
+  13  2     Emnebank - masteroppgaver [1365112325656436003, article]
+  14  1   Kontakt [8808977958598831083, navigationpage]
+  15  2     Ansattkatalog [8917329216099663884, displaylisting imported]
 
-Counter({'article': 7, 'navigationpage': 5, 'forskningsgruppe': 1, 'displaylisting': 1})
+Counter({'navigationpage': 5, 'article': 4, 'emne': 3, 'forskningsgruppe': 1, 'displaylisting': 1})
 max depth 2

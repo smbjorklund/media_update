@@ -1,4 +1,4 @@
-   1  0 Visuell kultur [5656253015567411080, forskningsgruppe]
+   1  0 Forskergruppen Visuell kultur [5656253015567411080, forskningsgruppe]
    2  1   Forskning  [6085231097137188622, navigationpage]
    3  2     Prosjekter [6085231097137188628, navigationpage]
    4  3       Individuelle prosjekter [8069880840651796271, navigationpage]

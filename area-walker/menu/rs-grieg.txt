@@ -1,0 +1,18 @@
+   1  0 Grieg Research School in Interdisciplinary Music Studies [7904679445583887061, forskerskole]
+   2  1   The Research School [1647418498021076866, navigationpage]
+   3  2     About us [2131729108123333284, article]
+   4  2     Member candidates [876534657663199193, article]
+   5  2     Admission [7778455312115083817, article]
+   6  2     Guidelines [3252737197918517114, article]
+   7  1   Research Links [6237243590939304285, navigationpage]
+   8  2     Research groups [7789522536943638878, article]
+   9  2     Research journals [6874023969475007845, article, PRIVATE]
+  10  2     International research events [5690696012685219981, article]
+  11  1   Activities [1647418498021076871, navigationpage]
+  12  2     GRS courses - content and structure [753395348277563880, article]
+  13  2     GRS courses 2011-2013 [753395348277563889, article]
+  14  1   Contact Us [1647418498021076876, navigationpage]
+  15  2     Contact information [5025789255040953809, article]
+
+Counter({'article': 10, 'navigationpage': 4, 'forskerskole': 1})
+max depth 2

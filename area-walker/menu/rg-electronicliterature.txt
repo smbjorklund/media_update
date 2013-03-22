@@ -1,0 +1,9 @@
+   1  0 Research Group Electronic Literature [6874076144949219512, forskningsgruppe]
+   2  1   Research [6874076144949219601, navigationpage]
+   3  1   Projects [6874076144949219593, navigationpage]
+   4  1   Publications [6874076144949219597, navigationpage]
+   5  1   Contact us [6874076144949219589, navigationpage]
+   6  2     Contact information [8988610475513385488, personliste]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1, 'personliste': 1})
+max depth 2

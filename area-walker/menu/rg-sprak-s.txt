@@ -1,0 +1,8 @@
+   1  0 From Language to Language: Research group for translation and contrastive linguistics [6850643199866398142, forskningsgruppe]
+   2  1   Research [2760336448688354537, navigationpage]
+   3  1   Projects [2760336448688354529, navigationpage]
+   4  1   Publications [2760336448688354533, navigationpage]
+   5  1   Contact us [2760336448688354525, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

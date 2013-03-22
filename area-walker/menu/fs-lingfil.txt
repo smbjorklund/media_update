@@ -2,8 +2,9 @@
    2  1   Forskerskulen [767887311248690001, navigationpage]
    3  1   Forskning [9217554990521225263, navigationpage]
    4  1   Aktivitetar [2933812599323062043, navigationpage]
-   5  1   Arkiv [2933812599323062049, navigationpage]
-   6  1   Kontakt [1430498224139302594, navigationpage]
+   5  2     Guest lecture [6046660563021674617, article, PRIVATE]
+   6  1   Arkiv [2933812599323062049, navigationpage]
+   7  1   Kontakt [1430498224139302594, navigationpage]
 
-Counter({'navigationpage': 5, 'forskerskole': 1})
-max depth 1
+Counter({'navigationpage': 5, 'article': 1, 'forskerskole': 1})
+max depth 2

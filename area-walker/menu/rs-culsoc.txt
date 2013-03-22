@@ -1,0 +1,9 @@
+   1  0 The Research School in Culture and Society [5392139019163767016, forskerskole]
+   2  1   The Research School [5392139019163767113, navigationpage]
+   3  1   Research [5392139019163767121, navigationpage]
+   4  1   Activities [5392139019163767117, navigationpage]
+   5  1   Resources [6682781782411494600, navigationpage]
+   6  1   Contact us [5392139019163767109, navigationpage]
+
+Counter({'navigationpage': 5, 'forskerskole': 1})
+max depth 1

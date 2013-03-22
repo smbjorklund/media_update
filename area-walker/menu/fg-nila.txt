@@ -1,4 +1,4 @@
-   1  0 Nordmenn i Latin-Amerika [6512764593279536396, forskningsgruppe]
+   1  0 Forskergruppen Nordmenn i Latin-Amerika [6512764593279536396, forskningsgruppe]
    2  1   Forskning [6245503012372885248, navigationpage]
    3  2     ### 813612091930396060 does not exist!
    4  2     Tematisk fokus [4326530334778269988, article]

@@ -1,0 +1,58 @@
+   1  0 Centre for the Study of the Sciences and the Humanities [9000625789282785724, institutt]
+   2  1   Research [501804939984940913, navigationpage]
+   3  2     Theory of Science [6901538091048139297, article]
+   4  2     Publications in English [1576850892320973226, navigationpage]
+   5  3       Working Papers [734169992308577696, navigationpage]
+   6  3       Megaloceros Publishers [733549702080217247, article]
+   7  3       SVT PRESS [469291030383720860, article]
+   8  3       Dissertations [4279704452894377207, article]
+   9  3       ### 5493504495894170053 does not exist!
+  10  3       Nano Meets Macro [4471835457148050282, article]
+  11  3       Multiple Democracies in Theory and History [502583610495036837, article]
+  12  3       Environment, Embodiment and Gender [2933269773804623280, article]
+  13  3       RATIONALITY AND MODERNITY Essays in Philosophical Pragmatics and other books in English by Gunnar Skirbekk [472363606662713565, article]
+  14  3       Multiple Modernities: A Tale of Scandinavian Experiences  [6599673595054019815, article]
+  15  2     ELSA-Research - NANO [3658113713941010997, article]
+  16  2     Marco Polo [787362635062365583, article]
+  17  2     EU FP7 Technolife Project [4357048024652894701, article]
+  18  2     EU FP7 Value Isobars Project [4357048024652894724, article]
+  19  2     NFR Reflexive Systems Biology  [173517824759951912, article]
+  20  2     EU FP7 SEAT: Sustaining Ethical Aquaculture Trade [8508276157029623662, article]
+  21  2     EU FP7 PEGASUS [9217520582872147257, article]
+  22  1   Education [501804939984940909, navigationpage]
+  23  2     The PhD training component in Theory of Science [883240222879964961, navigationpage]
+  24  3       PhD HF: VITHF900: Course in Theory of science and ethics, 2014. [241603316780578881, navigationpage]
+  25  4         Course description for 2012 or earlier: VITHFPHD Theory of science and ethics  [689798799519305928, article, RETRACTED]
+  26  4         VITHF900: Course in Theory of Science and Ethics for PhD students HF/UiB and NHH, 2014 [3125915265705052924, article]
+  27  4         Course description for VITHF900 Theory of science and ethics  [1509974346367920026, article]
+  28  3       PhD SV: VITSV900 2013: 12-.15 February, 2013 (plus a start-up course in Bergen) [8548355965510932599, article]
+  29  3       PhD PSY: PhD Course 2013 [3805025708581596686, article]
+  30  3       ### 5301454423946284780 does not exist!
+  31  3       PhD MN: MNF490 [107492218360351018, article]
+  32  3       ### 4252958434540679336 does not exist!
+  33  2     Joint course: Nanoethics 310 and Biomed 310 (Fall 2012) [5157192561174458791, article, RETRACTED]
+  34  2     Bachelor level courses: Dannelsesemner (Spring 2013) [7729019328746969524, article]
+  35  2     ### 1824544085484853540 does not exist!
+  36  2     Fundamental Problems of Physics: PHYS210 Spring 2012 [1932144773089694875, article, RETRACTED]
+  37  2     Joint Course: BIOMED310: Philosophy of Science and Research Ethics and Nanoethics Fall 2012 [3142962743044476728, article, RETRACTED]
+  38  1   Seminars [501804939984940917, navigationpage]
+  39  2     ### 5752964938706341257 does not exist!
+  40  2     ### 3026000150193399520 does not exist!
+  41  2     Mailing list for Lectures at SVT [7153048308531293949, article]
+  42  2     ### 6880431502010393894 does not exist!
+  43  1   About the Centre [501804939984940901, navigationpage]
+  44  2     Where are we? Contact information [8750891661063714213, article]
+  45  2     Faculty and staff [2058392382913149328, displaylisting imported]
+  46  2     History of the Centre [749774775426377039, article]
+  47  2     SVT's Rules and Regulations [2911302533908879426, article]
+  48  2     For SVT staff: important links [5822490458570067016, article]
+  49  2     PhDs from SVT [6804657450802438747, article]
+  50  2     HSE - Health, Safety and Environment (HMS) at SVT and SKOK [6856518531546996313, navigationpage]
+  51  3       Health, Safety and Environment Information (HSE) for SVT and SKOK 2013-2014 [8277946700027603836, article]
+  52  3       HSE-Goals for 2013-2014 at SVT and SKOK [6037674249440537953, article]
+  53  2     Useful information for staff members [1095093568885790139, navigationpage]
+  54  1   Contact us [501804939984940905, navigationpage]
+  55  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'article': 34, 'navigationpage': 11, 'displaylisting': 2, 'institutt': 1})
+max depth 4

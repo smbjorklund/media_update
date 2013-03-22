@@ -1,15 +1,14 @@
-   1  0 Antikkens historie, kultur og religioner [5656253015567410935, forskningsgruppe exp:ahkr]
+   1  0 Forskergruppen Antikkens historie, kultur og religioner [5656253015567410935, forskningsgruppe exp:ahkr]
    2  1   Forskning [830545846704064753, navigationpage]
    3  2     ### 4863816228067135155 does not exist!
    4  2     ### 6228563355952900087 does not exist!
    5  2     ### 284563526255314000 does not exist!
    6  2     ### 7435335773755649992 does not exist!
    7  1   Prosjekter [830545846704064759, navigationpage]
-   8  2     Prosjekter under arbeid [1753678202086002394, article]
-   9  1   Publikasjoner [830545846704064765, navigationpage]
-  10  2     ### 4863816228067135155 does not exist!
-  11  1   Kontakt [830545846704064771, navigationpage]
-  12  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+   8  1   Publikasjoner [830545846704064765, navigationpage]
+   9  2     ### 4863816228067135155 does not exist!
+  10  1   Kontakt [830545846704064771, navigationpage]
+  11  2     Ansattkatalog [8917329216099663884, displaylisting imported]
 
-Counter({'navigationpage': 4, 'forskningsgruppe': 1, 'displaylisting': 1, 'article': 1})
+Counter({'navigationpage': 4, 'forskningsgruppe': 1, 'displaylisting': 1})
 max depth 2

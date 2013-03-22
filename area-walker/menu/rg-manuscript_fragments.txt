@@ -1,0 +1,13 @@
+   1  0 From manuscript fragments to book history [4946515791890384085, forskningsgruppe]
+   2  1   Research [6842850023636922523, navigationpage]
+   3  2     Area 1: England-France-Scandiavia [1688661209179363866, article]
+   4  2     Area 2: Medieval Nordic collaboration [3197523229265081380, article]
+   5  2     Area 3: Norwegian scribal centres [8217230931152521396, article]
+   6  1   Projects [6842850023636922515, navigationpage]
+   7  2     Illustrated fragment inventory on line [4465040995618191022, article]
+   8  1   Publications [6842850023636922519, navigationpage]
+   9  1   Contact us [6842850023636922511, navigationpage]
+  10  2     Contact details [3040026811367051624, article]
+
+Counter({'article': 5, 'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 2

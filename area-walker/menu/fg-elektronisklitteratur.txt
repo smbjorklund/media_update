@@ -1,4 +1,4 @@
-   1  0 Elektronisk litteratur [2300875233110824327, forskningsgruppe]
+   1  0 Forskergruppen Elektronisk litteratur [2300875233110824327, forskningsgruppe]
    2  1   Forskning [2300875233110824340, navigationpage]
    3  1   Prosjekter [2300875233110824348, navigationpage]
    4  1   Publikasjoner [2300875233110824352, navigationpage]

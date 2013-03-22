@@ -1,0 +1,8 @@
+   1  0 Research group for Competition and Market Law [4121049847058161690, forskningsgruppe]
+   2  1   Research [3224963483966100739, navigationpage]
+   3  1   Projects [3224963483966100731, navigationpage]
+   4  1   Publications [3224963483966100735, navigationpage]
+   5  1   Contact us [3224963483966100727, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

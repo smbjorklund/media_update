@@ -1,0 +1,9 @@
+   1  0 Senter for middelalderstudier - topografier og nettverk [8113398911060754967, forskningsgruppe]
+   2  1   Forskning [8113398911060755024, navigationpage]
+   3  1   Prosjekter [8113398911060755032, navigationpage]
+   4  1   Publikasjoner [8113398911060755036, navigationpage]
+   5  1   Kontakt [8113398911060755028, navigationpage]
+   6  2     Ansattkatalog [8917329216099663884, displaylisting imported]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1, 'displaylisting': 1})
+max depth 2

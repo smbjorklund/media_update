@@ -1,4 +1,4 @@
-   1  0 LaMoRe [5656253015567411035, forskningsgruppe]
+   1  0 Forskergruppen LaMoRe [5656253015567411035, forskningsgruppe]
    2  1   Forskning [7892839053641111931, navigationpage]
    3  2     LiLa [8622282666018898099, article]
    4  2     Links [713675354746781896, article]

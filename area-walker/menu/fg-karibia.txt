@@ -1,4 +1,4 @@
-   1  0 Karibia: Identiteter og konflikter [4474100487159784213, forskningsgruppe]
+   1  0 Forskergruppen Karibia: Identiteter og konflikter [4474100487159784213, forskningsgruppe]
    2  1   Forskning [2376355065786987562, navigationpage]
    3  2     Om oss [5167232185423480543, article]
    4  2     Seminarhistorikk [7192680638185674892, article]

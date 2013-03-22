@@ -1,0 +1,9 @@
+   1  0 Research group for Law of Property and Obligations [17706490769834454, forskningsgruppe]
+   2  1   Research [17706490769834656, navigationpage]
+   3  1   Projects [17706490769834648, navigationpage]
+   4  2     ### 6032221365757967085 does not exist!
+   5  1   Publications [17706490769834652, navigationpage]
+   6  1   Contact us [17706490769834644, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

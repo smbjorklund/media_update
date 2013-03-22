@@ -1,4 +1,4 @@
-   1  0 LexIF [2958673157286542861, forskningsgruppe]
+   1  0 Forskergruppen LexIF [2958673157286542861, forskningsgruppe]
    2  1   Forskning [2958673157286542970, navigationpage]
    3  2     Diverse aktiviteter [8016132888653243302, navigationpage]
    4  3       Gjesteforelesninger [237520799258017061, article]

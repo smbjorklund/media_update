@@ -1,0 +1,8 @@
+   1  0 Research Group Norwegians in Latin-America [6512764593279536405, forskningsgruppe exp:research/global exp:research/global]
+   2  1   Research [6512764593279536457, navigationpage]
+   3  1   Projects [6512764593279536449, navigationpage]
+   4  1   Publications [6512764593279536453, navigationpage]
+   5  1   Contact us [6512764593279536445, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

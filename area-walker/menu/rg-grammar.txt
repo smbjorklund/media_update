@@ -1,0 +1,8 @@
+   1  0 Research Group Grammar and Semantics of the Nordic Languages [1162567165940662631, forskningsgruppe]
+   2  1   Research [3791626394631264089, navigationpage]
+   3  1   Projects [3791626394631264081, navigationpage]
+   4  1   Publications [3791626394631264085, navigationpage]
+   5  1   Contact us [3791626394631264077, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

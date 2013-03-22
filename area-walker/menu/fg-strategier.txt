@@ -1,4 +1,4 @@
-   1  0 Strategier for språkkompetanse [5656253015567410930, forskningsgruppe exp:utdanning/laerer]
+   1  0 Forskergruppen Strategier for språkkompetanse [5656253015567410930, forskningsgruppe exp:utdanning/laerer]
    2  1   Forskning [2600126907125821399, navigationpage]
    3  2     Oversikt [3680870491045715510, navigationpage]
    4  3       MOO og rollespill i andre fremmedspåk i universitetes lærerutdanning [5668494150428518744, article]

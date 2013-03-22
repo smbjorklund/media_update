@@ -1,0 +1,26 @@
+   1  0 Department of Archaeology, History, Cultural Studies and Religion [9000625789282786252, institutt]
+   2  1   Education [8395441968306502812, navigationpage]
+   3  2     Admission to Master's Degree Programmes [6803281854504327704, navigationpage from education]
+   4  2     Religious Roots of Europe [5886190060108364247, article from ahkr]
+   5  2     Exchange [3762354443066848307, navigationpage from international]
+   6  2     Admission to Bachelor's degree programmes [594630224150142924, article from education]
+   7  2     Doctoral education at the Faculty of Mathematics and Natural Sciences [9147066468344731392, navigationpage from matnat/en]
+   8  1   Research [8395441968306502816, navigationpage]
+   9  2     Research groups [678868621036531604, navigationpage]
+  10  3       Research Group Ancient history, culture and religion [6850643199866398135, forskningsgruppe rg/antikken]
+  11  3       Research Group Beyond The Nation State [6850643199866398191, forskningsgruppe rg/internasj]
+  12  3       Research Group Democracy, Governance, Law and Working Life [6850643199866398219, forskningsgruppe rg/styring-rett]
+  13  3       Research Group Health-, welfare and history of science [6850643199866398128, forskningsgruppe rg/hws]
+  14  3       Research Group Places - Regions - Identity [6850643199866398198, forskningsgruppe rg/steder-regioner]
+  15  3       Research Group in Middle Eastern and African Studies [6850643199866398205, forskningsgruppe rg/midoesten]
+  16  2     Doctoral education at the Faculty of Humanities [5354350447785399726, navigationpage from hf/en]
+  17  1   Resources [8395441968306502820, navigationpage]
+  18  2     Social Sciences and Arts Library  [9000625789282785895, enhet ub/svh/en]
+  19  1   About the Department [8395441968306502804, navigationpage]
+  20  2     ### 6377863277556811813 does not exist!
+  21  2     Department of Archeology, History, Cultural Studies and Religion [2030122771852200747, article]
+  22  1   Contact us [8395441968306502808, navigationpage]
+  23  2     Faculty and staff [2058392382913149328, displaylisting imported]
+
+Counter({'navigationpage': 10, 'forskningsgruppe': 6, 'article': 3, 'institutt': 1, 'displaylisting': 1, 'enhet': 1})
+max depth 3

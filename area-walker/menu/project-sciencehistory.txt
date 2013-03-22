@@ -1,0 +1,9 @@
+   1  0 Project History of Science [216001478162513693, forskningsgruppe]
+   2  1   Projects [216001478162513908, navigationpage]
+   3  1   Publications [216001478162513912, navigationpage]
+   4  1   Activities [6242121891613818766, navigationpage]
+   5  1   Our partners [4799812366681792035, navigationpage]
+   6  1   Contact us [216001478162513904, navigationpage]
+
+Counter({'navigationpage': 5, 'forskningsgruppe': 1})
+max depth 1

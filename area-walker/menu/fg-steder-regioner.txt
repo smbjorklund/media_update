@@ -1,4 +1,4 @@
-   1  0 Steder - regioner - identitet [5656253015567411010, forskningsgruppe exp:ahkr]
+   1  0 Forskergruppen Steder - regioner - identitet [5656253015567411010, forskningsgruppe exp:ahkr]
    2  1   Forskning [4781569177806025961, navigationpage]
    3  2     Om gruppen [6546778342919091318, article]
    4  1   Prosjekter [4781569177806025967, navigationpage]

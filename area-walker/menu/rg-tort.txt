@@ -1,0 +1,8 @@
+   1  0 Research group for Tort, Insurance and Social Security Law [7799123864365095140, forskningsgruppe]
+   2  1   Research [248715610658514777, navigationpage]
+   3  1   Projects [248715610658514769, navigationpage]
+   4  1   Publications [248715610658514773, navigationpage]
+   5  1   Contact us [248715610658514765, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

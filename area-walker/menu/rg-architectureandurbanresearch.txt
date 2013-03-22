@@ -1,0 +1,8 @@
+   1  0 Research Group Architectural and Urban Research [6850643199866398212, forskningsgruppe exp:research/global]
+   2  1   Research [1143029524533805703, navigationpage]
+   3  1   Projects [1143029524533805695, navigationpage]
+   4  1   Publications [1143029524533805699, navigationpage]
+   5  1   Contact us [1143029524533805691, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

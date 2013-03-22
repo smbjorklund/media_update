@@ -1,0 +1,18 @@
+   1  0 Research group for Criminal Law and Criminal Procedure [2069052046270727107, forskningsgruppe]
+   2  1   Research [2069052046270727161, navigationpage]
+   3  2     Bergen Lecture 2012 and Symposium: Challenges to Contemporary Criminal Law [7276211814727204951, article]
+   4  1   Projects [2069052046270727153, navigationpage]
+   5  2     The functionality of the criminal justice system [85800601799901709, section project/fcjs]
+   6  2     Criminal Law Theory - A New Norwegian Approach [5048170272193068694, navigationpage exp:fg/straff exp:jur exp:jur/en]
+   7  3       Research Plan for the Programme (Revised) [5048170272193068703, article]
+   8  3       Project 1: The Concept of Crime [5048170272193068713, article]
+   9  3       Project 2: Rethinking the Criminal Justice System beyond the State: Towards a System Model for Transnational Criminal Law [5048170272193068722, article]
+  10  3       Project 3: Transnational Criminal Law Process: A Justice (Fairness) Approach [5048170272193068731, article]
+  11  2     Theory in Practice: Risks and Responses in the Modern Criminal Law [7075277841406822439, article from jur]
+  12  1   Publications [2069052046270727157, navigationpage]
+  13  2     Publications in English and German [1157733619461657868, navigationpage]
+  14  1   ### 6592048537032462012 does not exist!
+  15  1   Contact us [2069052046270727149, navigationpage]
+
+Counter({'navigationpage': 6, 'article': 6, 'forskningsgruppe': 1, 'section': 1})
+max depth 3

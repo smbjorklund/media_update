@@ -1,4 +1,4 @@
-   1  0 Arkitektur og byforskning [5656253015567411020, forskningsgruppe]
+   1  0 Forskergruppen Arkitektur og byforskning [5656253015567411020, forskningsgruppe]
    2  1   Forskning [4684853286539452737, navigationpage]
    3  2     Arkitektur og byforskning - seminarer våren 2010 [2435997447613608740, article]
    4  2     Seminarer høsten 2011 [8406059409386353227, article, RETRACTED]

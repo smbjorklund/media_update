@@ -1,0 +1,16 @@
+   1  0 Research Group The Bergen Shakespeare and Drama Network [9000625789282785196, forskningsgruppe]
+   2  1   Research [6215249050712002921, navigationpage]
+   3  2     About [8952918436634018015, article]
+   4  1   Projects [6215249050712002913, navigationpage]
+   5  2     List of projects [5118754117185839021, navigationpage]
+   6  3        Shakespeare, Transmediation and International Identity [2176422585076432962, article]
+   7  3       Framing and Reframing [992379605709642146, article]
+   8  3       EMRG [251933508742675935, article]
+   9  1   Publications [6215249050712002917, navigationpage]
+  10  2     Books and articles [2655306667170167830, article]
+  11  1   Contact us [6215249050712002909, navigationpage]
+  12  2     Contact details [6800821428832527327, article]
+  13  2     Current network members [6800821428832527317, article]
+
+Counter({'article': 7, 'navigationpage': 5, 'forskningsgruppe': 1})
+max depth 3

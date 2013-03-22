@@ -1,0 +1,23 @@
+   1  0 Department of Philosophy [9000625789282785751, institutt]
+   2  1   Education [186483301792689799, navigationpage]
+   3  2     One-year programs [186483301792689761, Studieprogramlister]
+   4  2     Bachelor's Programs [186483301792689766, Studieprogramlister]
+   5  2     Master's Programs [186483301792689781, Studieprogramlister]
+   6  2     Courses [186483301792689771, Studieprogramlister]
+   7  2     Examen philosophicum in English [4440219766883618638, article, PRIVATE]
+   8  1   Research [186483301792689803, navigationpage]
+   9  2     Research Groups [1436512954523042068, navigationpage]
+  10  3       The research group for analytic philosophy  [8703001445824971056, article]
+  11  3       The research group for ancient philosophy [4228319090162364080, article]
+  12  3       The research group for phenomenology and existential philosophy [3378996873683098426, article]
+  13  3       The research group for social philosophy and political theory [8976871176688861713, article]
+  14  3       The research group for Wittgenstein-related studies [2515204058872689572, article]
+  15  1   Resources [186483301792689807, navigationpage]
+  16  2     Library [3404047440135654585, navigationpage]
+  17  3       Social Sciences and Arts Library  [9000625789282785895, enhet ub/svh/en]
+  18  2     Online resources in philosophy and history of ideas [2786833665740368480, article]
+  19  1   About the Department [186483301792689791, navigationpage]
+  20  1   Contact us [186483301792689795, navigationpage]
+
+Counter({'navigationpage': 7, 'article': 7, 'Studieprogramlister': 4, 'enhet': 1, 'institutt': 1})
+max depth 3

@@ -10,16 +10,15 @@
   10  2     Utvidet inndragning som strafferettslig sanksjon (postdok-prosjekt) [4007982572834515628, article from project/fcjs]
   11  2     Fengsling av utlendinger [6965563963412685649, article]
   12  2     Statens adgang til å bruke militær makt ved myndighetsutøvelse internt på norsk territorium – forholdet til Grl. § 99 andre ledd (forskningsprosjekt) [4997100341766256949, article]
-  13  2     Perspektiv på funksjonalitet i strafferettssystemet: Ein analyse av grunnlag, føremål og konstruksjon av forsettskravet. [1589274111576057316, article]
-  14  2     Overføring fra tvungent psykisk helsevern til anstalt innen kriminalomsorgen: Fra særreaksjon til straff? (studentprosjekt) [4784171822042712068, article]
-  15  1   Publikasjoner [7959921037175271141, navigationpage]
-  16  2     Publikasjoner [3300785699210246204, article]
-  17  1   Aktiviteter [3242582633606213999, navigationpage]
-  18  2     Aktivitetsplan [8828264739095409507, article]
-  19  2     Konferanser [2426807386013953729, article]
-  20  1   Kontakt [10054856986447241, navigationpage]
-  21  2     Forskere tilknyttet prosjektet [2209716929691210884, personliste]
-  22  2     Adresser og kontaktinfo [5564450037176652289, article from jur]
+  13  2     Overføring fra tvungent psykisk helsevern til anstalt innen kriminalomsorgen: Fra særreaksjon til straff? (studentprosjekt) [4784171822042712068, article]
+  14  1   Publikasjoner [7959921037175271141, navigationpage]
+  15  2     Publikasjoner [3300785699210246204, article]
+  16  1   Aktiviteter [3242582633606213999, navigationpage]
+  17  2     Aktivitetsplan [8828264739095409507, article]
+  18  2     Konferanser [2426807386013953729, article]
+  19  1   Kontakt [10054856986447241, navigationpage]
+  20  2     Forskere tilknyttet prosjektet [2209716929691210884, personliste]
+  21  2     Adresser og kontaktinfo [5564450037176652289, article from jur]
 
-Counter({'article': 15, 'navigationpage': 5, 'section': 1, 'personliste': 1})
+Counter({'article': 14, 'navigationpage': 5, 'section': 1, 'personliste': 1})
 max depth 2

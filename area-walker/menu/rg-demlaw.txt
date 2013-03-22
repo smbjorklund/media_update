@@ -1,0 +1,8 @@
+   1  0 Democracy and Rule of Law [9000625789282785485, forskningsgruppe exp:research/global exp:research/global]
+   2  1   Research [2450271439046468710, navigationpage]
+   3  1   Projects [2450271439046468702, navigationpage]
+   4  1   Publications [2450271439046468706, navigationpage]
+   5  1   Contact us [2450271439046468698, navigationpage]
+
+Counter({'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 1

@@ -1,0 +1,9 @@
+   1  0 Department of Foreign Languages [9000625789282786087, institutt]
+   2  1   Education [2537706154854592635, navigationpage]
+   3  1   Research [2537706154854592639, navigationpage]
+   4  1   Resources [2537706154854592643, navigationpage]
+   5  1   About the Department [2537706154854592627, navigationpage]
+   6  1   Contact us [2537706154854592631, navigationpage]
+
+Counter({'navigationpage': 5, 'institutt': 1})
+max depth 1

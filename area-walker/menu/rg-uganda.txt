@@ -1,0 +1,18 @@
+   1  0 The Role of Ugandan Folklores as Repository of Traditional Wisdom [8688205753881757480, forskningsgruppe exp:research/global exp:research/global]
+   2  1   Research [8688205753881757568, navigationpage]
+   3  2     Research Area [6165840492703061572, article]
+   4  2     Research Progression [6165840492703061583, article]
+   5  2     Method and Theory [6165840492703061578, article]
+   6  1   Projects [8688205753881757560, navigationpage]
+   7  2     Upcoming activities [9114355375616389130, article]
+   8  1   Publications [8688205753881757564, navigationpage]
+   9  2     Audio-Visual  [6155893908040959879, article]
+  10  2     Essay Collections and Papers [7501446520874467132, article]
+  11  2     ### 7823971539662331367 does not exist!
+  12  1   Contact us [8688205753881757556, navigationpage]
+  13  2     Contact  [6155893908040959870, article]
+  14  2     Project members [191451541404103005, article]
+  15  2     Project Partners [7703611586461131177, article]
+
+Counter({'article': 9, 'navigationpage': 4, 'forskningsgruppe': 1})
+max depth 2

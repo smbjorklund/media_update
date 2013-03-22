@@ -1,4 +1,4 @@
-   1  0 Nordisk grammatikk og semantikk [1162567165940662615, forskningsgruppe]
+   1  0 Forskergruppen Nordisk grammatikk og semantikk [1162567165940662615, forskningsgruppe]
    2  1   Forskning [1162567165940662867, navigationpage]
    3  1   Prosjekter [1162567165940662875, navigationpage]
    4  1   Publikasjoner [1162567165940662879, navigationpage]
