@@ -68,12 +68,19 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     ->range(0, 1)
     ->execute();
   if (!empty($result['file'])) {
-    $res = array_values($result['file']);
-    $file = file_load($res[0]->fid);
+    // File exists
     $file_exists = TRUE;
+    $res = array_values($result['file']);
     // Check if we are forcing update of *field data* from w2.
     if (!drush_get_option('force')) {
+      $file = new stdClass();
+      $file->fid = $res[0]->fid;
+      // Return an object with only fid set
       return $file;
+    }
+    else {
+      // Load a full file object
+      $file = file_load($res[0]->fid);
     }
     uibx_log('Forcing file metadata update from w2: fid=' . $file->fid, 'notice');
   }
