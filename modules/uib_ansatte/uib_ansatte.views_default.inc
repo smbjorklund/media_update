@@ -109,6 +109,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_phone']['alter']['text'] = '[field_uib_phone]<br>';
   $handler->display->display_options['fields']['field_uib_phone']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_uib_phone']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_uib_phone']['separator'] = '';
   /* Field: User: Last name */
   $handler->display->display_options['fields']['field_uib_last_name_1']['id'] = 'field_uib_last_name_1';
   $handler->display->display_options['fields']['field_uib_last_name_1']['table'] = 'field_data_field_uib_last_name';
