@@ -147,14 +147,6 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function uib_zen_preprocess_page(&$variables, $hook) {
-  /**
-  * Setup variables for handling of current area
-  *   'page_title'
-  *    Area title to be used. Defaults to site name if no relevant area present
-  *   'page_title_link'
-  *    Full url to area home. Defaults to front page if no relevant area present
-  *    Corresponding modifications to use page_title and page_title_link are found in page.tpl.php
-  */
   if (arg(0) == 'node' && arg(1) != 'add') {
     if ($variables['language']->language == 'nb') {
       $variables['global_menu'] = menu_navigation_links('menu-global-menu-no');
@@ -163,36 +155,42 @@ function uib_zen_preprocess_page(&$variables, $hook) {
       $variables['global_menu'] = menu_navigation_links('menu-global-menu');
     }
   }
+
   if (isset($variables['page']['header']['locale_language'])) {
     $variables['extra_language'] = $variables['page']['header']['locale_language'];
   }
 
   $variables['page_title'] = $variables['site_name']; // defaults
   $variables['page_title_link'] = l($variables['site_name'], '<front>', array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
-  $current_area = uib_area__get_current(); // get ref to current area node object
-  if ($current_area) {
+
+  if (isset($variables['node'])) {
+    $current_area = uib_area__get_current(); // get ref to current area node object
+    if ($current_area) {
       // use the title of current area
       $variables['page_title'] = $current_area->title;
       $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
-  }
-  // set menu style. Use current node's menu style as default with area node as fallback
-  if (!empty($variables['node']->field_uib_menu_style['und'][0]['value'])) {
-    $variables['uib_menu_style'] = 'uib-menu-style-' . $variables['node']->field_uib_menu_style['und'][0]['value'];
-  }
-  elseif (isset($current_area->field_uib_menu_style['und'][0]['value'])) {
-    $variables['uib_menu_style'] = 'uib-menu-style-' . $current_area->field_uib_menu_style['und'][0]['value'];
-  }
-
-  // Create a variable that indicates whether we are in EDIT mode or not
-  $suggestions = theme_get_suggestions(arg(), 'page');
-  $variables['uib_node_edit_mode'] = '';
-  if ($suggestions) {
-    if (in_array('page__node__edit', $suggestions)) {
-      $variables['uib_node_edit_mode'] = 'edit';
     }
-  }
 
-  if (isset($variables['node'])) {
+    /**
+     * Set menu style. Use current node's menu style as default with area node
+     * as fallback.
+     */
+    if (!empty($variables['node']->field_uib_menu_style['und'][0]['value'])) {
+      $variables['uib_menu_style'] = 'uib-menu-style-' . $variables['node']->field_uib_menu_style['und'][0]['value'];
+    }
+    elseif (isset($current_area->field_uib_menu_style['und'][0]['value'])) {
+      $variables['uib_menu_style'] = 'uib-menu-style-' . $current_area->field_uib_menu_style['und'][0]['value'];
+    }
+
+    // Create a variable that indicates whether we are in EDIT mode or not
+    $suggestions = theme_get_suggestions(arg(), 'page');
+    $variables['uib_node_edit_mode'] = '';
+    if ($suggestions) {
+      if (in_array('page__node__edit', $suggestions)) {
+        $variables['uib_node_edit_mode'] = 'edit';
+      }
+    }
+
     if ($variables['node']->type == 'area') {
       $nid = $variables['node']->nid;
       if (isset($variables['page']['content']['system_main']['content']['nodes'][$nid]['field_uib_logo'])) {
