@@ -70,105 +70,117 @@
  */
 ?>
 <?php if ($variables['uib_node_edit_mode'] != 'edit'): ?>
-<div id="top-region-wrapper">
-  <?php if (isset($global_menu)): ?>
-    <div id="global-header">
-      <nav id="global-menu">
-        <?php print theme('links__menu-global-menu', array(
-          'links' => $global_menu,
-          'attributes' => array(
-            'class' => array('links','global-menu'),
-          ),
-        ));
-        ?>
-      </nav>
-      <div id="mobile-name-and-slogan">
-      <?php if ($logo): ?>
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-      <?php endif; ?>
+  <div id="top-region-wrapper">
+    <?php if (isset($global_menu)): ?>
+      <div id="global-header">
+        <nav id="global-menu">
+          <?php print theme('links__menu-global-menu', array(
+            'links' => $global_menu,
+            'attributes' => array(
+              'class' => array('links','global-menu'),
+            ),
+          ));
+          ?>
+        </nav>
 
-       <?php
-        // Modified to print name of area instead of site-name
-        // The varible 'page_title_link' is setup in template.php and contains the area name in an url
-        if ($site_name || $site_slogan || $page_title_link): ?>
-        <hgroup id="name-and-slogan-mobile">
-        <h1 class="site-name"><?php print $page_title_link; ?></h1>
-          <?php if ($site_slogan): ?>
-            <h2 id="mobile-site-slogan"><?php print $site_slogan; ?></h2>
+        <div id="mobile-name-and-slogan">
+          <?php if ($logo): ?>
+            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
           <?php endif; ?>
-        </hgroup><!-- /#name-and-slogan -->
-      </div><!-- end #mobile-name-and-slogan -->
-      <?php endif; ?>
-      <div id="menu-search-mobile-wrapper">
-        <div id="global-searchform">
-          <form method="get" action="http://www.uib.no/search">
-            <div class="searchbox">
-              <p><input type="text" id="searchField" name="q" value="" autocomplete="off"></p>
-              <p><input alt="Submit" type="image" src="<?php print base_path() . drupal_get_path('theme', 'uib_zen'); ?>/images/submit.gif" value="Search"></p>
-            </div>
-          </form>
+          <?php
+          /**
+           * Modified to print name of area instead of site-name.
+           * The varible 'page_title_link' is setup in template.php and contains
+           * the area name in an url.
+           */
+          if ($site_name || $site_slogan || $page_title_link): ?>
+            <hgroup id="name-and-slogan-mobile">
+              <h1 class="site-name"><?php print $page_title_link; ?></h1>
+              <?php if ($site_slogan): ?>
+                <h2 id="mobile-site-slogan"><?php print $site_slogan; ?></h2>
+              <?php endif; ?>
+            </hgroup><!-- /#name-and-slogan -->
+          <?php endif; ?>
+        </div><!-- end #mobile-name-and-slogan -->
+
+        <div id="menu-search-mobile-wrapper">
+          <div id="global-searchform">
+            <form method="get" action="http://www.uib.no/search">
+              <div class="searchbox">
+                <p><input type="text" id="searchField" name="q" value="" autocomplete="off"></p>
+                <p><input alt="Submit" type="image" src="<?php print base_path() . drupal_get_path('theme', 'uib_zen'); ?>/images/submit.gif" value="Search"></p>
+              </div>
+            </form>
+          </div>
+          <div id ="mobile-menu">
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
         </div>
-        <div id ="mobile-menu">
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
+
       </div>
-    </div>
-  <?php endif; ?>
-</div>
+    <?php endif; ?>
+  </div>
 <?php endif; ?>
+
 <div id="page">
-
   <?php if ($variables['uib_node_edit_mode'] != 'edit'): ?>
-  <header id="header" role="banner">
-    <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo large-screens"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-    <?php endif; ?>
+    <header id="header" role="banner">
+      <?php if ($logo): ?>
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo large-screens"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+      <?php endif; ?>
 
-     <?php
-      // Modified to print name of area instead of site-name
-      // The varible 'page_title_link' is setup in template.php and contains the area name in an url
+      <?php
+      /**
+      * Modified to print name of area instead of site-name.
+      * The varible 'page_title_link' is setup in template.php and contains the
+      * area name in an url.
+      */
       if ($site_name || $site_slogan || $page_title_link): ?>
-      <hgroup id="name-and-slogan">
-      <h1 class="site-name"><?php print $page_title_link; ?></h1>
-        <?php if ($site_slogan): ?>
-          <h2 id="site-slogan"><?php print $site_slogan; ?></h2>
-        <?php endif; ?>
-      </hgroup><!-- /#name-and-slogan -->
-    <?php endif; ?>
+        <hgroup id="name-and-slogan">
+          <h1 class="site-name"><?php print $page_title_link; ?></h1>
+            <?php if ($site_slogan): ?>
+              <h2 id="site-slogan"><?php print $site_slogan; ?></h2>
+            <?php endif; ?>
+        </hgroup><!-- /#name-and-slogan -->
+      <?php endif; ?>
 
-    <?php if ($secondary_menu): ?>
-      <nav id="secondary-menu" role="navigation">
-        <?php print theme('links__system_secondary_menu', array(
-          'links' => $secondary_menu,
-          'attributes' => array(
-            'class' => array('links', 'inline', 'clearfix'),
-          ),
-          'heading' => array(
-            'text' => $secondary_menu_heading,
-            'level' => 'h2',
-            'class' => array('element-invisible'),
-          ),
-        )); ?>
-      </nav>
-    <?php endif; ?>
+      <?php if ($secondary_menu): ?>
+        <nav id="secondary-menu" role="navigation">
+          <?php print theme('links__system_secondary_menu', array(
+            'links' => $secondary_menu,
+            'attributes' => array(
+              'class' => array('links', 'inline', 'clearfix'),
+            ),
+            'heading' => array(
+              'text' => $secondary_menu_heading,
+              'level' => 'h2',
+              'class' => array('element-invisible'),
+            ),
+          )); ?>
+        </nav>
+      <?php endif; ?>
 
-    <?php print render($page['header']); ?>
+      <?php print render($page['header']); ?>
+    </header>
 
-  </header>
-  <div id="navigation"<?php // Modified in order to pick upp class style for uib navigation menu, $uib_menu_style set in template.php
+    <div id="navigation"<?php
+      // Modified in order to pick upp class style for uib navigation menu, $uib_menu_style set in template.php
       if (!empty($uib_menu_style)): ?> class="<?php print $uib_menu_style; ?>"<?php endif; ?>>
 
       <?php if ($main_menu): ?>
         <nav id="main-menu" role="navigation">
           <?php
-          // This code snippet is hard to modify. We recommend turning off the
-          // "Main menu" on your sub-theme's settings form, deleting this PHP
-          // code block, and, instead, using the "Menu block" module.
-          // @see http://drupal.org/project/menu_block
+          /**
+           * This code snippet is hard to modify. We recommend turning off the
+           * "Main menu" on your sub-theme's settings form, deleting this PHP
+           * code block, and, instead, using the "Menu block" module.
+           *
+           * @see http://drupal.org/project/menu_block
+           */
           print theme('links__system_main_menu', array(
             'links' => $main_menu,
             'attributes' => array(
@@ -184,13 +196,13 @@
       <?php endif; ?>
 
       <?php print render($page['navigation']); ?>
-
-  </div><!-- /#navigation -->
+    </div><!-- /#navigation -->
   <?php endif; ?>
+
   <div id="desktop-tablet-language">
   <?php print render($extra_language); ?></div>
-  <div id="main">
 
+  <div id="main">
     <div id="content" class="column" role="main">
       <?php print render($page['highlighted']); ?>
       <?php print $breadcrumb; ?>
@@ -227,11 +239,9 @@
         <?php print $sidebar_second; ?>
       </aside><!-- /.sidebars -->
     <?php endif; ?>
-
   </div><!-- /#main -->
 
   <?php print render($page['footer']); ?>
-
 </div><!-- /#page -->
 
 <div id="bottom-region-wrapper" class="clearfix">
