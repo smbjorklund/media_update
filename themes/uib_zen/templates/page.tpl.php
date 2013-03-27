@@ -84,9 +84,6 @@
         </nav>
 
         <div id="mobile-name-and-slogan">
-          <?php if ($logo): ?>
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-          <?php endif; ?>
           <?php
           /**
            * Modified to print name of area instead of site-name.
@@ -95,11 +92,18 @@
            */
           if ($site_name || $site_slogan || $page_title_link): ?>
             <hgroup id="name-and-slogan-mobile">
+              <?php if ($logo): ?>
+                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+              <?php endif; ?>
               <h1 class="site-name"><?php print $page_title_link; ?></h1>
               <?php if ($site_slogan): ?>
                 <h2 id="mobile-site-slogan"><?php print $site_slogan; ?></h2>
               <?php endif; ?>
+              <?php if ($custom_logo): ?>
+                <?php print $custom_logo; ?>
+              <?php endif; ?>
             </hgroup><!-- /#name-and-slogan -->
+
           <?php endif; ?>
         </div><!-- end #mobile-name-and-slogan -->
 
@@ -129,10 +133,6 @@
 <div id="page">
   <?php if ($variables['uib_node_edit_mode'] != 'edit'): ?>
     <header id="header" role="banner">
-      <?php if ($logo): ?>
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo large-screens"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-      <?php endif; ?>
-
       <?php
       /**
       * Modified to print name of area instead of site-name.
@@ -141,10 +141,16 @@
       */
       if ($site_name || $site_slogan || $page_title_link): ?>
         <hgroup id="name-and-slogan">
+          <?php if ($logo): ?>
+            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo large-screens"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+          <?php endif; ?>
           <h1 class="site-name"><?php print $page_title_link; ?></h1>
             <?php if ($site_slogan): ?>
               <h2 id="site-slogan"><?php print $site_slogan; ?></h2>
             <?php endif; ?>
+          <?php if ($custom_logo): ?>
+            <?php print $custom_logo; ?>
+          <?php endif; ?>
         </hgroup><!-- /#name-and-slogan -->
       <?php endif; ?>
 

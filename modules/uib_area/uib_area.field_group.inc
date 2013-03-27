@@ -56,8 +56,8 @@ function uib_area_field_group_info() {
     'label' => 'Bottom wrapper',
     'weight' => '8',
     'children' => array(
-      0 => 'field_uib_bottom_media',
-      1 => 'field_uib_bottom_text',
+      0 => 'field_uib_bottom_text',
+      1 => 'field_uib_bottom_media',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -283,10 +283,10 @@ function uib_area_field_group_info() {
     'label' => 'two_column',
     'weight' => '7',
     'children' => array(
-      0 => 'field_uib_link_section',
-      1 => 'field_uib_profiled_message',
-      2 => 'field_uib_profiled_testimonial',
-      3 => 'field_uib_tertiary_text',
+      0 => 'field_uib_profiled_message',
+      1 => 'field_uib_profiled_testimonial',
+      2 => 'field_uib_tertiary_text',
+      3 => 'field_uib_link_section',
     ),
     'format_type' => 'div',
     'format_settings' => array(
