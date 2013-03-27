@@ -4,9 +4,9 @@ use strict;
 
 my %rts;
 
-open(my $git, "git branch --remote |") || die;
+open(my $git, "git branch -a |") || die;
 while (<$git>) {
-    next unless m,^\s+origin/rts/(\d+),;
+    next unless m,^\s+remotes/origin/rts/(\d+),;
     $rts{$1} = {}
 }
 close($git);
