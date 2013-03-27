@@ -51,11 +51,13 @@ body {
 .logo {
   border-right: 1px #aa0000 solid; /* Red decor line between logo and title. */
   float: left; /* LTR */
+  padding: 0 10px 0 0;
+  width: 70px;
   img {
-    height: 4.5em;
+    // height: 100%;
     margin: 0 0.8889em 0 0;
     vertical-align: bottom;
-    width: 4.5em;
+    width: 100%;
   }
 }
 

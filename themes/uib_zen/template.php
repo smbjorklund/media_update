@@ -160,9 +160,9 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   $variables['uib_node_edit_mode'] = '';
   if (!empty($variables['node']->type) && $variables['node']->type == 'area') {
     $current_area = $variables['node'];
-      // use the title of current area
-      $variables['page_title'] = $current_area->title;
-      $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
+    // use the title of current area
+    $variables['page_title'] = $current_area->title;
+    $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
   }
   else {
     $current_area = uib_area__get_current();
@@ -186,6 +186,18 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     $variables['extra_language'] = $variables['page']['header']['locale_language'];
   }
 
+  // Render areas custom logo.
+  $output = field_view_field('node', $current_area, 'field_uib_logo',
+  array(
+    'type' => 'image',
+    'label' => 'hidden',
+    'settings' => array(
+      'image_style' => 'custom_logo',
+      )
+    )
+  );
+  $variables['custom_logo'] = render($output);
+
   if (isset($variables['node'])) {
     // Create a variable that indicates whether we are in EDIT mode or not
     $suggestions = theme_get_suggestions(arg(), 'page');
@@ -194,17 +206,6 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         $variables['uib_node_edit_mode'] = 'edit';
       }
     }
-
-    $output = field_view_field('node', $current_area, 'field_uib_logo',
-    array(
-      'type' => 'image',
-      'label' => 'hidden',
-      'settings' => array(
-        'image_style' => 'thumbnail',
-        )
-      )
-    );
-    $variables['custom_logo'] = render($output);
 
     if ($variables['node']->type == 'area') {
       if (isset($variables['page']['content']['uib_area_node_children'])) {

@@ -185,6 +185,7 @@ features[image][] = area_bottom
 features[image][] = area_main
 features[image][] = content_main
 features[image][] = content_sidebar
+features[image][] = custom_logo
 features[image][] = full_width_16_9
 features[image][] = user_thumbnail
 features[image][] = wide_thumbnail
