@@ -4,7 +4,8 @@
  * EPEL-repo
  * UiB-RHEL6-Repo
 
-## Dependicy
+## Dependencies
+
 	yum install http://yum.postgresql.org/9.1/redhat/rhel-6-x86_64/pgdg-redhat91-9.1-5.noarch.rpm
 	cat << EOF > /etc/yum/pluginconf.d/rhnplugin.conf 
 	[main]
