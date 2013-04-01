@@ -3,9 +3,9 @@
 set -x
 
 # variables that psql picks up
-export PGHOST="glory.uib.no"
-export PGDATABASE="$USER-db1"
-export PGUSER="user1"
+export PGHOST=${PGHOST:-glory.uib.no}
+export PGDATABASE=${PGDATABASE:-${USER:?Environment is missing \$USER}-db1}
+export PGUSER=${PGUSER:="user1"}
 
 PGDUMP_HOST=vengeance.uib.no
 
