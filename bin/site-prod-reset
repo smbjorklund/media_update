@@ -2,9 +2,10 @@
 
 set -x
 
-PGHOST="glory.uib.no"
-PGDB="$USER-db1"
-PGUSER="user1"
+# variables that psql picks up
+export PGHOST="glory.uib.no"
+export PGDATABASE="$USER-db1"
+export PGUSER="user1"
 
 PGDUMP_HOST=vengeance.uib.no
 
@@ -18,7 +19,7 @@ find site/files -type f | xargs chmod 666
 LAST_DUMP=$(ssh $PGDUMP_HOST "ls -t /prod_nettapp_w3/pg_dump | head -n 1")
 rsync -avh $PGDUMP_HOST:/prod_nettapp_w3/pg_dump/$LAST_DUMP site/w3.uib.no.sql
 bin/site-drush sql-drop --yes
-perl -pe "s/\bw3_(?:user|admin)\b/$PGUSER/g" site/w3.uib.no.sql | psql --echo-queries --host $PGHOST $PGDB $PGUSER >site/pg.out 2>&1
+perl -pe "s/\bw3_(?:user|admin)\b/$PGUSER/g" site/w3.uib.no.sql | psql --echo-queries >site/pg.out 2>&1
 bin/pg_error_report --ignore-drop site/pg.out
 
 rm -rf drupal/sites/w3.uib.no
