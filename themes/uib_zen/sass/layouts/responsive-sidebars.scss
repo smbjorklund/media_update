@@ -1607,25 +1607,6 @@ $zen-auto-include-item-base: false;
     }
   }
 
-  /* Employee pages */
-  .section-foransatte {
-    #block-menu-block-page-area-menu {
-      @include zen-grid-item (1, 4);
-      li.has-children {
-        background-color:#efefef; /* Change this to show an image instead ? */
-      }
-    }
-
-    .field-name-field-uib-lead {
-      @include zen-grid-item (3, 1);
-    }
-
-    .field-name-field-uib-text {
-      @include zen-grid-item (3, 1);
-      @include zen-clear();
-    }
-  }
-}
   /* Persons list */
   @media all and (min-width: 960px) {
     $zen-column-count: 4;
