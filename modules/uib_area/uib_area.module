@@ -441,19 +441,38 @@ function uib_area__get_node_type($node = NULL) {
 }
 
 /**
-* Function to find the OU nid referenced from an the current area
-*
-*
-* If no area is found, the function returns NULL.
-*/
-function uib_area__get_ou_nid() {
-  $area = uib_area__get_current();
-  if(!empty($area)){
-    $ounid = $area->field_uib_ou['und'][0]['target_id'];
-    return $ounid;
+ * Find the OU nid referenced from an area
+ * (defaults to the current area).
+ *
+ * If the area does not have an OU, the function will
+ * recursively search its area parents until an OU is
+ * ultimately found -- or return NULL.
+ */
+function uib_area__get_ou_nid($area = NULL) {
+  if (empty($area)) {
+    $area = uib_area__get_current();
   }
-  else
-    return NULL;
+  if (!empty($area->field_uib_ou['und'][0]['target_id'])) {
+    return $area->field_uib_ou['und'][0]['target_id'];
+  }
+  else {
+    if (!empty($area->field_uib_area_parents)) {
+      $i = 0;
+      $nrof_parents = count($area->field_uib_area_parents['und']);
+      $ou_nid = NULL;
+      while (empty($ou_nid) && $i < $nrof_parents) {
+        $ou_nid = uib_area__get_ou_nid(node_load($area->field_uib_area_parents['und'][$i]['target_id']));
+        $i++;
+      }
+      if ($i < $nrof_parents) {
+        uibx_log("Selected the first OU found [$ou_nid] for area node $area->nid among $nrof_parents parents.", "warning");
+      }
+      return $ou_nid;
+    }
+    else {
+      return NULL;
+    }
+  }
 }
 
 /**
