@@ -1,0 +1,89 @@
+#!/usr/bin/perl
+
+use strict;
+die "site should be a link" unless -l "site";
+
+my $psql = qx(bin/site-drush sql-connect 2>/dev/null);
+chomp($psql);
+die "Unexpected '$psql'" unless $psql =~ /^psql / && $psql =~ /\s--dbname=(\S+)/;
+my $dbname = $1;
+
+my @ts = localtime;
+my $ts = sprintf "%4d%02d%02d_%02d%02d", $ts[5]+1900, $ts[4]+1, reverse @ts[1..3];
+
+my @snapshots;
+for (pg_query("\\l")) {  # list databases
+    push(@snapshots, $1) if /^ \Q$dbname\E_(\d{8}_\d{4}) /;
+}
+@snapshots = reverse sort @snapshots;
+
+if (!@ARGV) {
+    # make a new snapshot
+    pg_query("DROP DATABASE ${dbname}_$ts") if grep $_ eq $ts, @snapshots;
+    pg_query("CREATE DATABASE ${dbname}_$ts TEMPLATE $dbname");
+}
+elsif (@ARGV > 1) {
+    usage();
+}
+elsif ($ARGV[0] eq "list") {
+    for (@snapshots) {
+	if (/^(\d\d\d\d)(\d\d)(\d\d)_(\d\d)(\d\d)$/) {
+	    print "$1-$2-$3 $4:$5\n";
+	}
+	else {
+	    warn $_;
+	}
+    }
+}
+elsif ($ARGV[0] eq "clear") {
+    for (@snapshots) {
+	pg_query("DROP DATABASE ${dbname}_$_");
+    }
+}
+elsif ($ARGV[0] eq "pop") {
+    die "No snapshots" unless @snapshots;
+    restore($snapshots[0]);
+}
+else {
+    usage();
+}
+
+sub usage {
+    (my $progname = $0) =~ s,.*/,,;
+    die <<EOT;
+Usage: $progname [ "list" | "pop" | "clear" ]
+
+Without argument make a snapshot of the current $dbname database.
+EOT
+}
+
+sub restore {
+    my $snap = shift;
+    print "Restore $snap\n";
+    pg_query("DROP DATABASE $dbname", "postgres");
+    pg_query("ALTER DATABASE ${dbname}_$snap RENAME TO $dbname", "postgres");
+}
+
+sub pg_query {
+    my $sql = shift;
+    my $dbname = shift;
+    my $cmd = "$psql ";
+    if ($dbname) {
+       $cmd =~ s/\s--dbname=\S+/ --dbname=$dbname/;
+    }
+    $cmd .= shell_quote("-c", "$sql");
+    print "$cmd\n";
+    return qx($cmd) if defined(wantarray);
+    system($cmd);
+}
+
+sub shell_quote {
+    my @copy;
+    for (defined(wantarray) ? (@copy = @_) : @_) {
+	if ($_ eq "" || /[^\w\.\-\/]/) {
+	    s/([\\\$\"\`])/\\$1/g;
+	    $_ = qq("$_");
+	}
+    }
+    wantarray ? @copy : join(" ", @copy);
+}
