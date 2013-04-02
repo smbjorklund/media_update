@@ -2,7 +2,7 @@
 
 set -x
 
-PGUSER=$(bin/site-drush eval 'global $databases; print($databases["default"]["default"]["username"]);')
+PGUSER=$(php --run 'include "site/settings.php"; print($databases["default"]["default"]["username"]);')
 PSQL=$(bin/site-drush sql-connect)
 PGDUMP_HOST=vengeance.uib.no
 
