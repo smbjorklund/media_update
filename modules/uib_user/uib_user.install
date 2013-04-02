@@ -18,12 +18,21 @@ function uib_user_update_7001() {
 }
 
 /**
-* Populate the sort field with sortable last names
+* Update the collation used to sort employees by their last name (again).
 */
 function uib_user_update_7002() {
+  if (db_driver() == 'pgsql') {
+    db_query('ALTER TABLE field_data_field_uib_last_name ALTER COLUMN field_uib_last_name_value TYPE character varying(255) COLLATE "nb_NO"');
+  }
+}
+
+/**
+* Populate the sort field with sortable last names
+*/
+function uib_user_update_7003() {
   if (field_info_field('field_uib_sort_name')) {
     if (db_driver() == 'pgsql') {
-      db_query('ALTER TABLE field_data_field_uib_sort_name ALTER COLUMN field_uib_sort_name_value TYPE character varying(255) COLLATE "no_NO"');
+      db_query('ALTER TABLE field_data_field_uib_sort_name ALTER COLUMN field_uib_sort_name_value TYPE character varying(255) COLLATE "nb_NO"');
     }
 
     $result = db_select('field_data_field_uib_last_name', 'ln')
