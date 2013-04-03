@@ -1,0 +1,183 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use Getopt::Long qw(GetOptions);
+use JSON qw(from_json to_json);
+
+(my $PROGNAME = $0) =~ s,.*/,,;
+
+GetOptions(\my %OPT,
+    'dump',
+    'verbose',
+    'json',
+) || usage();
+
+my $DB = "var/rts";
+my $CMD = shift || usage();
+
+my $do_cmd = "do_$CMD";
+unless (defined &$do_cmd) {
+    require Text::Abbrev;
+    my @cmds;
+    for my $name (keys %main::) {
+        push(@cmds, $name) if $name =~ s/^do_//;
+    }
+    my $abbrev = Text::Abbrev::abbrev(@cmds);
+    if (my $cmd = $abbrev->{$CMD}) {
+        $do_cmd = "do_$cmd";
+    }
+    else {
+        require Text::Wrap;
+        usage(Text::Wrap::wrap("", "  ",
+                  "Unrecognized command '$CMD'; try one of " .
+                  join(", ", sort @cmds)
+              )
+        );
+    }
+}
+
+eval {
+    no strict 'refs';
+    &$do_cmd();
+};
+if ($@) {
+    print STDERR "$PROGNAME $CMD failed: $@";
+    exit 1;
+}
+else {
+    exit;
+}
+
+sub usage {
+    my $msg = shift;
+    print STDERR "$msg\n" if $msg;
+    die <<EOT;
+Usage: $PROGNAME <cmd> [options] ...
+
+Subcommands:
+
+    update
+    show [--json] <id>...
+    release
+    release <rid>
+EOT
+}
+
+sub do_update {
+    require LWP::UserAgent;
+    require URI;
+    require URI::QueryParam;
+
+    my $ua = LWP::UserAgent->new;
+    $ua->show_progress($OPT{verbose});
+
+    my $u = URI->new('https://rts.uib.no');
+    $u->path("issues.json");
+    $u->query_param(project_id => 'w3');
+    $u->query_param(limit => 999);
+
+    my $fh;
+    open($fh, "<", "$ENV{HOME}/.rts.key") || die "Can't open ~/.rts.key: $!";
+    my $key = <$fh>;
+    chomp($key);
+    close($fh);
+
+    $u->query_param(key => $key);
+
+    system("mkdir -p $DB/issue");
+
+    my @all_issues;
+    for my $status (qw(open closed)) {
+	$u->query_param(status_id => $status);
+	my $total_count;
+	my $offset = 0;
+	do {
+	    $u->query_param('offset' => $offset);
+
+	    my $res = $ua->get($u);
+	    die $res->status_line unless $res->is_success;
+
+	    my $data = from_json($res->content);
+
+	    $total_count = $data->{total_count}
+		unless defined $total_count;
+
+	    my $issues = delete $data->{issues};
+	    push(@all_issues, @$issues);
+	    for my $issue (@$issues) {
+		my $id = sprintf "%06d", $issue->{'id'};
+		open(my $fh, ">", "$DB/issue/$id.json") || die;
+		binmode($fh, ":utf8");
+		print $fh to_json($issue, { pretty => 1 });
+		close($fh) || die;
+		$offset += 1;
+	    }
+	    printf "%-6s %3.0f%%\n", $status, 100*$offset/$total_count if $total_count;
+	} while $offset < $total_count;
+    }
+
+    @all_issues = sort { $a->{id} <=> $b->{id} } @all_issues;
+
+    open($fh, ">", "$DB/issues.json") || die;
+    binmode($fh, ":utf8");
+    print $fh to_json(\@all_issues, { pretty => 1});
+}
+
+
+sub get_issues {
+    open(my $fh, "<", "$DB/issues.json") || die;
+    binmode($fh, ":utf8");
+    my $json = do { local $/; <$fh>; };
+    close($fh);
+    my $issues = from_json($json);
+    return @$issues;
+}
+
+sub filter_issues {
+    my $wanted = shift;
+    my @issues;
+    for my $issue (get_issues()) {
+	push(@issues, $issue) if $wanted->($issue);
+    }
+    return @issues;
+}
+
+sub list_issues {
+    for my $issue (@_) {
+	print "RTS-$issue->{'id'} $issue->{'subject'}\n";
+    }
+}
+
+sub do_show {
+    usage("No issue id given") unless @ARGV;
+    my %want_ids = map { $_ => 1 } @ARGV;
+    my @issues = filter_issues(sub { $want_ids{$_[0]{'id'}} });
+    die "$ARGV[0]: No such issue\n" unless @issues && @ARGV == 1;
+    binmode(STDOUT, ":utf8");
+    if ($OPT{json}) {
+	print to_json(\@issues, { pretty => 1 });
+	return;
+    }
+    list_issues(@issues);
+}
+
+sub do_release {
+    if (@ARGV) {
+	my $release = shift(@ARGV);
+	$release = "R$release" unless $release =~ /^r/i;
+	$release = lc($release);
+	my @issues = filter_issues(sub { lc($_[0]{'fixed_version'}{'name'} || 'none') eq $release });
+	if (@issues) {
+	    list_issues(@issues);
+	    return;
+	}
+    }
+    print "Releases:\n";
+    my %R;
+    filter_issues(sub { $R{$_[0]{'fixed_version'}{'name'} || 'none'}++; 0 });
+    for (sort keys %R) {
+	printf "  %-7s %4d\n", $_, $R{$_};
+    }
+}
