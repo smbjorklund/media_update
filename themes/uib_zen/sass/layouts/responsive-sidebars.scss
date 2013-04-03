@@ -528,7 +528,7 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (1, 1);
     background-color: #F1F1EF;
     margin: 1em 1em 1em 0;
-    padding: 1em;
+    padding: 1em 0 1em 0;
 
     .uib-child-teaser {
       float: left;
@@ -538,6 +538,9 @@ $zen-auto-include-item-base: false;
       min-height: 130px;
       max-height: 130px;
     }
+  }
+  .sidebars {
+    clear: both;
   }
 
 }
