@@ -86,7 +86,7 @@ sub do_update {
 
     $u->query_param(key => $key);
 
-    system("mkdir -p $DB/issue");
+    system("mkdir -p $DB");
 
     my @all_issues;
     for my $status (qw(open closed)) {
@@ -106,14 +106,7 @@ sub do_update {
 
 	    my $issues = delete $data->{issues};
 	    push(@all_issues, @$issues);
-	    for my $issue (@$issues) {
-		my $id = sprintf "%06d", $issue->{'id'};
-		open(my $fh, ">", "$DB/issue/$id.json") || die;
-		binmode($fh, ":utf8");
-		print $fh to_json($issue, { pretty => 1 });
-		close($fh) || die;
-		$offset += 1;
-	    }
+	    $offset += @$issues;
 	    printf "%-6s %3.0f%%\n", $status, 100*$offset/$total_count if $total_count;
 	} while $offset < $total_count;
     }
