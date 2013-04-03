@@ -177,6 +177,9 @@ ul.language-switcher-locale-url li.active {
   color: white;
 }
 
+/**
+ * Area menu.
+ */
 .menu-block-top-area-menu {
   .menu {
     padding: 0;
@@ -227,44 +230,41 @@ ul.language-switcher-locale-url li.active {
   }
 }
 
-.uib-menu-style-dropdown {
-  padding: 0 !important;
+.dropdown .menu {
+  padding: 0;
+  margin: 0;
+  z-index: 99;
+  position: relative;
+  li {
+    &:hover ul {
+      display: block;
+    }
+    a {
+      border-left: 1px solid #C4C5C3;
+    }
+  }
   .menu {
-    padding: 0;
-    margin: 0;
-    z-index: 99;
-    position: relative;
+    width: 15.3em;
+    position: absolute;
+    display: none;
+    background: #F1F1EF;
     li {
-      &:hover ul {
-        display: block;
-        }
-        a {
-          border-left: 1px solid #C4C5C3;
-        }
-      }
-     .menu {
-      margin: 0 !important;
-      width: 15.3em;
-      position: absolute;
-      display: none;
       background: #F1F1EF;
-      li {
-        background: #F1F1EF;
-      }
-      a {
-        width: auto;
-        border-left: medium none;
-        &:hover {
-          background-color: #AA0000;
-          background-image: none;
-          color: #FFFFFF;
-        }
+    }
+    a {
+      font-weight: normal;
+      width: auto;
+      border-left: medium none;
+      &:hover {
+        background-color: #AA0000;
+        background-image: none;
+        color: #FFFFFF;
       }
     }
   }
 }
 
-.uib-menu-style-expanded {
+.expanded .region-navigation {
   background: #F1F1EF;
   padding: 6px;
   .menu {

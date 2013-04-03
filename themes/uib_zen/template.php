@@ -129,13 +129,20 @@ function uib_zen_preprocess_maintenance_page(&$variables, $hook) {
  *   The name of the template being rendered ("html" in this case.)
  */
 function uib_zen_preprocess_html(&$variables, $hook) {
-
   if (!$variables['user']->uid == '0') {
     $user = user_load($variables['user']->uid);
 
     if (empty($user->field_grid['und']) || !empty($user->field_grid['und'][0]['value']) == '0')
       $variables['classes_array'][] = 'grid';
   }
+
+  /**
+   * Get area menu style.
+   */
+  $current_area = uib_area__get_current();
+  $menu_style = field_get_items('node', $current_area, 'field_uib_menu_style');
+  $variables['classes_array'][] = $menu_style[0]['value'];
+  return $current_area;
 }
 
 /**
@@ -147,6 +154,17 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function uib_zen_preprocess_page(&$variables, $hook) {
+  $variables['page_title'] = $variables['site_name'];
+  $variables['page_title_link'] = l($variables['site_name'], '<front>', array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
+  $variables['uib_node_edit_mode'] = '';
+  if (isset($variables['node']->type) == 'area') {
+    $current_area = $variables['node']->nid;
+  }
+  else {
+    $current_area = uib_area__get_current();
+    $current_area = $current_area->nid;
+  }
+
   if (arg(0) == 'node' && arg(1) != 'add') {
     if ($variables['language']->language == 'nb') {
       $variables['global_menu'] = menu_navigation_links('menu-global-menu-no');
@@ -160,31 +178,13 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     $variables['extra_language'] = $variables['page']['header']['locale_language'];
   }
 
-  $variables['page_title'] = $variables['site_name']; // defaults
-  $variables['page_title_link'] = l($variables['site_name'], '<front>', array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
-
   if (isset($variables['node'])) {
-    $current_area = uib_area__get_current(); // get ref to current area node object
-    if ($current_area) {
-      // use the title of current area
-      $variables['page_title'] = $current_area->title;
-      $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
-    }
-
-    /**
-     * Set menu style. Use current node's menu style as default with area node
-     * as fallback.
-     */
-    if (!empty($variables['node']->field_uib_menu_style['und'][0]['value'])) {
-      $variables['uib_menu_style'] = 'uib-menu-style-' . $variables['node']->field_uib_menu_style['und'][0]['value'];
-    }
-    elseif (isset($current_area->field_uib_menu_style['und'][0]['value'])) {
-      $variables['uib_menu_style'] = 'uib-menu-style-' . $current_area->field_uib_menu_style['und'][0]['value'];
-    }
+    // use the title of current area
+    $variables['page_title'] = $current_area->title;
+    $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
 
     // Create a variable that indicates whether we are in EDIT mode or not
     $suggestions = theme_get_suggestions(arg(), 'page');
-    $variables['uib_node_edit_mode'] = '';
     if ($suggestions) {
       if (in_array('page__node__edit', $suggestions)) {
         $variables['uib_node_edit_mode'] = 'edit';
@@ -193,6 +193,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
 
     if ($variables['node']->type == 'area') {
       $nid = $variables['node']->nid;
+
       if (isset($variables['page']['content']['system_main']['content']['nodes'][$nid]['field_uib_logo'])) {
         $variables['page']['header']['field_uib_logo'] = $variables['page']['content']['system_main']['content']['nodes'][$nid]['field_uib_logo'];
         unset($variables['page']['content']['system_main']['content']['nodes'][$nid]['field_uib_logo']);
@@ -207,7 +208,6 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     }
   }
 }
-// */
 
 /**
  * Override or insert variables into the node templates.
