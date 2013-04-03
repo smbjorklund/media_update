@@ -22,15 +22,17 @@ This procedure shal first be updated on test first.
 * Update CSS-files 
   (cd /var/www/w3.uib.no/themes/uib_zen/ ; 
   compass compile -q -c config-prod.rb)
-* Update the DB (if needed)
-  (bin/site-drush updatedb)
 * List what module needs updating
   (bin/site-drush fl)
 * Update one and one listed update
   (bin/site-drush fr <name>)
 * Flush cachen
   (bin/site-drush cc all)
-* Update the other server (git and CSS)
+* Update the DB (if needed)
+  (bin/site-drush updatedb)
+* Flush cachen
+  (bin/site-drush cc all)
+* Update the other server [Attika vs Attila] (git and CSS)
 * Double check if modules is updated
 * Disable maintenance mode
   (bin/site-drush vset maintenance_mode 0)
