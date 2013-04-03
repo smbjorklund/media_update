@@ -139,8 +139,17 @@ sub filter_issues {
 
 sub list_issues {
     for my $issue (@_) {
-	print "RTS-$issue->{'id'} $issue->{'subject'}\n";
+	printf "RTS-%-4s %-2s %s\n", $issue->{id}, issue_status($issue), $issue->{subject};
     }
+}
+
+sub issue_status {
+    my $issue = shift;
+    my $st = substr($issue->{status}{name}, 0, 1);
+    for my $f (@{$issue->{custom_fields}}) {
+	$st .= substr($f->{value}, 0, 1) if $f->{name} eq "Avsluttet som";
+    }
+    return $st;
 }
 
 sub do_show {
