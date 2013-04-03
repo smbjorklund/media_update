@@ -77,7 +77,7 @@ function uib_area_block_view($delta='') {
         'address' => array(
           '#theme' => 'key_value',
           '#key' => t('Address'),
-          '#value' => 'Postboks 7800, 5020 BERGEN',
+          '#value' => t('P.O. Box 7800, NO-5020 BERGEN'),
         ),
         'phone' => array(
           '#theme' => 'key_value',
