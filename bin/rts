@@ -257,16 +257,16 @@ sub do_branches {
 	my $suffix;
 	if ($local{$_} && !$remote{$_}) {
 	    print "L";
-	    $suffix = count_commits("origin/master", "rts/$_");
+	    $suffix = count_cherries("rts/$_");
 	}
 	elsif ($remote{$_} && !$local{$_}) {
 	    print "R";
-	    $suffix = count_commits("origin/master", "origin/rts/$_");
+	    $suffix = count_cherries("origin/rts/$_");
 	}
 	else {
 	    print "=";
 	    $suffix = join("/",
-	       count_commits("origin/master", "rts/$_"),
+	       count_cherries("rts/$_"),
 	       count_commits("origin/rts/$_", "rts/$_"),
 	       count_commits("rts/$_", "origin/rts/$_"),
 	    );
@@ -282,4 +282,23 @@ sub count_commits {
     my $c = qx(git rev-list --count $from..$to);
     chomp($c);
     return $c;
+}
+
+sub count_cherries {
+    my($head, $upstream) = @_;
+    $upstream ||= "origin/master";
+    my $picked = 0;
+    my $unpicked = 0;
+    open(my $fh, "git cherry $upstream $head|") || die;
+    local $_;
+    while (<$fh>) {
+	$picked++   if /^\- /;
+	$unpicked++ if /^\+ /;
+    }
+    my $all = $picked + $unpicked;
+    unless (wantarray) {
+	return 0 unless $all;
+	return "$picked/$all";
+    }
+    return $picked, $all;
 }
