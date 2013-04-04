@@ -8,11 +8,13 @@ use Getopt::Long qw(GetOptions);
 use JSON qw(from_json to_json);
 
 (my $PROGNAME = $0) =~ s,.*/,,;
+binmode(STDOUT, ":utf8");
 
 GetOptions(\my %OPT,
     'dump',
     'verbose',
     'json',
+    'open',
 ) || usage();
 
 my $DB = "var/rts";
@@ -63,6 +65,7 @@ Subcommands:
     show [--json] <id>...
     release
     release <rid>
+    list [--open]
 EOT
 }
 
@@ -106,6 +109,9 @@ sub do_update {
 		unless defined $total_count;
 
 	    my $issues = delete $data->{issues};
+	    for my $issue (@$issues) {
+		$issue->{open} = $status eq "open";
+	    }
 	    push(@all_issues, @$issues);
 	    $offset += @$issues;
 	    printf "%-6s %3.0f%%\n", $status, 100*$offset/$total_count if $total_count;
@@ -152,7 +158,7 @@ sub issue_status {
     my $st = substr($status, 0, 1) || "?";
     for my $f (@{$issue->{custom_fields}}) {
 	if ($f->{name} eq "Avsluttet som") {;
-	    my $v = $f->{value};
+	    my $v = $f->{value} || "";
 	    $v = "-" if $v eq "Løst";
 	    $v = "?" if $v eq "Kan ikke gjenskapes";
 	    $st .= substr($v, 0, 1);
@@ -166,12 +172,20 @@ sub do_show {
     my %want_ids = map { $_ => 1 } @ARGV;
     my @issues = filter_issues(sub { $want_ids{$_[0]{'id'}} });
     die "$ARGV[0]: No such issue\n" unless @issues && @ARGV == 1;
-    binmode(STDOUT, ":utf8");
     if ($OPT{json}) {
 	print to_json(\@issues, { pretty => 1 });
 	return;
     }
     list_issues(@issues);
+}
+
+sub do_list {
+    if ($OPT{open}) {
+	list_issues(filter_issues(sub { $_[0]{open} }));
+    }
+    else {
+	list_issues(get_issues());
+    }
 }
 
 sub do_release {
