@@ -1,9 +1,9 @@
 /*.html
 /mockups/index.html
-
 /.installed.cfg
 /bin/python
 /bin/buildout
+/bin/markdown2
 /develop-eggs/
 /eggs/
 /parts/
