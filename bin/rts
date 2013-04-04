@@ -169,7 +169,12 @@ sub issue_status {
 
 sub do_show {
     usage("No issue id given") unless @ARGV;
-    my %want_ids = map { $_ => 1 } @ARGV;
+    my %want_ids;
+    for (@ARGV) {
+	s/^RTS-?//i;
+	s/^#//;
+	$want_ids{$_}++;
+    }
     my @issues = filter_issues(sub { $want_ids{$_[0]{'id'}} });
     die "$ARGV[0]: No such issue\n" unless @issues && @ARGV == 1;
     if ($OPT{json}) {
