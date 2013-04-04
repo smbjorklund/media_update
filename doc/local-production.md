@@ -12,4 +12,4 @@ parameters at the beginning of the script accordingly.
 
 If you don't know the password for the admin account you can log in by running:
 
-   bin/site-drush user-login
+    bin/site-drush user-login
