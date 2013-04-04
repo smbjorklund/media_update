@@ -115,7 +115,7 @@ sub do_update {
 	    }
 	    push(@all_issues, @$issues);
 	    $offset += @$issues;
-	    printf "%-6s %3.0f%%\n", $status, 100*$offset/$total_count if $total_count;
+	    printf STDERR "%-6s %3.0f%%\n", $status, 100*$offset/$total_count if $total_count;
 	} while $offset < $total_count;
     }
 
@@ -129,6 +129,9 @@ sub do_update {
 
 
 sub get_issues {
+    if (!-e "$DB/issues.json" || -M _ > 1) {
+	do_update();
+    }
     open(my $fh, "<", "$DB/issues.json") || die;
     binmode($fh, ":utf8");
     my $json = do { local $/; <$fh>; };
