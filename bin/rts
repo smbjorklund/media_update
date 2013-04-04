@@ -1,0 +1,232 @@
+#!/usr/bin/env perl
+
+use utf8;
+use strict;
+use warnings;
+
+use Getopt::Long qw(GetOptions);
+use JSON qw(from_json to_json);
+
+(my $PROGNAME = $0) =~ s,.*/,,;
+binmode(STDOUT, ":utf8");
+
+GetOptions(\my %OPT,
+    'dump',
+    'verbose',
+    'json',
+    'open',
+    'patches',
+) || usage();
+
+my $DB = "var/rts";
+my $CMD = shift || usage();
+
+my $do_cmd = "do_$CMD";
+unless (defined &$do_cmd) {
+    require Text::Abbrev;
+    my @cmds;
+    for my $name (keys %main::) {
+        push(@cmds, $name) if $name =~ s/^do_//;
+    }
+    my $abbrev = Text::Abbrev::abbrev(@cmds);
+    if (my $cmd = $abbrev->{$CMD}) {
+        $do_cmd = "do_$cmd";
+    }
+    else {
+        require Text::Wrap;
+        usage(Text::Wrap::wrap("", "  ",
+                  "Unrecognized command '$CMD'; try one of " .
+                  join(", ", sort @cmds)
+              )
+        );
+    }
+}
+
+eval {
+    no strict 'refs';
+    &$do_cmd();
+};
+if ($@) {
+    print STDERR "$PROGNAME $CMD failed: $@";
+    exit 1;
+}
+else {
+    exit;
+}
+
+sub usage {
+    my $msg = shift;
+    print STDERR "$msg\n" if $msg;
+    die <<EOT;
+Usage: $PROGNAME <cmd> [options] ...
+
+Subcommands:
+
+    update
+    show [--json] <id>...
+    release
+    release <rid> [--patches]
+    list [--open] [--patches]
+EOT
+}
+
+sub do_update {
+    require LWP::UserAgent;
+    require URI;
+    require URI::QueryParam;
+
+    my $ua = LWP::UserAgent->new;
+    $ua->show_progress($OPT{verbose});
+
+    my $u = URI->new('https://rts.uib.no');
+    $u->path("issues.json");
+    $u->query_param(project_id => 'w3');
+    $u->query_param(limit => 999);
+
+    my $fh;
+    open($fh, "<", "$ENV{HOME}/.rts.key") || die "Can't open ~/.rts.key: $!";
+    my $key = <$fh>;
+    chomp($key);
+    close($fh);
+
+    $u->query_param(key => $key);
+
+    system("mkdir -p $DB");
+
+    my @all_issues;
+    for my $status (qw(open closed)) {
+	$u->query_param(status_id => $status);
+	my $total_count;
+	my $offset = 0;
+	do {
+	    $u->query_param('offset' => $offset);
+
+	    my $res = $ua->get($u);
+	    die $res->status_line unless $res->is_success;
+
+	    my $data = from_json($res->content);
+
+	    $total_count = $data->{total_count}
+		unless defined $total_count;
+
+	    my $issues = delete $data->{issues};
+	    for my $issue (@$issues) {
+		$issue->{open} = $status eq "open";
+	    }
+	    push(@all_issues, @$issues);
+	    $offset += @$issues;
+	    printf STDERR "%-6s %3.0f%%\n", $status, 100*$offset/$total_count if $total_count;
+	} while $offset < $total_count;
+    }
+
+    @all_issues = sort { $a->{id} <=> $b->{id} } @all_issues;
+
+    open($fh, ">", "$DB/issues.json") || die;
+    binmode($fh, ":utf8");
+    print $fh to_json(\@all_issues);
+    close($fh) || die;
+}
+
+
+sub get_issues {
+    if (!-e "$DB/issues.json" || -M _ > 1) {
+	do_update();
+    }
+    open(my $fh, "<", "$DB/issues.json") || die;
+    binmode($fh, ":utf8");
+    my $json = do { local $/; <$fh>; };
+    close($fh);
+    my $issues = from_json($json);
+    return @$issues;
+}
+
+sub filter_issues {
+    my $wanted = shift;
+    my @issues;
+    for my $issue (get_issues()) {
+	push(@issues, $issue) if $wanted->($issue);
+    }
+    return @issues;
+}
+
+sub list_issues {
+    for my $issue (@_) {
+	printf "RTS-%-4s %-2s %s\n", $issue->{id}, issue_status($issue), $issue->{subject};
+	if ($OPT{patches}) {
+	    for my $p (get_patches($issue->{id})) {
+		print "  - $p\n";
+	    }
+	}
+    }
+}
+
+sub issue_status {
+    my $issue = shift;
+    my $status = $issue->{status}{name};
+    $status = "-" if $status eq "Avsluttet" || $status eq "Levert";
+    my $st = substr($status, 0, 1) || "?";
+    for my $f (@{$issue->{custom_fields}}) {
+	if ($f->{name} eq "Avsluttet som") {;
+	    my $v = $f->{value} || "";
+	    $v = "-" if $v eq "Løst";
+	    $v = "?" if $v eq "Kan ikke gjenskapes";
+	    $st .= substr($v, 0, 1);
+	}
+    }
+    return $st;
+}
+
+sub get_patches {
+    my $issue_id = shift;
+    my @patches = qx(git log --oneline origin/master..origin/rts/$issue_id 2>/dev/null);
+    for (@patches) {
+	chomp;
+	s/ RTS-\#?$issue_id\s+/ /;
+    }
+    return @patches;
+}
+
+sub do_show {
+    usage("No issue id given") unless @ARGV;
+    my %want_ids;
+    for (@ARGV) {
+	s/^RTS-?//i;
+	s/^#//;
+	$want_ids{$_}++;
+    }
+    my @issues = filter_issues(sub { $want_ids{$_[0]{'id'}} });
+    die "$ARGV[0]: No such issue\n" unless @issues && @ARGV == 1;
+    if ($OPT{json}) {
+	print to_json(\@issues, { pretty => 1, canonical => 1 });
+	return;
+    }
+    list_issues(@issues);
+}
+
+sub do_list {
+    if ($OPT{open}) {
+	list_issues(filter_issues(sub { $_[0]{open} }));
+    }
+    else {
+	list_issues(get_issues());
+    }
+}
+
+sub do_release {
+    if (@ARGV) {
+	my $release = shift(@ARGV);
+	$release = "R$release" unless $release =~ /^r/i;
+	$release = lc($release);
+	my @issues = filter_issues(sub { lc($_[0]{'fixed_version'}{'name'} || 'none') eq $release });
+	if (@issues) {
+	    list_issues(@issues);
+	    return;
+	}
+    }
+    print "Releases:\n";
+    my %R;
+    filter_issues(sub { $R{$_[0]{'fixed_version'}{'name'} || 'none'}++; 0 });
+    for (sort keys %R) {
+	printf "  %-7s %4d\n", $_, $R{$_};
+    }
+}

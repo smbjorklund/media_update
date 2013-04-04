@@ -14,9 +14,17 @@ close($git);
 for my $rts (sort { $a <=> $b } keys %rts) {
     print "\nRTS-$rts  https://rts.uib.no/issues/$rts\n\n";
 
-    open($git, "git log --oneline master..origin/rts/$rts |") || die;
+    open($git, "git log --oneline origin/master..origin/rts/$rts |") || die;
     while (<$git>) {
 	s/\s+RTS-\#?$rts\s+/ | /;
         print "  $_";
     }
+    close($git);
+}
+
+my $docs = qx(git log --oneline origin/master..origin/docs);
+if ($docs) {
+    print "\nDocs\n\n";
+    $docs =~ s/^/  /gm;
+    print $docs;
 }
