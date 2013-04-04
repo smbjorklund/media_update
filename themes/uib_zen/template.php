@@ -140,9 +140,10 @@ function uib_zen_preprocess_html(&$variables, $hook) {
    * Get area menu style.
    */
   $current_area = uib_area__get_current();
-  $menu_style = field_get_items('node', $current_area, 'field_uib_menu_style');
-  $variables['classes_array'][] = $menu_style[0]['value'];
-  return $current_area;
+  if (!empty($current_area)) {
+    $menu_style = field_get_items('node', $current_area, 'field_uib_menu_style');
+    $variables['classes_array'][] = $menu_style[0]['value'];
+  }
 }
 
 /**
@@ -162,7 +163,9 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   }
   else {
     $current_area = uib_area__get_current();
-    $current_area = $current_area->nid;
+    if (!empty($current_area)) {
+      $current_area = $current_area->nid;
+    }
   }
 
   if (arg(0) == 'node' && arg(1) != 'add') {
