@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 
+use utf8;
 use strict;
 use warnings;
 
@@ -145,9 +146,16 @@ sub list_issues {
 
 sub issue_status {
     my $issue = shift;
-    my $st = substr($issue->{status}{name}, 0, 1);
+    my $status = $issue->{status}{name};
+    $status = "-" if $status eq "Avsluttet" || $status eq "Levert";
+    my $st = substr($status, 0, 1) || "?";
     for my $f (@{$issue->{custom_fields}}) {
-	$st .= substr($f->{value}, 0, 1) if $f->{name} eq "Avsluttet som";
+	if ($f->{name} eq "Avsluttet som") {;
+	    my $v = $f->{value};
+	    $v = "-" if $v eq "Løst";
+	    $v = "?" if $v eq "Kan ikke gjenskapes";
+	    $st .= substr($v, 0, 1);
+	}
     }
     return $st;
 }
