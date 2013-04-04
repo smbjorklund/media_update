@@ -67,6 +67,7 @@ Subcommands:
     release
     release <rid> [--patches]
     list [--open] [--patches]
+    branches
 EOT
 }
 
@@ -229,4 +230,56 @@ sub do_release {
     for (sort keys %R) {
 	printf "  %-7s %4d\n", $_, $R{$_};
     }
+}
+
+sub do_branches {
+    my %local;
+    my %remote;
+
+    system('git fetch --prune >/dev/null');
+
+    for (qx(git branch -a)) {
+	if (m,(/origin/)?rts/(\d+),) {
+	    if ($1) {
+		$remote{$2}++;
+	    }
+	    else {
+		$local{$2}++;
+	    }
+	}
+    }
+
+    #use Data::Dump; dd \%local, \%remote;
+
+    my %all = (%local, %remote);
+
+    for (sort keys %all) {
+	my $suffix;
+	if ($local{$_} && !$remote{$_}) {
+	    print "L";
+	    $suffix = count_commits("origin/master", "rts/$_");
+	}
+	elsif ($remote{$_} && !$local{$_}) {
+	    print "R";
+	    $suffix = count_commits("origin/master", "origin/rts/$_");
+	}
+	else {
+	    print "=";
+	    $suffix = join("/",
+	       count_commits("origin/master", "rts/$_"),
+	       count_commits("origin/rts/$_", "rts/$_"),
+	       count_commits("rts/$_", "origin/rts/$_"),
+	    );
+	}
+	print " rts/$_";
+	print " $suffix" if $suffix;
+	print "\n";
+    }
+}
+
+sub count_commits {
+    my($from, $to) = @_;
+    my $c = qx(git rev-list --count $from..$to);
+    chomp($c);
+    return $c;
 }
