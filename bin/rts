@@ -15,6 +15,7 @@ GetOptions(\my %OPT,
     'verbose',
     'json',
     'open',
+    'patches',
 ) || usage();
 
 my $DB = "var/rts";
@@ -64,8 +65,8 @@ Subcommands:
     update
     show [--json] <id>...
     release
-    release <rid>
-    list [--open]
+    release <rid> [--patches]
+    list [--open] [--patches]
 EOT
 }
 
@@ -148,6 +149,11 @@ sub filter_issues {
 sub list_issues {
     for my $issue (@_) {
 	printf "RTS-%-4s %-2s %s\n", $issue->{id}, issue_status($issue), $issue->{subject};
+	if ($OPT{patches}) {
+	    for my $p (get_patches($issue->{id})) {
+		print "  - $p\n";
+	    }
+	}
     }
 }
 
@@ -165,6 +171,16 @@ sub issue_status {
 	}
     }
     return $st;
+}
+
+sub get_patches {
+    my $issue_id = shift;
+    my @patches = qx(git log --oneline origin/master..origin/rts/$issue_id 2>/dev/null);
+    for (@patches) {
+	chomp;
+	s/ RTS-\#?$issue_id\s+/ /;
+    }
+    return @patches;
 }
 
 sub do_show {
