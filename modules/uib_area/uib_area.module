@@ -7,9 +7,8 @@
 include_once 'uib_area.features.inc';
 
 /**
- * Implements hook_menu_block_blocks
+ * Implements hook_menu_block_blocks().
  */
-
 function uib_area_menu_block_blocks() {
   return array(
     'top-area-menu' => array(
@@ -35,7 +34,6 @@ function uib_area_menu_block_blocks() {
 /**
  * Implements hook_block_info().
  */
-
 function uib_area_block_info() {
   return array(
     'colophon' => array(
@@ -62,11 +60,9 @@ function uib_area_block_info() {
   );
 }
 
-
 /**
  * Implements hook_block_view().
  */
-
 function uib_area_block_view($delta='') {
   $block = array();
   switch ($delta) {
@@ -251,11 +247,26 @@ function uib_area_block_view($delta='') {
   return $block;
 }
 
+/**
+ * uib_area_change_to_h2 description missing
+ * @param  [type] $markup  [description]
+ * @param  [type] $element [description]
+ *
+ * @return [type]          [description]
+ */
 function uib_area_change_to_h2($markup, $element) {
   $markup = preg_replace('/<h3(.*?)>(.*?)<\/h3>/','<h2\1>\2</h2>', $markup);
   return $markup;
 }
 
+/**
+ * [uib_area__feed_format description]
+ * @param  [type] $url   [description]
+ * @param  [type] $title [description]
+ * @param  [type] $limit [description]
+ *
+ * @return [type]        [description]
+ */
 function uib_area__feed_format($url, $title, $limit) {
   $items = array();
   $content = @file_get_contents($url);
@@ -303,7 +314,7 @@ function uib_area_field_formatter_info() {
 }
 
 /**
- * Implements hook_field_formatter_view()
+ * Implements hook_field_formatter_view().
  */
 function uib_area_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
@@ -332,9 +343,8 @@ function uib_area_theme() {
 }
 
 /**
- * Implements hook_node_presave
+ * Implements hook_node_presave().
  */
-
 function uib_area_node_presave($node) {
   // obtain full list of parent areas
   $parent_node_id_list = array();
@@ -358,8 +368,11 @@ function uib_area_node_presave($node) {
 }
 
 /**
-* Function to recursively get uib_area parent_ids
-*/
+ * Rcursively tries to get uib_area parent_ids.
+ *
+ * @param [type] [varname] [description]
+ * @param [type] [varname] [description]
+ */
 function uib_area__get_parentage($parent_node_id, &$parent_ids) {
   $parent_ids[] = $parent_node_id;
   if ($parent_node = node_load($parent_node_id)) {
@@ -372,12 +385,13 @@ function uib_area__get_parentage($parent_node_id, &$parent_ids) {
 }
 
 /**
-* Function to obtain [and keep] reference to current uib_area
-*    as indicated by node id in URL, or in the field_uib_area
-*    of that node. That node is loaded if necessary.
-*
-* If no area reference is found, the function returns NULL.
-*/
+ * Find and obtain [and keep] reference to current uib_area
+ * as indicated by node id in URL, or in the field_uib_area
+ * of that node. That node is loaded if necessary.
+ *
+ * @return [type] [description]
+ *   If no area reference is found, the function returns NULL.
+ */
 function uib_area__get_current() {
   static $current_area;
   if (!isset($current_area)) {
@@ -405,11 +419,11 @@ function uib_area__get_current() {
 }
 
 /**
-* Function to get current node address
-*    as indicated by node id in URL
-*
-* If no node reference is found in URL, the function returns NULL.
-*/
+ * Get current node address as indicated by node id in URL.
+ *
+ * @return [type] [description]
+ *   If no node reference is found in URL, the function returns NULL.
+ */
 function uib_area__get_current_node() {
   if (arg(0) == 'node' && is_numeric(arg(1))) {
     return arg(0) . '/' . arg(1);
@@ -418,11 +432,14 @@ function uib_area__get_current_node() {
 }
 
 /**
-* Function to get the node type of an indicated node ('node/nid'), or
-*    the current node as indicated by node id in URL
-*
-* If no node or node type is found, the function returns NULL.
-*/
+ * Get the node type of an indicated node ('node/nid'), or
+ * the current node as indicated by node id in URL.
+ *
+ * @param [type] [varname] [description]
+ *
+ * @return [type] [description]
+ *   If no node or node type is found, the function returns NULL.
+ */
 function uib_area__get_node_type($node = NULL) {
   if (empty($node)) {
     $node = uib_area__get_current_node();
@@ -444,9 +461,9 @@ function uib_area__get_node_type($node = NULL) {
  * Find the OU nid referenced from an area
  * (defaults to the current area).
  *
- * If the area does not have an OU, the function will
- * recursively search its area parents until an OU is
- * ultimately found -- or return NULL.
+ * @return [type] [description]
+ *   If the area does not have an OU, the function will recursively search its
+ *   area parents until an OU is ultimately found -- or return NULL.
  */
 function uib_area__get_ou_nid($area = NULL) {
   if (empty($area)) {
@@ -476,10 +493,11 @@ function uib_area__get_ou_nid($area = NULL) {
 }
 
 /**
-* Function that returns the node id of the current uib_area
-*
-* If no area reference is found, the function returns NULL.
-*/
+ * Find the node id of the current uib_area.
+ *
+ * @return [type] [description]
+ *   If no area reference is found, the function returns NULL.
+ */
 function uib_area__get_current_nid() {
   $a = uib_area__get_current();
   if (!empty($a)) {
@@ -491,10 +509,11 @@ function uib_area__get_current_nid() {
 }
 
 /**
-* Function that returns the menu link for the current uib_area
-*
-* If no area reference or no menu link is found, the function returns NULL.
-*/
+ * Find menu link for the current uib_area.
+ *
+ * @return [type] [description]
+ *   If no area reference or no menu link is found, the function returns NULL.
+ */
 function uib_area__get_current_menu_link() {
   $ar = uib_area__get_current();
   if (! empty($ar)) {
@@ -509,10 +528,11 @@ function uib_area__get_current_menu_link() {
 }
 
 /**
-* Function that returns the menu link item id of the current uib_area
-*
-* If no menu link is found, the function returns NULL.
-*/
+ * Find link item id of the current uib_area.
+ *
+ * @return [type] [description]
+ *   If no menu link is found, the function returns NULL.
+ */
 function uib_area__get_current_mlid() {
   $menu_link = uib_area__get_current_menu_link();
   if (!empty($menu_link)) {
@@ -522,15 +542,16 @@ function uib_area__get_current_mlid() {
 }
 
 /**
-* Function that returns the menu link item id which is to be used
-* as a starting point for the top level area menu block.
-*
-* The function may not return something that evaluates to FALSE,
-* because this will result in a menu containing the full area menu.
-* Instead, this fix will return 1 upon failure which will
-* result in an empty menu.
-*
-*/
+ * Find menu link item id which is to be used as a starting point for the top
+ * level area menu block.
+ *
+ * @return [type] [description]
+ *   The function may not return something that evaluates to FALSE,
+ *   because this will result in a menu containing the full area menu.
+ *   Instead, this fix will return 1 upon failure which will
+ *   result in an empty menu.
+ *
+ */
 function uib_area__get_menustart() {
   $mlid = uib_area__get_current_mlid();
   if ($mlid > 0) {
@@ -539,12 +560,10 @@ function uib_area__get_menustart() {
   else {
     return 1;
   }
-
 }
 
-
 /**
- * Implements hook_form_alter
+ * Implements hook_form_alter().
  */
 function uib_area_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'area_node_form') {
@@ -593,9 +612,9 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
-* Implements hook_node_validate
-*/
-function uib_area_node_validate($node, $form, &$form_state){
+ * Implements hook_node_validate().
+ */
+function uib_area_node_validate($node, $form, &$form_state) {
   if ($form['#form_id'] == 'area_node_form') {
     if ($form['field_uib_area_type']['und']['#value'] == 'discipline') {
       if (empty($form['field_uib_area_parents']['und'][0]['target_id']['#value'])) {
@@ -606,11 +625,17 @@ function uib_area_node_validate($node, $form, &$form_state){
 }
 
 /**
-* Function that adds a number of alias paths to an area node
-*
-* Adds a number of project specific aliases for area nodes (if they do not exist)
-* These aliases correspond to views paths in the views "Staff", "Area map", "Recent news" etc
-*/
+ * Adds aliases paths to an area node.
+ *
+ * Adds a number of project specific aliases for area nodes (if they do not exist)
+ * These aliases correspond to views paths in the views "Staff", "Area map", "Recent news" etc
+ *
+ * @param [type] [varname] [description]
+ * @param [type] [varname] [description]
+ * @param [type] [varname] [description]
+ *
+ * @return [type] [description]
+ */
 function uib_area__create_area_aliases($node_nid, $node_alias, $language) {
    if (!empty($node_nid) AND !empty($node_alias)) {
     // Add aliases only to non employee pages
@@ -659,10 +684,14 @@ function uib_area__create_area_aliases($node_nid, $node_alias, $language) {
 }
 
 /**
-* Function that deletes a number of alias paths from an area node
-*
-* cf. the function uib_area__create_area_aliases() that creates them.
-*/
+ * Deletes a number of alias paths from an area node.
+ *
+ * cf. the function uib_area__create_area_aliases() that creates them.
+ *
+ * @param [type] [varname] [description]
+ *
+ * @return [type] [description]
+ */
 function uib_area__remove_area_aliases($node_nid) {
   if (!empty($node_nid)) {
     $node_url = 'node/' . intval($node_nid);
@@ -692,7 +721,8 @@ function uib_area__remove_area_aliases($node_nid) {
 }
 
 /**
- * Implements hook_node_insert(
+ * Implements hook_node_insert().
+ *
  */
 function uib_area_node_insert($node) {
   if ($node->type == 'area' && isset($node->path['alias'])) {
@@ -701,7 +731,7 @@ function uib_area_node_insert($node) {
 }
 
 /**
- * Implements hook_node_update(
+ * Implements hook_node_update().
  */
 function uib_area_node_update($node) {
   if ($node->type == 'area' && isset($node->path['alias'])) {
@@ -712,7 +742,7 @@ function uib_area_node_update($node) {
 }
 
 /**
- * Implements hook_node_delete(
+ * Implements hook_node_delete().
  */
 function uib_area_node_delete($node) {
   if ($node->type == 'area') {
@@ -722,8 +752,8 @@ function uib_area_node_delete($node) {
 }
 
 /**
-* Function to check if the current node page is an employee page
-*/
+ * Control if the current node page is an employee page.
+ */
 function uib_area__is_employee_page() {
   $node = uib_area__get_current();
   if (isset($node->field_uib_sebra_id['und'][0]['value'])) {
