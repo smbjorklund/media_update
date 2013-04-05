@@ -24,7 +24,7 @@ if grep -q no_NO site/w3.uib.no.sql; then
 fi
 
 bin/site-drush sql-drop --yes
-perl -pe "s/\bw3_(?:user|admin)\b/$PGUSER/g" site/w3.uib.no.sql | $FIX_LOCALE | $PSQL --echo-queries >site/pg.out 2>&1
+perl -pe "s/\bw3_(?:user|admin)\b/$PGUSER/g" site/w3.uib.no.sql | perl -pe "s/^CREATE TABLE/CREATE UNLOGGED TABLE/" | $FIX_LOCALE | $PSQL --echo-queries >site/pg.out 2>&1
 bin/pg_error_report --ignore-drop site/pg.out
 
 rm -rf drupal/sites/w3.uib.no
