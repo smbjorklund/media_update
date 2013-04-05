@@ -177,6 +177,20 @@ sub issue_status {
     return $st;
 }
 
+my %ISSUE_NAME;
+sub issue_name {
+    my $issue_id = shift;
+
+    unless (%ISSUE_NAME) {
+	for my $issue (get_issues()) {
+	    $ISSUE_NAME{$issue->{id}} = $issue->{subject};
+	}
+    }
+
+    my $name = $ISSUE_NAME{$issue_id} || "?";
+    return $name;
+}
+
 sub get_patches {
     my $issue_id = shift;
     my @patches = qx(git log --oneline origin/master..origin/rts/$issue_id 2>/dev/null);
@@ -273,7 +287,7 @@ sub do_branches {
 	}
 	print " rts/$_";
 	print " $suffix" if $suffix;
-	print "\n";
+	print " ", issue_name($_+0), "\n";
     }
 }
 
