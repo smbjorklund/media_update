@@ -158,14 +158,11 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   $variables['page_title'] = $variables['site_name'];
   $variables['page_title_link'] = l($variables['site_name'], '<front>', array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
   $variables['uib_node_edit_mode'] = '';
-  if (isset($variables['node']->type) == 'area') {
-    $current_area = $variables['node']->nid;
+  if (!empty($variables['node']->type) && $variables['node']->type == 'area') {
+    $current_area = $variables['node'];
   }
   else {
     $current_area = uib_area__get_current();
-    if (!empty($current_area)) {
-      $current_area = $current_area->nid;
-    }
   }
 
   if (arg(0) == 'node' && arg(1) != 'add') {
