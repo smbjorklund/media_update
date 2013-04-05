@@ -15,6 +15,7 @@ GetOptions(\my %OPT,
     'verbose',
     'json',
     'open',
+    'url',
     'patches',
 ) || usage();
 
@@ -168,7 +169,13 @@ sub filter_issues {
 
 sub list_issues {
     for my $issue (@_) {
-	printf "RTS-%-4s %-2s %s\n", $issue->{id}, issue_status($issue), $issue->{subject};
+	if ($OPT{url}) {
+	    printf "https://rts.uib.no/issues/%-4s", $issue->{id};
+	}
+	else {
+	    printf "RTS-%-4s", $issue->{id};
+	}
+	printf " %-2s %s\n", issue_status($issue), shorten($issue->{subject});
 	if ($OPT{patches}) {
 	    for my $p (get_patches($issue->{id})) {
 		print "  - $p\n";
@@ -192,6 +199,18 @@ sub issue_status {
     return $st;
 }
 
+sub shorten {
+    my $s = shift;
+    my $max = shift || 50;
+    if (length($s) > $max) {
+	my $len1 = int($max * 2/3);
+	my $len2 = $max - $len1;
+	$len1 -= 3;
+	$s = substr($s, 0, $len1) . "..." . substr($s, -$len2);
+    }
+    return $s;
+}
+
 my %ISSUE_NAME;
 sub issue_name {
     my $issue_id = shift;
@@ -203,6 +222,7 @@ sub issue_name {
     }
 
     my $name = $ISSUE_NAME{$issue_id} || "?";
+    $name = shorten($name);
     return $name;
 }
 
