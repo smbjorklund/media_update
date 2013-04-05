@@ -314,11 +314,7 @@ sub do_branches {
 	}
 	else {
 	    print "=";
-	    $suffix = join("/",
-	       count_cherries("rts/$_"),
-	       count_commits("origin/rts/$_", "rts/$_"),
-	       count_commits("rts/$_", "origin/rts/$_"),
-	    );
+	    $suffix = count_cherries("rts/$_");
 	}
 	print " rts/$_";
 	print " $suffix" if $suffix;
