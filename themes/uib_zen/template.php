@@ -287,12 +287,15 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         }
         if (empty($variables['node']->field_uib_kicker['und'][0]['value'])) {
           // set default value for kicker in news articles
-          $variables['content']['field_uib_kicker'][0]['text'] = array('#markup' => "<div class=\"uib-kicker-text\">" . t('news') . "</div>");
+          $variables['node']->field_uib_kicker['und'][0] = array('value' => t('News'),   'format' => NULL, 'safe_value' => t('News'));
+          $field_uib_kicker = field_view_field('node', $variables['node'], 'field_uib_kicker', array('label' => 'hidden'));
+          $variables['content']['field_uib_kicker'] = $field_uib_kicker;
+          $variables['content']['field_uib_kicker'][0]['text'] = array('#markup' => "<div class=\"uib-kicker-text\">" . t('News') . "</div>");
         }
         else {
           $variables['content']['field_uib_kicker'][0]['text'] = array('#markup' => "<div class=\"uib-kicker-text\">" . $variables['content']['field_uib_kicker'][0]['#markup'] . "</div>");
-          $variables['content']['field_uib_kicker'][0]['#markup'] = "";
         }
+        $variables['content']['field_uib_kicker'][0]['#markup'] = "";
         $variables['content']['field_uib_kicker'][0]['date'] = array('#markup' => "<div class=\"uib-kicker-date\">" . $up_date . "</div>");
 
         // Byline
