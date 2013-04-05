@@ -6,28 +6,33 @@ The original code got merged into master. Bugs was later found and we need to do
 
 The new changes is first committed to the original branch. We now  need to cherry pick the commit and put it on top of a fresh master branch.
 
-Make sure your master is up2date.
+Make sure your origin/master is up2date.
 
-    git checkout master
-    git pull --rebase
+    git fetch
 
 Check out the original branch
 
     git checkout branch_name
-    git fetch
+
+List the patches that you made:
+
+    git log --oneline origin/master..
 
 Now move your HEAD to the master branch.
 
     git reset --hard origin/master
 
-git cherry-pick commit_id
+and reapply the patches you had (commit ids from the 'git log' invocation above)
+
+    git cherry-pick commit_id1
+    git cherry-pick commit_id2
 
 Test run
 
     git push --dry-run
 
 If everything looks good, go, go, go!
-    
+
     git push
 
 Git might reject you if the changes committed also was pushed before you started doing this. Typical warning is that your HEAD is behind:
