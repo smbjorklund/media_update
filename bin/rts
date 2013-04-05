@@ -118,6 +118,17 @@ sub do_update {
 	    my $issues = delete $data->{issues};
 	    for my $issue (@$issues) {
 		$issue->{open} = $status eq "open";
+		for my $k (keys %$issue) {
+		    if (ref($issue->{$k}) eq "HASH" && exists $issue->{$k}{name}) {
+			$issue->{$k} = $issue->{$k}{name};
+		    }
+		}
+		for my $f (@{delete $issue->{custom_fields} || []}) {
+		    my $k = $f->{name};
+		    $k =~ s/ /_/g;
+		    $k = "x_$k";
+		    $issue->{$k} = $f->{value};
+		}
 	    }
 	    push(@all_issues, @$issues);
 	    $offset += @$issues;
@@ -168,17 +179,16 @@ sub list_issues {
 
 sub issue_status {
     my $issue = shift;
-    my $status = $issue->{status}{name};
+
+    my $status = $issue->{status};
     $status = "-" if $status eq "Avsluttet" || $status eq "Levert";
     my $st = substr($status, 0, 1) || "?";
-    for my $f (@{$issue->{custom_fields}}) {
-	if ($f->{name} eq "Avsluttet som") {;
-	    my $v = $f->{value} || "";
-	    $v = "-" if $v eq "Løst";
-	    $v = "?" if $v eq "Kan ikke gjenskapes";
-	    $st .= substr($v, 0, 1);
-	}
-    }
+
+    my $v = $issue->{x_Avsluttet_som} || "";
+    $v = "-" if $v eq "Løst";
+    $v = "?" if $v eq "Kan ikke gjenskapes";
+    $st .= substr($v, 0, 1);
+
     return $st;
 }
 
@@ -237,7 +247,7 @@ sub do_release {
 	my $release = shift(@ARGV);
 	$release = "R$release" unless $release =~ /^r/i;
 	$release = lc($release);
-	my @issues = filter_issues(sub { lc($_[0]{'fixed_version'}{'name'} || 'none') eq $release });
+	my @issues = filter_issues(sub { lc($_[0]{'fixed_version'} || 'none') eq $release });
 	if (@issues) {
 	    list_issues(@issues);
 	    return;
@@ -245,7 +255,7 @@ sub do_release {
     }
     print "Releases:\n";
     my %R;
-    filter_issues(sub { $R{$_[0]{'fixed_version'}{'name'} || 'none'}++; 0 });
+    filter_issues(sub { $R{$_[0]{'fixed_version'} || 'none'}++; 0 });
     for (sort keys %R) {
 	printf "  %-7s %4d\n", $_, $R{$_};
     }
