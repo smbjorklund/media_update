@@ -11,7 +11,6 @@ use JSON qw(from_json to_json);
 binmode(STDOUT, ":utf8");
 
 GetOptions(\my %OPT,
-    'dump',
     'verbose',
     'json',
     'open',
