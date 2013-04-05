@@ -21,6 +21,11 @@ GetOptions(\my %OPT,
 my $DB = "var/rts";
 my $CMD = shift || usage();
 
+if ($CMD =~ /^\d+$/) {
+    unshift(@ARGV, $CMD);
+    $CMD = 'show';
+}
+
 my $do_cmd = "do_$CMD";
 unless (defined &$do_cmd) {
     require Text::Abbrev;
@@ -63,7 +68,7 @@ Usage: $PROGNAME <cmd> [options] ...
 Subcommands:
 
     update
-    show [--json] <id>...
+    [show] [--json] <id>...
     release
     release <rid> [--patches]
     list [--open] [--patches]
