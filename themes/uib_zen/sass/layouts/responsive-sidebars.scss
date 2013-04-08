@@ -1588,6 +1588,8 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-bottom-text {
     @include zen-grid-item (3, 2);
+    width: 73%;
+    margin-left: 27%;
   }
 
   /* Area "teaser" block */
