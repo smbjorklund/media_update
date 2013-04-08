@@ -751,8 +751,8 @@ function uib_setup_strongarm() {
     'default_logo' => 0,
     'logo_path' => 'sites/all/themes/uib/uib_zen/uiblogo.svg',
     'logo_upload' => '',
-    'default_favicon' => 1,
-    'favicon_path' => '',
+    'default_favicon' => 0,
+    'favicon_path' => 'public://favicon.ico',
     'favicon_upload' => '',
     'zen_breadcrumb' => 'yes',
     'zen_breadcrumb_separator' => ' › ',
@@ -768,6 +768,7 @@ function uib_setup_strongarm() {
     ),
     'zen_rebuild_registry' => 0,
     'zen_wireframes' => 0,
+    'favicon_mimetype' => 'image/vnd.microsoft.icon',
   );
   $export['theme_uib_zen_settings'] = $strongarm;
 
