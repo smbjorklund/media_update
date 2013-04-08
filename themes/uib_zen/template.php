@@ -163,6 +163,11 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   }
   else {
     $current_area = uib_area__get_current();
+    if (!empty($current_area)) {
+      // use the title of current area
+      $variables['page_title'] = $current_area->title;
+      $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
+    }
   }
 
   if (arg(0) == 'node' && arg(1) != 'add') {
@@ -179,10 +184,6 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   }
 
   if (isset($variables['node'])) {
-    // use the title of current area
-    $variables['page_title'] = $current_area->title;
-    $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
-
     // Create a variable that indicates whether we are in EDIT mode or not
     $suggestions = theme_get_suggestions(arg(), 'page');
     if ($suggestions) {
