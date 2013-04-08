@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# syntax uninstall [--discard]
+# if --discard is given as first arg, skips backup of database+site
+
+test -L site || exit 1
+SITE=$(basename $(readlink site))
+BACKUP=true
+rm -fr var/private
+
+if [ "$1" = "--discard" ]; then
+    BACKUP=false
+    shift
+    echo "Skipping backup of database+site"
+fi
+
+set -x
+if [ -d drupal/sites/$SITE ]; then
+    if $BACKUP ; then
+        bin/site-dump
+        mv drupal/sites/$SITE drupal/sites/$SITE-$(date +%Y%m%dT%H%M)
+    else
+        rm -rf drupal/sites/$SITE
+    fi
+fi
