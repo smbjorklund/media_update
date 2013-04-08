@@ -160,6 +160,9 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   $variables['uib_node_edit_mode'] = '';
   if (!empty($variables['node']->type) && $variables['node']->type == 'area') {
     $current_area = $variables['node'];
+      // use the title of current area
+      $variables['page_title'] = $current_area->title;
+      $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
   }
   else {
     $current_area = uib_area__get_current();
