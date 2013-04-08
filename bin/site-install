@@ -83,7 +83,7 @@ EOT
 
 ln -s ../../../etc/drushrc.php .
 (cd ../../.. && rm -f site && ln -s drupal/sites/$SITE_DIR site)
-(cd ../../.. && bin/sql-dump $SITE_DIR)
+(cd ../../.. && bin/site-dump)
 
 git init
 git add settings.php drushrc.php dump.sql

@@ -18,8 +18,8 @@ set -x
 #test -d drupal/sites/$SITE && mv drupal/sites/$SITE drupal/sites/$SITE-$(date +%Y%m%dT%H%M)
 if [ -d drupal/sites/$SITE ]; then
     if $BACKUP ; then
-        bin/sql-dump
-	      mv drupal/sites/$SITE drupal/sites/$SITE-$(date +%Y%m%dT%H%M)
+        bin/site-dump
+        mv drupal/sites/$SITE drupal/sites/$SITE-$(date +%Y%m%dT%H%M)
     else
         rm -rf drupal/sites/$SITE
     fi

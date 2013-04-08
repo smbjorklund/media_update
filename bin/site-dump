@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# This creates an SQL dump file in the site/files directory.  Use sql-restore to initialize the database from the file.
+# This creates an SQL dump file in the site/files directory.  Use site-restore to initialize the database from the file.
 bin/site-drush sql-dump --result-file=../site/dump.sql --structure-tables-key=common "$@"
