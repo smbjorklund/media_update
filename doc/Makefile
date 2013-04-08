@@ -1,13 +1,15 @@
 HTML = \
-  apache-local.html \
   area.html \
   blocks.html \
   course_site-w3-kurs.uib.no.html \
+  development-setup.html \
   drupal-deploy.html \
   drupal-sync-course-site.html \
   drupal-update.html \
+  git.html \
   hints.html \
   index.html \
+  local-production.html \
   release1.html \
   render-array.html \
   repo-readme.html \
@@ -17,8 +19,6 @@ HTML = \
   style.html \
   terms.html \
   w3_server_layout.html \
-  local-production.html \
-  git.html \
 
 PYTHON = python
 PERL = perl
