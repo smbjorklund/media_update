@@ -101,14 +101,6 @@ $zen-auto-include-item-base: false;
 
   $zen-column-count: 1;
 
-  h1.site-name {
-     font-size: 15px;
-   }
-
-   #mobile-name-and-slogan .logo {
-     margin-top: 0;
-   }
-
    #menu-search-mobile-wrapper{
      float: left;
      width: 100%;
@@ -235,12 +227,9 @@ $zen-auto-include-item-base: false;
       display: block;
     }
   }
-  #header {
-    margin-bottom: 0;
-    .logo {
-      height: auto;
-      width: 30%;
-    }
+  #header .logo {
+    height: auto;
+    width: 30%;
   }
   #block-locale-language {
       ul {
@@ -292,7 +281,8 @@ $zen-auto-include-item-base: false;
   }
 
   #name-and-slogan-mobile {
-    padding-top: 1px;
+    font-size: 1.25em;
+    margin: 0.333em 0 0.333em 0.333em;
   }
 
   #block-locale-language--2 {

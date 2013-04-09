@@ -91,7 +91,7 @@
            * the area name in an url.
            */
           if ($site_name || $site_slogan || $page_title_link): ?>
-            <hgroup id="name-and-slogan-mobile">
+            <hgroup id="name-and-slogan-mobile" class="clearfix">
               <?php if ($logo): ?>
                 <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
               <?php endif; ?>

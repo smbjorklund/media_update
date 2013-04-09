@@ -48,27 +48,29 @@ body {
   background-position: right;
 }
 
-.logo { /* Wrapping link for logo */
+.logo {
   float: left; /* LTR */
   img {
+    height: 3.61em;
+    margin: 0 0.8889em 0 0;
     vertical-align: bottom;
-    height: 7.3em;
-    width: 7.3em;
+    width: 3.61em;
   }
 }
 
 #name-and-slogan { /* Wrapper for website name and slogan */
   float: left;
+  font-size: 1.5em;
+  margin: 0.8889em 0;
   width: 90%;
 }
 
-.site-name { /* The name of the website */
-  margin: 20px, 0 0 0;
-  font-size: 1.5em;
+.site-name {
+  border-left: 1px #aa0000 solid; /* Red decor line between logo and title. */
+  font-size: 1em;
   float: left;
-  line-height: 1.5em;
-  border-left: 1px #AA0000 solid; /* the red line between logo and title in header */
-  padding: 20px 20px 20px 16px;
+  margin: 0;
+  padding: 1em 0.8889em;
   a:link,
   a:visited {
     text-decoration: none;
