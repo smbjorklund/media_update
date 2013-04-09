@@ -177,7 +177,6 @@ features[file_display][] = video__wide_thumbnail__media_youtube_video
 features[filter][] = advanced_editor
 features[filter][] = basic_html
 features[filter][] = full_html
-features[filter][] = html
 features[filter][] = plain_text
 features[filter][] = restricted_html
 features[filter][] = simple_editor
