@@ -94,9 +94,10 @@ function uib_area_block_view($delta='') {
           '#value' => '+47 55 58 80 81',
         ),
         'contact' => array(
-          '#theme' => 'key_value',
-          '#key' => t('Contact'),
-          '#value' => 'post@uib.no',
+          '#type' => 'link',
+          '#title' => t('post@uib.no'),
+          '#href' => 'mailto:post@uib.no',
+          '#prefix' => t('Contact') . ': ',
         ),
         'responsible' => array(
           '#theme' => 'key_value',
@@ -117,8 +118,10 @@ function uib_area_block_view($delta='') {
             $place->field_uib_fax['und'][0]['value'];
         }
         if (isset($place->field_uib_mail_domain)) {
-          $block['content']['contact']['#value'] =
+          $block['content']['contact']['#title'] =
             'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
+          $block['content']['contact']['#href'] =
+            'mailto:post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
         }
       }
       hide($block['content']['emergency']);
