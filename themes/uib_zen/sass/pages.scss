@@ -49,27 +49,31 @@ body {
 }
 
 .logo {
+  border-right: 1px #aa0000 solid; /* Red decor line between logo and title. */
   float: left; /* LTR */
   img {
-    height: 3.61em;
+    height: 4.5em;
     margin: 0 0.8889em 0 0;
     vertical-align: bottom;
-    width: 3.61em;
+    width: 4.5em;
   }
 }
 
 #name-and-slogan { /* Wrapper for website name and slogan */
   float: left;
-  font-size: 1.5em;
-  margin: 0.8889em 0;
   width: 90%;
+}
+
+#name-and-slogan,
+.language-switcher-locale-url {
+  margin: 0.8889em 0;
 }
 
 .site-name {
   border-left: 1px #aa0000 solid; /* Red decor line between logo and title. */
-  font-size: 1em;
+  font-size: 1.5em;
   float: left;
-  margin: 0;
+  margin: 0 0 0 -1px;
   padding: 1em 0.8889em;
   a:link,
   a:visited {
@@ -87,9 +91,6 @@ body {
 #site-slogan { /* The slogan (or tagline) of a website */
   margin: 0;
   font-size: 1em;
-}
-
-.region-header { /* Wrapper for any blocks placed in the header region */
 }
 
 /* Header: Styling for Webdesk */

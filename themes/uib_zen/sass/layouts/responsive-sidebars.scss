@@ -101,6 +101,21 @@ $zen-auto-include-item-base: false;
 
   $zen-column-count: 1;
 
+  #name-and-slogan-mobile {
+    .site-name {
+      font-size: 1.125em;
+      padding: 0 0 0 0.416em;
+      width: 75%;
+    }
+    .logo {
+      width: 50px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
    #menu-search-mobile-wrapper{
      float: left;
      width: 100%;
@@ -281,7 +296,6 @@ $zen-auto-include-item-base: false;
   }
 
   #name-and-slogan-mobile {
-    font-size: 1.25em;
     margin: 0.333em 0 0.333em 0.333em;
   }
 
@@ -698,10 +712,7 @@ $zen-auto-include-item-base: false;
 
     /* mobile header fixes*/
     @media all and (min-width: 720px) and (max-width: 959px) {
-      #mobile-name-and-slogan {
-        display: none;
-      }
-
+      #mobile-name-and-slogan,
       #block-locale-language--2 {
         display: none;
       }
