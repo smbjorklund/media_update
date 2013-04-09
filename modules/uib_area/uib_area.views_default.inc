@@ -56,7 +56,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['field_uib_geo']['settings'] = array(
     'geofield_map_width' => '100%',
     'geofield_map_height' => '300px',
-    'geofield_map_zoom' => '8',
+    'geofield_map_zoom' => '15',
     'geofield_map_controltype' => 'default',
     'geofield_map_mtc' => 'standard',
     'geofield_map_pancontrol' => 1,
