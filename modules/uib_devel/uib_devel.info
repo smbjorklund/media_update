@@ -15,6 +15,7 @@ dependencies[] = migrate_ui
 dependencies[] = panels_ipe
 dependencies[] = uib_setup
 dependencies[] = views_ui
+dependencies[] = advanced_help
 features[features_api][] = api:1
 features[user_permission][] = access devel information
 features[user_permission][] = administer devel menu items
