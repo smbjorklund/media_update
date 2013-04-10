@@ -123,3 +123,31 @@ function uib_article_node_validate($node, $form, &$form_state) {
     }
   }
 }
+
+/**
+* Create redirect for a node entity.
+*
+* This is only relevant for nodes migrated from w2.
+* If the attached field_uib_w2_path contains a string, the
+* redirect will be setup to our node.
+*
+* @param entity $entity
+* The node entity that is the target for the redirect
+*
+*/
+function uib_article__set_redirect($entity) {
+  if (!empty($entity->field_uib_w2_path['und'][0]['value'])) {
+    $redirect = new stdClass();
+    redirect_object_prepare($redirect);
+    $redirect->source = $entity->field_uib_w2_path['und'][0]['value'];
+    $redirect->redirect = 'node/' . $entity->nid;
+    // Check if the redirect exists before saving.
+    $hash = redirect_hash($redirect);
+    if (!redirect_load_by_hash($hash)) {
+      redirect_save($redirect);
+      uibx_log('Redirect created for ' . $redirect->source . ' -> ' . $redirect->redirect);
+    } else {
+      uibx_log('Redirect ' . $redirect->source . ' -> ' . $redirect->redirect . ' already existed');
+    }
+  }
+}
