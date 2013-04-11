@@ -188,6 +188,8 @@ sub issue_status {
 
     my $status = $issue->{status};
     $status = "-" if $status eq "Avsluttet" || $status eq "Levert";
+    $status = "✅" if $status eq "Verifisert";
+    $status = "😴" if $status eq "Venter";
     my $st = substr($status, 0, 1) || "?";
 
     my $v = $issue->{x_Avsluttet_som} || "";
