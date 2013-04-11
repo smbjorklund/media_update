@@ -187,15 +187,17 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   }
 
   // Render areas custom logo.
-  $output = field_view_field('node', $current_area, 'field_uib_logo',
-  array(
-    'type' => 'image',
-    'label' => 'hidden',
-    'settings' => array(
-      'image_style' => 'custom_logo',
+  if (!empty($current_area)) {
+    $output = field_view_field('node', $current_area, 'field_uib_logo',
+      array(
+        'type' => 'image',
+        'label' => 'hidden',
+        'settings' => array(
+          'image_style' => 'custom_logo',
+        )
       )
-    )
-  );
+    );
+  }
   $variables['custom_logo'] = render($output);
 
   if (isset($variables['node'])) {
