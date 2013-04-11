@@ -351,9 +351,15 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         hide($variables['content']['group_article_sidebar']['field_uib_media'][0]['field_uib_owner']);
       }
 
-      // Do not show related area on employee pages [RTS 1225]
+      // Section that only run on employee nodes.
       if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
-         hide($variables['content']['group_article_sidebar']['field_uib_area']);
+        // Do not show related area on employee pages [RTS 1225]
+        hide($variables['content']['group_article_sidebar']['field_uib_area']);
+
+        // Add page-area-menu to node group_article_sidebar
+        $block = block_load('menu_block', 'page-area-menu');
+        $block = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+        $variables['content']['group_article_sidebar']['page-area-menu']['#markup'] = $block;
       }
 
       if (isset($variables['field_uib_text']['und']) && (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container'))) {
