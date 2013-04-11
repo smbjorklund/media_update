@@ -1,4 +1,0 @@
-name = UIB menuparents
-description = Contains overrides to the menu module
-package = UiB
-core = 7.x

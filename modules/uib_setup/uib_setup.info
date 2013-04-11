@@ -53,7 +53,6 @@ dependencies[] = uib_breadcrumb
 dependencies[] = uib_field
 dependencies[] = uib_h2tabs
 dependencies[] = uib_media
-dependencies[] = uib_menuparents
 dependencies[] = variable_realm
 dependencies[] = view_unpublished
 dependencies[] = views
