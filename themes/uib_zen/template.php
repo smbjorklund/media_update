@@ -351,9 +351,24 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         hide($variables['content']['group_article_sidebar']['field_uib_media'][0]['field_uib_owner']);
       }
 
-      // Do not show related area on employee pages [RTS 1225]
+      // Section that only run on employee nodes.
       if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
-         hide($variables['content']['group_article_sidebar']['field_uib_area']);
+        // Do not show related area on employee pages [RTS 1225]
+        hide($variables['content']['group_article_sidebar']['field_uib_area']);
+
+        // Add page-area-menu to node group_article_sidebar
+        $block = module_invoke('menu_block', 'block_view', 'page-area-menu');
+        $block = '<div class="block"><h2 class="block-title">' . $block['subject_array']['#markup'] . '</h2>' . render($block['content']) . '</div>';
+        if (!empty($variables['content']['group_article_sidebar']['#id'])) {
+          $variables['content']['group_article_sidebar']['page-area-menu']['#markup'] = $block;
+        }
+        else {
+          $variables['content']['group_article_sidebar']['#weight'] = 4;
+          $variables['content']['group_article_sidebar']['#id'] =  'node_uib_article_full_group_article_sidebar';
+          $variables['content']['group_article_sidebar']['#prefix'] = '<div class="group-article-sidebar">';
+          $variables['content']['group_article_sidebar']['#suffix'] = '</div>';
+          $variables['content']['group_article_sidebar']['page-area-menu']['#markup'] = $block;
+        }
       }
 
       if (isset($variables['field_uib_text']['und']) && (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container'))) {
