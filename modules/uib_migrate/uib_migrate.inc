@@ -339,6 +339,31 @@ abstract class XTopicToArticleMigration extends Migration {
       }
     }
   }
+
+  public function complete($node, $row) {
+    // Create redirect for w2 url and/or or path to the node that is being migrated
+    $sources = array(
+      trim($row->url),
+      trim($row->path),
+      );
+    foreach ($sources as $source_path) {
+      if (!empty($source_path)) {
+        $redirect = new stdClass();
+        redirect_object_prepare($redirect);
+        $redirect->source = $source_path;
+        $redirect->redirect = 'node/' . $node->nid;
+        // Check if the redirect exists before saving.
+        $hash = redirect_hash($redirect);
+        if (!redirect_load_by_hash($hash)) {
+          redirect_save($redirect);
+          uibx_log('Redirect created for ' . $redirect->source . ' -> ' . $redirect->redirect);
+        } else {
+          uibx_log('Redirect ' . $redirect->source . ' -> ' . $redirect->redirect . ' already existed');
+        }
+      }
+    }
+  }
+
 }
 
 /**
@@ -364,22 +389,9 @@ class InfoPageMigration extends XTopicToArticleMigration {
   }
 
   public function complete($node, $row) {
-     if(!empty($row->url)) {
-      // Setup redirects for w2 urls to w3 nodes
-      $redirect = new stdClass();
-      redirect_object_prepare($redirect);
-      $redirect->source = $row->url;
-      $redirect->redirect = 'node/' . $node->nid;
-      // Check if the redirect exists before saving.
-      $hash = redirect_hash($redirect);
-      if (!redirect_load_by_hash($hash)) {
-        redirect_save($redirect);
-        uibx_log('Redirect created for ' . $row->url . ' -> node/' . $node->nid);
-      } else {
-        uibx_log('Redirect ' . $row->url . ' -> node/' . $node->nid . ' already existed');
-      }
-    }
+    parent::complete($node, $row);
   }
+
 }
 
 /**
