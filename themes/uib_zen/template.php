@@ -326,12 +326,14 @@ function uib_zen_preprocess_node(&$variables, $hook) {
             $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => '<div class="uib-news-byline">' . $uib_news_byline . "</div>");
           }
         }
+        $variables['content']['group_article_main']['uib_news_byline']['#suffix'] = '<div class="uib-news-byline-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-news-byline-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
       }
       else {
         // In articles of other types than 'news': Ensure that no byline is shown
         if (!empty($variables['content']['field_uib_byline'])) {
           hide($variables['content']['field_uib_byline']);
         }
+        $variables['content']['group_article_main']['field_uib_text']['#suffix'] = '<div class="uib-article-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-article-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
       }
       // Ensure that the labels of some fields, which are shown in the
       // main content sidebar, are not show when the fields contain no data
