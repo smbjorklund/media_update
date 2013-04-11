@@ -972,7 +972,7 @@ webdesk/*';
     'logo_path' => 'sites/all/themes/uib/uib_zen/uiblogo.svg',
     'logo_upload' => '',
     'default_favicon' => 0,
-    'favicon_path' => 'public://favicon.ico',
+    'favicon_path' => 'sites/all/themes/uib/uib_zen/favicon.ico',
     'favicon_upload' => '',
     'zen_breadcrumb' => 'yes',
     'zen_breadcrumb_separator' => ' › ',
