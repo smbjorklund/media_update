@@ -436,3 +436,15 @@ div.link-field-column {
   width: 20%;
   float: left;
 }
+
+.service-links {
+  .item-list {
+    li {
+      float: left;
+      margin: 0 1em 1em 0 ;
+    }
+  }
+}
+.service-links + div {
+  clear: left;
+}
