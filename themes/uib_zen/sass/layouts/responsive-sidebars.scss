@@ -98,7 +98,7 @@ $zen-auto-include-item-base: false;
 }
 
 /* Mobile */
-@media all and (min-width: 240px) and (max-width: 720px) {
+@media all and (min-width: 240px) and (max-width: 719px) {
   $zen-column-count: 1;
 
   #name-and-slogan-mobile {
@@ -256,34 +256,28 @@ $zen-auto-include-item-base: false;
       }
     }
   }
-}
 
-.node-type-area {
-  .breadcrumb {
-    display: none;
+  .node-type-area {
+    .breadcrumb {
+      display: none;
+    }
   }
-}
 
-.region-bottom {
-  width: 100% !important;
-}
+  .region-bottom {
+    width: 100% !important;
+  }
 
-/* content */
-@media all and (min-width: 240px) and (max-width: 720px) {
+  /* content */
   #content {
     margin-top: 20px;
   }
-}
 
-/* Hide extra logo */
-@media all and (min-width: 240px) and (max-width: 720px) {
+  /* Hide extra logo */
   .field-name-field-uib-logo {
     display: none;
   }
-}
 
-/* Hide desktop and tablet header */
-@media all and (min-width: 240px) and (max-width: 720px) {
+  /* Hide desktop and tablet header */
   #name-and-slogan, .logo.large-screens {
     display: none;
   }
@@ -304,11 +298,8 @@ $zen-auto-include-item-base: false;
     float: right;
     margin-right: 18px;
   }
-}
 
-/* Area mobile */
-@media all and (min-width: 240px) and (max-width: 720px) {
-  $zen-column-count: 1;
+  /* Area mobile */
 
   .field-name-field-uib-primary-media {
     @include zen-clear();
@@ -537,12 +528,8 @@ $zen-auto-include-item-base: false;
   .sidebars {
     clear: both;
   }
-}
 
-/* News archive mobile */
-@media all and (min-width: 240px) and (max-width: 720px) {
-  $zen-column-count: 1;
-
+  /* News archive mobile */
   .view-recent-news .views-row {
     @include zen-clear();
   }
@@ -574,23 +561,15 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     min-height: 115px;
   }
-}
 
-@media all and (min-width: 240px) and (max-width: 720px) {
-  $zen-column-count: 1;
-
-  #block-uib-area-colophon {
+    #block-uib-area-colophon {
     @include zen-grid-item(1, 1);
     @include zen-clear();
     margin: 100px 0 0 45px;
     width: auto;
   }
-}
 
-/* Courses  mobile*/
-@media all and (min-width: 240px) and (max-width: 720px) {
-  $zen-column-count: 1;
-
+  /* Courses  mobile*/
   .view-courses {
     @include zen-grid-item(1, 1);
     .views-row {
@@ -609,10 +588,8 @@ $zen-auto-include-item-base: false;
       line-height: 2em;
     }
   }
-}
 
-/* Persons mobile */
-@media all and (min-width: 240px) and (max-width: 720px) {
+  /* Persons mobile */
   .view-ansatte {
     margin-left: 0;
     background-color: #F1F1EF;
@@ -620,10 +597,8 @@ $zen-auto-include-item-base: false;
       width: 96%;
     }
   }
-}
 
-/* Article mobile */
-@media all and (min-width: 240px) and (max-width: 720px) {
+  /* Article mobile */
   .group_article_main {
     @include zen-grid-item(1, 1);
     @include zen-clear();
@@ -651,10 +626,8 @@ $zen-auto-include-item-base: false;
       width: 100%;
     }
   }
-}
 
-/* calendar mobile */
-@media all and (min-width: 240px) and (max-width: 720px) {
+  /* calendar mobile */
   .view-id-calendar .pager {
     display: none;
   }
@@ -698,11 +671,9 @@ $zen-auto-include-item-base: false;
       max-width: 722px;
     }
     /* mobile header fixes*/
-    @media all and (min-width: 720px) and (max-width: 959px) {
-      #mobile-name-and-slogan,
-      #block-locale-language--2 {
-        display: none;
-      }
+    #mobile-name-and-slogan,
+    #block-locale-language--2 {
+      display: none;
     }
     #top-region-wrapper {
       height: 50px;
@@ -717,279 +688,267 @@ $zen-auto-include-item-base: false;
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ededed', endColorstr='#efefef',GradientType=0 ); /* IE6-9 */
     }
     /* Area tablet */
-    @media all and (min-width: 720px) and (max-width: 959px) {
-      $zen-column-count: 4;
-
-      #content, .sidebars {
-        float: none;
-        max-width: 722px;
-        margin: auto;
-        li {
-          margin-bottom: 8px;
-        }
+    #content, .sidebars {
+      float: none;
+      max-width: 722px;
+      margin: auto;
+      li {
+        margin-bottom: 8px;
       }
+    }
 
-      .field-name-field-uib-primary-media {
-        @include zen-grid-item(2, 1);
-        width: 47%;
-        margin-left: 0%;
-      }
+    .field-name-field-uib-primary-media {
+      @include zen-grid-item(2, 1);
+      width: 47%;
+      margin-left: 0%;
+    }
 
-      .field-name-field-uib-primary-text {
-        @include zen-grid-item(2, 3);
-        padding-left: 3px;
-      }
+    .field-name-field-uib-primary-text {
+      @include zen-grid-item(2, 3);
+      padding-left: 3px;
+    }
 
-      .field-name-field-uib-secondary-text {
+    .field-name-field-uib-secondary-text {
+      @include zen-clear();
+      width: 100%;
+      float: left;
+      margin: 20px 0 20px 0;
+      background: #F1F1EF;
+      border-radius: $border-radius;
+      padding-bottom: 20px;
+      box-shadow: $box-shadow;
+      ul {
         @include zen-clear();
-        width: 100%;
+        list-style-type: none;
+        margin-top: 0;
+      }
+      li {
+        float:left;
+        margin: 10px 0 0 0;
+        padding: 0 10px 0 0;
+        width: 210px;
+      }
+      p {
+        @include zen-clear();
+        padding: 0px 20px 0 20px;
+      }
+      h4 {
+        margin-left: 20px;
+      }
+      h3 {
+        margin: 20px 0 0 20px;
+      }
+    }
+
+    .view-area-slideshow .transparent {
+      position: absolute;
+      bottom: 4px;
+      left: 0px;
+      width: 708px;
+      height: 30%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .view-area-slideshow img {
+      max-width: 708px;
+    }
+
+    .field-name-field-uib-social-media {
+      @include zen-clear();
+      .field-item {
         float: left;
-        margin: 20px 0 20px 0;
-        background: #F1F1EF;
-        border-radius: $border-radius;
-        padding-bottom: 20px;
-        box-shadow: $box-shadow;
-        ul {
-          @include zen-clear();
-          list-style-type: none;
-          margin-top: 0;
-        }
-        li {
-          float:left;
-          margin: 10px 0 0 0;
-          padding: 0 10px 0 0;
-          width: 210px;
-        }
-        p {
-          @include zen-clear();
-          padding: 0px 20px 0 20px;
-        }
-        h4 {
-          margin-left: 20px;
-        }
-        h3 {
-          margin: 20px 0 0 20px;
-        }
       }
-
-      .view-area-slideshow .transparent {
-        position: absolute;
-        bottom: 4px;
-        left: 0px;
-        width: 708px;
-        height: 30%;
-        background-color: rgba(0, 0, 0, 0.8);
+      .twitter {
+        background-image: url('../../images/twitter.png');
       }
-
-      .view-area-slideshow img {
-        max-width: 708px;
+      .facebook {
+        background-image: url('../../images/facebook.png');
       }
+      .vimeo {
+        background-image: url('../../images/vimeo.png');
+      }
+      .youtube {
+        background-image: url('../../images/youtube.png');
+      }
+      .flickr {
+        background-image: url('../../images/flickr.png');
+      }
+    }
 
-      .field-name-field-uib-social-media {
+    .field-name-field-uib-profiled-message {
+      @include zen-grid-item(2, 3);
+      float: none;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
+
+    .node-area .field-collection-container {
+      @include zen-grid-item(4, 1);
+      border: none;
+      float: left;
+      width: 48%;
+      background: #F1F1EF;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+    }
+
+    .group-bottom-wrapper {
+      @include zen-grid-item(4, 1);
+      @include zen-clear();
+    }
+
+    .field-name-field-uib-bottom-media {
+      @include zen-grid-item(1, 1);
+    }
+
+    .field-name-field-uib-bottom-text {
+      @include zen-grid-item(3, 2);
+    }
+
+    .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
+      @include zen-clear();
+      @include zen-grid-item(4, 1);
+    }
+
+    .region-sidebar-second {
+      float: none;
+    }
+
+    .region-bottom {
+      width: 100%;
+    }
+
+    .group_two_column {
+      @include zen-clear();
+      .view-faculty-departments-kids {
+        @include zen-grid-item(2, 1);
         @include zen-clear();
-        .field-item {
-          float: left;
-        }
-        .twitter {
-          background-image: url('../../images/twitter.png');
-        }
-        .facebook {
-          background-image: url('../../images/facebook.png');
-        }
-        .vimeo {
-          background-image: url('../../images/vimeo.png');
-        }
-        .youtube {
-          background-image: url('../../images/youtube.png');
-        }
-        .flickr {
-          background-image: url('../../images/flickr.png');
-        }
-      }
-
-      .field-name-field-uib-profiled-message {
-        @include zen-grid-item(2, 3);
-        float: none;
-        padding-left: 10px;
         margin-bottom: 10px;
-      }
-
-      .node-area .field-collection-container {
-        @include zen-grid-item(4, 1);
-        border: none;
         float: left;
-        width: 48%;
-        background: #F1F1EF;
-        border-radius: $border-radius;
-        box-shadow: $box-shadow;
-      }
-
-      .group-bottom-wrapper {
-        @include zen-grid-item(4, 1);
-        @include zen-clear();
-      }
-
-      .field-name-field-uib-bottom-media {
-        @include zen-grid-item(1, 1);
-      }
-
-      .field-name-field-uib-bottom-text {
-        @include zen-grid-item(3, 2);
-      }
-
-      .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
-        @include zen-clear();
-        @include zen-grid-item(4, 1);
-      }
-
-      .region-sidebar-second {
-        float: none;
-      }
-
-      .region-bottom {
-        width: 100%;
-      }
-
-      .group_two_column {
-        @include zen-clear();
-        .view-faculty-departments-kids {
-          @include zen-grid-item(2, 1);
-          @include zen-clear();
-          margin-bottom: 10px;
-          float: left;
-          padding: 15px;
-          background: #F1F1EF;
-          border: none;
-          border-radius: $border-radius;
-          width: 45%;
-          box-shadow: $box-shadow;
-        }
-      }
-
-      .field-name-field-uib-link-section {
-        @include zen-grid-item(2, 1);
+        padding: 15px;
         background: #F1F1EF;
         border: none;
         border-radius: $border-radius;
-        padding: 5px;
-        width: 100%;
-        padding-right: 5px;
-        box-shadow: $box-shadow;
-      }
-
-      .field-name-field-uib-profiled-testimonial {
-        @include zen-grid-item(2, 3);
-        @include zen-clear();
-        float: none;
-        clear: none;
-        margin-left: 53%;
-        width: 46%;
-        background: #F1F1EF;
-        border-radius: $border-radius;
-        box-shadow: $box-shadow;
-        header {
-          height: 1px;
-        }
-        a, .node-uib-testimonial {
-          color: #333;
-          margin-top: 0;
-          display: inline-block;
-        }
-        .node-uib-testimonial .node-title {
-          border: none;
-        }
-        img {
-          margin: 10px 10px 10px 10px;
-          float: left;
-        }
-      }
-
-      .field-name-field-uib-tertiary-text {
-        @include zen-grid-item(2, 3);
-        clear: none;
-        float: none;
-        margin-left: 55%;
         width: 45%;
+        box-shadow: $box-shadow;
       }
+    }
+
+    .field-name-field-uib-link-section {
+      @include zen-grid-item(2, 1);
+      background: #F1F1EF;
+      border: none;
+      border-radius: $border-radius;
+      padding: 5px;
+      width: 100%;
+      padding-right: 5px;
+      box-shadow: $box-shadow;
+    }
+
+    .field-name-field-uib-profiled-testimonial {
+      @include zen-grid-item(2, 3);
+      @include zen-clear();
+      float: none;
+      clear: none;
+      margin-left: 53%;
+      width: 46%;
+      background: #F1F1EF;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+      header {
+        height: 1px;
+      }
+      a, .node-uib-testimonial {
+        color: #333;
+        margin-top: 0;
+        display: inline-block;
+      }
+      .node-uib-testimonial .node-title {
+        border: none;
+      }
+      img {
+        margin: 10px 10px 10px 10px;
+        float: left;
+      }
+    }
+
+    .field-name-field-uib-tertiary-text {
+      @include zen-grid-item(2, 3);
+      clear: none;
+      float: none;
+      margin-left: 55%;
+      width: 45%;
     }
 
     /* Slideshow tablet */
-    @media all and (min-width: 720px) and (max-width: 959px) {
-      .view-area-slideshow .transparent {
-        position: absolute;
-        bottom: 4px;
-        left: 0px;
-        width: 708px;
-        height: 30%;
-        background-color: rgba(0, 0, 0, 0.8);
-      }
+    .view-area-slideshow .transparent {
+      position: absolute;
+      bottom: 4px;
+      left: 0px;
+      width: 708px;
+      height: 30%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
 
-      .view-area-slideshow img {
-        max-width: 708px;
-      }
+    .view-area-slideshow img {
+      max-width: 708px;
+    }
 
-      .view-area-slideshow, .views-field-field-uib-main-media {
-        @include zen-grid-item(4, 1);
-        width: 100%;
-        .media {
-          width: 47%;
-        }
-      }
-
-      #widget_pager_bottom_area_slideshow-default {
-        left: 40%;
-        top: 90%;
-        margin: 3px 0 0;
-      }
-
-      .slidecontent {
-        bottom: 8%;
-        left: 6%;
-        h3 {
-          color: #fff;
-          margin-bottom: 20px !important;
-          font-size: 1.5em !important;
-          font-weight: normal !important;
-        }
+    .view-area-slideshow, .views-field-field-uib-main-media {
+      @include zen-grid-item(4, 1);
+      width: 100%;
+      .media {
+        width: 47%;
       }
     }
 
-    @media all and (min-width: 720px) and (max-width: 959px) {
-      #block-uib-area-node-children {
-        @include zen-grid-item(4, 1);
-        background-color: #F1F1EF;
-        margin: 1em 1em 1em 0;
-        padding: 1em;
-        width: 97%;
-        .uib-child-teaser {
-          width: 48%;
-          float: left;
-          line-height: 1.5em;
-          margin-right: 1%;
-          margin-bottom: 10px;
-        }
-      }
+    #widget_pager_bottom_area_slideshow-default {
+      left: 40%;
+      top: 90%;
+      margin: 3px 0 0;
+    }
 
-      #block-uib-area-colophon {
-        width: auto;
+    .slidecontent {
+      bottom: 8%;
+      left: 6%;
+      h3 {
+        color: #fff;
+        margin-bottom: 20px !important;
+        font-size: 1.5em !important;
+        font-weight: normal !important;
       }
+    }
+
+    #block-uib-area-node-children {
+      @include zen-grid-item(4, 1);
+      background-color: #F1F1EF;
+      margin: 1em 1em 1em 0;
+      padding: 1em;
+      width: 97%;
+      .uib-child-teaser {
+        width: 48%;
+        float: left;
+        line-height: 1.5em;
+        margin-right: 1%;
+        margin-bottom: 10px;
+      }
+    }
+
+    #block-uib-area-colophon {
+      width: auto;
     }
 
     /* Article tablet */
-    @media all and (min-width: 720px) and (max-width: 959px) {
-      $zen-column-count: 4;
+    #content {
+      float: none;
+    }
 
-      #content {
-        float: none;
-      }
+    .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
+      @include zen-grid-item(4, 1);
+    }
 
-      .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
-        @include zen-grid-item(4, 1);
-      }
-
-      .region-sidebar-second {
-        float: none;
-      }
+    .region-sidebar-second {
+      float: none;
     }
 
     .group-article-main {
@@ -1000,96 +959,80 @@ $zen-auto-include-item-base: false;
     .group-article-sidebar {
       @include zen-grid-item(1, 4);
     }
-  }
+  } /* class sidebar-second ends here! */
 
   /* News archive tablet */
-  @media all and (min-width: 720px) and (max-width: 959px) {
-    $zen-column-count: 4;
-
-    #block-views-recent-news-block-date-selector {
-      ul {
-        list-style-type: none;
-        margin-top: 0;
-      }
-      li {
-        float: left;
-        margin: 10px 0 0 0;
-        padding: 0 10px 0 0;
-        width: 160px;
-      }
+  #block-views-recent-news-block-date-selector {
+    ul {
+      list-style-type: none;
+      margin-top: 0;
     }
-
-    .view-recent-news .views-row {
-      @include zen-clear();
-      width: 95%;
+    li {
+      float: left;
+      margin: 10px 0 0 0;
+      padding: 0 10px 0 0;
+      width: 160px;
     }
+  }
 
-    .view-recent-news img {
-      @include zen-grid-item(1, 1);
-    }
+  .view-recent-news .views-row {
+    @include zen-clear();
+    width: 95%;
+  }
 
-    .view-display-id-newsarchive .views-field-title {
-      @include zen-grid-item(3, 2);
-      margin-bottom: 10px;
-      margin-top: 20px;
-      float: none;
-      padding-left: 15px;
-    }
+  .view-recent-news img {
+    @include zen-grid-item(1, 1);
+  }
 
-    .view-display-id-newsarchive .views-field-field-uib-lead {
-      @include zen-grid-item(3, 2);
-      min-height: 115px;
-      padding-left: 15px;
-    }
+  .view-display-id-newsarchive .views-field-title {
+    @include zen-grid-item(3, 2);
+    margin-bottom: 10px;
+    margin-top: 20px;
+    float: none;
+    padding-left: 15px;
+  }
+
+  .view-display-id-newsarchive .views-field-field-uib-lead {
+    @include zen-grid-item(3, 2);
+    min-height: 115px;
+    padding-left: 15px;
   }
 
   /* Persons list tablet */
-  @media all and (min-width: 720px) and (max-width: 959px) {
-    $zen-column-count: 4;
-
-    .view-ansatte {
-      margin-left: 0;
-      .media {
-        width: 324px;
-      }
+  .view-ansatte {
+    margin-left: 0;
+    .media {
+      width: 324px;
     }
+  }
 
-    .uib-ansatte-section {
-      @include zen-clear();
-      @include zen-grid-item(4, 1)
-    }
+  .uib-ansatte-section {
+    @include zen-clear();
+    @include zen-grid-item(4, 1)
   }
 
   /* Courses  tablet*/
-  @media all and (min-width: 720px) and (max-width: 959px) {
-    $zen-column-count: 4;
-
-    .view-courses {
-      @include zen-grid-item(4, 1);
-      .views-row {
-        width: 300px;
-        height: 110px;
-        float: left;
-        margin: 0 10px 10px 0;
-        background-color: #efefef;
-        padding: 10px 10px 0 10px;
-      }
-      h3 {
-        clear: both;
-      }
-      a {
-        font-size: 1.4em;
-        line-height: 2em;
-      }
+  .view-courses {
+    @include zen-grid-item(4, 1);
+    .views-row {
+      width: 300px;
+      height: 110px;
+      float: left;
+      margin: 0 10px 10px 0;
+      background-color: #efefef;
+      padding: 10px 10px 0 10px;
+    }
+    h3 {
+      clear: both;
+    }
+    a {
+      font-size: 1.4em;
+      line-height: 2em;
     }
   }
 
-  @media all and (min-width: 720px) and (max-width: 959px) {
-    $zen-column-count: 4;
-
-    #block-uib-area-colophon {
-      @include zen-grid-item(3, 2);
-    }
+  #block-uib-area-colophon {
+    @include zen-grid-item(3, 2);
   }
 
   /*
@@ -1174,44 +1117,32 @@ $zen-auto-include-item-base: false;
       @include zen-grid-item(1, 5);
     }
   }
-}
 
-/* Hide mobile header */
-@media all and (min-width: 960px) {
+  /* Hide mobile header */
   #mobile-name-and-slogan,
   #block-locale-language--2 {
     display: none;
   }
-}
 
-/* Content */
-@media all and (min-width: 960px) {
+  /* Content */
   #content {
     margin-top: 20px;
   }
-}
 
-/* Sidebar background img */
-@media all and (min-width: 960px) {
+  /* Sidebar background img */
   .one-sidebar #main, .sidebar-second #main {
     background-image: url('../../images/fade-to-left-bg.png');
     background-repeat: repeat-y;
     background-position: 728px, 0;
   }
-}
 
-@media all and (min-width:960px) {
   $zen-column-count: 4;
 
   .node-type-area {
     @include zen-grid-item(4, 1)
   }
-}
 
-/* Article page */
-@media all and (min-width: 960px) {
-  $zen-column-count: 4;
-
+  /* Article page */
   .group-article-main {
     @include zen-grid-item(3, 1);
     width: 73%;
@@ -1220,10 +1151,6 @@ $zen-auto-include-item-base: false;
   .group-article-sidebar {
     @include zen-grid-item(1, 4)
   }
-}
-
-@media all and (min-width: 960px) {
-  $zen-column-count: 4;
 
   .view-ansatte {
     margin-left: 0;
@@ -1231,12 +1158,8 @@ $zen-auto-include-item-base: false;
       width: 324px;
     }
   }
-}
 
-/* News archive */
-@media all and (min-width: 960px) {
-  $zen-column-count: 4;
-
+  /* News archive */
   #block-views-recent-news-block-date-selector {
     ul {
     list-style-type: none;
@@ -1275,10 +1198,8 @@ $zen-auto-include-item-base: false;
     padding-left: 15px;
     float: none;
   }
-}
 
-/* Global header */
-@media all and (min-width: 960px) {
+  /* Global header */
   $zen-column-count: 5;
 
   #global-menu {
@@ -1312,10 +1233,8 @@ $zen-auto-include-item-base: false;
   #block-locale-language--2 {
     display: none;
   }
-}
 
-/* Area page */
-@media all and (min-width: 960px) {
+  /* Area page */
   $zen-column-count: 4;
 
   .field-name-field-uib-important-message {
@@ -1520,30 +1439,22 @@ $zen-auto-include-item-base: false;
       margin-bottom: 10px;
     }
   }
-}
 
-/* Persons list */
-@media all and (min-width: 960px) {
-  $zen-column-count: 4;
-
-  .uib-ansatte-section {
+  /* Persons list */
+    .uib-ansatte-section {
     @include zen-clear();
     @include zen-grid-item(4, 1)
   }
-}
 
-/* Breadcrumb */
-@media all and (min-width: 960px) {
+  /* Breadcrumb */
   $zen-column-count: 5;
 
   nav.breadcrumb {
     @include zen-grid-item(5, 1);
     float: none;
   }
-}
 
-/* Slideshow */
-@media all and (min-width: 960px) {
+  /* Slideshow */
   .view-area-slideshow .transparent {
     position: absolute;
     bottom: 4px;
@@ -1586,10 +1497,8 @@ $zen-auto-include-item-base: false;
       font-weight: normal !important;
     }
   }
-}
 
-/* Courses */
-@media all and (min-width: 960px) {
+  /* Courses */
   $zen-column-count: 4;
 
   .view-courses {
@@ -1611,14 +1520,9 @@ $zen-auto-include-item-base: false;
       line-height: 2em;
     }
   }
-}
 
-/* Bottom region */
-@media all and (min-width: 960px) {
-  $zen-column-count: 4;
-
+  /* Bottom region */
   .region-bottom .block {
      @include zen-grid-item(2, 1, left)
   }
 }
-
