@@ -14,8 +14,8 @@
 
 // We are going to create a 910px wide, 5 column grid with 20px gutters between
 // columns (applied as 10px of left/right padding on each column).
-$zen-column-count:  5;
-$zen-gutter-width:  20px;
+$zen-column-count: 5;
+$zen-gutter-width: 20px;
 
 
 // IE6-7 don't support box-sizing: border-box. We can fix this in 1 of 3 ways:
@@ -49,6 +49,7 @@ $zen-auto-include-item-base: false;
   margin-right: auto;
   max-width: 910px;
 }
+
 .page-add-node #main {
   position: relative;
   width: 890px;
@@ -89,7 +90,7 @@ $zen-auto-include-item-base: false;
   #main {
     padding-top: 0;
     position: relative;
-    clear:both;
+    clear: both;
   }
   #navigation {
     width: $zen-grid-width;
@@ -98,7 +99,6 @@ $zen-auto-include-item-base: false;
 
 /* Mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
-
   $zen-column-count: 1;
 
   #name-and-slogan-mobile {
@@ -116,28 +116,28 @@ $zen-auto-include-item-base: false;
     }
   }
 
-   #menu-search-mobile-wrapper{
-     float: left;
-     width: 100%;
-     background: #eceae9; /* Old browsers */
-     background: rgb(236,234,233); /* Old browsers */
-     background: -moz-linear-gradient(top,  rgba(236,234,233,1) 0%, rgba(229,228,227,1) 50%, rgba(219,218,217,1) 51%, rgba(236,234,233,1) 100%); /* FF3.6+ */
-     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(236,234,233,1)), color-stop(50%,rgba(229,228,227,1)), color-stop(51%,rgba(219,218,217,1)), color-stop(100%,rgba(236,234,233,1))); /* Chrome,Safari4+ */
-     background: -webkit-linear-gradient(top,  rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* Chrome10+,Safari5.1+ */
-     background: -o-linear-gradient(top,  rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* Opera 11.10+ */
-     background: -ms-linear-gradient(top,  rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* IE10+ */
-     background: linear-gradient(to bottom,  rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* W3C */
-     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eceae9', endColorstr='#eceae9',GradientType=0 ); /* IE6-9 */
-     border-top: solid 1px #DDDADA;
-     border-bottom: solid 1px #DDDADA;
-   }
+  #menu-search-mobile-wrapper {
+    float: left;
+    width: 100%;
+    background: #eceae9; /* Old browsers */
+    background: rgb(236,234,233); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(236,234,233,1) 0%, rgba(229,228,227,1) 50%, rgba(219,218,217,1) 51%, rgba(236,234,233,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(236,234,233,1)), color-stop(50%,rgba(229,228,227,1)), color-stop(51%,rgba(219,218,217,1)), color-stop(100%,rgba(236,234,233,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eceae9', endColorstr='#eceae9',GradientType=0 ); /* IE6-9 */
+    border-top: solid 1px #DDDADA;
+    border-bottom: solid 1px #DDDADA;
+  }
 
-#global-header {
-    @include zen-grid-item (1, 1);
+  #global-header {
+    @include zen-grid-item(1, 1);
     #global-menu {
-      ul li a{
+      ul li a {
         font-size: 7px;
-        padding: 18px 4px 10px 4px
+        padding: 18px 4px 10px 4px;
       }
     }
     #global-menu {
@@ -146,15 +146,15 @@ $zen-auto-include-item-base: false;
     #global-searchform {
       width: 50%;
       form {
-        float:left !important;
+        float: left !important;
         input[type='text'] {
         background: #ededed url(../../images/search.png) no-repeat 1px;
         background-size: 18px 19px;
-	      width: 100%;
-	      padding-right: 30px;
-	      margin: 14px 0  0 10px;
-	      color: transparent;
-	      cursor: pointer;
+        width: 100%;
+        padding-right: 30px;
+        margin: 14px 0  0 10px;
+        color: transparent;
+        cursor: pointer;
         }
         input[type='text']:hover {
           background-color: #fff;
@@ -166,7 +166,7 @@ $zen-auto-include-item-base: false;
           color: transparent;
         }
         input::-webkit-input-placeholder {
-	  color: transparent;
+          color: transparent;
         }
         .searchbox {
           p {
@@ -194,7 +194,6 @@ $zen-auto-include-item-base: false;
         padding: 10px 5px 2px 10px;
         border-radius: 2px;
         margin: 4px 15px 10px 0;
-
         li {
           width: 30px;
           border-top: 3px solid #005473;
@@ -208,15 +207,15 @@ $zen-auto-include-item-base: false;
       }
     }
   }
+
   .menu-block-wrapper ul.menu {
     li {
       @include zen-grid-item(1, 1);
       float: none;
       width: 100%;
-        a {
-          font-weight: normal;
-        }
-
+      a {
+        font-weight: normal;
+      }
       .menu {
         @include zen-grid-item(1, 1);
         display: none;
@@ -242,42 +241,44 @@ $zen-auto-include-item-base: false;
       display: block;
     }
   }
+
   #header .logo {
     height: auto;
     width: 30%;
   }
+
   #block-locale-language {
-      ul {
-        padding: 0;
-        margin: 0;
-        li {
-          font-size: 10px;
-        }
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        font-size: 10px;
       }
     }
   }
-  .node-type-area {
-    .breadcrumb {
-      display: none;
-      }
-    }
+}
 
-  .region-bottom {
-    width: 100% !important;
+.node-type-area {
+  .breadcrumb {
+    display: none;
   }
+}
 
+.region-bottom {
+  width: 100% !important;
+}
 
 /* content */
 @media all and (min-width: 240px) and (max-width: 720px) {
   #content {
-     margin-top: 20px;
-   }
+    margin-top: 20px;
+  }
 }
 
 /* Hide extra logo */
 @media all and (min-width: 240px) and (max-width: 720px) {
-    .field-name-field-uib-logo {
-      display: none;
+  .field-name-field-uib-logo {
+    display: none;
   }
 }
 
@@ -310,61 +311,54 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 1;
 
   .field-name-field-uib-primary-media {
-     @include zen-clear();
-     @include zen-grid-item (1, 1);
-     img {
+    @include zen-clear();
+    @include zen-grid-item(1, 1);
+    img {
       width: 100%;
-     }
+    }
   }
 
   .field-name-field-uib-primary-text {
-     @include zen-clear();
-     @include zen-grid-item (1, 1);
-     float: none !important;
-     clear: both;
-     width: 100%;
-     padding: 0;
+    @include zen-clear();
+    @include zen-grid-item(1, 1);
+    float: none !important;
+    clear: both;
+    width: 100%;
+    padding: 0;
   }
 
   .field-name-field-uib-secondary-text {
-     @include zen-clear();
-     @include zen-grid-item (1, 1);
-     margin: 20px 0 20px 0;
-     background-color: #F1F1EF;
-     border-radius: $border-radius;
-     padding-bottom: 20px;
-     box-shadow: $box-shadow;
-
-
-     ul {
-       @include zen-clear();
-       list-style-type:none;
-       margin-top: 0;
-       display: block;
-     }
-
-     li {
-       float: left;
-       margin: 10px 0 0 0;
-       padding: 0 10px 0 0;
-       width:210px;
-     }
-
-     p  {
-       @include zen-clear();
-       padding: 0px 20px 0 20px;
-       display: block;
-     }
-
-     h4  {
-       margin-left: 20px;
-     }
-
-     h3 {
-       margin: 20px 0 0 20px;
-     }
+    @include zen-clear();
+    @include zen-grid-item(1, 1);
+    margin: 20px 0 20px 0;
+    background-color: #F1F1EF;
+    border-radius: $border-radius;
+    padding-bottom: 20px;
+    box-shadow: $box-shadow;
+    ul {
+      @include zen-clear();
+      list-style-type: none;
+      margin-top: 0;
+      display: block;
+    }
+    li {
+      float: left;
+      margin: 10px 0 0 0;
+      padding: 0 10px 0 0;
+      width: 210px;
+    }
+    p {
+      @include zen-clear();
+      padding: 0px 20px 0 20px;
+      display: block;
+    }
+    h4 {
+      margin-left: 20px;
+    }
+    h3 {
+      margin: 20px 0 0 20px;
+    }
   }
-
 
   .field-name-field-uib-social-media {
     @include zen-clear();
@@ -376,8 +370,8 @@ $zen-auto-include-item-base: false;
       background-image: url('../../images/twitter.png');
       margin-bottom: 10px;
       .field-item {
-          float: none;
-        }
+        float: none;
+      }
     }
     .facebook {
       background-image: url('../../images/facebook.png');
@@ -410,7 +404,7 @@ $zen-auto-include-item-base: false;
   }
 
   .field-name-field-uib-profiled-message {
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
     margin-bottom: 10px;
   }
 
@@ -438,14 +432,12 @@ $zen-auto-include-item-base: false;
 
   .field-name-profiled-article {
     @include zen-clear();
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
   }
 
-
-  .field-name-field-uib-bottom-media  {
+  .field-name-field-uib-bottom-media {
     @include zen-clear();
-    @include zen-grid-item (1, 1);
-
+    @include zen-grid-item(1, 1);
     img {
       width: 80%;
     }
@@ -453,17 +445,17 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-bottom-text {
     @include zen-clear();
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
   }
 
   .field-name-field-uib-link-section {
     @include zen-clear();
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
     float: none;
   }
 
-  .view-faculty-departments-kids  {
-     @include zen-grid-item (1, 1);
+  .view-faculty-departments-kids {
+     @include zen-grid-item(1, 1);
      @include zen-clear();
      margin-bottom: 10px;
      padding: 15px;
@@ -476,7 +468,7 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-profiled-testimonial {
     @include zen-clear();
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
     float: none;
     background-color: #F1F1EF;
     padding: 5px;
@@ -484,7 +476,6 @@ $zen-auto-include-item-base: false;
     margin-right: 10px;
     width: 97%;
     box-shadow: $box-shadow;
-
     img {
       float: left;
       margin-right: 10px;
@@ -493,21 +484,23 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-tertiary-text {
     @include zen-clear();
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
     float: none;
     width: 100%;
   }
 
   /* Slideshow mobile */
-  .view-area-slideshow, .views-field-field-uib-main-media  {
-    @include zen-grid-item (1, 1);
+  .view-area-slideshow, .views-field-field-uib-main-media {
+    @include zen-grid-item(1, 1);
     h.view-area-slideshow .slidecontent {
       bottom: 20%;
     }
   }
+
   .view-area-slideshow .views-slideshow-pager-fields {
     display: none;
   }
+
   #widget_pager_bottom_area_slideshow-default {
     left: 9%;
     top: 81%
@@ -516,22 +509,21 @@ $zen-auto-include-item-base: false;
   .slidecontent {
     top: 80%;
     left: 10%;
-
-    h3  {
-    font-size: 8px;
-    margin-top: -25px;
+    h3 {
+      font-size: 8px;
+      margin-top: -25px;
     }
   }
+
   .lead {
     display: none;
   }
 
   #block-uib-area-node-children {
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
     background-color: #F1F1EF;
     margin: 1em 1em 1em 0;
     padding: 1em 0 1em 0;
-
     .uib-child-teaser {
       float: left;
       line-height: 1.5em;
@@ -541,13 +533,14 @@ $zen-auto-include-item-base: false;
       max-height: 130px;
     }
   }
+
   .sidebars {
     clear: both;
   }
-
 }
+
 /* News archive mobile */
-@media all and(min-width: 240px) and (max-width: 720px) {
+@media all and (min-width: 240px) and (max-width: 720px) {
   $zen-column-count: 1;
 
   .view-recent-news .views-row {
@@ -556,28 +549,28 @@ $zen-auto-include-item-base: false;
 
   #block-views-recent-news-block-date-selector {
     ul {
-    list-style-type:none;
-    margin-top: 0;
-    width: 93%;
-    padding-top: 10px;
+      list-style-type: none;
+      margin-top: 0;
+      width: 93%;
+      padding-top: 10px;
     }
   }
 
-  .view-recent-news img  {
-    @include zen-grid-item (1, 1);
+  .view-recent-news img {
+    @include zen-grid-item(1, 1);
     @include zen-clear();
   }
 
 
-  .view-display-id-newsarchive  .views-field-title  {
-    @include zen-grid-item (1, 1);
+  .view-display-id-newsarchive  .views-field-title {
+    @include zen-grid-item(1, 1);
     @include zen-clear();
     margin-bottom: 10px;
     float: none;
   }
 
   .view-display-id-newsarchive  .views-field-field-uib-lead {
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
     @include zen-clear();
     min-height: 115px;
   }
@@ -585,8 +578,9 @@ $zen-auto-include-item-base: false;
 
 @media all and (min-width: 240px) and (max-width: 720px) {
   $zen-column-count: 1;
+
   #block-uib-area-colophon {
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
     @include zen-clear();
     margin: 100px 0 0 45px;
     width: auto;
@@ -598,7 +592,7 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 1;
 
   .view-courses {
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
     .views-row {
       width: 97%;
       height: 110px;
@@ -607,11 +601,9 @@ $zen-auto-include-item-base: false;
       background-color: #efefef;
       padding: 10px 10px 0 10px;
     }
-
     h3 {
       clear: both;
     }
-
     a {
       font-size: 1.4em;
       line-height: 2em;
@@ -624,7 +616,6 @@ $zen-auto-include-item-base: false;
   .view-ansatte {
     margin-left: 0;
     background-color: #F1F1EF;
-
     .media {
       width: 96%;
     }
@@ -633,15 +624,15 @@ $zen-auto-include-item-base: false;
 
 /* Article mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
-  .group_article_main  {
-    @include zen-grid-item (1, 1);
+  .group_article_main {
+    @include zen-grid-item(1, 1);
     @include zen-clear();
     float: none;
     width: 100%;
   }
 
   .group_article_sidebar {
-    @include zen-grid-item (1, 1);
+    @include zen-grid-item(1, 1);
     @include zen-clear();
   }
 
@@ -652,7 +643,7 @@ $zen-auto-include-item-base: false;
     height: 0;
     overflow: hidden;
     iframe.media-youtube-player, iframe.media-vimeo-player {
-    @include zen-grid-item (1, 1);
+      @include zen-grid-item(1, 1);
       position: absolute;
       top: 0;
       left: 0;
@@ -665,7 +656,7 @@ $zen-auto-include-item-base: false;
 /* calendar mobile */
 @media all and (min-width: 240px) and (max-width: 720px) {
   .view-id-calendar .pager {
-      display: none;
+    display: none;
   }
 }
 
@@ -684,11 +675,9 @@ $zen-auto-include-item-base: false;
     #content { /* Span 2 columns, starting in 2nd column from left. */
       @include zen-grid-item(2, 2);
     }
-
     .region-sidebar-first { /* Span 1 column, starting in 1st column from left. */
       @include zen-grid-item(1, 1);
     }
-
     #navigation {
       display: block;
     }
@@ -702,14 +691,12 @@ $zen-auto-include-item-base: false;
     #content { /* Span 2 columns, starting in 1st column from left. */
       @include zen-grid-item(4, 1);
     }
-
     .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
       @include zen-grid-item(4, 1);
       @include zen-clear();
       margin: auto;
       max-width: 722px;
     }
-
     /* mobile header fixes*/
     @media all and (min-width: 720px) and (max-width: 959px) {
       #mobile-name-and-slogan,
@@ -717,7 +704,6 @@ $zen-auto-include-item-base: false;
         display: none;
       }
     }
-
     #top-region-wrapper {
       height: 50px;
       border-bottom: solid 1px #DDD;
@@ -730,30 +716,27 @@ $zen-auto-include-item-base: false;
       background: linear-gradient(to bottom,  rgba(237,237,237,0) 0%,rgba(237,237,237,0.01) 1%,rgba(239,239,239,1) 100%); /* W3C */
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ededed', endColorstr='#efefef',GradientType=0 ); /* IE6-9 */
     }
-
     /* Area tablet */
     @media all and (min-width: 720px) and (max-width: 959px) {
+      $zen-column-count: 4;
 
-    $zen-column-count: 4;
-
-    #content, .sidebars  {
+      #content, .sidebars {
         float: none;
         max-width: 722px;
         margin: auto;
-
         li {
           margin-bottom: 8px;
         }
       }
 
-      .field-name-field-uib-primary-media  {
-        @include zen-grid-item (2, 1);
+      .field-name-field-uib-primary-media {
+        @include zen-grid-item(2, 1);
         width: 47%;
         margin-left: 0%;
       }
 
       .field-name-field-uib-primary-text {
-        @include zen-grid-item (2, 3);
+        @include zen-grid-item(2, 3);
         padding-left: 3px;
       }
 
@@ -766,32 +749,27 @@ $zen-auto-include-item-base: false;
         border-radius: $border-radius;
         padding-bottom: 20px;
         box-shadow: $box-shadow;
-
         ul {
           @include zen-clear();
-          list-style-type:none;
+          list-style-type: none;
           margin-top: 0;
-          }
-
-          li {
+        }
+        li {
           float:left;
           margin: 10px 0 0 0;
           padding: 0 10px 0 0;
-          width:210px;
-          }
-
-          p  {
-            @include zen-clear();
-            padding: 0px 20px 0 20px;
-          }
-
-          h4  {
-            margin-left: 20px;
-          }
-
-          h3 {
-            margin: 20px 0 0 20px;
-          }
+          width: 210px;
+        }
+        p {
+          @include zen-clear();
+          padding: 0px 20px 0 20px;
+        }
+        h4 {
+          margin-left: 20px;
+        }
+        h3 {
+          margin: 20px 0 0 20px;
+        }
       }
 
       .view-area-slideshow .transparent {
@@ -802,7 +780,6 @@ $zen-auto-include-item-base: false;
         height: 30%;
         background-color: rgba(0, 0, 0, 0.8);
       }
-
 
       .view-area-slideshow img {
         max-width: 708px;
@@ -831,14 +808,14 @@ $zen-auto-include-item-base: false;
       }
 
       .field-name-field-uib-profiled-message {
-        @include zen-grid-item (2, 3);
+        @include zen-grid-item(2, 3);
         float: none;
         padding-left: 10px;
         margin-bottom: 10px;
       }
 
-      .node-area .field-collection-container  {
-        @include zen-grid-item (4, 1);
+      .node-area .field-collection-container {
+        @include zen-grid-item(4, 1);
         border: none;
         float: left;
         width: 48%;
@@ -848,15 +825,16 @@ $zen-auto-include-item-base: false;
       }
 
       .group-bottom-wrapper {
-        @include zen-grid-item (4, 1);
+        @include zen-grid-item(4, 1);
         @include zen-clear();
       }
-      .field-name-field-uib-bottom-media  {
-        @include zen-grid-item (1, 1);
+
+      .field-name-field-uib-bottom-media {
+        @include zen-grid-item(1, 1);
       }
 
       .field-name-field-uib-bottom-text {
-        @include zen-grid-item (3, 2);
+        @include zen-grid-item(3, 2);
       }
 
       .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
@@ -866,30 +844,30 @@ $zen-auto-include-item-base: false;
 
       .region-sidebar-second {
         float: none;
-
       }
+
       .region-bottom {
         width: 100%;
       }
 
       .group_two_column {
         @include zen-clear();
-        .view-faculty-departments-kids  {
-           @include zen-grid-item (2, 1);
-           @include zen-clear();
-           margin-bottom: 10px;
-           float: left;
-           padding: 15px;
-           background: #F1F1EF;
-           border: none;
-           border-radius: $border-radius;
-           width: 45%;
-           box-shadow: $box-shadow;
-         }
-       }
+        .view-faculty-departments-kids {
+          @include zen-grid-item(2, 1);
+          @include zen-clear();
+          margin-bottom: 10px;
+          float: left;
+          padding: 15px;
+          background: #F1F1EF;
+          border: none;
+          border-radius: $border-radius;
+          width: 45%;
+          box-shadow: $box-shadow;
+        }
+      }
 
       .field-name-field-uib-link-section {
-        @include zen-grid-item (2, 1);
+        @include zen-grid-item(2, 1);
         background: #F1F1EF;
         border: none;
         border-radius: $border-radius;
@@ -900,7 +878,7 @@ $zen-auto-include-item-base: false;
       }
 
       .field-name-field-uib-profiled-testimonial {
-        @include zen-grid-item (2, 3);
+        @include zen-grid-item(2, 3);
         @include zen-clear();
         float: none;
         clear: none;
@@ -909,29 +887,25 @@ $zen-auto-include-item-base: false;
         background: #F1F1EF;
         border-radius: $border-radius;
         box-shadow: $box-shadow;
-
         header {
           height: 1px;
         }
-
         a, .node-uib-testimonial {
           color: #333;
           margin-top: 0;
           display: inline-block;
         }
-
         .node-uib-testimonial .node-title {
           border: none;
         }
-
         img {
           margin: 10px 10px 10px 10px;
           float: left;
         }
-    }
+      }
 
       .field-name-field-uib-tertiary-text {
-        @include zen-grid-item (2, 3);
+        @include zen-grid-item(2, 3);
         clear: none;
         float: none;
         margin-left: 55%;
@@ -940,7 +914,7 @@ $zen-auto-include-item-base: false;
     }
 
     /* Slideshow tablet */
-    @media all and (min-width: 720px) and (max-width: 959px){
+    @media all and (min-width: 720px) and (max-width: 959px) {
       .view-area-slideshow .transparent {
         position: absolute;
         bottom: 4px;
@@ -954,10 +928,9 @@ $zen-auto-include-item-base: false;
         max-width: 708px;
       }
 
-      .view-area-slideshow, .views-field-field-uib-main-media  {
-        @include zen-grid-item (4, 1);
+      .view-area-slideshow, .views-field-field-uib-main-media {
+        @include zen-grid-item(4, 1);
         width: 100%;
-
         .media {
           width: 47%;
         }
@@ -972,7 +945,6 @@ $zen-auto-include-item-base: false;
       .slidecontent {
         bottom: 8%;
         left: 6%;
-
         h3 {
           color: #fff;
           margin-bottom: 20px !important;
@@ -980,16 +952,15 @@ $zen-auto-include-item-base: false;
           font-weight: normal !important;
         }
       }
-   }
+    }
 
     @media all and (min-width: 720px) and (max-width: 959px) {
       #block-uib-area-node-children {
-        @include zen-grid-item (4, 1);
+        @include zen-grid-item(4, 1);
         background-color: #F1F1EF;
         margin: 1em 1em 1em 0;
         padding: 1em;
         width: 97%;
-
         .uib-child-teaser {
           width: 48%;
           float: left;
@@ -998,37 +969,36 @@ $zen-auto-include-item-base: false;
           margin-bottom: 10px;
         }
       }
+
       #block-uib-area-colophon {
-      width: auto;
+        width: auto;
       }
     }
 
     /* Article tablet */
     @media all and (min-width: 720px) and (max-width: 959px) {
+      $zen-column-count: 4;
 
-    $zen-column-count: 4;
-
-    #content  {
+      #content {
         float: none;
       }
 
       .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
-        @include zen-grid-item (4, 1);
+        @include zen-grid-item(4, 1);
       }
 
       .region-sidebar-second {
         float: none;
-
       }
     }
 
     .group-article-main {
-      @include zen-grid-item (3, 1);
+      @include zen-grid-item(3, 1);
       width: 72%;
     }
 
-    .group-article-sidebar  {
-      @include zen-grid-item (1, 4);
+    .group-article-sidebar {
+      @include zen-grid-item(1, 4);
     }
   }
 
@@ -1037,17 +1007,15 @@ $zen-auto-include-item-base: false;
     $zen-column-count: 4;
 
     #block-views-recent-news-block-date-selector {
-
       ul {
-      list-style-type:none;
-      margin-top: 0;
+        list-style-type: none;
+        margin-top: 0;
       }
-
       li {
-      float:left;
-      margin: 10px 0 0 0;
-      padding: 0 10px 0 0;
-      width:160px;
+        float: left;
+        margin: 10px 0 0 0;
+        padding: 0 10px 0 0;
+        width: 160px;
       }
     }
 
@@ -1056,12 +1024,12 @@ $zen-auto-include-item-base: false;
       width: 95%;
     }
 
-    .view-recent-news img  {
-      @include zen-grid-item (1, 1);
+    .view-recent-news img {
+      @include zen-grid-item(1, 1);
     }
 
-    .view-display-id-newsarchive .views-field-title  {
-      @include zen-grid-item (3, 2);
+    .view-display-id-newsarchive .views-field-title {
+      @include zen-grid-item(3, 2);
       margin-bottom: 10px;
       margin-top: 20px;
       float: none;
@@ -1069,28 +1037,27 @@ $zen-auto-include-item-base: false;
     }
 
     .view-display-id-newsarchive .views-field-field-uib-lead {
-      @include zen-grid-item (3, 2);
+      @include zen-grid-item(3, 2);
       min-height: 115px;
       padding-left: 15px;
     }
   }
 
+  /* Persons list tablet */
+  @media all and (min-width: 720px) and (max-width: 959px) {
+    $zen-column-count: 4;
 
-    /* Persons list tablet */
-    @media all and (min-width: 720px) and (max-width: 959px) {
-      $zen-column-count: 4;
-      .view-ansatte {
-        margin-left: 0;
-
-        .media {
-          width: 324px;
-        }
+    .view-ansatte {
+      margin-left: 0;
+      .media {
+        width: 324px;
       }
+    }
 
-      .uib-ansatte-section {
-        @include zen-clear();
-        @include zen-grid-item (4, 1)
-      }
+    .uib-ansatte-section {
+      @include zen-clear();
+      @include zen-grid-item(4, 1)
+    }
   }
 
   /* Courses  tablet*/
@@ -1098,7 +1065,7 @@ $zen-auto-include-item-base: false;
     $zen-column-count: 4;
 
     .view-courses {
-      @include zen-grid-item (4, 1);
+      @include zen-grid-item(4, 1);
       .views-row {
         width: 300px;
         height: 110px;
@@ -1107,11 +1074,9 @@ $zen-auto-include-item-base: false;
         background-color: #efefef;
         padding: 10px 10px 0 10px;
       }
-
       h3 {
-	clear: both;
+        clear: both;
       }
-
       a {
         font-size: 1.4em;
         line-height: 2em;
@@ -1123,7 +1088,7 @@ $zen-auto-include-item-base: false;
     $zen-column-count: 4;
 
     #block-uib-area-colophon {
-      @include zen-grid-item (3, 2)
+      @include zen-grid-item(3, 2);
     }
   }
 
@@ -1135,16 +1100,13 @@ $zen-auto-include-item-base: false;
     #content { /* Span 2 columns, starting in 2nd column from left. */
       @include zen-grid-item(2, 2);
     }
-
     .region-sidebar-first { /* Span 1 column, starting in 1st column from left. */
       @include zen-grid-item(1, 1);
     }
-
     .region-sidebar-second { /* Start a new row and span all 3 columns. */
       @include zen-grid-item(3, 1);
       @include zen-nested-container(); // Since we're making every block in this region be a grid item.
       @include zen-clear();
-
       .block {
         @include zen-grid-item-base();
       }
@@ -1177,7 +1139,6 @@ $zen-auto-include-item-base: false;
     #content { /* Span 4 columns, starting in 2nd column from left. */
       @include zen-grid-item(4, 1);
     }
-
     .region-sidebar-first { /* Span 1 column, starting in 1st column from left. */
       @include zen-grid-item(1, 1);
     }
@@ -1186,19 +1147,17 @@ $zen-auto-include-item-base: false;
   /*
    * The layout when there is only one sidebar, the right one.
    */
-   .sidebar-second {
-     #content { /* Span 4 columns, starting in 1st column from left. */
-       @include zen-grid-item(4, 1);
-     }
-
-     .region-sidebar-second { /* Span 1 column, starting in 5th column from left. */
-       @include zen-grid-item(1, 5);
-
-       li {
-         margin-bottom: 8px;
-       }
+  .sidebar-second {
+    #content { /* Span 4 columns, starting in 1st column from left. */
+      @include zen-grid-item(4, 1);
+    }
+    .region-sidebar-second { /* Span 1 column, starting in 5th column from left. */
+      @include zen-grid-item(1, 5);
+      li {
+        margin-bottom: 8px;
       }
-   }
+    }
+  }
 
   /*
    * The layout when there are two sidebars.
@@ -1208,11 +1167,9 @@ $zen-auto-include-item-base: false;
     #content { /* Span 3 columns, starting in 2nd column from left. */
       @include zen-grid-item(3, 2);
     }
-
     .region-sidebar-first { /* Span 1 column, starting in 1st column from left. */
       @include zen-grid-item(1, 1);
     }
-
     .region-sidebar-second { /* Span 1 column, starting in 5th column from left. */
       @include zen-grid-item(1, 5);
     }
@@ -1245,8 +1202,9 @@ $zen-auto-include-item-base: false;
 
 @media all and (min-width:960px) {
   $zen-column-count: 4;
+
   .node-type-area {
-    @include zen-grid-item (4, 1)
+    @include zen-grid-item(4, 1)
   }
 }
 
@@ -1255,20 +1213,20 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 4;
 
   .group-article-main {
-    @include zen-grid-item (3, 1);
+    @include zen-grid-item(3, 1);
     width: 73%;
   }
 
-  .group-article-sidebar  {
-    @include zen-grid-item (1, 4)
+  .group-article-sidebar {
+    @include zen-grid-item(1, 4)
   }
 }
 
 @media all and (min-width: 960px) {
   $zen-column-count: 4;
+
   .view-ansatte {
     margin-left: 0;
-
     .media {
       width: 324px;
     }
@@ -1280,17 +1238,15 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 4;
 
   #block-views-recent-news-block-date-selector {
-
     ul {
-    list-style-type:none;
+    list-style-type: none;
     margin-top: 0;
     }
-
     li {
     float:left;
     margin: 10px 0 0 0;
     padding: 0 10px 0 0;
-    width:160px;
+    width: 160px;
     text-transform: capitalize;
     }
   }
@@ -1300,13 +1256,13 @@ $zen-auto-include-item-base: false;
     width: 95%;
   }
 
-  .view-recent-news img  {
-    @include zen-grid-item (1, 1);
+  .view-recent-news img {
+    @include zen-grid-item(1, 1);
   }
 
 
-  .view-display-id-newsarchive  .views-field-title  {
-    @include zen-grid-item (3, 2);
+  .view-display-id-newsarchive  .views-field-title {
+    @include zen-grid-item(3, 2);
     margin-bottom: 10px;
     margin-top: 20px;
     float: none;
@@ -1314,7 +1270,7 @@ $zen-auto-include-item-base: false;
   }
 
   .view-display-id-newsarchive  .views-field-field-uib-lead {
-    @include zen-grid-item (3, 2);
+    @include zen-grid-item(3, 2);
     min-height: 115px;
     padding-left: 15px;
     float: none;
@@ -1326,16 +1282,18 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 5;
 
   #global-menu {
-    @include zen-grid-item (3, 1)
+    @include zen-grid-item(3, 1)
   }
-  #global-searchform  {
-    @include zen-grid-item (2, 4);
+
+  #global-searchform {
+    @include zen-grid-item(2, 4);
     p {
       margin-top: 10px;
     }
   }
-  #navigation  {
-    @include zen-grid-item (5, 1)
+
+  #navigation {
+    @include zen-grid-item(5, 1)
   }
 
   #top-region-wrapper {
@@ -1361,18 +1319,18 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 4;
 
   .field-name-field-uib-important-message {
-    @include zen-grid-item (4, 1);
+    @include zen-grid-item(4, 1);
   }
 
   .field-name-field-uib-primary-media {
-     @include zen-grid-item (2, 1);
-     @include zen-clear();
+    @include zen-grid-item(2, 1);
+    @include zen-clear();
   }
 
   .field-name-field-uib-primary-text {
-     @include zen-grid-item (2, 3);
-     width: 47%;
-     margin-left: 53%;
+    @include zen-grid-item(2, 3);
+    width: 47%;
+    margin-left: 53%;
   }
 
   .field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
@@ -1380,41 +1338,36 @@ $zen-auto-include-item-base: false;
   }
 
   .field-name-field-uib-secondary-text {
-     @include zen-grid-item (4, 1);
-     clear: both;
-     width: 100%;
-     float: left;
-     margin: 20px 0 20px 0;
-     background: #F1F1EF;
-     border-radius: $border-radius;
-     padding-bottom: 20px;
-     box-shadow: $box-shadow;
-
-     ul {
-       @include zen-clear();
-     list-style-type:none;
-     margin-top: 0;
-     }
-
-     li {
-     float:left;
-     margin: 10px 0 0 0;
-     padding: 0 10px 0 0;
-     width:210px;
-     }
-
-     p  {
-       @include zen-clear();
-       padding: 0px 20px 0 20px;
-     }
-
-     h4  {
-       margin-left: 20px;
-     }
-
-     h3 {
-       margin: 20px 0 0 20px;
-     }
+    @include zen-grid-item(4, 1);
+    clear: both;
+    width: 100%;
+    float: left;
+    margin: 20px 0 20px 0;
+    background: #F1F1EF;
+    border-radius: $border-radius;
+    padding-bottom: 20px;
+    box-shadow: $box-shadow;
+    ul {
+      @include zen-clear();
+      list-style-type: none;
+      margin-top: 0;
+    }
+    li {
+      float: left;
+      margin: 10px 0 0 0;
+      padding: 0 10px 0 0;
+      width: 210px;
+    }
+    p {
+      @include zen-clear();
+      padding: 0px 20px 0 20px;
+    }
+    h4 {
+      margin-left: 20px;
+    }
+    h3 {
+      margin: 20px 0 0 20px;
+    }
   }
 
   .field-name-field-uib-social-media {
@@ -1438,9 +1391,10 @@ $zen-auto-include-item-base: false;
       background-image: url('../../images/flickr.png');
     }
   }
-/* the important overrides a value from field collection.theme.css */
-  .node-area .field-collection-container  {
-    @include zen-grid-item (4, 1);
+
+  /* the important overrides a value from field collection.theme.css */
+  .node-area .field-collection-container {
+    @include zen-grid-item(4, 1);
     border: none;
     float: left;
     width: 48%;
@@ -1450,124 +1404,114 @@ $zen-auto-include-item-base: false;
   }
 
   .field-name-profiled-article {
-    @include zen-grid-item (4, 1);
+    @include zen-grid-item(4, 1);
   }
 
-  .group_two_column  {
-     @include zen-grid-item (4, 1);
-     @include zen-clear();
-     padding-bottom: 15px;
-     float: none;
-
-     .view-faculty-departments-kids  {
-        @include zen-grid-item (2, 1);
-        @include zen-clear();
-        margin-bottom: 10px;
-        float: left;
-        box-shadow: $box-shadow;
-        padding: 15px;
-        background: #F1F1EF;
-        border: none;
-        border-radius: $border-radius;
-        width: 46%;
-      }
-
-     .field-name-field-uib-link-section {
-       @include zen-grid-item (2, 1);
-       @include zen-clear();
-       background: #F1F1EF;
-       border: none;
-       border-radius: $border-radius;
-       width: 100%;
-       padding-right: 17px;
-
-       .field-collection-view {
-         width: 100%;
-         padding-left: 0;
-         margin-left: 0;
-         padding-right: 10px;
-       }
-
-       .field-item {
-         margin-bottom: 7px;
-       }
-
-       .entity-field-collection-item {
-         padding-left: 20px;
-       }
-   }
-
-   .field-name-field-uib-profiled-message {
-     @include zen-grid-item (2, 3);
-     float: none;
-     padding-left: 10px;
-     width: 49%;
-     margin-bottom: 10px;
-   }
-
-  .field-name-field-uib-tertiary-text {
-    @include zen-grid-item (2, 3);
+  .group_two_column {
+    @include zen-grid-item(4, 1);
     @include zen-clear();
-    clear: none;
+    padding-bottom: 15px;
     float: none;
-    margin-left: 53%;
-    width: 46%;
-   }
+    .view-faculty-departments-kids {
+      @include zen-grid-item(2, 1);
+      @include zen-clear();
+      margin-bottom: 10px;
+      float: left;
+      box-shadow: $box-shadow;
+      padding: 15px;
+      background: #F1F1EF;
+      border: none;
+      border-radius: $border-radius;
+      width: 46%;
+    }
+    .field-name-field-uib-link-section {
+      @include zen-grid-item(2, 1);
+      @include zen-clear();
+      background: #F1F1EF;
+      border: none;
+      border-radius: $border-radius;
+      width: 100%;
+      padding-right: 17px;
+      .field-collection-view {
+        width: 100%;
+        padding-left: 0;
+        margin-left: 0;
+        padding-right: 10px;
+      }
+      .field-item {
+        margin-bottom: 7px;
+      }
+      .entity-field-collection-item {
+        padding-left: 20px;
+      }
+    }
+    .field-name-field-uib-profiled-message {
+      @include zen-grid-item(2, 3);
+      float: none;
+      padding-left: 10px;
+      width: 49%;
+      margin-bottom: 10px;
+    }
+    .field-name-field-uib-tertiary-text {
+      @include zen-grid-item(2, 3);
+      @include zen-clear();
+      clear: none;
+      float: none;
+      margin-left: 53%;
+      width: 46%;
+    }
+    .field-name-field-uib-profiled-testimonial {
+      @include zen-grid-item(2, 3);
+      @include zen-clear();
+      float: none;
+      clear: none;
+      background: #F1F1EF;
+      margin-left: 53%;
+      width: 46%;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+      header {
+        height: 1px;
+      }
+      img {
+        margin: 10px 10px 10px 10px;
+        float: left;
+      }
+      a, .node-uib-testimonial {
+        color: #333;
+        display: inline-block;
+      }
+      .field-name-field-uib-name {
+        margin-top: 10px;
+      }
+      .node-uib-testimonial .node-title {
+        border: none;
+      }
+    }
+  }
 
-   .field-name-field-uib-profiled-testimonial {
-     @include zen-grid-item (2, 3);
-     @include zen-clear();
-     float: none;
-     clear: none;
-     background: #F1F1EF;
-     margin-left: 53%;
-     width: 46%;
-     border-radius: $border-radius;
-     box-shadow: $box-shadow;
-
-     header {
-       height: 1px;
-     }
-     img {
-       margin: 10px 10px 10px 10px;
-       float: left;
-     }
-
-     a, .node-uib-testimonial {
-       color: #333;
-       display: inline-block;
-     }
-     .field-name-field-uib-name {
-       margin-top: 10px;
-     }
-
-     .node-uib-testimonial .node-title {
-       border: none;
-     }
-     }
-   }
   .group-bottom-wrapper {
-    @include zen-grid-item (4, 1);
+    @include zen-grid-item(4, 1);
     @include zen-clear();
   }
-  .field-name-field-uib-bottom-media  {
-    @include zen-grid-item (1, 1);
+
+  .field-name-field-uib-bottom-media {
+    @include zen-grid-item(1, 1);
   }
 
   .field-name-field-uib-bottom-text {
-    @include zen-grid-item (3, 2);
+    @include zen-grid-item(3, 2);
     width: 73%;
     margin-left: 27%;
   }
 
   /* Area "teaser" block */
   #block-uib-area-node-children {
-    @include zen-grid-item (4, 1);
+    @include zen-grid-item(4, 1);
     background-color: #F1F1EF;
     margin: 1em 1em 1em 0;
     padding: 1em;
     width: 97%;
-
     .uib-child-teaser {
       width: 48%;
       float: left;
@@ -1577,77 +1521,79 @@ $zen-auto-include-item-base: false;
     }
   }
 }
-  /* Persons list */
-  @media all and (min-width: 960px) {
-    $zen-column-count: 4;
 
-    .uib-ansatte-section {
-      @include zen-clear();
-      @include zen-grid-item (4, 1)
-    }
+/* Persons list */
+@media all and (min-width: 960px) {
+  $zen-column-count: 4;
+
+  .uib-ansatte-section {
+    @include zen-clear();
+    @include zen-grid-item(4, 1)
+  }
 }
+
 /* Breadcrumb */
 @media all and (min-width: 960px) {
   $zen-column-count: 5;
+
   nav.breadcrumb {
-    @include zen-grid-item (5, 1);
+    @include zen-grid-item(5, 1);
     float: none;
   }
 }
+
 /* Slideshow */
-  @media all and (min-width: 960px) {
-    .view-area-slideshow .transparent {
-      position: absolute;
-      bottom: 4px;
-      left: 0px;
-      width: 708px;
-      height: 30%;
-      background-color: rgba(0, 0, 0, 0.8);
-      .slidecontent {
-        &:hover {
-        text-decoration: underline;
-        }
-      }
-    }
-
-    .view-area-slideshow img {
-      max-width: 708px;
-    }
-
-    .view-area-slideshow, .views-field-field-uib-main-media  {
-      @include zen-grid-item (4, 1);
-      width: 100%;
-
-      .media {
-        width: 47%;
-      }
-    }
-
-    #widget_pager_bottom_area_slideshow-default {
-      left: 40%;
-      top: 90%;
-      margin: 3px 0 0;
-    }
-
+@media all and (min-width: 960px) {
+  .view-area-slideshow .transparent {
+    position: absolute;
+    bottom: 4px;
+    left: 0px;
+    width: 708px;
+    height: 30%;
+    background-color: rgba(0, 0, 0, 0.8);
     .slidecontent {
-      bottom: 8%;
-      left: 6%;
-
-      h3 {
-        color: #fff;
-        margin-bottom: 15px !important;
-        font-size: 1.5em !important;
-        font-weight: normal !important;
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
+
+  .view-area-slideshow img {
+    max-width: 708px;
+  }
+
+  .view-area-slideshow, .views-field-field-uib-main-media {
+    @include zen-grid-item(4, 1);
+    width: 100%;
+    .media {
+      width: 47%;
+    }
+  }
+
+  #widget_pager_bottom_area_slideshow-default {
+    left: 40%;
+    top: 90%;
+    margin: 3px 0 0;
+  }
+
+  .slidecontent {
+    bottom: 8%;
+    left: 6%;
+    h3 {
+      color: #fff;
+      margin-bottom: 15px !important;
+      font-size: 1.5em !important;
+      font-weight: normal !important;
+    }
+  }
+}
 
 /* Courses */
 @media all and (min-width: 960px) {
   $zen-column-count: 4;
 
   .view-courses {
-    @include zen-grid-item (4, 1);
+    @include zen-grid-item(4, 1);
     .views-row {
       width: 324px;
       height: 110px;
@@ -1657,11 +1603,9 @@ $zen-auto-include-item-base: false;
       padding: 10px 10px 0 10px;
       box-shadow: $box-shadow;
     }
-
     h3 {
       clear: both;
     }
-
     a {
       font-size: 1.4em;
       line-height: 2em;
@@ -1674,7 +1618,7 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 4;
 
   .region-bottom .block {
-     @include zen-grid-item (2, 1, left)
+     @include zen-grid-item(2, 1, left)
   }
 }
 
