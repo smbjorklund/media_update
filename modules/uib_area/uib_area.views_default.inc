@@ -491,9 +491,8 @@ function uib_area_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['id'] = 'field_uib_ou_target_id';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['table'] = 'field_data_field_uib_ou';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['field'] = 'field_uib_ou_target_id';
-  $handler->display->display_options['arguments']['field_uib_ou_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_uib_ou_target_id']['default_argument_type'] = 'php';
-  $handler->display->display_options['arguments']['field_uib_ou_target_id']['default_argument_options']['code'] = 'return uib_area__get_ou_nid();';
+  $handler->display->display_options['arguments']['field_uib_ou_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_uib_ou_target_id']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['summary_options']['items_per_page'] = '25';
