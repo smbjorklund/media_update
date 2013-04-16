@@ -32,6 +32,12 @@ You should know these:
 * [Git](https://rts.uib.no/projects/w3/repository) and [cgit](https://git.uib.no/cgit/site/w3.uib.no.git/tree/)
 * [API docs](api/)
 
+### Stats and Logs
+
+* [404-list and errorlogs](http://overvakning.app.uib.no/w3_logs/)
+* [Piwik stats](http://stats.uib.no/)
+* [Awstats](http://overvakning.uib.no/awstats/index.php)
+* [Munin](http://overvakning.app.uib.no/awstats/awstats.pl?output=main&config=www.uib.no)
 
 ### Stale stuff
 
