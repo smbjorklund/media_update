@@ -498,8 +498,9 @@ function uib_area_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['validate']['type'] = 'php';
-  $handler->display->display_options['arguments']['field_uib_ou_target_id']['validate_options']['code'] = '$handler->argument = uib_area__get_ou_nid(node_load($argument));
+  $handler->display->display_options['arguments']['field_uib_ou_target_id']['validate_options']['code'] = '$handler->argument = uib_area__get_ou_nids_recursive($argument);
 return !empty($handler->argument);';
+  $handler->display->display_options['arguments']['field_uib_ou_target_id']['break_phrase'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';

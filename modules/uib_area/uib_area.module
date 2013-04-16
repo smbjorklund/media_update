@@ -496,6 +496,46 @@ function uib_area__get_ou_nid($area = NULL) {
 }
 
 /**
+ * Find nid referenced from an area or ou
+ *
+ */
+function uib_area__get_ou_nids_recursive($nid) {
+  $node = node_load($nid);
+  if (!$node)
+    return NULL;
+
+  if ($node->type == "area") {
+    $nid = uib_area__get_ou_nid($node);
+    if (!$nid)
+      return NULL;
+    $node = node_load($nid);
+  }
+
+  $res = array();
+  $res[] = $node->nid;
+
+  $code = $node->field_uib_ou_id['und'][0]['value'];
+  if (substr($code, 2) == '0000')
+    $like = substr($code, 0, 2) . '%';
+  elseif (substr($code, 4) == '00')
+    $like = substr($code, 0, 4) . '%';
+
+  if (isset($like)) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'uib_ou')
+      ->fieldCondition('field_uib_ou_id', 'value', $like, 'LIKE');
+    $result = $query->execute();
+    $res = array_keys($result['node']);
+    sort($res);
+  }
+
+  $res = join('+', $res);
+  //dd("=== $res ===");
+  return $res;
+}
+
+/**
  * Find the node id of the current uib_area.
  *
  * @return [type] [description]
