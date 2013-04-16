@@ -295,11 +295,11 @@ function uib_area_views_default_views() {
 <div class="slidecontent">
 <h3>[title]</h3>
 <p class="lead">[field_uib_lead]</p>
+</div>
 <div class="eventdata">
 <p>[field_uib_event_type]</p>
 <p>[field_uib_date]</p>
 <p>[field_uib_location]</p>
-</div>
 </div>
 </div>';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
@@ -370,11 +370,11 @@ function uib_area_views_default_views() {
 <div class="slidecontent">
 <h3>[title]</h3>
 <p class="lead">[field_uib_lead]</p>
+</div>
 <div class="eventdata">
 <p>[field_uib_event_type]</p>
 <p>[field_uib_date]</p>
 <p>[field_uib_location]</p>
-</div>
 </div>
 </div>'),
     t('All'),
