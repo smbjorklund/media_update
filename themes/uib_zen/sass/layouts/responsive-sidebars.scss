@@ -631,6 +631,16 @@ $zen-auto-include-item-base: false;
   .view-id-calendar .pager {
     display: none;
   }
+
+  /* Employee page menu */
+  .expanded .region-navigation {
+    .menu {
+      li {
+        float: none;
+        width: 100%;
+      }
+    }
+  }
 }
 
 /* Tablet */
@@ -1524,5 +1534,15 @@ $zen-auto-include-item-base: false;
   /* Bottom region */
   .region-bottom .block {
      @include zen-grid-item(2, 1, left)
+  }
+
+  /* Employee page menu */
+  .expanded .region-navigation {
+    .menu {
+      li {
+        float: left;
+        width: 20%;
+      }
+    }
   }
 }
