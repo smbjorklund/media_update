@@ -1015,7 +1015,7 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(4, 1)
   }
 
-  /* Courses  tablet*/
+  /* Courses tablet*/
   .view-courses {
     @include zen-grid-item(4, 1);
     .views-row {
@@ -1037,6 +1037,18 @@ $zen-auto-include-item-base: false;
 
   #block-uib-area-colophon {
     @include zen-grid-item(3, 2);
+  }
+
+  /* Webdesk */
+  .ui-dialog {
+    left: 10px !important;
+  }
+
+  .vertical-tabs {
+    float: left;
+    display: block;
+    min-width: 406px;
+    margin-left: 180px;
   }
 
   /*
@@ -1538,5 +1550,13 @@ $zen-auto-include-item-base: false;
         width: 20%;
       }
     }
+  }
+
+  /* Webdesk */
+  .vertical-tabs {
+    float: left;
+    display: block;
+    min-width: 706px;
+    margin-left: 180px;
   }
 }
