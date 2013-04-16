@@ -458,8 +458,8 @@ function uib_area__get_node_type($node = NULL) {
 }
 
 /**
- * Find the OU nid referenced from an area
- * (defaults to the current area).
+ * Find the OU nid referenced from an area or ou
+ * (defaults to the ou nid of current area).
  *
  * @return [type] [description]
  *   If the area does not have an OU, the function will recursively search its
@@ -468,6 +468,9 @@ function uib_area__get_node_type($node = NULL) {
 function uib_area__get_ou_nid($area = NULL) {
   if (empty($area)) {
     $area = uib_area__get_current();
+  }
+  elseif ($area->type == 'uib_ou') {
+    return $area->nid;
   }
   if (!empty($area->field_uib_ou['und'][0]['target_id'])) {
     return $area->field_uib_ou['und'][0]['target_id'];
