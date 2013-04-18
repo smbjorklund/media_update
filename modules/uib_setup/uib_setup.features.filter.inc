@@ -67,13 +67,18 @@ function uib_setup_filter_default_formats() {
           'filter_url_length' => '72',
         ),
       ),
-      'media_filter' => array(
+      'filter_uib_url' => array(
         'weight' => '-47',
         'status' => '1',
         'settings' => array(),
       ),
-      'filter_htmlcorrector' => array(
+      'media_filter' => array(
         'weight' => '-46',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'filter_htmlcorrector' => array(
+        'weight' => '-45',
         'status' => '1',
         'settings' => array(),
       ),
@@ -89,19 +94,24 @@ function uib_setup_filter_default_formats() {
     'weight' => '-7',
     'filters' => array(
       'filter_autop' => array(
-        'weight' => '0',
+        'weight' => '-48',
         'status' => '1',
         'settings' => array(),
       ),
       'filter_url' => array(
-        'weight' => '0',
+        'weight' => '-47',
         'status' => '1',
         'settings' => array(
           'filter_url_length' => '72',
         ),
       ),
+      'filter_uib_url' => array(
+        'weight' => '-46',
+        'status' => '1',
+        'settings' => array(),
+      ),
       'filter_htmlcorrector' => array(
-        'weight' => '10',
+        'weight' => '-42',
         'status' => '1',
         'settings' => array(),
       ),
@@ -180,7 +190,7 @@ function uib_setup_filter_default_formats() {
     'weight' => '-8',
     'filters' => array(
       'filter_html' => array(
-        'weight' => '-10',
+        'weight' => '-49',
         'status' => '1',
         'settings' => array(
           'allowed_html' => '<br> <p> <a> <strong> <em> <ul> <li> <ol> <h3> <h4> ',
@@ -189,14 +199,19 @@ function uib_setup_filter_default_formats() {
         ),
       ),
       'filter_url' => array(
-        'weight' => '0',
+        'weight' => '-47',
         'status' => '1',
         'settings' => array(
           'filter_url_length' => '72',
         ),
       ),
+      'filter_uib_url' => array(
+        'weight' => '-46',
+        'status' => '1',
+        'settings' => array(),
+      ),
       'filter_htmlcorrector' => array(
-        'weight' => '10',
+        'weight' => '-42',
         'status' => '1',
         'settings' => array(),
       ),
