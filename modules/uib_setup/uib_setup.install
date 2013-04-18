@@ -16,3 +16,10 @@ function uib_setup_install() {
     ));
   }
 }
+
+/**
+ * Enable new module: uib_urlfilter
+ */
+function uib_setup_update_7000() {
+  module_enable(array('uib_urlfilter'));
+}

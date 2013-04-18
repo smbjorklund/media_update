@@ -1,0 +1,46 @@
+<?php
+/**
+ * @file
+ * Module file for uib_urlfilter
+ */
+
+/**
+ * Implements hook_filter_info().
+ *
+ */
+function uib_urlfilter_filter_info() {
+  $filters['filter_uib_url'] = array(
+    'title' => t('Remove protocol and uib domain from inline urls'),
+    'description' => t('Initial http(s) and domain are removed from urls if the domain is w3.uib.no.'),
+    'prepare callback' => '_uib_urlfilter_filter_prepare',
+    'process callback' => '_uib_urlfilter_filter_process',
+    'tips callback' => '_uib_urlfilter_filter_tips',
+  );
+  return $filters;
+}
+
+/**
+ * prepare callback.
+ *
+ */
+function _uib_urlfilter_filter_prepare($text, $filter) {
+  return $text; // do not prepare
+}
+
+/**
+ * process callback.
+ *
+ * Perform the filtering.
+ */
+function _uib_urlfilter_filter_process($text, $filter) {
+    // Recode markup
+  return preg_replace('/https?:\/\/w3\.uib\.no\/?/', '/', $text);
+}
+
+/**
+ * Filter tips callback for time filter.
+ *
+ */
+function _uib_urlfilter_filter_tips($filter, $format, $long = FALSE) {
+  return t('http(s)://w3.uib.no is removed from inline urls.');
+}
