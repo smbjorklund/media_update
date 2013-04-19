@@ -320,6 +320,16 @@ sub do_branches {
 	print " rts/$_";
 	print " $suffix" if $suffix;
 	print " ", issue_name($_+0), "\n";
+
+	if ($remote{$_}) {
+	    my $base = `git merge-base origin/master origin/rts/$_`;
+	    chomp($base);
+	    if ($base) {
+		my $cmd = "git merge-tree $base origin/master origin/rts/$_";
+		my $merge_report = qx($cmd);
+		print "  *** merge conflicts\n" if $merge_report =~ /^\+<<<<<+ \.our/m;
+	    }
+	}
     }
 }
 
