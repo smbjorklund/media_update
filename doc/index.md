@@ -13,7 +13,6 @@ You should know these:
 * [Area regions and fields](area.html)
 * [Mockups](mockups/)
 * [Blocks](blocks.html)
-* [Mindmap of stuff to consider](w3.uib.no.pdf)
 * [Release 1](release1.html)
 
 ### Guides
