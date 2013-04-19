@@ -72,7 +72,7 @@ such.
 ### `bin/`
 
 Some handy scripts.  The handiest of those are `bin/site-drush` and
-`bin/reinstall`.
+`bin/site-prod-reset`.
 
 ### `etc/`
 
