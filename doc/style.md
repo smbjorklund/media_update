@@ -6,7 +6,7 @@ Dette dokumentet beskriver regler for navngiving og koding i Drupal.
 
 Modulene som vi skriver selv (spesifikt for denne applikasjonen) har `uib_` prefix. Alle disse modulene har `package` satt til `"UiB"` slik at de grupperes sammen i modullisten.  Unntaket er "uibx" modulen vår.
 
-`uib_`-modulene plasseres under *sites/all/modules/uib*. Andre non-core moduler vi installerer ligger under *sites/all/modules* (som er standard for `drush dl <mod>`.
+`uib_`-modulene plasseres under *modules/* (linket fra *drupal/sites/all/modules/uib*). Andre non-core moduler vi installerer ligger under *drupal/sites/all/modules* (som er standard installasjonssted for `drush dl <mod>`.
 
 Drupal sine "machine names" skal være engelske identifikatorer. Alle disse får `uib_` prefix.
 
