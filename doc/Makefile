@@ -1,6 +1,5 @@
 HTML = \
   area.html \
-  blocks.html \
   course_site-w3-kurs.uib.no.html \
   css-retningslinjer.html \
   development-setup.html \

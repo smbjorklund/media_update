@@ -12,7 +12,6 @@ You should know these:
 * [Ny funksjonalitet — Innspill fra pilotfakultetene](doc/pilot-ny-funksjonalitet.pdf)
 * [Area regions and fields](area.html)
 * [Mockups](mockups/)
-* [Blocks](blocks.html)
 * [Release 1](release1.html)
 
 ### Guides
