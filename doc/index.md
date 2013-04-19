@@ -25,6 +25,7 @@ You should know these:
 * [Hints that's good to know](hints.html)
 * [Git](git.html)
 * [Deploy Drupal into production](drupal-deploy.html)
+* [User/Editor docs](http://w3docs.h.uib.no/)
 
 ### The code
 
