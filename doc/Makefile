@@ -37,9 +37,11 @@ mockups/index.html: mockups/mkindex
 
 bin/python: bin/buildout
 	bin/buildout
+	touch $@
 
 bin/buildout: $(BOOTSTRAP_PY)
 	$(PYTHON) $(BOOTSTRAP_PY)
+	touch $@
 
 makefile:
 	$(PERL) update-makefile.pl >Makefile.new
