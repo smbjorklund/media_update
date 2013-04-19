@@ -31,7 +31,7 @@ BOOTSTRAP_PY = bootstrap.py
 .md.html:
 	bin/python htmlify.py $< >$@
 
-all: bin/python $(HTML)
+all: bin/python $(HTML) mockups/index.html
 
 mockups/index.html: mockups/mkindex
 	$(PERL) mockups/mkindex
