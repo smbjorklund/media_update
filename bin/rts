@@ -25,6 +25,9 @@ if ($CMD =~ /^\d+$/) {
     unshift(@ARGV, $CMD);
     $CMD = 'show';
 }
+else {
+    $CMD =~ s/-/_/g;
+}
 
 my $do_cmd = "do_$CMD";
 unless (defined &$do_cmd) {
@@ -73,6 +76,7 @@ Subcommands:
     release <rid> [--patches]
     list [--open] [--patches]
     branches
+    merge-status <id>
 EOT
 }
 
@@ -322,15 +326,29 @@ sub do_branches {
 	print " ", issue_name($_+0), "\n";
 
 	if ($remote{$_}) {
-	    my $base = `git merge-base origin/master origin/rts/$_`;
-	    chomp($base);
-	    if ($base) {
-		my $cmd = "git merge-tree $base origin/master origin/rts/$_";
-		my $merge_report = qx($cmd);
-		print "  *** merge conflicts\n" if $merge_report =~ /^\+<<<<<+ \.our/m;
-	    }
+	    print "  *** merge conflicts (run 'rts merge-status $_' for details)\n" if git_merge_tree($_) =~ /^\+<<<<<+ \.our/m;
 	}
     }
+}
+
+sub do_merge_status {
+    my $issue = shift(@ARGV) || die;
+    my $merge_report = git_merge_tree($issue);
+    die "Can't merge origin/rts/$issue" unless $merge_report;
+    print $merge_report;
+}
+
+sub git_merge_tree {
+    my $issue = shift || die;
+
+    my $base = `git merge-base origin/master origin/rts/$issue`;
+    chomp($base);
+    if ($base) {
+	my $cmd = "git merge-tree $base origin/master origin/rts/$issue";
+	my $merge_report = qx($cmd);
+	return $merge_report;
+    }
+    return undef;
 }
 
 sub count_commits {
