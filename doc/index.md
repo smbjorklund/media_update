@@ -9,10 +9,8 @@ You should know these:
 
 ### Specifications and plans
 
-* [Ny funksjonalitet — Innspill fra pilotfakultetene](doc/pilot-ny-funksjonalitet.pdf)
 * [Area regions and fields](area.html)
 * [Mockups](mockups/)
-* [Release 1](release1.html)
 
 ### Guides
 
@@ -43,3 +41,4 @@ You should know these:
 ... but not stale enough to just throw away
 
 * [Initial spesification](spec.html) as of early 2012
+* [Release 1](release1.html) med [innspill fra pilotfakultetene](doc/pilot-ny-funksjonalitet.pdf)
