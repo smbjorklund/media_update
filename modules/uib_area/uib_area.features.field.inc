@@ -49,9 +49,9 @@ function uib_area_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'link',
+          'module' => 'uib_urlfilter',
           'settings' => array(),
-          'type' => 'link_default',
+          'type' => 'uiblink_formatter',
           'weight' => '1',
         ),
       ),

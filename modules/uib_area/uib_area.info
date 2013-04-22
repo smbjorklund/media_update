@@ -29,6 +29,7 @@ dependencies[] = panels
 dependencies[] = phone
 dependencies[] = strongarm
 dependencies[] = uib_field
+dependencies[] = uib_urlfilter
 dependencies[] = views
 features[context][] = ansattside_blocks
 features[context][] = area_blocks

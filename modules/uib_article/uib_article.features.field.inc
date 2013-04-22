@@ -901,9 +901,9 @@ function uib_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'link',
+          'module' => 'uib_urlfilter',
           'settings' => array(),
-          'type' => 'link_default',
+          'type' => 'uiblink_formatter',
           'weight' => '28',
         ),
         'teaser' => array(
