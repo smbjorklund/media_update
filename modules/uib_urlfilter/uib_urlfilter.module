@@ -33,8 +33,8 @@ function _uib_urlfilter_filter_prepare($text, $filter) {
  * Perform the filtering.
  */
 function _uib_urlfilter_filter_process($text, $filter) {
-    // Recode markup
-  return preg_replace('/https?:\/\/w3\.uib\.no\/?/', '/', $text);
+  // Recode markup
+  return _uib_urlfilter__replace($text);
 }
 
 /**
@@ -43,4 +43,38 @@ function _uib_urlfilter_filter_process($text, $filter) {
  */
 function _uib_urlfilter_filter_tips($filter, $format, $long = FALSE) {
   return t('http(s)://w3.uib.no is removed from inline urls.');
+}
+
+/**
+ * Remove w3.uib.no from url
+ */
+function _uib_urlfilter__replace($html_text) {
+  return preg_replace('/https?:\/\/w3\.uib\.no\/?/', '/', $html_text);
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function uib_urlfilter_field_formatter_info() {
+  return array(
+    'uiblink_formatter' => array(
+      'label' => t('UiB link'),
+      'field types' => array('link_field'),
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function uib_urlfilter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  if ($display['type'] == 'uiblink_formatter') {
+    $elements = array();
+    foreach ($items as $delta => $item) {
+      $link = _uib_urlfilter__replace($item['url']);
+      $elements[$delta]['#markup'] = '<a href="' . $link . '">' . $item['title'] . '</a>'; // Assign it to the #markup of the element
+    }
+    return $elements;
+  }
 }
