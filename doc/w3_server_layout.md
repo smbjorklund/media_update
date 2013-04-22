@@ -31,3 +31,17 @@
         testserver for attila
         staging-server
         course-server
+
+## Virtualhosts
+
+### w3-staging.uib.no
+
+w3-staging contains is the staging-vhost, and is located on attilatest.
+
+### www.test.uib.no
+
+www.test.uib.no if the staging-frontend, and contains the same functions as http://www.uib.no.
+
+To flush the varnish-cache, download the page http://www.test.uib.no/varnish_flush. The cache will be flushed with in 2 min. The page will return a 404 page not found.
+
+The redirects that are in nginx may be out of date.
