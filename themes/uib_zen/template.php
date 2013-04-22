@@ -276,7 +276,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     }
     // Handle articles
     if ($variables['type'] == 'uib_article') {
-      if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
+       if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
         // Setup kicker
         // -- First determine which date to set
         if ($variables['node']->created < $variables['node']->revision_timestamp) {
@@ -327,18 +327,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           }
         }
         $variables['content']['group_article_main']['uib_news_byline']['#suffix'] = '<div class="uib-news-byline-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-news-byline-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
-      }
-      elseif($variables['node']->field_uib_article_type['und'][0]['value'] == 'event') {
-        if (empty($variables['node']->field_uib_kicker['und'][0]['value'])) {
-          $event_type = $variables['node']->field_uib_event_type['und'][0]['value'];
-          $variables['node']->field_uib_kicker['und'][0] = array(
-            'value' => $event_type,
-            'format' => NULL,
-            'safe_value' => $event_type
-          );
-          $field_uib_kicker = field_view_field('node', $variables['node'], 'field_uib_kicker', array('label' => 'hidden'));
-          $variables['content']['field_uib_kicker'] = $field_uib_kicker;
-        }
       }
       else {
         // In articles of other types than 'news': Ensure that no byline is shown
