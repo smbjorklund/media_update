@@ -271,36 +271,48 @@ function uib_area_change_to_h2($markup, $element) {
  * @return [type]        [description]
  */
 function uib_area__feed_format($url, $title, $limit) {
-  $items = array();
+  return array(
+    '#cache' => array(
+      'keys' => array($url, $title, $limit),
+      'expire' => time() + 30*60,
+    ),
+    '#pre_render' => array('uib_area__feed_format_pre_render'),
+  );
+}
+
+/**
+ * The heavy stuff done during uib_area__feed_form()
+ */
+
+function uib_area__feed_format_pre_render($element) {
+  list($url, $title, $limit) = $element['#cache']['keys'];
   $content = @file_get_contents($url);
   if (!$content) {
-    return;
+    return $element;
   }
   $xml = @simplexml_load_string($content);
   if ($xml === FALSE) {
-    return;
+    return $element;
   }
   if ($xml->channel->item) {
-    $items = array(
-      'list' => array(
-        '#title' => $title,
-        '#items' => array(),
-        '#theme' => 'item_list',
-        '#post_render' => array('uib_area_change_to_h2'),
-      ),
+    $element['list'] = array(
+      '#title' => $title,
+      '#items' => array(),
+      '#theme' => 'item_list',
+      '#post_render' => array('uib_area_change_to_h2'),
     );
     foreach ($xml->channel->item as $entry) {
       $pubDate = $entry->pubDate;
       $pubDate = strftime("%Y-%m-%d", strtotime($pubDate));
       if(!empty($pubDate))
         $entry->title .= '('.$pubDate .')';
-      $items['list']['#items'][] = l($entry->title, $entry->link);
+      $element['list']['#items'][] = l($entry->title, $entry->link);
       if (--$limit == 0)
         break;
     }
   }
 
-  return $items;
+  return $element;
 }
 
 /**

@@ -216,3 +216,35 @@ See [theme\_username()](http://api.drupal.org/api/drupal/includes%21theme.inc/fu
     )
 
 See [theme\_user\_list()](http://api.drupal.org/api/drupal/modules%21user%21user.module/function/theme_user_list/7) for more information.
+
+### Caching
+
+This requires the use of **'#cache'** and **'#pre_render'** properties
+([described in the `drupal_render` docs](http://api.drupal.org/api/drupal/includes%21common.inc/function/drupal_render/7)).
+If the formatted block is a function of the parameters (`$foo`, `$bar`, `$baz`)
+then the initial render array should look like this:
+
+    array(
+      '#cache' => array(
+        'keys' => array($foo, $bar, $baz),
+        'expire' => time() + 60*60,
+      ),
+      '#pre_render' => array('heavy_stuff_pre_render'),
+    )
+
+and then you have to provide the `heavy_stuff_pre_render()` function that does
+the rest.  It might go like this:
+
+    function heavy_stuff_pre_render($element) {
+      list($foo, $bar, $baz) = $element['#cache']['keys'];
+
+      # do some heavy calculation based on $foo, $bar, and $baz and update
+      # the $element array in some way.
+      $element['heavy'] = array(
+        '#markup' => 'heavy stuff',
+      );
+
+      return $element;
+    }
+
+More examples can for instance be found in [Brendan's #cache article](http://omnifik.com/blog/render-arrays-and-cache-drupal-7).
