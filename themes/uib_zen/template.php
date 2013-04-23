@@ -279,6 +279,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
        if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
         // Setup kicker
         // -- First determine which date to set
+        $created = format_date($variables['node']->created, 'medium');
         if ($variables['node']->created < $variables['node']->revision_timestamp) {
           $up_date = format_date($variables['node']->revision_timestamp, 'medium');
         }
@@ -296,7 +297,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $variables['content']['field_uib_kicker'][0]['text'] = array('#markup' => "<div class=\"uib-kicker-text\">" . $variables['content']['field_uib_kicker'][0]['#markup'] . "</div>");
         }
         $variables['content']['field_uib_kicker'][0]['#markup'] = "";
-        $variables['content']['field_uib_kicker'][0]['date'] = array('#markup' => "<div class=\"uib-kicker-date\">" . $up_date . "</div>");
+        $variables['content']['field_uib_kicker'][0]['date'] = array('#markup' => "<div class=\"uib-kicker-date\">" . $created . "</div>");
 
         // Byline
         $uib_news_byline = "";
