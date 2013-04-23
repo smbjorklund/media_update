@@ -245,7 +245,7 @@ function uib_area_block_view($delta='') {
           }
         }
       }
-    break;
+      break;
   }
   return $block;
 }
@@ -273,32 +273,32 @@ function uib_area_change_to_h2($markup, $element) {
 function uib_area__feed_format($url, $title, $limit) {
   $items = array();
   $content = @file_get_contents($url);
-    if (!$content) {
-      return;
-    }
-    $xml = @simplexml_load_string($content);
-    if ($xml === FALSE) {
-      return;
-    }
-    if ($xml->channel->item) {
-      $items = array(
+  if (!$content) {
+    return;
+  }
+  $xml = @simplexml_load_string($content);
+  if ($xml === FALSE) {
+    return;
+  }
+  if ($xml->channel->item) {
+    $items = array(
       'list' => array(
         '#title' => $title,
         '#items' => array(),
         '#theme' => 'item_list',
         '#post_render' => array('uib_area_change_to_h2'),
-        ),
-      );
-      foreach ($xml->channel->item as $entry) {
-       $pubDate = $entry->pubDate;
-       $pubDate = strftime("%Y-%m-%d", strtotime($pubDate));
-       if(!empty($pubDate))
-         $entry->title .= '('.$pubDate .')';
-       $items['list']['#items'][] = l($entry->title, $entry->link);
-       if (--$limit == 0)
+      ),
+    );
+    foreach ($xml->channel->item as $entry) {
+      $pubDate = $entry->pubDate;
+      $pubDate = strftime("%Y-%m-%d", strtotime($pubDate));
+      if(!empty($pubDate))
+        $entry->title .= '('.$pubDate .')';
+      $items['list']['#items'][] = l($entry->title, $entry->link);
+      if (--$limit == 0)
         break;
-      }
     }
+  }
 
   return $items;
 }
@@ -321,7 +321,7 @@ function uib_area_field_formatter_info() {
  */
 function uib_area_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
-   foreach ($items as $delta => $item) {
+  foreach ($items as $delta => $item) {
     $url = url($item['url'], $item);
       if (strpos($url, '#')) {
         $limit = explode('#', $url);
@@ -683,7 +683,7 @@ function uib_area_node_validate($node, $form, &$form_state) {
  * @return [type] [description]
  */
 function uib_area__create_area_aliases($node_nid, $node_alias, $language) {
-   if (!empty($node_nid) AND !empty($node_alias)) {
+  if (!empty($node_nid) AND !empty($node_alias)) {
     // Add aliases only to non employee pages
     if (stripos($node_alias, 'foransatte') === FALSE AND stripos($node_alias, 'foremployees') === FALSE) {
       $uib_area_aliases = array(
