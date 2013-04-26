@@ -8,5 +8,6 @@ dependencies[] = uib_article
 dependencies[] = uib_area
 dependencies[] = uib_sebra
 dependencies[] = uib_redirect
+dependencies[] = job_scheduler
 files[] = uib_migrate.inc
 files[] = XTopic.inc
