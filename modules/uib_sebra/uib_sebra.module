@@ -373,7 +373,7 @@ function uib_sebra__add_content_manager($content_manager_areas, $uid) {
  * The function returns the user object created/loaded.
  */
 
-function uib_sebra__sync_user($username) {
+function uib_sebra__sync_user($username, $dry_run=FALSE) {
   $account = user_load_by_name($username);
   try {
     $u = new SebraPerson($username);
@@ -423,7 +423,8 @@ function uib_sebra__sync_user($username) {
       uibx_log("No user field change for $username <$account->mail>");
     }
     else {
-      user_save($account, $edit);
+      if (!$dry_run)
+        user_save($account, $edit);
       uibx_log("Updated user fields for $username <$account->mail>");
       uibx_log('Update-'.print_r($edit,true));
     }
@@ -444,7 +445,8 @@ function uib_sebra__sync_user($username) {
     $account->field_uib_position_category['und'][0]['value'] = $u->position_category;
     $account->field_uib_phone = $phones;
     $account->roles = $u->roles;
-    user_save($account);
+    if (!$dry_run)
+      user_save($account);
     uibx_log("Created user $account->uid for $username <$u->email>");
   }
 

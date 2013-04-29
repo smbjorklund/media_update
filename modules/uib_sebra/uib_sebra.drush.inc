@@ -39,6 +39,9 @@ function uib_sebra_drush_command() {
       'user' => 'The username',
     ),
     'required-arguments' => TRUE,
+    'options' => array(
+      'dry-run' => 'Don\'t actually update the database',
+    ),
   );
   $items['uib-sebra-areadiff'] = array(
     'description' => 'Show a list of areas in sebra are not in the Drupal database, and which are',
@@ -64,7 +67,7 @@ function drush_uib_sebra_areas() {
 }
 
 function drush_uib_sebra_user($user) {
-  uib_sebra__sync_user($user);
+  uib_sebra__sync_user($user, drush_get_option('dry-run'));
 }
 
 function drush_uib_sebra_users() {
