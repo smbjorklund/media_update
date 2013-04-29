@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -x
+
+COMMIT=${1:-master}
+
+echo $COMMIT
+
+git checkout $COMMIT
+git submodule update
+
+compass compile --force themes/uib_zen
+find site/files/{css,js,languages} -type f -print | xargs rm
+
+bin/site-drush updatedb --yes
+bin/site-drush features-revert-all --yes
+bin/site-drush cc all
