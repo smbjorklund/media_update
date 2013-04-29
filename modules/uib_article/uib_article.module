@@ -70,6 +70,17 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
         $form['scheduler_settings']['#weight'] = $tmp_weight;
       }
     }
+
+    if (empty($form['nid']['#value'])) {
+      // For new articles, add anti-bubbling checkbox
+      $form['anti_bubbling'] = array(
+        '#title' => t('Do not show on other areas'),
+        '#type' => 'checkbox',
+        '#description' => t('Check this if you do not want this article to automatically show on other areas'),
+        '#weight' => 6,
+      );
+      $form['#group_children']['anti_bubbling'] = 'group_information';
+    }
   }
 }
 
@@ -157,19 +168,21 @@ function uib_article__set_redirect($entity) {
  *
  */
 function uib_article_node_presave($node) {
-  if (empty($node->nid)) {
-    // Upon creation of an article,
-    // add all area parents to field_uib_area. RTS-914
-    $parent_trail = array();
-    uib_area__get_parentage($node->field_uib_area['und'][0]['target_id'], $parent_trail);
-    $node_areas = array();
-    foreach ($node->field_uib_area['und'] as $area) {
-      $node_areas[] = $area['target_id'];
-    }
-    foreach($parent_trail as $pt) {
-      if (!in_array($pt, $node_areas)) {
-        $node->field_uib_area['und'][]['target_id'] = $pt;
-        $node_areas[] = $pt;
+  if ($node->is_new) {
+    if (!$node->anti_bubbling) {
+      // Upon creation of an article,
+      // add all area parents to field_uib_area. RTS-914
+      $parent_trail = array();
+      uib_area__get_parentage($node->field_uib_area['und'][0]['target_id'], $parent_trail);
+      $node_areas = array();
+      foreach ($node->field_uib_area['und'] as $area) {
+        $node_areas[] = $area['target_id'];
+      }
+      foreach($parent_trail as $pt) {
+        if (!in_array($pt, $node_areas)) {
+          $node->field_uib_area['und'][]['target_id'] = $pt;
+          $node_areas[] = $pt;
+        }
       }
     }
   }

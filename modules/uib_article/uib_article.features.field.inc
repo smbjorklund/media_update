@@ -243,7 +243,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -786,7 +786,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -857,7 +857,7 @@ function uib_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -1140,7 +1140,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -1463,7 +1463,7 @@ function uib_article_field_default_fields() {
           'rows' => '30',
         ),
         'type' => 'text_textarea',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
