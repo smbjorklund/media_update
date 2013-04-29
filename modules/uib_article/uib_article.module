@@ -151,3 +151,26 @@ function uib_article__set_redirect($entity) {
     }
   }
 }
+
+/**
+ * Implements hook_node_presave
+ *
+ */
+function uib_article_node_presave($node) {
+  if (empty($node->nid)) {
+    // Upon creation of an article,
+    // add all area parents to field_uib_area. RTS-914
+    $parent_trail = array();
+    uib_area__get_parentage($node->field_uib_area['und'][0]['target_id'], $parent_trail);
+    $node_areas = array();
+    foreach ($node->field_uib_area['und'] as $area) {
+      $node_areas[] = $area['target_id'];
+    }
+    foreach($parent_trail as $pt) {
+      if (!in_array($pt, $node_areas)) {
+        $node->field_uib_area['und'][]['target_id'] = $pt;
+        $node_areas[] = $pt;
+      }
+    }
+  }
+}
