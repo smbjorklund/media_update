@@ -209,18 +209,20 @@ function uib_sebra__get_area_roles($all_area_roles, $sebra_id) {
  *
  */
 function uib_sebra__sync_jobbnorge_id($area, $area_doc) {
-  $place_id = (string)$area_doc->omraade->EIER_STED_KODE;
   $jobbnorge_id = (string)$area_doc->omraade->JOBBNORGE_DEPID;
+  if (!$jobbnorge_id)
+    return;
+  $place_id = (string)$area_doc->omraade->EIER_STED_KODE;
   //uibx_log("jobbnorge $place_id => $jobbnorge_id");
   if (isset($area->field_uib_ou['und'])) {
     $nid = $area->field_uib_ou['und'][0]['target_id'];
     $place = node_load($nid);
     if ($place->field_uib_ou_id['und'][0]['value'] != $place_id) {
-      uibx_log("Mismatch for place code for /node/$nid $place_id");
+      uibx_log("Mismatch for place code for /node/$nid $place_id", 'error');
       return;
     }
     if ( !is_numeric($jobbnorge_id) ) {
-      uibx_log("jobbnorge_id not numeric for place code for /node/$nid");
+      uibx_log("jobbnorge_id not numeric for place code for /node/$nid", 'error');
       return;
     }
     if ($place->field_uib_jobbnorge_id['und'][0]['value'] != $jobbnorge_id) {
