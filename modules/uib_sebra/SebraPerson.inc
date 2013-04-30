@@ -18,12 +18,18 @@ class SebraPerson extends stdClass {
    *
    *  @param $id
    *    The UiB username of the person to fetch information about
+   *  @param $ref
+   *    Optionally explain where this user was refrenced from.  Only used for
+   *    generating more informative exception message.
    */
 
-  public function __construct($id) {
+  public function __construct($id, $ref=NULL) {
     $person = uib_sebra__sws_get('person?id=' . $id);
     if (empty($person)) {
-      throw new Exception("User '$id' not found", 404);
+      $msg = "User '$id' not found";
+      if ($ref)
+        $msg .= " (ref by $ref)";
+      throw new Exception($msg, 404);
     }
 
     $this->id = $id;

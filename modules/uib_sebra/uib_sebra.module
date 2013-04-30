@@ -123,7 +123,7 @@ function uib_sebra__sync_areas() {
         foreach ($area_doc->omraade->visninger->uibid as $uname) {
           $account = user_load_by_name($uname);
           if (!$account) {
-            $account = uib_sebra__sync_user($uname);
+            $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id staff");
             if (!$account) {
               continue;
             }
@@ -148,7 +148,7 @@ function uib_sebra__sync_areas() {
       foreach ($area_roles as $uname) {
         $account = user_load_by_name($uname);
         if (!$account) {
-          $account = uib_sebra__sync_user($uname);
+          $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id roles");
           if (!$account) {
             continue;
           }
@@ -270,7 +270,7 @@ function uib_sebra__sync_users($limit) {
   foreach ($users as $username) {
     if (--$offset > 0)
       continue;
-    uib_sebra__sync_user($username);
+    uib_sebra__sync_user($username, FALSE, 'persons staff+extern');
     if ($limit) {
       if (--$limit == 0)
         break;
@@ -373,10 +373,10 @@ function uib_sebra__add_content_manager($content_manager_areas, $uid) {
  * The function returns the user object created/loaded.
  */
 
-function uib_sebra__sync_user($username, $dry_run=FALSE) {
+function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
   $account = user_load_by_name($username);
   try {
-    $u = new SebraPerson($username);
+    $u = new SebraPerson($username, $ref);
   }
   catch (Exception $e) {
     uibx_log($e->getMessage(), 'warning');
