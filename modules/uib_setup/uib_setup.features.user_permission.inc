@@ -56,7 +56,10 @@ function uib_setup_user_default_permissions() {
   // Exported permission: access content overview.
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'admin',
+      1 => 'level 1',
+    ),
     'module' => 'node',
   );
 
@@ -154,6 +157,8 @@ function uib_setup_user_default_permissions() {
     'roles' => array(
       0 => 'admin',
       1 => 'level 1',
+      2 => 'level 2',
+      3 => 'level 3',
     ),
     'module' => 'i18n_node',
   );
@@ -759,6 +764,7 @@ function uib_setup_user_default_permissions() {
       0 => 'admin',
       1 => 'level 1',
       2 => 'level 2',
+      3 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -1279,6 +1285,7 @@ function uib_setup_user_default_permissions() {
       0 => 'admin',
       1 => 'level 1',
       2 => 'level 2',
+      3 => 'level 3',
     ),
     'module' => 'node',
   );
@@ -1508,6 +1515,7 @@ function uib_setup_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       0 => 'admin',
+      1 => 'level 1',
     ),
     'module' => 'filter',
   );
