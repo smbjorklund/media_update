@@ -23,7 +23,7 @@ class SebraPerson extends stdClass {
   public function __construct($id) {
     $person = uib_sebra__sws_get('person?id=' . $id);
     if (empty($person)) {
-      throw new Exception("Person $id not found", 404);
+      throw new Exception("User '$id' not found", 404);
     }
 
     $this->id = $id;

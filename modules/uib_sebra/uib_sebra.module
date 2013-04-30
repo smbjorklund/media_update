@@ -26,7 +26,10 @@ function uib_sebra__sws_url($path) {
 function uib_sebra__sws_get($path) {
   $url = uib_sebra__sws_url($path);
   uibx_log('GET ' . $url);
-  $object = simplexml_load_file($url);
+  $contents = file_get_contents($url);
+  if ($contents == "\nNo data\n")
+    return NULL;
+  $object = simplexml_load_string($contents);
   return $object;
 }
 
@@ -122,7 +125,6 @@ function uib_sebra__sync_areas() {
           if (!$account) {
             $account = uib_sebra__sync_user($uname);
             if (!$account) {
-              uibx_log("Can't find user $uname from Sebra", "error");
               continue;
             }
           }
@@ -148,7 +150,6 @@ function uib_sebra__sync_areas() {
         if (!$account) {
           $account = uib_sebra__sync_user($uname);
           if (!$account) {
-            uibx_log("Can't find user $uname from Sebra", "error");
             continue;
           }
         }
@@ -378,7 +379,7 @@ function uib_sebra__sync_user($username) {
     $u = new SebraPerson($username);
   }
   catch (Exception $e) {
-    uibx_log("Error creating SebraPerson " . $e->getMessage() . " " . $e->getCode(), 'warning');
+    uibx_log($e->getMessage(), 'warning');
     if ($e->getCode() == 404)
       // Should we block the user before we return it then?
       return $account;
