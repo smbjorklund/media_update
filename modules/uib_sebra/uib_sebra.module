@@ -166,7 +166,7 @@ function uib_sebra__sync_areas() {
       if ($edit_p)
         node_save($area);
     }
-    else {
+    elseif (substr($area->title, 0, 13) != 'Area stub for') {
       uibx_log("No sebra_id for /node/$nid", 'warning');
     }
   }
