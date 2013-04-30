@@ -31,3 +31,53 @@ function uib_article_update_7000() {
     uib_article__set_redirect($node);
   }
 }
+
+/**
+* Populate parental area trail for existing articles (not infopages)
+*/
+function uib_article_update_7001() {
+  // Do not bother infopages
+  $article_types = array('event', 'news');
+  // Do not handle past events
+  $event_limit = date('Y-m-d H:i');
+  // Do not handle too old news articles (creation timestamp). 30 days.
+  $max_news_age = time() - 2592000;
+  $cnt = 0;
+  foreach ($article_types as $type) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'uib_article')
+      ->fieldCondition('field_uib_article_type', 'value', $type, '=');
+    if ($type == 'event') {
+      $query->fieldCondition('field_uib_date', 'value2', $event_limit, '>=');
+    }
+    $result = $query->execute();
+    $nodes = entity_load('node', array_keys($result['node']));
+    foreach ($nodes as $node) {
+      if (!empty($node->field_uib_area['und'][0]['target_id'])) {
+        if ($type == 'news' && $node->created < $max_news_age) {
+          continue;
+        }
+        $parent_trail = array();
+        uib_area__get_parentage($node->field_uib_area['und'][0]['target_id'], $parent_trail);
+        $node_areas = array();
+        foreach ($node->field_uib_area['und'] as $area) {
+          $node_areas[] = $area['target_id'];
+        }
+        foreach($parent_trail as $pt) {
+          if (!in_array($pt, $node_areas)) {
+            $node->field_uib_area['und'][]['target_id'] = $pt;
+            $node_areas[] = $pt;
+          }
+        }
+        node_save($node);
+        uibx_log("Updated node $node->nid of article type $type");
+        $cnt++;
+      }
+      else {
+        uibx_log("Node $node->nid is missing area", "warning");
+      }
+    }
+  }
+  uibx_log("Updated $cnt articles");
+}
