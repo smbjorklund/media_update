@@ -17,7 +17,47 @@ function uib_devel_drush_command() {
       'show-empty' => 'Show the empty fields as well',
     ),
   );
+  $items['usr'] = array(
+    'description' => 'Dump information about the given user',
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(
+      'id' => 'Numeric user id or username',
+    ),
+    'required-arguments' => TRUE,
+    'options' => array(
+      'dump' => 'Dump the raw node structure (with print_r)',
+      'show-empty' => 'Show the empty fields as well',
+    ),
+  );
   return $items;
+}
+
+function drush_uib_devel_usr($id) {
+  $account = NULL;
+  if (is_numeric($id)) {
+    $account = user_load($id, TRUE);
+  }
+  else {
+    $account = user_load_by_name($id);
+  }
+  if (!$account) {
+    uibx_log("account $id does not exist", 'error');
+    return;
+  }
+  if (drush_get_option('dump')) {
+    print_r($account);
+    return;
+  }
+  print "uid: $account->uid\n";
+  print "name: $account->name\n";
+  print "mail: $account->mail\n";
+
+  // dump timestamps
+  print "created: " . strftime('%Y-%m-%d %H:%M', $account->created) . "\n";
+  print "access: " . strftime('%Y-%m-%d %H:%M', $account->access) . "\n";
+  print "login: " . strftime('%Y-%m-%d %H:%M', $account->login) . "\n";
+
+  uib_devel__dump_fields($account);
 }
 
 function drush_uib_devel_node($id) {
@@ -64,12 +104,16 @@ function drush_uib_devel_node($id) {
   print "created: " . strftime('%Y-%m-%d %H:%M', $node->created) . "\n";
   print "changed: " . strftime('%Y-%m-%d %H:%M', $node->changed) . "\n";
 
-  // dump the fields
-  $arr = array_keys((array)$node);
+  uib_devel__dump_fields($node);
+}
+
+
+function uib_devel__dump_fields($entity) {
+  $arr = array_keys((array)$entity);
   sort($arr);
   foreach ($arr as $key) {
     if (substr($key, 0, 6) == 'field_') {
-      $languages = $node->$key;
+      $languages = $entity->$key;
       if (empty($languages)) {
         if (drush_get_option('show-empty')) {
           print "$key: <empty>\n";
