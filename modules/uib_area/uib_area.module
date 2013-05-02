@@ -430,6 +430,35 @@ function uib_area__get_current() {
       }
     }
   }
+  return uib_area__get_current_by_language($current_area);
+}
+
+/**
+* Get the area that corresponds to the global language if this
+* is different from the articles language.
+*
+* @param node $current_area
+*   The current uib_area before a check to se if the global
+*   language is equal to the current uib_area's language
+* @return node
+*   The current uib_area in the global language
+*/
+function uib_area__get_current_by_language($current_area) {
+  global $language;
+  if ($language->language != $current_area->language) {
+    if ($current_area->nid == $current_area->tnid) {
+      $result = db_select('node', 'n')
+        ->fields('n', array('nid'))
+        ->condition('tnid', $current_area->nid, '=')
+        ->condition('nid', $current_area->nid, '<>')
+        ->execute()
+        ->fetchAssoc();
+      $current_area = node_load($result);
+    }
+    else {
+      $current_area = node_load($current_area->tnid);
+    }
+  }
   return $current_area;
 }
 
