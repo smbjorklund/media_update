@@ -367,3 +367,14 @@
   overflow-y: auto;
   max-width: none;
 }
+
+/**
+* Style for warning when article is not translated
+*/
+.uib-not-translated {
+  border: solid 1px #d95900;
+  background-color: #F1F1EF;
+  color: #333;
+  font-size: 1.5em;
+  padding: 0.5em;
+}
