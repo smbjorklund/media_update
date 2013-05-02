@@ -60,3 +60,21 @@ function theme_views_view_field__user_block__edit_node($view) {
     return $url;
   }
 }
+
+/**
+ * Implements hook_form_alter().
+ *
+ */
+function uib_user_form_alter(&$form, &$form_state, $form_id) {
+  array_unshift($form['#validate'], 'uib_user__username_lc');
+}
+
+/**
+ * Always lowercase username.
+ *
+ */
+function uib_user__username_lc($form, &$form_state) {
+  if (!empty($form_state['values']['name'])) {
+    $form_state['values']['name'] = drupal_strtolower($form_state['values']['name']);
+  }
+}
