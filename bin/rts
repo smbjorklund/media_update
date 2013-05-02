@@ -16,6 +16,7 @@ GetOptions(\my %OPT,
     'open',
     'url',
     'patches',
+    'full',
 ) || usage();
 
 my $DB = "var/rts";
@@ -70,7 +71,7 @@ Usage: $PROGNAME <cmd> [options] ...
 
 Subcommands:
 
-    update
+    update [--full]
     [show] [--json] <id>...
     release
     release <rid> [--patches]
@@ -81,6 +82,8 @@ EOT
 }
 
 sub do_update {
+    my $implict = shift;
+
     require LWP::UserAgent;
     require URI;
     require URI::QueryParam;
@@ -103,8 +106,12 @@ sub do_update {
 
     system("mkdir -p $DB");
 
+    my @closed_issues = $OPT{full} ? () : (grep !$_->{open}, _get_issues());
+
     my @all_issues;
     for my $status (qw(open closed)) {
+	next if $status eq "closed" && !$OPT{full};
+
 	$u->query_param(status_id => $status);
 	my $total_count;
 	my $offset = 0;
@@ -136,23 +143,32 @@ sub do_update {
 	    }
 	    push(@all_issues, @$issues);
 	    $offset += @$issues;
-	    printf STDERR "%-6s %3.0f%%\n", $status, 100*$offset/$total_count if $total_count;
+	    printf STDERR "%-6s %3.0f%%\r", $status, 100*$offset/$total_count if $total_count;
 	} while $offset < $total_count;
     }
+    push(@all_issues, @closed_issues) if @closed_issues;
 
     @all_issues = sort { $a->{id} <=> $b->{id} } @all_issues;
 
+    rename("$DB/issues.json", "$DB/issues-old.json");
     open($fh, ">", "$DB/issues.json") || die;
     binmode($fh, ":utf8");
     print $fh to_json(\@all_issues);
     close($fh) || die;
-}
 
+    print " " x 40, "\r";
+    print scalar(@all_issues), " issues saved to $DB/issues.json\n"
+	unless $implict;
+}
 
 sub get_issues {
     if (!-e "$DB/issues.json" || -M _ > 1) {
-	do_update();
+	do_update(1);
     }
+    return _get_issues(@_);
+}
+
+sub _get_issues {
     open(my $fh, "<", "$DB/issues.json") || die;
     binmode($fh, ":utf8");
     my $json = do { local $/; <$fh>; };
