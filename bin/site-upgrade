@@ -2,10 +2,9 @@
 
 set -x
 
+bin/site-drush cc all
+
 COMMIT=${1:-master}
-
-echo $COMMIT
-
 git checkout $COMMIT
 git submodule update
 
