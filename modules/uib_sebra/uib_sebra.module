@@ -416,6 +416,13 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
       $edit['field_uib_position_category']['und'][0]['value'] = $u->position_category;
     if ($account->field_uib_phone != $phones)
       $edit['field_uib_phone'] = $phones;
+    // Some roles have no correspondence in Sebra and will be lost if we do not fix it here.
+    // All roles but 'level 2' and 'level 3' are fixed.
+    foreach ($account->roles as $key => $value) {
+      if ($value != 'level 2' OR $value != 'level 3') {
+        $u->roles[$key] = $value;
+      }
+    }
     if ($account->roles != $u->roles)
       $edit['roles'] = $u->roles;
 
