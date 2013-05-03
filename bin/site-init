@@ -12,7 +12,7 @@ my $PGUSER = 'user1';
 my $PGPASS = 'pass1';
 my $PGDATABASE = 'db1';
 my $PGHOST = 'localhost';
-my $PGPORT = '';
+my $PGPORT = '5432';
 
 if (-e "drupal/sites/$SITE") {
     #die "drupal/sites/$SITE already exists";
@@ -52,6 +52,30 @@ EOT
 
 my $psql = qx(bin/site-drush sql-connect --verbose=0);
 chomp($psql);
+
+# Is there a suitable entry in .pgpass
+my $pgpass_file = "$ENV{HOME}/.pgpass";
+my $pgpass_line = "$PGHOST:$PGPORT:$PGDATABASE:$PGUSER:$PGPASS";
+
+# Can we find an existing matching entry in ~/.pgpass
+if (open(my $fh, $pgpass_file)) {
+    while (<$fh>) {
+	chomp;
+	s/\*/[^:]+/g;
+	if ($pgpass_line =~ /^$_$/) {
+	    undef($pgpass_line);
+	    last;
+	}
+    }
+}
+
+if ($pgpass_line) {
+    open(my $fh, ">>", $pgpass_file) || die "Can't append to $pgpass_file: $!";
+    print $fh "$pgpass_line\n";
+    close($fh) || die;
+    chmod(0600, $pgpass_file);
+    print "Appended '$pgpass_line' to your $pgpass_file\n";
+}
 
 # Can we connect to the database
 my $out = qx(echo "SELECT 'yup!'" | $psql -t -w 2>&1);
