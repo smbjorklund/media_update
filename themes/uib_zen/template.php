@@ -155,8 +155,12 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function uib_zen_preprocess_page(&$variables, $hook) {
-  if ($variables['node']->language != $variables['language']->language) {
-    $variables['title_prefix'] = '<div class="uib-not-translated">' .t('The content of this article has not been translated.') . '</div>';
+  if (isset($variables['node'])) {
+    if ($variables['node']->type == 'uib_article'){
+      if ($variables['node']->language != $variables['language']->language) {
+        $variables['title_prefix'] = '<div class="uib-not-translated">' .t('The content of this article has not been translated.') . '</div>';
+      }
+    }
   }
   $variables['page_title'] = $variables['site_name'];
   $variables['page_title_link'] = l($variables['site_name'], '<front>', array('attributes' => array('title' => $variables['site_name'] . " " . t('Home'))));
