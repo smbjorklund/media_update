@@ -54,12 +54,13 @@ my $psql = qx(bin/site-drush sql-connect --verbose=0);
 chomp($psql);
 
 # Can we connect to the database
-my $out = qx(echo "SELECT 'yup!'" | $psql -t 2>&1);
+my $out = qx(echo "SELECT 'yup!'" | $psql -t -w 2>&1);
 if ($?) {
+    chomp($out);
     die $out unless $out =~ /database \"$PGDATABASE\" does not exist/;
     (my $psql_postgres = $psql) =~ s/--dbname=\Q$PGDATABASE/--dbname=postgres/ || die;
-    open(my $fh, "| $psql_postgres -e") || die;
+    open(my $fh, "| $psql_postgres -e -w") || die;
     print $fh "CREATE DATABASE $PGDATABASE TEMPLATE template0 ENCODING 'UTF-8';\n";
     close($fh);
 }
-print "Connect to database with '$psql'\n";
+print "Connect with '$psql'\n";
