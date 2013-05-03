@@ -25,7 +25,12 @@ unlink("site");
 symlink("drupal/sites/$SITE", "site") || die;
 
 open(my $fh, ">site/settings.php") || die;
-mkdir("site/files", 0777);
+if (-d "files") {
+    symlink("../../../files", "site/files");
+}
+else {
+    mkdir("site/files", 0777);
+}
 print $fh <<EOT;
 <?php
 
