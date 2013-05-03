@@ -1,0 +1,65 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+die unless -f "drupal/index.php";
+
+my $SITE = shift || "w3.uib.local";
+die if $SITE =~ /\s/;
+
+my $PGUSER = 'user1';
+my $PGPASS = 'pass1';
+my $PGDATABASE = 'db1';
+my $PGHOST = 'localhost';
+my $PGPORT = '';
+
+if (-e "drupal/sites/$SITE") {
+    #die "drupal/sites/$SITE already exists";
+    system("rm -rf drupal/sites/$SITE.old");
+    rename("drupal/sites/$SITE", "drupal/sites/$SITE.old");
+}
+
+mkdir("drupal/sites/$SITE", 0755) || die;
+unlink("site");
+symlink("drupal/sites/$SITE", "site") || die;
+
+open(my $fh, ">site/settings.php") || die;
+mkdir("site/files", 0777);
+print $fh <<EOT;
+<?php
+
+\$databases['default']['default'] = array (
+  'database' => '$PGDATABASE',
+  'username' => '$PGUSER',
+  'password' => '$PGPASS',
+  'host' => '$PGHOST',
+  'port' => '$PGPORT',
+  'driver' => 'pgsql',
+  'prefix' => '',
+);
+\$update_free_access = FALSE;
+\$drupal_hash_salt = 'ejpcOYgCoYl5D_Ro42E5ngEVDDwqeJTrFjvrlETGpY8';
+ini_set('memory_limit', '999M');
+ini_set('session.gc_probability', 1);
+ini_set('session.gc_divisor', 100);
+ini_set('session.gc_maxlifetime', 200000);
+ini_set('session.cookie_lifetime', 2000000);
+\$conf['404_fast_paths_exclude'] = '/\/(?:styles)\//';
+\$conf['404_fast_paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
+\$conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "\@path" was not found on this server.</p></body></html>';
+EOT
+
+my $psql = qx(bin/site-drush sql-connect --verbose=0);
+chomp($psql);
+
+# Can we connect to the database
+my $out = qx(echo "SELECT 'yup!'" | $psql -t 2>&1);
+if ($?) {
+    die $out unless $out =~ /database \"$PGDATABASE\" does not exist/;
+    (my $psql_postgres = $psql) =~ s/--dbname=\Q$PGDATABASE/--dbname=postgres/ || die;
+    open(my $fh, "| $psql_postgres -e") || die;
+    print $fh "CREATE DATABASE $PGDATABASE TEMPLATE template0 ENCODING 'UTF-8';\n";
+    close($fh);
+}
+print "Connect to database with '$psql'\n";
