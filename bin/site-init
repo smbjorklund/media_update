@@ -39,6 +39,21 @@ if (!$SITE) {
 $SITE ||= "w3.uib.local";
 die "Bad site name '$SITE'" if $SITE =~ /\s/;
 
+# Can we find the previous database settings
+if (-f "drupal/sites/$SITE/settings.php") {
+    my %db;
+    open(my $fh, qq(php --run 'include "site/settings.php"; print_r(\$databases["default"]["default"]);' |)) || die;
+    while (<$fh>) {
+	$db{$1} = $2 if /^\s*\[(\w+)\] => (.*)/;
+    }
+    #use Data::Dump; dd \%db;
+    $PGUSER ||= $db{username};
+    $PGPASS ||= $db{password};
+    $PGPORT ||= $db{port};
+    $PGHOST ||= $db{host};
+    $PGDATABASE ||= $db{database};
+}
+
 # Default database parameters
 $PGUSER ||= $ENV{PGUSER} || 'user1';
 $PGPASS ||= $ENV{PGPASS} || 'pass1';
