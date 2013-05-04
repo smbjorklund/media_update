@@ -34,7 +34,7 @@ if (!$SITE) {
     $SITE = readlink("site");
     $SITE = basename($SITE) if $SITE;
 }
-$SITE ||= "w3.uib.local";
+$SITE ||= "w3.uib.9zlhb.xip.io";  # alias for 127.0.0.1.xip.io (aka localhost)
 die "Bad site name '$SITE'" if $SITE =~ /\s/;
 
 # Can we find the previous database settings
