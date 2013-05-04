@@ -135,7 +135,7 @@ chomp($sqlsh);
 if ($DB{driver} eq "pgsql") {
     # Is there a suitable entry in .pgpass
     my $pgpass_file = "$ENV{HOME}/.pgpass";
-    my $pgpass_line = "$DB{host}:$DB{port}:$DB{database}:$DB{username}:$DB{password}";
+    my $pgpass_line = "$DB{host}:$DB{port}:*:$DB{username}:$DB{password}";
 
     # Can we find an existing matching entry in ~/.pgpass
     if (open(my $fh, $pgpass_file)) {
