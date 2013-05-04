@@ -166,3 +166,4 @@ if ($DB{driver} eq "pgsql") {
     }
 }
 print "Connect with '$sqlsh'\n";
+print "http://$SITE\n";
