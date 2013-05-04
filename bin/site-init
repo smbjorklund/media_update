@@ -82,6 +82,7 @@ if (-d "files") {
 }
 else {
     mkdir("site/files", 0777);
+    chmod(0777, "site/files");
 }
 print $fh "<?php\n\n";
 print $fh "\$databases['default']['default'] = array (\n";
