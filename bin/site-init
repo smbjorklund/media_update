@@ -90,9 +90,14 @@ for my $k (sort keys %DB) {
 }
 print $fh ");\n\n";
 
+my $salt = '';
+for (1..60) {
+    $salt .= chr(ord('a') + rand(26));
+}
+
 print $fh <<EOT;
 \$update_free_access = FALSE;
-\$drupal_hash_salt = 'ejpcOYgCoYl5D_Ro42E5ngEVDDwqeJTrFjvrlETGpY8';
+\$drupal_hash_salt = '$salt';
 ini_set('memory_limit', '640M');
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 100);
