@@ -9,10 +9,12 @@ use Getopt::Long qw(GetOptions);
 die "Need to run from the root of the w3.uib.no repo" unless -f "drupal/index.php";
 
 my $opt_force;
+my $opt_fresh;
 my %DB;
 
 GetOptions(
     'force' => \$opt_force,
+    'fresh' => \$opt_fresh,
     'sqlite' => sub { $DB{driver} = 'sqlite' },
     'postgres|pgsql' => sub { $DB{driver} = 'pgsql' },
     'username=s' => \$DB{username},
@@ -32,7 +34,7 @@ sub usage {
 }
 
 my $SITE = shift;
-if (!$SITE) {
+if (!$SITE && !$opt_fresh) {
     $SITE = readlink("site");
     $SITE = basename($SITE) if $SITE;
 }
@@ -40,7 +42,7 @@ $SITE ||= "w3.uib.9zlhb.xip.io";  # alias for 127.0.0.1.xip.io (aka localhost)
 die "Bad site name '$SITE'" if $SITE =~ /\s/;
 
 # Can we find the previous database settings
-if (!$DB{driver} && -f "drupal/sites/$SITE/settings.php") {
+if (!$DB{driver} && !$opt_fresh && -f "drupal/sites/$SITE/settings.php") {
     open(my $fh, qq(php --run 'include "site/settings.php"; print_r(\$databases["default"]["default"]);' |)) || die;
     while (<$fh>) {
 	$DB{$1} ||= $2 if /^\s*\[(\w+)\] => (.*)/;
@@ -68,9 +70,8 @@ elsif (!$DB{database}) {
 }
 
 if (-e "drupal/sites/$SITE") {
-    die "drupal/sites/$SITE already exists; use --force to reinitialize it\n" unless $opt_force;
-    system("rm -rf drupal/sites/$SITE.old");
-    rename("drupal/sites/$SITE", "drupal/sites/$SITE.old");
+    die "drupal/sites/$SITE already exists; use --force to reinitialize it\n" unless $opt_force || $opt_fresh;
+    system("bin/site-uninstall");
 }
 
 mkdir("drupal/sites/$SITE", 0755) || die "Can't mkdir 'drupal/sites/$SITE': $!";
