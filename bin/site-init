@@ -4,8 +4,30 @@ use strict;
 use warnings;
 
 use File::Basename qw(basename);
+use Getopt::Long qw(GetOptions);
 
 die "Need to run from the root of the w3.uib.no repo" unless -f "drupal/index.php";
+
+my $PGDATABASE;
+my $PGUSER;
+my $PGPASS;
+my $PGHOST;
+my $PGPORT;
+
+GetOptions(
+    'dbname=s' => \$PGDATABASE,
+    'username=s' => \$PGUSER,
+    'password=s' => \$PGPASS,
+    'host=s' => \$PGHOST,
+    'port=n' => \$PGPORT,
+) || usage();
+
+usage() if @ARGV > 1;
+
+sub usage {
+    (my $progname = $0) =~ s,.*/,,;
+    die "Usage: $progname [options] [sitename]\n";
+}
 
 my $SITE = shift;
 if (!$SITE) {
@@ -15,11 +37,12 @@ if (!$SITE) {
 $SITE ||= "w3.uib.local";
 die "Bad site name '$SITE'" if $SITE =~ /\s/;
 
-my $PGUSER = 'user1';
-my $PGPASS = 'pass1';
-my $PGDATABASE = 'db1';
-my $PGHOST = 'localhost';
-my $PGPORT = '5432';
+# Default database parameters
+$PGDATABASE ||= $ENV{PGDATABASE} || 'db1';
+$PGUSER ||= $ENV{PGUSER} || 'user1';
+$PGPASS ||= $ENV{PGPASS} || 'pass1';
+$PGHOST ||= $ENV{PGHOST} || 'localhost';
+$PGPORT ||= $ENV{PGPORT} || '5432';
 
 if (-e "drupal/sites/$SITE") {
     #die "drupal/sites/$SITE already exists";
