@@ -8,18 +8,18 @@ use Getopt::Long qw(GetOptions);
 
 die "Need to run from the root of the w3.uib.no repo" unless -f "drupal/index.php";
 
-my $PGDATABASE;
 my $PGUSER;
 my $PGPASS;
 my $PGHOST;
 my $PGPORT;
+my $PGDATABASE;
 
 GetOptions(
-    'dbname=s' => \$PGDATABASE,
     'username=s' => \$PGUSER,
     'password=s' => \$PGPASS,
     'host=s' => \$PGHOST,
     'port=n' => \$PGPORT,
+    'dbname=s' => \$PGDATABASE,
 ) || usage();
 
 usage() if @ARGV > 1;
@@ -38,11 +38,14 @@ $SITE ||= "w3.uib.local";
 die "Bad site name '$SITE'" if $SITE =~ /\s/;
 
 # Default database parameters
-$PGDATABASE ||= $ENV{PGDATABASE} || 'db1';
 $PGUSER ||= $ENV{PGUSER} || 'user1';
 $PGPASS ||= $ENV{PGPASS} || 'pass1';
-$PGHOST ||= $ENV{PGHOST} || 'localhost';
 $PGPORT ||= $ENV{PGPORT} || '5432';
+$PGHOST ||= $ENV{PGHOST} || do {
+    require IO::Socket::INET;
+    IO::Socket::INET->new("localhost:$PGPORT") ? 'localhost' : 'glory.uib.no';
+};
+$PGDATABASE ||= $ENV{PGDATABASE} || ($PGHOST eq 'localhost' ? 'db1' : "$ENV{USER}-db1");
 
 if (-e "drupal/sites/$SITE") {
     #die "drupal/sites/$SITE already exists";
@@ -137,7 +140,7 @@ if ($?) {
     die "Failed to connect to the database with '$psql'\n$out" unless $out =~ /database \"$PGDATABASE\" does not exist/;
     (my $psql_postgres = $psql) =~ s/--dbname=\Q$PGDATABASE/--dbname=postgres/ || die;
     open(my $fh, "| $psql_postgres -e -w") || die;
-    print $fh "CREATE DATABASE $PGDATABASE TEMPLATE template0 ENCODING 'UTF-8';\n";
+    print $fh qq(CREATE DATABASE "$PGDATABASE" TEMPLATE template0 ENCODING 'UTF-8';\n);
     close($fh);
 }
 print "Connect with '$psql'\n";
