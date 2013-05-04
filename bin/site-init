@@ -3,10 +3,17 @@
 use strict;
 use warnings;
 
-die unless -f "drupal/index.php";
+use File::Basename qw(basename);
 
-my $SITE = shift || "w3.uib.local";
-die if $SITE =~ /\s/;
+die "Need to run from the root of the w3.uib.no repo" unless -f "drupal/index.php";
+
+my $SITE = shift;
+if (!$SITE) {
+    $SITE = readlink("site");
+    $SITE = basename($SITE) if $SITE;
+}
+$SITE ||= "w3.uib.local";
+die "Bad site name '$SITE'" if $SITE =~ /\s/;
 
 my $PGUSER = 'user1';
 my $PGPASS = 'pass1';
@@ -20,9 +27,10 @@ if (-e "drupal/sites/$SITE") {
     rename("drupal/sites/$SITE", "drupal/sites/$SITE.old");
 }
 
-mkdir("drupal/sites/$SITE", 0755) || die;
+mkdir("drupal/sites/$SITE", 0755) || die "Can't mkdir 'drupal/sites/$SITE': $!";
 unlink("site");
 symlink("drupal/sites/$SITE", "site") || die;
+print "Created 'drupal/sites/$SITE' (symlinked from 'site')\n";
 
 open(my $fh, ">site/settings.php") || die;
 if (-d "files") {
@@ -54,6 +62,23 @@ ini_set('session.cookie_lifetime', 2000000);
 \$conf['404_fast_paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
 \$conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "\@path" was not found on this server.</p></body></html>';
 EOT
+
+unless (-d "var/private") {
+    mkdir("var", 0755);
+    mkdir("var/private", 0777) || die "Can't mkdir 'var/private': $!";
+    print "Created 'var/private'\n";
+}
+
+symlink("../../../etc/drushrc.php", "drupal/sites/$SITE/drushrc.php");
+
+unless (-f "drupal/default/settings.php") {
+    open(my $fh, ">", "drupal/sites/default/settings.php") || die;
+    print $fh <<"EOT";
+No default site.  You need to visit <a href="http://$SITE">$SITE</a> instead.
+<?php
+exit;
+EOT
+}
 
 my $psql = qx(bin/site-drush sql-connect --verbose=0);
 chomp($psql);
