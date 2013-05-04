@@ -9,19 +9,17 @@ use Getopt::Long qw(GetOptions);
 die "Need to run from the root of the w3.uib.no repo" unless -f "drupal/index.php";
 
 my $opt_force;
-my $PGUSER;
-my $PGPASS;
-my $PGHOST;
-my $PGPORT;
-my $PGDATABASE;
+my %DB;
 
 GetOptions(
     'force' => \$opt_force,
-    'username=s' => \$PGUSER,
-    'password=s' => \$PGPASS,
-    'host=s' => \$PGHOST,
-    'port=n' => \$PGPORT,
-    'dbname=s' => \$PGDATABASE,
+    'username=s' => \$DB{username},
+    'password=s' => \$DB{password},
+    'host=s' => \$DB{host},
+    'port=n' => \$DB{port},
+    'database=s' => \$DB{database},
+    'driver=s' => \$DB{driver},
+    'prefix=s' => \$DB{prefix},
 ) || usage();
 
 usage() if @ARGV > 1;
@@ -40,29 +38,32 @@ $SITE ||= "w3.uib.local";
 die "Bad site name '$SITE'" if $SITE =~ /\s/;
 
 # Can we find the previous database settings
-if (-f "drupal/sites/$SITE/settings.php") {
-    my %db;
+if (!$DB{driver} && -f "drupal/sites/$SITE/settings.php") {
     open(my $fh, qq(php --run 'include "site/settings.php"; print_r(\$databases["default"]["default"]);' |)) || die;
     while (<$fh>) {
-	$db{$1} = $2 if /^\s*\[(\w+)\] => (.*)/;
+	$DB{$1} ||= $2 if /^\s*\[(\w+)\] => (.*)/;
     }
-    #use Data::Dump; dd \%db;
-    $PGUSER ||= $db{username};
-    $PGPASS ||= $db{password};
-    $PGPORT ||= $db{port};
-    $PGHOST ||= $db{host};
-    $PGDATABASE ||= $db{database};
 }
 
-# Default database parameters
-$PGUSER ||= $ENV{PGUSER} || 'user1';
-$PGPASS ||= $ENV{PGPASS} || 'pass1';
-$PGPORT ||= $ENV{PGPORT} || '5432';
-$PGHOST ||= $ENV{PGHOST} || do {
-    require IO::Socket::INET;
-    IO::Socket::INET->new("localhost:$PGPORT") ? 'localhost' : 'glory.uib.no';
-};
-$PGDATABASE ||= $ENV{PGDATABASE} || ($PGHOST eq 'localhost' ? 'db1' : "$ENV{USER}-db1");
+$DB{driver} ||= 'pgsql';
+if ($DB{driver} eq 'pgsql') {
+    # Default database parameters
+    $DB{username} ||= $ENV{PGUSER} || 'user1';
+    $DB{password} ||= $ENV{PGPASS} || 'pass1';
+    $DB{port} ||= $ENV{PGPORT} || '5432';
+    $DB{host} ||= $ENV{PGHOST} || do {
+	require IO::Socket::INET;
+	IO::Socket::INET->new("localhost:$DB{port}") ? 'localhost' : 'glory.uib.no';
+    };
+    $DB{database} ||= $ENV{PGDATABASE} || ($DB{host} eq 'localhost' ? 'db1' : "$ENV{USER}-db1");
+}
+elsif ($DB{driver} eq "sqlite") {
+    require Cwd;
+    $DB{database} = Cwd::cwd() . "/drupal/sites/$SITE/db.sqlite";
+}
+elsif (!$DB{database}) {
+    die "Don't know about defaults for $DB{driver}\n";
+}
 
 if (-e "drupal/sites/$SITE") {
     die "drupal/sites/$SITE already exists; use --force to reinitialize it\n" unless $opt_force;
@@ -82,18 +83,14 @@ if (-d "files") {
 else {
     mkdir("site/files", 0777);
 }
-print $fh <<EOT;
-<?php
+print $fh "<?php\n\n";
+print $fh "\$databases['default']['default'] = array (\n";
+for my $k (sort keys %DB) {
+    print $fh "  '$k' => '$DB{$k}',\n" if defined $DB{$k};
+}
+print $fh ");\n\n";
 
-\$databases['default']['default'] = array (
-  'database' => '$PGDATABASE',
-  'username' => '$PGUSER',
-  'password' => '$PGPASS',
-  'host' => '$PGHOST',
-  'port' => '$PGPORT',
-  'driver' => 'pgsql',
-  'prefix' => '',
-);
+print $fh <<EOT;
 \$update_free_access = FALSE;
 \$drupal_hash_salt = 'ejpcOYgCoYl5D_Ro42E5ngEVDDwqeJTrFjvrlETGpY8';
 ini_set('memory_limit', '640M');
@@ -123,41 +120,43 @@ exit;
 EOT
 }
 
-my $psql = qx(bin/site-drush sql-connect --verbose=0);
-chomp($psql);
+my $sqlsh = qx(bin/site-drush sql-connect --verbose=0);
+chomp($sqlsh);
 
-# Is there a suitable entry in .pgpass
-my $pgpass_file = "$ENV{HOME}/.pgpass";
-my $pgpass_line = "$PGHOST:$PGPORT:$PGDATABASE:$PGUSER:$PGPASS";
+if ($DB{driver} eq "pgsql") {
+    # Is there a suitable entry in .pgpass
+    my $pgpass_file = "$ENV{HOME}/.pgpass";
+    my $pgpass_line = "$DB{host}:$DB{port}:$DB{database}:$DB{username}:$DB{password}";
 
-# Can we find an existing matching entry in ~/.pgpass
-if (open(my $fh, $pgpass_file)) {
-    while (<$fh>) {
-	chomp;
-	s/\*/[^:]+/g;
-	if ($pgpass_line =~ /^$_$/) {
-	    undef($pgpass_line);
-	    last;
+    # Can we find an existing matching entry in ~/.pgpass
+    if (open(my $fh, $pgpass_file)) {
+	while (<$fh>) {
+	    chomp;
+	    s/\*/[^:]+/g;
+	    if ($pgpass_line =~ /^$_$/) {
+		undef($pgpass_line);
+		last;
+	    }
 	}
     }
-}
 
-if ($pgpass_line) {
-    open(my $fh, ">>", $pgpass_file) || die "Can't append to $pgpass_file: $!";
-    print $fh "$pgpass_line\n";
-    close($fh) || die;
-    chmod(0600, $pgpass_file);
-    print "Appended '$pgpass_line' to your $pgpass_file\n";
-}
+    if ($pgpass_line) {
+	open(my $fh, ">>", $pgpass_file) || die "Can't append to $pgpass_file: $!";
+	print $fh "$pgpass_line\n";
+	close($fh) || die;
+	chmod(0600, $pgpass_file);
+	print "Appended '$pgpass_line' to your $pgpass_file\n";
+    }
 
-# Can we connect to the database
-my $out = qx(echo "SELECT 'yup!'" | $psql -t -w 2>&1);
-if ($?) {
-    chomp($out);
-    die "Failed to connect to the database with '$psql'\n$out" unless $out =~ /database \"$PGDATABASE\" does not exist/;
-    (my $psql_postgres = $psql) =~ s/--dbname=\Q$PGDATABASE/--dbname=postgres/ || die;
-    open(my $fh, "| $psql_postgres -e -w") || die;
-    print $fh qq(CREATE DATABASE "$PGDATABASE" TEMPLATE template0 ENCODING 'UTF-8';\n);
-    close($fh);
+    # Can we connect to the database
+    my $out = qx(echo "SELECT 'yup!'" | $sqlsh -t -w 2>&1);
+    if ($?) {
+	chomp($out);
+	die "Failed to connect to the database with '$sqlsh'\n$out" unless $out =~ /database \"$DB{database}\" does not exist/;
+	(my $psql_postgres = $sqlsh) =~ s/--dbname=\Q$DB{database}/--dbname=postgres/ || die;
+	open(my $fh, "| $psql_postgres -e -w") || die;
+	print $fh qq(CREATE DATABASE "$DB{database}" TEMPLATE template0 ENCODING 'UTF-8';\n);
+	close($fh);
+    }
 }
-print "Connect with '$psql'\n";
+print "Connect with '$sqlsh'\n";
