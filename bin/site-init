@@ -86,7 +86,7 @@ if ($pgpass_line) {
 my $out = qx(echo "SELECT 'yup!'" | $psql -t -w 2>&1);
 if ($?) {
     chomp($out);
-    die $out unless $out =~ /database \"$PGDATABASE\" does not exist/;
+    die "Failed to connect to the database with '$psql'\n$out" unless $out =~ /database \"$PGDATABASE\" does not exist/;
     (my $psql_postgres = $psql) =~ s/--dbname=\Q$PGDATABASE/--dbname=postgres/ || die;
     open(my $fh, "| $psql_postgres -e -w") || die;
     print $fh "CREATE DATABASE $PGDATABASE TEMPLATE template0 ENCODING 'UTF-8';\n";
