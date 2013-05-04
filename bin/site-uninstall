@@ -23,3 +23,4 @@ if [ -d drupal/sites/$SITE ]; then
         rm -rf drupal/sites/$SITE
     fi
 fi
+rm site
