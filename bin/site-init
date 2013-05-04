@@ -8,6 +8,7 @@ use Getopt::Long qw(GetOptions);
 
 die "Need to run from the root of the w3.uib.no repo" unless -f "drupal/index.php";
 
+my $opt_force;
 my $PGUSER;
 my $PGPASS;
 my $PGHOST;
@@ -15,6 +16,7 @@ my $PGPORT;
 my $PGDATABASE;
 
 GetOptions(
+    'force' => \$opt_force,
     'username=s' => \$PGUSER,
     'password=s' => \$PGPASS,
     'host=s' => \$PGHOST,
@@ -48,7 +50,7 @@ $PGHOST ||= $ENV{PGHOST} || do {
 $PGDATABASE ||= $ENV{PGDATABASE} || ($PGHOST eq 'localhost' ? 'db1' : "$ENV{USER}-db1");
 
 if (-e "drupal/sites/$SITE") {
-    #die "drupal/sites/$SITE already exists";
+    die "drupal/sites/$SITE already exists; use --force to reinitialize it\n" unless $opt_force;
     system("rm -rf drupal/sites/$SITE.old");
     rename("drupal/sites/$SITE", "drupal/sites/$SITE.old");
 }
