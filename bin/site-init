@@ -13,6 +13,8 @@ my %DB;
 
 GetOptions(
     'force' => \$opt_force,
+    'sqlite' => sub { $DB{driver} = 'sqlite' },
+    'postgres|pgsql' => sub { $DB{driver} = 'pgsql' },
     'username=s' => \$DB{username},
     'password=s' => \$DB{password},
     'host=s' => \$DB{host},
