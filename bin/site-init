@@ -59,7 +59,7 @@ if ($DB{driver} eq 'pgsql') {
 }
 elsif ($DB{driver} eq "sqlite") {
     require Cwd;
-    $DB{database} = Cwd::cwd() . "/drupal/sites/$SITE/db.sqlite";
+    $DB{database} = Cwd::cwd() . "/drupal/sites/$SITE/files/db.sqlite";
 }
 elsif (!$DB{database}) {
     die "Don't know about defaults for $DB{driver}\n";
