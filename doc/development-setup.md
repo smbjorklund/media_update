@@ -138,7 +138,7 @@ to such a database:
 - Install Postgres natively/locally (on OS X for instance using homebrew).
 
 Running with postgres locally is much faster if you have anything but a very
-fast connection to _glory_, that is if you are not connected to the UiB network
+fast connection to _glory_, that is if you are not wired to the UiB network
 directly.
 
 Select your preferred option above and make sure psql is able to connect to the
