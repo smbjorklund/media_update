@@ -159,6 +159,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     if ($variables['node']->type == 'uib_article'){
       if ($variables['node']->language != $variables['language']->language) {
         $variables['title_prefix'] = '<div class="uib-not-translated">' .t('The content of this article has not been translated.') . '</div>';
+        drupal_set_breadcrumb(array());
       }
     }
   }
