@@ -969,7 +969,7 @@ webdesk/*';
     'toggle_main_menu' => 1,
     'toggle_secondary_menu' => 0,
     'default_logo' => 0,
-    'logo_path' => 'sites/all/themes/uib/uib_zen/uiblogo.svg',
+    'logo_path' => 'sites/all/themes/uib/uib_zen/logo.png',
     'logo_upload' => '',
     'default_favicon' => 0,
     'favicon_path' => 'sites/all/themes/uib/uib_zen/favicon.ico',
