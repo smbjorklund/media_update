@@ -72,6 +72,7 @@ elsif (!$DB{database}) {
 if (-e "drupal/sites/$SITE") {
     die "drupal/sites/$SITE already exists; use --force to reinitialize it\n" unless $opt_force || $opt_fresh;
     system("bin/site-uninstall");
+    die "drupal/sites/$SITE did not uninstall properly" if -e "drupal/sites/$SITE";
 }
 
 mkdir("drupal/sites/$SITE", 0755) || die "Can't mkdir 'drupal/sites/$SITE': $!";
