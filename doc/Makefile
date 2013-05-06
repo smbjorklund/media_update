@@ -9,7 +9,6 @@ HTML = \
   git.html \
   hints.html \
   index.html \
-  local-production.html \
   release1.html \
   render-array.html \
   repo-readme.html \
