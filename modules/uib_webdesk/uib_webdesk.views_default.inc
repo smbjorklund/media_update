@@ -49,7 +49,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'No content';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Sorry sailor. Your search/site contain no content.';
+  $handler->display->display_options['empty']['area']['content'] = 'You have no available content.';
   $handler->display->display_options['empty']['area']['format'] = 'restricted_html';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
@@ -319,7 +319,7 @@ function uib_webdesk_views_default_views() {
     t('next ›'),
     t('last »'),
     t('No content'),
-    t('Sorry sailor. Your search/site contain no content.'),
+    t('You have no available content.'),
     t('Content entity referenced from field_uib_area'),
     t('Title'),
     t('Area'),
@@ -410,6 +410,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'You have no available content.';
   $handler->display->display_options['empty']['area']['format'] = 'plain_text';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -604,6 +605,7 @@ function uib_webdesk_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('You have no available content.'),
     t('Author of content'),
     t('Content entity referenced from field_uib_area'),
     t('Title'),
@@ -2092,6 +2094,14 @@ function uib_webdesk_views_default_views() {
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'User image missing.';
+  $handler->display->display_options['empty']['area']['format'] = 'plain_text';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: User: Picture */
