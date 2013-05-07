@@ -106,11 +106,11 @@ sub do_update {
 
     system("mkdir -p $DB");
 
-    my @closed_issues = $OPT{full} ? () : (grep !$_->{open}, _get_issues());
+    my @closed_issues = $OPT{full} ? () : (grep !$_->{open}, eval { _get_issues() });
 
     my @all_issues;
     for my $status (qw(open closed)) {
-	next if $status eq "closed" && !$OPT{full};
+	next if $status eq "closed" && @closed_issues;
 
 	$u->query_param(status_id => $status);
 	my $total_count;
