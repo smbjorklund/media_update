@@ -208,7 +208,7 @@
   <div id="main">
     <div id="content" class="column" role="main">
       <?php print render($page['highlighted']); ?>
-      <?php if ($variables['node']->type != 'area'): ?>
+      <?php if (isset($variables['node']) && $variables['node']->type != 'area'): ?>
         <?php print $breadcrumb; ?>
       <?php endif; ?>
       <a id="main-content"></a>
