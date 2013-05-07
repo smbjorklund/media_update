@@ -78,6 +78,7 @@ Subcommands:
     list [--open] [--patches]
     branches
     merge-status <id>
+    extract
 EOT
 }
 
@@ -175,6 +176,14 @@ sub _get_issues {
     close($fh);
     my $issues = from_json($json);
     return @$issues;
+}
+
+sub get_issues_hashref {
+    my %issues;
+    for (get_issues()) {
+	$issues{$_->{id}} = $_;
+    }
+    return \%issues;
 }
 
 sub filter_issues {
@@ -393,4 +402,22 @@ sub count_cherries {
 	return "$picked/$all";
     }
     return $picked, $all;
+}
+
+sub do_extract {
+    my %found;
+    while (<>) {
+	while (/\bRTS-#?+(\d+)/g) {
+	    $found{$1}++;
+	}
+    }
+
+    if (%found) {
+	my $issues = get_issues_hashref();
+	my @found;
+	for my $id (sort { $a <=> $b } keys %found) {
+	    push(@found, $issues->{$id});
+	}
+	list_issues(@found);
+    }
 }
