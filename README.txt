@@ -22,4 +22,5 @@ Then set up the drupal site by invoking:
 
 The 'doc' directory contains further information you might want to read first.
 The 'doc/development-setup.md' explains the details on how to set up your
-development environment.
+development environment.  An up-to-date HTML version of the docs should always
+be available at <http://phpdoc.devapp.uib.no/w3/>.
