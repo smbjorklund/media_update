@@ -10,11 +10,13 @@ die "Need to run from the root of the w3.uib.no repo" unless -f "drupal/index.ph
 
 my $opt_force;
 my $opt_fresh;
+my $opt_discard;
 my %DB;
 
 GetOptions(
     'force' => \$opt_force,
     'fresh' => \$opt_fresh,
+    'discard' => \$opt_discard,
     'sqlite' => sub { $DB{driver} = 'sqlite' },
     'postgres|pgsql' => sub { $DB{driver} = 'pgsql' },
     'username=s' => \$DB{username},
@@ -71,7 +73,9 @@ elsif (!$DB{database}) {
 
 if (-e "drupal/sites/$SITE") {
     die "drupal/sites/$SITE already exists; use --force to reinitialize it\n" unless $opt_force || $opt_fresh;
-    system("bin/site-uninstall");
+    my @uninstall = ("bin/site-uninstall");
+    push(@uninstall, "--discard") if $opt_discard;
+    system(@uninstall);
     die "drupal/sites/$SITE did not uninstall properly" if -e "drupal/sites/$SITE";
 }
 
