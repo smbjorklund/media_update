@@ -1,0 +1,60 @@
+#!/bin/bash
+datetime=$(date -I)T$(date +%H%M%S)
+echo "Reset origin/staging to prod!!! (y/n)?"
+read x
+if ! [ $x == "y" ];then 
+  echo User abort...
+  exit
+fi
+#Check user
+if ! [ $(whoami) == "w3-drupal" ];then 
+  echo wrong user Run as w3-drupal >/dev/stderr
+  exit 1
+fi
+
+#Check hostname
+if ! [ $(hostname|grep ^attila|grep -v test|wc -l) -gt 0 ];then 
+  echo wrong user Run as w3-drupal >/dev/stderr
+  exit 1
+fi
+set -x 
+cd /var/www/w3.uib.no/ || exit 1
+mkdir -p /nettapp_w3/pg_dump/pre_staging || exit 1
+#DB-Dump
+bin/site-drush sql-dump --structure-tables-key=common > /nettapp_w3/pg_dump/pre_staging/w3.uib.no-staging-backup.${datetime}.sql || exit 1
+gzip -v9 /nettapp_w3/pg_dump/pre_staging/*sql || exit 1
+git fetch --all --prune || exit 1
+git reset --hard origin/staging || exit 2
+git status || exit 3
+git submodule update || exit 4
+
+set -x
+echo "Confirm before feature revert is applied!!! (y/n)?"
+read x
+if ! [ $x == "y" ];then 
+  echo User abort...
+  echo TOTO: Reset using GIT...
+  exit
+fi
+set x
+
+compass compile --force -q themes/uib_zen
+find site/files/{css,js,languages} -type f -print | xargs rm -f
+## CC all cleans out the deleted files from DB that was deleted above
+bin/site-drush cc all
+
+#CC ALL some times display changes to do that not are visble before the CC ALL
+#Run FR
+bin/site-drush fra -v || exit 5
+bin/site-drush cc all || exit 6
+
+#Run updateDB
+bin/site-drush updatedb || exit 7
+bin/site-drush cc all || exit 8
+
+#Sometimes more modules may be updated after updatedb & CC
+bin/site-drush fra -v || exit 9 
+bin/site-drush cc all || exit 10
+
+#Display that all is OK to user
+bin/site-drush fl
