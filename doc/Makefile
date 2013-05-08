@@ -18,6 +18,7 @@ HTML = \
   style.html \
   terms.html \
   w3_server_layout.html \
+  man1/site-init.html \
 
 PYTHON = python
 PERL = perl

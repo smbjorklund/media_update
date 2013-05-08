@@ -6,7 +6,7 @@ open(my $fh, "Makefile") || die;
 while (<$fh>) {
     print;
     if (/^HTML =/) {
-	for (glob('*.md')) {
+	for (glob('*.md */*.md')) {
 	    (my $html = $_) =~ s/\.md$/.html/;
 	    print "  $html \\\n";
 	}
