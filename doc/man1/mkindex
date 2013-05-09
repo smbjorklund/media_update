@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+use File::Basename qw(dirname);
+chdir(dirname(__FILE__));
+open(STDOUT, ">index.html") || die;
+
+print STDOUT qx(cat ../tmpl/header.html);
+
+print "<h1>w3 scripts</h1>\n";
+
+print "<dl>\n";
+for my $manpage (sort <*.md>) {
+    $manpage =~ s/\.md$//;
+    print "<dt><a href=$manpage.html>$manpage</a>\n";
+}
+print "</dl>\n";
+
+print STDOUT qx(cat ../tmpl/footer.html);

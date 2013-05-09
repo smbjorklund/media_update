@@ -31,10 +31,13 @@ BOOTSTRAP_PY = bootstrap.py
 .md.html:
 	bin/python htmlify.py $< >$@
 
-all: bin/python $(HTML) mockups/index.html
+all: bin/python $(HTML) mockups/index.html man1/index.html
 
 mockups/index.html: mockups/mkindex
 	$(PERL) mockups/mkindex
+
+man1/index.html: man1/mkindex
+	$(PERL) man1/mkindex
 
 bin/python: bin/buildout
 	bin/buildout
@@ -50,6 +53,8 @@ makefile:
 
 clean:
 	rm -f $(HTML)
+	rm -f man1/index.html
+	rm -f mockups/index.html
 
 realclean: clean
 	rm -f bin/buildout bin/python
