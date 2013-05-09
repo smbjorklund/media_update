@@ -19,6 +19,7 @@ HTML = \
   terms.html \
   w3_server_layout.html \
   man1/site-init.html \
+  man1/site-uninstall.html \
 
 PYTHON = python
 PERL = perl

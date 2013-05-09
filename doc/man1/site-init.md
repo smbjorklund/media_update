@@ -1,6 +1,6 @@
 # Name
 
-site-init – initialize the site
+site-init -- initialize the site
 
 # Synopsis
 
