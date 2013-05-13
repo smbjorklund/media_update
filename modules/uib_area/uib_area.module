@@ -941,8 +941,35 @@ function uib_area__remove_area_aliases($node_nid) {
  *
  */
 function uib_area_node_insert($node) {
-  if ($node->type == 'area' && isset($node->path['alias'])) {
-    uib_area__create_area_aliases($node->nid, $node->path['alias'], $node->language);
+  if ($node->type == 'area') {
+    if (isset($node->path['alias'])) {
+      uib_area__create_area_aliases($node->nid, $node->path['alias'], $node->language);
+    }
+    // Create a unique menu for this area
+    if ($node->nid) {
+      $menu_machine_name = 'menu-area-' . $node->nid;
+      if (!empty($node->path['alias'])) {
+        $menu_title = 'area_' . str_replace('/', '_', $node->path['alias']);
+        if ($node->language == 'en') {
+          // Set suffix for English menus since nb and en aliases for different nodes may be the same
+          $menu_title .= '_en';
+        }
+      }
+      else {
+        // A way out if no alias was set: use the node id
+        $menu_title = 'area_' . $node->nid;
+      }
+      $menu_description = t('Menu for') . ' ' . $node->title;
+      if (!menu_load($menu_machine_name)) {
+        // Create new menu
+        $menu = array(
+          'menu_name' => $menu_machine_name,
+          'title' => $menu_title,
+          'description' => $menu_description,
+          );
+        menu_save($menu);
+      }
+    }
   }
 }
 
@@ -964,6 +991,11 @@ function uib_area_node_delete($node) {
   if ($node->type == 'area') {
     // remove uib area aliases
     uib_area__remove_area_aliases($node->nid);
+    // remove the menu for this area
+    $menu_machine_name = 'menu-area-' . $node->nid;
+    if ($menu = menu_load($menu_machine_name)) {
+      menu_delete($menu);
+    }
   }
 }
 

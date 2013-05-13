@@ -98,6 +98,7 @@ function drush_uib_area_split_menu() {
   $result = $query->execute();
   if ($result) {
     $nodes = entity_load('node', array_keys($result['node']));
+    $added_menus = array();
     foreach($nodes as $node) {
       $menu_machine_name = 'menu-area-' . $node->nid;
       $menu_title = 'area_' . str_replace('/', '_', drupal_get_path_alias("node/$node->nid", $node->language));
@@ -118,6 +119,7 @@ function drush_uib_area_split_menu() {
             'description' => $menu_description,
             );
           menu_save($menu);
+          $added_menus[] = $menu_machine_name;
 
           // Move the first level children
           $result = db_select('menu_links', 'n')
@@ -180,7 +182,24 @@ function drush_uib_area_split_menu() {
               );
             menu_link_save($new_child, $child);
           }
-       }
+        }
+      }
+    }
+    if (!empty($added_menus)) {
+      // add the menus to content (node) types uib_article and uib_testimonial
+      $content_types = array('uib_article', 'uib_testimonial');
+      foreach ($content_types as $content_type) {
+        $menu_options = variable_get("menu_options_$content_type");
+        if (empty($menu_options)) {
+          $menu_options = array();
+        }
+        // remove the old area menu if it is still on the list
+        $key = array_search('area', $menu_options);
+        if ($key !== FALSE) {
+          array_splice($menu_options, $key, 1);
+        }
+        $menu_options = array_merge($menu_options, $added_menus);
+        variable_set("menu_options_$content_type", $menu_options);
       }
     }
   }
