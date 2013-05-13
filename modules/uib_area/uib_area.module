@@ -11,16 +11,8 @@ include_once 'uib_area.features.inc';
  */
 function uib_area_menu_block_blocks() {
   return array(
-    'top-area-menu' => array(
-      'menu_name'   => 'area',
-      'title_link'  => FALSE,
-      'admin_title' => 'Top level area menu',
-      'depth'       => 2,
-      'expanded'    => 1,
-      'parent_mlid' => uib_area__get_menustart(),
-    ),
     'page-area-menu' => array(
-      'menu_name'   => 'area',
+      'menu_name'   => uib_area__get_current_menu(),
       'title_link'  => FALSE,
       'admin_title' => 'Page level area menu',
       'follow'      => 1,
@@ -192,14 +184,14 @@ function uib_area_block_view($delta='') {
       break;
     case 'node_children': // A block to display a list of teasers of children [nodes only] to current node
       $block['subject'] = "";
-      $menu_link = menu_link_get_preferred(uib_area__get_current_node(), 'area'); // get menu link of the current node
+      $menu_link = menu_link_get_preferred(uib_area__get_current_node(), uib_area__get_current_menu()); // get menu link of the current node
       if (empty($menu_link)) {
         $menu_link = uib_area__get_current_menu_link(); // get menu link of current area
       }
       if (empty($menu_link)) {
         return $block; // Returns an empty block if area is not in the Area menu
       }
-      $items = menu_navigation_links('area', $menu_link['depth']);
+      $items = menu_navigation_links(uib_area__get_current_menu(), $menu_link['depth']);
       if (!empty($items)) {
         foreach ($items as $menu_item) {
           $node_title = $menu_item['title'];
@@ -240,7 +232,7 @@ function uib_area_block_view($delta='') {
             }
              $children_classes_array = array('uib-child-teaser');
             // Check if the node has children
-            $child_menu_link = menu_link_get_preferred($menu_item['href'], 'area');
+            $child_menu_link = menu_link_get_preferred($menu_item['href'], uib_area__get_current_menu());
             if (! empty($child_menu_link)) {
               if ($child_menu_link['has_children']) {
                 $children_classes_array[] = 'uib-child-has-children';
@@ -648,6 +640,23 @@ function uib_area__get_current_nid() {
 }
 
 /**
+ * Find the menu to use for the current uib_area.
+ *
+ * @return [type] [description]
+ *   If no area node id is found, the function returns NULL.
+ */
+function uib_area__get_current_menu() {
+  $nid = uib_area__get_current_nid();
+  if (!empty($nid)) {
+    return "menu-area-$nid";
+  }
+  else {
+    return NULL;
+  }
+}
+
+
+/**
  * Find menu link for the current uib_area.
  *
  * @return [type] [description]
@@ -657,7 +666,7 @@ function uib_area__get_current_menu_link() {
   $ar = uib_area__get_current();
   if (! empty($ar)) {
     if (!empty($ar->nid)) {
-      $menu_link = menu_link_get_preferred('node/' . $ar->nid, 'area');
+      $menu_link = menu_link_get_preferred('node/' . $ar->nid, uib_area__get_current_menu());
       if (!empty($menu_link)) {
         return $menu_link;
       }
@@ -1037,4 +1046,24 @@ function uib_area_menu_local_tasks_alter(&$data, $router_item, $root_path) {
     $data['tabs'][0]['count'] = count($tabs);
     $data['tabs'][0]['output'] = $tabs;
   }
+
+/**
+ * Assemble the current area menu for display on a page
+ */
+function uib_area_area_menu() {
+  $area_menu = block_load('menu', uib_area__get_current_menu());
+  $area_menu->title = 'area menu';
+  $area_menu->region = 'navigation';
+  $am = _block_get_renderable_array(_block_render_blocks(array($area_menu,)));
+  // Cause nothing to happen when a user clicks on top level menu item
+  foreach ($am as $key => $item) {
+    if (strpos($key, 'menu-area') !== FALSE) {
+      foreach ($item as $mlink => $menu_item) {
+        if (is_numeric($mlink)) {
+          $am[$key][$mlink]['#href'] = current_path();
+        }
+      }
+    }
+  }
+  return $am;
 }

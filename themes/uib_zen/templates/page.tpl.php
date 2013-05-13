@@ -201,6 +201,8 @@
       <?php endif; ?>
 
       <?php print render($page['navigation']); ?>
+      <?php $area_menu = uib_area_area_menu(); ?>
+      <?php print render($area_menu); ?>
     </div><!-- /#navigation -->
   <?php endif; ?>
 
