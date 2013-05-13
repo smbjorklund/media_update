@@ -20,6 +20,7 @@ HTML = \
   w3_server_layout.html \
   man1/site-drush.html \
   man1/site-init.html \
+  man1/site-install.html \
   man1/site-uninstall.html \
 
 PYTHON = python
