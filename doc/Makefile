@@ -24,6 +24,7 @@ HTML = \
   man1/site-dump.html \
   man1/site-init.html \
   man1/site-install.html \
+  man1/site-open.html \
   man1/site-restore.html \
   man1/site-uninstall.html \
 
