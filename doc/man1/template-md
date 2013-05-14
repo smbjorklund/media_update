@@ -1,0 +1,22 @@
+# Name
+
+cmdname -- short abstract
+
+# Synopsis
+
+    cmdname [options]
+
+# Description
+
+Desribe what this command is all about.
+
+The following options are recognized:
+
+### --foo
+
+Turn on the foobricator.
+
+# See also
+
+[site-init](site-init.html)
+
