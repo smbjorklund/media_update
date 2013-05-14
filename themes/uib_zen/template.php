@@ -291,7 +291,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     }
     // Handle articles
     if ($variables['type'] == 'uib_article') {
-       if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
+      if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
         // Setup kicker
         // -- First determine which date to set
         $created = format_date($variables['node']->created, 'medium');
