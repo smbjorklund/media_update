@@ -81,3 +81,16 @@ function uib_migrate_update_7000() {
     }
   }
 }
+
+/**
+ * Clean up EP migration tables
+ */
+function uib_migrate_update_7001() {
+  db_delete('migrate_status')
+    ->condition('machine_name', array('EPagesNodes', 'EPagesMenuLinks'), 'in')
+    ->execute();
+  db_drop_table('migrate_message_epagesnodes');
+  db_drop_table('migrate_message_epagesmenulinks');
+  db_drop_table('migrate_map_epagesnodes');
+  db_drop_table('migrate_map_epagesmenulinks');
+}
