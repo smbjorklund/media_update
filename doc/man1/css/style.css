@@ -16,7 +16,7 @@ h3 {
   margin-bottom: 0;
 }
 
-h3 ~ p {
+h3 + p {
   margin-left: 4ex;
 }
 
