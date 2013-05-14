@@ -21,8 +21,10 @@ HTML = \
   man1/patches.html \
   man1/rts.html \
   man1/site-drush.html \
+  man1/site-dump.html \
   man1/site-init.html \
   man1/site-install.html \
+  man1/site-restore.html \
   man1/site-uninstall.html \
 
 PYTHON = python
