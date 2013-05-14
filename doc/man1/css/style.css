@@ -1,0 +1,25 @@
+@import url("../../css/style.css");
+
+h1 {
+  text-transform: uppercase;
+  margin-left: -4ex;
+  font-size: 1.2em;
+  margin-top: 2ex;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+h3 {
+  font-size: 1em;
+  margin-bottom: 0;
+}
+
+h3 + p {
+  margin-left: 4ex;
+}
+
+pre {
+  padding-left: 0;
+}

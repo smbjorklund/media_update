@@ -113,7 +113,8 @@ works.  You will get into the Drupal install dialog, which we will not use. We'l
 install the site from the command line instead:
 
     cd /tmp/w3.uib.no
-    bin/site-install w3.uib.local
+    bin/site-init --sqlite w3.uib.local
+    bin/site-install
     bin/site-drush pm-enable --yes uib_devel
 
 Then goto  <http://w3.uib.local> once more.  You should now see the empty front page
@@ -138,7 +139,7 @@ to such a database:
 - Install Postgres natively/locally (on OS X for instance using homebrew).
 
 Running with postgres locally is much faster if you have anything but a very
-fast connection to _glory_, that is if you are not connected to the UiB network
+fast connection to _glory_, that is if you are not wired to the UiB network
 directly.
 
 Select your preferred option above and make sure psql is able to connect to the
@@ -214,6 +215,7 @@ do, please ask:
     bin/site-drush fu
     bin/site-drush fr
 
+    bin/site-init
     bin/site-prod-reset
     bin/site-snapshot
     bin/site-snapshot pop

@@ -1,0 +1,38 @@
+#!/usr/bin/perl
+
+use File::Basename qw(dirname);
+chdir(dirname(__FILE__));
+open(STDOUT, ">index.html") || die;
+
+print STDOUT qx(cat ../tmpl/header.html);
+
+print "<h1>w3 scripts</h1>\n";
+
+print <<EOT;
+<style>
+dt { float: left; }
+dd { margin-left: 15ex; }
+dd:before { content: "— " }
+</style>
+EOT
+
+print "<dl>\n";
+for my $manpage (sort <*.md>) {
+    open(my $fh, "<", $manpage) || die;
+    $manpage =~ s/\.md$//;
+    my $abstract;
+    while (<$fh>) {
+	if (/^\Q$manpage\E -- (.*)/) {
+	    $abstract = $1;
+	    last;
+	}
+    }
+    close($fh);
+    warn "Can't extract abstract from $manpage.md" unless $abstract;
+    print "<dt><a href=$manpage.html>$manpage</a></dt><dd>$abstract</dd>\n";
+}
+print "</dl>\n";
+
+print "<p><a href=../>Back to the main index</a>\n";
+
+print STDOUT qx(cat ../tmpl/footer.html);

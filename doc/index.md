@@ -16,7 +16,6 @@ You should know these:
 
 * [The code repository](repo.html)
 * [Development setup](development-setup.html)
-* [How to get a copy of the production database](local-production.html)
 * [Reder Arrays](render-array.html)
 * [Hints that's good to know](hints.html)
 * [Git](git.html)
@@ -25,6 +24,7 @@ You should know these:
 
 ### The code
 
+* [Manpages  for commands](man1/)
 * [Repo README](repo-readme.html)
 * [Git](https://rts.uib.no/projects/w3/repository) and [cgit](https://git.uib.no/cgit/site/w3.uib.no.git/tree/)
 * [API docs](api/)

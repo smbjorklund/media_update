@@ -1,0 +1,177 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use File::Basename qw(basename);
+use Getopt::Long qw(GetOptions);
+
+die "Need to run from the root of the w3.uib.no repo" unless -f "drupal/index.php";
+
+my $opt_force;
+my $opt_fresh;
+my $opt_discard;
+my %DB;
+
+GetOptions(
+    'force' => \$opt_force,
+    'fresh' => \$opt_fresh,
+    'discard' => \$opt_discard,
+    'sqlite' => sub { $DB{driver} = 'sqlite' },
+    'postgres|pgsql' => sub { $DB{driver} = 'pgsql' },
+    'username=s' => \$DB{username},
+    'password=s' => \$DB{password},
+    'host=s' => \$DB{host},
+    'port=n' => \$DB{port},
+    'database=s' => \$DB{database},
+    'driver=s' => \$DB{driver},
+    'prefix=s' => \$DB{prefix},
+) || usage();
+
+usage() if @ARGV > 1;
+
+sub usage {
+    (my $progname = $0) =~ s,.*/,,;
+    die "Usage: $progname [options] [sitename]\n";
+}
+
+my $SITE = shift;
+if (!$SITE && !$opt_fresh) {
+    $SITE = readlink("site");
+    $SITE = basename($SITE) if $SITE;
+}
+$SITE ||= "w3.uib.9zlhb.xip.io";  # alias for 127.0.0.1.xip.io (aka localhost)
+die "Bad site name '$SITE'" if $SITE =~ /\s/;
+
+# Can we find the previous database settings
+if (!$DB{driver} && !$opt_fresh && -f "drupal/sites/$SITE/settings.php") {
+    open(my $fh, qq(php --run 'include "drupal/sites/$SITE/settings.php"; print_r(\$databases["default"]["default"]);' |)) || die;
+    while (<$fh>) {
+	$DB{$1} ||= $2 if /^\s*\[(\w+)\] => (.*)/;
+    }
+}
+
+$DB{driver} ||= 'pgsql';
+if ($DB{driver} eq 'pgsql') {
+    # Default database parameters
+    $DB{username} ||= $ENV{PGUSER} || 'user1';
+    $DB{password} ||= $ENV{PGPASS} || 'pass1';
+    $DB{port} ||= $ENV{PGPORT} || '5432';
+    $DB{host} ||= $ENV{PGHOST} || do {
+	require IO::Socket::INET;
+	IO::Socket::INET->new("localhost:$DB{port}") ? 'localhost' : 'glory.uib.no';
+    };
+    $DB{database} ||= $ENV{PGDATABASE} || ($DB{host} eq 'localhost' ? 'db1' : "$ENV{USER}-db1");
+}
+elsif ($DB{driver} eq "sqlite") {
+    require Cwd;
+    $DB{database} = Cwd::cwd() . "/drupal/sites/$SITE/files/db.sqlite";
+}
+elsif (!$DB{database}) {
+    die "Don't know about defaults for $DB{driver}\n";
+}
+
+if (-e "drupal/sites/$SITE") {
+    die "drupal/sites/$SITE already exists; use --force to reinitialize it\n" unless $opt_force || $opt_fresh;
+    my @uninstall = ("bin/site-uninstall");
+    push(@uninstall, "--discard") if $opt_discard;
+    system(@uninstall);
+    die "drupal/sites/$SITE did not uninstall properly" if -e "drupal/sites/$SITE";
+}
+
+mkdir("drupal/sites/$SITE", 0755) || die "Can't mkdir 'drupal/sites/$SITE': $!";
+unlink("site");
+symlink("drupal/sites/$SITE", "site") || die;
+print "Created 'drupal/sites/$SITE' (symlinked from 'site')\n";
+
+open(my $fh, ">site/settings.php") || die;
+if (-d "files") {
+    symlink("../../../files", "site/files");
+}
+else {
+    mkdir("site/files", 0777);
+    chmod(0777, "site/files");
+}
+print $fh "<?php\n\n";
+print $fh "\$databases['default']['default'] = array (\n";
+for my $k (sort keys %DB) {
+    print $fh "  '$k' => '$DB{$k}',\n" if defined $DB{$k};
+}
+print $fh ");\n\n";
+
+my $salt = '';
+for (1..60) {
+    $salt .= chr(ord('a') + rand(26));
+}
+
+print $fh <<EOT;
+\$update_free_access = FALSE;
+\$drupal_hash_salt = '$salt';
+ini_set('memory_limit', '640M');
+ini_set('session.gc_probability', 1);
+ini_set('session.gc_divisor', 100);
+ini_set('session.gc_maxlifetime', 200000);
+ini_set('session.cookie_lifetime', 2000000);
+\$conf['404_fast_paths_exclude'] = '/\/(?:styles)\//';
+\$conf['404_fast_paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
+\$conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "\@path" was not found on this server.</p></body></html>';
+EOT
+
+unless (-d "var/private") {
+    mkdir("var", 0755);
+    mkdir("var/private", 0777) || die "Can't mkdir 'var/private': $!";
+    print "Created 'var/private'\n";
+}
+
+symlink("../../../etc/drushrc.php", "drupal/sites/$SITE/drushrc.php");
+
+unless (-f "drupal/default/settings.php") {
+    open(my $fh, ">", "drupal/sites/default/settings.php") || die;
+    print $fh <<"EOT";
+No default site.  You need to visit <a href="http://$SITE">$SITE</a> instead.
+<?php
+exit;
+EOT
+}
+
+my $sqlsh = qx(bin/site-drush sql-connect --verbose=0);
+chomp($sqlsh);
+
+if ($DB{driver} eq "pgsql") {
+    # Is there a suitable entry in .pgpass
+    my $pgpass_file = "$ENV{HOME}/.pgpass";
+    my $pgpass_line = "$DB{host}:$DB{port}:*:$DB{username}:$DB{password}";
+
+    # Can we find an existing matching entry in ~/.pgpass
+    if (open(my $fh, $pgpass_file)) {
+	while (<$fh>) {
+	    chomp;
+	    s/\*/[^:]+/g;
+	    if ($pgpass_line =~ /^$_$/) {
+		undef($pgpass_line);
+		last;
+	    }
+	}
+    }
+
+    if ($pgpass_line) {
+	open(my $fh, ">>", $pgpass_file) || die "Can't append to $pgpass_file: $!";
+	print $fh "$pgpass_line\n";
+	close($fh) || die;
+	chmod(0600, $pgpass_file);
+	print "Appended '$pgpass_line' to your $pgpass_file\n";
+    }
+
+    # Can we connect to the database
+    my $out = qx(echo "SELECT 'yup!'" | $sqlsh -t -w 2>&1);
+    if ($?) {
+	chomp($out);
+	die "Failed to connect to the database with '$sqlsh'\n$out" unless $out =~ /database \"$DB{database}\" does not exist/;
+	(my $psql_postgres = $sqlsh) =~ s/--dbname=\Q$DB{database}/--dbname=postgres/ || die;
+	open(my $fh, "| $psql_postgres -e -w") || die;
+	print $fh qq(CREATE DATABASE "$DB{database}" TEMPLATE template0 ENCODING 'UTF-8';\n);
+	close($fh);
+    }
+}
+print "Connect with '$sqlsh'\n";
+print "http://$SITE\n";

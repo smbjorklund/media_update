@@ -9,7 +9,6 @@ HTML = \
   git.html \
   hints.html \
   index.html \
-  local-production.html \
   release1.html \
   render-array.html \
   repo-readme.html \
@@ -19,6 +18,17 @@ HTML = \
   style.html \
   terms.html \
   w3_server_layout.html \
+  man1/patches.html \
+  man1/rts.html \
+  man1/site-drush.html \
+  man1/site-dump.html \
+  man1/site-init.html \
+  man1/site-install.html \
+  man1/site-open.html \
+  man1/site-prod-reset.html \
+  man1/site-restore.html \
+  man1/site-uninstall.html \
+  man1/site-upgrade.html \
 
 PYTHON = python
 PERL = perl
@@ -30,10 +40,13 @@ BOOTSTRAP_PY = bootstrap.py
 .md.html:
 	bin/python htmlify.py $< >$@
 
-all: bin/python $(HTML) mockups/index.html
+all: bin/python $(HTML) mockups/index.html man1/index.html
 
 mockups/index.html: mockups/mkindex
 	$(PERL) mockups/mkindex
+
+man1/index.html: man1/mkindex
+	$(PERL) man1/mkindex
 
 bin/python: bin/buildout
 	bin/buildout
@@ -49,6 +62,8 @@ makefile:
 
 clean:
 	rm -f $(HTML)
+	rm -f man1/index.html
+	rm -f mockups/index.html
 
 realclean: clean
 	rm -f bin/buildout bin/python
