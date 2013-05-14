@@ -25,8 +25,10 @@ HTML = \
   man1/site-init.html \
   man1/site-install.html \
   man1/site-open.html \
+  man1/site-prod-reset.html \
   man1/site-restore.html \
   man1/site-uninstall.html \
+  man1/site-upgrade.html \
 
 PYTHON = python
 PERL = perl
