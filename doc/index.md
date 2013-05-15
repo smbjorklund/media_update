@@ -9,6 +9,7 @@ You should know these:
 
 ### Specifications and plans
 
+* [Release notes](release-notes.html)
 * [Area regions and fields](area.html)
 * [Mockups](mockups/)
 
