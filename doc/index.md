@@ -4,7 +4,7 @@
 
 You should know these:
 
-* [Coding style](style.html)
+* [Coding style](style.html); [CSS style](css-retningslinjer.html)
 * [Terminology](terms.html)
 
 ### Specifications and plans
@@ -35,6 +35,14 @@ You should know these:
 * [Piwik stats](http://stats.uib.no/)
 * [Awstats](http://overvakning.app.uib.no/awstats/awstats.pl?output=main&config=www.uib.no)
 * [Munin](http://overvakning.app.uib.no/w3_hist.php?limit=2)
+
+### Misc
+
+* [How to upgrade Drupal on w3.uib.no](drupal-update.html)
+* [Production server layout](w3_server_layout.html)
+* [Production setup](server-setup.html)
+* [Course server setup](course_site-w3-kurs.uib.no.html)
+  and [syncing](drupal-sync-course-site.html)
 
 ### Stale stuff
 

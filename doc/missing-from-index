@@ -1,0 +1,27 @@
+#!/usr/bin/env perl
+
+# This script just prints the documents in the directory that's not
+# linked from the index.md file.
+
+use strict;
+use warnings;
+
+my %href;
+$href{'index.md'}++;
+
+open(my $fh, "<", "index.md") || die;
+while (<$fh>) {
+    while (/]\(([^)]+)\)/g) {
+	my $href = $1;
+	next if $href =~ /^https?:/;
+	$href =~ s/\.html$/.md/;
+	$href{$href}++;
+    }
+}
+
+#use Data::Dump; dd \%href;
+
+for (glob("*.md")) {
+    print "$_\n" unless $href{$_};
+}
+
