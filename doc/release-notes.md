@@ -1,3 +1,7 @@
+# Release 2013-05-15 tag:R1.4.2
+
+Logoen til [Grieg akademiet](http://www.uib.no/grieg) var blitt feilplassert i releasen fra 13. mai.
+
 # Release 2013-05-13 tag:R1.4.1
 
 Release mandag 13. mai inneholdt både nyutvikling, justeringer og feilrettinger. Her er en oversikt over hva som ble gjort:
