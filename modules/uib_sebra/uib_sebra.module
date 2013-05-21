@@ -102,6 +102,7 @@ function uib_sebra__sync_areas() {
   $query = $query
     ->entityCondition('entity_type', 'node')
     ->propertyCondition('type', 'area')
+    ->fieldOrderBy('field_uib_sebra_id', 'value')
     ;
   $result = $query->execute();
 
@@ -112,71 +113,66 @@ function uib_sebra__sync_areas() {
     $edit_p = FALSE;
     $area = node_load($nid);
 
-    if (isset($area->field_uib_sebra_id['und'])) {
-      $sebra_id = $area->field_uib_sebra_id['und'][0]['value'];
-      if (isset($seen_sebra_id[$sebra_id])) {
-        // we can skip this one since all the fields we update are shared
-        // between the translations.
-        continue;
-      }
-      $seen_sebra_id[$sebra_id] = 1;
-      $area_doc = uib_sebra__sws_get("omraader?omraadekode=$sebra_id");
-      if (empty($area_doc)) {
-        uibx_log("Can't get $sebra_id", 'error');
-      }
-      uib_sebra__sync_jobbnorge_id($area, $area_doc);
-      $staff = array();
-      if (isset($area_doc->omraade)) {
-        foreach ($area_doc->omraade->visninger->uibid as $uname) {
-          $account = user_load_by_name($uname);
-          if (!$account) {
-            $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id staff");
-            if (!$account) {
-              continue;
-            }
-          }
-          $staff['und'][]['target_id'] = $account->uid;
-        }
-      }
-      else {
-        uibx_log("Sebra area $sebra_id empty", 'warning');
-      }
-      if (!isset($area->field_uib_staff) || $area->field_uib_staff != $staff) {
-        $area->field_uib_staff = $staff;
-        $edit_p = TRUE;
-        uibx_log("Updating staff setting area /node/$nid");
-      }
-      else {
-        $staff_unchanged++;
-      }
-
-      $content_manager = array();
-      $area_roles = uib_sebra__get_area_roles($all_area_roles, $sebra_id);
-      foreach ($area_roles as $uname) {
+    $sebra_id = $area->field_uib_sebra_id['und'][0]['value'];
+    if (isset($seen_sebra_id[$sebra_id])) {
+      // we can skip this one since all the fields we update are shared
+      // between the translations.
+      continue;
+    }
+    $seen_sebra_id[$sebra_id] = 1;
+    $area_doc = uib_sebra__sws_get("omraader?omraadekode=$sebra_id");
+    if (empty($area_doc)) {
+      uibx_log("Can't get $sebra_id", 'error');
+    }
+    uib_sebra__sync_jobbnorge_id($area, $area_doc);
+    $staff = array();
+    if (isset($area_doc->omraade)) {
+      foreach ($area_doc->omraade->visninger->uibid as $uname) {
         $account = user_load_by_name($uname);
         if (!$account) {
-          $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id roles");
+          $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id staff");
           if (!$account) {
             continue;
           }
         }
-        $content_manager['und'][]['target_id'] = $account->uid;
+        $staff['und'][]['target_id'] = $account->uid;
       }
-      if (!isset($area->field_uib_content_manager) || $area->field_uib_content_manager != $content_manager) {
-        $area->field_uib_content_manager = $content_manager;
-        $edit_p = TRUE;
-        uibx_log("Updating content_manager setting area /node/$nid");
-      }
-      else {
-        $content_manager_unchanged++;
-      }
+    }
+    else {
+      uibx_log("Sebra area $sebra_id empty", 'warning');
+    }
+    if (!isset($area->field_uib_staff) || $area->field_uib_staff != $staff) {
+      $area->field_uib_staff = $staff;
+      $edit_p = TRUE;
+      uibx_log("Updating staff setting area /node/$nid");
+    }
+    else {
+      $staff_unchanged++;
+    }
 
-      if ($edit_p)
-        node_save($area);
+    $content_manager = array();
+    $area_roles = uib_sebra__get_area_roles($all_area_roles, $sebra_id);
+    foreach ($area_roles as $uname) {
+      $account = user_load_by_name($uname);
+      if (!$account) {
+        $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id roles");
+        if (!$account) {
+          continue;
+        }
+      }
+      $content_manager['und'][]['target_id'] = $account->uid;
     }
-    elseif (substr($area->title, 0, 13) != 'Area stub for') {
-      uibx_log("No sebra_id for /node/$nid", 'warning');
+    if (!isset($area->field_uib_content_manager) || $area->field_uib_content_manager != $content_manager) {
+      $area->field_uib_content_manager = $content_manager;
+      $edit_p = TRUE;
+      uibx_log("Updating content_manager setting area /node/$nid");
     }
+    else {
+      $content_manager_unchanged++;
+    }
+
+    if ($edit_p)
+      node_save($area);
   }
   uibx_log("staff attribute unchanged for $staff_unchanged areas");
   uibx_log("content_manager attribute unchanged for $content_manager_unchanged areas");
