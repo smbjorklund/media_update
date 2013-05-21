@@ -26,7 +26,8 @@ bin/pg_error_report --ignore-drop site/pg.out
 rm -rf drupal/sites/w3.uib.no
 ln -s $SITE drupal/sites/w3.uib.no
 
-git checkout prod || exit 1;
+git fetch
+git checkout origin/prod || exit 1;
 git submodule update
 compass compile --force themes/uib_zen
 bin/site-drush cc all
