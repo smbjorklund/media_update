@@ -1,5 +1,5 @@
-name = UIB Webdesk
-description = UIB editorial interface
+name = UiB webdesk
+description = UiB editorial interface
 core = 7.x
 package = UiB
 php = 5.2.4

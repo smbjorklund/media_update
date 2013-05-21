@@ -624,14 +624,14 @@ function uib_webdesk_views_default_views() {
   $view->description = '';
   $view->tag = 'webdesk';
   $view->base_table = 'node';
-  $view->human_name = 'UIB webdesk';
+  $view->human_name = 'UiB webdesk';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'UIB webdesk';
+  $handler->display->display_options['title'] = 'UiB webdesk';
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'mer';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -1797,7 +1797,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['path'] = 'webdesk/all-content';
   $translatables['uib_webdesk'] = array(
     t('Master'),
-    t('UIB webdesk'),
+    t('UiB webdesk'),
     t('mer'),
     t('Bruk'),
     t('Nullstill'),

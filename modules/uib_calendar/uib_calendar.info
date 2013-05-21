@@ -1,4 +1,4 @@
-name = UIB_calendar
+name = UiB calendar
 description = Calendar listings and formats
 core = 7.x
 package = UiB

@@ -1,4 +1,4 @@
-name = "UIB Migrate w2"
+name = "UiB Migrate w2"
 description = "Migrate data from w2, tempsite for employee-pages"
 package = UiB
 core = 7.x

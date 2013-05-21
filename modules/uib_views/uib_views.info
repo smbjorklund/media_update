@@ -1,5 +1,5 @@
-name = UIB Views overrides
-description = Collection of UIB specific Views overrides.
+name = UiB Views overrides
+description = Collection of UiB specific Views overrides.
 core = 7.x
 package = UiB
 dependencies[] = ctools

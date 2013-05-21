@@ -13,7 +13,7 @@ function uib_webdesk_default_page_manager_pages() {
   $page->api_version = 1;
   $page->name = 'uib_webdesk';
   $page->task = 'page';
-  $page->admin_title = 'UIB webdesk';
+  $page->admin_title = 'UiB webdesk';
   $page->admin_description = '';
   $page->path = 'webdesk/all';
   $page->access = array(
@@ -100,7 +100,7 @@ function uib_webdesk_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'UIB webdesk';
+  $display->title = 'UiB webdesk';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -231,7 +231,7 @@ function uib_webdesk_default_page_manager_pages() {
   $page->api_version = 1;
   $page->name = 'uib_webdesk_user';
   $page->task = 'page';
-  $page->admin_title = 'UIB webdesk user';
+  $page->admin_title = 'UiB webdesk user';
   $page->admin_description = '';
   $page->path = 'webdesk/my';
   $page->access = array(
@@ -313,7 +313,7 @@ function uib_webdesk_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'UIB webdesk';
+  $display->title = 'UiB webdesk';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();

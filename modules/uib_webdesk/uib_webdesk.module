@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the UIB webdesk feature.
+ * Code for the UiB webdesk feature.
  */
 
 include_once 'uib_webdesk.features.inc';

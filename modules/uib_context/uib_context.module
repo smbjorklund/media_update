@@ -37,7 +37,7 @@ function uib_context_context_registry() {
   $registry = array();
   $registry['conditions'] = array(
     'area' => array(
-      'title' => t('UIB area'),
+      'title' => t('UiB area'),
       'description' => t('Content type not to check.'),
       'plugin' => 'uib_area',
     ),
@@ -45,7 +45,7 @@ function uib_context_context_registry() {
 
   $registry['reactions'] = array(
     'areaid' => array(
-      'title' => t('UIB area'),
+      'title' => t('UiB area'),
       'plugin' => 'uib_area_reaction',
     ),
   );

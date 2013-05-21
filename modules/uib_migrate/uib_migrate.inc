@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * UIB w2 -> w3 migration code.
+ * UiB w2 -> w3 migration code.
  */
 
 function xtopic_cleanup($text) {

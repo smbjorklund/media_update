@@ -1,4 +1,4 @@
-name = UIB Development support
+name = UiB Development support
 description = Add stuff that make it easier to inspect the system
 core = 7.x
 package = UiB

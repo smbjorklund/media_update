@@ -5,7 +5,7 @@
  */
 class uib_area_reaction extends context_reaction {
   function options_form($context) {
-    return array('UIB Area' => array('#type' => 'value', '#value' => TRUE));
+    return array('UiB Area' => array('#type' => 'value', '#value' => TRUE));
   }
 
   function options_form_submit($values) {
