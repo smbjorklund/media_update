@@ -223,6 +223,13 @@ function uib_zen_preprocess_page(&$variables, $hook) {
       }
     }
   }
+
+  if (strlen($variables['page_title']) > 47 && !empty($variables['custom_logo'])) {
+    $variables['uib_long_page_title'] = TRUE;
+  }
+  elseif (strlen($variables['page_title']) > 65 && empty($variables['custom_logo'])) {
+    $variables['uib_long_page_title'] = TRUE;
+  }
 }
 
 /**

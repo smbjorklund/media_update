@@ -144,7 +144,7 @@
           <?php if ($logo): ?>
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo large-screens"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
           <?php endif; ?>
-          <h1 class="site-name"><?php print $page_title_link; ?></h1>
+          <h1 class="site-name<?php print $uib_long_page_title ? ' long-page-title' : ''; ?><?php print $custom_logo ? ' custom-logo' : ''; ?>"><?php print $page_title_link; ?></h1>
           <?php if ($site_slogan): ?>
             <h2 id="site-slogan"><?php print $site_slogan; ?></h2>
           <?php endif; ?>
