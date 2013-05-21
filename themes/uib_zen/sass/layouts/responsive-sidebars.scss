@@ -1264,6 +1264,7 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-owner, .field-name-field-uib-copyright, .field-name-field-uib-description {
     @include zen-clear();
+    padding-left: 10px;
   }
 
   .field-name-field-uib-secondary-text {

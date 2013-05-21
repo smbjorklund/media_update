@@ -332,10 +332,24 @@
 
 .group-article-sidebar .field-name-field-uib-copyright .field-label, .field-name-field-uib-owner .field-label {
   margin: 0;
+  border: none;
+  width: auto;
+  text-transform: none;
+  color: #000;
+  font-size: inherit;
+  font-weight: bold;
 }
 
 .group-article-sidebar .field-name-field-uib-copyright .field-items, .field-name-field-uib-owner .field-items {
   margin: 0;
+  width: auto;
+}
+.field-name-field-uib-media .content {
+  background: $light-grey;
+  margin: 10px 0 0;
+  padding: 0 0 10px;
+  font-size: .9em;
+  line-height: 1.4;
 }
 
 
