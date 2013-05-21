@@ -23,3 +23,10 @@ function uib_setup_install() {
 function uib_setup_update_7000() {
   module_enable(array('uib_urlfilter'));
 }
+
+/**
+ * Disable _ui modules
+ */
+function uib_setup_update_7001() {
+  module_disable(array('context_ui', 'field_ui', 'migrate_ui'));
+}

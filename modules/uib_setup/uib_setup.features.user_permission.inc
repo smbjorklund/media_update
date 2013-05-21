@@ -172,15 +172,6 @@ function uib_setup_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: administer contexts.
-  $permissions['administer contexts'] = array(
-    'name' => 'administer contexts',
-    'roles' => array(
-      0 => 'admin',
-    ),
-    'module' => 'context_ui',
-  );
-
   // Exported permission: administer entity translation.
   $permissions['administer entity translation'] = array(
     'name' => 'administer entity translation',
