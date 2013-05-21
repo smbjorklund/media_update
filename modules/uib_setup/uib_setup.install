@@ -30,3 +30,10 @@ function uib_setup_update_7000() {
 function uib_setup_update_7001() {
   module_disable(array('context_ui', 'field_ui', 'migrate_ui'));
 }
+
+/**
+ * Disable coder modules
+ */
+function uib_setup_update_7002() {
+  module_disable(array('coder', 'coder_review'));
+}

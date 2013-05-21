@@ -1589,20 +1589,6 @@ function uib_setup_user_default_permissions() {
     'module' => 'view_unpublished',
   );
 
-  // Exported permission: view code review.
-  $permissions['view code review'] = array(
-    'name' => 'view code review',
-    'roles' => array(),
-    'module' => 'coder_review',
-  );
-
-  // Exported permission: view code review all.
-  $permissions['view code review all'] = array(
-    'name' => 'view code review all',
-    'roles' => array(),
-    'module' => 'coder_review',
-  );
-
   // Exported permission: view files.
   $permissions['view files'] = array(
     'name' => 'view files',
