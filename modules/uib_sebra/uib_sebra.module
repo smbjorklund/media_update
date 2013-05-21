@@ -107,12 +107,19 @@ function uib_sebra__sync_areas() {
 
   $staff_unchanged = 0;
   $content_manager_unchanged = 0;
+  $seen_sebra_id = array();
   foreach (array_keys($result['node']) as $nid) {
     $edit_p = FALSE;
     $area = node_load($nid);
 
     if (isset($area->field_uib_sebra_id['und'])) {
       $sebra_id = $area->field_uib_sebra_id['und'][0]['value'];
+      if (isset($seen_sebra_id[$sebra_id])) {
+        // we can skip this one since all the fields we update are shared
+        // between the translations.
+        continue;
+      }
+      $seen_sebra_id[$sebra_id] = 1;
       $area_doc = uib_sebra__sws_get("omraader?omraadekode=$sebra_id");
       if (empty($area_doc)) {
         uibx_log("Can't get $sebra_id", 'error');
