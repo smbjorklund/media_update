@@ -360,6 +360,20 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         }
         $variables['content']['group_article_main']['uib_news_byline']['#suffix'] = '<div class="uib-news-byline-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-news-byline-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
       }
+      elseif ($variables['node']->field_uib_article_type['und'][0]['value'] = 'event') {
+        if (empty($variables['node']->field_uib_kicker['und'][0]['value'])) {
+          $event_type_machine_name = $variables['node']->field_uib_event_type['und'][0]['value'];
+          $event_type_default = field_info_field('field_uib_event_type')['settings']['allowed_values'][$event_type_machine_name];
+          $event_type = i18n_string_translate('field:field_uib_event_type:#allowed_values:' . $event_type_machine_name, $event_type_default);
+          $variables['node']->field_uib_kicker['und'][0] = array(
+            'value' => $event_type,
+            'format' => NULL,
+            'safe_value' => $event_type
+          );
+          $field_uib_kicker = field_view_field('node', $variables['node'], 'field_uib_kicker', array('label' => 'hidden'), $variables['language']);
+          $variables['content']['field_uib_kicker'] = $field_uib_kicker;
+        }
+      }
       else {
         // In articles of other types than 'news': Ensure that no byline is shown
         if (!empty($variables['content']['field_uib_byline'])) {
