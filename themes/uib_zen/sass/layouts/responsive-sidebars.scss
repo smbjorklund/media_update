@@ -1224,7 +1224,7 @@ $zen-auto-include-item-base: false;
   }
 
   #navigation {
-    @include zen-grid-item(5, 1)
+    @include zen-grid-item(5, 1);
   }
 
   #top-region-wrapper {
