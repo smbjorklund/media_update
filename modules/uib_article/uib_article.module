@@ -74,9 +74,9 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
     if (empty($form['nid']['#value'])) {
       // For new articles (but not infopages), add anti-bubbling checkbox
       $form['anti_bubbling'] = array(
-        '#title' => t('Do not show on other areas'),
+        '#title' => t('Do not show on parent areas.'),
         '#type' => 'checkbox',
-        '#description' => t('Check this if you do not want this article to automatically show on other areas'),
+        '#description' => t('Check this if you do not want this article to automatically show on other areas. You will still be able to add other areas later.'),
         '#weight' => 6,
         // Do not show when infopage article type is selected
         '#states' => array(
