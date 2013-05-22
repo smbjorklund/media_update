@@ -363,7 +363,8 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       elseif ($variables['node']->field_uib_article_type['und'][0]['value'] = 'event') {
         if (empty($variables['node']->field_uib_kicker['und'][0]['value'])) {
           $event_type_machine_name = $variables['node']->field_uib_event_type['und'][0]['value'];
-          $event_type_default = field_info_field('field_uib_event_type')['settings']['allowed_values'][$event_type_machine_name];
+          $event_type_info = field_info_field('field_uib_event_type');
+          $event_type_default = $event_type_info['settings']['allowed_values'][$event_type_machine_name];
           $event_type = i18n_string_translate('field:field_uib_event_type:#allowed_values:' . $event_type_machine_name, $event_type_default);
           $variables['node']->field_uib_kicker['und'][0] = array(
             'value' => $event_type,
