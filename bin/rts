@@ -94,7 +94,6 @@ sub do_update {
 
     my $u = URI->new('https://rts.uib.no');
     $u->path("issues.json");
-    $u->query_param(project_id => 'w3');
     $u->query_param(limit => 999);
 
     my $fh;
@@ -110,42 +109,45 @@ sub do_update {
     my @closed_issues = $OPT{full} ? () : (grep !$_->{open}, eval { _get_issues() });
 
     my @all_issues;
-    for my $status (qw(open closed)) {
-	next if $status eq "closed" && @closed_issues;
+    for my $project (qw(w3 w3-ideas)) {
+	for my $status (qw(open closed)) {
+	    next if $status eq "closed" && @closed_issues;
 
-	$u->query_param(status_id => $status);
-	my $total_count;
-	my $offset = 0;
-	do {
-	    $u->query_param('offset' => $offset);
+	    $u->query_param(project_id => $project);
+	    $u->query_param(status_id => $status);
+	    my $total_count;
+	    my $offset = 0;
+	    do {
+		$u->query_param('offset' => $offset);
 
-	    my $res = $ua->get($u);
-	    die $res->status_line unless $res->is_success;
+		my $res = $ua->get($u);
+		die $res->status_line unless $res->is_success;
 
-	    my $data = from_json($res->content);
+		my $data = from_json($res->content);
 
-	    $total_count = $data->{total_count}
-		unless defined $total_count;
+		$total_count = $data->{total_count}
+		    unless defined $total_count;
 
-	    my $issues = delete $data->{issues};
-	    for my $issue (@$issues) {
-		$issue->{open} = $status eq "open";
-		for my $k (keys %$issue) {
-		    if (ref($issue->{$k}) eq "HASH" && exists $issue->{$k}{name}) {
-			$issue->{$k} = $issue->{$k}{name};
+		my $issues = delete $data->{issues};
+		for my $issue (@$issues) {
+		    $issue->{open} = $status eq "open";
+		    for my $k (keys %$issue) {
+			if (ref($issue->{$k}) eq "HASH" && exists $issue->{$k}{name}) {
+			    $issue->{$k} = $issue->{$k}{name};
+			}
+		    }
+		    for my $f (@{delete $issue->{custom_fields} || []}) {
+			my $k = $f->{name};
+			$k =~ s/ /_/g;
+			$k = "x_$k";
+			$issue->{$k} = $f->{value};
 		    }
 		}
-		for my $f (@{delete $issue->{custom_fields} || []}) {
-		    my $k = $f->{name};
-		    $k =~ s/ /_/g;
-		    $k = "x_$k";
-		    $issue->{$k} = $f->{value};
-		}
-	    }
-	    push(@all_issues, @$issues);
-	    $offset += @$issues;
-	    printf STDERR "%-6s %3.0f%%\r", $status, 100*$offset/$total_count if $total_count;
-	} while $offset < $total_count;
+		push(@all_issues, @$issues);
+		$offset += @$issues;
+		printf STDERR "%-6s %3.0f%%\r", $status, 100*$offset/$total_count if $total_count;
+	    } while $offset < $total_count;
+	}
     }
     push(@all_issues, @closed_issues) if @closed_issues;
 
