@@ -27,7 +27,7 @@ function uib_sebra__sws_get($path) {
   $url = uib_sebra__sws_url($path);
   uibx_log('GET ' . $url);
   $contents = file_get_contents($url);
-  if ($contents == "\nNo data\n")
+  if (preg_match("/^\s*No data(?:\n|$)/i", $contents))
     return NULL;
   $object = simplexml_load_string($contents);
   return $object;
