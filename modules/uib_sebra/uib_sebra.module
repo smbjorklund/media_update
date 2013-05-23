@@ -401,7 +401,7 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
       $edit['mail'] = $u->email;
     if ($account->status != 1) {
       $edit['status'] = 1;
-      uibx_log("User was blocked");
+      uibx_log("$account->name unblocked");
     }
     if ($account->field_uib_first_name['und'][0]['value'] != $u->first_name)
       $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
