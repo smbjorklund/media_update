@@ -289,6 +289,7 @@ function uib_sebra__sync_users($limit, $do_block=FALSE) {
     ->fieldCondition('field_uib_user_domain', 'value', 'uib', '=');
   $result = $query->execute();
   $active_count = 0;
+  $blocked_count = 0;
   foreach (array_keys($result['user']) as $uid) {
     $account = user_load($uid);
     if (isset($users[$account->name])) {
@@ -308,16 +309,17 @@ function uib_sebra__sync_users($limit, $do_block=FALSE) {
           'status' => 0, // BLOCKED
         ));
         uibx_log("$account->name blocked");
+        $blocked_count++;
       }
       else {
         uibx_log("$account->name would be blocked");
       }
     }
     else {
-      uibx_log("$account->name is still blocked");
+      $blocked_count++;
     }
   }
-  uibx_log("$active_count uib-accounts are still active");
+  uibx_log("$active_count active and $blocked_count blocked uib-accounts");
 }
 
 /**
