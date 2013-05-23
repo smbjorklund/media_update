@@ -400,7 +400,7 @@ sub count_cherries {
     }
     my $all = $picked + $unpicked;
     unless (wantarray) {
-	return 0 unless $all;
+	return "0/0" unless $all;
 	return "$picked/$all";
     }
     return $picked, $all;
