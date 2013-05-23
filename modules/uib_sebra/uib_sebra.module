@@ -2,6 +2,10 @@
 
 function uib_sebra__sync_places($limit) {
   $places = uib_sebra__sws_get('places?status=aktiv');
+  if (empty($places)) {
+    uibx_log('Sebra claims no active places', 'error');
+    return;
+  }
 
   foreach ($places->place as $place) {
     $place_id = (string)$place->code;
@@ -100,6 +104,10 @@ function uib_sebra__create_uib_ou($place_id) {
 function uib_sebra__sync_areas() {
   // fetch all roles for all areas
   $all_area_roles = uib_sebra__sws_get('omraaderoller');
+  if (empty($all_area_roles)) {
+    uibx_log('Sebra claims there are no area roles, aborting area sync', 'error');
+    return;
+  }
 
   $query = new EntityFieldQuery;
   $query = $query
@@ -125,24 +133,20 @@ function uib_sebra__sync_areas() {
     $seen_sebra_id[$sebra_id] = 1;
     $area_doc = uib_sebra__sws_get("omraader?omraadekode=$sebra_id");
     if (empty($area_doc)) {
-      uibx_log("Can't get $sebra_id", 'error');
+      uibx_log("Can't get area $sebra_id", 'error');
+      continue;
     }
     uib_sebra__sync_jobbnorge_id($area, $area_doc);
     $staff = array();
-    if (isset($area_doc->omraade)) {
-      foreach ($area_doc->omraade->visninger->uibid as $uname) {
-        $account = user_load_by_name($uname);
+    foreach ($area_doc->omraade->visninger->uibid as $uname) {
+      $account = user_load_by_name($uname);
+      if (!$account) {
+        $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id staff");
         if (!$account) {
-          $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id staff");
-          if (!$account) {
-            continue;
-          }
+          continue;
         }
-        $staff['und'][]['target_id'] = $account->uid;
       }
-    }
-    else {
-      uibx_log("Sebra area $sebra_id empty", 'warning');
+      $staff['und'][]['target_id'] = $account->uid;
     }
     if (!isset($area->field_uib_staff) || $area->field_uib_staff != $staff) {
       $area->field_uib_staff = $staff;
@@ -335,6 +339,9 @@ function uib_sebra__get_persons($type) {
   if ($type)
     $persons_url .= "?type=$type";
   $persons = uib_sebra__sws_get($persons_url);
+  if (empty($persons)) {
+    throw new Exception("No users returned by sws/$persons_url");
+  }
   $uids = array();
   foreach ($persons->person as $p) {
     $uids[] = (string)$p->id;
