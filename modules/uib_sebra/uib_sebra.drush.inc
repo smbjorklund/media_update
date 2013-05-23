@@ -30,6 +30,7 @@ function uib_sebra_drush_command() {
     'arguments' => array(),
     'options' => array(
       'limit' => 'Only process this many users before terminating',
+      'block' => 'Block users that are not present in Sebra',
     ),
   );
   $items['uib-sebra-user'] = array(
@@ -72,7 +73,8 @@ function drush_uib_sebra_user($user) {
 
 function drush_uib_sebra_users() {
   $limit = (int)drush_get_option('limit', 5);
-  uib_sebra__sync_users($limit);
+  $block = drush_get_option('block', FALSE);
+  uib_sebra__sync_users($limit, $block);
 }
 
 function drush_uib_sebra_areadiff() {

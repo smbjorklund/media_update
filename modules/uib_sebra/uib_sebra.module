@@ -250,7 +250,7 @@ function uib_sebra__sync_jobbnorge_id($area, $area_doc) {
  * Syncing with a $limit of 0 means unlimited and will take a long time.
  */
 
-function uib_sebra__sync_users($limit) {
+function uib_sebra__sync_users($limit, $do_block=FALSE) {
   $users = array_merge(
     uib_sebra__get_persons('staff'),
     uib_sebra__get_persons('extern')
@@ -303,10 +303,15 @@ function uib_sebra__sync_users($limit) {
       }
     }
     elseif ($account->status != 0) {
-      user_save($account, array(
-        'status' => 0, // BLOCKED
-      ));
-      uibx_log("$account->name blocked");
+      if ($do_block) {
+        user_save($account, array(
+          'status' => 0, // BLOCKED
+        ));
+        uibx_log("$account->name blocked");
+      }
+      else {
+        uibx_log("$account->name would be blocked");
+      }
     }
     else {
       uibx_log("$account->name is still blocked");
