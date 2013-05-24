@@ -11,10 +11,11 @@ include_once 'uib_webdesk.features.inc';
 */
 function uib_webdesk_admin_menu_output_alter(&$content) {
   global $user;
-    if ( (in_array('level 2', $user->roles, TRUE)) || (in_array('level 3', $user->roles, TRUE)) ) {
+  if ( (in_array('level 2', $user->roles, TRUE)) || (in_array('level 3', $user->roles, TRUE)) ) {
     // Do not let users at level 2 and level 3 see these admin menu items
     $content['menu']['admin/help']['#access'] = FALSE;
     $content['menu']['admin/index']['#access'] = FALSE;
+    $content['menu']['admin/structure']['#access'] = FALSE;
   }
 }
 
