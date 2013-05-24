@@ -15,7 +15,9 @@ function uib_webdesk_admin_menu_output_alter(&$content) {
     // Do not let users at level 2 and level 3 see these admin menu items
     $content['menu']['admin/help']['#access'] = FALSE;
     $content['menu']['admin/index']['#access'] = FALSE;
-    $content['menu']['admin/structure']['#access'] = FALSE;
+    if (!(in_array('level 1', $user->roles, TRUE))) {
+      $content['menu']['admin/structure']['#access'] = FALSE;
+    }
   }
 }
 
