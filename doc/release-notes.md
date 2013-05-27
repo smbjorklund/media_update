@@ -2,17 +2,16 @@
 
 Release mandag 27. mai inneholdt både justeringer og feilrettinger. Her er en oversikt over hva som ble gjort:
 
-* Endring #2429: Sørger for at stikktittelen på arrangementer viser riktig arrangementstype, feks "Gjesteforelesning" eller "Seminar"
-* Endring #2541: Sørger for at man kan bla i kalenderen på mobile plattformer.
-* Endring #2494: Vi nærmer oss lanseringen av nye ansattsider på uib.no, og hovedmenyen for disse sidene trengte litt finpuss for å få riktig visning på mobile plattformer. Det har den fått nå!
-* Endring #2903: I forrige release la vi til informasjon om copyright på bildene som legges ut på uib.no. Denne informasjonen trengte litt styling for ikke å få for stort fokus, spesielt på små bilder. Dette er nå rettet opp.
-* Endring #2889: Justering i hjelpetekster
-* Feil #2511: I den innebygde webbrowseren på android-enheter har UiB-logoen på toppen av siden blitt strukket ut av proposjoner. Dette er nå rettet opp.
-* Feil #2886: Lange navn på områder (f.eks. institutter eller forskergrupper) ble vist over to linjer og ga et uryddig inntrykk. Denne saken retter opp dette, slik at lange områdenavn får en pen visning.
-* Endring #2355: Sørger for at kartvisningene på uib.no viser på riktig zoomet nivå.
-* Endring #2948: Fjerner tilgang til menystruktur for level 2 og 3 i webdesk.
-
-Sakene #2464, #2619, #2906, #2907,#2917 og #2933 — interne forbedringer for økt stabilitet/ytelse.
+* Stikktittelen på arrangementer viser nå riktig arrangementstype, feks "Gjesteforelesning" eller "Seminar". -#2429
+* Bla-funksjon på plass i kalenderen på mobile plattformer. -#2541
+* Vi nærmer oss lanseringen av nye ansattsider på uib.no, og hovedmenyen for disse sidene trengte litt finpuss for å få riktig visning på mobile plattformer. Det har den fått nå! -#2494
+* I forrige release la vi til informasjon om copyright på bildene som legges ut på uib.no. Denne informasjonen trengte litt styling for ikke å få for stort fokus, spesielt på små bilder. Dette er nå rettet opp. -#2903
+* Diverse hjelpetekster i webdesken er justert. -#2889
+* I den innebygde webbrowseren på android-enheter har UiB-logoen på toppen av siden blitt strukket ut av proposjoner. Dette er nå rettet opp. -#2511
+* Lange navn på områder (f.eks. institutter eller forskergrupper) ble vist over to linjer og ga et uryddig inntrykk. Dette er nå justert, slik at lange områdenavn får en pen visning. -#2886
+* Kartvisningene på uib.no viser på riktig zoomet nivå. -#2355
+* For bedre sikkerhet for systemet har vi fjernet tilgang til menystruktur for level 2 og 3 i webdesk. -#2948
+* En håndfull saker gir interne forbedringer for økt stabilitet/ytelse. - #2464, #2619, #2906, #2907,#2917 og #2933.
 
 # Release 2013-05-15 tag:R1.4.2
 
