@@ -11,7 +11,7 @@ Release mandag 27. mai inneholdt både justeringer og feilrettinger. Her er en o
 * Feil #2886: Lange navn på områder (f.eks. institutter eller forskergrupper) ble vist over to linjer og ga et uryddig inntrykk. Denne saken retter opp dette, slik at lange områdenavn får en pen visning.
 * Endring #2355: Sørger for at kartvisningene på uib.no viser på riktig zoomet nivå.
 
-Sakene #2464, #2619, #2906, #2907,#2917 og #2933 - diverse backend for optimalisering.
+Sakene #2464, #2619, #2906, #2907,#2917 og #2933 — interne forbedringer for økt stabilitet/ytelse.
 
 # Release 2013-05-15 tag:R1.4.2
 
