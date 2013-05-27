@@ -10,6 +10,7 @@ Release mandag 27. mai inneholdt både justeringer og feilrettinger. Her er en o
 * Feil #2511: I den innebygde webbrowseren på android-enheter har UiB-logoen på toppen av siden blitt strukket ut av proposjoner. Dette er nå rettet opp.
 * Feil #2886: Lange navn på områder (f.eks. institutter eller forskergrupper) ble vist over to linjer og ga et uryddig inntrykk. Denne saken retter opp dette, slik at lange områdenavn får en pen visning.
 * Endring #2355: Sørger for at kartvisningene på uib.no viser på riktig zoomet nivå.
+* Endring #2948: Fjerner tilgang til menystruktur for level 2 og 3 i webdesk.
 
 Sakene #2464, #2619, #2906, #2907,#2917 og #2933 — interne forbedringer for økt stabilitet/ytelse.
 
