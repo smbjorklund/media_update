@@ -101,10 +101,10 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_uib_event_type']['element_wrapper_type'] = 'h2';
   $handler->display->display_options['fields']['field_uib_event_type']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_uib_event_type']['type'] = 'i18n_list_default';
-  /* Sort criterion: Content: Date - end date (field_uib_date:value2) */
-  $handler->display->display_options['sorts']['field_uib_date_value2']['id'] = 'field_uib_date_value2';
-  $handler->display->display_options['sorts']['field_uib_date_value2']['table'] = 'field_data_field_uib_date';
-  $handler->display->display_options['sorts']['field_uib_date_value2']['field'] = 'field_uib_date_value2';
+  /* Sort criterion: Content: Date -  start date (field_uib_date) */
+  $handler->display->display_options['sorts']['field_uib_date_value']['id'] = 'field_uib_date_value';
+  $handler->display->display_options['sorts']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['sorts']['field_uib_date_value']['field'] = 'field_uib_date_value';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -198,11 +198,6 @@ function uib_calendar_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Date - end date (field_uib_date:value2) */
-  $handler->display->display_options['sorts']['field_uib_date_value2']['id'] = 'field_uib_date_value2';
-  $handler->display->display_options['sorts']['field_uib_date_value2']['table'] = 'field_data_field_uib_date';
-  $handler->display->display_options['sorts']['field_uib_date_value2']['field'] = 'field_uib_date_value2';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
