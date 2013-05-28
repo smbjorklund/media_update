@@ -1,0 +1,72 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+my %release;
+my %D;
+my %R;
+
+for my $line (qx(git show-ref --tags)) {
+    my($sha, $tag) = split(' ', $line);
+    $tag =~ s,^refs/tags/,, || die;
+    if ($tag =~ m,^prod/(\d{4}-\d{2}-\d{2})$,) {
+	die if exists $release{$1};
+	$release{$1} = {
+	    sha => $sha,
+	};
+	$D{$sha} = $1;
+    }
+    elsif ($tag =~ m,^R(\d+\S*)$,) {
+	$R{$sha} = $1;
+    }
+    elsif ($tag !~ m,(log)$,) {
+	warn "Ignored tag '$tag'";
+    }
+}
+
+for my $r (keys %R) {
+    if (my $d = $D{$r}) {
+	die if exists $release{$d}{R};
+	$release{$d}{R} = $R{$r};
+    }
+}
+
+undef %R;
+undef %D;
+
+my $PGDUMP_HOST = 'vengeance.uib.no';
+my $PGDUMP_DIR = '/prod_nettapp_w3/pg_dump';
+
+my @dumps = qx(ssh $PGDUMP_HOST ls $PGDUMP_DIR/pre_staging);
+
+my %dumps;
+for my $dump (@dumps) {
+    chomp($dump);
+    if ($dump =~ /^w3\.uib\.no-staging-backup\.(\d{4}-\d{2}-\d{2})\S+$/) {
+	$dumps{$1} = "$PGDUMP_DIR/pre_staging/$dump";
+    }
+}
+
+# Assign the dumps to releases
+my $prev;
+for my $d (sort keys %release) {
+    my $dump = $dumps{$d};
+    if ($dump) {
+	if ($prev) {
+	    $release{$prev}{dump} = $dump;
+	}
+    }
+    $prev = $d;
+}
+$release{$prev}{dump} = "$PGDUMP_DIR/w3.uib.no.sql";
+
+# use Data::Dump; dd \%dumps, \%release;
+
+for my $d (sort keys %release) {
+    my $r = $release{$d}{R} || next;
+    if (@ARGV) {
+	next unless grep $_ eq $r || $_ eq $d, @ARGV;
+    }
+    printf "%-5s %10s %s\n", $r, $d, $release{$d}{dump} || '-';
+}
