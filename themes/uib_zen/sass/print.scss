@@ -23,7 +23,7 @@
     a[href]:after { /* Add visible URL after links. */
       content: " (" attr(href) ")";
       font-weight: normal;
-      font-size: $base-font-size;
+      font-size: 10pt;
     }
 
     a[href^="javascript:"]:after,
@@ -50,9 +50,12 @@
     color: #000;
     background-color: transparent !important;
     background-image: none !important;
+    font-size: 10pt;
   }
 
   #skip-link,
+  #top-region-wrapper,
+  #block-locale-language,
   #toolbar,
   #navigation,
   .region-sidebar-first,
@@ -65,9 +68,19 @@
   .book-navigation,
   .forum-topic-navigation,
   .pager,
-  .feed-icons { /* Hide sidebars and nav elements */
+  .feed-icons,
+  .service-links,
+  .field-name-field-uib-links,
+  #block-uib-area-node-children,
+  #bottom-region-wrapper,
+  #menu-search-mobile-wrapper,
+  #desktop-tablet-language{ /* Hide sidebars and nav elements */
     visibility: hidden;
     display: none;
+  }
+  .ui-tabs .ui-tabs-hide {
+    display: block !important;
+    visibility: visible !important;
   }
 
 } /* End @media print */
