@@ -4,7 +4,7 @@ site-prod-reset -- restore database state from production
 
 # Synopsis
 
-    site-prod-reset
+    site-prod-reset [ <release> ]
 
 # Description
 
@@ -12,6 +12,11 @@ The **site-prod-reset** command will sync the files area and the database conten
 from the latest copy of the production state found at *vengeance.uib.no*, thus the command
 requires that you have an account on vengeance.  The copy should never be more than 1 hour
 old.
+
+You might also select a given release to sync with.  This will sync with the
+last dump generated for that release before it was upgraded to the next.
+Releases are identified by a release number (like "1.4") or a date (in YYYY-MM-DD format).
+The available releases can be listed by running the **release-dumps** command.
 
 Before you run this command you need to invoke **site-init --postgres** to set up your local site.
 After you might want to run **site-upgrade**.

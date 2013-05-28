@@ -1,21 +1,39 @@
 #!/bin/bash
 
-set -x
-
 PGUSER=$(php --run 'include "site/settings.php"; print($databases["default"]["default"]["username"]);')
-PSQL=$(bin/site-drush sql-connect)
+PSQL=$(bin/site-drush --verbose=0 sql-connect)
 PGDUMP_HOST=${PGDUMP_HOST:-vengeance.uib.no}
 
 test -L site || exit 1
 SITE=$(basename $(readlink site))
 
-if [ "$PGDUMP_HOST" != "none" ]; then
-    rsync -rltDih --delete $PGDUMP_HOST:/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/
-    find site/files/ -type d | xargs chmod 777
-    find site/files/ -type f | xargs chmod 666
+RELEASE=$1
+if [ "$RELEASE" != "" ]; then
+    set -- $(bin/release-dumps $RELEASE)
+    if [ "$1" != $RELEASE ]; then
+	echo "Don't have any dumps for release $RELEASE"
+	exit 1
+    fi
+    COMMIT=R$RELEASE
+    DUMP=$3
+else
+    COMMIT=origin/prod
+    DUMP_DIR=/prod_nettapp_w3/pg_dump
+    LAST_DUMP=$(ssh $PGDUMP_HOST "ls -t $DUMP_DIR | head -n 1")
+    DUMP=$DUMP_DIR/$LAST_DUMP
+fi
 
-    LAST_DUMP=$(ssh $PGDUMP_HOST "ls -t /prod_nettapp_w3/pg_dump | head -n 1")
-    rsync -avh $PGDUMP_HOST:/prod_nettapp_w3/pg_dump/$LAST_DUMP site/w3.uib.no.sql
+set -x
+
+rsync -rltDih --delete $PGDUMP_HOST:/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/
+find site/files/ -type d | xargs chmod 777
+find site/files/ -type f | xargs chmod 666
+
+DOTGZ=""
+case $DUMP in *.gz) DOTGZ=".gz";; esac
+rsync -avh $PGDUMP_HOST:$DUMP site/w3.uib.no.sql$DOTGZ
+if [ "$DOTGZ" != "" ]; then
+    gunzip -f site/w3.uib.no.sql$DOTGZ
 fi
 
 bin/site-drush sql-drop --yes
@@ -27,7 +45,7 @@ rm -rf drupal/sites/w3.uib.no
 ln -s $SITE drupal/sites/w3.uib.no
 
 git fetch
-git checkout origin/prod || exit 1;
+git checkout $COMMIT || exit 1;
 git submodule update
 compass compile --force themes/uib_zen
 bin/site-drush cc all
