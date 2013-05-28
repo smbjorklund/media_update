@@ -867,16 +867,14 @@ function uib_setup_field_default_fields() {
       'display' => array(
         'area_bottom' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'area_main' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'content_main' => array(
