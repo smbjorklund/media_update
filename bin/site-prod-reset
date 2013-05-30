@@ -3,6 +3,15 @@
 PGUSER=$(php --run 'include "site/settings.php"; print($databases["default"]["default"]["username"]);')
 PSQL=$(bin/site-drush --verbose=0 sql-connect)
 PGDUMP_HOST=${PGDUMP_HOST:-vengeance.uib.no}
+PGDUMP_HOST_PREFIX=$PGDUMP_HOST:
+PGDUMP_HOST_RUN="ssh $PGDUMP_HOST"
+
+set -x
+
+if [ $(hostname) == $PGDUMP_HOST ]; then
+    PGDUMP_HOST_PREFIX=
+    PGDUMP_HOST_RUN="sh -c"
+fi
 
 test -L site || exit 1
 SITE=$(basename $(readlink site))
@@ -19,19 +28,19 @@ if [ "$RELEASE" != "" ]; then
 else
     COMMIT=origin/prod
     DUMP_DIR=/prod_nettapp_w3/pg_dump
-    LAST_DUMP=$(ssh $PGDUMP_HOST "ls -t $DUMP_DIR | head -n 1")
+    LAST_DUMP=$($PGDUMP_HOST_RUN "ls -t $DUMP_DIR | head -n 1")
     DUMP=$DUMP_DIR/$LAST_DUMP
 fi
 
 set -x
 
-rsync -rltDih --delete $PGDUMP_HOST:/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/
+rsync -rltDih --delete $PGDUMP_HOST_PREFIX/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/
 find site/files/ -type d | xargs chmod 777
 find site/files/ -type f | xargs chmod 666
 
 DOTGZ=""
 case $DUMP in *.gz) DOTGZ=".gz";; esac
-rsync -avh $PGDUMP_HOST:$DUMP site/w3.uib.no.sql$DOTGZ
+rsync -avh $PGDUMP_HOST_PREFIX$DUMP site/w3.uib.no.sql$DOTGZ
 if [ "$DOTGZ" != "" ]; then
     gunzip -f site/w3.uib.no.sql$DOTGZ
 fi
