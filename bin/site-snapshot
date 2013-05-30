@@ -19,8 +19,8 @@ for (pg_query("\@\\l")) {  # list databases
 
 if (!@ARGV) {
     # make a new snapshot
-    pg_query("DROP DATABASE ${dbname}_$ts") if grep $_ eq $ts, @snapshots;
-    pg_query("CREATE DATABASE ${dbname}_$ts TEMPLATE $dbname");
+    pg_query("DROP DATABASE \"${dbname}_$ts\"") if grep $_ eq $ts, @snapshots;
+    pg_query("CREATE DATABASE \"${dbname}_$ts\" TEMPLATE \"$dbname\"");
 }
 elsif ($ARGV[0] eq "list") {
     for (@snapshots) {
@@ -34,7 +34,7 @@ elsif ($ARGV[0] eq "list") {
 }
 elsif ($ARGV[0] eq "clear") {
     for (@snapshots) {
-	pg_query("DROP DATABASE ${dbname}_$_");
+	pg_query("DROP DATABASE \"${dbname}_$_\"");
     }
 }
 elsif ($ARGV[0] eq "restore") {
@@ -73,12 +73,12 @@ sub restore {
     my $snap = shift;
     my $pop = shift;
     #print "Restore $snap\n";
-    pg_query("DROP DATABASE $dbname", "postgres");
+    pg_query("DROP DATABASE \"$dbname\"", "postgres");
     if ($pop) {
-        pg_query("ALTER DATABASE ${dbname}_$snap RENAME TO $dbname", "postgres");
+        pg_query("ALTER DATABASE \"${dbname}_$snap\" RENAME TO \"$dbname\"", "postgres");
     }
     else {
-        pg_query("CREATE DATABASE ${dbname} TEMPLATE ${dbname}_$snap", "postgres");
+        pg_query("CREATE DATABASE \"${dbname}\" TEMPLATE \"${dbname}_$snap\"", "postgres");
     }
 }
 
