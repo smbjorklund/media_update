@@ -268,6 +268,8 @@ function uib_area_field_default_fields() {
           'research school' => 'Research school',
           'section' => 'Section',
           'discipline' => 'Discipline',
+          'frontpage' => 'Frontpage',
+          'newspage' => 'Newspage',
         ),
         'allowed_values_function' => '',
         'entity_translation_sync' => FALSE,
