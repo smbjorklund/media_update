@@ -129,13 +129,6 @@ function uib_zen_preprocess_maintenance_page(&$variables, $hook) {
  *   The name of the template being rendered ("html" in this case.)
  */
 function uib_zen_preprocess_html(&$variables, $hook) {
-  if (!$variables['user']->uid == '0') {
-    $user = user_load($variables['user']->uid);
-
-    if (empty($user->field_grid['und']) || !empty($user->field_grid['und'][0]['value']) == '0')
-      $variables['classes_array'][] = 'grid';
-  }
-
   /**
    * Get area menu style.
    */

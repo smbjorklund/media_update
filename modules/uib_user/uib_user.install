@@ -59,3 +59,11 @@ function uib_user_update_7003() {
     }
   }
 }
+
+/**
+ * Delete the uib_grid field
+ */
+function uib_user_update_7004() {
+  /* Must also explictly delete fields that are gone from the feature */
+  field_delete_field('field_grid');
+}

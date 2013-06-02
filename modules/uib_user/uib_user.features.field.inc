@@ -10,71 +10,6 @@
 function uib_user_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'user-user-field_grid'.
-  $fields['user-user-field_grid'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_grid',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => '',
-          1 => '',
-        ),
-        'allowed_values_function' => '',
-        'entity_translation_sync' => FALSE,
-      ),
-      'translatable' => '0',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'user',
-      'default_value' => array(
-        0 => array(
-          'value' => 0,
-        ),
-      ),
-      'deleted' => '0',
-      'description' => 'Do not display theme grid background on every page.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '9',
-        ),
-      ),
-      'entity_type' => 'user',
-      'field_name' => 'field_grid',
-      'label' => 'Remove grid',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'user_register_form' => 0,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'display_label' => 1,
-        ),
-        'type' => 'options_onoff',
-        'weight' => '15',
-      ),
-    ),
-  );
-
   // Exported field: 'user-user-field_uib_first_name'.
   $fields['user-user-field_uib_first_name'] = array(
     'field_config' => array(
@@ -741,7 +676,6 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Do not display theme grid background on every page.');
   t('First name');
   t('ID w2');
   t('Last name');
@@ -749,7 +683,6 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Position');
   t('Position category');
   t('Position code');
-  t('Remove grid');
   t('Slug');
   t('Sort name');
   t('The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
