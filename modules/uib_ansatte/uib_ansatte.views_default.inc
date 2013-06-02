@@ -234,8 +234,8 @@ function uib_ansatte_views_default_views() {
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page_1');
+  /* Display: List of all persons */
+  $handler = $view->new_display('page', 'List of all persons', 'page_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
@@ -288,8 +288,9 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'area';
   $handler->display->display_options['menu']['context'] = 0;
 
-  /* Display: node page */
-  $handler = $view->new_display('page', 'node page', 'page_2');
+  /* Display: List of staff for area */
+  $handler = $view->new_display('page', 'List of staff for area', 'page_2');
+  $handler->display->display_options['display_description'] = 'Lists the all staff belonging to an area.  By adding "faculity" or "staff" to the URL limit to that kind.';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
@@ -381,9 +382,10 @@ function uib_ansatte_views_default_views() {
     t('All'),
     t('Staff at %1'),
     t('%2 at %1'),
-    t('Page'),
+    t('List of all persons'),
     t('All staff'),
-    t('node page'),
+    t('List of staff for area'),
+    t('Lists the all staff belonging to an area.  By adding "faculity" or "staff" to the URL limit to that kind.'),
     t('All employees at %1'),
     t('%1'),
   );
