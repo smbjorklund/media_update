@@ -102,18 +102,6 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_phone']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_uib_phone']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_uib_phone']['separator'] = '';
-  /* Field: User: Last name */
-  $handler->display->display_options['fields']['field_uib_last_name_1']['id'] = 'field_uib_last_name_1';
-  $handler->display->display_options['fields']['field_uib_last_name_1']['table'] = 'field_data_field_uib_last_name';
-  $handler->display->display_options['fields']['field_uib_last_name_1']['field'] = 'field_uib_last_name';
-  $handler->display->display_options['fields']['field_uib_last_name_1']['relationship'] = 'field_uib_staff_target_id';
-  $handler->display->display_options['fields']['field_uib_last_name_1']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_last_name_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['max_length'] = '1';
-  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['field_uib_last_name_1']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_last_name_1']['element_label_colon'] = FALSE;
   /* Field: User: Link */
   $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
   $handler->display->display_options['fields']['view_user']['table'] = 'users';
