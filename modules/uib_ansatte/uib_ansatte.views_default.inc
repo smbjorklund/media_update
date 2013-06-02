@@ -152,11 +152,6 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_sort_name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['field_uib_sort_name']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_uib_sort_name']['element_label_colon'] = FALSE;
-  /* Sort criterion: User: Last name (field_uib_last_name) */
-  $handler->display->display_options['sorts']['field_uib_last_name_value']['id'] = 'field_uib_last_name_value';
-  $handler->display->display_options['sorts']['field_uib_last_name_value']['table'] = 'field_data_field_uib_last_name';
-  $handler->display->display_options['sorts']['field_uib_last_name_value']['field'] = 'field_uib_last_name_value';
-  $handler->display->display_options['sorts']['field_uib_last_name_value']['relationship'] = 'field_uib_staff_target_id';
   /* Sort criterion: User: Sort name (field_uib_sort_name) */
   $handler->display->display_options['sorts']['field_uib_sort_name_value']['id'] = 'field_uib_sort_name_value';
   $handler->display->display_options['sorts']['field_uib_sort_name_value']['table'] = 'field_data_field_uib_sort_name';
