@@ -52,71 +52,79 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['relationships']['field_uib_staff_target_id']['table'] = 'field_data_field_uib_staff';
   $handler->display->display_options['relationships']['field_uib_staff_target_id']['field'] = 'field_uib_staff_target_id';
   $handler->display->display_options['relationships']['field_uib_staff_target_id']['required'] = TRUE;
-  /* Field: User: Picture */
+  /* Field: token picture */
   $handler->display->display_options['fields']['picture']['id'] = 'picture';
   $handler->display->display_options['fields']['picture']['table'] = 'users';
   $handler->display->display_options['fields']['picture']['field'] = 'picture';
   $handler->display->display_options['fields']['picture']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['picture']['ui_name'] = 'token picture';
   $handler->display->display_options['fields']['picture']['label'] = '';
   $handler->display->display_options['fields']['picture']['exclude'] = TRUE;
   $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['picture']['empty'] = '<span class="user-picture"><img src="/sites/all/themes/uib/uib_zen/images/person.png"></span>';
   $handler->display->display_options['fields']['picture']['hide_alter_empty'] = FALSE;
-  /* Field: User: First name */
+  /* Field: token field_uib_first_name */
   $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['field'] = 'field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_first_name']['ui_name'] = 'token field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['exclude'] = TRUE;
-  /* Field: User: Last name */
+  /* Field: token field_uib_last_name */
   $handler->display->display_options['fields']['field_uib_last_name']['id'] = 'field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['table'] = 'field_data_field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['field'] = 'field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_last_name']['ui_name'] = 'token field_uib_last_name';
   $handler->display->display_options['fields']['field_uib_last_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_last_name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_last_name']['alter']['text'] = '[field_uib_last_name]</br>';
-  /* Field: Field: Position */
+  /* Field: token field_uib_position */
   $handler->display->display_options['fields']['field_uib_position']['id'] = 'field_uib_position';
   $handler->display->display_options['fields']['field_uib_position']['table'] = 'field_data_field_uib_position';
   $handler->display->display_options['fields']['field_uib_position']['field'] = 'field_uib_position';
   $handler->display->display_options['fields']['field_uib_position']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_position']['ui_name'] = 'token field_uib_position';
   $handler->display->display_options['fields']['field_uib_position']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_position']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_position']['alter']['text'] = '[field_uib_position]</br>';
   $handler->display->display_options['fields']['field_uib_position']['hide_empty'] = TRUE;
-  /* Field: User: E-mail */
+  /* Field: token mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
   $handler->display->display_options['fields']['mail']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['mail']['ui_name'] = 'token mail';
   $handler->display->display_options['fields']['mail']['exclude'] = TRUE;
-  /* Field: Field: Phone */
+  /* Field: token field_uib_phone */
   $handler->display->display_options['fields']['field_uib_phone']['id'] = 'field_uib_phone';
   $handler->display->display_options['fields']['field_uib_phone']['table'] = 'field_data_field_uib_phone';
   $handler->display->display_options['fields']['field_uib_phone']['field'] = 'field_uib_phone';
   $handler->display->display_options['fields']['field_uib_phone']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_phone']['ui_name'] = 'token field_uib_phone';
   $handler->display->display_options['fields']['field_uib_phone']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_phone']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_phone']['alter']['text'] = '[field_uib_phone]<br>';
   $handler->display->display_options['fields']['field_uib_phone']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_uib_phone']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_uib_phone']['separator'] = '';
-  /* Field: User: Link */
+  /* Field: Linked user name (token) */
   $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
   $handler->display->display_options['fields']['view_user']['table'] = 'users';
   $handler->display->display_options['fields']['view_user']['field'] = 'view_user';
   $handler->display->display_options['fields']['view_user']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['view_user']['ui_name'] = 'Linked user name (token)';
   $handler->display->display_options['fields']['view_user']['label'] = '';
   $handler->display->display_options['fields']['view_user']['exclude'] = TRUE;
   $handler->display->display_options['fields']['view_user']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['view_user']['alter']['text'] = '[field_uib_first_name] [field_uib_last_name]';
   $handler->display->display_options['fields']['view_user']['alter']['path'] = '[view_user]';
   $handler->display->display_options['fields']['view_user']['element_label_colon'] = FALSE;
-  /* Field: Global: Custom text */
+  /* Field: The generated HTML */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'The generated HTML';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="media">
  [picture]
@@ -128,11 +136,12 @@ function uib_ansatte_views_default_views() {
   </div>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: User: Sort name */
+  /* Field: First letter of sort name */
   $handler->display->display_options['fields']['field_uib_sort_name']['id'] = 'field_uib_sort_name';
   $handler->display->display_options['fields']['field_uib_sort_name']['table'] = 'field_data_field_uib_sort_name';
   $handler->display->display_options['fields']['field_uib_sort_name']['field'] = 'field_uib_sort_name';
   $handler->display->display_options['fields']['field_uib_sort_name']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_sort_name']['ui_name'] = 'First letter of sort name';
   $handler->display->display_options['fields']['field_uib_sort_name']['label'] = '';
   $handler->display->display_options['fields']['field_uib_sort_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_sort_name']['alter']['max_length'] = '1';
