@@ -250,21 +250,10 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'php';
-  $handler->display->display_options['arguments']['nid']['validate_options']['code'] = 'global $base_url;
-    $node = drupal_get_normal_path($argument, $language = NULL);
-
-    if ($argument == $node) {
-      uibx_log(\'Node not found\');
-    }
-
-    if ($argument != $node) {
-      uibx_log(\'node: \' . $node);
-      $nid = substr(strrchr($node, "/"), 1);
-    }
-
-    return TRUE;
-  ';
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'area' => 'area',
+  );
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
   /* Contextual filter: User: Position category (field_uib_position_category) */
   $handler->display->display_options['arguments']['field_uib_position_category_value']['id'] = 'field_uib_position_category_value';
@@ -303,21 +292,11 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'php';
-  $handler->display->display_options['arguments']['nid']['validate_options']['code'] = 'global $base_url;
-    $node = drupal_get_normal_path($argument, $language = NULL);
-
-    if ($argument == $node) {
-      uibx_log(\'Node not found\');
-    }
-
-    if ($argument != $node) {
-      uibx_log(\'node: \' . $node);
-      $nid = substr(strrchr($node, "/"), 1);
-    }
-
-    return TRUE;
-  ';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'area' => 'area',
+  );
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
   /* Contextual filter: User: Position category (field_uib_position_category) */
   $handler->display->display_options['arguments']['field_uib_position_category_value']['id'] = 'field_uib_position_category_value';
