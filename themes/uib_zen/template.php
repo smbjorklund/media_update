@@ -552,8 +552,10 @@ function uib_zen_preprocess_block(&$variables, $hook) {
     'block-views-calendar-block-1',
   );
   if (in_array ($variables['block_html_id'], $blue_block)) {
-    $variables['classes_array'][] = 'blue-block';
-    $variables['block']->subject = '<span></span>' . $variables['block']->subject;
+    if($variables['block']->subject) {
+      $variables['classes_array'][] = 'blue-block';
+      $variables['block']->subject = '<span></span>' . $variables['block']->subject;
+    }
   }
   if (in_array ($variables['block_html_id'], $orange_block)) {
     $variables['classes_array'][] = 'orange-block';

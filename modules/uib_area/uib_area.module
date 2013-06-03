@@ -139,8 +139,7 @@ function uib_area_block_view($delta='') {
          $feed = 'http://www.jobbnorge.no/joblist/joblistbuilder.ashx?id=821a69c9-7674-4e36-90f8-41e443b99064&depid=' . $place->field_uib_jobbnorge_id['und'][0]['value'];
         if ($area->language == 'en')
           $feed .= '&langid=2';
-        $block['subject'] = t('Open Positions');
-        $block['content'] = uib_area__feed_format($feed, $title='', $limit = 999);
+        $block['content'] = uib_area__feed_format($feed, $title=t('Open Positions'), $limit = 999);
         }
       break;
     case 'feed':
@@ -312,6 +311,9 @@ function uib_area__feed_format_pre_render($element) {
     }
   }
 
+  if (!isset($element['list'])) {
+    unset($element);
+  }
   return $element;
 }
 
