@@ -28,3 +28,11 @@ function uib_area_update_7000() {
     }
   }
 }
+
+/**
+ * Update aliases for areas already present
+ */
+function uib_area_update_7001() {
+  // do it once more
+  uib_area_update_7000();
+}

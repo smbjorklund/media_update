@@ -734,6 +734,7 @@ function uib_area__create_area_aliases($node_nid, $node_alias, $language) {
       $uib_area_aliases = array(
         '/persons',
         '/persons/faculty',
+        '/persons/staff',
         '/map',
         '/news-archive',
         '/rss.xml',
