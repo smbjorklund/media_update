@@ -310,12 +310,12 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         // Byline
         $uib_news_byline = "";
         $byline_nrof_authors = 0;
+        $glue = "";
         if (isset($variables['field_uib_byline']['und'])) {
           $byline_nrof_authors = count($variables['field_uib_byline']['und']);
         }
         if ($byline_nrof_authors > 0) {
           $uib_news_byline = t('By') . ' ';
-          $glue = "";
           // join authors into a single line
           for ($i = 0; $i < $byline_nrof_authors; $i++) {
             $uib_news_byline .= $glue . $variables['content']['group_article_main']['field_uib_byline'][$i]['#markup'];
@@ -326,9 +326,15 @@ function uib_zen_preprocess_node(&$variables, $hook) {
               $glue = ', '; // comma between names
             }
           }
-          hide($variables['content']['group_article_main']['field_uib_byline']);
-          $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
         }
+        if (!empty($variables['field_uib_external_author']['und'])) {
+          if (empty($uib_news_byline)) {
+            $uib_news_byline = t('By') . ' ';
+          }
+          $uib_news_byline .= $glue . $variables['field_uib_external_author']['und'][0]['value'];
+        }
+        hide($variables['content']['group_article_main']['field_uib_byline']);
+        $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
         $variables['content']['group_article_main']['uib_news_byline']['#suffix'] = '<div class="uib-news-byline-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-news-byline-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
       }
       elseif ($variables['node']->field_uib_article_type['und'][0]['value'] = 'event') {
