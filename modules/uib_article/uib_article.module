@@ -72,6 +72,8 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
     }
 
     if (empty($form['nid']['#value'])) {
+      global $user;
+      $form['field_uib_byline']['und']['#default_value'] = $user->name;
       // For new articles (but not infopages), add anti-bubbling checkbox
       $form['anti_bubbling'] = array(
         '#title' => t('Do not show on parent areas.'),
