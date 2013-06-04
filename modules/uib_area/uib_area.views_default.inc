@@ -1221,6 +1221,76 @@ return !empty($handler->argument);';
   $export['recent_news'] = $view;
 
   $view = new view();
+  $view->name = 'relevant_links';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'field_collection_item';
+  $view->human_name = 'Relevant links';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'entity';
+  /* Relationship: Field collection item: Entity with the Relevant links (field_uib_link_section) */
+  $handler->display->display_options['relationships']['field_uib_link_section_node']['id'] = 'field_uib_link_section_node';
+  $handler->display->display_options['relationships']['field_uib_link_section_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_uib_link_section_node']['field'] = 'field_uib_link_section_node';
+  $handler->display->display_options['relationships']['field_uib_link_section_node']['required'] = TRUE;
+  /* Field: Field collection item: Field collection item ID */
+  $handler->display->display_options['fields']['item_id']['id'] = 'item_id';
+  $handler->display->display_options['fields']['item_id']['table'] = 'field_collection_item';
+  $handler->display->display_options['fields']['item_id']['field'] = 'item_id';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_uib_link_section_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'php';
+  $handler->display->display_options['arguments']['nid']['default_argument_options']['code'] = 'return uib_area__get_current_nid();';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Content: Type (field_uib_area_type) */
+  $handler->display->display_options['filters']['field_uib_area_type_value']['id'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['field'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['relationship'] = 'field_uib_link_section_node';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['value'] = array(
+    'newspage' => 'newspage',
+  );
+
+  /* Display: Relevant Links */
+  $handler = $view->new_display('block', 'Relevant Links', 'relevant_links');
+  $handler->display->display_options['display_description'] = 'Expose uib_link_section to a block ';
+  $translatables['relevant_links'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('field_uib_link_section'),
+    t('Field collection item ID'),
+    t('.'),
+    t(','),
+    t('All'),
+    t('Relevant Links'),
+    t('Expose uib_link_section to a block '),
+  );
+  $export['relevant_links'] = $view;
+
+  $view = new view();
   $view->name = 'research_groups';
   $view->description = '';
   $view->tag = 'default';

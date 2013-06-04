@@ -112,6 +112,12 @@ function uib_area_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-3',
         ),
+        'views-relevant_links-relevant_links' => array(
+          'module' => 'views',
+          'delta' => 'relevant_links-relevant_links',
+          'region' => 'sidebar_second',
+          'weight' => '-2',
+        ),
       ),
     ),
   );

@@ -260,6 +260,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'unit') {
          $variables ['classes_array'][] = t('unit_node');
       }
+      if ($variables['field_uib_area_type']['und']['0']['value'] == 'newspage') {
+        $variables ['classes_array'][] = t('newspage_node');
+        //This field is printed in a view in the sidebar
+        unset($variables['content']['group_two_column']['field_uib_link_section']);
+      }
       if (isset($variables['content']['field_uib_profiled_article'])) {
         $weight = $variables['content']['field_uib_profiled_article']['#weight'];
         unset($variables['content']['field_uib_profiled_article']);
