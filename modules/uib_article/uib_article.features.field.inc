@@ -243,7 +243,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -501,6 +501,103 @@ function uib_article_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-uib_article-field_uib_external_author'.
+  $fields['node-uib_article-field_uib_external_author'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_external_author',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'uib_article',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'An author who is external to UiB may be added here. Always use the byline field for UiB authors.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 29,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_external_author',
+      'label' => 'External author',
+      'required' => 0,
+      'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'basic_html' => 'basic_html',
+            'full_html' => 'full_html',
+            'plain_text' => 'plain_text',
+            'restricted_html' => 'restricted_html',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'basic_html' => array(
+                'weight' => '-9',
+              ),
+              'full_html' => array(
+                'weight' => '-7',
+              ),
+              'plain_text' => array(
+                'weight' => '-10',
+              ),
+              'restricted_html' => array(
+                'weight' => '-8',
+              ),
+            ),
+          ),
+        ),
+        'entity_translation_sync' => FALSE,
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '13',
       ),
     ),
   );
@@ -857,7 +954,7 @@ function uib_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '11',
+        'weight' => '14',
       ),
     ),
   );
@@ -1463,7 +1560,7 @@ function uib_article_field_default_fields() {
           'rows' => '30',
         ),
         'type' => 'text_textarea',
-        'weight' => '12',
+        'weight' => '15',
       ),
     ),
   );
@@ -1682,6 +1779,7 @@ function uib_article_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Add several relevant links to the text in these fields. It it possible to use  <a href="http://w3docs.h.uib.no/?q=node/16">internal links</a> when linking to pages within www.uib.no.');
   t('Add the author of the content. Use UiB usernames to search for people.');
+  t('An author who is external to UiB may be added here. Always use the byline field for UiB authors.');
   t('Area');
   t('Attachments');
   t('Byline');
@@ -1690,6 +1788,7 @@ function uib_article_field_default_fields() {
   t('Date');
   t('Event type');
   t('Every event must have both a start date and an end date. Remember to fill out both date fields and time fields.');
+  t('External author');
   t('Fact box');
   t('Here you should type which area this content belongs to');
   t('ID w2');
