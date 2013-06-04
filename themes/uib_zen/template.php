@@ -329,28 +329,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           hide($variables['content']['group_article_main']['field_uib_byline']);
           $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
         }
-        else {
-          if (!empty($variables['uid'])) {
-            $author = entity_load('user', array($variables['uid']));
-            $author_name = '';
-            $glue = '';
-            if (!empty($author[$variables['uid']]->field_uib_first_name['und'][0]['value'])) {
-              $author_name .= $glue . $author[$variables['uid']]->field_uib_first_name['und'][0]['value'];
-              $glue = ' ';
-            }
-            if (!empty($author[$variables['uid']]->field_uib_last_name['und'][0]['value'])) {
-              $author_name .= $glue . $author[$variables['uid']]->field_uib_last_name['und'][0]['value'];
-            }
-            $uib_news_byline = t('By') . ' ';
-            if (empty($author_name)) {
-              $uib_news_byline .= l($author[$variables['uid']]->name, 'user/' . $variables['uid']);
-            }
-            else {
-              $uib_news_byline .= l($author_name, 'user/' . $variables['uid']);
-            }
-            $variables['content']['group_article_main']['uib_news_byline'] = array('#markup' => '<div class="uib-news-byline">' . $uib_news_byline . "</div>");
-          }
-        }
         $variables['content']['group_article_main']['uib_news_byline']['#suffix'] = '<div class="uib-news-byline-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-news-byline-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
       }
       elseif ($variables['node']->field_uib_article_type['und'][0]['value'] = 'event') {
