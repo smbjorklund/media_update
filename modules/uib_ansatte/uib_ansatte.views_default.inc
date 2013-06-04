@@ -315,7 +315,18 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['arguments']['field_uib_position_category_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['field_uib_position_category_value']['validate']['fail'] = 'summary';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['field_uib_position_category_value']['validate_options']['code'] = 'if ($argument == \'faculty\') {
+  $handler->validated_title = t(\'Faculty\');
+}
+elseif ($argument == \'staff\') {
+  $handler->validated_title = t(\'Administrative staff\');
+}
+else {
+  return FALSE;
+}
+return TRUE;
+';
   $handler->display->display_options['arguments']['field_uib_position_category_value']['limit'] = '0';
   $handler->display->display_options['path'] = 'node/%/persons';
   $handler->display->display_options['menu']['title'] = 'Staff';
