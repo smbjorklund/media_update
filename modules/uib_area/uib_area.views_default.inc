@@ -1146,27 +1146,6 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['created_1']['field'] = 'created';
   $handler->display->display_options['fields']['created_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['created_1']['date_format'] = 'medium';
-  /* Field: Content: Main media */
-  $handler->display->display_options['fields']['field_uib_main_media']['id'] = 'field_uib_main_media';
-  $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
-  $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
-  $handler->display->display_options['fields']['field_uib_main_media']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_main_media']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_main_media']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_uib_main_media']['empty'] = '<img src="/sites/all/themes/uib/uib_zen/images/Recent_High.png">';
-  $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
-  $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
-    'file_view_mode' => 'wide_thumbnail',
-  );
-  /* Field: Content: Link */
-  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['label'] = '';
-  $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['view_node']['alter']['text'] = '[field_uib_main_media]';
-  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
@@ -1175,6 +1154,20 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['path']['absolute'] = TRUE;
+  /* Field: Content: Main media */
+  $handler->display->display_options['fields']['field_uib_main_media']['id'] = 'field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_main_media']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_main_media']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_uib_main_media']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_main_media']['empty'] = '<img src="/sites/all/themes/uib/uib_zen/images/Recent_High.png">';
+  $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
+    'file_view_mode' => 'wide_thumbnail',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1297,7 +1290,6 @@ return !empty($handler->argument);';
     t('last »'),
     t('Post date'),
     t('<img src="/sites/all/themes/uib/uib_zen/images/Recent_High.png">'),
-    t('[field_uib_main_media]'),
     t('[title] ([created_1])'),
     t('Read more'),
     t('Feed'),
