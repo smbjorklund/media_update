@@ -12,7 +12,7 @@
 
 - Ansvarlig for å godkjenne kode til master
 
-### Drifsansvarlig:  Mike (vara: Lennart, Gisle)
+### Driftsansvarlig:  Mike (vara: Lennart, Gisle)
 
 - Ansvarlig for test- og produksjonsmiljø, daglig drift og ytelse
 - Overvåke sikkerhet-oppdateringer for Drupal (og modulene vi bruker) og applisere disse
