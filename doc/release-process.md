@@ -51,15 +51,16 @@ Alle prosjektdeltakere oppfordres til å bidra til nye idéer og registrere diss
 
 4. Prosjektansvarlig avgjør hva som skal prioriteres inn i en release
 
-5. For at en sak skal komme med i release, må den være løst og testet innen et minimum av to arbeidsdager før releasedato.
 
-6. Releasansvarlig avgjør hvilke løste saker som kan merges og settes til "Klar til test".  Releaseansvarlig gir tilbakemelding på "løste" saker som ikke oppfyller kravene til å merges ("code review").
+5. Releasansvarlig avgjør hvilke løste saker som kan merges og settes til "Klar til test".  Releaseansvarlig gir tilbakemelding på "løste" saker som ikke oppfyller kravene til å merges ("code review").
+
+6. For at en sak skal komme med i release, må den være løst og akseptert innen et minimum av to arbeidsdager før releasedato.
 
 7. For at en sak skal komme med i release, må den være ferdig testet seinest arbeidsdagen før releasedato.
 
-8. Eventuelle unntak fra pkt 5 og 7 kan gis av Releaseansvarlig
+8. Eventuelle unntak fra pkt 6 og 7 kan gis av Releaseansvarlig
 
-9. Releaseansvarlig flytter saker UT av release etter at de har fått status "Klar til test", dersom saken ikke kan verifiseres.
+9. Releaseansvarlig er den eneste som får flytte saker UT av release etter at de har fått status "Klar til test".
 
 10. Release skal angi dato og klokkeslett i RTS.
 
