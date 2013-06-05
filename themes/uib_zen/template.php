@@ -265,6 +265,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         //This field is printed in a view in the sidebar
         unset($variables['content']['group_two_column']['field_uib_link_section']);
       }
+      if ($variables['field_uib_area_type']['und']['0']['value'] == 'frontpage') {
+        $variables ['classes_array'][] = t('frontpage_node');
+        //This fields is printed in a view in the sidebar
+        unset($variables['content']['group_two_column']['field_uib_profiled_message']);
+      }
       if (isset($variables['content']['field_uib_profiled_article'])) {
         $weight = $variables['content']['field_uib_profiled_article']['#weight'];
         unset($variables['content']['field_uib_profiled_article']);
