@@ -51,20 +51,25 @@ Store array oppsett skrives på formen:
 
 ## Git commit message format
 
-Legger oss på omtreng samme linje som Linux kjernen og andre for å prøve å oppnå en ren og pen commit historie.
-Commit messages må ikke overstige 72 char. Skriv kort og konsis. Har man behov for en mere utfyllende commit message skal man benytte følgende format:
+Det viktigste er at commit meldingen beskriver hvorfor endringen ble gjort.  Hva som ble gjort er forhåpentligvis
+opplagt fra diffen.  Forutsett at den som leser commit meldingen også ser diffen.
+
+Linjene i commit meldingen må ikke overstige 72 tegn. Skriv kort og konsis. Har
+man behov for en mere utfyllende commit message skal man benytte følgende
+format:
 
     Short summary of change
     (tom linje)
     Explain why this change was made and other details about the change.
     yadayada, bla, bla.
 
-Vi skriver vanligvis commit meldingene på engelsk.
+Vi skriver commit meldingene på engelsk.
 
 Er din commit knyttet til en sak i [RTS](https://rts.uib.no/projects/w3) er konvensjonen at du prefikser commit message med RTS-###. Den vil da har formen:
 
-    RTS-9999 Short summary of change
+    RTS-### Short summary of change
     (tom linje)
     ...
 
-Dette er samme konvensjonen vi brukte for gamle eksternwebben bare med "JEW-###"-prefiks.  Etterhvert er det ønskelig at nesten alle commits har dette prefikset. Alle endringer bør være forankret i en RTS-oppgave.
+Det er ønskelig at nesten alle commits har dette
+prefikset. Alle endringer bør være forankret i en RTS-oppgave.
