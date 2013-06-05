@@ -292,6 +292,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           hide($variables['content']['group_two_column']['field_uib_link_section']);
         }
       }
+      if (!isset($variables['content']['field_uib_primary_text'])) {
+        $variables['content']['field_uib_primary_media'][0]['#view_mode'] = 'content_main';
+        $variables['content']['field_uib_primary_media'][0]['file']['#style_name'] = 'content_main';
+        $variables['classes_array'][] = 'no-primary-text';
+      }
     }
     // Handle articles
     if ($variables['type'] == 'uib_article') {

@@ -617,7 +617,7 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
   }
 
-  .node-uib-article .file-video-youtube, .node-uib-article .file-video-vimeo {
+  .node-uib-article .file-video-youtube, .node-uib-article .file-video-vimeo, .node-type-area .file-video-vimeo, .node-type-area .file-video-youtube {
     position: relative;
     padding-bottom: 56.25%;
     padding-top: 10px;
@@ -977,6 +977,30 @@ $zen-auto-include-item-base: false;
     }
   } /* class sidebar-second ends here! */
 
+  /* Responsive video tablet*/
+  .node-type-area {
+    .no-primary-text {
+      .field-name-field-uib-primary-media {
+        @include zen-grid-item(4, 1);
+        @include zen-clear();
+        .file-video {
+          position: relative;
+          padding-bottom: 56.25%;
+          padding-top: 10px;
+          height: 0;
+          overflow: hidden;
+          iframe.media-youtube-player, iframe.media-vimeo-player {
+            @include zen-grid-item(1, 1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
   /* News archive tablet */
   #block-views-recent-news-block-date-selector {
     ul {
@@ -1272,6 +1296,30 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-primary-media {
     @include zen-grid-item(2, 1);
     @include zen-clear();
+  }
+
+  .node-type-area {
+    .no-primary-text {
+      .field-name-field-uib-primary-media {
+        @include zen-grid-item(4, 1);
+        @include zen-clear();
+        .file-video {
+          position: relative;
+          padding-bottom: 56.25%;
+          padding-top: 10px;
+          height: 0;
+          overflow: hidden;
+          iframe.media-youtube-player, iframe.media-vimeo-player {
+            @include zen-grid-item(1, 1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 
   .field-name-field-uib-primary-text {
