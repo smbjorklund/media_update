@@ -10,6 +10,7 @@ HTML = \
   hints.html \
   index.html \
   release-notes.html \
+  release-process.html \
   release1.html \
   render-array.html \
   repo-readme.html \

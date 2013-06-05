@@ -6,6 +6,7 @@ You should know these:
 
 * [Coding style](style.html); [CSS style](css-retningslinjer.html)
 * [Terminology](terms.html)
+* [Release process](release-process.html)
 
 ### Specifications and plans
 
