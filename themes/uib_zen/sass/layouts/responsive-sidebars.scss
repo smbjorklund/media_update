@@ -768,6 +768,11 @@ $zen-auto-include-item-base: false;
     .view-area-slideshow img {
       max-width: 708px;
     }
+    .slidecontent {
+      h3 {
+        width: 75% !important;
+      }
+    }
 
     .field-name-field-uib-social-media {
       @include zen-clear();
