@@ -54,7 +54,7 @@ function uib_area_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Bottom wrapper',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
       0 => 'field_uib_bottom_text',
       1 => 'field_uib_bottom_media',
@@ -281,11 +281,11 @@ function uib_area_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'two_column',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_uib_profiled_message',
-      1 => 'field_uib_profiled_testimonial',
-      2 => 'field_uib_tertiary_text',
+      1 => 'field_uib_tertiary_text',
+      2 => 'field_uib_profiled_testimonial',
       3 => 'field_uib_link_section',
     ),
     'format_type' => 'div',
