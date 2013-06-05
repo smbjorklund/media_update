@@ -373,11 +373,15 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $field_uib_kicker = field_view_field('node', $variables['node'], 'field_uib_kicker', array('label' => 'hidden'), $variables['language']);
           $variables['content']['field_uib_kicker'] = $field_uib_kicker;
         }
+        // Ensure that no byline is shown
+        if (!empty($variables['content']['group_article_main']['field_uib_byline'])) {
+          hide($variables['content']['group_article_main']['field_uib_byline']);
+        }
       }
       else {
         // In all other article types ensure that no byline is shown
-        if (!empty($variables['content']['field_uib_byline'])) {
-          hide($variables['content']['field_uib_byline']);
+        if (!empty($variables['content']['group_article_main']['field_uib_byline'])) {
+          hide($variables['content']['group_article_main']['field_uib_byline']);
         }
         // ... and that we show timestamps
         $variables['content']['group_article_main']['field_uib_text']['#suffix'] = '<div class="uib-article-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-article-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
