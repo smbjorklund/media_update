@@ -264,10 +264,16 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         $variables ['classes_array'][] = t('newspage_node');
         //This field is printed in a view in the sidebar
         unset($variables['content']['group_two_column']['field_uib_link_section']);
+        if (isset($variables['content']['group_two_column']['field_uib_profiled_message'])) {
+          $weight = $variables['content']['group_two_column']['field_uib_profiled_message']['#weight'];
+          unset($variables['content']['group_two_column']['field_uib_profiled_message']);
+          $variables['content']['field_uib_profiled_message'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'block_4', $variables['nid']);
+          $variables['content']['field_uib_profiled_message']['#weight'] = $weight;
+        }
       }
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'frontpage') {
         $variables ['classes_array'][] = t('frontpage_node');
-        //This fields is printed in a view in the sidebar
+        //This field is printed as view
         unset($variables['content']['group_two_column']['field_uib_profiled_message']);
       }
       if (isset($variables['content']['field_uib_profiled_article'])) {

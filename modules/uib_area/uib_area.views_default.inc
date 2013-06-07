@@ -1160,6 +1160,74 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['language']['value'] = array(
     'nb' => 'nb',
   );
+
+  /* Display: Profiled articles newspage */
+  $handler = $view->new_display('block', 'Profiled articles newspage', 'block_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Main media */
+  $handler->display->display_options['fields']['field_uib_main_media']['id'] = 'field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['table'] = 'field_data_field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['field'] = 'field_uib_main_media';
+  $handler->display->display_options['fields']['field_uib_main_media']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_main_media']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_uib_main_media']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_main_media']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_uib_main_media']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_uib_main_media']['settings'] = array(
+    'file_view_mode' => 'area_main',
+  );
+  /* Field: Content: Kicker */
+  $handler->display->display_options['fields']['field_uib_kicker']['id'] = 'field_uib_kicker';
+  $handler->display->display_options['fields']['field_uib_kicker']['table'] = 'field_data_field_uib_kicker';
+  $handler->display->display_options['fields']['field_uib_kicker']['field'] = 'field_uib_kicker';
+  $handler->display->display_options['fields']['field_uib_kicker']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_kicker']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Lead */
+  $handler->display->display_options['fields']['field_uib_lead']['id'] = 'field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'uib_article' => 'uib_article',
+  );
+  /* Filter criterion: Content: Type (field_uib_area_type) */
+  $handler->display->display_options['filters']['field_uib_area_type_value']['id'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['field'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['relationship'] = 'reverse_field_uib_profiled_message_node';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['value'] = array(
+    'newspage' => 'newspage',
+  );
   $translatables['frontpage_profiled_articles'] = array(
     t('Master'),
     t('Frontpage profiled articles'),
@@ -1181,6 +1249,7 @@ return !empty($handler->argument);';
     t('Se hele kalenderen'),
     t('Profiled news norwegian'),
     t('Flere aktuelle saker'),
+    t('Profiled articles newspage'),
   );
   $export['frontpage_profiled_articles'] = $view;
 
