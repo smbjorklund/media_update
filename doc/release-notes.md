@@ -1,3 +1,18 @@
+# Release 2013-06-10 tag: R1.6
+
+Release mandag 6. juni inneholdt både justeringer og feilrettinger. Dette ble gjort: 
+
+* Print av sider fra uib.no har fått et godt og konsistent oppsett. - #2459
+* Man kan nå liste opp administrativt og vitenskapelig ansatte ved enhetene separat. - #2706
+* Det er lagt inn et ekstra felt for forfatter/byline. Dette fritekstfeltet kan brukes dersom forfatteren av saken ikke er har brukernavn ved UiB.- #2292
+* Klikke man på et bilde, får man nå se bildet i stor versjon. -#2244
+* Headingen "Ledige stillinger" viser ikke lenger på siden hvis det ikke faktisk er ledige stillinger å liste opp. -#2967
+* "Opphavsrett" viser ikke under bilder på områdeforsiden. -#2786
+* En oppdatering av styling i slideshow hindrer at lange titler i kalenderhendelser skriver over faktainformasjonen til høyre i bildet. -#2650
+* Feil i sortering/rekkefølge på kalenderhendelser er rettet opp. -#2950
+* Bug som fjernet innhold i media-browser er fikset. Dermed kan man igjen søke på bilder i biblioteket og se egne opplastinger i bildeeditoren. -#2949
+* Noen justeringer i styling, hjelpetekster, samt en håndfull tekniske saker. - #3023, #3024 #2963, #2967, #2386, #2995
+
 # Release 2013-05-27 tag:R1.5
 
 Release mandag 27. mai inneholdt både justeringer og feilrettinger. Her er en oversikt over hva som ble gjort:
