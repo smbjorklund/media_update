@@ -23,9 +23,34 @@
  */
 ?>
 <?php
-  $output = strstr($output, '<img');
-  $output = trim(str_replace(array('</div>', '</a>'), '', $output));
+  global $base_root;
+  if (isset($row->field_field_uib_main_media[0]['raw']['uri'])) {
+    $alt = '';
+    if (isset($row->field_field_uib_main_media[0]['raw']['field_file_image_alt_text']['und']))
+      $alt = $row->field_field_uib_main_media[0]['raw']['field_file_image_alt_text']['und'][0]['safe_value'];
+    $title = '';
+    if (isset($row->field_field_uib_main_media[0]['raw']['field_file_image_title_text']['en']))
+      $title = $row->field_field_uib_main_media[0]['raw']['field_file_image_title_text']['en'][0]['safe_value'];
+    $image = theme('image_style', array(
+      'style_name' => 'wide_thumbnail',
+      'path' => $row->field_field_uib_main_media[0]['raw']['uri'],
+      'alt' => $alt,
+      'title' => $title,
+      'attributes' => array(),
+    ));
+  }
+  else {
+    $image = theme('image', array(
+      'path' => $base_root . '/sites/all/themes/uib/uib_zen/images/Recent_High.png',
+    ));
+  }
+  $link = array(
+    '#type' => 'link',
+    '#title' => $image,
+    '#href' => $field->last_tokens['[path]'],
+    '#options' => array('html' => TRUE, ),
+  );
 ?>
 <span class="field-content">
-  <a href="<?php print $field->last_tokens['[path]']; ?>"><?php print $output; ?></a>
+  <?php print render($link); ?>
 </span>
