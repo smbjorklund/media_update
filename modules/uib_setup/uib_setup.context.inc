@@ -49,39 +49,6 @@ function uib_setup_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'faculties_navigation';
-  $context->description = 'Temporary faculties navigation';
-  $context->tag = 'block';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        '<front>' => '<front>',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'views-faculties-block_1' => array(
-          'module' => 'views',
-          'delta' => 'faculties-block_1',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 1;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Temporary faculties navigation');
-  t('block');
-  $export['faculties_navigation'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'navigation';
   $context->description = 'Basic navigation for the whole site';
   $context->tag = 'block';
