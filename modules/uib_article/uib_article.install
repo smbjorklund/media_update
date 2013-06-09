@@ -81,33 +81,3 @@ function uib_article_update_7001() {
   }
   uibx_log("Updated $cnt articles");
 }
-
-/**
-* Populate empty byline fields for existing news articles
-*/
-function uib_article_update_7002() {
-  // Update all news articles that lack byline
-  // Performed in two steps. First, find all in which byline exist
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'uib_article')
-    ->fieldCondition('field_uib_article_type', 'value', 'news', '=')
-    ->fieldCondition('field_uib_byline', 'target_id', 0, '>');
-  $result = $query->execute();
-  $with_byline = array_keys($result['node']);
-  // Then get the nodes where byline does not exist
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'uib_article')
-    ->fieldCondition('field_uib_article_type', 'value', 'news', '=')
-    ->entityCondition('entity_id', $with_byline, 'NOT IN');
-  $result = $query->execute();
-  $nodes = entity_load('node', array_keys($result['node']));
-  $cnt = 0;
-  foreach ($nodes as $node) {
-    $node->field_uib_byline['und'][]['target_id'] = $node->uid;
-    field_attach_update('node', $node);
-    $cnt++;
-  }
-  uibx_log("Updated $cnt news articles.", "notice");
-}
