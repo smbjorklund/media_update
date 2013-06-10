@@ -5,7 +5,7 @@ Release mandag 6. juni inneholdt både justeringer og feilrettinger. Dette ble g
 * Print av sider fra uib.no har fått et godt og konsistent oppsett. - #2459
 * Man kan nå liste opp administrativt og vitenskapelig ansatte ved enhetene separat. - #2706
 * Det er lagt inn et ekstra felt for forfatter/byline. Dette fritekstfeltet kan brukes dersom forfatteren av saken ikke er har brukernavn ved UiB.- #2292
-* Klikke man på et bilde, får man nå se bildet i stor versjon. -#2244
+* Klikker man på et bilde i nyhetsarkiv-visningen, vil du komme inn på selve saken. -#2244
 * Headingen "Ledige stillinger" viser ikke lenger på siden hvis det ikke faktisk er ledige stillinger å liste opp. -#2967
 * "Opphavsrett" viser ikke under bilder på områdeforsiden. -#2786
 * En oppdatering av styling i slideshow hindrer at lange titler i kalenderhendelser skriver over faktainformasjonen til høyre i bildet. -#2650
