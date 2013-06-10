@@ -1,0 +1,26 @@
+commit 53e693af07774596ab0dd387a7c3d7712036a30b
+Author: Torsten Eriksson <Torsten.Eriksson@adm.uib.no>
+Date:   Thu Apr 11 13:41:23 2013 +0200
+
+    RTS-#2068 menuux module fix for length of menu option texts
+    
+    The previous solution to the problem of truncated menu option texts
+    was overridden when the menuux module was enabled, as it does its
+    own truncation.
+    
+    This is a simple hack directly in the module code. Long option
+    texts are still truncated, but max length increased from 30 to 94.
+
+diff --git a/sites/all/modules/menuux/menuux.admin.inc b/sites/all/modules/menuux/menuux.admin.inc
+index b01fb71..c37d69e 100755
+--- menuux/menuux.admin.inc
++++ menuux/menuux.admin.inc
+@@ -309,7 +309,7 @@ function menuux_generate_menu_rec(&$menu, $raw_menu, $active_mlid = FALSE) {
+   $has_active = FALSE;
+   foreach ($raw_menu as $data) {
+     if ($data['link']['hidden'] >= 0) {
+-      $title = truncate_utf8($data['link']['title'], 30, TRUE, FALSE);
++      $title = truncate_utf8($data['link']['title'], 94, TRUE, FALSE);
+       if ($data['link']['hidden']) {
+         $title .= ' ('. t('disabled') .')';
+       }
