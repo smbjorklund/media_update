@@ -444,6 +444,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 }
 
 function uib_zen_menu_link(array $variables) {
+  global $user;
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -451,7 +452,15 @@ function uib_zen_menu_link(array $variables) {
     $sub_menu = drupal_render($element['#below']);
   }
 
-  if (isset($variables['element']['#bid']) && ($variables['element']['#bid']['delta'] == 'top-area-menu') && ($element['#original_link']['depth'] == 2))
+  if ($element['#href'] == 'node/add/uib-article') {
+    // prepopulate byline field
+    $output = '<a href="' . url($element['#href'], array('query' => array('field_uib_byline' => $user->uid))) . '"';
+    if (!empty($element['#localized_options']['attributes']['title'])) {
+      $output .= ' title="' . t($element['#localized_options']['attributes']['title']) . '"';
+    }
+    $output .= '>' . t($element['#title']) . '</a>';
+  }
+  elseif (isset($variables['element']['#bid']) && ($variables['element']['#bid']['delta'] == 'top-area-menu') && ($element['#original_link']['depth'] == 2))
     $output = '<a href="#">' . $element["#title"] . '</a> ';
   else
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);

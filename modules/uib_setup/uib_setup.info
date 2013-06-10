@@ -13,6 +13,7 @@ dependencies[] = contextual
 dependencies[] = ctools
 dependencies[] = entity_token
 dependencies[] = entity_translation
+dependencies[] = entityreference_prepopulate
 dependencies[] = features
 dependencies[] = field_collection
 dependencies[] = field_group

@@ -19,6 +19,14 @@ function uib_webdesk_admin_menu_output_alter(&$content) {
       $content['menu']['admin/structure']['#access'] = FALSE;
     }
   }
+  // prepopulate byline field
+  if (!empty($content['menu']['admin/content']['node/add'])) {
+    $content['menu']['admin/content']['node/add']['node/add/uib-article']['#options']['query'] = array('field_uib_byline' => $user->uid);
+  }
+  elseif (!empty($content['menu']['node/add'])) {
+    // prepopulate byline field for level 2 and 3 users (admin menu structure is different)
+    $content['menu']['node/add']['node/add/uib-article']['#options']['query'] = array('field_uib_byline' => $user->uid);
+  }
 }
 
 /**

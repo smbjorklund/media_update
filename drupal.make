@@ -27,6 +27,7 @@ projects[diff][version] = 3.2
 projects[entity][version] = 1.1
 projects[entity_translation][version] = 1.0-beta2
 projects[entityreference][version] = 1.0
+projects[entityreference_prepopulate][version] = 1.3
 projects[features][version] = 1.0
 projects[features][patch][] = http://drupal.org/files/features-component-list-as-info.patch
 projects[feeds][version] = 2.0-alpha8
