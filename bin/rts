@@ -299,7 +299,7 @@ sub do_list {
 sub do_release {
     if (@ARGV) {
 	my $release = shift(@ARGV);
-	$release = "R$release" unless $release =~ /^r/i;
+	$release = "R$release" if $release =~ /^\d/;
 	$release = lc($release);
 	my @issues = filter_issues(sub { lc($_[0]{'fixed_version'} || 'none') eq $release });
 	if (@issues) {
