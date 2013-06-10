@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# set -x
+
+MOD=$1
+
+if [ "$MOD" = "" ]; then
+    echo "Usage: $0 <module>"
+    exit 1
+fi
+
+rm -rf drupal/sites/all/modules/$MOD
+
+ln -s drupal/sites || exit 1
+drush make drupal.make . --projects=$MOD --libraries= --no-core
+rm sites
+
+(cd drupal && git status -s sites/all/modules/$MOD)
