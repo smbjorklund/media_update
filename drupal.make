@@ -56,6 +56,7 @@ projects[menu_admin_per_menu][version] = 1.0
 projects[menu_block][version] = 2.3
 projects[menuperformance][revision] = 4c46d15673ee11ae56adf65bd1bc6677798e0cea
 projects[menuux][version] = 1.0-beta3
+projects[menuux][patch][] = https://drupal.org/files/menuux-fix-bad-reference-params-1031104-12.patch
 projects[migrate][version] = 2.4
 projects[module_filter][version] = 1.7
 projects[override_node_options][version] = 1.12
