@@ -79,6 +79,7 @@ projects[views][patch][] = https://drupal.org/files/views-3.x-dev-issue_1331056-
 projects[views_bulk_operations][version] = 3.1
 projects[views_slideshow][version] = 3.0
 projects[wysiwyg][version] = 2.2
+projects[wysiwyg][patch][] = https://drupal.org/files/wysiwyg-tinymce-invisible.179482.10.patch
 
 ; libraries
 libraries[jquery.cycle][download][type] = file
