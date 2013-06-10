@@ -50,6 +50,7 @@ projects[login_destination][version] = 1.1
 projects[markdown][version] = 1.1
 projects[media][version] = 2.0-unstable7
 projects[media_vimeo][revision] = 81decc73c27764437876a2c9482a66592aa71ffb
+projects[media_vimeo][patch][] = https://drupal.org/files/register-video-vimeo-mimetype-1931136-1.patch
 projects[media_youtube][version] = 2.0-rc2
 projects[menu_admin_per_menu][version] = 1.0
 projects[menu_block][version] = 2.3
