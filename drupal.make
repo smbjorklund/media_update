@@ -28,6 +28,7 @@ projects[entity][version] = 1.0
 projects[entity_translation][version] = 1.0-beta2
 projects[entityreference][version] = 1.0
 projects[features][version] = 1.0
+projects[features][patch][] = http://drupal.org/files/features-component-list-as-info.patch
 projects[feeds][version] = 2.0-alpha8
 projects[feeds_xpathparser][version] = 1.0-beta4
 projects[field_collection][version] = 1.0-beta5
