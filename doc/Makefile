@@ -20,6 +20,7 @@ HTML = \
   style.html \
   terms.html \
   w3_server_layout.html \
+  man1/make-drupal.html \
   man1/patches.html \
   man1/rts.html \
   man1/site-drush.html \

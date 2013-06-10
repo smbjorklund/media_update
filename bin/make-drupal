@@ -1,0 +1,40 @@
+#!/bin/sh
+
+set -x
+
+DIR=drupal
+
+DRUPAL_REPO=git@git.uib.no:x-contrib/drupal.git
+DRUPAL_VER=$(perl -ne 'print $1 if /^projects\[drupal]\[version] = (\S+)/' drupal.make)
+
+case "$DRUPAL_VER" in
+    7.*) echo $DRUPAL_VER;;
+    *)   echo "Bad version number $DRUPAL_VER"; exit 1;;
+esac
+
+drush --version || exit $?
+
+if test -e $DIR; then
+    echo "$DIR already exists, aborting"
+    exit 1
+fi
+
+if true; then
+    # make $DIR an git clone of core
+    git clone -b $DRUPAL_VER $DRUPAL_REPO $DIR
+
+    # This is a hack; 'drush make' refuse to overwrite $DIR directly
+    ln -s $DIR/sites || exit 1
+    drush make drupal.make . --no-core
+    rm sites
+else
+    drush make drupal.make $DIR
+fi
+
+# Set up stuff we depend on
+echo "*uib*" >>$DIR/sites/.gitignore
+
+# Links back
+ln -s ../../../../modules $DIR/sites/all/modules/uib
+ln -s ../../../../themes  $DIR/sites/all/themes/uib
+ln -s ../../profiles/uib $DIR/profiles/uib
