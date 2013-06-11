@@ -80,9 +80,11 @@ Det er kan være nyttig å beskrive saken ut fra hva en tester må gjøre for å
 - Endringer i koder tilknyttet en sak commites på en branch som har navn på formen 'rts/_###_' (hvor '_###_' er saksnummeret i RTS).
 Legg inn kommentarer i RTS saken som refererer til denne.  Referanser på formen "commit:_deadbeef_" blir lenker til Git presentasjonen i RTS.
 
-- Når man har løst en sak, settes status til «Venter» og Avsluttet som: «Løst».
+- Når man har løst en sak, settes status til «Klar til kontroll» og Avsluttet som: «Løst».
 
-- Før release flyttes saker som står som «Venter/Løst» til «Klar til test/Løst» etter kodegjennomgang og godkjenning fra Releaseansvarlig.
+- Releaseansvarlig flytter saker til "Kontrollert" når den er gjennomgått, godkjent og merget inn i master.
+
+- Når saker er blitt [staget på www.test.uib.no](http://www.test.uib.no) får de tilstand «Klar til test».
 
 - Saker tildeles for testing av Testansvarlig.  Den som har løst saken (utvikler) kan _ikke_ selv være tester.
 
@@ -92,9 +94,11 @@ Legg inn kommentarer i RTS saken som refererer til denne.  Referanser på forme
 
 - Releasen er klar til produksjonsetting når alle sakene som inngår er satt til  «Verifisert».
 
-- Når release er oppdatert på produksjon, endrer Releaseansvarlig status fra  «Klar til test» til «Avsluttet» for alle sakene som inngår i releasen.  Deretter stenges releasen i RTS (hindrer at nye saker kan tilordnes).
+- Når release er oppdatert på produksjon, endrer Releaseansvarlig status fra  «Verifisert» til «Avsluttet» for alle sakene som inngår i releasen.  Deretter stenges releasen i RTS (hindrer at nye saker kan tilordnes).
 
 ### Tidstandsdiagram for RTS-saker
+
+_Dette diagrammet er desverre foreldet.  Det har ikke med tilstandene "Klar for kontroll" og "Kontrollert"._
 
 <img src="img/rts-workflow.png" style="width: 100%">
 
