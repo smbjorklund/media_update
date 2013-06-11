@@ -219,8 +219,11 @@ sub issue_status {
 
     my $status = $issue->{status};
     $status = "-" if $status eq "Avsluttet" || $status eq "Levert";
-    $status = "✅" if $status eq "Verifisert";
+    $status = "🚜" if $status eq "Under arbeid";
     $status = "😴" if $status eq "Venter";
+    $status = "🍄" if $status eq "Klar til kontroll";
+    $status = "👍" if $status eq "Kontrollert";
+    $status = "✅" if $status eq "Verifisert";
     my $st = substr($status, 0, 1) || "?";
 
     my $v = $issue->{x_Avsluttet_som} || "";
