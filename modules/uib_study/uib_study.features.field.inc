@@ -70,6 +70,12 @@ function uib_study_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '2',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -143,6 +149,12 @@ function uib_study_field_default_fields() {
           'type' => 'list_default',
           'weight' => 3,
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -210,6 +222,12 @@ function uib_study_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '0',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -282,6 +300,12 @@ function uib_study_field_default_fields() {
           'settings' => array(),
           'type' => 'list_default',
           'weight' => '1',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',

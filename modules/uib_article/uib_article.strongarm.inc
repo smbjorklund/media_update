@@ -31,6 +31,9 @@ function uib_article_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'short_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -55,6 +58,10 @@ function uib_article_strongarm() {
           ),
           'teaser' => array(
             'weight' => '9',
+              'visible' => FALSE,
+            ),
+          'short_teaser' => array(
+            'weight' => '2',
             'visible' => FALSE,
           ),
         ),

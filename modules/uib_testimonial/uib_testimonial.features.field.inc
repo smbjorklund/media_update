@@ -67,6 +67,12 @@ function uib_testimonial_field_default_fields() {
           'type' => 'hidden',
           'weight' => '2',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -144,6 +150,12 @@ function uib_testimonial_field_default_fields() {
           ),
           'type' => 'date_default',
           'weight' => '3',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -224,6 +236,12 @@ function uib_testimonial_field_default_fields() {
           'type' => 'text_default',
           'weight' => '7',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -294,6 +312,12 @@ function uib_testimonial_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '8',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -366,6 +390,12 @@ function uib_testimonial_field_default_fields() {
           'type' => 'text_default',
           'weight' => '9',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -435,6 +465,13 @@ function uib_testimonial_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '11',
+        ),
+        'short_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -511,6 +548,12 @@ function uib_testimonial_field_default_fields() {
           ),
           'type' => 'file_rendered',
           'weight' => '4',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -608,6 +651,12 @@ function uib_testimonial_field_default_fields() {
           'type' => 'text_default',
           'weight' => '2',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -680,6 +729,12 @@ function uib_testimonial_field_default_fields() {
           'type' => 'text_default',
           'weight' => '6',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -751,6 +806,12 @@ function uib_testimonial_field_default_fields() {
           'type' => 'text_default',
           'weight' => '5',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -821,6 +882,12 @@ function uib_testimonial_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '12',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -920,6 +987,12 @@ function uib_testimonial_field_default_fields() {
           'type' => 'text_default',
           'weight' => '10',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -944,6 +1017,101 @@ function uib_testimonial_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '19',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-uib_testimonial-field_uib_relation'.
+  $fields['node-uib_testimonial-field_uib_relation'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_relation',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'uib_article' => 'uib_article',
+            'uib_external_content' => 'uib_external_content',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'uib_testimonial',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 14,
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_relation',
+      'label' => 'Relation',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
+        ),
+        'type' => 'entityreference_autocomplete',
+        'weight' => '21',
       ),
     ),
   );
@@ -989,6 +1157,12 @@ function uib_testimonial_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '13',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1086,6 +1260,12 @@ function uib_testimonial_field_default_fields() {
           'type' => 'hidden',
           'weight' => '3',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1156,6 +1336,12 @@ function uib_testimonial_field_default_fields() {
           'type' => 'hidden',
           'weight' => '4',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1202,6 +1388,7 @@ function uib_testimonial_field_default_fields() {
   t('Position');
   t('Quote');
   t('Related studyprogrammes');
+  t('Relation');
   t('Text');
   t('The quote that will be highlighted in the middle of the page and all the places this testimonial is featured. ');
 

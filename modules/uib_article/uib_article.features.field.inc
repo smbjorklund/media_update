@@ -67,6 +67,12 @@ function uib_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '13',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -135,6 +141,12 @@ function uib_article_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '12',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -219,6 +231,12 @@ function uib_article_field_default_fields() {
           ),
           'type' => 'entityreference_label',
           'weight' => '17',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -317,6 +335,12 @@ function uib_article_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '22',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -394,6 +418,12 @@ function uib_article_field_default_fields() {
           ),
           'type' => 'date_default',
           'weight' => '21',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -491,6 +521,12 @@ function uib_article_field_default_fields() {
           'type' => 'i18n_list_default',
           'weight' => '24',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -557,6 +593,12 @@ function uib_article_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '29',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -653,6 +695,12 @@ function uib_article_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '25',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -756,6 +804,12 @@ function uib_article_field_default_fields() {
           'type' => 'file_rendered',
           'weight' => '27',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -843,6 +897,12 @@ function uib_article_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '0',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -941,6 +1001,13 @@ function uib_article_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'short_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -1013,6 +1080,12 @@ function uib_article_field_default_fields() {
           'settings' => array(),
           'type' => 'uiblink_formatter',
           'weight' => '28',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1097,6 +1170,12 @@ function uib_article_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '23',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1200,6 +1279,15 @@ function uib_article_field_default_fields() {
           'type' => 'file_rendered',
           'weight' => '2',
         ),
+        'short_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'teaser',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '1',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'file_entity',
@@ -1301,6 +1389,12 @@ function uib_article_field_default_fields() {
           'type' => 'file_rendered',
           'weight' => '26',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1393,6 +1487,12 @@ function uib_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '11',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1451,6 +1551,12 @@ function uib_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '10',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1476,6 +1582,101 @@ function uib_article_field_default_fields() {
         'settings' => array(),
         'type' => 'number',
         'weight' => '16',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-uib_article-field_uib_relation'.
+  $fields['node-uib_article-field_uib_relation'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_relation',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'uib_article' => 'uib_article',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'uib_article',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'links' => 0,
+            'view_mode' => 'short_teaser',
+          ),
+          'type' => 'entityreference_entity_view',
+          'weight' => '19',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_relation',
+      'label' => 'Relation',
+      'required' => 0,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
+        ),
+        'type' => 'entityreference_autocomplete',
+        'weight' => '17',
       ),
     ),
   );
@@ -1521,6 +1722,12 @@ function uib_article_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '18',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1618,6 +1825,12 @@ function uib_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '7',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1684,6 +1897,12 @@ function uib_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '9',
@@ -1758,6 +1977,12 @@ function uib_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '8',
         ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1810,6 +2035,7 @@ function uib_article_field_default_fields() {
   t('Menu title w2');
   t('Parent ID w2');
   t('Path w2');
+  t('Relation');
   t('Relevant links');
   t('Select which content type you want to create. Choose between info page, event or news article.');
   t('Small images');

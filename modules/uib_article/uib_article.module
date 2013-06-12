@@ -316,3 +316,13 @@ function uib_article_node_presave($node) {
     }
   }
 }
+
+/**
+* Implements hook_entity_info_alter().
+*/
+function uib_article_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['short_teaser'] = array(
+    'label' => t('Short teaser'),
+    'custom settings' => TRUE,
+  );
+}
