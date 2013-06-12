@@ -217,6 +217,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     }
   }
 
+  $variables['uib_long_page_title'] = FALSE;
   if (strlen($variables['page_title']) > 47 && !empty($variables['custom_logo'])) {
     $variables['uib_long_page_title'] = TRUE;
   }
