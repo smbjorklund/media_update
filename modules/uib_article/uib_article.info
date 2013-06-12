@@ -21,6 +21,7 @@ dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = uib_area
+dependencies[] = uib_external
 dependencies[] = uib_urlfilter
 dependencies[] = views
 features[ctools][] = field_group:field_group:1

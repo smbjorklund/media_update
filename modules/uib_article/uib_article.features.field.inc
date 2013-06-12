@@ -1345,7 +1345,7 @@ function uib_article_field_default_fields() {
   $fields['node-uib_article-field_uib_media'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_uib_media',
@@ -1623,6 +1623,7 @@ function uib_article_field_default_fields() {
           ),
           'target_bundles' => array(
             'uib_article' => 'uib_article',
+            'uib_external_content' => 'uib_external_content',
           ),
         ),
         'target_type' => 'node',

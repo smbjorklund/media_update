@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the External content feature.
+ */
+
+include_once 'uib_external.features.inc';

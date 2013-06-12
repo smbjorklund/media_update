@@ -111,3 +111,8 @@ function uib_article_update_7002() {
   }
   uibx_log("Updated $cnt news articles.", "notice");
 }
+
+function uib_article_update_7003() {
+  module_enable(array('uib_external'), FALSE);
+  uibx_log('Enabled module - UiB External');
+}
