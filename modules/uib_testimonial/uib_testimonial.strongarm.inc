@@ -81,9 +81,7 @@ function uib_testimonial_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_uib_testimonial';
-  $strongarm->value = array(
-    0 => 'area',
-  );
+  $strongarm->value = array();
   $export['menu_options_uib_testimonial'] = $strongarm;
 
   $strongarm = new stdClass();
