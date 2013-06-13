@@ -204,6 +204,26 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
   return $file;
 }
 
+function xtopic_vimeo($uri, $parent_lang = 'nb') {
+  $file = new stdClass();
+  $result = db_select('file_managed', 'fm')
+    ->fields('fm', array('fid'))
+    ->condition('uri', $uri, '=')
+    ->execute()
+    ->fetchAssoc();
+  if (!empty($result)) {
+    $file->fid = $result['fid'];
+  }
+  else {
+    $file->uri = $uri;
+    file_save($file);
+    if (!$file->fid) {
+      die('Could not save file');
+    }
+  }
+  return $file;
+}
+
 /**
  * Base class for Article Migrations.
  */
@@ -247,6 +267,8 @@ abstract class XTopicToArticleMigration extends Migration {
       ->sourceMigration('User');
     $this->addFieldMapping('field_uib_byline', 'byline')
       ->sourceMigration('User');
+    $this->addFieldMapping('field_uib_fact_box', 'fact_box')
+      ->arguments(array('format' => 'basic_html'));
   }
 
   public function prepareRow($row) {
@@ -261,10 +283,31 @@ abstract class XTopicToArticleMigration extends Migration {
 
       $row->text = xtopic_fixuri($row->text);
     }
+
+    $row->fact_box = '';
+    if (!empty($row->faktabokstittel)) {
+      $row->fact_box .= '<h3>' . $row->faktabokstittel . '</h3>';
+    }
+    $faktaboks = 'faktaboks-tekst';
+    if (!empty($row->$faktaboks)) {
+      $row->fact_box .= $row->$faktaboks;
+
+      $clean_fact_box = xtopic_cleanup($row->fact_box);
+      $row->fact_box = $clean_fact_box;
+
+      $row->fact_box = xtopic_fixuri($row->fact_box);
+    }
   }
 
   public function prepare($node, $row) {
-    if (isset($row->main_media)) {
+    if (strstr($row->main_media, 'vimeo')) {
+      $file = xtopic_vimeo($row->main_media);
+      $node->field_uib_main_media['und'][0] = array(
+        'fid' => $file->fid,
+        'display' => 1,
+      );
+    }
+    elseif (isset($row->main_media)) {
       $file = xtopic_file($row->main_media, $node->uid, $row->site_lang);
       $node->field_uib_main_media['und'][0] = array(
         'fid' => $file->fid,

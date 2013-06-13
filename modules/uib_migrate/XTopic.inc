@@ -216,7 +216,10 @@ class XTopic extends stdClass {
         }
       }
 
-      if (!empty($xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
+      if (!empty($this->vimeoembed)) {
+        $this->main_media = 'vimeo://v/' . $this->vimeoembed;
+      }
+      elseif (!empty($xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
         $this->main_media = $xlink['decorated/stort_hovedtekstbilde/decoration'][0];
       }
 
@@ -297,6 +300,11 @@ class XTopic extends stdClass {
       'location' => t('Location for events'),
       'fullkampanjetittel' => t('Norwegian main title for Areas'),
       'menypunkttittel' => t('Menu title for infopages and navpages'),
+      'faktabokstittel' => t('Fact box title for articles (in w2 this applies for articles for the news section)'),
+      'faktaboks-tekst' => t('Fact box content for articles (in w2 this applies for articles for the news section)'),
+      'vimeoembed' => t('The id to a video located at vimeo to use as main media in an article'),
+      'forside_vimeoembedid' => t('The id to a video file located at vimeo to use in the frontpage'),
+      'frontpage_title' => t('A possibility to display a different article title when used on a front page'),
 
       # Testimonial
       'name' => t('Name for testimonial'),
