@@ -235,7 +235,7 @@ function uib_article_field_group_info() {
       'label' => 'Information',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => 'clearfix',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -302,7 +302,7 @@ function uib_article_field_group_info() {
       'label' => 'Sidebar',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => 'clearfix',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
