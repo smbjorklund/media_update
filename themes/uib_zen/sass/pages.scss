@@ -144,10 +144,12 @@ body {
 .page-webdesk #main,
 .page-node-add #main {
   color: #666;
-  margin: 0 0 30px;
   padding: 0;
 }
 
+.page-node-add #main {
+  margin: 0 0 30px;
+}
 .page-webdesk #page-title {
   display: none;
 }

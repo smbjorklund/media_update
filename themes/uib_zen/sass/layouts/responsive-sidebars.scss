@@ -94,6 +94,11 @@ $zen-auto-include-item-base: false;
   padding-bottom: 16px;
 }
 
+.page-node-add, .page-webdesk {
+  #navigation {
+    background: none;
+  }
+}
 @media all and (min-width: 480px) {
   #main {
     padding-top: 0;
