@@ -40,9 +40,11 @@ $zen-auto-include-item-base: false;
  * Center the page.
  */
 
-#page,
+#main,
 .region-bottom,
-#global-header {
+#global-header,
+#header,
+#navigation .region-navigation {
   /* For screen sizes larger than 1200px, prevent excessively long lines of text
      by setting a max-width. */
   margin-left: auto;
@@ -85,6 +87,12 @@ $zen-auto-include-item-base: false;
 /*
  * Navigation bar
  */
+
+#navigation {
+  background: url(../../images/decore-line.png) repeat-x bottom;
+  margin-bottom: -6px;
+  padding-bottom: 16px;
+}
 
 @media all and (min-width: 480px) {
   #main {
