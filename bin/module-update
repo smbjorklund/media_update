@@ -1,0 +1,86 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+my $module = shift;
+my $vers = shift;
+
+$module || usage();
+
+my @make = qx(cat drupal.make);
+die unless @make;
+
+my $core;
+my $spec;
+my $idx = 0;
+my $updated;
+for (@make) {
+    if (/^core\s*=\s*(\S+)/) {
+	$core = $1;
+    }
+    elsif (/^projects\[(\w+)]\[version] = (\S+)/ && $1 eq $module) {
+	$spec = [$_, $1, $2];
+	if (!$vers) {
+	    $vers = $2;
+	}
+	elsif ($vers ne $2) {
+	    # update the entry
+	    $_ = "projects[$1][version] = $vers\n";
+	    $updated++;
+	}
+	last;
+    }
+    $idx++;
+}
+
+die unless $core;
+
+unless ($spec) {
+    usage() unless $vers;
+
+    # insert it then
+    my $mod;
+    $idx = 0;
+    for (@make) {
+	if (/^; modules/ .. /^$/) {
+	    if (/^projects\[(\w+)]\[version]/) {
+		my $mod = $1;
+		#use Data::Dump; dd $mod, $module;
+		if ($mod gt $module) {
+		    # we should insert it here
+		    last;
+		}
+	    }
+	    elsif (/^$/) {
+		last;
+	    }
+	}
+	$idx++;
+    }
+    splice(@make, $idx, 0, "projects[$module][version] = $vers\n");
+    $updated++;
+}
+
+if ($updated) {
+    open(my $fh, ">", "drupal.make") || die "Can't open drupal.make: $!";
+    print $fh @make;
+    close($fh) || die "Can't write to drupal.make: $!";
+    warn "Wrote drupal.make\n";
+}
+
+run("rm -rf drupal/sites/all/modules/$module");
+run("ln -s drupal/sites");
+run("drush make drupal.make . --projects=$module --libraries= --no-core");
+run("rm sites");
+
+sub run {
+    print ">>> @_\n";
+    system(@_);
+    die "Failed $?" if $?;
+}
+
+sub usage {
+    (my $progname = $0) =~ s,.*/,,;
+    die "Usage: $progname <module> <version>\n";
+}
