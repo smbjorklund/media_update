@@ -1,4 +1,4 @@
-name = UiB staff
+name = UiB Staff
 core = 7.x
 package = UiB
 php = 5.2.4

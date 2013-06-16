@@ -1,4 +1,4 @@
-name = UiB Feature Article
+name = UiB Article
 description = Define articles
 core = 7.x
 package = UiB

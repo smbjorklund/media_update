@@ -1,4 +1,4 @@
-name = UiB Feature Area
+name = UiB Area
 description = Provides the area and area_type taxonomies.  Organisational units.
 core = 7.x
 package = UiB

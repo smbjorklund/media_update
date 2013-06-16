@@ -1,5 +1,5 @@
-name = uib_prod
-description = Production settings
+name = UiB Production Settings
+description = Imposes the configuration that we want to apply to our production setup
 core = 7.x
 package = UiB
 php = 5.2.4

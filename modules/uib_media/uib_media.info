@@ -1,4 +1,4 @@
-name = UiB media
+name = UiB Media
 description = Contains modifications to media module
 package = UiB
 core = 7.x

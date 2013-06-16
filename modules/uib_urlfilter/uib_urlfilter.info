@@ -1,4 +1,4 @@
-name = UiB urlfilter
+name = UiB URL filter
 description = Filter for removal of superfluous domain name
 package = UiB
 core = 7.x

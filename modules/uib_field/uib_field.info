@@ -1,4 +1,4 @@
-name = UiB field
+name = UiB Field
 description = Contains modifications to fields
 package = UiB
 core = 7.x

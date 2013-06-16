@@ -1,5 +1,5 @@
-name = UiB newsarchive
-description = Newsarchive views
+name = UiB Newsarchive
+description = Provides pages and blocks that presents all the news articles for an area
 core = 7.x
 package = UiB
 php = 5.2.4

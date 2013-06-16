@@ -1,4 +1,4 @@
-name = UiB h2tabs
+name = UiB H2 Tabs
 description = Contains recodings for article second level headers to tabs
 package = UiB
 core = 7.x
