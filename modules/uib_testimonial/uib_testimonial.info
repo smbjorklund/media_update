@@ -3,7 +3,6 @@ description = Define testimonials
 core = 7.x
 package = UiB
 php = 5.2.4
-version = 7.x-0.1
 project = uib_testimonial
 dependencies[] = ctools
 dependencies[] = date

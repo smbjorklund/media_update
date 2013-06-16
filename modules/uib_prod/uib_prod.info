@@ -3,7 +3,6 @@ description = Production settings
 core = 7.x
 package = UiB
 php = 5.2.4
-version = 7.x-1.0
 project = uib_prod
 dependencies[] = l10n_update
 dependencies[] = strongarm
