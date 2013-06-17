@@ -12,7 +12,7 @@ my @make = qx(cat drupal.make);
 die unless @make;
 
 my $core;
-my $spec;
+my $old_vers;
 my $idx = 0;
 my $updated;
 for (@make) {
@@ -20,7 +20,7 @@ for (@make) {
 	$core = $1;
     }
     elsif (/^projects\[(\w+)]\[version] = (\S+)/ && $1 eq $module) {
-	$spec = [$_, $1, $2];
+	$old_vers = $2;
 	if (!$vers) {
 	    $vers = $2;
 	}
@@ -36,7 +36,7 @@ for (@make) {
 
 die unless $core;
 
-unless ($spec) {
+unless ($old_vers) {
     usage() unless $vers;
 
     # insert it then
@@ -73,6 +73,16 @@ run("rm -rf drupal/sites/all/modules/$module");
 run("ln -s drupal/sites");
 run("drush make drupal.make . --projects=$module --libraries= --no-core");
 run("rm sites");
+
+my $msg = ($old_vers ?
+    ($old_vers eq $vers ?
+	"Refreshed $module-$core-$vers"
+	: "Upgrade to $module-$core-$vers (was $old_vers)")
+    : "Imported $module-$core-$vers"
+);
+run("(cd drupal && git commit -m '$msg' sites/all/modules/$module)");
+run("git add drupal.make drupal");
+run("git commit -m '$msg'");
 
 sub run {
     print ">>> @_\n";
