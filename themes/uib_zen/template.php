@@ -571,9 +571,11 @@ function uib_zen_preprocess_block(&$variables, $hook) {
     'block-uib-area-area-parents',
     'block-views-faculties-block-1',
     'block-uib-area-jobbnorge',
+    'view-frontpage-profiled-articles view-display-id-block_3',
   );
   $orange_block = array(
     'block-views-calendar-block-1',
+    'view-frontpage-profiled-articles.view-display-id-block_2',
   );
   if (in_array ($variables['block_html_id'], $blue_block)) {
     if($variables['block']->subject) {
