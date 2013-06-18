@@ -36,3 +36,22 @@ function uib_area_update_7001() {
   // do it once more
   uib_area_update_7000();
 }
+
+/**
+* Create frontpage areas
+*/
+function uib_area_update_7002() {
+  $languages = array(
+    'nb' => 'Universitetet i Bergen',
+    'en' => 'University of Bergen',
+  );
+  foreach ($languages as $lang => $title) {
+    $node = new stdClass();
+    $node->title = $title;
+    $node->language = $lang;
+    $node->type = 'area';
+    $node->field_uib_area_type['und'][0]['value'] = 'frontpage';
+    node_save($node);
+    i18n_variable_set('site_frontpage', 'node/' . $node->nid, $lang);
+  }
+}
