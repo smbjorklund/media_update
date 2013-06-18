@@ -392,16 +392,18 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
         // Add page-area-menu to node group_article_sidebar
         $block = module_invoke('menu_block', 'block_view', 'page-area-menu');
-        $block = '<div class="block"><h2 class="block-title">' . $block['subject_array']['#markup'] . '</h2>' . render($block['content']) . '</div>';
-        if (!empty($variables['content']['group_article_sidebar']['#id'])) {
-          $variables['content']['group_article_sidebar']['page-area-menu']['#markup'] = $block;
-        }
-        else {
-          $variables['content']['group_article_sidebar']['#weight'] = 4;
-          $variables['content']['group_article_sidebar']['#id'] =  'node_uib_article_full_group_article_sidebar';
-          $variables['content']['group_article_sidebar']['#prefix'] = '<div class="group-article-sidebar">';
-          $variables['content']['group_article_sidebar']['#suffix'] = '</div>';
-          $variables['content']['group_article_sidebar']['page-area-menu']['#markup'] = $block;
+        if (!empty($block['content'])) {
+          $block = '<div class="block"><h2 class="block-title">' . $block['subject_array']['#markup'] . '</h2>' . render($block['content']) . '</div>';
+          if (!empty($variables['content']['group_article_sidebar']['#id'])) {
+            $variables['content']['group_article_sidebar']['page-area-menu']['#markup'] = $block;
+          }
+          else {
+            $variables['content']['group_article_sidebar']['#weight'] = 4;
+            $variables['content']['group_article_sidebar']['#id'] =  'node_uib_article_full_group_article_sidebar';
+            $variables['content']['group_article_sidebar']['#prefix'] = '<div class="group-article-sidebar">';
+            $variables['content']['group_article_sidebar']['#suffix'] = '</div>';
+            $variables['content']['group_article_sidebar']['page-area-menu']['#markup'] = $block;
+          }
         }
       }
 
