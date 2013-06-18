@@ -36,6 +36,9 @@ function drush_uib_study_uib_sync_fs() {
     $ou_id[$nid] = $ou->field_uib_ou_id['und'][0]['value'];
   }
 
+  $err = 0;
+  $not_found = 0;
+
   // let's process these then
   foreach ($ou_id as $nid => $oid) {
     $o1 = substr($oid, 0, 2);
@@ -49,10 +52,10 @@ function drush_uib_study_uib_sync_fs() {
     // look for fag belonging to this ou
     $fspres_oid = implode('.', array('184', (int)$o1, (int)$o2));
     $fspres_url = "http://fs-pres.app.uib.no/sted/$fspres_oid/info.json";
-    uibx_log('GET ' . $fspres_url);
 
     $res = drupal_http_request($fspres_url);
     if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
+      uibx_log('GET ' . $fspres_url);
       $data = drupal_json_decode($res->data);
       if (isset($data['emner_fag'])) {
         foreach ($data['emner_fag'] as $emne) {
@@ -68,17 +71,34 @@ function drush_uib_study_uib_sync_fs() {
       }
     }
     else {
-      uibx_log("GET $fspres_url: " . $res->code . ' ' . $res->status_message, 'warning');
+      uibx_log("GET $fspres_url: " . $res->code . ' ' . $res->status_message, ($res->code == 404 ? 'warning' : 'error'));
+      if ($res->code == 404) {
+        $not_found++;
+      }
+      else {
+        $err++;
+      }
     }
   }
 
-  $nodes_to_delete = array();
-  foreach ($unused_codes as $code => $nids) {
-    array_splice($nodes_to_delete, count($nodes_to_delete), 0, $nids);
-    uibx_log("Deleting nodes for $code");
+  if ($err) {
+    uibx_log("Will not delete studies when $err errors occured", 'warning');
   }
-  if ($nodes_to_delete) {
-    node_delete_multiple($nodes_to_delete);
+  else {
+    $nodes_to_delete = array();
+    foreach ($unused_codes as $code => $nids) {
+      array_splice($nodes_to_delete, count($nodes_to_delete), 0, $nids);
+      uibx_log("Deleting nodes for $code");
+    }
+    $delete_limit = variable_get('uib_fs_delete_limit', 50);
+    if (count($nodes_to_delete) <= $delete_limit) {
+      if ($nodes_to_delete) {
+        node_delete_multiple($nodes_to_delete);
+      }
+    }
+    else {
+      uibx_log('Cowardly refused to delete more than $delete_limit study nodes', 'error');
+    }
   }
 }
 
