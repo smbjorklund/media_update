@@ -207,6 +207,7 @@ function uib_article_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'uib_article',
       'default_value' => NULL,
+      'default_value_function' => 'entityreference_prepopulate_field_default_value',
       'deleted' => '0',
       'description' => 'Add the author of the content. Use UiB usernames to search for people.',
       'display' => array(
@@ -231,6 +232,16 @@ function uib_article_field_default_fields() {
       'label' => 'Byline',
       'required' => 0,
       'settings' => array(
+        'behaviors' => array(
+          'prepopulate' => array(
+            'action' => 'none',
+            'action_on_edit' => 0,
+            'fallback' => 'none',
+            'og_context' => 0,
+            'skip_perm' => '0',
+            'status' => 1,
+          ),
+        ),
         'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
