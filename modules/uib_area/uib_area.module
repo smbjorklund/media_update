@@ -1099,3 +1099,83 @@ function uib_area_area_menu() {
   }
   return $am;
 }
+
+/**
+ * Generate a menu
+ * @param string $menu_name
+ *  The menu we want to retrieve
+ * @param int $active_mlid
+ *  The id of the active menu link
+ * @return string
+ *  HTML representing the chosen menu
+ */
+function uib_area__get_menu($menu_name, $active_mlid = FALSE) {
+  $tree = menu_tree_all_data($menu_name, NULL, 2);
+  $menu = array();
+  uib_area__generate_menu_rec($menu, $tree, $active_mlid);
+  $output = '<select name="area_menu"><option value="0">' . $menu_name . '</option>';
+  $options = array();
+  uib_area__menu_get_options($menu, '', $options);
+  foreach ($options as $mlid => $option_title) {
+    $output .= '<option value="' . $mlid . '">' . $option_title . '</option>';
+  }
+  $output .= '</select>';
+  return $output;
+}
+
+/**
+ * Fetch menu options (recursive)
+ */
+function uib_area__menu_get_options($menu, $indent, &$options) {
+  foreach ($menu as $mlid => $item) {
+    $options[$mlid] = $indent . $item['title'];
+    if (!empty($item['below'])) {
+      uib_area__menu_get_options($item['below'], $indent . '-- ', $options);
+    }
+  }
+}
+
+/**
+ * Generate a menu array
+ * [modified from menuux module]
+ * This function is recursive
+ *
+ * @param array $menu
+ *  The menu that is to be generated
+ * @param array $raw_menu
+ *  The menu as returned from menu_tree_all_data
+ * @param int $active_mlid
+ *  The id of the active link
+ * @return boolean
+ *  Was the mlid of the active item found in the menu?
+ */
+function uib_area__generate_menu_rec(&$menu, $raw_menu, $active_mlid = FALSE) {
+  $has_active = FALSE;
+  foreach ($raw_menu as $data) {
+    if ($data['link']['hidden'] >= 0) {
+      $title = truncate_utf8($data['link']['title'], 94, TRUE, FALSE);
+      if ($data['link']['hidden']) {
+        $title .= ' ('. t('disabled') .')';
+      }
+      $mlid = $data['link']['mlid'];
+      $menu[$mlid]['title'] = $title;
+      if ($mlid == $active_mlid) {
+        $menu[$mlid]['active'] = TRUE;
+        $has_active = TRUE;
+      }
+      $menu[$mlid]['expanded'] = FALSE;
+      if ($data['below']) {
+        $below = array();
+        $active_child = uib_area__generate_menu_rec($below, $data['below'], $active_mlid);
+        $has_active = $has_active || $active_child;
+        if (!empty($below)) {
+          $menu[$mlid]['below'] = $below;
+        }
+        if ($active_child) {
+          $menu[$mlid]['expanded'] = TRUE;
+        }
+      }
+    }
+  }
+  return $has_active;
+}
