@@ -412,12 +412,14 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         );
       }
 
-      $service_links = theme('item_list', array(
-        'items' => service_links_render($node, FALSE),
-        'style' => SERVICE_LINKS_STYLE_IMAGE,
-      ));
-      if (!empty($variables['content']['group_article_main'])) {
-        $variables['content']['group_article_main']['#prefix'] = $variables['content']['group_article_main']['#prefix'] . '<div class="service-links">' . $service_links . '</div>';
+      if (!in_array($variables['node']->field_uib_area['und'][0]['target_id'], array(1, 2))) {
+        $service_links = theme('item_list', array(
+          'items' => service_links_render($node, FALSE),
+          'style' => SERVICE_LINKS_STYLE_IMAGE,
+        ));
+        if (!empty($variables['content']['group_article_main'])) {
+          $variables['content']['group_article_main']['#prefix'] = $variables['content']['group_article_main']['#prefix'] . '<div class="service-links">' . $service_links . '</div>';
+        }
       }
     }
 
