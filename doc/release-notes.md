@@ -1,3 +1,14 @@
+# Release 2013-06-24 tag: R1.7
+
+Release mandag 24. juni. Justeringer etter forrige release, noen tekniske ryddesaker.
+
+* Mulighet til å søke på for- og etternavn i byline, i stedet for sebra brukernavn. - #240
+* Forfatter blir lagt til automatisk i byline når en sak opprettes. - #2980
+* Sosiale medier-ikoner på ansattsidene er fjernet - #3081
+* Meny-header i høyre spalte på ansattsidene fjernes når siden ikke har lenker til undersider. - #3101
+* Justeringer etter ITAs kontinuitetstesting 15. juni - #3163
+* Oppgradering av moduler og andre tekniske saker - #3069, #2976, #3116, #933, #3047 #3031
+
 # Release 2013-06-10 tag: R1.6
 
 Release mandag 6. juni inneholdt både justeringer og feilrettinger. Dette ble gjort: 
