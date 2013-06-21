@@ -5,7 +5,8 @@ Release mandag 24. juni. Justeringer etter forrige release, noen tekniske ryddes
 * Forfatter blir lagt til automatisk i byline når en sak opprettes. - #2980
 * Sosiale medier-ikoner på ansattsidene er fjernet - #3081
 * Meny-header i høyre spalte på ansattsidene fjernes når siden ikke har lenker til undersider. - #3101
-* Justeringer etter ITAs kontinuitetstesting 15. juni - #3163
+* Fikset feil i sykroniseringen med FS etter ITAs kontinuitetstesting 15. juni - #3163
+* Fikset feil som fikk videoer til å forsvinne når vinduet ble smalt - #3221
 * Oppgradering av moduler og andre tekniske saker - #3069, #2976, #3116, #933, #3047 #3031
 
 # Release 2013-06-10 tag: R1.6
