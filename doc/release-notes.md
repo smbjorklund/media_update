@@ -2,7 +2,6 @@
 
 Release mandag 24. juni. Justeringer etter forrige release, noen tekniske ryddesaker.
 
-* Mulighet til å søke på for- og etternavn i byline, i stedet for sebra brukernavn. - #240
 * Forfatter blir lagt til automatisk i byline når en sak opprettes. - #2980
 * Sosiale medier-ikoner på ansattsidene er fjernet - #3081
 * Meny-header i høyre spalte på ansattsidene fjernes når siden ikke har lenker til undersider. - #3101
