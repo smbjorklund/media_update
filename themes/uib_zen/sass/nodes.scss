@@ -218,6 +218,7 @@
 }
 
 .field-name-field-uib-main-media {
+  @include zen-clear(both);
   background-color: #F1F1EF;
   margin-bottom: 20px;
   padding-bottom: 10px;
