@@ -131,6 +131,11 @@ function uib_article__share_access() {
 
 function uib_article_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == "uib_article_node_form") {
+    $bar = FALSE;
+    if ($bar) {
+      $form['field_uib_area']['und'][0]['target_id']['#disabled'] = TRUE;
+    }
+
     // Extra save button
     $form['extra_save'] = $form['actions']['submit'];
     $form['extra_save']['#weight'] = -1;
@@ -325,4 +330,96 @@ function uib_article_entity_info_alter(&$entity_info) {
     'label' => t('Short teaser'),
     'custom settings' => TRUE,
   );
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function uib_article_theme_registry_alter(&$theme_registry) {
+  if (isset($theme_registry['field_multiple_value_form'])) {
+    $theme_registry['field_multiple_value_form']['type'] = 'module';
+    $theme_registry['field_multiple_value_form']['theme path'] = drupal_get_path('module', 'uib_article');
+    $theme_registry['field_multiple_value_form']['function'] = 'uib_article_theme_field_multiple_value_form';
+  }
+}
+
+/**
+ * Implements theme_field_multiple_value_form().
+ * @param  [type] $variables [description]
+ * @return [type]            [description]
+ */
+function uib_article_theme_field_multiple_value_form($variables) {
+  $element = $variables['element'];
+  $output = '';
+
+  if ($element['#cardinality'] > 1 || $element['#cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
+    $table_id = drupal_html_id($element['#field_name'] . '_values');
+    $order_class = $element['#field_name'] . '-delta-order';
+    $required = !empty($element['#required']) ? theme('form_required_marker', $variables) : '';
+
+    $header = array(
+      array(
+        'data' => '<label>' . t('!title !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>",
+        'colspan' => 2,
+        'class' => array('field-label'),
+      ),
+      t('Order'),
+    );
+    $rows = array();
+
+    // Sort items according to '_weight' (needed when the form comes back after
+    // preview or failed validation)
+    $items = array();
+    foreach (element_children($element) as $key) {
+      if ($key === 'add_more') {
+        $add_more_button = &$element[$key];
+      }
+      else {
+        $items[] = &$element[$key];
+      }
+    }
+    usort($items, '_field_sort_items_value_helper');
+
+    // Add the items as table rows.
+    foreach ($items as $key => $item) {
+      $item['_weight']['#attributes']['class'] = array($order_class);
+      $delta_element = drupal_render($item['_weight']);
+      $cells = array(
+        array(
+          'data' => '',
+          'class' => array('field-multiple-drag'),
+        ),
+        drupal_render($item),
+        array(
+          'data' => $delta_element,
+          'class' => array('delta-order'),
+        ),
+      );
+      $rows[] = array(
+        'data' => $cells,
+        'class' => array('draggable'),
+      );
+      if (!empty($item['target_id'])) {
+        if ($item['target_id']['#field_name'] == 'field_uib_area') {
+          $rows[0]['class'][0] = 'nodrag';
+          $rows[0]['class'][1] = 'area';
+        }
+      }
+    }
+
+    $output = '<div class="form-item">';
+    $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table'))));
+    $output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
+    $output .= '<div class="clearfix">' . drupal_render($add_more_button) . '</div>';
+    $output .= '</div>';
+
+    drupal_add_tabledrag($table_id, 'order', 'sibling', $order_class);
+  }
+  else {
+    foreach (element_children($element) as $key) {
+      $output .= drupal_render($element[$key]);
+    }
+  }
+
+  return $output;
 }
