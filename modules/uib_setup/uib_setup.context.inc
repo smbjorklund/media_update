@@ -36,6 +36,12 @@ function uib_setup_context_default_contexts() {
           'region' => 'bottom',
           'weight' => '-10',
         ),
+        'views-relevant_links-block_1' => array(
+          'module' => 'views',
+          'delta' => 'relevant_links-block_1',
+          'region' => 'bottom',
+          'weight' => '-9',
+        ),
       ),
     ),
   );

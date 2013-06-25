@@ -275,6 +275,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         $variables ['classes_array'][] = t('frontpage_node');
         //This field is printed as view
         unset($variables['content']['group_two_column']['field_uib_profiled_message']);
+        unset($variables['content']['group_two_column']['field_uib_link_section']);
       }
       if (isset($variables['content']['field_uib_profiled_article'])) {
         $weight = $variables['content']['field_uib_profiled_article']['#weight'];

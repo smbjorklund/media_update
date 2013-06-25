@@ -1702,6 +1702,20 @@ return !empty($handler->argument);';
   /* Display: Relevant Links */
   $handler = $view->new_display('block', 'Relevant Links', 'relevant_links');
   $handler->display->display_options['display_description'] = 'Expose uib_link_section to a block ';
+
+  /* Display: Shortcut menu */
+  $handler = $view->new_display('block', 'Shortcut menu', 'block_1');
+  $handler->display->display_options['display_description'] = 'Shortcut menu for frontpage';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type (field_uib_area_type) */
+  $handler->display->display_options['filters']['field_uib_area_type_value']['id'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['field'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['relationship'] = 'field_uib_link_section_node';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['value'] = array(
+    'frontpage' => 'frontpage',
+  );
   $translatables['relevant_links'] = array(
     t('Master'),
     t('more'),
@@ -1717,6 +1731,8 @@ return !empty($handler->argument);';
     t('All'),
     t('Relevant Links'),
     t('Expose uib_link_section to a block '),
+    t('Shortcut menu'),
+    t('Shortcut menu for frontpage'),
   );
   $export['relevant_links'] = $view;
 
