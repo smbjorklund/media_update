@@ -971,3 +971,34 @@ function uib_area__is_employee_page() {
   }
   return FALSE;
 }
+
+/**
+ * Is the given user a content manager for the given area
+ */
+function uib_area__is_content_manager($area, $user) {
+    if (isset($area->field_uib_content_manager['und'])) {
+      foreach ($area->field_uib_content_manager['und'] as $cm) {
+        if ($user->uid == $cm['target_id'])
+          return TRUE;
+      }
+    }
+    return FALSE;
+}
+
+/**
+ * Implements hook_node_access().
+ *
+ * Control access to edit an area
+ */
+function uib_area_node_access($node, $op, $user) {
+  if ($op == 'view') {
+    return NODE_ACCESS_IGNORE;
+  }
+  // $op is one of 'create', 'update', 'delete'
+  if (is_object($node) && $node->type == 'area') {
+    if (!uib_area__is_content_manager($node, $user)) {
+      return NODE_ACCESS_DENY;
+    }
+  }
+  return NODE_ACCESS_IGNORE;
+}
