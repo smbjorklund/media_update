@@ -120,6 +120,7 @@ EOT
 unless (-d "var/private") {
     mkdir("var", 0755);
     mkdir("var/private", 0777) || die "Can't mkdir 'var/private': $!";
+    chmod(0777, "var/private"); # The umask might have masked some bits
     print "Created 'var/private'\n";
 }
 
