@@ -17,6 +17,18 @@ function uib_area_drush_command() {
     'arguments' => array(),
     'options' => array(),
   );
+  $items['uib-area-menu-to-relation'] = array(
+    'description' => 'Removes area menu levels above 2 into entity relation structure',
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(),
+    'options' => array(),
+  );
+  $items['uib-area-menu-chk'] = array(
+    'description' => 'Reads area menu trees and checks that menu link pointers are consistent',
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(),
+    'options' => array(),
+  );
   return $items;
 }
 
@@ -58,13 +70,13 @@ function drush_uib_area_connect_ou() {
       $nodes = entity_load('node', array_keys($result2['node']));
       foreach($nodes as $node) {
         if ($dry_run) {
-          uibx_log("Checking OU of node $node->nid ...", "notice");
+          uibx_log("Checking OU of node $node->nid ...", 'notice');
         }
         $ou_nid = uib_area__get_ou_nid($node);
         if (!empty($ou_nid)) {
           $node->field_uib_ou['und'][]['target_id'] = $ou_nid;
           if ($dry_run) {
-            uibx_log("-- would update node=$node->nid with ou=$ou_nid", "notice");
+            uibx_log("-- would update node=$node->nid with ou=$ou_nid", 'notice');
           }
           else {
             field_attach_update('node', $node);
@@ -72,7 +84,7 @@ function drush_uib_area_connect_ou() {
         }
         else {
           if ($dry_run) {
-            uibx_log("** found no OU for node $node->nid **", "warning");
+            uibx_log("** found no OU for node $node->nid **", 'warning');
           }
         }
       }
@@ -100,107 +112,271 @@ function drush_uib_area_split_menu() {
     $nodes = entity_load('node', array_keys($result['node']));
     $added_menus = array();
     foreach($nodes as $node) {
-      $menu_machine_name = 'menu-area-' . $node->nid;
-      $menu_title = 'area_' . str_replace('/', '_', drupal_get_path_alias("node/$node->nid", $node->language));
-      if ($node->language == 'en') {
-        // Set suffix for English menus since nb and en aliases for different nodes may be the same
-        $menu_title .= '_en';
-      }
-      $menu_description = 'Menu for ' . $node->title;
-
-      // Get menu link id for the area
-      $node_mlink = menu_link_get_preferred('node/' . $node->nid, 'area');
-      if (!empty($node_mlink)) {
-        if (!menu_load($menu_machine_name)) {
-          // Create new menu
-          $menu = array(
-            'menu_name' => $menu_machine_name,
-            'title' => $menu_title,
-            'description' => $menu_description,
-            );
-          menu_save($menu);
-          $added_menus[] = $menu_machine_name;
-
-          // Move the first level children
-          $result = db_select('menu_links', 'n')
-            ->fields('n', array('mlid'))
-            ->condition('plid', $node_mlink['mlid'])
-            ->condition('menu_name', 'area')
-            ->execute()
-            ->fetchCol();
-          foreach ($result as $item) {
-            $child = menu_link_load($item);
-            if (empty($child['options'])) {
-              $child_options = array('attributes' => array('title' => ''));
-            }
-            else {
-              $child_options = $child['options'];
-            }
-            $new_child = array (
-              'link_path' => $child['link_path'],
-              'link_title' => $child['link_title'],
-              'menu_name' => $menu_machine_name,
-              'weight' => $child['weight'],
-              'expanded' => 1,
-              'options' => $child_options,
-              'mlid' => $child['mlid'],
-              'router_path' => $child['router_path'],
-              );
-            menu_link_save($new_child, $child);
+      if (uib_area_menu_is_allowed($node)) {
+        if (substr($node->title, 0, 13) !== 'Area stub for') {
+          $menu_machine_name = 'menu-area-' . $node->nid;
+          $menu_title = 'area_' . str_replace('/', '_', drupal_get_path_alias("node/$node->nid", $node->language));
+          if ($node->language == 'en') {
+            // Set suffix for English menus since nb and en aliases for different nodes may be the same
+            $menu_title .= '_en';
           }
-          // Then fix second level menu children for this menu
-          //   they were automatically moved here when moving the first level
-          //   menu children.
-          $result = db_select('menu_links', 'n')
-            ->fields('n', array('mlid'))
-            ->condition('depth', 2)
-            ->condition('menu_name', $menu_machine_name)
-            ->execute()
-            ->fetchCol();
-          foreach ($result as $item) {
-            $child = menu_link_load($item);
-            if ($child['plid']==0) {
-              print_r($child);
-              echo PHP_EOL;
-            }
-            if (empty($child['options'])) {
-              $child_options = array('attributes' => array('title' => ''));
-            }
-            else {
-              $child_options = $child['options'];
-            }
-            $new_child = array (
-              'link_path' => $child['link_path'],
-              'link_title' => $child['link_title'],
+          $menu_description = 'Menu for ' . $node->title;
+
+          if (!menu_load($menu_machine_name)) {
+            // Create new menu
+            $menu = array(
               'menu_name' => $menu_machine_name,
-              'weight' => $child['weight'],
-              'expanded' => 0,
-              'options' => $child_options,
-              'mlid' => $child['mlid'],
-              'plid' => $child['plid'],
-              'router_path' => $child['router_path'],
+              'title' => $menu_title,
+              'description' => $menu_description,
               );
-            menu_link_save($new_child, $child);
+            menu_save($menu);
+            $added_menus[] = $menu_machine_name;
+            uibx_log('Created ' . $menu_machine_name . ' for "' . $node->title . '"', 'notice');
+
+            // Get menu link id for the area
+            $node_mlink = menu_link_get_preferred('node/' . $node->nid, 'area');
+            if (!empty($node_mlink)) {
+              // Move the first level children
+              $result = db_select('menu_links', 'n')
+                ->fields('n', array('mlid'))
+                ->condition('plid', $node_mlink['mlid'])
+                ->condition('menu_name', 'area')
+                ->execute()
+                ->fetchCol();
+              foreach ($result as $item) {
+                $child = menu_link_load($item);
+                $new_child = array (
+                  'link_path' => $child['link_path'],
+                  'link_title' => $child['link_title'],
+                  'menu_name' => $menu_machine_name,
+                  'expanded' => 1,
+                  'mlid' => $child['mlid'],
+                  'weight' => $child['weight'],
+                  'has_children' => $child['has_children'],
+                  );
+                menu_link_save($new_child);
+              }
+              // Then fix second level menu children for this menu
+              //   they were automatically moved here when moving the first level
+              //   menu children.
+              $result = db_select('menu_links', 'n')
+                ->fields('n', array('mlid'))
+                ->condition('depth', 2)
+                ->condition('menu_name', $menu_machine_name)
+                ->execute()
+                ->fetchCol();
+              foreach ($result as $item) {
+                $child = menu_link_load($item);
+                $new_child = array (
+                  'link_path' => $child['link_path'],
+                  'link_title' => $child['link_title'],
+                  'menu_name' => $menu_machine_name,
+                  'expanded' => 0,
+                  'mlid' => $child['mlid'],
+                  'plid' => $child['plid'],
+                  'weight' => $child['weight'],
+                  'has_children' => $child['has_children'],
+                  );
+                menu_link_save($new_child);
+              }
+            }
           }
         }
+        else {
+          uibx_log('Skipped "' . $node->title . '"', 'warning');
+        }
       }
-    }
-    if (!empty($added_menus)) {
-      // add the menus to content (node) types uib_article and uib_testimonial
-      $content_types = array('uib_article', 'uib_testimonial');
-      foreach ($content_types as $content_type) {
-        $menu_options = variable_get("menu_options_$content_type");
-        if (empty($menu_options)) {
-          $menu_options = array();
-        }
-        // remove the old area menu if it is still on the list
-        $key = array_search('area', $menu_options);
-        if ($key !== FALSE) {
-          array_splice($menu_options, $key, 1);
-        }
-        $menu_options = array_merge($menu_options, $added_menus);
-        variable_set("menu_options_$content_type", $menu_options);
+      else {
+        uibx_log('Skipped area node of type ' . $node->field_uib_area_type['und'][0]['value'] . ': "' . $node->title . '"', 'notice');
       }
     }
   }
+}
+
+/**
+ * Remove all menu levels above 2 from area menus and add them into
+ * an entity relation structure of articles
+ */
+function drush_uib_area_menu_to_relation() {
+  // Find all area nodes
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'area');
+  $result = $query->execute();
+  if ($result) {
+    $nodes = entity_load('node', array_keys($result['node']));
+    foreach($nodes as $node) {
+      // menu name
+      $menu_machine_name = 'menu-area-' . $node->nid;
+      if ($menu = menu_load($menu_machine_name)) {
+        $menu_title = $menu['title'];
+        $menu_tree = menu_tree_all_data($menu_machine_name);
+        uib_area__unroll_menu_recursive($menu_tree);
+        uibx_log('Completed relationalization of menu "' . $menu_title . '" = ' . $menu_machine_name, 'notice');
+      }
+    }
+  }
+}
+
+function uib_area__unroll_menu_recursive($trunk) {
+  foreach ($trunk as $branch) {
+    $nid = 0;
+    $external = FALSE;
+    if (url_is_external($branch['link']['link_path'])) {
+      $external = TRUE;
+      // create external content node
+      if ($branch['link']['depth'] > 2) {
+        // create new uib_external_content
+        $new_node = new stdClass();
+        $new_node->is_new = TRUE;
+        $new_node->title = $branch['link']['title'];
+        $new_node->type = 'uib_external_content';
+        $new_node->language = 'und';
+        $new_node->field_uib_links['und'][0]['url'] = $branch['link']['link_path'];
+        $new_node->field_uib_links['und'][0]['title'] = $branch['link']['title'];
+        node_save($new_node);
+        if (!empty($new_node->nid)) {
+          $nid = $new_node->nid;
+          uibx_log('Created external link node ' . $nid . ' for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'notice');
+        }
+        else {
+          uibx_log('Unable to create external link node for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'error');
+        }
+      }
+    }
+    else {
+      // get node id from url
+      $nid = uib_area__extract_nid_from_path($branch['link']['link_path']);
+      if (empty($nid)) {
+        uibx_log('Unable to extract nid from url for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'error');
+      }
+    }
+    if (!empty($branch['below'])) {
+      if ($external && $branch['link']['depth'] > 2) {
+        uibx_log('Skipped children of external link "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'warning');
+      }
+      else {
+        uib_area__unroll_menu_recursive($branch['below']);
+      }
+    }
+    // add to entity relation and nuke this menu link
+    if ($branch['link']['depth'] > 2) {
+      $parent_menu_link = menu_link_load($branch['link']['plid']);
+      $parent_nid = uib_area__extract_nid_from_path($parent_menu_link['link_path']);
+      if (empty($parent_nid)) {
+        uibx_log('Unable to extract parent nid from url for "' . $parent_menu_link['link_path'] . '" mlid=' . $branch['link']['mlid'], 'error');
+      }
+      $parent_node = node_load($parent_nid);
+      $parent_node->field_uib_relation['und'][]['target_id'] = $nid;
+      node_save($parent_node);
+      uibx_log('Added entity relation to ' . $nid . ' for node ' . $parent_nid, 'notice');
+      menu_link_delete($branch['link']['mlid']);
+    }
+  }
+}
+
+function uib_area__extract_nid_from_path($path) {
+  $nid = 0;
+  if (!empty($path)) {
+    $nid = substr($path, (strpos($path, 'node/') + 5));
+    $p = strpos($nid, '/');
+    if ($p !== FALSE) {
+      $nid = substr($nid, 0, $p);
+    }
+    $nid = intval($nid);
+  }
+  return $nid;
+}
+
+/**
+ * Check (and correct) menu for inconsistencies regarding parents
+ *   Inconsistencies may be found by comparing the menu tree built
+ *   by menu_tree_all_data() with what is found in the menu link record.
+ */
+function drush_uib_area_menu_chk() {
+  // Try old-style area menu
+  $parent_trail = array();
+  $menu_tree = menu_tree_all_data('area');
+  uibx_log('Checking old-style "area" menu', 'notice');
+  $parent_trail = array();
+  uib_area__chk_menu_recursive($menu_tree, NULL, $parent_trail);
+
+  // Find all area nodes
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'area');
+  $result = $query->execute();
+  if ($result) {
+    $nodes = entity_load('node', array_keys($result['node']));
+    foreach($nodes as $node) {
+      // menu name
+      $menu_machine_name = 'menu-area-' . $node->nid;
+      if ($menu = menu_load($menu_machine_name)) {
+        $menu_title = $menu['title'];
+        uibx_log('Checking menu "' . $menu_title . '" = ' . $menu_machine_name, 'notice');
+        $menu_tree = menu_tree_all_data($menu_machine_name);
+        $parent_trail = array();
+        if (!uib_area__chk_menu_recursive($menu_tree, NULL, $parent_trail)) {
+          return FALSE;
+        }
+      }
+    }
+  }
+}
+
+function uib_area__chk_menu_recursive($trunk, $parent_mlid, &$ptrail) {
+  foreach ($trunk as $branch) {
+    $nid = 0;
+    array_push($ptrail, $branch['link']['mlid']);
+    if (url_is_external($branch['link']['link_path'])) {
+      if (!empty($branch['below'])) {
+        uibx_log('External link "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'] . ' has children', 'notice');
+      }
+    }
+    else {
+      // get node id from url
+      $nid = uib_area__extract_nid_from_path($branch['link']['link_path']);
+      if (empty($nid)) {
+        uibx_log('Unable to extract nid from url for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'] . ' external=' . $branch['link']['external'], 'error');
+        return FALSE;
+      }
+      else {
+        // Check that node exists
+        if (!node_load($nid)) {
+          uibx_log('Can not load node ' . $nid . ' path="' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'notice');
+        }
+      }
+    }
+    // Check menu parent link consistency
+    if ($parent_mlid != NULL) {
+       if ($parent_mlid != $branch['link']['plid']) {
+        $current = menu_link_load($branch['link']['mlid']);
+        $current['plid'] = $parent_mlid;
+        menu_link_save($current);
+        uibx_log('Fixed menu parent mismatch. Found plid=' . $branch['link']['plid'] . ', was set to ' . $parent_mlid, 'notice');
+        // amend working branch with newly save data
+        $current = menu_link_load($branch['link']['mlid']);
+        for ($i = 1; $i <= 9; $i++) {
+          $branch['link']["p$i"] = $current["p$i"];
+        }
+      }
+    }
+    // Check parent trail
+    for ($i = 0; $i < count($ptrail); $i++) {
+      $j = $i + 1;
+      if ($ptrail[$i] != $branch['link']["p$j"]) {
+        $current = menu_link_load($branch['link']['mlid']);
+        $current['plid'] = $parent_mlid;
+        menu_link_save($current);
+        uibx_log('Fixed menu parent trail mismatch at mlid=' . $branch['link']['mlid'] . ' plid=' . $branch['link']['plid'] . ": p$j", 'notice');
+      }
+    }
+    if (!empty($branch['below'])) {
+      if (!uib_area__chk_menu_recursive($branch['below'], $branch['link']['mlid'], $ptrail)) {
+        return FALSE;
+      }
+    }
+    array_pop($ptrail);
+  }
+  return TRUE;
 }
