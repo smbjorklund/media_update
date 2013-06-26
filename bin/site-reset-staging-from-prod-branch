@@ -1,9 +1,15 @@
 #!/bin/bash
-echo "Reset origin/prod to staging (y/n)?"
-read x
-if ! [ $x == "y" ];then 
-  echo User abort...
-  exit
+if  [ $# -gt 0 ] && [ $1 == "--yes" ] ; then
+echo "Running unnattended!!!!!"
+sleep 3
+echo "Starting unnattended reset from origin/prod to staging" | logger -t "w3-drupal[$(pwd)]"
+else
+  echo "Reset origin/master to staging (y/n)?"
+  read x
+  if ! [ $x == "y" ];then 
+    echo User abort...
+    exit
+  fi
 fi
 #Check user
 if ! [ $(whoami) == "w3-drupal" ];then 
@@ -27,7 +33,7 @@ git status || exit 3
 git submodule update || exit 4
 sleep 3 
 
-bin/site-drush sql-drop || exit 5
+bin/site-drush sql-drop --yes || exit 5
 cat /prod_nettapp_w3/pg_dump/w3.uib.no.sql | bin/site-drush sql-cli || exit 6
 rsync -rihH --delete /prod_nettapp_w3/sites/w3.uib.no/files/  /nettapp_w3/sites/attilatest.uib.no/files/ || exit 7
 
@@ -35,3 +41,4 @@ compass compile --force themes/uib_zen || exit 10
 find site/files/{css,js,languages} -type f -print | xargs rm -f 
 ## CC all cleans out the deleted files from DB that was deleted above
 bin/site-drush cc all
+echo "Finished unnattended reset from origin/prod to staging" | logger -t "w3-drupal[$(pwd)]"

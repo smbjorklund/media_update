@@ -1,9 +1,15 @@
 #!/bin/bash
-echo "Reset origin/master to staging (y/n)?"
-read x
-if ! [ $x == "y" ];then 
-  echo User abort...
-  exit
+if  [ $# -gt 0 ] && [ $1 == "--yes" ] ; then
+echo "Running unnattended!!!!!"
+sleep 3
+echo "Starting unnattended reset from origin/master to staging" | logger -t "w3-drupal[$(pwd)]"
+else
+  echo "Reset origin/master to staging (y/n)?"
+  read x
+  if ! [ $x == "y" ];then 
+    echo User abort...
+    exit
+  fi
 fi
 #Check user
 if ! [ $(whoami) == "w3-drupal" ];then 
@@ -32,16 +38,17 @@ bin/site-drush cc all
 
 #CC ALL some times display changes to do that not are visble before the CC ALL
 #Run FR
-bin/site-drush fra -v || exit 5
+bin/site-drush fra -v --yes || exit 5
 bin/site-drush cc all || exit 6
 
 #Run updateDB
-bin/site-drush updatedb || exit 7
+bin/site-drush updatedb --yes || exit 7
 bin/site-drush cc all || exit 8
 
 #Sometimes more modules may be updated after updatedb & CC
-bin/site-drush fra -v || exit 9 
+bin/site-drush fra -v --yes || exit 9 
 bin/site-drush cc all || exit 10
 
 #Display that all is OK to user
 bin/site-drush fl
+echo "Finished unnattended reset from origin/master to staging" | logger -t "w3-drupal[$(pwd)]"
