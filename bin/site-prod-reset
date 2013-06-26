@@ -35,8 +35,6 @@ fi
 set -x
 
 rsync -rltDih --delete $PGDUMP_HOST_PREFIX/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/ --exclude=/js --exclude=/css --exclude=/ctools --exclude=/styles --exclude=*.pdf --exclude=*.mp3
-find site/files/ -type d | xargs chmod 777
-find site/files/ -type f | xargs chmod 666
 
 DOTGZ=""
 case $DUMP in *.gz) DOTGZ=".gz";; esac
@@ -58,3 +56,6 @@ git checkout $COMMIT || exit 1;
 git submodule update
 compass compile --force themes/uib_zen
 bin/site-drush cc all
+
+find site/files/ -type d | xargs chmod 777
+find site/files/ -type f | xargs chmod 666
