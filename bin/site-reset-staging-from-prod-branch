@@ -1,4 +1,14 @@
 #!/bin/bash
+
+lockfile="/tmp/drupal_reset$(pwd |sed 's:/:_:g').lock"
+#test lockfile
+if [ -f $lockfile ] ; then
+echo $lockfile exists
+exit 1
+fi
+#Creating lockfile
+w > /tmp/drupal_reset$(pwd |sed 's:/:_:g').lock
+
 if  [ $# -gt 0 ] && [ $1 == "--yes" ] ; then
 echo "Running unnattended!!!!!"
 sleep 3
@@ -41,4 +51,5 @@ compass compile --force themes/uib_zen || exit 10
 find site/files/{css,js,languages} -type f -print | xargs rm -f 
 ## CC all cleans out the deleted files from DB that was deleted above
 bin/site-drush cc all
+rm -rf $lockfile
 echo "Finished unnattended reset from origin/prod to staging" | logger -t "w3-drupal[$(pwd)]"
