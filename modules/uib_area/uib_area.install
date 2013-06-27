@@ -105,3 +105,15 @@ function uib_area__create_menu_tree($menu_name, $item, $weight, $plid = 0) {
     }
   }
 }
+
+/**
+ * Split area menu (This may take som time...)
+ */
+function uib_area_update_7004() {
+  // check and fix area menu
+  drush_uib_area_menu_chk();
+  // split area menu into one menu per area
+  drush_uib_area_split_menu();
+  // move menu items of depth > 2 into entity relations
+  drush_uib_area_menu_to_relation();
+}
