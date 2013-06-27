@@ -218,7 +218,7 @@ h1 {
   @include trailer(1, $h1-font-size);
 }
 
-h2 {
+h2, .region-sidebar-second .field-name-field-uib-title {
   @include adjust-font-size-to( $h2-font-size );
   @include leader(1, $h2-font-size);
   @include trailer(.5, $h2-font-size);
