@@ -1113,14 +1113,9 @@ function uib_area__get_menu($menu_name, $active_mlid = FALSE) {
   $tree = menu_tree_all_data($menu_name, NULL, 2);
   $menu = array();
   uib_area__generate_menu_rec($menu, $tree, $active_mlid);
-  $output = '<select name="area_menu"><option value="0">' . $menu_name . '</option>';
   $options = array();
   uib_area__menu_get_options($menu, '', $options);
-  foreach ($options as $mlid => $option_title) {
-    $output .= '<option value="' . $mlid . '">' . $option_title . '</option>';
-  }
-  $output .= '</select>';
-  return $output;
+  return $options;
 }
 
 /**
