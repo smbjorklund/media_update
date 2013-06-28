@@ -267,8 +267,12 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         if (isset($variables['content']['group_two_column']['field_uib_profiled_message'])) {
           $weight = $variables['content']['group_two_column']['field_uib_profiled_message']['#weight'];
           unset($variables['content']['group_two_column']['field_uib_profiled_message']);
-          $variables['content']['field_uib_profiled_message'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'block_4', $variables['nid']);
+          $variables['content']['field_uib_profiled_message'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_one_chosen_item', $variables['nid']);
           $variables['content']['field_uib_profiled_message']['#weight'] = $weight;
+          $variables['content']['field_uib_profiled_message_2'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_two_chosen_items', $variables['nid']);
+          $variables['content']['field_uib_profiled_message_2']['#weight'] = $weight - 1;
+          $variables['content']['field_uib_profiled_message_last'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_last_chosen_items', $variables['nid']);
+          $variables['content']['field_uib_profiled_message_last']['#weight'] = $weight + 1;
         }
       }
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'frontpage') {
