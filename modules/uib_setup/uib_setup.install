@@ -37,3 +37,47 @@ function uib_setup_update_7001() {
 function uib_setup_update_7002() {
   module_disable(array('coder', 'coder_review'));
 }
+
+/**
+ * Enable Drupal core block module.
+ */
+function uib_setup_update_7003() {
+  module_enable(array('block'), FALSE);
+  if (variable_get('node_access_needs_rebuild')) {
+    uibx_log('Rebuilding node permissions. This might take a while so please be patient.', 'notice');
+    db_delete('node_access')->execute();
+    if (count(module_implements('node_grants'))) {
+      $limit = 1000;
+      $sandbox['progress'] = 0;
+      $sandbox['current_node'] = 0;
+      $sandbox['max'] = db_query('SELECT COUNT(DISTINCT nid) FROM {node}')->fetchField();
+      do {
+        $nids = db_query_range("SELECT nid FROM {node} WHERE nid > :nid ORDER BY nid ASC", 0, $limit, array(':nid' => $sandbox['current_node']))->fetchCol();
+        $nodes = node_load_multiple($nids, array(), TRUE);
+        foreach ($nodes as $nid => $node) {
+          if (!empty($node)) {
+            node_access_acquire_grants($node);
+          }
+          $sandbox['progress']++;
+          $sandbox['current_node'] = $nid;
+        }
+        if ($sandbox['progress'] != $sandbox['max']) {
+          $sandbox['finished'] = $sandbox['progress'] . ' of ' . $sandbox['max'] . " nodes\n";
+          print($sandbox['finished']);
+        }
+      }
+      while ($sandbox['progress'] < $sandbox['max']);
+    }
+    uibx_log($sandbox['progress'] . ' of ' . $sandbox['max'] . ' nodes processed. Content permissions have been rebuilt.', 'ok');
+    node_access_needs_rebuild(FALSE);
+    cache_clear_all();
+  }
+}
+
+/**
+ * Disable modules: menuux and bigmenu.
+ */
+function uib_setup_update_7004() {
+  module_disable(array('menuux', 'bigmenu'), TRUE);
+  drupal_uninstall_modules(array('menuux', 'bigmenu', 'coder_review', 'coder', 'context_ui', 'migrate_ui', 'field_ui'), FALSE);
+}
