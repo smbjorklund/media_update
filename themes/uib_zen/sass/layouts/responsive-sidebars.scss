@@ -1663,15 +1663,18 @@ $zen-auto-include-item-base: false;
 
   /* News page (aktuelt) */
   .view-frontpage-profiled-articles {
-    .views-field-field-uib-lead, .views-field-title {
+    .views-field-field-uib-lead, .views-field-title, .views-field-field-uib-kicker {
       @include zen-grid-item (2, 3);
-      padding: 20px 20px 0 20px;
       float: none;
       width: 45%;
+      padding: 0 0 0 20px;
     }
     .views-field-title {
       font-size: 20px;
       margin-bottom: 10px;
+    }
+    .views-field-title, .views-field-field-uib-lead {
+      padding: 20px 20px 0 20px;
     }
     .views-field-field-uib-main-media {
       @include zen-grid-item (2, 1);

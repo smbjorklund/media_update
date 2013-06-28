@@ -392,3 +392,20 @@
   font-size: 1.5em;
   padding: 0.5em;
 }
+
+/* Kicker field in news page (aktuelt) */
+.view-frontpage-profiled-articles .views-field-field-uib-kicker {
+  @include adjust-font-size-to( $h2-font-size );
+  @include leader(1, $h2-font-size);
+  @include trailer(.5, $h2-font-size);
+  border-top: $sidebar-border;
+  border-bottom: $sidebar-border;
+  font-family: $font-body;
+  text-transform: uppercase;
+  color: #555;
+  font-weight: normal;
+  font-size: 1.2em;
+  font-family: "times new roman" serif;
+  line-height: 1.2em;
+  margin-right: 53%;
+}
