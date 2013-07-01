@@ -554,7 +554,7 @@ $zen-auto-include-item-base: false;
     display: none;
   }
 
-  #block-uib-area-node-children {
+  .block-uib-area {
     @include zen-grid-item(1, 1);
     background-color: #F1F1EF;
     margin: 1em 1em 1em 0;
@@ -970,7 +970,7 @@ $zen-auto-include-item-base: false;
       }
     }
 
-    #block-uib-area-node-children {
+    .block-uib-area {
       @include zen-grid-item(4, 1);
       background-color: #F1F1EF;
       margin: 1em 1em 1em 0;
@@ -1572,7 +1572,7 @@ $zen-auto-include-item-base: false;
   }
 
   /* Area "teaser" block */
-  #block-uib-area-node-children {
+  .block-uib-area {
     @include zen-grid-item(4, 1);
     background-color: #F1F1EF;
     margin: 1em 1em 1em 0;

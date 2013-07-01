@@ -488,14 +488,9 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     }
   }
 
-  /*
-  // Optionally, run node-type-specific preprocess functions, like
-  // uib_zen_preprocess_node_page() or uib_zen_preprocess_node_story().
-  $function = __FUNCTION__ . '_' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
+  if ($variables['view_mode'] == 'short_teaser') {
+    $variables['theme_hook_suggestions'][] = 'node__children';
   }
-  */
 }
 
 function uib_zen_menu_link(array $variables) {
@@ -658,6 +653,9 @@ function uib_zen_preprocess_field(&$variables, $hook) {
       $variables['classes_array'][] = 'blue-block';
       $variables['label'] = '<span></span>' . $variables['label'];
     }
+  }
+  if ($variables['element']['#field_name'] == 'field_uib_relation') {
+    $variables['classes_array'][] = 'block-uib-area';
   }
 }
 

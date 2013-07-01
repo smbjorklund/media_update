@@ -83,7 +83,7 @@
  * @see template_process()
  */
 ?>
-<article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix uib-child-teaser"<?php print $attributes; ?>>
 
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
     <header>
@@ -94,7 +94,7 @@
             <?php $node_url = $node->field_uib_links['und'][0]['url']; ?>
           <?php endif; ?>
         <?php endif; ?>
-        <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+        <h3<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
 
