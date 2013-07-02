@@ -1662,6 +1662,30 @@ $zen-auto-include-item-base: false;
   }
 
   /* News page (aktuelt) */
+  .view-display-id-newspage_two_chosen_items {
+    .views-row-first {
+      float: left;
+      width: 95%;
+      .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
+        @include zen-grid-item (2, 1);
+        @include zen-clear();
+        padding: 0;
+      }
+    }
+  }
+    .view-display-id-newspage_two_chosen_items {  
+      .views-row-last {
+        @include zen-grid-item (4, 1); 
+        width: 95%;
+        margin-left: -90%;
+        .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
+          @include zen-grid-item (2, 3);
+          @include zen-clear();
+          padding: 0;
+        }
+      }
+  }
+
   .view-frontpage-profiled-articles {
     .views-field-field-uib-lead, .views-field-title, .views-field-field-uib-kicker {
       @include zen-grid-item (2, 3);
