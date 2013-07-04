@@ -451,7 +451,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           'style' => SERVICE_LINKS_STYLE_IMAGE,
         ));
         if (!empty($variables['content']['group_article_main'])) {
-          $variables['content']['group_article_top']['#prefix'] = $variables['content']['group_article_top']['#prefix'] . '<div class="service-links">' . $service_links . '</div>';
+          $variables['content']['group_article_top']['#suffix'] = $variables['content']['group_article_top']['#prefix'] . '<div class="service-links">' . $service_links . '</div>';
           $variables['content']['group_article_top']['#weight'] = $variables['content']['group_article_main']['#weight'] - 0.5;
         }
       }
