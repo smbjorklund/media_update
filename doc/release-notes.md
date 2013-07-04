@@ -1,3 +1,18 @@
+# Release 2013-08-13 tag: R2
+
+Release tirsdag 13. august. Migrasjon av forside uib.no og /aktuelt til w3.  Strengere tilganger til å redigere områder.
+
+* Opprettet to nye områdetyper, "Frontpage" og "Newspage" #2989
+* Global meny inkluderes i responsivt design. #2922
+* Tilgangskontroll satt på forsiden og /aktuelt. #3055
+* Noe omorganisering / redesign av publiseringsinfo i artikler. #2537
+* Stikktittel er blitt flyttet over tittel på artikler. #1947
+* Introbilde bruker full bredde hvis introtekst ikke er fylt ut. #2991
+* Profilerte meldinger vises i høyremarg hvis område type er forside. #2994
+* Følg oss (sosiale lenker) er flyttet til under slideshow. #2996
+* Hjelpetekster på introbilde og profilerte meldinger er oppdatert. #3289
+* Reorganisering av info på forsiden og oppsett for /aktuelt (øvrige saker).
+
 # Release 2013-06-24 tag: R1.7
 
 Release mandag 24. juni. Justeringer etter forrige release, noen tekniske ryddesaker.

@@ -2,7 +2,7 @@
 
 ## Roller
 
-### Prosjektansvarlig: Mathilde (vara:...)
+### Prosjektansvarlig: Mathilde (vara:Said)
 
 - Ansvarlig for å legge opp releaseplan og nominere saker til release
 - Annonserer releasene og release notes til brukere
