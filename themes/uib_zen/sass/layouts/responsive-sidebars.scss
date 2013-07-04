@@ -702,6 +702,10 @@ $zen-auto-include-item-base: false;
     #block-locale-language--2 {
       display: none;
     }
+    /* Hide global menu for mobile */
+    .global-menu-mobile {
+      display: none;
+    }
     #top-region-wrapper {
       height: 50px;
       border-bottom: solid 1px #DDD;
@@ -1251,7 +1255,10 @@ $zen-auto-include-item-base: false;
   #block-locale-language--2 {
     display: none;
   }
-
+  /* Hide global menu for mobile */
+  .global-menu-mobile {
+    display: none;
+  }
   /* Content */
   #content {
     margin-top: 20px;
