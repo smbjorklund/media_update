@@ -53,7 +53,7 @@ function uib_article_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
-            'weight' => '6',
+            'weight' => '7',
             'visible' => FALSE,
           ),
           'teaser' => array(
@@ -61,7 +61,7 @@ function uib_article_strongarm() {
               'visible' => FALSE,
             ),
           'short_teaser' => array(
-            'weight' => '2',
+            'weight' => '3',
             'visible' => FALSE,
           ),
         ),

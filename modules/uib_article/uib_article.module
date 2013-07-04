@@ -131,9 +131,11 @@ function uib_article__share_access() {
 function uib_article_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == "uib_article_node_form") {
     // Disable possibility for changing main area if node has connection to menu
-    $menu_name = 'menu-area-' . $form_state['node']->field_uib_area['und'][0]['target_id'];
-    if (menu_link_get_preferred('node/' . $form_state['node']->nid, $menu_name)) {
-      $form['field_uib_area']['und'][0]['target_id']['#disabled'] = TRUE;
+    if (isset($form_state['node']->field_uib_area['und'])) {
+      $menu_name = 'menu-area-' . $form_state['node']->field_uib_area['und'][0]['target_id'];
+      if (menu_link_get_preferred('node/' . $form_state['node']->nid, $menu_name)) {
+        $form['field_uib_area']['und'][0]['target_id']['#disabled'] = TRUE;
+      }
     }
 
     // Extra save button

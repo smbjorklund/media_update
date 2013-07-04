@@ -7,7 +7,6 @@
 
 @import "base";
 
-
 @media print {
 
   a:link,
@@ -71,7 +70,7 @@
   .feed-icons,
   .service-links,
   .field-name-field-uib-links,
-  .block-uib-area,
+  #block-uib-area-node-children,
   #bottom-region-wrapper,
   #menu-search-mobile-wrapper,
   #desktop-tablet-language{ /* Hide sidebars and nav elements */

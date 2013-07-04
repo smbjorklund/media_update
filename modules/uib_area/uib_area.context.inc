@@ -152,51 +152,5 @@ function uib_area_context_default_contexts() {
   t('block');
   $export['area_blocks'] = $context;
 
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'area_blocks_not_ansattsider';
-  $context->description = 'Blocks that should show on all area pages but not employee pages';
-  $context->tag = 'block';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'area' => 'area',
-        'uib_article' => 'uib_article',
-        'uib_testimonial' => 'uib_testimonial',
-      ),
-      'options' => array(
-        'node_form' => '0',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        '~foransatte' => '~foransatte',
-        '~foransatte/*' => '~foransatte/*',
-        '~en/foremployees' => '~en/foremployees',
-        '~en/foremployees/*' => '~en/foremployees/*',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'uib_area-node_children' => array(
-          'module' => 'uib_area',
-          'delta' => 'node_children',
-          'region' => 'content',
-          'weight' => '9',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 1;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Blocks that should show on all area pages but not employee pages');
-  t('block');
-  $export['area_blocks_not_ansattsider'] = $context;
-
   return $export;
 }

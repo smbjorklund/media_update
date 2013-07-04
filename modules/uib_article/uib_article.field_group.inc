@@ -88,8 +88,7 @@ function uib_article_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_uib_byline',
-      1 => 'field_uib_relation',
-      2 => 'field_uib_text',
+      1 => 'field_uib_text',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -120,14 +119,14 @@ function uib_article_field_group_info() {
     'label' => 'article-sidebar',
     'weight' => '4',
     'children' => array(
-      0 => 'field_uib_contacts',
-      1 => 'field_uib_date',
-      2 => 'field_uib_event_type',
+      0 => 'field_uib_date',
+      1 => 'field_uib_event_type',
+      2 => 'field_uib_files',
       3 => 'field_uib_fact_box',
-      4 => 'field_uib_files',
-      5 => 'field_uib_links',
+      4 => 'field_uib_contacts',
+      5 => 'field_uib_media',
       6 => 'field_uib_location',
-      7 => 'field_uib_media',
+      7 => 'field_uib_links',
     ),
     'format_type' => 'div',
     'format_settings' => array(

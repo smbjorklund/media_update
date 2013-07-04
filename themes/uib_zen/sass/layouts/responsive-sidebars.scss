@@ -490,16 +490,16 @@ $zen-auto-include-item-base: false;
   }
 
   .view-faculty-departments-kids {
-     @include zen-grid-item(1, 1);
-     @include zen-clear();
-     margin-bottom: 10px;
-     padding: 15px;
-     background: #F1F1EF;
-     border: none;
-     box-shadow: $box-shadow;
-     border-radius: $border-radius;
-     width: 90%;
-   }
+    @include zen-grid-item(1, 1);
+    @include zen-clear();
+    margin-bottom: 10px;
+    padding: 15px;
+    background: #F1F1EF;
+    border: none;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    width: 90%;
+  }
 
   .field-name-field-uib-profiled-testimonial {
     @include zen-clear();
@@ -554,7 +554,8 @@ $zen-auto-include-item-base: false;
     display: none;
   }
 
-  .block-uib-area {
+  .field-name-field-uib-relation,
+  #block-uib-area-node-children {
     @include zen-grid-item(1, 1);
     background-color: #F1F1EF;
     margin: 1em 1em 1em 0;
@@ -969,8 +970,8 @@ $zen-auto-include-item-base: false;
         font-weight: normal !important;
       }
     }
-
-    .block-uib-area {
+    .field-name-field-uib-relation,
+    #block-uib-area-node-children {
       @include zen-grid-item(4, 1);
       background-color: #F1F1EF;
       margin: 1em 1em 1em 0;
@@ -1572,7 +1573,8 @@ $zen-auto-include-item-base: false;
   }
 
   /* Area "teaser" block */
-  .block-uib-area {
+  .field-name-field-uib-relation,
+  #block-uib-area-node-children {
     @include zen-grid-item(4, 1);
     background-color: #F1F1EF;
     margin: 1em 1em 1em 0;

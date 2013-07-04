@@ -25,6 +25,8 @@ function uib_area_menu_block_blocks() {
 
 /**
  * Implements hook_block_info().
+ *
+ * area_parents contains a list of parents to the current area.
  */
 function uib_area_block_info() {
   return array(
@@ -44,10 +46,6 @@ function uib_area_block_info() {
       'info' => t('Area parents'),
       'status' => TRUE,
     ),
-      'node_children' => array(
-      'info' => t('Node children teasers'),
-      'status' => TRUE,
-    ),
     'newspage_recent_news' => array(
       'info' => t('Newspage recent news'),
       'status' => TRUE,
@@ -56,7 +54,6 @@ function uib_area_block_info() {
       'info' => t('Colophon logos frontpage'),
       'status' => TRUE,
     ),
-
   );
 }
 
@@ -118,14 +115,12 @@ function uib_area_block_view($delta='') {
             $place->field_uib_fax['und'][0]['value'];
         }
         if (isset($place->field_uib_mail_domain)) {
-          $block['content']['contact']['#title'] =
-            'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
-          $block['content']['contact']['#href'] =
-            'mailto:post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
+          $block['content']['contact']['#title'] = 'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
+          $block['content']['contact']['#href'] = 'mailto:post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
         }
       }
       hide($block['content']['emergency']);
-      break;
+    break;
     case 'jobbnorge':
       $area = uib_area__get_current();
       $whitelist = array('faculty', 'unit', 'institute');
@@ -133,21 +128,24 @@ function uib_area_block_view($delta='') {
         if (!empty($area->field_uib_ou['und'])) {
           $place = node_load($area->field_uib_ou['und'][0]['target_id']);
         }
-        if (empty($place->field_uib_jobbnorge_id['und']))
-         continue;
-        else
-         $feed = 'http://www.jobbnorge.no/joblist/joblistbuilder.ashx?id=821a69c9-7674-4e36-90f8-41e443b99064&depid=' . $place->field_uib_jobbnorge_id['und'][0]['value'];
-        if ($area->language == 'en')
+        if (empty($place->field_uib_jobbnorge_id['und'])) {
+          continue;
+        }
+        else {
+          $feed = 'http://www.jobbnorge.no/joblist/joblistbuilder.ashx?id=821a69c9-7674-4e36-90f8-41e443b99064&depid=' . $place->field_uib_jobbnorge_id['und'][0]['value'];
+        }
+        if ($area->language == 'en') {
           $feed .= '&langid=2';
+        }
         $block['content'] = uib_area__feed_format($feed, '', $limit = 999);
         $block['subject'] = t('Open Positions');
-        }
-      break;
+      }
+    break;
     case 'feed':
       $area = uib_area__get_current();
-      if($area){
+      if ($area) {
         $elements = array();
-        if(!empty($area->field_uib_feed['und'])){
+        if (!empty($area->field_uib_feed['und'])) {
           foreach ($area->field_uib_feed['und'] as $delta => $item) {
             $url = url($item['url'], $item);
             if (strpos($url, '#')) {
@@ -160,93 +158,28 @@ function uib_area_block_view($delta='') {
       $block['content'] = $elements;
       $block['subject'] = $item['title'];
       }
-      break;
-    case 'area_parents': // A block to display a linked list to parents of current area [if any]
+    break;
+    case 'area_parents':
       $block['subject'] = t('Belongs to');
       $area = uib_area__get_current();
       if (!empty($area->field_uib_area_parents['und'])) {
-        // Setup an SQL query to get parent titles from node ids listed
+        // Setup an SQL query to get parent titles from node ids listed.
         $nlist = array();
         $query = 'SELECT nid, title FROM {node} WHERE ';
-        $glue = "";
+        $glue = '';
         for ($i=0; $i < count($area->field_uib_area_parents['und']); $i++) {
           $nlist[":nid$i"] = $area->field_uib_area_parents['und'][$i]['target_id'];
           $query .= $glue . " nid = :nid$i";
           $glue = " OR";
         }
         $result = db_query($query, $nlist);
-        // Setup each parental area node title on a separate line with link
+        // Setup each parental area node title on a separate line with link.
         foreach ($result as $record) {
           $title = t($record->title);
           $block['content'][$title]['#markup'] = l($title, 'node/' . $record->nid) . '<br>';
         }
       }
-      break;
-    case 'node_children': // A block to display a list of teasers of children [nodes only] to current node
-      $block['subject'] = "";
-      $menu_link = menu_link_get_preferred(uib_area__get_current_node(), uib_area__get_current_menu()); // get menu link of the current node
-      if (empty($menu_link)) {
-        $menu_link = uib_area__get_current_menu_link(); // get menu link of current area
-      }
-      if (empty($menu_link)) {
-        return $block; // Returns an empty block if area is not in the Area menu
-      }
-      $items = menu_navigation_links(uib_area__get_current_menu(), $menu_link['depth']);
-      if (!empty($items)) {
-        foreach ($items as $menu_item) {
-          $node_title = $menu_item['title'];
-          $teaser_text = '';
-          $tmp = explode('/',$menu_item['href']);
-          $entity_type = trim($tmp[0]);
-          if ($entity_type == 'node') {
-            $node_id = intval($tmp[1]); // cast to integer, just to be sure
-            $query = 'SELECT type FROM {node} WHERE nid = :nid'; // get node type
-            $result = db_query($query, array(':nid' => $node_id));
-            foreach ($result as $record) {
-              $node_type = $record->type;
-            }
-            // get teaser text
-            if ($node_type == 'area') {
-              $result = db_select('field_data_field_uib_primary_text', 'f')
-                ->fields('f', array('field_uib_primary_text_value'))
-                ->condition('entity_type', $entity_type)
-                ->condition('bundle', 'uib_area')
-                ->condition('entity_id', $node_id)
-                ->execute()
-                ->fetchCol();
-                if (!empty($result[0])) {
-                  $teaser_text = $result[0];
-                }
-              }
-            else { // article (uib_article) or testimonial
-              $result = db_select('field_data_field_uib_lead', 'f')
-                ->fields('f', array('field_uib_lead_value'))
-                ->condition('entity_type', $entity_type)
-                ->condition('bundle', $node_type)
-                ->condition('entity_id', $node_id)
-                ->execute()
-                ->fetchCol();
-                if (!empty($result[0])) {
-                  $teaser_text = $result[0];
-                }
-            }
-             $children_classes_array = array('uib-child-teaser');
-            // Check if the node has children
-            $child_menu_link = menu_link_get_preferred($menu_item['href'], uib_area__get_current_menu());
-            if (! empty($child_menu_link)) {
-              if ($child_menu_link['has_children']) {
-                $children_classes_array[] = 'uib-child-has-children';
-              }
-            }
-            $node_title = t($node_title);
-            $children_classes = implode(' ', $children_classes_array);
-            $block['content'][$node_title]['#markup'] = "<div class=\"$children_classes\">" . '<h3>'. l($node_title, $menu_item['href']) . '</h3>';
-            $teaser_text = truncate_utf8($teaser_text, 203, TRUE, TRUE);
-            $block['content'][$node_title . '_text']['#markup'] = '<p>' . $teaser_text . '</p><span>'. l(t('Read more'), $menu_item['href']) .'</span></div>';
-          }
-        }
-      }
-      break;
+    break;
     case 'newspage_recent_news':
       $area = uib_area__get_current();
       $slideshow = db_select('field_data_field_uib_profiled_article', 'f')
@@ -275,7 +208,7 @@ function uib_area_block_view($delta='') {
       $nids = array_keys($result['node']);
       $nodes = node_load_multiple($nids);
       $block['content'] = node_view_multiple($nodes);
-      break;
+    break;
     case 'colophon_logos':
       $area = uib_area__get_current();
       if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
@@ -619,7 +552,6 @@ function uib_area__get_ou_nids_recursive($nid) {
   }
 
   $res = join('+', $res);
-  //dd("=== $res ===");
   return $res;
 }
 
