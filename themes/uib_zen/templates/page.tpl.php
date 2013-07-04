@@ -244,6 +244,17 @@
         <?php print $sidebar_second; ?>
       </aside><!-- /.sidebars -->
     <?php endif; ?>
+    <?php if (isset($global_menu)): ?>
+      <nav class="global-menu-mobile" id="footer-global-menu">
+        <?php print theme('links__menu-global-menu', array(
+          'links' => $global_menu,
+          'attributes' => array(
+            'class' => array('links','global-menu'),
+          ),
+        ));
+        ?>
+      </nav>
+    <?php endif; ?>
   </div><!-- /#main -->
 
   <?php print render($page['footer']); ?>
