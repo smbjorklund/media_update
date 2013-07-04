@@ -273,6 +273,10 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $variables['content']['field_uib_profiled_message_2']['#weight'] = $weight - 1;
           $variables['content']['field_uib_profiled_message_last'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_last_chosen_items', $variables['nid']);
           $variables['content']['field_uib_profiled_message_last']['#weight'] = $weight + 1;
+          // Recent news block from uib_area module
+          $recent_news_block = module_invoke('uib_area', 'block_view', 'newspage_recent_news');
+          $variables['content']['field_uib_newspage_recent_news'] = $recent_news_block['content'];
+          $variables['content']['field_uib_newspage_recent_news']['#weight'] = $weight + 2;
         }
       }
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'frontpage') {
@@ -461,6 +465,12 @@ function uib_zen_preprocess_node(&$variables, $hook) {
   else {
     if ($variables['type'] == 'uib_testimonial') {
       $variables['title'] = '';
+    }
+    // Add theme suggestion to nodes printed in view mode (newspage)
+    if (($variables['type'] == 'uib_article') && ($variables['field_uib_article_type']['und'][0]['value'] == 'news')) {
+      if ($variables['view_mode'] == 'teaser') {
+        $variables['theme_hook_suggestions'][] = 'node__news__recent_news';
+      }
     }
   }
 

@@ -53,6 +53,10 @@ function uib_article_strongarm() {
             'weight' => '6',
             'visible' => FALSE,
           ),
+          'teaser' => array(
+            'weight' => '8',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),

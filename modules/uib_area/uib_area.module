@@ -56,6 +56,10 @@ function uib_area_block_info() {
       'info' => t('Node children teasers'),
       'status' => TRUE,
     ),
+    'newspage_recent_news' => array(
+      'info' => t('Newspage recent news'),
+      'status' => TRUE,
+    ),
 
   );
 }
@@ -244,6 +248,35 @@ function uib_area_block_view($delta='') {
           }
         }
       }
+      break;
+    case 'newspage_recent_news':
+      $area = uib_area__get_current();
+      $slideshow = db_select('field_data_field_uib_profiled_article', 'f')
+        ->fields('f', array('field_uib_profiled_article_target_id'))
+        ->condition('entity_id', $area->nid)
+        ->execute()
+        ->fetchCol();
+
+      $profiled_messages = db_select('field_data_field_uib_profiled_message', 'f')
+        ->fields('f', array('field_uib_profiled_message_target_id'))
+        ->condition('entity_id', $area->nid)
+        ->execute()
+        ->fetchCol();
+
+      $exludes_nodes = array_merge($slideshow, $profiled_messages);
+      $query = new EntityFieldQuery;
+      $query = $query
+        ->entityCondition('entity_type', 'node')
+        ->range(0, 5)
+        ->propertyCondition('status', 1)
+        ->propertyOrderBy('created', 'DESC')
+        ->fieldCondition('field_uib_article_type','value', 'news', '=')
+        ->fieldCondition('field_uib_area','target_id', $area->nid, '=')
+        ->propertyCondition('nid', $exludes_nodes, 'NOT IN');
+      $result = $query->execute();
+      $nids = array_keys($result['node']);
+      $nodes = node_load_multiple($nids);
+      $block['content'] = node_view_multiple($nodes);
       break;
   }
   return $block;
