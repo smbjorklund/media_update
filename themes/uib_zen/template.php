@@ -367,6 +367,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         hide($variables['content']['group_article_main']['field_uib_byline']);
         $variables['content']['group_article_top']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
         $variables['content']['group_article_top']['uib_news_byline']['#suffix'] = '<div class="uib-news-byline-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-news-byline-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
+        $variables['content']['group_article_top']['#prefix'] = '<div class="article-info">';
       }
       elseif ($variables['node']->field_uib_article_type['und'][0]['value'] == 'event') {
         if (empty($variables['node']->field_uib_kicker['und'][0]['value'])) {
@@ -451,8 +452,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           'style' => SERVICE_LINKS_STYLE_IMAGE,
         ));
         if (!empty($variables['content']['group_article_main'])) {
-          $variables['content']['group_article_top']['#suffix'] = $variables['content']['group_article_top']['#prefix'] . '<div class="service-links">' . $service_links . '</div>';
+          $variables['content']['group_article_top']['#suffix'] = '<div class="service-links">' . $service_links . '</div></div>';
           $variables['content']['group_article_top']['#weight'] = $variables['content']['group_article_main']['#weight'] - 0.5;
+          if (empty($variables['content']['group_article_top']['#prefix'])) {
+            $variables['content']['group_article_top']['#prefix'] = '<div class="article-info">';
+          }
         }
       }
     }
