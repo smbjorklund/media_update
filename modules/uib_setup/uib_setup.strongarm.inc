@@ -857,7 +857,7 @@ webdesk/*';
     'stumbleupon' => 0,
     'twitter' => 1,
     'pingthis' => 0,
-    'reddit' => 1,
+    'reddit' => 0,
     'slashdot' => 0,
     'newsvine' => 0,
     'furl' => 0,
