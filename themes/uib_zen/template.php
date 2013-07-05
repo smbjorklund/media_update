@@ -315,6 +315,8 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     }
     // Handle articles
     if ($variables['type'] == 'uib_article') {
+        $variables['content']['title']['#markup'] = '<h1>' . $variables['title'] . '</h1>';
+        $variables['content']['title']['#weight'] = 0.5;
       if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
         // Setup kicker
         // -- First determine which date to set

@@ -213,13 +213,6 @@
       <?php endif; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
-      <?php if ($title): ?>
-        <?php if ($title != $page_title):
-          // Modified to print title only if different from area title
-          ?>
-          <h1 class="title" id="page-title"><?php print $title; ?></h1>
-        <?php endif; ?>
-      <?php endif; ?>
       <?php print render($page['content_top']); ?>
       <?php print render($title_suffix); ?>
       <?php print $messages; ?>
