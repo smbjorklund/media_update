@@ -653,6 +653,19 @@ $zen-auto-include-item-base: false;
       @include zen-clear();
     }
   }
+    /* Automatic news feed on news page */
+  .node-uib-article {
+    width: 100%;
+    @include zen-grid-item (1, 1);
+    @include zen-clear();
+    h1, .field-name-field-uib-lead {
+      width: 73%;
+      font-weight: normal;
+    }
+    h1 {
+      font-size: 1.6em;
+    }
+  }
 
   /* Employee page menu */
   .expanded .region-navigation {
@@ -1175,6 +1188,23 @@ $zen-auto-include-item-base: false;
          width: 98%;
          margin-left: 2%;
       }
+    }
+  }
+    /* Automatic news feed on news page */
+  .node-uib-article {
+    clear: both;
+    .field-name-field-uib-main-media-recent-news {
+      @include zen-grid-item (1, 1);
+    }
+    h1, .field-name-field-uib-lead {
+      @include zen-grid-item (3, 2);
+      width: 73%;
+      margin-left: 27%;
+      font-weight: normal;
+    }
+    h1 {
+      float: none;
+      font-size: 1.6em;
     }
   }
 
@@ -1754,6 +1784,7 @@ $zen-auto-include-item-base: false;
   /* Last two or more */
   .view-display-id-newspage_last_chosen_items {
     @include zen-grid-item (4, 1);
+    margin-bottom: 20px;
     .views-row-odd {
       @include zen-grid-item (2, 1);
       .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
@@ -1768,6 +1799,24 @@ $zen-auto-include-item-base: false;
          width: 98%;
          margin-left: 2%;
       }
+    }
+  }
+
+  /* Automatic news feed on news page */
+  .node-uib-article {
+    clear: both;
+    .field-name-field-uib-main-media-recent-news {
+      @include zen-grid-item (1, 1);
+    }
+    h1, .field-name-field-uib-lead {
+      @include zen-grid-item (3, 2);
+      width: 73%;
+      margin-left: 27%;
+      font-weight: normal;
+    }
+    h1 {
+      float: none;
+      font-size: 1.6em;
     }
   }
 
