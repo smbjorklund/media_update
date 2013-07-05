@@ -102,24 +102,24 @@ function uib_area_block_view($delta='') {
           '#value' => t('Director of Communications'),
         ),
       );
-      $area = uib_area__get_current();
-      if ($area && isset($area->field_uib_ou['und'])) {
-        $place = node_load($area->field_uib_ou['und'][0]['target_id']);
-        $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
-        if (isset($place->field_uib_phone)) {
-          $block['content']['phone']['#value'] =
-            $place->field_uib_phone['und'][0]['value'];
-        }
-        if (isset($place->field_uib_fax)) {
-          $block['content']['fax']['#value'] =
-            $place->field_uib_fax['und'][0]['value'];
-        }
-        if (isset($place->field_uib_mail_domain)) {
-          $block['content']['contact']['#title'] = 'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
-          $block['content']['contact']['#href'] = 'mailto:post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
-        }
+    $area = uib_area__get_current();
+    if ($area && isset($area->field_uib_ou['und'])) {
+      $place = node_load($area->field_uib_ou['und'][0]['target_id']);
+      $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
+      if (isset($place->field_uib_phone)) {
+        $block['content']['phone']['#value'] =
+          $place->field_uib_phone['und'][0]['value'];
       }
-      hide($block['content']['emergency']);
+      if (isset($place->field_uib_fax)) {
+        $block['content']['fax']['#value'] =
+          $place->field_uib_fax['und'][0]['value'];
+      }
+      if (isset($place->field_uib_mail_domain)) {
+        $block['content']['contact']['#title'] = 'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
+        $block['content']['contact']['#href'] = 'mailto:post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
+      }
+    }
+    hide($block['content']['emergency']);
     break;
     case 'jobbnorge':
       $area = uib_area__get_current();
@@ -1017,33 +1017,27 @@ function uib_area_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 
 /**
  * Assemble the current area menu for display on a page
+ *
+ * Implements hook_block_list_alter().
+ * @param  [type] $blocks
  */
-function uib_area_area_menu() {
+function uib_area_block_list_alter(&$blocks) {
   $area_menu = block_load('menu', uib_area__get_current_menu());
-  $area_menu->title = 'area menu';
   $area_menu->region = 'navigation';
-  $am = _block_get_renderable_array(_block_render_blocks(array($area_menu,)));
-  // Cause nothing to happen when a user clicks on top level menu item
-  foreach ($am as $key => $item) {
-    if (strpos($key, 'menu-area') !== FALSE) {
-      foreach ($item as $mlink => $menu_item) {
-        if (is_numeric($mlink)) {
-          $am[$key][$mlink]['#href'] = current_path();
-        }
-      }
-    }
-  }
-  return $am;
+  $area_menu->visibility = 1;
+  $blocks[] = $area_menu;
 }
 
 /**
- * Generate a menu
+ * Generate a menu.
  * @param string $menu_name
- *  The menu we want to retrieve
+ *  The menu we want to retrieve.
+ *
  * @param int $active_mlid
- *  The id of the active menu link
+ *  The id of the active menu link.
+ *
  * @return string
- *  HTML representing the chosen menu
+ *  HTML representing the chosen menu.
  */
 function uib_area__get_menu($menu_name, $active_mlid = FALSE) {
   $tree = menu_tree_all_data($menu_name, NULL, 2);

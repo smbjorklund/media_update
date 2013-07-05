@@ -592,6 +592,9 @@ function uib_zen_preprocess_block(&$variables, $hook) {
   if ($variables['block_html_id'] == 'block-uib-area-colophon') {
     $variables['content'] = '<div class="block-wrapper">' . $variables['content'] . '</div>';
   }
+  if ($variables['block_html_id'] == 'block-menu-menu-area-1') {
+    $variables['classes_array'][] = 'clearfix';
+  }
 
   //arrays containg block_html_id of blocks where the title is getting colored squares
   $blue_block = array(
