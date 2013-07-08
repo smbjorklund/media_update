@@ -320,6 +320,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         $variables['classes_array'][] = 'no-primary-text';
       }
     }
+
     // Handle articles
     if ($variables['type'] == 'uib_article') {
         $variables['content']['title']['#markup'] = '<h1>' . $variables['title'] . '</h1>';
@@ -428,24 +429,14 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
       // Section that only run on employee nodes.
       if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
-        // Do not show related area on employee pages [RTS 1225]
-        hide($variables['content']['group_article_sidebar']['field_uib_area']);
-
-        // Add page-area-menu to node group_article_sidebar
-        $block = module_invoke('menu_block', 'block_view', 'page-area-menu');
-        if (!empty($block['content'])) {
-          $block = '<div class="block"><h2 class="block-title">' . $block['subject_array']['#markup'] . '</h2>' . render($block['content']) . '</div>';
-          if (!empty($variables['content']['group_article_sidebar']['#id'])) {
-            $variables['content']['group_article_sidebar']['page-area-menu']['#markup'] = $block;
-          }
-          else {
-            $variables['content']['group_article_sidebar']['#weight'] = 4;
-            $variables['content']['group_article_sidebar']['#id'] =  'node_uib_article_full_group_article_sidebar';
-            $variables['content']['group_article_sidebar']['#prefix'] = '<div class="group-article-sidebar">';
-            $variables['content']['group_article_sidebar']['#suffix'] = '</div>';
-            $variables['content']['group_article_sidebar']['page-area-menu']['#markup'] = $block;
-          }
+        if (empty($variables['content']['group_article_sidebar']['#id'])) {
+          $variables['content']['group_article_sidebar']['#weight'] = 4;
+          $variables['content']['group_article_sidebar']['#id'] =  'node_uib_article_full_group_article_sidebar';
+          $variables['content']['group_article_sidebar']['#prefix'] = '<div class="group-article-sidebar">';
+          $variables['content']['group_article_sidebar']['#suffix'] = '</div>';
         }
+        $variables['content']['group_article_sidebar']['field_uib_relation'] = $variables['content']['field_uib_relation'];
+        unset($variables['content']['field_uib_relation']);
       }
 
       if (isset($variables['field_uib_text']['und']) && (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container'))) {
@@ -471,25 +462,31 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     }
 
     if (in_array($variables['title'], array('Ansattsider', 'Employee Pages'))) {
-      drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/hide_links.js',
-        array('group' => JS_THEME, )
-      );
+      drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/hide_links.js', array('group' => JS_THEME, ));
     }
   }
-  else {
-    if ($variables['type'] == 'uib_testimonial') {
-      $variables['title'] = '';
-    }
-    // Add theme suggestion to nodes printed in view mode (newspage)
-    if (($variables['type'] == 'uib_article') && ($variables['field_uib_article_type']['und'][0]['value'] == 'news')) {
-      if ($variables['view_mode'] == 'teaser') {
-        $variables['theme_hook_suggestions'][] = 'node__news__recent_news';
-      }
+
+  if ($variables[view_mode] == 'teaser' && $variables['type'] == 'uib_testimonial') {
+    $variables['title'] = '';
+  }
+
+  // Add theme suggestion to nodes printed in view mode (newspage)
+  if (($variables['type'] == 'uib_article') && ($variables['field_uib_article_type']['und'][0]['value'] == 'news')) {
+    if ($variables['view_mode'] == 'teaser') {
+      $variables['theme_hook_suggestions'][] = 'node__news__recent_news';
     }
   }
 
   if ($variables['view_mode'] == 'short_teaser') {
     $variables['theme_hook_suggestions'][] = 'node__children';
+  }
+
+  if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
+    $variables['is_employee'] = TRUE;
+  }
+
+  if ($variables['type'] == 'uib_external_content' && $variables['view_mode'] == 'short_teaser') {
+    $variables['is_employee'] = TRUE;
   }
 }
 
@@ -665,4 +662,49 @@ function uib_zen_preprocess_field(&$variables, $hook) {
 function __uib_media_content($vars) {
   $content .= $vars;
   return $content;
+}
+
+function uib_zen_field($variables) {
+  $output = '';
+  // List of fields that will be rendered with simplified markup
+  $simple_markup = array(
+    'field_uib_lead',
+    );
+  if (in_array($variables['element']['#field_name'], $simple_markup)) {
+    // Simplified markup
+     foreach ($variables['items'] as $delta => $item) {
+      $output = '<p class="' . $variables['classes'] . '">' . $item['#markup'] . '</p>';
+    }
+  }
+  else {
+    // Standard markup with lots of divs
+
+    // Render the label, if it's not hidden.
+    if (!$variables['label_hidden']) {
+      $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
+    }
+
+    if ($variables['element']['#field_name'] == 'field_uib_relation') {
+      // Render this particular field as an unordered list
+      // Render the items.
+      $output .= '<ul class="field-items">';
+      foreach ($variables['items'] as $delta => $item) {
+        $output .= drupal_render($item);
+      }
+      $output .= '</ul>';
+    }
+    else {
+
+      // Render the items.
+      $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+      foreach ($variables['items'] as $delta => $item) {
+        $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+        $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
+      }
+      $output .= '</div>';
+    }
+    // Render the top-level DIV.
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  }
+  return $output;
 }

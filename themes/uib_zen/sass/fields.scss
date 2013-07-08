@@ -496,5 +496,24 @@ div.link-field-column {
 }
 
 .field-name-field-uib-relation {
+  background-color: #F1F1EF;
   clear: left;
+  margin: 10px 0;
+  ul {
+    padding: 0 10px;
+  }
+  li {
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 48%;
+  }
+  .field-name-field-uib-lead {
+    font-weight: normal;
+  }
+  a {
+    font-weight: bold;
+  }
+  p {
+    margin: 0;
+  }
 }

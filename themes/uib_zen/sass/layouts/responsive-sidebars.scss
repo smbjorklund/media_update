@@ -305,7 +305,7 @@ $zen-auto-include-item-base: false;
     }
   }
 
-  .menu-block-wrapper ul.menu {
+  .region-navigation .block-menu ul.menu {
     li {
       @include zen-grid-item(1, 1);
       float: none;
@@ -554,19 +554,11 @@ $zen-auto-include-item-base: false;
     display: none;
   }
 
-  .field-name-field-uib-relation,
-  #block-uib-area-node-children {
+  .field-name-field-uib-relation.field-type-entityreference {
     @include zen-grid-item(1, 1);
-    background-color: #F1F1EF;
-    margin: 1em 1em 1em 0;
-    padding: 1em 0 1em 0;
-    .uib-child-teaser {
-      float: left;
-      line-height: 1.5em;
+    padding: 0;
+    li {
       width: 100%;
-      margin-bottom: 10px;
-      min-height: 130px;
-      max-height: 130px;
     }
   }
 
@@ -970,20 +962,8 @@ $zen-auto-include-item-base: false;
         font-weight: normal !important;
       }
     }
-    .field-name-field-uib-relation,
-    #block-uib-area-node-children {
+    .field-name-field-uib-relation {
       @include zen-grid-item(4, 1);
-      background-color: #F1F1EF;
-      margin: 1em 1em 1em 0;
-      padding: 1em;
-      width: 97%;
-      .uib-child-teaser {
-        width: 48%;
-        float: left;
-        line-height: 1.5em;
-        margin-right: 1%;
-        margin-bottom: 10px;
-      }
     }
 
     /* Article tablet */
@@ -1573,20 +1553,8 @@ $zen-auto-include-item-base: false;
   }
 
   /* Area "teaser" block */
-  .field-name-field-uib-relation,
-  #block-uib-area-node-children {
+  .field-name-field-uib-relation {
     @include zen-grid-item(4, 1);
-    background-color: #F1F1EF;
-    margin: 1em 1em 1em 0;
-    padding: 1em;
-    width: 97%;
-    .uib-child-teaser {
-      width: 48%;
-      float: left;
-      line-height: 1.5em;
-      margin-right: 1%;
-      margin-bottom: 10px;
-    }
   }
 
   /* Persons list */

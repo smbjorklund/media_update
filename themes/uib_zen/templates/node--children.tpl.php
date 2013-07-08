@@ -83,43 +83,12 @@
  * @see template_process()
  */
 ?>
-<article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix uib-child-teaser"<?php print $attributes; ?>>
 
-  <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
-    <header>
-      <?php print render($title_prefix); ?>
-      <?php if (!$page && $title): ?>
-        <?php if ($view_mode == 'short_teaser'): ?>
-          <?php if (!empty($node->field_uib_links['und'][0])): ?>
-            <?php $node_url = $node->field_uib_links['und'][0]['url']; ?>
-          <?php endif; ?>
-        <?php endif; ?>
-        <h3<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-
-      <?php if ($display_submitted): ?>
-        <p class="submitted">
-          <?php print $user_picture; ?>
-          <?php print $submitted; ?>
-        </p>
-      <?php endif; ?>
-
-      <?php if ($unpublished): ?>
-        <p class="unpublished"><?php print t('Unpublished'); ?></p>
-      <?php endif; ?>
-    </header>
-  <?php endif; ?>
-
-  <?php
-    // We hide the comments and links now so that we can render them later.
-    hide($content['comments']);
-    hide($content['links']);
-    print render($content);
-  ?>
-
-  <?php print render($content['links']); ?>
-
-  <?php print render($content['comments']); ?>
-
-</article><!-- /.node -->
+<?php if ($is_employee): ?>
+   <li<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></li>
+<?php else: ?>
+   <li<?php print $title_attributes; ?>>
+    <a href="<?php print $node_url; ?>"><?php print $title; ?></a>
+    <?php print render($content); ?>
+   </li>
+<?php endif; ?>

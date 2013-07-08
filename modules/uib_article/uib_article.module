@@ -590,10 +590,10 @@ function uib_article_menu_form_submit($form, &$form_state) {
               $sibl = $sibling['mlid'];
               continue;
             }
-            if (!$sibl) {
+            if (!isset($sibl)) {
               $prev = $wht;
             }
-            if (!isset($next) && $sibl) {
+            if (!isset($next) && isset($sibl)) {
               $next = $wht;
               break;
             }
