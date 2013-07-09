@@ -92,7 +92,7 @@
     hide($content['links']);
     // Using l() to create link failed, the url created gave 404.
     $content['title']['#markup'] = '<h1>' . '<a href=' . $node_url . '>' . $title . '</a></h1>';
-    $content['title']['#weight'] = $content['field_uib_main_media']['#weight'] + 1;
+    $content['title']['#weight'] = $content['field_uib_kicker']['#weight'] + 0.5;
     $content['field_uib_main_media']['#field_name'] = 'field_uib_main_media_recent_news';
 
     print render($content);
