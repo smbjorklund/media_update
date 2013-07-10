@@ -845,7 +845,7 @@ function uib_article_field_default_fields() {
           'weight' => '0',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
