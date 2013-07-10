@@ -1165,10 +1165,16 @@ $zen-auto-include-item-base: false;
       @include zen-grid-item (2, 1);
       width: 49%;
     }
-    .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
+    .newspage-one-chosen-text {
       @include zen-grid-item (2, 3);
       float: none;
       margin-left: 51%;
+      background-color: #f1f1ef;
+      width: 49%;
+      height: 245px;
+      .views-field-field-uib-kicker {
+        width: 100%;
+      }
     }
   }
   /* Last two or more */
@@ -1775,10 +1781,16 @@ $zen-auto-include-item-base: false;
       @include zen-grid-item (2, 1);
       width: 49%;
     }
-    .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
+    .newspage-one-chosen-text {
       @include zen-grid-item (2, 3);
       float: none;
       margin-left: 51%;
+      background-color: #f1f1ef;
+      height: 245px;
+      width: 49%;
+      .views-field-field-uib-kicker {
+        width: 100%;
+      }
     }
   }
   /* Last two or more */
