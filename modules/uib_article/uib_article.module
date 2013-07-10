@@ -661,3 +661,24 @@ function _get_weights($tree) {
   }
   return $weightset;
 }
+
+/**
+ * Fetch a header to display on a relations list
+ **/
+function uib_article__relation_title($node) {
+  if (!empty($node)) {
+    $node_url = 'node/' . $node->nid;
+    $node_alias = drupal_get_path_alias($node_url, $node->language);
+    if (stripos($node_alias, 'foransatte') !== FALSE OR stripos($node_alias, 'foremployees') !== FALSE) {
+      $menu_name = uib_area__get_current_menu();
+      $menu_link = menu_link_get_preferred($node_url, $menu_name);
+      if (!empty($menu_link)) {
+        return $menu_link['link_title'];
+      }
+      else {
+        return $node->title;
+      }
+    }
+  }
+  return NULL;
+}

@@ -685,9 +685,15 @@ function uib_zen_field($variables) {
     }
 
     if ($variables['element']['#field_name'] == 'field_uib_relation') {
+      $output .= '<div class="field-wrapper">';
+      // Potentially insert a header
+      $header = uib_article__relation_title($variables['element']['#object']);
+      if (!empty($header)) {
+        $output .= '<h2 class="block-title">' . $header . '</h2>';
+      }
       // Render this particular field as an unordered list
       // Render the items.
-      $output .= '<div class="field-wrapper"><ul class="field-items clearfix">';
+      $output .= '<ul class="field-items clearfix">';
       foreach ($variables['items'] as $delta => $item) {
         $output .= drupal_render($item);
       }
