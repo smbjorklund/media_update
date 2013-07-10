@@ -687,11 +687,11 @@ function uib_zen_field($variables) {
     if ($variables['element']['#field_name'] == 'field_uib_relation') {
       // Render this particular field as an unordered list
       // Render the items.
-      $output .= '<ul class="field-items">';
+      $output .= '<div class="field-wrapper"><ul class="field-items clearfix">';
       foreach ($variables['items'] as $delta => $item) {
         $output .= drupal_render($item);
       }
-      $output .= '</ul>';
+      $output .= '</ul></div>';
     }
     else {
 
