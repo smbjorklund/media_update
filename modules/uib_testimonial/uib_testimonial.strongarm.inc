@@ -31,6 +31,9 @@ function uib_testimonial_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'short_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

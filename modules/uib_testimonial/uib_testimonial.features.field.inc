@@ -1073,13 +1073,13 @@ function uib_testimonial_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 14,
+          'weight' => '14',
         ),
         'short_teaser' => array(
           'label' => 'above',
