@@ -407,6 +407,34 @@ div.add-or-remove-shortcuts {
   width: 100%;
 }
 
+#block-views-recent-news-block .view-recent-news {
+  border-bottom-style: none;
+  .more-link {
+    border-bottom-style: double;
+    border-color: #c8d1d5;
+    a {
+      width: 200px;
+    }
+  }
+}
+
+#block-views-calendar-block-1 .view-id-calendar {
+  border-bottom-style: none;
+  .more-link {
+    border-bottom-style: double;
+    border-color: #c8d1d5;
+    height: 32px;
+  }
+}
+
+#block-uib-area-area-parents,
+#block-uib-area-jobbnorge,
+.region-sidebar-second #block-views-relevant-links-relevant-links {
+  border-bottom-style: double;
+  border-color: #c8d1d5;
+>>>>>>> RTS-#2587 Bugfix. article sidebar layout and _ vs - confusion.
+}
+
 #block-views-recent-news-block .views-row, .view-calendar .views-row  {
   margin-bottom: 8px;
 }

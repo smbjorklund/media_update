@@ -640,7 +640,7 @@ $zen-auto-include-item-base: false;
     height: 100px;
   }
 
-  .group_article_sidebar {
+  .group-article-sidebar {
     @include zen-grid-item(1, 1);
     @include zen-clear();
   }

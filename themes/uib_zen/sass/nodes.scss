@@ -323,7 +323,7 @@ h1 {
     display: none;
   }
 
-  .group_article_sidebar .field-name-field-name-field-uib-media .field-label {
+  .group-article-sidebar .field-name-field-name-field-uib-media .field-label {
     display: none;
   }
 }
@@ -423,4 +423,8 @@ h1 {
   .view-display-id-block_2 .views-field-title a {
     color: #333;
   }
+}
+
+.group-article-sidebar .block-title {
+  margin: 0 0 0.5em 0;
 }

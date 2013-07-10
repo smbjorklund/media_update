@@ -518,16 +518,18 @@ div.link-field-column {
   }
 }
 
-.group_article_sidebar .field-name-field-uib-relation {
+.group-article-sidebar .field-name-field-uib-relation {
+  background-color: transparent;
   a {
     font-weight: normal;
   }
   li {
     margin: 0;
     width: auto;
+    clear: left;
   }
-}
-
-.field-wrapper {
-  padding: 10px;
+  ul {
+    padding: 0 10px 0 14px;
+    margin: 0;
+  }
 }
