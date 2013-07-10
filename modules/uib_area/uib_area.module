@@ -732,6 +732,61 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
         ':input[name="field_uib_area_type[und]"]' => array('value' => 'discipline'),
        ),
     );
+    // Hiding fields for newspage/frontpage
+    $form['field_uib_bottom_media']['#states'] = array(
+      'invisible' => array(
+        ':input[name="field_uib_area_type[und]"]' => array(
+          array('value' => 'frontpage'),
+          array('value' => 'newspage'),
+        ),
+      ),
+    );
+    $form['field_uib_profiled_testimonial']['#states'] = array(
+      'invisible' => array(
+        ':input[name="field_uib_area_type[und]"]' => array(
+          array('value' => 'frontpage'),
+          array('value' => 'newspage'),
+        ),
+      ),
+    );
+    $form['field_uib_bottom_text']['#states'] = array(
+      'invisible' => array(
+        ':input[name="field_uib_area_type[und]"]' => array(
+          array('value' => 'frontpage'),
+          array('value' => 'newspage'),
+        ),
+      ),
+    );
+    $form['field_uib_secondary_text']['#states'] = array(
+      'invisible' => array(
+        ':input[name="field_uib_area_type[und]"]' => array(
+          array('value' => 'frontpage'),
+          array('value' => 'newspage'),
+        ),
+      ),
+    );
+    $form['field_uib_tertiary_text']['#states'] = array(
+      'invisible' => array(
+        ':input[name="field_uib_area_type[und]"]' => array(
+          array('value' => 'frontpage'),
+          array('value' => 'newspage'),
+        ),
+      ),
+    );
+    // Showing profiled messages only for newspage and frontpage
+    $form['field_uib_profiled_message']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_uib_area_type[und]"]' => array(
+          array('value' => 'frontpage'),
+          array('value' => 'newspage'),
+        ),
+      ),
+    );
+    $form['field_uib_feed']['#states'] = array(
+      'invisible' => array(
+        ':input[name="field_uib_area_type[und]"]' => array('value' => 'frontpage'),
+       ),
+    );
   }
 }
 
