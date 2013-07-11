@@ -1220,7 +1220,7 @@ function uib_area_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'area',
       'deleted' => '0',
-      'description' => 'The primary media is the image/video at the top of the area front page. ',
+      'description' => 'The primary media is the image/video at the top of the area front page. If text is added to the primary text field the image shown will be a maximum of 354x199 pixels. If the primary text field is empty, the image will take up the entire width.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1271,6 +1271,7 @@ function uib_area_field_default_fields() {
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 'media_internet',
             'upload' => 'upload',
+            'youtube' => 0,
           ),
           'progress_indicator' => 'throbber',
         ),
@@ -1458,7 +1459,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '26',
+        'weight' => '25',
       ),
     ),
   );
@@ -1510,8 +1511,10 @@ function uib_area_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'area',
       'default_value' => NULL,
+      'default_value_function' => '',
       'deleted' => '0',
-      'description' => 'Select the articles that will display in the "Messages" box on the "For Employees" area',
+      'description' => '<strong>Front page:</strong> Adds both news articles and events to the front page. <br> 
+<strong>News page:</strong> Adds news articles to the middle section of the page. The first article is the profiled article in the middle. Only the first five articles will show on the area page. More information: <a href="http://w3docs.h.uib.no/redigere-områdeforside#97"> Promoted articles </a>',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1531,9 +1534,14 @@ function uib_area_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_profiled_message',
-      'label' => 'Profiled messages',
+      'label' => 'Promoted articles',
       'required' => 0,
       'settings' => array(
+        'behaviors' => array(
+          'prepopulate' => array(
+            'status' => 0,
+          ),
+        ),
         'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
@@ -1968,7 +1976,7 @@ function uib_area_field_default_fields() {
           'size' => '30',
         ),
         'type' => 'text_textfield',
-        'weight' => '25',
+        'weight' => '26',
       ),
     ),
   );
@@ -2979,6 +2987,8 @@ function uib_area_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<strong>Front page:</strong> Adds both news articles and events to the front page. <br> 
+<strong>News page:</strong> Adds news articles to the middle section of the page. The first article is the profiled article in the middle. Only the first five articles will show on the area page. More information: <a href="http://w3docs.h.uib.no/redigere-områdeforside#97"> Promoted articles </a>');
   t('Add a testimonial that will be featured on the front page. ');
   t('Add ids for the social media links that are desired.  Use strings like twitter:uib, youtube:unibergen, facebook:universitetetibergen, vimeo:uib and flickr:unibergen. Replace "uib" with the desired account. ');
   t('Adds a link list to the area front page. It it possible to use  <a href="http://w3docs.h.uib.no/?q=node/16">internal links</a> when linking to pages within www.uib.no.');
@@ -3007,20 +3017,19 @@ function uib_area_field_default_fields() {
   t('Postal Address');
   t('Primary media');
   t('Primary text');
-  t('Profiled messages');
   t('Profiled testimonial');
+  t('Promoted articles');
   t('Relevant links');
   t('Rss feed');
   t('Sebra ID');
   t('Secondary text');
-  t('Select the articles that will display in the "Messages" box on the "For Employees" area');
   t('Select which articles show up in the slideshow, a large image is required for your article to appear in the slideshow.');
   t('Short name');
   t('Show staff');
   t('Slideshow');
   t('Staff');
   t('Tertiary text');
-  t('The primary media is the image/video at the top of the area front page. ');
+  t('The primary media is the image/video at the top of the area front page. If text is added to the primary text field the image shown will be a maximum of 354x199 pixels. If the primary text field is empty, the image will take up the entire width.');
   t('This field contains the text that was known as "profiltekster" in the old version and was shown on the left side of the area page. ');
   t('This field is shown at the bottom of the area front page. ');
   t('This is the primary profile text on the page. Keep it short and focus on useful information like a basic description and contact info.');

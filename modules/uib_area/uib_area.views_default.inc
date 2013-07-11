@@ -1230,7 +1230,7 @@ return !empty($handler->argument);';
 </div>';
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Profiled messages (field_uib_profiled_message:delta) */
+  /* Sort criterion: Content: Promoted articles (field_uib_profiled_message:delta) */
   $handler->display->display_options['sorts']['delta']['id'] = 'delta';
   $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_uib_profiled_message';
   $handler->display->display_options['sorts']['delta']['field'] = 'delta';
@@ -1307,7 +1307,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Profiled messages (field_uib_profiled_message:delta) */
+  /* Sort criterion: Content: Promoted articles (field_uib_profiled_message:delta) */
   $handler->display->display_options['sorts']['delta']['id'] = 'delta';
   $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_uib_profiled_message';
   $handler->display->display_options['sorts']['delta']['field'] = 'delta';
@@ -1384,7 +1384,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Profiled messages (field_uib_profiled_message:delta) */
+  /* Sort criterion: Content: Promoted articles (field_uib_profiled_message:delta) */
   $handler->display->display_options['sorts']['delta']['id'] = 'delta';
   $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_uib_profiled_message';
   $handler->display->display_options['sorts']['delta']['field'] = 'delta';
