@@ -146,7 +146,7 @@ function drush_uib_area_split_menu() {
               foreach ($result as $item) {
                 $child = menu_link_load($item);
                 $new_child = array (
-                  'link_path' => $child['link_path'],
+                  'link_path' => 'http:#',
                   'link_title' => $child['link_title'],
                   'menu_name' => $menu_machine_name,
                   'expanded' => 1,
@@ -155,6 +155,27 @@ function drush_uib_area_split_menu() {
                   'has_children' => $child['has_children'],
                   );
                 menu_link_save($new_child);
+                $orphan_nid = intval(substr($child['link_path'], (strpos($child['link_path'], '/') + 1)));
+                if ($orphan_nid > 0) {
+                  $orphan = node_load($orphan_nid);
+                  if (!$orphan) {
+                    uibx_log('Tried to orphanize ' . $child['link_path'] . ' but was unable to load node.', 'notice');
+                  }
+                  else {
+                    if ($orphan->status != 0) {
+                      $orphan->status = 0;
+                      $orphan->sticky = 1;
+                      node_save($orphan);
+                      uibx_log('Orphanized and unpublished ' . $child['link_path'] . ' and made it sticky.', 'notice');
+                    }
+                    else {
+                      uibx_log('Found an unpublished node at first level of menu ' . $child['link_path'], 'notice');
+                    }
+                  }
+                }
+                else {
+                    uibx_log('Failed to orphanize ' . $child['link_path'] . ' due to lack of nid.', 'notice');
+                }
               }
               // Then fix second level menu children for this menu
               //   they were automatically moved here when moving the first level

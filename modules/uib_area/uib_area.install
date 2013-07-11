@@ -12,6 +12,16 @@ function uib_area_install() {
 }
 
 /**
+ * Implements hook_update_dependencies().
+ */
+function uib_area_update_dependencies() {
+  $dependencies['uib_area'][7004] = array(
+    'uib_setup' => 7003,
+    );
+  return $dependencies;
+}
+
+/**
  * Update aliases for areas already present
  */
 function uib_area_update_7000() {
