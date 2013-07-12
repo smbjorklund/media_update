@@ -1168,12 +1168,16 @@ $zen-auto-include-item-base: false;
     .newspage-one-chosen-text {
       @include zen-grid-item (2, 3);
       float: none;
-      margin-left: 51%;
       background-color: #f1f1ef;
-      width: 49%;
       height: 245px;
+      width: 51%;
+      margin-left: 49%;
       .views-field-field-uib-kicker {
         width: 100%;
+      }
+      .views-field-field-uib-kicker, .views-field-field-uib-lead, .views-field-title {
+        width: 96%;
+        margin-left: 4%;
       }
     }
   }
@@ -1791,12 +1795,16 @@ $zen-auto-include-item-base: false;
     .newspage-one-chosen-text {
       @include zen-grid-item (2, 3);
       float: none;
-      margin-left: 51%;
       background-color: #f1f1ef;
       height: 245px;
-      width: 49%;
+      width: 51%;
+      margin-left: 49%;
       .views-field-field-uib-kicker {
         width: 100%;
+      }
+      .views-field-field-uib-kicker, .views-field-field-uib-lead, .views-field-title {
+        width: 96%;
+        margin-left: 4%;
       }
     }
   }
