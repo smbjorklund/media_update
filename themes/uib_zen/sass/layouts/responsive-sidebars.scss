@@ -659,7 +659,6 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (1, 1);
     @include zen-clear();
     h1, .field-name-field-uib-lead {
-      width: 73%;
       font-weight: normal;
     }
     h1 {
