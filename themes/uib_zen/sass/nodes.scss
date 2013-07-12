@@ -429,7 +429,19 @@ h1 {
 }
 
 /* Sidebar on front page */
-.front .region-sidebar-second .view-frontpage-profiled-articles .views-field-title {
-  font-size: 1em;
-  color: red;
+.front .region-sidebar-second  {
+  .view-frontpage-profiled-articles .views-field-title {
+    font-size: 1em;
+    color: red;
+  }
+  .date-display-single {
+    font-size: .9em;
+    font-weight: bold;
+  }
+  .view-id-frontpage_profiled_articles .views-field-title {
+    margin-bottom: 7px;
+  }
+  .view-display-id-block_2 .views-field-title a {
+    color: #333;
+  }
 }
