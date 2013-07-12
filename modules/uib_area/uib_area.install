@@ -17,6 +17,7 @@ function uib_area_install() {
 function uib_area_update_dependencies() {
   $dependencies['uib_area'][7004] = array(
     'uib_setup' => 7003,
+    'uib_article' => 7003,
     );
   return $dependencies;
 }

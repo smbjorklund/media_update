@@ -153,28 +153,26 @@ function drush_uib_area_split_menu() {
                   'mlid' => $child['mlid'],
                   'weight' => $child['weight'],
                   'has_children' => $child['has_children'],
+                  'hidden' => $child['hidden'],
                   );
                 menu_link_save($new_child);
-                $orphan_nid = intval(substr($child['link_path'], (strpos($child['link_path'], '/') + 1)));
+                $orphan_nid = intval(substr($child['link_path'], (strrpos($child['link_path'], '/') + 1)));
                 if ($orphan_nid > 0) {
                   $orphan = node_load($orphan_nid);
                   if (!$orphan) {
-                    uibx_log('Tried to orphanize ' . $child['link_path'] . ' but was unable to load node.', 'notice');
+                    uibx_log('Tried to set ' . $child['link_path'] . ' to sticky, but was unable to load node.', 'notice');
                   }
                   else {
-                    if ($orphan->status != 0) {
-                      $orphan->status = 0;
-                      $orphan->sticky = 1;
-                      node_save($orphan);
-                      uibx_log('Orphanized and unpublished ' . $child['link_path'] . ' and made it sticky.', 'notice');
-                    }
-                    else {
-                      uibx_log('Found an unpublished node at first level of menu ' . $child['link_path'], 'notice');
+                    $orphan->sticky = 1;
+                    node_save($orphan);
+                    uibx_log('Orphanized and set ' . $child['link_path'] . ' to sticky.', 'notice');
+                    if ($orphan->status == 0 && $child['hidden'] == 0) {
+                      uibx_log('Found an unpublished node [' . $child['link_path'] . ', mlid=' . $child['mlid'] . '] at first level of menu ' . $menu_machine_name, 'warning');
                     }
                   }
                 }
                 else {
-                    uibx_log('Failed to orphanize ' . $child['link_path'] . ' due to lack of nid.', 'notice');
+                    uibx_log('Did not set ' . $child['link_path'] . ' to sticky: no nid where expected.', 'notice');
                 }
               }
               // Then fix second level menu children for this menu
@@ -197,6 +195,7 @@ function drush_uib_area_split_menu() {
                   'plid' => $child['plid'],
                   'weight' => $child['weight'],
                   'has_children' => $child['has_children'],
+                  'hidden' => $child['hidden'],
                   );
                 menu_link_save($new_child);
               }
@@ -274,23 +273,30 @@ function uib_area__unroll_menu_recursive($trunk) {
     }
     if (!empty($branch['below'])) {
       if ($external && $branch['link']['depth'] > 2) {
+        menu_link_delete($branch['link']['mlid']);
         uibx_log('Skipped children of external link "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'warning');
       }
       else {
         uib_area__unroll_menu_recursive($branch['below']);
       }
     }
-    // add to entity relation and nuke this menu link
+    // Add to entity relation and nuke this menu link
     if ($branch['link']['depth'] > 2) {
-      $parent_menu_link = menu_link_load($branch['link']['plid']);
-      $parent_nid = uib_area__extract_nid_from_path($parent_menu_link['link_path']);
-      if (empty($parent_nid)) {
-        uibx_log('Unable to extract parent nid from url for "' . $parent_menu_link['link_path'] . '" mlid=' . $branch['link']['mlid'], 'error');
+      // Only add the relation if the menu link was enabled
+      if ($branch['link']['hidden'] == 0) {
+        $parent_menu_link = menu_link_load($branch['link']['plid']);
+        $parent_nid = uib_area__extract_nid_from_path($parent_menu_link['link_path']);
+        if (empty($parent_nid)) {
+          uibx_log('Unable to extract parent nid from url for "' . $parent_menu_link['link_path'] . '" mlid=' . $branch['link']['mlid'], 'error');
+        }
+        $parent_node = node_load($parent_nid);
+        $parent_node->field_uib_relation['und'][]['target_id'] = $nid;
+        node_save($parent_node);
+        uibx_log('Added entity relation to ' . $nid . ' for node ' . $parent_nid, 'notice');
       }
-      $parent_node = node_load($parent_nid);
-      $parent_node->field_uib_relation['und'][]['target_id'] = $nid;
-      node_save($parent_node);
-      uibx_log('Added entity relation to ' . $nid . ' for node ' . $parent_nid, 'notice');
+      else {
+        uibx_log('Skipped relation for hidden link "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'warning');
+      }
       menu_link_delete($branch['link']['mlid']);
     }
   }
@@ -374,7 +380,7 @@ function uib_area__chk_menu_recursive($trunk, $parent_mlid, &$ptrail) {
         $current = menu_link_load($branch['link']['mlid']);
         $current['plid'] = $parent_mlid;
         menu_link_save($current);
-        uibx_log('Fixed menu parent mismatch. Found plid=' . $branch['link']['plid'] . ', was set to ' . $parent_mlid, 'notice');
+        uibx_log('Fixed menu parent mismatch [mlid=' . $branch['link']['mlid'] . ']. Found plid=' . $branch['link']['plid'] . ', was corrected to ' . $parent_mlid, 'notice');
         // amend working branch with newly save data
         $current = menu_link_load($branch['link']['mlid']);
         for ($i = 1; $i <= 9; $i++) {
@@ -389,7 +395,7 @@ function uib_area__chk_menu_recursive($trunk, $parent_mlid, &$ptrail) {
         $current = menu_link_load($branch['link']['mlid']);
         $current['plid'] = $parent_mlid;
         menu_link_save($current);
-        uibx_log('Fixed menu parent trail mismatch at mlid=' . $branch['link']['mlid'] . ' plid=' . $branch['link']['plid'] . ": p$j", 'notice');
+        uibx_log('Fixed menu parent trail mismatch [mlid=' . $branch['link']['mlid'] . ']. Found ' . "p$j: " . $branch['link']["p$j"] . ' when expecting ' . $ptrail[$i] , 'notice');
       }
     }
     if (!empty($branch['below'])) {
