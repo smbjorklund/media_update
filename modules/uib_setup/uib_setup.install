@@ -75,7 +75,7 @@ function uib_setup_update_7003() {
 }
 
 /**
- * Disable modules: menuux and bigmenu.
+ * Disable module: menuux and bigmenu.
  */
 function uib_setup_update_7004() {
   module_disable(array('menuux', 'bigmenu'), TRUE);

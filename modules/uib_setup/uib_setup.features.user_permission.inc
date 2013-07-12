@@ -144,13 +144,6 @@ function uib_setup_user_default_permissions() {
     'module' => 'menu_admin_per_menu',
   );
 
-  // Exported permission: administer bigmenu.
-  $permissions['administer bigmenu'] = array(
-    'name' => 'administer bigmenu',
-    'roles' => array(),
-    'module' => 'bigmenu',
-  );
-
   // Exported permission: administer content translations.
   $permissions['administer content translations'] = array(
     'name' => 'administer content translations',
@@ -1440,18 +1433,6 @@ function uib_setup_user_default_permissions() {
     'name' => 'use PHP for service visibility',
     'roles' => array(),
     'module' => 'service_links',
-  );
-
-  // Exported permission: use bigmenu.
-  $permissions['use bigmenu'] = array(
-    'name' => 'use bigmenu',
-    'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
-    ),
-    'module' => 'bigmenu',
   );
 
   // Exported permission: use page manager.
