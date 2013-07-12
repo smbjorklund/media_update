@@ -1180,6 +1180,7 @@ $zen-auto-include-item-base: false;
   /* Last two or more */
   .view-display-id-newspage_last_chosen_items {
     @include zen-grid-item (4, 1);
+    margin-bottom: 17px;
     .views-row-odd {
       @include zen-grid-item (2, 1);
       .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
@@ -1199,10 +1200,11 @@ $zen-auto-include-item-base: false;
     /* Automatic news feed on news page */
   .newspage_node .node-uib-article {
     clear: both;
+    margin-top: 16px;
     .field-name-field-uib-main-media-recent-news {
       @include zen-grid-item (1, 1);
     }
-    h1, .field-name-field-uib-lead {
+    h1, .field-name-field-uib-lead, .field-name-field-uib-kicker {
       @include zen-grid-item (3, 2);
       width: 73%;
       margin-left: 27%;
@@ -1211,6 +1213,11 @@ $zen-auto-include-item-base: false;
     h1 {
       float: none;
       font-size: 1.6em;
+      padding-top: 23px;
+      margin-bottom: 0;
+    }
+    .field-name-field-uib-kicker {
+      margin-top: 0;
     }
   }
 
@@ -1820,7 +1827,7 @@ $zen-auto-include-item-base: false;
     .field-name-field-uib-main-media-recent-news {
       @include zen-grid-item (1, 1);
     }
-    h1, .field-name-field-uib-lead {
+    h1, .field-name-field-uib-lead, .field-name-field-uib-kicker {
       @include zen-grid-item (3, 2);
       width: 73%;
       margin-left: 27%;
@@ -1829,6 +1836,11 @@ $zen-auto-include-item-base: false;
     h1 {
       float: none;
       font-size: 1.6em;
+      padding-top: 23px;
+      margin-bottom: 0;
+    }
+    .field-name-field-uib-kicker {
+      margin-top: 0;
     }
   }
 
