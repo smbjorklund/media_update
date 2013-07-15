@@ -12,7 +12,6 @@ dependencies[] = field_ui
 dependencies[] = help
 dependencies[] = menu_admin_per_menu
 dependencies[] = migrate_ui
-dependencies[] = panels_ipe
 dependencies[] = uib_setup
 dependencies[] = views_ui
 dependencies[] = advanced_help
