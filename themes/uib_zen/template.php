@@ -277,6 +277,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $recent_news_block = module_invoke('uib_area', 'block_view', 'newspage_recent_news');
           $variables['content']['field_uib_newspage_recent_news'] = $recent_news_block['content'];
           $variables['content']['field_uib_newspage_recent_news']['#weight'] = $weight + 2;
+          $variables['content']['field_uib_newspage_recent_news'][0]['#markup'] = l(t('News archive'), drupal_get_path_alias(current_path()) . '/news-archive');
         }
       }
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'frontpage') {
