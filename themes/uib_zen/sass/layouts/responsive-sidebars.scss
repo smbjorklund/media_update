@@ -1138,6 +1138,7 @@ $zen-auto-include-item-base: false;
   /* Aktuelt tablet */
   /* First two */
   .view-display-id-newspage_two_chosen_items {
+    @include zen-clear();
     @include zen-grid-item (4, 1);
     .views-row-odd {
       @include zen-grid-item (2, 1);
@@ -1765,6 +1766,7 @@ $zen-auto-include-item-base: false;
   /* Aktuelt desktop */
   /* First two */
   .view-display-id-newspage_two_chosen_items {
+    @include zen-clear();
     @include zen-grid-item (4, 1);
     .views-row-odd {
       @include zen-grid-item (2, 1);
