@@ -22,7 +22,7 @@ for my $rts (sort { $a <=> $b } keys %rts) {
     close($git);
 }
 
-my $docs = qx(git log --oneline origin/master..origin/docs);
+my $docs = qx(git log --oneline origin/master..origin/docs -- 2>/dev/null);
 if ($docs) {
     print "\nDocs\n\n";
     $docs =~ s/^/  /gm;
