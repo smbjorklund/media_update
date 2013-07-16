@@ -1,0 +1,55 @@
+{"en":[
+  {"title":"Education","url": "/education","listings": [
+      {"title": "Studies", "url": "/education/studies"},
+      {"title": "Admission", "url": "/education/admission"},
+      {"title": "Life-long learning", "url": "/utdanning/evu/en"}
+  ]},
+  {"title": "PhD - Doctoral Education", "url": "/phd/en", "listings": [
+    {"title": "PhD at the Faculties", "url": "/phd/en/phd-at-uib/doctoral-education-at-faculties"},
+    {"title": "Research schools", "url": "/phd/en/phd-at-uib/research-schools"},
+    {"title": "Regulations", "url": "/phd/en/phd-at-uib/phd-handbook-and-regulations"}
+  ]},
+  {"title": "Research", "url": "/research", "listings": [
+    {"title": "Research at the Faculties", "url": "/research/research-fields/research-at-the-faculties"},
+    {"title": "Centres of Excellence", "url": "/about/profile/centres-of-excellence"},
+    {"title": "Publications", "url": "/research/publications"}
+  ]},
+  {"title": "Community", "url": "/community", "listings": [
+    {"title": "International", "url": "/international"},
+    {"title": "Alumni", "url": "http://alumni.uib.no/pages-en/open/"},
+    {"title": "Media contact", "url": "/form/en/contact-us/media-contact"}
+  ]},
+  {"title": "The university", "url": "/about", "listings": [
+    {"title": "Organisation", "url": "/about/organisationchart"},
+    {"title": "Career", "url": "/poa/en/organisation/career-at-uib"},
+    {"title": "Life on Campus", "url": "/education/practical-information/prospective-students/on-campus"}
+  ]}
+],
+"nb": [
+  {"title": "Utdanning", "url": "/utdanning", "listings": [
+    {"title": "Studietilbud", "url": "/utdanning/studietilbud"},
+    {"title": "Opptak", "url": "/utdanning/opptak"},
+    {"title": "Etter- og videreutdanning", "url": "/utdanning/ev"}
+  ]},
+  {"title": "Forskerutdanning", "url": "/phd", "listings": [
+    {"title": "Forskerskoler", "url": "/phd/phd-ved-uib/forskerskoler"},
+    {"title": "Opptak", "url": "/utdanning/opptak/forskerutdanning-ph.d"},
+    {"title": "Reglement", "url": "/phd/phd-ved-uib/ph.d.-reglementet"}
+  ]},
+  {"title": "Forskning", "url": "/forskning", "listings": [
+    {"title": "Forskning ved fakultetene", "url": "/forskning/forskningsomraader/forsking-ved-fakulteta"},
+    {"title": "Senter for fremragende forskning", "url": "/forskning/forskningsomraader/forskningssentre/sentre-for-fremragende-forskning-sff"},
+    {"title": "Publikasjoner", "url": "/forskning/publikasjoner"}
+  ]},
+  {"title": "Samfunn", "url": "/samfunn", "listings": [
+    {"title": "Internasjonalt", "url": "/internasjonalt"},
+    {"title": "Alumni", "url": "http://alumni.uib.no/"},
+    {"title": "Presserom", "url": "/form/pressesenter/presserom"},
+    {"title": "Samfunnskontakt", "url": "/ledelsen/kontakt/-kontor-for-samfunnskontakt"}
+  ]},
+  {"title": "Universitetet", "url": "/om", "listings": [
+    {"title": "Organisasjonen", "url": "/om/organisasjonskart"},
+    {"title": "Karriere", "url": "/poa/karriere-ved-uib"},
+    {"title": "Studentliv", "url": "/utdanning/studentliv"}
+  ]}
+]}

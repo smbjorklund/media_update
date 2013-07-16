@@ -55,3 +55,53 @@ function uib_area_update_7002() {
     i18n_variable_set('site_frontpage', 'node/' . $node->nid, $lang);
   }
 }
+
+/**
+* Create frontpage menues
+*/
+function uib_area_update_7003() {
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'area')
+    ->fieldCondition('field_uib_area_type', 'value', 'frontpage')
+    ->execute();
+
+  $menu_template = drupal_json_decode(file_get_contents(dirname(__FILE__) . '/frontpage-menu.json'));
+
+  foreach (node_load_multiple(array_keys($result['node'])) as $area) {
+    $area->field_uib_menu_style['und'][0]['value'] = 'expanded';
+    node_save($area);
+
+    $mlink = array(
+      'menu_name' => 'area',
+      'link_title' => $area->title . ' (frontpage)',
+      'link_path' => 'node/' . $area->nid,
+      'weight' => 1,
+      'expanded' => 1,
+    );
+    $mlid = menu_link_save($mlink);
+
+    foreach ($menu_template[$area->language] as $index => $item) {
+      uib_area__create_menu_tree('area', $item, $index, $mlid);
+    }
+  }
+}
+
+function uib_area__create_menu_tree($menu_name, $item, $weight, $plid = 0) {
+  $base_url = 'http://www.uib.no';
+  $menu_item = array(
+    'link_title' => $item['title'],
+    'menu_name' => $menu_name,
+    'link_path' => $base_url . $item['url'],
+    'weight' => $weight,
+    'plid' => $plid,
+    'expanded' => 1,
+  );
+  $mlid = menu_link_save($menu_item);
+  if (isset($item['listings'])) {
+    foreach ($item['listings'] as $k => $i) {
+      uib_area__create_menu_tree($menu_name, $i, $k, $mlid);
+    }
+  }
+}
