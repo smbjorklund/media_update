@@ -30,7 +30,7 @@ class XTopic extends stdClass {
       'fag' => 'discipline',
       'fagressurser-ub' => 'discipline resource ub',
       'fakultet' => 'faculty',
-      'forside' => 'front page',
+      //'frontpage' => 'frontpage',
       'forskerskole' => 'research school',
       'forskningsgruppe' => 'research group',
       'institutt' => 'institute',
@@ -39,6 +39,7 @@ class XTopic extends stdClass {
       'studiemulighet' => 'study option', # not used, but defined in Sebra
       'tema-indeks' => 'focus area index', # not used, but defined in Sebra
       'tema' => 'focus area',
+      'mainnewspage' => 'newspage',
     );
     if (isset($type_map[$w2_type]))
       return $type_map[$w2_type];
