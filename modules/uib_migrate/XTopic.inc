@@ -200,6 +200,13 @@ class XTopic extends stdClass {
 
       if (!empty($xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
         $this->area_parent_ids =  $xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
+
+        if ($this->path == 'aktuelt' || $this->path == 'news') {
+          // The aktuelt/news area belongs to KA in w2.  Since we want to migrate
+          // this area first, we ignore this relation to avoid creating an area
+          // stub for KA.
+          unset($this->area_parent_ids);
+        }
       }
 
       if (!empty($xlink['er_skrevet_av/forfatterskap/har_skrevet'])) {
