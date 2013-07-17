@@ -42,6 +42,12 @@ function uib_setup_context_default_contexts() {
           'region' => 'bottom',
           'weight' => '-9',
         ),
+        'uib_area-colophon_logos' => array(
+          'module' => 'uib_area',
+          'delta' => 'colophon_logos',
+          'region' => 'bottom',
+          'weight' => '-8',
+        ),
       ),
     ),
   );
