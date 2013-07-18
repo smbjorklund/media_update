@@ -83,17 +83,21 @@ function uib_area_update_7003() {
     $mlid = menu_link_save($mlink);
 
     foreach ($menu_template[$area->language] as $index => $item) {
-      uib_area__create_menu_tree('area', $item, $index, $mlid);
+      uib_area__create_menu_tree('area', $area->language, $item, $index, $mlid);
     }
   }
 }
 
-function uib_area__create_menu_tree($menu_name, $item, $weight, $plid = 0) {
-  $base_url = 'http://www.uib.no';
+function uib_area__create_menu_tree($menu_name, $lang, $item, $weight, $plid = 0) {
+  $url = $item['url'];
+  if (substr($url, 0, 1) == '/')
+    $url = 'http://www.uib.no' . $url;
+  else
+    $url = drupal_get_normal_path($url, $lang);
   $menu_item = array(
     'link_title' => $item['title'],
     'menu_name' => $menu_name,
-    'link_path' => $base_url . $item['url'],
+    'link_path' => $url,
     'weight' => $weight,
     'plid' => $plid,
     'expanded' => 1,
@@ -101,7 +105,7 @@ function uib_area__create_menu_tree($menu_name, $item, $weight, $plid = 0) {
   $mlid = menu_link_save($menu_item);
   if (isset($item['listings'])) {
     foreach ($item['listings'] as $k => $i) {
-      uib_area__create_menu_tree($menu_name, $i, $k, $mlid);
+      uib_area__create_menu_tree($menu_name, $lang, $i, $k, $mlid);
     }
   }
 }

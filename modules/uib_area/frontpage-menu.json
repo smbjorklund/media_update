@@ -23,7 +23,7 @@
     {"title": "Organisation", "url": "/about/organisationchart"},
     {"title": "Career", "url": "/poa/en/organisation/career-at-uib"},
     {"title": "Life on Campus", "url": "/education/practical-information/prospective-students/on-campus"},
-    {"title": "For employees", "url": "/foremployees"}
+    {"title": "For employees", "url": "foremployees"}
   ]}
 ],
 "nb": [
@@ -52,6 +52,6 @@
     {"title": "Organisasjonen", "url": "/om/organisasjonskart"},
     {"title": "Karriere", "url": "/poa/karriere-ved-uib"},
     {"title": "Studentliv", "url": "/utdanning/studentliv"},
-    {"title": "For ansatte", "url": "/foransatte"}
+    {"title": "For ansatte", "url": "foransatte"}
   ]}
 ]}
