@@ -1062,7 +1062,7 @@ return !empty($handler->argument);';
   /* Display: Profiled events norwegian */
   $handler = $view->new_display('block', 'Profiled events norwegian', 'block_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Calendar';
+  $handler->display->display_options['title'] = 'Kalender - Det skjer';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
@@ -1162,7 +1162,7 @@ return !empty($handler->argument);';
   /* Display: Profiled news norwegian */
   $handler = $view->new_display('block', 'Profiled news norwegian', 'block_3');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'News';
+  $handler->display->display_options['title'] = 'Nyheter';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
@@ -1482,8 +1482,10 @@ return !empty($handler->argument);';
     t('See the entire calendar'),
     t('[field_uib_date] - [title] ([field_uib_event_type])'),
     t('Profiled events norwegian'),
+    t('Kalender - Det skjer'),
     t('Se hele kalenderen'),
     t('Profiled news norwegian'),
+    t('Nyheter'),
     t('Flere aktuelle saker'),
     t('Profiled articles newspage'),
     t('<div class="newspage-one-chosen-text">
