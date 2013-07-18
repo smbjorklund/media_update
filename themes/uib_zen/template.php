@@ -211,9 +211,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     }
 
     if ($variables['node']->type == 'area') {
-      if (isset($variables['page']['content']['uib_area_node_children'])) {
-        unset($variables['page']['content']['uib_area_node_children']);
-      }
+      unset($variables['page']['content']['uib_area_node_children']);
     }
   }
 
