@@ -93,6 +93,14 @@ $zen-auto-include-item-base: false;
   margin-bottom: -6px;
   padding-bottom: 16px;
 }
+.expanded {
+  #navigation {
+    background: url(../../images/decore-line.png) repeat-x top;
+    .region-navigation {
+      margin-top: 10px;
+    }
+  }
+}
 
 .page-node-add, .page-webdesk {
   #navigation {
