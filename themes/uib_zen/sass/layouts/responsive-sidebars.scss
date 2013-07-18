@@ -1331,6 +1331,11 @@ $zen-auto-include-item-base: false;
   #content {
     margin-top: 20px;
   }
+  .front {
+    #content {
+      margin-top: 0px;
+    }
+  }
 
   /* Sidebar background img */
   .one-sidebar #main, .sidebar-second #main {
