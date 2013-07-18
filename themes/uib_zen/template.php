@@ -509,7 +509,7 @@ function uib_zen_menu_link(array $variables) {
     }
     $output .= '>' . t($element['#title']) . '</a>';
   }
-  elseif (isset($variables['element']['#bid']) && ($variables['element']['#bid']['delta'] == 'top-area-menu') && ($element['#original_link']['depth'] == 2))
+  elseif (isset($variables['element']['#bid']) && ($variables['element']['#bid']['delta'] == 'top-area-menu') && ($element['#original_link']['depth'] == 2) && (!drupal_is_front_page()))
     $output = '<a href="#">' . $element["#title"] . '</a> ';
   else
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
