@@ -378,6 +378,9 @@ class XTopicListSource extends MigrateSource {
       $this->listUrl .= '&allinstances';
     }
     if (function_exists('drush_get_option')) {
+      if ($w2prefix = drush_get_option('w2prefix')) {
+        $this->listUrl .= '&prefix=' . $w2prefix;
+      }
       $area_subset_filename = drush_get_option('area_subset');
       if (!empty($area_subset_filename)) {
         // If supplied, read a file that contains an explicit list of areas which are to be migrated
