@@ -15,3 +15,8 @@ $options['structure-tables'] = array(
        'history', 'sessions', 'watchdog',
     ),
 );
+
+// assumes 'drush php-script ...' runs from the drupal directory
+$command_specific['php-script'] = array(
+  'script-path' => '../scripts',
+);
