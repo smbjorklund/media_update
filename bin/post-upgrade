@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -x
+
+REL=2
+
+if git tag | grep -q R$REL; then
+    echo "Disabled after $REL has been released";
+    exit 1
+fi
+
+# Do stuff here that is needed to set up the site after it has been upgraded
+# ...
+
+# Make sure the cache is really blenda-clean
+bin/site-drush cc all

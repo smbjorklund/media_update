@@ -73,6 +73,11 @@ bin/site-drush cc all || exit 8
 bin/site-drush fra -v --yes || exit 9 
 bin/site-drush cc all || exit 10
 
+# Run script with some final commands that might do some good
+if [ -x bin/post-upgrade ]; then
+    bin/post-upgrade
+fi
+
 #Display that all is OK to user
 bin/site-drush fl
 rm -rf $lockfile
