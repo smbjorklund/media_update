@@ -1002,3 +1002,33 @@ function uib_area_node_access($node, $op, $user) {
   }
   return NODE_ACCESS_IGNORE;
 }
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ *
+ * If the 'edit' tab of a node is missing (because of missing node_access) then
+ * also hide the 'revisions' and 'translate' tabs
+ */
+function uib_area_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  if ($data['tabs'][0]['output'][0]['#link']['path'] != 'node/%/view') {
+    return;
+  }
+
+  $tabs = array();
+  foreach ($data['tabs'][0]['output'] as $tab) {
+    $path = $tab['#link']['path'];
+    if ($path == 'node/%/edit') {
+      // if we find the edit tab, do nothing
+      return;
+    }
+    if ($path == 'node/%/revisions' || $path == 'node/%/translate') {
+      // tabs to ignore
+      continue;
+    }
+    $tabs[] = $tab;
+  }
+
+  // replace the tabs
+  $data['tabs'][0]['count'] = count($tabs);
+  $data['tabs'][0]['output'] = $tabs;
+}
