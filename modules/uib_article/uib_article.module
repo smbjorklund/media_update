@@ -6,6 +6,122 @@
 
 include_once 'uib_article.features.inc';
 
+
+/**
+ * Implements hook_menu
+ */
+function uib_article_menu() {
+  return array(
+    'node/%/share' => array(
+      'title' => 'Share',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('uib_article__share'),
+      'access callback' => 'uib_article__share_access',
+      'type' => MENU_LOCAL_TASK,
+    ),
+  );
+}
+
+function uib_article__share($form, &$form_state) {
+  $article = node_load(arg(1));
+  global $user;
+
+  $form['header'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'h1',
+    '#value' => $article->title,
+  );
+
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'area')
+    ->propertyCondition('language', $article->language)
+    ->fieldCondition('field_uib_content_manager', 'target_id', $user->uid)
+    ->propertyOrderBy('title')
+    ->execute();
+
+  if ($result) {
+    $form['check'] = array(
+      '#type' => 'checkboxes',
+      '#title' => t('Share this article on the following areas'),
+      '#description' => t('Articles can be shared to all the areas you are content manger for.  Please select the areas you want to share this article on.'),
+      '#options' => array(),
+      '#default_value' => array(),
+    );
+
+    $areas = node_load_multiple(array_keys($result['node']));
+    $owner = $article->field_uib_area['und'][0]['target_id'];
+    foreach ($areas as $area) {
+      if ($area->nid != $owner)
+        $form['check']['#options'][$area->nid] = $area->title;
+    }
+
+    foreach (array_slice($article->field_uib_area['und'], 1) as $value) {
+      $form['check']['#default_value'][] = $value['target_id'];
+    }
+
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => 'Update',
+    );
+  }
+  return $form;
+}
+
+function uib_article__share_submit($form, &$form_state) {
+  $article = node_load(arg(1));
+  if ($article) {
+    //dpm(array($form, $form_state, $article));
+    $old = $article->field_uib_area['und'];
+    $new = array();
+    $checks = $form_state['values']['check'];
+
+    // remove those not present any more
+    $seen = array();
+    foreach ($old as $i => $v) {
+      $nid = $v['target_id'];
+      if ($i == 0 || !array_key_exists($nid, $checks) || $checks[$nid]) {
+        $new[] = $v;
+        $seen[$nid]++;
+      }
+      else {
+        drupal_set_message(t('Article not shared with area "@area" any more', array('@area' => node_load($nid)->title)));
+      }
+    }
+
+    // add the new ones
+    foreach ($checks as $nid => $checked) {
+      if ($checked && !$seen[$nid]) {
+        $new[] = array( 'target_id' => $nid );
+        drupal_set_message(t('Article now shared with area "@area"', array('@area' => node_load($nid)->title)));
+      }
+    }
+
+    //dpm(array('old' => $old, 'checks' => $checks, 'new' => $new));
+
+    if ($new != $old) {
+      $article->field_uib_area['und'] = $new;
+      node_save($article);
+    }
+    else {
+      drupal_set_message(t('Article still shared to the same areas'));
+    }
+  }
+  $form_state['redirect'] = 'node/' . arg(1);
+}
+
+function uib_article__share_access() {
+  if (!user_access('edit any uib_article content'))
+    return FALSE;
+  $node = node_load(arg(1));
+  if ($node && $node->type == 'uib_article') {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+
 /**
  * Implements hook_form_alter
  */
