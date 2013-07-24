@@ -83,8 +83,8 @@ function uib_article_update_7001() {
 }
 
 /**
-* Populate empty byline fields for existing news articles
-*/
+ * Populate empty byline fields for existing news articles.
+ */
 function uib_article_update_7002() {
   // Update all news articles that lack byline
   // Performed in two steps. First, find all in which byline exist
@@ -112,6 +112,9 @@ function uib_article_update_7002() {
   uibx_log("Updated $cnt news articles.", "notice");
 }
 
+/**
+ * Enable new feature module - uib_external.
+ */
 function uib_article_update_7003() {
   module_enable(array('uib_external'), FALSE);
   uibx_log('Enabled module - UiB External');

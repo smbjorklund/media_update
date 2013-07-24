@@ -118,7 +118,7 @@ function uib_area__create_menu_tree($menu_name, $item, $weight, $plid = 0) {
 }
 
 /**
- * Split area menu (This may take som time...)
+ * Splitting area menu (This may take some time...).
  */
 function uib_area_update_7004() {
   // check and fix area menu
