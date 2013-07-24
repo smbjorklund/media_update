@@ -104,6 +104,10 @@ Our custom modules.  Many of these written by
 Our custom themes.  Currently there is only one; `themes/uib_zen/`
 based on the [Zen theme](http://drupal.org/project/zen).
 
+### `scripts/`
+
+Various utility scripts that can be invoked with 'drush php-script'.
+
 ### `test-se/`
 
 This is a [Selenium](http://seleniumhq.org/) based test suite.  It contains
