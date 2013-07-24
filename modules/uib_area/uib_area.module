@@ -1000,6 +1000,11 @@ function uib_area_node_access($node, $op, $user) {
       return NODE_ACCESS_DENY;
     }
   }
+  if (is_object($node) && $node->type == 'uib_article') {
+    if (!uib_area__is_content_manager(node_load($node->field_uib_area['und'][0]['target_id']), $user)) {
+      return NODE_ACCESS_DENY;
+    }
+  }
   return NODE_ACCESS_IGNORE;
 }
 
