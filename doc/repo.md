@@ -83,6 +83,13 @@ Configuration files (used by the scripts). Not much used yet.
 This is a git submodule that contains core Drupal 7 and all the modules
 that we depend on (found under `drupal/sites/all/modules/`).
 
+### `patches/`
+
+Contains patches we have made to 3rd party modules and drupal core.
+The patches must be registered in the 'drupal.make' file.
+The 'drupal.make' can also reference external patches and we prefer
+that when the patch is available from a stable URL.
+
 ### `profiles/`
 
 Our custom profiles.  Currently there is only one; `profiles/uib/`.
