@@ -27,9 +27,11 @@ foreach ($uib_language as $lang => $path) {
       ->propertyOrderBy('created', 'DESC')
       ->range(0, 9);
     $result = $query->execute();
-    if (!empty($result['node'])) {
-      $nids = array_keys($result['node']);
+    if (empty($result['node'])) {
+      uibx_log('Can not load any nodes', 'error');
+      continue;
     }
+    $nids = array_keys($result['node']);
     // Setup profiled articles
     for ($i = 0; $i <= 3; $i++) {
       $area->field_uib_profiled_article['und'][$i]['target_id'] = $nids[$i];
