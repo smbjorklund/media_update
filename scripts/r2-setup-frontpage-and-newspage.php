@@ -11,15 +11,10 @@ foreach ($uib_language as $lang => $path) {
     $area->field_uib_feed['und'][0]['title'] = 'UiB i media';
     // Setup social icons
     $area->field_uib_social_media['und'][0]['value'] = 'twitter:uib';
-    $area->field_uib_social_media['und'][0]['safe_value'] = 'twitter:uib';
     $area->field_uib_social_media['und'][1]['value'] = 'facebook:uib';
-    $area->field_uib_social_media['und'][1]['safe_value'] = 'facebook:uib';
     $area->field_uib_social_media['und'][2]['value'] = 'youtube:uib';
-    $area->field_uib_social_media['und'][2]['safe_value'] = 'youtube:uib';
     $area->field_uib_social_media['und'][3]['value'] = 'vimeo:uib';
-    $area->field_uib_social_media['und'][3]['safe_value'] = 'vimeo:uib';
     $area->field_uib_social_media['und'][4]['value'] = 'flickr:uib';
-    $area->field_uib_social_media['und'][4]['safe_value'] = 'flickr:uib';
 
     // Get 9 node ids
     $query = new EntityFieldQuery;
@@ -100,15 +95,10 @@ foreach ($uib_language as $lang => $path) {
     }
     // Setup social icons
     $frontpage->field_uib_social_media['und'][0]['value'] = 'twitter:uib';
-    $frontpage->field_uib_social_media['und'][0]['safe_value'] = 'twitter:uib';
     $frontpage->field_uib_social_media['und'][1]['value'] = 'facebook:uib';
-    $frontpage->field_uib_social_media['und'][1]['safe_value'] = 'facebook:uib';
     $frontpage->field_uib_social_media['und'][2]['value'] = 'youtube:uib';
-    $frontpage->field_uib_social_media['und'][2]['safe_value'] = 'youtube:uib';
     $frontpage->field_uib_social_media['und'][3]['value'] = 'vimeo:uib';
-    $frontpage->field_uib_social_media['und'][3]['safe_value'] = 'vimeo:uib';
     $frontpage->field_uib_social_media['und'][4]['value'] = 'flickr:uib';
-    $frontpage->field_uib_social_media['und'][4]['safe_value'] = 'flickr:uib';
     // Setup profiled messages, first news
     for ($i = 0; $i <= 2; $i++) {
       $frontpage->field_uib_profiled_message['und'][$i]['target_id'] = $nids[$i];
