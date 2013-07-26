@@ -36,7 +36,7 @@ foreach (user_roles() as $rid => $role_name) {
   }
 }
 
-cache_clear_all();
+drupal_flush_all_caches();
 
 function add_content_manager($area, $user) {
   foreach ($area->field_uib_content_manager['und'] as $cm) {
