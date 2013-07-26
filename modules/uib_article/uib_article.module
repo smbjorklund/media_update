@@ -116,7 +116,10 @@ function uib_article__share_access() {
     return FALSE;
   $node = node_load(arg(1));
   if ($node && $node->type == 'uib_article') {
-    return TRUE;
+    $atype = $node->field_uib_article_type['und'][0]['value'];
+    if ($atype == 'news' || $atype == 'event') {
+      return TRUE;
+    }
   }
   return FALSE;
 }
