@@ -32,13 +32,13 @@ foreach ($uib_language as $lang => $path) {
       continue;
     }
     $nids = array_keys($result['node']);
-    // Setup profiled articles
+    // Setup profiled articles (the slide show)
     for ($i = 0; $i <= 3; $i++) {
       $area->field_uib_profiled_article['und'][$i]['target_id'] = $nids[$i];
     }
-    // Setup profiled messages
+    // Setup profiled messages (other stuff)
     for ($i = 0; $i <= 4; $i++) {
-      $area->field_uib_profiled_message['und'][$i]['target_id'] = $nids[$i];
+      $area->field_uib_profiled_message['und'][$i]['target_id'] = $nids[$i+4];
     }
     node_save($area);
     // Setup relevant link (field collection)
@@ -103,7 +103,7 @@ foreach ($uib_language as $lang => $path) {
     $frontpage->field_uib_social_media['und'][4]['value'] = 'flickr:uib';
     // Setup profiled messages, first news
     for ($i = 0; $i <= 2; $i++) {
-      $frontpage->field_uib_profiled_message['und'][$i]['target_id'] = $nids[$i];
+      $frontpage->field_uib_profiled_message['und'][$i]['target_id'] = $nids[$i+4];
     }
     // Setup profiled messages, events
     $query = new EntityFieldQuery;
