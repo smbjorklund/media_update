@@ -274,3 +274,63 @@ table.cols-6 {
   color: #005473;
   font-weight: bold;
 }
+
+/**
+ * Media block basic config.
+ */
+.media {}
+
+.half ul :first-child .media,
+.full ul :first-child .image {
+  margin: 0 10px 0 0;
+}
+
+.half .media {
+  margin: 0 0 0 10px;
+}
+
+.full ul,
+.half ul {
+  margin: 0;
+}
+
+.half li {
+  float: left;
+  width: 50%;
+}
+
+.full li {
+  background-color: $light-grey;
+  width: 100%;
+}
+
+.full img {
+  width: 50%;
+  float: left;
+}
+
+.full .media-wrapper {
+  margin: 10px 0 0 10px;
+}
+
+.media-content {
+  display: table-cell;
+  width: 10000px;
+}
+
+/* Media block additional config */
+.media .views-field-title {
+  font-size: 1.6em;
+  line-height: 1.2em;
+}
+
+.media .views-field-field-uib-kicker {
+  border-top: $sidebar-border;
+  border-bottom: $sidebar-border;
+  color: #555;
+  font-family: $font-body;
+  font-size: 1.2em;
+  font-family: "times new roman" serif;
+  line-height: 1.2em;
+  text-transform: uppercase;
+}

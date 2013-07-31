@@ -629,3 +629,8 @@ function uib_zen_preprocess_field(&$variables, $hook) {
     $variables['label'] = '<span></span>' . $variables['label'];
   }
 }
+
+function __uib_media_content($vars) {
+  $content .= $vars;
+  return $content;
+}

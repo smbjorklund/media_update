@@ -405,28 +405,6 @@ h1 {
   padding: 0.5em;
 }
 
-/* Kicker field and title in news page (aktuelt) */
-.newspage_node .view-frontpage-profiled-articles .views-field-field-uib-kicker {
-  @include adjust-font-size-to( $h2-font-size );
-  @include leader(1, $h2-font-size);
-  @include trailer(.5, $h2-font-size);
-  border-top: $sidebar-border;
-  border-bottom: $sidebar-border;
-  font-family: $font-body;
-  text-transform: uppercase;
-  color: #555;
-  font-weight: normal;
-  font-size: 1.2em;
-  font-family: "times new roman" serif;
-  line-height: 1.2em;
-  margin-right: 43%;
-}
-
-.view-frontpage-profiled-articles .views-field-title {
-  font-size: 1.6em;
-  line-height: 1.2em;
-}
-
 /* Shortcut menu on front page */
 #bottom-region-wrapper .field-collection-item-field-uib-link-section .field-name-field-uib-title {
   font-weight: bold;

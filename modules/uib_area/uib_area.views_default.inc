@@ -1215,6 +1215,8 @@ return !empty($handler->argument);';
   /* Display: Profiled articles newspage */
   $handler = $view->new_display('block', 'Profiled articles newspage', 'newspage_one_chosen_item');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'clearfix full';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -1255,29 +1257,19 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   /* Field: Content: Lead */
   $handler->display->display_options['fields']['field_uib_lead']['id'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
   $handler->display->display_options['fields']['field_uib_lead']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_lead']['alter']['text'] = '<div class="newspage-one-chosen-text">
-<div class="views-field views-field-field-uib-kicker">
-<div class="field-content">
-[field_uib_kicker]
-</div>
-</div>
-<div class="views-field views-field-title">
-<span class="field-content">
-[title]
-</span>
-</div>
-<div class="views-field views-field-field-uib-lead">
-<div class="field-content">
-[field_uib_lead]
-</div>
-</div>
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['text'] = '<div class="media-content">
+  [field_uib_kicker]
+  [title]
+  [field_uib_lead]
 </div>';
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
@@ -1313,6 +1305,8 @@ return !empty($handler->argument);';
   /* Display: Profiled articles newspage 2 items */
   $handler = $view->new_display('block', 'Profiled articles newspage 2 items', 'newspage_two_chosen_items');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'clearfix';
   $handler->display->display_options['display_description'] = 'Showing the next 2 items';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -1343,19 +1337,28 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_kicker']['table'] = 'field_data_field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['field'] = 'field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_kicker']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_kicker']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Lead */
   $handler->display->display_options['fields']['field_uib_lead']['id'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['text'] = '<div class="media-content">
+  [field_uib_kicker]
+  [title]
+  [field_uib_lead]
+</div>';
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Promoted articles (field_uib_profiled_message:delta) */
@@ -1390,6 +1393,8 @@ return !empty($handler->argument);';
   /* Display: Profiled articles newspage last items */
   $handler = $view->new_display('block', 'Profiled articles newspage last items', 'newspage_last_chosen_items');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'clearfix';
   $handler->display->display_options['display_description'] = 'Showing the last items';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -1420,19 +1425,28 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_kicker']['table'] = 'field_data_field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['field'] = 'field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_kicker']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_kicker']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Lead */
   $handler->display->display_options['fields']['field_uib_lead']['id'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_lead']['alter']['text'] = '<div class="media-content">
+  [field_uib_kicker]
+  [title]
+  [field_uib_lead]
+</div>';
   $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Promoted articles (field_uib_profiled_message:delta) */
@@ -1488,22 +1502,10 @@ return !empty($handler->argument);';
     t('Nyheter'),
     t('Flere aktuelle saker'),
     t('Profiled articles newspage'),
-    t('<div class="newspage-one-chosen-text">
-<div class="views-field views-field-field-uib-kicker">
-<div class="field-content">
-[field_uib_kicker]
-</div>
-</div>
-<div class="views-field views-field-title">
-<span class="field-content">
-[title]
-</span>
-</div>
-<div class="views-field views-field-field-uib-lead">
-<div class="field-content">
-[field_uib_lead]
-</div>
-</div>
+    t('<div class="media-content">
+  [field_uib_kicker]
+  [title]
+  [field_uib_lead]
 </div>'),
     t('Profiled articles newspage 2 items'),
     t('Showing the next 2 items'),
