@@ -190,7 +190,6 @@ ul.language-switcher-locale-url li.active {
       background: -o-linear-gradient(top, rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* Opera 11.10+ */
       background: -ms-linear-gradient(top, rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* IE10+ */
       background: linear-gradient(to bottom, rgba(236,234,233,1) 0%,rgba(229,228,227,1) 50%,rgba(219,218,217,1) 51%,rgba(236,234,233,1) 100%); /* W3C */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eceae9', endColorstr='#eceae9',GradientType=0 ); /* IE6-9 */
       &:hover ul {
         display: block;
       }
