@@ -280,13 +280,9 @@ table.cols-6 {
  */
 .media {}
 
-.half ul :first-child .media,
-.full ul :first-child .image {
-  margin: 0 10px 0 0;
-}
-
-.half .media {
-  margin: 0 0 0 10px;
+.full {
+  background-color: $light-grey;
+  width: 100%;
 }
 
 .full ul,
@@ -294,19 +290,26 @@ table.cols-6 {
   margin: 0;
 }
 
+.half .media {
+  margin: 0 0 0 10px;
+}
+
+.half ul :first-child .media {
+  margin: 0 10px 0 0;
+}
+
+.full .image {
+  float: left;
+  width: 50%;
+}
+
+.full .image .field-content {
+  margin: 0 10px 0 0;
+}
+
 .half li {
   float: left;
   width: 50%;
-}
-
-.full li {
-  background-color: $light-grey;
-  width: 100%;
-}
-
-.full img {
-  width: 50%;
-  float: left;
 }
 
 .full .media-wrapper {
