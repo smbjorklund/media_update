@@ -25,7 +25,7 @@
  */
 ?>
 <?php $i = 0; ?>
-<?php print '<div class="media">'; ?>
+<?php print '<div class="media clearfix">'; ?>
 
 <?php foreach ($fields as $id => $field): ?>
   <?php if ($i == 0): ?>

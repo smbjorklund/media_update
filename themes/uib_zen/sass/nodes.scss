@@ -209,7 +209,9 @@ h1 {
   font-weight: normal;
 }
 
-.field-name-field-uib-kicker, .group-article-sidebar .field-label  {
+.views-field-field-uib-kicker,
+.field-name-field-uib-kicker,
+.group-article-sidebar .field-label  {
   border-top: $sidebar-border;
   border-bottom: $sidebar-border;
   font-family: $font-body;
@@ -221,7 +223,7 @@ h1 {
   line-height: 1.2em;
   float: left;
   width: 100%;
-  margin: 20px 0 5px 0;
+  margin: 0 0 5px 0;
 }
 
 .field-name-field-uib-main-media {

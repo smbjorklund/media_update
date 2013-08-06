@@ -277,8 +277,13 @@ table.cols-6 {
 
 /**
  * Media block basic config.
+ *
+ * @todo: Code here is candidate for getting moved to base theme as a general
+ * style.
  */
-.media {}
+.media {
+  margin: 0 0 20px 0;
+}
 
 .full {
   background-color: $light-grey;
@@ -312,6 +317,10 @@ table.cols-6 {
   width: 50%;
 }
 
+.media-wrapper {
+  margin: 10px 0 0 0;
+}
+
 .full .media-wrapper {
   margin: 10px 0 0 10px;
 }
@@ -325,15 +334,4 @@ table.cols-6 {
 .media .views-field-title {
   font-size: 1.6em;
   line-height: 1.2em;
-}
-
-.media .views-field-field-uib-kicker {
-  border-top: $sidebar-border;
-  border-bottom: $sidebar-border;
-  color: #555;
-  font-family: $font-body;
-  font-size: 1.2em;
-  font-family: "times new roman" serif;
-  line-height: 1.2em;
-  text-transform: uppercase;
 }

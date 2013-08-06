@@ -661,15 +661,6 @@ $zen-auto-include-item-base: false;
     }
   }
 
-  /* Aktuelt mobile */
-  .view-frontpage-profiled-articles {
-    @include zen-grid-item (1, 1);
-    @include zen-clear();
-    .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
-      @include zen-grid-item (1, 1);
-      @include zen-clear();
-    }
-  }
     /* Automatic news feed on news page */
   .node-uib-article {
     width: 100%;
