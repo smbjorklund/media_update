@@ -488,7 +488,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Content: Place (field_uib_ou) */
+  /* Contextual filter: Content: Responsible (field_uib_ou) */
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['id'] = 'field_uib_ou_target_id';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['table'] = 'field_data_field_uib_ou';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['field'] = 'field_uib_ou_target_id';
@@ -1247,25 +1247,20 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_kicker']['table'] = 'field_data_field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['field'] = 'field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_kicker']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_kicker']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   /* Field: Content: Lead */
   $handler->display->display_options['fields']['field_uib_lead']['id'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_lead']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_lead']['alter']['text'] = '<div class="media-content">
   [field_uib_kicker]
   [title]
@@ -1338,14 +1333,12 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_kicker']['table'] = 'field_data_field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['field'] = 'field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_kicker']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_kicker']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -1354,7 +1347,6 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_lead']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_lead']['alter']['text'] = '<div class="media-content">
   [field_uib_kicker]
   [title]
@@ -1427,14 +1419,12 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_kicker']['table'] = 'field_data_field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['field'] = 'field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_kicker']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_kicker']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -1443,7 +1433,6 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
   $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_lead']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_lead']['alter']['text'] = '<div class="media-content">
   [field_uib_kicker]
   [title]
