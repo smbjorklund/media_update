@@ -123,6 +123,18 @@ $zen-auto-include-item-base: false;
     background: none;
   }
 }
+
+.field-name-field-uib-social-media {
+  .twitter,
+  .vimeo,
+  .youtube,
+  .facebook,
+  .flickr {
+    padding-left: 25px;
+    width: 0;
+  }
+}
+
 @media all and (min-width: 480px) {
   #main {
     padding-top: 0;
@@ -131,6 +143,19 @@ $zen-auto-include-item-base: false;
   }
   #navigation {
     width: $zen-grid-width;
+  }
+}
+
+@media all and (min-width: 580px) {
+  .field-name-field-uib-social-media {
+    .twitter,
+    .vimeo,
+    .youtube,
+    .facebook,
+    .flickr {
+      padding-left: 30px;
+      width: auto;
+    }
   }
 }
 
@@ -382,49 +407,6 @@ $zen-auto-include-item-base: false;
     }
     h3 {
       margin: 20px 0 0 20px;
-    }
-  }
-
-  .field-name-field-uib-social-media {
-    @include zen-clear();
-    .field-label {
-      float: none;
-      margin-bottom: 10px;
-    }
-    .twitter {
-      background-image: url('../../images/twitter.png');
-      margin-bottom: 10px;
-      .field-item {
-        float: none;
-      }
-    }
-    .facebook {
-      background-image: url('../../images/facebook.png');
-      .field-item {
-        margin-bottom: 10px;
-        float: none;
-      }
-    }
-    .vimeo {
-      background-image: url('../../images/vimeo.png');
-      .field-item {
-        margin-bottom: 10px;
-        float: none;
-      }
-    }
-    .youtube {
-      background-image: url('../../images/youtube.png');
-      .field-item {
-        margin-bottom: 10px;
-        float: none;
-      }
-    }
-    .flickr {
-      background-image: url('../../images/flickr.png');
-      .field-item {
-        margin-bottom: 10px;
-        float: none;
-      }
     }
   }
 
@@ -829,28 +811,6 @@ $zen-auto-include-item-base: false;
     .slidecontent {
       h3 {
         width: 75% !important;
-      }
-    }
-
-    .field-name-field-uib-social-media {
-      @include zen-clear();
-      .field-item {
-        float: left;
-      }
-      .twitter {
-        background-image: url('../../images/twitter.png');
-      }
-      .facebook {
-        background-image: url('../../images/facebook.png');
-      }
-      .vimeo {
-        background-image: url('../../images/vimeo.png');
-      }
-      .youtube {
-        background-image: url('../../images/youtube.png');
-      }
-      .flickr {
-        background-image: url('../../images/flickr.png');
       }
     }
 
@@ -1470,28 +1430,6 @@ $zen-auto-include-item-base: false;
     }
     h3 {
       margin: 20px 0 0 20px;
-    }
-  }
-
-  .field-name-field-uib-social-media {
-    @include zen-clear();
-    .field-item {
-      float: left;
-    }
-    .twitter {
-      background-image: url('../../images/twitter.png');
-    }
-    .facebook {
-      background-image: url('../../images/facebook.png');
-    }
-    .vimeo {
-      background-image: url('../../images/vimeo.png');
-    }
-    .youtube {
-      background-image: url('../../images/youtube.png');
-    }
-    .flickr {
-      background-image: url('../../images/flickr.png');
     }
   }
 
