@@ -1920,7 +1920,9 @@ return !empty($handler->argument);';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entity';
   /* Relationship: Field collection item: Entity with the Relevant links (field_uib_link_section) */
   $handler->display->display_options['relationships']['field_uib_link_section_node']['id'] = 'field_uib_link_section_node';
