@@ -606,6 +606,7 @@ function uib_zen_preprocess_block(&$variables, $hook) {
     'block-uib-area-jobbnorge',
     'block-views-79622ce408d27be255f959dc886a6751',
     'block-views-59c9268577c7dee7af4089857ed7ab4e',
+    'block-uib-area-feed',
   );
   $orange_block = array(
     'block-views-calendar-block-1',
