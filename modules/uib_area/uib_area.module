@@ -286,12 +286,12 @@ function uib_area_block_view($delta='') {
       $area = uib_area__get_current();
       if($area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
         if ($area->language == 'en') {
-          $block['content'] = '<div class="banner eng" id="hp"><a title="Holbergprize" href="http://www.uib.no/ledelsen/en/field-of-work/holberg-prize"><img alt="Holbergprize" src="http://www.uib.no/@@/images/HP_eng.png" /></a></div>';
           $block['content'] .= '<div class="banner eng" id="stem"><a title="Centennial Female Vote 2013" href="http://www.uib.no/centennialfemalevote2013"><img alt="Centennial Female Vote 2013" src="http://www.uib.no/@@/images/stemmerettsjubileet.png" /></a></div>';
+          $block['content'] .= '<div class="banner eng" id="hp"><a title="Holbergprize" href="http://www.uib.no/ledelsen/en/field-of-work/holberg-prize"><img alt="Holbergprize" src="http://www.uib.no/@@/images/HP_eng.png" /></a></div>';
         }
         else {
-          $block['content'] = '<div class="banner" id="hp"><a title="Holbergprisen" href="http://www.uib.no/samfunn/uib-i-samfunnet/holbergprisen"><img alt="Holbergprisen" src="http://www.uib.no/@@/images/HP_norsk.png" /></a></div>';
           $block['content'] .= '<div class="banner" id="stem"><a title="Stemmerettsjubileet 2013" href="http://www.uib.no/stemmerettsjubileet2013"><img alt="Stemmerettsjubileet 2013" src="http://www.uib.no/@@/images/stemmerettsjubileet.png" /></a></div>';
+          $block['content'] .= '<div class="banner" id="hp"><a title="Holbergprisen" href="http://www.uib.no/samfunn/uib-i-samfunnet/holbergprisen"><img alt="Holbergprisen" src="http://www.uib.no/@@/images/HP_norsk.png" /></a></div>';
         }
       }
   }

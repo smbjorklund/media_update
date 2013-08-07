@@ -143,6 +143,14 @@
   font-size: .9em;
 }
 
+.banner {
+  float: right;
+}
+
+#block-uib-area-colophon-logos .banner:first-child {
+  margin: 0 0 0 20px;
+}
+
 #block-uib-area-colophon {
   background-image: url('../images/logo-grey.png');
   background-repeat: no-repeat;
