@@ -593,6 +593,10 @@ function uib_zen_preprocess_region(&$variables) {
 *   The name of the template being rendered
 */
 function uib_zen_preprocess_block(&$variables, $hook) {
+  if ($variables['block_html_id'] == 'block-uib-area-colophon') {
+    $variables['content'] = '<div class="block-wrapper">' . $variables['content'] . '</div>';
+  }
+
   //arrays containg block_html_id of blocks where the title is getting colored squares
   $blue_block = array(
     'block-views-recent-news-block',
