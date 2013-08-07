@@ -286,6 +286,10 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         //This field is printed as view
         unset($variables['content']['group_two_column']['field_uib_profiled_message']);
         unset($variables['content']['group_two_column']['field_uib_link_section']);
+        // Adding js to fix mobile menu on front page
+        drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/mobile_menu_fix.js',
+          array('group' => JS_THEME, )
+        );
       }
       if (isset($variables['content']['field_uib_profiled_article'])) {
         $weight = $variables['content']['field_uib_profiled_article']['#weight'];
