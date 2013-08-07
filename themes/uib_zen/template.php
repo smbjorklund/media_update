@@ -604,14 +604,16 @@ function uib_zen_preprocess_block(&$variables, $hook) {
     'block-uib-area-area-parents',
     'block-views-faculties-block-1',
     'block-uib-area-jobbnorge',
-    'view-frontpage-profiled-articles view-display-id-block_3',
+    'block-views-79622ce408d27be255f959dc886a6751',
+    'block-views-59c9268577c7dee7af4089857ed7ab4e',
   );
   $orange_block = array(
     'block-views-calendar-block-1',
-    'view-frontpage-profiled-articles.view-display-id-block_2',
+    'block-views-e35933dcbeaec830701d3e48e98f0046',
+    'block-views-87d291272c77934f60566c1a5bccebdf',
   );
   if (in_array ($variables['block_html_id'], $blue_block)) {
-    if($variables['block']->subject) {
+    if ($variables['block']->subject) {
       $variables['classes_array'][] = 'blue-block';
       $variables['block']->subject = '<span></span>' . $variables['block']->subject;
     }
