@@ -286,13 +286,16 @@ table.cols-6 {
 }
 
 .full {
-  background-color: $light-grey;
   width: 100%;
 }
 
 .full ul,
 .half ul {
   margin: 0;
+}
+
+.full .media {
+  background-color: $light-grey;
 }
 
 .half .media {
