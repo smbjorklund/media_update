@@ -111,29 +111,31 @@
 #block-user-online { /* "Who's online" block for a list of the online users */
 }
 
-.blue-block, .orange-block {
-  h2, .field-label{
-    span {
-      display: block;
-      float: left;
-      height: 0.7em;
-      margin: 0.2em 0.2em 0;
-      width: 0.35em;
+.region-sidebar-second, .article-sidebar {
+  .blue-block, .orange-block {
+    h2, .field-label, .field-item {
+      span {
+        display: block;
+        float: left;
+        height: 0.7em;
+        margin: 0.2em 0.2em 0;
+        width: 0.35em;
+      }
     }
   }
-}
 
-.blue-block {
-  h2, .field-label{
-    span {
-      background-color: #005473;
+  .blue-block {
+    h2, .field-label, .field-item {
+      span {
+        background-color: #005473;
+      }
     }
   }
-}
-.orange-block {
-  h2, .field-label{
-    span {
-      background-color: #bb5200;
+  .orange-block {
+    h2, .field-label, .field-item {
+      span {
+        background-color: #bb5200;
+      }
     }
   }
 }

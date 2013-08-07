@@ -634,14 +634,30 @@ function uib_zen_preprocess_block(&$variables, $hook) {
 *   The name of the template being rendered
 */
 function uib_zen_preprocess_field(&$variables, $hook) {
-  //arrays containg field_name_css of blocks where the title is getting colored squares
+  static $blue_block_done = FALSE;
+  //arrays containing field_name_css of blocks where the title is getting colored squares
   $blue_block = array(
     'field-uib-area',
     'field-uib-files',
+    'field-uib-title',
   );
   if (in_array($variables['field_name_css'], $blue_block)) {
-    $variables['classes_array'][] = 'blue-block';
-    $variables['label'] = '<span></span>' . $variables['label'];
+    // Deal separately with certain field collections
+    if (empty($variables['label']) && $variables['field_name_css'] == 'field-uib-title' && $variables['element']['#object']->field_name == 'field_uib_link_section') {
+      $variables['items'][0]['#markup'] = '<span></span>' . $variables['items'][0]['#markup'];
+      if ($blue_block_done) {
+        // Fix to make second "block" in field collection orange
+        $variables['classes_array'][] = 'orange-block';
+      }
+      else {
+        $variables['classes_array'][] = 'blue-block';
+        $blue_block_done = TRUE;
+      }
+    }
+    else {
+      $variables['classes_array'][] = 'blue-block';
+      $variables['label'] = '<span></span>' . $variables['label'];
+    }
   }
 }
 
