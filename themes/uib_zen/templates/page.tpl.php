@@ -254,5 +254,7 @@
 </div><!-- /#page -->
 
 <div id="bottom-region-wrapper" class="clearfix">
-  <?php print render($page['bottom']); ?>
+  <div class="inner clearfix">
+    <?php print render($page['bottom']); ?>
+  </div>
 </div>

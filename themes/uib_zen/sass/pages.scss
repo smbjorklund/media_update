@@ -349,23 +349,25 @@ span.field-label { /* The inline field label used by the Fences module */
 /*
  * Page bottom
  */
-.region-bottom { /* Wrapper for any blocks placed in the page bottom region */
-  font-size: .8em;
-  width: 910px;
+ #bottom-region-wrapper {
+  max-width: 100%;
+  -webkit-box-shadow: inset 0 2px 8px 0 #B3B3B3;
+  box-shadow: inset 0 2px 8px 0 #B3B3B3;
+  background-color: #f2f2f2;
+ }
+
+#bottom-region-wrapper .inner {
   padding: 30px 0 30px 0;
+}
+
+.region-bottom {
+  font-size: .8em;
   .block-title  {
     display: none;
   }
   h3 {
     font-size: 1em;
   }
-}
-
-#bottom-region-wrapper {
- max-width: 100%;
- -webkit-box-shadow: inset 0 2px 8px 0 #B3B3B3;
- box-shadow: inset 0 2px 8px 0 #B3B3B3;
- background-color: #f2f2f2;
 }
 
 div.add-or-remove-shortcuts {
