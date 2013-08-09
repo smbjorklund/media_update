@@ -460,6 +460,10 @@ div.link-field-column {
 }
 
 .field-name-field-uib-social-media {
+  .field-item {
+    margin-left: 1em;
+    overflow: hidden;
+  }
   .twitter,
   .vimeo,
   .youtube,
@@ -468,7 +472,6 @@ div.link-field-column {
     display: block;
     float: left;
     height: 25px;
-    margin-left: 1em;
-    overflow: hidden;
+    padding-left: 30px;
   }
 }

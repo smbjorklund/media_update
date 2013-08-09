@@ -125,13 +125,8 @@ $zen-auto-include-item-base: false;
 }
 
 .field-name-field-uib-social-media {
-  .twitter,
-  .vimeo,
-  .youtube,
-  .facebook,
-  .flickr {
-    padding-left: 25px;
-    width: 0;
+  .field-item {
+    width: 25px;
   }
 }
 
@@ -148,12 +143,7 @@ $zen-auto-include-item-base: false;
 
 @media all and (min-width: 580px) {
   .field-name-field-uib-social-media {
-    .twitter,
-    .vimeo,
-    .youtube,
-    .facebook,
-    .flickr {
-      padding-left: 30px;
+    .field-item {
       width: auto;
     }
   }
