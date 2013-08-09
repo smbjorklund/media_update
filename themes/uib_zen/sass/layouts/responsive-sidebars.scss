@@ -157,20 +157,9 @@ $zen-auto-include-item-base: false;
       width: auto;
     }
   }
-}
-
-/* Mobile */
-@media all and (min-width: 240px) and (max-width: 719px) {
-  $zen-column-count: 1;
-
-  #bottom-region-wrapper {
-    @include zen-grid-container;
-  }
-
   #bottom-region-wrapper .inner {
     $zen-column-count: 2;
   }
-
   .region-bottom {
     .block {
       @include zen-grid-item-base();
@@ -184,6 +173,28 @@ $zen-auto-include-item-base: false;
     #block-uib-area-colophon-logos {
       @include zen-clear();
       @include zen-grid-item(2, 1);
+    }
+  }
+}
+
+/* Mobile */
+@media all and (min-width: 240px) and (max-width: 719px) {
+  $zen-column-count: 1;
+
+  .region-bottom {
+    .block {
+      @include zen-grid-item-base();
+    }
+    #block-uib-area-colophon {
+      @include zen-grid-item(1, 1);
+    }
+    #block-views-relevant-links-block-1 {
+      @include zen-grid-item(1, 1);
+      @include zen-clear();
+    }
+    #block-uib-area-colophon-logos {
+      @include zen-clear();
+      @include zen-grid-item(1, 1);
     }
   }
 
@@ -1180,6 +1191,23 @@ $zen-auto-include-item-base: false;
    * Use 5 grid columns for larger screens.
    */
   $zen-column-count: 5;
+
+  .region-bottom {
+    .block {
+      @include zen-grid-item-base();
+    }
+    #block-uib-area-colophon {
+      @include zen-grid-item(2, 1);
+    }
+    #block-views-relevant-links-block-1 {
+      @include zen-grid-item(1, 3);
+    }
+    #block-uib-area-colophon-logos {
+      @include zen-grid-item(2, 4);
+      @include zen-clear(none);
+    }
+  }
+
 
   /*
    * The layout when there is only one sidebar, the left one.
