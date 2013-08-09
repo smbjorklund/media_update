@@ -238,7 +238,7 @@
       </aside><!-- /.sidebars -->
     <?php endif; ?>
     <?php if (isset($global_menu)): ?>
-      <nav class="global-menu-mobile" id="footer-global-menu">
+      <nav id="footer-global-menu" class="global-menu-mobile clearfix">
         <?php print theme('links__menu-global-menu', array(
           'links' => $global_menu,
           'attributes' => array(
