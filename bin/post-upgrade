@@ -13,8 +13,8 @@ fi
 bin/site-drush mi Area --strict=0 --serial=8314982073342080046,8314982073342080055 --verbose
 
 # Import articles
-bin/site-drush mi News -v --strict=0 --w2prefix=/news --limit=20
-bin/site-drush mi News -v --strict=0 --w2prefix=/aktuelt --limit=20
+bin/site-drush mi News -v --strict=0 --w2prefix=/news
+bin/site-drush mi News -v --strict=0 --w2prefix=/aktuelt
 
 # Set up example frontpage and news areas
 bin/site-drush php-script r2-setup-frontpage-and-newspage
