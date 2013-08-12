@@ -280,6 +280,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $variables['content']['field_uib_newspage_recent_news']['#weight'] = $weight + 2;
           $variables['content']['field_uib_newspage_recent_news'][0]['#markup'] = l(t('News archive'), drupal_get_path_alias(current_path()) . '/news-archive');
         }
+        unset($variables['content']['group_two_column']);
       }
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'frontpage') {
         $variables ['classes_array'][] = t('frontpage_node');
