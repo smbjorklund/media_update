@@ -116,6 +116,7 @@
               </div>
             </form>
           </div>
+          <?php if (uib_area__get_current_menu_link()): ?>
           <div id ="mobile-menu">
             <ul>
               <li></li>
@@ -123,6 +124,7 @@
               <li></li>
             </ul>
           </div>
+          <?php endif; ?>
         </div>
 
       </div>
