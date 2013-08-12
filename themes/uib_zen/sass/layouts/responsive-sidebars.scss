@@ -1693,6 +1693,7 @@ $zen-auto-include-item-base: false;
   .view-display-id-newspage_one_chosen_item {
     @include zen-grid-item (4, 1);
     float: none;
+    clear: both;
     min-height: 260px;
     .views-field-field-uib-main-media {
       @include zen-grid-item (2, 1);
