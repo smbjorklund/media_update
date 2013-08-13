@@ -68,12 +68,8 @@
 .blue-block {
   .more-link {
     font-weight: bold;
-    float: left;
-    margin: 0 0 15px 0;
     width: 100%;
     text-align: left;
-    padding-bottom: 8px;
-    clear: both;
   }
 
   .more-link:before {
@@ -84,18 +80,16 @@
 
 .orange-block {
   .more-link {
-    clear: both;
+    text-align: left !important;
     a {
       font-weight: bold;
-      float: left;
-      color:#d95900;
+      color: #d95900;
       margin: 5px 0 5px 0;
     }
   }
 
   .more-link:before {
     content: '→';
-    float: left;
     margin: 6px 5px 5px 0;
     color:#d95900;
   }

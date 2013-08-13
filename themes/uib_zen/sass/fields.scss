@@ -197,6 +197,21 @@
   }
 }
 
+.region-sidebar-second {
+  .field-name-field-uib-title {
+    border-top: 1px solid #c8d1d5;
+    border-bottom: 1px solid #c8d1d5;
+    padding-bottom: 0;
+  }
+
+  .field-collection-item-field-uib-link-section {
+    border-bottom: 3px double #c8d1d5;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
+
 .group-uib-links {
   padding: 10px;
 }

@@ -113,6 +113,10 @@
 
 .region-sidebar-second, .article-sidebar {
   .blue-block, .orange-block {
+    border-bottom: 3px double #c8d1d5;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+
     h2, .field-label, .field-item {
       span {
         display: block;
@@ -122,6 +126,15 @@
         width: 0.35em;
       }
     }
+
+    ul {
+      margin: 0;
+
+      li.last {
+        margin: 0;
+      }
+    }
+
   }
 
   .blue-block {
@@ -131,6 +144,7 @@
       }
     }
   }
+
   .orange-block {
     h2, .field-label, .field-item {
       span {
