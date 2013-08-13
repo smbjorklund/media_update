@@ -6,6 +6,7 @@ HTML = \
   drupal-deploy.html \
   drupal-sync-course-site.html \
   drupal-update.html \
+  fs-pres.html \
   git.html \
   hints.html \
   index.html \
