@@ -16,7 +16,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #fff;
+  background: #f2f2f2;
 }
 
 /*
@@ -97,6 +97,9 @@ body {
   font-size: 1em;
 }
 
+#page {
+  background-color: #fff;
+}
 /* Header: Styling for Webdesk */
 .page-node-add,
 .page-webdesk {
