@@ -284,16 +284,17 @@ function uib_area_block_view($delta='') {
       break;
     case 'colophon_logos':
       $area = uib_area__get_current();
-      if($area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
+      if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
         if ($area->language == 'en') {
-          $block['content'] .= '<div class="banner eng" id="stem"><a title="Centennial Female Vote 2013" href="http://www.uib.no/centennialfemalevote2013"><img alt="Centennial Female Vote 2013" src="http://www.uib.no/@@/images/stemmerettsjubileet.png" /></a></div>';
+          $block['content'] = '<div class="banner eng" id="stem"><a title="Centennial Female Vote 2013" href="http://www.uib.no/centennialfemalevote2013"><img alt="Centennial Female Vote 2013" src="http://www.uib.no/@@/images/stemmerettsjubileet.png" /></a></div>';
           $block['content'] .= '<div class="banner eng" id="hp"><a title="Holbergprize" href="http://www.uib.no/ledelsen/en/field-of-work/holberg-prize"><img alt="Holbergprize" src="http://www.uib.no/@@/images/HP_eng.png" /></a></div>';
         }
         else {
-          $block['content'] .= '<div class="banner" id="stem"><a title="Stemmerettsjubileet 2013" href="http://www.uib.no/stemmerettsjubileet2013"><img alt="Stemmerettsjubileet 2013" src="http://www.uib.no/@@/images/stemmerettsjubileet.png" /></a></div>';
+          $block['content'] = '<div class="banner" id="stem"><a title="Stemmerettsjubileet 2013" href="http://www.uib.no/stemmerettsjubileet2013"><img alt="Stemmerettsjubileet 2013" src="http://www.uib.no/@@/images/stemmerettsjubileet.png" /></a></div>';
           $block['content'] .= '<div class="banner" id="hp"><a title="Holbergprisen" href="http://www.uib.no/samfunn/uib-i-samfunnet/holbergprisen"><img alt="Holbergprisen" src="http://www.uib.no/@@/images/HP_norsk.png" /></a></div>';
         }
       }
+    break;
   }
   return $block;
 }
@@ -358,10 +359,6 @@ function uib_area__feed_format_pre_render($element) {
       if (--$limit == 0)
         break;
     }
-  }
-
-  if (!isset($element['list'])) {
-    unset($element);
   }
   return $element;
 }
@@ -1015,25 +1012,27 @@ function uib_area_node_access($node, $op, $user) {
  * also hide the 'revisions' and 'translate' tabs
  */
 function uib_area_menu_local_tasks_alter(&$data, $router_item, $root_path) {
-  if ($data['tabs'][0]['output'][0]['#link']['path'] != 'node/%/view') {
-    return;
-  }
-
-  $tabs = array();
-  foreach ($data['tabs'][0]['output'] as $tab) {
-    $path = $tab['#link']['path'];
-    if ($path == 'node/%/edit') {
-      // if we find the edit tab, do nothing
+  if (!path_is_admin(current_path())) {
+    if (empty($data['tabs']) || $data['tabs'][0]['output'][0]['#link']['path'] != 'node/%/view') {
       return;
     }
-    if ($path == 'node/%/revisions' || $path == 'node/%/translate') {
-      // tabs to ignore
-      continue;
-    }
-    $tabs[] = $tab;
-  }
 
-  // replace the tabs
-  $data['tabs'][0]['count'] = count($tabs);
-  $data['tabs'][0]['output'] = $tabs;
+    $tabs = array();
+    foreach ($data['tabs'][0]['output'] as $tab) {
+      $path = $tab['#link']['path'];
+      if ($path == 'node/%/edit') {
+        // if we find the edit tab, do nothing
+        return;
+      }
+      if ($path == 'node/%/revisions' || $path == 'node/%/translate') {
+        // tabs to ignore
+        continue;
+      }
+      $tabs[] = $tab;
+    }
+
+    // replace the tabs
+    $data['tabs'][0]['count'] = count($tabs);
+    $data['tabs'][0]['output'] = $tabs;
+  }
 }
