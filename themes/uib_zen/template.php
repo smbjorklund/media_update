@@ -173,7 +173,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
       $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
     }
   }
-  if ($current_area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
+  if (!empty($current_area) && $current_area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
     $variables['page_title_link'] = l(check_plain($current_area->title), '', array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
   }
 
