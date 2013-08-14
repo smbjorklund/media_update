@@ -9,7 +9,8 @@ my $vers = shift;
 $module || usage();
 
 my @make = qx(cat drupal.make);
-die unless @make;
+die "Can't find the 'drupal.make' file" unless @make;
+die "Not clean; see 'git status'" if qx(git status --porcelain);
 
 my $core;
 my $old_vers;
@@ -80,7 +81,8 @@ my $msg = ($old_vers ?
 	: "Upgrade to $module-$core-$vers (was $old_vers)")
     : "Imported $module-$core-$vers"
 );
-run("(cd drupal && git commit -m '$msg' sites/all/modules/$module)");
+run("(cd drupal && git add --all sites/all/modules/$module)");
+run("(cd drupal && git commit -m '$msg')");
 run("git add drupal.make drupal");
 run("git commit -m '$msg'");
 
