@@ -1,3 +1,10 @@
+; This file declares what modules are required for the w3 application.
+; The 'drupal' directory can be rebuilt from scratch based on this file by
+; invoking the 'make-drupal' command (which invokes 'drush make').
+;
+; Normally you should not edit this file directly.  The 'module-update'
+; command is used to upgrade individual modules.
+;
 core = 7.x
 api = 2
 
