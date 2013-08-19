@@ -1,3 +1,15 @@
+#Release 2013-08-19 tag: R2.1
+
+Release mandag 19. august gjør justeringer etter R.2, primært i frontend, både på desktop og mobil.
+
+* Stylingjusteringer på forsiden og /aktuelt #3240, #3419, #3359, #3432
+* Fjerne menyikon på sider uten meny i mobilvisning #3328
+* Feil som gjorde at thumbnail-visning av video ikke vistes rettet opp #3416
+* Casesensitivetet i e-postadresse fjernet #2586
+* Diverse justeringer/rettinger på systemet #3437, #3453
+
+
+
 # Release 2013-08-13 tag: R2
 
 Release tirsdag 13. august. Migrasjon av forside uib.no og /aktuelt til w3.  Strengere tilganger til å redigere områder.
