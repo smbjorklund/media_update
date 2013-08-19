@@ -982,7 +982,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_date']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_date']['settings'] = array(
-    'format_type' => 'short',
+    'format_type' => 'long',
     'fromto' => 'value',
     'multiple_number' => '',
     'multiple_from' => '',
