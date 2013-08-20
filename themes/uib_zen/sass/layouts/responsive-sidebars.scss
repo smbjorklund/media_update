@@ -621,9 +621,8 @@ $zen-auto-include-item-base: false;
   /* Persons mobile */
   .view-ansatte {
     margin-left: 0;
-    background-color: #F1F1EF;
-    .media {
-      width: 96%;
+    .uib-ansatte-section .media {
+      float: none;
     }
   }
 

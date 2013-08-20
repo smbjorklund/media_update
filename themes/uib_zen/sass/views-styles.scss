@@ -216,11 +216,34 @@ table.cols-6 {
   }
 }
 
+.view-calendar .field-content .date-display-single {
+    font-weight: bold;
+    color: #D95900;
+}
+
+.view-faculty-departments-kids .views-field-title {
+  margin: 0 0 7px 0;
+}
+
+.view-content h3  {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.view-calendar .view-content a  {
+  color: #333;
+}
+
+.view-calendar .views-summary a  {
+  color: $blue;
+  text-transform: capitalize;
+  font-size: 1.1em;
+}
+
 /* Persons */
-.view-ansatte,
-.uib-ansatte-section {
-  background-color: #F1F1EF;
-  box-shadow: $box-shadow;
+.view-ansatte {
   clear: both;
   ul.pager {
     padding-top: 30px;
@@ -230,42 +253,43 @@ table.cols-6 {
     padding-top: 20px;
     height: 120px;
   }
-  .uib-ansatte-section {
+  .title {
+    font-size: 2em;
+  }
+}
+
+.uib-ansatte-section {
+  background-color: #F1F1EF;
+  box-shadow: $box-shadow;
+  margin-bottom: 10px;
+  h3 {
     display: block;
+    height: 40px;
+    padding-left: 20px;
+    font-size: 2em;
+    padding-top: 20px;
+  }
+  h2 {
+    border: none;
+    font-family: $verdana;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: none;
+    margin: 0 0 5px;
+  }
+  .media {
+    margin-left: 20px;
     float: left;
-    width: 100%;
-    h3 {
+    height: 150px;
+    .user-picture {
       float: left;
-      display: block;
-      height: 40px;
-      width: 98%;
-      padding-left: 20px;
-      font-size: 2em;
-      border-top: 10px solid #fff;
-      padding-top: 20px;
+      margin-top: 2px;
+      margin-right: 20px;
+      max-width: 80px;
     }
-    h2 {
-      border: none;
-      font-family: $verdana;
-      font-weight: bold;
-      font-size: 1.1em;
-      text-transform: none;
-      margin: 0 0 5px;
-    }
-    .media {
-      margin-left: 20px;
+    .info {
       float: left;
-      height: 150px;
-      .user-picture {
-        float: left;
-        margin-top: 2px;
-        margin-right: 20px;
-        max-width: 80px;
-      }
-      .info {
-        float: left;
-        max-width: 220px;
-      }
+      max-width: 220px;
     }
   }
 }
