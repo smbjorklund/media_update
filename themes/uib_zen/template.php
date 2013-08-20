@@ -306,7 +306,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
        if ($variables['field_uib_show_staff']['und'][0]['value'] == 1) {
         $variables['content']['field_uib_front_staff']['#markup'] = views_embed_view('ansatte', 'page_1', $variables['nid']);
-                $variables['content']['field_uib_front_staff']['#weight'] = 12;
+        $variables['content']['field_uib_front_staff']['#weight'] = 12;
        }
       // Hide "relevant links section" if empty [RTS-1073]
       if (isset($variables['content']['group_two_column']['field_uib_link_section']['#items'])) {
@@ -708,6 +708,21 @@ function uib_zen_views_post_render(&$view, &$output, &$cache) {
     foreach ($view->result as $key => $result) {
       $event_type = i18n_string_translate('field:field_uib_event_type:#allowed_values:' . $view->result[$key]->field_data_field_uib_event_type_field_uib_event_type_value);
       $output = str_replace($view->result[$key]->link, ucfirst($event_type), $output);
+    }
+  }
+}
+
+function uib_zen_preprocess_views_view(&$variables) {
+  if ($variables['name'] == 'ansatte') {
+    if (empty($variables['title'])) {
+      $variables['title_prefix']['#markup'] = '<h1 class="title">';
+      $variables['title_suffix']['#markup'] = '</h1>';
+      if ($variables['display_id'] == 'page_2') {
+        $variables['title'] = menu_get_active_title();
+      }
+      else {
+        $variables['title'] = t('Staff');
+      }
     }
   }
 }
