@@ -972,19 +972,19 @@ $zen-auto-include-item-base: false;
     }
 
     /* Article publishing info */
-    .uib-news-byline-created  {
+    .uib-news-byline-created,
+    .uib-article-created {
       @include zen-grid-item (1, 1);
     }
-    .uib-news-byline-last-updated {
+    .uib-news-byline-last-updated,
+    .uib-article-last-updated  {
       @include zen-grid-item (1, 2);
     }
     .service-links {
       @include zen-grid-item (1, 4);
-      margin-left: 85%;
     }
     .article-info {
       border-bottom: solid 1px #DEDFDD;
-      height: 60px;
     }
 
     .region-sidebar-second { /* Span 1 column, starting in 3rd column from left. */
@@ -1731,19 +1731,19 @@ $zen-auto-include-item-base: false;
   }
 
   /* Article publishing info */
-  .uib-news-byline-created  {
+  .uib-news-byline-created,
+  .uib-article-created {
     @include zen-grid-item (1, 1);
   }
-  .uib-news-byline-last-updated {
+  .uib-news-byline-last-updated,
+  .uib-article-last-updated {
     @include zen-grid-item (1, 2);
   }
   .service-links {
     @include zen-grid-item (1, 4);
-    margin-left: 85%;
   }
   .article-info {
     border-bottom: solid 1px #DEDFDD;
-    height: 60px;
   }
 
   /* Employee page menu */

@@ -464,8 +464,11 @@ div.link-field-column {
 
 .service-links {
   .item-list {
+    ul {
+      margin: 0;
+    }
     li {
-      float: left;
+      float: right;
       margin: 0 1em 1em 0 ;
     }
   }
