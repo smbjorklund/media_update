@@ -466,7 +466,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     }
   }
 
-  if ($variables[view_mode] == 'teaser' && $variables['type'] == 'uib_testimonial') {
+  if ($variables['view_mode'] == 'teaser' && $variables['type'] == 'uib_testimonial') {
     $variables['title'] = '';
   }
 
@@ -481,6 +481,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     $variables['theme_hook_suggestions'][] = 'node__children';
   }
 
+  $variables['is_employee'] = FALSE;
   if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
     $variables['is_employee'] = TRUE;
   }

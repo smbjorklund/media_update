@@ -8,18 +8,25 @@ include_once 'uib_article.features.inc';
 
 
 /**
- * Implements hook_menu
+ * Implements hook_menu().
  */
 function uib_article_menu() {
-  return array(
-    'node/%/share' => array(
+  $items['node/%node/menu'] = array(
+    'title' => 'Menu',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('uib_article_menu_form', 1),
+    'access callback' => 'uib_article__access_check',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['node/%/share'] = array(
       'title' => 'Share',
       'page callback' => 'drupal_get_form',
       'page arguments' => array('uib_article__share'),
       'access callback' => 'uib_article__share_access',
       'type' => MENU_LOCAL_TASK,
-    ),
-  );
+    );
+  return $items;
 }
 
 function uib_article__share($form, &$form_state) {
@@ -418,21 +425,6 @@ function uib_article_theme_field_multiple_value_form($variables) {
     }
   }
   return $output;
-}
-
-/**
- * Implements hook_menu().
- */
-function uib_article_menu() {
-  $items['node/%node/menu'] = array(
-    'title' => 'Menu',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('uib_article_menu_form', 1),
-    'access callback' => 'uib_article__access_check',
-    'access arguments' => array(1),
-    'type' => MENU_LOCAL_TASK,
-  );
-  return $items;
 }
 
 function uib_article__access_check($node) {

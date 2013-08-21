@@ -7,23 +7,6 @@
 include_once 'uib_area.features.inc';
 
 /**
- * Implements hook_menu_block_blocks().
- */
-function uib_area_menu_block_blocks() {
-  return array(
-    'page-area-menu' => array(
-      'menu_name'   => uib_area__get_current_menu(),
-      'title_link'  => FALSE,
-      'admin_title' => 'Page level area menu',
-      'follow'      => 1,
-      'level'       => 4,
-      'depth'       => 1,
-      'expanded'    => 1,
-    ),
-  );
-}
-
-/**
  * Implements hook_block_info().
  *
  * area_parents contains a list of parents to the current area.
@@ -575,16 +558,20 @@ function uib_area__get_current_nid() {
  * Find the menu to use for the current uib_area.
  *
  * @return [type] [description]
- *   If no area node id is found, the function returns NULL.
+ *   Returns NULL if there is no current area node
+ *   or there should be no menu for the area.
  */
 function uib_area__get_current_menu() {
-  $nid = uib_area__get_current_nid();
-  if (!empty($nid)) {
-    return "menu-area-$nid";
+  $menu_name = NULL;
+  $curr_node = uib_area__get_current();
+  if ($curr_node) {
+    if (uib_area_menu_is_allowed($curr_node)) {
+      if (!empty($curr_node->nid)) {
+        $menu_name = 'menu-area-' . $curr_node->nid;
+      }
+    }
   }
-  else {
-    return NULL;
-  }
+  return $menu_name;
 }
 
 
@@ -1014,6 +1001,7 @@ function uib_area_menu_local_tasks_alter(&$data, $router_item, $root_path) {
     $data['tabs'][0]['count'] = count($tabs);
     $data['tabs'][0]['output'] = $tabs;
   }
+}
 
 /**
  * Assemble the current area menu for display on a page
@@ -1022,10 +1010,13 @@ function uib_area_menu_local_tasks_alter(&$data, $router_item, $root_path) {
  * @param  [type] $blocks
  */
 function uib_area_block_list_alter(&$blocks) {
-  $area_menu = block_load('menu', uib_area__get_current_menu());
-  $area_menu->region = 'navigation';
-  $area_menu->visibility = 1;
-  $blocks[] = $area_menu;
+  $current_area_menu_name = uib_area__get_current_menu();
+  if ($current_area_menu_name) {
+    $area_menu = block_load('menu', $current_area_menu_name);
+    $area_menu->region = 'navigation';
+    $area_menu->visibility = 1;
+    $blocks[] = $area_menu;
+  }
 }
 
 /**
