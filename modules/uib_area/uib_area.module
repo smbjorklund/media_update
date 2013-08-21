@@ -120,8 +120,7 @@ function uib_area_block_view($delta='') {
         if ($area->language == 'en') {
           $feed .= '&langid=2';
         }
-        $block['content'] = uib_area__feed_format($feed, '', $limit = 999);
-        $block['subject'] = t('Open Positions');
+        $block['content'] = uib_area__feed_format($feed, t('Open Positions'), $limit = 999);
       }
     break;
     case 'feed':
@@ -135,11 +134,10 @@ function uib_area_block_view($delta='') {
               $limit = explode('#', $url);
             }
             $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
-            $elements[$delta] = uib_area__feed_format($url, '', $limit);
+            $elements[$delta] = uib_area__feed_format($url, $item['title'], $limit);
           }
         }
-      $block['content'] = $elements;
-      $block['subject'] = $item['title'];
+        $block['content'] = $elements;
       }
     break;
     case 'area_parents':
@@ -236,6 +234,7 @@ function uib_area__feed_format($url, $title, $limit) {
       'expire' => time() + 30*60,
     ),
     '#pre_render' => array('uib_area__feed_format_pre_render'),
+    '#post_render' => array('uib_area__feed_format_post_render'),
   );
 }
 
@@ -270,7 +269,20 @@ function uib_area__feed_format_pre_render($element) {
         break;
     }
   }
+  if (!isset($element['list'])) {
+    $element = array();
+  }
   return $element;
+}
+
+
+/**
+ * Adds markup for blue square on feed block titles
+ */
+function uib_area__feed_format_post_render($markup) {
+  $markup = preg_replace('/<h2>/', '<h2><span></span>', $markup, 1);
+  $markup = '<div class="blue-block">' . $markup . '</div>';
+  return $markup;
 }
 
 /**
