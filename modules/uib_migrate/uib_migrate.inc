@@ -87,6 +87,7 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
 
   // Fetch file meta info from w2
   $xtopic = new XTopic($id, FALSE, 'file');
+
   if ($xtopic->type == 'image') {
     $uri = $xtopic->original;
   }
@@ -146,36 +147,21 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
   if (isset($xtopic->photographer)) {
     $file->field_uib_owner['und'][]['value'] = $xtopic->photographer;
   }
+
   if (isset($xtopic->{1351138798041054899})) {
     $file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
   }
+
+  // Get file description text.
   if (isset($xtopic->dc_description)) {
-    $file->field_uib_description[$parent_lang][]['value'] = $xtopic->dc_description;
-    if (!empty($file->field_uib_description[$parent_lang][0]['value'])) {
-      if ($xtopic->type == 'image') {
-        // Populate image files title and ALT attribute with something useful.
-        $file->field_file_image_title_text[$parent_lang][]['value'] = truncate_utf8($file->field_uib_description[$parent_lang][0]['value'], 200, TRUE, TRUE, 1);
-        $file->field_file_image_alt_text['und'][]['value'] = truncate_utf8($file->field_uib_description[$parent_lang][0]['value'], 80, TRUE, TRUE, 1);
-      }
-    }
+    $file = xtopicDescription($file, $xtopic, $parent_lang);
   }
+
+  $title = xtopicTrimTitle($xtopic->title, $basename, $xtopic);
+  $file = xtopicMakeDescription($file, $title, $xtopic, $parent_lang);
+
   $file->field_uib_w2_id['und'][]['value'] = $id;
-  $tmp_title = trim($xtopic->title);
-  if (drupal_strlen($tmp_title) > 100) { // If the title is very long, treat it as description if possible
-    if (empty($file->field_uib_description[$parent_lang])) { // but only if description is empty
-      $file->field_uib_description[$parent_lang][]['value'] = $tmp_title;
-      uibx_log('Long title of file copied to empty description: ' . $xtopic->title, 'warning');
-    }
-  }
-  if (drupal_strlen($tmp_title) > 255) {
-    $tmp_title = truncate_utf8($xtopic->title, 250, TRUE, TRUE, 1); // if title is > 255 it causes an error in postgresql
-    uibx_log('Title of file right-truncated to 250 chars: ' . $xtopic->title, 'warning');
-  }
-  // set xtopic title as file 'filename'
-  if (empty($tmp_title) OR $tmp_title == '.') {
-    $tmp_title = $basename; // fix for stupid or empty titles
-  }
-  $file->filename = $tmp_title;
+  $file->filename = $title;
   $file->uid = $uid;
   $file->status = FILE_STATUS_PERMANENT;
   $file->type = $xtopic->type; // Set bundle
@@ -201,6 +187,7 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
     $file->timestamp = strtotime($xtopic->created);
     drupal_write_record('file_managed', $file, 'fid');
   }
+
   return $file;
 }
 
@@ -222,6 +209,66 @@ function xtopic_vimeo($uri, $parent_lang = 'nb') {
     }
   }
   return $file;
+}
+
+/**
+ * Get the file description text. Images in w2 does not contain alt and title
+ * attributes so we syntizise these out of the description text.
+ *
+ * @return object drupal file entity object.
+ */
+function xtopicDescription($file, $xtopic, $parent_lang) {
+  $description = $xtopic->dc_description;
+  $file->field_uib_description[$parent_lang][]['value'] = $description;
+
+  if (!empty($file->field_uib_description[$parent_lang][0]['value'])) {
+    if ($xtopic->type == 'image') {
+      $title = truncate_utf8($description, 200, TRUE, TRUE, 1);
+      $alt = truncate_utf8($description, 80, TRUE, TRUE, 1);
+
+      $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
+      $file->field_file_image_alt_text['und'][]['value'] = $alt;
+    }
+  }
+
+  return $file;
+}
+
+/**
+ * If description is empty and file title is very long use title as
+ * file description.
+ *
+ * @return object file be saved.
+ */
+function xtopicMakeDescription($file, $title, $xtopic, $parent_lang) {
+  if (drupal_strlen($title) > 100) {
+    if (empty($file->field_uib_description[$parent_lang])) {
+      $file->field_uib_description[$parent_lang][]['value'] = $title;
+      uibx_log('Long title of file copied to empty description: ' . $xtopic->title, 'warning');
+    }
+  }
+
+  return $file;
+}
+
+/**
+ * Titles more then 255 char cause fatal errors in postgresql.
+ *
+ * @return string on less then 250 char.
+ */
+function xtopicTrimTitle($title, $basename) {
+  $title = trim($title);
+
+  // set xtopic title as file 'filename'
+  if (empty($title) OR $title == '.') {
+    $title = $basename; // fix for stupid or empty titles
+  }
+  elseif (drupal_strlen($title) > 255) {
+    $title = truncate_utf8($xtopic->title, 250, TRUE, TRUE, 1);
+    uibx_log('Title of file right-truncated to 250 chars: ' . $xtopic->title, 'warning');
+  }
+
+  return $title;
 }
 
 /**
