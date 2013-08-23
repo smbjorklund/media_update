@@ -359,7 +359,6 @@ abstract class XTopicToArticleMigration extends Migration {
       }
     }
   }
-
 }
 
 /**
@@ -387,7 +386,6 @@ class InfoPageMigration extends XTopicToArticleMigration {
   public function complete($node, $row) {
     parent::complete($node, $row);
   }
-
 }
 
 /**
@@ -585,7 +583,6 @@ class TestimonialMigration extends Migration {
       }
     }
   }
-
 }
 
 /**
