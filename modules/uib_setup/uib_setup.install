@@ -81,3 +81,11 @@ function uib_setup_update_7004() {
   module_disable(array('menuux', 'bigmenu'), TRUE);
   drupal_uninstall_modules(array('menuux', 'bigmenu', 'coder_review', 'coder', 'context_ui', 'migrate_ui', 'field_ui'), FALSE);
 }
+
+/**
+ * Disable Menu Admin per Menu after #2587 got committed.
+ */
+function uib_setup_update_7005() {
+  module_disable(array('menu_admin_per_menu'), FALSE);
+  drupal_uninstall_modules(array('menu_admin_per_menu'), FALSE);
+}
