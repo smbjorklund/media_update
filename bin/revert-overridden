@@ -1,0 +1,8 @@
+#!/bin/bash
+
+IFS=","
+FEATURES=$(drush fl | grep 'Overridden' | awk '{print $1;}' | tr "\r\n" ",");
+
+for feature in $FEATURES; do
+  bin/site-drush -y fr $feature;
+done
