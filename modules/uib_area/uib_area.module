@@ -1125,6 +1125,7 @@ function uib_area_menu_is_allowed($node) {
       'research school',
       'section',
       'unit',
+      'frontpage',
     );
     if (!empty($node->field_uib_area_type['und'][0]['value']) && in_array($node->field_uib_area_type['und'][0]['value'], $allowed)) {
       return TRUE;
