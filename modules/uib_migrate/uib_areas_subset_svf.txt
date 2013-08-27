@@ -1,0 +1,15 @@
+# Areas
+svf
+svf/en
+infomedia/en
+infomedia
+geografi
+geografi/en
+sampol
+sampol/en
+econ
+econ/en
+sosio
+sosio/en
+admorg
+admorg/en
