@@ -116,7 +116,7 @@
               </div>
             </form>
           </div>
-          <?php if (uib_area__get_current_menu_link()): ?>
+          <?php if (uib_area__get_current_menu()): ?>
           <div id ="mobile-menu">
             <ul>
               <li></li>
