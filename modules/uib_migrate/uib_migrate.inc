@@ -47,13 +47,16 @@ function xtopic_fixuri($text) {
  * @param $parent_lang
  *   File entity language and its translatable fields will get this set.
  *   Defaults to nb (Norwegian bokmål).
+ * @param $scope
+ *   Images can have article based overridden the master dc_description. Passing
+ *   in w2 ID allow us to check for scoped this.
  *
  * @return
  *   A Drupal file object. Return existing file object if file exist.
  *   Non existing file object is created and stored (file_save) before
  *   returning the file object.
  */
-function xtopic_file($id, $uid, $parent_lang = 'nb') {
+function xtopic_file($id, $uid, $parent_lang = 'nb', $scope) {
   if (empty($parent_lang)) {
     $parent_lang = 'nb';
   }
@@ -154,7 +157,7 @@ function xtopic_file($id, $uid, $parent_lang = 'nb') {
 
   // Get file description text.
   if (isset($xtopic->dc_description)) {
-    $file = xtopicDescription($file, $xtopic, $parent_lang);
+    $file = xtopicDescription($file, $xtopic, $parent_lang, $scope);
   }
 
   $title = xtopicTrimTitle($xtopic->title, $basename, $xtopic);
@@ -217,15 +220,19 @@ function xtopic_vimeo($uri, $parent_lang = 'nb') {
  *
  * @return object drupal file entity object.
  */
-function xtopicDescription($file, $xtopic, $parent_lang) {
+function xtopicDescription($file, $xtopic, $parent_lang, $scope) {
   $description = $xtopic->dc_description;
-  $file->field_uib_description[$parent_lang][]['value'] = $description;
 
-  if (!empty($file->field_uib_description[$parent_lang][0]['value'])) {
+  if ($description) {
+    $file->field_uib_description[$parent_lang][]['value'] = $description;
     if ($xtopic->type == 'image') {
+      $scope = "dc_description:$scope";
+      $scopedDescription = $xtopic->$scope;
+      if ($scopedDescription) {
+        $description = $scopedDescription;
+      }
       $title = truncate_utf8($description, 200, TRUE, TRUE, 1);
       $alt = truncate_utf8($description, 80, TRUE, TRUE, 1);
-
       $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
       $file->field_file_image_alt_text['und'][]['value'] = $alt;
     }
@@ -355,7 +362,7 @@ abstract class XTopicToArticleMigration extends Migration {
       );
     }
     elseif (isset($row->main_media)) {
-      $file = xtopic_file($row->main_media, $node->uid, $row->site_lang);
+      $file = xtopic_file($row->main_media, $node->uid, $row->site_lang, $row->id);
       $node->field_uib_main_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,
@@ -364,7 +371,7 @@ abstract class XTopicToArticleMigration extends Migration {
 
     if (!empty($row->media)) {
       foreach ($row->media as $file_id) {
-        $file = xtopic_file($file_id, $node->uid, $row->site_lang);
+        $file = xtopic_file($file_id, $node->uid, $row->site_lang, $row->id);
         $node->field_uib_media['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
@@ -374,7 +381,7 @@ abstract class XTopicToArticleMigration extends Migration {
 
     if (!empty($row->attachments)) {
       foreach ($row->attachments as $file_id) {
-        $file = xtopic_file($file_id, $node->uid, $row->site_lang);
+        $file = xtopic_file($file_id, $node->uid, $row->site_lang, $row->id);
         $node->field_uib_files['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
@@ -622,7 +629,7 @@ class TestimonialMigration extends Migration {
 
     if (!empty($row->media)) {
       foreach ($row->media as $file_id) {
-        $file = xtopic_file($file_id, $node->uid, $row->site_lang);
+        $file = xtopic_file($file_id, $node->uid, $row->site_lang, $row->id);
         $node->field_uib_media['und'][] = array(
           'fid' => $file->fid,
           'display' => 1,
@@ -703,7 +710,7 @@ class AreaMigration extends Migration {
     }
 
     if (isset($row->media)) {
-      $file = xtopic_file($row->media[0], $term->uid, $row->site_lang);
+      $file = xtopic_file($row->media[0], $term->uid, $row->site_lang, $row->id);
       $term->field_uib_primary_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,
@@ -716,7 +723,7 @@ class AreaMigration extends Migration {
   }
 
   public function complete($node, $row) {
-     // Set tnid; can't map it directly because we can't map to ourself
+    // Set tnid; can't map it directly because we can't map to ourself
     $node->tnid = $row->no_site == $row->id ? $node->nid :
       $this->handleSourceMigration('Area', array($row->no_site), NULL, $this);
     $node_alias = $node->path['alias']; // keep this
