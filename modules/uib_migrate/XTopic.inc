@@ -18,12 +18,13 @@ class XTopic extends stdClass {
    * This defaults to 'w2-data.test.uib.no', but you can override this by setting
    * the 'uib_w2_server' configuration variable.
    */
-  public static function url($path='topicmap/@@xtopic') {
+  public static function url($path = 'topicmap/@@xtopic') {
     if (is_null(self::$w2_server)) {
       self::$w2_server = variable_get('uib_w2_server', 'w2-data.test.uib.no');
     }
     return 'http://' . self::$w2_server . '/' . $path;
   }
+
   private static function type_map($w2_type) {
     static $type_map = array(
       'avdeling' => 'unit',
@@ -63,8 +64,7 @@ class XTopic extends stdClass {
    * @param $reason
    *   Using during logging to explain why this topic was instantiated.
    */
-
-  public function __construct($id, $shallow=FALSE, $reason=NULL) {
+  public function __construct($id, $shallow = FALSE, $reason = NULL) {
     if (substr($id, 0, 9) == 'username:') {
       $url = XTopic::url() . "?username=" . substr($id, 9);
     }
@@ -374,7 +374,7 @@ class XTopicListSource extends MigrateSource {
     parent::__construct();
     $this->type = $type;
     $this->listUrl = XTopic::url() . "?type=$type";
-    if ($type == 'area' || $type == 'event') {
+    if ($type == 'area' || $type == 'kevent') {
       $this->listUrl .= '&allinstances';
     }
     if (function_exists('drush_get_option')) {
@@ -547,5 +547,4 @@ class XTopicListSource extends MigrateSource {
     }
     return NULL;
   }
-
 }
