@@ -165,9 +165,9 @@ function drush_uib_area_split_menu() {
                   else {
                     $orphan->sticky = 1;
                     node_save($orphan);
-                    uibx_log('Orphanized and set ' . $child['link_path'] . ' to sticky.', 'notice');
+                    uibx_log('Orphanized and set ' . $child['link_path'] . ' ["' . $child['link_title'] . '"] to sticky.', 'notice');
                     if ($orphan->status == 0 && $child['hidden'] == 0) {
-                      uibx_log('Found an unpublished node [' . $child['link_path'] . ', mlid=' . $child['mlid'] . '] at first level of menu ' . $menu_machine_name, 'warning');
+                      uibx_log('Found an unpublished node [' . $child['link_path'] . ' "' . $child['link_title'] . '", mlid=' . $child['mlid'] . '] at first level of menu ' . $menu_machine_name, 'warning');
                     }
                   }
                 }
@@ -258,6 +258,8 @@ function uib_area__unroll_menu_recursive($trunk) {
         if (!empty($new_node->nid)) {
           $nid = $new_node->nid;
           uibx_log('Created external link node ' . $nid . ' for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'notice');
+          // nuke the menu link
+          menu_link_delete($branch['link']['mlid']);
         }
         else {
           uibx_log('Unable to create external link node for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'error');
@@ -289,10 +291,12 @@ function uib_area__unroll_menu_recursive($trunk) {
         if (empty($parent_nid)) {
           uibx_log('Unable to extract parent nid from url for "' . $parent_menu_link['link_path'] . '" mlid=' . $branch['link']['mlid'], 'error');
         }
-        $parent_node = node_load($parent_nid);
-        $parent_node->field_uib_relation['und'][]['target_id'] = $nid;
-        node_save($parent_node);
-        uibx_log('Added entity relation to ' . $nid . ' for node ' . $parent_nid, 'notice');
+        else {
+          $parent_node = node_load($parent_nid);
+          $parent_node->field_uib_relation['und'][]['target_id'] = $nid;
+          node_save($parent_node);
+          uibx_log('Added entity relation to ' . $nid . ' for node ' . $parent_nid, 'notice');
+        }
       }
       else {
         uibx_log('Skipped relation for hidden link "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'warning');

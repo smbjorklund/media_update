@@ -128,7 +128,3 @@ function uib_area_update_7004() {
   // move menu items of depth > 2 into entity relations
   drush_uib_area_menu_to_relation();
 }
-
-function uib_area_update_7005() {
-  uib_area_update_7004();
-}
