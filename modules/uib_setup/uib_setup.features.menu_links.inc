@@ -69,7 +69,7 @@ function uib_setup_menu_default_menu_links() {
     'menu_name' => 'menu-global-menu-no',
     'link_path' => 'http://www.uib.no/internasjonalt',
     'router_path' => '',
-    'link_title' => 'Internasjonal',
+    'link_title' => 'Internasjonalt',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -327,7 +327,7 @@ function uib_setup_menu_default_menu_links() {
   t('Education');
   t('Find content');
   t('Forskning');
-  t('Internasjonal');
+  t('Internasjonalt');
   t('International');
   t('Library');
   t('News');
