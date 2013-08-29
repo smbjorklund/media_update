@@ -61,35 +61,8 @@ function xtopic_file($id, $uid, $parent_lang = 'nb', $scope) {
     $parent_lang = 'nb';
   }
 
-  // Check if we already have a 'file' migrated from the same id
-  // If so, load the file object properly to make it possible to update it below
-  $file_exists = FALSE;
-  $query = new EntityFieldQuery;
-  $result = $query
-    ->entityCondition('entity_type', 'file')
-    ->fieldCondition('field_uib_w2_id', 'value', $id, '=')
-    ->range(0, 1)
-    ->execute();
-  if (!empty($result['file'])) {
-    // File exists
-    $file_exists = TRUE;
-    $res = array_values($result['file']);
-    // Check if we are forcing update of *field data* from w2.
-    if (!drush_get_option('force')) {
-      $file = new stdClass();
-      $file->fid = $res[0]->fid;
-      // Return an object with only fid set
-      return $file;
-    }
-    else {
-      // Load a full file object
-      $file = file_load($res[0]->fid);
-    }
-    uibx_log('Forcing file metadata update from w2: fid=' . $file->fid, 'notice');
-  }
-
-  // Fetch file meta info from w2
   $xtopic = new XTopic($id, FALSE, 'file');
+  $file = new stdClass();
 
   if ($xtopic->type == 'image') {
     $uri = $xtopic->original;
@@ -116,33 +89,28 @@ function xtopic_file($id, $uid, $parent_lang = 'nb', $scope) {
     die("Unknown file type: " . $xtopic->type);
   }
 
-  if (!$file_exists) {
-    // Create file object if new file
-    $file = new stdClass();
-
-    // setup file origin and destination paths for new file
-    $uri = XTopic::url($uri); // origin
-    $basename = drupal_basename($uri);
-    if (function_exists('transliteration_clean_filename')) {
-      $basename = transliteration_clean_filename($basename, 'nb');
-    }
-    $hash = strtolower(substr($basename, 0, 2));
-    $dirname = 'public://w2/' . $hash;
-    @drupal_mkdir($dirname, NULL, TRUE);
-    $filename = "$dirname/$basename";
-    $filename = file_destination($filename, FILE_EXISTS_RENAME);
-    $file->uri = $filename; // destination
-    // Fetch new file
-    $opts = array(
-      'http' => array(
-        'timeout' => 20
-        )
-      );
-    $context = stream_context_create($opts);
-    if (!copy($uri, $filename, $context)) {
-      print_r(error_get_last());
-      die("Failed to copy file $uri to $filename\n");
-    }
+  // setup file origin and destination paths for new file
+  $uri = XTopic::url($uri); // origin
+  $basename = drupal_basename($uri);
+  if (function_exists('transliteration_clean_filename')) {
+    $basename = transliteration_clean_filename($basename, 'nb');
+  }
+  $hash = strtolower(substr($basename, 0, 2));
+  $dirname = 'public://w2/' . $hash;
+  @drupal_mkdir($dirname, NULL, TRUE);
+  $filename = "$dirname/$basename";
+  $filename = file_destination($filename, FILE_EXISTS_RENAME);
+  $file->uri = $filename; // destination
+  // Fetch new file
+  $opts = array(
+    'http' => array(
+      'timeout' => 20
+      )
+    );
+  $context = stream_context_create($opts);
+  if (!copy($uri, $filename, $context)) {
+    print_r(error_get_last());
+    die("Failed to copy file $uri to $filename\n");
   }
 
   // Set or update field data attached to the file
@@ -155,11 +123,7 @@ function xtopic_file($id, $uid, $parent_lang = 'nb', $scope) {
     $file->field_uib_copyright['und'][]['value'] = $xtopic->{1351138798041054899};
   }
 
-  // Get file description text.
-  if (isset($xtopic->dc_description)) {
-    $file = xtopicDescription($file, $xtopic, $parent_lang, $scope);
-  }
-
+  $file = xtopicDescription($file, $xtopic, $parent_lang, $scope);
   $title = xtopicTrimTitle($xtopic->title, $basename, $xtopic);
   $file = xtopicMakeDescription($file, $title, $xtopic, $parent_lang);
 
@@ -218,24 +182,27 @@ function xtopic_vimeo($uri, $parent_lang = 'nb') {
  * Get the file description text. Images in w2 does not contain alt and title
  * attributes so we syntizise these out of the description text.
  *
- * @return object drupal file entity object.
+ * @return file object.
  */
 function xtopicDescription($file, $xtopic, $parent_lang, $scope) {
   $description = $xtopic->dc_description;
-
   if ($description) {
     $file->field_uib_description[$parent_lang][]['value'] = $description;
-    if ($xtopic->type == 'image') {
-      $scope = "dc_description:$scope";
-      $scopedDescription = $xtopic->$scope;
-      if ($scopedDescription) {
-        $description = $scopedDescription;
-      }
-      $title = truncate_utf8($description, 200, TRUE, TRUE, 1);
-      $alt = truncate_utf8($description, 80, TRUE, TRUE, 1);
-      $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
-      $file->field_file_image_alt_text['und'][]['value'] = $alt;
+  }
+
+  if ($xtopic->type == 'image') {
+    $scope = "dc_description:$scope";
+    $scopedDescription = $xtopic->$scope;
+
+    if ($scopedDescription) {
+      $description = $scopedDescription;
+      $file->field_uib_description[$parent_lang][]['value'] = $description;
     }
+
+    $title = truncate_utf8($description, 200, TRUE, TRUE, 1);
+    $alt = truncate_utf8($description, 80, TRUE, TRUE, 1);
+    $file->field_file_image_title_text[$parent_lang][]['value'] = $title;
+    $file->field_file_image_alt_text['und'][]['value'] = $alt;
   }
 
   return $file;
