@@ -78,8 +78,8 @@ function uib_setup_update_7003() {
  * Disable module: menuux and bigmenu.
  */
 function uib_setup_update_7004() {
-  module_disable(array('menuux', 'bigmenu'), TRUE);
-  drupal_uninstall_modules(array('menuux', 'bigmenu', 'coder_review', 'coder', 'context_ui', 'migrate_ui', 'field_ui'), FALSE);
+  module_disable(array('menuux', 'bigmenu', 'menuperformance'), FALSE);
+  drupal_uninstall_modules(array('menuux', 'bigmenu', 'coder_review', 'coder', 'context_ui', 'migrate_ui', 'field_ui', 'menuperformance'), FALSE);
 }
 
 /**
