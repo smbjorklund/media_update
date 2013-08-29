@@ -992,6 +992,29 @@ function uib_area__is_content_manager($area, $user) {
 }
 
 /**
+ * List the areas (node ids) a user is content manager for
+ *
+ * @param StdObject $user
+ *  The user object
+ * @return array
+ *  A list of node ids that the user is content manager for
+ */
+function uib_area__may_manage_these_areas($user) {
+  $areas = array();
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'area')
+    ->fieldCondition('field_uib_content_manager', 'target_id', $user->uid)
+    ->execute();
+  if ($result) {
+    $areas = array_keys($result['node']);
+  }
+  return $areas;
+}
+
+
+/**
  * Implements hook_node_access().
  *
  * Control access to edit an area
@@ -1163,4 +1186,107 @@ function uib_area_menu_is_allowed($node) {
     }
   }
   return FALSE;
+}
+
+/**
+ * Implements hook_permission.
+ */
+function uib_area_permission() {
+  $perms = array('administer uib area menus' =>
+    array('title' => t('Administer uib area menus')),
+    );
+  return $perms;
+}
+
+/**
+* Implements hook_menu_alter.
+*/
+function uib_area_menu_alter(&$items) {
+  // Modified from "menu admin per menu" module
+  $items['admin/structure/menu']['page callback'] = 'uib_area__menu_overview_page';
+  $items['admin/structure/menu']['access callback'] = 'uib_area__menupage_access';
+  unset($items['admin/structure/menu']['access arguments']);
+  $items['admin/structure/menu/manage/%menu']['access callback'] = 'uib_area__menu_access';
+  $items['admin/structure/menu/manage/%menu']['access arguments'] = array(4);
+  $items['admin/structure/menu/manage/%menu/add']['access callback'] = 'uib_area__menu_access';
+  $items['admin/structure/menu/manage/%menu/add']['access arguments'] = array(4);
+  $items['admin/structure/menu/item/%menu_link/edit']['access callback'] = 'uib_area__menulink_access';
+  $items['admin/structure/menu/item/%menu_link/edit']['access arguments'] = array(4);
+  $items['admin/structure/menu/item/%menu_link/reset']['access callback'] = 'uib_area__menulink_access';
+  $items['admin/structure/menu/item/%menu_link/reset']['access arguments'] = array(4);
+  $items['admin/structure/menu/item/%menu_link/delete']['access callback'] = 'uib_area__menulink_access';
+  $items['admin/structure/menu/item/%menu_link/delete']['access arguments'] = array(4);
+}
+
+/**
+* Callback to check access to menu administration page.
+*/
+function uib_area__menupage_access() {
+  if (user_access('administer menu')) {
+    return TRUE;
+  }
+  if (user_access('administer uib area menus')) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+* Callback to check access to relevant area menus.
+*/
+function uib_area__menu_access($menu = NULL) {
+  global $user;
+  if (user_access('administer menu')) {
+    return TRUE;
+  }
+  $managing_areas = uib_area__may_manage_these_areas($user);
+  foreach ($managing_areas as $area_nid) {
+    if ($menu['menu_name'] == 'menu-area-' . $area_nid) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+* Callback to check access to relevant area menu links.
+*/
+function uib_area__menulink_access($menu_link = NULL) {
+  global $user;
+  if (user_access('administer menu')) {
+    return TRUE;
+  }
+  $managing_areas = uib_area__may_manage_these_areas($user);
+  foreach ($managing_areas as $area_nid) {
+    if ($menu['menu_name'] == 'menu-area-' . $area_nid) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+* Creates a menu overview page,
+* showing only those menus that the user has access to
+* The user need to have the 'administer uib area menus' permission set
+* and needs to be content manager for the area.
+*/
+function uib_area__menu_overview_page() {
+  // Modified from "menu admin per menu" module
+  if (user_access('administer menu')) {
+    return menu_overview_page();
+  }
+
+  $result = db_query("SELECT * FROM {menu_custom} ORDER BY title", array(), array('fetch' => PDO::FETCH_ASSOC));
+  $header = array(t('Title'), array('data' => t('Operations'), 'colspan' => '2'));
+  $rows = array();
+  foreach ($result as $menu) {
+    if (uib_area__menu_access($menu)) {
+      $row = array(theme('menu_admin_overview', array('title' => $menu['title'], 'name' => $menu['menu_name'], 'description' => $menu['description'])));
+      $row[] = array('data' => l(t('list links'), 'admin/structure/menu/manage/' . $menu['menu_name']));
+      $row[] = array('data' => l(t('add link'), 'admin/structure/menu/manage/' . $menu['menu_name'] . '/add'));
+      $rows[] = $row;
+    }
+  }
+  return theme('table', array('header' => $header, 'rows' => $rows));
 }

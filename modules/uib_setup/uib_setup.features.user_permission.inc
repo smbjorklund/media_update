@@ -238,8 +238,6 @@ function uib_setup_user_default_permissions() {
     'roles' => array(
       0 => 'admin',
       1 => 'level 1',
-      2 => 'level 2',
-      3 => 'level 3',
     ),
     'module' => 'menu',
   );
@@ -346,6 +344,18 @@ function uib_setup_user_default_permissions() {
     'name' => 'administer themes',
     'roles' => array(),
     'module' => 'system',
+  );
+
+  // Exported permission: administer uib area menus.
+  $permissions['administer uib area menus'] = array(
+    'name' => 'administer uib area menus',
+    'roles' => array(
+      0 => 'admin',
+      1 => 'level 1',
+      2 => 'level 2',
+      3 => 'level 3',
+    ),
+    'module' => 'uib_area',
   );
 
   // Exported permission: administer url aliases.
