@@ -200,6 +200,9 @@ function drush_uib_area_split_menu() {
                 menu_link_save($new_child);
               }
             }
+            else {
+              uibx_log('Did not find preferred menu link for node/' . $node->nid, 'warning');
+            }
           }
         }
         else {
@@ -374,7 +377,7 @@ function uib_area__chk_menu_recursive($trunk, $parent_mlid, &$ptrail) {
       else {
         // Check that node exists
         if (!node_load($nid)) {
-          uibx_log('Can not load node ' . $nid . ' path="' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'notice');
+          uibx_log('Cannot load node ' . $nid . ' path="' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'warning');
         }
       }
     }
