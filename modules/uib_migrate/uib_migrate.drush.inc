@@ -58,8 +58,16 @@ function drush_uib_migrate_build_menu() {
     // link_path may contain 'http://#'
     if (count($result) > 1) {
       list($empty, $nid) = $result;
+      if (!is_numeric($nid)) {
+        $msg = 'Non numeric node id:' . $nid;
+        $nid = intval($nid);
+        $msg .= "... converting to $nid";
+        uibx_log($msg, "warning");
+      }
       $node = node_load($nid);
-      uib_migrate__build_menu_tree($node, $row->mlid, 3);
+      if ($node) {
+        uib_migrate__build_menu_tree($node, $row->mlid, 3);
+      }
     }
   }
   menu_cache_clear_all();
