@@ -1631,6 +1631,7 @@ function uib_article_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'uib_article',
       'default_value' => NULL,
+      'default_value_function' => '',
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -1659,9 +1660,14 @@ function uib_article_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_uib_relation',
-      'label' => 'Relation',
+      'label' => 'Related content',
       'required' => 0,
       'settings' => array(
+        'behaviors' => array(
+          'prepopulate' => array(
+            'status' => 0,
+          ),
+        ),
         'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
@@ -2033,7 +2039,7 @@ function uib_article_field_default_fields() {
   t('Menu title w2');
   t('Parent ID w2');
   t('Path w2');
-  t('Relation');
+  t('Related content');
   t('Relevant links');
   t('Select which content type you want to create. Choose between info page, event or news article.');
   t('Small images');
