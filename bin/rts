@@ -421,7 +421,7 @@ sub do_extract {
 	my $issues = get_issues_hashref();
 	my @found;
 	for my $id (sort { $a <=> $b } keys %found) {
-	    push(@found, $issues->{$id});
+	    push(@found, $issues->{$id} || { id => $id, subject => '---', status => '?', 'x_Avsluttet_som' => '?', });
 	}
 	list_issues(@found);
     }
