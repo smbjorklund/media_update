@@ -1,4 +1,19 @@
-#Release 2013-08-19 tag: R2.1
+# Release 2013-09-04 tag: R2.2
+
+Release onsdag 4. september splitter menyen til enkeltmenyer for hvert område og introduserer ny funksjonalitet for å legge artikler i meny og i relasjon til andre artikler.
+Som en følge av dette har vi også justert rettighetene noe. I tillegg følger noen små justeringer på styling. Vi har også fjernet tilgang for level 2 brukere til å legge opp egen logo i tittelfeltet.
+Vi har også tatt med et par saker som forbereder migrasjon av neste område (R3).
+
+* Ny menystruktur og relaterte saker # 2587, #3549, #3619, #3585, #3567
+* Justeringer og feilrettinger etter omorganiseringen av publiseringsinfo (#2537) #3356, #3454
+* Feilretting i mobilmenyer #2318, #3572
+* Rettet feil som gjorde at "Stilling ledig"-header viste selv om det ikke fantes ledige stillinger #3510
+* Rettet bakgrunnsfarge i de store menyene på forsiden og /foransatte #3588
+* Endret til level 1 rettighet for å få legge logo i tittelfeltet på siden
+* Fisk for migrasjon av bildetekster fra w2 til w3 #3486
+* Styling på /aktuelt og /news # 3535
+
+# Release 2013-08-19 tag: R2.1
 
 Release mandag 19. august gjør justeringer etter R.2, primært i frontend, både på desktop og mobil.
 
