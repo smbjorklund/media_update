@@ -3,10 +3,80 @@
 /**
  * @file
  * Implement hook_menu_breadcrumb_alter().
- *
- * w3/w2 mixed mode setting. This module is to be turned off and removed as
- * soon as we have migrated all of w2 into w3.
  */
 function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
-  $active_trail[0]['href'] = 'http://uib.no';
+
+  $current_area = uib_area__get_current();
+  $uib_active_trail = array();
+  $uib_active_trail[0] = array_shift($active_trail);
+  $uib_active_trail[1] = array(
+    'title' => $current_area->title,
+    'href' => 'node/' . $current_area->nid,
+    'link_path' => '',
+    'localized_options' => array(),
+    'type' => 0,
+  );
+  if (count($active_trail) > 1) {
+    $uib_active_trail[] = $active_trail[0];
+  }
+  $uib_crumbs = __uib_get_breadcrumb(arg(1));
+  if (count($uib_crumbs) > 0) {
+    $uib_crumbs = array_reverse($uib_crumbs);
+    $first_relation = $uib_crumbs[0];
+    $plid = __uib_get_plid($first_relation['href'], 'menu-area-' . $current_area->nid);
+    if($active_trail[0]['mlid'] != $plid) {
+      if($parent = __uib_get_parent_item($plid)) {
+        $uib_active_trail[] = array(
+          'title' => $parent['link_title'],
+          'href' => $parent['link_path'],
+          'link_path' => '',
+          'localized_options' => array(),
+          'type' => 0,
+        );
+      }
+    }
+  }
+  $active_trail = array_merge($uib_active_trail, $uib_crumbs);
+}
+
+function __uib_get_breadcrumb($nid, $crumbs=array()) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'uib_article')
+    ->fieldCondition('field_uib_relation', 'target_id', $nid, '=');
+  $result = $query->execute();
+  if (!empty($result['node'])) {
+    $ids = array_keys($result['node']);
+    $parents = entity_load('node', $ids);
+    $parent = array_shift($parents);
+    $item = array(
+      'title' => $parent->title,
+      'href' => 'node/' . $parent->nid,
+      'link_path' => '',
+      'localized_options' => array(),
+      'type' => 0,
+    );
+    $crumbs[] = $item;
+    $crumbs = __uib_get_breadcrumb($parent->nid, $crumbs);
+  }
+  return $crumbs;
+}
+
+function __uib_get_plid($path, $menu_name) {
+  $plid = db_select('menu_links' , 'ml')
+  ->condition('ml.link_path' , $path)
+  ->condition('ml.menu_name',$menu_name)
+  ->fields('ml' , array('plid'))
+  ->execute()
+  ->fetchField();
+  return $plid;
+}
+
+function __uib_get_parent_item($mlid) {
+  $result = db_select('menu_links', 'ml')
+   ->condition('ml.mlid', $mlid)
+   ->fields('ml', array('link_path', 'link_title'))
+   ->execute()
+   ->fetchAssoc();
+  return $result;
 }
