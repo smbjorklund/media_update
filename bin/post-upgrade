@@ -2,22 +2,23 @@
 
 set -x
 
-REL=2
+REL=3
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
     exit 1
 fi
 
-# Import the Norwegian and English news areas
-bin/site-drush mi Area --strict=0 --serial=8314982073342080046,8314982073342080055 --verbose
+bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_svf.txt
+bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_svf.txt
+bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_svf.txt
+bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_svf.txt
+bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_svf.txt
+bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_svf.txt
 
-# Import articles
-bin/site-drush mi News -v --strict=0 --w2prefix=/news
-bin/site-drush mi News -v --strict=0 --w2prefix=/aktuelt
-
-# Set up example frontpage and news areas
-bin/site-drush php-script r2-setup-frontpage-and-newspage
+# Split Area menu for newly migrated content
+bin/site-drush uib-area-split-menu --verbose
+bin/site-drush uib-migrate-build-menu --verbose
 
 # Make sure the cache is really blenda-clean
 bin/site-drush cc all
