@@ -187,7 +187,7 @@ function xtopic_vimeo($uri, $parent_lang = 'nb') {
 function xtopicDescription($file, $xtopic, $parent_lang, $scope) {
   $description = $xtopic->dc_description;
   if ($description) {
-    $file->field_uib_description[$parent_lang][]['value'] = $description;
+    $file->field_uib_description[$parent_lang][0]['value'] = $description;
   }
 
   if ($xtopic->type == 'image') {
@@ -196,7 +196,7 @@ function xtopicDescription($file, $xtopic, $parent_lang, $scope) {
 
     if ($scopedDescription) {
       $description = $scopedDescription;
-      $file->field_uib_description[$parent_lang][]['value'] = $description;
+      $file->field_uib_description[$parent_lang][0]['value'] = $description;
     }
 
     $title = truncate_utf8($description, 200, TRUE, TRUE, 1);
