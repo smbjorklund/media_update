@@ -10,7 +10,7 @@ Vi har også tatt med et par saker som forbereder migrasjon av neste område (R3
 * Rettet feil som gjorde at "Stilling ledig"-header viste selv om det ikke fantes ledige stillinger #3510
 * Rettet bakgrunnsfarge i de store menyene på forsiden og /foransatte #3588
 * Endret til level 1 rettighet for å få legge logo i tittelfeltet på siden
-* Fisk for migrasjon av bildetekster fra w2 til w3 #3486
+* Fiks for migrasjon av bildetekster fra w2 til w3 #3486
 * Styling på /aktuelt og /news # 3535
 
 # Release 2013-08-19 tag: R2.1
