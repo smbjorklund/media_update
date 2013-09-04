@@ -215,8 +215,8 @@
 			<integer>140</integer>
 			<key>Points</key>
 			<array>
-				<string>{693.53656052342365, 344.82747689663728}</string>
-				<string>{746.57042239722216, 357.48997847979024}</string>
+				<string>{693.48744260455214, 344.86948688379459}</string>
+				<string>{746.39692405686867, 357.55974451430052}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -248,8 +248,8 @@
 			<integer>139</integer>
 			<key>Points</key>
 			<array>
-				<string>{906.28774134157834, 341.19241357090948}</string>
-				<string>{865.41012772292163, 354.42194355281629}</string>
+				<string>{906.60269778593852, 341.28721760550417}</string>
+				<string>{865.9615805423249, 354.58324862987217}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -281,8 +281,8 @@
 			<integer>138</integer>
 			<key>Points</key>
 			<array>
-				<string>{902.68855349652563, 398.96583546460204}</string>
-				<string>{870.77058838418964, 389.87566923556068}</string>
+				<string>{902.58401710639203, 399.00169211277711}</string>
+				<string>{870.61130121114752, 389.93095398086069}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -383,8 +383,8 @@ sebraintegrator/paster}</string>
 			<integer>124</integer>
 			<key>Points</key>
 			<array>
-				<string>{139.42728354131415, 159.58373838957851}</string>
-				<string>{397.89883864180706, 531.61423841661986}</string>
+				<string>{139.4288033962001, 159.58346304458615}</string>
+				<string>{397.8989377105184, 531.61422816851962}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -473,8 +473,8 @@ apache}</string>
 			<integer>120</integer>
 			<key>Points</key>
 			<array>
-				<string>{135.76575186772706, 155.53200400696966}</string>
-				<string>{393.232823909003, 440.43686928628159}</string>
+				<string>{135.76703918261765, 155.53175882685642}</string>
+				<string>{393.25047954669299, 440.43452166696812}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -586,8 +586,8 @@ nginx}</string>
 			<integer>113</integer>
 			<key>Points</key>
 			<array>
-				<string>{715.37505652802599, 690.00044976541164}</string>
-				<string>{895.63944463188773, 516.34641695358232}</string>
+				<string>{715.37514709986874, 690.00046951698107}</string>
+				<string>{895.63990143747219, 516.3468918004088}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -621,8 +621,8 @@ nginx}</string>
 			<integer>112</integer>
 			<key>Points</key>
 			<array>
-				<string>{733.28090297153335, 584.11997074834392}</string>
-				<string>{891.74435709663396, 520.09867032856505}</string>
+				<string>{733.28105083083835, 584.12004587659499}</string>
+				<string>{891.74480598877255, 520.09913534185819}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -718,8 +718,8 @@ nginx}</string>
 			<integer>109</integer>
 			<key>Points</key>
 			<array>
-				<string>{437.95685061177619, 106.67781773895531}</string>
-				<string>{450.45209807593136, 57.674526086656229}</string>
+				<string>{437.46010201027923, 106.6514809162837}</string>
+				<string>{449.00585513528119, 57.546995301736764}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -778,8 +778,8 @@ nginx}</string>
 			<integer>107</integer>
 			<key>Points</key>
 			<array>
-				<string>{485.18551820007298, 139.22105544364214}</string>
-				<string>{663.83326647397155, 163.25035307210192}</string>
+				<string>{485.18218601931801, 139.22613623157645}</string>
+				<string>{663.81881579030266, 163.27233699937477}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -811,8 +811,8 @@ nginx}</string>
 			<integer>106</integer>
 			<key>Points</key>
 			<array>
-				<string>{453.49344234613147, 155.39068708967463}</string>
-				<string>{622.00644822040044, 334.60933458070065}</string>
+				<string>{453.49345352274855, 155.39068487816272}</string>
+				<string>{622.00654503146393, 334.60931542422003}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -844,8 +844,8 @@ nginx}</string>
 			<integer>105</integer>
 			<key>Points</key>
 			<array>
-				<string>{455.73235819341909, 154.92096595305946}</string>
-				<string>{619.76759698155831, 310.07904398056229}</string>
+				<string>{455.73236322605703, 154.920964844455}</string>
+				<string>{619.76763602684457, 310.07903531586828}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -877,8 +877,8 @@ nginx}</string>
 			<integer>104</integer>
 			<key>Points</key>
 			<array>
-				<string>{449.52969496655908, 156.09615776130082}</string>
-				<string>{625.97029930178007, 391.90384310741263}</string>
+				<string>{449.52969544872514, 156.09615768828093}</string>
+				<string>{625.9703045020043, 391.90384231918057}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -910,8 +910,8 @@ nginx}</string>
 			<integer>103</integer>
 			<key>Points</key>
 			<array>
-				<string>{487.19928411368232, 134.62809341688416}</string>
-				<string>{661.80196302901754, 142.8664784936326}</string>
+				<string>{487.19905565353258, 134.62908872303794}</string>
+				<string>{661.80101724905512, 142.87059376948801}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -943,8 +943,8 @@ nginx}</string>
 			<integer>102</integer>
 			<key>Points</key>
 			<array>
-				<string>{486.83468827261953, 135.9022202786245}</string>
-				<string>{588.67015572329115, 143.08369068307329}</string>
+				<string>{486.8335848254323, 135.90543432742135}</string>
+				<string>{588.66701516680155, 143.09281927254901}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1110,8 +1110,8 @@ nginx}</string>
 			<integer>85</integer>
 			<key>Points</key>
 			<array>
-				<string>{477.22631940208487, 117.36542383338046}</string>
-				<string>{598.26325220171896, 78.627903840693421}</string>
+				<string>{477.22839518335184, 117.36675159578083}</string>
+				<string>{598.27082065981267, 78.632746775705968}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1211,8 +1211,8 @@ nginx}</string>
 			<integer>82</integer>
 			<key>Points</key>
 			<array>
-				<string>{335.49785522525781, 132.2236843384722}</string>
-				<string>{375.50635819887026, 132.38349895074469}</string>
+				<string>{335.4997762098144, 132.07611127405104}</string>
+				<string>{375.50071140293892, 132.13047795811374}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1244,8 +1244,8 @@ nginx}</string>
 			<integer>74</integer>
 			<key>Points</key>
 			<array>
-				<string>{457.22485782635391, 223.07738186489587}</string>
-				<string>{618.27487537378113, 364.4226818102058}</string>
+				<string>{457.22488953123838, 223.07737431961652}</string>
+				<string>{618.27510542802236, 364.42262690627416}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1277,8 +1277,8 @@ nginx}</string>
 			<integer>73</integer>
 			<key>Points</key>
 			<array>
-				<string>{487.49836851474248, 200.30451296926904}</string>
-				<string>{661.50165861026051, 199.6970776560556}</string>
+				<string>{487.49836354565281, 200.30421998862332}</string>
+				<string>{661.50163806908904, 199.69587429941393}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1338,8 +1338,8 @@ nginx}</string>
 			<integer>71</integer>
 			<key>Points</key>
 			<array>
-				<string>{484.95694240559749, 261.43905543362672}</string>
-				<string>{664.0734199169226, 236.10483883905093}</string>
+				<string>{484.95158058261654, 261.43128349663101}</string>
+				<string>{664.05002074293009, 236.07103586702476}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1600,8 +1600,8 @@ zclient/paster}</string>
 			<integer>47</integer>
 			<key>Points</key>
 			<array>
-				<string>{481.46946724484138, 664.94865983697559}</string>
-				<string>{641.46885383749679, 701.60661622959981}</string>
+				<string>{481.48067480026191, 664.93864070087886}</string>
+				<string>{641.5158269430641, 701.56448883493431}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1633,8 +1633,8 @@ zclient/paster}</string>
 			<integer>46</integer>
 			<key>Points</key>
 			<array>
-				<string>{482.65999638061521, 643.1839975439658}</string>
-				<string>{640.40021970980069, 611.3769481616124}</string>
+				<string>{482.64888778718625, 643.17272174987704}</string>
+				<string>{640.35471770332765, 611.33093480844968}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1671,8 +1671,8 @@ zclient/paster}</string>
 					<integer>76</integer>
 					<key>Points</key>
 					<array>
-						<string>{335.48052265847582, 654.17018568379194}</string>
-						<string>{375.55742196874564, 654.64997691997542}</string>
+						<string>{335.49976654083576, 653.5775630470423}</string>
+						<string>{375.50073989543932, 653.63296680262374}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -1704,8 +1704,8 @@ zclient/paster}</string>
 					<integer>77</integer>
 					<key>Points</key>
 					<array>
-						<string>{170.48896332066573, 654.00478066016353}</string>
-						<string>{223.54195139231547, 654.48309139774733}</string>
+						<string>{170.49997405131231, 653.53516089518837}</string>
+						<string>{223.50017559897822, 653.56843831295782}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -1865,8 +1865,8 @@ apache}</string>
 			<integer>43</integer>
 			<key>Points</key>
 			<array>
-				<string>{143.03697449207709, 153.85931585841675}</string>
-				<string>{397.97079830017134, 349.13856591214187}</string>
+				<string>{143.03627083075867, 153.85950767316496}</string>
+				<string>{397.96380795730829, 349.14047087149117}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1898,8 +1898,8 @@ apache}</string>
 			<integer>42</integer>
 			<key>Points</key>
 			<array>
-				<string>{170.50002152245656, 131.98803677958162}</string>
-				<string>{223.499995788614, 131.97671445582034}</string>
+				<string>{170.50002731829593, 131.99684229345976}</string>
+				<string>{223.49997390551221, 131.99385375423958}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1965,8 +1965,8 @@ apache}</string>
 			<integer>40</integer>
 			<key>Points</key>
 			<array>
-				<string>{170.46618422586948, 273.11726212558904}</string>
-				<string>{375.53381989339931, 269.88279168020227}</string>
+				<string>{170.46618352584181, 273.11725306297262}</string>
+				<string>{375.53381666523251, 269.88274941035758}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -2326,7 +2326,7 @@ drupal/apache}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\b\fs24 \cf0 attila.uib.no}</string>
+\f0\b\fs24 \cf0 attila.uib.no (w3.uib.no)}</string>
 			</dict>
 			<key>TextPlacement</key>
 			<integer>0</integer>
@@ -3087,7 +3087,7 @@ zclient/paster}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-09-03 09:21:36 +0000</string>
+	<string>2013-09-04 13:19:41 +0000</string>
 	<key>Modifier</key>
 	<string>Gisle Aas</string>
 	<key>NotesVisible</key>
