@@ -444,15 +444,29 @@ function uib_article__access_check($node) {
 
 function uib_article_menu_form($form, &$form_state, $node) {
   if (!isset($form_state['uib_article']['confirm'])) {
-    $menu_name = uib_area__get_current_menu();
-    $menu = menu_load($menu_name);
-    $menu_link = menu_link_get_preferred('node/' . $node->nid, $menu_name);
-    $form_state['uib_article']['node'] = $node;
-    $form_state['uib_article']['menu_name'] = $menu_name;
-    if (!empty($menu_link)) {
-      $form_state['uib_article']['menu_link'] = $menu_link;
+    // Obtain menu and menu link data. If we are returning from
+    // an ajax call, these must be fetched from form_state.
+    if (empty($form_state['uib_article']['node'])) {
+      // Save node for later use at form submit
+      $form_state['uib_article']['node'] = $node;
     }
-
+    if (!empty($form_state['uib_article']['menu_name'])) {
+      $menu_name = $form_state['uib_article']['menu_name'];
+    }
+    else {
+      $menu_name = uib_area__get_current_menu();
+      $form_state['uib_article']['menu_name'] = $menu_name;
+    }
+    $menu = menu_load($menu_name);
+    if (!empty($form_state['uib_article']['menu_link'])) {
+      $menu_link = $form_state['uib_article']['menu_link'];
+    }
+    else {
+      $menu_link = menu_link_get_preferred('node/' . $node->nid, $menu_name);
+      if (!empty($menu_link)) {
+        $form_state['uib_article']['menu_link'] = $menu_link;
+      }
+    }
     $form['uib_area_menu_formtext'] = array(
       '#type' => 'item',
       '#title' => $menu['description'] . ' ' . t('options'),
@@ -464,6 +478,7 @@ function uib_article_menu_form($form, &$form_state, $node) {
     else {
       $form['uib_area_menu_formtext']['#description'] = t('Not in menu');
     }
+
 
     $form['uib_area_menu_settings'] = array(
       '#type' => 'container',
@@ -484,13 +499,24 @@ function uib_article_menu_form($form, &$form_state, $node) {
         '#type' => 'select',
         '#title' => t('Select menu item'),
         '#options' => uib_area__get_menu($menu_name),
+        '#ajax' => array(
+          'callback' => 'uib_article__menu_form_setrels',
+          'event' => 'change',
+          'wrapper' => 'menu_relation_radios',
+          ),
       );
 
       if (!empty($menu_link['mlid'])) {
         $form['uib_area_menu_settings']['area_menu_select']['#value'] = $menu_link['mlid'];
       }
 
-      $form['uib_area_menu_settings']['relations'] = array(
+      $form['uib_area_menu_settings']['radios'] = array(
+        '#type' => 'container',
+        '#prefix' => '<div id="menu_relation_radios">',
+        '#suffix' => '</div>',
+      );
+
+      $form['uib_area_menu_settings']['radios']['relations'] = array(
         '#type' => 'radios',
         '#title' => t('Specify relationship to selected menu item'),
         '#default_value' => 0,
@@ -500,6 +526,17 @@ function uib_article_menu_form($form, &$form_state, $node) {
           2 => t('Child to'),
         ),
       );
+
+      // Check if a menu link with depth > 1 has been selected
+      if (!empty($form_state['input']['area_menu_select'])) {
+        $ml = menu_link_load($form_state['input']['area_menu_select']);
+        if ($ml['depth'] > 1) {
+          unset($form['uib_area_menu_settings']['radios']['relations']['#options'][2]);
+        }
+      }
+      elseif (!empty($menu_link) && $menu_link['depth'] > 1) {
+        unset($form['uib_area_menu_settings']['radios']['relations']['#options'][2]);
+      }
 
       $form['submit'] = array(
         '#type' => 'submit',
@@ -533,6 +570,13 @@ function uib_article_menu_form($form, &$form_state, $node) {
       t('Cancel')
     );
   }
+}
+
+/**
+ * Ajax callback from uib_article_menu_form
+ */
+function uib_article__menu_form_setrels($form, $form_state) {
+  return $form['uib_area_menu_settings']['radios'];
 }
 
 function uib_article_menu_form_submit($form, &$form_state) {
