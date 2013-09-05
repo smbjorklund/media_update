@@ -9,6 +9,10 @@ if git tag | grep -q R$REL; then
     exit 1
 fi
 
+# Clean up
+bin/site-drush php-script delete-sticky-nodes
+
+# Migrate
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_svf.txt
 bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_svf.txt
 bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_svf.txt
