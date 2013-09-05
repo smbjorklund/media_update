@@ -35,6 +35,7 @@ You should know these:
 ### Stats and Logs
 
 * [404-list and errorlogs](http://overvakning.app.uib.no/w3_logs/)
+* [Staging log](http://attilatest.uib.no/status/drupal-daily-staging.last.txt)
 * [Piwik stats](http://stats.uib.no/)
 * [Awstats](http://overvakning.app.uib.no/awstats/awstats.pl?output=main&config=www.uib.no)
 * [Munin](http://overvakning.app.uib.no/w3_hist.php?limit=2)
