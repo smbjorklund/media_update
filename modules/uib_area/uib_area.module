@@ -774,6 +774,20 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
        ),
     );
   }
+  elseif ($form_id == 'menu_edit_item') {
+    if (!user_access('administer menu')) {
+      // For content managers: Restrict options to the current area menu
+      $area_menu = substr($form['parent']['#default_value'], 0, strpos($form['parent']['#default_value'], ':'));
+      $opt = array();
+      foreach ($form['parent']['#options'] as $key => $value) {
+        if (substr($key, 0, strpos($key, ':')) == $area_menu) {
+          $opt[$key] = $value;
+        }
+      }
+      $form['parent']['#options'] = $opt;
+      $form_state['rebuild'] = TRUE;
+    }
+  }
 }
 
 /**
@@ -1260,7 +1274,7 @@ function uib_area__menulink_access($menu_link = NULL) {
   }
   $managing_areas = uib_area__may_manage_these_areas($user);
   foreach ($managing_areas as $area_nid) {
-    if ($menu['menu_name'] == 'menu-area-' . $area_nid) {
+    if ($menu_link['menu_name'] == 'menu-area-' . $area_nid) {
       return TRUE;
     }
   }
