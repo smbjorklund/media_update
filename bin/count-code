@@ -1,0 +1,143 @@
+#!/usr/bin/perl
+
+use strict;
+
+if (@ARGV) {
+    if ($ARGV[0] eq "--releases") {
+	my %lang;
+	my %R;
+	system("cp", __FILE__, "/tmp/count-code");
+	open(my $git, "git tag |") || die;
+	my @tags;
+	while (my $tag = <$git>) {
+	    chomp($tag);
+	    push(@tags, $tag) if $tag =~ /^R/;
+	}
+	push(@tags, "master");
+
+	for my $tag (@tags) {
+	    system("git", "checkout", $tag);
+	    open(my $fh, "$^X /tmp/count-code |") || die;
+	    my %counts;
+	    while (<$fh>) {
+		if (/^(\w+): (\d+)$/) {
+		    $counts{$1} = $2;
+		    $lang{$1}++;
+		}
+		else {
+		    warn;
+		}
+	    }
+	    close($fh);
+	    $R{$tag} = \%counts;
+	}
+	unlink("/tmp/count-code");
+
+	my @lang = sort { $R{master}{$b} <=> $R{master}{$a} } keys %lang;
+
+	print join(", ", "release", @lang), "\n";
+	for my $r (sort(keys %R)) {
+	    print $r;
+	    for my $lang (@lang) {
+		print ", ", $R{$r}{$lang} || 0;
+	    }
+	    print "\n";
+	}
+	exit;
+    }
+    else {
+	die "Usage: $0 [--releases]\n";
+    }
+}
+
+use File::Find qw(find);
+
+my %COUNTERS;
+
+find(sub {
+    if (-d $_) {
+	if ($File::Find::name eq "themes/uib_zen/css" ||
+	    $File::Find::name eq "themes/uib_zen/images" ||
+	    $File::Find::name eq "themes/uib_zen/sass-extensions/zen-grids" ||
+	    $File::Find::name eq "themes/uib_zen/.sass-cache" ||
+	    0)
+	{
+	    $File::Find::prune++;
+	}
+	next;
+    }
+    if (/\.(php|inc|module|install|test)$/) {
+	count_php($_);
+	next
+    }
+    elsif (/\.scss$/) {
+	my $lines = count_lines($_);
+	$COUNTERS{lines}{sass} += $lines;
+	$COUNTERS{lines}{code} += $lines;
+    }
+    elsif (/\.js$/) {
+	my $lines = count_lines($_);
+	$COUNTERS{lines}{js} += $lines;
+	$COUNTERS{lines}{code} += $lines;
+    }
+    elsif (/\.rb$/) {
+	my $lines = count_lines($_);
+	$COUNTERS{lines}{ruby} += $lines;
+	$COUNTERS{lines}{code} += $lines;
+    }
+    elsif (/\.(info|gitignore|json|yml|csv|txt|png|gif|ico|svg|psd)$/) {
+	# ignore
+    }
+    elsif ($File::Find::dir =~ /^(bin|area-walker)$/) {
+	count_script($_);
+    }
+    else {
+	warn "Don't know what '$File::Find::name' is\n";
+    }
+}, "bin", "scripts", "modules", "themes", "area-walker");
+
+#use Data::Dump; dd \%COUNTERS;
+for (sort keys %{$COUNTERS{lines}}) {
+    next if $_ eq "code";
+    print "$_: $COUNTERS{lines}{$_}\n";
+}
+
+sub count_php {
+    my $file = shift;
+    my $lines = count_lines($file);
+    if ($file =~ /\.features\./) {
+	$COUNTERS{lines}{features} += $lines;
+    }
+    else {
+	$COUNTERS{lines}{php} += $lines;
+    }
+    $COUNTERS{lines}{code} += $lines;
+}
+
+sub count_script {
+    my $file = shift;
+    open(my $fh, "<", $file) || die;
+    my $first_line = <$fh>;
+    close($fh);
+
+    my $lang = "unknown";
+    if ($first_line =~ s/^\#!\S*\/(\w+)\s*//) {
+	$lang = $1;
+	$lang = (split ' ', $first_line)[0] if $lang eq "env";
+	$lang = "sh" if $lang eq "bash";
+    }
+
+    my $lines = count_lines($file);
+    $COUNTERS{lines}{$lang} += $lines;
+    $COUNTERS{lines}{code} += $lines;
+}
+
+sub count_lines {
+    my $file = shift;
+    my $lines = 0;
+    open(my $fh, "<", $file) || die "Can't open $file: $!";
+    while (<$fh>) {
+	$lines++;
+    }
+    return $lines;
+}
