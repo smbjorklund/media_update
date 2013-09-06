@@ -5,7 +5,9 @@
  * Implement hook_menu_breadcrumb_alter().
  */
 function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
-
+  if (path_is_admin(current_path())) {
+    return;
+  }
   $current_area = uib_area__get_current();
   $uib_active_trail = array();
   $uib_active_trail[0] = array_shift($active_trail);
