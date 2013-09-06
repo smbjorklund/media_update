@@ -193,7 +193,7 @@ function uib_area_block_view($delta='') {
     case 'colophon_logos':
       global $base_url;
       global $theme_path;
-      $path = $base_path . '/' . $theme_path . '/images/';
+      $path = $base_url . '/' . $theme_path . '/images/';
       $logo0_nb = $path . 'stemmerettsjubileet_nb.png';
       $logo0_en = $path . 'stemmerettsjubileet_nb.png';
       $logo1_nb = $path . 'hp_nb.png';
