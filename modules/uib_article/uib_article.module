@@ -138,7 +138,13 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
     // Disable possibility for changing main area if node has connection to menu
     if (isset($form_state['node']->field_uib_area['und'])) {
       $menu_name = 'menu-area-' . $form_state['node']->field_uib_area['und'][0]['target_id'];
-      if (menu_link_get_preferred('node/' . $form_state['node']->nid, $menu_name)) {
+      if (!empty($form_state['node']->nid)) {
+        $curr_nid = $form_state['node']->nid;
+      }
+      elseif (!empty($form_state['node']->translation_source->nid)) {
+        $curr_nid = $form_state['node']->translation_source->nid;
+      }
+      if (menu_link_get_preferred('node/' . $curr_nid, $menu_name)) {
         $form['field_uib_area']['und'][0]['target_id']['#disabled'] = TRUE;
       }
     }

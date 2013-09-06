@@ -9,6 +9,9 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
     return;
   }
   $current_area = uib_area__get_current();
+  if (!$current_area) {
+    return;
+  }
   $uib_active_trail = array();
   $uib_active_trail[0] = array_shift($active_trail);
   $uib_active_trail[1] = array(
