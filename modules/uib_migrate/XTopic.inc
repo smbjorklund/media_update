@@ -374,7 +374,7 @@ class XTopicListSource extends MigrateSource {
     parent::__construct();
     $this->type = $type;
     $this->listUrl = XTopic::url() . "?type=$type";
-    if ($type == 'area' || $type == 'kevent') {
+    if ($type == 'area' || $type == 'event') {
       $this->listUrl .= '&allinstances';
     }
     if (function_exists('drush_get_option')) {
