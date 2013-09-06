@@ -1,3 +1,8 @@
+# Release 2013-09-06 tag: R2.2.1
+
+Fikser problemet med at bare det første av de små bildene på artiklene var synlig. #3703
+
+
 # Release 2013-09-04 tag: R2.2
 
 Release onsdag 4. september splitter menyen til enkeltmenyer for hvert område og introduserer ny funksjonalitet for å legge artikler i meny og i relasjon til andre artikler.
