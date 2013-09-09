@@ -58,8 +58,8 @@ function uib_article_strongarm() {
           ),
           'teaser' => array(
             'weight' => '9',
-              'visible' => FALSE,
-            ),
+            'visible' => FALSE,
+          ),
           'short_teaser' => array(
             'weight' => '3',
             'visible' => FALSE,
