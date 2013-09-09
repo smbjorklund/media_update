@@ -447,22 +447,25 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         );
       }
 
-      if (!in_array($variables['node']->field_uib_area['und'][0]['target_id'], array(1, 2))) {
-        $service_links = theme('item_list', array(
-          'items' => service_links_render($variables['node'], FALSE),
-          'style' => SERVICE_LINKS_STYLE_IMAGE,
-        ));
-        if (!empty($variables['content']['group_article_main'])) {
+      if (!empty($variables['content']['group_article_top'])) {
+        if (!in_array($variables['node']->field_uib_area['und'][0]['target_id'], array(1, 2))) {
+          $service_links = theme('item_list', array(
+            'items' => service_links_render($variables['node'], FALSE),
+            'style' => SERVICE_LINKS_STYLE_IMAGE,
+          ));
           $variables['content']['group_article_top']['#suffix'] = '<div class="service-links">' . $service_links . '</div></div>';
-          $variables['content']['group_article_top']['#weight'] = $variables['content']['group_article_main']['#weight'] - 0.5;
-          if (empty($variables['content']['group_article_top']['#prefix'])) {
-            $variables['content']['group_article_top']['#prefix'] = '<div class="article-info clearfix">';
-          }
+        }
+        else {
+          $variables['content']['group_article_top']['#suffix'] = '</div>';
+        }
+        $variables['content']['group_article_top']['#weight'] = $variables['content']['title']['#weight'] + 0.5;
+        if (empty($variables['content']['group_article_top']['#prefix'])) {
+          $variables['content']['group_article_top']['#prefix'] = '<div class="article-info clearfix">';
         }
       }
     }
 
-    if (in_array($variables['title'], array('Ansattsider', 'Employee Pages'))) {
+    if (in_array($variables['node']->field_uib_area['und'][0]['target_id'], array(1, 2))) {
       drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/hide_links.js', array('group' => JS_THEME, ));
     }
   }
