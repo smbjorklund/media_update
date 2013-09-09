@@ -1,3 +1,18 @@
+# Release 2013-09-10 tag: R3
+
+Release migrerer SV-fakultetet til ny plattform og gjør dessuten en del opprettinger etter r2.2 (menysplit)
+
+* Migrerer SV-fakultetet og sub-områder til ny plattform #3661 #3708
+* Setter opp redirects for nyheter og hendelser i arkiv for sv-fakultetet #2454
+* Fiks for migrasjon av lange filnavn eller filnavn med mellomrom #3617
+* Rydder opp tomme menypunkt for sv-fakultetet etter menysplit #3536
+* Fiks for brødsmulestien etter menysplit #3575
+* Fiks for at vitnesbyrd skal kunne vises som relatert innhold #3717
+* Fiks etter R2.2 som ga feilmelding på oversettelse av innhold
+* Fiks for å unngå visning av skjulte menypunkter på nivå tre (navigasjonssider) etter migrasjon
+* Stylingjusteringer på publiseringsinfo på infosider og ansattesider
+
+
 # Release 2013-09-06 tag: R2.2.1
 
 Fikser problemet med at bare det første av de små bildene på artiklene var synlig. #3703
