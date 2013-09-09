@@ -1621,6 +1621,7 @@ function uib_article_field_default_fields() {
           'target_bundles' => array(
             'uib_article' => 'uib_article',
             'uib_external_content' => 'uib_external_content',
+            'uib_testimonial' => 'uib_testimonial',
           ),
         ),
         'target_type' => 'node',
