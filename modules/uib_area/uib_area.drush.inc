@@ -241,14 +241,15 @@ function drush_uib_area_menu_to_relation() {
   }
 }
 
-function uib_area__unroll_menu_recursive($trunk) {
+function uib_area__unroll_menu_recursive($trunk, $visible = TRUE) {
   foreach ($trunk as $branch) {
     $nid = 0;
-    $external = FALSE;
+    if (!$visible || $branch['link']['hidden'] == 1) {
+      $visible = FALSE;
+    }
     if (url_is_external($branch['link']['link_path'])) {
-      $external = TRUE;
       // create external content node
-      if ($branch['link']['depth'] > 2) {
+      if ($branch['link']['depth'] > 2 && $visible) {
         // create new uib_external_content
         $new_node = new stdClass();
         $new_node->is_new = TRUE;
@@ -261,8 +262,6 @@ function uib_area__unroll_menu_recursive($trunk) {
         if (!empty($new_node->nid)) {
           $nid = $new_node->nid;
           uibx_log('Created external link node ' . $nid . ' for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'notice');
-          // nuke the menu link
-          menu_link_delete($branch['link']['mlid']);
         }
         else {
           uibx_log('Unable to create external link node for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'error');
@@ -277,18 +276,12 @@ function uib_area__unroll_menu_recursive($trunk) {
       }
     }
     if (!empty($branch['below'])) {
-      if ($external && $branch['link']['depth'] > 2) {
-        menu_link_delete($branch['link']['mlid']);
-        uibx_log('Skipped children of external link "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'warning');
-      }
-      else {
-        uib_area__unroll_menu_recursive($branch['below']);
-      }
+      uib_area__unroll_menu_recursive($branch['below'], $visible);
     }
     // Add to entity relation and nuke this menu link
     if ($branch['link']['depth'] > 2) {
-      // Only add the relation if the menu link was enabled
-      if ($branch['link']['hidden'] == 0) {
+      // Only add the relation if the menu link was enabled and it has no disabled parents
+      if ($visible) {
         $parent_menu_link = menu_link_load($branch['link']['plid']);
         $parent_nid = uib_area__extract_nid_from_path($parent_menu_link['link_path']);
         if (empty($parent_nid)) {
@@ -302,7 +295,7 @@ function uib_area__unroll_menu_recursive($trunk) {
         }
       }
       else {
-        uibx_log('Skipped relation for hidden link "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'warning');
+        uibx_log('Ignored hidden link "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'notice');
       }
       menu_link_delete($branch['link']['mlid']);
     }
