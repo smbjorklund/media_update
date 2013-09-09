@@ -82,6 +82,7 @@ fg/eurasia
 fg/genpent
 fg/norskerom
 fg/middleeastislam
+fg/poverty
 rg/pacific
 rg/eurasia
 rg/genpent
