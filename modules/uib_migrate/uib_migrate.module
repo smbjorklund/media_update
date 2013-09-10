@@ -11,30 +11,6 @@ function uib_migrate_migrate_api() {
   return $api;
 }
 
-function uib_migrate_cron_job_scheduler_info() {
-  return array(
-    'w2_sync' => array(
-      'queue name' => 'w2_sync',
-      'worker callback' => 'uib_migrate__w2_sync',
-      'jobs' => array(
-        array(
-          'type' => 'w2',
-          'id' => 0,
-          'period' => 15*60,
-          'periodic' => TRUE,
-        ),
-      ),
-    ),
-  );
-}
-
-function uib_migrate__w2_sync($job) {
-  module_load_include('inc', 'uib_migrate');
-  uibx_log("W2 SYNC start");
-  uib_migrate__sync_w2_users(100);
-  uibx_log("W2 SYNC done");
-}
-
 function uib_migrate__sync_w2_users($limit=100) {
   $offset = variable_get('uib_w2_user_offset', 0);
 

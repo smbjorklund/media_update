@@ -94,3 +94,10 @@ function uib_migrate_update_7001() {
   db_drop_table('migrate_map_epagesnodes');
   db_drop_table('migrate_map_epagesmenulinks');
 }
+
+/**
+ * Disable the job_scheduler
+ */
+function uib_migrate_update_7002() {
+  module_disable(array('job_scheduler'), FALSE);
+}
