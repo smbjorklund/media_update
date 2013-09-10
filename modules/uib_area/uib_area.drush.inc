@@ -289,9 +289,20 @@ function uib_area__unroll_menu_recursive($trunk, $visible = TRUE) {
         }
         else {
           $parent_node = node_load($parent_nid);
-          $parent_node->field_uib_relation['und'][]['target_id'] = $nid;
-          node_save($parent_node);
-          uibx_log('Added entity relation to ' . $nid . ' for node ' . $parent_nid, 'notice');
+          $already_set = FALSE;
+          if (isset($parent_node->field_uib_relation['und'][0])) {
+            foreach ($parent_node->field_uib_relation['und'] as $exists) {
+              if ($exists['target_id'] == $nid) {
+                $already_set = TRUE;
+                break;
+              }
+            }
+          }
+          if (!$already_set) {
+            $parent_node->field_uib_relation['und'][]['target_id'] = $nid;
+            node_save($parent_node);
+            uibx_log('Added entity relation to ' . $nid . ' for [parent] node ' . $parent_nid, 'notice');
+          }
         }
       }
       else {
