@@ -100,4 +100,5 @@ function uib_migrate_update_7001() {
  */
 function uib_migrate_update_7002() {
   module_disable(array('job_scheduler'), FALSE);
+  drupal_uninstall_modules(array('job_scheduler'), FALSE);
 }
