@@ -1644,7 +1644,7 @@ function uib_article_field_default_fields() {
             'view_mode' => 'short_teaser',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '6',
+          'weight' => '30',
         ),
         'short_teaser' => array(
           'label' => 'above',
