@@ -88,16 +88,17 @@ function drush_uib_study_uib_sync_fs() {
     $nodes_to_delete = array();
     foreach ($unused_codes as $code => $nids) {
       array_splice($nodes_to_delete, count($nodes_to_delete), 0, $nids);
-      uibx_log("Deleting nodes for $code");
+      uibx_log("Deleting nodes for $code", 'warning');
     }
-    $delete_limit = variable_get('uib_fs_delete_limit', 50);
+    $delete_limit = variable_get('uib_fs_delete_limit', 500);
     if (count($nodes_to_delete) <= $delete_limit) {
       if ($nodes_to_delete) {
         node_delete_multiple($nodes_to_delete);
+        uibx_log('Deleted ' . count($nodes_to_delete) . ' study nodes', 'warning');
       }
     }
     else {
-      uibx_log('Cowardly refused to delete more than $delete_limit study nodes', 'error');
+      uibx_log('Cowardly refused to delete ' . count($nodes_to_delete) . ' study nodes', 'error');
     }
   }
 }
