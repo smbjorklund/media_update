@@ -1,6 +1,10 @@
 #!/bin/sh
 
 SITE_URL=http://$(basename $(readlink site))
+if test ! -z "$1"; then
+    SITE_URL=$SITE_URL/$1
+fi
+
 echo $SITE_URL
 
 if [ "$(uname -s)" = "Darwin" ]; then
