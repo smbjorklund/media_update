@@ -8,9 +8,12 @@ Release migrerer SV-fakultetet til ny plattform og gjør dessuten en del opprett
 * Rydder opp tomme menypunkt for sv-fakultetet etter menysplit #3536
 * Fiks for brødsmulestien etter menysplit #3575
 * Fiks for at vitnesbyrd skal kunne vises som relatert innhold #3717
-* Fiks etter R2.2 som ga feilmelding på oversettelse av innhold
-* Fiks for å unngå visning av skjulte menypunkter på nivå tre (navigasjonssider) etter migrasjon
-* Stylingjusteringer på publiseringsinfo på infosider og ansattesider
+* Fiks etter R2.2 som ga feilmelding på oversettelse av innhold #3705
+* Fiks for å unngå visning av skjulte menypunkter på nivå tre (navigasjonssider) etter migrasjon #3707
+* Justering av rettigheter i webdesk gir level 2 og 3-brukere redigeringstilgang bare til meny på egne områder #3643
+* Lagt til rettigheter i webdesk fo level 2 og 3 til å legge til eksternt innhold
+* Noen justeringer i forhold til feilmeldinger i migrasjon #3733, #3706
+
 
 
 # Release 2013-09-06 tag: R2.2.1
