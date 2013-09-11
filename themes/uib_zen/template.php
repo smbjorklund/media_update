@@ -323,25 +323,8 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
     // Handle articles
     if ($variables['type'] == 'uib_article') {
-      $variables['content']['title']['#markup'] = '<h1>' . $variables['title'] . '</h1>';
-      $variables['content']['title']['#weight'] = -45;
-      $variables['content']['group_article_info']['#prefix'] = '<div class="article-info clearfix">';
-      $variables['content']['group_article_info']['#suffix'] = '</div>';
-      $variables['content']['group_article_info']['uib_article_publish_info'] = array(
-        '#markup' => '<div class="uib-news-byline-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-news-byline-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>',
-        '#weight' => 10,
-      );
-      hide($variables['content']['group_article_info']['field_uib_byline']);
-      if (!in_array($variables['node']->field_uib_area['und'][0]['target_id'], array(1, 2))) {
-        $service_links = theme('item_list', array(
-          'items' => service_links_render($variables['node'], FALSE),
-          'style' => SERVICE_LINKS_STYLE_IMAGE,
-        ));
-        $variables['content']['group_article_info']['uib_service_links'] = array(
-          '#markup' => '<div class="service-links">' . $service_links . '</div>',
-          '#weight' => 20,
-        );
-      }
+        $variables['content']['title']['#markup'] = '<h1>' . $variables['title'] . '</h1>';
+        $variables['content']['title']['#weight'] = 0.5;
       if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
         // Setup kicker
         // -- First determine which date to set
@@ -362,7 +345,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         else {
           $variables['content']['field_uib_kicker'][0]['text'] = array('#markup' => "<div class=\"uib-kicker-text\">" . $variables['content']['field_uib_kicker'][0]['#markup'] . "</div>");
         }
-        $variables['content']['field_uib_kicker']['#weight'] = -50;
         $variables['content']['field_uib_kicker'][0]['#markup'] = "";
         $variables['content']['field_uib_kicker'][0]['date'] = array('#markup' => "<div class=\"uib-kicker-date\">" . $created . "</div>");
 
@@ -377,7 +359,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $uib_news_byline = t('By') . ' ';
           // join authors into a single line
           for ($i = 0; $i < $byline_nrof_authors; $i++) {
-            $uib_news_byline .= $glue . $variables['content']['group_article_info']['field_uib_byline'][$i]['#markup'];
+            $uib_news_byline .= $glue . $variables['content']['group_article_main']['field_uib_byline'][$i]['#markup'];
             if ($i == $byline_nrof_authors - 2) {
               $glue = ' ' . t('and') . ' '; // not comma between last names
             }
@@ -392,10 +374,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           }
           $uib_news_byline .= $glue . $variables['field_uib_external_author']['und'][0]['value'];
         }
-        $variables['content']['group_article_info']['uib_news_byline'] = array(
-          '#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>",
-          '#weight' => 0,
-        );
+        hide($variables['content']['group_article_main']['field_uib_byline']);
+        $variables['content']['group_article_top']['uib_news_byline'] = array('#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>");
+        $variables['content']['group_article_top']['uib_news_byline']['#suffix'] = '<div class="uib-news-byline-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-news-byline-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
+        $variables['content']['group_article_top']['#prefix'] = '<div class="article-info clearfix">';
+        $variables['content']['group_article_top']['#suffix'] = '</div>';
       }
       elseif ($variables['node']->field_uib_article_type['und'][0]['value'] == 'event') {
         if (empty($variables['node']->field_uib_kicker['und'][0]['value'])) {
@@ -412,6 +395,17 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $variables['content']['field_uib_kicker'] = $field_uib_kicker;
         }
         // Ensure that no byline is shown
+        if (!empty($variables['content']['group_article_main']['field_uib_byline'])) {
+          hide($variables['content']['group_article_main']['field_uib_byline']);
+        }
+      }
+      else {
+        // In all other article types ensure that no byline is shown
+        if (!empty($variables['content']['group_article_main']['field_uib_byline'])) {
+          hide($variables['content']['group_article_main']['field_uib_byline']);
+        }
+        // ... and that we show timestamps
+        $variables['content']['group_article_top']['field_uib_text']['#suffix'] = '<div class="uib-article-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-article-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>';
       }
       // Ensure that the labels of some fields, which are shown in the
       // main content sidebar, are not show when the fields contain no data
@@ -452,9 +446,23 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           array('group' => JS_THEME, )
         );
       }
+
+      if (!in_array($variables['node']->field_uib_area['und'][0]['target_id'], array(1, 2))) {
+        $service_links = theme('item_list', array(
+          'items' => service_links_render($variables['node'], FALSE),
+          'style' => SERVICE_LINKS_STYLE_IMAGE,
+        ));
+        if (!empty($variables['content']['group_article_main'])) {
+          $variables['content']['group_article_top']['#suffix'] = '<div class="service-links">' . $service_links . '</div></div>';
+          $variables['content']['group_article_top']['#weight'] = $variables['content']['group_article_main']['#weight'] - 0.5;
+          if (empty($variables['content']['group_article_top']['#prefix'])) {
+            $variables['content']['group_article_top']['#prefix'] = '<div class="article-info clearfix">';
+          }
+        }
+      }
     }
 
-    if (in_array($variables['node']->field_uib_area['und'][0]['target_id'], array(1, 2))) {
+    if (in_array($variables['title'], array('Ansattsider', 'Employee Pages'))) {
       drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/hide_links.js', array('group' => JS_THEME, ));
     }
   }

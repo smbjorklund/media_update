@@ -224,7 +224,7 @@ function uib_article_field_default_fields() {
       'description' => 'Add the author of the content. Use UiB usernames to search for people.',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'inline',
           'module' => 'entityreference',
           'settings' => array(
             'link' => 1,
@@ -896,7 +896,7 @@ function uib_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '-50',
+          'weight' => '0',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -999,7 +999,7 @@ function uib_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '-40',
+          'weight' => '1',
         ),
         'short_teaser' => array(
           'label' => 'hidden',
@@ -1277,7 +1277,7 @@ function uib_article_field_default_fields() {
             'file_view_mode' => 'content_main',
           ),
           'type' => 'file_rendered',
-          'weight' => '-30',
+          'weight' => '2',
         ),
         'short_teaser' => array(
           'label' => 'hidden',
@@ -1644,7 +1644,7 @@ function uib_article_field_default_fields() {
             'view_mode' => 'short_teaser',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '30',
+          'weight' => '6',
         ),
         'short_teaser' => array(
           'label' => 'above',
