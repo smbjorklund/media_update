@@ -431,14 +431,19 @@ div.link-field-column {
   .field-item {
     float: left;
     text-transform: capitalize;
+    margin-left: 1em;
+    overflow: hidden;
+    a:link {
+      display: block;
+      float: left;
+      height: 25px;
+      padding-left: 30px;
+      background-repeat: no-repeat;
+      background-position: left top;
+    }
   }
-  .twitter,
-  .vimeo,
-  .youtube,
-  .facebook,
-  .flickr {
-    background-repeat: no-repeat;
-    background-position: left top;
+  .instagram {
+    background-image: url('../images/instagram.png');
   }
   .twitter {
     background-image: url('../images/twitter.png');
@@ -475,23 +480,6 @@ div.link-field-column {
 }
 .service-links + div {
   clear: left;
-}
-
-.field-name-field-uib-social-media {
-  .field-item {
-    margin-left: 1em;
-    overflow: hidden;
-  }
-  .twitter,
-  .vimeo,
-  .youtube,
-  .facebook,
-  .flickr {
-    display: block;
-    float: left;
-    height: 25px;
-    padding-left: 30px;
-  }
 }
 
 .more-link {
