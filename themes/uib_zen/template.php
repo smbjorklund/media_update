@@ -459,6 +459,8 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
   if ($variables['view_mode'] == 'teaser' && $variables['type'] == 'uib_testimonial') {
     $variables['title'] = '';
+    $variables['content']['field_uib_quote'][0]['#markup'] = '<span class="testimonial-teaser-quote">“</span>' . trim($variables['content']['field_uib_quote'][0]['#markup']) . '<span class="testimonial-teaser-quote">”</span>';
+    $variables['content']['field_uib_name'][0]['#markup'] = '– ' . $variables['content']['field_uib_name'][0]['#markup'];
   }
 
   // Add theme suggestion to nodes printed in view mode (newspage)
