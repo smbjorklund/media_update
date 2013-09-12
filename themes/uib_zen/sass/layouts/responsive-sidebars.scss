@@ -1483,6 +1483,16 @@ $zen-auto-include-item-base: false;
       margin-left: 53%;
       width: 46%;
       float: none;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+      > .field-items {
+        margin: 15px;
+      }
+      display: inline-block;
+      .field {
+        float: left;
+        display: inline-block;
+      }
     }
   }
 
