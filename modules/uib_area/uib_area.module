@@ -196,8 +196,8 @@ function uib_area_block_view($delta='') {
       $path = $base_url . '/' . $theme_path . '/images/';
       $logo0_nb = $path . 'stemmerettsjubileet_nb.png';
       $logo0_en = $path . 'stemmerettsjubileet_nb.png';
-      $logo1_nb = $path . 'hp_nb.png';
-      $logo1_en = $path . 'hp_eng.png';
+      $logo1_nb = $path . 'forskningsdagene.png';
+      $logo1_en = $path . 'forskningsdagene.png';
       $area = uib_area__get_current();
       if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
         if ($area->language == 'en') {
@@ -209,9 +209,9 @@ function uib_area_block_view($delta='') {
             </div>
           ';
           $block['content'] .= '
-            <div class="banner eng" id="hp">
-              <a title="Holbergprize" href="http://www.uib.no/ledelsen/en/field-of-work/holberg-prize">
-                <img alt="Holbergprize" src="'  . $logo1_en . '"/>
+            <div class="banner eng" id="fd">
+              <a title="Forskningsdagene" href="http://www.uib.no/form/arbeidsfelt/forskningsdagene">
+                <img alt="Forskningsdagene" src="'  . $logo1_en . '"/>
               </a>
             </div>
           ';
@@ -225,9 +225,9 @@ function uib_area_block_view($delta='') {
             </div>
           ';
           $block['content'] .= '
-            <div class="banner" id="hp">
-              <a title="Holbergprisen" href="http://www.uib.no/samfunn/uib-i-samfunnet/holbergprisen">
-                <img alt="Holbergprisen" src="' . $logo1_nb . '"/>
+            <div class="banner" id="fd">
+              <a title="Forskningsdagene" href="http://www.uib.no/form/arbeidsfelt/forskningsdagene">
+                <img alt="Forskningsdagene" src="' . $logo1_nb . '"/>
               </a>
             </div>
           ';
