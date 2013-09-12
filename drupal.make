@@ -14,7 +14,7 @@ api = 2
 projects[drupal][version] = 7.23
 
 ; themes
-projects[zen][version] = 5.1
+projects[zen][version] = 5.4
 
 ; modules
 projects[addressfield][version] = 1.0-beta4
