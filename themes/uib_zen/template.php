@@ -442,8 +442,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $variables['content']['group_article_sidebar']['#prefix'] = '<div class="group-article-sidebar">';
           $variables['content']['group_article_sidebar']['#suffix'] = '</div>';
         }
-        $variables['content']['group_article_sidebar']['field_uib_relation'] = $variables['content']['field_uib_relation'];
-        unset($variables['content']['field_uib_relation']);
       }
 
       if (isset($variables['field_uib_text']['und']) && (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container'))) {
