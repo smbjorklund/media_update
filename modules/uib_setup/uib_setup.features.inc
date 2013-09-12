@@ -64,6 +64,7 @@ function uib_setup_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'area_bottom',
   );
 
   // Exported image style: area_main.
@@ -87,6 +88,7 @@ function uib_setup_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'area_main',
   );
 
   // Exported image style: content_main.
@@ -110,6 +112,7 @@ function uib_setup_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'content_main',
   );
 
   // Exported image style: content_sidebar.
@@ -133,6 +136,7 @@ function uib_setup_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'content_sidebar',
   );
 
   // Exported image style: custom_logo.
@@ -156,6 +160,7 @@ function uib_setup_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'custom_logo',
   );
 
   // Exported image style: full_width_16_9.
@@ -178,6 +183,7 @@ function uib_setup_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'full_width_16_9',
   );
 
   // Exported image style: user_thumbnail.
@@ -201,6 +207,7 @@ function uib_setup_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'user_thumbnail',
   );
 
   // Exported image style: wide_thumbnail.
@@ -223,6 +230,7 @@ function uib_setup_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'wide_thumbnail',
   );
 
   return $styles;
