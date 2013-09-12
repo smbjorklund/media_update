@@ -1,0 +1,5 @@
+name = UiB Service links
+description = "Extend services provided by the service links module."
+package = UiB
+core = 7.x
+dependencies[] = service_links

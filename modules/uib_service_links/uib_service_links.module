@@ -1,0 +1,140 @@
+<?php
+
+/**
+ * @file
+ * Extend the number of services in uib_service_links.module.
+ *
+ */
+
+/**
+ * Implements hook_service_links().
+ */
+function uib_service_links_service_links() {
+  $links = array();
+  $links['google_plus_share'] = array(
+    'name' => 'Google Plus Share',
+    'description' => t('Share on Google+'),
+    'link' => 'https://plus.google.com/share?url=<raw-encoded-url>',
+  );
+
+  return $links;
+}
+
+/**
+ * Implements hook_theme_registry_alter.
+ */
+function uib_service_links_theme_registry_alter(&$theme_registry) {
+  if ($theme_registry['service_links_build_link']) {
+    $theme_registry['service_links_build_link']['theme path'] = drupal_get_path('module', 'uib_service_links');
+    $theme_registry['service_links_build_link']['function'] = 'theme_uib_service_links_build_link';
+  }
+}
+
+function theme_uib_service_links_build_link($variables) {
+  $text = $variables['text'];
+  $url = $variables['url'];
+  $image = $variables['image'];
+  $nodelink = $variables['nodelink'];
+  $style = $variables['style'];
+  $attributes = $variables['attributes'];
+
+  // Hardcode shared hostname to be www.uib.no.
+  foreach ($url[1] as $value) {
+    if (preg_match('/^http:\/\//', $value)) {
+      $path = parse_url($value, PHP_URL_PATH);
+      $segments = explode('/', $path);
+      $segments[0] = 'http://www.uib.no';
+      $path = implode('/', $segments);
+      if (isset($url[1]['url'])) {
+        $url[1]['url'] = $path;
+      }
+      if (isset($url[1]['u'])) {
+        $url[1]['u'] = $path;
+      }
+    }
+  }
+
+  if ($nodelink) {
+    $query = isset($url[1]) ? $url[1] : NULL;
+
+    switch ($style) {
+      case SERVICE_LINKS_STYLE_TEXT:
+        $link = array(
+          'title' => $text,
+          'href' => $url[0],
+          //'query' => array($url[1]),
+          'query' => $query,
+          'attributes' => $attributes,
+        );
+        break;
+      case SERVICE_LINKS_STYLE_IMAGE:
+        $link = array(
+          'title' => theme('image', array('path' => service_links_expand_path($image), 'alt' => $text)),
+          'href' => $url[0],
+          'query' => $query,
+          'attributes' => $attributes,
+          'html' => TRUE,
+        );
+        break;
+      case SERVICE_LINKS_STYLE_IMAGE_AND_TEXT:
+        $link = array(
+          'title' => theme('image', array('path' => service_links_expand_path($image), 'alt' => $text)) .' '. $text,
+          'href' => $url[0],
+          'query' => $query,
+          'attributes' => $attributes,
+          'html' => TRUE,
+        );
+        break;
+      case SERVICE_LINKS_STYLE_EMPTY:
+        $link = array(
+          'title' => '<span class="element-invisible">' . $text . '</span>',
+          'href' => $url[0],
+          'query' => $query,
+          'attributes' => $attributes,
+          'html' => TRUE,
+        );
+        break;
+      default:
+        $link = theme($style, $variables);
+    }
+  }
+  else {
+    $attributes = array('attributes' => $attributes);
+    if (isset($url[1])) {
+      $attributes['query'] = $url[1];
+    }
+    switch ($style) {
+      case SERVICE_LINKS_STYLE_TEXT:
+        $link = l($text, $url[0], $attributes);
+        break;
+      case SERVICE_LINKS_STYLE_IMAGE:
+        $attributes = array_merge($attributes, array('html' => TRUE));
+        if ($attributes['attributes']['class'][0] == 'service-links-google-plus-share') {
+          global $theme_path;
+          $link = l(theme('image', array('path' => $theme_path . '/'. $image, 'alt' => $text)), $url[0], $attributes);
+        }
+        else {
+          $link = l(theme('image', array('path' => service_links_expand_path($image), 'alt' => $text)), $url[0], $attributes);
+        }
+
+        break;
+      case SERVICE_LINKS_STYLE_IMAGE_AND_TEXT:
+        $attributes = array_merge($attributes, array('html' => TRUE));
+        $link = l(theme('image', array('path' => service_links_expand_path($image), 'alt' => $text)) .' '. $text, $url[0], $attributes);
+        break;
+      case SERVICE_LINKS_STYLE_EMPTY:
+        $attributes = array_merge($attributes, array('html' => TRUE));
+        $link = l('<span class="element-invisible">' . $text . '</span>', $url[0], $attributes);
+        break;
+      case SERVICE_LINKS_STYLE_FISHEYE:
+        $attributes['attributes']['class'] = isset($attributes['attributes']['class']) ? array_merge($attributes['attributes']['class'], array('fisheyeItem')) : array('fisheyeItem');
+        $attributes = array_merge($attributes, array('html' => TRUE));
+        $link = l(theme('image', array('path' => service_links_expand_path($image, 'fisheye'), 'alt' => $text, 'getsize' => FALSE)) .'<span>'. $text .'</span>', $url[0], $attributes);
+        break;
+      default:
+        $link = theme($style, $variables);
+    }
+  }
+
+  return $link;
+}

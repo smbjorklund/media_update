@@ -877,6 +877,7 @@ webdesk/*';
     'identica' => 0,
     'newskicks' => 0,
     'diigo' => 0,
+    'google_plus_share' => 1,
   );
   $export['service_links_show'] = $strongarm;
 
@@ -924,6 +925,7 @@ webdesk/*';
     'identica' => '-87',
     'newskicks' => '-83',
     'diigo' => '-92',
+    'google_plus_share' => '0',
   );
   $export['service_links_weight'] = $strongarm;
 
