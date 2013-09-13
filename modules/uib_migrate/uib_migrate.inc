@@ -56,7 +56,7 @@ function xtopic_fixuri($text) {
  *   Non existing file object is created and stored (file_save) before
  *   returning the file object.
  */
-function xtopic_file($id, $uid, $parent_lang = 'nb', $scope) {
+function xtopic_file($id, $uid, $parent_lang = 'nb', $scope = NULL) {
   if (empty($parent_lang)) {
     $parent_lang = 'nb';
   }
@@ -139,9 +139,6 @@ function xtopic_file($id, $uid, $parent_lang = 'nb', $scope) {
     $translation = array('language' => $parent_lang, 'status' => 1);
     $et->setTranslation($translation);
     $et->setOriginalLanguage($parent_lang); // set original language
-    if ($file_exists) {
-      uibx_log('Set original language for existing file: fid=' . $file->fid . ', entity lang=' . entity_language('file',$file), 'notice');
-    }
   }
 
   file_save($file);
@@ -191,12 +188,14 @@ function xtopicDescription($file, $xtopic, $parent_lang, $scope) {
   }
 
   if ($xtopic->type == 'image') {
-    $scope = "dc_description:$scope";
-    $scopedDescription = $xtopic->$scope;
+    if ($scope) {
+      $scope = "dc_description:$scope";
+      $scopedDescription = $xtopic->$scope;
 
-    if ($scopedDescription) {
-      $description = $scopedDescription;
-      $file->field_uib_description[$parent_lang][0]['value'] = $description;
+      if ($scopedDescription) {
+        $description = $scopedDescription;
+        $file->field_uib_description[$parent_lang][0]['value'] = $description;
+      }
     }
 
     $title = truncate_utf8($description, 200, TRUE, TRUE, 1);

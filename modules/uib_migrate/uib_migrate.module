@@ -42,7 +42,6 @@ function uib_migrate__sync_w2_users($limit=100) {
 
 function uib_migrate__sync_w2_user($username) {
   $account = user_load_by_name($username);
-
   if (!$account) {
     uibx_log('No user with the given username exist');
     return;
@@ -77,11 +76,16 @@ function uib_migrate__sync_w2_user($username) {
   }
 
   if (!empty($w2u->main_media)) {
-    $file = xtopic_file($w2u->main_media, $account->uid);
-    if ($file && (empty($account->picture) || $account->picture->fid != $file->fid)) {
-      $file->status = FILE_STATUS_PERMANENT; // fake it since xtopic_file doesn't really load the file object
-      $edit['picture'] = $file;
-      file_usage_add($file, 'user', 'user', $account->uid);
+    if (!isset($account->picture->field_uib_w2_id['und'][0]['value']) || $account->picture->field_uib_w2_id['und'][0]['value'] != $w2u->main_media) {
+      if (!empty($account->picture->fid)) {
+        file_usage_delete($account->picture, 'user', 'user', $account->uid);
+      }
+      $file = xtopic_file($w2u->main_media, $account->uid, $account->language);
+      if ($file && (empty($account->picture) || $account->picture->fid != $file->fid)) {
+        $file->status = FILE_STATUS_PERMANENT;
+        $edit['picture'] = $file;
+        file_usage_add($file, 'user', 'user', $account->uid);
+      }
     }
   }
 
