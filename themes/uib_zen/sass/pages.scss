@@ -57,6 +57,11 @@ body {
   }
 }
 
+#top-region-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
 #name-and-slogan { /* Wrapper for website name and slogan */
   float: left;
   width: 90%;
