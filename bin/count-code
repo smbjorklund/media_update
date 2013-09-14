@@ -33,7 +33,13 @@ if (@ARGV) {
 	}
 	unlink("/tmp/count-code");
 
-	my @lang = sort { $R{master}{$b} <=> $R{master}{$a} } keys %lang;
+	sub churn {
+	    my $lang = shift;
+	    my @k = sort keys %R;
+	    return abs($R{$k[0]}{$lang} - $R{$k[-1]}{$lang});
+	}
+
+	my @lang = sort { churn($a) <=> churn($b) || $R{master}{$b} <=> $R{master}{$a} } keys %lang;
 
 	print join(", ", "release", @lang), "\n";
 	for my $r (sort(keys %R)) {
