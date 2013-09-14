@@ -1,4 +1,8 @@
-# Release 2013-09-10 tag: R3
+# Release 2013-09-12 tag: R3.0.1
+
+La inn reklame for Forskningsdagene på forsiden.  #3736
+
+# Release 2013-09-11 tag: R3.0
 
 Release migrerer SV-fakultetet til ny plattform og gjør dessuten en del opprettinger etter r2.2 (menysplit)
 
@@ -48,7 +52,7 @@ Release mandag 19. august gjør justeringer etter R.2, primært i frontend, båd
 
 
 
-# Release 2013-08-13 tag: R2
+# Release 2013-08-13 tag: R2.0
 
 Release tirsdag 13. august. Migrasjon av forside uib.no og /aktuelt til w3.  Strengere tilganger til å redigere områder.
 
