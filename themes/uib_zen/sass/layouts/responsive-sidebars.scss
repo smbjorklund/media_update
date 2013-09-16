@@ -86,23 +86,6 @@ $zen-auto-include-item-base: false;
   @include zen-grid-container();
 }
 
-/*
- * Navigation bar
- */
-#navigation {
-  background: url(../../images/decore-line.png) repeat-x bottom;
-  margin-bottom: -6px;
-  padding-bottom: 16px;
-}
-.expanded {
-  #navigation {
-    background: url(../../images/decore-line.png) repeat-x top;
-    .region-navigation {
-      margin-top: 10px;
-    }
-  }
-}
-
 .page-node-add, .page-webdesk {
   #navigation {
     background: none;
@@ -173,6 +156,23 @@ $zen-auto-include-item-base: false;
     #block-uib-area-colophon-logos {
       @include zen-clear();
       @include zen-grid-item(2, 1);
+    }
+  }
+}
+
+@media all and (min-width: 720px) {
+  #navigation {
+    background: url(../../images/decore-line.png) repeat-x bottom;
+    margin-bottom: -6px;
+    padding-bottom: 16px;
+  }
+  .expanded {
+    #navigation {
+      padding-top: 1px;
+      background: url(../../images/decore-line.png) repeat-x top;
+      .region-navigation {
+        margin-top: 10px;
+      }
     }
   }
 }
