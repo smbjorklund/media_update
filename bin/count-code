@@ -36,7 +36,11 @@ if (@ARGV) {
 	sub churn {
 	    my $lang = shift;
 	    my @k = sort keys %R;
-	    return abs($R{$k[0]}{$lang} - $R{$k[-1]}{$lang});
+	    my $churn = 0;
+	    for my $i (0 .. $#k-1) {
+		$churn += abs($R{$k[$i]}{$lang} - $R{$k[$i+1]}{$lang});
+	    }
+	    return $churn;
 	}
 
 	my @lang = sort { churn($a) <=> churn($b) || $R{master}{$b} <=> $R{master}{$a} } keys %lang;
