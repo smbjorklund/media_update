@@ -1248,6 +1248,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_kicker']['field'] = 'field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['label'] = '';
   $handler->display->display_options['fields']['field_uib_kicker']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_kicker']['empty'] = 'News';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1334,6 +1335,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_kicker']['field'] = 'field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['label'] = '';
   $handler->display->display_options['fields']['field_uib_kicker']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_kicker']['empty'] = 'News';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1420,6 +1422,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_kicker']['field'] = 'field_uib_kicker';
   $handler->display->display_options['fields']['field_uib_kicker']['label'] = '';
   $handler->display->display_options['fields']['field_uib_kicker']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_kicker']['empty'] = 'News';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
