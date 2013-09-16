@@ -288,6 +288,11 @@ function uib_article_node_validate($node, $form, &$form_state) {
  */
 function uib_article__set_redirect($entity) {
   if (!empty($entity->field_uib_w2_path['und'][0]['value'])) {
+    // Redirect source may not exceed 255 chars
+    if (drupal_strlen($entity->field_uib_w2_path['und'][0]['value']) > 255) {
+      uibx_log('Redirect ignored; exceeded 255 characters: ' . $source_path, 'warning');
+      return;
+    }
     $redirect = new stdClass();
     redirect_object_prepare($redirect);
     $redirect->source = $entity->field_uib_w2_path['und'][0]['value'];

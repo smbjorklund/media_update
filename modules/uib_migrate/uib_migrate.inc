@@ -364,6 +364,11 @@ abstract class XTopicToArticleMigration extends Migration {
       );
     foreach ($sources as $source_path) {
       if (!empty($source_path)) {
+        // Redirect source may not exceed 255 chars
+        if (drupal_strlen($source_path) > 255) {
+          uibx_log('Redirect ignored; exceeded 255 characters: ' . $source_path, 'warning');
+          continue;
+        }
         $redirect = new stdClass();
         redirect_object_prepare($redirect);
         $redirect->source = $source_path;
