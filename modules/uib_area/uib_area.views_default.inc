@@ -1562,6 +1562,8 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'uib_article' => 'uib_article',
+    'uib_external_content' => 'uib_external_content',
+    'uib_testimonial' => 'uib_testimonial',
   );
 
   /* Display: Entity Reference */
