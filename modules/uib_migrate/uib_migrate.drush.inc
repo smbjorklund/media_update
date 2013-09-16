@@ -74,6 +74,10 @@ function drush_uib_migrate_build_menu() {
 }
 
 function uib_migrate__build_menu_tree($node, $mlid, $depth) {
+  if ($depth > 9) {
+    drush_log("Menu link at depth > 9 attempted", "error");
+    return;
+  }
   $w2id = $node->field_uib_w2_id['und'][0]['value'];
   if (empty($w2id)) {
     drush_log('Skipping menu link not created in migration for node ' . $node->nid);
