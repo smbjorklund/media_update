@@ -40,7 +40,21 @@ if (!$SITE && !$opt_fresh) {
     $SITE = readlink("site");
     $SITE = basename($SITE) if $SITE;
 }
-$SITE ||= "w3.uib.9zlhb.xip.io";  # alias for 127.0.0.1.xip.io (aka localhost)
+if (!$SITE) {
+    my $d = qx(/bin/pwd);
+    chomp($d);
+    $d = basename($d);
+    $d =~ s/\.uib\.no$//;
+    print "'$d'\n";
+
+    if (qx(hostname) eq "vengeance.uib.no\n") {
+	$SITE = "w3-$d.test.uib.no";
+    }
+    else {
+	$SITE ||= "w3-$d.uib.9zlhb.xip.io";  # alias for 127.0.0.1.xip.io (aka localhost)
+	$SITE =~ s/^w3-w3-/w3-/;
+    }
+}
 die "Bad site name '$SITE'" if $SITE =~ /\s/;
 
 # Can we find the previous database settings
@@ -61,7 +75,17 @@ if ($DB{driver} eq 'pgsql') {
 	require IO::Socket::INET;
 	IO::Socket::INET->new("localhost:$DB{port}") ? 'localhost' : 'glory.uib.no';
     };
-    $DB{database} ||= $ENV{PGDATABASE} || ($DB{host} eq 'localhost' ? 'db1' : "$ENV{USER}-db1");
+    $DB{database} ||= $ENV{PGDATABASE};
+    if (!$DB{database}) {
+	my $d = $SITE;
+	if ($d =~ s/\.local$// || $d =~ s/\.uib\.9zlhb\.xip\.io$//) {
+	    if ($DB{host} ne 'localhost') {
+		$d .= "-$ENV{USER}";
+	    }
+	}
+	$d =~ s/\./-/g;
+	$DB{database} = $d;
+    }
 }
 elsif ($DB{driver} eq "sqlite") {
     require Cwd;
