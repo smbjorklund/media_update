@@ -602,6 +602,7 @@ function uib_zen_preprocess_block(&$variables, $hook) {
   if (in_array ($variables['block_html_id'], $blue_block)) {
     if ($variables['block']->subject) {
       $variables['classes_array'][] = 'blue-block';
+      $variables['classes_array'][] = 'clearfix';
       $variables['block']->subject = '<span></span>' . $variables['block']->subject;
     }
   }
