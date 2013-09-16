@@ -176,6 +176,14 @@ $zen-auto-include-item-base: false;
   }
 }
 
+@media all and (min-width: 720px) {
+  .front #header {
+    background-image:url('../../images/bergenmuseum.png');
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+}
+
 /* Mobile */
 @media all and (min-width: 240px) and (max-width: 719px) {
   $zen-column-count: 1;
