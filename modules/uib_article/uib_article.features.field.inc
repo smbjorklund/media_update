@@ -407,7 +407,7 @@ function uib_article_field_default_fields() {
       'description' => 'Every event must have both a start date and an end date. Remember to fill out both date fields and time fields.',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -515,7 +515,7 @@ function uib_article_field_default_fields() {
       'description' => 'Choose which type of event you are creating.',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'i18n_field',
           'settings' => array(),
           'type' => 'i18n_list_default',
