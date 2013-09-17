@@ -1,3 +1,20 @@
+#Release 2013-09-18
+
+Release for løpende fix på diverse saker og moduloppdatering av Drupal.
+
+* Ansattsidene har fått endret layout slik at den korresponderer med layout på øvrige sider på uib.no. Dette innebærer at lenker til videre lesing som tidligere stod som lenker til høyre, nå er flyttet ned under artikkelen. #3738
+* Som en følge av dette måtte vi også justere på visning av lenker til eksternt innhold fra ansattsidene #3796
+* Stylingjusteringer og bugfiks for visning på mobil #3786, #3792
+* Justering i styling på publiserings-info mm #3722 #3583
+* Oversettelse av kategoriene i event-filteret #2330
+* Lagt til autocomplete på tilhørighet for artikler man søker opp som tilknyttet innhold #3649
+* Fjernet mulighet til å legge til underpunkt på meny nivå 2 — siden dette ikke er et nivå brukt på nettstedet #3586
+* Lagt til mulighet til å legge til lenker til Instagram og Google+ på områdeforsidene #3355 #3275
+* Lagt til default "Nyhet" i kicker på /aktuelt-sidene, der kickerfeltet ikke er fyllt ut #3308
+* Lagt til overskrift på ansattlistene på område #3167
+* Core og moduloppdateringer av Drupal #3433
+* Diverse tekniske saker #3746 #3740 #3730 #3729 #3709 #3591
+
 # Release 2013-09-12 tag: R3.0.1
 
 La inn reklame for Forskningsdagene på forsiden.  #3736
