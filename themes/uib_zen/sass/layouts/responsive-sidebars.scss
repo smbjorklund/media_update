@@ -1516,13 +1516,22 @@ $zen-auto-include-item-base: false;
       width: 46%;
       border-radius: $border-radius;
       box-shadow: $box-shadow;
-      > .field-items {
-        margin: 15px;
+      header {
+        height: 1px;
       }
-      display: inline-block;
-      .field {
+      img {
+        margin: 10px 10px 10px 10px;
         float: left;
+      }
+      a, .node-uib-testimonial {
+        color: #333;
         display: inline-block;
+      }
+      .field-name-field-uib-name {
+        margin-top: 10px;
+      }
+      .node-uib-testimonial .node-title {
+        border: none;
       }
     }
   }

@@ -223,6 +223,16 @@ h1 {
   color: #A2A2A2;
 }
 
+
+
+.node-type-uib-testimonial {
+  .field-name-field-uib-lead, .field-name-field-uib-text {
+    .field-label {
+      display: none;
+    }
+  }
+}
+
 .group-article-sidebar ul, .field-name-field-uib-primary-text ul, .field-name-field-uib-text ul, .field-name-field-uib-tertiary-text ul, .field-name-field-uib-tertiary-text ul, .field-name-field-uib-bottom-text ul {
     list-style-type: square;
   }
@@ -294,25 +304,13 @@ h1 {
   }
 }
 
-.node-teaser {
-  .field-name-field-uib-media {
-    margin: 0 10px 10px 0;
-  }
-  .field-name-field-uib-quote {
-    font-size: 1em;
-    width: 35%;
-    margin: 0 0 10px 0;
-    font-style: normal;
-    font-family: verdana, sans-serif;
-    &:before{display: none};
-  }
-  .testimonial-teaser-quote {
-    font-size: 1.5em;
-  }
-  .field-name-field-uib-name {
-    width: 35%;
-    margin: 0 0 10px 0;
-  }
+.node-area .field-name-field-uib-quote  {
+  font-size: 1em;
+  width: 100%;
+  font-style: normal;
+  font-family: verdana, sans-serif;
+  &:before{display: none};
+  &:after{display: none};
 }
 
 
@@ -332,13 +330,14 @@ h1 {
   margin: 0;
   width: auto;
 }
-
-.group-article-sidebar .field-name-field-uib-media {
+.field-name-field-uib-media .content {
   background: $light-grey;
-  margin: 10px 0 10px 0;
+  margin: 10px 0 0;
+  padding: 0 0 10px;
   font-size: .9em;
   line-height: 1.4;
 }
+
 
 /* styles for tabs recoded from <h2> headers */
 .uib-tabs-container {
