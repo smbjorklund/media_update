@@ -47,7 +47,7 @@ class XTopic(object):
         site = self.site()
         for f in self.etree.findall('xlink[@name="subordinate/hierarchical-relation/superordinate"]'):
             scope = f.get('scope')
-            if scope != site:
+            if scope and scope != site:
                 yield scope
 
 class XTopic_UserAgent(uib.web.UserAgent):
