@@ -236,8 +236,46 @@ function uib_zen_preprocess_page(&$variables, $hook) {
  *   The name of the template being rendered ("node" in this case.)
  */
 function uib_zen_preprocess_node(&$variables, $hook) {
-  if ($variables['page']) { // only preprocess if node is rendered in page mode
+  /**
+   * hook_preprocess that allways run on nodes.
+   */
+  $variables['is_employee'] = FALSE;
+
+  if ($variables['view_mode'] == 'teaser' && $variables['type'] == 'uib_testimonial') {
+    $variables['title'] = '';
+  }
+
+  // Add theme suggestion to nodes printed in view mode (newspage).
+  if (($variables['type'] == 'uib_article') && ($variables['field_uib_article_type']['und'][0]['value'] == 'news')) {
+    if ($variables['view_mode'] == 'teaser') {
+      $variables['theme_hook_suggestions'][] = 'node__news__recent_news';
+    }
+  }
+
+  if ($variables['view_mode'] == 'short_teaser') {
+    $variables['theme_hook_suggestions'][] = 'node__children';
+  }
+
+  if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
+    $variables['is_employee'] = TRUE;
+  }
+
+  if ($variables['type'] == 'uib_external_content' && $variables['view_mode'] == 'short_teaser') {
+    $variables['is_employee'] = TRUE;
+  }
+
+  /**
+   * Only run this when nodes are rendered on a page.
+   */
+  if ($variables['page']) {
     if ($variables['type'] == 'area') {
+      $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
+
+      if (stripos($tmp_block_html, 'view-content') !== FALSE) {
+        $variables['content']['group_two_column']['field_uib_kids']['#markup'] = $tmp_block_html;
+        $variables['content']['group_two_column']['field_uib_kids']['#weight'] = 6;
+      }
+
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'research group') {
         $variables ['classes_array'][] = t('research_g_node');
       }
@@ -261,9 +299,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'unit') {
          $variables ['classes_array'][] = t('unit_node');
       }
+
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'newspage') {
         $variables ['classes_array'][] = t('newspage_node');
-        //This field is printed in a view in the sidebar
+
+        // This field is printed in a view in the sidebar.
         unset($variables['content']['group_two_column']['field_uib_link_section']);
         if (isset($variables['content']['group_two_column']['field_uib_profiled_message'])) {
           $weight = $variables['content']['group_two_column']['field_uib_profiled_message']['#weight'];
@@ -274,7 +314,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           $variables['content']['field_uib_profiled_message_2']['#weight'] = $weight - 1;
           $variables['content']['field_uib_profiled_message_last'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_last_chosen_items', $variables['nid']);
           $variables['content']['field_uib_profiled_message_last']['#weight'] = $weight + 1;
-          // Recent news block from uib_area module
+          // Recent news block from uib_area module.
           $recent_news_block = module_invoke('uib_area', 'block_view', 'newspage_recent_news');
           $variables['content']['field_uib_newspage_recent_news'] = $recent_news_block['content'];
           $variables['content']['field_uib_newspage_recent_news']['#weight'] = $weight + 2;
@@ -282,46 +322,51 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         }
         unset($variables['content']['group_two_column']);
       }
+
       if ($variables['field_uib_area_type']['und']['0']['value'] == 'frontpage') {
         $variables ['classes_array'][] = t('frontpage_node');
-        //This field is printed as view
+        //This field is printed as view.
         unset($variables['content']['group_two_column']['field_uib_profiled_message']);
         unset($variables['content']['group_two_column']['field_uib_link_section']);
-        // Adding js to fix mobile menu on front page
+        // Adding js to fix mobile menu on front page.
         drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/mobile_menu_fix.js',
           array('group' => JS_THEME, )
         );
       }
+
       if (isset($variables['content']['field_uib_profiled_article'])) {
         $weight = $variables['content']['field_uib_profiled_article']['#weight'];
         unset($variables['content']['field_uib_profiled_article']);
         $variables['content']['field_uib_profiled_article'][]['#markup'] = views_embed_view('area_slideshow', 'default', $variables['nid']);
         $variables['content']['field_uib_profiled_article']['#weight'] = $weight;
       }
-      $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
-      if (stripos($tmp_block_html, 'view-content') !== FALSE) { // display only if any content present
-        $variables['content']['group_two_column']['field_uib_kids']['#markup'] = $tmp_block_html;
-        $variables['content']['group_two_column']['field_uib_kids']['#weight'] = 6;
-      }
 
-       if ($variables['field_uib_show_staff']['und'][0]['value'] == 1) {
+      if ($variables['field_uib_show_staff']['und'][0]['value'] == 1) {
         $variables['content']['field_uib_front_staff']['#markup'] = views_embed_view('ansatte', 'page_1', $variables['nid']);
         $variables['content']['field_uib_front_staff']['#weight'] = 12;
        }
-      // Hide "relevant links section" if empty [RTS-1073]
+
+      // Hide "relevant links section" if empty [RTS-1073].
       if (isset($variables['content']['group_two_column']['field_uib_link_section']['#items'])) {
         if (empty($variables['content']['group_two_column']['field_uib_link_section']['#items'][0]['value'])) {
           hide($variables['content']['group_two_column']['field_uib_link_section']);
         }
       }
+
       if (!isset($variables['content']['field_uib_primary_text'])) {
         $variables['content']['field_uib_primary_media'][0]['#view_mode'] = 'content_main';
         $variables['content']['field_uib_primary_media'][0]['file']['#style_name'] = 'content_main';
         $variables['classes_array'][] = 'no-primary-text';
       }
+
+      // Only run on emplyoee area pages.
+      if ($variables['is_employee']) {
+        drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/hide_links.js', array('group' => JS_THEME, ));
+      }
+
     }
 
-    // Handle articles
+    // Run only if the node type is uib_article.
     if ($variables['type'] == 'uib_article') {
       $variables['content']['title']['#markup'] = '<h1>' . $variables['title'] . '</h1>';
       $variables['content']['title']['#weight'] = -45;
@@ -366,7 +411,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         $variables['content']['field_uib_kicker'][0]['#markup'] = "";
         $variables['content']['field_uib_kicker'][0]['date'] = array('#markup' => "<div class=\"uib-kicker-date\">" . $created . "</div>");
 
-        // Byline
+        // Byline.
         $uib_news_byline = "";
         $byline_nrof_authors = 0;
         $glue = "";
@@ -434,7 +479,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         hide($variables['content']['group_article_sidebar']['field_uib_media'][0]['field_uib_owner']);
       }
 
-      // Section that only run on employee nodes.
+      // Section that only run on employee uib-article nodes types.
       if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
         if (empty($variables['content']['group_article_sidebar']['#id'])) {
           $variables['content']['group_article_sidebar']['#weight'] = 4;
@@ -451,34 +496,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         );
       }
     }
-
-    if (in_array($variables['node']->field_uib_area['und'][0]['target_id'], array(1, 2))) {
-      drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/hide_links.js', array('group' => JS_THEME, ));
-    }
-  }
-
-  if ($variables['view_mode'] == 'teaser' && $variables['type'] == 'uib_testimonial') {
-    $variables['title'] = '';
-  }
-
-  // Add theme suggestion to nodes printed in view mode (newspage)
-  if (($variables['type'] == 'uib_article') && ($variables['field_uib_article_type']['und'][0]['value'] == 'news')) {
-    if ($variables['view_mode'] == 'teaser') {
-      $variables['theme_hook_suggestions'][] = 'node__news__recent_news';
-    }
-  }
-
-  if ($variables['view_mode'] == 'short_teaser') {
-    $variables['theme_hook_suggestions'][] = 'node__children';
-  }
-
-  $variables['is_employee'] = FALSE;
-  if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
-    $variables['is_employee'] = TRUE;
-  }
-
-  if ($variables['type'] == 'uib_external_content' && $variables['view_mode'] == 'short_teaser') {
-    $variables['is_employee'] = TRUE;
   }
 }
 
@@ -531,9 +548,9 @@ function uib_zen_preprocess_comment(&$variables, $hook) {
 /* -- Delete this line if you want to use this function
 function uib_zen_preprocess_region(&$variables, $hook) {
   // Don't use Zen's region--sidebar.tpl.php template for sidebars.
-  //if (strpos($variables['region'], 'sidebar_') === 0) {
-  //  $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('region__sidebar'));
-  //}
+  if (strpos($variables['region'], 'sidebar_') === 0) {
+    $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('region__sidebar'));
+  }
 }
 // */
 
@@ -548,13 +565,13 @@ function uib_zen_preprocess_region(&$variables, $hook) {
 /* -- Delete this line if you want to use this function
 function uib_zen_preprocess_block(&$variables, $hook) {
   // Add a count to all the blocks in the region.
-  // $variables['classes_array'][] = 'count-' . $variables['block_id'];
+  $variables['classes_array'][] = 'count-' . $variables['block_id'];
 
   // By default, Zen will use the block--no-wrapper.tpl.php for the main
   // content. This optional bit of code undoes that:
-  //if ($variables['block_html_id'] == 'block-system-main') {
-  //  $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('block__no_wrapper'));
-  //}
+  if ($variables['block_html_id'] == 'block-system-main') {
+    $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('block__no_wrapper'));
+  }
 }
 // */
 
@@ -570,13 +587,13 @@ function uib_zen_preprocess_region(&$variables) {
 }
 
 /**
-* Override or insert variables into the block template
-*
-* @param $variables
-*   An array of varibales to pass to the theme template
-* @param $hook
-*   The name of the template being rendered
-*/
+ * Override or insert variables into the block template
+ *
+ * @param $variables
+ *   An array of varibales to pass to the theme template
+ * @param $hook
+ *   The name of the template being rendered
+ */
 function uib_zen_preprocess_block(&$variables, $hook) {
   if ($variables['block_html_id'] == 'block-uib-area-colophon') {
     $variables['content'] = '<div class="block-wrapper">' . $variables['content'] . '</div>';
@@ -611,13 +628,13 @@ function uib_zen_preprocess_block(&$variables, $hook) {
 }
 
 /**
-* Override or insert variables into the field template
-*
-* @param $variables
-*   A array of variables to pass to the theme template
-* @param $hook
-*   The name of the template being rendered
-*/
+ * Override or insert variables into the field template
+ *
+ * @param $variables
+ *   A array of variables to pass to the theme template
+ * @param $hook
+ *   The name of the template being rendered
+ */
 function uib_zen_preprocess_field(&$variables, $hook) {
   static $blue_block_done = FALSE;
   //arrays containing field_name_css of blocks where the title is getting colored squares
