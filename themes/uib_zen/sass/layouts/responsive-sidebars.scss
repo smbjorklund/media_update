@@ -504,17 +504,7 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-profiled-testimonial {
     @include zen-clear();
     @include zen-grid-item(1, 1);
-    float: none;
-    background-color: #F1F1EF;
-    padding: 5px;
-    border-radius: $border-radius;
-    margin-right: 10px;
-    width: 97%;
-    box-shadow: $box-shadow;
-    img {
-      float: left;
-      margin-right: 10px;
-    }
+    width: 100%;
   }
 
   .field-name-field-uib-tertiary-text {
@@ -891,28 +881,9 @@ $zen-auto-include-item-base: false;
     .field-name-field-uib-profiled-testimonial {
       @include zen-grid-item(2, 3);
       @include zen-clear();
-      float: none;
-      clear: none;
       margin-left: 53%;
       width: 46%;
-      background: #F1F1EF;
-      border-radius: $border-radius;
-      box-shadow: $box-shadow;
-      header {
-        height: 1px;
-      }
-      a, .node-uib-testimonial {
-        color: #333;
-        margin-top: 0;
-        display: inline-block;
-      }
-      .node-uib-testimonial .node-title {
-        border: none;
-      }
-      img {
-        margin: 10px 10px 10px 10px;
-        float: left;
-      }
+      float: none;
     }
 
     .field-name-field-uib-tertiary-text {
@@ -1509,30 +1480,9 @@ $zen-auto-include-item-base: false;
     .field-name-field-uib-profiled-testimonial {
       @include zen-grid-item(2, 3);
       @include zen-clear();
-      float: none;
-      clear: none;
-      background: #F1F1EF;
       margin-left: 53%;
       width: 46%;
-      border-radius: $border-radius;
-      box-shadow: $box-shadow;
-      header {
-        height: 1px;
-      }
-      img {
-        margin: 10px 10px 10px 10px;
-        float: left;
-      }
-      a, .node-uib-testimonial {
-        color: #333;
-        display: inline-block;
-      }
-      .field-name-field-uib-name {
-        margin-top: 10px;
-      }
-      .node-uib-testimonial .node-title {
-        border: none;
-      }
+      float: none;
     }
   }
 

@@ -272,48 +272,6 @@ h1 {
   clear: both;
 }
 
-/* Testimonial */
-
-.view-mode-full .field-name-field-uib-quote  {
-  font-size: 1.8em;
-  line-height: 1.4em;
-  width: 75%;
-  display: block;
-  position: relative;
-  font-style: italic;
-  font-family: "Times New Roman", Serif;
-  clear: none;
-  margin: 30px auto 30px auto;
-
-  &:before  {
-    content: "\201C";
-    position: absolute;
-    font-size: 100px;
-    font-family: "Times New Roman", Serif;
-    left: -60px;
-    top: 20px;
-    color: #7F7F7F;
-  }
-
-  .field-label {
-    display: none;
-  }
-
-  .group-article-sidebar .field-name-field-name-field-uib-media .field-label {
-    display: none;
-  }
-}
-
-.node-area .field-name-field-uib-quote  {
-  font-size: 1em;
-  width: 100%;
-  font-style: normal;
-  font-family: verdana, sans-serif;
-  &:before{display: none};
-  &:after{display: none};
-}
-
-
 /* General styling for description, copyright and photographer */
 
 .group-article-sidebar .field-name-field-uib-copyright .field-label, .field-name-field-uib-owner .field-label {

@@ -508,3 +508,59 @@ div.link-field-column {
     margin: 0;
   }
 }
+
+.field-name-field-uib-profiled-testimonial {
+  background: #F1F1EF;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  margin-bottom: 10px;
+  display: inline-block;
+  > .field-items {
+    margin: 15px;
+  }
+  .field {
+    float: left;
+  }
+}
+
+.node-type-uib-testimonial .field-name-field-uib-quote {
+  font-size: 1.8em;
+  line-height: 1.4em;
+  width: 75%;
+  position: relative;
+  font-style: italic;
+  font-family: "Times New Roman", Serif;
+  margin: 30px auto 30px auto;
+
+  &:before {
+    content: "\201C";
+    position: absolute;
+    font-size: 100px;
+    font-family: "Times New Roman", Serif;
+    left: -60px;
+    top: 20px;
+    color: #7F7F7F;
+  }
+}
+
+.node-teaser {
+  .field-name-field-uib-media {
+    margin: 0 10px 10px 0;
+    width: 45%;
+  }
+  .field-name-field-uib-quote {
+    font-size: 1em;
+    width: 50%;
+    margin: 0 0 10px 0;
+    font-style: normal;
+    font-family: verdana, sans-serif;
+    position: static;
+  }
+  .testimonial-teaser-quote {
+    font-size: 1.5em;
+  }
+  .field-name-field-uib-name {
+    width: 50%;
+    margin: 0 0 10px 0;
+  }
+}
