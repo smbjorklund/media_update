@@ -617,7 +617,7 @@ $zen-auto-include-item-base: false;
   }
 
   /* Article mobile */
-  .group_article_main {
+  #node_uib_article_full_group_article_main {
     @include zen-grid-item(1, 1);
     @include zen-clear();
     float: none;
@@ -629,7 +629,7 @@ $zen-auto-include-item-base: false;
     height: 100px;
   }
 
-  .group-article-sidebar {
+  #node_uib_article_full_group_article_sidebar {
     @include zen-grid-item(1, 1);
     @include zen-clear();
   }
@@ -965,12 +965,12 @@ $zen-auto-include-item-base: false;
       float: none;
     }
 
-    .group-article-main {
+    #node_uib_article_full_group_article_main {
       @include zen-grid-item(3, 1);
       width: 72%;
     }
 
-    .group-article-sidebar {
+    #node_uib_article_full_group_article_sidebar {
       @include zen-grid-item(1, 4);
     }
   } /* class sidebar-second ends here! */
@@ -1235,13 +1235,13 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(4, 1)
   }
 
-  /* Article page */
-  .group-article-main {
+  /* uib_article nodes */
+  #node_uib_article_full_group_article_main {
     @include zen-grid-item(3, 1);
     width: 73%;
   }
 
-  .group-article-sidebar {
+  #node_uib_article_full_group_article_sidebar {
     @include zen-grid-item(1, 4)
   }
 

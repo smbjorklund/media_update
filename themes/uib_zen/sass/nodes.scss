@@ -223,8 +223,6 @@ h1 {
   color: #A2A2A2;
 }
 
-
-
 .node-type-uib-testimonial {
   .field-name-field-uib-lead, .field-name-field-uib-text {
     .field-label {
@@ -233,15 +231,20 @@ h1 {
   }
 }
 
-.group-article-sidebar ul, .field-name-field-uib-primary-text ul, .field-name-field-uib-text ul, .field-name-field-uib-tertiary-text ul, .field-name-field-uib-tertiary-text ul, .field-name-field-uib-bottom-text ul {
-    list-style-type: square;
-  }
+#node_uib_article_full_group_article_main ul,
+.field-name-field-uib-primary-text ul,
+.field-name-field-uib-text ul,
+.field-name-field-uib-tertiary-text ul,
+.field-name-field-uib-tertiary-text ul,
+.field-name-field-uib-bottom-text ul {
+  list-style-type: square;
+}
 
 #block-uib-area-feed ul {
   list-style-type: none;
 }
 
-.field-name-field-uib-fact-box  {
+.field-name-field-uib-fact-box {
   background: #F1F1EF;
   clear: both;
   line-height: 14px;
@@ -263,31 +266,33 @@ h1 {
   }
 }
 
-.group-article-sidebar, .group-article-main {
+#node_uib_article_full_group_article_main,
+#node_uib_article_full_group_article_sidebar {
   margin-top: 30px;
 }
 
-.group-article-main {
+#node_uib_article_full_group_article_main {
   float: left;
   clear: both;
 }
 
 /* General styling for description, copyright and photographer */
-
-.group-article-sidebar .field-name-field-uib-copyright .field-label, .field-name-field-uib-owner .field-label {
-  margin: 0;
+#node_uib_article_full_group_article_sidebar .field-name-field-uib-copyright .field-label,
+#node_uib_article_full_group_article_sidebar .field-name-field-uib-owner .field-label {
   border: none;
-  width: auto;
-  text-transform: none;
   color: #000;
   font-size: inherit;
   font-weight: bold;
-}
-
-.group-article-sidebar .field-name-field-uib-copyright .field-items, .field-name-field-uib-owner .field-items {
   margin: 0;
+  text-transform: none;
   width: auto;
 }
+
+#node_uib_article_full_group_article_sidebar .field-name-field-uib-copyright .field-items,
+.field-name-field-uib-owner .field-items {
+  width: auto;
+}
+
 .field-name-field-uib-media .content {
   background: $light-grey;
   margin: 10px 0 0;
@@ -295,7 +300,6 @@ h1 {
   font-size: .9em;
   line-height: 1.4;
 }
-
 
 /* styles for tabs recoded from <h2> headers */
 .uib-tabs-container {
@@ -342,7 +346,7 @@ h1 {
 }
 
 /* Sidebar on front page */
-.front .region-sidebar-second  {
+.front .region-sidebar-second {
   .view-frontpage-profiled-articles .views-field-title {
     font-size: 1em;
     color: red;
@@ -359,6 +363,6 @@ h1 {
   }
 }
 
-.group-article-sidebar .block-title {
+#node_uib_article_full_group_article_sidebar .block-title {
   margin: 0 0 0.5em 0;
 }
