@@ -1,4 +1,4 @@
-#Release 2013-09-18
+#Release 2013-09-18 tag: R3.1
 
 Release for løpende fix på diverse saker og moduloppdatering av Drupal.
 
