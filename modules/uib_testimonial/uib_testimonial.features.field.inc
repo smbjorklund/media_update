@@ -877,7 +877,7 @@ function uib_testimonial_field_default_fields() {
       'description' => 'The quote that will be highlighted in the middle of the page and all the places this testimonial is featured. ',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
