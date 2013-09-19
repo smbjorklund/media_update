@@ -22,9 +22,16 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
     'type' => 0,
   );
   if (count($active_trail) > 1) {
-    $uib_active_trail[] = $active_trail[0];
+    $item = (__uib_get_parent_item(__uib_get_plid('node/' . arg(1), 'menu-area-' . $current_area->nid)));
+    $uib_active_trail[] = array(
+      'title' => $item['link_title'],
+      'href' => '',
+      'link_path' => $item['link_path'],
+      'localized_options' => array(),
+      'type' => 0,
+    );
   }
-  $uib_crumbs = __uib_get_breadcrumb(arg(1));
+  $uib_crumbs = __uib_get_breadcrumb(arg(1), array(), $current_area->nid);
   if (count($uib_crumbs) > 0) {
     $uib_crumbs = array_reverse($uib_crumbs);
     $first_relation = $uib_crumbs[0];
@@ -44,7 +51,7 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
   $active_trail = array_merge($uib_active_trail, $uib_crumbs);
 }
 
-function __uib_get_breadcrumb($nid, $crumbs=array()) {
+function __uib_get_breadcrumb($nid, $crumbs=array(), $current_area) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'uib_article')
@@ -53,16 +60,19 @@ function __uib_get_breadcrumb($nid, $crumbs=array()) {
   if (!empty($result['node'])) {
     $ids = array_keys($result['node']);
     $parents = entity_load('node', $ids);
-    $parent = array_shift($parents);
-    $item = array(
-      'title' => $parent->title,
-      'href' => 'node/' . $parent->nid,
-      'link_path' => '',
-      'localized_options' => array(),
-      'type' => 0,
-    );
-    $crumbs[] = $item;
-    $crumbs = __uib_get_breadcrumb($parent->nid, $crumbs);
+    foreach ($parents as $parent) {
+      if ($parent->field_uib_area['und'][0]['target_id'] == $current_area) {
+        $item = array(
+          'title' => $parent->title,
+          'href' => 'node/' . $parent->nid,
+          'link_path' => '',
+          'localized_options' => array(),
+          'type' => 0,
+        );
+        $crumbs[] = $item;
+        $crumbs = __uib_get_breadcrumb($parent->nid, $crumbs, $current_area);
+      }
+    }
   }
   return $crumbs;
 }
