@@ -269,6 +269,8 @@ function uib_zen_preprocess_node(&$variables, $hook) {
    */
   if ($variables['page']) {
     if ($variables['type'] == 'area') {
+      $metadata = entity_metadata_wrapper('node', $variables['nid']);
+      $area_type = $metadata->field_uib_area_type->value();
       $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
 
       if (stripos($tmp_block_html, 'view-content') !== FALSE) {
@@ -276,62 +278,57 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         $variables['content']['group_two_column']['field_uib_kids']['#weight'] = 6;
       }
 
-      if ($variables['field_uib_area_type']['und']['0']['value'] == 'research group') {
-        $variables ['classes_array'][] = t('research_g_node');
-      }
+      switch ($area_type) {
+        case 'research group':
+          $variables['classes_array'][] = 'research_g_node';
+          break;
+        case 'faculty':
+          $variables['classes_array'][] = 'faculty_node';
+          break;
+        case 'institute':
+          $variables['classes_array'][] = 'institute_node';
+          break;
+        case 'research school':
+          $variables['classes_array'][] = 'research_s_node';
+          break;
+        case 'section':
+          $variables['classes_array'][] = 'section_node';
+          break;
+        case 'unit':
+          $variables['classes_array'][] = 'unit_node';
+          break;
+        case 'newspage':
+          $variables['classes_array'][] = 'newspage_node';
+          unset($variables['content']['group_two_column']['field_uib_link_section']);
 
-      if ($variables['field_uib_area_type']['und']['0']['value'] == 'faculty') {
-        $variables ['classes_array'][] = t('faculty_node');
-      }
+          if (isset($variables['content']['group_two_column']['field_uib_profiled_message'])) {
+            $weight = $variables['content']['group_two_column']['field_uib_profiled_message']['#weight'];
+            unset($variables['content']['group_two_column']['field_uib_profiled_message']);
+            $variables['content']['field_uib_profiled_message'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_one_chosen_item', $variables['nid']);
+            $variables['content']['field_uib_profiled_message']['#weight'] = $weight;
+            $variables['content']['field_uib_profiled_message_2'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_two_chosen_items', $variables['nid']);
+            $variables['content']['field_uib_profiled_message_2']['#weight'] = $weight - 1;
+            $variables['content']['field_uib_profiled_message_last'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_last_chosen_items', $variables['nid']);
+            $variables['content']['field_uib_profiled_message_last']['#weight'] = $weight + 1;
+            // Recent news block from uib_area module.
+            $recent_news_block = module_invoke('uib_area', 'block_view', 'newspage_recent_news');
+            $variables['content']['field_uib_newspage_recent_news'] = $recent_news_block['content'];
+            $variables['content']['field_uib_newspage_recent_news']['#weight'] = $weight + 2;
+            $variables['content']['field_uib_newspage_recent_news'][0]['#markup'] = l(t('News archive'), drupal_get_path_alias(current_path()) . '/news-archive');
+          }
 
-      if ($variables['field_uib_area_type']['und']['0']['value'] == 'institute') {
-        $variables ['classes_array'][] = t('institute_node');
-      }
-
-      if ($variables['field_uib_area_type']['und']['0']['value'] == 'research school') {
-        $variables ['classes_array'][] = t('research_s_node');
-      }
-
-      if ($variables['field_uib_area_type']['und']['0']['value'] == 'section') {
-        $variables ['classes_array'][] = t('section_node');
-      }
-
-      if ($variables['field_uib_area_type']['und']['0']['value'] == 'unit') {
-         $variables ['classes_array'][] = t('unit_node');
-      }
-
-      if ($variables['field_uib_area_type']['und']['0']['value'] == 'newspage') {
-        $variables ['classes_array'][] = t('newspage_node');
-
-        // This field is printed in a view in the sidebar.
-        unset($variables['content']['group_two_column']['field_uib_link_section']);
-        if (isset($variables['content']['group_two_column']['field_uib_profiled_message'])) {
-          $weight = $variables['content']['group_two_column']['field_uib_profiled_message']['#weight'];
+          unset($variables['content']['group_two_column']);
+          break;
+        case 'frontpage':
+          $variables['classes_array'][] = 'frontpage_node';
+          //This field is printed as view.
           unset($variables['content']['group_two_column']['field_uib_profiled_message']);
-          $variables['content']['field_uib_profiled_message'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_one_chosen_item', $variables['nid']);
-          $variables['content']['field_uib_profiled_message']['#weight'] = $weight;
-          $variables['content']['field_uib_profiled_message_2'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_two_chosen_items', $variables['nid']);
-          $variables['content']['field_uib_profiled_message_2']['#weight'] = $weight - 1;
-          $variables['content']['field_uib_profiled_message_last'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_last_chosen_items', $variables['nid']);
-          $variables['content']['field_uib_profiled_message_last']['#weight'] = $weight + 1;
-          // Recent news block from uib_area module.
-          $recent_news_block = module_invoke('uib_area', 'block_view', 'newspage_recent_news');
-          $variables['content']['field_uib_newspage_recent_news'] = $recent_news_block['content'];
-          $variables['content']['field_uib_newspage_recent_news']['#weight'] = $weight + 2;
-          $variables['content']['field_uib_newspage_recent_news'][0]['#markup'] = l(t('News archive'), drupal_get_path_alias(current_path()) . '/news-archive');
-        }
-        unset($variables['content']['group_two_column']);
-      }
-
-      if ($variables['field_uib_area_type']['und']['0']['value'] == 'frontpage') {
-        $variables ['classes_array'][] = t('frontpage_node');
-        //This field is printed as view.
-        unset($variables['content']['group_two_column']['field_uib_profiled_message']);
-        unset($variables['content']['group_two_column']['field_uib_link_section']);
-        // Adding js to fix mobile menu on front page.
-        drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/mobile_menu_fix.js',
-          array('group' => JS_THEME, )
-        );
+          unset($variables['content']['group_two_column']['field_uib_link_section']);
+          // Adding js to fix mobile menu on front page.
+          drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/mobile_menu_fix.js',
+            array('group' => JS_THEME, )
+          );
+          break;
       }
 
       if (isset($variables['content']['field_uib_profiled_article'])) {
