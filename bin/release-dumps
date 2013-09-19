@@ -47,7 +47,10 @@ my %dumps;
 for my $dump (@dumps) {
     chomp($dump);
     if ($dump =~ /^w3\.uib\.no-staging-backup\.(\d{4}-\d{2}-\d{2})\S+$/) {
-	$dumps{$1} = "$PGDUMP_DIR/pre_staging/$dump";
+	my $date = $1;
+	next if $dump !~ /\.sql(\.gz)?$/;
+	next if $dump =~ /\bpostupgrade\b/;
+	$dumps{$date} = "$PGDUMP_DIR/pre_staging/$dump";
     }
 }
 
