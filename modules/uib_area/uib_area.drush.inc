@@ -29,6 +29,13 @@ function uib_area_drush_command() {
     'arguments' => array(),
     'options' => array(),
   );
+  $items['uib-area-area-cleanup'] = array(
+    'description' => 'Remove an area and all traces',
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'arguments' => array(
+      'area' => 'The node id of the area',
+    ),
+  );
   return $items;
 }
 
@@ -417,4 +424,67 @@ function uib_area__chk_menu_recursive($trunk, $parent_mlid, &$ptrail) {
     array_pop($ptrail);
   }
   return TRUE;
+}
+
+/**
+ * Cleanup when an area has been or is to be deleted, and no traces should remain.
+ *
+ * Removes the area node and its menu if it exists
+ * Removes any menu links pointing to the area node
+ * Removes any aliases pointing to the node
+ * Removes any redirects pointing to the node
+ * Removes nodes that were connected to the deleted area if they were owned by the area
+ * Removes any connections to nodes ("bobling")
+*
+ * @param integer $area
+ *   Node id of the area node that was deleted
+ *
+ * @return FALSE if anything went wrong, else TRUE.
+ */
+function drush_uib_area_area_cleanup($area) {
+  if (empty($area) || !is_numeric($area)) {
+    return FALSE;
+  }
+  $area = intval($area);
+  $area_path = 'node/' . $area;
+
+  node_delete($area);
+
+  if ($area_menu = menu_load('menu-area-' . $area)) {
+    uibx_log('Removing menu ' . $area_menu['menu_name']);
+    menu_delete($area_menu);
+  }
+
+  while ($menu_link = menu_link_get_preferred($area_path)) {
+    uibx_log('Removing menu link ' . $menu_link['title']);
+    menu_link_delete($menu_link['mlid']);
+  }
+
+  path_delete(array('source' => $area_path,));
+
+  redirect_delete_by_path($area_path);
+
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->fieldCondition('field_uib_area', 'target_id', $area)
+    ->execute();
+  $related_nodes = entity_load('node', array_keys($result['node']));
+  foreach ($related_nodes as $rnid => $rnode) {
+    if ($rnode->field_uib_area['und'][0]['target_id'] == $area) {
+      // Remove articles owned by the area
+      uibx_log("Removing node $rnid ($rnode->title)");
+      node_delete($rnid);
+   }
+    else {
+      $nrof_areas = count($rnode->field_uib_area['und']);
+      for ($i = (count($rnode->field_uib_area['und']) - 1); $i >= 0; $i--) {
+        if ($rnode->field_uib_area['und'][$i]['target_id'] == $area) {
+          unset($rnode->field_uib_area['und'][$i]);
+        }
+      }
+      node_save($rnode);
+      uibx_log("Disconnected node $rnid ($rnode->title) from area $area");
+    }
+  }
 }
