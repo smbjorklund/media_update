@@ -10,12 +10,19 @@ if git tag | grep -q R$REL; then
 fi
 
 # Migrate
-bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_svf.txt
-bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_svf.txt
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_svf.txt
-bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_svf.txt
-bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_svf.txt
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_svf.txt
+bin/site-drush migrate-import --verbose Area --strict=0 --serial=2503286534104024748,9000625789282785485
+
+bin/site-drush migrate-import --verbose NavPage --strict=0 --w2prefix=/fg/demrett
+bin/site-drush migrate-import --verbose InfoPage --strict=0 --w2prefix=/fg/demrett
+bin/site-drush migrate-import --verbose News --strict=0 --w2prefix=/fg/demrett
+bin/site-drush migrate-import --verbose Event --strict=0 --w2prefix=/fg/demrett
+bin/site-drush migrate-import --verbose Testimonial --strict=0 --w2prefix=/fg/demrett
+
+bin/site-drush migrate-import --verbose NavPage --strict=0 --w2prefix=/rg/demlaw
+bin/site-drush migrate-import --verbose InfoPage --strict=0 --w2prefix=/rg/demlaw
+bin/site-drush migrate-import --verbose News --strict=0 --w2prefix=/rg/demlaw
+bin/site-drush migrate-import --verbose Event --strict=0 --w2prefix=/rg/demlaw
+bin/site-drush migrate-import --verbose Testimonial --strict=0 --w2prefix=/rg/demlaw
 
 # Build area menu for migrated content
 bin/site-drush uib-migrate-build-menu --verbose
