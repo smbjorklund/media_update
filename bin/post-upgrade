@@ -16,13 +16,13 @@ bin/site-drush migrate-import --verbose NavPage --strict=0 --w2prefix=/fg/demret
 bin/site-drush migrate-import --verbose InfoPage --strict=0 --w2prefix=/fg/demrett
 bin/site-drush migrate-import --verbose News --strict=0 --w2prefix=/fg/demrett
 bin/site-drush migrate-import --verbose Event --strict=0 --w2prefix=/fg/demrett
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --w2prefix=/fg/demrett
+#bin/site-drush migrate-import --verbose Testimonial --strict=0 --w2prefix=/fg/demrett
 
 bin/site-drush migrate-import --verbose NavPage --strict=0 --w2prefix=/rg/demlaw
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --w2prefix=/rg/demlaw
-bin/site-drush migrate-import --verbose News --strict=0 --w2prefix=/rg/demlaw
+#bin/site-drush migrate-import --verbose InfoPage --strict=0 --w2prefix=/rg/demlaw
+#bin/site-drush migrate-import --verbose News --strict=0 --w2prefix=/rg/demlaw
 bin/site-drush migrate-import --verbose Event --strict=0 --w2prefix=/rg/demlaw
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --w2prefix=/rg/demlaw
+#bin/site-drush migrate-import --verbose Testimonial --strict=0 --w2prefix=/rg/demlaw
 
 # Build area menu for migrated content
 bin/site-drush uib-migrate-build-menu --verbose

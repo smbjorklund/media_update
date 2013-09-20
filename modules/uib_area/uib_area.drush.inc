@@ -374,7 +374,7 @@ function uib_area__chk_menu_recursive($trunk, $parent_mlid, &$ptrail) {
     $nid = 0;
     array_push($ptrail, $branch['link']['mlid']);
     if (url_is_external($branch['link']['link_path'])) {
-      if (!empty($branch['below'])) {
+      if (!empty($branch['below']) && $branch['link']['link_path'] != 'http:#') {
         uibx_log('External link "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'] . ' has children', 'notice');
       }
     }
