@@ -301,25 +301,31 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           break;
         case 'newspage':
           $variables['classes_array'][] = 'newspage_node';
-          unset($variables['content']['group_two_column']['field_uib_link_section']);
+          $profiled_message = $metadata->field_uib_profiled_message->value();
+          hide($variables['content']['field_uib_link_section']);
 
-          if (isset($variables['content']['group_two_column']['field_uib_profiled_message'])) {
-            $weight = $variables['content']['group_two_column']['field_uib_profiled_message']['#weight'];
-            unset($variables['content']['group_two_column']['field_uib_profiled_message']);
-            $variables['content']['field_uib_profiled_message'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_one_chosen_item', $variables['nid']);
-            $variables['content']['field_uib_profiled_message']['#weight'] = $weight;
-            $variables['content']['field_uib_profiled_message_2'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_two_chosen_items', $variables['nid']);
-            $variables['content']['field_uib_profiled_message_2']['#weight'] = $weight - 1;
-            $variables['content']['field_uib_profiled_message_last'][]['#markup'] = views_embed_view('frontpage_profiled_articles', 'newspage_last_chosen_items', $variables['nid']);
-            $variables['content']['field_uib_profiled_message_last']['#weight'] = $weight + 1;
-            // Recent news block from uib_area module.
-            $recent_news_block = module_invoke('uib_area', 'block_view', 'newspage_recent_news');
-            $variables['content']['field_uib_newspage_recent_news'] = $recent_news_block['content'];
-            $variables['content']['field_uib_newspage_recent_news']['#weight'] = $weight + 2;
-            $variables['content']['field_uib_newspage_recent_news'][0]['#markup'] = l(t('News archive'), drupal_get_path_alias(current_path()) . '/news-archive');
+          if ($profiled_message) {
+            $newspage_one = views_embed_view('frontpage_profiled_articles', 'newspage_one_chosen_item', $variables['nid']);
+            $newspage_two = views_embed_view('frontpage_profiled_articles', 'newspage_two_chosen_items', $variables['nid']);
+            $newspage_last = views_embed_view('frontpage_profiled_articles', 'newspage_last_chosen_items', $variables['nid']);
+            $weight = $variables['content']['field_uib_profiled_message']['#weight'];
+            $message = array(
+              '#weight' => $weight,
+              array('#markup' => $newspage_two),
+              array('#markup' => $newspage_one),
+              array('#markup' => $newspage_last),
+            );
+            $variables['content']['field_uib_profiled_message'] = $message;
           }
 
-          unset($variables['content']['group_two_column']);
+          // Recent news block.
+          $recent_news_block = module_invoke('uib_area', 'block_view', 'newspage_recent_news');
+          if ($recent_news_block) {
+            $variables['content']['field_uib_newspage_recent_news'] = $recent_news_block['content'];
+            $variables['content']['field_uib_newspage_recent_news']['#weight'] = $weight + 1;
+            $news_archive_link = l(t('News archive'), drupal_get_path_alias(current_path()) . '/news-archive');
+            $variables['content']['field_uib_newspage_recent_news'][]['#markup'] = $news_archive_link;
+          }
           break;
         case 'frontpage':
           $variables['classes_array'][] = 'frontpage_node';
@@ -362,7 +368,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       if ($variables['is_employee']) {
         drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/hide_links.js', array('group' => JS_THEME, ));
       }
-
     }
 
     // Run only if the node type is uib_article.
