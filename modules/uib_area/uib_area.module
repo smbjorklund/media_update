@@ -176,19 +176,21 @@ function uib_area_block_view($delta='') {
         ->fetchCol();
 
       $exludes_nodes = array_merge($slideshow, $profiled_messages);
-      $query = new EntityFieldQuery;
-      $query = $query
-        ->entityCondition('entity_type', 'node')
-        ->range(0, 5)
-        ->propertyCondition('status', 1)
-        ->propertyOrderBy('created', 'DESC')
-        ->fieldCondition('field_uib_article_type','value', 'news', '=')
-        ->fieldCondition('field_uib_area','target_id', $area->nid, '=')
-        ->propertyCondition('nid', $exludes_nodes, 'NOT IN');
-      $result = $query->execute();
-      $nids = array_keys($result['node']);
-      $nodes = node_load_multiple($nids);
-      $block['content'] = node_view_multiple($nodes);
+      if (!$exludes_nodes) {
+        $query = new EntityFieldQuery;
+        $query = $query
+          ->entityCondition('entity_type', 'node')
+          ->range(0, 5)
+          ->propertyCondition('status', 1)
+          ->propertyOrderBy('created', 'DESC')
+          ->fieldCondition('field_uib_article_type','value', 'news', '=')
+          ->fieldCondition('field_uib_area','target_id', $area->nid, '=')
+          ->propertyCondition('nid', $exludes_nodes, 'NOT IN');
+        $result = $query->execute();
+        $nids = array_keys($result['node']);
+        $nodes = node_load_multiple($nids);
+        $block['content'] = node_view_multiple($nodes);
+      }
     break;
     case 'colophon_logos':
       global $base_url;
