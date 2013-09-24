@@ -39,7 +39,6 @@ $zen-gutter-width: 20px;
 $zen-auto-include-item-base: false;
 // $zen-auto-include-flow-item-base: false;
 
-
 /*
  * Center the page.
  */
@@ -1331,10 +1330,12 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 4;
 
   .field-name-field-uib-important-message {
+    @include zen-grid-item-base;
     @include zen-grid-item(4, 1);
   }
 
   .field-name-field-uib-primary-media {
+    @include zen-grid-item-base;
     @include zen-grid-item(2, 1);
     @include zen-clear();
   }
@@ -1342,6 +1343,7 @@ $zen-auto-include-item-base: false;
   .node-type-area {
     .no-primary-text {
       .field-name-field-uib-primary-media {
+        @include zen-grid-item-base;
         @include zen-grid-item(4, 1);
         @include zen-clear();
         .file-video {
@@ -1364,9 +1366,8 @@ $zen-auto-include-item-base: false;
   }
 
   .field-name-field-uib-primary-text {
+    @include zen-grid-item-base;
     @include zen-grid-item(2, 3);
-    width: 47%;
-    margin-left: 53%;
   }
 
   .field-name-field-uib-owner,
@@ -1377,128 +1378,58 @@ $zen-auto-include-item-base: false;
   }
 
   .field-name-field-uib-secondary-text {
+    @include zen-grid-item-base;
     @include zen-grid-item(4, 1);
-    clear: both;
-    width: 100%;
-    float: left;
+    @include zen-clear();
     margin: 20px 0 20px 0;
-    background: #F1F1EF;
-    border-radius: $border-radius;
-    padding-bottom: 20px;
-    box-shadow: $box-shadow;
     ul {
-      @include zen-clear();
-      list-style-type: none;
-      margin-top: 0;
+      padding: 0;
     }
     li {
       float: left;
-      margin: 10px 0 0 0;
-      padding: 0 10px 0 0;
-      width: 210px;
-    }
-    p {
-      @include zen-clear();
-      padding: 0px 20px 0 20px;
-    }
-    h4 {
-      margin-left: 20px;
+      width: zen-unit-width();
     }
     h3 {
-      margin: 20px 0 0 20px;
+      margin: 20px 0 0 0;
     }
-  }
-
-  /* the important overrides a value from field collection.theme.css */
-  .node-area .field-collection-container {
-    @include zen-grid-item(4, 1);
-    border: none;
-    float: left;
-    width: 48%;
-    .field-item {
-      margin-bottom: 7px !important;
-    }
-  }
-
-  .field-name-profiled-article {
-    @include zen-grid-item(4, 1);
   }
 
   #node_area_full_group_two_column {
-    @include zen-grid-item(4, 1);
     @include zen-clear();
-    padding-bottom: 15px;
-    float: none;
-    .view-faculty-departments-kids {
-      @include zen-grid-item(2, 1);
-      @include zen-clear();
-      margin-bottom: 10px;
-      float: left;
-      box-shadow: $box-shadow;
-      padding: 15px;
-      background: #F1F1EF;
-      border: none;
-      border-radius: $border-radius;
-      width: 46%;
+    @include zen-grid-container();
+
+    /* the important overrides a value from field collection.theme.css */
+    .field-collection-container {
+      @include zen-grid-item-base;
+      @include zen-grid-item(2, 3);
     }
-    .field-name-field-uib-link-section {
+    .field-name-profiled-article {
+      @include zen-grid-item(2, 3);
+    }
+    .view-faculty-departments-kids {
+      @include zen-grid-item-base;
       @include zen-grid-item(2, 1);
-      @include zen-clear();
-      background: #F1F1EF;
-      border: none;
-      border-radius: $border-radius;
-      width: 100%;
-      padding-right: 17px;
-      .field-collection-view {
-        width: 100%;
-        padding-left: 0;
-        margin-left: 0;
-        padding-right: 10px;
-      }
-      .field-item {
-        margin-bottom: 7px;
-      }
-      .entity-field-collection-item {
-        padding-left: 20px;
-      }
+      margin-bottom: 10px;
     }
     .field-name-field-uib-profiled-message {
+      @include zen-grid-item-base;
       @include zen-grid-item(2, 3);
-      float: none;
-      padding-left: 10px;
-      width: 49%;
       margin-bottom: 10px;
     }
     .field-name-field-uib-tertiary-text {
-      @include zen-grid-item(2, 3);
       @include zen-clear();
-      clear: none;
-      float: none;
-      margin-left: 53%;
-      width: 46%;
+      @include zen-grid-item-base;
+      @include zen-grid-item(2, 1);
     }
     .field-name-field-uib-profiled-testimonial {
+      @include zen-grid-item-base;
       @include zen-grid-item(2, 3);
-      @include zen-clear();
-      margin-left: 53%;
-      width: 46%;
-      float: none;
-      border-radius: $border-radius;
-      box-shadow: $box-shadow;
-      > .field-items {
-        margin: 15px;
-      }
-      display: inline-block;
-      .field {
-        float: left;
-        display: inline-block;
-      }
     }
   }
 
   .group-bottom-wrapper {
-    @include zen-grid-item(4, 1);
     @include zen-clear();
+    @include zen-grid-container();
   }
 
   .field-name-field-uib-bottom-media {
@@ -1507,12 +1438,12 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-bottom-text {
     @include zen-grid-item(3, 2);
-    width: 73%;
-    margin-left: 27%;
+    @include zen-grid-item-base;
   }
 
   /* Area "teaser" block */
   .field-name-field-uib-relation {
+    @include zen-clear();
     @include zen-grid-item(4, 1);
   }
 
@@ -1523,10 +1454,8 @@ $zen-auto-include-item-base: false;
   }
 
   /* Breadcrumb */
-  $zen-column-count: 5;
-
   nav.breadcrumb {
-    @include zen-grid-item(5, 1);
+    @include zen-grid-item(4, 1);
     float: none;
   }
 
@@ -1535,7 +1464,7 @@ $zen-auto-include-item-base: false;
     position: absolute;
     bottom: 4px;
     left: 0px;
-    width: 708px;
+    width: 100%;
     height: 30%;
     background-color: rgba(0, 0, 0, 0.8);
     .slidecontent {
@@ -1546,15 +1475,12 @@ $zen-auto-include-item-base: false;
   }
 
   .view-area-slideshow img {
-    max-width: 708px;
+    max-width: 100%;
   }
 
   .view-area-slideshow, .views-field-field-uib-main-media {
     @include zen-grid-item(4, 1);
     width: 100%;
-    .media {
-      width: 47%;
-    }
   }
 
   #widget_pager_bottom_area_slideshow-default {
@@ -1575,9 +1501,13 @@ $zen-auto-include-item-base: false;
     }
   }
 
-  /* Courses */
-  $zen-column-count: 4;
+  .field-name-field-uib-social-media {
+    @include zen-grid-item(4, 1);
+    @include zen-grid-item-base;
+    margin-bottom: 20px;
+  }
 
+  /* Courses */
   .view-courses {
     @include zen-grid-item(4, 1);
     .views-row {

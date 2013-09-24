@@ -221,8 +221,13 @@ table.cols-6 {
     color: #D95900;
 }
 
-.view-faculty-departments-kids .views-field-title {
-  margin: 0 0 7px 0;
+.view-faculty-departments-kids {
+  background: #F1F1EF;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  .views-field-title {
+    margin: 0 0 7px 0;
+  }
 }
 
 .view-content h3  {

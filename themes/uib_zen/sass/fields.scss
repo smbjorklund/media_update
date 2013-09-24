@@ -138,15 +138,25 @@
   }
 }
 
-.field-name-field-uib-primary-media {
-  clear: both;
-}
-
 .field-collection-container {
-  clear: both;
+  border-radius: $border-radius;
+  background: #F1F1EF;
+  box-shadow: $box-shadow;
+  .field-name-field-uib-link-section {
+    // border-radius: $border-radius;
+    // background: #F1F1EF;
+  }
+  .field-item {
+    margin-bottom: 7px !important;
+  }
+  .field-collection-view {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
 }
 
-/* Webdesk - everything above this comment is drupal default and has not yet been motified. */
+/* Webdesk */
 
 /* Create article */
 #uib-article-node-form,
@@ -516,11 +526,21 @@ div.link-field-column {
   margin-bottom: 10px;
   display: inline-block;
   > .field-items {
-    margin: 15px;
+    margin: 15px 0 0 0;
   }
   .field {
     float: left;
+    display: inline-block;
   }
+  .field-name-field-uib-media .content {
+    margin: 0 0 10px 0;
+  }
+}
+
+.field-name-field-uib-secondary-text {
+  background: #F1F1EF;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
 }
 
 .node-type-uib-testimonial .field-name-field-uib-quote {
