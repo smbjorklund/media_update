@@ -458,7 +458,7 @@ $zen-auto-include-item-base: false;
     max-width: 100%;
   }
 
-  .group_two_column .field-collection-container {
+  #node_area_full_group_two_column .field-collection-container {
     width: 100%;
     background: #F1F1EF;
     border: none;
@@ -851,7 +851,7 @@ $zen-auto-include-item-base: false;
       float: none;
     }
 
-    .group_two_column {
+    #node_area_full_group_two_column {
       @include zen-clear();
       .view-faculty-departments-kids {
         @include zen-grid-item(2, 1);
@@ -1424,7 +1424,7 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(4, 1);
   }
 
-  .group_two_column {
+  #node_area_full_group_two_column {
     @include zen-grid-item(4, 1);
     @include zen-clear();
     padding-bottom: 15px;

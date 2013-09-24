@@ -273,8 +273,14 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     if ($variables['type'] == 'area') {
       $metadata = entity_metadata_wrapper('node', $variables['nid']);
       $area_type = $metadata->field_uib_area_type->value();
-      $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
+      $profiled_article = $metadata->field_uib_profiled_article->value();
+      $show_staff = $metadata->field_uib_show_staff->value();
+      $link_section = $metadata->field_uib_link_section->value();
 
+      /**
+       * Insert department views block in not empty.
+       */
+      $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
       if (stripos($tmp_block_html, 'view-content') !== FALSE) {
         $variables['content']['group_two_column']['field_uib_kids']['#markup'] = $tmp_block_html;
         $variables['content']['group_two_column']['field_uib_kids']['#weight'] = 6;
@@ -329,9 +335,9 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           break;
         case 'frontpage':
           $variables['classes_array'][] = 'frontpage_node';
-          //This field is printed as view.
-          unset($variables['content']['group_two_column']['field_uib_profiled_message']);
-          unset($variables['content']['group_two_column']['field_uib_link_section']);
+          hide($variables['content']['field_uib_profiled_message']);
+          hide($variables['content']['field_uib_link_section']);
+
           // Adding js to fix mobile menu on front page.
           drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/mobile_menu_fix.js',
             array('group' => JS_THEME, )
@@ -339,29 +345,37 @@ function uib_zen_preprocess_node(&$variables, $hook) {
           break;
       }
 
-      if (isset($variables['content']['field_uib_profiled_article'])) {
+      /**
+       * Area nodes slideshow.
+       */
+      if ($profiled_article) {
         $weight = $variables['content']['field_uib_profiled_article']['#weight'];
-        unset($variables['content']['field_uib_profiled_article']);
-        $variables['content']['field_uib_profiled_article'][]['#markup'] = views_embed_view('area_slideshow', 'default', $variables['nid']);
-        $variables['content']['field_uib_profiled_article']['#weight'] = $weight;
+        $slideshow = views_embed_view('area_slideshow', 'default', $variables['nid']);
+        $variables['content']['field_uib_profiled_article'] = array(
+          '#weight' => $weight,
+          array('#markup' => $slideshow),
+        );
       }
 
-      if ($variables['field_uib_show_staff']['und'][0]['value'] == 1) {
+      /**
+       * Include list of area emplyee.
+       */
+      if ($show_staff) {
         $variables['content']['field_uib_front_staff']['#markup'] = views_embed_view('ansatte', 'page_1', $variables['nid']);
         $variables['content']['field_uib_front_staff']['#weight'] = 12;
        }
 
-      // Hide "relevant links section" if empty [RTS-1073].
-      if (isset($variables['content']['group_two_column']['field_uib_link_section']['#items'])) {
-        if (empty($variables['content']['group_two_column']['field_uib_link_section']['#items'][0]['value'])) {
-          hide($variables['content']['group_two_column']['field_uib_link_section']);
-        }
+      /**
+       * Hide "relevant links section" if empty [RTS-1073]. Prevent empty div.
+       */
+      if ($link_section) {
+        hide($variables['content']['group_two_column']['field_uib_link_section']);
       }
 
       if (!isset($variables['content']['field_uib_primary_text'])) {
+        $variables['classes_array'][] = 'no-primary-text';
         $variables['content']['field_uib_primary_media'][0]['#view_mode'] = 'content_main';
         $variables['content']['field_uib_primary_media'][0]['file']['#style_name'] = 'content_main';
-        $variables['classes_array'][] = 'no-primary-text';
       }
 
       // Only run on emplyoee area pages.
