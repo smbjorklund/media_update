@@ -270,8 +270,9 @@ function uib_zen_preprocess_node(&$variables, $hook) {
    * Only run this when nodes are rendered on a page.
    */
   if ($variables['page']) {
+    $metadata = entity_metadata_wrapper('node', $variables['nid']);
+
     if ($variables['type'] == 'area') {
-      $metadata = entity_metadata_wrapper('node', $variables['nid']);
       $area_type = $metadata->field_uib_area_type->value();
       $profiled_article = $metadata->field_uib_profiled_article->value();
       $show_staff = $metadata->field_uib_show_staff->value();
@@ -384,98 +385,158 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       }
     }
 
-    // Run only if the node type is uib_article.
     if ($variables['type'] == 'uib_article') {
-      $variables['content']['title']['#markup'] = '<h1>' . $variables['title'] . '</h1>';
-      $variables['content']['title']['#weight'] = -45;
-      $variables['content']['group_article_info']['#weight'] = -20;
-      $variables['content']['group_article_info']['#prefix'] = '<div class="article-info clearfix">';
-      $variables['content']['group_article_info']['#suffix'] = '</div>';
-      $variables['content']['group_article_info']['uib_article_publish_info'] = array(
-        '#markup' => '<div class="uib-news-byline-created uib-publish-info">' . t('Created') . ' ' . format_date($variables['node']->created, 'long') . '</div><div class="uib-news-byline-last-updated uib-publish-info">' . t('Last updated') . ' ' . format_date($variables['node']->revision_timestamp, 'long') . '</div>',
-        '#weight' => 10,
+      $article_type = $metadata->field_uib_article_type->value();
+      $kicker = $metadata->field_uib_kicker->value();
+      $title = $metadata->label();
+      $created = $metadata->created->value();
+      $changed = $metadata->changed->value();
+      $byline = $metadata->field_uib_byline->value();
+      $external_author = $metadata->field_uib_external_author->value();
+      hide($variables['content']['field_uib_byline']);
+
+      /**
+       * Move node title into content.
+       */
+      $variables['content']['title'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'h1',
+        '#value' => $title,
+        '#weight' => -45,
       );
-      hide($variables['content']['group_article_info']['field_uib_byline']);
-      if (!in_array($variables['node']->field_uib_area['und'][0]['target_id'], array(1, 2))) {
-        $service_links = theme('item_list', array(
-          'items' => service_links_render($variables['node'], FALSE),
-          'style' => SERVICE_LINKS_STYLE_IMAGE,
-        ));
-        $variables['content']['group_article_info']['uib_service_links'] = array(
-          '#markup' => '<div class="service-links">' . $service_links . '</div>',
+
+      /**
+       * Content publish information as time, etc.
+       */
+      $article_info = array(
+        '#prefix' => '<div class="article-info clearfix">',
+        '#suffix' => '</div>',
+        '#weight' => -20,
+        'created' => array(
+          '#prefix' => '<div class="uib-news-byline-created uib-publish-info">',
+          '#markup' => t('Created') . ' ' . format_date($created, 'long'),
+          '#suffix' => '</div>',
+          '#weight' => 10,
+        ),
+        'changed' => array(
+          '#prefix' => '<div class="uib-news-byline-last-updated uib-publish-info">',
+          '#markup' => t('Last updated') . ' ' . format_date($changed, 'long'),
+          '#suffix' => '</div>',
+          '#weight' => 11,
+        ),
+      );
+
+      if ($variables['is_employee']) {
+        if (empty($variables['content']['group_article_sidebar']['#id'])) {
+          $variables['content']['group_article_sidebar']['#id'] =  'node_uib_article_full_group_article_sidebar';
+          $variables['content']['group_article_sidebar']['#prefix'] = '<div class="group-article-sidebar">';
+          $variables['content']['group_article_sidebar']['#suffix'] = '</div>';
+          $variables['content']['group_article_sidebar']['#weight'] = 4;
+        }
+      }
+      else {
+        $service_links = theme('item_list',
+          array(
+            'items' => service_links_render($variables['node'], FALSE),
+            'style' => SERVICE_LINKS_STYLE_IMAGE,
+          )
+        );
+        $article_info['uib_service_links'] = array(
+          '#prefix' => '<div class="service-links">',
+          '#markup' => $service_links,
+          '#suffix' => '</div>',
           '#weight' => 20,
         );
       }
-      if ($variables['node']->field_uib_article_type['und'][0]['value'] == 'news') {
-        // Setup kicker
-        // -- First determine which date to set
-        $created = format_date($variables['node']->created, 'medium');
-        if ($variables['node']->created < $variables['node']->revision_timestamp) {
-          $up_date = format_date($variables['node']->revision_timestamp, 'medium');
-        }
-        else {
-          $up_date = format_date($variables['node']->created, 'medium');
-        }
-        if (empty($variables['node']->field_uib_kicker['und'][0]['value'])) {
-          // set default value for kicker in news articles
-          $variables['node']->field_uib_kicker['und'][0] = array('value' => t('News'),   'format' => NULL, 'safe_value' => t('News'));
-          $field_uib_kicker = field_view_field('node', $variables['node'], 'field_uib_kicker', array('label' => 'hidden', 'weight' => -50,));
-          $variables['content']['field_uib_kicker'] = $field_uib_kicker;
-          $variables['content']['field_uib_kicker'][0]['text'] = array('#markup' => "<div class=\"uib-kicker-text\">" . t('News') . "</div>");
-        }
-        else {
-          $variables['content']['field_uib_kicker'][0]['text'] = array('#markup' => "<div class=\"uib-kicker-text\">" . $variables['content']['field_uib_kicker'][0]['#markup'] . "</div>");
-        }
-        $variables['content']['field_uib_kicker'][0]['#markup'] = "";
-        $variables['content']['field_uib_kicker'][0]['date'] = array('#markup' => "<div class=\"uib-kicker-date\">" . $created . "</div>");
 
-        // Byline.
-        $uib_news_byline = "";
-        $byline_nrof_authors = 0;
-        $glue = "";
-        if (isset($variables['field_uib_byline']['und'])) {
-          $byline_nrof_authors = count($variables['field_uib_byline']['und']);
-        }
-        if ($byline_nrof_authors > 0) {
-          $uib_news_byline = t('By') . ' ';
-          // join authors into a single line
-          for ($i = 0; $i < $byline_nrof_authors; $i++) {
-            $uib_news_byline .= $glue . $variables['content']['group_article_info']['field_uib_byline'][$i]['#markup'];
-            if ($i == $byline_nrof_authors - 2) {
-              $glue = ' ' . t('and') . ' '; // not comma between last names
-            }
-            else {
-              $glue = ', '; // comma between names
-            }
-          }
-        }
-        if (!empty($variables['field_uib_external_author']['und'])) {
-          if (empty($uib_news_byline)) {
-            $uib_news_byline = t('By') . ' ';
-          }
-          $uib_news_byline .= $glue . $variables['field_uib_external_author']['und'][0]['value'];
-        }
-        $variables['content']['group_article_info']['uib_news_byline'] = array(
-          '#markup' => "<div class=\"uib-news-byline\">" . $uib_news_byline . "</div>",
-          '#weight' => 0,
+      if ($article_type == 'news') {
+        $kicker_array = array(
+          '#prefix' => '<div class="field-name-field-uib-kicker">',
+          'title' => array(
+            '#prefix' => '<div class="uib-kicker-text">',
+            '#suffix' => '</div>',
+          ),
+          'date' => array(
+            '#prefix' => '<div class="uib-kicker-date">',
+            '#markup' => format_date($created, 'medium'),
+            '#suffix' => '</div>',
+          ),
+          '#suffix' => '</div>',
+          '#weight' => -50,
         );
+
+        if ($kicker) {
+          $kicker_array['title']['#markup'] = $kicker;
+        }
+        else {
+          $kicker_array['title']['#markup'] = t('News');
+        }
+        $variables['content']['field_uib_kicker'] = $kicker_array;
+
+        /**
+         * Reformatting byline information.
+         */
+        if ($byline) {
+          $weight = $variables['field_uib_byline']['#weight'];
+          $byline_nrof_authors = 0;
+          $byline_nrof_authors = count($byline);
+
+          if ($byline_nrof_authors > 0) {
+            $uib_news_byline = t('By') . ' ';
+            // join authors into a single line
+            for ($i = 0; $i < $byline_nrof_authors; $i++) {
+              $uib_news_byline .= $glue . $variables['content']['field_uib_byline'][$i]['#markup'];
+              if ($i == $byline_nrof_authors - 2) {
+                $glue = ' ' . t('and') . ' '; // not comma between last names
+              }
+              else {
+                $glue = ', '; // comma between names
+              }
+            }
+          }
+        }
+
+        if ($external_author) {
+          if ($byline) {
+            $uib_news_byline .= $glue . $external_author;
+          }
+          else {
+            $uib_news_byline = t('By') . ' ';
+            $uib_news_byline .= $external_author;
+          }
+        }
+
+        if ($uib_news_byline) {
+          $article_info['uib_news_byline'] = array(
+            '#prefix' => '<div class="uib-news-byline">',
+            '#markup' => $uib_news_byline,
+            '#suffix' => '</div>',
+            '#weight' => $weight,
+          );
+        }
       }
-      elseif ($variables['node']->field_uib_article_type['und'][0]['value'] == 'event') {
-        if (empty($variables['node']->field_uib_kicker['und'][0]['value'])) {
+
+      if ($article_type == 'event') {
+        if (!$kicker) {
           $event_type_machine_name = $variables['node']->field_uib_event_type['und'][0]['value'];
           $event_type_info = field_info_field('field_uib_event_type');
           $event_type_default = $event_type_info['settings']['allowed_values'][$event_type_machine_name];
           $event_type = i18n_string_translate('field:field_uib_event_type:#allowed_values:' . $event_type_machine_name, $event_type_default);
+
           $variables['node']->field_uib_kicker['und'][0] = array(
             'value' => $event_type,
             'format' => NULL,
             'safe_value' => $event_type
           );
-          $field_uib_kicker = field_view_field('node', $variables['node'], 'field_uib_kicker', array('label' => 'hidden', 'weight' => -50,), $variables['language']);
+          $field_uib_kicker = field_view_field('node', $variables['node'], 'field_uib_kicker', array(
+            'label' => 'hidden',
+            'weight' => -50,
+            ),
+          $variables['language']);
           $variables['content']['field_uib_kicker'] = $field_uib_kicker;
         }
-        // Ensure that no byline is shown
       }
+
       // Ensure that the labels of some fields, which are shown in the
       // main content sidebar, are not show when the fields contain no data
       if (empty($variables['node']->field_uib_location['und'][0]['value'])) {
@@ -497,23 +558,16 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         hide($variables['content']['group_article_sidebar']['field_uib_media'][0]['field_uib_owner']);
       }
 
-      // Section that only run on employee uib-article nodes types.
-      if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {
-        if (empty($variables['content']['group_article_sidebar']['#id'])) {
-          $variables['content']['group_article_sidebar']['#weight'] = 4;
-          $variables['content']['group_article_sidebar']['#id'] =  'node_uib_article_full_group_article_sidebar';
-          $variables['content']['group_article_sidebar']['#prefix'] = '<div class="group-article-sidebar">';
-          $variables['content']['group_article_sidebar']['#suffix'] = '</div>';
-        }
-      }
-
       if (isset($variables['field_uib_text']['und']) && (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container'))) {
         drupal_add_library('system' , 'ui.tabs');
         drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js',
           array('group' => JS_THEME, )
         );
       }
+
+      $variables['content']['article_info'] = $article_info;
     }
+
   }
 }
 
