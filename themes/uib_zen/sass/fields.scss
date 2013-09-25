@@ -142,10 +142,6 @@
   border-radius: $border-radius;
   background: #F1F1EF;
   box-shadow: $box-shadow;
-  .field-name-field-uib-link-section {
-    // border-radius: $border-radius;
-    // background: #F1F1EF;
-  }
   .field-item {
     margin-bottom: 7px !important;
   }
@@ -541,6 +537,22 @@ div.link-field-column {
   background: #F1F1EF;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
+  margin: 20px 0 20px 0;
+  ul {
+    padding: 0 0 10px 0;
+  }
+  li {
+    float: left;
+  }
+  h3 {
+    margin: 20px 0 0 0;
+  }
+  h4 {
+    margin-left: 20px;
+  }
+  p {
+    display: block;
+  }
 }
 
 .node-type-uib-testimonial .field-name-field-uib-quote {

@@ -137,7 +137,7 @@
   border-bottom: solid 1px #c0c0c0;
 }
 
-.group_two_column .field-collection-item-field-uib-link-section .field-name-field-uib-title {
+#node_area_full_group_two_column .field-collection-item-field-uib-link-section .field-name-field-uib-title {
   font-weight: bold;
 }
 
@@ -149,19 +149,9 @@
   margin-top: 0;
 }
 
-.group_bottom_wrapper {
-  margin-top: 30px;
+#node_area_full_group_bottom_wrapper {
+  padding-top: 20px;
 }
-
-.field-name-field-uib-bottom-media  {
-  clear: both;
-}
-
-.group_two_colum  {
-  clear: both;
-}
-
-
 
 /* Article page */
 .field-name-field-uib-main-media .field-name-field-uib-copyright .field-items {
