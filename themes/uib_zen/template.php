@@ -476,42 +476,30 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         /**
          * Reformatting byline information.
          */
+        $news_byline = array();
         if ($byline) {
-          $weight = $variables['field_uib_byline']['#weight'];
-          $byline_nrof_authors = 0;
-          $byline_nrof_authors = count($byline);
-
-          if ($byline_nrof_authors > 0) {
-            $uib_news_byline = t('By') . ' ';
-            // join authors into a single line
-            for ($i = 0; $i < $byline_nrof_authors; $i++) {
-              $uib_news_byline .= $glue . $variables['content']['field_uib_byline'][$i]['#markup'];
-              if ($i == $byline_nrof_authors - 2) {
-                $glue = ' ' . t('and') . ' '; // not comma between last names
-              }
-              else {
-                $glue = ', '; // comma between names
-              }
-            }
+          foreach ($byline as $key => $value) {
+            $news_byline[] = $variables['content']['field_uib_byline'][$key]['#markup'];
           }
         }
 
         if ($external_author) {
-          if ($byline) {
-            $uib_news_byline .= $glue . $external_author;
-          }
-          else {
-            $uib_news_byline = t('By') . ' ';
-            $uib_news_byline .= $external_author;
-          }
+          $news_byline[] = $external_author;
         }
 
-        if ($uib_news_byline) {
+        if ($news_byline) {
+          $last_author = array_pop($news_byline);
+          if ($news_byline) {
+            $news_byline = t('By') . ' ' . implode(', ', $news_byline) . ' ' . t('and') . ' ' . $last_author;
+          }
+          else {
+            $news_byline = t('By') . ' ' . $last_author;
+          }
+
           $article_info['uib_news_byline'] = array(
             '#prefix' => '<div class="uib-news-byline">',
-            '#markup' => $uib_news_byline,
+            '#markup' => $news_byline,
             '#suffix' => '</div>',
-            '#weight' => $weight,
           );
         }
       }
