@@ -52,15 +52,15 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
 }
 
 /**
-* Recursive function aiming to get the part of the breadcrumb consisting
-* of related content.
-*
-* @param int $nid
-* @param array $crumbs
-* @param node $current_area
-*
-* @return array
-*/
+ * Recursive function aiming to get the part of the breadcrumb consisting
+ * of related content.
+ *
+ * @param int $nid
+ * @param array $crumbs
+ * @param node $current_area
+ *
+ * @return array
+ */
 function __uib_get_breadcrumb($nid, $crumbs=array(), $current_area) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
@@ -88,13 +88,13 @@ function __uib_get_breadcrumb($nid, $crumbs=array(), $current_area) {
 }
 
 /**
-* Getting the parent link id for items in the specified menu
-*
-* @param string $path
-* @param string $menu_name
-*
-* @return int
-*/
+ * Getting the parent link id for items in the specified menu.
+ *
+ * @param string $path
+ * @param string $menu_name
+ *
+ * @return int
+ */
 function __uib_get_plid($path, $menu_name) {
   $plid = db_select('menu_links' , 'ml')
   ->condition('ml.link_path' , $path)
@@ -106,12 +106,12 @@ function __uib_get_plid($path, $menu_name) {
 }
 
 /**
-* Getting a links parent item
-*
-* @param int $mlid
-*
-* @return array
-*/
+ * Getting a links parent item.
+ *
+ * @param int $mlid
+ *
+ * @return array
+ */
 function __uib_get_parent_item($mlid) {
   $result = db_select('menu_links', 'ml')
    ->condition('ml.mlid', $mlid)
