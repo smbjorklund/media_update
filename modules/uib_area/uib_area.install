@@ -138,6 +138,32 @@ function uib_area_update_7005() {
     'fg/demrett' => 17519,
     'rg/demlaw' => 17611,
   );
+  $manually_removed_nodes = array(
+    'navpage' => array(
+      24792,
+      ),
+    'infopage' => array(
+      21851,
+      21961,
+      22132,
+      22165,
+      22196,
+      22276,
+      22576,
+      22626,
+      22639,
+      22686,
+      23075,
+      23083,
+      23331,
+      23391,
+      23449,
+      23557,
+      23682,
+      24017,
+      24229,
+      ),
+  );
   foreach ($areas_to_forget as $area) {
     db_delete('migrate_map_area')
       ->condition('destid1', $area)
@@ -178,6 +204,14 @@ function uib_area_update_7005() {
               ->execute();
           }
         }
+      }
+    }
+    foreach ($manually_removed_nodes as $node_type => $removed_nodes) {
+      $migrate_table = 'migrate_map_' . $node_type;
+      foreach ($removed_nodes as $rnid) {
+        db_delete($migrate_table)
+          ->condition('destid1', $rnid)
+          ->execute();
       }
     }
 

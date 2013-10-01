@@ -2,7 +2,7 @@
 
 set -x
 
-REL=3.1.1
+REL=3.2
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
@@ -39,7 +39,7 @@ bin/site-drush cc all
 echo "Not yet ready for psyfa migration"; exit
 
 # Migrate
-bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_psyfa.txt
+xbin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_psyfa.txt
 bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_psyfa.txt
 bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_psyfa.txt
 bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_psyfa.txt
