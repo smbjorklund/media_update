@@ -96,3 +96,10 @@ function uib_setup_update_7005() {
 function uib_setup_update_7006() {
   module_enable(array('uib_service_links'), TRUE);
 }
+
+/**
+ * Enable EU Cookie compliance.
+ */
+function uib_setup_update_7007() {
+  module_enable(array('eu_cookie_compliance'), FALSE);
+}

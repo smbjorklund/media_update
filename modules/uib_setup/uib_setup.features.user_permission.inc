@@ -116,6 +116,16 @@ function uib_setup_user_default_permissions() {
     'module' => 'media_internet',
   );
 
+  // Exported permission: administer EU Cookie Compliance popup.
+  $permissions['administer EU Cookie Compliance popup'] = array(
+    'name' => 'administer EU Cookie Compliance popup',
+    'roles' => array(
+      0 => 'admin',
+      1 => 'level 1',
+    ),
+    'module' => 'eu_cookie_compliance',
+  );
+
   // Exported permission: administer actions.
   $permissions['administer actions'] = array(
     'name' => 'administer actions',
@@ -715,6 +725,17 @@ function uib_setup_user_default_permissions() {
       3 => 'level 3',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: display EU Cookie Compliance popup.
+  $permissions['display EU Cookie Compliance popup'] = array(
+    'name' => 'display EU Cookie Compliance popup',
+    'roles' => array(
+      0 => 'admin',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'eu_cookie_compliance',
   );
 
   // Exported permission: display drupal links.

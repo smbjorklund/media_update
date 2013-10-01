@@ -62,6 +62,60 @@ function uib_setup_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'eu_cookie_compliance_en';
+  $strongarm->value = array(
+    'popup_enabled' => 1,
+    'popup_clicking_confirmation' => 1,
+    'popup_position' => 1,
+    'popup_info' => array(
+      'value' => 'The uib.no site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies.',
+      'format' => 'plain_text',
+    ),
+    'popup_agreed_enabled' => 0,
+    'popup_hide_agreed' => 0,
+    'popup_agreed' => array(
+      'value' => 'Thank you for accepting cookies.',
+      'format' => 'plain_text',
+    ),
+    'popup_link' => 'https://www.uib.no/form/en/artikler/2013/09/cookiepolicy',
+    'popup_height' => '',
+    'popup_width' => '100%',
+    'popup_delay' => '1',
+    'popup_bg_hex' => '0779BF',
+    'popup_text_hex' => 'ffffff',
+  );
+  $export['eu_cookie_compliance_en'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'eu_cookie_compliance_nb';
+  $strongarm->value = array(
+    'popup_enabled' => 1,
+    'popup_clicking_confirmation' => 1,
+    'popup_position' => 1,
+    'popup_info' => array(
+      'value' => 'Vi bruker cookies på uib.no for å kunne gi deg en best mulig brukeropplevelse. Dersom du fortsetter uten å gjøre endringer, tillater du dette.',
+      'format' => 'plain_text',
+    ),
+    'popup_agreed_enabled' => 0,
+    'popup_hide_agreed' => 0,
+    'popup_agreed' => array(
+      'value' => 'Foo',
+      'format' => 'plain_text',
+    ),
+    'popup_link' => 'https://www.uib.no/form/artikler/2013/09/cookiepolicy',
+    'popup_height' => '',
+    'popup_width' => '100%',
+    'popup_delay' => '1',
+    'popup_bg_hex' => '0779BF',
+    'popup_text_hex' => 'ffffff',
+  );
+  $export['eu_cookie_compliance_nb'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'file_private_path';
   $strongarm->value = '../var/private';
   $export['file_private_path'] = $strongarm;
