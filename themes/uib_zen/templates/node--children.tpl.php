@@ -88,7 +88,6 @@
   <li<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></li>
 <?php else: ?>
   <li<?php print $title_attributes; ?>>
-    <a href="<?php print $node_url; ?>"><?php print $title; ?></a>
     <?php print render($content); ?>
   </li>
 <?php endif; ?>

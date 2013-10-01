@@ -471,7 +471,7 @@ function uib_testimonial_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -550,10 +550,13 @@ function uib_testimonial_field_default_fields() {
           'weight' => '4',
         ),
         'short_teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '7',
+          'label' => 'hidden',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'wide_thumbnail',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',

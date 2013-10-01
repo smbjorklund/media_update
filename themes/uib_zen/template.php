@@ -256,6 +256,17 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
   if ($variables['view_mode'] == 'short_teaser') {
     $variables['theme_hook_suggestions'][] = 'node__children';
+    $variables['content']['title'] = array(
+      '#theme' => 'link',
+      '#text' => $variables['title'],
+      '#path' => 'node/' . $variables['nid'],
+      '#options' => array(
+        'attributes' => array(),
+        'html' => TRUE,
+      ),
+      '#weight' => 5,
+    );
+    $variables['title'] = '';
   }
 
   if (stripos($variables['node_url'], 'foransatte') !== FALSE OR stripos($variables['node_url'], 'foremployees') !== FALSE) {

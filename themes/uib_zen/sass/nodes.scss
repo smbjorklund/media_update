@@ -339,3 +339,43 @@ h1 {
 #node_uib_article_full_group_article_sidebar .block-title {
   margin: 0 0 0.5em 0;
 }
+
+// Node in short teaser view mode
+.field-name-field-uib-relation {
+  border-top: #F1F1EF 3px solid;
+  clear: left;
+
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    float: left;
+    width: 50%;
+    height: 6em;
+    margin-bottom: 1em;
+    overflow: hidden;
+  }
+
+  a {
+    font-weight: bold;
+  }
+
+  .field-name-field-uib-media {
+    float: left;
+    width: 30%;
+
+    .content {
+      margin: 0 1em 0 0;
+    }
+  }
+
+  .field-name-field-uib-lead {
+    font-weight: normal;
+    margin: 0;
+  }
+
+  a, .field-name-field-uib-lead {
+    padding-right: 1em;
+  }
+}

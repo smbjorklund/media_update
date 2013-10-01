@@ -1006,7 +1006,7 @@ function uib_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -1281,9 +1281,12 @@ function uib_article_field_default_fields() {
         ),
         'short_teaser' => array(
           'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '1',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'wide_thumbnail',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -1387,10 +1390,10 @@ function uib_article_field_default_fields() {
           'weight' => '26',
         ),
         'short_teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
