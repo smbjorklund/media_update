@@ -1307,3 +1307,20 @@ function uib_area__menu_overview_page() {
   }
   return theme('table', array('header' => $header, 'rows' => $rows));
 }
+
+/**
+ * Implements hook_field_group_build_pre_render_alter().
+ * Add non field elements to field group.
+ */
+function uib_area_field_group_build_pre_render_alter(&$element) {
+  if ($element['#entity_type'] == 'node' && $element['#bundle'] == 'area') {
+    if ($element['group_two_column']) {
+      $nid = $element['#node']->nid;
+      $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $nid);
+      if (stripos($tmp_block_html, 'view-content') !== FALSE) {
+        $element['group_two_column']['field_uib_kids']['#markup'] = $tmp_block_html;
+        $element['group_two_column']['field_uib_kids']['#weight'] = 6;
+      }
+    }
+  }
+}

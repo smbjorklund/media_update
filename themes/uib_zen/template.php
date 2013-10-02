@@ -278,15 +278,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       $show_staff = $metadata->field_uib_show_staff->value();
       $link_section = $metadata->field_uib_link_section->value();
 
-      /**
-       * Insert department views block in not empty.
-       */
-      $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $variables['nid']);
-      if (stripos($tmp_block_html, 'view-content') !== FALSE) {
-        $variables['content']['group_two_column']['field_uib_kids']['#markup'] = $tmp_block_html;
-        $variables['content']['group_two_column']['field_uib_kids']['#weight'] = 6;
-      }
-
       switch ($area_type) {
         case 'research group':
           $variables['classes_array'][] = 'research_g_node';
