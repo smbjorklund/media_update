@@ -152,9 +152,9 @@
   }
 }
 
-/* Webdesk */
-
-/* Create article */
+/**
+ * Node forms.
+ */
 #uib-article-node-form,
 #area-node-form,
 #uib-testimonial-node-form,
@@ -164,8 +164,7 @@
   width: 100%;
 }
 
-.group-information,
-.group-specific-field {
+#node_uib_article_form_group_information {
   float: right;
   margin: 0 35px 0 0;
   width: 60%;
@@ -186,7 +185,7 @@
 }
 
 /* Sidebar */
-.group_sidebar {
+#node_uib_article_form_group_sidebar {
   width: 35%;
   float: right;
   background: #e5e5e5;
