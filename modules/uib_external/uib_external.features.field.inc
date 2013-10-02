@@ -152,10 +152,10 @@ function uib_external_field_default_fields() {
           'label' => 'hidden',
           'module' => 'file_entity',
           'settings' => array(
-            'file_view_mode' => 'teaser',
+            'file_view_mode' => 'wide_thumbnail',
           ),
           'type' => 'file_rendered',
-          'weight' => '1',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -254,7 +254,7 @@ function uib_external_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',

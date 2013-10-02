@@ -83,11 +83,6 @@
  * @see template_process()
  */
 ?>
-<?php if ($node->type == 'uib_external_content' && !empty($node->field_uib_links['und'][0]['url'])): ?>
-  <?php $node_url = $node->field_uib_links['und'][0]['url']; ?>
-  <li<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></li>
-<?php else: ?>
   <li<?php print $title_attributes; ?>>
     <?php print render($content); ?>
   </li>
-<?php endif; ?>
