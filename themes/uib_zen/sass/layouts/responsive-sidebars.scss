@@ -76,7 +76,7 @@ $zen-auto-include-item-base: false;
   @include zen-grid-item-base();
 }
 
-/*
+/**
  * Containers for grid items and flow items.
  */
 #header,
@@ -361,11 +361,6 @@ $zen-auto-include-item-base: false;
     }
   }
 
-  /* content */
-  #content {
-    margin-top: 20px;
-  }
-
   /* Hide extra logo */
   .field-name-field-uib-logo {
     display: none;
@@ -390,9 +385,16 @@ $zen-auto-include-item-base: false;
 
   #block-locale-language--2 {
     float: right;
-    margin-right: 18px;
+    margin-right: zen-half-gutter() * 2;
+    margin-bottom: 0;
+    .language-switcher-locale-url {
+      margin-bottom: 0;
+    }
   }
 
+#main {
+  clear: both;
+}
   /* Area mobile */
 
   .region-sidebar-second .block {
@@ -410,6 +412,7 @@ $zen-auto-include-item-base: false;
       @include zen-clear();
       @include zen-grid-item-base();
       @include zen-grid-item(1, 1);
+      margin-bottom: $box-spacing;
     }
   }
 
@@ -417,15 +420,6 @@ $zen-auto-include-item-base: false;
     li {
       width: zen-unit-width();
     }
-  }
-
-  .field-name-field-uib-profiled-message,
-  .view-faculty-departments-kids {
-    margin-bottom: 10px;
-  }
-
-  .field-name-field-uib-social-media {
-    margin-bottom: 20px;
   }
 
   /* Slideshow mobile */
@@ -704,7 +698,6 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-social-media {
     @include zen-grid-item(4, 1);
     @include zen-grid-item-base;
-    margin-bottom: 20px;
   }
 
   #node_area_full_group_two_column {
@@ -717,14 +710,11 @@ $zen-auto-include-item-base: false;
       float: left;
       width: 50%;
       @include zen-grid-item-base;
-    }
-    .field-name-field-uib-profiled-message,
-    .view-faculty-departments-kids {
-      margin-bottom: 10px;
+      margin-bottom: $box-spacing;
     }
   }
 
-  #node_area_full_group-bottom-wrapper {
+  #node_area_full_group_bottom_wrapper {
     @include zen-clear();
   }
 
@@ -1034,9 +1024,6 @@ $zen-auto-include-item-base: false;
     display: none;
   }
   /* Content */
-  #content {
-    margin-top: 20px;
-  }
   .front {
     #content {
       margin-top: 0px;
@@ -1220,10 +1207,7 @@ $zen-auto-include-item-base: false;
       float: left;
       width: 50%;
       @include zen-grid-item-base;
-    }
-    .field-name-field-uib-profiled-message,
-    .view-faculty-departments-kids {
-      margin-bottom: 10px;
+      margin-bottom: $box-spacing;
     }
   }
 
@@ -1260,16 +1244,20 @@ $zen-auto-include-item-base: false;
   }
 
   /* Slideshow */
-  .view-area-slideshow .transparent {
-    position: absolute;
-    bottom: 4px;
-    left: 0px;
-    width: 100%;
-    height: 30%;
-    background-color: rgba(0, 0, 0, 0.8);
-    .slidecontent {
-      &:hover {
-        text-decoration: underline;
+  .view-area-slideshow {
+    @include zen-clear();
+    @include zen-grid-item(4, 1);
+    .transparent {
+      position: absolute;
+      bottom: 4px;
+      left: 0px;
+      width: 100%;
+      height: 30%;
+      background-color: rgba(0, 0, 0, 0.8);
+      .slidecontent {
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -1304,7 +1292,6 @@ $zen-auto-include-item-base: false;
   .field-name-field-uib-social-media {
     @include zen-grid-item(4, 1);
     @include zen-grid-item-base;
-    margin-bottom: 20px;
   }
 
   /* Courses */

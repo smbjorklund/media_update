@@ -139,9 +139,6 @@
 }
 
 .field-collection-container {
-  border-radius: $border-radius;
-  background: #F1F1EF;
-  box-shadow: $box-shadow;
   .field-item {
     margin-bottom: 7px !important;
   }
@@ -491,43 +488,30 @@ div.link-field-column {
   clear: both;
 }
 
-.field-name-field-uib-profiled-testimonial {
-  background: #F1F1EF;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  margin-bottom: 10px;
-  display: inline-block;
-  > .field-items {
-    margin: 15px 0 0 0;
+.field-name-field-uib-primary-media,
+.field-name-field-uib-profiled-testimonial,
+.field-name-field-uib-bottom-media {
+  img {
+    display: block;
   }
+}
+
+.field-name-field-uib-profiled-testimonial {
   .field {
     float: left;
-    display: inline-block;
-  }
-  .field-name-field-uib-media .content {
-    margin: 0 0 10px 0;
   }
 }
 
 .field-name-field-uib-secondary-text {
-  background: #F1F1EF;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  margin: 20px 0 20px 0;
   ul {
     padding: 0 0 10px 0;
+    margin-bottom: 0;
   }
   li {
     float: left;
   }
-  h3 {
-    margin: 20px 0 0 0;
-  }
   h4 {
     margin-left: 20px;
-  }
-  p {
-    display: block;
   }
 }
 
@@ -551,9 +535,9 @@ div.link-field-column {
   }
 }
 
-.node-teaser {
+.field-name-field-uib-profiled-testimonial .node-teaser {
   .field-name-field-uib-media {
-    margin: 0 10px 10px 0;
+    margin: 0 10px 0 0;
     width: 45%;
   }
   .field-name-field-uib-quote {
@@ -570,5 +554,22 @@ div.link-field-column {
   .field-name-field-uib-name {
     width: 50%;
     margin: 0 0 10px 0;
+  }
+}
+
+.opaque-box {
+  background: #F1F1EF;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: zen-half-gutter();
+  h1 {
+    margin-top: 0;
+  }
+}
+
+// General field spacing
+.node-type-area {
+  .field {
+    margin-bottom: $box-spacing;
   }
 }

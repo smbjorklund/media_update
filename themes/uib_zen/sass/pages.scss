@@ -196,6 +196,12 @@ body {
 /*
  * Content
  */
+
+#main #content {
+  padding-top: $zen-gutter-width;
+  padding-bottom: $zen-gutter-width;
+}
+
 .section-node-add #content {
   margin-top: 0;
 }

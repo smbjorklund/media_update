@@ -1318,9 +1318,61 @@ function uib_area_field_group_build_pre_render_alter(&$element) {
       $nid = $element['#node']->nid;
       $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $nid);
       if (stripos($tmp_block_html, 'view-content') !== FALSE) {
+        if (uib_area__has_bg_box('views-faculty-department-kids')) {
+          $ptr = mb_strpos($tmp_block_html, '>') + 1;
+          $tmp_block_html = drupal_substr($tmp_block_html, 0, $ptr) . '<div class="opaque-box">' . drupal_substr($tmp_block_html, $ptr) . '</div>';
+        }
         $element['group_two_column']['field_uib_kids']['#markup'] = $tmp_block_html;
         $element['group_two_column']['field_uib_kids']['#weight'] = 6;
       }
     }
   }
+}
+
+/**
+ * Determine if a field (etc) should have background box on area pages
+ */
+function uib_area__has_bg_box($field_name) {
+  $boxed = array(
+    'field_uib_secondary_text',
+    'field_uib_link_section',
+    'field_uib_profiled_testimonial',
+    'views-faculty-department-kids',
+  );
+  if (!empty($field_name) && in_array($field_name, $boxed)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Overrides theme_field on area pages
+ * [uib_zen_field__area description]
+ * @param  [type] $variables
+ * @return [type]
+ */
+function uib_zen_field__area($variables) {
+  $output = '';
+
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
+  }
+
+  // Render the items.
+  $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+    $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
+  }
+  $output .= '</div>';
+
+  $prefix = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>';
+  if (!empty($variables['element']['#field_name']) && uib_area__has_bg_box($variables['element']['#field_name'])) {
+    $output = $prefix . '<div class="opaque-box">' . $output . '</div></div>';
+  }
+  else {
+    $output = $prefix . $output . '</div>';
+  }
+
+  return $output;
 }
