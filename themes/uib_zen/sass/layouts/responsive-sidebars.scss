@@ -1057,11 +1057,13 @@ $zen-auto-include-item-base: false;
   }
 
   /* uib_article nodes */
+  #node_uib_testimonial_full_group_article_main,
   #node_uib_article_full_group_article_main {
     @include zen-grid-item(3, 1);
     width: 73%;
   }
 
+  #node_uib_testimonial_full_group_article_sidebar,
   #node_uib_article_full_group_article_sidebar {
     @include zen-grid-item(1, 4)
   }
