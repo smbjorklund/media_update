@@ -9,6 +9,7 @@ dependencies[] = ctools
 dependencies[] = strongarm
 dependencies[] = views
 features[context][] = calendar
+features[context][] = calendar_year
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
