@@ -333,8 +333,10 @@ h1 {
   .view-id-frontpage_profiled_articles .views-field-title {
     margin-bottom: 7px;
   }
-  .view-display-id-block_2 .views-field-title a {
-    color: #333;
+  .view-display-id-block_2, .view-display-id-block_1 {
+    .views-field-title a {
+      color: #333;
+  }
   }
 }
 
