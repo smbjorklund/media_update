@@ -1,3 +1,21 @@
+# Release 2013-10-09 tag: R3.2
+
+Release for løpende fix på diverse saker og moduloppdatering av Drupal, ny layout for tilknyttet innhold, reformatterer og rydder opp i template.php, og funksjonalitet for å gjøre folk oppmerksomme på cookies på nettstedet. I tillegg remigreres en forskergruppe som manglet etter migrasjonen av SV-fakultetet. Oppdateringen begynner også et arbeid med å restrukturere layout på area for å forbedre flyt og utseende.
+
+* Ny layout på tilknyttet innhold organiserer opplistingen bedre og gir mulighet for å legge bilde til visningen, også for eksternt tilknyttet innhold #3829 #3848
+* Justering av styling på "Foto" og "Opphavsrett" #3785
+* Museumsbildet fjernes fra header i mobil visning #3774
+* Reintroduksjon av tittel i teaser for vitnesbyrd på områdeforsiden, samt noe omorganisering av teksten i teaser #3827 #3277
+* Tillegg for årsvisning i kalender samt reformattering av dato i månedsvisningen #3553 #1069
+* Cookie-varsel for nettstedet (EU-krav) #3823
+* Fiks for brødsmulestien #3840 #3860
+* Fiks for ekstern forfatter i bylinefeltet på nyhetsartikler #3901
+* Migrering av manglende forskergruppe (fg/demrett) etter migrasjon av SV-fakultetet #3811
+* Reformatering av template.php #3812
+* Oppgardering av moduler og fikser etter oppgraderingen #3753 #3918 # 3911 #3908
+* Opprydning av css og layout på område og fiks etter denne #3754 #3924 #3940 #3933 
+* Diverse tekniske saker #3858 #3818 #3762 #3740
+
 # Release 2013-09-18 tag: R3.1
 
 Release for løpende fix på diverse saker og moduloppdatering av Drupal.
