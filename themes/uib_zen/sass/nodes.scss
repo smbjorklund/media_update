@@ -357,7 +357,9 @@ h1 {
     font-weight: bold;
   }
 
-  .field-name-field-uib-media {
+  .field-name-field-uib-media,
+  .field-name-field-uib-main-media {
+    background-color: transparent;
     float: left;
     width: 30%;
 
