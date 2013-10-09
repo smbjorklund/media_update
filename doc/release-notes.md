@@ -7,7 +7,7 @@ Release for løpende fix på diverse saker og moduloppdatering av Drupal, ny lay
 * Museumsbildet fjernes fra header i mobil visning #3774
 * Reintroduksjon av tittel i teaser for vitnesbyrd på områdeforsiden, samt noe omorganisering av teksten i teaser #3827 #3277
 * Tillegg for årsvisning i kalender samt reformattering av dato i månedsvisningen #3553 #1069
-* Cookie-varsel for nettstedet (EU-krav) #3823
+* Forberedelse for cookie-varsel for nettstedet (EU-krav) #3823
 * Fiks for brødsmulestien #3840 #3860
 * Fiks for ekstern forfatter i bylinefeltet på nyhetsartikler #3901
 * Migrering av manglende forskergruppe (fg/demrett) etter migrasjon av SV-fakultetet #3811
