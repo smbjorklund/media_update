@@ -337,32 +337,49 @@ function uib_area__extract_nid_from_path($path) {
  * Check (and correct) menu for inconsistencies regarding parents
  *   Inconsistencies may be found by comparing the menu tree built
  *   by menu_tree_all_data() with what is found in the menu link record.
+ *
+ *   The option --check-all will force check of all menus, not only the
+ *   old style Area menu.
  */
 function drush_uib_area_menu_chk() {
   // Try old-style area menu
   $parent_trail = array();
   $menu_tree = menu_tree_all_data('area');
-  uibx_log('Checking old-style "area" menu', 'notice');
-  $parent_trail = array();
-  uib_area__chk_menu_recursive($menu_tree, NULL, $parent_trail);
+  if (!empty($menu_tree)) {
+    uibx_log('Checking old-style "area" menu', 'notice');
+    $parent_trail = array();
+    if (!uib_area__chk_menu_recursive($menu_tree, NULL, $parent_trail)) {
+      return FALSE;
+    }
+  }
+  else {
+    uibx_log('Old-style "area" menu was empty', 'notice');
+  }
 
-  // Find all area nodes
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'area');
-  $result = $query->execute();
-  if ($result) {
-    $nodes = entity_load('node', array_keys($result['node']));
-    foreach($nodes as $node) {
-      // menu name
-      $menu_machine_name = 'menu-area-' . $node->nid;
-      if ($menu = menu_load($menu_machine_name)) {
-        $menu_title = $menu['title'];
-        uibx_log('Checking menu "' . $menu_title . '" = ' . $menu_machine_name, 'notice');
-        $menu_tree = menu_tree_all_data($menu_machine_name);
-        $parent_trail = array();
-        if (!uib_area__chk_menu_recursive($menu_tree, NULL, $parent_trail)) {
-          return FALSE;
+  if (drush_get_option('check-all')) {
+    // Find all area nodes
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'area');
+    $result = $query->execute();
+    if ($result) {
+      $nodes = entity_load('node', array_keys($result['node']));
+      foreach($nodes as $node) {
+        // menu name
+        $menu_machine_name = 'menu-area-' . $node->nid;
+        if ($menu = menu_load($menu_machine_name)) {
+          $menu_title = $menu['title'];
+          uibx_log('Checking menu "' . $menu_title . '" = ' . $menu_machine_name, 'notice');
+          $menu_tree = menu_tree_all_data($menu_machine_name);
+          $parent_trail = array();
+          if (!uib_area__chk_menu_recursive($menu_tree, NULL, $parent_trail)) {
+            return FALSE;
+          }
+        }
+        else {
+          if (uib_area_menu_is_allowed($node) && stripos($node->title, "Area stub") === FALSE) {
+            uibx_log('The area "' . $node->title . '" unexpectedly lacked menu (' . $menu_machine_name . ')', 'warning');
+          }
         }
       }
     }
@@ -382,7 +399,7 @@ function uib_area__chk_menu_recursive($trunk, $parent_mlid, &$ptrail) {
       // get node id from url
       $nid = uib_area__extract_nid_from_path($branch['link']['link_path']);
       if (empty($nid)) {
-        uibx_log('Unable to extract nid from url for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'] . ' external=' . $branch['link']['external'], 'error');
+        uibx_log('Unable to extract nid from url for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'] . ' external=' . $branch['link']['external'], 'warning');
         return FALSE;
       }
       else {
