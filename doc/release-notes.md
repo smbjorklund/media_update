@@ -12,8 +12,8 @@ Release for løpende fix på diverse saker og moduloppdatering av Drupal, ny lay
 * Fiks for ekstern forfatter i bylinefeltet på nyhetsartikler #3901
 * Migrering av manglende forskergruppe (fg/demrett) etter migrasjon av SV-fakultetet #3811
 * Reformatering av template.php #3812
-* Oppgardering av moduler og fikser etter oppgraderingen #3753 #3918 # 3911 #3908
-* Opprydning av css og layout på område og fiks etter denne #3754 #3924 #3940 #3933 
+* Oppgardering av moduler og fikser etter oppgraderingen #3753 #3918 #3911 #3908
+* Opprydning av css og layout på område og fiks etter denne #3754 #3924 #3940 #3933
 * Diverse tekniske saker #3858 #3818 #3762 #3740
 
 # Release 2013-09-18 tag: R3.1
