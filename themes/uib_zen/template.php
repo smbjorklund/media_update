@@ -402,6 +402,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       $changed = $metadata->changed->value();
       $byline = $metadata->field_uib_byline->value();
       $external_author = $metadata->field_uib_external_author->value();
+      $uib_text = $metadata->field_uib_text->value();
       hide($variables['content']['field_uib_byline']);
 
       /**
@@ -555,7 +556,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         hide($variables['content']['group_article_sidebar']['field_uib_media'][0]['field_uib_owner']);
       }
 
-      if (isset($variables['field_uib_text']['und']) && (strstr($variables['field_uib_text']['und'][0]['safe_value'],'uib-tabs-container'))) {
+      if ($uib_text && strstr($uib_text['safe_value'], 'uib-tabs-container')) {
         drupal_add_library('system' , 'ui.tabs');
         drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js',
           array('group' => JS_THEME, )
