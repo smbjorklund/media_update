@@ -1372,7 +1372,9 @@ function uib_zen_field__area($variables) {
 
   $prefix = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>';
   if (!empty($variables['element']['#field_name']) && uib_area__has_bg_box($variables['element']['#field_name'])) {
-    $output = $prefix . '<div class="opaque-box">' . $output . '</div></div>';
+    if (!empty($variables['element']['#object']->$variables['element']['#field_name'])) {
+      $output = $prefix . '<div class="opaque-box">' . $output . '</div></div>';
+    }
   }
   else {
     $output = $prefix . $output . '</div>';
