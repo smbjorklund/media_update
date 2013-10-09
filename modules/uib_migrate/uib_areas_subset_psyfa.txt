@@ -31,6 +31,10 @@ rg/dice-lab
 fg/dice-lab
 rg/oprg
 fg/oprg
+fg/ap
+rg/es
+fg/fluh
+rg/herg
 
 # Research groups Institutt for pedagogikk
 fg/dlc
@@ -71,3 +75,13 @@ fg/ccns
 # Research groups Faculty of Psychology
 fg/frg
 rg/frg
+
+# Research schools
+fs/cdp
+rs/cdp
+fs/ghig
+rs/ghig
+fs/nafol
+rs/nafol
+fs/nated
+rs/nated
