@@ -1,3 +1,7 @@
+# Release 2013-10-10 tag: R3.2.1
+
+Faner ble ikke lenger presentert for artikler (regresjon i 3.2) #3950
+
 # Release 2013-10-09 tag: R3.2
 
 Release for løpende fix på diverse saker og moduloppdatering av Drupal, ny layout for tilknyttet innhold, reformatterer og rydder opp i template.php, og funksjonalitet for å gjøre folk oppmerksomme på cookies på nettstedet. I tillegg remigreres en forskergruppe som manglet etter migrasjonen av SV-fakultetet. Oppdateringen begynner også et arbeid med å restrukturere layout på area for å forbedre flyt og utseende.
