@@ -853,7 +853,7 @@ function uib_area_field_default_fields() {
             'view_mode' => 'full',
           ),
           'type' => 'field_collection_view',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'short_teaser' => array(
           'label' => 'above',

@@ -56,8 +56,8 @@ function uib_area_field_group_info() {
     'label' => 'Bottom wrapper',
     'weight' => '7',
     'children' => array(
-      0 => 'field_uib_bottom_text',
-      1 => 'field_uib_bottom_media',
+      0 => 'field_uib_bottom_media',
+      1 => 'field_uib_bottom_text',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -88,12 +88,12 @@ function uib_area_field_group_info() {
     'label' => 'For level 1',
     'weight' => '1',
     'children' => array(
-      0 => 'field_uib_area_parents',
-      1 => 'field_uib_sebra_id',
-      2 => 'field_uib_menu_style',
-      3 => 'field_uib_area_type',
-      4 => 'field_uib_ou',
-      5 => 'field_uib_w2_id',
+      0 => 'field_uib_sebra_id',
+      1 => 'field_uib_area_parents',
+      2 => 'field_uib_area_type',
+      3 => 'field_uib_menu_style',
+      4 => 'field_uib_w2_id',
+      5 => 'field_uib_ou',
       6 => 'title',
     ),
     'format_type' => 'tab',
@@ -121,11 +121,11 @@ function uib_area_field_group_info() {
     'label' => 'Management',
     'weight' => '2',
     'children' => array(
-      0 => 'field_uib_important_message',
+      0 => 'field_uib_content_manager',
       1 => 'field_uib_logo',
-      2 => 'field_uib_staff',
-      3 => 'field_uib_content_manager',
-      4 => 'field_uib_show_staff',
+      2 => 'field_uib_show_staff',
+      3 => 'field_uib_staff',
+      4 => 'field_uib_important_message',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -153,8 +153,8 @@ function uib_area_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_uib_profiled_testimonial',
-      1 => 'field_uib_tertiary_text',
-      2 => 'field_uib_link_section',
+      1 => 'field_uib_link_section',
+      2 => 'field_uib_tertiary_text',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -247,11 +247,11 @@ function uib_area_field_group_info() {
     'label' => 'Top section',
     'weight' => '4',
     'children' => array(
-      0 => 'field_uib_secondary_text',
-      1 => 'field_uib_primary_media',
-      2 => 'field_uib_profiled_article',
-      3 => 'field_uib_social_media',
-      4 => 'field_uib_primary_text',
+      0 => 'field_uib_social_media',
+      1 => 'field_uib_primary_text',
+      2 => 'field_uib_primary_media',
+      3 => 'field_uib_secondary_text',
+      4 => 'field_uib_profiled_article',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -284,9 +284,8 @@ function uib_area_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'field_uib_profiled_message',
-      1 => 'field_uib_tertiary_text',
-      2 => 'field_uib_profiled_testimonial',
-      3 => 'field_uib_link_section',
+      1 => 'group_column_second',
+      2 => 'group_column_first',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -316,7 +315,10 @@ function uib_area_field_group_info() {
   $field_group->data = array(
     'label' => 'Two column',
     'weight' => '19',
-    'children' => array(),
+    'children' => array(
+      0 => 'group_column_second',
+      1 => 'group_column_first',
+    ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
