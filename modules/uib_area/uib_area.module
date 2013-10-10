@@ -1318,7 +1318,7 @@ function uib_area__menu_overview_page() {
  */
 function uib_area_field_group_build_pre_render_alter(&$element) {
   if ($element['#entity_type'] == 'node' && $element['#bundle'] == 'area') {
-    if ($element['group_two_column']) {
+    if ($element['group_two_column']['group_column_first']) {
       $nid = $element['#node']->nid;
       $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $nid);
       if (stripos($tmp_block_html, 'view-content') !== FALSE) {
@@ -1326,8 +1326,8 @@ function uib_area_field_group_build_pre_render_alter(&$element) {
           $ptr = mb_strpos($tmp_block_html, '>') + 1;
           $tmp_block_html = drupal_substr($tmp_block_html, 0, $ptr) . '<div class="opaque-box">' . drupal_substr($tmp_block_html, $ptr) . '</div>';
         }
-        $element['group_two_column']['field_uib_kids']['#markup'] = $tmp_block_html;
-        $element['group_two_column']['field_uib_kids']['#weight'] = 6;
+        $element['group_two_column']['group_column_first']['field_uib_kids']['#markup'] = $tmp_block_html;
+        $element['group_two_column']['group_column_first']['field_uib_kids']['#weight'] = 6;
       }
     }
   }

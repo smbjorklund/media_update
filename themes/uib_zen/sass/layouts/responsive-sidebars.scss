@@ -404,7 +404,8 @@ $zen-auto-include-item-base: false;
   }
 
   .node-area,
-  #node_area_full_group_two_column,
+  #node_area_full_group_column_first,
+  #node_area_full_group_column_second,
   #node_area_full_group_bottom_wrapper {
     >.field,
     .field-collection-container,
@@ -702,13 +703,21 @@ $zen-auto-include-item-base: false;
 
   #node_area_full_group_two_column {
     @include zen-clear();
-    @include zen-grid-item(4, 1);
+  }
 
+  #node_area_full_group_column_first {
+    @include zen-grid-item(2, 1);
     >.field,
     .field-collection-container,
     .view-faculty-departments-kids {
-      float: left;
-      width: 50%;
+      @include zen-grid-item-base;
+      margin-bottom: $box-spacing;
+    }
+  }
+
+  #node_area_full_group_column_second {
+    @include zen-grid-item(2, 3);
+    >.field {
       @include zen-grid-item-base;
       margin-bottom: $box-spacing;
     }
@@ -1198,13 +1207,21 @@ $zen-auto-include-item-base: false;
 
   #node_area_full_group_two_column {
     @include zen-clear();
-    @include zen-grid-item(4, 1);
+  }
 
+  #node_area_full_group_column_first {
+    @include zen-grid-item(2, 1);
     >.field,
     .field-collection-container,
     .view-faculty-departments-kids {
-      float: left;
-      width: 50%;
+      @include zen-grid-item-base;
+      margin-bottom: $box-spacing;
+    }
+  }
+
+  #node_area_full_group_column_second {
+    @include zen-grid-item(2, 3);
+    >.field {
       @include zen-grid-item-base;
       margin-bottom: $box-spacing;
     }
