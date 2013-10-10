@@ -1211,6 +1211,22 @@ $zen-auto-include-item-base: false;
 
   #node_area_full_group_column_first {
     @include zen-grid-item(2, 1);
+  }
+
+  .full-width #node_area_full_group_column_first {
+    @include zen-grid-item(4, 1);
+  }
+
+  #node_area_full_group_column_second {
+    @include zen-grid-item(2, 3);
+  }
+
+  .full-width #node_area_full_group_column_second {
+    @include zen-grid-item(4, 1);
+  }
+
+  #node_area_full_group_column_first,
+  #node_area_full_group_column_second {
     >.field,
     .field-collection-container,
     .view-faculty-departments-kids {
@@ -1219,13 +1235,6 @@ $zen-auto-include-item-base: false;
     }
   }
 
-  #node_area_full_group_column_second {
-    @include zen-grid-item(2, 3);
-    >.field {
-      @include zen-grid-item-base;
-      margin-bottom: $box-spacing;
-    }
-  }
 
   #node_area_full_group_bottom_wrapper {
     @include zen-clear();

@@ -1330,6 +1330,34 @@ function uib_area_field_group_build_pre_render_alter(&$element) {
         $element['group_two_column']['group_column_first']['field_uib_kids']['#weight'] = 6;
       }
     }
+    if ($element['group_two_column']) {
+      $column_first_empty = TRUE;
+      if ($element['group_two_column']['group_column_first']) {
+        foreach ($element['group_two_column']['group_column_first'] as $key => $value) {
+          if (substr($key, 0, 1) != '#') {
+            if (!empty($value)) {
+              $column_first_empty = FALSE;
+              break;
+            }
+          }
+        }
+      }
+      $column_second_empty = TRUE;
+      if ($element['group_two_column']['group_column_second']) {
+        foreach ($element['group_two_column']['group_column_second'] as $key => $value) {
+          if (substr($key, 0, 1) != '#') {
+            if (!empty($value)) {
+              $column_second_empty = FALSE;
+              break;
+            }
+          }
+        }
+      }
+      if ($column_first_empty || $column_second_empty) {
+        $element['group_two_column']['#prefix'] .= '<div class="full-width">';
+        $element['group_two_column']['#suffix'] .= '</div>';
+      }
+    }
   }
 }
 
