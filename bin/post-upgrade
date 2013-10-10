@@ -2,41 +2,12 @@
 
 set -x
 
-REL=3.2
+REL=4
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
     exit 1
 fi
-
-# Migrate
-bin/site-drush migrate-import --verbose Area --strict=0 --serial=2503286534104024748,9000625789282785485
-
-bin/site-drush migrate-import --verbose NavPage --strict=0 --w2prefix=/fg/demrett
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --w2prefix=/fg/demrett
-bin/site-drush migrate-import --verbose News --strict=0 --w2prefix=/fg/demrett
-bin/site-drush migrate-import --verbose Event --strict=0 --w2prefix=/fg/demrett
-#bin/site-drush migrate-import --verbose Testimonial --strict=0 --w2prefix=/fg/demrett
-
-bin/site-drush migrate-import --verbose NavPage --strict=0 --w2prefix=/rg/demlaw
-#bin/site-drush migrate-import --verbose InfoPage --strict=0 --w2prefix=/rg/demlaw
-#bin/site-drush migrate-import --verbose News --strict=0 --w2prefix=/rg/demlaw
-bin/site-drush migrate-import --verbose Event --strict=0 --w2prefix=/rg/demlaw
-#bin/site-drush migrate-import --verbose Testimonial --strict=0 --w2prefix=/rg/demlaw
-
-# Build area menu for migrated content
-bin/site-drush uib-migrate-build-menu --verbose
-
-# Split Area menu for newly migrated content
-bin/site-drush uib-area-menu-chk
-bin/site-drush uib-area-split-menu --verbose
-bin/site-drush uib-area-menu-to-relation
-
-# Make sure the cache is really blenda-clean
-bin/site-drush cc all
-
-
-echo "Not yet ready for psyfa migration"; exit
 
 # Migrate
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_psyfa.txt
