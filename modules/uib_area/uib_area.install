@@ -219,3 +219,59 @@ function uib_area_update_7005() {
     drush_uib_area_area_cleanup($area);
   }
 }
+
+/**
+ * Remove incorrectly migrated area fg/rtpr.
+ */
+function uib_area_update_7006() {
+  $areas_to_forget = array(
+    'fg/rtpr' => 17615,
+  );
+
+  foreach ($areas_to_forget as $area) {
+    db_delete('migrate_map_area')
+      ->condition('destid1', $area)
+      ->execute();
+
+    // Make migrate forget that nodes belonging to these areas were migrated before
+    $query = new EntityFieldQuery;
+    $result = $query
+      ->entityCondition('entity_type', 'node')
+      ->fieldCondition('field_uib_area', 'target_id', $area)
+      ->execute();
+    $related_nodes = entity_load('node', array_keys($result['node']));
+    foreach ($related_nodes as $rnid => $rnode) {
+      if ($rnode->field_uib_area['und'][0]['target_id'] == $area) {
+        $migrate_table = 'migrate_map_';
+        $table = FALSE;
+        if ($rnode->type == 'uib_article') {
+          $migrate_table .= $rnode->field_uib_article_type['und'][0]['value'];
+          $table = TRUE;
+        }
+        elseif ($rnode->type == 'uib_testimonial') {
+          $migrate_table .= 'testimonial';
+          $table = TRUE;
+        }
+        else {
+          uibx_log("Unexpected node type: $rnode->type, node $rnid", 'error');
+        }
+        if ($table) {
+          db_delete($migrate_table)
+            ->condition('destid1', $rnid)
+            ->execute();
+          if ($migrate_table == 'migrate_map_infopage') {
+            // navpages have their own table in migrate, but are not possible
+            // to distinguish from infopages in w3. Thus, try also other table.
+            $migrate_table = 'migrate_map_navpage';
+            db_delete($migrate_table)
+              ->condition('destid1', $rnid)
+              ->execute();
+          }
+        }
+      }
+    }
+
+    // Wipe the slate clean
+    drush_uib_area_area_cleanup($area);
+  }
+}
