@@ -234,6 +234,12 @@ h1 {
     border-bottom: solid 1px silver;
     padding: 4px 0 4px 10px;
   }
+  ul {
+    list-style: square;
+  }
+  li {
+    margin: 0.5em 0;
+  }
 }
 
 #node_uib_article_full_group_article_main,
