@@ -505,7 +505,7 @@ class XTopicListSource extends MigrateSource {
           $notInSubset = TRUE;
           foreach ($this->w2AreaSubset as $subsetArea) {
             $path = ltrim($path, "/");
-            if (substr($path, 0, strlen($subsetArea)) == $subsetArea) {
+            if ($path == $subsetArea || substr($path, 0, strlen($subsetArea)+1) == "$subsetArea/") {
               $notInSubset = FALSE;
               //uibx_log("$subsetArea found in " . substr($path, 0, 35) . "...", 'notice');
               break;
