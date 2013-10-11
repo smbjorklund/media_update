@@ -5,3 +5,31 @@
  */
 
 include_once 'uib_study.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function uib_study_block_info() {
+  return array(
+    'study_content' => array(
+      'info' => t('Study content from FS'),
+      'status' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function uib_study_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'study_content':
+      $block['subject'] = 'Greeting!';
+      $block['content'] = array(
+        '#markup' => 'Hello world!',
+      );
+      break;
+  }
+  return $block;
+}
