@@ -1,3 +1,14 @@
+# Release 2013-10-14 tag: R4
+
+Release tar seg primært av migrering av området Psykologisk fakultet til ny plattform. I tillegg gjøres noen små rettelser.
+
+* Fiks for felt på område som dukket opp selv om det var tomt #3948
+* Fiks for kulepunkter i faktaboks som forsvant i R3.2 #3973
+* Styling på kalenderlenker på engelske og norske sider justert slik at de samsvarer #3642
+* Fiks for å hindre at brødsmulestien viser begge stiene når en side ligger flere steder i menyen #3972
+* Fiks for oversettelse av hendelses-typer i årsvisning på kalender #3974
+* Forarbeid, testmigrasjon og opprydning foran endelig migrasjon i R4 ble gjort i sakene #3760 #3747 #3981 og #3763
+
 # Release 2013-10-10 tag: R3.2.1
 
 Faner ble ikke lenger presentert for artikler (regresjon i 3.2) #3950
