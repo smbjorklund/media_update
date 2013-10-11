@@ -78,6 +78,69 @@ function uib_area_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_column_first|node|area|default';
+  $field_group->group_name = 'group_column_first';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'area';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_two_column';
+  $field_group->data = array(
+    'label' => 'Column first',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_uib_link_section',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Column first',
+      'instance_settings' => array(
+        'classes' => 'group-column-first field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_column_first|node|area|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_column_second|node|area|default';
+  $field_group->group_name = 'group_column_second';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'area';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_two_column';
+  $field_group->data = array(
+    'label' => 'Column second',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_uib_profiled_testimonial',
+      1 => 'field_uib_tertiary_text',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Column second',
+      'instance_settings' => array(
+        'classes' => 'group-column-second field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_column_second|node|area|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_level_1|node|area|form';
   $field_group->group_name = 'group_level_1';
   $field_group->entity_type = 'node';

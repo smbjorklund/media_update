@@ -853,7 +853,7 @@ function uib_area_field_default_fields() {
             'view_mode' => 'full',
           ),
           'type' => 'field_collection_view',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -1713,7 +1713,7 @@ function uib_area_field_default_fields() {
             'view_mode' => 'teaser',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -2237,7 +2237,7 @@ function uib_area_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'short_teaser' => array(
           'label' => 'above',
