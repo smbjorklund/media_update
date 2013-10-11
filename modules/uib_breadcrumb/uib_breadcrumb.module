@@ -30,25 +30,28 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
       'localized_options' => array(),
       'type' => 0,
     );
+    $active_trail = $uib_active_trail;
   }
-  $uib_crumbs = __uib_get_breadcrumb(arg(1), array(), $current_area->nid);
-  if (count($uib_crumbs) > 0) {
-    $uib_crumbs = array_reverse($uib_crumbs);
-    $first_relation = $uib_crumbs[0];
-    $plid = __uib_get_plid($first_relation['href'], 'menu-area-' . $current_area->nid);
-    if($active_trail[0]['mlid'] != $plid) {
-      if($parent = __uib_get_parent_item($plid)) {
-        $uib_active_trail[] = array(
-          'title' => $parent['link_title'],
-          'href' => $parent['link_path'],
-          'link_path' => '',
-          'localized_options' => array(),
-          'type' => 0,
-        );
+  else {
+    $uib_crumbs = __uib_get_breadcrumb(arg(1), array(), $current_area->nid);
+    if (count($uib_crumbs) > 0) {
+      $uib_crumbs = array_reverse($uib_crumbs);
+      $first_relation = $uib_crumbs[0];
+      $plid = __uib_get_plid($first_relation['href'], 'menu-area-' . $current_area->nid);
+      if($active_trail[0]['mlid'] != $plid) {
+        if($parent = __uib_get_parent_item($plid)) {
+          $uib_active_trail[] = array(
+            'title' => $parent['link_title'],
+            'href' => $parent['link_path'],
+            'link_path' => '',
+            'localized_options' => array(),
+            'type' => 0,
+          );
+        }
       }
     }
+    $active_trail = array_merge($uib_active_trail, $uib_crumbs);
   }
-  $active_trail = array_merge($uib_active_trail, $uib_crumbs);
 }
 
 /**
