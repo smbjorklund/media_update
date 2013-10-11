@@ -518,18 +518,6 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(1, 1);
     .views-row {
       width: 97%;
-      height: 110px;
-      float: left;
-      margin: 0 10px 10px 0;
-      background-color: #efefef;
-      padding: 10px 10px 0 10px;
-    }
-    h3 {
-      clear: both;
-    }
-    a {
-      font-size: 1.4em;
-      line-height: 2em;
     }
   }
 
@@ -904,18 +892,6 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(4, 1);
     .views-row {
       width: 300px;
-      height: 110px;
-      float: left;
-      margin: 0 10px 10px 0;
-      background-color: #efefef;
-      padding: 10px 10px 0 10px;
-    }
-    h3 {
-      clear: both;
-    }
-    a {
-      font-size: 1.4em;
-      line-height: 2em;
     }
   }
 
@@ -1324,19 +1300,7 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(4, 1);
     .views-row {
       width: 324px;
-      height: 110px;
-      float: left;
-      margin: 0 10px 10px 0;
-      background-color: #efefef;
-      padding: 10px 10px 0 10px;
       box-shadow: $box-shadow;
-    }
-    h3 {
-      clear: both;
-    }
-    a {
-      font-size: 1.4em;
-      line-height: 2em;
     }
   }
 
