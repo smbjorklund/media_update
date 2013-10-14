@@ -27,8 +27,8 @@ function uib_study_block_view($delta='') {
     case 'study_content':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
         $node = node_load(arg(1));
-        $type = $node->field_uib_study_type['und'][0]['value'];
-        if ($type == 'course') {
+        if ($node->type == 'uib_study') {
+          $type = $node->field_uib_study_type['und'][0]['value'];
           /* Fetch what to render from:
            * http://fs-pres.app.uib.no/<lang>/emne/<code>/render.json
            */
@@ -36,7 +36,16 @@ function uib_study_block_view($delta='') {
           $url = 'http://fs-pres.app.uib.no/';
           $lang = $language->language;
           if ($lang == 'nb') { $lang = 'nn'; }  // fs-pres Norwegian is ny-norsk
-          $url .= $lang . '/emne/';
+          $url .= $lang . '/';
+          if ($type == 'course') {
+            $url .= 'emne/';
+          }
+          elseif ($type == 'program') {
+            $url .= 'studieprogram/';
+          }
+          else {
+            uibx_log("Unknown study type; '$type'", 'error');
+          }
           $slug = $node->field_uib_study_code['und'][0]['value'];
           $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
           $url .= $slug . '/';
