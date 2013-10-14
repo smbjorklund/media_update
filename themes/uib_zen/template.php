@@ -568,6 +568,17 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       $variables['content']['article_info'] = $article_info;
     }
 
+    if ($variables['type'] == 'uib_study') {
+      /**
+       * Move node code/title into content.
+       */
+      $variables['content']['title'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'h1',
+        '#value' => $metadata->field_uib_study_code->value() . ' ' . $metadata->label(),
+        '#weight' => -45,
+      );
+    }
   }
 }
 
