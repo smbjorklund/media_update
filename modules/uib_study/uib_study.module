@@ -37,7 +37,9 @@ function uib_study_block_view($delta='') {
           $lang = $language->language;
           if ($lang == 'nb') { $lang = 'nn'; }  // fs-pres Norwegian is ny-norsk
           $url .= $lang . '/emne/';
-          $url .= $node->field_uib_study_code['und'][0]['value'] . '/'; // XXX encoding?
+          $slug = $node->field_uib_study_code['und'][0]['value'];
+          $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
+          $url .= $slug . '/';
           $url .= 'render.json';
           $res = drupal_http_request($url);
           if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
