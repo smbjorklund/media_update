@@ -858,3 +858,23 @@ function uib_zen_date_nav_title(&$params) {
     return $title;
   }
 }
+
+/**
+ * Overrides theme_breadcrumb()
+ *
+ * @param $vars
+ *  An array containing the breadcrumb links.
+ *
+ * @return
+ *  markup for the overriden breadcrumb
+ */
+function uib_zen_breadcrumb(&$vars) {
+  $breadcrumb = $vars['breadcrumb'];
+  $output = '<nav class="breadcrumb" role="navigation"><ol>';
+  foreach ($breadcrumb as $key => $crumb) {
+    if ($key == 2) $crumb = strip_tags($crumb);
+    $output .= '<li>' . $crumb . ' &gt; </li>';
+  }
+  $output .= '</ol></nav>';
+  return $output;
+}
