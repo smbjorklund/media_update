@@ -25,10 +25,47 @@ function uib_study_block_view($delta='') {
   $block = array();
   switch ($delta) {
     case 'study_content':
-      $block['subject'] = 'Greeting!';
-      $block['content'] = array(
-        '#markup' => 'Hello world!',
-      );
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $node = node_load(arg(1));
+        $type = $node->field_uib_study_type['und'][0]['value'];
+        if ($type == 'course') {
+          /* Fetch what to render from:
+           * http://fs-pres.app.uib.no/<lang>/emne/<code>/render.json
+           */
+          global $language;
+          $url = 'http://fs-pres.app.uib.no/';
+          $lang = $language->language;
+          if ($lang == 'nb') { $lang = 'nn'; }  // fs-pres Norwegian is ny-norsk
+          $url .= $lang . '/emne/';
+          $url .= $node->field_uib_study_code['und'][0]['value'] . '/'; // XXX encoding?
+          $url .= 'render.json';
+          $res = drupal_http_request($url);
+          if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
+            uibx_log('GET ' . $url);
+            $data = drupal_json_decode($res->data);
+
+            /* Turn data into an real render array */
+            $render = array();
+            foreach ($data as $group) {
+              $render[$group['#group']] = array(
+                'header' => array(
+                  '#type' => 'html_tag',
+                  '#tag' => 'h2',
+                  '#value' => check_plain($group['#title']),
+                ),
+              );
+              foreach ($group['#items'] as $item) {
+                $render[$group['#group']][$item['#type']] = array(
+                  '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
+                  '#markup' => $item['#text'],
+                );
+              }
+            }
+
+            $block['content']['fspres'] = $render;
+          }
+        }
+      }
       break;
   }
   return $block;
