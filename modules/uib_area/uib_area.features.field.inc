@@ -276,6 +276,7 @@ function uib_area_field_default_fields() {
           'discipline' => 'Discipline',
           'frontpage' => 'Frontpage',
           'newspage' => 'Newspage',
+          'phdpresspage' => 'PhD press page',
         ),
         'allowed_values_function' => '',
         'entity_translation_sync' => FALSE,

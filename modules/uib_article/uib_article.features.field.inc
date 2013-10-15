@@ -123,6 +123,7 @@ function uib_article_field_default_fields() {
           'news' => 'news',
           'infopage' => 'info page',
           'event' => 'event',
+          'phd_press_release' => 'PhD press release',
         ),
         'allowed_values_function' => '',
         'entity_translation_sync' => FALSE,

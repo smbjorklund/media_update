@@ -275,3 +275,48 @@ function uib_area_update_7006() {
     drush_uib_area_area_cleanup($area);
   }
 }
+
+
+/**
+* Creating phd page for both languages
+*/
+function uib_area_update_7007() {
+  /* English */
+    $node = new stdClass();
+    $node->title = 'New phds';
+    $node->language = 'en';
+    $node->type = 'area';
+    $node->field_uib_area_type['und'][0]['value'] = 'phdpresspage';
+    $node->path = array('alias' => 'new_phds', 'pathauto' => FALSE);
+    node_save($node);
+    // Setting node id as translate nid
+    $node->tnid = $node->nid;
+    node_save($node);
+    /* Norwegian */
+    $node_nb = new stdClass();
+    $node_nb->title = 'Nye doktorgrader';
+    $node_nb->language = 'nb';
+    $node_nb->type = 'area';
+    $node_nb->tnid = $node->nid;
+    $node_nb->field_uib_area_type['und'][0]['value'] = 'phdpresspage';
+    $node_nb->path = array('alias' => 'nye_doktorgrader', 'pathauto' => FALSE);
+    $values = array(
+      'field_name' => 'field_uib_link_section',
+      'field_uib_title' => array(
+        LANGUAGE_NONE => array(array('value' => 'Arkiv')),
+      ),
+      'field_uib_links' => array(
+        LANGUAGE_NONE => array(
+          array('url' => '?date=2012','title' => '2012'),
+          array('url' => '?date=2011','title' => '2011'),
+          array('url' => '?date=2010','title' => '2010'),
+          array('url' => '?date=2009','title' => '2009'),
+          array('url' => '?date=2008','title' => '2008'),
+        ),
+      ),
+    );
+    $entity = entity_create('field_collection_item', $values);
+    $entity->setHostEntity('node', $node_nb);
+    $entity->save();
+    node_save($node_nb);
+}

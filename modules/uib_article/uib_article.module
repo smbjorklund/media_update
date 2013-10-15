@@ -171,23 +171,35 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
 
     $form['field_uib_date']['#states'] = array(
       'visible' => array(
-        ':input[name="field_uib_article_type[und]"]' => array('value' => 'event'),
-       ),
+        ':input[name="field_uib_article_type[und]"]' => array(
+          array('value' => 'event'),
+          array('value' => 'phd_press_release'),
+        ),
+      ),
       'required' => array(
-        ':input[name="field_uib_article_type[und]"]' => array('value' => 'event'),
-       ),
+        ':input[name="field_uib_article_type[und]"]' => array(
+          array('value' => 'event'),
+          array('value' => 'phd_press_release'),
+        ),
+      ),
     );
 
     $form['field_uib_contacts']['#states'] = array(
       'visible' => array(
-        ':input[name="field_uib_article_type[und]"]' => array('value' => 'event'),
-       ),
+        ':input[name="field_uib_article_type[und]"]' => array(
+          array('value' => 'event'),
+          array('value' => 'phd_press_release'),
+        ),
+      ),
     );
 
     $form['field_uib_location']['#states'] = array(
       'visible' => array(
-        ':input[name="field_uib_article_type[und]"]' => array('value' => 'event'),
-       ),
+        ':input[name="field_uib_article_type[und]"]' => array(
+          array('value' => 'event'),
+          array('value' => 'phd_press_release'),
+        ),
+      ),
     );
 
     // Hide all fields with "w2" in name
