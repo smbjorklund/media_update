@@ -799,7 +799,7 @@ function uib_article_field_default_fields() {
           'label' => 'above',
           'module' => 'file_entity',
           'settings' => array(
-            'file_view_mode' => 'default',
+            'file_view_mode' => 'preview',
           ),
           'type' => 'file_rendered',
           'weight' => '27',
@@ -831,25 +831,30 @@ function uib_article_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'file',
+        'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
+            'private' => 0,
             'public' => 'public',
+            'vimeo' => 0,
+            'youtube' => 0,
           ),
           'allowed_types' => array(
             'audio' => 0,
-            'default' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 0,
             'media_default--media_browser_1' => 0,
+            'media_default--media_browser_my_files' => 0,
+            'media_internet' => 0,
             'upload' => 0,
+            'youtube' => 0,
           ),
           'progress_indicator' => 'throbber',
         ),
-        'type' => 'file_generic',
+        'type' => 'media_generic',
         'weight' => '15',
       ),
     ),
