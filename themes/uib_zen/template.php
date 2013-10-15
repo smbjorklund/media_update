@@ -357,6 +357,15 @@ function uib_zen_preprocess_node(&$variables, $hook) {
             array('group' => JS_THEME, )
           );
           break;
+        case 'phdpresspage':
+          $variables['classes_array'][] = 'phdpresspage_node';
+          hide($variables['content']['field_uib_link_section']);
+          $latest_phds = views_embed_view('recent_phds', 'page', $variables['nid']);
+          $variables['content']['field_uib_recent_phds'] = array(
+            '#weight' => 100,
+             array('#markup' => $latest_phds),
+          );
+          break;
       }
 
       /**

@@ -2126,6 +2126,183 @@ return !empty($handler->argument);';
   $export['recent_news'] = $view;
 
   $view = new view();
+  $view->name = 'recent_phds';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Recent PhDs';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Recent PhDs';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+    ),
+    'sort' => array(
+      'bef_format' => 'default',
+      'advanced' => array(
+        'collapsible' => 0,
+        'collapsible_label' => 'Sort options',
+        'combine' => 0,
+        'combine_rewrite' => '',
+        'reset' => 0,
+        'reset_label' => '',
+        'is_secondary' => 0,
+      ),
+    ),
+  );
+  $handler->display->display_options['pager']['type'] = 'date_views_pager';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Photo */
+  $handler->display->display_options['fields']['field_uib_media']['id'] = 'field_uib_media';
+  $handler->display->display_options['fields']['field_uib_media']['table'] = 'field_data_field_uib_media';
+  $handler->display->display_options['fields']['field_uib_media']['field'] = 'field_uib_media';
+  $handler->display->display_options['fields']['field_uib_media']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_media']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_media']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_uib_media']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_uib_media']['settings'] = array(
+    'file_view_mode' => 'area_bottom',
+  );
+  $handler->display->display_options['fields']['field_uib_media']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_uib_media']['delta_offset'] = '0';
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_uib_date']['id'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['field'] = 'field_uib_date';
+  $handler->display->display_options['fields']['field_uib_date']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] ([field_uib_date])';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Lead */
+  $handler->display->display_options['fields']['field_uib_lead']['id'] = 'field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['table'] = 'field_data_field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['field'] = 'field_uib_lead';
+  $handler->display->display_options['fields']['field_uib_lead']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_lead']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_lead']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="phd-lead-title-wrapper">
+<div class="phd-title">[title]</div>
+<div class="phd-lead">[field_uib_lead]</div>
+</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Date -  start date (field_uib_date) */
+  $handler->display->display_options['sorts']['field_uib_date_value']['id'] = 'field_uib_date_value';
+  $handler->display->display_options['sorts']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['sorts']['field_uib_date_value']['field'] = 'field_uib_date_value';
+  $handler->display->display_options['sorts']['field_uib_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_uib_date_value']['expose']['label'] = 'Date';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['title']['expose']['label'] = 'Title';
+  /* Contextual filter: Content: Area (field_uib_area) */
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['id'] = 'field_uib_area_target_id';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['table'] = 'field_data_field_uib_area';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['field'] = 'field_uib_area_target_id';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['exception']['title'] = 'Alle';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['default_argument_type'] = 'php';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['default_argument_options']['code'] = 'return uib_area__get_current_nid();';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_area_target_id']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Content: Date -  start date (field_uib_date) */
+  $handler->display->display_options['arguments']['field_uib_date_value']['id'] = 'field_uib_date_value';
+  $handler->display->display_options['arguments']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
+  $handler->display->display_options['arguments']['field_uib_date_value']['field'] = 'field_uib_date_value';
+  $handler->display->display_options['arguments']['field_uib_date_value']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_uib_date_value']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_uib_date_value']['title'] = '%1';
+  $handler->display->display_options['arguments']['field_uib_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_uib_date_value']['granularity'] = 'year';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'uib_article' => 'uib_article',
+  );
+  /* Filter criterion: Content: Type (field_uib_article_type) */
+  $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
+  $handler->display->display_options['filters']['field_uib_article_type_value']['value'] = array(
+    'phd_press_release' => 'phd_press_release',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'node/%/recent-phds';
+  $translatables['recent_phds'] = array(
+    t('Master'),
+    t('Recent PhDs'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('[title] ([field_uib_date])'),
+    t('<div class="phd-lead-title-wrapper">
+<div class="phd-title">[title]</div>
+<div class="phd-lead">[field_uib_lead]</div>
+</div>'),
+    t('Date'),
+    t('Title'),
+    t('Alle'),
+    t('All'),
+    t('%1'),
+    t('Page'),
+  );
+  $export['recent_phds'] = $view;
+
+  $view = new view();
   $view->name = 'relevant_links';
   $view->description = '';
   $view->tag = 'default';
@@ -2179,6 +2356,17 @@ return !empty($handler->argument);';
   /* Display: Relevant Links */
   $handler = $view->new_display('block', 'Relevant Links', 'relevant_links');
   $handler->display->display_options['display_description'] = 'Expose uib_link_section to a block ';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type (field_uib_area_type) */
+  $handler->display->display_options['filters']['field_uib_area_type_value']['id'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['field'] = 'field_uib_area_type_value';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['relationship'] = 'field_uib_link_section_node';
+  $handler->display->display_options['filters']['field_uib_area_type_value']['value'] = array(
+    'newspage' => 'newspage',
+    'phdpresspage' => 'phdpresspage',
+  );
 
   /* Display: Shortcut menu */
   $handler = $view->new_display('block', 'Shortcut menu', 'block_1');

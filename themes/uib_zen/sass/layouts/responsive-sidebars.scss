@@ -1395,6 +1395,10 @@ $zen-auto-include-item-base: false;
     }
   }
 
+  /* Recent phds */
+  .view-recent-phds {
+    @include zen-clear();
+  }
   /* Automatic news feed on news page */
   .newspage_node .node-uib-article {
     clear: both;

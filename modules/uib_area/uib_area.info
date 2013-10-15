@@ -117,5 +117,6 @@ features[views_view][] = faculty_departments_kids
 features[views_view][] = frontpage_profiled_articles
 features[views_view][] = newslist
 features[views_view][] = recent_news
+features[views_view][] = recent_phds
 features[views_view][] = relevant_links
 features[views_view][] = research_groups

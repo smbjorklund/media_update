@@ -70,6 +70,7 @@ function uib_area_context_default_contexts() {
         'calendar' => 'calendar',
         'courses' => 'courses',
         'recent_news:newsarchive' => 'recent_news:newsarchive',
+        'recent_phds' => 'recent_phds',
       ),
     ),
   );
