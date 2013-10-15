@@ -255,6 +255,14 @@ html.js input.throbbing {
   background: #f00;
 }
 
+#edit-field-uib-files {
+  .label-wrapper {
+    label {
+      white-space: normal;
+    }
+  }
+}
+
 /* Webdesk title */
 .panel-3col h2 {
   text-transform: none;
