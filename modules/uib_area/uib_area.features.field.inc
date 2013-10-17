@@ -1292,7 +1292,7 @@ function uib_area_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'area',
       'deleted' => '0',
-      'description' => 'The primary media is the image/video at the top of the area front page. If text is added to the primary text field the image shown will be a maximum of 354x199 pixels. If the primary text field is empty, the image will take up the entire width.',
+      'description' => 'The primary media is the image/video at the top of the area front page. If text is added to the primary text field the image shown will be a maximum of 334x251 pixels. If the primary text field is empty, the image will take up the entire width.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -3233,7 +3233,7 @@ function uib_area_field_default_fields() {
   t('Slideshow');
   t('Staff');
   t('Tertiary text');
-  t('The primary media is the image/video at the top of the area front page. If text is added to the primary text field the image shown will be a maximum of 354x199 pixels. If the primary text field is empty, the image will take up the entire width.');
+  t('The primary media is the image/video at the top of the area front page. If text is added to the primary text field the image shown will be a maximum of 334x251 pixels. If the primary text field is empty, the image will take up the entire width.');
   t('This field contains the text that was known as "profiltekster" in the old version and was shown on the left side of the area page. ');
   t('This field is shown at the bottom of the area front page. ');
   t('This is the primary profile text on the page. Keep it short and focus on useful information like a basic description and contact info.');
