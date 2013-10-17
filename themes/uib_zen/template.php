@@ -272,7 +272,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       '#weight' => 5,
     );
     if ($variables['type'] == 'uib_external_content') {
-      $variables['content']['title']['#path'] = $variables['field_uib_links']['und'][0]['display_url'];
+      $variables['content']['title']['#path'] = $variables['field_uib_links']['und'][0]['url'];
     }
     $variables['title'] = '';
   }
