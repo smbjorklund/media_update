@@ -503,12 +503,15 @@ div.link-field-column {
 
 .field-name-field-uib-secondary-text {
   ul {
-    padding: 0 0 10px 0;
-    margin-bottom: 0;
+    padding: 0;
+    margin: 0;
     overflow: auto;
   }
   li {
-    float: left;
+    margin-bottom: 10px;
+    a {
+      padding-right: 10px;
+    }
   }
   h4 {
     margin-left: 20px;

@@ -419,7 +419,8 @@ $zen-auto-include-item-base: false;
 
   .field-name-field-uib-secondary-text {
     li {
-      width: zen-unit-width();
+      @include zen-clear();
+      @include zen-grid-item(1, 1);
     }
   }
 
@@ -661,8 +662,18 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     @include zen-grid-item-base();
     @include zen-grid-item(4, 1);
-    li {
-      width: zen-unit-width();
+    li:nth-child(4n+1) {
+      @include zen-clear();
+      @include zen-grid-item(1, 1);
+    }
+    li:nth-child(4n+2) {
+      @include zen-grid-item(1, 2);
+    }
+    li:nth-child(4n+3) {
+      @include zen-grid-item(1, 3);
+    }
+    li:nth-child(4n+4) {
+      @include zen-grid-item(1, 4);
     }
   }
 
@@ -1176,8 +1187,18 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     @include zen-grid-item-base();
     @include zen-grid-item(4, 1);
-    li {
-      width: zen-unit-width();
+    li:nth-child(4n+1) {
+      @include zen-clear();
+      @include zen-grid-item(1, 1);
+    }
+    li:nth-child(4n+2) {
+      @include zen-grid-item(1, 2);
+    }
+    li:nth-child(4n+3) {
+      @include zen-grid-item(1, 3);
+    }
+    li:nth-child(4n+4) {
+      @include zen-grid-item(1, 4);
     }
   }
 
