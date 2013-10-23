@@ -428,7 +428,7 @@ function uib_area_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '14',
+        'weight' => '12',
       ),
     ),
   );
@@ -530,7 +530,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '15',
+        'weight' => '13',
       ),
     ),
   );
@@ -709,7 +709,7 @@ function uib_area_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '8',
+        'weight' => '14',
       ),
     ),
   );
@@ -881,7 +881,7 @@ function uib_area_field_default_fields() {
         'module' => 'field_collection',
         'settings' => array(),
         'type' => 'field_collection_embed',
-        'weight' => '18',
+        'weight' => '9',
       ),
     ),
   );
@@ -1354,7 +1354,7 @@ function uib_area_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '22',
+        'weight' => '4',
       ),
     ),
   );
@@ -1456,7 +1456,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '23',
+        'weight' => '5',
       ),
     ),
   );
@@ -1549,7 +1549,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '25',
+        'weight' => '7',
       ),
     ),
   );
@@ -1650,7 +1650,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '9',
+        'weight' => '15',
       ),
     ),
   );
@@ -1745,7 +1745,7 @@ function uib_area_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '20',
+        'weight' => '11',
       ),
     ),
   );
@@ -1923,7 +1923,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '24',
+        'weight' => '6',
       ),
     ),
   );
@@ -2102,7 +2102,7 @@ function uib_area_field_default_fields() {
           'size' => '30',
         ),
         'type' => 'text_textfield',
-        'weight' => '26',
+        'weight' => '8',
       ),
     ),
   );
@@ -2294,7 +2294,7 @@ function uib_area_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '19',
+        'weight' => '10',
       ),
     ),
   );

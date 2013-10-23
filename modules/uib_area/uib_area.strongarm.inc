@@ -56,10 +56,10 @@ function uib_area_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
+          'weight' => '17',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '16',
         ),
       ),
       'display' => array(
