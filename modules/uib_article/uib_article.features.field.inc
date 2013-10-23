@@ -65,7 +65,7 @@ function uib_article_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '16',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -140,7 +140,7 @@ function uib_article_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '15',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -230,7 +230,7 @@ function uib_article_field_default_fields() {
             'link' => 1,
           ),
           'type' => 'entityreference_label',
-          'weight' => '17',
+          'weight' => '-20',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -272,7 +272,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '11',
+        'weight' => '10',
       ),
     ),
   );
@@ -365,7 +365,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '14',
+        'weight' => '17',
       ),
     ),
   );
@@ -592,7 +592,7 @@ function uib_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '17',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -649,7 +649,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '11',
       ),
     ),
   );
@@ -751,7 +751,7 @@ function uib_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '12',
+        'weight' => '20',
       ),
     ),
   );
@@ -897,7 +897,7 @@ function uib_article_field_default_fields() {
       'description' => 'This is a short category title which highlights the subject of the article. ',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1037,7 +1037,7 @@ function uib_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '14',
+        'weight' => '12',
       ),
     ),
   );
@@ -1128,7 +1128,7 @@ function uib_article_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '16',
+        'weight' => '23',
       ),
     ),
   );
@@ -1231,7 +1231,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '15',
+        'weight' => '18',
       ),
     ),
   );
@@ -1282,7 +1282,7 @@ function uib_article_field_default_fields() {
             'file_view_mode' => 'content_main',
           ),
           'type' => 'file_rendered',
-          'weight' => '-30',
+          'weight' => '2',
         ),
         'short_teaser' => array(
           'label' => 'hidden',
@@ -1445,7 +1445,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '14',
+        'weight' => '21',
       ),
     ),
   );
@@ -1490,7 +1490,7 @@ function uib_article_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '14',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -1521,7 +1521,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '15',
+        'weight' => '7',
       ),
     ),
   );
@@ -1554,7 +1554,7 @@ function uib_article_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '13',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -1586,7 +1586,7 @@ function uib_article_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '16',
+        'weight' => '8',
       ),
     ),
   );
@@ -1649,7 +1649,7 @@ function uib_article_field_default_fields() {
             'view_mode' => 'short_teaser',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '30',
+          'weight' => '8',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -1686,7 +1686,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '17',
+        'weight' => '14',
       ),
     ),
   );
@@ -1788,7 +1788,7 @@ function uib_article_field_default_fields() {
           'rows' => '30',
         ),
         'type' => 'text_textarea',
-        'weight' => '15',
+        'weight' => '13',
       ),
     ),
   );
@@ -1833,7 +1833,7 @@ function uib_article_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '10',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -1864,7 +1864,7 @@ function uib_article_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '4',
       ),
     ),
   );
@@ -1909,7 +1909,7 @@ function uib_article_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '12',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -1940,7 +1940,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '6',
       ),
     ),
   );
@@ -1985,7 +1985,7 @@ function uib_article_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '11',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -2016,7 +2016,7 @@ function uib_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '5',
       ),
     ),
   );

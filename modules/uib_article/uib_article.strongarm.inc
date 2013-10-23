@@ -41,10 +41,10 @@ function uib_article_strongarm() {
           'weight' => '8',
         ),
         'language' => array(
-          'weight' => '2',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '10',
         ),
         'redirect' => array(
           'weight' => '11',
@@ -53,7 +53,7 @@ function uib_article_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
-            'weight' => '7',
+            'weight' => '9',
             'visible' => FALSE,
           ),
           'teaser' => array(
