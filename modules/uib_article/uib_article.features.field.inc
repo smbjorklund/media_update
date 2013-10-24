@@ -1731,7 +1731,7 @@ function uib_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '18',
+          'weight' => '5',
         ),
         'short_teaser' => array(
           'label' => 'above',

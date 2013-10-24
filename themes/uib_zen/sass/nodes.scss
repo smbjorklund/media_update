@@ -201,7 +201,6 @@ h1 {
   color: #A2A2A2;
 }
 
-#node_uib_article_full_group_article_main ul,
 .field-name-field-uib-primary-text ul,
 .field-name-field-uib-text ul,
 .field-name-field-uib-tertiary-text ul,
@@ -242,12 +241,12 @@ h1 {
   }
 }
 
-#node_uib_article_full_group_article_main,
+.node-uib-article .field-name-field-uib-text,
 #node_uib_article_full_group_article_sidebar {
   margin-top: 30px;
 }
 
-#node_uib_article_full_group_article_main {
+.node-uib-article .field-name-field-uib-text {
   float: left;
   clear: both;
 }

@@ -50,7 +50,6 @@ features[field][] = node-uib_article-field_uib_text
 features[field][] = node-uib_article-field_uib_w2_id
 features[field][] = node-uib_article-field_uib_w2_nav_parent_id
 features[field][] = node-uib_article-field_uib_w2_path
-features[field_group][] = group_article_main|node|uib_article|default
 features[field_group][] = group_article_sidebar|node|uib_article|default
 features[field_group][] = group_information|node|uib_article|form
 features[field_group][] = group_sidebar|node|uib_article|form
