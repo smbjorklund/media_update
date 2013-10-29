@@ -855,7 +855,7 @@ function uib_article_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '15',
+        'weight' => '22',
       ),
     ),
   );
@@ -897,7 +897,7 @@ function uib_article_field_default_fields() {
       'description' => 'This is a short category title which highlights the subject of the article. ',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
