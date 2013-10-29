@@ -518,7 +518,7 @@ $zen-auto-include-item-base: false;
   .view-courses {
     @include zen-grid-item(1, 1);
     .views-row {
-      width: 97%;
+      width: 93%;
     }
   }
 
@@ -902,7 +902,7 @@ $zen-auto-include-item-base: false;
   .view-courses {
     @include zen-grid-item(4, 1);
     .views-row {
-      width: 300px;
+      width: 44%;
     }
   }
 
@@ -1319,8 +1319,7 @@ $zen-auto-include-item-base: false;
   .view-courses {
     @include zen-grid-item(4, 1);
     .views-row {
-      width: 324px;
-      box-shadow: $box-shadow;
+      width: 44%;
     }
   }
 
