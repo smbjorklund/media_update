@@ -248,8 +248,9 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       $variables['content']['title']['#markup'] = '<h1><a href="' . $variables['node_url'] . '">' . $variables['title'] . '</a></h1>';
       $variables['title'] = '';
       $variables['content']['field_uib_quote'][0]['#markup'] = '<span class="testimonial-teaser-quote">“</span>' . trim($variables['content']['field_uib_quote'][0]['#markup']) . '<span class="testimonial-teaser-quote">”</span>';
-      $variables['content']['field_uib_name'][0]['#markup'] = '– ' . $variables['content']['field_uib_name'][0]['#markup'];
-    }
+      if (!empty($variables['field_uib_name'])){
+        $variables['content']['field_uib_name'][0]['#markup'] = '– ' . $variables['content']['field_uib_name'][0]['#markup'];
+    } }
   }
 
   // Add theme suggestion to nodes printed in view mode (newspage).
