@@ -1,3 +1,18 @@
+# Release 2013-10-31 tag: R4.1
+
+Release gjør primært en rekke justeringer i layout på forsidene.
+
+* Fjerner ubrukte field-groups #3914
+* Gjør tittelen i vitnesbyrd-teaser til en link og sørger for at Les mer-lenken alltid kommer under teksten #3945 #4185
+* Fikser innstilling som gjorde at tilknyttet innhold med titler på over 80 karakterer ikke virket som lenke #4032
+* Fikser oppsett i fremhevet innhold-feltet på områdeforsiden, mht luft og rekkefølge på innhold lagt som kulepunktliste #4012 #4037
+* Fiks for bug som ikke gjorde det mulig å hente eksisterende innhold fra fillagret #1448
+* Fjerner lenke fra tredje brødsmulenivå #3791
+* Gir luft rundt main media på områdeforsiden når main media er en video #4007
+* Øker bredden på main media når det ikke er tekst eller sidebar på siden #4157
+* Reorganiserer kolonnelayout på områdeforsiden #3930
+* Fiks for sjekk av områdemeny satt til bare å sjekke ved migrering #3955
+
 # Release 2013-10-14 tag: R4
 
 Release tar seg primært av migrering av området Psykologisk fakultet til ny plattform. I tillegg gjøres noen små rettelser.
