@@ -295,7 +295,7 @@ function uib_area__feed_format_pre_render($element) {
       $pubDate = $entry->pubDate;
       $pubDate = strftime("%Y-%m-%d", strtotime($pubDate));
       if(!empty($pubDate))
-        $entry->title .= '('.$pubDate .')';
+        $entry->title .= " ($pubDate)";
       $element['list']['#items'][] = l($entry->title, $entry->link);
       if (--$limit == 0)
         break;
