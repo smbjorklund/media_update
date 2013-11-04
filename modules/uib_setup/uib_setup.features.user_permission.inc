@@ -1163,7 +1163,12 @@ function uib_setup_user_default_permissions() {
   // Exported permission: override uib_external_content published option.
   $permissions['override uib_external_content published option'] = array(
     'name' => 'override uib_external_content published option',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'admin',
+      1 => 'level 1',
+      2 => 'level 2',
+      3 => 'level 3',
+    ),
     'module' => 'override_node_options',
   );
 
