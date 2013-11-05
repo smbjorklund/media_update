@@ -116,55 +116,94 @@ function uib_study__update_study($type, $study, $ou_nid) {
     ->execute();
   if (empty($result)) {
     // Create a new one
-    $node = new stdClass();
-    $node->type = 'uib_study';
-    $node->uid = 1;
-    $node->status = 1;
-    $node->revision = 0;
-    $node->language = 'nb';
-    $node->path = array(
-      'alias' => $no_path_prefix . '/' . $study['id'],
-      'language' => 'nb',
+    $study_node = entity_create('node', array(
+      'type' => 'uib_study',
+      'uid' => 1,
+      'status' => 1,
+      'revision' => 0,
+      )
     );
-    $node->title = $study['title_no'];
-    if (empty($node->title))
-      $node->title = $study['id'];
-    $node->field_uib_study_type['und'][0]['value'] = $type;
-    $node->field_uib_study_code['und'][0]['value'] = $study['id'];
-    if (isset($study['category'])) {
-        $node->field_uib_study_category['und'][0]['value'] = $study['category'];
+    $metadata = entity_metadata_wrapper('node', $study_node);
+
+    // Populate Norwegain version
+    $metadata->language = 'nb';
+    $metadata->title = $study['title_no'];
+    if (!$metadata->title->value()) {
+      $metadata->title = $study['id'];
     }
-    $node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
-    node_save($node);
+    $metadata->language('nb')->field_field_title->set($study['title_no']);
+    if (!$metadata->language('nb')->field_field_title->value()) {
+      $metadata->language('nb')->field_field_title->set($study['id']);
+    }
+    $metadata->field_uib_study_code->set($study['id']);
+    $metadata->field_uib_study_type->set($type);
+    $metadata->field_uib_ou->set($ou_nid);
+
+    // Populate English version
+    $metadata->language('en')->field_field_title->set($study['title_en']);
+    if (!$metadata->language('en')->field_field_title->value()) {
+      $metadata->language('en')->field_field_title->set($study['id']);
+    }
+
+    $metadata->save();
+    // print_r($metadata->getPropertyInfo());
+    // exit;
+
+
+    // $node = new stdClass();
+    // $node->type = 'uib_study';
+    // $node->uid = 1;
+    // $node->status = 1;
+    // $node->revision = 0;
+    // $node->language = 'nb';
+    // $node->path = array(
+    //   'alias' => $no_path_prefix . '/' . $study['id'],
+    //   'language' => 'nb',
+    // );
+    // $node->title = $study['title_no'];
+    // if (empty($node->title))
+    //   $node->title = $study['id'];
+    // $node->field_uib_study_type['und'][0]['value'] = $type;
+    // $node->field_uib_study_code['und'][0]['value'] = $study['id'];
+    // if (isset($study['category'])) {
+    //     $node->field_uib_study_category['und'][0]['value'] = $study['category'];
+    // }
+    // $node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
+    // node_save($node);
 
     // set tnid
-    $node->tnid = $node->nid;
-    node_save($node);
+    // $node->tnid = $node->nid;
+    // node_save($node);
+    //
+    // $wrapper = entity_metadata_wrapper('node', $node->nid);
 
-    $en_node = new stdClass();
-    $en_node->type = 'uib_study';
-    $en_node->uid = 1;
-    $en_node->status = 1;
-    $en_node->revision = 0;
-    $en_node->language = 'en';
-    $en_node->tnid = $node->nid;
-    $en_node->path = array(
-      'alias' => $en_path_prefix . '/' . $study['id'],
-      'language' => 'en',
-    );
-    $en_node->title = $study['title_en'];
-    if (empty($en_node->title))
-      $en_node->title = $study['id'];
-    $en_node->field_uib_study_type['und'][0]['value'] = $type;
-    $en_node->field_uib_study_code['und'][0]['value'] = $study['id'];
-    $en_node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
-    node_save($en_node);
-    uibx_log("Created $type " . $study['id'] . " as node " . $node->nid);
+
+    // $en_node = new stdClass();
+    // $en_node->type = 'uib_study';
+    // $en_node->uid = 1;
+    // $en_node->status = 1;
+    // $en_node->revision = 0;
+    // $en_node->language = 'en';
+    // $en_node->tnid = $node->nid;
+    // $en_node->path = array(
+    //   'alias' => $en_path_prefix . '/' . $study['id'],
+    //   'language' => 'en',
+    // );
+    // $en_node->title = $study['title_en'];
+    // if (empty($en_node->title))
+    //   $en_node->title = $study['id'];
+    // $en_node->field_uib_study_type['und'][0]['value'] = $type;
+    // $en_node->field_uib_study_code['und'][0]['value'] = $study['id'];
+    // $en_node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
+    // node_save($en_node);
+    // uibx_log("Created $type " . $study['id'] . " as node " . $node->nid);
+    // uibx_log("Created $type " . $study->nid);
     return;
   }
 
   $nodes = node_load_multiple(array_keys($result['node']));
   foreach ($nodes as $node) {
+    $wrapper = entity_metadata_wrapper('node', $node);
     $edit = FALSE;
     $title = ($node->language == 'nb') ? $study['title_no'] : $study['title_en'];
     if (empty($title))
@@ -173,8 +212,9 @@ function uib_study__update_study($type, $study, $ou_nid) {
       $node->title = $title;
       $edit = TRUE;
     }
-    if ($node->field_uib_ou['und'][0]['target_id'] != $ou_nid) {
-      $node->field_uib_ou['und'][0]['target_id'] = $ou_nid;
+
+    if ($wrapper->field_uib_ou->raw() != $ou_nid) {
+      $wrapper->field_uib_ou->set($ou_nid);
       $edit = TRUE;
     }
     if (isset($study['category'])) {
