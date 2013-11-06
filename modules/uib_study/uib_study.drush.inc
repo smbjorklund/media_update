@@ -124,7 +124,14 @@ function uib_study__update_study($type, $study, $ou_nid) {
       )
     );
     $metadata = entity_metadata_wrapper('node', $study_node);
-
+    $handler = entity_translation_get_handler('node', $study_node, TRUE);
+    $translation = array(
+      'translate' => 0,
+      'status' => 1,
+      'language' => 'en',
+      'source' => 'nb',
+    );
+    $handler->setTranslation($translation, $study_node);
     // Populate Norwegain version
     $metadata->language = 'nb';
     $metadata->title = $study['title_no'];
@@ -138,6 +145,9 @@ function uib_study__update_study($type, $study, $ou_nid) {
     $metadata->field_uib_study_code->set($study['id']);
     $metadata->field_uib_study_type->set($type);
     $metadata->field_uib_ou->set($ou_nid);
+    if (isset($study['category'])) {
+      $metadata->field_uib_study_category->set($study['category']);
+    }
 
     // Populate English version
     $metadata->language('en')->field_field_title->set($study['title_en']);
@@ -147,7 +157,6 @@ function uib_study__update_study($type, $study, $ou_nid) {
 
     $metadata->save();
     // print_r($metadata->getPropertyInfo());
-    // exit;
 
 
     // $node = new stdClass();
