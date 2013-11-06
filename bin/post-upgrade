@@ -10,6 +10,9 @@ if git tag | grep -q R$REL; then
 fi
 
 # Migrate
+bin/site-drush migrate-import --verbose Area --strict=0 --serial=3899846132506877758,7117914931746643279
+
+exit  # for now
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_utdanning.txt
 bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_utdanning.txt
 bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_utdanning.txt
