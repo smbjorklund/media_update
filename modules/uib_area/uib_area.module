@@ -810,91 +810,24 @@ function uib_area_node_validate($node, $form, &$form_state) {
 }
 
 /**
- * Adds aliases paths to an area node.
+ * Lists general aliases paths for an area node.
  *
- * Adds a number of project specific aliases for area nodes (if they do not exist)
- * These aliases correspond to views paths in the views "Staff", "Area map",
- * "Recent news" etc.
+ * @param string $node_alias Node alias
  *
- * @param [type] [varname] [description]
- * @param [type] [varname] [description]
- * @param [type] [varname] [description]
- *
- * @return [type] [description]
+ * @return array List of aliases to be added or removed for this node
  */
-function uib_area__create_area_aliases($node_nid, $node_alias, $language) {
-  if (!empty($node_nid) AND !empty($node_alias)) {
-    // Add aliases only to non employee pages
-    if (stripos($node_alias, 'foransatte') === FALSE AND stripos($node_alias, 'foremployees') === FALSE) {
-      $uib_area_aliases = array(
-        '/persons',
-        '/persons/faculty',
-        '/persons/staff',
-        '/map',
-        '/news-archive',
-        '/rss.xml',
-        '/calrss.xml',
-        '/calendar',
-        '/courses',
-        '/study-programmes',
-        '/bachelor-programmes',
-        '/master-programmes',
-        '/one-year-programmes',
-        '/research-groups',
-        '/research-schools',
-        '/disciplines',
-        '/calendar',
-        '/calendar/year',
-        '/calendar/day',
-      );
-      $node_url = 'node/' . intval($node_nid);
-      foreach ($uib_area_aliases as $pa) {
-        $source_url = $node_url . $pa;
-        $new_alias_url = $node_alias . $pa;
-        if (empty($language)) {
-          $new_path = array('source' => $source_url, 'alias' => $new_alias_url); // will create alias for all languages
-        }
-        else {
-          $new_path = array('source' => $source_url, 'alias' => $new_alias_url, 'language' => $language);
-        }
-        if ($existing_alias = path_load($source_url)) { // get existing alias
-           if ($existing_alias['alias'] != $new_alias_url) {
-            // Alias exists for the source, but different one than this
-            path_save($new_path);
-          }
-          elseif (!empty($language)) {
-            if ($existing_alias['language'] != $language) {
-              // Alias exists, but not for this language
-              path_save($new_path);
-            }
-          }
-        }
-        else {
-          path_save($new_path);
-        }
-      }
-    }
+function uib_area__list_area_aliases($node_alias = NULL) {
+  if (!empty($node_alias) && (stripos($node_alias, 'foransatte') || stripos($node_alias, 'foremployees'))) {
+    return array(
+      '/rss.xml',
+      '/calrss.xml',
+    );
   }
   else {
-    return FALSE;
-  }
-}
-
-/**
- * Deletes a number of alias paths from an area node.
- *
- * cf. the function uib_area__create_area_aliases() that creates them.
- *
- * @param [type] [varname] [description]
- *
- * @return [type] [description]
- */
-function uib_area__remove_area_aliases($node_nid) {
-  if (!empty($node_nid)) {
-    $node_url = 'node/' . intval($node_nid);
-    $uib_area_aliases = array(
+    return array(
       '/persons',
       '/persons/faculty',
+      '/persons/staff',
       '/map',
       '/news-archive',
       '/rss.xml',
@@ -912,6 +845,70 @@ function uib_area__remove_area_aliases($node_nid) {
       '/calendar/year',
       '/calendar/day',
     );
+  }
+}
+
+/**
+ * Adds aliases paths to an area node.
+ *
+ * Adds a number of project specific aliases for area nodes (if they do not exist)
+ * These aliases correspond to views paths in the views "Staff", "Area map",
+ * "Recent news" etc.
+ *
+ * @param integer $node_nid   Node id [nid] of the node
+ * @param string  $node_alias Node alias
+ * @param string  $language   Language code for the node
+ *
+ * @return FALSE is returned if input parameters are missing
+ */
+function uib_area__create_area_aliases($node_nid, $node_alias, $language = NULL) {
+  if (!empty($node_nid) AND !empty($node_alias)) {
+    $uib_area_aliases = uib_area__list_area_aliases($node_alias);
+    $node_url = 'node/' . intval($node_nid);
+    foreach ($uib_area_aliases as $pa) {
+      $source_url = $node_url . $pa;
+      $new_alias_url = $node_alias . $pa;
+      if (empty($language)) {
+        $new_path = array('source' => $source_url, 'alias' => $new_alias_url); // will create alias for all languages
+      }
+      else {
+        $new_path = array('source' => $source_url, 'alias' => $new_alias_url, 'language' => $language);
+      }
+      if ($existing_alias = path_load($source_url)) { // get existing alias
+         if ($existing_alias['alias'] != $new_alias_url) {
+          // Alias exists for the source, but different one than this
+          path_save($new_path);
+        }
+        elseif (!empty($language)) {
+          if ($existing_alias['language'] != $language) {
+            // Alias exists, but not for this language
+            path_save($new_path);
+          }
+        }
+      }
+      else {
+        path_save($new_path);
+      }
+    }
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Deletes a number of alias paths from an area node.
+ *
+ * cf. the function uib_area__create_area_aliases() that creates them.
+ *
+ * @param integer $node_nid Node id [nid] of the node
+ *
+ * @return FALSE is returned if no input parameter
+ */
+function uib_area__remove_area_aliases($node_nid) {
+  if (!empty($node_nid)) {
+    $node_url = 'node/' . intval($node_nid);
+    $uib_area_aliases = uib_area__list_area_aliases();
     foreach ($uib_area_aliases as $pa) {
       $source_url = $node_url . $pa;
       if ($existing = path_load($source_url)) { // Check if alias exists
