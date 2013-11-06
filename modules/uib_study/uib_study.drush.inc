@@ -138,9 +138,9 @@ function uib_study__update_study($type, $study, $ou_nid) {
     if (!$metadata->title->value()) {
       $metadata->title = $study['id'];
     }
-    $metadata->language('nb')->field_field_title->set($study['title_no']);
-    if (!$metadata->language('nb')->field_field_title->value()) {
-      $metadata->language('nb')->field_field_title->set($study['id']);
+    $metadata->language('nb')->field_uib_study_title->set($study['title_no']);
+    if (!$metadata->language('nb')->field_uib_study_title->value()) {
+      $metadata->language('nb')->field_uib_study_title->set($study['id']);
     }
     $metadata->field_uib_study_code->set($study['id']);
     $metadata->field_uib_study_type->set($type);
@@ -150,14 +150,12 @@ function uib_study__update_study($type, $study, $ou_nid) {
     }
 
     // Populate English version
-    $metadata->language('en')->field_field_title->set($study['title_en']);
-    if (!$metadata->language('en')->field_field_title->value()) {
-      $metadata->language('en')->field_field_title->set($study['id']);
+    $metadata->language('en')->field_uib_study_title->set($study['title_en']);
+    if (!$metadata->language('en')->field_uib_study_title->value()) {
+      $metadata->language('en')->field_uib_study_title->set($study['id']);
     }
 
     $metadata->save();
-    // print_r($metadata->getPropertyInfo());
-
 
     // $node = new stdClass();
     // $node->type = 'uib_study';
