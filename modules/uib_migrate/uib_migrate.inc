@@ -674,9 +674,14 @@ class AreaMigration extends Migration {
         $term->field_uib_ou['und'][0]['target_id'] = $nid;
       }
       else {
-        // Create a new 'uib_ou' node
-        $node = uib_sebra__create_uib_ou($row->placeid);
-        $term->field_uib_ou['und'][0]['target_id'] = $node->nid;
+        try {
+          // Create a new 'uib_ou' node
+          $node = uib_sebra__create_uib_ou($row->placeid);
+          $term->field_uib_ou['und'][0]['target_id'] = $node->nid;
+        }
+        catch (Exception $e) {
+          uibx_log($e->getMessage(), 'warning');
+        }
       }
     }
 

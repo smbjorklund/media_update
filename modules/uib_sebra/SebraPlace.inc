@@ -16,11 +16,14 @@ class SebraPlace extends stdClass {
    *    represent the IT-department.
    */
   public function __construct($id) {
-    $this->id = $id;
+    if (strlen($id) != 6) {
+      throw new Exception("Place id $id is invalid (needs to be 6 digits)");
+    }
     $place = uib_sebra__sws_get('place?code=' . $id);
     if (empty($place)) {
       throw new Exception("Place $id not found");
     }
+    $this->id = $id;
     $this->name = (string)$place->name;
     $this->address = (string)$place->address;
     $this->postbox = (string)$place->postboks;
