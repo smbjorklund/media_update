@@ -2,7 +2,7 @@
 
 set -x
 
-REL=4
+REL=4.2
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
@@ -10,12 +10,12 @@ if git tag | grep -q R$REL; then
 fi
 
 # Migrate
-bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_psyfa.txt
-bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_psyfa.txt
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_psyfa.txt
-bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_psyfa.txt
-bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_psyfa.txt
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_psyfa.txt
+bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_utdanning.txt
+bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_utdanning.txt
+bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_utdanning.txt
+bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_utdanning.txt
+bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_utdanning.txt
+bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_utdanning.txt
 
 # Build area menu for migrated content
 bin/site-drush uib-migrate-build-menu --verbose
