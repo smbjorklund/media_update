@@ -2,7 +2,7 @@
 
 set -x
 
-REL=4.2
+REL=4.4
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
@@ -10,10 +10,6 @@ if git tag | grep -q R$REL; then
 fi
 
 # Migrate
-bin/site-drush migrate-import --verbose Area --strict=0 --serial=3899846132506877758,7117914931746643279
-bin/site-drush php-script r42-setup-uib-study-area
-
-exit  # for now
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_utdanning.txt
 bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_utdanning.txt
 bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_utdanning.txt
