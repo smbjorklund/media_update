@@ -1,0 +1,33 @@
+#!/usr/bin/perl -w
+
+my $dump = shift || "site/w3.uib.no.sql";
+
+open(my $fh, "<", $dump) || die;
+
+my %size;
+my $max_length = 0;
+my $total_bytes = 0;
+
+while (<$fh>) {
+    if (/^COPY (\w+)/) {
+	my $table = $1;
+	die unless / FROM stdin;$/;
+	my $lines = 0;
+	my $bytes = 0;
+	while (<$fh>) {
+	    last if /^\\\.\n\z/;
+	    $lines++;
+	    $bytes += length;
+	}
+	$size{$table} = "$bytes $lines";
+	$total_bytes += $bytes;
+	$max_length = length($table) if length($table) > $max_length;
+    }
+}
+
+no warnings 'numeric';
+for my $table (sort { $size{$b} <=> $size{$a} } keys %size) {
+    my($bytes, $lines) = split(' ', $size{$table});
+    printf "%-*s %9.1fM %4.1f%% %6d\n", $max_length, $table, $bytes/(1024*1024), 100*$bytes/$total_bytes, $lines;
+    last if $bytes/$total_bytes < 0.001;
+}
