@@ -426,6 +426,11 @@ function uib_area__get_current() {
         if ($node->type == 'area') {
           $current_area = $node;
         }
+        elseif ($node->type == 'uib_study') {
+          $study_area_nid = variable_get('uib_study_area_nid');
+          if ($study_area_nid)
+            $current_area = node_load($study_area_nid);
+        }
         elseif (isset($node->field_uib_area['und'][0]['entity'])) {
           $current_area = $node->field_uib_area['und'][0]['entity'];
         }
