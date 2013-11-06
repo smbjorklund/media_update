@@ -11,6 +11,7 @@ fi
 
 # Migrate
 bin/site-drush migrate-import --verbose Area --strict=0 --serial=3899846132506877758,7117914931746643279
+bin/site-drush php-script r42-setup-uib-study-area
 
 exit  # for now
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_utdanning.txt
