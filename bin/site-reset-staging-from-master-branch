@@ -68,6 +68,7 @@ if ! [ $(hostname|grep ^attilatest|wc -l) -gt 0 ];then
   exit 1
 fi
 
+date +%FT%H%M
 set -x
 pwd
 git fetch --all --prune || exit 1
@@ -76,28 +77,34 @@ git status || exit 3
 git submodule update || exit 4
 sleep 3
 
+date +%FT%H%M
 compass compile --force -q themes/uib_zen
 find site/files/{css,js,languages} -type f -print | xargs rm -f
 ## CC all cleans out the deleted files from DB that was deleted above
 bin/site-drush cc all
 
+date +%FT%H%M
 #CC ALL some times display changes to do that not are visble before the CC ALL
 #Run FR
 bin/site-drush fra -v --yes || exit 5
 bin/site-drush cc all || exit 6
 
+date +%FT%H%M
 #Run updateDB
-bin/site-drush updatedb --yes || exit 7
+bin/site-drush updatedb --yes --verbose || exit 7
 bin/site-drush cc all || exit 8
 
+date +%FT%H%M
 #Sometimes more modules may be updated after updatedb & CC
 bin/site-drush fra -v --yes || exit 9
 bin/site-drush cc all || exit 10
 
+date +%FT%H%M
 # Run script with some final commands that might do some good
 if [ -x bin/post-upgrade ]; then
     bin/post-upgrade
 fi
+date +%FT%H%M
 
 #Display that all is OK to user
 bin/site-drush fl

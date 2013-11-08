@@ -14,7 +14,7 @@ fi
 
 #Check hostname
 if ! [ $(hostname|grep ^attila|grep -v test|wc -l) -gt 0 ];then 
-  echo wrong user Run as w3-drupal >/dev/stderr
+  echo wrong host >/dev/stderr
   exit 1
 fi
 set -x 
@@ -22,7 +22,6 @@ cd /var/www/w3.uib.no/ || exit 1
 mkdir -p /nettapp_w3/pg_dump/pre_staging || exit 1
 #DB-Dump
 bin/site-drush sql-dump --structure-tables-key=common > /nettapp_w3/pg_dump/pre_staging/w3.uib.no-staging-backup.${datetime}.sql || exit 1
-gzip -v9 /nettapp_w3/pg_dump/pre_staging/*sql || exit 1
 git fetch --all --prune || exit 1
 git reset --hard origin/staging || exit 2
 git status || exit 3
@@ -43,18 +42,33 @@ find site/files/{css,js,languages} -type f -print | xargs rm -f
 ## CC all cleans out the deleted files from DB that was deleted above
 bin/site-drush cc all
 
+date +%FT%H%M
 #CC ALL some times display changes to do that not are visble before the CC ALL
 #Run FR
-bin/site-drush fra -v || exit 5
+bin/site-drush fra -v --yes || exit 5
 bin/site-drush cc all || exit 6
 
+date +%FT%H%M
 #Run updateDB
-bin/site-drush updatedb || exit 7
+bin/site-drush updatedb --yes --verbose || exit 7
 bin/site-drush cc all || exit 8
 
+date +%FT%H%M
 #Sometimes more modules may be updated after updatedb & CC
-bin/site-drush fra -v || exit 9 
+bin/site-drush fra -v --yes || exit 9
 bin/site-drush cc all || exit 10
+
+#Backup DB
+bin/site-drush sql-dump --structure-tables-key=common > /nettapp_w3/pg_dump/pre_staging/w3.uib.no-staging-backup.$(date -I)T$(date +%H%M%S).postupgrade.sql || exit 1
+date +%FT%H%M
+# Run script with some final commands that might do some good
+if [ -x bin/post-upgrade ]; then
+    bin/post-upgrade
+    bin/site-drush sql-dump --structure-tables-key=common > /nettapp_w3/pg_dump/pre_staging/w3.uib.no-staging-backup.$(date -I)T$(date +%H%M%S).postimport.sql || exit 1
+fi
+date +%FT%H%M
 
 #Display that all is OK to user
 bin/site-drush fl
+
+gzip -v9 /nettapp_w3/pg_dump/pre_staging/*sql || exit 1
