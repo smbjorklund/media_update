@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Getopt::Long qw(GetOptions);
+
+my $map_user;
+my $unlogged;
+GetOptions(
+    'map-user=s' => \$map_user,
+    'unlogged' => \$unlogged,
+) || usage();
+
+sub usage {
+    (my $progname = $0) =~ s,.*/,,;
+    die "Usage: $progname [--map-user <username>] [--unlogged] [<sql-dump>]\n";
+}
+
+while (<>) {
+    s/\bw3_(?:user|admin)\b/$map_user/g if $map_user;
+    s/^CREATE TABLE/CREATE UNLOGGED TABLE/ if $unlogged;
+    print;
+}

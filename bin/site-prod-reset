@@ -43,7 +43,7 @@ if [ "$DOTGZ" != "" ]; then
 fi
 
 bin/site-drush sql-drop --yes
-perl -pe "s/\bw3_(?:user|admin)\b/$PGUSER/g" site/w3.uib.no.sql | perl -pe "s/^CREATE TABLE/CREATE UNLOGGED TABLE/" | $PSQL --echo-queries >site/pg.out 2>&1
+bin/filter-prod-dump --map-user $PGUSER --unlogged site/w3.uib.no.sql | $PSQL --echo-queries >site/pg.out 2>&1
 bin/pg_error_report --ignore-drop site/pg.out
 
 # Need to set up w3.uib.no as site alias since it's hardcoded a few places in the database dump
