@@ -1,4 +1,5 @@
 utdanning
+!utdanning/evu
 education
 ua
 ua/en

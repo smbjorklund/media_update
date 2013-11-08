@@ -356,6 +356,7 @@ class XTopicListSource extends MigrateSource {
   private $offset;
   private $ids;
   private $w2AreaSubset;
+  private $w2AreaSubsetAvoid;
 
   /**
    * Create a new listing object.
@@ -384,14 +385,18 @@ class XTopicListSource extends MigrateSource {
       $area_subset_filename = drush_get_option('area_subset');
       if (!empty($area_subset_filename)) {
         // If supplied, read a file that contains an explicit list of areas which are to be migrated
-        if ($this->w2AreaSubset = file(dirname(__FILE__) . DIRECTORY_SEPARATOR . $area_subset_filename)) {
-          for ($i=count($this->w2AreaSubset)-1; $i>=0; $i--) {
-            $this->w2AreaSubset[$i] = trim($this->w2AreaSubset[$i]); // strip line ends
-            if (empty($this->w2AreaSubset[$i])) {
-              array_splice($this->w2AreaSubset, $i, 1); // remove empty lines
+        if ($this->w2AreaSubset = file(dirname(__FILE__) . DIRECTORY_SEPARATOR . $area_subset_filename, FILE_SKIP_EMPTY_LINES)) {
+          $this->w2AreaSubsetAvoid = array();
+          for ($i = count($this->w2AreaSubset) - 1; $i >= 0; $i--) {
+            $this->w2AreaSubset[$i] = trim($this->w2AreaSubset[$i]);
+            if (substr($this->w2AreaSubset[$i], 0, 1) == '#') {
+              // discard comment lines
+              array_splice($this->w2AreaSubset, $i, 1);
             }
-            elseif (substr($this->w2AreaSubset[$i], 0, 1)=='#') {
-              array_splice($this->w2AreaSubset, $i, 1); // discard comment lines
+            elseif (substr($this->w2AreaSubset[$i], 0, 1) == '!') {
+              // this path should not be migrated
+              $this->w2AreaSubsetAvoid[] = ltrim($this->w2AreaSubset[$i], ' !');
+              array_splice($this->w2AreaSubset, $i, 1);
             }
           }
         }
@@ -500,18 +505,32 @@ class XTopicListSource extends MigrateSource {
         }
         // Check if there is a limiting set of areas
         // and if the current record is within this set.
-        if (!empty($this->w2AreaSubset)) {
+        if ($this->w2AreaSubset || $this->w2AreaSubsetAvoid) {
+          $migrateThis = TRUE;
           $path = (string)$t['path'];
-          $notInSubset = TRUE;
-          foreach ($this->w2AreaSubset as $subsetArea) {
-            $path = ltrim($path, "/");
-            if ($path == $subsetArea || substr($path, 0, strlen($subsetArea)+1) == "$subsetArea/") {
-              $notInSubset = FALSE;
-              //uibx_log("$subsetArea found in " . substr($path, 0, 35) . "...", 'notice');
-              break;
+          $path = ltrim($path, "/");
+          if (!empty($this->w2AreaSubset)) {
+            $migrateThis = FALSE;
+            foreach ($this->w2AreaSubset as $subsetArea) {
+              if ($path == $subsetArea || substr($path, 0, strlen($subsetArea) + 1) == "$subsetArea/") {
+                $migrateThis = TRUE;
+                break;
+              }
             }
           }
-          if ($notInSubset) {
+          if (!empty($this->w2AreaSubsetAvoid)) {
+            // Check for specifically listed paths that should not be migrated
+            if ($migrateThis) {
+              foreach ($this->w2AreaSubsetAvoid as $subsetAreaAvoid) {
+                if ($path == $subsetAreaAvoid || substr($path, 0, strlen($subsetAreaAvoid) + 1) == "$subsetAreaAvoid/") {
+                  $migrateThis = FALSE;
+                  uibx_log("Excluded from migration: $subsetAreaAvoid " . substr($path, 0, 35) . "...", 'notice');
+                  break;
+                }
+              }
+            }
+          }
+          if (!$migrateThis) {
             continue;
           }
         }
