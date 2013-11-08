@@ -278,7 +278,7 @@ function uib_area__unroll_menu_recursive($trunk, $visible = TRUE) {
     else {
       // get node id from url
       $nid = uib_area__extract_nid_from_path($branch['link']['link_path']);
-      if (empty($nid)) {
+      if (empty($nid) && $branch['link']['depth'] > 2) {
         uibx_log('Unable to extract nid from url for "' . $branch['link']['link_path'] . '" mlid=' . $branch['link']['mlid'], 'error');
       }
     }
