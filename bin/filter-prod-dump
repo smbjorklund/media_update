@@ -5,11 +5,10 @@ use warnings;
 
 use Getopt::Long qw(GetOptions);
 
-my $map_user;
-my $unlogged;
 GetOptions(
-    'map-user=s' => \$map_user,
-    'unlogged' => \$unlogged,
+    'map-user=s' => \ my $map_user,
+    'unlogged' => \my $unlogged,
+    'skip-revision-data' => \my $skip_revision_data,
 ) || usage();
 
 sub usage {
@@ -17,8 +16,26 @@ sub usage {
     die "Usage: $progname [--map-user <username>] [--unlogged] [<sql-dump>]\n";
 }
 
+my $skipping_data;
+
 while (<>) {
+    if ($skipping_data) {
+	$skipping_data = 0 if /^\\\.\n\z/;
+	next;
+    }
     s/\bw3_(?:user|admin)\b/$map_user/g if $map_user;
     s/^CREATE TABLE/CREATE UNLOGGED TABLE/ if $unlogged;
+    if (/^COPY (\w+).* FROM stdin;$/ && skip_data($1)) {
+	$skipping_data++;
+	print "-- Data for $1 removed by filter\n";
+	next;
+    }
     print;
+}
+
+sub skip_data {
+    my $table = shift;
+    return 1 if $table =~ /^migrate_message_/;
+    return 1 if $table =~ /^field_revision_field_/ && $skip_revision_data;
+    return 0;
 }
