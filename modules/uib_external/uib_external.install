@@ -1,0 +1,42 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+/**
+ * Set area for existing external content
+ */
+function uib_external_update_7000() {
+  // get all external content nodes
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'uib_external_content');
+  $result = $query->execute();
+  if (!empty($result)) {
+    $externals = entity_load('node', array_keys($result['node']));
+    foreach ($externals as $nid => $external_content) {
+      if (empty($external_content->field_uib_area)) {
+        // find area
+        $subquery = new EntityFieldQuery();
+        $subquery->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'uib_article')
+          ->fieldCondition('field_uib_relation', 'target_id', $nid, '=');
+        $rez = $subquery->execute();
+        if (!empty($rez)) {
+          $sub = array_keys($rez['node']);
+          $article = entity_load('node', array($sub[0]));
+          $article_wrapper = entity_metadata_wrapper('node', $article[$sub[0]]);
+          $area_nid = $article_wrapper->field_uib_area[0]->raw();
+          // set area for external content
+          $wrapper = entity_metadata_wrapper('node', $nid);
+          $wrapper->field_uib_area[0]->set($area_nid);
+          $wrapper->save();
+        }
+        else {
+          uibx_log("Unable to connect area to external content node $nid : '$external_content->title'", 'warning');
+        }
+      }
+    }
+  }
+}
