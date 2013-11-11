@@ -13,7 +13,7 @@ function uib_study_drush_command() {
 }
 
 function drush_uib_study_uib_sync_fs() {
-  // Find out what study_codes are in use
+  // Find out what study_codes are in use.
   $unused_codes = array();
   $result = db_select('field_data_field_uib_study_code', 'c')
     ->fields('c', array('entity_id', 'field_uib_study_code_value'))
@@ -31,8 +31,7 @@ function drush_uib_study_uib_sync_fs() {
 
   $ou_id = array();
   foreach (array_keys($result['node']) as $nid) {
-    $ou = node_load($nid); // must be a better way than to load the full node here
-    //print_r($ou);
+    $ou = node_load($nid); // Must be a better way than to load the full node here.
     $ou_id[$nid] = $ou->field_uib_ou_id['und'][0]['value'];
   }
 
@@ -104,7 +103,6 @@ function drush_uib_study_uib_sync_fs() {
 }
 
 function uib_study__update_study($type, $study, $ou_nid) {
-  //print_r(array($type, $study, $ou_nid));
   $no_path_prefix = $type == 'course' ? 'emne' : 'studieprogram';
   $en_path_prefix = $type == 'course' ? $type : 'studyprogramme';
 
@@ -116,7 +114,7 @@ function uib_study__update_study($type, $study, $ou_nid) {
     ->execute();
 
   if (empty($result)) {
-    // Create a new one
+    // Create a new one.
     $study_node = entity_create('node', array(
       'type' => 'uib_study',
       'uid' => 1,
@@ -173,6 +171,7 @@ function uib_study__update_study($type, $study, $ou_nid) {
       );
     path_save($path);
 
+    uibx_log("Created $type " . $study['id']);
     return;
   }
 
@@ -193,16 +192,16 @@ function uib_study__update_study($type, $study, $ou_nid) {
       $edit = TRUE;
     }
     if (isset($study['category'])) {
-      if (!isset($node->field_uib_study_category['und'][0]['value']) ||
-        $node->field_uib_study_category['und'][0]['value'] != $study['category'])
+      if ($wrapper->field_uib_study_category->value() ||
+        $wrapper->field_uib_study_category->value() != $study['category'])
       {
-        $node->field_uib_study_category['und'][0]['value'] = $study['category'];
+        $wrapper->field_uib_study_category->set($study['category']);
         $edit = TRUE;
       }
     }
 
     if ($edit) {
-      node_save($node);
+      $wrapper->save();
       uibx_log("$type " . $study['id'] . " updated");
     }
   }

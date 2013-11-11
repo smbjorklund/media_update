@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * Remove all existing uib_study nodes from the system.
+ */
+function uib_study_update_7001() {
+  $query = new EntityFieldQuery;
+  $result = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'uib_study')
+    ->execute();
+
+  $nids = array_keys($result['node']);
+  $total = count($nids);
+  print "Removing $total study nodes\n";
+  $i = 1;
+  foreach ($nids as $nid) {
+    node_delete($nid);
+    print "Deleting $i of $total\r";
+    $i++;
+  }
+  print "Removed " . --$i . " out of $total nodes.\n";
+}
+
+/**
+ * Re-import all study programs (uib_study) from fs-sync.
+ */
+function uib_study_update_7002() {
+  print "Re-Importing study programs from fs-sync\n";
+  drush_uib_study_uib_sync_fs();
+}
