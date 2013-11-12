@@ -100,7 +100,7 @@ function uib_study_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '7',
+        'weight' => '5',
       ),
     ),
   );
@@ -175,7 +175,7 @@ function uib_study_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '4',
       ),
     ),
   );
@@ -252,7 +252,115 @@ function uib_study_field_default_fields() {
           'size' => '10',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '0',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-uib_study-field_uib_study_image'.
+  $fields['node-uib_study-field_uib_study_image'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_study_image',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'entity_translation_sync' => array(
+          0 => 'fid',
+        ),
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'uib_study',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '6',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_study_image',
+      'label' => 'Image',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'default_image' => 0,
+        'entity_translation_sync' => FALSE,
+        'file_directory' => 'media',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '640x480',
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'private' => 'private',
+            'public' => 'public',
+            'vimeo' => 0,
+            'youtube' => 0,
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'document' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'browser_plugins' => array(
+            'media_default--media_browser_1' => 'media_default--media_browser_1',
+            'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+            'media_internet' => 0,
+            'upload' => 'upload',
+            'youtube' => 0,
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '6',
       ),
     ),
   );
@@ -298,7 +406,7 @@ function uib_study_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 5,
+          'weight' => '5',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -355,7 +463,7 @@ function uib_study_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '2',
       ),
     ),
   );
@@ -430,7 +538,7 @@ function uib_study_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '5',
+        'weight' => '3',
       ),
     ),
   );
@@ -439,6 +547,7 @@ function uib_study_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Category');
   t('ID');
+  t('Image');
   t('Responsible');
   t('Title');
   t('Type');

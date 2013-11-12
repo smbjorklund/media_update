@@ -52,16 +52,16 @@ function uib_study_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '2',
+          'weight' => '1',
         ),
         'language' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '8',
         ),
       ),
       'display' => array(),
