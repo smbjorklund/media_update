@@ -477,18 +477,26 @@ function uib_area_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_study_title']['id'] = 'field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['table'] = 'field_data_field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['field'] = 'field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['text'] = '<a href="[path]">[field_uib_study_title]</a>';
+  $handler->display->display_options['fields']['field_uib_study_title']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Content: Responsible (field_uib_ou) */
+  /* Contextual filter: Content: Place (field_uib_ou) */
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['id'] = 'field_uib_ou_target_id';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['table'] = 'field_data_field_uib_ou';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['field'] = 'field_uib_ou_target_id';
@@ -523,19 +531,19 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_type_value']['value'] = array(
     'program' => 'program',
   );
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
-  );
 
   /* Display: Courses */
   $handler = $view->new_display('page', 'Courses', 'courses');
   $handler->display->display_options['display_description'] = 'Listing courses belonging to area';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Content: ID */
   $handler->display->display_options['fields']['field_uib_study_code']['id'] = 'field_uib_study_code';
   $handler->display->display_options['fields']['field_uib_study_code']['table'] = 'field_data_field_uib_study_code';
@@ -544,15 +552,14 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_study_code']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_study_code']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_uib_study_code] / [title]';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_study_title']['id'] = 'field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['table'] = 'field_data_field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['field'] = 'field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['text'] = '<a href="[path]">[field_uib_study_code] / [field_uib_study_title]</a>';
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_study_title']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: ID (field_uib_study_code) */
   $handler->display->display_options['sorts']['field_uib_study_code_value']['id'] = 'field_uib_study_code_value';
@@ -581,13 +588,6 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_type_value']['value'] = array(
     'course' => 'course',
   );
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
-  );
   $handler->display->display_options['path'] = 'node/%/courses';
 
   /* Display: Studyprogrammes */
@@ -610,13 +610,13 @@ return !empty($handler->argument);';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Content: Category */
   $handler->display->display_options['fields']['field_uib_study_category']['id'] = 'field_uib_study_category';
   $handler->display->display_options['fields']['field_uib_study_category']['table'] = 'field_data_field_uib_study_category';
@@ -625,6 +625,14 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['field_uib_study_category']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_study_category']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_study_category']['type'] = 'i18n_list_default';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['field_uib_study_title']['id'] = 'field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['table'] = 'field_data_field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['field'] = 'field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['text'] = '<a href="[path]">[field_uib_study_title]</a>';
+  $handler->display->display_options['fields']['field_uib_study_title']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'node/%/study-programmes';
 
   /* Display: Masterprogrammes */
@@ -654,13 +662,6 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_type_value']['field'] = 'field_uib_study_type_value';
   $handler->display->display_options['filters']['field_uib_study_type_value']['value'] = array(
     'program' => 'program',
-  );
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
   /* Filter criterion: Content: ID (field_uib_study_code) */
   $handler->display->display_options['filters']['field_uib_study_code_value']['id'] = 'field_uib_study_code_value';
@@ -698,13 +699,6 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_type_value']['value'] = array(
     'program' => 'program',
   );
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
-  );
   /* Filter criterion: Content: ID (field_uib_study_code) */
   $handler->display->display_options['filters']['field_uib_study_code_value']['id'] = 'field_uib_study_code_value';
   $handler->display->display_options['filters']['field_uib_study_code_value']['table'] = 'field_data_field_uib_study_code';
@@ -741,13 +735,6 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_type_value']['value'] = array(
     'program' => 'program',
   );
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
-  );
   /* Filter criterion: Content: ID (field_uib_study_code) */
   $handler->display->display_options['filters']['field_uib_study_code_value']['id'] = 'field_uib_study_code_value';
   $handler->display->display_options['filters']['field_uib_study_code_value']['table'] = 'field_data_field_uib_study_code';
@@ -764,9 +751,10 @@ return !empty($handler->argument);';
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('<a href="[path]">[field_uib_study_title]</a>'),
     t('All'),
     t('Listing courses belonging to area'),
-    t('[field_uib_study_code] / [title]'),
+    t('<a href="[path]">[field_uib_study_code] / [field_uib_study_title]</a>'),
     t('Studyprogrammes'),
     t('Study programmes'),
     t('Masterprogrammes'),
