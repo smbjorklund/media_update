@@ -77,8 +77,13 @@ function uib_setup_filter_default_formats() {
         'status' => '1',
         'settings' => array(),
       ),
-      'filter_htmlcorrector' => array(
+      'filter_studycodes' => array(
         'weight' => '-45',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'filter_htmlcorrector' => array(
+        'weight' => '-44',
         'status' => '1',
         'settings' => array(),
       ),
@@ -148,7 +153,7 @@ function uib_setup_filter_default_formats() {
     'weight' => '-8',
     'filters' => array(
       'filter_html' => array(
-        'weight' => '-49',
+        'weight' => '-50',
         'status' => '1',
         'settings' => array(
           'allowed_html' => '<br> <p> <a> <strong> <em> <ul> <li> <ol> <h3> <h4> ',
@@ -157,19 +162,24 @@ function uib_setup_filter_default_formats() {
         ),
       ),
       'filter_url' => array(
-        'weight' => '-47',
+        'weight' => '-49',
         'status' => '1',
         'settings' => array(
           'filter_url_length' => '72',
         ),
       ),
       'filter_uib_url' => array(
-        'weight' => '-46',
+        'weight' => '-48',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'filter_studycodes' => array(
+        'weight' => '-47',
         'status' => '1',
         'settings' => array(),
       ),
       'filter_htmlcorrector' => array(
-        'weight' => '-42',
+        'weight' => '-46',
         'status' => '1',
         'settings' => array(),
       ),

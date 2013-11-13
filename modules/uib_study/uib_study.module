@@ -156,3 +156,60 @@ function uib_study_block_view($delta = '') {
 
   return $block;
 }
+
+/**
+ * Implements hook_filter_info().
+ *
+ */
+function uib_study_filter_info() {
+  $filters['filter_studycodes'] = array(
+    'title' => t('Link study codes to their nodes'),
+    'description' => t('Study codes (whole words) are linked to their corresponding study nodes.'),
+    'process callback' => '_uib_study_filter_process',
+    'tips callback' => '_uib_study_filter_tips',
+  );
+  return $filters;
+}
+
+/**
+ * process callback.
+ *
+ * ...do the filtering.
+ */
+function _uib_study_filter_process($text, $filter) {
+  // Get list of study codes
+  $codes = db_select('field_data_field_uib_study_code', 's')
+    ->fields('s', array('field_uib_study_code_value'))
+    ->execute()
+    ->fetchCol();
+
+  // Split html tagged text into content words
+  $tmp = str_replace('<p>', "\n", $text);
+  $tmp = strip_tags($tmp);
+  $words = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
+
+  // Check which words are study codes
+  $found_codes = array();
+  foreach ($words as $word) {
+    $clean_word = trim($word, '.,;?!-');
+    if (in_array($clean_word, $codes)) {
+      $found_codes[] = $clean_word;
+    }
+  }
+
+  // insert links
+  if ($found_codes) {
+    foreach ($found_codes as $code) {
+      $text = str_replace($code, l($code, 'emne/' . $code), $text);
+    }
+  }
+  return $text;
+}
+
+/**
+ * Filter tips callback for study filter.
+ *
+ */
+function _uib_study_filter_tips($filter, $format, $long = FALSE) {
+  return t('Study codes are linked to their content.');
+}

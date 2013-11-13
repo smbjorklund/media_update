@@ -53,6 +53,7 @@ dependencies[] = uib_field
 dependencies[] = uib_h2tabs
 dependencies[] = uib_media
 dependencies[] = uib_service_links
+dependencies[] = uib_study
 dependencies[] = uib_urlfilter
 dependencies[] = variable_realm
 dependencies[] = view_unpublished
