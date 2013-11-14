@@ -385,3 +385,18 @@ h1 {
     padding-right: 1em;
   }
 }
+
+// PHDS
+  .view-recent-phds {
+    .views-field-field-uib-media {
+      clear: both;
+    }
+    .form-item-sort-by {
+      float: left;
+      margin: 6px 0 0 0;
+      padding: 0 10px 0 0;
+    }
+    .phd-lead-title-wrapper {
+      margin: 0 0 10px 0;
+    }
+  }

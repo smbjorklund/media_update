@@ -944,6 +944,17 @@ $zen-auto-include-item-base: false;
     min-width: 406px;
     margin-left: 180px;
   }
+
+    /* Recent phds */
+  .view-recent-phds {
+    .views-field-field-uib-media {
+      @include zen-clear();
+      @include zen-grid-item (2, 1);
+    }
+    .views-field-title, .views-field-field-uib-lead {
+    @include zen-grid-item (2, 3);
+    }
+  }
 }
 
 /* Desktop */
@@ -1397,7 +1408,13 @@ $zen-auto-include-item-base: false;
 
   /* Recent phds */
   .view-recent-phds {
-    @include zen-clear();
+    .views-field-field-uib-media {
+      @include zen-clear();
+      @include zen-grid-item (2, 1);
+    }
+    .views-field-title, .views-field-field-uib-lead {
+    @include zen-grid-item (2, 3);
+    }
   }
   /* Automatic news feed on news page */
   .newspage_node .node-uib-article {
