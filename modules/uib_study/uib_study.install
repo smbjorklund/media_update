@@ -15,13 +15,7 @@ function uib_study_update_7001() {
   $nids = array_keys($result['node']);
   $total = count($nids);
   print "Removing $total study nodes\n";
-  $i = 1;
-  foreach ($nids as $nid) {
-    node_delete($nid);
-    print "Deleting $i of $total\r";
-    $i++;
-  }
-  print "Removed " . --$i . " out of $total nodes.\n";
+  node_delete_multiple($nids);
 }
 
 /**
