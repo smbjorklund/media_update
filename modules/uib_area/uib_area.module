@@ -205,40 +205,24 @@ function uib_area_block_view($delta='') {
       global $base_url;
       global $theme_path;
       $path = $base_url . '/' . $theme_path . '/images/';
-      $logo0_nb = $path . 'stemmerettsjubileet_nb.png';
-      $logo0_en = $path . 'stemmerettsjubileet_nb.png';
-      $logo1_nb = $path . 'forskningsdagene.png';
-      $logo1_en = $path . 'forskningsdagene.png';
+      $logo0_nb = $path . 'grunnloven_nb.png';
+      $logo0_en = $path . 'grunnloven_en.png';
       $area = uib_area__get_current();
       if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
         if ($area->language == 'en') {
           $block['content'] = '
-            <div class="banner eng" id="stem">
-              <a title="Centennial Female Vote 2013" href="http://www.uib.no/centennialfemalevote2013">
-                <img alt="Centennial Female Vote 2013" src="' . $logo0_en . '"/>
-              </a>
-            </div>
-          ';
-          $block['content'] .= '
-            <div class="banner eng" id="fd">
-              <a title="Forskningsdagene" href="http://www.uib.no/form/arbeidsfelt/forskningsdagene">
-                <img alt="Forskningsdagene" src="'  . $logo1_en . '"/>
+            <div class="banner eng">
+              <a title="The Bicentenary of the Norwegian Constitution in 2014" href="http://www.uib.no/en/constitution2014">
+                <img alt="The Bicentenary of the Norwegian Constitution in 2014" src="' . $logo0_en . '"/>
               </a>
             </div>
           ';
         }
         else {
           $block['content'] = '
-            <div class="banner" id="stem">
-              <a title="Stemmerettsjubileet 2013" href="http://www.uib.no/stemmerettsjubileet2013">
-                <img alt="Stemmerettsjubileet 2013" src="' . $logo0_nb . '" />
-              </a>
-            </div>
-          ';
-          $block['content'] .= '
-            <div class="banner" id="fd">
-              <a title="Forskningsdagene" href="http://www.uib.no/form/arbeidsfelt/forskningsdagene">
-                <img alt="Forskningsdagene" src="' . $logo1_nb . '"/>
+            <div class="banner">
+              <a title="Grunnlovsjubileet 2014" href="http://www.uib.no/grunnlovsjubileet2014">
+                <img alt="Grunnlovsjubileet 2014" src="' . $logo0_nb . '" />
               </a>
             </div>
           ';
