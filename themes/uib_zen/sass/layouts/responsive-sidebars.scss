@@ -43,11 +43,6 @@ $zen-auto-include-item-base: false;
  * Center the page.
  */
 
-#mains {
-  @include zen-grid-container();
-  @include zen-grid-background();
-}
-
 #main,
 #bottom-region-wrapper .inner,
 #global-header,
@@ -57,7 +52,7 @@ $zen-auto-include-item-base: false;
      by setting a max-width. */
   margin-left: auto;
   margin-right: auto;
-  max-width: 1260px;
+  max-width: 910px;
 }
 
 .page-add-node #main {
@@ -1034,7 +1029,7 @@ $zen-auto-include-item-base: false;
   .one-sidebar #main, .sidebar-second #main {
     background-image: url('../../images/fade-to-left-bg.png');
     background-repeat: repeat-y;
-    background-position: 80% 0;
+    background-position: 728px, 0;
   }
 
   $zen-column-count: 4;
