@@ -33,7 +33,7 @@ fi
 
 set -x
 
-rsync -rltDih --delete $PGDUMP_HOST_PREFIX/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/ --exclude=/js --exclude=/css --exclude=/ctools --exclude=/styles --exclude=*.pdf --exclude=*.mp3
+rsync -rltDih --delete $PGDUMP_HOST_PREFIX/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/ --exclude=/js --exclude=/css --exclude=/ctools --exclude=/styles --exclude=*.pdf --exclude=*.mp3 --exclude=*.mp4
 
 DOTGZ=""
 case $DUMP in *.gz) DOTGZ=".gz";; esac
