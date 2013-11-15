@@ -1282,7 +1282,7 @@ function uib_article_field_default_fields() {
             'file_view_mode' => 'content_main',
           ),
           'type' => 'file_rendered',
-          'weight' => '2',
+          'weight' => '-30',
         ),
         'short_teaser' => array(
           'label' => 'hidden',
