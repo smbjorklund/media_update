@@ -71,6 +71,6 @@ clean:
 	rm -f mockups/index.html
 
 realclean: clean
-	rm -f bin/buildout bin/python
+	rm -f bin/buildout bin/markdown2 bin/python
 	-rmdir bin
 	rm -rf .installed.cfg develop-eggs parts
