@@ -10,6 +10,7 @@ HTML = \
   git.html \
   hints.html \
   index.html \
+  model.html \
   release-notes.html \
   release-process.html \
   release1.html \

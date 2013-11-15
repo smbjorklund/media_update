@@ -18,6 +18,7 @@ You should know these:
 
 * [The code repository](repo.html)
 * [Development setup](development-setup.html)
+* [Data model](model.html)
 * [Reder Arrays](render-array.html)
 * [Hints that's good to know](hints.html)
 * [Git](git.html)
