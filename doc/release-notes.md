@@ -1,3 +1,17 @@
+# Release 2013-11-18 tag: R4.2
+
+Forberedende saker til migrasjon av området /utdanning, opprettinger etter forrige release, funksjonalitet i webdesk for innholdstypen "Tilknyttet innhold" og endring av logoer på forsiden uib.no.
+
+* Bytter ut de to logoene på forsiden til uib.no (engelsk og norsk) med logo for grunnlovsjublieet #4373
+* Artikkelinfo var ved en feil flyttet over hovedbildet på artikkel etter forrige release. Dette er nå flyttet ned på riktig plass. #4328
+* Gjort mulig rss-feed for nyheter og hendelser fra ansattsidene #4310
+* Lagt til områdetilhørighet for "Tilknyttet innhold" - vises nå også i webdesk og i søk fra webdesk for rolle 2 #4265 #3742 #3743
+* Lagt til mer luft mellom kolonner som viser tilknyttet innhold for å hindre at lange titler overskriver neste kolonne #4043
+* Regulert antall tegn som vises for tittel på emner for å unngå tekst utover tekstboks #3917
+* Lagt til default-bilde i nyhetsarkiv når det ikke er bilde på saken #3362
+* Lagt til mellomrom mellom tittel og dato i rss-feed #4246
+* Diverse saker som forbereder migrasjon og presentasjon av området /utdanning #171 #1279 #4283 #4284 #4286 #4288
+
 # Release 2013-10-31 tag: R4.1
 
 Release gjør primært en rekke justeringer i layout på forsidene.
