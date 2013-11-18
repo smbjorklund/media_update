@@ -15,69 +15,99 @@ function uib_study_block_info() {
       'info' => t('Study content from FS'),
       'status' => TRUE,
     ),
+    'study_content_contact' => array(
+      'info' => t('Study contact content from FS'),
+      'status' => TRUE,
+    ),
   );
+}
+
+function uib__getfs($nid) {
+  $data = FALSE;
+  $node = node_load($nid);
+  if ($node->type == 'uib_study') {
+    $type = $node->field_uib_study_type['und'][0]['value'];
+    /* Fetch what to render from:
+     * http://fs-pres.app.uib.no/<lang>/emne/<code>/render.json
+     */
+    global $language;
+    $url = 'http://fs-pres.app.uib.no/';
+    $lang = $language->language;
+    if ($lang == 'nb') { $lang = 'nn'; }  // fs-pres Norwegian is ny-norsk
+    $url .= $lang . '/';
+    if ($type == 'course') {
+      $url .= 'emne/';
+    }
+    elseif ($type == 'program') {
+      $url .= 'studieprogram/';
+    }
+    else {
+      uibx_log("Unknown study type; '$type'", 'error');
+    }
+    $slug = $node->field_uib_study_code['und'][0]['value'];
+    $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
+    $url .= $slug . '/';
+    $url .= 'render.json';
+    $res = drupal_http_request($url);
+    if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
+      uibx_log('GET ' . $url);
+      $data = drupal_json_decode($res->data);
+    }
+  }
+
+  return $data;
 }
 
 /**
  * Implements hook_block_view().
  */
-function uib_study_block_view($delta='') {
+function uib_study_block_view($delta = '') {
   $block = array();
+  $data = FALSE;
   switch ($delta) {
     case 'study_content':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $node = node_load(arg(1));
-        if ($node->type == 'uib_study') {
-          $type = $node->field_uib_study_type['und'][0]['value'];
-          /* Fetch what to render from:
-           * http://fs-pres.app.uib.no/<lang>/emne/<code>/render.json
-           */
-          global $language;
-          $url = 'http://fs-pres.app.uib.no/';
-          $lang = $language->language;
-          if ($lang == 'nb') { $lang = 'nn'; }  // fs-pres Norwegian is ny-norsk
-          $url .= $lang . '/';
-          if ($type == 'course') {
-            $url .= 'emne/';
-          }
-          elseif ($type == 'program') {
-            $url .= 'studieprogram/';
-          }
-          else {
-            uibx_log("Unknown study type; '$type'", 'error');
-          }
-          $slug = $node->field_uib_study_code['und'][0]['value'];
-          $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
-          $url .= $slug . '/';
-          $url .= 'render.json';
-          $res = drupal_http_request($url);
-          if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
-            uibx_log('GET ' . $url);
-            $data = drupal_json_decode($res->data);
-
-            /* Turn data into an real render array */
-            $render = array();
-            foreach ($data as $group) {
-              $render[$group['#group']] = array(
-                'header' => array(
-                  '#type' => 'html_tag',
-                  '#tag' => 'h2',
-                  '#value' => check_plain($group['#title']),
-                ),
+        $data = uib__getfs(arg(1));
+        // Turn data into an real render array.
+        $render = array();
+        foreach ($data as $group) {
+          $render[$group['#group']] = array(
+            'header' => array(
+              '#type' => 'html_tag',
+              '#tag' => 'h2',
+              '#value' => check_plain($group['#title']),
+            ),
+          );
+          foreach ($group['#items'] as $item) {
+            if ($item['#type'] != 'EB_KONTAKT') {
+              $render[$group['#group']][$item['#type']] = array(
+                '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
+                '#markup' => $item['#text'],
               );
-              foreach ($group['#items'] as $item) {
-                $render[$group['#group']][$item['#type']] = array(
-                  '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
-                  '#markup' => $item['#text'],
-                );
-              }
             }
-
-            $block['content']['fspres'] = $render;
           }
         }
+        $block['content']['fspres'][] = $render;
+      }
+      break;
+    case 'study_content_contact':
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $data = uib__getfs(arg(1));
+        $render = array();
+        foreach ($data as $group) {
+          foreach ($group['#items'] as $item) {
+            if ($item['#type'] == 'EB_KONTAKT') {
+              $render = array(
+                '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
+                '#markup' => $item['#text'],
+              );
+            }
+          }
+        }
+        $block['content']['fspres'][] = $render;
       }
       break;
   }
+
   return $block;
 }

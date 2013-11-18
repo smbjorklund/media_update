@@ -35,6 +35,12 @@ function uib_study_context_default_contexts() {
           'region' => 'content',
           'weight' => '20',
         ),
+        'uib_study-study-content-contact' => array(
+          'module' => 'uib_study',
+          'delta' => 'study_content_contact',
+          'region' => 'content',
+          'weight' => '19',
+        ),
       ),
     ),
   );
