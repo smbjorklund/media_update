@@ -192,9 +192,7 @@ function uib_study__update_study($type, $study, $ou_nid) {
       $edit = TRUE;
     }
     if (isset($study['category'])) {
-      if ($wrapper->field_uib_study_category->value() ||
-        $wrapper->field_uib_study_category->value() != $study['category'])
-      {
+      if ($wrapper->field_uib_study_category->value() != $study['category']) {
         $wrapper->field_uib_study_category->set($study['category']);
         $edit = TRUE;
       }
