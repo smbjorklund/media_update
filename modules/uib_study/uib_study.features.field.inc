@@ -97,7 +97,7 @@ function uib_study_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '5',
+        'weight' => '7',
       ),
     ),
   );
@@ -171,7 +171,7 @@ function uib_study_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '4',
+        'weight' => '6',
       ),
     ),
   );
@@ -247,7 +247,7 @@ function uib_study_field_default_fields() {
           'size' => '10',
         ),
         'type' => 'text_textfield',
-        'weight' => '0',
+        'weight' => '1',
       ),
     ),
   );
@@ -355,7 +355,7 @@ function uib_study_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '6',
+        'weight' => '4',
       ),
     ),
   );
@@ -502,7 +502,7 @@ function uib_study_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => 5,
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -559,7 +559,7 @@ function uib_study_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '4',
       ),
     ),
   );
@@ -633,7 +633,7 @@ function uib_study_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '3',
+        'weight' => '5',
       ),
     ),
   );

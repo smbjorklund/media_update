@@ -1,0 +1,62 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+/**
+ * Connect pre-existing related study programmes to entity ref field
+ */
+function uib_testimonial_update_7000() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'uib_testimonial');
+  $result = $query->execute();
+  if (!empty($result)) {
+    $testimonials = entity_load('node', array_keys($result['node']));
+    foreach ($testimonials as $nid => $testimonial_content) {
+      if (!empty($testimonial_content->field_uib_related_programmes)) {
+        $testimonial = entity_metadata_wrapper('node', $nid);
+        foreach ($testimonial->field_uib_related_programmes->getIterator() as $delta => $term) {
+          $preexisting_value = $term->value();
+          if (!empty($preexisting_value)) {
+            $wasFound = FALSE;
+            // Look for study code
+            $query = new EntityFieldQuery();
+            $query->entityCondition('entity_type', 'node')
+              ->entityCondition('bundle', 'uib_study')
+              ->fieldCondition('field_uib_study_code', 'value', $preexisting_value);
+            $subresult = $query->execute();
+            if (!empty($subresult)) {
+              if (count($subresult['node']) == 1) {
+                $instance = array_shift($subresult['node']);
+                $testimonial->field_uib_study_programmes[$delta]->set($instance->nid);
+                $testimonial->save();
+                $wasFound = TRUE;
+              }
+            }
+            if (!$wasFound) {
+              // Look for study title
+              $query = new EntityFieldQuery();
+              $query->entityCondition('entity_type', 'node')
+                ->entityCondition('bundle', 'uib_study')
+                ->fieldCondition('field_uib_study_title', 'value', $preexisting_value, 'LIKE');
+              $subresult = $query->execute();
+              if (!empty($subresult)) {
+                if (count($subresult['node']) == 1) {
+                  $instance = array_shift($subresult['node']);
+                  $testimonial->field_uib_study_programmes[$delta]->set($instance->nid);
+                  $testimonial->save();
+                  $wasFound = TRUE;
+                }
+              }
+            }
+            if (!$wasFound) {
+              uibx_log('Unable to connect study programme: "' . $preexisting_value . '", node=' . $nid, 'warning');
+            }
+          }
+        }
+      }
+    }
+  }
+}

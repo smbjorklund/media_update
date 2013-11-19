@@ -496,7 +496,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Content: Place (field_uib_ou) */
+  /* Contextual filter: Content: Responsible (field_uib_ou) */
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['id'] = 'field_uib_ou_target_id';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['table'] = 'field_data_field_uib_ou';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['field'] = 'field_uib_ou_target_id';
@@ -742,6 +742,38 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_code_value']['operator'] = 'starts';
   $handler->display->display_options['filters']['field_uib_study_code_value']['value'] = 'Å';
   $handler->display->display_options['path'] = 'node/%/one-year-programmes';
+
+  /* Display: Entity Reference */
+  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'entityreference_style';
+  $handler->display->display_options['style_options']['search_fields'] = array(
+    'field_uib_study_code' => 'field_uib_study_code',
+    'field_uib_study_title' => 'field_uib_study_title',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: ID */
+  $handler->display->display_options['fields']['field_uib_study_code']['id'] = 'field_uib_study_code';
+  $handler->display->display_options['fields']['field_uib_study_code']['table'] = 'field_data_field_uib_study_code';
+  $handler->display->display_options['fields']['field_uib_study_code']['field'] = 'field_uib_study_code';
+  $handler->display->display_options['fields']['field_uib_study_code']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_study_code']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_study_code']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['field_uib_study_title']['id'] = 'field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['table'] = 'field_data_field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['field'] = 'field_uib_study_title';
+  $handler->display->display_options['fields']['field_uib_study_title']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['text'] = '[field_uib_study_title] - [field_uib_study_code]';
+  $handler->display->display_options['fields']['field_uib_study_title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
   $translatables['courses'] = array(
     t('Master'),
     t('Courses'),
@@ -762,6 +794,8 @@ return !empty($handler->argument);';
     t('Bachelorprogrammes'),
     t('Bachelor programmes'),
     t('One-year programmes'),
+    t('Entity Reference'),
+    t('[field_uib_study_title] - [field_uib_study_code]'),
   );
   $export['courses'] = $view;
 
