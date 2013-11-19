@@ -962,10 +962,11 @@ webdesk/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'service_links_node_types';
   $strongarm->value = array(
+    'uib_study' => 'uib_study',
     'uib_article' => 0,
+    'uib_external_content' => 0,
     'area' => 0,
     'uib_ou' => 0,
-    'uib_study' => 0,
     'uib_testimonial' => 0,
   );
   $export['service_links_node_types'] = $strongarm;
