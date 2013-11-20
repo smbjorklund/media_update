@@ -15,8 +15,16 @@ function uib_study_block_info() {
       'info' => t('Study content from FS'),
       'status' => TRUE,
     ),
-    'study_content_contact' => array(
+    'study_contact' => array(
       'info' => t('Study contact content from FS'),
+      'status' => TRUE,
+    ),
+    'study_facts' => array(
+      'info' => t('Study facts from FS'),
+      'status' => TRUE,
+    ),
+    'study_related' => array(
+      'info' => t('Related study programs or courses from FS'),
       'status' => TRUE,
     ),
   );
@@ -90,7 +98,7 @@ function uib_study_block_view($delta = '') {
         $block['content']['fspres'][] = $render;
       }
       break;
-    case 'study_content_contact':
+    case 'study_contact':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
         $data = uib__getfs(arg(1));
         $render = array();
@@ -106,6 +114,33 @@ function uib_study_block_view($delta = '') {
         }
         $block['content']['fspres'][] = $render;
       }
+      break;
+    case 'study_facts':
+      $rows = array(
+        array('Foo', '1'),
+        array('Bar', '3'),
+        array('Foobar', '7'),
+      );
+      $render = array(
+        '#theme' => 'table',
+        '#header' => array(t('Study facts')),
+        '#rows' => $rows,
+      );
+      $block['content']['fspres'][] = $render;
+      break;
+    case 'study_related':
+      $items = array(
+        'Foo',
+        'Bar',
+        'Foobar',
+      );
+      $render = array(
+        '#theme' => 'item_list',
+        '#title' => 'study_content_related',
+        '#type' => 'ul',
+        '#items' => $items,
+      );
+      $block['content']['fspres'][] = $render;
       break;
   }
 

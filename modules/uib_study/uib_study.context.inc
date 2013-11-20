@@ -33,13 +33,25 @@ function uib_study_context_default_contexts() {
           'module' => 'uib_study',
           'delta' => 'study_content',
           'region' => 'content',
-          'weight' => '20',
+          'weight' => '25',
         ),
-        'uib_study-study-content-contact' => array(
+        'uib_study-study-contact' => array(
           'module' => 'uib_study',
-          'delta' => 'study_content_contact',
+          'delta' => 'study_contact',
           'region' => 'content',
           'weight' => '19',
+        ),
+        'uib_study-study-facts' => array(
+          'module' => 'uib_study',
+          'delta' => 'study_facts',
+          'region' => 'content',
+          'weight' => '18',
+        ),
+        'uib_study-study-related' => array(
+          'module' => 'uib_study',
+          'delta' => 'study_related',
+          'region' => 'content',
+          'weight' => '20',
         ),
       ),
     ),
