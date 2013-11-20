@@ -25,3 +25,27 @@ function uib_study_update_7002() {
   print "Re-Importing study programs from fs-sync\n";
   drush_uib_study_uib_sync_fs();
 }
+
+/**
+ * Add nb aliases for new Study view paths
+ */
+function uib_study_update_7003() {
+  $new_alias = array(
+    'source' => 'course',
+    'alias' => 'uib-archive?listing=studieemner',
+    'language' => 'nb',
+  );
+  path_save($new_alias);
+  $new_alias = array(
+    'source' => 'course',
+    'alias' => 'emne',
+    'language' => 'nb',
+  );
+  path_save($new_alias);
+  $new_alias = array(
+    'source' => 'studyprogramme',
+    'alias' => 'studieprogram',
+    'language' => 'nb',
+  );
+  path_save($new_alias);
+}
