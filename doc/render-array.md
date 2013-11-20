@@ -186,6 +186,7 @@ See [theme\_item\_list()](http://api.drupal.org/api/drupal/includes%21theme.inc/
 
     array(
       '#theme' => 'table',
+      '#header' => array('Title a', 'Title b', 'Title c'),
       '#rows' => array(
         array('a1', 'b1', 'c1'),
         array('a2', 'b2', 'c2'),
