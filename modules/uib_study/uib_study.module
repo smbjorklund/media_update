@@ -30,19 +30,25 @@ function uib_study_block_info() {
   );
 }
 
-function uib__getfs($nid) {
+function uib__getfs($nid, $json, $lang = FALSE) {
   $data = FALSE;
   $node = node_load($nid);
   if ($node->type == 'uib_study') {
-    $type = $node->field_uib_study_type['und'][0]['value'];
+    $url = 'http://fs-pres.test.uib.no/';
+    $study = entity_metadata_wrapper('node', $node);
+    $type = $study->field_uib_study_type->value();
     /* Fetch what to render from:
-     * http://fs-pres.app.uib.no/<lang>/emne/<code>/render.json
+     * http://fs-pres.app.uib.no/[<lang>]/emne/<code>/render.json
      */
-    global $language;
-    $url = 'http://fs-pres.app.uib.no/';
-    $lang = $language->language;
-    if ($lang == 'nb') { $lang = 'nn'; }  // fs-pres Norwegian is ny-norsk
-    $url .= $lang . '/';
+    if ($lang) {
+      global $language;
+      $lang = $language->language;
+      if ($lang == 'nb') {
+        $lang = 'nn'; // fs-pres Norwegian is ny-norsk
+      }
+      $url .= $lang . '/';
+    }
+
     if ($type == 'course') {
       $url .= 'emne/';
     }
@@ -52,7 +58,8 @@ function uib__getfs($nid) {
     else {
       uibx_log("Unknown study type; '$type'", 'error');
     }
-    $slug = $node->field_uib_study_code['und'][0]['value'];
+
+    $slug = $study->field_uib_study_code->value();
     $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
     $url .= $slug . '/';
     $url .= 'render.json';
@@ -75,7 +82,7 @@ function uib_study_block_view($delta = '') {
   switch ($delta) {
     case 'study_content':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $data = uib__getfs(arg(1));
+        $data = uib__getfs(arg(1), 'render.json', TRUE);
         // Turn data into an real render array.
         $render = array();
         foreach ($data as $group) {
@@ -100,7 +107,7 @@ function uib_study_block_view($delta = '') {
       break;
     case 'study_contact':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $data = uib__getfs(arg(1));
+        $data = uib__getfs(arg(1), 'render.json', TRUE);
         $render = array();
         foreach ($data as $group) {
           foreach ($group['#items'] as $item) {
@@ -116,17 +123,20 @@ function uib_study_block_view($delta = '') {
       }
       break;
     case 'study_facts':
-      $rows = array(
-        array('Foo', '1'),
-        array('Bar', '3'),
-        array('Foobar', '7'),
-      );
-      $render = array(
-        '#theme' => 'table',
-        '#header' => array(t('Study facts')),
-        '#rows' => $rows,
-      );
-      $block['content']['fspres'][] = $render;
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $data = uib__getfs(arg(1), 'info.json', FALSE);
+        $rows = array(
+          array('Foo', '1'),
+          array('Bar', '3'),
+          array('Foobar', '7'),
+        );
+        $render = array(
+          '#theme' => 'table',
+          '#header' => array(t('Study facts')),
+          '#rows' => $rows,
+        );
+        $block['content']['fspres'][] = $render;
+      }
       break;
     case 'study_related':
       $items = array(
