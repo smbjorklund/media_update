@@ -22,7 +22,7 @@ function uib_study_context_default_contexts() {
         'uib_study' => 'uib_study',
       ),
       'options' => array(
-        'node_form' => '1',
+        'node_form' => '0',
       ),
     ),
   );
