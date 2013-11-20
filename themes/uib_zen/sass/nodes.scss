@@ -74,7 +74,7 @@
 
   .more-link:before {
     content: '→';
-    color: #005473;
+    color: #037caf;
   }
 }
 
@@ -400,3 +400,16 @@ h1 {
       margin: 0 0 10px 0;
     }
   }
+
+// links
+#main a {
+  text-decoration: none;
+  &:hover {
+    color: #004866;
+    text-decoration: underline;
+  }
+}
+
+#content a {
+  text-decoration: underline;
+}
