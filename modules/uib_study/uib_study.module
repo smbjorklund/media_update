@@ -27,6 +27,10 @@ function uib_study_block_info() {
       'info' => t('Related study programs or courses from FS'),
       'status' => TRUE,
     ),
+    'study_testimonial' => array(
+      'info' => t('Randomly selected testimonial referring to a Study'),
+      'status' => TRUE,
+    ),
   );
 }
 
@@ -253,6 +257,25 @@ function uib_study_block_view($delta = '') {
       );
       $block['title'] = t("Related studies");
       $block['content']['fspres'][] = $render;
+      break;
+
+    case 'study_testimonial':
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $study_nid = arg(1);
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'uib_testimonial')
+          ->fieldCondition('field_uib_study_programmes', 'target_id', $study_nid);
+        $result = $query->execute();
+        if (!empty($result)) {
+          $testimonials = array_keys($result['node']);
+          $max = count($testimonials) - 1;
+          $selected = rand(0, $max);
+          $selected_nid = $testimonials[$selected];
+          $block['content'] = node_view(node_load($selected_nid), 'teaser');
+          $block['subject'] = t('Selected testimonial');
+        }
+      }
       break;
   }
 
