@@ -265,6 +265,7 @@ function uib_study_block_view($delta = '') {
         $query = new EntityFieldQuery();
         $query->entityCondition('entity_type', 'node')
           ->entityCondition('bundle', 'uib_testimonial')
+          ->propertyCondition('status', 1)
           ->fieldCondition('field_uib_study_programmes', 'target_id', $study_nid);
         $result = $query->execute();
         if (!empty($result)) {
