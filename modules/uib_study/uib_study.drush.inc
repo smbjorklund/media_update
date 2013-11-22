@@ -50,11 +50,8 @@ function drush_uib_study_uib_sync_fs() {
 
     // look for fag belonging to this ou
     $fspres_oid = implode('.', array('184', (int)$o1, (int)$o2));
-    $fspres_url = "http://fs-pres.app.uib.no/sted/$fspres_oid/info.json";
-
-    $res = drupal_http_request($fspres_url);
+    $res = uib_study__fspres_request("sted/$fspres_oid/info.json");
     if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
-      uibx_log('GET ' . $fspres_url);
       $data = drupal_json_decode($res->data);
       if (isset($data['emner_fag'])) {
         foreach ($data['emner_fag'] as $emne) {
@@ -70,7 +67,6 @@ function drush_uib_study_uib_sync_fs() {
       }
     }
     else {
-      uibx_log("GET $fspres_url: " . $res->code . ' ' . $res->status_message, ($res->code == 404 ? 'warning' : 'error'));
       if ($res->code == 404) {
         $not_found++;
       }

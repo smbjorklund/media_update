@@ -30,30 +30,48 @@ function uib_study_block_info() {
   );
 }
 
+function uib_study__fspres_request($path) {
+    $url = variable_get('uib_fspres_root', 'http://fs-pres.test.uib.no');
+    $url .= '/';
+    $url .= $path;
+
+    $before = microtime(true);
+    $res = drupal_http_request($url);
+
+    $ms = sprintf("%.0fms", 1000 * (microtime(true) - $before));
+    uibx_log("GET $url => $res->code $res->status_message ($ms)",
+      $res->code == 200 ? 'notice' :
+     ($res->code == 404 ? 'warning' :
+                          'error')
+    );
+
+    return $res;
+}
+
 function uib__getfs($nid, $json, $lang = FALSE) {
   $data = FALSE;
   $node = node_load($nid);
   if ($node->type == 'uib_study') {
-    $url = 'http://fs-pres.test.uib.no/';
     $study = entity_metadata_wrapper('node', $node);
     $type = $study->field_uib_study_type->value();
     /* Fetch what to render from:
      * http://fs-pres.app.uib.no/[<lang>]/emne/<code>/render.json
      */
+    $path = '';
     if ($lang) {
       global $language;
       $lang = $language->language;
       if ($lang == 'nb') {
         $lang = 'nn'; // fs-pres Norwegian is ny-norsk
       }
-      $url .= $lang . '/';
+      $path .= $lang . '/';
     }
 
     if ($type == 'course') {
-      $url .= 'emne/';
+      $path .= 'emne/';
     }
     elseif ($type == 'program') {
-      $url .= 'studieprogram/';
+      $path .= 'studieprogram/';
     }
     else {
       uibx_log("Unknown study type; '$type'", 'error');
@@ -61,11 +79,10 @@ function uib__getfs($nid, $json, $lang = FALSE) {
 
     $slug = $study->field_uib_study_code->value();
     $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
-    $url .= $slug . '/';
-    $url .= 'render.json';
-    $res = drupal_http_request($url);
+    $path .= $slug . '/';
+    $path .= 'render.json';
+    $res = uib_study__fspres_request($path);
     if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
-      uibx_log('GET ' . $url);
       $data = drupal_json_decode($res->data);
     }
   }
