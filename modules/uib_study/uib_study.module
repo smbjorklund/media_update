@@ -181,16 +181,17 @@ function uib_study_filter_info() {
  */
 function _uib_study_filter_process($text, $filter) {
   // Get list of study codes
-  $codes = db_select('field_data_field_uib_study_code', 's')
-    ->fields('s', array('field_uib_study_code_value'))
-    ->execute()
-    ->fetchCol();
+  $codes = array();
+  uib_study_get_codes($codes);
+  $nodes = array_flip($codes);
 
   // Split html tagged text into content words
-  $tmp = str_replace('<p>', "\n", $text);
+  $tmp = str_replace('&nbsp;', ' ', $text);
+  $tmp = str_replace('<p>', "\n<p> ", $tmp);
+  $tmp = str_replace('<br />', "\n<br /> ", $tmp);
+  $tmp = str_replace('<br>', "\n<br> ", $tmp);
   $tmp = strip_tags($tmp);
   $words = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
-
   // Check which words are study codes
   $found_codes = array();
   foreach ($words as $word) {
@@ -203,7 +204,7 @@ function _uib_study_filter_process($text, $filter) {
   // insert links
   if ($found_codes) {
     foreach ($found_codes as $code) {
-      $text = str_replace($code, l($code, 'emne/' . $code), $text);
+      $text = str_replace($code, l($code, 'node/' . $nodes[$code]), $text);
     }
   }
   return $text;
@@ -215,4 +216,21 @@ function _uib_study_filter_process($text, $filter) {
  */
 function _uib_study_filter_tips($filter, $format, $long = FALSE) {
   return t('Study codes are linked to their content.');
+}
+
+/**
+ * Get list of study codes.
+ *
+ */
+function uib_study_get_codes(&$code_list) {
+  // Get all published study codes indexed by their node ids
+  $result = db_query(
+    'SELECT n.nid, c.field_uib_study_code_value
+    FROM {node} n, {field_data_field_uib_study_code} c
+    WHERE n.status = 1 AND n.type = :studytype AND c.entity_id = n.nid',
+    array(':studytype' => 'uib_study')
+    );
+  foreach ($result as $record) {
+    $code_list[$record->nid] = $record->field_uib_study_code_value;
+  }
 }
