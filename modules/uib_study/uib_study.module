@@ -80,7 +80,7 @@ function uib__getfs($nid, $json, $lang = FALSE) {
     $slug = $study->field_uib_study_code->value();
     $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
     $path .= $slug . '/';
-    $path .= 'render.json';
+    $path .= $json;
     $res = uib_study__fspres_request($path);
     if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
       $data = drupal_json_decode($res->data);
@@ -139,22 +139,41 @@ function uib_study_block_view($delta = '') {
             }
           }
         }
+        $block['title'] = t("Contact");
         $block['content']['fspres'][] = $render;
       }
       break;
     case 'study_facts':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $node = node_load(arg(1));
+        $type = $node->field_uib_study_type['und'][0]['value'];
         $data = uib__getfs(arg(1), 'info.json', FALSE);
-        $rows = array(
-          array('Foo', '1'),
-          array('Bar', '3'),
-          array('Foobar', '7'),
-        );
+
+        $rows = array();
+        $rows[] = array(t('Study points'), $data['studiepoeng']);
+        if ($type == 'course') {
+          $rows[] = array(t('Teaching semester'), $data['undervisningssemester']);
+          $rows[] = array(t('Teaching lanugage'), '?');
+          $rows[] = array(t('Study level'), $data['studieniva']);
+          $rows[] = array(t('Number of semesters'), $data['antall-undsemester']);
+          $rows[] = array(t('Schedule'), '?');
+          $rows[] = array(t('Reading list'), '?');
+          $rows[] = array(t('Belongs to'), '?');
+        }
+        else {
+          assert($type == 'program');
+          $rows[] = array(t('Duration'), '99 years');
+          $rows[] = array(t('Number of seats'), '?');
+          $rows[] = array(t('Degree'), $data['gradnavn']);
+          $rows[] = array(t('Study level'), $data['studieniva']);
+        }
+        //$rows[] = array(t('Study type'), $type);
+
         $render = array(
           '#theme' => 'table',
-          '#header' => array(t('Study facts')),
           '#rows' => $rows,
         );
+        $block['title'] = t('Study facts');
         $block['content']['fspres'][] = $render;
       }
       break;
@@ -166,10 +185,10 @@ function uib_study_block_view($delta = '') {
       );
       $render = array(
         '#theme' => 'item_list',
-        '#title' => 'study_content_related',
         '#type' => 'ul',
         '#items' => $items,
       );
+      $block['title'] = t("Related studies");
       $block['content']['fspres'][] = $render;
       break;
   }
