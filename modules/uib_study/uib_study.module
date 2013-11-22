@@ -90,6 +90,24 @@ function uib__getfs($nid, $json, $lang = FALSE) {
   return $data;
 }
 
+function uib_study__area($study_node) {
+  $ou_nid = $study_node->field_uib_ou['und'][0]['target_id'];
+  $query = new EntityFieldQuery;
+  $results = $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'area')
+    ->propertyCondition('language', 'nb')
+    ->fieldCondition('field_uib_ou', 'target_id', $ou_nid)
+    ->fieldCondition('field_uib_area_type', 'value', array('institute', 'faculty'))
+    ->execute();
+  if (!empty($results['node'])) {
+    list($area_nid) = array_keys($results['node']);
+    $area = node_load($area_nid);
+    return l($area->title, "node/" . $area_nid);
+  }
+  return false;
+}
+
 /**
  * Implements hook_block_view().
  */
@@ -198,7 +216,6 @@ function uib_study_block_view($delta = '') {
           $rows[] = array(t('Number of semesters'), $data['antall-undsemester']);
           $rows[] = array(t('Schedule'), '?');
           $rows[] = array(t('Reading list'), '?');
-          $rows[] = array(t('Belongs to'), '?');
         }
         else {
           assert($type == 'program');
@@ -207,6 +224,12 @@ function uib_study_block_view($delta = '') {
           $rows[] = array(t('Degree'), $data['gradnavn']);
           $rows[] = array(t('Study level'), $data['studieniva']);
         }
+
+        $belongs_to = uib_study__area($node);
+        if ($belongs_to) {
+          $rows[] = array(t('Belongs to'), $belongs_to);
+        }
+
         //$rows[] = array(t('Study type'), $type);
 
         $render = array(
