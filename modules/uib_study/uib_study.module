@@ -122,6 +122,46 @@ function uib_study_block_view($delta = '') {
             }
           }
         }
+        $node = node_load(arg(1));
+        $type = $node->field_uib_study_type['und'][0]['value'];
+        if ($type == 'program') {
+          $render['construction'] = array(
+              '#type' => 'html_tag',
+              '#tag' => 'h2',
+              '#value' => t("Construction"),
+          );
+          $plan = uib__getfs(arg(1), 'plan.json');
+          $t_rows = array();
+          foreach ($plan['rows'] as $s_row) {
+            $t_row = array($s_row['depth']);
+            if ($s_row['emneheader']) {
+              $t_row[] = t('Course code');
+              $t_row[] = t('Course title');
+              $t_row[] = t('SP');
+              $t_row[] = t('S');
+              $t_row[] = t('A');
+            }
+            elseif ($s_row['emnekode']) {
+              $t_row[] = $s_row['emnekode'];
+              $t_row[] = $s_row['name'];
+              $t_row[] = $s_row['sp'];
+              $t_row[] = $s_row['s'];
+              $t_row[] = $s_row['a'];
+            }
+            else {
+              $t_row[] = array(
+                'data' => check_plain($s_row['name']),
+                'colspan' => 5,
+              );
+            }
+            //$t_row[] = check_plain(drupal_json_encode($s_row));
+            $t_rows[] = $t_row;
+          }
+          $render['construction table'] = array(
+            '#theme' => 'table',
+            '#rows' => $t_rows,
+          );
+        }
         $block['content']['fspres'][] = $render;
       }
       break;
