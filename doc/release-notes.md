@@ -2,7 +2,6 @@
 
 Forberedende saker til migrasjon av området /utdanning samt sikkerhetsoppdatering av moduler i drupal, bla core.
 
-* Laget filter som lenker til studiekoder i løpende tekst #4290
 * Flyttet "Kontakt"-info fra studieinnholdsfeltet til venstre infofelt #4292
 * Legger til service-links for deling på sosiale medier for studieinformasjon #4414
 * Oppretter nye felt for studierelatert informasjon #4416
