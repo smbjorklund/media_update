@@ -1,3 +1,16 @@
+# Release 2013-11-25 tag: R4.3
+
+Forberedende saker til migrasjon av området /utdanning samt sikkerhetsoppdatering av moduler i drupal, bla core.
+
+* Laget filter som lenker til studiekoder i løpende tekst #4290
+* Flyttet "Kontakt"-info fra studieinnholdsfeltet til venstre infofelt #4292
+* Legger til service-links for deling på sosiale medier for studieinformasjon #4414
+* Oppretter nye felt for studierelatert informasjon #4416
+* Lagt til referansefelt til studie på vitnesbyrd #1974
+* Sikkerhetsoppdatering av core, context, entitiy\_ref og eu\_cookies #4430
+* Rydde i staging-scripts #4314
+
+
 # Release 2013-11-18 tag: R4.2
 
 Forberedende saker til migrasjon av området /utdanning, opprettinger etter forrige release, funksjonalitet i webdesk for innholdstypen "Tilknyttet innhold" og endring av logoer på forsiden uib.no.
