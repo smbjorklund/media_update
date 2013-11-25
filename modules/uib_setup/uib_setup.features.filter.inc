@@ -77,6 +77,11 @@ function uib_setup_filter_default_formats() {
         'status' => '1',
         'settings' => array(),
       ),
+      'filter_studycodes' => array(
+        'weight' => '-45',
+        'status' => '1',
+        'settings' => array(),
+      ),
       'filter_htmlcorrector' => array(
         'weight' => '-44',
         'status' => '1',
@@ -165,6 +170,11 @@ function uib_setup_filter_default_formats() {
       ),
       'filter_uib_url' => array(
         'weight' => '-48',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'filter_studycodes' => array(
+        'weight' => '-47',
         'status' => '1',
         'settings' => array(),
       ),
