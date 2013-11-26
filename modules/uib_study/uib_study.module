@@ -164,7 +164,7 @@ function uib_study_block_view($delta = '') {
               $t_row[] = t('A');
             }
             elseif ($s_row['emnekode']) {
-              $t_row[] = $s_row['emnekode'];
+              $t_row[] = uib_study__study_link($s_row['emnekode']);
               $t_row[] = $s_row['name'];
               $t_row[] = $s_row['sp'];
               $t_row[] = $s_row['s'];
