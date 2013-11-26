@@ -52,7 +52,7 @@ function uib_study__fspres_request($path) {
     return $res;
 }
 
-function uib__getfs($nid, $json, $lang = FALSE) {
+function uib_study__fspres_get_json($nid, $json, $lang = FALSE) {
   $data = FALSE;
   $node = node_load($nid);
   if ($node->type == 'uib_study') {
@@ -121,7 +121,7 @@ function uib_study_block_view($delta = '') {
   switch ($delta) {
     case 'study_content':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $data = uib__getfs(arg(1), 'render.json', TRUE);
+        $data = uib_study__fspres_get_json(arg(1), 'render.json', TRUE);
         // Turn data into an real render array.
         $render = array();
         foreach ($data as $group) {
@@ -152,7 +152,7 @@ function uib_study_block_view($delta = '') {
               '#tag' => 'h2',
               '#value' => t("Construction"),
           );
-          $plan = uib__getfs(arg(1), 'plan.json');
+          $plan = uib_study__fspres_get_json(arg(1), 'plan.json');
           $t_rows = array();
           foreach ($plan['rows'] as $s_row) {
             $t_row = array($s_row['depth']);
@@ -189,7 +189,7 @@ function uib_study_block_view($delta = '') {
       break;
     case 'study_contact':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $data = uib__getfs(arg(1), 'render.json', TRUE);
+        $data = uib_study__fspres_get_json(arg(1), 'render.json', TRUE);
         $render = array();
         foreach ($data as $group) {
           foreach ($group['#items'] as $item) {
@@ -209,7 +209,7 @@ function uib_study_block_view($delta = '') {
       if (arg(0) == 'node' && is_numeric(arg(1))) {
         $node = node_load(arg(1));
         $type = $node->field_uib_study_type['und'][0]['value'];
-        $data = uib__getfs(arg(1), 'info.json', FALSE);
+        $data = uib_study__fspres_get_json(arg(1), 'info.json', FALSE);
 
         $rows = array();
         $rows[] = array(t('Study points'), $data['studiepoeng']);
