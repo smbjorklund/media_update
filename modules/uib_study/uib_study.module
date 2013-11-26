@@ -139,7 +139,7 @@ function uib_study_block_view($delta = '') {
             if ($item['#type'] != 'EB_KONTAKT') {
               $render[$group['#group']][$item['#type']] = array(
                 '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
-                '#markup' => $item['#text'],
+                '#markup' => uib_study__filter_text($item['#text']),
               );
             }
           }
@@ -291,18 +291,16 @@ function uib_study_filter_info() {
   $filters['filter_studycodes'] = array(
     'title' => t('Link study codes to their nodes'),
     'description' => t('Study codes (whole words) are linked to their corresponding study nodes.'),
-    'process callback' => '_uib_study_filter_process',
+    'process callback' => 'uib_study__filter_text',
     'tips callback' => '_uib_study_filter_tips',
   );
   return $filters;
 }
 
 /**
- * process callback.
- *
- * ...do the filtering.
+ * Replace study codes in the text with an HTML link to the corresponding study pages.
  */
-function _uib_study_filter_process($text, $filter) {
+function uib_study__filter_text($text) {
   // Split html tagged text into content words
   $tmp = str_replace('&nbsp;', ' ', $text);
   $tmp = str_replace('<p>', "\n<p> ", $tmp);
