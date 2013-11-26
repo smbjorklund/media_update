@@ -315,13 +315,13 @@ function _uib_study_filter_process($text, $filter) {
   foreach ($words as $word) {
     $clean_word = trim($word, '.,;?!-');
     if (uib_study__study_exists($clean_word)) {
-      $found_codes[] = $clean_word;
+      $found_codes[$clean_word] = TRUE;
     }
   }
 
   // insert links
   if ($found_codes) {
-    foreach ($found_codes as $code) {
+    foreach (array_keys($found_codes) as $code) {
       $text = str_replace($code, uib_study__study_link($code), $text);
     }
   }
