@@ -1168,11 +1168,12 @@ function uib_testimonial_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'entityreference',
+          'module' => 'uib_study',
           'settings' => array(
-            'link' => 1,
+            'uib_study_field_name' => 'field_uib_study_title',
+            'uib_study_link' => 1,
           ),
-          'type' => 'entityreference_label',
+          'type' => 'uib_study_title_formatter',
           'weight' => '11',
         ),
         'short_teaser' => array(
