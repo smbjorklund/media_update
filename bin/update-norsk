@@ -1,4 +1,12 @@
 #!/bin/sh
 
-bin/site-drush en --yes l10n_update
-bin/site-drush l10n-update
+DRUSH=bin/site-drush
+set -x
+
+#$DRUSH en --yes l10n_update
+mkdir drupal/sites/all/translations
+$DRUSH vget l10n_update_check_mode
+$DRUSH vset l10n_update_check_mode 1
+$DRUSH l10n-update
+$DRUSH vset l10n_update_check_mode 2
+#rm -rf drupal/sites/all/translations

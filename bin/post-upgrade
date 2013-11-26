@@ -27,3 +27,6 @@ bin/site-drush uib-area-menu-to-relation
 
 # Make sure the cache is really blenda-clean
 bin/site-drush cc all
+
+# Refresh the contributed translations for modules
+bin/update-norsk

@@ -438,7 +438,7 @@ webdesk/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_check_mode';
-  $strongarm->value = '2';
+  $strongarm->value = 2;
   $export['l10n_update_check_mode'] = $strongarm;
 
   $strongarm = new stdClass();
