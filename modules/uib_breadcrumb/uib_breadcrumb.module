@@ -21,37 +21,95 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
     'localized_options' => array(),
     'type' => 0,
   );
-  if (count($active_trail) > 1) {
-    $item = (__uib_get_parent_item(__uib_get_plid('node/' . arg(1), 'menu-area-' . $current_area->nid)));
-    $uib_active_trail[] = array(
-      'title' => $item['link_title'],
-      'href' => '',
-      'link_path' => $item['link_path'],
-      'localized_options' => array(),
-      'type' => 0,
-    );
-    $active_trail = $uib_active_trail;
-  }
-  else {
-    $uib_crumbs = __uib_get_breadcrumb(arg(1), array(), $current_area->nid);
-    if (count($uib_crumbs) > 0) {
-      $uib_crumbs = array_reverse($uib_crumbs);
-      $first_relation = $uib_crumbs[0];
-      $plid = __uib_get_plid($first_relation['href'], 'menu-area-' . $current_area->nid);
-      if($active_trail[0]['mlid'] != $plid) {
-        if($parent = __uib_get_parent_item($plid)) {
+  if (isset($item['page_arguments'][0]->type)) {
+    if ($item['page_arguments'][0]->type == 'uib_article') {
+      switch ($item['page_arguments'][0]->field_uib_article_type['und'][0]['value']) {
+        case 'news':
           $uib_active_trail[] = array(
-            'title' => $parent['link_title'],
-            'href' => $parent['link_path'],
+            'title' => t('News archive'),
+            'href' => $uib_active_trail[1]['href'] . '/news-archive',
             'link_path' => '',
             'localized_options' => array(),
             'type' => 0,
           );
-        }
+          $year = date('Y', $item['page_arguments'][0]->created);
+          $month = date('F', $item['page_arguments'][0]->created);
+          $datelink = date('Ym', $item['page_arguments'][0]->created);
+          $uib_active_trail[] = array(
+            'title' => t($month) . ' ' . $year,
+            'href' => $uib_active_trail[1]['href'] . '/news-archive/' . $datelink,
+            'link_path' => '',
+            'localized_options' => array(),
+            'type' => 0,
+          );
+          break;
+        case 'infopage':
+          if (count($active_trail) > 1) {
+            $item = (__uib_get_parent_item(__uib_get_plid('node/' . arg(1), 'menu-area-' . $current_area->nid)));
+            $uib_active_trail[] = array(
+              'title' => $item['link_title'],
+              'href' => '',
+              'link_path' => $item['link_path'],
+              'localized_options' => array('attributes' => array('class' => array('uib-remove-link'))),
+              'type' => 0,
+            );
+          }
+          else {
+            $uib_crumbs = __uib_get_breadcrumb(arg(1), array(), $current_area->nid);
+            if (count($uib_crumbs) > 0) {
+              $uib_crumbs = array_reverse($uib_crumbs);
+              $first_relation = $uib_crumbs[0];
+              $plid = __uib_get_plid($first_relation['href'], 'menu-area-' . $current_area->nid);
+              if($active_trail[0]['mlid'] != $plid) {
+                if($parent = __uib_get_parent_item($plid)) {
+                  $uib_active_trail[] = array(
+                    'title' => $parent['link_title'],
+                    'href' => $parent['link_path'],
+                    'link_path' => '',
+                    'localized_options' => array('attributes' => array('class' => array('uib-remove-link'))),
+                    'type' => 0,
+                  );
+                }
+              }
+              foreach ($uib_crumbs as $key => $crumb) {
+                if (!in_array($crumb, $uib_active_trail)) {
+                  $uib_active_trail[] = $crumb;
+                }
+                else {
+                  break;
+                }
+              }
+            }
+          }
+          break;
+        case 'event':
+          $uib_active_trail[] = array(
+            'title' => t('Calendar'),
+            'href' => $uib_active_trail[1]['href'] . '/calendar',
+            'link_path' => '',
+            'localized_options' => array(),
+            'type' => 0,
+          );
+          $date = explode('-', $item['page_arguments'][0]->field_uib_date['und'][0]['value']);
+          $uib_active_trail[] = array(
+            'title' => (string)$date[0],
+            'href' => $uib_active_trail[1]['href'] . '/calendar/year?dateyear=' . $date[0],
+            'link_path' => '',
+            'localized_options' => array(),
+            'type' => 0,
+          );
+          $uib_active_trail[] = array(
+            'title' => t(date("F", mktime(0,0,0,$date[1],1,2013))),
+            'href' => $uib_active_trail[1]['href'] . '/calendar?date=' . $date[0] . '-' . $date[1],
+            'link_path' => '',
+            'localized_options' => array(),
+            'type' => 0,
+          );
+          break;
       }
     }
-    $active_trail = array_merge($uib_active_trail, $uib_crumbs);
   }
+  $active_trail = $uib_active_trail;
 }
 
 /**

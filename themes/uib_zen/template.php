@@ -805,7 +805,7 @@ function uib_zen_views_post_render(&$view, &$output, &$cache) {
   $current_lang = $language->language;
   if ($view->name == 'calendar' && in_array($view->current_display, array('block_3', 'block_5')) && $current_lang == 'nb') {
     foreach ($view->result as $key => $result) {
-      $event_type = i18n_string_translate('field:field_uib_event_type:#allowed_values:' . $view->result[$key]->field_data_field_uib_event_type_field_uib_event_type_value);
+      $event_type = i18n_string_translate('field:field_uib_event_type:#allowed_values:' . $view->result[$key]->field_data_field_uib_event_type_field_uib_event_type_value, $view->result[$key]->field_data_field_uib_event_type_field_uib_event_type_value);
       $output = str_replace('>' . $view->result[$key]->link . '<', '>'. ucfirst($event_type) . '<', $output);
     }
   }
@@ -884,8 +884,8 @@ function uib_zen_breadcrumb(&$vars) {
   $breadcrumb = $vars['breadcrumb'];
   $output = '<nav class="breadcrumb" role="navigation"><ol>';
   foreach ($breadcrumb as $key => $crumb) {
-    if ($key == 2) $crumb = strip_tags($crumb);
-    $output .= '<li>' . $crumb . ' &gt; </li>';
+    if ($key == 2 && strpos($crumb, 'uib-remove-link')) $crumb = strip_tags($crumb);
+    $output .= '<li>' . urldecode($crumb) . ' &gt; </li>';
   }
   $output .= '</ol></nav>';
   return $output;
