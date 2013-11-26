@@ -303,11 +303,6 @@ function uib_study_filter_info() {
  * ...do the filtering.
  */
 function _uib_study_filter_process($text, $filter) {
-  // Get list of study codes
-  $codes = array();
-  uib_study_get_codes($codes);
-  $nodes = array_flip($codes);
-
   // Split html tagged text into content words
   $tmp = str_replace('&nbsp;', ' ', $text);
   $tmp = str_replace('<p>', "\n<p> ", $tmp);
@@ -319,7 +314,7 @@ function _uib_study_filter_process($text, $filter) {
   $found_codes = array();
   foreach ($words as $word) {
     $clean_word = trim($word, '.,;?!-');
-    if (in_array($clean_word, $codes)) {
+    if (uib_study__study_exists($clean_word)) {
       $found_codes[] = $clean_word;
     }
   }
@@ -327,7 +322,7 @@ function _uib_study_filter_process($text, $filter) {
   // insert links
   if ($found_codes) {
     foreach ($found_codes as $code) {
-      $text = str_replace($code, l($code, 'node/' . $nodes[$code]), $text);
+      $text = str_replace($code, uib_study__study_link($code), $text);
     }
   }
   return $text;
@@ -342,18 +337,39 @@ function _uib_study_filter_tips($filter, $format, $long = FALSE) {
 }
 
 /**
- * Get list of study codes.
- *
+ *  Returns the path to the page for given study code.  Returns FALSE for codes
+ *  that isn't in use.
  */
-function uib_study_get_codes(&$code_list) {
-  // Get all published study codes indexed by their node ids
-  $result = db_query(
-    'SELECT n.nid, c.field_uib_study_code_value
-    FROM {node} n, {field_data_field_uib_study_code} c
-    WHERE n.status = 1 AND n.type = :studytype AND c.entity_id = n.nid',
-    array(':studytype' => 'uib_study')
-    );
-  foreach ($result as $record) {
-    $code_list[$record->nid] = $record->field_uib_study_code_value;
+function uib_study__study_path($code) {
+  static $study_nid;
+  if (!isset($study_nid)) {
+    $result = db_query(
+      'SELECT n.nid, c.field_uib_study_code_value
+      FROM {node} n, {field_data_field_uib_study_code} c
+      WHERE n.status = 1 AND n.type = :studytype AND c.entity_id = n.nid',
+      array(':studytype' => 'uib_study')
+      );
+    foreach ($result as $record) {
+      $study_nid[$record->field_uib_study_code_value] = $record->nid;
+    }
   }
+  if (isset($study_nid[$code])) {
+    return "node/$study_nid[$code]";
+  }
+  return FALSE;
+}
+
+/**
+ *  Returns the TRUE if the given study code is in use.
+ */
+function uib_study__study_exists($code) {
+  return !!uib_study__study_path($code);
+}
+
+/**
+ *  Linkify a study code.  Returns $code unchanged if code isn't valid.
+ */
+function uib_study__study_link($code) {
+  $path = uib_study__study_path($code);
+  return $path ? l($code, $path) : $code;
 }
