@@ -452,7 +452,7 @@ function uib_area__get_current_by_language($current_area) {
         ->condition('nid', $current_area->nid, '<>')
         ->execute()
         ->fetchAssoc();
-      $current_area = node_load($result);
+      $current_area = node_load($result['nid']);
     }
     else {
       $current_area = node_load($current_area->tnid);
