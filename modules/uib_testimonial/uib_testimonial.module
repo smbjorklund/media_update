@@ -5,3 +5,22 @@
  */
 
 include_once 'uib_testimonial.features.inc';
+
+/**
+ * Implements hook_field_widget_form_alter.
+ */
+function uib_testimonial_field_widget_form_alter(&$element, &$form_state, $context) {
+  if ($context['field']['type'] == 'entityreference' && $context['field']['field_name'] == 'field_uib_study_programmes') {
+    if (!empty($element['target_id']['#default_value'])) {
+      // Get study title that is translated into the language of the node being edited
+      $study_nid = $context['items'][$context['delta']]['target_id'];
+      $testimonial = entity_metadata_wrapper('node', $form_state['node']);
+      $study = entity_metadata_wrapper('node', $testimonial->field_uib_study_programmes[$context['delta']]->value());
+      $study_title = $study->language($form_state['node']->language)->field_uib_study_title->value();
+      if (!empty($study_title)) {
+        // Override form field default value
+        $element['target_id']['#default_value'] = $study_title . ' (' . $study_nid . ')';
+      }
+    }
+  }
+}
