@@ -60,3 +60,25 @@ function uib_testimonial_update_7000() {
     }
   }
 }
+
+/**
+ * Update testimonial language inheritance
+ */
+function uib_testimonial_update_7001() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'uib_testimonial');
+  $result = $query->execute();
+  if (!empty($result)) {
+    $testimonials = entity_load('node', array_keys($result['node']));
+    foreach ($testimonials as $nid => $testimonial_content) {
+      $testimonial = entity_metadata_wrapper('node', $testimonial_content);
+      $area_node = $testimonial->field_uib_area->value();
+      // A testimonial may be connected to more than one area
+      // Let testimonial inherit the language of first area
+      $area = entity_metadata_wrapper('node', $area_node[0]);
+      $testimonial->language->set($area->language->value());
+      $testimonial->save();
+    }
+  }
+}
