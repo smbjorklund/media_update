@@ -385,3 +385,85 @@ function uib_study__study_link($code, $text=NULL) {
   $path = uib_study__study_path($code);
   return $path ? l($text, $path) : $text;
 }
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function uib_study_field_formatter_info() {
+  return array(
+    'uib_study_title_formatter' => array(
+      'label' => t('Display a field'),
+      'description' => t('Display a field instead of the node title.'),
+      'field types' => array('entityreference'),
+      'settings' => array(
+        'uib_study_field_name' => '',
+        'uib_study_link' => 0,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function uib_study_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $element = array();
+  $element['uib_study_field_name'] = array(
+    '#type'           => 'textfield',
+    '#title'          => t('Field name'),
+    '#description'    => t('The name of the uib field to use'),
+    '#default_value'  => $settings['uib_study_field_name'],
+  );
+  $element['uib_study_link'] = array(
+    '#type'           => 'checkbox',
+    '#title'          => t('Link to entity'),
+    '#description'    => t('Indicate if the field should link to its entity'),
+    '#default_value'  => $settings['uib_study_link'],
+  );
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function uib_study_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $lnk = '';
+  if (!$settings['uib_study_link']) {
+    $lnk = 'no ';
+  }
+  $summary = t('Show field "@the_field", ' . $lnk . 'link to entity', array(
+    '@the_field' => $settings['uib_study_field_name'],
+  ));
+  return $summary;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function uib_study_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  if ($display['type'] == 'uib_study_title_formatter') {
+    $elements = array();
+    $settings = $display['settings'];
+    if (!empty($settings['uib_study_field_name'])) {
+      foreach ($items as $delta => $item) {
+        $node = entity_metadata_wrapper('node', node_load($item['target_id']));
+        $language = $entity->language;
+        if (empty($language) || $language == 'und') {
+          $language = 'nb';
+        }
+        $display_text = $node->language($language)->$settings['uib_study_field_name']->value();
+        if ($settings['uib_study_link']) {
+          $elements[$delta]['#markup'] = l($display_text, 'node/' . $item['target_id']);
+        }
+        else {
+          $elements[$delta]['#markup'] = $display_text;
+        }
+      }
+    }
+    return $elements;
+  }
+}
