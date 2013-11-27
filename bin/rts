@@ -76,7 +76,7 @@ Subcommands:
     release
     release <rid> [--patches]
     list [--open] [--patches]
-    branches
+    branches [--patches]
     merge-status <id>
     extract
 EOT
@@ -359,6 +359,11 @@ sub do_branches {
 
 	if ($remote{$_}) {
 	    print "  *** merge conflicts (run 'rts merge-status $_' for details)\n" if git_merge_tree($_) =~ /^\+<<<<<+ \.our/m;
+	}
+	if ($OPT{patches}) {
+	    for my $p (get_patches($_)) {
+		print "  - $p\n";
+	    }
 	}
     }
 }
