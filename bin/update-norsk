@@ -7,6 +7,6 @@ set -x
 mkdir drupal/sites/all/translations
 $DRUSH vget l10n_update_check_mode
 $DRUSH vset l10n_update_check_mode 1
-$DRUSH l10n-update
+$DRUSH l10n-update --verbose
 $DRUSH vset l10n_update_check_mode 2
 #rm -rf drupal/sites/all/translations
