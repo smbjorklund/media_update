@@ -78,6 +78,7 @@ Subcommands:
     list [--open] [--patches]
     branches [--patches]
     merge-status <id>
+    done <id>
     extract
 EOT
 }
@@ -299,6 +300,29 @@ sub do_list {
     }
 }
 
+sub do_done {
+    usage("No issue id given") unless @ARGV;
+    my %want_ids;
+    for (@ARGV) {
+	s/^RTS[-\/]?//i;
+	s/^#//;
+	if (/^\d+$/) {
+	    my $issue_id = $_;
+	    print "RTS-$issue_id\n";
+	    my @patches = get_patches($issue_id);
+	    for (@patches) {
+		print "  $_\n";
+	    }
+	    system("git push origin origin/rts/$issue_id:refs/heads/rts/$issue_id.done");
+	    system("git push origin :rts/$issue_id");
+	    system("git branch -D rts/$issue_id");
+	}
+	else {
+	    warn "'$_' doesn't look like an issue to me\n";
+	}
+    }
+}
+
 sub do_release {
     if (@ARGV) {
 	my $release = shift(@ARGV);
@@ -325,7 +349,7 @@ sub do_branches {
     system('git fetch --prune >/dev/null');
 
     for (qx(git branch -a)) {
-	if (m,(/origin/)?rts/(\d+),) {
+	if (m,(/origin/)?rts/(\d+)$,) {
 	    if ($1) {
 		$remote{$2}++;
 	    }
