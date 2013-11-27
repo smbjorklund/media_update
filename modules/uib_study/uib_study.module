@@ -95,10 +95,12 @@ function uib_study__fspres_get_json($nid, $json, $lang = FALSE) {
     if ($cache = cache_get($path, 'cache_uib_study')) {
       $data = $cache->data;
     }
-    $res = uib_study__fspres_request($path);
-    if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
-      $data = drupal_json_decode($res->data);
-      cache_set($path, $data, 'cache_uib_study', REQUEST_TIME + 4*3600);
+    else {
+      $res = uib_study__fspres_request($path);
+      if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
+        $data = drupal_json_decode($res->data);
+        cache_set($path, $data, 'cache_uib_study', REQUEST_TIME + 4*3600);
+      }
     }
   }
 
