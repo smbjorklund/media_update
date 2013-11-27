@@ -4,6 +4,15 @@
  */
 
 /**
+ * Implements hook_schema().
+ */
+function uib_study_schema() {
+  $schema['cache_uib_study'] = drupal_get_schema_unprocessed('system', 'cache');
+  $schema['cache_uib_study']['description'] = 'Cache table for FS information.';
+  return $schema;
+}
+
+/**
  * Remove all existing uib_study nodes from the system.
  */
 function uib_study_update_7001() {
@@ -48,4 +57,16 @@ function uib_study_update_7003() {
     'language' => 'nb',
   );
   path_save($new_alias);
+}
+
+/**
+ * Create cache table for FS
+ */
+function uib_study_update_7004() {
+  $schema = uib_study_schema();
+  foreach ($schema as $table => $fields) {
+    if (!db_table_exists($table)) {
+      db_create_table($table, $fields);
+    }
+  }
 }

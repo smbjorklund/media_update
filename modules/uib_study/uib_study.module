@@ -34,6 +34,13 @@ function uib_study_block_info() {
   );
 }
 
+/**
+ * Implements hook_flush_caches().
+ */
+function uib_study_flush_caches() {
+  return array('cache_uib_study');
+}
+
 function uib_study__fspres_request($path) {
     $url = variable_get('uib_fspres_root', 'http://fs-pres.test.uib.no');
     $url .= '/';
@@ -85,9 +92,13 @@ function uib_study__fspres_get_json($nid, $json, $lang = FALSE) {
     $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
     $path .= $slug . '/';
     $path .= $json;
+    if ($cache = cache_get($path, 'cache_uib_study')) {
+      $data = $cache->data;
+    }
     $res = uib_study__fspres_request($path);
     if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
       $data = drupal_json_decode($res->data);
+      cache_set($path, $data, 'cache_uib_study', REQUEST_TIME + 4*3600);
     }
   }
 
