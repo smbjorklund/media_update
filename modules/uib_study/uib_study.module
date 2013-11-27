@@ -317,12 +317,15 @@ function uib_study__filter_text($text) {
   $tmp = str_replace('<p>', "\n<p> ", $tmp);
   $tmp = str_replace('<br />', "\n<br /> ", $tmp);
   $tmp = str_replace('<br>', "\n<br> ", $tmp);
+  $tmp = str_replace('<div', "\n<div", $tmp);
+  $tmp = str_replace('<ul', "\n<ul", $tmp);
+  $tmp = str_replace('</li><li>', "</li>\n<li>", $tmp);
   $tmp = strip_tags($tmp);
   $words = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
   // Check which words are study codes
   $found_codes = array();
   foreach ($words as $word) {
-    $clean_word = trim($word, '.,;?!-');
+    $clean_word = trim($word, '.,;:?!-()/');
     if (uib_study__study_exists($clean_word)) {
       $found_codes[$clean_word] = TRUE;
     }
