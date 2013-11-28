@@ -270,7 +270,9 @@ function uib_study_block_view($delta = '') {
         }
         else {
           assert($type == 'program');
-          $rows[] = array(t('Duration'), '99 years');
+          // calculate duration of programme, based on 60 credits per year
+          $duration = number_format(round($data['heltidsprosent'] * $data['studiepoeng'] / 60 / 100, 1) , 1, ',', ' ');
+          $rows[] = array(t('Duration'), $duration . ' ' . t('years'));
           $rows[] = array(t('Number of seats'), '?');
           if (empty($data['gradnavn'])) {
             $rows[] = array(t('Degree'));
