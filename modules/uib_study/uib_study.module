@@ -253,7 +253,8 @@ function uib_study_block_view($delta = '') {
         $node = node_load(arg(1));
         $type = $node->field_uib_study_type['und'][0]['value'];
         $data = uib_study__fspres_get_json(arg(1), 'info.json', FALSE);
-
+        $study_code = $data['emneid']['emnekode'];
+        $semester = uib_study__get_current_semester();
         $rows = array();
         $rows[] = array(t('Study points'), $data['studiepoeng']);
         if ($type == 'course') {
@@ -261,8 +262,9 @@ function uib_study_block_view($delta = '') {
           $rows[] = array(t('Teaching lanugage'), '?');
           $rows[] = array(t('Study level'), $data['studieniva']);
           $rows[] = array(t('Number of semesters'), $data['antall-undsemester']);
-          $rows[] = array(t('Schedule'), '?');
-          $rows[] = array(t('Reading list'), '?');
+
+          $rows[] = array(t('Schedule'), render(uib_study__get_schedule_link($study_code, $semester)));
+          $rows[] = array(t('Reading list'), render(uib_study__get_reading_list_link($study_code, $semester)));
         }
         else {
           assert($type == 'program');
@@ -501,4 +503,39 @@ function uib_study_field_formatter_view($entity_type, $entity, $field, $instance
     }
     return $elements;
   }
+}
+
+function uib_study__get_current_semester() {
+  $current_semester = (date('n') > 6 ? 'h' : 'v');
+  return date('Y') . $current_semester;
+}
+
+function uib_study__get_schedule_link($study_code, $semester) {
+  global $language;
+  $lang = ($language->language == 'nb' ? '' : 'en');
+  $schedule = array(
+    '#theme' => 'link',
+    '#text' => t('Schedule'),
+    '#path' => 'http://rom.app.uib.no/timeplanliste.php?emne='. $study_code . '&periode=' . $semester . '&lang=' . $lang . '&simple=1',
+    '#options' => array(
+      'attributes' => array(),
+      'html' => TRUE,
+    ),
+  );
+  return $schedule;
+}
+
+function uib_study__get_reading_list_link($study_code, $semester) {
+  global $language;
+  $locale = ($language->language == 'nb' ? '' : 'en_US');
+  $reading_list = array(
+    '#theme' => 'link',
+    '#text' => t('Reading list'),
+    '#path' => 'https://miside.uib.no/fs-cron/pensum?emnekode='. $study_code . '&periode=' . $semester . '&locale=' . $locale . '&simple=1',
+    '#options' => array(
+      'attributes' => array(),
+      'html' => TRUE,
+    ),
+  );
+  return $reading_list;
 }
