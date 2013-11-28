@@ -68,8 +68,11 @@ class XTopic extends stdClass {
     if (substr($id, 0, 9) == 'username:') {
       $url = XTopic::url() . "?username=" . substr($id, 9);
     }
-    else {
+    elseif (is_numeric($id)) {
       $url = XTopic::url() . "?id=$id";
+    }
+    else {
+      $url = XTopic::url($id);
     }
 
     $log_msg = 'GET ' . $url;
@@ -239,6 +242,9 @@ class XTopic extends stdClass {
       if (!empty($xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images
         $this->media = $xlink['decorated/hovedtekstbilde/decoration'];
       }
+      elseif (!empty($xlink['decorated/forsideingressbilde/decoration'])) {
+        $this->media = $xlink['decorated/forsideingressbilde/decoration'];
+      }
 
       if (!empty($xlink['has_attachment/vedlegg/attachment'])) {
         $this->attachments = $xlink['has_attachment/vedlegg/attachment'];
@@ -265,8 +271,20 @@ class XTopic extends stdClass {
       }
     }
     else {
-      $info = stream_get_meta_data($fhandle);
-      var_dump($info);
+      // Try to check if topic exists
+      $page_headers = @get_headers($url);
+      if (!empty($page_headers)) {
+        if ($page_headers[0] == 'HTTP/1.1 404 Not Found') {
+          throw new Exception("Topic $id not found", 404);
+        }
+        elseif ($page_headers[0] == 'HTTP/1.1 301 Moved Permanently') {
+          throw new Exception("Topic $id not found", 301);
+        }
+      }
+      if ($fhandle) {
+        $info = stream_get_meta_data($fhandle);
+        var_dump($info);
+      }
       die('Oh horror. Failed to open XTopic connection.');
     }
   }
