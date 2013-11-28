@@ -38,7 +38,10 @@ function uib_study_block_info() {
  * Implements hook_flush_caches().
  */
 function uib_study_flush_caches() {
-  return array('cache_uib_study');
+  $caches = array();
+  if (db_table_exists('cache_uib_study'))
+    $caches[] = 'cache_uib_study';
+  return $caches;
 }
 
 function uib_study__fspres_request($path) {
