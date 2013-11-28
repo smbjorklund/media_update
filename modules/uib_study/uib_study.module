@@ -171,33 +171,60 @@ function uib_study_block_view($delta = '') {
           $plan = uib_study__fspres_get_json(arg(1), 'plan.json');
           $t_rows = array();
           foreach ($plan['rows'] as $s_row) {
-            $t_row = array($s_row['depth']);
-            if ($s_row['emneheader']) {
-              $t_row[] = t('Course code');
-              $t_row[] = t('Course title');
-              $t_row[] = t('SP');
-              $t_row[] = t('S');
-              $t_row[] = t('A');
-            }
-            elseif ($s_row['emnekode']) {
-              $t_row[] = uib_study__study_link($s_row['emnekode']);
-              $t_row[] = uib_study__study_link($s_row['emnekode'], $s_row['name']);
-              $t_row[] = $s_row['sp'];
-              $t_row[] = $s_row['s'];
-              $t_row[] = $s_row['a'];
+            $t_row = array();
+            if ($s_row['depth'] > 1) {
+              $t_row[] = array(
+                'data' => '',
+                'colspan' => $s_row['depth'] - 1,
+                'class' => 'uib-cell-indent-' . ($s_row['depth'] - 1),
+              );
+              if ($s_row['emneheader']) {
+                $headertitles = array(t('Course code'), t('Course title'), t('SP'), t('S'), t('A'));
+                foreach ($headertitles as $title) {
+                  $t_row[] = array(
+                    'data' => $title,
+                    'header' => TRUE,
+                  );
+                }
+              }
+              elseif ($s_row['emnekode']) {
+                $cells = array(
+                  uib_study__study_link($s_row['emnekode']),
+                  uib_study__study_link($s_row['emnekode'], $s_row['name']),
+                  $s_row['sp'],
+                  $s_row['s'],
+                  $s_row['a'],
+                );
+                foreach ($cells as $cell) {
+                  $t_row[] = array(
+                    'data' => $cell,
+                    'class' => 'uib-study-data',
+                  );
+                }
+                #$t_row[] = uib_study__study_link($s_row['emnekode']);
+                #$t_row[] = uib_study__study_link($s_row['emnekode'], $s_row['name']);
+                #$t_row[] = $s_row['sp'];
+                #$t_row[] = $s_row['s'];
+                #$t_row[] = $s_row['a'];
+              }
+              else {
+                $t_row[] = array(
+                  'data' => check_plain($s_row['name']),
+                  'colspan' => 9 - $s_row['depth'],
+                );
+              }
             }
             else {
-              $t_row[] = array(
-                'data' => check_plain($s_row['name']),
-                'colspan' => 5,
-              );
+              $caption = $s_row['name'];
             }
             //$t_row[] = check_plain(drupal_json_encode($s_row));
             $t_rows[] = $t_row;
           }
           $render['construction table'] = array(
             '#theme' => 'table',
+            '#caption' => $caption,
             '#rows' => $t_rows,
+            '#attributes' => array('class' => 'uib-study-construction'),
           );
         }
         $block['content']['fspres'][] = $render;

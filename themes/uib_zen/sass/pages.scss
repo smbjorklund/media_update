@@ -440,3 +440,84 @@ div.add-or-remove-shortcuts {
 .view-display-id-newsarchive span {
   font-size: 1.3em;
 }
+
+$uib-study-construction-bg-color: #c7d9e0;
+$uib-study-construction-border-color: #fff;
+$uib-study-construction-zebra-dark-color: #e1e1e1;
+$uib-study-construction-zebra-light-color: #f2f2f2;
+
+.uib-study-construction {
+  background-color: $uib-study-construction-bg-color;
+  width: 100%;
+  caption {
+    background-color: $uib-study-construction-bg-color;
+    border-bottom: solid 1px $uib-study-construction-border-color;
+    font: {
+      size: 1.2em;
+      weight: bold;
+    }
+    padding: 0.5em;
+    text-align: left;
+  }
+  tr {
+    background: transparent;
+    border: 0 none;
+  }
+  .uib-cell-indent-1 {
+    background: #94b7c4;
+    border-bottom: solid 1px $uib-study-construction-border-color;
+    border-top: solid 1px $uib-study-construction-border-color;
+    width: 1%;
+  }
+  tr:first-child .uib-cell-indent-1 {
+    border-top: none 0;
+  }
+  .uib-cell-indent-2 {
+    width: 2%;
+  }
+  .uib-cell-indent-3 {
+    width: 3%;
+  }
+  .uib-cell-indent-1 + td,
+  .uib-cell-indent-2 + td {
+    background: #94b7c4;
+  }
+  .uib-cell-indent-1 + td {
+    font-weight: bold;
+  }
+  th {
+    border: solid 1px $uib-study-construction-border-color;
+    padding: 0 0.5em;
+    font-weight: normal;
+  }
+  td:nth-child(n+2) {
+    border-bottom: solid 1px $uib-study-construction-border-color;
+    border-left: solid 1px $uib-study-construction-border-color;
+    padding: 0.3em 0.5em;
+  }
+  th:nth-child(4),
+  td:nth-child(4),
+  th:nth-child(5),
+  td:nth-child(5),
+  th:nth-child(6),
+  td:nth-child(6) {
+    text-align: center
+  }
+  th:nth-child(5),
+  td:nth-child(5) {
+    min-width: 3em;
+  }
+  tr:nth-child(n+2) td:nth-child(n+2) {
+    border-top: solid 1px $uib-study-construction-border-color;
+  }
+  .even {
+    .uib-study-data {
+      background-color: $uib-study-construction-zebra-light-color;
+    }
+  }
+  .odd {
+    .uib-study-data {
+      background-color: $uib-study-construction-zebra-dark-color;
+    }
+  }
+}
