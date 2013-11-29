@@ -36,6 +36,9 @@ foreach (user_roles() as $rid => $role_name) {
   }
 }
 
+# make errors show on every page
+variable_set('error_level', '2');
+
 drupal_flush_all_caches();
 
 function add_content_manager($area, $user) {
