@@ -27,7 +27,7 @@ class XTopic extends stdClass {
 
   private static function type_map($w2_type) {
     static $type_map = array(
-      'avdeling' => 'unit',
+      'enhet' => 'unit',
       'fag' => 'discipline',
       'fagressurser-ub' => 'discipline resource ub',
       'fakultet' => 'faculty',
