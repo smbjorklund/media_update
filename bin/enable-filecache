@@ -1,0 +1,27 @@
+#!/bin/bash
+
+DRUSH=bin/site-drush
+
+set -x
+if [ ! -d m/filecache ]; then
+    $DRUSH dl filecache
+fi
+
+$DRUSH en filecache --yes
+
+if grep sites/all/modules/filecache/filecache.inc site/settings.php; then
+    echo filecache already added to settings.php
+else
+    $DRUSH cc all
+    chmod +w site/settings.php
+    cat <<'EOT' >>site/settings.php
+
+# filecache
+$conf['cache_backends'][] = 'sites/all/modules/filecache/filecache.inc';
+$conf['cache_default_class'] = 'DrupalFileCache';
+EOT
+    chmod -w site/settings.php
+fi
+
+# show config
+grep cache site/settings.php
