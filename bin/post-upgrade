@@ -9,7 +9,10 @@ if git tag | grep -q R$REL; then
     exit 1
 fi
 
-# Migrate
+# Do a fresh FS sync (too late for RTS-4602 to be fixes, but better than nothing)
+bin/site-drush uib-sync-fs
+
+# Migrate /education
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_utdanning.txt
 bin/site-drush php-script r42-setup-uib-study-area
 bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_utdanning.txt
