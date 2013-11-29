@@ -304,6 +304,7 @@ sub do_done {
     usage("No issue id given") unless @ARGV;
     my %want_ids;
     for (@ARGV) {
+	s/^origin\///;
 	s/^RTS[-\/]?//i;
 	s/^#//;
 	if (/^\d+$/) {
