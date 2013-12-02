@@ -1,3 +1,18 @@
+# Release 2013-12-02 tag: R5
+
+R5 migrerer området /utdanning, /ua (studieadministrativ avdeling og /laererutdanning til ny plattform. I tillegg fortsetter vi å legge til rette for å vise studieprogrammer og emner på ny plattform.
+
+* Migrerer bilder fra studieprogramsidene på w2 #4494
+* Lager en visning for studieprogrammer A-Å #4313
+* Lager et filter for å vise lenker til studieprogrammer og emner i løpende tekst #4290
+* Definerer brødsmulesti for studie-program og emner #4458
+* Diverse saker som forbereder visning av studieprogrammer og –emner i w3 #4289 #4295 #4301 #4302 #4303 #4452 #4357 #4477 #4600 #4602 #4603 #4526
+* Oppdaterer språkmodulen i Drupal #3967
+* Migrerer området utdanning #4212
+* Retter feil i migrasjonskode #4601 #4608
+* Retter opp feil i brødsmulesti for hendelser #4527
+
+
 # Release 2013-11-25 tag: R4.3
 
 Forberedende saker til migrasjon av området /utdanning samt sikkerhetsoppdatering av moduler i drupal, bla core.
