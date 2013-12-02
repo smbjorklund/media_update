@@ -24,3 +24,14 @@ function uib_testimonial_field_widget_form_alter(&$element, &$form_state, $conte
     }
   }
 }
+
+/**
+ * Implements hook_node_presave().
+ */
+function uib_testimonial_node_presave($node) {
+  if ($node->type == 'uib_testimonial') {
+    // Set language of the testimonial to that of its mother area
+    $area = node_load($node->field_uib_area['und'][0]['target_id']);
+    $node->language = $area->language;
+  }
+}
