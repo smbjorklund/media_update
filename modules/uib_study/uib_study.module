@@ -168,7 +168,7 @@ function uib_study_block_view($delta = '') {
               '#tag' => 'h2',
               '#value' => t("Construction"),
           );
-          $plan = uib_study__fspres_get_json(arg(1), 'plan.json');
+          $plan = uib_study__fspres_get_json(arg(1), 'plan.json', TRUE);
           $t_rows = array();
           foreach ($plan['rows'] as $s_row) {
             $t_row = array();
