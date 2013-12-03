@@ -37,6 +37,7 @@ function theme_uib_service_links_build_link($variables) {
   $nodelink = $variables['nodelink'];
   $style = $variables['style'];
   $attributes = $variables['attributes'];
+  global $theme_path;
 
   // Hardcode shared hostname to be www.uib.no.
   foreach ($url[1] as $value) {
@@ -69,12 +70,17 @@ function theme_uib_service_links_build_link($variables) {
         break;
       case SERVICE_LINKS_STYLE_IMAGE:
         $link = array(
-          'title' => theme('image', array('path' => service_links_expand_path($image), 'alt' => $text)),
           'href' => $url[0],
           'query' => $query,
           'attributes' => $attributes,
           'html' => TRUE,
         );
+        if ($attributes['class'][0] == 'service-links-google-plus-share') {
+          $link['title'] = theme('image', array('path' => $theme_path . '/'. $image, 'alt' => $text));
+        }
+        else {
+          $link['title'] = theme('image', array('path' => service_links_expand_path($image), 'alt' => $text));
+        }
         break;
       case SERVICE_LINKS_STYLE_IMAGE_AND_TEXT:
         $link = array(
@@ -110,7 +116,6 @@ function theme_uib_service_links_build_link($variables) {
       case SERVICE_LINKS_STYLE_IMAGE:
         $attributes = array_merge($attributes, array('html' => TRUE));
         if ($attributes['attributes']['class'][0] == 'service-links-google-plus-share') {
-          global $theme_path;
           $link = l(theme('image', array('path' => $theme_path . '/'. $image, 'alt' => $text)), $url[0], $attributes);
         }
         else {
@@ -135,6 +140,5 @@ function theme_uib_service_links_build_link($variables) {
         $link = theme($style, $variables);
     }
   }
-
   return $link;
 }
