@@ -245,10 +245,21 @@ function uib_study_block_view($delta = '') {
                 #$t_row[] = $s_row['a'];
               }
               else {
-                $t_row[] = array(
+                $td = array(
                   'data' => check_plain($s_row['name']),
                   'colspan' => 9 - $s_row['depth'],
                 );
+                if (isset($s_row['description'])) {
+                  # fake another row then
+                  $tmp = $t_row;
+                  $tmp[] = $td;
+                  $t_rows[] = $tmp;
+
+                  # and make the current row display the description
+                  $td['data'] = uib_study__filter_text($s_row['description']);
+                  $td['class'] = 'uib-study-description';
+                }
+                $t_row[] = $td;
               }
             }
             else {
