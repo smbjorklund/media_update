@@ -188,9 +188,12 @@ function uib_study_block_view($delta = '') {
                 }
               }
               elseif (!empty($s_row['emnekode'])) {
+                $emnenavn = $s_row['name'];
+                if (!$emnenavn)
+                  $emnenavn = '<title>';  # will be expanded
                 $cells = array(
                   uib_study__study_link($s_row['emnekode']),
-                  uib_study__study_link($s_row['emnekode'], $s_row['name']),
+                  uib_study__study_link($s_row['emnekode'], $emnenavn),
                   $s_row['sp'],
                   $s_row['s'],
                   $s_row['a'],
@@ -425,11 +428,25 @@ function uib_study__study_exists($code) {
  *  Linkify a study code.  Returns $code unchanged if code isn't valid.
  *
  *  The optional $text argument can be provided to replace the link text.
+ *  The special $text value of "<title>" will be replaced with the title of
+ *  the study.
  */
 function uib_study__study_link($code, $text=NULL) {
   $text = $text ? $text : $code;
   $path = uib_study__study_path($code);
-  return $path ? l($text, $path) : $text;
+  if ($path) {
+    if ($text == '<title>') {
+      # expand the name
+      $nid = substr($path, 5);
+      $node = node_load($nid);
+      global $language;
+      $text = $node->field_uib_study_title[$language->language][0]['value'];
+    }
+    return l($text, $path);
+  }
+  else {
+    return check_plain($text);
+  }
 }
 
 /**
