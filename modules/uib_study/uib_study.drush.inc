@@ -15,28 +15,27 @@ function uib_study_drush_command() {
 function drush_uib_study_uib_sync_fs() {
   // Find out what study_codes are in use.
   $unused_codes = array();
-  $result = db_select('field_data_field_uib_study_code', 'c')
-    ->fields('c', array('entity_id', 'field_uib_study_code_value'))
-    ->execute();
+  $study_status = array();
+  $query = 'SELECT n.status, c.entity_id, c.field_uib_study_code_value
+    FROM node n, field_data_field_uib_study_code c
+    WHERE n.nid = c.entity_id';
+  $result = db_query($query);
   foreach ($result as $row) {
-    $unused_codes[$row->field_uib_study_code_value][] = $row->entity_id;
+    $unused_codes[$row->field_uib_study_code_value] = $row->entity_id;
+    $study_status[$row->field_uib_study_code_value] = $row->status;
   }
 
   // Find what Organization Units we have
-  $query = new EntityFieldQuery;
-  $result = $query
-    ->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'uib_ou')
-    ->execute();
-
   $ou_id = array();
-  foreach (array_keys($result['node']) as $nid) {
-    $ou = node_load($nid); // Must be a better way than to load the full node here.
-    $ou_id[$nid] = $ou->field_uib_ou_id['und'][0]['value'];
+  $query = 'SELECT o.entity_id, o.field_uib_ou_id_value
+    FROM node n, field_data_field_uib_ou_id o
+    WHERE n.nid = o.entity_id AND n.type = :bnd';
+  $result = db_query($query, array(':bnd' => 'uib_ou'));
+  foreach ($result as $row) {
+    $ou_id[$row->entity_id] = $row->field_uib_ou_id_value;
   }
 
   $err = 0;
-  $not_found = 0;
 
   // let's process these then
   foreach ($ou_id as $nid => $oid) {
@@ -67,33 +66,23 @@ function drush_uib_study_uib_sync_fs() {
       }
     }
     else {
-      if ($res->code == 404) {
-        $not_found++;
-      }
-      else {
+      if ($res->code != 404) {
         $err++;
       }
     }
   }
 
   if ($err) {
-    uibx_log("Will not delete studies when $err errors occured", 'warning');
+    uibx_log("Will not unpublish studies because $err errors occured", 'warning');
   }
   else {
-    $nodes_to_delete = array();
-    foreach ($unused_codes as $code => $nids) {
-      array_splice($nodes_to_delete, count($nodes_to_delete), 0, $nids);
-      uibx_log("Deleting nodes for $code", 'warning');
-    }
-    $delete_limit = variable_get('uib_fs_delete_limit', 500);
-    if (count($nodes_to_delete) <= $delete_limit) {
-      if ($nodes_to_delete) {
-        node_delete_multiple($nodes_to_delete);
-        uibx_log('Deleted ' . count($nodes_to_delete) . ' study nodes', 'warning');
+    foreach ($unused_codes as $study_code => $study_nid) {
+      if ($study_status[$study_code]) {
+        $unused = node_load($study_nid);
+        $unused->status = 0;
+        node_save($unused);
+        uibx_log('Unpublished study: ' . $study_code);
       }
-    }
-    else {
-      uibx_log('Cowardly refused to delete ' . count($nodes_to_delete) . ' study nodes', 'error');
     }
   }
 }
@@ -101,12 +90,16 @@ function drush_uib_study_uib_sync_fs() {
 function uib_study__update_study($type, $study, $ou_nid) {
   $no_path_prefix = $type == 'course' ? 'emne' : 'studieprogram';
   $en_path_prefix = $type == 'course' ? $type : 'studyprogramme';
-
+  $admin_user = &drupal_static(__FUNCTION__);
+  if (!isset($admin_user)) {
+    $admin_user = user_load(1);
+  }
   $query = new EntityFieldQuery;
   $result = $query
     ->entityCondition('entity_type', 'node')
     ->fieldCondition('field_uib_study_type', 'value', $type)
     ->fieldCondition('field_uib_study_code', 'value', $study['id'])
+    ->addMetaData('account', $admin_user)
     ->execute();
 
   if (empty($result)) {
@@ -128,12 +121,16 @@ function uib_study__update_study($type, $study, $ou_nid) {
     );
     $handler->setTranslation($translation, $study_node);
 
-    // Populate Norwegain version
-    $metadata->language = 'nb';
-    $metadata->title = $study['title_no'];
-    if (!$metadata->title->value()) {
-      $metadata->title = $study['id'];
+    // Node title
+    if (empty($study['title_no']) && empty($study['title_en'])) {
+      $metadata->title->set($study['id']);
     }
+    else {
+      $metadata->title->set($study['title_no'] . ' / ' . $study['title_en']);
+    }
+
+    // Populate Norwegian version
+    $metadata->language->set('nb');
     $metadata->language('nb')->field_uib_study_title->set($study['title_no']);
     if (!$metadata->language('nb')->field_uib_study_title->value()) {
       $metadata->language('nb')->field_uib_study_title->set($study['id']);
@@ -175,11 +172,29 @@ function uib_study__update_study($type, $study, $ou_nid) {
   foreach ($nodes as $node) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $edit = FALSE;
-    $title = ($node->language == 'nb') ? $study['title_no'] : $study['title_en'];
-    if (empty($title))
+
+    if ($wrapper->status->value() == 0) {
+      $wrapper->status->set(1);
+      $edit = TRUE;
+    }
+
+    if (empty($study['title_no']) && empty($study['title_en'])) {
       $title = $study['id'];
-    if ($node->title != $title) {
-      $node->title = $title;
+    }
+    else {
+      $title = $study['title_no'] . ' / ' . $study['title_en'];
+    }
+    if ($wrapper->title->value() != $title) {
+      $wrapper->title->set($title);
+      $edit = TRUE;
+    }
+
+    if ($wrapper->language('nb')->field_uib_study_title->value() != $study['title_no']) {
+      $wrapper->language('nb')->field_uib_study_title->set($study['title_no']);
+      $edit = TRUE;
+    }
+    if ($wrapper->language('en')->field_uib_study_title->value() != $study['title_en']) {
+      $wrapper->language('en')->field_uib_study_title->set($study['title_en']);
       $edit = TRUE;
     }
 
@@ -187,6 +202,7 @@ function uib_study__update_study($type, $study, $ou_nid) {
       $wrapper->field_uib_ou->set($ou_nid);
       $edit = TRUE;
     }
+
     if (isset($study['category'])) {
       if ($wrapper->field_uib_study_category->value() != $study['category']) {
         $wrapper->field_uib_study_category->set($study['category']);

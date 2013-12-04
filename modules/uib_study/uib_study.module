@@ -45,21 +45,55 @@ function uib_study_flush_caches() {
 }
 
 function uib_study__fspres_request($path) {
-    $url = variable_get('uib_fspres_root', 'http://fs-pres.test.uib.no');
-    $url .= '/';
-    $url .= $path;
+  $url = variable_get('uib_fspres_root', 'http://fs-pres.test.uib.no');
+  $url .= '/';
+  $url .= $path;
 
-    $before = microtime(true);
-    $res = drupal_http_request($url);
+  $before = microtime(true);
+  $res = drupal_http_request($url);
 
-    $ms = sprintf("%.0fms", 1000 * (microtime(true) - $before));
-    uibx_log("GET $url => $res->code $res->status_message ($ms)",
-      $res->code == 200 ? 'notice' :
-     ($res->code == 404 ? 'warning' :
-                          'error')
+  $ms = sprintf("%.0fms", 1000 * (microtime(true) - $before));
+  $log_message = "GET $url => $res->code $res->status_message ($ms)";
+  $severity = 'notice';
+  if ($res->code == 404) {
+    $expected_404s = array(
+      'sted/184.11.74',
+      'sted/184.11.1',
+      'sted/184.11.82',
+      'sted/184.12.80',
+      'sted/184.12.90',
+      'sted/184.13.2',
+      'sted/184.13.15',
+      'sted/184.13.16',
+      'sted/184.13.17',
+      'sted/184.13.18',
+      'sted/184.13.27',
+      'sted/184.13.44',
+      'sted/184.13.57',
+      'sted/184.15.1',
+      'sted/184.19.0',
+      'sted/184.19.10',
+      'sted/184.19.16',
+      'sted/184.19.81',
+      'sted/184.19.92',
+      'sted/184.19.94',
+      'sted/184.19.96',
+      'sted/184.19.98',
+      'sted/184.19.99',
     );
-
-    return $res;
+    $subpath = substr($path, 0, strrpos($path, '/'));
+    if (!in_array($subpath, $expected_404s)) {
+      $severity = 'warning';
+    }
+    else {
+      $log_message .= ' [expected]';
+    }
+  }
+  elseif ($res->code != 200) {
+    $severity = 'error';
+  }
+  uibx_log($log_message, $severity);
+  return $res;
 }
 
 function uib_study__fspres_get_json($nid, $json, $lang = FALSE) {
