@@ -16,14 +16,18 @@ function drush_uib_study_uib_sync_fs() {
   // Find out what study_codes are in use.
   $unused_codes = array();
   $study_status = array();
+  $studies_all = array();
+  $incomplete_refs = array();
   $query = 'SELECT n.status, c.entity_id, c.field_uib_study_code_value
     FROM node n, field_data_field_uib_study_code c
     WHERE n.nid = c.entity_id';
   $result = db_query($query);
   foreach ($result as $row) {
     $unused_codes[$row->field_uib_study_code_value] = $row->entity_id;
+    $studies_all[$row->field_uib_study_code_value] = $row->entity_id;
     $study_status[$row->field_uib_study_code_value] = $row->status;
   }
+  $unused_codes = $studies_all;
 
   // Find what Organization Units we have
   $ou_id = array();
@@ -54,13 +58,19 @@ function drush_uib_study_uib_sync_fs() {
       $data = drupal_json_decode($res->data);
       if (isset($data['emner_fag'])) {
         foreach ($data['emner_fag'] as $emne) {
-          uib_study__update_study('course', $emne, $nid);
+          $missing_refs = uib_study__update_study('course', $emne, $nid, $studies_all);
+          if ($missing_refs) {
+            $incomplete_refs[$emne['id']] = $missing_refs;
+          }
           unset($unused_codes[$emne['id']]);
         }
       }
       if (isset($data['studieprogrammer_fag'])) {
         foreach ($data['studieprogrammer_fag'] as $program) {
-          uib_study__update_study('program', $program, $nid);
+          $missing_refs = uib_study__update_study('program', $program, $nid, $studies_all);
+          if ($missing_refs) {
+            $incomplete_refs[$program['id']] = $missing_refs;
+          }
           unset($unused_codes[$program['id']]);
         }
       }
@@ -68,6 +78,30 @@ function drush_uib_study_uib_sync_fs() {
     else {
       if ($res->code != 404) {
         $err++;
+      }
+    }
+  }
+
+  // if possible, fix any remaining incomplete program references
+  if ($incomplete_refs) {
+    foreach ($incomplete_refs as $study_code => $missing_refs) {
+      $study_node = node_load($studies_all[$study_code]);
+      $incomplete = entity_metadata_wrapper('node', $study_node);
+      $delta = count($study_node->field_uib_study_part_of['und']);
+      $found = 0;
+      foreach ($missing_refs as $missing) {
+        if ($studies_all[$missing]) {
+          $incomplete->field_uib_study_part_of[$delta]->set($studies_all[$missing]);
+          $delta++;
+          $found++;
+        }
+        else {
+          uibx_log("Referenced program [from $study_code] $missing is missing", 'warning');
+        }
+      }
+      if ($found) {
+        $incomplete->save();
+        uibx_log("Study $study_code updated");
       }
     }
   }
@@ -87,13 +121,24 @@ function drush_uib_study_uib_sync_fs() {
   }
 }
 
-function uib_study__update_study($type, $study, $ou_nid) {
+/**
+ * [uib_study__update_study description]
+ * @param  [type] $type      [description]
+ * @param  [type] $study     [description]
+ * @param  [type] $ou_nid    [description]
+ * @param  [type] &$existing [list of existing studies]
+ * @return [type]            [Returns an empty array or an array with missing study programs]
+ */
+function uib_study__update_study($type, $study, $ou_nid, &$existing) {
   $no_path_prefix = $type == 'course' ? 'emne' : 'studieprogram';
   $en_path_prefix = $type == 'course' ? $type : 'studyprogramme';
+
   $admin_user = &drupal_static(__FUNCTION__);
   if (!isset($admin_user)) {
     $admin_user = user_load(1);
   }
+
+  $refs_incomplete = array();
   $query = new EntityFieldQuery;
   $result = $query
     ->entityCondition('entity_type', 'node')
@@ -147,7 +192,23 @@ function uib_study__update_study($type, $study, $ou_nid) {
     if (!$metadata->language('en')->field_uib_study_title->value()) {
       $metadata->language('en')->field_uib_study_title->set($study['id']);
     }
+
+    // program references
+    if (!empty($study['ref_programs'])) {
+      foreach ($study['ref_programs'] as $ref_code) {
+        $delta = 0;
+        if ($existing[$ref_code]) {
+          $metadata->field_uib_study_part_of[$delta]->set($existing[$ref_code]);
+          $delta++;
+        }
+        else {
+          $refs_incomplete[] = $ref_code;
+        }
+      }
+    }
+
     $metadata->save();
+    $existing[$study['id']] = $study_node->nid;
 
     // Define node path alias
     $path = array(
@@ -165,7 +226,7 @@ function uib_study__update_study($type, $study, $ou_nid) {
     path_save($path);
 
     uibx_log("Created $type " . $study['id']);
-    return;
+    return $refs_incomplete;
   }
 
   $nodes = node_load_multiple(array_keys($result['node']));
@@ -210,9 +271,40 @@ function uib_study__update_study($type, $study, $ou_nid) {
       }
     }
 
+    if (!empty($study['ref_programs'])) {
+      // Check if any change in referenced programs
+      $prev_refs = array();
+      foreach ($wrapper->field_uib_study_part_of->getIterator() as $delta => $term) {
+        $prev_refs[] = $term->raw();
+      }
+      $new_refs = array();
+      foreach ($study['ref_programs'] as $ref_code) {
+        if ($existing[$ref_code]) {
+          $new_refs[] = $existing[$ref_code];
+        }
+      }
+      sort($prev_refs);
+      sort($new_refs);
+      if ($prev_refs != $new_refs) {
+        $wrapper->field_uib_study_part_of = array();
+        $delta = 0;
+        foreach ($study['ref_programs'] as $ref_code) {
+          if ($existing[$ref_code]) {
+            $wrapper->field_uib_study_part_of[$delta]->set($existing[$ref_code]);
+            $delta++;
+          }
+          else {
+            $refs_incomplete[] = $ref_code;
+          }
+        }
+        $edit = TRUE;
+      }
+    }
+
     if ($edit) {
       $wrapper->save();
       uibx_log("$type " . $study['id'] . " updated");
     }
   }
+  return $refs_incomplete;
 }
