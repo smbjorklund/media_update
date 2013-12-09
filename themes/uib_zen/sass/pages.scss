@@ -96,6 +96,38 @@ body {
   font-size: 1em;
 }
 
+/* EU cookie compliance */
+#sliding-popup {
+  .popup-content {
+    #popup-text {
+      background: url('../images/notice.png') no-repeat;
+      padding: 16px;
+      p {
+        margin-left: 60px; /* So background image will be visible. */
+        font-weight: normal;
+        font-family: Verdana, Tahoma, 'DejaVu Sans', sans-serif;
+      }
+    }
+    #popup-buttons {
+      button {
+        font-family: Verdana, Tahoma, 'DejaVu Sans', sans-serif;
+        background: #1673A6;
+        color: #fff;
+        text-shadow: none;
+        font-weight: normal;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: 0;
+        &:hover {
+          color:#000;
+        }
+      }
+    }
+  }
+}
+
 #page {
   background-color: #fff;
   webkit-box-shadow: 0 4px 4px #B3B3B3;

@@ -732,7 +732,9 @@ function uib_setup_user_default_permissions() {
     'name' => 'display EU Cookie Compliance popup',
     'roles' => array(
       0 => 'admin',
-      1 => 'level 1',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+      3 => 'level 1',
     ),
     'module' => 'eu_cookie_compliance',
   );

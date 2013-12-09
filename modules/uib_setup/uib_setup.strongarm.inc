@@ -132,10 +132,10 @@ function uib_setup_strongarm() {
   $strongarm->value = array(
     'popup_enabled' => 1,
     'popup_clicking_confirmation' => 1,
-    'popup_position' => 1,
+    'popup_position' => 0,
     'popup_info' => array(
-      'value' => 'The uib.no site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies.',
-      'format' => 'plain_text',
+      'value' => '<p>The uib.no site uses cookies.</p><p>By continuing to browse the site, you are agreeing to our use of cookies.</p>',
+      'format' => 'basic_html',
     ),
     'popup_agreed_enabled' => 0,
     'popup_hide_agreed' => 0,
@@ -147,7 +147,7 @@ function uib_setup_strongarm() {
     'popup_height' => '',
     'popup_width' => '100%',
     'popup_delay' => '1',
-    'popup_bg_hex' => '0779BF',
+    'popup_bg_hex' => '006b9a',
     'popup_text_hex' => 'ffffff',
   );
   $export['eu_cookie_compliance_en'] = $strongarm;
@@ -159,10 +159,10 @@ function uib_setup_strongarm() {
   $strongarm->value = array(
     'popup_enabled' => 1,
     'popup_clicking_confirmation' => 1,
-    'popup_position' => 1,
+    'popup_position' => 0,
     'popup_info' => array(
-      'value' => 'Vi bruker cookies på uib.no for å kunne gi deg en best mulig brukeropplevelse. Dersom du fortsetter uten å gjøre endringer, tillater du dette.',
-      'format' => 'plain_text',
+      'value' => '<p>Vi bruker cookies på uib.no for å kunne gi deg en best mulig brukeropplevelse.</p><p>Dersom du fortsetter uten å gjøre endringer, tillater du dette.</p>',
+      'format' => 'basic_html',
     ),
     'popup_agreed_enabled' => 0,
     'popup_hide_agreed' => 0,
@@ -174,7 +174,7 @@ function uib_setup_strongarm() {
     'popup_height' => '',
     'popup_width' => '100%',
     'popup_delay' => '1',
-    'popup_bg_hex' => '0779BF',
+    'popup_bg_hex' => '006b9a',
     'popup_text_hex' => 'ffffff',
   );
   $export['eu_cookie_compliance_nb'] = $strongarm;
