@@ -505,12 +505,13 @@ function uib_study_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'entityreference',
+          'module' => 'uib_study',
           'settings' => array(
-            'link' => FALSE,
+            'uib_study_field_name' => 'field_uib_study_title',
+            'uib_study_link' => 1,
           ),
-          'type' => 'entityreference_label',
-          'weight' => 8,
+          'type' => 'uib_study_title_formatter',
+          'weight' => '8',
         ),
         'short_teaser' => array(
           'label' => 'above',
