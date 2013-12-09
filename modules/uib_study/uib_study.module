@@ -360,19 +360,21 @@ function uib_study_block_view($delta = '') {
         $block['content']['fspres'][] = $render;
       }
       break;
+
     case 'study_related':
-      $items = array(
-        'Foo',
-        'Bar',
-        'Foobar',
-      );
-      $render = array(
-        '#theme' => 'item_list',
-        '#type' => 'ul',
-        '#items' => $items,
-      );
-      $block['title'] = t("Related studies");
-      $block['content']['fspres'][] = $render;
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $display_settings = array(
+          'label' => 'hidden',
+          'type' => 'uib_study_title_formatter',
+          'settings' => array(
+            'uib_study_field_name' => 'field_uib_study_title',
+            'uib_study_link' => 1,
+          ),
+        );
+        $block['title'] = t("Mandatory part of");
+        $study_nid = intval(arg(1));
+        $block['content'] = field_view_field('node', node_load($study_nid), 'field_uib_study_part_of', $display_settings);
+      }
       break;
 
     case 'study_testimonial':
