@@ -43,6 +43,7 @@ projects[field_collection][version] = 1.0-beta5
 projects[field_collection][patch][] = https://drupal.org/files/hide-empty-field-collections-1276258-33_0.patch
 projects[field_group][version] = 1.2
 projects[file_entity][version] = 2.0-unstable7
+projects[filecache][version] = 1.0-beta2
 projects[flag][version] = 2.1
 projects[geocoder][version] = 1.2
 projects[geofield][version] = 1.2
