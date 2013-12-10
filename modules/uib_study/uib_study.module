@@ -281,8 +281,10 @@ function uib_study_block_view($delta = '') {
             }
           }
         }
-        $block['title'] = t("Contact");
-        $block['content']['fspres'][] = $render;
+        if ($render) {
+          $block['title'] = t("Contact");
+          $block['content']['fspres'][] = $render;
+        }
       }
       break;
     case 'study_facts':
