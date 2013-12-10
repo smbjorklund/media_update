@@ -52,7 +52,7 @@ function uib_study_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '4',
+          'weight' => '2',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -155,12 +155,9 @@ function uib_study_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
-          'weight' => '1',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -239,7 +236,7 @@ function uib_study_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '2',
+          'weight' => '0',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -312,7 +309,7 @@ function uib_study_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '4',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -394,7 +391,7 @@ function uib_study_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => '3',
+          'weight' => '1',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -515,7 +512,7 @@ function uib_study_field_default_fields() {
             'view_mode' => 'full',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '5',
+          'weight' => '3',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -597,7 +594,7 @@ function uib_study_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '5',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -698,10 +695,9 @@ function uib_study_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'short_teaser' => array(
           'label' => 'above',
