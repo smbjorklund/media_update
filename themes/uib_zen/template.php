@@ -239,6 +239,8 @@ function uib_zen_preprocess_node(&$variables, $hook) {
   /**
    * hook_preprocess that allways run on nodes.
    */
+  global $language;
+  $current_language = $language->language;
   $variables['is_employee'] = FALSE;
 
   if ($variables['type'] == 'uib_testimonial') {
@@ -570,12 +572,12 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
     if ($variables['type'] == 'uib_study') {
       /**
-       * Move node code/title into content.
+       * Use title field as node title.
        */
       $variables['content']['title'] = array(
         '#type' => 'html_tag',
         '#tag' => 'h1',
-        '#value' => $metadata->field_uib_study_code->value() . ' ' . $metadata->label(),
+        '#value' => $metadata->field_uib_study_code->value() . ' ' . $metadata->language($current_language)->field_uib_study_title->value(),
         '#weight' => -45,
       );
     }
