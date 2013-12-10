@@ -778,7 +778,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
 
   /* Display: All courses */
-  $handler = $view->new_display('page', 'All courses', 'page_1');
+  $handler = $view->new_display('page', 'All courses', 'study_courses_all_page');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Courses';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
@@ -869,7 +869,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['path'] = 'course';
 
   /* Display: All studyprogrammes */
-  $handler = $view->new_display('page', 'All studyprogrammes', 'page_2');
+  $handler = $view->new_display('page', 'All studyprogrammes', 'study_programmes_all_page');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'uib-all-studyprogrammes';
   $handler->display->display_options['display_description'] = 'Listing all study programmes';

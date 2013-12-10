@@ -826,6 +826,12 @@ function uib_zen_preprocess_views_view(&$variables) {
       }
     }
   }
+  if ($variables['name'] == 'courses') {
+    if ($variables['display_id'] == 'study_courses_all_page' || $variables['display_id'] == 'study_programmes_all_page') {
+      // Force education as current area
+      uib_area__get_current(variable_get('uib_study_area_nid'));
+    }
+  }
 }
 
 /**

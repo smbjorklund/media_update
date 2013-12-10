@@ -418,11 +418,21 @@ function uib_area__get_parentage($parent_node_id, &$parent_ids) {
  * as indicated by node id in URL, or in the field_uib_area
  * of that node. That node is loaded if necessary.
  *
+ * The current area may be set "manually" by passing an area node id
+ *
+ * @param [integer] Optional area node id to set as current area
  * @return [type] [description]
  *   If no area reference is found, the function returns NULL.
  */
-function uib_area__get_current() {
+function uib_area__get_current($area_nid = NULL) {
   static $current_area;
+  if (!empty($area_nid)) {
+    $area_nid = intval($area_nid);
+    $node = node_load($area_nid);
+    if ($node->type == 'area') {
+      $current_area = $node;
+    }
+  }
   if (!isset($current_area)) {
     // obtain area from node indicated in url
     if (arg(0) == 'node' && is_numeric(arg(1))) {
