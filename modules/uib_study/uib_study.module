@@ -171,8 +171,17 @@ function uib_study_block_view($delta = '') {
   $data = FALSE;
   switch ($delta) {
     case 'study_content':
+      $splice_list = array(
+        'EB_SPRAK',
+        'B_RE_PLASS',
+        'EB_KONTAKT',
+        'B_RE_INFO',
+      );
       if (arg(0) == 'node' && is_numeric(arg(1))) {
         $data = uib_study__fspres_get_json(arg(1), 'render.json', TRUE);
+        foreach ($splice_list as $splice_item) {
+          uib_study__extract_study_info($data, $splice_item);
+        }
         // Turn data into an real render array.
         $render = array();
         foreach ($data as $group) {
@@ -187,12 +196,10 @@ function uib_study_block_view($delta = '') {
             ),
           );
           foreach ($group['#items'] as $item) {
-            if ($item['#type'] != 'EB_KONTAKT') {
-              $render[$group['#group']][$item['#type']] = array(
-                '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
-                '#markup' => uib_study__filter_text($item['#text']),
-              );
-            }
+            $render[$group['#group']][$item['#type']] = array(
+              '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
+              '#markup' => uib_study__filter_text($item['#text']),
+            );
           }
         }
         $node = node_load(arg(1));
@@ -283,15 +290,17 @@ function uib_study_block_view($delta = '') {
       if (arg(0) == 'node' && is_numeric(arg(1))) {
         $data = uib_study__fspres_get_json(arg(1), 'render.json', TRUE);
         $render = array();
-        foreach ($data as $group) {
-          foreach ($group['#items'] as $item) {
-            if ($item['#type'] == 'EB_KONTAKT' || $group['#group'] == 'ba_kontakt') {
-              $render = array(
-                '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
-                '#markup' => $item['#text'],
-              );
-            }
-          }
+        $tmp = uib_study__extract_study_info($data, 'EB_KONTAKT');
+        if (!$tmp) {
+          $tmp = uib_study__extract_study_info($data, 'B_RE_INFO');
+        }
+        if ($tmp) {
+          $render = array(
+            '#prefix' => '<h3>' . check_plain($tmp['#title']) . '</h3>',
+            '#markup' => $tmp['#text'],
+          );
+          $block['title'] = t("Contact");
+          $block['content']['fspres'][] = $render;
         }
         if ($render) {
           $block['title'] = t("Contact");
@@ -311,7 +320,8 @@ function uib_study_block_view($delta = '') {
         if ($type == 'course') {
           $study_code = $data['emneid']['emnekode'];
           $rows[] = array(t('Teaching semester'), $data['undervisningssemester']);
-          $rows[] = array(t('Teaching language'), uib_study__extract_study_info($data_2, 'EB_SPRAK'));
+          $tmp = uib_study__extract_study_info($data_2, 'EB_SPRAK');
+          $rows[] = array(t('Teaching language'), check_plain(strip_tags($tmp['#text'])));
           $rows[] = array(t('Study level'), $data['studieniva']);
           $rows[] = array(t('Number of semesters'), $data['antall-undsemester']);
 
@@ -325,7 +335,8 @@ function uib_study_block_view($delta = '') {
           // calculate duration of programme, based on 60 credits per year
           $duration = number_format(round($data['heltidsprosent'] * $data['studiepoeng'] / 60 / 100, 1) , 1, ',', ' ');
           $rows[] = array(t('Duration'), $duration . ' ' . t('years'));
-          $rows[] = array(t('Number of seats'), uib_study__extract_study_info($data_2, 'B_RE_PLASS'));
+          $tmp = uib_study__extract_study_info($data_2, 'B_RE_PLASS');
+          $rows[] = array(t('Number of seats'), check_plain(strip_tags($tmp['#text'])));
           if (empty($data['gradnavn'])) {
             $rows[] = array(t('Degree'));
           }
@@ -648,14 +659,21 @@ function uib_study__extract_study_info(&$data, $info_type = NULL) {
   if (empty($data) || empty($info_type)) {
     return NULL;
   }
-  foreach ($data as $group) {
+  $text = NULL;
+  foreach ($data as $inx => $group) {
     if ($group['#items']) {
-      foreach ($group['#items'] as $info) {
+      foreach ($group['#items'] as $key => $info) {
         if ($info['#type'] == $info_type) {
-          return strip_tags($info['#text']);
+          $text = $info;
+          if (stripos($group['#group'], '_kontakt') && count($group['#items']) < 2) {
+            unset($data[$inx]);
+          }
+          else {
+            unset($data[$inx]['#items'][$key]);
+          }
         }
       }
     }
   }
-  return NULL;
+  return $text;
 }
