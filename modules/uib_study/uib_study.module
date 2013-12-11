@@ -611,3 +611,33 @@ function uib_study__get_reading_list_link($study_code, $semester) {
   );
   return $reading_list;
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function uib_study_form_alter(&$form, &$form_state, $form_id) {
+  global $language;
+  if ($form_id == "uib_study_node_form") {
+    // Show code and title at the top of the form
+    $study = entity_metadata_wrapper('node', $form['#node']);
+    $form['study_title'] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'h1',
+      '#value' => $study->field_uib_study_code->value() . ' ' . $study->language($language->language)->field_uib_study_title->value(),
+      '#weight' => -3,
+    );
+
+    // hide all fields that are fs-pres synchronised
+    hide($form['title']);
+    hide($form['field_uib_ou']);
+    hide($form['field_uib_study_title']);
+    hide($form['field_uib_study_category']);
+    hide($form['field_uib_study_type']);
+    hide($form['field_uib_study_code']);
+    // hide language selector
+    hide($form['language']);
+    // hide additional settings
+    hide($form['path']);
+    hide($form['author']);
+  }
+}
