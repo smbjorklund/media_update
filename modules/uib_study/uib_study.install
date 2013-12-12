@@ -118,3 +118,11 @@ function uib_study_update_7005() {
   }
   uibx_log("Migrated image for $cnt study programmes (out of $tot_cnt).");
 }
+
+/**
+ * Remove field_uib_study_testimonial
+ */
+function uib_study_update_7006() {
+  field_delete_field('field_uib_study_testimonial');
+  field_purge_batch(1000);
+}
