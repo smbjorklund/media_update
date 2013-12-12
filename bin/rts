@@ -378,7 +378,9 @@ sub do_branches {
 	    print "=";
 	    $suffix = count_cherries("rts/$_");
 	}
-	print " rts/$_";
+	print " ";
+	print "origin/" if $remote{$_} && !$local{$_};
+	print "rts/$_";
 	print " $suffix" if $suffix;
 	print " ", issue_name($_+0), "\n";
 
