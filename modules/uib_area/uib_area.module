@@ -37,6 +37,10 @@ function uib_area_block_info() {
       'info' => t('Colophon logos frontpage'),
       'status' => TRUE,
     ),
+    'paahoyden_logo' => array(
+      'info' => t('Paa hoyden logo on newspage'),
+      'status' => TRUE,
+    ),
   );
 }
 
@@ -223,6 +227,24 @@ function uib_area_block_view($delta='') {
             <div class="banner">
               <a title="Grunnlovsjubileet 2014" href="http://www.uib.no/grunnlovsjubileet2014">
                 <img alt="Grunnlovsjubileet 2014" src="' . $logo0_nb . '" />
+              </a>
+            </div>
+          ';
+        }
+      }
+    break;
+    case 'paahoyden_logo':
+      global $base_url;
+      global $theme_path;
+      $path = $base_url . '/' . $theme_path . '/images/';
+      $logo = $path . 'paahoyden.png';
+      $area = uib_area__get_current();
+      if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'newspage') {
+        if ($area->language == 'nb') {
+          $block['content'] = '
+            <div>
+              <a title="På Høyden, Uavhengig avis for UiB" href="http://pahoyden.no/">
+                <img alt="På Høyden, Uavhengig avis for UiB" src="' . $logo . '"/>
               </a>
             </div>
           ';
