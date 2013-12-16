@@ -1,3 +1,12 @@
+# Release 2013-12-16 tag: R5.1
+
+R5.1 inneholder saker der vi fortsetter å legge til rette for å vise studieprogrammer og emner på ny plattform. I tillegg har vi lagt inn varsel om informasjonskapsler på uib.no, ryddet i mobilvisningen av arrangementer i slideshow og hardkodet logo for På høyden på uib.no/aktuelt.
+
+* Lagt til varsel for informasjonskapsler på uib.no #3949
+* Tatt bort faktainformasjon fra visning av arrangementer i slidshow på mobil #3559
+* Plassert På høyden-logo i sidebar på uib.no/aktuelt
+* Diverse saker som forbereder visning av studieprogrammer og emner på uib.no #4287 #4305 #4308 #4536 #4604 #4605 #4640 #4642 #4643 #4644 #4652 #4702 #4704
+
 # Release 2013-12-02 tag: R5
 
 R5 migrerer området /utdanning, /ua (studieadministrativ avdeling og /laererutdanning til ny plattform. I tillegg fortsetter vi å legge til rette for å vise studieprogrammer og emner på ny plattform.
