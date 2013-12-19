@@ -2,35 +2,12 @@
 
 set -x
 
-REL=5
+REL=5.2
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
     exit 1
 fi
 
-# Do a fresh FS sync (too late for RTS-4602 to be fixes, but better than nothing)
-bin/site-drush uib-sync-fs
-
-# Migrate /education
-bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_utdanning.txt
-bin/site-drush php-script r42-setup-uib-study-area
-bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_utdanning.txt
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_utdanning.txt
-bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_utdanning.txt
-bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_utdanning.txt
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_utdanning.txt
-
-# Build area menu for migrated content
-bin/site-drush uib-migrate-build-menu --verbose
-
-# Split Area menu for newly migrated content
-bin/site-drush uib-area-menu-chk
-bin/site-drush uib-area-split-menu --verbose
-bin/site-drush uib-area-menu-to-relation
-
-# Make sure the cache is really blenda-clean
-bin/site-drush cc all
-
-# Refresh the contributed translations for modules
-bin/update-norsk
+# Fix author and byline for articles and testimonials where missing
+bin/site-drush -v php-script r52-fixup-author-and-byline.php

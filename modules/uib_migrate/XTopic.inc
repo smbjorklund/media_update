@@ -223,6 +223,9 @@ class XTopic extends stdClass {
             if ($transition['user']) {
               $this->author =  (string)$transition['user'];
             }
+            if ($transition['uib-uid']) {
+              $this->author_name =  (string)$transition['uib-uid'];
+            }
           }
         }
       }
