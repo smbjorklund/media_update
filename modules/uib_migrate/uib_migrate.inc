@@ -356,6 +356,27 @@ abstract class XTopicToArticleMigration extends Migration {
         );
       }
     }
+    // Fetch author from w3 if migrate failed to do it
+    if (empty($node->uid)) {
+      if (isset($row->author) && empty($row->author_name)) {
+        $row->author_name = uib_migrate__get_user_name($row->author);
+      }
+      if (isset($row->author_name)) {
+        if ($uid = uib_migrate__get_user($row->author_name)) {
+          $node->uid = $uid;
+        }
+      }
+    }
+    // Fetch byline user ids from w3 if migrate failed in finding them
+    if ($row->byline && empty($node->field_uib_byline)) {
+      foreach ($row->byline as $byline_id) {
+        if ($byline_user_name = uib_migrate__get_user_name($byline_id)) {
+          if ($byline_uid = uib_migrate__get_user($byline_user_name)) {
+            $node->field_uib_byline['und'][]['target_id'] = $byline_uid;
+          }
+        }
+      }
+    }
   }
 
   public function complete($node, $row) {
@@ -385,6 +406,7 @@ abstract class XTopicToArticleMigration extends Migration {
         }
       }
     }
+    uibx_log("Migrated: '$node->title' $node->nid");
   }
 }
 
@@ -607,6 +629,17 @@ class TestimonialMigration extends Migration {
           'fid' => $file->fid,
           'display' => 1,
         );
+      }
+    }
+    // Fetch author from w3 if migrate failed to do it
+    if (empty($node->uid)) {
+      if (isset($row->author) && empty($row->author_name)) {
+        $row->author_name = uib_migrate__get_user_name($row->author);
+      }
+      if (isset($row->author_name)) {
+        if ($uid = uib_migrate__get_user($row->author_name)) {
+          $node->uid = $uid;
+        }
       }
     }
   }
