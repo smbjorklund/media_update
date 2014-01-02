@@ -17,7 +17,7 @@ projects[drupal][version] = 7.24
 projects[zen][version] = 5.4
 
 ; modules
-projects[addressfield][version] = 1.0-beta4
+projects[addressfield][version] = 1.0-beta5
 projects[admin_menu][version] = 3.0-rc4
 projects[advanced_help][version] = 1.1
 projects[better_exposed_filters][version] = 3.0-beta3
