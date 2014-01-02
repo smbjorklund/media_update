@@ -55,8 +55,7 @@ function _uib_h2tabs_filter_h2_process($text, $filter) {
       // Tabs contents
       $tabs_contents = '';
       for ($i = $hits_index; $i >= 0; $i--) { // loop backwards through hits
-        $add_markup = "<div id=\"t$i\" ";
-        $add_markup .= "\">
+        $add_markup = "<div id=\"t$i\">
         ";
         // Use the content of the h2, i.e. the contents of the first captured pattern
         $pos_match = $h2s[0][$i][1]; // position of match in text
