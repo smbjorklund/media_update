@@ -81,6 +81,7 @@ projects[strongarm][version] = 2.0
 projects[subpathauto][version] = 1.3
 projects[title][version] = 1.0-alpha7
 projects[token][version] = 1.5
+projects[taxonomy_menu][version] = 1.4
 projects[transliteration][version] = 3.1
 projects[variable][version] = 2.3
 projects[view_unpublished][version] = 1.1
