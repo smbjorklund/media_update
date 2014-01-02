@@ -7,6 +7,8 @@ my $module = shift;
 my $vers = shift;
 
 $module || usage();
+$module =~ s,^m/,,; $module =~ s,/$,,;  # clean out m/*/ names
+die "Bad module name [$module]" unless $module =~ /^\w+$/;
 
 my @make = qx(cat drupal.make);
 die "Can't find the 'drupal.make' file" unless @make;
