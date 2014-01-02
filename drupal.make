@@ -19,7 +19,7 @@ projects[zen][version] = 5.4
 ; modules
 projects[addressfield][version] = 1.0-beta4
 projects[admin_menu][version] = 3.0-rc4
-projects[advanced_help][version] = 1.0
+projects[advanced_help][version] = 1.1
 projects[better_exposed_filters][version] = 3.0-beta3
 projects[better_formats][version] = 1.0-beta1
 projects[bot][revision] = d0e10c65616f267543e717addc17422979f83bd2
