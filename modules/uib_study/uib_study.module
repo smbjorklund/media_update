@@ -575,34 +575,108 @@ function uib_study_filter_info() {
 
 /**
  * Replace study codes in the text with an HTML link to the corresponding study pages.
+ * Avoid touching existing links. The filter may fail if there are words with embedded
+ * html tags.
  */
 function uib_study__filter_text($text) {
-  // Split html tagged text into content words
-  $tmp = str_replace('&nbsp;', ' ', $text);
-  $tmp = str_replace('<p>', "\n<p> ", $tmp);
-  $tmp = str_replace('<br />', "\n<br /> ", $tmp);
-  $tmp = str_replace('<br>', "\n<br> ", $tmp);
-  $tmp = str_replace('<div', "\n<div", $tmp);
-  $tmp = str_replace('<ul', "\n<ul", $tmp);
-  $tmp = str_replace('</li><li>', "</li>\n<li>", $tmp);
-  $tmp = strip_tags($tmp);
-  $words = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
-  // Check which words are study codes
-  $found_codes = array();
-  foreach ($words as $word) {
-    $clean_word = trim($word, '.,;:?!-()/');
-    if (uib_study__study_exists($clean_word)) {
-      $found_codes[$clean_word] = TRUE;
-    }
-  }
+  // Check if there is any study code in the text
+  // before parsing it.
+  $study_codes = array_keys(uib_study__study_map());
+  $pattern = implode('|', $study_codes);
+  // Fix some study code characters that interfere with regex
+  $pattern = str_replace('/', '\/', $pattern);
+  $pattern = str_replace('-', '\-', $pattern);
+  $pattern = '/\b(?:' . $pattern . ')\b/';
+  if (preg_match($pattern, $text)) {
+    $in_tag = FALSE;
+    $in_a = FALSE;
+    $word = '';
+    $out = '';
+    $i = 0;
+    while (1) {
+      $ch = drupal_substr($text, $i, 1);
+      if ($ch === '') {
+        break;
+      }
+      switch ($ch) {
 
-  // insert links
-  if ($found_codes) {
-    foreach (array_keys($found_codes) as $code) {
-      $text = str_replace($code, uib_study__study_link($code), $text);
+        case '<':
+          $in_tag = TRUE;
+          if (drupal_strtolower(drupal_substr($text, ($i+1), 1)) == 'a') {
+            // anchor tag
+            $in_a = TRUE;
+          }
+          if ($word) {
+            // end of word
+            $out .= uib_study__word_code_chk($word);
+            $word = '';
+          }
+          $out .= $ch;
+          break;
+
+        case '>':
+          $in_tag = FALSE;
+          if ($in_a && drupal_strtolower(drupal_substr($text, ($i-2), 2)) == '/a') {
+            // end of anchor tag
+            $in_a = FALSE;
+          }
+          $out .= $ch;
+          break;
+
+        case ' ':
+        case "\t":
+        case "\n":
+        case "\r":
+        case '.':
+        case ',':
+        case ';':
+        case ':':
+        case '?':
+        case '!':
+        case '(':
+        case ')':
+          if ($word) {
+            // end of word
+            $out .= uib_study__word_code_chk($word) . $ch;
+            $word = '';
+          }
+          else {
+            $out .= $ch;
+          }
+          break;
+
+        default:
+          if ($in_tag || $in_a) {
+            $out .= $ch;
+          }
+          else {
+            $word .= $ch;
+          }
+      }
+
+      $i++;
     }
+    return $out;
   }
   return $text;
+}
+
+/**
+ * Check if a word is a study code
+ * Return a link if it is, else return the word.
+ * Keeps track of previously checked words that were not codes.
+ */
+function uib_study__word_code_chk($word) {
+  static $non_codes = array();
+  if (!in_array($word, $non_codes)) {
+    if (uib_study__study_exists($word)) {
+      $word = uib_study__study_link($word);
+    }
+    else {
+      $non_codes[] = $word;
+    }
+  }
+  return $word;
 }
 
 /**
@@ -614,10 +688,9 @@ function _uib_study_filter_tips($filter, $format, $long = FALSE) {
 }
 
 /**
- *  Returns the path to the page for given study code.  Returns FALSE for codes
- *  that isn't in use.
+ *  Returns array reference that maps study codes into nid
  */
-function uib_study__study_path($code) {
+function &uib_study__study_map() {
   static $study_nid;
   if (!isset($study_nid)) {
     $result = db_query(
@@ -630,6 +703,15 @@ function uib_study__study_path($code) {
       $study_nid[$record->field_uib_study_code_value] = $record->nid;
     }
   }
+  return $study_nid;
+}
+
+/**
+ *  Returns the path to the page for given study code.  Returns FALSE for codes
+ *  that are not in use.
+ */
+function uib_study__study_path($code) {
+  $study_nid = &uib_study__study_map();
   if (isset($study_nid[$code])) {
     return "node/$study_nid[$code]";
   }
