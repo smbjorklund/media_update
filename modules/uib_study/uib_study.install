@@ -126,3 +126,16 @@ function uib_study_update_7006() {
   field_delete_field('field_uib_study_testimonial');
   field_purge_batch(1000);
 }
+
+/**
+ * Add place 100000 where exphil belongs
+ */
+function uib_study_update_7007() {
+  $node = new stdClass();
+  $node->type = 'uib_ou';
+  $node->title = 'The magic place where Examen Philosophicum courses belong';
+  $node->field_ou_shortname['und'][0]['value'] = 'Ex. Phil.';
+  $node->field_uib_ou_id['und'][0]['value'] = '100000';
+  node_save($node);
+  uibx_log("Created node $node->nid '$node->title' of type $node->type");
+}
