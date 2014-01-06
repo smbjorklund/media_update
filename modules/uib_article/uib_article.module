@@ -460,28 +460,32 @@ function uib_article__access_check($node) {
 }
 
 function uib_article_menu_form($form, &$form_state, $node) {
-  if (!isset($form_state['uib_article']['confirm'])) {
+  return uib_article_menu_local_task($form, $form_state, $node, 'uib_article');
+}
+
+function uib_article_menu_local_task($form, &$form_state, $node, $uib_content_type) {
+  if (!isset($form_state[$uib_content_type]['confirm'])) {
     // Obtain menu and menu link data. If we are returning from
     // an ajax call, these must be fetched from form_state.
-    if (empty($form_state['uib_article']['node'])) {
+    if (empty($form_state[$uib_content_type]['node'])) {
       // Save node for later use at form submit
-      $form_state['uib_article']['node'] = $node;
+      $form_state[$uib_content_type]['node'] = $node;
     }
-    if (!empty($form_state['uib_article']['menu_name'])) {
-      $menu_name = $form_state['uib_article']['menu_name'];
+    if (!empty($form_state[$uib_content_type]['menu_name'])) {
+      $menu_name = $form_state[$uib_content_type]['menu_name'];
     }
     else {
       $menu_name = uib_area__get_current_menu();
-      $form_state['uib_article']['menu_name'] = $menu_name;
+      $form_state[$uib_content_type]['menu_name'] = $menu_name;
     }
     $menu = menu_load($menu_name);
-    if (!empty($form_state['uib_article']['menu_link'])) {
-      $menu_link = $form_state['uib_article']['menu_link'];
+    if (!empty($form_state[$uib_content_type]['menu_link'])) {
+      $menu_link = $form_state[$uib_content_type]['menu_link'];
     }
     else {
       $menu_link = menu_link_get_preferred('node/' . $node->nid, $menu_name);
       if (!empty($menu_link)) {
-        $form_state['uib_article']['menu_link'] = $menu_link;
+        $form_state[$uib_content_type]['menu_link'] = $menu_link;
       }
     }
     $form['uib_area_menu_formtext'] = array(
@@ -597,14 +601,18 @@ function uib_article__menu_form_setrels($form, $form_state) {
 }
 
 function uib_article_menu_form_submit($form, &$form_state) {
-  if ($form_state['clicked_button']['#name'] == 'delete_button' && !isset($form_state['uib_article']['confirm'])) {
-    $form_state['uib_article']['confirm'] = TRUE;
+  uib_article_menu_local_task_submit($form, $form_state, 'uib_article');
+}
+
+function uib_article_menu_local_task_submit($form, &$form_state, $uib_content_type) {
+  if ($form_state['clicked_button']['#name'] == 'delete_button' && !isset($form_state[$uib_content_type]['confirm'])) {
+    $form_state[$uib_content_type]['confirm'] = TRUE;
     $form_state['rebuild'] = TRUE;
   }
   else {
     if ($form_state['clicked_button']['#name'] == 'save_button') {
       // Save action
-      if (!empty($form_state['uib_article']['menu_link']) && ($form_state['input']['area_menu_item_title'] == $form_state['values']['area_menu_item_title']) && ($form_state['input']['area_menu_select'] == $form_state['values']['area_menu_select'])) {
+      if (!empty($form_state[$uib_content_type]['menu_link']) && ($form_state['input']['area_menu_item_title'] == $form_state['values']['area_menu_item_title']) && ($form_state['input']['area_menu_select'] == $form_state['values']['area_menu_select'])) {
         drupal_set_message(t('Menu link unchanged.'), 'status', FALSE);
       }
       else {
@@ -612,7 +620,7 @@ function uib_article_menu_form_submit($form, &$form_state) {
           // Child to selected
           $parent = $form_state['input']['area_menu_select'];
           $expanded = 0;
-          $menu_tree = menu_tree_all_data($form_state['uib_article']['menu_name'], NULL);
+          $menu_tree = menu_tree_all_data($form_state[$uib_content_type]['menu_name'], NULL);
           $existing_weights = _get_weights(_get_subtree($menu_tree, $parent));
           // Determine weight to use (put item last)
           $weight = NULL;
@@ -636,7 +644,7 @@ function uib_article_menu_form_submit($form, &$form_state) {
           else {
             $expanded = 1;
           }
-          $menu_tree = menu_tree_all_data($form_state['uib_article']['menu_name'], NULL);
+          $menu_tree = menu_tree_all_data($form_state[$uib_content_type]['menu_name'], NULL);
           $existing_weights = _get_weights(_get_subtree($menu_tree, $parent));
           // Determine weight to use (halfway in between items)
           unset($prev);
@@ -670,18 +678,18 @@ function uib_article_menu_form_submit($form, &$form_state) {
             $weight = round(($sibling['weight'] + $prev) / 2);
           }
         }
-        if (empty($form_state['uib_article']['menu_link'])) {
+        if (empty($form_state[$uib_content_type]['menu_link'])) {
           $mlid = NULL;
         }
         else {
-          $mlid = $form_state['uib_article']['menu_link']['mlid'];
+          $mlid = $form_state[$uib_content_type]['menu_link']['mlid'];
         }
 
         // Save menu link
         $new_menu_link = array(
-          'link_path' => 'node/' . $form_state['uib_article']['node']->nid,
+          'link_path' => 'node/' . $form_state[$uib_content_type]['node']->nid,
           'link_title' => $form_state['input']['area_menu_item_title'],
-          'menu_name' => $form_state['uib_article']['menu_name'],
+          'menu_name' => $form_state[$uib_content_type]['menu_name'],
           'expanded' => $expanded,
           'mlid' => $mlid,
           'plid' => $parent,
@@ -694,7 +702,7 @@ function uib_article_menu_form_submit($form, &$form_state) {
     }
     else {
       // Delete action
-      menu_link_delete($form_state['uib_article']['menu_link']['mlid']);
+      menu_link_delete($form_state[$uib_content_type]['menu_link']['mlid']);
       drupal_set_message(t('Menu link deleted.'), 'status', FALSE);
     }
   }

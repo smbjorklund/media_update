@@ -35,3 +35,37 @@ function uib_testimonial_node_presave($node) {
     $node->language = $area->language;
   }
 }
+
+/**
+ * Implements hook_menu().
+ */
+function uib_testimonial_menu() {
+  $items['node/%node/tmenu'] = array(
+    'title' => 'Menu',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('uib_testimonial_menu_form', 1),
+    'access callback' => 'uib_testimonial__access_check',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+  );
+  return $items;
+}
+
+function uib_testimonial_menu_form($form, &$form_state, $node) {
+  return uib_article_menu_local_task($form, $form_state, $node, 'uib_testimonial');
+}
+
+function uib_testimonial__access_check($node) {
+  if (!empty($node)) {
+    if ($node->type == 'uib_testimonial' && node_access('update', $node)) {
+      if (!empty($node->field_uib_area['und'][0]['target_id'])) {
+        return TRUE;
+      }
+    }
+  }
+  return FALSE;
+}
+
+function uib_testimonial_menu_form_submit($form, &$form_state) {
+  uib_article_menu_local_task_submit($form, $form_state, 'uib_testimonial');
+}
