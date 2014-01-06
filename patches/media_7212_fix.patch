@@ -1,0 +1,14 @@
+diff --git a/media.install b/media.install
+index 343ba7f..d9ea486 100644
+--- a/media.install
++++ b/media.install
+@@ -129,6 +129,9 @@ function media_update_dependencies() {
+   $dependencies['media'][7208] = array(
+     'file_entity' => 7210,
+   );
++  $dependencies['media'][7212] = array(
++    'file_entity' => 7210,
++  );
+   return $dependencies;
+ }
+ 

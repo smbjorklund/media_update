@@ -371,6 +371,7 @@ function uib_setup_views_default_views() {
     t('next ›'),
     t('last »'),
     t('User'),
+    t('- Choose an operation -'),
     t('Uid'),
     t('Navn'),
     t('First name'),
