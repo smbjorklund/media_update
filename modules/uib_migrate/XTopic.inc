@@ -40,6 +40,7 @@ class XTopic extends stdClass {
       'studiemulighet' => 'study option', # not used, but defined in Sebra
       'tema-indeks' => 'focus area index', # not used, but defined in Sebra
       'tema' => 'focus area',
+      'fokusomrade' => 'focus area',
       'mainnewspage' => 'newspage',
     );
     if (isset($type_map[$w2_type]))

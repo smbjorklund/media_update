@@ -277,6 +277,7 @@ function uib_area_field_default_fields() {
           'frontpage' => 'Frontpage',
           'newspage' => 'Newspage',
           'phdpresspage' => 'PhD press page',
+          'focus area' => 'Focus area',
         ),
         'allowed_values_function' => '',
         'entity_translation_sync' => FALSE,
