@@ -403,7 +403,6 @@ h1 {
   text-decoration: underline;
 }
 
-
 // exceptions from links rule
 #main .breadcrumb li a {
   text-decoration: none;
@@ -421,4 +420,14 @@ h1 {
 #main .uib-tabs-list .ui-tabs-selected a:hover {
   color: #fff;
   text-decoration: underline;
+}
+
+// Study nodes
+.node-type-uib-study {
+  .previous-semester {
+    display: none;
+  }
+  .next-semester {
+    display: none;
+  }
 }

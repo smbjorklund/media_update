@@ -201,3 +201,16 @@
     list-style-type: disc;
   }
 }
+
+#block-uib-study-study-semester-toggle {
+  ul {
+    padding: 0;
+  }
+  li {
+    padding-bottom: 0.5em;
+    .is-active {
+      color: #fff;
+      background-color: #a00;
+    }
+  }
+}
