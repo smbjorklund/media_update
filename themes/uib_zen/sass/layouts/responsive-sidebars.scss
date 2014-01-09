@@ -994,10 +994,12 @@ $zen-auto-include-item-base: false;
   .view-recent-phds {
     .views-field-field-uib-media {
       @include zen-clear();
-      @include zen-grid-item (2, 1);
+      @include zen-grid-item (1, 1);
     }
-    .views-field-title, .views-field-field-uib-lead {
-    @include zen-grid-item (2, 3);
+    .phd-title, .phd-lead {
+    @include zen-grid-item (3, 2);
+    float: none;
+    padding: 0 0 0 20px;
     }
   }
 }
@@ -1455,10 +1457,12 @@ $zen-auto-include-item-base: false;
   .view-recent-phds {
     .views-field-field-uib-media {
       @include zen-clear();
-      @include zen-grid-item (2, 1);
+      @include zen-grid-item (1, 1);
     }
-    .views-field-title, .views-field-field-uib-lead {
-    @include zen-grid-item (2, 3);
+    .phd-title, .phd-lead {
+    @include zen-grid-item (3, 2);
+    float: none;
+    padding: 0 0 0 20px;
     }
   }
   /* Automatic news feed on news page */
