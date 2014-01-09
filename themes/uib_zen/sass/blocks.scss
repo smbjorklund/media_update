@@ -180,3 +180,18 @@
 .region-bottom .field-collection-item-field-uib-link-section .field-item a {
   color: #333;
 }
+
+.field-name-field-uib-study-category {
+  display: none;
+}
+#block-uib-study-study-facts,
+#block-uib-study-study-contact {
+
+  table {
+    background-color: #F1F1EF;
+    padding: 0.5em;
+  }
+  tr {
+    border: 0 none;
+  }
+}

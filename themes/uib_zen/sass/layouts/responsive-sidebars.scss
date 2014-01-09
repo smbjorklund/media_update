@@ -182,6 +182,51 @@ $zen-auto-include-item-base: false;
     background-repeat: no-repeat;
     background-position: right;
   }
+
+  $zen-column-count: 5;
+  $zen-gutter-width: 20px;
+
+  .node-uib-study {
+
+    #block-uib-study-study-related,
+    .node-uib-study .links.inline,
+    .field-name-field-uib-study-image,
+    .service-links {
+      @include zen-grid-item(2, 1);
+    }
+    #block-uib-study-study-facts {
+      @include zen-grid-item(1, 1);
+    }
+    #block-uib-study-study-contact {
+      @include zen-grid-item(1, 2);
+    }
+    #block-uib-study-study-content {
+      @include zen-grid-item(3, 1, right);
+    }
+    #block-uib-study-study-facts,
+    #block-uib-study-study-related,
+    .node-uib-study .links.inline,
+    .service-links {
+      @include zen-clear();
+    }
+    #block-uib-study-study-related,
+    .node-uib-study .links.inline,
+    .field-name-field-uib-study-image,
+    .service-links,
+    #block-uib-study-study-facts,
+    #block-uib-study-study-contact,
+    #block-uib-study-study-content
+    {
+      @include zen-grid-item-base();
+    }
+    .service-links {
+      .item-list {
+        li {
+          float: left;
+        }
+      }
+    }
+  }
 }
 
 /* Mobile */

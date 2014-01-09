@@ -458,18 +458,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         }
       }
       else {
-        $service_links = theme('item_list',
-          array(
-            'items' => service_links_render($variables['node'], FALSE),
-            'style' => SERVICE_LINKS_STYLE_IMAGE,
-          )
-        );
-        $article_info['uib_service_links'] = array(
-          '#prefix' => '<div class="service-links">',
-          '#markup' => $service_links,
-          '#suffix' => '</div>',
-          '#weight' => 20,
-        );
+        $article_info['uib_service_links'] = __uib_render_service_links($variables['node'], 20);
       }
 
       if ($article_type == 'news') {
@@ -589,6 +578,14 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         '#value' => $metadata->field_uib_study_code->value() . ' ' . $metadata->language($current_language)->field_uib_study_title->value(),
         '#weight' => -45,
       );
+      hide($variables['content']['field_uib_study_category']);
+      $weight = $variables['content']['field_uib_study_image']['#weight'];
+      $variables['content']['uib_service_links'] = __uib_render_service_links($variables['node'], $weight + 9);
+      $variables['content']['uib_study_content'] = __uib_render_block('uib_study', 'study_content', $weight + 4);
+      $variables['content']['uib_study_facts'] = __uib_render_block('uib_study', 'study_facts', $weight + 14);
+      $variables['content']['uib_study_contact'] = __uib_render_block('uib_study', 'study_contact', $weight + 19);
+      $variables['content']['uib_study_related'] = __uib_render_block('uib_study', 'study_related', $weight + 24);
+      $variables['content']['uib_study_testimonial'] = __uib_render_block('uib_study', 'study_related', $weight + 29);
     }
   }
 }
@@ -758,6 +755,36 @@ function uib_zen_preprocess_field(&$variables, $hook) {
   if ($variables['element']['#field_name'] == 'field_uib_relation') {
     $variables['classes_array'][] = 'block-uib-area';
   }
+}
+
+/**
+ *
+ */
+function __uib_render_block($module, $block_id, $weight) {
+  $block = block_load($module, $block_id);
+  $block_content = _block_render_blocks(array($block));
+  $render = _block_get_renderable_array($block_content);
+  $render['#weight'] = $weight;
+  return $render;
+}
+
+/**
+ *
+ */
+function __uib_render_service_links($node, $weight) {
+  $service_links = theme('item_list',
+    array(
+      'items' => service_links_render($node, FALSE),
+      'style' => SERVICE_LINKS_STYLE_IMAGE,
+    )
+  );
+  $output = array(
+    '#prefix' => '<div class="service-links">',
+    '#markup' => $service_links,
+    '#suffix' => '</div>',
+    '#weight' => $weight,
+  );
+  return $output;
 }
 
 function __uib_media_content($vars) {
