@@ -1,3 +1,17 @@
+#Release 2014-01-10 tag: R5.2
+Releasen inneholder funksjonalitet for visning av studieprogram og emner, samt stylig for disse, implementerer også en ny innholdstype og område for nye doktorgrader og migrerer områdene uib.no/project/speakup og diverse områder tilknyttet Kommunikasjonsavdelinga. 
+
+* Bug med lenker til studieprogram og emner i tekst, samt bug knyttet til h2-tab filter er fikset  #4782 #4877
+* Bug som forårsaket at saker mistet forfatter (byline)etter migrasjon. #4707
+* Migrert området uib.no/prosjekt/speakup #4693
+* Migrert områder tilknyttet Kommunikasjonsavdelingen #4757
+* Introduserer ny artikkeltype for doktorgradspressemeldinger, samt område som lister og viser disse #3472 #4931 
+* Forbedrer visuell utforming av lenker i tekst #4211
+* Diverse saker knyttet til funskjon og styling av studieprogram og emner #4304 #4873 #4860 #4767 #4725 #4645
+* Legger meny-tab til innholdstypen vitnesbyrd #4680
+* Oppdaterer service-link ikonet G+ #4723
+* Moduloppgraderinger i Drupal #4855
+
 # Release 2013-12-16 tag: R5.1
 
 R5.1 inneholder saker der vi fortsetter å legge til rette for å vise studieprogrammer og emner på ny plattform. I tillegg har vi lagt inn varsel om informasjonskapsler på uib.no, ryddet i mobilvisningen av arrangementer i slideshow og hardkodet logo for På høyden på uib.no/aktuelt.
