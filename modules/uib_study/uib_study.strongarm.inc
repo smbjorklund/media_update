@@ -13,15 +13,6 @@ function uib_study_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'context_status';
-  $strongarm->value = array(
-    'study_blocks' => TRUE,
-  );
-  $export['context_status'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_hide_translation_links_uib_study';
   $strongarm->value = 1;
   $export['entity_translation_hide_translation_links_uib_study'] = $strongarm;
