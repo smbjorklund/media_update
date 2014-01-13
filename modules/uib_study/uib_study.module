@@ -71,15 +71,6 @@ function uib_study__fspres_request($path) {
       'sted/184.13.44',
       'sted/184.13.57',
       'sted/184.15.1',
-      'sted/184.19.0',
-      'sted/184.19.10',
-      'sted/184.19.16',
-      'sted/184.19.81',
-      'sted/184.19.92',
-      'sted/184.19.94',
-      'sted/184.19.96',
-      'sted/184.19.98',
-      'sted/184.19.99',
     );
     $subpath = substr($path, 0, strrpos($path, '/'));
     if (!in_array($subpath, $expected_404s)) {

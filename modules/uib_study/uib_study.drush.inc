@@ -33,7 +33,8 @@ function drush_uib_study_uib_sync_fs() {
   $ou_id = array();
   $query = 'SELECT o.entity_id, o.field_uib_ou_id_value
     FROM node n, field_data_field_uib_ou_id o
-    WHERE n.nid = o.entity_id AND n.type = :bnd';
+    WHERE n.nid = o.entity_id AND n.type = :bnd
+    ORDER BY o.field_uib_ou_id_value';
   $result = db_query($query, array(':bnd' => 'uib_ou'));
   foreach ($result as $row) {
     $ou_id[$row->entity_id] = $row->field_uib_ou_id_value;
@@ -46,7 +47,7 @@ function drush_uib_study_uib_sync_fs() {
     $o1 = substr($oid, 0, 2);
     $o2 = substr($oid, 2, 2);
     $o3 = substr($oid, 4, 2);
-    if ($o1 >= '20') # optimize; no need to look at adm/misc places
+    if ($o1 >= '19') # optimize; no need to look at adm/misc places
       continue;
     if ($o3 != '00')
       continue;  # not an institute
