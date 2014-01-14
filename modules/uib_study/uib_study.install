@@ -139,3 +139,12 @@ function uib_study_update_7007() {
   node_save($node);
   uibx_log("Created node $node->nid '$node->title' of type $node->type");
 }
+
+/**
+ * Set Norwegian collation for study codes
+ */
+function uib_study_update_7008() {
+    if (db_driver() == 'pgsql') {
+      db_query('ALTER TABLE field_data_field_uib_study_code ALTER COLUMN field_uib_study_code_value TYPE character varying(16) COLLATE "nb_NO"');
+    }
+}
