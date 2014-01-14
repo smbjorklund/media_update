@@ -290,8 +290,6 @@ function uib_study_block_view($delta = '') {
             '#prefix' => '<h3>' . check_plain($tmp['#title']) . '</h3>',
             '#markup' => $tmp['#text'],
           );
-          $block['title'] = t("Contact");
-          $block['content']['fspres'][] = $render;
         }
         if ($render) {
           $block['title'] = t("Contact");
