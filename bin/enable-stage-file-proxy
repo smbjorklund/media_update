@@ -1,0 +1,27 @@
+#!/bin/bash
+
+DRUSH=bin/site-drush
+
+#set -x
+if [ ! -d m/stage_file_proxy ]; then
+    $DRUSH dl stage_file_proxy --verbose=0
+fi
+
+$DRUSH en stage_file_proxy --yes --verbose=0
+
+if grep -s stage_file_proxy_origin site/settings.php; then
+    echo stage_file_proxy already added to settings.php
+else
+    $DRUSH cc all --verbose=0
+    chmod +w site/settings.php
+    cat <<'EOT' >>site/settings.php
+
+# stage_file_proxy
+$conf['stage_file_proxy_origin'] = 'http://www.uib.no';
+#$conf['stage_file_proxy_hotlink'] = TRUE;
+EOT
+    chmod -w site/settings.php
+fi
+
+# show config
+grep stage_file_proxy site/settings.php | sed 's/^/| /'

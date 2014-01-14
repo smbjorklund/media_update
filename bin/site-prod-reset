@@ -6,6 +6,8 @@ PGDUMP_HOST=${PGDUMP_HOST:-vengeance.uib.no}
 PGDUMP_HOST_PREFIX=$PGDUMP_HOST:
 PGDUMP_HOST_RUN="ssh $PGDUMP_HOST"
 
+USE_STAGE_FILE_PROXY=${USE_STAGE_FILE_PROXY:-yes}
+
 set -x
 
 if [ $(hostname) == $PGDUMP_HOST ]; then
@@ -31,9 +33,25 @@ else
     DUMP=$($PGDUMP_HOST_RUN "ls -t $DUMP_DIR/*.sql | head -n 1")
 fi
 
+if [ "$USE_STAGE_FILE_PROXY" = yes ]; then
+    if git rev-parse $COMMIT:bin/enable-stage-file-proxy 2>/dev/null; then
+	echo Will use stage_file_proxy to pull in files on demand
+    else
+	echo Can not use stage_file_proxy when moving back to $COMMIT
+	USE_STAGE_FILE_PROXY=no
+    fi
+fi
+
 set -x
 
-rsync -rltDih --delete $PGDUMP_HOST_PREFIX/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/ --exclude=/js --exclude=/css --exclude=/ctools --exclude=/styles --exclude=*.pdf --exclude=*.mp3 --exclude=*.mp4
+if [ "$USE_STAGE_FILE_PROXY" = yes ]; then
+    mkdir site/files
+else
+    rsync -rltDih --delete $PGDUMP_HOST_PREFIX/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/ --exclude=/js --exclude=/css --exclude=/ctools --exclude=/styles --exclude=*.pdf --exclude=*.mp3 --exclude=*.mp4
+fi
+
+find site/files/ -type d | xargs chmod 777 2>/dev/null
+find site/files/ -type f | xargs chmod 666 2>/dev/null
 
 DOTGZ=""
 case $DUMP in *.gz) DOTGZ=".gz";; esac
@@ -56,5 +74,6 @@ git submodule update
 compass compile --force themes/uib_zen || exit 3
 bin/site-drush cc all
 
-find site/files/ -type d | xargs chmod 777
-find site/files/ -type f | xargs chmod 666
+if [ "$USE_STAGE_FILE_PROXY" = yes ]; then
+    bin/enable-stage-file-proxy
+fi

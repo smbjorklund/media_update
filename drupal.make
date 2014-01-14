@@ -78,6 +78,7 @@ projects[role_export][version] = 1.0
 projects[rules][version] = 2.6
 projects[scheduler][version] = 1.1
 projects[service_links][version] = 2.1
+projects[stage_file_proxy][version] = 1.4
 projects[strongarm][version] = 2.0
 projects[subpathauto][version] = 1.3
 projects[title][version] = 1.0-alpha7
