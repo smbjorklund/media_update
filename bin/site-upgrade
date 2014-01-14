@@ -5,10 +5,10 @@ set -x
 bin/site-drush cc all
 
 COMMIT=${1:-master}
-git checkout $COMMIT
-git submodule update
+git checkout $COMMIT || exit 1
+git submodule update || exit 2
 
-compass compile --force themes/uib_zen
+compass compile --force themes/uib_zen || exit 3
 find site/files/{css,js,languages} -type f -print | xargs rm
 
 bin/site-drush features-revert-all --yes

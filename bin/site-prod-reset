@@ -37,7 +37,7 @@ rsync -rltDih --delete $PGDUMP_HOST_PREFIX/prod_nettapp_w3/sites/w3.uib.no/files
 
 DOTGZ=""
 case $DUMP in *.gz) DOTGZ=".gz";; esac
-rsync -avh $PGDUMP_HOST_PREFIX$DUMP site/w3.uib.no.sql$DOTGZ
+rsync -avh $PGDUMP_HOST_PREFIX$DUMP site/w3.uib.no.sql$DOTGZ || exit 1
 if [ "$DOTGZ" != "" ]; then
     gunzip -f site/w3.uib.no.sql$DOTGZ
 fi
@@ -51,9 +51,9 @@ rm -rf drupal/sites/w3.uib.no
 ln -s $SITE drupal/sites/w3.uib.no
 
 git fetch
-git checkout $COMMIT || exit 1;
+git checkout $COMMIT || exit 2
 git submodule update
-compass compile --force themes/uib_zen
+compass compile --force themes/uib_zen || exit 3
 bin/site-drush cc all
 
 find site/files/ -type d | xargs chmod 777
