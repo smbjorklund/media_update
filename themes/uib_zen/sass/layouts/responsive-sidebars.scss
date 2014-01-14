@@ -189,6 +189,7 @@ $zen-auto-include-item-base: false;
   .node-uib-study {
 
     #block-uib-study-study-related,
+    #block-uib-study-study-resources,
     .node-uib-study .links.inline,
     .field-name-field-uib-study-image,
     .service-links {
@@ -204,6 +205,7 @@ $zen-auto-include-item-base: false;
       @include zen-grid-item(3, 1, right);
     }
     #block-uib-study-study-facts,
+    #block-uib-study-study-resources,
     #block-uib-study-study-related,
     .node-uib-study .links.inline,
     .service-links {
@@ -214,6 +216,7 @@ $zen-auto-include-item-base: false;
     .field-name-field-uib-study-image,
     .service-links,
     #block-uib-study-study-facts,
+    #block-uib-study-study-resources,
     #block-uib-study-study-contact,
     #block-uib-study-study-content
     {

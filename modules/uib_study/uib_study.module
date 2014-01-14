@@ -31,6 +31,10 @@ function uib_study_block_info() {
       'info' => t('Randomly selected testimonial referring to a Study'),
       'status' => TRUE,
     ),
+    'study_resources' => array(
+      'info' => t('Resources related to a study'),
+      'status' => TRUE,
+    ),
   );
 }
 
@@ -303,7 +307,6 @@ function uib_study_block_view($delta = '') {
         $type = $node->field_uib_study_type['und'][0]['value'];
         $data = uib_study__fspres_get_json(arg(1), 'info.json', FALSE);
         $data_2 = uib_study__fspres_get_json(arg(1), 'render.json', TRUE);
-        $semester = uib_study__get_current_semester();
         $rows = array();
         $rows[] = array(t('Study points'), $data['studiepoeng']);
         if ($type == 'course') {
@@ -313,11 +316,6 @@ function uib_study_block_view($delta = '') {
           $rows[] = array(t('Teaching language'), check_plain(strip_tags($tmp['#text'])));
           $rows[] = array(t('Study level'), $data['studieniva']);
           $rows[] = array(t('Number of semesters'), $data['antall-undsemester']);
-
-          $tmp = uib_study__get_schedule_link($study_code, $semester);
-          $rows[] = array(t('Schedule'), render($tmp));
-          $tmp = uib_study__get_reading_list_link($study_code, $semester);
-          $rows[] = array(t('Reading list'), render($tmp));
         }
         else {
           assert($type == 'program');
@@ -347,6 +345,27 @@ function uib_study_block_view($delta = '') {
         );
         $block['title'] = t('Study facts');
         $block['content']['fspres'][] = $render;
+      }
+      break;
+
+    case 'study_resources':
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $node = node_load(arg(1));
+        $type = $node->field_uib_study_type['und'][0]['value'];
+        if ($type == 'course') {
+          $data = uib_study__fspres_get_json(arg(1), 'info.json', FALSE);
+          $semester = uib_study__get_current_semester();
+          $resources = array(
+            '#theme' => 'item_list',
+            '#items' => array(),
+          );
+          $tmp = uib_study__get_schedule_link($study_code, $semester);
+          $resources['#items'][] = render($tmp);
+          $tmp = uib_study__get_reading_list_link($study_code, $semester);
+          $resources['#items'][] = render($tmp);
+          $block['title'] = t('Resources');
+          $block['content']['fspres'][] = $resources;
+        }
       }
       break;
 
