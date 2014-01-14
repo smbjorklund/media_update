@@ -105,6 +105,20 @@ function uib_area_block_view($delta='') {
           $block['content']['contact']['#title'] = 'post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
           $block['content']['contact']['#href'] = 'mailto:post@' . $place->field_uib_mail_domain['und'][0]['safe_value'];
         }
+        if (isset($place->field_uib_postal_address)) {
+          $block['content']['address']['#value'] = uib_area__format_address($place);
+        }
+      }
+      elseif ($area) {
+        if (isset($area->field_uib_area_parents['und'])) {
+          $parent = node_load($area->field_uib_area_parents['und'][0]['target_id']);
+          if (isset($parent->field_uib_ou['und'])) {
+            $place = node_load($parent->field_uib_ou['und'][0]['target_id']);
+            if (isset($place->field_uib_postal_address)) {
+              $block['content']['address']['#value'] = uib_area__format_address($place);
+            }
+          }
+        }
       }
       hide($block['content']['emergency']);
     break;
@@ -253,6 +267,18 @@ function uib_area_block_view($delta='') {
     break;
   }
   return $block;
+}
+
+/**
+ * Returns the full address of a place as a string
+ */
+function uib_area__format_address($place) {
+  if (empty($place->field_uib_postal_address))
+    return;
+  $address = $place->field_uib_postal_address['und'][0]['thoroughfare'];
+  $p_code = $place->field_uib_postal_address['und'][0]['postal_code'];
+  $p_place = $place->field_uib_postal_address['und'][0]['locality'];
+  return $address . ', ' . t('N-') . $p_code . ' ' . $p_place;
 }
 
 /**
