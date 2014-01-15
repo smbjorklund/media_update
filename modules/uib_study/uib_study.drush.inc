@@ -231,9 +231,26 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
   }
 
   $nodes = node_load_multiple(array_keys($result['node']));
+  $terms = entity_load('taxonomy_term');
   foreach ($nodes as $node) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $edit = FALSE;
+
+    $nusId_temp = str_split(substr($study['nuskode'], 2, 3));
+    $nusId = $nusId_temp[0];
+    if (isset($nusId_temp[1])) {
+      $nusId .= '.' . $nusId_temp[1];
+    }
+
+    foreach($terms as $term) {
+      $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
+      if ($term_wrapper->field_uib_nus_id->value() == $nusId) {
+        if ($wrapper->field_uib_nus->raw() != $term_wrapper->tid->value()) {
+          $wrapper->field_uib_nus->set($term_wrapper->tid->value());
+          $edit = TRUE;
+        }
+      }
+    }
 
     if ($wrapper->status->value() == 0) {
       $wrapper->status->set(1);
