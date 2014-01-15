@@ -1814,6 +1814,7 @@ function uib_webdesk_views_default_views() {
     t('Author of content'),
     t('Content entity referenced from field_uib_area'),
     t('Content'),
+    t('- Choose an operation -'),
     t('Title'),
     t('Type'),
     t('Area'),

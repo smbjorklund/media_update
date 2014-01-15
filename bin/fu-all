@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Outputs the statements required to run 'drush feature-update' on all
+# our feature based modules.  This can for instance be useful when
+# upgrading the version of features used.
+
+for mod in modules/*/*.features.inc; do
+    mod=$(basename $(dirname $mod))
+    echo bin/site-drush fu --yes $mod
+done

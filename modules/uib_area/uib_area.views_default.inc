@@ -2245,6 +2245,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['arguments']['field_uib_date_value']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_uib_date_value']['title_enable'] = TRUE;
   $handler->display->display_options['arguments']['field_uib_date_value']['title'] = '%1';
+  $handler->display->display_options['arguments']['field_uib_date_value']['default_argument_type'] = 'date';
   $handler->display->display_options['arguments']['field_uib_date_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_uib_date_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_uib_date_value']['summary_options']['items_per_page'] = '25';
