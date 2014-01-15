@@ -53,11 +53,74 @@ function uib_study_menu() {
       'access callback' => TRUE,
     );
   }
+
+  // studieplan page
+  foreach (explode(' ', 'studieprogram studyprogramme') as $prefix) {
+    $items["$prefix/%/plan"] = array(
+      'page callback' => 'uib_study__studyplan',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+    );
+  }
   return $items;
 }
 
 function uib_study__not_found() {
   return MENU_NOT_FOUND;
+}
+
+function uib_study__studyplan($code) {
+  uib_area__get_current(variable_get('uib_study_area_nid'));
+
+  $path = uib_study__study_path($code);
+  if (empty($path))
+    return MENU_NOT_FOUND;
+  $study = entity_metadata_wrapper('node', node_load(substr($path, 5)));
+
+  $page = array();
+  $page['header'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'h1',
+    '#value' => l($code . ' ' . $study->field_uib_study_title->value(), $path),
+  );
+
+  if (!uib_study__infotyper_render($page,
+    uib_study__fspres_get_json(uib_study__fspres_lang() . "/studieprogram/$code/render.json"),
+    function ($group) { return substr($group, -11) == '_studieplan'; }
+  )) {
+    drupal_set_message(t('This page has not been translated yet'), 'warning');
+    $page['missing'] = array(
+      '#markup' => t('Study plan missing'),
+    );
+  }
+
+  return $page;
+}
+
+function uib_study__infotyper_render(&$page, $render, $filter) {
+  if (empty($render))
+    return FALSE;
+
+  $count = 0;
+  foreach ($render as $group) {
+    if ($filter && !$filter($group['#group']))
+      continue;
+    $count++;
+    $page[$group['#group']] = array(
+      'header' => array(
+        '#type' => 'html_tag',
+        '#tag' => 'h2',
+        '#value' => check_plain($group['#title']),
+      ),
+    );
+    foreach ($group['#items'] as $item) {
+      $page[$group['#group']][$item['#type']] = array(
+        '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
+        '#markup' => uib_study__text_markup($item),
+      );
+    }
+  }
+  return $count;
 }
 
 /**
@@ -207,26 +270,12 @@ function uib_study_block_view($delta = '') {
         foreach ($splice_list as $splice_item) {
           uib_study__extract_study_info($data, $splice_item);
         }
-        // Turn data into an real render array.
-        $render = array();
-        foreach ($data as $group) {
-          if ($group['#group'] == 'ba_kontakt')
-            continue;
 
-          $render[$group['#group']] = array(
-            'header' => array(
-              '#type' => 'html_tag',
-              '#tag' => 'h2',
-              '#value' => check_plain($group['#title']),
-            ),
-          );
-          foreach ($group['#items'] as $item) {
-            $render[$group['#group']][$item['#type']] = array(
-              '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
-              '#markup' => uib_study__text_markup($item),
-            );
-          }
-        }
+        $render = array();
+        uib_study__infotyper_render($render, $data, function ($group) {
+          return $group != 'ba_kontakt' && substr($group, -11) != '_studieplan';
+        });
+
         $node = node_load(arg(1));
         $type = $node->field_uib_study_type['und'][0]['value'];
         if ($type == 'program') {
@@ -389,20 +438,26 @@ function uib_study_block_view($delta = '') {
 
     case 'study_resources':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $resources = array(
+          '#theme' => 'item_list',
+          '#items' => array(),
+        );
         $node = node_load(arg(1));
         $type = $node->field_uib_study_type['und'][0]['value'];
         if ($type == 'course') {
           $data = uib_study__fspres_get_node_json(arg(1), 'info.json', FALSE);
           $study_code = $data['emneid']['emnekode'];
           $semester = uib_study__get_current_semester();
-          $resources = array(
-            '#theme' => 'item_list',
-            '#items' => array(),
-          );
           $tmp = uib_study__get_schedule_link($study_code, $semester);
           $resources['#items'][] = render($tmp);
           $tmp = uib_study__get_reading_list_link($study_code, $semester);
           $resources['#items'][] = render($tmp);
+        }
+        else {
+          global $language;
+          $resources['#items'][] = l(t('Study plan'), (($language->language == 'nb' ? 'studieprogram/' : 'studyprogramme/') . $node->field_uib_study_code['und'][0]['value'] . '/plan'));
+        }
+        if (!empty($resources['#items'])) {
           $block['title'] = t('Resources');
           $block['content']['fspres'][] = $resources;
         }
