@@ -2,15 +2,17 @@
 
 set -x
 
-REL=5.2
+REL=5.3
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
     exit 1
 fi
 
-# Fix author and byline for articles and testimonials where missing
-bin/site-drush -v php-script r52-fixup-author-and-byline.php
+bin/site-drush -v php-script populate-nus
+bin/site-drush -v uib-sync-fs
+
+exit  # keep statements below around until the next migration
 
 # Migrate uib.no/project/speakup
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_kommunikasjon.txt
