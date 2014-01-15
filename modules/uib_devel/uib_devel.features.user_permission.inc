@@ -22,14 +22,18 @@ function uib_devel_user_default_permissions() {
   // Exported permission: execute php code.
   $permissions['execute php code'] = array(
     'name' => 'execute php code',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'admin',
+    ),
     'module' => 'devel',
   );
 
   // Exported permission: migration information.
   $permissions['migration information'] = array(
     'name' => 'migration information',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'admin',
+    ),
     'module' => 'migrate_ui',
   );
 
