@@ -30,7 +30,7 @@ function uib_area_field_group_info() {
     'format_settings' => array(
       'label' => 'Bottom wrapper',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-bottom-wrapper field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -131,7 +131,7 @@ function uib_area_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-level-1 field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -162,7 +162,7 @@ function uib_area_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-management field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -190,7 +190,7 @@ function uib_area_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-profile-text field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -218,7 +218,7 @@ function uib_area_field_group_info() {
     'format_settings' => array(
       'label' => 'two_column',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-two-column field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',

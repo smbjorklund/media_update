@@ -36,7 +36,7 @@ function uib_article_field_group_info() {
     'format_settings' => array(
       'label' => 'article-sidebar',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-article-sidebar field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -78,7 +78,7 @@ function uib_article_field_group_info() {
       'label' => 'Information',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => 'clearfix',
+        'classes' => 'clearfix group-information field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -116,7 +116,7 @@ function uib_article_field_group_info() {
       'label' => 'Sidebar',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => 'clearfix',
+        'classes' => 'clearfix group-sidebar field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
