@@ -19,18 +19,18 @@ function uib_devel_user_default_permissions() {
     'module' => 'devel',
   );
 
-  // Exported permission: administer devel menu items.
-  $permissions['administer devel menu items'] = array(
-    'name' => 'administer devel menu items',
-    'roles' => array(),
-    'module' => 'menu_admin_per_menu',
-  );
-
   // Exported permission: execute php code.
   $permissions['execute php code'] = array(
     'name' => 'execute php code',
     'roles' => array(),
     'module' => 'devel',
+  );
+
+  // Exported permission: migration information.
+  $permissions['migration information'] = array(
+    'name' => 'migration information',
+    'roles' => array(),
+    'module' => 'migrate_ui',
   );
 
   // Exported permission: switch users.
@@ -41,13 +41,6 @@ function uib_devel_user_default_permissions() {
       1 => 'level 1',
     ),
     'module' => 'devel',
-  );
-
-  // Exported permission: migration information.
-  $permissions['migration information'] = array(
-    'name' => 'migration information',
-    'roles' => array(),
-    'module' => 'migrate_ui',
   );
 
   return $permissions;
