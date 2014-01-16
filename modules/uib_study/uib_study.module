@@ -39,6 +39,24 @@ function uib_study_block_info() {
 }
 
 /**
+ * Implements hook_menu().
+ */
+function uib_study_menu() {
+  // Arrange for unaliased uib_study pages to return 404
+  foreach (explode(' ', 'emne studieprogram course studyprogramme') as $prefix) {
+    $items["$prefix/%"] = array(
+      'page callback' => 'uib_study__not_found',
+      'access callback' => TRUE,
+    );
+  }
+  return $items;
+}
+
+function uib_study__not_found() {
+  return MENU_NOT_FOUND;
+}
+
+/**
  * Implements hook_flush_caches().
  */
 function uib_study_flush_caches() {
