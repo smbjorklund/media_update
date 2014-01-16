@@ -188,46 +188,23 @@ $zen-auto-include-item-base: false;
 
   .node-uib-study {
 
-    #block-uib-study-study-related,
-    #block-uib-study-study-resources,
-    .node-uib-study .links.inline,
-    .field-name-field-uib-study-image,
+    .uib-study-first-block,
+    .uib-study-second-block,
     .service-links {
       @include zen-grid-item(2, 1);
-    }
-    #block-uib-study-study-facts {
-      @include zen-grid-item(1, 1);
-    }
-    #block-uib-study-study-contact {
-      @include zen-grid-item(1, 2);
     }
     #block-uib-study-study-content {
       @include zen-grid-item(3, 1, right);
     }
-    #block-uib-study-study-facts,
-    #block-uib-study-study-resources,
-    #block-uib-study-study-related,
-    .node-uib-study .links.inline,
-    .service-links {
+    .uib-study-second-block {
       @include zen-clear();
     }
-    #block-uib-study-study-related,
-    .node-uib-study .links.inline,
-    .field-name-field-uib-study-image,
-    .service-links,
-    #block-uib-study-study-facts,
-    #block-uib-study-study-resources,
-    #block-uib-study-study-contact,
+    h1,
+    .uib-study-first-block,
+    .uib-study-second-block,
     #block-uib-study-study-content
     {
       @include zen-grid-item-base();
-    }
-    .service-links {
-      .item-list {
-        li {
-          float: left;
-        }
-      }
     }
   }
 }

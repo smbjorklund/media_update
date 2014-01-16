@@ -471,6 +471,17 @@ div.link-field-column {
     }
   }
 }
+
+.node-uib-study {
+  .service-links {
+    .item-list {
+      li {
+        float: left;
+      }
+    }
+  }
+}
+
 .service-links + div {
   clear: left;
 }
