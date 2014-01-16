@@ -91,52 +91,56 @@ function uib_study__fspres_request($path) {
   return $res;
 }
 
-function uib_study__fspres_get_node_json($nid, $json, $lang = FALSE) {
+function uib_study__fspres_get_json($path) {
   $data = FALSE;
-  $node = node_load($nid);
-  if ($node->type == 'uib_study') {
-    $study = entity_metadata_wrapper('node', $node);
-    $type = $study->field_uib_study_type->value();
-    /* Fetch what to render from:
-     * http://fs-pres.app.uib.no/[<lang>]/emne/<code>/render.json
-     */
-    $path = '';
-    if ($lang) {
-      global $language;
-      $lang = $language->language;
-      if ($lang == 'nb') {
-        $lang = 'nn'; // fs-pres Norwegian is ny-norsk
-      }
-      $path .= $lang . '/';
-    }
-
-    if ($type == 'course') {
-      $path .= 'emne/';
-    }
-    elseif ($type == 'program') {
-      $path .= 'studieprogram/';
-    }
-    else {
-      uibx_log("Unknown study type; '$type'", 'error');
-    }
-
-    $slug = $study->field_uib_study_code->value();
-    $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
-    $path .= $slug . '/';
-    $path .= $json;
-    if ($cache = cache_get($path, 'cache_uib_study')) {
-      $data = $cache->data;
-    }
-    else {
-      $res = uib_study__fspres_request($path);
-      if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
-        $data = drupal_json_decode($res->data);
-        cache_set($path, $data, 'cache_uib_study', REQUEST_TIME + 4*3600);
-      }
+  if ($cache = cache_get($path, 'cache_uib_study')) {
+    $data = $cache->data;
+  }
+  else {
+    $res = uib_study__fspres_request($path);
+    if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
+      $data = drupal_json_decode($res->data);
+      cache_set($path, $data, 'cache_uib_study', REQUEST_TIME + 4*3600);
     }
   }
-
   return $data;
+}
+
+function uib_study__fspres_get_node_json($nid, $json, $lang = FALSE) {
+  $node = node_load($nid);
+  if ($node->type != 'uib_study')
+    return FALSE;
+
+  $study = entity_metadata_wrapper('node', $node);
+  $type = $study->field_uib_study_type->value();
+  /* Fetch what to render from:
+   * http://fs-pres.app.uib.no/[<lang>]/emne/<code>/render.json
+   */
+  $path = '';
+  if ($lang) {
+    global $language;
+    $lang = $language->language;
+    if ($lang == 'nb') {
+      $lang = 'nn'; // fs-pres Norwegian is ny-norsk
+    }
+    $path .= $lang . '/';
+  }
+
+  if ($type == 'course') {
+    $path .= 'emne/';
+  }
+  elseif ($type == 'program') {
+    $path .= 'studieprogram/';
+  }
+  else {
+    uibx_log("Unknown study type; '$type'", 'error');
+  }
+
+  $slug = $study->field_uib_study_code->value();
+  $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
+  $path .= $slug . '/';
+  $path .= $json;
+  return uib_study__fspres_get_json($path);
 }
 
 function uib_study__area($study_node) {
