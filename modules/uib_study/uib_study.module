@@ -91,7 +91,7 @@ function uib_study__fspres_request($path) {
   return $res;
 }
 
-function uib_study__fspres_get_json($nid, $json, $lang = FALSE) {
+function uib_study__fspres_get_node_json($nid, $json, $lang = FALSE) {
   $data = FALSE;
   $node = node_load($nid);
   if ($node->type == 'uib_study') {
@@ -173,7 +173,7 @@ function uib_study_block_view($delta = '') {
         'B_RE_INFO',
       );
       if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $data = uib_study__fspres_get_json(arg(1), 'render.json', TRUE);
+        $data = uib_study__fspres_get_node_json(arg(1), 'render.json', TRUE);
         foreach ($splice_list as $splice_item) {
           uib_study__extract_study_info($data, $splice_item);
         }
@@ -205,7 +205,7 @@ function uib_study_block_view($delta = '') {
               '#tag' => 'h2',
               '#value' => t("Construction"),
           );
-          $plan = uib_study__fspres_get_json(arg(1), 'plan.json', TRUE);
+          $plan = uib_study__fspres_get_node_json(arg(1), 'plan.json', TRUE);
           $t_rows = array();
           foreach ($plan['rows'] as $s_row) {
             $t_row = array();
@@ -283,7 +283,7 @@ function uib_study_block_view($delta = '') {
       break;
     case 'study_contact':
       if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $data = uib_study__fspres_get_json(arg(1), 'render.json', TRUE);
+        $data = uib_study__fspres_get_node_json(arg(1), 'render.json', TRUE);
         $render = array();
         $tmp = uib_study__extract_study_info($data, 'EB_KONTAKT');
         if (!$tmp) {
@@ -305,8 +305,8 @@ function uib_study_block_view($delta = '') {
       if (arg(0) == 'node' && is_numeric(arg(1))) {
         $node = node_load(arg(1));
         $type = $node->field_uib_study_type['und'][0]['value'];
-        $data = uib_study__fspres_get_json(arg(1), 'info.json', FALSE);
-        $data_2 = uib_study__fspres_get_json(arg(1), 'render.json', TRUE);
+        $data = uib_study__fspres_get_node_json(arg(1), 'info.json', FALSE);
+        $data_2 = uib_study__fspres_get_node_json(arg(1), 'render.json', TRUE);
         $rows = array();
         $rows[] = array(t('Study points'), $data['studiepoeng']);
         if ($type == 'course') {
@@ -359,7 +359,7 @@ function uib_study_block_view($delta = '') {
         $node = node_load(arg(1));
         $type = $node->field_uib_study_type['und'][0]['value'];
         if ($type == 'course') {
-          $data = uib_study__fspres_get_json(arg(1), 'info.json', FALSE);
+          $data = uib_study__fspres_get_node_json(arg(1), 'info.json', FALSE);
           $study_code = $data['emneid']['emnekode'];
           $semester = uib_study__get_current_semester();
           $resources = array(
