@@ -580,7 +580,10 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       );
       hide($variables['content']['field_uib_study_category']);
       $uib_service_links = __uib_render_service_links($variables['node'], 10);
-      $uib_study_image = $variables['content']['field_uib_study_image'];
+      $uib_study_image = '';
+      if (isset($variables['content']['field_uib_study_image'])) {
+        $uib_study_image = $variables['content']['field_uib_study_image'];
+      }
       hide($variables['content']['field_uib_study_image']);
       $uib_study_facts = __uib_render_block('uib_study', 'study_facts', 15);
       $uib_study_resources = '';
