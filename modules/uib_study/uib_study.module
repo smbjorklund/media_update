@@ -106,6 +106,15 @@ function uib_study__fspres_get_json($path) {
   return $data;
 }
 
+function uib_study__fspres_lang() {
+  global $language;
+  $lang = $language->language;
+  if ($lang == 'nb') {
+    $lang = 'nn'; // fs-pres Norwegian is ny-norsk
+  }
+  return $lang;
+}
+
 function uib_study__fspres_get_node_json($nid, $json, $lang = FALSE) {
   $node = node_load($nid);
   if ($node->type != 'uib_study')
@@ -118,12 +127,7 @@ function uib_study__fspres_get_node_json($nid, $json, $lang = FALSE) {
    */
   $path = '';
   if ($lang) {
-    global $language;
-    $lang = $language->language;
-    if ($lang == 'nb') {
-      $lang = 'nn'; // fs-pres Norwegian is ny-norsk
-    }
-    $path .= $lang . '/';
+    $path .= uib_study__fspres_lang() . '/';
   }
 
   if ($type == 'course') {
@@ -429,11 +433,7 @@ function uib_study_block_view($delta = '') {
 function uib_study__studieniva($code) {
   $map = uib_study__fspres_get_json("studieniva/info.json");
   if (!empty($map[$code])) {
-    global $language;
-    $lang = $language->language;
-    if ($lang == 'nb') {
-      $lang = 'nn'; // fs-pres Norwegian is ny-norsk
-    }
+    $lang = uib_study__fspres_lang();
     if (!empty($map[$code][$lang]) && $map[$code][$lang] != '-')
       return $map[$code][$lang];
   }
