@@ -360,6 +360,7 @@ function uib_study_block_view($delta = '') {
         $type = $node->field_uib_study_type['und'][0]['value'];
         if ($type == 'course') {
           $data = uib_study__fspres_get_json(arg(1), 'info.json', FALSE);
+          $study_code = $data['emneid']['emnekode'];
           $semester = uib_study__get_current_semester();
           $resources = array(
             '#theme' => 'item_list',
