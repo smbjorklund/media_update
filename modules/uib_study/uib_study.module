@@ -318,7 +318,10 @@ function uib_study_block_view($delta = '') {
           $rows[] = array(t('Teaching semester'), $data['undervisningssemester']);
           $tmp = uib_study__extract_study_info($data_2, 'EB_SPRAK');
           $rows[] = array(t('Teaching language'), check_plain(strip_tags($tmp['#text'])));
-          $rows[] = array(t('Study level'), $data['studieniva']);
+          $tmp = uib_study__studieniva($data['studieniva']);
+          if (!empty($tmp)) {
+            $rows[] = array(t('Study level'), check_plain($tmp));
+          }
           $rows[] = array(t('Number of semesters'), $data['antall-undsemester']);
         }
         else {
@@ -418,6 +421,23 @@ function uib_study_block_view($delta = '') {
   }
 
   return $block;
+}
+
+/**
+ * Expand the study level code to a more readable string
+ */
+function uib_study__studieniva($code) {
+  $map = uib_study__fspres_get_json("studieniva/info.json");
+  if (!empty($map[$code])) {
+    global $language;
+    $lang = $language->language;
+    if ($lang == 'nb') {
+      $lang = 'nn'; // fs-pres Norwegian is ny-norsk
+    }
+    if (!empty($map[$code][$lang]) && $map[$code][$lang] != '-')
+      return $map[$code][$lang];
+  }
+  return NULL;
 }
 
 /**
