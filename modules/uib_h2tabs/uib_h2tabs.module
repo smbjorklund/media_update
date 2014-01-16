@@ -59,8 +59,7 @@ function _uib_h2tabs_filter_h2_process($text, $filter) {
         ";
         // Use the content of the h2, i.e. the contents of the first captured pattern
         $pos_match = $h2s[0][$i][1]; // position of match in text
-        $pos_after = $h2s[0][$i][1] + strlen($h2s[0][$i][0]); // position in text after matched h2
-        $add_markup .= substr($text,$pos_after);
+        $add_markup .= substr($text,$pos_match);
         $text = substr($text, 0 ,$pos_match); // remove this portion from text
         $add_markup .= "
         </div>

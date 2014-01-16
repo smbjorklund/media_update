@@ -73,13 +73,20 @@
   #block-uib-area-node-children,
   #bottom-region-wrapper,
   #menu-search-mobile-wrapper,
-  #desktop-tablet-language{ /* Hide sidebars and nav elements */
+  #desktop-tablet-language,
+  .ui-tabs-nav { /* Hide sidebars and nav elements */
     visibility: hidden;
     display: none;
   }
   .ui-tabs .ui-tabs-hide {
     display: block !important;
     visibility: visible !important;
+  }
+
+  article {
+    h2 {
+      display: block;
+    }
   }
 
 } /* End @media print */

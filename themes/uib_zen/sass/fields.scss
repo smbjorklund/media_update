@@ -583,3 +583,23 @@ div.link-field-column {
     margin-bottom: $box-spacing;
   }
 }
+
+.region-sidebar-second {
+ .field-name-field-uib-title,
+ h2 {
+  @extend %over-and-underline;
+  font-family: $font-body;
+  text-transform: uppercase;
+  color: #555;
+  font-weight: normal;
+  line-height: 1.2em;
+  clear: both;
+  font-size: 1.2em;
+ }
+}
+
+article {
+  h2 {
+    display: none;
+  }
+}

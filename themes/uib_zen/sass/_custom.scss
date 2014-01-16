@@ -57,3 +57,10 @@
     }
   }
 }
+
+// Custom sass extendables
+
+%over-and-underline {
+  border-top: $sidebar-border;
+  border-bottom: $sidebar-border;
+}
