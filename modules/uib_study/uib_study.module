@@ -1204,16 +1204,26 @@ function uib_study_entity_info_alter(&$entity_info) {
 function uib_study_views_pre_render(&$view) {
   if ($view->name == 'uib_taxonomy_term') {
     $term_id = $view->args[0];
-    // The taxonomy term itself
-    $term = taxonomy_term_view(taxonomy_term_load($term_id), $view_mode = 'full');
-    $view->attachment_before = render($term);
+    $term = taxonomy_term_load($term_id);
 
-    // List underlying taxonomy terms
-    $children = taxonomy_get_children($term_id);
-    if (!empty($children)) {
-      foreach ($children as $tid => $child) {
-        $term = taxonomy_term_view($child, $view_mode = 'teaser');
-        $view->attachment_after .= render($term);
+    // NUS code pages
+    if ($term->vocabulary_machine_name == 'uib_nus') {
+      if (arg(0) == 'taxonomy' && arg(1) == 'term') {
+        // Set the term page to belong to education
+        uib_area__get_current(variable_get('uib_study_area_nid'));
+      }
+
+      // Add the taxonomy term itself as an attachment (before)
+      $term_data = taxonomy_term_view($term, $view_mode = 'full');
+      $view->attachment_before = render($term_data);
+
+      // Add a list underlying taxonomy terms as another attachment (after)
+      $children = taxonomy_get_children($term_id);
+      if (!empty($children)) {
+        foreach ($children as $tid => $child) {
+          $term = taxonomy_term_view($child, $view_mode = 'teaser');
+          $view->attachment_after .= render($term);
+        }
       }
     }
   }
