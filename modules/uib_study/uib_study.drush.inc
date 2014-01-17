@@ -236,7 +236,7 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $edit = FALSE;
 
-    $nusId_temp = str_split(substr($study['nuskode'], 2, 3));
+    $nusId_temp = str_split(substr($study['nuskode'], 1, 2));
     $nusId = $nusId_temp[0];
     if (isset($nusId_temp[1])) {
       $nusId .= '.' . $nusId_temp[1];
@@ -245,8 +245,8 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     foreach($terms as $term) {
       $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
       if ($term_wrapper->field_uib_nus_id->value() == $nusId) {
-        if ($wrapper->field_uib_nus->raw() != $term_wrapper->tid->value()) {
-          $wrapper->field_uib_nus->set($term_wrapper->tid->value());
+        if ($wrapper->field_uib_nus->raw() != $term_wrapper->getIdentifier()) {
+          $wrapper->field_uib_nus->set($term_wrapper->getIdentifier());
           $edit = TRUE;
         }
       }
