@@ -149,10 +149,20 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  */
 function uib_zen_preprocess_page(&$variables, $hook) {
   if (isset($variables['node'])) {
-    if ($variables['node']->type == 'uib_article'){
+    $not_translated_txt = t('This content has not been translated.');
+    if ($variables['node']->type == 'uib_article') {
       if ($variables['node']->language != $variables['language']->language) {
-        $variables['title_prefix'] = '<div class="uib-not-translated">' .t('The content of this article has not been translated.') . '</div>';
+        drupal_set_message($not_translated_txt, 'warning');
         drupal_set_breadcrumb(array());
+      }
+    }
+    elseif ($variables['node']->type == 'uib_study') {
+      $study_data = uib_study__fspres_get_node_json($variables['node']->nid, 'render.json', TRUE);
+       if (empty($study_data)) {
+        $study_data = uib_study__fspres_get_node_json($variables['node']->nid, 'render.json', FALSE);
+        if (!empty($study_data)) {
+          drupal_set_message($not_translated_txt, 'warning');
+        }
       }
     }
   }
