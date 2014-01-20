@@ -595,6 +595,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         $uib_study_image = $variables['content']['field_uib_study_image'];
       }
       hide($variables['content']['field_uib_study_image']);
+      $uib_study_links = '';
+      if (isset($variables['content']['field_uib_links'])) {
+        $uib_study_links = $variables['content']['field_uib_links'];
+      }
+      hide($variables['content']['field_uib_links']);
       $uib_study_facts = __uib_render_block('uib_study', 'study_facts', 15);
       $uib_study_resources = __uib_render_block('uib_study', 'study_resources', 22);
       $uib_study_contact = __uib_render_block('uib_study', 'study_contact', 20);
@@ -613,7 +618,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       $variables['content']['uib_study_second_block'] = array(
         '#type' => 'html_tag',
         '#tag' => 'div',
-        '#value' => render($uib_study_toggle) . render($uib_study_testimonial) . render($uib_study_related) . render($uib_service_links),
+        '#value' => render($uib_study_toggle) .
+                    render($uib_study_testimonial) .
+                    render($uib_study_related) .
+                    render($uib_study_links) .
+                    render($uib_service_links),
         '#weight' => 10,
         '#attributes' => array('class' => array('uib-study-second-block')),
       );
