@@ -100,18 +100,22 @@ function uib_study__studyplan($code) {
 function uib_study__infotyper_render(&$page, $render, $filter) {
   if (empty($render))
     return FALSE;
-
+  $wrong_chars = array(' ', 'æ', 'ø' ,'å');
   $count = 0;
   foreach ($render as $group) {
     if ($filter && !$filter($group['#group']))
       continue;
+    $group_title = check_plain($group['#title']);
+    $group_title_html_id = str_replace($wrong_chars, '-', strtolower($group_title));
     $count++;
     $page[$group['#group']] = array(
       'header' => array(
         '#type' => 'html_tag',
         '#tag' => 'h2',
-        '#value' => check_plain($group['#title']),
+        '#value' => $group_title,
       ),
+      '#prefix' => '<div id="uib-tabs-'. $group_title_html_id . '">',
+      '#suffix' => '</div>',
     );
     foreach ($group['#items'] as $item) {
       $page[$group['#group']][$item['#type']] = array(
@@ -279,6 +283,17 @@ function uib_study_block_view($delta = '') {
         $node = node_load(arg(1));
         $type = $node->field_uib_study_type['und'][0]['value'];
         if ($type == 'program') {
+          $tab_items = array();
+          $wrong_chars = array(' ', 'æ', 'ø' ,'å');
+          foreach ($data as $group) {
+            $group_title = check_plain($group['#title']);
+            if ($group_title == 'Studieplan')
+              continue;
+            $group_title_html_id = str_replace($wrong_chars, '-', strtolower($group_title));
+            $tab_items[] = '<a href="#uib-tabs-' . $group_title_html_id . '">' . $group_title . '</a>';
+          }
+          $group_title = t('Construction');
+          $tab_items[] = '<a href="#uib-tabs-construction">' . $group_title . '</a>';
           $render['construction'] = array(
               '#type' => 'html_tag',
               '#tag' => 'h2',
@@ -355,9 +370,21 @@ function uib_study_block_view($delta = '') {
             '#caption' => $caption,
             '#rows' => $t_rows,
             '#attributes' => array('class' => 'uib-study-construction'),
+            '#prefix' => '<div id="uib-tabs-construction">',
+            '#suffix' => '</div>',
+          );
+          $toc = array(
+            '#items' => $tab_items,
+            '#theme' => 'item_list',
+            '#attributes' => array(
+              'class' => array('uib-tabs-list'),
+            ),
           );
         }
         $block['content']['fspres'][] = $render;
+        if (isset($toc)) {
+          $block['content']['fspres']['#prefix'] = render($toc);
+        }
       }
       break;
     case 'study_contact':
@@ -1024,5 +1051,14 @@ function uib_study__semester_name($code = NULL) {
     }
     $name .= ' ' . substr($code, 0, 4);
     return $name;
+  }
+}
+
+/**
+ * Implements hook_contextual_links_view_alter()
+ */
+function uib_study_contextual_links_view_alter(&$element, $items) {
+  if ($element['#element']['#block']->module == 'uib_study' && $element['#element']['#block']->delta == 'study_content') {
+    unset($element['#links']);
   }
 }
