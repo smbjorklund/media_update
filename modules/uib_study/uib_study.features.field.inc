@@ -10,6 +10,98 @@
 function uib_study_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-uib_study-field_uib_feed'.
+  $fields['node-uib_study-field_uib_feed'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_uib_feed',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'entity_translation_sync' => FALSE,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'uib_study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'uib_area',
+          'settings' => array(),
+          'type' => 'uib_area_link_feed',
+          'weight' => '4',
+        ),
+        'short_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_uib_feed',
+      'label' => 'Rss feed',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'entity_translation_sync' => FALSE,
+        'rel_remove' => 'default',
+        'title' => 'optional',
+        'title_maxlength' => '128',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+        'validate_url' => 1,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '13',
+      ),
+    ),
+  );
+
   // Exported field: 'node-uib_study-field_uib_links'.
   $fields['node-uib_study-field_uib_links'] = array(
     'field_config' => array(
@@ -158,7 +250,7 @@ function uib_study_field_default_fields() {
             'link' => 1,
           ),
           'type' => 'entityreference_label',
-          'weight' => '8',
+          'weight' => '3',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -258,7 +350,7 @@ function uib_study_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -410,7 +502,7 @@ function uib_study_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -608,7 +700,7 @@ function uib_study_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -690,7 +782,7 @@ function uib_study_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -793,7 +885,7 @@ function uib_study_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'short_teaser' => array(
           'label' => 'above',
@@ -966,6 +1058,7 @@ function uib_study_field_default_fields() {
   t('Part of study');
   t('Related links');
   t('Responsible');
+  t('Rss feed');
   t('Title');
   t('Type');
 
