@@ -1065,3 +1065,102 @@ function uib_study_contextual_links_view_alter(&$element, $items) {
     }
   }
 }
+
+/**
+ * Implements hook_taxonomy_term_insert().
+ */
+function uib_study_taxonomy_term_insert($term) {
+  if ($term->vocabulary_machine_name == 'uib_nus') {
+    uib_study__add_taxonomy_aliases($term);
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_update().
+ */
+function uib_study_taxonomy_term_update($term) {
+  if ($term->vocabulary_machine_name == 'uib_nus') {
+    uib_study__add_taxonomy_aliases($term);
+  }
+}
+
+/**
+ * Add NUS code aliases for a taxonomy term
+ */
+function uib_study__add_taxonomy_aliases($term) {
+  $taxonomy_term = entity_metadata_wrapper('taxonomy_term', $term);
+  $source_path = 'taxonomy/term/' . $taxonomy_term->getIdentifier();
+
+  // Obtain the names of the education area in 'nb' and 'en' languages
+  $study_area_nid = variable_get('uib_study_area_nid');
+  $utdanning = path_load("node/$study_area_nid");
+  $languages['nb'] = $utdanning['alias'];
+  $query = new EntityFieldQuery();
+  $edu = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('tnid', $study_area_nid)
+    ->propertyCondition('language', 'en')
+    ->execute();
+  $edu_nids = array_keys($edu['node']);
+  $education = path_load('node/' . $edu_nids[0]);
+  $languages['en'] = $education['alias'];
+
+  foreach ($languages as $lang_abbrev => $area_name) {
+    if ($taxonomy_term->language($lang_abbrev)->field_uib_term_title->value()) {
+      $path = $area_name . '/';
+      $path .= uib_study__get_parents_path($term, $lang_abbrev);
+      $path .= uib_study__prepare_path($taxonomy_term->language($lang_abbrev)->field_uib_term_title->value());
+      $new_alias = array('source' => $source_path, 'alias' => $path, 'language' => $lang_abbrev);
+      if ($existing_alias = path_load($source_path)) {
+        if ($existing_alias['alias'] != $path) {
+          path_save($new_alias);
+        }
+      }
+      else {
+        path_save($new_alias);
+      }
+    }
+  }
+}
+
+/**
+ * Get translated title of parent(s) for use in alias path
+ */
+function uib_study__get_parents_path($term, $lang) {
+  if ($parents = taxonomy_get_parents($term->tid)) {
+    $parent_term = entity_metadata_wrapper('taxonomy_term', current($parents));
+    if ($parent_term->language($lang)->field_uib_term_title->value()) {
+      $path = uib_study__prepare_path($parent_term->language($lang)->field_uib_term_title->value()) . '/';
+      return uib_study__get_parents_path(current($parents), $lang) . $path;
+    }
+  }
+  return '';
+}
+
+/**
+ * Implements hook_taxonomy_term_delete().
+ */
+function uib_study_taxonomy_term_delete($term) {
+   if ($term->vocabulary_machine_name == 'uib_nus') {
+    // delete term aliases
+    $term_url = 'taxonomy/term/' . $term->tid;
+    while ($existing = path_load($term_url)) {
+      path_delete($existing['pid']);
+    }
+  }
+}
+
+/**
+ * Prepares a text string for use in an alias path
+ * @param  [string] $in_path  the input text string
+ * @return [string]           cleaned text string with hyphens instead of spaces
+ */
+function uib_study__prepare_path($in_path) {
+  $in_path = trim($in_path);
+  if (empty($in_path)) {
+    return $in_path;
+  }
+  $path = drupal_strtolower($in_path);
+  $path = mb_ereg_replace('\W+', '-', $path);
+  $path = preg_replace('/(_)_+|(-)-+/', '\\1\\2', $path);
+  return $path;
+}
