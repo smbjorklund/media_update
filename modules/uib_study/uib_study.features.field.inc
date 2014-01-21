@@ -867,6 +867,7 @@ function uib_study_field_default_fields() {
         'allowed_values' => array(
           'course' => 'Course',
           'program' => 'Study programme',
+          'specialization' => 'Specialization',
         ),
         'allowed_values_function' => '',
         'entity_translation_sync' => FALSE,
