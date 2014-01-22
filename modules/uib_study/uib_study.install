@@ -148,3 +148,20 @@ function uib_study_update_7008() {
       db_query('ALTER TABLE field_data_field_uib_study_code ALTER COLUMN field_uib_study_code_value TYPE character varying(16) COLLATE "nb_NO"');
     }
 }
+
+/**
+ * Create aliases for NUS vocabuary
+ */
+function uib_study_update_7009() {
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'taxonomy_term')
+    ->entityCondition('vocabulary_machine_name', 'uib_nus')
+    ->execute();
+  if (!empty($result['taxonomy_term'])) {
+    $tids = array_keys($result['taxonomy_term']);
+    $terms = entity_load('taxonomy_term', $tids);
+    foreach ($terms as $term) {
+      uib_study__add_taxonomy_aliases($term);
+    }
+  }
+}
