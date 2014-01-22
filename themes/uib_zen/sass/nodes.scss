@@ -430,4 +430,14 @@ h1 {
   .next-semester {
     display: none;
   }
+ #block-uib-study-study-facts table, #block-uib-study-study-contact table {
+    margin: 0;
+  }
+  #block-uib-study-study-facts tr, #block-uib-study-study-contact tr {
+    border: solid 1px #ccc;
+    td {
+      padding: 5px 10px 5px 10px;
+      border-right:  solid 1px silver;
+    }
+  }
 }
