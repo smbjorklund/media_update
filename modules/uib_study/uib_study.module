@@ -1058,7 +1058,9 @@ function uib_study__semester_name($code = NULL) {
  * Implements hook_contextual_links_view_alter()
  */
 function uib_study_contextual_links_view_alter(&$element, $items) {
-  if ($element['#element']['#block']->module == 'uib_study' && $element['#element']['#block']->delta == 'study_content') {
-    unset($element['#links']);
+  if (isset($element['#element']['#block'])) {
+    if ($element['#element']['#block']->module == 'uib_study' && $element['#element']['#block']->delta == 'study_content') {
+      unset($element['#links']);
+    }
   }
 }
