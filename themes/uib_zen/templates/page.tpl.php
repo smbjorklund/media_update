@@ -210,7 +210,7 @@
   <div id="main">
     <div id="content" class="column" role="main">
       <?php print render($page['highlighted']); ?>
-      <?php if (isset($variables['node']) && $variables['node']->type != 'area'): ?>
+      <?php if ((isset($variables['node']) && $variables['node']->type != 'area') || (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2)))): ?>
         <?php print $breadcrumb; ?>
       <?php endif; ?>
       <a id="main-content"></a>
