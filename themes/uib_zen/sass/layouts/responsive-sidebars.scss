@@ -104,7 +104,7 @@ $zen-auto-include-item-base: false;
   @include zen-grid-container;
 }
 #bottom-region-wrapper .inner {
-  $zen-column-count: 5;
+  $zen-column-count: 6;
 }
 
 .region-bottom {
@@ -118,7 +118,24 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(1, 3);
   }
   #block-uib-area-colophon-logos {
-    @include zen-grid-item(2, 4);
+    $zen-column-count: 6;
+    @include zen-grid-item(3, 4);
+    #banner1 {
+      @include zen-grid-item(3, 1);
+    }
+    #banner2 {
+      @include zen-grid-item(3, 4);
+    }
+  }
+  #block-views-relevant-links-block-1 {
+    .item-list {
+      ul {
+        margin: 0;
+      }
+    }
+    .field-name-field-uib-title {
+      margin: 0;
+    }
   }
 }
 
@@ -223,6 +240,10 @@ $zen-auto-include-item-base: false;
     #block-views-relevant-links-block-1 {
       @include zen-grid-item(1, 1);
       @include zen-clear();
+      div {
+        float: left;
+        padding: 2px;
+      }
     }
     #block-uib-area-colophon-logos {
       @include zen-clear();

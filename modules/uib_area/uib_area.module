@@ -225,11 +225,18 @@ function uib_area_block_view($delta='') {
       $path = $base_url . '/' . $theme_path . '/images/';
       $logo0_nb = $path . 'grunnloven_nb.png';
       $logo0_en = $path . 'grunnloven_en.png';
+      $logo1_nb = $path . 'bsrs.png';
+      $logo1_en = $path . 'bsrs.png';
       $area = uib_area__get_current();
       if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
         if ($area->language == 'en') {
           $block['content'] = '
-            <div class="banner eng">
+            <div id="banner1" class="banner eng">
+              <a title="Bergen Summer Research School" href="http://www.uib.no/rs/bsrs">
+                <img alt="Bergen Summer Research School" src="' . $logo1_en . '"/>
+              </a>
+            </div>
+            <div id="banner2" class="banner eng">
               <a title="The Bicentenary of the Norwegian Constitution in 2014" href="http://www.uib.no/en/constitution2014">
                 <img alt="The Bicentenary of the Norwegian Constitution in 2014" src="' . $logo0_en . '"/>
               </a>
@@ -238,7 +245,12 @@ function uib_area_block_view($delta='') {
         }
         else {
           $block['content'] = '
-            <div class="banner">
+            <div id="banner1" class="banner">
+              <a title="Bergen Summer Research School" href="http://www.uib.no/rs/bsrs">
+                <img alt="Bergen Summer Research School" src="' . $logo1_nb . '" />
+              </a>
+            </div>
+            <div id="banner2" class="banner">
               <a title="Grunnlovsjubileet 2014" href="http://www.uib.no/grunnlovsjubileet2014">
                 <img alt="Grunnlovsjubileet 2014" src="' . $logo0_nb . '" />
               </a>
