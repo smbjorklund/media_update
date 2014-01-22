@@ -33,46 +33,42 @@ function _uib_h2tabs_filter_h2_prepare($text, $filter) {
  * do the real filtering. Note that themes/uib_zen/sass/nodes.scss has corresponding formatting
  */
 function _uib_h2tabs_filter_h2_process($text, $filter) {
-  // Make sure that we are dealing with an uib_article
-  $node_type = uib_area__get_node_type();
-  if ($node_type == 'uib_article') {
-    // Recode markup
-    $h2s = array();
-    $e = preg_match_all('/<h2.*?>(.*?)<\/h2>/', $text, $h2s, PREG_OFFSET_CAPTURE);
-    if ($e > 0) {
-      $hits_index = count($h2s[1]) -1;
-      // Table of contents
-      $toc = "<ul class=\"uib-tabs-list\">
-        ";
-      for ($i = 0; $i <= $hits_index; $i++) {
-
-        $toc .= "<li><a href=\"#t$i\" ";
-        $toc .= ">" . $h2s[1][$i][0] . "</a></li>
-        ";
-      }
-      $toc .= "</ul>
+  // Recode markup
+  $h2s = array();
+  $e = preg_match_all('/<h2.*?>(.*?)<\/h2>/', $text, $h2s, PREG_OFFSET_CAPTURE);
+  if ($e > 0) {
+    $hits_index = count($h2s[1]) -1;
+    // Table of contents
+    $toc = "<ul class=\"uib-tabs-list\">
       ";
-      // Tabs contents
-      $tabs_contents = '';
-      for ($i = $hits_index; $i >= 0; $i--) { // loop backwards through hits
-        $add_markup = "<div id=\"t$i\">
-        ";
-        // Use the content of the h2, i.e. the contents of the first captured pattern
-        $pos_match = $h2s[0][$i][1]; // position of match in text
-        $add_markup .= substr($text,$pos_match);
-        $text = substr($text, 0 ,$pos_match); // remove this portion from text
-        $add_markup .= "
-        </div>
-        ";
-        $tabs_contents = $add_markup . $tabs_contents;
-      }
-      return $text . "
-        <div class=\"uib-tabs-container\">
-        " . $toc . "<div class=\"tabs-content\">" .
-        $tabs_contents . "
-        </div>
-        </div>";
+    for ($i = 0; $i <= $hits_index; $i++) {
+
+      $toc .= "<li><a href=\"#t$i\" ";
+      $toc .= ">" . $h2s[1][$i][0] . "</a></li>
+      ";
     }
+    $toc .= "</ul>
+    ";
+    // Tabs contents
+    $tabs_contents = '';
+    for ($i = $hits_index; $i >= 0; $i--) { // loop backwards through hits
+      $add_markup = "<div id=\"t$i\">
+      ";
+      // Use the content of the h2, i.e. the contents of the first captured pattern
+      $pos_match = $h2s[0][$i][1]; // position of match in text
+      $add_markup .= substr($text,$pos_match);
+      $text = substr($text, 0 ,$pos_match); // remove this portion from text
+      $add_markup .= "
+      </div>
+      ";
+      $tabs_contents = $add_markup . $tabs_contents;
+    }
+    return $text . "
+      <div class=\"uib-tabs-container\">
+      " . $toc . "<div class=\"tabs-content\">" .
+      $tabs_contents . "
+      </div>
+      </div>";
   }
   return $text;
 }
