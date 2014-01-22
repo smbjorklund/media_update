@@ -6,13 +6,13 @@
           var curData = $( ".previous-exists" );
           var prevData = $( ".previous-semester" );
           var nextData = $( ".next-semester" );
-          $( "button.previous" ).click(function() {
+          $( "a.previous" ).click(function() {
             curData.hide();
             prevData.show();
             nextData.hide();
-            $( "button.previous" ).addClass( "is-active" );
-            $( "button.current" ).removeClass( "is-active" );
-            $( "button.next" ).removeClass( "is-active" );
+            $( "a.previous" ).addClass( "is-active" );
+            $( "a.current" ).removeClass( "is-active" );
+            $( "a.next" ).removeClass( "is-active" );
           });
       });
     }
@@ -24,13 +24,13 @@
           var curData = $( ".variants-exist" );
           var prevData = $( ".previous-semester" );
           var nextData = $( ".next-semester" );
-          $( "button.current" ).click(function() {
+          $( "a.current" ).click(function() {
             curData.show();
             prevData.hide();
             nextData.hide();
-            $( "button.current" ).addClass( "is-active" );
-            $( "button.previous" ).removeClass( "is-active" );
-            $( "button.next" ).removeClass( "is-active" );
+            $( "a.current" ).addClass( "is-active" );
+            $( "a.previous" ).removeClass( "is-active" );
+            $( "a.next" ).removeClass( "is-active" );
           });
       });
     }
@@ -42,13 +42,13 @@
           var curData = $( ".next-exists" );
           var prevData = $( ".previous-semester" );
           var nextData = $( ".next-semester" );
-          $( "button.next" ).click(function() {
+          $( "a.next" ).click(function() {
             curData.hide();
             prevData.hide();
             nextData.show();
-            $( "button.previous" ).removeClass( "is-active" );
-            $( "button.current" ).removeClass( "is-active" );
-            $( "button.next" ).addClass( "is-active" );
+            $( "a.previous" ).removeClass( "is-active" );
+            $( "a.current" ).removeClass( "is-active" );
+            $( "a.next" ).addClass( "is-active" );
           });
       });
     }

@@ -553,14 +553,14 @@ function uib_study_block_view($delta = '') {
         if ($prev || $next) {
            $markup = '<ul>';
           if ($prev) {
-            $markup .= '<li><button type="button" class="previous">' . uib_study__semester_name($previous_semester);
-            $markup .= ' (' . t('Previous semester') . ')' . '</button></li>';
+            $markup .= '<li><a href="#" class="previous">' . uib_study__semester_name($previous_semester);
+            $markup .= ' (' . t('Previous semester') . ')' . '</a></li>';
           }
-          $markup .= '<li><button type="button" class="current is-active">' . uib_study__semester_name($current_semester);
-          $markup .= ' (' . t('Current semester') . ')' . '</button></li>';
+          $markup .= '<li><a href="#" class="current is-active">' . uib_study__semester_name($current_semester);
+          $markup .= ' (' . t('Current semester') . ')' . '</a></li>';
           if ($next) {
-            $markup .= '<li><button type="button" class="next">' . uib_study__semester_name($next_semester);
-            $markup .= ' (' . t('Next semester') . ')' . '</button></li>';
+            $markup .= '<li><a href="#" class="next">' . uib_study__semester_name($next_semester);
+            $markup .= ' (' . t('Next semester') . ')' . '</a></li>';
           }
           $markup .= '</ul>';
           $block['subject'] = t('Select semester');
