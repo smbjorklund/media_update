@@ -87,7 +87,6 @@ features[node][] = area
 features[node][] = uib_ou
 features[page_manager_handlers][] = node_view_panel_context
 features[page_manager_handlers][] = term_view_panel_context
-features[variable][] = entity_translation_entity_types
 features[variable][] = field_bundle_settings_node__area
 features[variable][] = i18n_node_extended_area
 features[variable][] = i18n_node_extended_uib_ou

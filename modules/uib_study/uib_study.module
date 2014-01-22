@@ -1150,3 +1150,14 @@ function uib_study__prepare_path($in_path) {
   $path = preg_replace('/(_)_+|(-)-+/', '\\1\\2', $path);
   return $path;
 }
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function uib_study_entity_info_alter(&$entity_info) {
+  $entity_info['taxonomy_term']['view modes']['teaser'] = array(
+    'label' => t('Teaser'),
+    'custom settings' => TRUE,
+  );
+
+}

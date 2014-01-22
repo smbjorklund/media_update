@@ -345,7 +345,10 @@ function uib_setup_user_default_permissions() {
   // Exported permission: administer taxonomy.
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'admin',
+      1 => 'level 1',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -1473,6 +1476,17 @@ function uib_setup_user_default_permissions() {
       1 => 'level 1',
     ),
     'module' => 'locale',
+  );
+
+  // Exported permission: translate taxonomy_term entities.
+  $permissions['translate taxonomy_term entities'] = array(
+    'name' => 'translate taxonomy_term entities',
+    'roles' => array(
+      0 => 'admin',
+      1 => 'level 1',
+      2 => 'level 2',
+    ),
+    'module' => 'entity_translation',
   );
 
   // Exported permission: translate user-defined strings.
