@@ -440,4 +440,14 @@ h1 {
       border-right:  solid 1px silver;
     }
   }
+  .node-uib-testimonial {
+    background: #f1f1ef;
+    .field-name-field-uib-media {
+      float: left;
+      padding: 0 10px 0 10px;
+    }
+    .field-name-field-uib-quote {
+      padding: 8px 10px 0 0;
+    }
+  }
 }
