@@ -2159,6 +2159,7 @@ return !empty($handler->argument);';
   );
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'clearfix';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Photo */
   $handler->display->display_options['fields']['field_uib_media']['id'] = 'field_uib_media';
