@@ -442,6 +442,7 @@ h1 {
   }
   .node-uib-testimonial {
     background: #f1f1ef;
+    border: solid 1px silver;
     .field-name-field-uib-media {
       float: left;
       padding: 0 10px 0 10px;
@@ -459,5 +460,11 @@ h1 {
       font-weight: bold;
       color: #037caf;
     }
+  }
+  #block-uib-study-study-testimonial .block__title, #block-uib-study-study-facts .block__title, #block-uib-study-study-contact .block__title {
+    display: none;
+  }
+  #block-uib-study-study-content h3 {
+    padding: 20px 0 0 0;
   }
 }

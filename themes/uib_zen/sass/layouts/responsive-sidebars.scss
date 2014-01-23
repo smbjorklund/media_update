@@ -1522,4 +1522,9 @@ $zen-auto-include-item-base: false;
     min-width: 706px;
     margin-left: 180px;
   }
+
+  /* Study */
+  #block-uib-study-study-facts table, #block-uib-study-study-contact table {
+    min-width: 340px;
+  }
 }
