@@ -450,4 +450,14 @@ h1 {
       padding: 8px 10px 0 0;
     }
   }
+  #block-uib-study-study-semester-toggle {
+    background: #f1f1ef;
+    padding: 5px 10px 5px 10px;
+    border: solid 1px silver;
+    .is-active {
+      background: none;
+      font-weight: bold;
+      color: #037caf;
+    }
+  }
 }
