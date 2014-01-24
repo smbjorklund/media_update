@@ -223,13 +223,15 @@ function uib_study_field_default_fields() {
         'handler_settings' => array(
           'behaviors' => array(
             'views-select-list' => array(
-              'status' => 0,
+              'status' => 1,
             ),
           ),
           'sort' => array(
             'type' => 'none',
           ),
-          'target_bundles' => array(),
+          'target_bundles' => array(
+            'uib_nus' => 'uib_nus',
+          ),
         ),
         'target_type' => 'taxonomy_term',
       ),

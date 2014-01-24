@@ -864,6 +864,23 @@ return !empty($handler->argument);';
     74573517 => 0,
     176168899 => 0,
   );
+  /* Filter criterion: Content: NUS (field_uib_nus) */
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['id'] = 'field_uib_nus_target_id';
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['table'] = 'field_data_field_uib_nus';
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['field'] = 'field_uib_nus_target_id';
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['operator_id'] = 'field_uib_nus_target_id_op';
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['label'] = 'Disipline';
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['operator'] = 'field_uib_nus_target_id_op';
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['identifier'] = 'nus';
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
   $handler->display->display_options['path'] = 'course';
 
   /* Display: All studyprogrammes */
@@ -1007,6 +1024,7 @@ return !empty($handler->argument);';
     t('last »'),
     t('<a href="[path]">[field_uib_study_code] [field_uib_study_title]</a>'),
     t('Type'),
+    t('Disipline'),
     t('All studyprogrammes'),
     t('Listing all study programmes'),
   );
