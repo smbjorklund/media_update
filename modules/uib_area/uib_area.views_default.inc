@@ -951,6 +951,30 @@ return !empty($handler->argument);';
     74573517 => 0,
     176168899 => 0,
   );
+  /* Filter criterion: Content: Category (field_uib_study_category) */
+  $handler->display->display_options['filters']['field_uib_study_category_value']['id'] = 'field_uib_study_category_value';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['table'] = 'field_data_field_uib_study_category';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['field'] = 'field_uib_study_category_value';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['operator'] = 'and';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['value'] = array(
+    'bachelorprogram' => 'bachelorprogram',
+    'arsstudium' => 'arsstudium',
+    'masterprogram' => 'masterprogram',
+  );
+  $handler->display->display_options['filters']['field_uib_study_category_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator_id'] = 'field_uib_study_category_value_op';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator'] = 'field_uib_study_category_value_op';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['identifier'] = 'category';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['reduce'] = TRUE;
   $handler->display->display_options['path'] = 'studyprogramme';
   $translatables['courses'] = array(
     t('Master'),
