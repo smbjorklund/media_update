@@ -1,3 +1,20 @@
+# Release 2014-01-28 tag: R5.3
+
+Releasen inneholder funksjonalitet for visning av studieprogram og emner, samt stylig for disse. Den inneholder også oppgradering av flere Drupalmoduler og fikser et par feil i løsningen. Legger også til ny logo på forsiden.
+
+* Retter på utseende på utskrift av sider som bruker faner #4145
+* Retter kolofon, slik at den viser adresse til området, ikke bare sentral adresse #3902
+* Retter opp feil som har oppstått med ujevne mellomrom der faner på infosider har forsvunnet #2542
+* Fjerner understreking på lenker i brødsmulesti og faner #4945 
+* Diverse styling knyttet til studieprogram og emner #5111 #5131 #5110 #5109 #5058 #4967 #4965 #4963 #4962 #4959 #4952 #4964
+* Diverse funksjonalitet knyttet til studieprogram og emner #4991 #4724 #4306 #4622 #4941 #4699 #4943 #4609 #4950 #4966
+* Legger til BSRS logoen til forsiden #4989
+* Rydder i styling til de nye sidene for phd-pressemeldinger #4946
+* Oppgraderinger av Drupal-moduler #4957 #4950 #4956
+* Fuksjonalitet knyttet til visning av studieprogram sortert etter NUS-kode #5040 #3820 #4996
+* Andre tekniske saker #4995 #4997
+
+
 # Release 2014-01-10 tag: R5.2
 
 Releasen inneholder funksjonalitet for visning av studieprogram og emner, samt stylig for disse, implementerer også en ny innholdstype og område for nye doktorgrader og migrerer områdene uib.no/project/speakup og diverse områder tilknyttet Kommunikasjonsavdelinga.
