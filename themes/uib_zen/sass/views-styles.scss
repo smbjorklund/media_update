@@ -384,3 +384,9 @@ table.cols-6 {
     line-height: 2em;
   }
 }
+
+.view-id-taxonomy_term {
+  .view-content, .attachment-after {
+    background-color: $light-grey;
+  }
+}

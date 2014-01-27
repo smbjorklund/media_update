@@ -907,6 +907,14 @@ function uib_study_form_alter(&$form, &$form_state, $form_id) {
     hide($form['path']);
     hide($form['author']);
   }
+  elseif ($form_id == 'taxonomy_form_term' && $form['#vocabulary']->name == 'uib_nus') {
+    // hide fields that are synchronised
+    hide($form['name']);
+    hide($form['description']);
+    hide($form['relations']);
+    hide($form['field_uib_nus_id']);
+    hide($form['field_uib_term_title']);
+  }
 }
 
 function uib_study__extract_study_info(&$data, $info_type = NULL) {
@@ -1159,5 +1167,25 @@ function uib_study_entity_info_alter(&$entity_info) {
     'label' => t('Teaser'),
     'custom settings' => TRUE,
   );
+}
 
+/**
+ * Implements hook_views_pre_render().
+ */
+function uib_study_views_pre_render(&$view) {
+  if ($view->name == 'taxonomy_term') {
+    $term_id = $view->args[0];
+    // The taxonomy term itself
+    $term = taxonomy_term_view(taxonomy_term_load($term_id), $view_mode = 'full');
+    $view->attachment_before = render($term);
+
+    // List underlying taxonomy terms
+    $children = taxonomy_get_children($term_id);
+    if (!empty($children)) {
+      foreach ($children as $tid => $child) {
+        $term = taxonomy_term_view($child, $view_mode = 'teaser');
+        $view->attachment_after .= render($term);
+      }
+    }
+  }
 }

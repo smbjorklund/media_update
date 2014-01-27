@@ -298,6 +298,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     $variables['is_employee'] = TRUE;
   }
 
+  if ($variables['type'] == 'uib_study' && $variables['teaser']) {
+    $variables['theme_hook_suggestions'][] = 'node__uib_study__teaser';
+  }
+
+
   /**
    * Only run this when nodes are rendered on a page.
    */
