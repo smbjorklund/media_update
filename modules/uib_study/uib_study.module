@@ -98,6 +98,7 @@ function uib_study__infotyper_render(&$page, $render, $filter) {
     return FALSE;
   $wrong_chars = array(' ', 'æ', 'ø' ,'å');
   $count = 0;
+  $is_course = uib_study__is_course();
   foreach ($render as $group) {
     if ($filter && !$filter($group['#group']))
       continue;
@@ -116,7 +117,7 @@ function uib_study__infotyper_render(&$page, $render, $filter) {
     foreach ($group['#items'] as $item) {
       $page[$group['#group']][$item['#type']] = array(
         '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
-        '#markup' => uib_study__text_markup($item),
+        '#markup' => uib_study__text_markup($item, $is_course),
       );
     }
     if (array_key_exists('em-emnebeskrivelse', $page)) {
@@ -278,6 +279,7 @@ function uib_study_block_view($delta = '') {
   global $language;
   $block = array();
   $data = FALSE;
+  $is_course = uib_study__is_course();
   switch ($delta) {
     case 'study_content':
       $splice_list = array(
@@ -415,7 +417,7 @@ function uib_study_block_view($delta = '') {
         if ($tmp) {
           $render = array(
             '#prefix' => '<h3>' . check_plain($tmp['#title']) . '</h3>',
-            '#markup' => uib_study__text_markup($tmp),
+            '#markup' => uib_study__text_markup($tmp, $is_course),
           );
         }
         if ($render) {
@@ -436,7 +438,7 @@ function uib_study_block_view($delta = '') {
           $study_code = $data['emneid']['emnekode'];
           $rows[] = array(t('Teaching semester'), $data['undervisningssemester']);
           $tmp = uib_study__extract_study_info($data_2, 'EB_SPRAK');
-          $rows[] = array(t('Teaching language'), uib_study__text_markup($tmp, TRUE));
+          $rows[] = array(t('Teaching language'), uib_study__text_markup($tmp, $is_course, TRUE));
           $tmp = uib_study__studieniva($data['studieniva']);
           if (!empty($tmp)) {
             $rows[] = array(t('Study level'), check_plain($tmp));
@@ -459,7 +461,7 @@ function uib_study_block_view($delta = '') {
           $duration = number_format(round($data['heltidsprosent'] * $data['studiepoeng'] / 60 / 100, 1) , 1, ',', ' ');
           $rows[] = array(t('Duration'), $duration . ' ' . t('years'));
           $tmp = uib_study__extract_study_info($data_2, 'B_RE_PLASS');
-          $rows[] = array(t('Number of seats'), uib_study__text_markup($tmp, TRUE));
+          $rows[] = array(t('Number of seats'), uib_study__text_markup($tmp, $is_course, TRUE));
           if (empty($data['gradnavn'])) {
             $rows[] = array(t('Degree'));
           }
@@ -534,7 +536,7 @@ function uib_study_block_view($delta = '') {
       break;
 
     case 'study_semester_toggle':
-      if (arg(0) == 'node' && is_numeric(arg(1))) {
+      if (arg(0) == 'node' && is_numeric(arg(1)) && uib_study__is_course()) {
         $data = uib_study__fspres_get_node_json(arg(1), 'render.json', TRUE);
         list($previous_semester, $current_semester, $next_semester) = uib_study__get_adjacent_semesters();
         $prev = FALSE;
@@ -966,51 +968,53 @@ function uib_study__extract_study_info(&$data, $info_type = NULL) {
 /**
  * Add div with semester classes to all semester variants of a study text item
  */
-function uib_study__text_markup($item, $plain = FALSE) {
+function uib_study__text_markup($item, $is_course, $plain = FALSE) {
   if (empty($item)) {
     return;
   }
-  $variants = '';
-  $prev = FALSE;
-  $next = FALSE;
   $tmp_markup = '';
-  list($previous_semester, $current_semester, $next_semester) = uib_study__get_adjacent_semesters();
-  if (isset($item['#variants'])) {
-    foreach ($item['#variants'] as $sem_key => $sem_variant) {
-      if ($sem_key == $previous_semester) {
-        $css_semester = 'previous-semester';
-        $prev = TRUE;
+  if ($is_course) {
+    $variants = '';
+    $prev = FALSE;
+    $next = FALSE;
+    list($previous_semester, $current_semester, $next_semester) = uib_study__get_adjacent_semesters();
+    if (isset($item['#variants'])) {
+      foreach ($item['#variants'] as $sem_key => $sem_variant) {
+        if ($sem_key == $previous_semester) {
+          $css_semester = 'previous-semester';
+          $prev = TRUE;
+        }
+        elseif ($sem_key == $next_semester) {
+          $css_semester = 'next-semester';
+          $next = TRUE;
+        }
+        $tmp_markup .= '<div class="' . $css_semester . ' ' . check_plain($sem_key) . '">';
+        if ($plain) {
+          // no html tags
+          $tmp_markup .= check_plain(strip_tags($sem_variant));
+        }
+        else {
+          // keep html tags
+          $tmp_markup .= uib_study__filter_text($sem_variant);
+        }
+        $tmp_markup .= '</div>';
       }
-      elseif ($sem_key == $next_semester) {
-        $css_semester = 'next-semester';
-        $next = TRUE;
-      }
-      $tmp_markup .= '<div class="' . $css_semester . ' ' . check_plain($sem_key) . '">';
-      if ($plain) {
-        // no html tags
-        $tmp_markup .= check_plain(strip_tags($sem_variant));
-      }
-      else {
-        // keep html tags
-        $tmp_markup .= uib_study__filter_text($sem_variant);
-      }
-      $tmp_markup .= '</div>';
     }
+    if ($prev) {
+      $variants .= 'previous-exists ';
+    }
+    if ($next) {
+      $variants .= 'next-exists ';
+    }
+    if (empty($variants)) {
+      $variants = 'no-variants';
+    }
+    else {
+      $variants .= 'variants-exist ';
+    }
+    $variants = trim($variants);
+    $tmp_markup .= '<div class="current-semester ' . $current_semester . ' ' . $variants . '">';
   }
-  if ($prev) {
-    $variants .= 'previous-exists ';
-  }
-  if ($next) {
-    $variants .= 'next-exists ';
-  }
-  if (empty($variants)) {
-    $variants = 'no-variants';
-  }
-  else {
-    $variants .= 'variants-exist ';
-  }
-  $variants = trim($variants);
-  $tmp_markup .= '<div class="current-semester ' . $current_semester . ' ' . $variants . '">';
   if ($plain) {
     // no html tags
     $tmp_markup .= check_plain(strip_tags($item['#text']));
@@ -1019,7 +1023,9 @@ function uib_study__text_markup($item, $plain = FALSE) {
     // keep html tags
     $tmp_markup .= uib_study__filter_text($item['#text']);
   }
-  $tmp_markup .= '</div>';
+  if ($is_course) {
+    $tmp_markup .= '</div>';
+  }
   return $tmp_markup;
 }
 
@@ -1211,4 +1217,21 @@ function uib_study_views_pre_render(&$view) {
       }
     }
   }
+}
+
+/**
+ * Function to check if current node's study_type is course
+ * @return [bool]
+ */
+function uib_study__is_course() {
+  $is_course = FALSE;
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'uib_study')
+      ->entityCondition('entity_id', arg(1))
+      ->fieldCondition('field_uib_study_type', 'value', 'course', '=');
+    $is_course = $query->execute();
+  }
+  return $is_course;
 }
