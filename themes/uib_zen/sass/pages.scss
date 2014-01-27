@@ -110,6 +110,7 @@ body {
     }
     #popup-buttons {
       button {
+        filter: none;
         font-family: Verdana, Tahoma, 'DejaVu Sans', sans-serif;
         background: #1673A6;
         color: #fff;
@@ -121,6 +122,7 @@ body {
         box-shadow: none;
         border: 0;
         &:hover {
+          filter: none;
           color:#000;
         }
       }
