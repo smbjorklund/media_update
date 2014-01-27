@@ -947,82 +947,6 @@ function uib_testimonial_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-uib_testimonial-field_uib_related_programmes'.
-  $fields['node-uib_testimonial-field_uib_related_programmes'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_uib_related_programmes',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'uib_testimonial',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
-        ),
-        'short_teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '9',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_uib_related_programmes',
-      'label' => 'Related studyprogrammes',
-      'required' => 0,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '19',
-      ),
-    ),
-  );
-
   // Exported field: 'node-uib_testimonial-field_uib_relation'.
   $fields['node-uib_testimonial-field_uib_relation'] = array(
     'field_config' => array(
@@ -1488,7 +1412,6 @@ function uib_testimonial_field_default_fields() {
   t('Position');
   t('Quote');
   t('Related study programmes');
-  t('Related studyprogrammes');
   t('Relation');
   t('Text');
   t('The quote that will be highlighted in the middle of the page and all the places this testimonial is featured. ');

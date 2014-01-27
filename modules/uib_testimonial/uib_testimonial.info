@@ -31,7 +31,6 @@ features[field][] = node-uib_testimonial-field_uib_name
 features[field][] = node-uib_testimonial-field_uib_organization
 features[field][] = node-uib_testimonial-field_uib_position
 features[field][] = node-uib_testimonial-field_uib_quote
-features[field][] = node-uib_testimonial-field_uib_related_programmes
 features[field][] = node-uib_testimonial-field_uib_relation
 features[field][] = node-uib_testimonial-field_uib_study_programmes
 features[field][] = node-uib_testimonial-field_uib_text

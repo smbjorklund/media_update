@@ -82,3 +82,11 @@ function uib_testimonial_update_7001() {
     }
   }
 }
+
+/**
+ * Remove field_uib_related_programmes
+ */
+function uib_testimonial_update_7002() {
+  field_delete_field('field_uib_related_programmes');
+  field_purge_batch(1000);
+}
