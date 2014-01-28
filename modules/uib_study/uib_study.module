@@ -454,6 +454,10 @@ function uib_study_block_view($delta = '') {
 
         //$rows[] = array(t('Study type'), $type);
 
+        foreach ($rows as $i => $row) {
+          if (empty($row[1])) $rows[$i] = array();
+        }
+
         $render = array(
           '#theme' => 'table',
           '#rows' => $rows,
@@ -953,6 +957,9 @@ function uib_study__extract_study_info(&$data, $info_type = NULL) {
  * Add div with semester classes to all semester variants of a study text item
  */
 function uib_study__text_markup($item, $plain = FALSE) {
+  if (empty($item)) {
+    return;
+  }
   $variants = '';
   $prev = FALSE;
   $next = FALSE;
