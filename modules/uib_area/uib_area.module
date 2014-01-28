@@ -1048,6 +1048,7 @@ function uib_area_node_update($node) {
  */
 function uib_area_node_delete($node) {
   if ($node->type == 'area') {
+    global $user;
     // remove uib area aliases
     uib_area__remove_area_aliases($node->nid);
     // remove the menu for this area
@@ -1057,6 +1058,9 @@ function uib_area_node_delete($node) {
         menu_delete($menu);
       }
     }
+    // remove content owned by the area
+    uib_area__cleanup($node);
+    uibx_log("node/$node->nid [$node->type] deleted by user $user->uid", 'notice');
   }
 }
 
@@ -1518,5 +1522,455 @@ function uib_area__get_stub_info($stubtitle) {
   }
   catch (Exception $e) {
     return FALSE;
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function uib_area_menu() {
+  $items['node/%node/ties'] = array(
+    'title' => 'Ties',
+    'page callback' => 'uib_area__ties',
+    'page arguments' => array(1),
+    'access callback' => 'uib_area__ties_access_check',
+    'type' => MENU_LOCAL_TASK,
+  );
+  return $items;
+}
+
+/**
+ * Check access to the ties local task
+ */
+function uib_area__ties_access_check() {
+  $node = node_load(arg(1));
+  if ($node && $node->type == 'area') {
+    if (user_access('delete any area content')) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Setup contents of the ties local task tab
+ */
+function uib_area__ties($node) {
+  $ties = array();
+  // Node info
+  $ties['area_node'] = uib_area__ties_node($node);
+  // Menu info
+  $ties['menu'] = uib_area__ties_menu($node->nid);
+  // Menu links
+  $ties['menu_links'] = uib_area__ties_menu_links($node->nid);
+  // Aliases
+  $ties['aliases'] = uib_area__ties_aliases($node->nid);
+  // Redirects
+  $ties['redirects'] = uib_area__ties_redirects($node->nid);
+  // Children
+  $ties['children'] = uib_area__ties_children($node->nid);
+  // Connected content
+  $ties['connected'] = uib_area__ties_content($node->nid);
+  return $ties;
+}
+
+/**
+ * Format the node section of the ties tab
+ */
+function uib_area__ties_node($area_node) {
+  if (empty($area_node) || $area_node->type != 'area') {
+    return array();
+  }
+  $published = ($area_node->status) ? t('published') : t('unpublished');
+  return array(
+    '#prefix' => '<div id="node-info">',
+    '#suffix' => '</div>',
+    'title' => array(
+      '#type' => 'html_tag',
+      '#tag' => 'h1',
+      '#value' => $area_node->title,
+      ),
+    'text' => array(
+      '#markup' => '<p>' . drupal_ucfirst($area_node->type) . ' ' . t('node') . ' ' . $area_node->nid . '<br>' .
+      t('status') . ': ' . $published . '<br>' .
+      t('language') . ': ' . $area_node->language . '</p>',
+      ),
+    );
+}
+
+/**
+ * Build the menu section of the ties tab
+ */
+function uib_area__ties_menu($area_nid) {
+  // Menu and menu links
+  $area_path = 'node/' . $area_nid;
+  $menu_connection = array(
+  '#prefix' => '<div id="connected-menu">',
+  '#suffix' => '</div>',
+  'title' => array(
+    '#type' => 'html_tag',
+    '#tag' => 'h2',
+    '#value' => t('Menu'),
+    ),
+  );
+  if ($area_menu = menu_load('menu-area-' . $area_nid)) {
+    $menu_connection['menu'] = array(
+      '#markup' => '<p><span class="menu-title">' . $area_menu['title'] . '</span><br>' . t('machine name') . ': ' . $area_menu['menu_name'] . '</p>',
+      );
+  }
+  else {
+    $menu_connection['menu'] = array(
+      '#markup' => '<p>' . t('No menu') . '</p>',
+      );
+  }
+  return $menu_connection;
+}
+
+/**
+ * Build the menu links section of the ties tab
+ */
+function uib_area__ties_menu_links($area_nid) {
+  $area_path = 'node/' . $area_nid;
+  $menu_links = array(
+    '#prefix' => '<div id="menu-links">',
+    '#suffix' => '</div>',
+    'title' => array(
+      '#type' => 'html_tag',
+      '#tag' => 'h2',
+      '#value' => t('Menu links'),
+      ),
+    );
+  $result = db_query('SELECT mlid, link_path, menu_name, link_title, hidden FROM {menu_links} WHERE link_path LIKE :lpt',
+    array(':lpt' => $area_path . '%')
+    );
+  if ($result) {
+    $lnk_table = array(
+      '#theme' => 'table',
+      '#header' => array(t('link id'), t('menu name'), t('path'), t('link title'), t('hidden')),
+      );
+    $rows = array();
+    foreach ($result as $lnk) {
+      if ($lnk->menu_name != 'area') {
+        $tmp = array($lnk->mlid, $lnk->menu_name, l($lnk->link_path, $lnk->link_path), truncate_utf8($lnk->link_title, 80, TRUE, TRUE));
+        $tmp[] = ($lnk->hidden) ? t('yes') : t('no');
+        $rows[] = $tmp;
+      }
+    }
+    if (!empty($rows)) {
+      $lnk_table['#rows'] = $rows;
+      $menu_links['links'] = $lnk_table;
+    }
+  }
+  if (empty($menu_links['links'])) {
+    $menu_links['links'] = array(
+      '#markup' => '<p>' . t('No menu links point to this node') . '</p>',
+      );
+  }
+  return $menu_links;
+}
+
+/**
+ * Build the aliases section of the ties tab
+ */
+function uib_area__ties_aliases($area_nid) {
+  // Aliases
+  $area_path = 'node/' . $area_nid;
+  $aliases = array(
+    '#prefix' => '<div id="aliases">',
+    '#suffix' => '</div>',
+    'title' => array(
+      '#type' => 'html_tag',
+      '#tag' => 'h2',
+      '#value' => t('Aliases'),
+      ),
+    );
+  $result = db_query('SELECT source, alias, language FROM {url_alias} WHERE source LIKE :lpt',
+    array(':lpt' => $area_path . '%')
+    );
+  if ($result) {
+    $alias_table = array(
+      '#theme' => 'table',
+      '#header' => array(t('alias'), t('source'), t('language')),
+      );
+    $rows = array();
+    foreach ($result as $alias) {
+      $rows[] = array($alias->alias, l($alias->source, $alias->source), $alias->language);
+    }
+    if (!empty($rows)) {
+      $alias_table['#rows'] = $rows;
+      $aliases['aliases'] = $alias_table;
+    }
+  }
+  if (empty($aliases['aliases'])) {
+    $aliases['aliases'] = array(
+      '#markup' => '<p>' . t('No aliases') . '</p>',
+      );
+  }
+  return $aliases;
+}
+
+/**
+ * Build the redirects section of the ties tab
+ */
+function uib_area__ties_redirects($area_nid) {
+  // Redirects
+  $area_path = 'node/' . $area_nid;
+  $redirects = array(
+    '#prefix' => '<div id="redirects">',
+    '#suffix' => '</div>',
+    'title' => array(
+      '#type' => 'html_tag',
+      '#tag' => 'h2',
+      '#value' => t('Redirects'),
+      ),
+    );
+  $area_alias = path_load($area_path);
+  $query = 'SELECT source, count FROM {redirect} WHERE redirect = :lpt';
+  $data = array(':lpt' => $area_path);
+  if (!empty($area_alias['alias'])) {
+    $query .= ' OR redirect = :als OR redirect = :lal';
+    $data[':als'] = $area_alias['alias'];
+    $data[':lal'] = $area_alias['language'] . '/' . $area_alias['alias'];
+  }
+  $result = db_query($query, $data);
+  if ($result) {
+    $redirects_table = array(
+      '#theme' => 'table',
+      '#header' => array(t('source'), t('count')),
+      );
+    $rows = array();
+    foreach ($result as $redirect) {
+      $rows[] = array(l($redirect->source, $redirect->source), $redirect->count);
+    }
+    if (!empty($rows)) {
+      $redirects_table['#rows'] = $rows;
+      $redirects['redirects'] = $redirects_table;
+    }
+  }
+  if (empty($redirects['redirects'])) {
+    $redirects['redirects'] = array(
+      '#markup' => '<p>' . t('No redirects') . '</p>',
+      );
+  }
+  return $redirects;
+}
+
+/**
+ * Build the node children section of the ties tab
+ */
+function uib_area__ties_children($area_nid) {
+  // Is parent of
+  $children = array(
+    '#prefix' => '<div id="children">',
+    '#suffix' => '</div>',
+    'title' => array(
+      '#type' => 'html_tag',
+      '#tag' => 'h2',
+      '#value' => t('Area children'),
+      ),
+    'text' => array(
+      '#markup' => '<p>' . t('Areas of which this area is a parent') . '</p>',
+      ),
+    );
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->fieldCondition('field_uib_area_parents', 'target_id', $area_nid)
+    ->execute();
+  if ($result) {
+    $children_table = array(
+      '#theme' => 'table',
+      '#header' => array(t('path')),
+      );
+    $rows = array();
+    foreach ($result['node'] as $child) {
+      $child_path = 'node/' . $child->nid;
+      $child_path_alias = path_load($child_path);
+      $rows[] = array(l($child_path, $child_path), $child_path_alias['alias']);
+    }
+    if (!empty($rows)) {
+      $children_table['#rows'] = $rows;
+      $children['children'] = $children_table;
+    }
+  }
+  if (empty($children['children'])) {
+    $children['children'] = array(
+      '#markup' => '<p>' . t('No children') . '</p>',
+      );
+  }
+  return $children;
+}
+
+/**
+ * Build the connected content section of the ties tab
+ */
+function uib_area__ties_content($area_nid) {
+  // Connected content
+  $connected_content = array(
+    '#prefix' => '<div id="connected-articles">',
+    '#suffix' => '</div>',
+    'title' => array(
+      '#type' => 'html_tag',
+      '#tag' => 'h2',
+      '#value' => t('Connected content nodes'),
+      ),
+  );
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->fieldCondition('field_uib_area', 'target_id', $area_nid)
+    ->execute();
+  if ($result) {
+    $connect_tbl = array();
+    $connect_tbl['#theme'] = 'table';
+    $connect_tbl['#header'] = array(t('node'), t('title'), t('type'), t('article type'), t('owned'), t('shared'), t('related from'));
+    $rows = array();
+    $related_nodes = entity_load('node', array_keys($result['node']));
+    foreach ($related_nodes as $rnid => $rnode) {
+      $related = entity_metadata_wrapper('node', $rnode);
+      $tmp = array(l($related->getIdentifier(), 'node/' . $related->getIdentifier()),
+        truncate_utf8($related->title->value(), 70, TRUE, TRUE),
+        $related->type->value(),
+        );
+      $tmp[] = ($related->type->value() == 'uib_article') ? $related->field_uib_article_type->value() : '';
+      $tmp[] = ($related->field_uib_area[0]->raw() == $area_nid) ? t('yes') : t('no');
+      $tmp[] = (count($rnode->field_uib_area['und']) > 1) ? t('yes') : t('no');
+      // Check if this is related content
+      $result = db_select('field_data_field_uib_relation', 'r')
+        ->fields('r', array('entity_id'))
+        ->condition('field_uib_relation_target_id', $rnid, '=')
+        ->execute()
+        ->fetchAssoc();
+      if ($result) {
+        $rel = '';
+        foreach ($result as $entity_id) {
+          $rel .= l($entity_id, "node/$entity_id") . ' ';
+        }
+        $tmp[] = $rel;
+      }
+      else {
+        $tmp[] = '';
+      }
+      $rows[] = $tmp;
+    }
+    $connect_tbl['#rows'] = $rows;
+    $connected_content['connected'] = $connect_tbl;
+  }
+  else {
+    $connected_content['text'] = array('#markup' => '<p>' . t('No content') . '</p>');
+  }
+  return $connected_content;
+}
+
+/**
+ * Cleanup when an area is to be deleted.
+ *
+ * @param StdObject $area_node
+ *   Node object of the area node
+ */
+function uib_area__cleanup($area_node) {
+  if (empty($area_node)) {
+    return FALSE;
+  }
+  global $user;
+  $area = $area_node->nid;
+  $area_path = 'node/' . $area;
+
+  // Remove any menu links pointing to the area node
+  $result = db_query('SELECT mlid FROM {menu_links} WHERE link_path LIKE :lpt',
+    array(':lpt' => $area_path . '%')
+    );
+  if ($result) {
+    foreach ($result as $record) {
+      menu_link_delete($record->mlid);
+    }
+  }
+
+  // Remove any aliases pointing to the node
+  $area_alias = path_load($area_path);
+  path_delete(array('source' => $area_path,));
+
+  // Remove any redirects pointing to the node
+  redirect_delete_by_path($area_path);
+  if (!empty($area_alias['alias'])) {
+    redirect_delete_by_path($area_alias['alias']);
+    redirect_delete_by_path($area_alias['language'] . '/' . $area_alias['alias']);
+  }
+
+  // Connected content
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->fieldCondition('field_uib_area', 'target_id', $area)
+    ->execute();
+  if ($result) {
+    $related_nodes = entity_load('node', array_keys($result['node']));
+    foreach ($related_nodes as $rnid => $rnode) {
+      if ($rnode->field_uib_area['und'][0]['target_id'] == $area) {
+
+        // Remove articles etc owned by the area
+        uibx_log("node/$rnode->nid [$rnode->type] deleted by user $user->uid", 'notice');
+        node_delete($rnid);
+
+        // Remove related content indications pointing to the deleted article
+        $query = new EntityFieldQuery;
+        $result = $query
+          ->entityCondition('entity_type', 'node')
+          ->fieldCondition('field_uib_relation', 'target_id', $rnid)
+          ->execute();
+        if ($result) {
+          $rc_nodes = entity_load('node', array_keys($result['node']));
+          foreach ($rc_nodes as $rc_node) {
+            $rc_last = count($rc_node->field_uib_relation['und']) - 1;
+            for ($i = $rc_last; $i >= 0; $i--) {
+              if ($rc_node->field_uib_relation['und'][$i]['target_id'] == $rnid) {
+                unset($rc_node->field_uib_relation['und'][$i]);
+              }
+            }
+            node_save($rc_node);
+          }
+        }
+      }
+      else {
+        // Remove the area from articles not owned by the area ("bobbling")
+        $area_last = count($rnode->field_uib_area['und']) - 1;
+        for ($i = $area_last; $i >= 0; $i--) {
+          if ($rnode->field_uib_area['und'][$i]['target_id'] == $area) {
+            unset($rnode->field_uib_area['und'][$i]);
+          }
+        }
+        node_save($rnode);
+      }
+    }
+  }
+
+  // Connect any area children to their grand-parent, if possible
+  $grand_parent_nid = FALSE;
+  if (!empty($area_node->field_uib_area_parents['und'][0]['target_id'])) {
+    $grand_parent_nid = $area_node->field_uib_area_parents['und'][0]['target_id'];
+  }
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->fieldCondition('field_uib_area_parents', 'target_id', $area)
+    ->execute();
+  if ($result) {
+    $children = entity_load('node', array_keys($result['node']));
+   foreach ($children as $child) {
+      $grand_parent_present = FALSE;
+      $area_last = count($child->field_uib_area_parents['und']) - 1;
+      for ($i = $area_last; $i >= 0; $i--) {
+        if ($child->field_uib_area_parents['und'][$i]['target_id'] == $grand_parent_nid) {
+          $grand_parent_present = TRUE;
+        }
+        if ($child->field_uib_area_parents['und'][$i]['target_id'] == $area) {
+          unset($child->field_uib_area_parents['und'][$i]);
+        }
+      }
+      if (!$grand_parent_present && $grand_parent_nid) {
+        $child->field_uib_area_parents['und'][] = $grand_parent_nid;
+      }
+      node_save($child);
+    }
   }
 }

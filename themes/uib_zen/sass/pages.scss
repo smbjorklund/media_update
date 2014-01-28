@@ -555,3 +555,17 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
     }
   }
 }
+
+.page-node-ties {
+  td, th {
+    padding-right: 0.5em;
+  }
+  #content {
+    .even {
+      background-color: $light-grey;
+    }
+    .odd {
+      background-color: darken($light-grey, 5%);
+    }
+  }
+}
