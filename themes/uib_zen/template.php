@@ -619,10 +619,20 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       $uib_study_testimonial = __uib_render_block('uib_study', 'study_testimonial', 30);
       $uib_study_toggle = __uib_render_block('uib_study', 'study_semester_toggle', 18);
 
+      $specializations = '';
+      $view = views_get_view('uib_study_specialization');
+      $view->preview('block', array($variables['node']->nid));
+      if ($view->result) {
+        $specializations = '<h2>' . $view->get_title() . '</h2>' . $view->render();
+      }
+
       $variables['content']['uib_study_first_block'] = array(
         '#type' => 'html_tag',
         '#tag' => 'div',
-        '#value' => render($uib_study_image) . render($uib_study_facts) . render($uib_study_contact),
+        '#value' => render($uib_study_image) .
+                    render($uib_study_facts) .
+                    $specializations .
+                    render($uib_study_contact),
         '#weight' => 1,
         '#attributes' => array('class' => array('uib-study-first-block')),
       );
