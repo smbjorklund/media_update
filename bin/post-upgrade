@@ -2,25 +2,22 @@
 
 set -x
 
-REL=5.3
+REL=6
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
     exit 1
 fi
 
-bin/site-drush -v php-script populate-nus
-bin/site-drush -v uib-sync-fs
-
-exit  # keep statements below around until the next migration
+#exit  # keep statements below around until the next migration
 
 # Migrate uib.no/project/speakup
-bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_kommunikasjon.txt
-bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_kommunikasjon.txt
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_kommunikasjon.txt
-bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_kommunikasjon.txt
-bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_kommunikasjon.txt
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_kommunikasjon.txt
+bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_matnat.txt
+bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_matnat.txt
+bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_matnat.txt
+bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_matnat.txt
+bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_matnat.txt
+bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_matnat.txt
 
 # Build area menu for migrated content
 bin/site-drush uib-migrate-build-menu --verbose
