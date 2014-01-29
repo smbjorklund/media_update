@@ -8,8 +8,6 @@ PGDUMP_HOST_RUN="ssh $PGDUMP_HOST"
 
 USE_STAGE_FILE_PROXY=${USE_STAGE_FILE_PROXY:-yes}
 
-set -x
-
 if [ $(hostname) == $PGDUMP_HOST ]; then
     PGDUMP_HOST_PREFIX=
     PGDUMP_HOST_RUN="sh -c"
@@ -34,7 +32,7 @@ else
 fi
 
 if [ "$USE_STAGE_FILE_PROXY" = yes ]; then
-    if git rev-parse $COMMIT:bin/enable-stage-file-proxy 2>/dev/null; then
+    if git rev-parse $COMMIT:bin/enable-stage-file-proxy 2>/dev/null 1>&2; then
 	echo Will use stage_file_proxy to pull in files on demand
     else
 	echo Can not use stage_file_proxy when moving back to $COMMIT
@@ -42,11 +40,11 @@ if [ "$USE_STAGE_FILE_PROXY" = yes ]; then
     fi
 fi
 
-set -x
-
 if [ "$USE_STAGE_FILE_PROXY" = yes ]; then
+    set -x
     mkdir site/files
 else
+    set -x
     rsync -rltDih --delete $PGDUMP_HOST_PREFIX/prod_nettapp_w3/sites/w3.uib.no/files/ site/files/ --exclude=/js --exclude=/css --exclude=/ctools --exclude=/styles --exclude=*.pdf --exclude=*.mp3 --exclude=*.mp4
 fi
 
