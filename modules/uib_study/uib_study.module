@@ -1173,7 +1173,7 @@ function uib_study_entity_info_alter(&$entity_info) {
  * Implements hook_views_pre_render().
  */
 function uib_study_views_pre_render(&$view) {
-  if ($view->name == 'taxonomy_term') {
+  if ($view->name == 'uib_taxonomy_term') {
     $term_id = $view->args[0];
     // The taxonomy term itself
     $term = taxonomy_term_view(taxonomy_term_load($term_id), $view_mode = 'full');
