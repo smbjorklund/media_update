@@ -209,16 +209,40 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     $existing[$study['id']] = $study_node->nid;
 
     // Define node path alias
+    $path_suffix = $study['id'];
+    if ($type == 'specialization') {
+      $program_code = $study['ref_programs'][0];
+      // If the specialization code share prefix with the study code use shorter URLs.
+      // i.e. studieprogram/MAMN-INF/AG instead of studieprogram/MAMN-INF/MAMN-INFAG
+      if (strlen($path_suffix) > strlen($program_code) &&
+          substr($path_suffix, 0, strlen($program_code)) == $program_code)
+      {
+        $path_suffix = substr($path_suffix, strlen($program_code));
+      }
+      $path_suffix = "$program_code/$path_suffix";
+
+      // Set up redirects from the w2 location
+      foreach (array('nb', 'en') as $lang) {
+        $redirect = new stdClass();
+        redirect_object_prepare($redirect);
+        $redirect->source = ($lang == 'nb' ? 'studieretning/' : 'programmeoption/') . $study['id'];
+        $redirect->redirect = 'node/' . $metadata->nid->value();
+        $redirect->language = $lang;
+        redirect_save($redirect);
+        uibx_log("Redirect created for $lang/" . $redirect->source . ' -> ' . $redirect->redirect);
+      }
+    }
+
     $path = array(
       'source' => 'node/' . $metadata->nid->value(),
-      'alias' => $no_path_prefix . '/' . $study['id'],
+      'alias' => "$no_path_prefix/$path_suffix",
       'language' => 'nb',
       );
     path_save($path);
 
     $path = array(
       'source' => 'node/' . $metadata->nid->value(),
-      'alias' => $en_path_prefix . '/' . $study['id'],
+      'alias' => "$en_path_prefix/$path_suffix",
       'language' => 'en',
       );
     path_save($path);
