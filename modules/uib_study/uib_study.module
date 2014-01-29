@@ -173,6 +173,12 @@ function uib_study__fspres_request($path) {
   return $res;
 }
 
+/**
+ * Fetch the given JSON object from fs-pres.
+ *
+ * Returns the deserialized array on success, FALSE on 404 and NULL otherwise
+ * Responses are cached for 4 hours.
+ */
 function uib_study__fspres_get_json($path) {
   $data = FALSE;
   if ($cache = cache_get($path, 'cache_uib_study')) {
@@ -183,6 +189,9 @@ function uib_study__fspres_get_json($path) {
     if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
       $data = drupal_json_decode($res->data);
       cache_set($path, $data, 'cache_uib_study', REQUEST_TIME + 4*3600);
+    }
+    elseif ($res->code != 404) {
+      $data = NULL;
     }
   }
   return $data;

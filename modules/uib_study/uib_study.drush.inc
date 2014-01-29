@@ -54,9 +54,8 @@ function drush_uib_study_uib_sync_fs() {
 
     // look for fag belonging to this ou
     $fspres_oid = implode('.', array('184', (int)$o1, (int)$o2));
-    $res = uib_study__fspres_request("sted/$fspres_oid/info.json");
-    if ($res->code == 200 && $res->headers['content-type'] == 'application/json') {
-      $data = drupal_json_decode($res->data);
+    $data = uib_study__fspres_get_json("sted/$fspres_oid/info.json");
+    if (!empty($data)) {
       if (isset($data['emner_fag'])) {
         foreach ($data['emner_fag'] as $emne) {
           $missing_refs = uib_study__update_study('course', $emne, $nid, $studies_all);
@@ -76,10 +75,8 @@ function drush_uib_study_uib_sync_fs() {
         }
       }
     }
-    else {
-      if ($res->code != 404) {
-        $err++;
-      }
+    elseif (is_null($data)) {
+      $err++;
     }
   }
 
