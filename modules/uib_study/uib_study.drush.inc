@@ -227,6 +227,15 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     return $refs_incomplete;
   }
 
+  // handle specializations
+  if (!empty($study['specializations'])) {
+    foreach ($study['specializations'] as $spec) {
+      $spec['nuskode'] = $study['nuskode'];
+      $spec['ref_programs'] = array($study['id']);
+      uib_study__update_study('specialization', $spec, $ou_nid, $existing);
+    }
+  }
+
   $nodes = node_load_multiple(array_keys($result['node']));
   $terms = entity_load('taxonomy_term');
   foreach ($nodes as $node) {
