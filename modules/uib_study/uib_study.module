@@ -31,10 +31,6 @@ function uib_study_block_info() {
       'info' => t('Randomly selected testimonial referring to a Study'),
       'status' => TRUE,
     ),
-    'study_resources' => array(
-      'info' => t('Resources related to a study'),
-      'status' => TRUE,
-    ),
     'study_semester_toggle' => array(
       'info' => t('Possibility to toggle semesters'),
       'status' => TRUE,
