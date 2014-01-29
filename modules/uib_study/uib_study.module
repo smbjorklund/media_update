@@ -221,19 +221,31 @@ function uib_study__fspres_get_node_json($nid, $json, $lang = FALSE) {
     $path .= uib_study__fspres_lang() . '/';
   }
 
+  $path_objects = array($study);
   if ($type == 'course') {
     $path .= 'emne/';
   }
-  elseif ($type == 'program') {
+  elseif ($type == 'program' || $type == 'specialization') {
     $path .= 'studieprogram/';
   }
   else {
     uibx_log("Unknown study type; '$type'", 'error');
   }
+  if ($type == 'specialization') {
+    $program = entity_metadata_wrapper('node', $study->field_uib_study_part_of[0]->value());
+    if ($json == 'render.json') {
+      array_unshift($path_objects, $program);
+    }
+    else {
+      $path_objects = array($program);
+    }
+  }
 
-  $slug = $study->field_uib_study_code->value();
-  $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
-  $path .= $slug . '/';
+  foreach ($path_objects as $path_object) {
+    $slug = $path_object->field_uib_study_code->value();
+    $slug = str_replace("/", "_", $slug);  # for courses like "NOR-U1/2"
+    $path .= $slug . '/';
+  }
   $path .= $json;
   return uib_study__fspres_get_json($path);
 }
@@ -439,8 +451,7 @@ function uib_study_block_view($delta = '') {
           $resources['#items'][] = render($tmp);
           $rows[] = array(t('Resources'), render($resources));
         }
-        else {
-          assert($type == 'program');
+        elseif ($type == 'program' or $type == 'specialization') {
           // calculate duration of programme, based on 60 credits per year
           $duration = number_format(round($data['heltidsprosent'] * $data['studiepoeng'] / 60 / 100, 1) , 1, ',', ' ');
           $rows[] = array(t('Duration'), $duration . ' ' . t('years'));
