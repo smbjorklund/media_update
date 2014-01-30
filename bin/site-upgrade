@@ -4,7 +4,11 @@ set -x
 
 bin/site-drush cc all
 
-COMMIT=${1:-master}
+COMMIT=${1:-$(git rev-parse --abbrev-ref HEAD)}
+if [ "$COMMIT" = "HEAD" ]; then
+    COMMIT=master
+fi
+
 git checkout $COMMIT || exit 1
 git submodule update || exit 2
 

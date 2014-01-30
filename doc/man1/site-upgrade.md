@@ -12,7 +12,8 @@ The **site-upgrade** command will upgrade the w3 application to the given
 branch/tag.  This involves checking out the code, recompiling the SASS files,
 and updating the database.
 
-Without argument **site-upgrade** will upgrade to the tip of `master` branch.
+Without argument **site-upgrade** will upgrade to the current branch, or
+`master` if there is no current branch.
 
 # See also
 
