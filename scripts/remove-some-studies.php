@@ -22,6 +22,7 @@ for ($i = 0; $i < 2; $i++) {
   $n = node_load(array_rand($result['node']));
   print "Updated $n->title\n";
   $n->title = 'Kilroy was here!';
+  $n->field_uib_nus['und'] = array();
   $n->field_uib_study_category['und'][0]['value'] = 'foo';
   node_save($n);
 }
