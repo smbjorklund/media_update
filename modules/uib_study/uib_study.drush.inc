@@ -288,6 +288,10 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
         $edit[] = 'category';
       }
     }
+    elseif (!is_null($wrapper->field_uib_study_category->value())) {
+      $wrapper->field_uib_study_category->set(NULL);
+      $edit[] = 'removed category';
+    }
 
     if (!empty($study['ref_programs'])) {
       // Check if any change in referenced programs
