@@ -165,9 +165,6 @@ function uib_study__fspres_request($path) {
     if (!in_array($subpath, $expected_404s)) {
       $severity = 'warning';
     }
-    else {
-      $log_message .= ' [expected]';
-    }
   }
   elseif ($res->code != 200) {
     $severity = 'error';
