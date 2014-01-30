@@ -88,7 +88,7 @@ function drush_uib_study_uib_sync_fs() {
     foreach ($incomplete_refs as $study_code => $missing_refs) {
       $study_node = node_load($studies_all[$study_code]);
       $incomplete = entity_metadata_wrapper('node', $study_node);
-      $delta = count($study_node->field_uib_study_part_of['und']);
+      $delta = isset($study_node->field_uib_study_part_of['und']) ? count($study_node->field_uib_study_part_of['und']) : 0;
       $found = 0;
       foreach ($missing_refs as $missing) {
         if ($studies_all[$missing]) {
@@ -102,7 +102,7 @@ function drush_uib_study_uib_sync_fs() {
       }
       if ($found) {
         $incomplete->save();
-        uibx_log("Study $study_code updated");
+        uibx_log("Study $study_code updated (again) to fix incomplete refs");
       }
     }
   }
@@ -198,7 +198,7 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     if (!empty($study['ref_programs'])) {
       foreach ($study['ref_programs'] as $ref_code) {
         $delta = 0;
-        if ($existing[$ref_code]) {
+        if (!empty($existing[$ref_code])) {
           $metadata->field_uib_study_part_of[$delta]->set($existing[$ref_code]);
           $delta++;
         }
@@ -297,7 +297,7 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       }
       $new_refs = array();
       foreach ($study['ref_programs'] as $ref_code) {
-        if ($existing[$ref_code]) {
+        if (!empty($existing[$ref_code])) {
           $new_refs[] = $existing[$ref_code];
         }
       }
@@ -307,7 +307,7 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
         $wrapper->field_uib_study_part_of = array();
         $delta = 0;
         foreach ($study['ref_programs'] as $ref_code) {
-          if ($existing[$ref_code]) {
+          if (!empty($existing[$ref_code])) {
             $wrapper->field_uib_study_part_of[$delta]->set($existing[$ref_code]);
             $delta++;
           }
