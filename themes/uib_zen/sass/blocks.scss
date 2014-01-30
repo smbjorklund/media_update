@@ -190,6 +190,8 @@
   table {
     background-color: #F1F1EF;
     padding: 0.5em;
+    table-layout: fixed;
+    width: 100%;
   }
   tr {
     border: 0 none;

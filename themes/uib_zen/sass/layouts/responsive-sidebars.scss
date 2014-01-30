@@ -655,6 +655,10 @@ $zen-auto-include-item-base: false;
 
   #main {
     max-width: 722px;
+
+    .node-type-uib-study & {
+      max-width: 100%;
+    }
   }
 
   #content {

@@ -445,10 +445,17 @@ h1 {
     border: solid 1px silver;
     .field-name-field-uib-media {
       float: left;
-      padding: 0 10px 0 10px;
+      width: 50%;
+      .field-items {
+        padding: 0 10px 0 10px;
+      }
     }
     .field-name-field-uib-quote {
-      padding: 8px 10px 0 0;
+      float: left;
+      width: 50%;
+      .field-items {
+        padding: 8px 10px 0 0;
+      }
     }
   }
   #block-uib-study-study-semester-toggle {
