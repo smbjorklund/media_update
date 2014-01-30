@@ -234,7 +234,7 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
   $terms = entity_load('taxonomy_term');
   foreach ($nodes as $node) {
     $wrapper = entity_metadata_wrapper('node', $node);
-    $edit = FALSE;
+    $edit = array();
 
     $nusId_temp = str_split(substr($study['nuskode'], 1, 2));
     $nusId = $nusId_temp[0];
@@ -247,14 +247,14 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       if ($term_wrapper->field_uib_nus_id->value() == $nusId) {
         if ($wrapper->field_uib_nus->raw() != $term_wrapper->getIdentifier()) {
           $wrapper->field_uib_nus->set($term_wrapper->getIdentifier());
-          $edit = TRUE;
+          $edit[] = 'nuscode';
         }
       }
     }
 
     if ($wrapper->status->value() == 0) {
       $wrapper->status->set(1);
-      $edit = TRUE;
+      $edit[] = 'status';
     }
 
     if (empty($study['title_no']) && empty($study['title_en'])) {
@@ -265,27 +265,27 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     }
     if ($wrapper->title->value() != $title) {
       $wrapper->title->set($title);
-      $edit = TRUE;
+      $edit[] = 'node title';
     }
 
     if ($wrapper->language('nb')->field_uib_study_title->value() != $study['title_no']) {
       $wrapper->language('nb')->field_uib_study_title->set($study['title_no']);
-      $edit = TRUE;
+      $edit[] = 'no title';
     }
     if ($wrapper->language('en')->field_uib_study_title->value() != $study['title_en']) {
       $wrapper->language('en')->field_uib_study_title->set($study['title_en']);
-      $edit = TRUE;
+      $edit[] = 'en title';
     }
 
     if ($wrapper->field_uib_ou->raw() != $ou_nid) {
       $wrapper->field_uib_ou->set($ou_nid);
-      $edit = TRUE;
+      $edit[] = 'ou';
     }
 
     if (isset($study['category'])) {
       if ($wrapper->field_uib_study_category->value() != $study['category']) {
         $wrapper->field_uib_study_category->set($study['category']);
-        $edit = TRUE;
+        $edit[] = 'category';
       }
     }
 
@@ -315,13 +315,13 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
             $refs_incomplete[] = $ref_code;
           }
         }
-        $edit = TRUE;
+        $edit[] = 'part_of';
       }
     }
 
     if ($edit) {
       $wrapper->save();
-      uibx_log("$type " . $study['id'] . " updated");
+      uibx_log(ucfirst($type) . ' ' . $study['id'] . " updated " . implode(', ', $edit));
     }
   }
   return $refs_incomplete;

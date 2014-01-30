@@ -13,8 +13,16 @@ $result = $query
 
 for ($i = 0; $i < 2; $i++) {
   $n = node_load(array_rand($result['node']));
-  print "$n->title\n";
+  print "Deleted $n->title\n";
   node_delete($n->nid);
+}
+
+# Change some attributes on a few as well
+for ($i = 0; $i < 2; $i++) {
+  $n = node_load(array_rand($result['node']));
+  print "Updated $n->title\n";
+  $n->title = 'Kilroy was here!';
+  node_save($n);
 }
 
 $query = new EntityFieldQuery;
