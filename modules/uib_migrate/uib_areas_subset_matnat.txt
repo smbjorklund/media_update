@@ -192,3 +192,9 @@ project/dated
 prosjekt/dated
 IWMO-2013
 IWMO2013
+
+# previously missing areas. RTS-4694
+fs/igsin
+rs/igsin
+uniped
+uniped/en
