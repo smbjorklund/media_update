@@ -440,6 +440,19 @@ h1 {
       border-right:  solid 1px silver;
     }
   }
+  .field-name-field-uib-link-section .field-name-field-uib-title {
+    margin: 0 0 5px 0;
+    padding-top: 0;
+    font-size: 1.5em;
+  }
+  .field-name-field-uib-links .field-label {
+    border: none;
+    text-transform: none;
+    font-weight: bold;
+    font-family: $base-font-family;
+    color: #333;
+    font-size: 1.2em;
+  }
   .node-uib-testimonial {
     background: #f1f1ef;
     border: solid 1px silver;
