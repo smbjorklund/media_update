@@ -267,7 +267,7 @@ class XTopic extends stdClass {
             $relatedprogrammes[] = $omtalt->studieprogramkode;
           }
           else {
-            uibx_log("Relation (omtalt) to $omtalt->type dropped", 'warning');
+            uibx_log("Relation (omtalt) to $omtalt->type dropped", 'notice');
           }
         }
 

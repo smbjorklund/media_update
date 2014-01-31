@@ -406,7 +406,6 @@ abstract class XTopicToArticleMigration extends Migration {
         }
       }
     }
-    uibx_log("Migrated: '$node->title' $node->nid");
   }
 }
 
