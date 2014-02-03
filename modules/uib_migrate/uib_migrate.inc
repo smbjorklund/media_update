@@ -108,7 +108,7 @@ function xtopic_file($id, $uid, $parent_lang = 'nb', $scope = NULL) {
       )
     );
   $context = stream_context_create($opts);
-  if (!copy($uri, $filename, $context)) {
+  if (!copy(str_replace(' ', '%20', $uri), $filename, $context)) {
     print_r(error_get_last());
     die("Failed to copy file $uri to $filename\n");
   }
