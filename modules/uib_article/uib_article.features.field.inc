@@ -397,7 +397,7 @@ function uib_article_field_default_fields() {
         ),
         'timezone_db' => 'UTC',
         'todate' => 'required',
-        'tz_handling' => 'utc',
+        'tz_handling' => 'site',
       ),
       'translatable' => '0',
       'type' => 'datetime',
