@@ -30,5 +30,8 @@ bin/site-drush uib-area-menu-to-relation
 # Fill in missing parents after migration
 bin/site-drush php-script area-parents --force
 
+# Fix up timestamps
+bin/site-drush php-script new_dates_to_utc
+
 # Make sure the cache is really blenda-clean
 bin/site-drush cc all
