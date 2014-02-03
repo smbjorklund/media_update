@@ -27,5 +27,8 @@ bin/site-drush uib-area-menu-chk
 bin/site-drush uib-area-split-menu --verbose
 bin/site-drush uib-area-menu-to-relation
 
+# Fill in missing parents after migration
+bin/site-drush php-script area-parents --force
+
 # Make sure the cache is really blenda-clean
 bin/site-drush cc all
