@@ -13,6 +13,11 @@
 
 @import "base";
 
+//
+// Setting up sprites with compass
+//
+@import "icons-follow/*.png"; // The follow-us-on icons used in frontpages
+@include all-icons-follow-sprites;
 
 /*
  * Field wrappers when the Fences module is enabled.
@@ -428,27 +433,7 @@ div.link-field-column {
       float: left;
       height: 25px;
       padding-left: 30px;
-      background-repeat: no-repeat;
-      background-position: left top;
     }
-  }
-  .instagram {
-    background-image: url('../images/instagram.png');
-  }
-  .twitter {
-    background-image: url('../images/twitter.png');
-  }
-  .vimeo {
-    background-image: url('../images/vimeo.png');
-  }
-  .youtube {
-    background-image: url('../images/youtube.png');
-  }
-  .facebook {
-    background-image: url('../images/facebook.png');
-  }
-  .flickr {
-    background-image: url('../images/flickr.png');
   }
 }
 
