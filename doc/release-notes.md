@@ -1,3 +1,15 @@
+# Release 2014-02-05 tag: R6
+
+Release 6 migrerer Det matematisk-naturvitenskapelige fakultet med alle underområder samt to områder som manglet fra migrasjonen av Psykologisk fakultet.
+Releasen håndterer også noen feil knyttet til migrasjon samt et par andre, mindre feil i produksjon.
+
+* Migrerer Det matematisk-naturvitenskapelige fakultet #5000
+* Håndterer feil knyttet til migrasjon #4787 #5259 #5260 #5262 #5365 #5268
+* Migrerer områder som manglet fra migrasjon av Det psykologiske fakultet #4694
+* Styling og justeringer i studieprogram- og emnevisning #4413 #5150 #5152 #5165
+* Styling for informasjonskapsel-varsling i IE #4907
+* Diverse tekniske saker #5249 #5246
+
 # Release 2014-01-28 tag: R5.3
 
 Releasen inneholder funksjonalitet for visning av studieprogram og emner, samt stylig for disse. Den inneholder også oppgradering av flere Drupalmoduler og fikser et par feil i løsningen. Legger også til ny logo på forsiden.
