@@ -16,6 +16,7 @@ GetOptions(\my %OPT,
     'open',
     'url',
     'patches',
+    'merge-with=s',
     'full',
 ) || usage();
 
@@ -76,8 +77,8 @@ Subcommands:
     release
     release <rid> [--patches]
     list [--open] [--patches]
-    branches [--patches]
-    merge-status <id>
+    branches [--patches] [--merge-with <branch>]
+    merge-status <id> [--merge-with <branch>]
     done <id>
     extract
 EOT
@@ -385,7 +386,8 @@ sub do_branches {
 	print " ", issue_name($_+0), "\n";
 
 	if ($remote{$_}) {
-	    print "  *** merge conflicts (run 'rts merge-status $_' for details)\n" if git_merge_tree($_) =~ /^\+<<<<<+ \.our/m;
+	    my $with = $OPT{'merge-with'} || 'origin/master';
+	    print "  *** merge conflicts with $with (run 'rts merge-status $_' for details)\n" if git_merge_tree($_) =~ /^\+<<<<<+ \.our/m;
 	}
 	if ($OPT{patches}) {
 	    for my $p (get_patches($_)) {
@@ -404,11 +406,12 @@ sub do_merge_status {
 
 sub git_merge_tree {
     my $issue = shift || die;
+    my $merge_with = $OPT{'merge-with'} || 'origin/master';
 
-    my $base = `git merge-base origin/master origin/rts/$issue`;
+    my $base = `git merge-base $merge_with origin/rts/$issue`;
     chomp($base);
     if ($base) {
-	my $cmd = "git merge-tree $base origin/master origin/rts/$issue";
+	my $cmd = "git merge-tree $base $merge_with origin/rts/$issue";
 	my $merge_report = qx($cmd);
 	return $merge_report;
     }
