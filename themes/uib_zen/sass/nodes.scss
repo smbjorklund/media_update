@@ -475,3 +475,13 @@ h1 {
     padding: 20px 0 0 0;
   }
 }
+
+// NUS pages
+.page-taxonomy {
+  .attachment-before, .attachment-after {
+    float: left;
+  }
+  .taxonomy-term {
+    float: left;
+  }
+}

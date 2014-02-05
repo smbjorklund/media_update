@@ -1531,4 +1531,41 @@ $zen-auto-include-item-base: false;
   #block-uib-study-study-facts table, #block-uib-study-study-contact table {
     min-width: 340px;
   }
+  /* NUS page */
+  .page-taxonomy {
+    $zen-column-count: 5;
+    .attachment-before {
+      h1 {
+        @include zen-grid-item (3, 3);
+        @include zen-grid-item-base();
+      }
+      .field-name-field-uib-nus-text {
+        @include zen-grid-item (3, 3);
+        @include zen-grid-item-base();
+     }
+      .field-name-field-uib-nus-image {
+        @include zen-grid-item (2, 1);
+        @include zen-grid-item-base();
+
+      }
+    }
+    .taxonomy-term {
+      .field-name-field-uib-nus-image {
+        @include zen-grid-item (2, 1);
+        @include zen-grid-item-base();
+      }
+      .field-name-field-uib-nus-text {
+        @include zen-grid-item (3, 3);
+        @include zen-grid-item-base();
+
+      }
+    }
+    .attachment-after {
+      h1 {
+        @include zen-grid-item (3, 3);
+        @include zen-grid-item-base();
+        @include zen-clear();
+      }
+    }
+  }
 }
