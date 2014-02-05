@@ -10,12 +10,12 @@
 function uib_user_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access user profiles.
+  // Exported permission: 'access user profiles'.
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'user',
   );

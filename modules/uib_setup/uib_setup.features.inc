@@ -7,24 +7,19 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function uib_setup_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function uib_setup_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
-  list($module, $api) = func_get_args();
   if ($module == "file_entity" && $api == "file_default_displays") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "ldap_servers" && $api == "ldap_servers") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -33,8 +28,8 @@ function uib_setup_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function uib_setup_views_api() {
-  return array("version" => "3.0");
+function uib_setup_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
 }
 
 /**
@@ -57,11 +52,11 @@ function uib_setup_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '340',
+          'width' => 340,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
     'label' => 'area_bottom',
@@ -81,11 +76,11 @@ function uib_setup_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '354',
-          'height' => '266',
+          'width' => 354,
+          'height' => 266,
           'upscale' => 1,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
     'label' => 'area_main',
@@ -106,11 +101,11 @@ function uib_setup_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '1260',
-          'height' => '947',
+          'width' => 1260,
+          'height' => 947,
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -129,11 +124,11 @@ function uib_setup_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '177',
+          'width' => 177,
           'height' => '',
           'upscale' => 1,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
     'label' => 'content_sidebar',
@@ -154,10 +149,10 @@ function uib_setup_image_default_styles() {
         'name' => 'image_scale',
         'data' => array(
           'width' => '',
-          'height' => '70',
+          'height' => 70,
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
     'label' => 'custom_logo',
@@ -177,10 +172,10 @@ function uib_setup_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '708',
-          'height' => '398.25',
+          'width' => 708,
+          'height' => 398.25,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
     'label' => 'full_width_16_9',
@@ -200,11 +195,11 @@ function uib_setup_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '80',
+          'width' => 80,
           'height' => '',
           'upscale' => 1,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
     'label' => 'user_thumbnail',
@@ -224,10 +219,10 @@ function uib_setup_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '531',
-          'height' => '375',
+          'width' => 531,
+          'height' => 375,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
     'label' => 'wide_thumbnail',

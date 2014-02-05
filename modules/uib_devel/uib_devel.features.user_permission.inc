@@ -10,41 +10,41 @@
 function uib_devel_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access devel information.
+  // Exported permission: 'access devel information'.
   $permissions['access devel information'] = array(
     'name' => 'access devel information',
     'roles' => array(
-      0 => 'admin',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
+      'admin' => 'admin',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'devel',
   );
 
-  // Exported permission: execute php code.
+  // Exported permission: 'execute php code'.
   $permissions['execute php code'] = array(
     'name' => 'execute php code',
     'roles' => array(
-      0 => 'admin',
+      'admin' => 'admin',
     ),
     'module' => 'devel',
   );
 
-  // Exported permission: migration information.
+  // Exported permission: 'migration information'.
   $permissions['migration information'] = array(
     'name' => 'migration information',
     'roles' => array(
-      0 => 'admin',
+      'admin' => 'admin',
     ),
     'module' => 'migrate_ui',
   );
 
-  // Exported permission: switch users.
+  // Exported permission: 'switch users'.
   $permissions['switch users'] = array(
     'name' => 'switch users',
     'roles' => array(
-      0 => 'admin',
-      1 => 'level 1',
+      'admin' => 'admin',
+      'level 1' => 'level 1',
     ),
     'module' => 'devel',
   );

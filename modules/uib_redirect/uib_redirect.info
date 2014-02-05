@@ -1,13 +1,12 @@
 name = UiB Redirect
 core = 7.x
 package = UiB
-php = 5.2.4
 dependencies[] = features
 dependencies[] = redirect
 dependencies[] = strongarm
 dependencies[] = uib_setup
 features[ctools][] = strongarm:strongarm:1
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[user_permission][] = administer redirects
 features[variable][] = redirect_auto_redirect
 features[variable][] = redirect_default_status_code

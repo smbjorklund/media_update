@@ -10,8 +10,8 @@
 function uib_setup_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: management:webdesk
-  $menu_links['management:webdesk'] = array(
+  // Exported menu link: management_webdesk:webdesk
+  $menu_links['management_webdesk:webdesk'] = array(
     'menu_name' => 'management',
     'link_path' => 'webdesk',
     'router_path' => 'webdesk',
@@ -20,16 +20,18 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'management_webdesk:webdesk',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 0,
   );
-  // Exported menu link: menu-global-menu-no:http://www.uib.no/aktuelt
-  $menu_links['menu-global-menu-no:http://www.uib.no/aktuelt'] = array(
+  // Exported menu link: menu-global-menu-no_aktuelt:http://www.uib.no/aktuelt
+  $menu_links['menu-global-menu-no_aktuelt:http://www.uib.no/aktuelt'] = array(
     'menu_name' => 'menu-global-menu-no',
     'link_path' => 'http://www.uib.no/aktuelt',
     'router_path' => '',
@@ -38,70 +40,18 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'menu-global-menu-no_aktuelt:http://www.uib.no/aktuelt',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-47',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 0,
   );
-  // Exported menu link: menu-global-menu-no:http://www.uib.no/forskning
-  $menu_links['menu-global-menu-no:http://www.uib.no/forskning'] = array(
-    'menu_name' => 'menu-global-menu-no',
-    'link_path' => 'http://www.uib.no/forskning',
-    'router_path' => '',
-    'link_title' => 'Forskning',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-49',
-  );
-  // Exported menu link: menu-global-menu-no:http://www.uib.no/internasjonalt
-  $menu_links['menu-global-menu-no:http://www.uib.no/internasjonalt'] = array(
-    'menu_name' => 'menu-global-menu-no',
-    'link_path' => 'http://www.uib.no/internasjonalt',
-    'router_path' => '',
-    'link_title' => 'Internasjonalt',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-48',
-  );
-  // Exported menu link: menu-global-menu-no:http://www.uib.no/om
-  $menu_links['menu-global-menu-no:http://www.uib.no/om'] = array(
-    'menu_name' => 'menu-global-menu-no',
-    'link_path' => 'http://www.uib.no/om',
-    'router_path' => '',
-    'link_title' => 'Om UiB',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-46',
-  );
-  // Exported menu link: menu-global-menu-no:http://www.uib.no/ub/
-  $menu_links['menu-global-menu-no:http://www.uib.no/ub/'] = array(
+  // Exported menu link: menu-global-menu-no_bibliotek:http://www.uib.no/ub/
+  $menu_links['menu-global-menu-no_bibliotek:http://www.uib.no/ub/'] = array(
     'menu_name' => 'menu-global-menu-no',
     'link_path' => 'http://www.uib.no/ub/',
     'router_path' => '',
@@ -110,16 +60,78 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'menu-global-menu-no_bibliotek:http://www.uib.no/ub/',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-45',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -45,
+    'customized' => 0,
   );
-  // Exported menu link: menu-global-menu-no:http://www.uib.no/utdanning
-  $menu_links['menu-global-menu-no:http://www.uib.no/utdanning'] = array(
+  // Exported menu link: menu-global-menu-no_forskning:http://www.uib.no/forskning
+  $menu_links['menu-global-menu-no_forskning:http://www.uib.no/forskning'] = array(
+    'menu_name' => 'menu-global-menu-no',
+    'link_path' => 'http://www.uib.no/forskning',
+    'router_path' => '',
+    'link_title' => 'Forskning',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-global-menu-no_forskning:http://www.uib.no/forskning',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 0,
+  );
+  // Exported menu link: menu-global-menu-no_internasjonalt:http://www.uib.no/internasjonalt
+  $menu_links['menu-global-menu-no_internasjonalt:http://www.uib.no/internasjonalt'] = array(
+    'menu_name' => 'menu-global-menu-no',
+    'link_path' => 'http://www.uib.no/internasjonalt',
+    'router_path' => '',
+    'link_title' => 'Internasjonalt',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-global-menu-no_internasjonalt:http://www.uib.no/internasjonalt',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 0,
+  );
+  // Exported menu link: menu-global-menu-no_om-uib:http://www.uib.no/om
+  $menu_links['menu-global-menu-no_om-uib:http://www.uib.no/om'] = array(
+    'menu_name' => 'menu-global-menu-no',
+    'link_path' => 'http://www.uib.no/om',
+    'router_path' => '',
+    'link_title' => 'Om UiB',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-global-menu-no_om-uib:http://www.uib.no/om',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
+    'customized' => 0,
+  );
+  // Exported menu link: menu-global-menu-no_utdanning:http://www.uib.no/utdanning
+  $menu_links['menu-global-menu-no_utdanning:http://www.uib.no/utdanning'] = array(
     'menu_name' => 'menu-global-menu-no',
     'link_path' => 'http://www.uib.no/utdanning',
     'router_path' => '',
@@ -128,16 +140,18 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'menu-global-menu-no_utdanning:http://www.uib.no/utdanning',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 0,
   );
-  // Exported menu link: menu-global-menu:http://www.uib.no/about
-  $menu_links['menu-global-menu:http://www.uib.no/about'] = array(
+  // Exported menu link: menu-global-menu_about-uib:http://www.uib.no/about
+  $menu_links['menu-global-menu_about-uib:http://www.uib.no/about'] = array(
     'menu_name' => 'menu-global-menu',
     'link_path' => 'http://www.uib.no/about',
     'router_path' => '',
@@ -146,16 +160,18 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'menu-global-menu_about-uib:http://www.uib.no/about',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-46',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
+    'customized' => 0,
   );
-  // Exported menu link: menu-global-menu:http://www.uib.no/education
-  $menu_links['menu-global-menu:http://www.uib.no/education'] = array(
+  // Exported menu link: menu-global-menu_education:http://www.uib.no/education
+  $menu_links['menu-global-menu_education:http://www.uib.no/education'] = array(
     'menu_name' => 'menu-global-menu',
     'link_path' => 'http://www.uib.no/education',
     'router_path' => '',
@@ -164,16 +180,18 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'menu-global-menu_education:http://www.uib.no/education',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 0,
   );
-  // Exported menu link: menu-global-menu:http://www.uib.no/international
-  $menu_links['menu-global-menu:http://www.uib.no/international'] = array(
+  // Exported menu link: menu-global-menu_international:http://www.uib.no/international
+  $menu_links['menu-global-menu_international:http://www.uib.no/international'] = array(
     'menu_name' => 'menu-global-menu',
     'link_path' => 'http://www.uib.no/international',
     'router_path' => '',
@@ -182,52 +200,18 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'menu-global-menu_international:http://www.uib.no/international',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-48',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 0,
   );
-  // Exported menu link: menu-global-menu:http://www.uib.no/news
-  $menu_links['menu-global-menu:http://www.uib.no/news'] = array(
-    'menu_name' => 'menu-global-menu',
-    'link_path' => 'http://www.uib.no/news',
-    'router_path' => '',
-    'link_title' => 'News',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-47',
-  );
-  // Exported menu link: menu-global-menu:http://www.uib.no/research
-  $menu_links['menu-global-menu:http://www.uib.no/research'] = array(
-    'menu_name' => 'menu-global-menu',
-    'link_path' => 'http://www.uib.no/research',
-    'router_path' => '',
-    'link_title' => 'Research',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-49',
-  );
-  // Exported menu link: menu-global-menu:http://www.uib.no/ub/en
-  $menu_links['menu-global-menu:http://www.uib.no/ub/en'] = array(
+  // Exported menu link: menu-global-menu_library:http://www.uib.no/ub/en
+  $menu_links['menu-global-menu_library:http://www.uib.no/ub/en'] = array(
     'menu_name' => 'menu-global-menu',
     'link_path' => 'http://www.uib.no/ub/en',
     'router_path' => '',
@@ -236,16 +220,58 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'menu-global-menu_library:http://www.uib.no/ub/en',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-45',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -45,
+    'customized' => 0,
   );
-  // Exported menu link: menu-webdesk:node/add/area
-  $menu_links['menu-webdesk:node/add/area'] = array(
+  // Exported menu link: menu-global-menu_news:http://www.uib.no/news
+  $menu_links['menu-global-menu_news:http://www.uib.no/news'] = array(
+    'menu_name' => 'menu-global-menu',
+    'link_path' => 'http://www.uib.no/news',
+    'router_path' => '',
+    'link_title' => 'News',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-global-menu_news:http://www.uib.no/news',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 0,
+  );
+  // Exported menu link: menu-global-menu_research:http://www.uib.no/research
+  $menu_links['menu-global-menu_research:http://www.uib.no/research'] = array(
+    'menu_name' => 'menu-global-menu',
+    'link_path' => 'http://www.uib.no/research',
+    'router_path' => '',
+    'link_title' => 'Research',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-global-menu_research:http://www.uib.no/research',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 0,
+  );
+  // Exported menu link: menu-webdesk_add-area:node/add/area
+  $menu_links['menu-webdesk_add-area:node/add/area'] = array(
     'menu_name' => 'menu-webdesk',
     'link_path' => 'node/add/area',
     'router_path' => 'node/add/area',
@@ -254,16 +280,18 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => 'This is where you add area',
       ),
+      'identifier' => 'menu-webdesk_add-area:node/add/area',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-47',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 0,
   );
-  // Exported menu link: menu-webdesk:node/add/uib-article
-  $menu_links['menu-webdesk:node/add/uib-article'] = array(
+  // Exported menu link: menu-webdesk_add-content:node/add/uib-article
+  $menu_links['menu-webdesk_add-content:node/add/uib-article'] = array(
     'menu_name' => 'menu-webdesk',
     'link_path' => 'node/add/uib-article',
     'router_path' => 'node/add/uib-article',
@@ -272,16 +300,18 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => 'This is where you add content',
       ),
+      'identifier' => 'menu-webdesk_add-content:node/add/uib-article',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 0,
   );
-  // Exported menu link: menu-webdesk:node/add/uib-testimonial
-  $menu_links['menu-webdesk:node/add/uib-testimonial'] = array(
+  // Exported menu link: menu-webdesk_add-testimonial:node/add/uib-testimonial
+  $menu_links['menu-webdesk_add-testimonial:node/add/uib-testimonial'] = array(
     'menu_name' => 'menu-webdesk',
     'link_path' => 'node/add/uib-testimonial',
     'router_path' => 'node/add/uib-testimonial',
@@ -290,16 +320,18 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'menu-webdesk_add-testimonial:node/add/uib-testimonial',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-49',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 0,
   );
-  // Exported menu link: menu-webdesk:webdesk/all-content
-  $menu_links['menu-webdesk:webdesk/all-content'] = array(
+  // Exported menu link: menu-webdesk_find-content:webdesk/all-content
+  $menu_links['menu-webdesk_find-content:webdesk/all-content'] = array(
     'menu_name' => 'menu-webdesk',
     'link_path' => 'webdesk/all-content',
     'router_path' => 'webdesk/all-content',
@@ -308,13 +340,15 @@ function uib_setup_menu_default_menu_links() {
       'attributes' => array(
         'title' => 'This is where you find all content',
       ),
+      'identifier' => 'menu-webdesk_find-content:webdesk/all-content',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-48',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 0,
   );
   // Translatables
   // Included for use with string extractors like potx.

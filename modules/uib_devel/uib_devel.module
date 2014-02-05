@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file
+ * Code for the UiB Development support feature.
+ */
+
+include_once 'uib_devel.features.inc';
 
 /*
  * Implements hook_entity_view_alter().

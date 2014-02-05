@@ -13,9 +13,9 @@ function uib_study_taxonomy_default_vocabularies() {
       'name' => 'uib_nus',
       'machine_name' => 'uib_nus',
       'description' => 'Nuskoder from http://www.ssb.no/utdanning/norsk-standard-for-utdanningsgruppering',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '0',
+      'weight' => 0,
     ),
   );
 }
