@@ -378,11 +378,10 @@ div.link-field-column {
     box-shadow: 0px 1px 3px #E2E2E2;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
-    float: left;
     list-style-image: none;
     list-style-type: none;
     text-align: center;
-    margin: 0 0 34px 0;
+    margin: 0 0 8px 0;
     text-shadow: 1px 2px 3px #fff;
     filter: dropshadow(color=#005473, offx=1, offy=1);
     &:hover {
@@ -400,13 +399,6 @@ div.link-field-column {
       padding: 14px;
       display: inline-block;
     }
-  }
-  li.first {
-    float: left;
-    margin-right: 58px;
-  }
-  li.last {
-    float: right;
   }
 }
 
