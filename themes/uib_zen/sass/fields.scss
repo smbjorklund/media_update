@@ -543,8 +543,9 @@ div.link-field-column {
 
 .opaque-box {
   background: #F1F1EF;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
   padding: zen-half-gutter();
-  border-bottom: 1px solid #DEDFDD;
   h1 {
     margin-top: 0;
   }

@@ -261,8 +261,8 @@ table.cols-6 {
 }
 
 .uib-ansatte-section {
-  border-bottom: 1px solid #DEDFDD;
   background-color: #F1F1EF;
+  box-shadow: $box-shadow;
   margin-bottom: 10px;
   h3 {
     display: block;
@@ -373,8 +373,8 @@ table.cols-6 {
     margin-bottom: 1rem;
     background-color: #efefef;
     padding: 1rem 1rem 0 1rem;
+    box-shadow: $box-shadow;
     overflow: auto;
-    border-bottom: 1px solid #DEDFDD;
   }
   h3 {
     clear: both;
