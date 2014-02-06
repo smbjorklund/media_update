@@ -119,3 +119,38 @@ function uib_article_update_7003() {
   module_enable(array('uib_external'), FALSE);
   uibx_log('Enabled module - UiB External');
 }
+
+/**
+ * Fix events with end date before start date
+ */
+function uib_article_update_7004() {
+  // Some event dates lacking end date in w2 were
+  // getting an end date in w3, one or two hours
+  // before start date, during migration.
+  $result = db_query('SELECT entity_id, field_uib_date_value, field_uib_date_value2
+  FROM {field_data_field_uib_date}
+  WHERE field_uib_date_value2 IS NOT NULL
+  AND field_uib_date_value2 < field_uib_date_value');
+  if ($result) {
+    $cnt = 0;
+    foreach($result as $record) {
+      $from = new DateTime($record->field_uib_date_value);
+      $to = new DateTime($record->field_uib_date_value2);
+      $diff = date_diff($from, $to, TRUE);
+      if ($diff->y == 0 && $diff->m == 0 && $diff->d == 0 && $diff->i == 0) {
+        if ($diff->h == 1 || $diff->h == 2) {
+          // end of event set 1-2 hours before start
+          // fix this migration error
+          $node = node_load($record->entity_id);
+          $event = entity_metadata_wrapper('node', $node);
+          $date_data = $event->field_uib_date->value();
+          $date_data['value2'] = $date_data['value'];
+          $event->field_uib_date->set($date_data);
+          $event->save();
+          $cnt++;
+        }
+      }
+    }
+  }
+  uibx_log("Fixed end date for $cnt events", 'notice');
+}
