@@ -119,6 +119,9 @@ function uib_study__infotyper_render(&$page, $render, $filter) {
         '#markup' => uib_study__text_markup($item),
       );
     }
+    if (array_key_exists('em-emnebeskrivelse', $page)) {
+      $page['em-emnebeskrivelse']['header'] = NULL;
+    }
   }
   return $count;
 }
@@ -291,7 +294,7 @@ function uib_study_block_view($delta = '') {
 
         $render = array();
         uib_study__infotyper_render($render, $data, function ($group) {
-          return $group != 'ba_kontakt' && substr($group, -11) != '_studieplan';
+          return !in_array($group, array('ba_kontakt', 'em_introduksjon')) && substr($group, -11) != '_studieplan';
         });
 
         $node = node_load(arg(1));
