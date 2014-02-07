@@ -177,3 +177,12 @@ function uib_study_update_7010() {
   );
   path_save($new_alias);
 }
+
+/**
+ * Delete field_uib_links for uib_study
+ */
+function uib_study_update_7011() {
+  if ($instance = field_info_instance('node', 'field_uib_links', 'uib_study')) {
+    field_delete_instance($instance);
+  }
+}

@@ -602,10 +602,10 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       hide($variables['content']['field_uib_study_image']);
 
       $uib_study_links = '';
-      if (isset($variables['content']['field_uib_links'])) {
-        $uib_study_links = $variables['content']['field_uib_links'];
+      if (isset($variables['content']['field_uib_link_section'])) {
+        $uib_study_links = $variables['content']['field_uib_link_section'];
       }
-      hide($variables['content']['field_uib_links']);
+      hide($variables['content']['field_uib_link_section']);
 
       $uib_study_feed = '';
       if (isset($variables['content']['field_uib_feed'])) {

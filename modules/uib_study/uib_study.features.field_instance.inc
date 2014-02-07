@@ -71,19 +71,25 @@ function uib_study_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-uib_study-field_uib_links'
-  $field_instances['node-uib_study-field_uib_links'] = array(
+  // Exported field_instance: 'node-uib_study-field_uib_link_section'
+  $field_instances['node-uib_study-field_uib_link_section'] = array(
     'bundle' => 'uib_study',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Adds a link list to a study node. It it possible to use  <a href="http://w3docs.h.uib.no/?q=node/16">internal links</a> when linking to pages within www.uib.no.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 2,
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => '',
+          'delete' => '',
+          'description' => 0,
+          'edit' => '',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 10,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -99,36 +105,19 @@ function uib_study_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_uib_links',
-    'label' => 'Related links',
+    'field_name' => 'field_uib_link_section',
+    'label' => 'Relevant links',
     'required' => 0,
     'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
       'user_register_form' => FALSE,
-      'validate_url' => 1,
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'link',
+      'module' => 'field_collection',
       'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 7,
+      'type' => 'field_collection_embed',
+      'weight' => 15,
     ),
   );
 
@@ -826,6 +815,7 @@ function uib_study_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Adds a link list to a study node. It it possible to use  <a href="http://w3docs.h.uib.no/?q=node/16">internal links</a> when linking to pages within www.uib.no.');
   t('Category');
   t('Descriptive text');
   t('Entity translated term title.');
@@ -835,7 +825,7 @@ function uib_study_field_default_field_instances() {
   t('NUS');
   t('NUS ID');
   t('Part of study');
-  t('Related links');
+  t('Relevant links');
   t('Responsible');
   t('Rss feed');
   t('Title');
