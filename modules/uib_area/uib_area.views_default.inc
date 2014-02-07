@@ -1019,7 +1019,7 @@ return !empty($handler->argument);';
   );
   $handler->display->display_options['filters']['field_uib_study_category_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator_id'] = 'field_uib_study_category_value_op';
-  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['label'] = 'Filter by level';
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator'] = 'field_uib_study_category_value_op';
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['identifier'] = 'category';
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['remember_roles'] = array(
@@ -1076,6 +1076,7 @@ return !empty($handler->argument);';
     t('Filter by discipline'),
     t('All studyprogrammes'),
     t('Listing all study programmes'),
+    t('Filter by level'),
   );
   $export['courses'] = $view;
 
