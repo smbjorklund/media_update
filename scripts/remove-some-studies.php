@@ -13,14 +13,14 @@ $result = $query
 
 for ($i = 0; $i < 2; $i++) {
   $n = node_load(array_rand($result['node']));
-  print "Deleted $n->title\n";
+  print 'Deleted ' . $n->field_uib_study_code['und'][0]['value'] . " $n->title \n";
   node_delete($n->nid);
 }
 
 # Change some attributes on a few as well
 for ($i = 0; $i < 2; $i++) {
   $n = node_load(array_rand($result['node']));
-  print "Updated $n->title\n";
+  print 'Updated ' . $n->field_uib_study_code['und'][0]['value'] . " $n->title\n";
   $n->title = 'Kilroy was here!';
   $n->field_uib_nus['und'] = array();
   $n->field_uib_study_category['und'][0]['value'] = 'foo';
@@ -35,7 +35,7 @@ $result = $query
 
 
 $program = node_load(array_rand($result['node']));
-print "Program: $program->nid $program->title\n";
+print 'Program: ' . $program->field_uib_study_code['und'][0]['value'] . " $program->nid $program->title\n";
 
 $query = new EntityFieldQuery;
 $result = $query
@@ -45,7 +45,7 @@ $result = $query
 
 for ($i = 0; $i < 2; $i++) {
   $n = node_load(array_rand($result['node']));
-  print "- $n->title\n";
+  print '- ' . $n->field_uib_study_code['und'][0]['value'] . " $n->title\n";
   node_delete($n->nid);
 }
 
