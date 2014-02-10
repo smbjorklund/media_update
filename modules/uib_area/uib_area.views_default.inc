@@ -870,7 +870,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_nus_target_id']['field'] = 'field_uib_nus_target_id';
   $handler->display->display_options['filters']['field_uib_nus_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['operator_id'] = 'field_uib_nus_target_id_op';
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['label'] = 'Disipline';
+  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['label'] = 'Filter by discipline';
   $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['operator'] = 'field_uib_nus_target_id_op';
   $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['identifier'] = 'nus';
   $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['remember_roles'] = array(
@@ -1024,7 +1024,7 @@ return !empty($handler->argument);';
     t('last »'),
     t('<a href="[path]">[field_uib_study_code] [field_uib_study_title]</a>'),
     t('Type'),
-    t('Disipline'),
+    t('Filter by discipline'),
     t('All studyprogrammes'),
     t('Listing all study programmes'),
   );
