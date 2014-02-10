@@ -43,10 +43,13 @@ $result = $query
   ->fieldCondition('field_uib_study_part_of', 'target_id', $program->nid)
   ->execute();
 
-for ($i = 0; $i < 2; $i++) {
-  $n = node_load(array_rand($result['node']));
-  print '- ' . $n->field_uib_study_code['und'][0]['value'] . " $n->title\n";
-  node_delete($n->nid);
+if (!empty($result['node'])) {
+  for ($i = 0; $i < 2; $i++) {
+    if ($n = node_load(array_rand($result['node']))) {
+      print '- ' . $n->field_uib_study_code['und'][0]['value'] . " $n->title\n";
+      node_delete($n->nid);
+    }
+  }
 }
 
 node_delete($program->nid);

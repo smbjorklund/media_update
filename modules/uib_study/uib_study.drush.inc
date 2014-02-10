@@ -145,6 +145,36 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
   }
 
   $expected_status = (substr($study['id'], -2) == '-F') ? 0 : 1;
+  static $uib_nus_list;
+  if (!isset($uib_nus_list)) {
+    $uib_nus_list = array();
+    $vocabs = taxonomy_get_vocabularies();
+    $uib_nus_vid = 1;
+    foreach ($vocabs as $vocab) {
+      if ($vocab->machine_name == 'uib_nus') {
+        $uib_nus_vid = $vocab->vid;
+        break;
+      }
+    }
+    $query = new EntityFieldQuery;
+    $tax_result = $query
+      ->entityCondition('entity_type', 'taxonomy_term')
+      ->propertyCondition('vid', $uib_nus_vid)
+      ->execute();
+    if ($tax_result) {
+      $taxonomy_terms = taxonomy_term_load_multiple(array_keys($tax_result['taxonomy_term']));
+      foreach($taxonomy_terms as $term) {
+        $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
+        $uib_nus_list[$term_wrapper->field_uib_nus_id->value()] = $term_wrapper->getIdentifier();
+      }
+    }
+  }
+
+  $nusId_temp = str_split(substr($study['nuskode'], 1, 2));
+  $nusId = $nusId_temp[0];
+  if (isset($nusId_temp[1])) {
+    $nusId .= '.' . $nusId_temp[1];
+  }
 
   $refs_incomplete = array();
   $studypoints_ranks = _uib_study__get_sp_ranks();
@@ -225,6 +255,11 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       }
     }
 
+    // NUS code
+    if (isset($uib_nus_list[$nusId])) {
+      $metadata->field_uib_nus->set($uib_nus_list[$nusId]);
+    }
+
     $metadata->save();
     $existing[$study['id']] = $study_node->nid;
 
@@ -281,25 +316,14 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
   }
 
   $nodes = node_load_multiple(array_keys($result['node']));
-  $terms = entity_load('taxonomy_term');
   foreach ($nodes as $node) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $edit = array();
     $severity = 'notice';
-    $nusId_temp = str_split(substr($study['nuskode'], 1, 2));
-    $nusId = $nusId_temp[0];
-    if (isset($nusId_temp[1])) {
-      $nusId .= '.' . $nusId_temp[1];
-    }
 
-    foreach($terms as $term) {
-      $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
-      if ($term_wrapper->field_uib_nus_id->value() == $nusId) {
-        if ($wrapper->field_uib_nus->raw() != $term_wrapper->getIdentifier()) {
-          $wrapper->field_uib_nus->set($term_wrapper->getIdentifier());
-          $edit[] = 'nuscode';
-        }
-      }
+    if (isset($uib_nus_list[$nusId]) && $wrapper->field_uib_nus->raw() != $uib_nus_list[$nusId]) {
+      $wrapper->field_uib_nus->set($uib_nus_list[$nusId]);
+      $edit[] = 'nuscode';
     }
 
     if ($wrapper->status->value() != $expected_status) {
