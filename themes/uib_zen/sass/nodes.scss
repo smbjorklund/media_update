@@ -359,9 +359,14 @@ h1 {
     background-color: transparent;
     float: left;
     width: 30%;
+    border-bottom: 1px solid #DEDFDD;
 
-    .content {
+    .content, .field-items {
       margin: 0 1em 0 0;
+    }
+
+    .field-label {
+      display: none;
     }
   }
 

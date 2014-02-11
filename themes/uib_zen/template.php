@@ -285,6 +285,22 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       ),
       '#weight' => 5,
     );
+    if ($variables['type'] == 'uib_article' && empty($variables['content']['field_uib_main_media'])) {
+      // if possible, use first image of small images field in short teaser when main media is empty
+      if (isset($variables['field_uib_media']['und'])) {
+        $small_media = field_view_field('node', $variables['node'], 'field_uib_media', $variables['field_uib_media']['und'][0]);
+        if (!empty($small_media)) {
+          $variables['content']['field_uib_media'] = $small_media;
+          if (isset($variables['content']['field_uib_media']['1'])) {
+            $i = 1;
+            while (isset($variables['content']['field_uib_media'][$i])) {
+              unset($variables['content']['field_uib_media'][$i]);
+              $i++;
+            }
+          }
+        }
+      }
+    }
     if ($variables['type'] == 'uib_external_content') {
       $variables['content']['title']['#path'] = $variables['field_uib_links']['und'][0]['url'];
     }
