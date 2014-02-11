@@ -392,9 +392,12 @@ table.cols-6 {
   h1 {
     margin-top: 0;
   }
-  .view-content, .attachment-after {
+  .attachment-before {
+    margin-bottom: 1rem;
+  }
+  .view-content,
+  .attachment-after {
     background-color: $light-grey;
-    overflow: auto;
     margin-bottom: 1rem;
     .field-name-field-uib-nus-text {
       margin-bottom: 0.75em;

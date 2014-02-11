@@ -41,7 +41,7 @@
  * @ingroup themeable
  */
 ?>
-<div id="taxonomy-term-<?php print $term->tid; ?>" class="<?php print $classes; ?>">
+<div id="taxonomy-term-<?php print $term->tid; ?>" class="<?php print $classes; ?> clearfix">
   <?php if (!$page): ?>
     <?php if (isset($content['field_uib_term_title'])): ?>
       <?php print render($content['field_uib_nus_image']); ?>

@@ -618,7 +618,7 @@ function uib_study_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'wide_thumbnail',
         ),
         'type' => 'image',
         'weight' => 0,

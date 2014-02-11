@@ -1014,8 +1014,12 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     @include zen-grid-item-base();
     @include zen-grid-item(4, 1);
-    .attachment, .view-content {
+    .attachment {
       @include zen-clear();
+    }
+    .view-content {
+      @include zen-clear();
+      @include zen-grid-item-base();
     }
     .taxonomy-term {
       @include zen-clear();
@@ -1561,8 +1565,12 @@ $zen-auto-include-item-base: false;
     @include zen-clear();
     @include zen-grid-item-base();
     @include zen-grid-item(5, 1);
-    .attachment, .view-content {
+    .attachment {
       @include zen-clear();
+    }
+    .view-content {
+      @include zen-clear();
+      @include zen-grid-item-base();
     }
     .taxonomy-term {
       @include zen-clear();
