@@ -438,9 +438,9 @@ $zen-auto-include-item-base: false;
     }
   }
 
-#main {
-  clear: both;
-}
+  #main {
+    clear: both;
+  }
   /* Area mobile */
 
   .region-sidebar-second .block {
@@ -775,7 +775,8 @@ $zen-auto-include-item-base: false;
     }
   }
 
-  #node_area_full_group_bottom_wrapper {
+  #node_area_full_group_bottom_wrapper,
+  #bottom-region-wrapper {
     @include zen-clear();
   }
 
@@ -1005,6 +1006,27 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item (3, 2);
     float: none;
     padding: 0 0 0 20px;
+    }
+  }
+
+  // Taxonomy term
+  .view-uib-taxonomy-term {
+    @include zen-clear();
+    @include zen-grid-item-base();
+    @include zen-grid-item(4, 1);
+    .attachment, .view-content {
+      @include zen-clear();
+    }
+    .taxonomy-term {
+      @include zen-clear();
+      .field-name-field-uib-nus-image {
+        @include zen-grid-item-base();
+        @include zen-grid-item(2, 1);
+      }
+      .content {
+        @include zen-grid-item-base();
+        @include zen-grid-item(2, 3);
+      }
     }
   }
 }
@@ -1531,40 +1553,26 @@ $zen-auto-include-item-base: false;
   #block-uib-study-study-facts table, #block-uib-study-study-contact table {
     min-width: 340px;
   }
-  /* NUS page */
-  .page-taxonomy {
-    $zen-column-count: 5;
-    .attachment-before {
-      h1 {
-        @include zen-grid-item (3, 3);
-        @include zen-grid-item-base();
-      }
-      .field-name-field-uib-nus-text {
-        @include zen-grid-item (3, 3);
-        @include zen-grid-item-base();
-     }
-      .field-name-field-uib-nus-image {
-        @include zen-grid-item (2, 1);
-        @include zen-grid-item-base();
 
-      }
+  $zen-column-count: 5;
+
+  // Taxonomy term
+  .view-uib-taxonomy-term {
+    @include zen-clear();
+    @include zen-grid-item-base();
+    @include zen-grid-item(5, 1);
+    .attachment, .view-content {
+      @include zen-clear();
     }
     .taxonomy-term {
+      @include zen-clear();
       .field-name-field-uib-nus-image {
-        @include zen-grid-item (2, 1);
         @include zen-grid-item-base();
+        @include zen-grid-item(2, 1);
       }
-      .field-name-field-uib-nus-text {
-        @include zen-grid-item (3, 3);
+      .content {
         @include zen-grid-item-base();
-
-      }
-    }
-    .attachment-after {
-      h1 {
-        @include zen-grid-item (3, 3);
-        @include zen-grid-item-base();
-        @include zen-clear();
+        @include zen-grid-item(3, 3);
       }
     }
   }

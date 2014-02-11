@@ -44,13 +44,14 @@
 <div id="taxonomy-term-<?php print $term->tid; ?>" class="<?php print $classes; ?>">
   <?php if (!$page): ?>
     <?php if (isset($content['field_uib_term_title'])): ?>
+      <?php print render($content['field_uib_nus_image']); ?>
       <?php if ($view_mode == 'teaser'): ?>
         <?php $content['field_uib_term_title']['#prefix'] = '<h1><a href="' . $term_url . '">'; ?>
         <?php $content['field_uib_term_title']['#suffix'] = '</a></h1>'; ?>
       <?php else: ?>
-        <h1><?php print render($content['field_uib_term_title']); ?></h1>
+        <?php $content['field_uib_term_title']['#prefix'] = '<h1>'; ?>
+        <?php $content['field_uib_term_title']['#suffix'] = '</h1>'; ?>
       <?php endif; ?>
-
     <?php else: ?>
       <h1><a href="<?php print $term_url; ?>"><?php print $title; ?></a></h1>
     <?php endif; ?>
