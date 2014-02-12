@@ -917,7 +917,16 @@ function uib_zen_views_post_render(&$view, &$output, &$cache) {
   if ($view->name == 'calendar' && in_array($view->current_display, array('block_3', 'block_5')) && $current_lang == 'nb') {
     foreach ($view->result as $key => $result) {
       $event_type = i18n_string_translate('field:field_uib_event_type:#allowed_values:' . $view->result[$key]->field_data_field_uib_event_type_field_uib_event_type_value, $view->result[$key]->field_data_field_uib_event_type_field_uib_event_type_value);
-      $output = str_replace('>' . $view->result[$key]->link . '<', '>'. ucfirst($event_type) . '<', $output);
+      $output = str_replace('>' . $view->result[$key]->link . '<', '>'. drupal_ucfirst($event_type) . '<', $output);
+    }
+  }
+  if ($view->name == 'courses' && $view->current_display == 'study_programmes_all_page' && $current_lang == 'nb') {
+    foreach ($view->filter['field_uib_study_category_value']->value_options as $key => $value) {
+      $study_category = i18n_string_translate(
+        'field:field_uib_study_category:#allowed_values:' . $key,
+        $view->filter['field_uib_study_category_value']->value_options[$key]
+        );
+      $output = str_replace('>' . $view->filter['field_uib_study_category_value']->value_options[$key] . '</option>', '>'. drupal_ucfirst($study_category) . '</option>', $output);
     }
   }
 }
