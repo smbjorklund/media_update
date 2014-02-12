@@ -216,6 +216,9 @@
       background-color: #a00;
     }
   }
+  li:last-child {
+    padding-bottom: 0;
+  }
 }
 
 .node-uib-study .ui-tabs {
@@ -224,4 +227,14 @@
 
 table .item-list ul {
   margin: 0;
+}
+
+.uib-study-second-block {
+  h2 {
+    margin-top: 0;
+    line-height: inherit;
+  }
+  ul {
+    margin: 0;
+  }
 }
