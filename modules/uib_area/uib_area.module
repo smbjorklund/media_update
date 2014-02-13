@@ -1526,6 +1526,27 @@ function uib_area__get_stub_info($stubtitle) {
 }
 
 /**
+ * Implements hook_query_alter().
+ */
+function uib_area_query_uib_study_order_by_title_alter(QueryAlterableInterface $query) {
+  $order_by =& $query->getOrderBy();
+  if (isset($order_by['field_data_field_uib_study_title_field_uib_study_title_value'])) {
+    $query->addExpression('lower(field_data_field_uib_study_title.field_uib_study_title_value)', 'lower_title');
+
+    // replace orderBy entry with the lower case version
+    $copy = $order_by;
+    $order_by = array();
+    foreach ($copy as $key => $value) {
+      $order_by[
+        $key == 'field_data_field_uib_study_title_field_uib_study_title_value' ?
+        'lower_title' : $key
+       ] = $value;
+    }
+    //dpm((string)$query);
+  }
+}
+
+/**
  * Implements hook_menu().
  */
 function uib_area_menu() {
