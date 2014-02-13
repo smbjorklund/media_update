@@ -118,6 +118,19 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
           'localized_options' => array(),
           'type' => 0,
         );
+        if ($item['page_arguments'][0]->field_uib_study_type['und'][0]['value'] == 'specialization') {
+          $parent_nid = $item['page_arguments'][0]->field_uib_study_part_of['und'][0]['target_id'];
+          $parent = node_load($parent_nid);
+          global $language;
+          $lang = $language->language;
+          $uib_active_trail[3] = array(
+            'title' => $parent->field_uib_study_title[$lang][0]['value'],
+            'href' => 'node/' . $parent_nid,
+            'link_path' => '',
+            'localized_options' => array(),
+            'type' => 0,
+          );
+        }
         break;
     }
   }
