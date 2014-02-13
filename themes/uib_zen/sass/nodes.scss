@@ -427,8 +427,17 @@ h1 {
   .previous-semester {
     display: none;
   }
+  .field-name-field-uib-feed {
+    padding: 0 0 20px 0;
+    h2 {
+      font-weight: normal;
+    }
+  }
   .next-semester {
     display: none;
+  }
+  #block-uib-study-study-semester-toggle h2, #block-uib-study-study-related h2 {
+    font-weight: normal;
   }
  #block-uib-study-study-facts table, #block-uib-study-study-contact table {
     margin: 0;
