@@ -320,15 +320,15 @@ function uib_study_block_view($delta = '') {
           );
           $plan = uib_study__fspres_get_node_json(arg(1), 'plan.json', TRUE);
           $t_rows = array();
+          $max_depth = 0;
+          foreach ($plan['rows'] as $row) {
+            if ($row['depth'] > $max_depth) $max_depth = $row['depth'];
+          }
           foreach ($plan['rows'] as $s_row) {
             $t_row = array();
             if ($s_row['depth'] > 1) {
-              $t_row[] = array(
-                'data' => '',
-                'colspan' => $s_row['depth'] - 1,
-                'class' => 'uib-cell-indent-' . ($s_row['depth'] - 1),
-              );
               if (!empty($s_row['emneheader'])) {
+                $t_row[] = uib_study__insert_t_row($max_depth);
                 $headertitles = array(t('Course code'), t('Course title'), t('SP'), t('S'), t('A'));
                 foreach ($headertitles as $title) {
                   $t_row[] = array(
@@ -338,6 +338,7 @@ function uib_study_block_view($delta = '') {
                 }
               }
               elseif (!empty($s_row['emnekode'])) {
+                $t_row[] = uib_study__insert_t_row($max_depth);
                 $emnenavn = $s_row['name'];
                 if (!$emnenavn)
                   $emnenavn = '<title>';  # will be expanded
@@ -361,9 +362,10 @@ function uib_study_block_view($delta = '') {
                 #$t_row[] = $s_row['a'];
               }
               else {
+                $t_row[] = uib_study__insert_t_row($s_row['depth']);
                 $td = array(
                   'data' => check_plain($s_row['name']),
-                  'colspan' => 9 - $s_row['depth'],
+                  'colspan' => 5 + $max_depth - $s_row['depth'],
                 );
                 if (isset($s_row['description'])) {
                   # fake another row then
@@ -1244,4 +1246,13 @@ function uib_study__is_course() {
     $is_course = $query->execute();
   }
   return $is_course;
+}
+
+function uib_study__insert_t_row($depth) {
+  $row = array(
+    'data' => '',
+    'colspan' => $depth - 1,
+    'class' => 'uib-cell-indent-' . ($depth - 1),
+  );
+  return $row;
 }
