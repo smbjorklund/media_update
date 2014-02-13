@@ -403,7 +403,14 @@ function uib_area_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_uib_area_type',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -412,6 +419,17 @@ function uib_area_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['field_uib_area_type']['id'] = 'field_uib_area_type';
+  $handler->display->display_options['fields']['field_uib_area_type']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['fields']['field_uib_area_type']['field'] = 'field_uib_area_type';
+  $handler->display->display_options['fields']['field_uib_area_type']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_area_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_area_type']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Type (field_uib_area_type) */
+  $handler->display->display_options['sorts']['field_uib_area_type_value']['id'] = 'field_uib_area_type_value';
+  $handler->display->display_options['sorts']['field_uib_area_type_value']['table'] = 'field_data_field_uib_area_type';
+  $handler->display->display_options['sorts']['field_uib_area_type_value']['field'] = 'field_uib_area_type_value';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
