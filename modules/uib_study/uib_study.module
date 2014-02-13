@@ -301,7 +301,7 @@ function uib_study_block_view($delta = '') {
 
         $node = node_load(arg(1));
         $type = $node->field_uib_study_type['und'][0]['value'];
-        if ($type == 'program') {
+        if ($type == 'program' || $type == 'specialization') {
           $tab_items = array();
           $wrong_chars = array(' ', 'æ', 'ø' ,'å');
           foreach ($data as $group) {
