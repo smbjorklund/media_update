@@ -452,9 +452,9 @@ function uib_study_block_view($delta = '') {
           );
           $study_code = $data['emneid']['emnekode'];
           $semester = uib_study__get_current_semester();
-          $tmp = uib_study__get_schedule_link($study_code, $semester);
+          $tmp = uib_study__get_resource_links('schedule', $study_code);
           $resources['#items'][] = render($tmp);
-          $tmp = uib_study__get_reading_list_link($study_code, $semester);
+          $tmp = uib_study__get_resource_links('reading_list', $study_code);
           $resources['#items'][] = render($tmp);
           $rows[] = array(t('Resources'), render($resources));
         }
@@ -874,7 +874,24 @@ function uib_study__get_current_semester() {
   return date('Y') . $current_semester;
 }
 
-function uib_study__get_schedule_link($study_code, $semester) {
+function uib_study__get_resource_links($type, $study_code) {
+  $current = uib_study__get_current_semester();
+  $previous = substr($current, -1) == 'v' ? substr($current,0,4) - 1 . 'h' : substr($current,0,4) . 'v';
+  $next = substr($current, -1) == 'v' ? substr($current,0,4) . 'h' : substr($current,0,4) + 1 . 'v';
+  if ($type == 'schedule') {
+    $previous_semester = uib_study__get_schedule_link($study_code, $previous, array('previous-semester'));
+    $current_semester = uib_study__get_schedule_link($study_code, $current, array('current', 'previous-exists', 'next-exists', 'variants-exist'));
+    $next_semester = uib_study__get_schedule_link($study_code, $next, array('next-semester'));
+  }
+  else {
+    $previous_semester = uib_study__get_reading_list_link($study_code, $previous, array('previous-semester'));
+    $current_semester = uib_study__get_reading_list_link($study_code, $current, array('current', 'previous-exists', 'next-exists', 'variants-exist'));
+    $next_semester = uib_study__get_reading_list_link($study_code, $next, array('next-semester'));
+  }
+  return render($previous_semester) . render($current_semester) . render($next_semester);
+}
+
+function uib_study__get_schedule_link($study_code, $semester, $classes) {
   global $language;
   $lang = ($language->language == 'nb' ? '' : 'en');
   $schedule = array(
@@ -882,14 +899,14 @@ function uib_study__get_schedule_link($study_code, $semester) {
     '#text' => t('Schedule'),
     '#path' => 'http://rom.app.uib.no/timeplanliste.php?emne='. $study_code . '&periode=' . $semester . '&lang=' . $lang . '&simple=1',
     '#options' => array(
-      'attributes' => array(),
+      'attributes' => array('class' => $classes),
       'html' => TRUE,
     ),
   );
   return $schedule;
 }
 
-function uib_study__get_reading_list_link($study_code, $semester) {
+function uib_study__get_reading_list_link($study_code, $semester, $classes) {
   global $language;
   $locale = ($language->language == 'nb' ? '' : 'en_US');
   $reading_list = array(
@@ -897,7 +914,7 @@ function uib_study__get_reading_list_link($study_code, $semester) {
     '#text' => t('Reading list'),
     '#path' => 'https://miside.uib.no/fs-cron/pensum?emnekode='. $study_code . '&periode=' . $semester . '&locale=' . $locale . '&simple=1',
     '#options' => array(
-      'attributes' => array(),
+      'attributes' => array('class' => $classes),
       'html' => TRUE,
     ),
   );
