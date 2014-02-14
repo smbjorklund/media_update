@@ -364,6 +364,7 @@ sub do_branches {
     #use Data::Dump; dd \%local, \%remote;
 
     my %all = (%local, %remote);
+    my $conflicts;
 
     for (sort keys %all) {
 	my $suffix;
@@ -380,20 +381,26 @@ sub do_branches {
 	    $suffix = count_cherries("rts/$_");
 	}
 	print " ";
-	print "origin/" if $remote{$_} && !$local{$_};
+	print $remote{$_} && !$local{$_} ? "origin/" : "       ";
 	print "rts/$_";
 	print " $suffix" if $suffix;
-	print " ", issue_name($_+0), "\n";
+	print " ", issue_name($_+0);
 
 	if ($remote{$_}) {
 	    my $with = $OPT{'merge-with'} || 'origin/master';
-	    print "  *** merge conflicts with $with (run 'rts merge-status $_' for details)\n" if git_merge_tree($_) =~ /^\+<<<<<+ \.our/m;
+	    print " *** conflicts ***" if git_merge_tree($_) =~ /^\+<<<<<+ \.our/m;
+	    $conflicts++;
 	}
+	print "\n";
 	if ($OPT{patches}) {
 	    for my $p (get_patches($_)) {
 		print "  - $p\n";
 	    }
 	}
+    }
+
+    if ($conflicts) {
+	print "\n  *** Run 'run 'rts merge-status <branch>' for details on merge conflicts ***\n";
     }
 }
 
