@@ -285,7 +285,7 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
 
     if ($wrapper->status->value() != $expected_status) {
       $wrapper->status->set($expected_status);
-      $edit[] = 'status $expected_status';
+      $edit[] = "status=$expected_status";
     }
 
     if (empty($study['title_no']) && empty($study['title_en'])) {
