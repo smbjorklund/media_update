@@ -626,7 +626,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       $view = views_get_view('uib_study_specialization');
       $view->preview('block', array($variables['node']->nid));
       if ($view->result) {
-        $specializations = '<h2>' . $view->get_title() . '</h2>' . $view->render();
+        $specializations = '<h2>' . t('Specialization') . '</h2>' . $view->render();
       }
 
       $variables['content']['uib_study_first_block'] = array(
