@@ -13,6 +13,20 @@ function uib_devel_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'dev_mem';
+  $strongarm->value = 0;
+  $export['dev_mem'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'dev_timer';
+  $strongarm->value = 0;
+  $export['dev_timer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'devel_api_url';
   $strongarm->value = 'api.drupal.org';
   $export['devel_api_url'] = $strongarm;
@@ -113,16 +127,9 @@ function uib_devel_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'dev_mem';
-  $strongarm->value = 0;
-  $export['dev_mem'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'dev_timer';
-  $strongarm->value = 0;
-  $export['dev_timer'] = $strongarm;
+  $strongarm->name = 'features_admin_menu_links_menus';
+  $strongarm->value = array();
+  $export['features_admin_menu_links_menus'] = $strongarm;
 
   return $export;
 }
