@@ -1,3 +1,23 @@
+# Release 2014-02-17 tag: R6.1
+
+Denne oppdateringen gjør ferdig visning av studieinformasjon for w3. All grunnleggende funksjonalitet er nå på plass, men noen deler skal få ytterligere hjelp med utseende.
+
+Oppdateringen oppgraderer også feature-modulen til Drupal, fikser på utseende til webdesken og gjør et par andre små fikser i løsningen.
+
+- Løser funksjonalitet og foreløpig styling for sider som viser studietilbud sortert på NUS-kode #4998 #5432 #5345 #5338 #5067 #5068 #5170 #5179
+- Løser funksjonalitet og styling for studiepgram og emnevisninger #5393 #5420 #5392 #5391 #5290 #5370 #5361 #5362 #5357 #5173 #5151 #5169 #5390
+- Fjerner Infotypene "Introduksjon" og "Emnebeskrivelse" fra emnevisningen #5322
+- Gir studieprogram felt for å legge til flere grupper med relevante lenker med selvvalgt tittel #5250
+- Setter opp en områdeside med områder gruppert etter type #5431
+- Setter opp visning for studieprogram med studieretninger, samt brødsmulesti for studieretningene #4621 #5386
+- Sorterer emner og studieprogram-lister etter navn og retter opp titler for listene #5333 #5331
+- Endrer default status for nye artiker til å være upublisert #5351
+- Fikser bug i webdesken #5310
+- Fikser bug som ga migrerte hendelser uten sluttdato feil sluttdato #5301
+- Diverse tekniske saker #5301 #5172 #2618 #5424 #4172
+- Oppgraderer til features 2.0 #4993
+
+
 # Release 2014-02-05 tag: R6
 
 Release 6 migrerer Det matematisk-naturvitenskapelige fakultet med alle underområder samt to områder som manglet fra migrasjonen av Psykologisk fakultet.
