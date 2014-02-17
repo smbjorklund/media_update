@@ -16,8 +16,10 @@
 //
 // Setting up sprites with compass
 //
-@import "icons-follow/*.png"; // The follow-us-on icons used in frontpages
-@include all-icons-follow-sprites;
+$icons-social-spacing: 10px;
+@import "icons-social/*.png"; // The icons for social media used on uib.no
+$icons-social-sprite-dimensions: true;
+@include all-icons-social-sprites;
 
 /*
  * Field wrappers when the Fences module is enabled.
@@ -414,17 +416,15 @@ div.link-field-column {
 .field-name-field-uib-social-media {
   @include zen-clear();
   line-height: 2.2em;
-
   .field-item {
     float: left;
     text-transform: capitalize;
     margin-left: 1em;
     overflow: hidden;
     a:link {
-      display: block;
-      float: left;
-      height: 25px;
-      padding-left: 30px;
+      display: table-cell;
+      vertical-align: middle;
+      padding-left: 37px;
     }
   }
 }
@@ -445,6 +445,13 @@ div.link-field-column {
     }
     li.first {
       margin: 0 0 1em 0;
+    }
+    a {
+      display: block;
+      height: 32px;
+      overflow: hidden;
+      padding-left: 32px;
+      width: 0;
     }
   }
 }

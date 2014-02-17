@@ -63,7 +63,7 @@ function uib_field_field_formatter_view($entity_type, $entity, $field, $instance
       $options = array(
         'html'  => TRUE,
         'attributes'  => array(
-          'class' => array('icons-follow-' . $sm_name),
+          'class' => array('icons-social-' . $sm_name),
           ),
         );
       if ($sm_name != 'mailto') {

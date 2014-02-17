@@ -93,7 +93,7 @@ $zen-auto-include-item-base: false;
 
 .field-name-field-uib-social-media {
   .field-item {
-    width: 25px;
+    width: 32px;
   }
 }
 
@@ -151,11 +151,6 @@ $zen-auto-include-item-base: false;
 }
 
 @media all and (min-width: 580px) {
-  .field-name-field-uib-social-media {
-    .field-item {
-      width: auto;
-    }
-  }
   #bottom-region-wrapper .inner {
     $zen-column-count: 2;
   }
@@ -177,6 +172,11 @@ $zen-auto-include-item-base: false;
 }
 
 @media all and (min-width: 720px) {
+  .field-name-field-uib-social-media {
+    .field-item {
+      width: auto;
+    }
+  }
   #navigation {
     background: url(../../images/decore-line.png) repeat-x bottom;
     margin-bottom: -6px;
@@ -191,9 +191,6 @@ $zen-auto-include-item-base: false;
       }
     }
   }
-}
-
-@media all and (min-width: 720px) {
   .front #header {
     background-image:url('../../images/bergenmuseum.png');
     background-repeat: no-repeat;

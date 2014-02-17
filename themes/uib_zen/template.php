@@ -846,10 +846,13 @@ function __uib_render_block($module, $block_id, $weight) {
  *
  */
 function __uib_render_service_links($node, $weight) {
+  $ids = array('twitter', 'facebook', 'linkedin', 'google_plus_share');
+  $options = array(
+    'style' => SERVICE_LINKS_STYLE_TEXT,
+  );
   $service_links = theme('item_list',
     array(
-      'items' => service_links_render($node, FALSE),
-      'style' => SERVICE_LINKS_STYLE_IMAGE,
+      'items' => service_links_render_some($ids, $node, FALSE, $options),
     )
   );
   $output = array(

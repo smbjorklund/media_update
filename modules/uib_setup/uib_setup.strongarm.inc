@@ -917,14 +917,16 @@ webdesk/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'service_links_category_vocs';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    1 => 0,
+  );
   $export['service_links_category_vocs'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'service_links_check_icons';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['service_links_check_icons'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1008,7 +1010,7 @@ webdesk/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'service_links_path_icons';
-  $strongarm->value = 'sites/all/modules/service_links/images';
+  $strongarm->value = 'sites/all/themes/uib/uib_zen/images/icons-social';
   $export['service_links_path_icons'] = $strongarm;
 
   $strongarm = new stdClass();
