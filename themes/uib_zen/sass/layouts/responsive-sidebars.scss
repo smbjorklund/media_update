@@ -742,9 +742,7 @@ $zen-auto-include-item-base: false;
     max-width: 708px;
   }
   .slidecontent {
-    h3 {
-      width: 75% !important;
-    }
+    width: 60%;
   }
 
   .field-name-field-uib-social-media {
@@ -1392,12 +1390,12 @@ $zen-auto-include-item-base: false;
   .slidecontent {
     bottom: 8%;
     left: 6%;
+    width: 60%;
     h3 {
       color: #fff;
       margin-bottom: 15px !important;
       font-size: 1.5em !important;
       font-weight: normal !important;
-      width: 75% !important;
     }
   }
 
