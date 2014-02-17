@@ -534,6 +534,12 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
   .uib-cell-indent-1 + td {
     font-weight: bold;
   }
+  .uib-cell-indent-1 + .uib-study-description {
+    font-weight: normal;
+  }
+  .uib-study-specialization {
+    font-weight: bold;
+  }
   th {
     border: solid 1px $uib-study-construction-border-color;
     padding: 0 0.5em;

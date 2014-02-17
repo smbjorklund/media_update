@@ -496,10 +496,15 @@ h1 {
   #block-uib-study-study-content h3 {
     padding: 20px 0 0 0;
   }
-  #block-uib-study-study-content :first-child {
-    padding-top: 0;
-    margin-top: 0;
-    line-height: inherit;
+  #block-uib-study-study-content {
+    :first-child {
+      padding-top: 0;
+      margin-top: 0;
+      line-height: inherit;
+    }
+    table :first-child {
+      padding-top: 0.5em;
+    }
   }
   #block-uib-study-study-content h1 {
     padding: 0;
