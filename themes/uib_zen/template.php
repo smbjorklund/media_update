@@ -148,6 +148,7 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function uib_zen_preprocess_page(&$variables, $hook) {
+  $path = menu_tab_root_path();
   if (isset($variables['node'])) {
     $not_translated_txt = t('This content has not been translated.');
     if ($variables['node']->type == 'uib_article') {
@@ -187,7 +188,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     $variables['page_title_link'] = l(check_plain($current_area->title), '', array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
   }
 
-  if (arg(0) == 'node' && arg(1) != 'add') {
+  if (!is_int(strpos($path,'node/add/'))) {
     if ($variables['language']->language == 'nb') {
       $variables['global_menu'] = menu_navigation_links('menu-global-menu-no');
     }

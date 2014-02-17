@@ -79,6 +79,7 @@ function uib_study__studyplan($code) {
     '#tag' => 'h1',
     '#value' => l($code . ' ' . $study->field_uib_study_title->value(), $path),
   );
+  drupal_set_title(t('Study plan') . ' , ' . $code . ' ' . $study->field_uib_study_title->value(), $path);
 
   if (!uib_study__infotyper_render($page,
     uib_study__fspres_get_json(uib_study__fspres_lang() . "/studieprogram/$code/render.json"),
