@@ -369,9 +369,10 @@ function uib_study_block_view($delta = '') {
                   'colspan' => 5 + $max_depth - $s_row['depth'],
                 );
                 if (isset($s_row['specialization'])) {
-                  $study_code = $node->field_uib_study_code['und'][0]['value'];
-                  $spec_path = drupal_get_path_alias() . '/' . str_replace($study_code, '', $s_row['specialization']);
-                  $td['data'] = l($td['data'], $spec_path);
+                  $spec_path = uib_study__study_path($s_row['specialization']);
+                  if ($spec_path) {
+                    $td['data'] = l($td['data'], $spec_path);
+                  }
                   $td['class'] = 'uib-study-specialization';
                 }
                 if (isset($s_row['description'])) {
