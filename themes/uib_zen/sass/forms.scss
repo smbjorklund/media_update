@@ -53,11 +53,6 @@
   display: block;
 }
 
-.view-uib-webdesk #edit-submit--2,
-.view-uib-webdesk #edit-submit-uib-webdesk {
-  margin: 10px 0 0;
-}
-
 .tips { /* Tips for Drupal's input formats */
 }
 
@@ -218,16 +213,17 @@ td.menu-disabled {
   float: none;
 }
 
-.views-exposed-form .views-exposed-widget .form-submit {
-  margin: 0 0 1.6em;
+.page-webdesk-all-content .views-submit-button,
+.page-webdesk-all-content .views-reset-button {
+  float: left;
 }
 
 html.js input.form-autocomplete {
-  background-position: 100% 8px;
+  background-position: 100% 6px;
 }
 
 html.js input.throbbing {
-  background-position: 100% -12px; /* LTR */
+  background-position: 100% -14px;
 }
 
 #edit-changed-wrapper,
@@ -235,14 +231,6 @@ html.js input.throbbing {
 #edit-field-uib-article-type-value-wrapper,
 #edit-field-uib-event-type-value-wrapper {
   display: inline-block;
-}
-
-#edit-field-uib-event-type-value-wrapper {
-  width: 50%;
-}
-
-#views-exposed-form-uib-webdesk-page-1 #edit-field-uib-event-type-value-wrapper {
-  width: 20%;
 }
 
 .field-uib-links-value {
