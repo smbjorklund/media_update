@@ -72,6 +72,11 @@ function drush_uib_study_uib_sync_fs() {
             $incomplete_refs[$program['id']] = $missing_refs;
           }
           unset($unused_codes[$program['id']]);
+          if (isset($program['specializations'])) {
+            foreach ($program['specializations'] as $specialization) {
+              unset($unused_codes[$specialization['id']]);
+            }
+          }
         }
       }
     }
