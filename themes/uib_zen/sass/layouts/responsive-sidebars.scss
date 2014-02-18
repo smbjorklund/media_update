@@ -206,9 +206,11 @@ $zen-auto-include-item-base: false;
   .node-uib-study {
 
     .uib-study-first-block,
-    .uib-study-second-block,
-    .service-links {
+    .uib-study-second-block {
       @include zen-grid-item(2, 1);
+    }
+    .service-links {
+      @include zen-grid-item(5, 1);
     }
     #block-uib-study-study-content {
       @include zen-grid-item(3, 1, right);

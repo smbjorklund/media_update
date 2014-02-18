@@ -441,7 +441,10 @@ div.link-field-column {
     }
     li {
       float: right;
-      margin: 0 1em 1em 0 ;
+      margin: 0 1em 1em 0;
+    }
+    li.first {
+      margin: 0 0 1em 0;
     }
   }
 }
@@ -451,6 +454,9 @@ div.link-field-column {
     .item-list {
       li {
         float: left;
+      }
+      li.first {
+        margin: 0 1em 1em 0;
       }
     }
   }
