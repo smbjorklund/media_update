@@ -2,25 +2,21 @@
 
 set -x
 
-REL=6.2
+REL=7
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
     exit 1
 fi
 
-bin/site-drush uib-sync-fs --verbose
-
-exit  # keep statements below around until the next migration
-
-# Migrate uib.no/project/speakup
+# Migrate
 date +%FT%T
-bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_matnat.txt
-bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_matnat.txt
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_matnat.txt
-bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_matnat.txt
-bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_matnat.txt
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_matnat.txt
+bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_mofa.txt
+bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_mofa.txt
+bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_mofa.txt
+bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_mofa.txt
+bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_mofa.txt
+bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_mofa.txt
 date +%FT%T
 
 # Build area menu for migrated content
