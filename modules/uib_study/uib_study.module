@@ -289,8 +289,10 @@ function uib_study_block_view($delta = '') {
         'EB_KONTAKT',
         'B_RE_INFO',
       );
-      if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $data = uib_study__fspres_get_node_json(arg(1), 'render.json', TRUE);
+
+      $node = menu_get_object();
+      if ($node) {
+        $data = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
         foreach ($splice_list as $splice_item) {
           uib_study__extract_study_info($data, $splice_item);
         }
@@ -300,7 +302,6 @@ function uib_study_block_view($delta = '') {
           return !in_array($group, array('ba_kontakt', 'em_introduksjon')) && substr($group, -11) != '_studieplan';
         });
 
-        $node = node_load(arg(1));
         $type = $node->field_uib_study_type['und'][0]['value'];
         if ($type == 'program' || $type == 'specialization') {
           $tab_items = array();
@@ -319,7 +320,7 @@ function uib_study_block_view($delta = '') {
               '#tag' => 'h2',
               '#value' => t("Construction"),
           );
-          $plan = uib_study__fspres_get_node_json(arg(1), 'plan.json', TRUE);
+          $plan = uib_study__fspres_get_node_json($node->nid, 'plan.json', TRUE);
           $t_rows = array();
           $max_depth = 0;
           foreach ($plan['rows'] as $row) {
@@ -417,8 +418,9 @@ function uib_study_block_view($delta = '') {
       }
       break;
     case 'study_contact':
-      if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $data = uib_study__fspres_get_node_json(arg(1), 'render.json', TRUE);
+      $node = menu_get_object();
+      if ($node) {
+        $data = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
         $render = array();
         $tmp = uib_study__extract_study_info($data, 'EB_KONTAKT');
         if (!$tmp) {
@@ -437,11 +439,11 @@ function uib_study_block_view($delta = '') {
       }
       break;
     case 'study_facts':
-      if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $node = node_load(arg(1));
+      $node = menu_get_object();
+      if ($node) {
         $type = $node->field_uib_study_type['und'][0]['value'];
-        $data = uib_study__fspres_get_node_json(arg(1), 'info.json', FALSE);
-        $data_2 = uib_study__fspres_get_node_json(arg(1), 'render.json', TRUE);
+        $data = uib_study__fspres_get_node_json($node->nid, 'info.json', FALSE);
+        $data_2 = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
         $rows = array();
         $rows[] = array(t('Study points'), $data['studiepoeng']);
         if ($type == 'course') {
@@ -513,7 +515,8 @@ function uib_study_block_view($delta = '') {
       break;
 
     case 'study_related':
-      if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $node = menu_get_object();
+      if ($node) {
         $display_settings = array(
           'label' => 'hidden',
           'type' => 'uib_study_title_formatter',
@@ -523,19 +526,18 @@ function uib_study_block_view($delta = '') {
           ),
         );
         $block['title'] = t("Mandatory part of");
-        $study_nid = intval(arg(1));
-        $block['content'] = field_view_field('node', node_load($study_nid), 'field_uib_study_part_of', $display_settings);
+        $block['content'] = field_view_field('node', $node, 'field_uib_study_part_of', $display_settings);
       }
       break;
 
     case 'study_testimonial':
-      if (arg(0) == 'node' && is_numeric(arg(1))) {
-        $study_nid = arg(1);
+      $node = menu_get_object();
+      if ($node) {
         $query = new EntityFieldQuery();
         $query->entityCondition('entity_type', 'node')
           ->entityCondition('bundle', 'uib_testimonial')
           ->propertyCondition('status', 1)
-          ->fieldCondition('field_uib_study_programmes', 'target_id', $study_nid);
+          ->fieldCondition('field_uib_study_programmes', 'target_id', $node->nid);
         $result = $query->execute();
         if (!empty($result)) {
           $testimonials = array_keys($result['node']);
@@ -549,8 +551,9 @@ function uib_study_block_view($delta = '') {
       break;
 
     case 'study_semester_toggle':
-      if (arg(0) == 'node' && is_numeric(arg(1)) && uib_study__is_course()) {
-        $data = uib_study__fspres_get_node_json(arg(1), 'render.json', TRUE);
+      $node = menu_get_object();
+      if ($node && uib_study__is_course()) {
+        $data = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
         list($previous_semester, $current_semester, $next_semester) = uib_study__get_adjacent_semesters();
         $prev = FALSE;
         $next = FALSE;
@@ -1267,11 +1270,12 @@ function uib_study_views_pre_render(&$view) {
  */
 function uib_study__is_course() {
   $is_course = FALSE;
-  if (arg(0) == 'node' && is_numeric(arg(1))) {
+  $node = menu_get_object();
+  if ($node) {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'uib_study')
-      ->entityCondition('entity_id', arg(1))
+      ->entityCondition('entity_id', $node->nid)
       ->fieldCondition('field_uib_study_type', 'value', 'course', '=');
     $is_course = $query->execute();
   }
