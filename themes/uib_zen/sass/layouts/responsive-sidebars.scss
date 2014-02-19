@@ -1022,12 +1022,29 @@ $zen-auto-include-item-base: false;
       @include zen-clear();
       .field-name-field-uib-nus-image {
         @include zen-grid-item-base();
-        @include zen-grid-item(2, 1);
+        @include zen-grid-item(1, 1);
       }
       .content {
         @include zen-grid-item-base();
-        @include zen-grid-item(2, 3);
+        @include zen-grid-item(3, 2);
       }
+    }
+  }
+  .view-uib-nus-overview {
+    .field-name-field-uib-nus-image {
+      @include zen-grid-item(1, 1);
+    }
+    h1, .field-name-field-uib-nus-text {
+      @include zen-grid-item (3, 2);
+      @include zen-grid-item-base();
+
+    }
+    h1 {
+      float: none;
+    }
+    .taxonomy-term {
+      border-bottom: solid 1px #f1f1ef;
+
     }
   }
 }
@@ -1573,15 +1590,32 @@ $zen-auto-include-item-base: false;
       @include zen-clear();
       .field-name-field-uib-nus-image {
         @include zen-grid-item-base();
-        @include zen-grid-item(2, 1);
+        @include zen-grid-item(1, 1);
       }
       .content {
         @include zen-grid-item-base();
-        @include zen-grid-item(3, 3);
+        @include zen-grid-item(4, 2);
       }
     }
   }
   #uib-tabs-studieplan {
     @include zen-grid-item (4, 1);
+  }
+  .view-uib-nus-overview {
+    .field-name-field-uib-nus-image {
+      @include zen-grid-item(1, 1);
+    }
+    h1, .field-name-field-uib-nus-text {
+      @include zen-grid-item (4, 2);
+      @include zen-grid-item-base();
+
+    }
+    h1 {
+      float: none;
+    }
+    .taxonomy-term {
+      border-bottom: solid 1px #f1f1ef;
+
+    }
   }
 }
