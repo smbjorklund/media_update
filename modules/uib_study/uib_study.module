@@ -307,7 +307,7 @@ function uib_study_block_view($delta = '') {
           $wrong_chars = array(' ', 'æ', 'ø' ,'å');
           foreach ($data as $group) {
             $group_title = check_plain($group['#title']);
-            if ($group_title == 'Studieplan')
+            if (substr($group['#group'], -11) == '_studieplan')
               continue;
             $group_title_html_id = str_replace($wrong_chars, '-', strtolower($group_title));
             $tab_items[] = '<a href="#uib-tabs-' . $group_title_html_id . '">' . $group_title . '</a>';
