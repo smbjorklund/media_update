@@ -924,22 +924,22 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  /* Field: Content: ID */
-  $handler->display->display_options['fields']['field_uib_study_code']['id'] = 'field_uib_study_code';
-  $handler->display->display_options['fields']['field_uib_study_code']['table'] = 'field_data_field_uib_study_code';
-  $handler->display->display_options['fields']['field_uib_study_code']['field'] = 'field_uib_study_code';
-  $handler->display->display_options['fields']['field_uib_study_code']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_study_code']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_study_code']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['field_uib_study_title']['id'] = 'field_uib_study_title';
   $handler->display->display_options['fields']['field_uib_study_title']['table'] = 'field_data_field_uib_study_title';
   $handler->display->display_options['fields']['field_uib_study_title']['field'] = 'field_uib_study_title';
   $handler->display->display_options['fields']['field_uib_study_title']['label'] = '';
   $handler->display->display_options['fields']['field_uib_study_title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_study_title']['alter']['text'] = '<a href="[path]">[field_uib_study_title] / [field_uib_study_code]</a>';
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['text'] = '<a href="[path]">[field_uib_study_title]</a>';
   $handler->display->display_options['fields']['field_uib_study_title']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_uib_study_title']['element_label_colon'] = FALSE;
+  /* Field: Content: Category */
+  $handler->display->display_options['fields']['field_uib_study_category']['id'] = 'field_uib_study_category';
+  $handler->display->display_options['fields']['field_uib_study_category']['table'] = 'field_data_field_uib_study_category';
+  $handler->display->display_options['fields']['field_uib_study_category']['field'] = 'field_uib_study_category';
+  $handler->display->display_options['fields']['field_uib_study_category']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_study_category']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_study_category']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Title (field_uib_study_title) */
   $handler->display->display_options['sorts']['field_uib_study_title_value']['id'] = 'field_uib_study_title_value';
@@ -1186,17 +1186,69 @@ return !empty($handler->argument);';
   $handler->display->display_options['css_class'] = 'uib-all-studyprogrammes';
   $handler->display->display_options['display_description'] = 'Listing all study programmes';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+    ),
+    'field_uib_study_category_value' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+      ),
+    ),
+    'term_node_tid_depth' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'is_secondary' => 1,
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+      ),
+    ),
+  );
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_uib_study_category',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'No result';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Your criteria did not match any results';
+  $handler->display->display_options['empty']['area']['format'] = 'plain_text';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
@@ -1240,6 +1292,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['type']['value'] = array(
     'uib_study' => 'uib_study',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Type (field_uib_study_type) */
   $handler->display->display_options['filters']['field_uib_study_type_value']['id'] = 'field_uib_study_type_value';
   $handler->display->display_options['filters']['field_uib_study_type_value']['table'] = 'field_data_field_uib_study_type';
@@ -1247,6 +1300,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_type_value']['value'] = array(
     'program' => 'program',
   );
+  $handler->display->display_options['filters']['field_uib_study_type_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_study_type_value']['expose']['operator_id'] = 'field_uib_study_type_value_op';
   $handler->display->display_options['filters']['field_uib_study_type_value']['expose']['label'] = 'Type';
   $handler->display->display_options['filters']['field_uib_study_type_value']['expose']['operator'] = 'field_uib_study_type_value_op';
@@ -1260,21 +1314,53 @@ return !empty($handler->argument);';
     74573517 => 0,
     176168899 => 0,
   );
+  /* Filter criterion: Content: Has taxonomy terms (with depth) */
+  $handler->display->display_options['filters']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
+  $handler->display->display_options['filters']['term_node_tid_depth']['table'] = 'node';
+  $handler->display->display_options['filters']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
+  $handler->display->display_options['filters']['term_node_tid_depth']['value'] = array(
+    1 => '1',
+    8 => '8',
+    13 => '13',
+    23 => '23',
+    30 => '30',
+  );
+  $handler->display->display_options['filters']['term_node_tid_depth']['group'] = 1;
+  $handler->display->display_options['filters']['term_node_tid_depth']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['operator_id'] = 'term_node_tid_depth_op';
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['label'] = 'Filter by subject';
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['operator'] = 'term_node_tid_depth_op';
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['identifier'] = 'term_node_tid_depth';
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth']['type'] = 'select';
+  $handler->display->display_options['filters']['term_node_tid_depth']['vocabulary'] = 'uib_nus';
+  $handler->display->display_options['filters']['term_node_tid_depth']['depth'] = '3';
   /* Filter criterion: Content: Category (field_uib_study_category) */
   $handler->display->display_options['filters']['field_uib_study_category_value']['id'] = 'field_uib_study_category_value';
   $handler->display->display_options['filters']['field_uib_study_category_value']['table'] = 'field_data_field_uib_study_category';
   $handler->display->display_options['filters']['field_uib_study_category_value']['field'] = 'field_uib_study_category_value';
-  $handler->display->display_options['filters']['field_uib_study_category_value']['operator'] = 'and';
   $handler->display->display_options['filters']['field_uib_study_category_value']['value'] = array(
+    'integrertemasterpr-profesjonsst' => 'integrertemasterpr-profesjonsst',
     'bachelorprogram' => 'bachelorprogram',
     'arsstudium' => 'arsstudium',
     'masterprogram' => 'masterprogram',
   );
+  $handler->display->display_options['filters']['field_uib_study_category_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_study_category_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator_id'] = 'field_uib_study_category_value_op';
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['label'] = 'Filter by level';
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator'] = 'field_uib_study_category_value_op';
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['identifier'] = 'category';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1291,6 +1377,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
+  $handler->display->display_options['filters']['language']['group'] = 1;
   $handler->display->display_options['path'] = 'studyprogramme';
   $translatables['courses'] = array(
     t('Master'),
@@ -1335,6 +1422,9 @@ return !empty($handler->argument);';
     t('Study points'),
     t('All studyprogrammes'),
     t('Listing all study programmes'),
+    t('No result'),
+    t('Your criteria did not match any results'),
+    t('Filter by subject'),
     t('Filter by level'),
   );
   $export['courses'] = $view;
