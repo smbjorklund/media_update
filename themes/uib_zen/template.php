@@ -591,7 +591,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       $variables['content']['title'] = array(
         '#type' => 'html_tag',
         '#tag' => 'h1',
-        '#value' => $metadata->field_uib_study_code->value() . ' ' . $metadata->language($current_language)->field_uib_study_title->value(),
+        '#value' => $metadata->language($current_language)->field_uib_study_title->value(),
         '#weight' => -45,
       );
       hide($variables['content']['field_uib_study_category']);
