@@ -515,3 +515,17 @@ h1 {
 .view-uib-taxonomy-term .attachment-after .taxonomy-term {
   padding: 0 0 10px 0;
 }
+
+.view-uib-taxonomy-term {
+  .view-content {
+    ul h2 {
+      font-weight: normal;
+      font-size: 1.3em;
+    }
+    h1 {
+      border-bottom: solid 1px silver;
+      padding: 10px 0 0 0;
+      text-transform: uppercase;
+    }
+  }
+}
