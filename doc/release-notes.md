@@ -1,3 +1,26 @@
+# Release 2014-02-20 tag R6.2
+
+Oppdateringen gjør endringer og feilrettinger på studieprogram og emnemaler.
+
+- Fjerner lenke til studieplan når studieplan ikke finnes #5492
+- Fjerner overflødig bruk av fet formatering i studieløptabellen
+- Legger til globalmeny og områdemeny på studieplan og nus-sider
+- Sørger for å vise informasjon for inneværende semester i studieløptabellen #5505
+- Fjerner lenker til utgåtte kurs i studieløptabell #5490
+- Introduserer "Study programme" lenke i tabellen til venstre på engelsk studieprogram-side (tidligere tab) #5488
+- Fikser bug som gjorde at studieretningene ble publisert og avpublisert annenhver dag #5486
+- Sørget for å gjøre headingen "Specialization" oversettbar #5445
+- Sørger for at Timeplan og Litteraturliste blir hentet fra riktig semester #5444
+
+Andre mindre stylingjusteringer:
+
+- justerer bilder til å dekke høyden i uthevet felt (fjerner grå strek under bildet) #3932
+- Setter kappene for "bruk" og Reset"-"Finn innhold" i webdesken på linje #5497
+- Sørger for at service-ikonene til sosiale medier holdes på en linje under studieprogram i alle skjermfomater #5495
+
+Tekniske saker: #5383, #5078
+
+
 # Release 2014-02-17 tag: R6.1
 
 Denne oppdateringen gjør ferdig visning av studieinformasjon for w3. All grunnleggende funksjonalitet er nå på plass, men noen deler skal få ytterligere hjelp med utseende.
