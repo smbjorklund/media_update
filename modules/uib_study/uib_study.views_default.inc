@@ -308,6 +308,12 @@ function uib_study_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Translations'),
+    t('<a href="[path]">[field_uib_study_title]</a>'),
+    t('All'),
+    t('%1'),
+    t('Page'),
+    t('Feed'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -315,12 +321,6 @@ function uib_study_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Translations'),
-    t('<a href="[path]">[field_uib_study_title]</a>'),
-    t('All'),
-    t('%1'),
-    t('Page'),
-    t('Feed'),
   );
   $export['uib_taxonomy_term'] = $view;
 

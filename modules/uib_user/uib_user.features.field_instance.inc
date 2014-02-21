@@ -20,7 +20,10 @@ function uib_user_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -55,7 +58,10 @@ function uib_user_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -90,7 +96,10 @@ function uib_user_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'phone',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'phone',
         'weight' => 4,
       ),
@@ -127,7 +136,10 @@ function uib_user_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 2,
       ),
@@ -166,7 +178,10 @@ function uib_user_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'list_default',
         'weight' => 11,
       ),
@@ -200,6 +215,8 @@ function uib_user_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'prefix_suffix' => TRUE,
           'scale' => 0,
           'thousand_separator' => ' ',
@@ -239,7 +256,10 @@ function uib_user_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 7,
       ),
@@ -340,7 +360,10 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 8,
       ),
@@ -375,7 +398,10 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 5,
       ),

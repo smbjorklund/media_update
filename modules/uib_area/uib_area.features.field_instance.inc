@@ -20,7 +20,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'uib_urlfilter',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'uiblink_formatter',
         'weight' => 1,
       ),
@@ -68,7 +71,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -197,6 +203,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'file_view_mode' => 'area_bottom',
         ),
         'type' => 'file_rendered',
@@ -266,7 +274,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 10,
       ),
@@ -445,7 +456,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -523,6 +537,8 @@ function uib_area_field_default_field_instances() {
           'delete' => 'Delete',
           'description' => TRUE,
           'edit' => 'Edit',
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
@@ -795,6 +811,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'file_view_mode' => 'area_main',
         ),
         'type' => 'file_rendered',
@@ -865,7 +883,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 2,
       ),
@@ -939,6 +960,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -991,6 +1014,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'link' => 1,
         ),
         'type' => 'entityreference_label',
@@ -1046,6 +1071,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'links' => 1,
           'view_mode' => 'teaser',
         ),
@@ -1142,7 +1169,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 3,
       ),
@@ -1264,7 +1294,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'uib_field',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'socialmedia_formatter',
         'weight' => 5,
       ),
@@ -1384,7 +1417,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 9,
       ),
@@ -1667,6 +1703,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'link' => 1,
         ),
         'type' => 'entityreference_label',
@@ -1727,6 +1765,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'link' => 1,
         ),
         'type' => 'entityreference_label',
@@ -1776,6 +1816,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1836,7 +1878,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'i18n_field',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'i18n_list_default',
         'weight' => 24,
       ),
@@ -1952,7 +1997,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 25,
       ),
@@ -2025,6 +2073,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'above',
         'module' => 'file_entity',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'file_view_mode' => 'default',
         ),
         'type' => 'file_rendered',
@@ -2095,7 +2145,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => -50,
       ),
@@ -2108,7 +2161,10 @@ function uib_area_field_default_field_instances() {
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -2169,21 +2225,30 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => -40,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 2,
       ),
@@ -2218,7 +2283,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'uib_urlfilter',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'uiblink_formatter',
         'weight' => 28,
       ),
@@ -2278,7 +2346,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 23,
       ),
@@ -2351,6 +2422,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'file_view_mode' => 'content_main',
         ),
         'type' => 'file_rendered',
@@ -2360,6 +2433,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'file_view_mode' => 'wide_thumbnail',
         ),
         'type' => 'file_rendered',
@@ -2369,6 +2444,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'file_view_mode' => 'wide_thumbnail',
         ),
         'type' => 'file_rendered',
@@ -2427,6 +2504,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'file_view_mode' => 'content_sidebar',
         ),
         'type' => 'file_rendered',
@@ -2592,6 +2671,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'links' => 0,
           'view_mode' => 'short_teaser',
         ),
@@ -2647,7 +2728,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 5,
       ),
@@ -2858,7 +2942,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'phone',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'phone',
         'weight' => 4,
       ),
@@ -2908,6 +2995,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'above',
         'module' => 'geofield_map',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'geofield_map_baselayers_hybrid' => 1,
           'geofield_map_baselayers_map' => 1,
           'geofield_map_baselayers_physical' => 0,
@@ -2992,6 +3081,8 @@ function uib_area_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'prefix_suffix' => TRUE,
           'scale' => 0,
           'thousand_separator' => ' ',
@@ -3043,7 +3134,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 5,
       ),
@@ -3090,7 +3184,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -3137,7 +3234,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -3184,7 +3284,10 @@ function uib_area_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'phone',
-        'settings' => array(),
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
         'type' => 'phone',
         'weight' => 3,
       ),
@@ -3243,6 +3346,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'above',
         'module' => 'addressfield',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'format_handlers' => array(
             0 => 'address',
           ),
@@ -3312,6 +3417,8 @@ function uib_area_field_default_field_instances() {
         'label' => 'above',
         'module' => 'addressfield',
         'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
           'format_handlers' => array(
             0 => 'address',
           ),
@@ -3361,871 +3468,10 @@ function uib_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-uib_testimonial-field_uib_area'
-  $field_instances['node-uib_testimonial-field_uib_area'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Here you should type which area this content belongs to',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_area',
-    'label' => 'Area',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_birth_year'
-  $field_instances['node-uib_testimonial-field_uib_birth_year'] = array(
-    'bundle' => 'uib_testimonial',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 3,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_birth_year',
-    'label' => 'Birth year',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'blank',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'Y-m-d H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '1900:+0',
-      ),
-      'type' => 'date_select',
-      'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_education'
-  $field_instances['node-uib_testimonial-field_uib_education'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_education',
-    'label' => 'Education',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 16,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_exchange_place'
-  $field_instances['node-uib_testimonial-field_uib_exchange_place'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 8,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_exchange_place',
-    'label' => 'Exchange place',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 17,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_exchange_text'
-  $field_instances['node-uib_testimonial-field_uib_exchange_text'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_exchange_text',
-    'label' => 'Exchange text',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_lead'
-  $field_instances['node-uib_testimonial-field_uib_lead'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-      'short_teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_lead',
-    'label' => 'Lead',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_media'
-  $field_instances['node-uib_testimonial-field_uib_media'] = array(
-    'bundle' => 'uib_testimonial',
-    'deleted' => 0,
-    'description' => 'A small image in the sidebar. ',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'content_sidebar',
-        ),
-        'type' => 'file_rendered',
-        'weight' => 4,
-      ),
-      'short_teaser' => array(
-        'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'wide_thumbnail',
-        ),
-        'type' => 'file_rendered',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'preview',
-        ),
-        'type' => 'file_rendered',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_media',
-    'label' => 'Photo',
-    'required' => 0,
-    'settings' => array(
-      'description_field' => 0,
-      'entity_translation_sync' => FALSE,
-      'file_directory' => 'media',
-      'file_extensions' => 'png jpg jpeg',
-      'max_filesize' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'media',
-      'settings' => array(
-        'allowed_schemes' => array(
-          'private' => 0,
-          'public' => 'public',
-          'vimeo' => 0,
-          'youtube' => 0,
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 'media_default--media_browser_1',
-          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-          'media_internet' => 0,
-          'upload' => 'upload',
-          'youtube' => 0,
-        ),
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'media_generic',
-      'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_name'
-  $field_instances['node-uib_testimonial-field_uib_name'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_plain',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_name',
-    'label' => 'Name',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_organization'
-  $field_instances['node-uib_testimonial-field_uib_organization'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_organization',
-    'label' => 'Organization',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 15,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_position'
-  $field_instances['node-uib_testimonial-field_uib_position'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_position',
-    'label' => 'Position',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 14,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_quote'
-  $field_instances['node-uib_testimonial-field_uib_quote'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The quote that will be highlighted in the middle of the page and all the places this testimonial is featured. ',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_plain',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_quote',
-    'label' => 'Quote',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-          'restricted_html' => 'restricted_html',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -7,
-            ),
-            'plain_text' => array(
-              'weight' => -10,
-            ),
-            'restricted_html' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_relation'
-  $field_instances['node-uib_testimonial-field_uib_relation'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 2,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_relation',
-    'label' => 'Relation',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 21,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_study_programmes'
-  $field_instances['node-uib_testimonial-field_uib_study_programmes'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'uib_study',
-        'settings' => array(
-          'uib_study_field_name' => 'field_uib_study_title',
-          'uib_study_link' => 1,
-        ),
-        'type' => 'uib_study_title_formatter',
-        'weight' => 11,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_study_programmes',
-    'label' => 'Related study programmes',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 20,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_text'
-  $field_instances['node-uib_testimonial-field_uib_text'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 13,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_text',
-    'label' => 'Text',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'full_html' => 'full_html',
-          'plain_text' => 0,
-          'restricted_html' => 0,
-        ),
-        'allowed_formats_toggle' => 1,
-        'default_order_toggle' => 1,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => -50,
-            ),
-            'full_html' => array(
-              'weight' => -48,
-            ),
-            'plain_text' => array(
-              'weight' => -47,
-            ),
-            'restricted_html' => array(
-              'weight' => -49,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 18,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_w2_id'
-  $field_instances['node-uib_testimonial-field_uib_w2_id'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_w2_id',
-    'label' => 'ID w2',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-uib_testimonial-field_uib_w2_path'
-  $field_instances['node-uib_testimonial-field_uib_w2_path'] = array(
-    'bundle' => 'uib_testimonial',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_uib_w2_path',
-    'label' => 'Path w2',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 5,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('<strong>Front page:</strong> Adds both news articles and events to the front page. <br> 
 <strong>News page:</strong> Adds news articles to the middle section of the page. The first article is the profiled article in the middle. Only the first five articles will show on the area page. More information: <a href="http://w3docs.h.uib.no/redigere-områdeforside#97"> Promoted articles </a>');
-  t('A small image in the sidebar. ');
   t('Add a testimonial that will be featured on the front page. ');
   t('Add ids for the social media links that are desired.  Use strings like twitter:uib, youtube:unibergen, facebook:universitetetibergen, vimeo:uib and flickr:unibergen. Replace "uib" with the desired account. ');
   t('Add several relevant links to the text in these fields. It it possible to use  <a href="http://w3docs.h.uib.no/?q=node/16">internal links</a> when linking to pages within www.uib.no.');
@@ -4236,7 +3482,6 @@ function uib_area_field_default_field_instances() {
   t('Area');
   t('Areas might provide their own logo image.  It will be included in the header.  The logo ought to be about 80x80 pixels and have a transparent background.');
   t('Attachments');
-  t('Birth year');
   t('Bottom image');
   t('Bottom text');
   t('Byline');
@@ -4244,11 +3489,8 @@ function uib_area_field_default_field_instances() {
   t('Contacts');
   t('Content Manager');
   t('Date');
-  t('Education');
   t('Event type');
   t('Every event must have both a start date and an end date. Remember to fill out both date fields and time fields.');
-  t('Exchange place');
-  t('Exchange text');
   t('External author');
   t('Fact box');
   t('Fax');
@@ -4269,25 +3511,18 @@ function uib_area_field_default_field_instances() {
   t('Main media');
   t('Menu style');
   t('Menu title w2');
-  t('Name');
-  t('Organization');
   t('Parent ID w2');
   t('Parents');
   t('Path w2');
   t('Phone');
-  t('Photo');
   t('Place');
   t('Place ID');
-  t('Position');
   t('Postal Address');
   t('Primary media');
   t('Primary text');
   t('Profiled testimonial');
   t('Promoted articles');
-  t('Quote');
   t('Related content');
-  t('Related study programmes');
-  t('Relation');
   t('Relevant links');
   t('Rss feed');
   t('Sebra ID');
@@ -4304,7 +3539,6 @@ function uib_area_field_default_field_instances() {
   t('The address for the location of the event. ');
   t('The person to contact for information related to the event. Use UiB usernames to search for people. ');
   t('The primary media is the image/video at the top of the area front page. If text is added to the primary text field the image shown will be a maximum of 334x251 pixels. If the primary text field is empty, the image will take up the entire width.');
-  t('The quote that will be highlighted in the middle of the page and all the places this testimonial is featured. ');
   t('These are the small images in the sidebar. You can add several.');
   t('This field contains the text that was known as "profiltekster" in the old version and was shown on the left side of the area page. ');
   t('This field is shown at the bottom of the area front page. ');
