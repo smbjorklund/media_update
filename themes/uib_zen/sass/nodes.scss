@@ -581,3 +581,22 @@ h1 {
 .view-id-courses .view-content {
   font-size: .9em;
 }
+
+// Study program
+.view-display-id-study_programmes_all_page {
+  #views-exposed-form-courses-study-programmes-all-page {
+    background: #f9f9f6;
+    padding: 10px;
+    border-left: solid 5px #77af00;
+  }
+  li {
+    font-size: .9em;
+  }
+  h3 {
+    text-transform: uppercase;
+    padding: 30px 0 5px 0;
+    font-size: 1.6em;
+    font-weight: normal;
+    border-bottom: solid 1px silver;
+  }
+}
