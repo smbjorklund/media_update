@@ -880,16 +880,17 @@ function uib_study_field_formatter_settings_summary($field, $instance, $view_mod
  */
 function uib_study_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   if ($display['type'] == 'uib_study_title_formatter') {
+    global $language;
     $elements = array();
     $settings = $display['settings'];
     if (!empty($settings['uib_study_field_name'])) {
       foreach ($items as $delta => $item) {
         $node = entity_metadata_wrapper('node', node_load($item['target_id']));
-        $language = $entity->language;
-        if (empty($language) || $language == 'und') {
-          $language = 'nb';
+        $lang = $language->language;
+        if (empty($lang) || $lang == 'und') {
+          $lang = 'nb';
         }
-        $display_text = $node->language($language)->$settings['uib_study_field_name']->value();
+        $display_text = $node->language($lang)->$settings['uib_study_field_name']->value();
         if ($settings['uib_study_link']) {
           $elements[$delta]['#markup'] = l($display_text, 'node/' . $item['target_id']);
         }
