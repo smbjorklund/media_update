@@ -479,7 +479,12 @@ function uib_study_block_view($delta = '') {
             $rows[] = array(t('Degree'));
           }
           else {
-            $degree = $language->language == 'en' ? $data['gradnavn:en'] : $data['gradnavn'];
+            if (isset($data['gradnavn:en'])) {
+              $degree = $language->language == 'en' ? $data['gradnavn:en'] : $data['gradnavn'];
+            }
+            else {
+              $degree = $data['gradnavn'];
+            }
             $rows[] = array(t('Degree'), $degree);
           }
           $tmp = uib_study__extract_study_info($data_2, 'SP_SPRAK');
