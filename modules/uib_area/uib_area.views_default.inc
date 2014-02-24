@@ -945,20 +945,13 @@ return !empty($handler->argument);';
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  /* Field: Content: ID */
-  $handler->display->display_options['fields']['field_uib_study_code']['id'] = 'field_uib_study_code';
-  $handler->display->display_options['fields']['field_uib_study_code']['table'] = 'field_data_field_uib_study_code';
-  $handler->display->display_options['fields']['field_uib_study_code']['field'] = 'field_uib_study_code';
-  $handler->display->display_options['fields']['field_uib_study_code']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_study_code']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_study_code']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['field_uib_study_title']['id'] = 'field_uib_study_title';
   $handler->display->display_options['fields']['field_uib_study_title']['table'] = 'field_data_field_uib_study_title';
   $handler->display->display_options['fields']['field_uib_study_title']['field'] = 'field_uib_study_title';
   $handler->display->display_options['fields']['field_uib_study_title']['label'] = '';
   $handler->display->display_options['fields']['field_uib_study_title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_study_title']['alter']['text'] = '<a href="[path]">[field_uib_study_title] / [field_uib_study_code]</a>';
+  $handler->display->display_options['fields']['field_uib_study_title']['alter']['text'] = '<a href="[path]">[field_uib_study_title]</a>';
   $handler->display->display_options['fields']['field_uib_study_title']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_uib_study_title']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
