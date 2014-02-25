@@ -501,9 +501,6 @@ h1 {
   #block-uib-study-study-testimonial .block__title, #block-uib-study-study-facts .block__title, #block-uib-study-study-contact .block__title {
     display: none;
   }
-  #block-uib-study-study-content h3 {
-    padding: 20px 0 0 0;
-  }
   #block-uib-study-study-content {
     :first-child {
       padding-top: 0;
@@ -513,9 +510,15 @@ h1 {
     table :first-child {
       padding-top: 0.5em;
     }
-  }
-  #block-uib-study-study-content h1 {
-    padding: 0;
+    h1 {
+      padding: 0;
+    }
+    div {
+      margin-bottom: 20px;
+    }
+    [id|=uib] > p {
+      margin-bottom: 20px;
+    }
   }
 }
 

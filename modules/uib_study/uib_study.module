@@ -135,7 +135,6 @@ function uib_study__infotyper_render(&$page, $render, $filter) {
     );
     foreach ($group['#items'] as $item) {
       $page[$group['#group']][$item['#type']] = array(
-        '#prefix' => '<h3>' . check_plain($item['#title']) . '</h3>',
         '#markup' => uib_study__text_markup($item, $is_course),
       );
     }
@@ -481,7 +480,6 @@ function uib_study_block_view($delta = '') {
         }
         if ($tmp) {
           $render = array(
-            '#prefix' => '<h3>' . check_plain($tmp['#title']) . '</h3>',
             '#markup' => uib_study__text_markup($tmp, $is_course),
           );
         }
@@ -1107,7 +1105,7 @@ function uib_study__text_markup($item, $is_course, $plain = FALSE) {
         }
         else {
           // keep html tags
-          $tmp_markup .= uib_study__filter_text($sem_variant);
+          $tmp_markup .= uib_study__title_and_text($item['#title'], $sem_variant);
         }
         $tmp_markup .= '</div>';
       }
@@ -1133,7 +1131,7 @@ function uib_study__text_markup($item, $is_course, $plain = FALSE) {
   }
   else {
     // keep html tags
-    $tmp_markup .= uib_study__filter_text($item['#text']);
+    $tmp_markup .= uib_study__title_and_text($item['#title'], $item['#text']);
   }
   if ($is_course) {
     $tmp_markup .= '</div>';
@@ -1373,4 +1371,19 @@ function uib_study__insert_t_row($depth) {
     'class' => 'uib-cell-indent-' . ($depth - 1),
   );
   return $row;
+}
+
+function uib_study__title_and_text($title, $text) {
+  $output = '';
+  if (empty($text)) {
+    return $output;
+  }
+  $output .= '<h3>' . $title . '</h3>';
+  if (substr($text, 0, 1) != '<') {
+    $output .= '<p>' . uib_study__filter_text($text) . '</p>';
+  }
+  else {
+    $output .= uib_study__filter_text($text);
+  }
+  return $output;
 }
