@@ -2310,6 +2310,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['sorts']['field_uib_date_value']['id'] = 'field_uib_date_value';
   $handler->display->display_options['sorts']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
   $handler->display->display_options['sorts']['field_uib_date_value']['field'] = 'field_uib_date_value';
+  $handler->display->display_options['sorts']['field_uib_date_value']['order'] = 'DESC';
   $handler->display->display_options['sorts']['field_uib_date_value']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['field_uib_date_value']['expose']['label'] = 'Date';
   /* Sort criterion: Content: Title */
