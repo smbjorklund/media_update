@@ -545,3 +545,33 @@ h1 {
     padding: 30px 0 0 0;
   }
 }
+
+// Course
+#views-exposed-form-courses-study-courses-all-page {
+  background: #f9f9f6;
+  border-left: solid 5px #77af00;
+  input#edit-submit-courses {
+    margin: 10px 0 10px  20px;
+  }
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+  .form-checkboxes > a {
+    text-decoration: underline;
+    color: #037caf;
+  }
+}
+.view-id-courses .bef-select-as-checkboxes-fieldset {
+  .bef-toggle {
+    font-size: 1.2em;
+  }
+  .form-checkboxes {
+    margin-left: 30px;
+    padding-left: 20px;
+    border-left: solid 5px #d95900;
+  }
+}
+.view-id-courses .view-content {
+  font-size: .9em;
+}
