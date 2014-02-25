@@ -58,6 +58,14 @@ function uib_study_menu() {
       'access callback' => TRUE,
     );
   }
+
+  foreach (explode(' ', 'studieprogram studyprogramme') as $prefix) {
+    $items["$prefix/%/%/plan"] = array(
+      'page callback' => 'uib_study__studyplan',
+      'page arguments' => array(1,2),
+      'access callback' => TRUE,
+    );
+  }
   return $items;
 }
 
@@ -496,7 +504,8 @@ function uib_study_block_view($delta = '') {
           $tmp = uib_study__extract_study_info($data_2, 'SP_START');
           $rows[] = array(t('Study start'), $tmp['#text']);
           if (uib_study__has_study_plan($data_2)) {
-            $study_plan_url = l(t('Study plan'), (($language->language == 'nb' ? 'studieprogram/' : 'studyprogramme/') . $node->field_uib_study_code['und'][0]['value'] . '/plan'));
+            $study_path = uib_study__study_path($node->field_uib_study_code['und'][0]['value']);
+            $study_plan_url = l(t('Study plan'), (drupal_get_path_alias($study_path) . '/plan'));
             $rows[] = array(t('Resources'), $study_plan_url);
           }
         }
