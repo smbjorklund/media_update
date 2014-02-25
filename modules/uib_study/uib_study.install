@@ -186,3 +186,42 @@ function uib_study_update_7011() {
     field_delete_instance($instance);
   }
 }
+
+/**
+ * Fix entity translation for uib_nus taxonomy terms
+ */
+function uib_study_update_7012() {
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'taxonomy_term')
+    ->entityCondition('vocabulary_machine_name', 'uib_nus')
+    ->execute();
+  if (!empty($result['taxonomy_term'])) {
+    $nus_terms = entity_load('taxonomy_term', array_keys($result['taxonomy_term']));
+    foreach ($nus_terms as $entity) {
+      $term = entity_metadata_wrapper('taxonomy_term', $entity);
+      $trans_handler = entity_translation_get_handler('taxonomy_term', $entity, TRUE);
+      $translation = array(
+        'status' => 1,
+        'language' => 'nb',
+      );
+      $trans_handler->setTranslation($translation);
+      $translation = array(
+        'status' => 1,
+        'language' => 'en',
+        'source' => 'nb',
+      );
+      $trans_handler->setTranslation($translation);
+
+      // Fix errors introduced previously
+      $title = explode('/', $term->name->value());
+      $nb_title = explode(' ', $title[0]);
+      array_shift($nb_title);
+      $nb_title = trim(implode(' ', $nb_title));
+      if ($term->language('nb')->field_uib_term_title->value() != $nb_title) {
+        $term->language('nb')->field_uib_term_title->set($nb_title);
+        uibx_log("Fixed Norwegian title of nus term " . $term->getIdentifier());
+      }
+      $term->save();
+    }
+  }
+}

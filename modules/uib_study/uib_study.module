@@ -963,12 +963,14 @@ function uib_study_form_alter(&$form, &$form_state, $form_id) {
     hide($form['author']);
   }
   elseif ($form_id == 'taxonomy_form_term' && $form['#vocabulary']->name == 'uib_nus') {
-    // hide fields that are synchronised
-    hide($form['name']);
-    hide($form['description']);
-    $form['relations']['#access'] = FALSE;
-    hide($form['field_uib_nus_id']);
-    hide($form['field_uib_term_title']);
+    // hide fields that are synchronised (except for user 1)
+    if ($GLOBALS['user']->uid != 1) {
+      hide($form['name']);
+      hide($form['description']);
+      $form['relations']['#access'] = FALSE;
+      hide($form['field_uib_nus_id']);
+      hide($form['field_uib_term_title']);
+    }
   }
 }
 
