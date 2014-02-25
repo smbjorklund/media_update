@@ -811,6 +811,98 @@ return !empty($handler->argument);';
   $handler->display->display_options['css_class'] = 'uib-all-courses';
   $handler->display->display_options['display_description'] = 'Listing all courses';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+    ),
+    'field_uib_nus_target_id' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'bef_select_all_none' => FALSE,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+      ),
+    ),
+    'tid' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 1,
+        'bef_collapsible' => 1,
+        'is_secondary' => 1,
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+      ),
+    ),
+    'tid_1' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 1,
+        'bef_collapsible' => 1,
+        'is_secondary' => 1,
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+      ),
+    ),
+    'tid_2' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 1,
+        'bef_collapsible' => 1,
+        'is_secondary' => 1,
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+      ),
+    ),
+    'tid_3' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 1,
+        'bef_collapsible' => 1,
+        'is_secondary' => 1,
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+      ),
+    ),
+    'tid_4' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 1,
+        'bef_collapsible' => 1,
+        'is_secondary' => 1,
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+      ),
+    ),
+  );
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'mini';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
@@ -859,6 +951,10 @@ return !empty($handler->argument);';
   $handler->display->display_options['sorts']['field_uib_study_code_value']['field'] = 'field_uib_study_code_value';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -874,6 +970,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['type']['value'] = array(
     'uib_study' => 'uib_study',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Type (field_uib_study_type) */
   $handler->display->display_options['filters']['field_uib_study_type_value']['id'] = 'field_uib_study_type_value';
   $handler->display->display_options['filters']['field_uib_study_type_value']['table'] = 'field_data_field_uib_study_type';
@@ -881,29 +978,13 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_type_value']['value'] = array(
     'course' => 'course',
   );
+  $handler->display->display_options['filters']['field_uib_study_type_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_study_type_value']['expose']['operator_id'] = 'field_uib_study_type_value_op';
   $handler->display->display_options['filters']['field_uib_study_type_value']['expose']['label'] = 'Type';
   $handler->display->display_options['filters']['field_uib_study_type_value']['expose']['operator'] = 'field_uib_study_type_value_op';
   $handler->display->display_options['filters']['field_uib_study_type_value']['expose']['identifier'] = 'field_uib_study_type_value';
   $handler->display->display_options['filters']['field_uib_study_type_value']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_uib_study_type_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    64272948 => 0,
-    170699807 => 0,
-    74573517 => 0,
-    176168899 => 0,
-  );
-  /* Filter criterion: Content: NUS (field_uib_nus) */
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['id'] = 'field_uib_nus_target_id';
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['table'] = 'field_data_field_uib_nus';
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['field'] = 'field_uib_nus_target_id';
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['operator_id'] = 'field_uib_nus_target_id_op';
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['label'] = 'Filter by discipline';
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['operator'] = 'field_uib_nus_target_id_op';
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['identifier'] = 'nus';
-  $handler->display->display_options['filters']['field_uib_nus_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     64272948 => 0,
@@ -918,6 +999,167 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
+  $handler->display->display_options['filters']['language']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    2 => '2',
+    3 => '3',
+    4 => '4',
+    5 => '5',
+    6 => '6',
+    7 => '7',
+  );
+  $handler->display->display_options['filters']['tid']['group'] = 2;
+  $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Humanities and aesthetic studies';
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['tid']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['tid']['group_info']['label'] = 'Has taxonomy term';
+  $handler->display->display_options['filters']['tid']['group_info']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['tid']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'uib_nus';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_1']['id'] = 'tid_1';
+  $handler->display->display_options['filters']['tid_1']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_1']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_1']['value'] = array(
+    9 => '9',
+    10 => '10',
+    11 => '11',
+    12 => '12',
+  );
+  $handler->display->display_options['filters']['tid_1']['group'] = 2;
+  $handler->display->display_options['filters']['tid_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_1']['expose']['operator_id'] = 'tid_1_op';
+  $handler->display->display_options['filters']['tid_1']['expose']['label'] = 'Teacher training and pedagogy';
+  $handler->display->display_options['filters']['tid_1']['expose']['operator'] = 'tid_1_op';
+  $handler->display->display_options['filters']['tid_1']['expose']['identifier'] = 'tid_1';
+  $handler->display->display_options['filters']['tid_1']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['tid_1']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['tid_1']['type'] = 'select';
+  $handler->display->display_options['filters']['tid_1']['vocabulary'] = 'uib_nus';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_2']['id'] = 'tid_2';
+  $handler->display->display_options['filters']['tid_2']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_2']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_2']['value'] = array(
+    14 => '14',
+    15 => '15',
+    16 => '16',
+    17 => '17',
+    18 => '18',
+    19 => '19',
+    20 => '20',
+    21 => '21',
+    22 => '22',
+  );
+  $handler->display->display_options['filters']['tid_2']['group'] = 2;
+  $handler->display->display_options['filters']['tid_2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_2']['expose']['operator_id'] = 'tid_2_op';
+  $handler->display->display_options['filters']['tid_2']['expose']['label'] = 'Political science and Development studies';
+  $handler->display->display_options['filters']['tid_2']['expose']['operator'] = 'tid_2_op';
+  $handler->display->display_options['filters']['tid_2']['expose']['identifier'] = 'tid_2';
+  $handler->display->display_options['filters']['tid_2']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid_2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['tid_2']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['tid_2']['type'] = 'select';
+  $handler->display->display_options['filters']['tid_2']['vocabulary'] = 'uib_nus';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_3']['id'] = 'tid_3';
+  $handler->display->display_options['filters']['tid_3']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_3']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_3']['value'] = array(
+    24 => '24',
+    25 => '25',
+    26 => '26',
+    27 => '27',
+    28 => '28',
+    29 => '29',
+  );
+  $handler->display->display_options['filters']['tid_3']['group'] = 2;
+  $handler->display->display_options['filters']['tid_3']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_3']['expose']['operator_id'] = 'tid_3_op';
+  $handler->display->display_options['filters']['tid_3']['expose']['label'] = 'Natural sciences and techincal subjects';
+  $handler->display->display_options['filters']['tid_3']['expose']['operator'] = 'tid_3_op';
+  $handler->display->display_options['filters']['tid_3']['expose']['identifier'] = 'tid_3';
+  $handler->display->display_options['filters']['tid_3']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid_3']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['tid_3']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['tid_3']['type'] = 'select';
+  $handler->display->display_options['filters']['tid_3']['vocabulary'] = 'uib_nus';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_4']['id'] = 'tid_4';
+  $handler->display->display_options['filters']['tid_4']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_4']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_4']['value'] = array(
+    31 => '31',
+    32 => '32',
+    33 => '33',
+    34 => '34',
+    35 => '35',
+    36 => '36',
+    37 => '37',
+  );
+  $handler->display->display_options['filters']['tid_4']['group'] = 2;
+  $handler->display->display_options['filters']['tid_4']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_4']['expose']['operator_id'] = 'tid_4_op';
+  $handler->display->display_options['filters']['tid_4']['expose']['label'] = 'Health and welfare';
+  $handler->display->display_options['filters']['tid_4']['expose']['operator'] = 'tid_4_op';
+  $handler->display->display_options['filters']['tid_4']['expose']['identifier'] = 'tid_4';
+  $handler->display->display_options['filters']['tid_4']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid_4']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['tid_4']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['tid_4']['type'] = 'select';
+  $handler->display->display_options['filters']['tid_4']['vocabulary'] = 'uib_nus';
   $handler->display->display_options['path'] = 'course';
 
   /* Display: All studyprogrammes */
@@ -1066,7 +1308,12 @@ return !empty($handler->argument);';
     t('last »'),
     t('<a href="[path]">[field_uib_study_title] / [field_uib_study_code]</a>'),
     t('Type'),
-    t('Filter by discipline'),
+    t('Humanities and aesthetic studies'),
+    t('Has taxonomy term'),
+    t('Teacher training and pedagogy'),
+    t('Political science and Development studies'),
+    t('Natural sciences and techincal subjects'),
+    t('Health and welfare'),
     t('All studyprogrammes'),
     t('Listing all study programmes'),
     t('Filter by level'),
