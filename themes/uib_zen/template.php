@@ -553,6 +553,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         }
       }
 
+      if ($article_type == 'phd_press_release') {
+        // The the date is only used for sorting
+        hide($variables['content']['field_uib_date']);
+      }
+
       // Ensure that the labels of some fields, which are shown in the
       // main content sidebar, are not show when the fields contain no data
       if (empty($variables['node']->field_uib_location['und'][0]['value'])) {
