@@ -56,7 +56,9 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
               );
             }
             else {
-              $uib_crumbs = __uib_get_breadcrumb(arg(1), array(), $current_area->nid);
+              $current_area_menu = menu_tree_all_data('menu-area-' . $current_area->nid);
+              $current_area_menu_ids = __uib_get_menu_item_ids($current_area_menu);
+              $uib_crumbs = __uib_get_breadcrumb(arg(1), array(), $current_area->nid, $current_area_menu_ids);
               if (count($uib_crumbs) > 0) {
                 $uib_crumbs = array_reverse($uib_crumbs);
                 $first_relation = $uib_crumbs[0];
@@ -170,7 +172,7 @@ function uib_breadcrumb_page_alter(&$page) {
  *
  * @return array
  */
-function __uib_get_breadcrumb($nid, $crumbs=array(), $current_area) {
+function __uib_get_breadcrumb($nid, $crumbs=array(), $current_area, $menu_ids) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'uib_article')
@@ -179,17 +181,20 @@ function __uib_get_breadcrumb($nid, $crumbs=array(), $current_area) {
   if (!empty($result['node'])) {
     $ids = array_keys($result['node']);
     $parents = entity_load('node', $ids);
+    foreach ($ids as $key => $id) {
+      if (in_array($id, $menu_ids)) {
+        $parent = $parents[$id];
+        $crumbs[] = __uib_get_breadcrumb_item($parent);
+        return $crumbs;
+      }
+    }
     foreach ($parents as $parent) {
       if ($parent->field_uib_area['und'][0]['target_id'] == $current_area) {
-        $item = array(
-          'title' => $parent->title,
-          'href' => 'node/' . $parent->nid,
-          'link_path' => '',
-          'localized_options' => array(),
-          'type' => 0,
-        );
-        $crumbs[] = $item;
-        $crumbs = __uib_get_breadcrumb($parent->nid, $crumbs, $current_area);
+        $item = __uib_get_breadcrumb_item($parent);
+        if (!in_array($item, $crumbs)) {
+          $crumbs[] = $item;
+          $crumbs = __uib_get_breadcrumb($parent->nid, $crumbs, $current_area, $menu_ids);
+        }
       }
     }
   }
@@ -228,4 +233,34 @@ function __uib_get_parent_item($mlid) {
    ->execute()
    ->fetchAssoc();
   return $result;
+}
+
+/**
+ * Getting the ids of links in an area menu
+ *
+ * @param array $menu
+ *
+ * @return array
+ */
+function __uib_get_menu_item_ids($menu) {
+  $ids = array();
+  foreach ($menu as $item) {
+    foreach ($item['below'] as $ml) {
+      $id = explode('/', $ml['link']['link_path']);
+      if (count($id) < 3) {
+        $ids[] = $id[1];
+      }
+    }
+  }
+  return $ids;
+}
+
+function __uib_get_breadcrumb_item($object) {
+  return array(
+    'title' => $object->title,
+    'href' => 'node/' . $object->nid,
+    'link_path' => '',
+    'localized_options' => array(),
+    'type' => 0,
+  );
 }
