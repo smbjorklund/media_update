@@ -225,3 +225,12 @@ function uib_study_update_7012() {
     }
   }
 }
+
+/*
+ * Add Norwegian collation for study title field
+ */
+function uib_study_update_7013() {
+  if (db_driver() == 'pgsql') {
+    db_query('ALTER TABLE field_data_field_uib_study_title ALTER COLUMN field_uib_study_title_value TYPE character varying(255) COLLATE "nb_NO"');
+  }
+}
