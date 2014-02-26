@@ -984,6 +984,11 @@ function uib_zen_preprocess_views_view(&$variables) {
     // Force education as current area
     uib_area__get_current(variable_get('uib_study_area_nid'));
   }
+  if ($variables['name'] == 'uib_nus_overview') {
+    $variables['title_prefix']['#markup'] = '<h1>';
+    $variables['title'] = t('Studies');
+    $variables['title_suffix']['#markup'] = '</h1>';
+  }
 }
 
 /**
