@@ -79,7 +79,6 @@ Subcommands:
     list [--open] [--patches]
     branches [--patches] [--merge-with <branch>]
     merge-status <id> [--merge-with <branch>]
-    done <id>
     extract
 EOT
 }
@@ -298,30 +297,6 @@ sub do_list {
     }
     else {
 	list_issues(get_issues());
-    }
-}
-
-sub do_done {
-    usage("No issue id given") unless @ARGV;
-    my %want_ids;
-    for (@ARGV) {
-	s/^origin\///;
-	s/^RTS[-\/]?//i;
-	s/^#//;
-	if (/^\d+$/) {
-	    my $issue_id = $_;
-	    print "RTS-$issue_id\n";
-	    my @patches = get_patches($issue_id);
-	    for (@patches) {
-		print "  $_\n";
-	    }
-	    system("git push origin origin/rts/$issue_id:refs/heads/rts/$issue_id.done");
-	    system("git push origin :rts/$issue_id");
-	    system("git branch -D rts/$issue_id");
-	}
-	else {
-	    warn "'$_' doesn't look like an issue to me\n";
-	}
     }
 }
 

@@ -1,0 +1,115 @@
+#!/usr/bin/perl -w
+
+use strict;
+use warnings;
+
+my $cmd = shift || do_list();
+my $do_cmd = "do_$cmd";
+
+if (defined &$do_cmd) {
+    no strict 'refs';
+    &$do_cmd();
+    exit;
+}
+
+$cmd =~ /(\d+)$/ or usage();
+my $id = $1;
+
+unless (git_have_ref("remotes/origin/rts/$id")) {
+    die "No remote rts/$id branch";
+}
+
+run("git", "checkout", "master");
+
+if (git_have_ref("heads/pick/$id")) {
+    run("git", "branch", "-D", "pick/$id");
+}
+run("git", "checkout", "-b", "pick/$id", "origin/rts/$id");
+run("git", "rebase", "master");
+die "Aborting" if $?;
+do_review();
+
+print "______\nRun '$0 apply' if this looks good, '$0 abort' if not\n";
+exit;
+
+sub do_list {
+    run("bin/rts", "branches", @_);
+}
+
+sub do_review {
+    run("git", "log", "--patch", "--reverse", "master..");
+}
+
+sub do_abort {
+    if (-d ".git/rebase-apply") {
+	run("git", "rebase", "--abort");
+    }
+    my $current_branch = git_current_branch();
+    die "Not on an pick-branch" unless $current_branch =~ /^pick\/\d+$/;
+    run("git", "checkout", "master");
+    run("git", "branch", "-D", $current_branch);
+}
+
+sub do_apply {
+    my $current_branch = git_current_branch();
+    die "Not on an pick-branch" unless $current_branch =~ /^pick\/(\d+)$/;
+    my $id = $1;
+
+    my $commits = qx(git log --oneline master..);
+    $commits =~ s/RTS-\#?$id\s//;
+    $commits =~ s/^/commit:/gm;
+    if (($commits =~ tr/\n/\n/) == 1) {
+	$commits =~ s/\s(.*)/ "$1"/;
+	$commits = "Cherry-picked as $commits";
+    }
+    else {
+	$commits =~ s/^/* /gm;
+	$commits = "Cherry-picked as:\n$commits";
+    }
+
+    # Apply changes to master (should already be rebased, so the merge should always succeed)
+    run("git", "checkout", "master");
+    run("git", "merge", "--ff-only", $current_branch);
+    die if $?;
+    run("git", "branch", "-D", $current_branch);
+
+    # Update the server
+    run("git", "push", "origin", "master");
+    die if $?;
+    run("git", "push", "origin", "origin/rts/$id:refs/heads/rts/$id.done");
+    die if $?;
+    run("git", "push", "origin", ":rts/$id");
+
+    # Let the user easily update the issue;
+    if (-x "/usr/bin/pbcopy") {
+	open(my $fh, "|/usr/bin/pbcopy") || die;
+	print $fh $commits;
+	close($fh);
+	print "---- Copied ----\n";
+    }
+    else {
+	print "----\n";
+    }
+    print $commits;
+    print "----\n";
+    if (-x "/usr/bin/open") {
+	run("/usr/bin/open", "https://rts.uib.no/issues/$id");
+    }
+}
+
+sub git_have_ref {
+    my $ref = shift;
+    run("git", "show-ref", "--quiet", "--verify", "refs/$ref");
+    return $? == 0;
+}
+
+sub git_current_branch {
+    my $branch = qx(git rev-parse --abbrev-ref HEAD);
+    chomp($branch);
+    return $branch;
+}
+
+sub run {
+    print ">>> @_\n";
+    system(@_);
+}
