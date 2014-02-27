@@ -1389,6 +1389,19 @@ function uib_study_views_pre_render(&$view) {
       }
     }
   }
+  if (($view->name == 'courses' && $view->current_display == 'study_programmes') || $view->name == 'uib_taxonomy_term') {
+    // Re-sorting views results when grouping on study category
+    // It will probably not work as expected if a pager is used with the view
+    $sort_array = array();
+    $i = 0;
+    foreach ($view->result as $row) {
+      $suffix = str_pad($i, 6, '0', STR_PAD_LEFT);
+      $sort_array[$row->field_field_uib_study_category[0]['rendered']['#markup'] . $suffix] = $row;
+      $i++;
+    }
+    ksort($sort_array);
+    $view->result = $sort_array;
+  }
 }
 
 /**
