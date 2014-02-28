@@ -32,7 +32,7 @@
 use strict;
 use warnings;
 
-my $cmd = shift || do_list();
+my $cmd = shift || (do_list(), exit);
 my $do_cmd = "do_$cmd";
 
 if (defined &$do_cmd) {
