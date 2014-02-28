@@ -916,6 +916,12 @@ return !empty($handler->argument);';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = 'Found @total courses';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
@@ -1240,6 +1246,12 @@ return !empty($handler->argument);';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = 'Found @total study programmes';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -1411,6 +1423,7 @@ return !empty($handler->argument);';
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('Found @total courses'),
     t('<a href="[path]">[field_uib_study_title] / [field_uib_study_code]</a>'),
     t('Type'),
     t('Humanities and aesthetic studies'),
@@ -1422,6 +1435,7 @@ return !empty($handler->argument);';
     t('Study points'),
     t('All studyprogrammes'),
     t('Listing all study programmes'),
+    t('Found @total study programmes'),
     t('No result'),
     t('Your criteria did not match any results'),
     t('Filter by subject'),
