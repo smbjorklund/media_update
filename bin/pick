@@ -74,11 +74,18 @@ sub do_apply {
     run("git", "branch", "-D", $current_branch);
 
     # Update the server
-    run("git", "push", "origin", "master");
-    die if $?;
-    run("git", "push", "origin", "origin/rts/$id:refs/heads/rts/$id.done");
-    die if $?;
-    run("git", "push", "origin", ":rts/$id");
+    if (1) {
+	run("git", "push", "origin", "master");
+	die if $?;
+	my $picked = "picked/$id";
+	while (git_have_ref("remotes/origin/$picked")) {
+	    $picked .= ".0" unless $picked =~ /\./;
+	    $picked =~ s/\.(\d+)$/"." . ($1 + 1)/e;
+	}
+	run("git", "push", "origin", "origin/rts/$id:refs/heads/$picked");
+	die if $?;
+	run("git", "push", "origin", ":rts/$id");
+    }
 
     # Let the user easily update the issue;
     if (-x "/usr/bin/pbcopy") {
