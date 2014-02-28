@@ -654,6 +654,9 @@ function uib_study__filter_text($text) {
     while (1) {
       $ch = drupal_substr($text, $i, 1);
       if ($ch === '') {
+        if ($word) {
+          $out .= uib_study__word_code_chk($word);
+        }
         break;
       }
       switch ($ch) {
