@@ -63,6 +63,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['picture']['empty'] = '<span class="user-picture"><img src="/sites/all/themes/uib/uib_zen/images/person.png"></span>';
   $handler->display->display_options['fields']['picture']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['picture']['image_style'] = 'user_thumbnail';
   /* Field: token field_uib_first_name */
   $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
   $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
