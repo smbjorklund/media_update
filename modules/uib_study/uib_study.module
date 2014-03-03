@@ -429,6 +429,25 @@ function uib_study_block_view($delta = '') {
             //$t_row[] = check_plain(drupal_json_encode($s_row));
             $t_rows[] = $t_row;
           }
+          // Add explanation of abbreviated headers at end of table
+          if ($header_titles) {
+            $tmp = '';
+            $glue = '';
+            foreach ($header_titles as $key => $title_text) {
+              if ($title_text) {
+                $tmp .= $glue . $headers[$key] . ' = ' . $title_text;
+                $glue = ', ';
+              }
+            }
+            $t_rows[] = array(
+              array(
+                'data' => $tmp,
+                'colspan' => 5 + $max_depth - 1,
+                'class' => 'uib-study-abbrev-explanation',
+                ),
+              );
+          }
+
           $render['construction table'] = array(
             '#theme' => 'table',
             '#caption' => $caption,

@@ -540,6 +540,10 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
   .uib-study-specialization {
     font-weight: bold;
   }
+  .uib-study-abbrev-explanation {
+    background-color: $uib-study-construction-zebra-light-color;
+    padding: 0.5em;
+  }
   th {
     border: solid 1px $uib-study-construction-border-color;
     padding: 0 0.5em;
