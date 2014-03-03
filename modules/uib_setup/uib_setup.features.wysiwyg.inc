@@ -90,6 +90,9 @@ function uib_setup_wysiwyg_default_profiles() {
         'autosave' => array(
           'autosave' => 1,
         ),
+        'fullscreen' => array(
+          'fullscreen' => 1,
+        ),
         'paste' => array(
           'pasteword' => 1,
         ),
@@ -135,6 +138,9 @@ function uib_setup_wysiwyg_default_profiles() {
           'link' => 1,
           'unlink' => 1,
           'formatselect' => 1,
+        ),
+        'fullscreen' => array(
+          'fullscreen' => 1,
         ),
         'paste' => array(
           'pasteword' => 1,
