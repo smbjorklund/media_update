@@ -363,11 +363,13 @@ function uib_study_block_view($delta = '') {
             if ($s_row['depth'] > 1) {
               if (!empty($s_row['emneheader'])) {
                 $t_row[] = uib_study__insert_t_row($max_depth);
-                $headertitles = array(t('Course code'), t('Course title'), t('SP'), t('S'), t('A'));
-                foreach ($headertitles as $title) {
+                $headers = array(t('Course code'), t('Course title'), t('SP'), t('S'), t('R'));
+                $header_titles = array('', '', t('Study points'), t('Semester'), t('Recommended semester'),);
+                foreach ($headers as $key => $title) {
                   $t_row[] = array(
                     'data' => $title,
                     'header' => TRUE,
+                    'title' => $header_titles[$key],
                   );
                 }
               }
