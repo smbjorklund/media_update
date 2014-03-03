@@ -1,3 +1,33 @@
+# Release 2014-03-04 tag R6.3
+
+Denne releasen retter opp feil avdekket i siste runde testing for studiesidene til UiB. Den gjør også en del generelle bugfikser og stylingjusteringer.
+
+- Viser engelsk navn på eier av studieprogram og på grad på engelske studieprogramsider #5516
+- Fjerner studiekode/emnekode fra tittelfeltet på studieprogram og emner #5517
+- Viser bare ett nummer i S-feltet på studieløpstabellen, dersom de dataene gir to like tall #5631
+- Viser bare tall i feltet A for anbefalt semester i studieløpstabellen, dersom emnet faktisk er tilgjengelig i mer enn ett semester #5632
+- Gir styling til NUS på nivå 3 #5523
+- Gir styling til studieplan-sidene #5576
+- Henter inn riktige infotyper til integrerte masterstudier #5725
+- Sørger for at obligatoriske og valgfrie kurs sorteres hver for seg i studieløpstabellen #5521
+- Tittel på NUS-sidene hadde en bug som gjorde at de alltid plukket engelsk tittel, også på norske sider. Den er fikset. #5592
+- Endrer default sortering på doktorgradspressemelding til å være synkende #5606
+- Skjuler datofeltet på doktorgradspressemelding #5607
+- Fikser bug som skjulte "Bruk"-knappen på ansattlistene #5544
+- Fikser bug som forkortet tittel-teksten i slideshowet #4064
+- Setter inn ny versjon av sosiale medier-ikonene på områdeforsidene #5149
+- Sørger for at vitnesbyrd-teaseren på studieprogrammene aldri viser mer enn ett bilde #5167
+- Viser studiekoden i eget felt i faktaboks på studieprogram og emne #5533
+- Sørger for at studieprogrammer som listes under "Emnet er en obligatorisk del av.." på emnesidene, viser engelske navn på engelske sider #5535
+- Sørger for at den siste teksten i studieløp-tabellen vises (bug) #5709
+- Gi utdanning/nus-siden meny for området utdanning #5462
+- Fikser bug som gjorde at sider med lenker til hverandre i tilknyttet innhold ga feil på siden #5482
+- Fjern "Forrige/neste"-lenke på doktorgradspressemeldingssiden, inntil gamle doktorgrader er importert i systemet #5680
+- Integrasjon mot FS - viser infotyper for PHD-kurs. NB! oppfølgingssak i R7.1 for å få med all info fra tabellen også. #5722
+- Legger ny versjon av sosiale medier-ikonene på områdeforsiden #5149
+- Sørger for at alle artikler får opprettet alias på gammel tittel, dersom de får endret tittel #5034
+- Tekniske saker #5500
+
 # Release 2014-02-20 tag R6.2
 
 Oppdateringen gjør endringer og feilrettinger på studieprogram og emnemaler.
