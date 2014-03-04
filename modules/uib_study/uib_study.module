@@ -73,24 +73,34 @@ function uib_study__not_found() {
   return MENU_NOT_FOUND;
 }
 
-function uib_study__studyplan($code) {
+function uib_study__studyplan($code, $code2 = NULL) {
   uib_area__get_current(variable_get('uib_study_area_nid'));
 
-  $path = uib_study__study_path($code);
+  if ($code2) {
+    $path = uib_study__study_path($code2);
+    if (empty($path)) {
+      $path = uib_study__study_path($code . $code2);
+    }
+  }
+  else {
+    $path = uib_study__study_path($code);
+  }
   if (empty($path))
     return MENU_NOT_FOUND;
   $study = entity_metadata_wrapper('node', node_load(substr($path, 5)));
+  $study_code = $study->field_uib_study_code->value();
+  $fspres_code = $code2 ? $code . '/' . $study_code : $code;
 
   $page = array();
   $page['header'] = array(
     '#type' => 'html_tag',
     '#tag' => 'h1',
-    '#value' => l($code . ' ' . $study->field_uib_study_title->value(), $path),
+    '#value' => l($study_code . ' ' . $study->field_uib_study_title->value(), $path),
   );
-  drupal_set_title(t('Study plan') . ' , ' . $code . ' ' . $study->field_uib_study_title->value(), $path);
+  drupal_set_title(t('Study plan') . ' , ' . $study_code . ' ' . $study->field_uib_study_title->value(), $path);
 
   if (!uib_study__infotyper_render($page,
-    uib_study__fspres_get_json(uib_study__fspres_lang() . "/studieprogram/$code/render.json"),
+    uib_study__fspres_get_json(uib_study__fspres_lang() . "/studieprogram/$fspres_code/render.json"),
     function ($group) { return substr($group, -11) == '_studieplan'; }
   )) {
     drupal_set_message(t('This page has not been translated yet'), 'warning');
