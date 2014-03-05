@@ -323,6 +323,8 @@ abstract class XTopicToArticleMigration extends Migration {
   }
 
   public function prepare($node, $row) {
+    $node->status = 1;  # default is unpublished now
+
     if (strstr($row->main_media, 'vimeo')) {
       $file = xtopic_vimeo($row->main_media);
       $node->field_uib_main_media['und'][0] = array(
@@ -615,6 +617,7 @@ class TestimonialMigration extends Migration {
   }
 
   public function prepare($node, $row) {
+    $node->status = 1;  # default can become unpublished
 
     if (!empty($row->media)) {
       foreach ($row->media as $file_id) {
@@ -696,6 +699,8 @@ class AreaMigration extends Migration {
   }
 
   public function prepare($term, $row) {
+    $node->status = 1;  # default can become unpublished
+
     if (isset($row->placeid)) {
     // Check if we already have a 'uib_ou' node with the given placeid
       $nid = uib_sebra__uib_ou_nid($row->placeid);
