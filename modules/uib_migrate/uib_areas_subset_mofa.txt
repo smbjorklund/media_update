@@ -28,7 +28,7 @@ fg/fysioter
 fg/samffarm
 fg/gen-epi
 fg/globhelse
-fg/HLF
+fg/hlf
 fg/hiv_aids
 fg/livskvalitet
 fg/livsstil
