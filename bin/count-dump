@@ -12,6 +12,10 @@ while (<$fh>) {
     if (/^COPY (\w+)/) {
 	my $table = $1;
 	die unless / FROM stdin;$/;
+	if (1) {
+	    # Collapse the counts for some tables
+	    $table =~ s/^(field_revision_|field_data_field_).*/$1.../;
+	}
 	my $lines = 0;
 	my $bytes = 0;
 	while (<$fh>) {
@@ -19,8 +23,13 @@ while (<$fh>) {
 	    $lines++;
 	    $bytes += length;
 	}
-	$size{$table} = "$bytes $lines";
 	$total_bytes += $bytes;
+	if ($size{$table}) {
+	    my @num = split(' ', $size{$table});
+	    $bytes += $num[0];
+	    $lines += $num[1];
+	}
+	$size{$table} = "$bytes $lines";
 	$max_length = length($table) if length($table) > $max_length;
     }
 }
@@ -28,6 +37,6 @@ while (<$fh>) {
 no warnings 'numeric';
 for my $table (sort { $size{$b} <=> $size{$a} } keys %size) {
     my($bytes, $lines) = split(' ', $size{$table});
-    printf "%-*s %9.1fM %4.1f%% %6d\n", $max_length, $table, $bytes/(1024*1024), 100*$bytes/$total_bytes, $lines;
+    printf "%-*s %9.1fM %4.1f%% %7d\n", $max_length, $table, $bytes/(1024*1024), 100*$bytes/$total_bytes, $lines;
     last if $bytes/$total_bytes < 0.001;
 }
