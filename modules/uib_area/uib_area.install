@@ -320,3 +320,38 @@ function uib_area_update_7007() {
     $entity->save();
     node_save($node_nb);
 }
+
+/**
+ * Create menus for disciplines
+ */
+function uib_area_update_7008() {
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'area')
+    ->fieldCondition('field_uib_area_type', 'value', 'discipline')
+    ->execute();
+  $discipline_nodes = entity_load('node', array_keys($result['node']));
+  foreach ($discipline_nodes as $nid => $node) {
+    $menu_machine_name = 'menu-area-' . $nid;
+    if (!menu_load('menu-area-' . $nid)) {
+      // Create a menu if none is present
+      $alias = drupal_get_path_alias('node/' . $nid, $node->language);
+      if (substr($alias, 0, 5) == 'node/') {
+        $alias = $nid;
+      }
+      $menu_title = 'area_' . str_replace('/', '_', $alias);
+      if ($node->language == 'en') {
+        $menu_title .= '_en';
+      }
+      $menu_description = t('Menu for') . ' ' . trim($node->title);
+      $menu = array(
+        'menu_name' => $menu_machine_name,
+        'title' => $menu_title,
+        'description' => $menu_description,
+        );
+      menu_save($menu);
+      uibx_log("$menu_description created", 'notice');
+    }
+  }
+}
