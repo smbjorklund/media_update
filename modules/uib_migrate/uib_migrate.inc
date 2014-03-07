@@ -698,20 +698,20 @@ class AreaMigration extends Migration {
     }
   }
 
-  public function prepare($term, $row) {
+  public function prepare($node, $row) {
     $node->status = 1;  # default can become unpublished
 
     if (isset($row->placeid)) {
     // Check if we already have a 'uib_ou' node with the given placeid
       $nid = uib_sebra__uib_ou_nid($row->placeid);
       if ($nid) {
-        $term->field_uib_ou['und'][0]['target_id'] = $nid;
+        $node->field_uib_ou['und'][0]['target_id'] = $nid;
       }
       else {
         try {
           // Create a new 'uib_ou' node
-          $node = uib_sebra__create_uib_ou($row->placeid);
-          $term->field_uib_ou['und'][0]['target_id'] = $node->nid;
+          $ou_node = uib_sebra__create_uib_ou($row->placeid);
+          $node->field_uib_ou['und'][0]['target_id'] = $ou_node->nid;
         }
         catch (Exception $e) {
           uibx_log($e->getMessage(), 'warning');
@@ -720,15 +720,15 @@ class AreaMigration extends Migration {
     }
 
     if (isset($row->media)) {
-      $file = xtopic_file($row->media[0], $term->uid, $row->site_lang, $row->id);
-      $term->field_uib_primary_media['und'][0] = array(
+      $file = xtopic_file($row->media[0], $node->uid, $row->site_lang, $row->id);
+      $node->field_uib_primary_media['und'][0] = array(
         'fid' => $file->fid,
         'display' => 1,
       );
     }
 
     if (drush_get_option('update')) {
-      $term->menu['enabled'] = TRUE;
+      $node->menu['enabled'] = TRUE;
     }
   }
 
