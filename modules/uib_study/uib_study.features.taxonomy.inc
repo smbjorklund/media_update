@@ -17,5 +17,13 @@ function uib_study_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'uib_study_labels' => array(
+      'name' => 'uib_study_labels',
+      'machine_name' => 'uib_study_labels',
+      'description' => 'Labels used to pick uib_study nodes for special views',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 1,
+    ),
   );
 }
