@@ -124,6 +124,7 @@ class XTopic extends stdClass {
         $this->site_lang = 'nb'; // Drupal uses nb/nn (bokmål/nynorsk)
       }
 
+      $this->profiletext = '';
       foreach ($topic->profiletext as $profiletext) {
         $this->profiletext .= (string)$profiletext;
         if ($profiletext["image_ref"] && $profiletext["href"] ) {
