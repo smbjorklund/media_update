@@ -302,8 +302,15 @@ function uib_setup_strongarm() {
 admin/*
 batch
 node/add*
-node/edit*
-node/*/*
+node/*/rss.xml
+node/*/calrss.xml
+node/*/edit
+node/*/translate
+node/*/ties
+node/*/devel
+node/*/menu
+node/*/share
+node/*/revisions
 user/*/*
 webdesk
 webdesk/*';
