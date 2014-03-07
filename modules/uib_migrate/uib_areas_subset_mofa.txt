@@ -146,7 +146,6 @@ rg/socpharm
 rg/gencouns
 rg/socialepi
 isf/en
-kir/en
 indremedisin/en
 biomedisin/en
 rg/biorec
@@ -206,3 +205,10 @@ dks/en
 dns/en
 rs/forbio
 fs/forbio
+
+fs/kliniskmedisin
+rs/clinicalmedicine
+fg/hds
+rg/hds
+fg/mitokondriesykdom
+rg/mitochondrial_medicine
