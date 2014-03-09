@@ -205,7 +205,11 @@ function uib_study__fspres_get_json($path) {
       cache_set($path, $data, 'cache_uib_study', REQUEST_TIME + 4*3600);
     }
     elseif ($res->code != 404) {
+      if ($res->code == 200) {
+        uibx_log("$path response wasn't JSON; but " . $res->headers['content-type'], 'error');
+      }
       $data = NULL;
+      cache_set($path, $data, 'cache_uib_study', REQUEST_TIME + 60);
     }
   }
   return $data;
