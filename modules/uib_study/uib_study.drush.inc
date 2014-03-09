@@ -40,7 +40,7 @@ function drush_uib_study_uib_sync_fs() {
     $ou_id[$row->entity_id] = $row->field_uib_ou_id_value;
   }
 
-  $err = 0;
+  $study_count = 0;
 
   // let's process these then
   foreach ($ou_id as $nid => $oid) {
@@ -58,6 +58,7 @@ function drush_uib_study_uib_sync_fs() {
     if (!empty($data)) {
       if (isset($data['emner_fag'])) {
         foreach ($data['emner_fag'] as $emne) {
+          $study_count++;
           $missing_refs = uib_study__update_study('course', $emne, $nid, $studies_all);
           if ($missing_refs) {
             $incomplete_refs[$emne['id']] = $missing_refs;
@@ -67,6 +68,7 @@ function drush_uib_study_uib_sync_fs() {
       }
       if (isset($data['studieprogrammer_fag'])) {
         foreach ($data['studieprogrammer_fag'] as $program) {
+          $study_count++;
           $missing_refs = uib_study__update_study('program', $program, $nid, $studies_all);
           if ($missing_refs) {
             $incomplete_refs[$program['id']] = $missing_refs;
@@ -81,7 +83,8 @@ function drush_uib_study_uib_sync_fs() {
       }
     }
     elseif (is_null($data)) {
-      $err++;
+      uibx_log("Failed to fetch sted/$fspres_oid/info.json from fs-pres, aborting", "error");
+      return;
     }
   }
 
@@ -109,8 +112,8 @@ function drush_uib_study_uib_sync_fs() {
     }
   }
 
-  if ($err) {
-    uibx_log("Will not unpublish studies because $err errors occured", 'warning');
+  if ($study_count < 2200) {
+    uibx_log("Found too few studies ($study_count) to unpublish anything", 'error');
   }
   else {
     foreach ($unused_codes as $study_code => $study_nid) {
