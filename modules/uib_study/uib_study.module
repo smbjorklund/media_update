@@ -302,6 +302,8 @@ function uib_study_block_view($delta = '') {
       $node = menu_get_object();
       if ($node) {
         $data = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
+        if (empty($data))
+          break;
         foreach ($splice_list as $splice_item) {
           uib_study__extract_study_info($data, $splice_item);
         }
@@ -452,6 +454,8 @@ function uib_study_block_view($delta = '') {
       if ($node) {
         $type = $node->field_uib_study_type['und'][0]['value'];
         $data = uib_study__fspres_get_node_json($node->nid, 'info.json', FALSE);
+        if (empty($data))
+          break;
         $data_2 = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
         $rows = array();
         if ($type == 'course') {
@@ -571,6 +575,8 @@ function uib_study_block_view($delta = '') {
       $node = menu_get_object();
       if ($node && uib_study__is_course()) {
         $data = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
+        if (empty($data))
+          break;
         list($previous_semester, $current_semester, $next_semester) = uib_study__get_adjacent_semesters();
         $prev = FALSE;
         $next = FALSE;
