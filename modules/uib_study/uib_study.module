@@ -302,8 +302,12 @@ function uib_study_block_view($delta = '') {
       $node = menu_get_object();
       if ($node) {
         $data = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
-        if (empty($data))
+        if (empty($data)) {
+          $block['content'] = array(
+            '#markup' => '<div class="fs-error">' . t('Information about this study isn\'t currently available. Please try again later!') . '</div>',
+          );
           break;
+        }
         foreach ($splice_list as $splice_item) {
           uib_study__extract_study_info($data, $splice_item);
         }
