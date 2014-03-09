@@ -197,6 +197,9 @@ function uib_study__fspres_get_json($path) {
   $data = FALSE;
   if ($cache = cache_get($path, 'cache_uib_study')) {
     $data = $cache->data;
+    if (is_null($data)) {
+      uibx_log("Cached fs-pres failure for $path", 'warning');
+    }
   }
   else {
     $res = uib_study__fspres_request($path);
