@@ -175,6 +175,8 @@ class XTopic extends stdClass {
 
       $xlink = array();
       foreach ($topic->xlink as $x) {
+        if (isset($x['scope']) && $x['scope'] != $site)
+          continue;
         $xlink[(string)$x['name']][] = (string)$x['ref'];
       }
 
