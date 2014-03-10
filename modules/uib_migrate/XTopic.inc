@@ -166,6 +166,10 @@ class XTopic extends stdClass {
             $fname .= ':' . $field['scope'];
           }
           $this->$fname = (string)$field;
+          if ($field['datatype'] == 'dateTime' && !empty($this->$fname)) {
+            // Force timezone UTC
+            $this->$fname .= 'Z';
+          }
         }
       }
 
