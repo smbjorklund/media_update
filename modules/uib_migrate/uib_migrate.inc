@@ -272,8 +272,8 @@ abstract class XTopicToArticleMigration extends Migration {
     $this->addFieldMapping('language', 'site_lang');
     $this->addFieldMapping('created', 'created');
     $this->addFieldMapping('changed', 'modified');
-//    $this->addFieldMapping('field_uib_date', 'start_date'); // handled in 'prepare' for EventMigration
-//    $this->addFieldMapping('field_uib_date:to', 'end_date');
+    $this->addFieldMapping('field_uib_date', 'start_date');
+    $this->addFieldMapping('field_uib_date:to', 'end_date');
     $this->addFieldMapping('field_uib_links', 'hjemmeside'); // handled in 'prepare' for EventMigration
     $this->addFieldMapping('field_uib_location', 'sted');
     $this->addFieldMapping('field_uib_contacts', 'contacts')
@@ -558,14 +558,6 @@ class EventMigration extends XTopicToArticleMigration {
     if (!empty($row->hjemmeside)) {
           $node->field_uib_links['und'][0]['url'] = $row->hjemmeside;
           $node->field_uib_links['und'][0]['title'] = $row->lenketekst;
-    }
-    // We want the dates saved as is, in UTC
-    $node->field_uib_date['und'][0]['value'] = $row->start_date;
-    if (empty($row->end_date)) {
-      $node->field_uib_date['und'][0]['value2'] = $row->start_date;
-    }
-    else {
-      $node->field_uib_date['und'][0]['value2'] = $row->end_date;
     }
   }
 }
