@@ -306,6 +306,9 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     return $refs_incomplete;
   }
 
+  // save the nodes to process
+  $nodes = node_load_multiple(array_keys($result['node']));
+
   // handle specializations
   if (!empty($study['specializations'])) {
     foreach ($study['specializations'] as $spec) {
@@ -315,7 +318,14 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     }
   }
 
-  $nodes = node_load_multiple(array_keys($result['node']));
+  $uib_nus = taxonomy_vocabulary_machine_name_load('uib_nus');
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'taxonomy_term')
+    ->propertyCondition('vid', $uib_nus->vid)
+    ->execute();
+  $ids = array_keys($result['taxonomy_term']);
+  $terms = entity_load('taxonomy_term', $ids);
+
   foreach ($nodes as $node) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $edit = array();
