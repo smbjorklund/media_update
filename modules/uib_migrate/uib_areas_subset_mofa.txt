@@ -96,7 +96,6 @@ rg/ultrasound
 rg/kgj-ms
 rg/animalfacility
 rg/art-reg
-kliniskmedisin/en
 clin2
 rg/gyncancer
 rg/broegelmann
