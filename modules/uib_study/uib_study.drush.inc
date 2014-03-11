@@ -326,6 +326,20 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
   $ids = array_keys($result['taxonomy_term']);
   $terms = entity_load('taxonomy_term', $ids);
 
+  $uib_study_labels = taxonomy_vocabulary_machine_name_load('uib_study_labels');
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'taxonomy_term')
+    ->propertyCondition('vid', $uib_study_labels->vid)
+    ->execute();
+  $labels = array();
+  if (!empty($result)) {
+    $ids = array_keys($result['taxonomy_term']);
+    $label_terms = entity_load('taxonomy_term', $ids);
+    foreach ($label_terms as $term) {
+      $labels[$term->name] = $term->tid;
+    }
+  }
+
   foreach ($nodes as $node) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $edit = array();
@@ -334,6 +348,36 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     if (isset($uib_nus_list[$nusId]) && $wrapper->field_uib_nus->raw() != $uib_nus_list[$nusId]) {
       $wrapper->field_uib_nus->set($uib_nus_list[$nusId]);
       $edit[] = 'nuscode';
+    }
+    if (isset($study['labels'])) {
+      $existing_labels = array();
+      foreach ($wrapper->field_uib_study_label->getIterator() as $delta => $target) {
+        $existing_labels[] = $target->raw();
+      }
+      $new_labels = array();
+      foreach ($study['labels'] as $sl) {
+        if (!array_key_exists($sl, $labels)) {
+          $new_term_tid = uib_study__create_taxonomy_term($sl, 'uib_study_labels');
+          uibx_log('Created taxonomy_term "' . $sl . '" with $tid ' . $new_term_tid);
+          $labels[$new_term_tid] = $sl;
+          $new_labels[] = $new_term_tid;
+        }
+        else {
+          $new_labels[] = $labels[$sl];
+        }
+      }
+      if (!empty($new_labels)) {
+        sort($existing_labels);
+        sort($new_labels);
+        if ($existing_labels != $new_labels) {
+          $delta = 0;
+          foreach ($new_labels as $l) {
+            $wrapper->field_uib_study_label[$delta]->set($l);
+            $delta++;
+          }
+          $edit[] = 'labels';
+        }
+      }
     }
 
     if ($wrapper->status->value() != $expected_status) {
@@ -482,4 +526,13 @@ function _uib_study__sp_rank($study_points, $list) {
     }
   }
   return FALSE;
+}
+
+function uib_study__create_taxonomy_term($term_name, $vocabular_machine_name) {
+  $vocabular = taxonomy_vocabulary_machine_name_load($vocabular_machine_name);
+  $term = new stdClass();
+  $term->name = $term_name;
+  $term->vid = $vocabular->vid;
+  taxonomy_term_save($term);
+  return $term->tid;
 }
