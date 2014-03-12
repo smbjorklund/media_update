@@ -25,7 +25,7 @@ function uib_study_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'uib_area_link_feed',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -94,7 +94,7 @@ function uib_study_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 10,
+        'weight' => 3,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -138,7 +138,7 @@ function uib_study_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -449,6 +449,49 @@ function uib_study_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-uib_study-field_uib_study_points_rank'
+  $field_instances['node-uib_study-field_uib_study_points_rank'] = array(
+    'bundle' => 'uib_study',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_uib_study_points_rank',
+    'label' => 'Study points rank',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 16,
     ),
   );
 
@@ -865,6 +908,7 @@ function uib_study_field_default_field_instances() {
   t('Relevant links');
   t('Responsible');
   t('Rss feed');
+  t('Study points rank');
   t('Title');
   t('Type');
 

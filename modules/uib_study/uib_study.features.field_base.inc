@@ -283,6 +283,36 @@ function uib_study_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_uib_study_points_rank'
+  $field_bases['field_uib_study_points_rank'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_uib_study_points_rank',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        1 => '0-5',
+        2 => '6-10',
+        3 => '11-15',
+        4 => '16-29',
+        5 => '30+',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_uib_study_title'
   $field_bases['field_uib_study_title'] = array(
     'active' => 1,
