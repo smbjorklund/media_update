@@ -1,3 +1,17 @@
+# Release 2014-03-12 tag: R7
+
+R7 migrerer Universitetsmuseet og Det medisinsk-odontologiske fakultet inkl
+alle underområder til ny plattform. Dermed er alle seks fakulteter migrert til
+Drupal.  Releasen tar også hånd om feil som oppstod i testmigrasjonen:
+
+- MOFA hadde navigasjonssider som var knyttet opp til flere hovedmenypunkter. Dette ga uventet rekkefølge på både hovedmenypunkt og undermenypunkter etter migrasjonen. Fikset i #5853
+- Feil med datoformatet dukket opp igjen og ble fikset i #5839
+- Fjerner områder som IKKE skulle være med over i migrasjonen #5826
+- Default status for nye artikler er "upublisert" i w3. Dette måtte det justeres for i migrasjonskoden, for at ikke alle migrerte artikler skulle få status som upublisert. #5807
+- Bytte til små bokstaver i url for uib.no/fg/hlf
+- Redaksjonell endring på bildetekst som var for lang #5805
+- Teknisk sak #5842
+
 # Release 2014-03-04 tag R6.3
 
 Denne releasen retter opp feil avdekket i siste runde testing for studiesidene til UiB. Den gjør også en del generelle bugfikser og stylingjusteringer.
