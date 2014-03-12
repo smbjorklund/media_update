@@ -147,6 +147,8 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
   $expected_status = (substr($study['id'], -2) == '-F') ? 0 : 1;
 
   $refs_incomplete = array();
+  $studypoints_ranks = _uib_study__get_sp_ranks();
+
   $query = new EntityFieldQuery;
   $result = $query
     ->entityCondition('entity_type', 'node')
@@ -215,6 +217,14 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       }
     }
 
+    // Study points rank
+    if ($type == 'course') {
+      $sp_rank = _uib_study__sp_rank($study['studiepoeng'], $studypoints_ranks);
+      if ($sp_rank !== FALSE) {
+        $metadata->field_uib_study_points_rank->set($sp_rank);
+      }
+    }
+
     $metadata->save();
     $existing[$study['id']] = $study_node->nid;
 
@@ -275,6 +285,7 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
   foreach ($nodes as $node) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $edit = array();
+    $severity = 'notice';
     $nusId_temp = str_split(substr($study['nuskode'], 1, 2));
     $nusId = $nusId_temp[0];
     if (isset($nusId_temp[1])) {
@@ -362,10 +373,79 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       }
     }
 
+    // Study point rank
+    if ($type == 'course') {
+      $sp_rank = _uib_study__sp_rank($study['studiepoeng'], $studypoints_ranks);
+      if ($sp_rank === FALSE) {
+        $wrapper->field_uib_study_points_rank->set('');
+        $edit[] = 'study points rank [empty]';
+        $severity = 'warning';
+      }
+      elseif ($wrapper->field_uib_study_points_rank->value() != $sp_rank) {
+        $wrapper->field_uib_study_points_rank->set($sp_rank);
+        $edit[] = 'study points rank';
+      }
+    }
+
     if ($edit) {
       $wrapper->save();
-      uibx_log(ucfirst($type) . ' ' . $study['id'] . " updated " . implode(', ', $edit));
+      uibx_log(ucfirst($type) . ' ' . $study['id'] . " updated " . implode(', ', $edit), $severity);
     }
   }
   return $refs_incomplete;
+}
+
+/**
+ * Get study point ranks from field info
+ */
+function _uib_study__get_sp_ranks() {
+  static $ranks;
+  if (!isset($ranks)) {
+    $ranks = array();
+    $field_info = field_info_field('field_uib_study_points_rank');
+    $allowed_values = $field_info['settings']['allowed_values'];
+    $unreasonably_high_number = 1000;
+
+    foreach ($allowed_values as $key => $range) {
+      if (strpos($range, '-') !== FALSE) {
+        // range
+        $tmp = explode('-', $range);
+        $ranks[$key] = array(
+          'low' => trim($tmp[0]),
+          'high' => trim($tmp[1]),
+          );
+        if (empty($ranks[$key]['high'])) {
+          // unexpected open ended range
+          $ranks[$key]['high'] = $unreasonably_high_number;
+        }
+      }
+      elseif (strpos($range, '+') !== FALSE) {
+        // open ended range
+        $ranks[$key] = array(
+          'low' => rtrim($range, '+'),
+          'high' => $unreasonably_high_number,
+          );
+      }
+      else {
+        // single value
+        $ranks[$key] = array(
+          'low' => trim($range),
+          'high' => trim($range),
+          );
+      }
+    }
+  }
+  return $ranks;
+}
+
+/**
+ * Determine to which study point rank a study point instance belongs
+ */
+function _uib_study__sp_rank($study_points, $list) {
+  foreach ($list as $rank => $range) {
+    if ($study_points >= $range['low'] && $study_points <= $range['high']) {
+      return $rank;
+    }
+  }
+  return FALSE;
 }
