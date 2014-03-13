@@ -480,27 +480,35 @@ function uib_study_block_view($delta = '') {
         $data_2 = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
         $rows = array();
         if ($type == 'course') {
-          $study_code = $data['emneid']['emnekode'];
-          $rows[] = array(t('Course code'), $study_code);
-          $rows[] = array(t('Study points'), $data['studiepoeng']);
-          $rows[] = array(t('Teaching semester'), $data['undervisningssemester']);
-          $tmp = uib_study__extract_study_info($data_2, 'EB_SPRAK');
-          $rows[] = array(t('Teaching language'), uib_study__text_markup($tmp, $is_course, TRUE));
-          $tmp = uib_study__studieniva($data['studieniva']);
-          if (!empty($tmp)) {
+          if ($data['studieniva'] == 'FU') {
+            $study_code = $data['emneid']['emnekode'];
+            $rows[] = array(t('Course code'), $study_code);
+            $tmp = uib_study__studieniva($data['studieniva']);
             $rows[] = array(t('Study level'), check_plain($tmp));
           }
-          $rows[] = array(t('Number of semesters'), $data['antall-undsemester']);
-          $resources = array(
-            '#theme' => 'item_list',
-            '#items' => array(),
-          );
-          $semester = uib_study__get_current_semester();
-          $tmp = uib_study__get_resource_links('schedule', $study_code);
-          $resources['#items'][] = render($tmp);
-          $tmp = uib_study__get_resource_links('reading_list', $study_code);
-          $resources['#items'][] = render($tmp);
-          $rows[] = array(t('Resources'), render($resources));
+          else {
+            $study_code = $data['emneid']['emnekode'];
+            $rows[] = array(t('Course code'), $study_code);
+            $rows[] = array(t('Study points'), $data['studiepoeng']);
+            $rows[] = array(t('Teaching semester'), $data['undervisningssemester']);
+            $tmp = uib_study__extract_study_info($data_2, 'EB_SPRAK');
+            $rows[] = array(t('Teaching language'), uib_study__text_markup($tmp, $is_course, TRUE));
+            $tmp = uib_study__studieniva($data['studieniva']);
+            if (!empty($tmp)) {
+              $rows[] = array(t('Study level'), check_plain($tmp));
+            }
+            $rows[] = array(t('Number of semesters'), $data['antall-undsemester']);
+            $resources = array(
+              '#theme' => 'item_list',
+              '#items' => array(),
+            );
+            $semester = uib_study__get_current_semester();
+            $tmp = uib_study__get_resource_links('schedule', $study_code);
+            $resources['#items'][] = render($tmp);
+            $tmp = uib_study__get_resource_links('reading_list', $study_code);
+            $resources['#items'][] = render($tmp);
+            $rows[] = array(t('Resources'), render($resources));
+          }
         }
         elseif ($type == 'program' or $type == 'specialization') {
           $rows[] = array(t('Study programme code'), $data['studieprogramkode']);
