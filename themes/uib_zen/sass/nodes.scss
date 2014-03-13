@@ -583,12 +583,14 @@ h1 {
 }
 
 // Study program
-.view-display-id-study_programmes_all_page {
-  #views-exposed-form-courses-study-programmes-all-page {
-    background: #f9f9f6;
-    padding: 10px;
-    border-left: solid 5px #77af00;
-  }
+#views-exposed-form-courses-study-programmes-all-page,
+.view-special-study-listings form{
+  background: #f9f9f6;
+  padding: 10px;
+  border-left: solid 5px #77af00;
+}
+.view-display-id-study_programmes_all_page,
+.view-special-study-listings {
   li {
     font-size: .9em;
   }
