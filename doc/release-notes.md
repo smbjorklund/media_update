@@ -38,7 +38,6 @@ Denne releasen retter opp feil avdekket i siste runde testing for studiesidene t
 - Fikser bug som gjorde at sider med lenker til hverandre i tilknyttet innhold ga feil på siden #5482
 - Fjern "Forrige/neste"-lenke på doktorgradspressemeldingssiden, inntil gamle doktorgrader er importert i systemet #5680
 - Integrasjon mot FS - viser infotyper for PHD-kurs. NB! oppfølgingssak i R7.1 for å få med all info fra tabellen også. #5722
-- Legger ny versjon av sosiale medier-ikonene på områdeforsiden #5149
 - Sørger for at alle artikler får opprettet alias på gammel tittel, dersom de får endret tittel #5034
 - Tekniske saker #5500
 
