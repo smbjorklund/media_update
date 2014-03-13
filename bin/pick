@@ -59,6 +59,7 @@ die "Aborting" if $?;
 do_review();
 
 print "______\nRun '$0 apply' if this looks good, '$0 abort' if not; 'git rebase -i' to edit\n";
+print "Run 'bin/site-upgrade; bin/site-open' to watch it in action.\n";
 exit;
 
 sub do_list {
