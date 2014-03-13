@@ -84,7 +84,7 @@ sub do_apply {
     die "Not on an pick-branch" unless $current_branch =~ /^pick\/(\d+)$/;
     my $id = $1;
 
-    my $commits = qx(git log --oneline master..);
+    my $commits = qx(git log --oneline --reverse master..);
     $commits =~ s/RTS-\#?$id\s//;
     $commits =~ s/^/commit:/gm;
     if (($commits =~ tr/\n/\n/) == 1) {
