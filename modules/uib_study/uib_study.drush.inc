@@ -407,9 +407,9 @@ function _uib_study__get_sp_ranks() {
     $unreasonably_high_number = 1000;
 
     foreach ($allowed_values as $key => $range) {
-      if (strpos($range, '-') !== FALSE) {
+      if (strpos($range, '–') !== FALSE) {
         // range
-        $tmp = explode('-', $range);
+        $tmp = explode('–', $range);
         $ranks[$key] = array(
           'low' => trim($tmp[0]),
           'high' => trim($tmp[1]),

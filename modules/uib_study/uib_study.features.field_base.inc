@@ -300,10 +300,10 @@ function uib_study_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        1 => '0-5',
-        2 => '6-10',
-        3 => '11-15',
-        4 => '16-29',
+        1 => '0–5',
+        2 => '6–10',
+        3 => '11–15',
+        4 => '16–29',
         5 => '30+',
       ),
       'allowed_values_function' => '',
