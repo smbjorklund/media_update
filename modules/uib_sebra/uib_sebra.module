@@ -9,14 +9,10 @@ function uib_sebra__sync_places($limit) {
 
   foreach ($places->place as $place) {
     $place_id = (string)$place->code;
-    $nid = uib_sebra__uib_ou_nid($place_id);
-    if ($nid === NULL) {
-      $node = uib_sebra__create_uib_ou($place_id);
-      uibx_log("Created node $node->nid for place $place_id $place->name");
-      if ($limit) {
-        if (--$limit == 0)
-          break;
-      }
+    uib_sebra__update_uib_ou($place_id);
+    if ($limit) {
+      if (--$limit == 0)
+        break;
     }
   }
 }
@@ -60,41 +56,103 @@ function uib_sebra__uib_ou_nid($place_id) {
 }
 
 /**
- * Create a new node representing the organisation unit with the given
+ * Update or create node representing the organisation unit with the given
  * $place_id.
- *
- * Note that this function will create duplicates if called again for a
- * place that's already in the Drupal database.
  */
-function uib_sebra__create_uib_ou($place_id) {
+function uib_sebra__update_uib_ou($place_id) {
   $place = new SebraPlace($place_id);
-  $node = new stdClass();
-  $node->type = 'uib_ou';
-  $node->title = $place->name;
-  $node->uid = 1;
-  $node->status = 1;
-  $node->revision = 0;
-  $node->language = 'und';
-  $node->field_uib_ou_id['und'][0]['value'] = $place_id;
-  $node->field_uib_ou_shortname['und'][0]['value'] = $place->alias;
-  $node->field_uib_mail_domain['und'][0]['value'] = $place->maildomain;
+  $node = NULL;
+  $nid = uib_sebra__uib_ou_nid($place_id);
+  if ($nid === NULL) {
+    $node = new stdClass();
+    $node->type = 'uib_ou';
+    $node->title = $place->name;
+    $node->uid = 1;
+    $node->status = 1;
+    $node->revision = 0;
+    $node->language = 'und';
+    $node->field_uib_ou_id['und'][0]['value'] = $place_id;
+    $node->field_uib_ou_shortname['und'][0]['value'] = $place->alias;
+    $node->field_uib_mail_domain['und'][0]['value'] = $place->maildomain;
 
-  $node->field_uib_postal_address['und'][0]['thoroughfare'] = 'Postboks ' . $place->postbox;
-  $node->field_uib_postal_address['und'][0]['postal_code'] = $place->postcode;
-  $node->field_uib_postal_address['und'][0]['locality'] = $place->postarea;
-  $node->field_uib_postal_address['und'][0]['country'] = 'NO';
+    $node->field_uib_postal_address['und'][0]['thoroughfare'] = 'Postboks ' . $place->postbox;
+    $node->field_uib_postal_address['und'][0]['postal_code'] = $place->postcode;
+    $node->field_uib_postal_address['und'][0]['locality'] = $place->postarea;
+    $node->field_uib_postal_address['und'][0]['country'] = 'NO';
 
-  $node->field_uib_visit_address['und'][0]['thoroughfare'] = $place->address;
-  $node->field_uib_visit_address['und'][0]['postal_code'] = $place->postcode;
-  $node->field_uib_visit_address['und'][0]['locality'] = $place->postarea;
-  $node->field_uib_visit_address['und'][0]['country'] = 'NO';
+    $node->field_uib_visit_address['und'][0]['thoroughfare'] = $place->address;
+    $node->field_uib_visit_address['und'][0]['postal_code'] = $place->postcode;
+    $node->field_uib_visit_address['und'][0]['locality'] = $place->postarea;
+    $node->field_uib_visit_address['und'][0]['country'] = 'NO';
 
-  if (isset($place->phone))
-    $node->field_uib_phone['und'][0]['value'] = '+47 ' . $place->phone;
-  if (isset($place->fax))
-    $node->field_uib_fax['und'][0]['value'] = '+47 ' . $place->fax;
+    if (isset($place->phone))
+      $node->field_uib_phone['und'][0]['value'] = $place->phone;
+    if (isset($place->fax))
+      $node->field_uib_fax['und'][0]['value'] = $place->fax;
 
-  node_save($node);
+    node_save($node);
+    uibx_log("Created node $node->nid for place $place_id $place->name");
+  }
+  else {
+    $ou = entity_metadata_wrapper('node', node_load($nid));
+    $severity = 'notice';
+    $edit = array();
+    if ($ou->status->value() != 1) {
+      $ou->status->set(1);
+      $edit[] = 'published';
+    }
+    if ($ou->title->value() != $place->name) {
+      $ou->title->set($place->name);
+      $edit[] = 'title';
+    }
+    if ($ou->field_uib_ou_id->value() != $place_id) {
+      throw new Exception("Bad place id for node/$nid; expected $place_id, got " . $ou->field_uib_ou_id->value());
+    }
+    if ($ou->field_uib_ou_shortname->value() != $place->alias) {
+      $ou->field_uib_ou_shortname->set($place->alias);
+      $edit[] = 'shortname';
+    }
+    if ($ou->field_uib_mail_domain->value() != $place->maildomain) {
+      $ou->field_uib_mail_domain->set($place->maildomain);
+      $edit[] = 'mail_domain';
+    }
+
+    $old = $ou->field_uib_postal_address->value();
+    $new = $old;
+    $new['thoroughfare'] = 'Postboks ' . $place->postbox;
+    $new['postal_code'] = $place->postcode;
+    $new['locality'] = $place->postarea;
+    $new['country'] = 'NO';
+    if ($new != $old) {
+      $ou->field_uib_postal_address->set($new);
+      $edit[] = 'postal';
+    }
+
+    $old = $ou->field_uib_visit_address->value();
+    $new = $old;
+    $new['thoroughfare'] = $place->address;
+    $new['postal_code'] = $place->postcode;
+    $new['locality'] = $place->postarea;
+    $new['country'] = 'NO';
+    if ($new != $old) {
+      $ou->field_uib_visit_address->set($new);
+      $edit[] = 'visit';
+    }
+
+    if ($ou->field_uib_phone[0]->value() !== $place->phone) {
+      $ou->field_uib_phone[0]->set($place->phone);
+      $edit[] = 'phone';
+    }
+    if ($ou->field_uib_fax->value() !== $place->fax) {
+      $ou->field_uib_fax->set($place->fax);
+      $edit[] = 'fax';
+    }
+
+    if ($edit) {
+      $ou->save();
+      uibx_log("updated ou $place_id (node/$nid): " . implode(', ', $edit), $severity);
+    }
+  }
   return $node;
 }
 

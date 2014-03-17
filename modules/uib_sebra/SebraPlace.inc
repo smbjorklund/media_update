@@ -40,6 +40,14 @@ class SebraPlace extends stdClass {
       if ($value == "None" || $value == "na") {
         $this->$key = NULL;
       }
+      elseif ($value == 0 && ($key == 'phone' || $key == 'fax')) {
+        $this->$key = NULL;
+      }
     }
+
+    if ($this->phone)
+      $this->phone = '+47 ' . $this->phone;
+    if ($this->fax)
+      $this->fax = '+47 ' . $this->fax;
   }
 }
