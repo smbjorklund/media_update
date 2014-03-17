@@ -13,13 +13,13 @@
 
 @import "base";
 
-//
-// Setting up sprites with compass
-//
-$icons-social-spacing: 10px;
-@import "icons-social/*.png"; // The icons for social media used on uib.no
-$icons-social-sprite-dimensions: true;
-@include all-icons-social-sprites;
+@each $social in facebook, twitter, google-plus-share, linkedin, youtube, instagram, vimeo, flickr {
+  .icons-social-#{$social} {
+    background: inline-image("svg-icons/#{$social}.svg") left top no-repeat;
+    background-size: contain;
+  }
+}
+
 
 /*
  * Field wrappers when the Fences module is enabled.
@@ -425,6 +425,7 @@ div.link-field-column {
       display: table-cell;
       vertical-align: middle;
       padding-left: 37px;
+      height: 32px;
     }
   }
 }
