@@ -34,6 +34,12 @@ function uib_setup_menu_default_menu_custom() {
     'title' => 'Webdesk',
     'description' => '',
   );
+  // Exported menu: menu-webdesk-no.
+  $menus['menu-webdesk-no'] = array(
+    'menu_name' => 'menu-webdesk-no',
+    'title' => 'Webdesk_no',
+    'description' => '',
+  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Global menu');
@@ -41,6 +47,7 @@ function uib_setup_menu_default_menu_custom() {
   t('Management');
   t('The <em>Management</em> menu contains links for administrative tasks.');
   t('Webdesk');
+  t('Webdesk_no');
 
 
   return $menus;
