@@ -939,7 +939,7 @@ function uib_zen_field($variables) {
 function uib_zen_views_post_render(&$view, &$output, &$cache) {
   global $language;
   $current_lang = $language->language;
-  if ($view->name == 'calendar' && in_array($view->current_display, array('block_3', 'block_5')) && $current_lang == 'nb') {
+  if (($view->name == 'calendar' || $view->name == 'global_calendar') && in_array($view->current_display, array('block_3', 'block_5')) && $current_lang == 'nb') {
     foreach ($view->result as $key => $result) {
       $event_type = i18n_string_translate('field:field_uib_event_type:#allowed_values:' . $view->result[$key]->field_data_field_uib_event_type_field_uib_event_type_value, $view->result[$key]->field_data_field_uib_event_type_field_uib_event_type_value);
       $output = str_replace('>' . $view->result[$key]->link . '<', '>'. drupal_ucfirst($event_type) . '<', $output);
