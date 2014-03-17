@@ -66,8 +66,8 @@ function uib_setup_strongarm() {
   $strongarm->value = array(
     'file' => 'file',
     'taxonomy_term' => 'taxonomy_term',
+    'user' => 'user',
     'node' => 0,
-    'user' => 0,
   );
   $export['entity_translation_entity_types'] = $strongarm;
 
