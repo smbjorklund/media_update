@@ -1612,7 +1612,7 @@ function uib_area_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 15,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -1644,7 +1644,7 @@ function uib_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1659,7 +1659,7 @@ function uib_area_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 14,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -1708,7 +1708,7 @@ function uib_area_field_default_field_instances() {
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => -20,
+        'weight' => 3,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -1926,7 +1926,7 @@ function uib_area_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 16,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2150,7 +2150,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => -50,
+        'weight' => 0,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2230,7 +2230,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => -40,
+        'weight' => 1,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
@@ -2427,7 +2427,7 @@ function uib_area_field_default_field_instances() {
           'file_view_mode' => 'content_main',
         ),
         'type' => 'file_rendered',
-        'weight' => -30,
+        'weight' => 2,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
@@ -2577,7 +2577,7 @@ function uib_area_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 13,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2623,7 +2623,7 @@ function uib_area_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2677,7 +2677,7 @@ function uib_area_field_default_field_instances() {
           'view_mode' => 'short_teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 8,
+        'weight' => 6,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2733,7 +2733,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2805,7 +2805,7 @@ function uib_area_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2851,7 +2851,7 @@ function uib_area_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2897,7 +2897,7 @@ function uib_area_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'short_teaser' => array(
         'label' => 'above',

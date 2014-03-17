@@ -23,13 +23,9 @@ function uib_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_multiple_limit' => -1,
-          'field_multiple_limit_offset' => 0,
-        ),
-        'type' => 'list_default',
-        'weight' => 29,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -46,7 +42,7 @@ function uib_article_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_uib_show_global_calendar',
-    'label' => 'Show on global calendar',
+    'label' => 'Show in global calendar',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -59,13 +55,13 @@ function uib_article_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 24,
+      'weight' => 5,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Show on global calendar');
+  t('Show in global calendar');
 
   return $field_instances;
 }
