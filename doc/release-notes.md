@@ -1,3 +1,29 @@
+# Release 2014-03-18 tag: R7.1
+
+R7.1 gjør i hovedsak oppdateringer og feilrettinger knyttet til studieprogram, emner og lister på utdanningsområdet.
+
+- Innfører dropdown filter for søk på emner og inkluderer studiepoeng i filteret #5460 #5461
+- Fjerner overskrifter på infotyper på emner, dersom de ikke har noe innhold å vise #5494
+- Sørger for at studieplan for riktig spesialisering vises når man har valgt spesialisering på studieprogram #5572
+- Fjerner overflødige felter fra faktaboks på PHD-kurs #5727
+- Endrer sorteringsrekkefølge på emner i studieløpstabellen, slik at obligatoriske emner alltid listes først #5738
+- Legger til pop-up-tekst på kolonnene "S", "SP" og "A", samt forklaringstekst under i studieløpstabellen #5705 #5708
+- Gjør teaser-tittelen til vitnesbyrd på studieprogram mindre #5703
+- Sjekker hvor robust systemet er hvis fs-pres ikke er tilgjengelig #5487
+
+- Bruker thumbnail-bilde på ansattlistene på område #5727
+- Sørger for at navn/info alltid ligger ved siden av bildet på ansattlistene på område #2384
+
+- Lar systemet velge det lille bildet i en sak til visning i tilknyttet innhold, dersom stort bilde mangler #5349
+- Fikser utseende på tilknyttet innhold på innholdstypen vitnesbyrd #4856
+
+- Gir mulighet til å legge meny på fagsider #5608
+- Gir mulighet for fullskjermvisning i wysiwyg #5733
+- Legger til google analytics-sporing på noen sider #5818
+- Bytter en logo i kolofon-felt på uib.no forside #5919
+
+
+
 # Release 2014-03-12 tag: R7
 
 R7 migrerer Universitetsmuseet og Det medisinsk-odontologiske fakultet inkl
