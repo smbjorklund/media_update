@@ -90,3 +90,63 @@
   border-top: $sidebar-border;
   border-bottom: $sidebar-border;
 }
+
+/**
+ * Media block layout.
+ *
+ * @param numeric $precent
+ *   Size of the image in precent.
+ * @param string $float
+ *   Float direction of image element.
+ *
+ */
+@mixin media($percent, $float) {
+  margin: 0 0 20px 0;
+  width: 100%;
+  ul,
+  .field {
+    margin: 0;
+    padding: 0;
+  }
+
+  .full .media {
+    background-color: $light-grey;
+  }
+
+  .half ul :first-child .media {
+    margin: 0 10px 20px 0;
+  }
+
+  .file-image {
+    float: left;
+    width: $percent;
+  }
+
+  .file-image {
+    margin: 0 10px 0 0;
+  }
+
+  li {
+    float: $float;
+    width: $percent;
+  }
+
+  .media_content {
+    margin: 10px 0 0 0;
+  }
+
+  .media_content {
+    margin: 10px 0 0 10px;
+  }
+
+  .media_content {
+    display: table-cell;
+    width: 10000px;
+  }
+
+  /* Media block additional config */
+  .media .views-field-title {
+    font-size: 1.6em;
+    line-height: 1.2em;
+  }
+}

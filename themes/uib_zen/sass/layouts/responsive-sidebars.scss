@@ -1331,6 +1331,8 @@ $zen-auto-include-item-base: false;
 
   #node_area_full_group_two_column {
     @include zen-clear();
+    @include clearfix();
+    @include media(50%, left);
   }
 
   #node_area_full_group_column_first {
@@ -1533,21 +1535,8 @@ $zen-auto-include-item-base: false;
   }
   /* Automatic news feed on news page */
   .newspage_node .node-uib-article {
-    clear: both;
     .field-name-field-uib-main-media-recent-news {
       @include zen-grid-item (1, 1);
-    }
-    h1, .field-name-field-uib-lead, .field-name-field-uib-kicker {
-      @include zen-grid-item (3, 2);
-      width: 73%;
-      margin-left: 27%;
-      font-weight: normal;
-    }
-    h1 {
-      float: none;
-      font-size: 1.6em;
-      padding-top: 23px;
-      margin-bottom: 0;
     }
     .field-name-field-uib-kicker {
       margin-top: 0;

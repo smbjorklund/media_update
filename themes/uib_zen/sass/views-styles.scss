@@ -299,68 +299,17 @@ table.cols-6 {
   font-weight: bold;
 }
 
-/**
- * Media block basic config.
- *
- * @todo: Code here is candidate for getting moved to base theme as a general
- * style.
- */
-.media {
-  margin: 0 0 20px 0;
-}
-
-.full {
-  width: 100%;
-}
-
-.full ul,
-.half ul {
-  margin: 0;
-}
-
-.full .media {
-  background-color: $light-grey;
-}
-
-.half .media {
-  margin: 0 0 20px 10px;
-}
-
-.half ul :first-child .media {
-  margin: 0 10px 20px 0;
-}
-
-.full .image {
-  float: left;
-  width: 50%;
-}
-
-.full .image .field-content {
-  margin: 0 10px 0 0;
-}
-
-.half li {
-  float: left;
-  width: 50%;
-}
-
-.media-wrapper {
-  margin: 10px 0 0 0;
-}
-
-.full .media-wrapper {
-  margin: 10px 0 0 10px;
-}
-
-.media-content {
-  display: table-cell;
-  width: 10000px;
-}
-
-/* Media block additional config */
-.media .views-field-title {
-  font-size: 1.6em;
-  line-height: 1.2em;
+.node-uib-article.node-teaser {
+  @include media(25%, left);
+  .field-name-field-uib-main-media {
+    border: none;
+    background-color: transparent;
+    clear: none;
+  }
+  h1 {
+    margin: 0;
+    clear: both;
+  }
 }
 
 .view-courses,

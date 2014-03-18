@@ -85,18 +85,21 @@
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
-
   <?php
     // We hide the comments and links now so that we can render them later.
     hide($content['comments']);
     hide($content['links']);
-    // Using l() to create link failed, the url created gave 404.
-    $content['title']['#markup'] = '<h1>' . '<a href=' . $node_url . '>' . $title . '</a></h1>';
-    if (isset($content['field_uib_kicker']['#weight'])) {
-      $content['title']['#weight'] = $content['field_uib_kicker']['#weight'] + 0.5;
-    }
-    $content['field_uib_main_media']['#field_name'] = 'field_uib_main_media_recent_news';
+    $new_title = array(
+      '#type' => 'html_tag',
+      '#tag' => 'h1',
+    );
+    // $content['field_uib_main_media']['#field_name'] = 'field_uib_main_media_recent_news';
 
+    if (isset($content['group_media_content']['field_uib_kicker'])) {
+      $new_title['#weight'] =  $content['group_media_content']['field_uib_kicker']['#weight'] + 0.5;
+    }
+    $new_title['#value'] = '<a href=' . $node_url . '>' . $title . '</a>';
+    $content['group_media_content']['title'] = $new_title;
     print render($content);
   ?>
 </article><!-- /.node -->
