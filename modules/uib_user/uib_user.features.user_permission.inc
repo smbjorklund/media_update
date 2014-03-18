@@ -20,5 +20,26 @@ function uib_user_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'delete terms in uib_research_fields'.
+  $permissions['delete terms in uib_research_fields'] = array(
+    'name' => 'delete terms in uib_research_fields',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in uib_research_fields'.
+  $permissions['edit terms in uib_research_fields'] = array(
+    'name' => 'edit terms in uib_research_fields',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'translate user entities'.
+  $permissions['translate user entities'] = array(
+    'name' => 'translate user entities',
+    'roles' => array(),
+    'module' => 'entity_translation',
+  );
+
   return $permissions;
 }
