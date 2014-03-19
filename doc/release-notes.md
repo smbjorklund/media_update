@@ -1,3 +1,7 @@
+# Release 2014-03-19 tag: R7.1.1
+
+Fikser linken til Alumnusdagene fra logoen nederst på hovedsiden.
+
 # Release 2014-03-18 tag: R7.1
 
 R7.1 gjør i hovedsak oppdateringer og feilrettinger knyttet til studieprogram, emner og lister på utdanningsområdet.
