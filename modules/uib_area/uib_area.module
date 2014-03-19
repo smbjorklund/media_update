@@ -258,7 +258,7 @@ function uib_area_block_view($delta='') {
         else {
           $block['content'] = '
             <div id="banner1" class="banner">
-              <a title="Alumnidagene 2014" href="www.uib.no/alumnusdagene">
+              <a title="Alumnidagene 2014" href="http://www.uib.no/alumnusdagene">
                 <img alt="Alumnidagene 2014" src="' . $logo1_nb . '" />
               </a>
             </div>
