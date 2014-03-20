@@ -10,6 +10,7 @@ if git tag | grep -q R$REL; then
 fi
 
 bin/site-drush uib-sebra-places --verbose
+bin/site-drush uib-sync-fs --verbose
 exit
 
 # Migrate
