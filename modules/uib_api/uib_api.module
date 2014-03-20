@@ -4,11 +4,22 @@
  * Implements hook_menu().
  */
 function uib_api_menu() {
+  $items["api"] = array(
+    'page callback' => 'uib_api__home',
+    'access callback' => TRUE,
+  );
   $items["api/calendar.json"] = array(
     'page callback' => 'uib_api__calendar_json',
     'access callback' => TRUE,
   );
   return $items;
+}
+
+/**
+ * Returns the homepage for the API section.
+ */
+function uib_api__home() {
+  return "<h2>Reservert</h2>";
 }
 
 /**
