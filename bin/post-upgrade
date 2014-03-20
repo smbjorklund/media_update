@@ -11,6 +11,7 @@ fi
 
 bin/site-drush uib-sebra-places --verbose
 bin/site-drush uib-sync-fs --verbose
+bin/site-drush pm-enable --yes uib_api
 exit
 
 # Migrate
