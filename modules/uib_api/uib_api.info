@@ -1,0 +1,4 @@
+name = UiB API
+description = Machine access to our data
+core = 7.x
+package = UiB

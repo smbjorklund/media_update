@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function uib_api_menu() {
+  $items["api/calendar.json"] = array(
+    'page callback' => 'uib_api__calendar_json',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+/**
+ * Return selected calendar events as json
+ */
+function uib_api__calendar_json() {
+  $offset = 0;
+  $limit = 200;
+  $from_date = date('c');
+
+  $query = new EntityFieldQuery();
+  $query
+    -> entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'uib_article')
+    ->fieldCondition('field_uib_article_type','value', 'event')
+    ->fieldCondition('field_uib_date', 'value2', $from_date, '>=')
+    ->propertyCondition('status', 1)
+    ->fieldOrderBy('field_uib_date', 'value')
+    ->range($offset, $limit)
+    ;
+  $result = $query->execute();
+  $nids = array_keys($result['node']);
+  $nodes = node_load_multiple($nids);
+
+  $data = array(
+    'from_date' => $from_date,
+    'events'=>array(),
+  );
+  foreach ($nodes as $nid => $node) {
+    $row = array(
+      'type'      => $node->field_uib_event_type['und'][0]['value'],
+      'title'     => $node->title,
+      'date_from' => $node->field_uib_date['und'][0]['value']."Z",
+      'date_to'   => $node->field_uib_date['und'][0]['value2']."Z",
+      'location'  => $node->field_uib_location['und'][0]['value'],
+      'lead'      => $node->field_uib_lead['und'][0]['value'],
+      'id'   => $nid,
+      'path' => drupal_get_path_alias('node/' . $nid, $node->language),
+    );
+
+    $data['events'][] = $row;
+  }
+
+  return drupal_json_output($data);
+}
