@@ -1029,7 +1029,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => 0,
     ),
     'widget' => array(
