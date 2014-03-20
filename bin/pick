@@ -86,7 +86,7 @@ sub do_apply {
     my $id = $1;
 
     my $commits = qx(git log --oneline --reverse master..);
-    $commits =~ s/RTS-\#?$id\s//;
+    $commits =~ s/RTS-\#?$id\s//g;
     $commits =~ s/^/commit:/gm;
     if (($commits =~ tr/\n/\n/) == 1) {
 	$commits =~ s/\s(.*)/ "$1"/;
