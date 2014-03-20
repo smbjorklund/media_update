@@ -1338,6 +1338,26 @@ function uib_study_entity_info_alter(&$entity_info) {
  * Implements hook_views_pre_render().
  */
 function uib_study_views_pre_render(&$view) {
+  if (in_array($view->name, array('courses', 'special_study_listings'))) {
+    $current_displays = array(
+      'study_programmes_all_page',
+      'exchange',
+      'quota',
+      'self_financing',
+    );
+    if (in_array($view->current_display, $current_displays)) {
+      $taxonomy_tree = taxonomy_get_tree(1, 0, 1);
+      global $language;
+      foreach ($taxonomy_tree as $key => $t) {
+        if (strpos($view->exposed_widgets, $t->name)) {
+          list($nb, $en) = explode('/', substr($t->name, 2));
+          $term = $language->language == 'nb' ? $nb : $en;
+          $view->exposed_widgets = str_replace($t->name, $term, $view->exposed_widgets);
+        }
+      }
+    }
+  }
+
   if ($view->name == 'uib_taxonomy_term') {
     $term_id = $view->args[0];
     $term = taxonomy_term_load($term_id);
