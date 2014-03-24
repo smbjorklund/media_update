@@ -94,49 +94,38 @@
 /**
  * Media block layout.
  *
- * @param numeric $precent
- *   Size of the image in precent.
- * @param string $float
+ * @param string $media_element_size
+ *   Size of the entire element.
+ * @param string $media_element_float
+ *   Float direction of the entire element.
+ * @param numeric $image_size
+ *   Size of the image should be scaled to.
+ * @param string $image
  *   Float direction of image element.
- *
  */
-@mixin media($percent, $float) {
+
+@mixin media_element($media_element_size, $media_element_float, $background: transparent) {
   margin: 0 0 20px 0;
-  width: 100%;
-  ul,
-  .field {
-    margin: 0;
-    padding: 0;
+  float: $media_element_float;
+  width: $media_element_size;
+  background-color: $background;
+
+  @if $media_element_float == left {
+    float: $media_element_float;
+    .media {
+      margin: 0 10px 0 0;
+    }
   }
 
-  .full .media {
-    background-color: $light-grey;
+  @if $media_element_float == right {
+    float: $media_element_float;
+    .media {
+      margin: 0 0 0 10px;
+    }
   }
 
-  .half ul :first-child .media {
-    margin: 0 10px 20px 0;
-  }
-
-  .file-image {
-    float: left;
-    width: $percent;
-  }
-
-  .file-image {
-    margin: 0 10px 0 0;
-  }
-
-  li {
-    float: $float;
-    width: $percent;
-  }
-
-  .media_content {
-    margin: 10px 0 0 0;
-  }
-
-  .media_content {
-    margin: 10px 0 0 10px;
+  @if width == 100% {
+    @include zen-clean();
   }
 
   .media_content {
@@ -144,9 +133,61 @@
     width: 10000px;
   }
 
-  /* Media block additional config */
-  .media .views-field-title {
-    font-size: 1.6em;
-    line-height: 1.2em;
+  // Reset elements.
+  ul,
+  .field {
+    margin: 0;
+    padding: 0;
   }
 }
+
+@mixin media($image_size, $image_float: none) {
+  width: $image_size;
+  margin: 0 0 10px 0;
+
+  @if $image_float == left {
+    float: $image_float;
+    margin: 0 10px 0 0;
+    .media_content {
+      margin: 0 0 0 10px;
+    }
+  }
+
+  @if $image_float == right {
+    float: $image_float;
+    margin: 0 0 0 10px;
+    .media_content {
+      margin: 0 10px 0 0;
+    }
+  }
+}
+
+@mixin media_content() {
+  display: table-cell;
+  width: 10000px;
+}
+
+@mixin color_box($color: transparent, $color_text: none) {
+  padding: 10px;
+  @if $color != transparent {
+    background-color: $color;
+    color: $color_text;
+  }
+}
+
+  // $element {
+  //   margin: 10px 0 0 0;
+  // }
+
+  // .media_content {
+  //   margin: 10px 0 0 10px;
+  // }
+
+  // .media_content {
+  // }
+
+  // /* Media block additional config */
+  // .media .views-field-title {
+  //   font-size: 1.6em;
+  //   line-height: 1.2em;
+  // }
