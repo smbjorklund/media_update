@@ -8,7 +8,6 @@ if test ! -z "$1"; then
 fi
 
 echo $SITE_URL
-exit;
 
 if [ "$(uname -s)" = "Darwin" ]; then
     open $SITE_URL
