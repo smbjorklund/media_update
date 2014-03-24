@@ -2,10 +2,13 @@
 
 SITE_URL=http://$(basename $(readlink site))
 if test ! -z "$1"; then
-    SITE_URL=$SITE_URL/$1
+    SITE_PATH=$1
+    SITE_PATH=$(perl -le '$p = shift; $p =~ s,^https?://[^/]+/,,; print $p;' $SITE_PATH)
+    SITE_URL=$SITE_URL/$SITE_PATH
 fi
 
 echo $SITE_URL
+exit;
 
 if [ "$(uname -s)" = "Darwin" ]; then
     open $SITE_URL
