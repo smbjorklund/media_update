@@ -616,22 +616,19 @@ $zen-auto-include-item-base: false;
   .view-frontpage-profiled-articles {
     @include zen-grid-item (1, 1);
     @include zen-clear();
-    .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
+    .views-field-field-uib-main-media,
+    .views-field-field-uib-kicker,
+    .views-field-title,
+    .views-field-field-uib-lead {
       @include zen-grid-item (1, 1);
       @include zen-clear();
     }
   }
-    /* Automatic news feed on news page */
+
+  /* UiB article mobile */
   .node-uib-article {
-    width: 100%;
     @include zen-grid-item (1, 1);
     @include zen-clear();
-    h1, .field-name-field-uib-lead {
-      font-weight: normal;
-    }
-    h1 {
-      font-size: 1.6em;
-    }
   }
 
   /* Employee page menu */
@@ -965,30 +962,6 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(4, 1);
     .views-row {
       width: 44%;
-    }
-  }
-
-  /* Automatic news feed on news page */
-  .newspage_node .node-uib-article {
-    clear: both;
-    margin-top: 16px;
-    .field-name-field-uib-main-media-recent-news {
-      @include zen-grid-item (1, 1);
-    }
-    h1, .field-name-field-uib-lead, .field-name-field-uib-kicker {
-      @include zen-grid-item (3, 2);
-      width: 73%;
-      margin-left: 27%;
-      font-weight: normal;
-    }
-    h1 {
-      float: none;
-      font-size: 1.6em;
-      padding-top: 23px;
-      margin-bottom: 0;
-    }
-    .field-name-field-uib-kicker {
-      margin-top: 0;
     }
   }
 
@@ -1331,8 +1304,44 @@ $zen-auto-include-item-base: false;
 
   #node_area_full_group_two_column {
     @include zen-clear();
-    @include clearfix();
-    @include media(50%, left);
+    .half {
+      @include media_element(100%, none);
+    }
+
+    .half li {
+      @include media_element(50%, left);
+      .image {
+        @include media(100%);
+      }
+      .media-content {
+        @include media(100%);
+      }
+    }
+
+    li:nth-child(even) .media {
+      margin: 0 0 0 10px;
+    }
+    li:nth-child(odd) .media {
+      margin: 0 10px 0 0;
+    }
+
+    .full {
+      @include zen-clear();
+      @include media_element(100%, none, $light-grey);
+      .image {
+        @include media(50%, left);
+      }
+      .media-content {
+        @include media_content();
+      }
+      .media-wrapper {
+        @include color_box();
+      }
+
+      li:nth-child(odd) .media {
+        margin: 0 0 0 0;
+      }
+    }
   }
 
   #node_area_full_group_column_first {
@@ -1450,74 +1459,6 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item(4, 1);
     .views-row {
       width: 44%;
-    }
-  }
-
-  /* Aktuelt desktop */
-  /* First two */
-  .view-display-id-newspage_two_chosen_items {
-    @include zen-clear();
-    @include zen-grid-item (4, 1);
-    .views-row-odd {
-      @include zen-grid-item (2, 1);
-      .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
-        @include zen-clear();
-        width: 98%;
-      }
-    }
-    .views-row-even {
-      @include zen-grid-item (2, 3);
-      .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
-         @include zen-clear();
-         width: 98%;
-         margin-left: 2%;
-      }
-    }
-  }
-  /* promoted */
-  .view-display-id-newspage_one_chosen_item {
-    @include zen-grid-item (4, 1);
-    float: none;
-    clear: both;
-    min-height: 260px;
-    .views-field-field-uib-main-media {
-      @include zen-grid-item (2, 1);
-      width: 49%;
-    }
-    .newspage-one-chosen-text {
-      @include zen-grid-item (2, 3);
-      float: none;
-      background-color: #f1f1ef;
-      height: 245px;
-      width: 51%;
-      margin-left: 49%;
-      .views-field-field-uib-kicker {
-        width: 100%;
-      }
-      .views-field-field-uib-kicker, .views-field-field-uib-lead, .views-field-title {
-        width: 96%;
-        margin-left: 4%;
-      }
-    }
-  }
-  /* Last two or more */
-  .view-display-id-newspage_last_chosen_items {
-    @include zen-grid-item (4, 1);
-    margin-bottom: 20px;
-    .views-row-odd {
-      @include zen-grid-item (2, 1);
-      .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
-        @include zen-clear();
-        width: 98%;
-      }
-    }
-    .views-row-even {
-      @include zen-grid-item (2, 3);
-      .views-field-field-uib-main-media, .views-field-field-uib-kicker, .views-field-title, .views-field-field-uib-lead {
-         @include zen-clear();
-         width: 98%;
-         margin-left: 2%;
-      }
     }
   }
 
