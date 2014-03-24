@@ -93,13 +93,13 @@
       '#type' => 'html_tag',
       '#tag' => 'h1',
     );
-    // $content['field_uib_main_media']['#field_name'] = 'field_uib_main_media_recent_news';
 
-    if (isset($content['group_media_content']['field_uib_kicker'])) {
-      $new_title['#weight'] =  $content['group_media_content']['field_uib_kicker']['#weight'] + 0.5;
+    if (isset($content['group_media_wrapper']['group_media_content']['field_uib_kicker'])) {
+      $new_title['#weight'] =  $content['group_media_wrapper']['group_media_content']['field_uib_kicker']['#weight'] + 0.5;
     }
+
     $new_title['#value'] = '<a href=' . $node_url . '>' . $title . '</a>';
-    $content['group_media_content']['title'] = $new_title;
+    $content['group_media_wrapper']['group_media_content']['title'] = $new_title;
     print render($content);
   ?>
 </article><!-- /.node -->
