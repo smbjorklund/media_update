@@ -1379,8 +1379,17 @@ function uib_study_views_pre_render(&$view) {
       $children = taxonomy_get_children($term_id);
       if (!empty($children)) {
         foreach ($children as $tid => $child) {
-          $term = taxonomy_term_view($child, $view_mode = 'teaser');
-          $view->attachment_after .= render($term);
+          $query = new EntityFieldQuery();
+          $query->entityCondition('entity_type', 'node')
+            ->entityCondition('bundle', 'uib_study')
+            ->propertyCondition('status', 1)
+            ->fieldCondition('field_uib_study_type', 'value', 'program', '=')
+            ->fieldCondition('field_uib_nus', 'target_id', $tid, '=');
+          // Show term only if there are study programmes attached
+          if ($attached_programmes = $query->execute()) {
+            $term = taxonomy_term_view($child, $view_mode = 'teaser');
+            $view->attachment_after .= render($term);
+          }
         }
       }
     }
