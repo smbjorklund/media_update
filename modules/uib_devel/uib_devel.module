@@ -25,3 +25,15 @@ function uib_devel_entity_view_alter(&$build, $type) {
     $build['field_uib_sebra_id'][0]['#markup'] = '<a href="http://sebra.uib.no/sws/omraader?omraadekode=' . $sebra_id . '">' . $sebra_id . '</a>';
   }
 }
+
+/**
+ * Implements hook_context_registry_alter().
+ *
+ * https://drupal.org/node/873936 Context UI is slow with many menu items.
+ * This is a temporary workaround that remove the menu plugin from Context.
+ */
+function uib_devel_context_registry_alter(&$registry) {
+  if ($registry['conditions']['menu']) {
+    $registry['conditions']['menu'] = array();
+  }
+}
