@@ -307,49 +307,36 @@ table.cols-6 {
   }
 }
 
-.node-uib-article.node-teaser {
-  @include media_element(100%, none);
-  .field-name-field-uib-main-media {
-    border: none;
-    background-color: transparent;
-    clear: none;
-  }
-  h1 {
-    margin: 0;
-  }
-  .field-name-field-uib-main-media {
-    @include media(25%, left);
-  }
-}
-
 .view-courses,
 .view-special-study-listings {
-  .views-row {
-    height: 110px;
-    float: left;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    background-color: #efefef;
-    padding: 1rem 1rem 0 1rem;
-    overflow: auto;
-    border-bottom: 1px solid #DEDFDD;
-  }
-  h1 {
-    clear: both;
-  }
-  a {
-    font-size: 1.4em;
-    line-height: 2em;
-  }
-  a.fieldset-title {
-    line-height: 1em;
-  }
-  .view-filters{
-    margin-bottom: 1em;
-  }
-  .view-header {
-    font-weight: bold;
-    margin-bottom: 1em;
+  .view-courses {
+    .views-row {
+      height: 110px;
+      float: left;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+      background-color: #efefef;
+      padding: 1rem 1rem 0 1rem;
+      overflow: auto;
+      border-bottom: 1px solid #DEDFDD;
+    }
+    h1 {
+      clear: both;
+    }
+    a {
+      font-size: 1.4em;
+      line-height: 2em;
+    }
+    a.fieldset-title {
+      line-height: 1em;
+    }
+    .view-filters{
+      margin-bottom: 1em;
+    }
+    .view-header {
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
   }
   .views-exposed-form {
     .form-item-studypoints-rank {

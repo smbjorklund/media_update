@@ -224,12 +224,33 @@ $zen-auto-include-item-base: false;
     }
   }
 
+  .node-uib-article.node-teaser {
+    @include media_element(100%, none);
+    .field-name-field-uib-main-media {
+      @include media(25%, left);
+    }
+    .media_wrapper {
+      @include media_content();
+    }
+    .media_content {
+      @include media_content_wrapper;
+    }
+    /* Reset defaults */
+    .field-name-field-uib-main-media {
+      border: none;
+      background-color: transparent;
+      clear: none;
+    }
+    h1 {
+      margin: 0;
+    }
+  }
+
   #node_area_full_group_two_column {
     @include zen-clear();
     .half {
       @include media_element(100%, none);
     }
-
     .half li {
       @include media_element(50%, left);
       .image {
@@ -239,14 +260,12 @@ $zen-auto-include-item-base: false;
         @include media(100%);
       }
     }
-
     li:nth-child(even) .media {
       margin: 0 0 0 10px;
     }
     li:nth-child(odd) .media {
       margin: 0 10px 0 0;
     }
-
     .full {
       @include zen-clear();
       @include media_element(100%, none, $light-grey);
@@ -259,7 +278,6 @@ $zen-auto-include-item-base: false;
       .media-wrapper {
         @include color_box();
       }
-
       li:nth-child(odd) .media {
         margin: 0 0 0 0;
       }
