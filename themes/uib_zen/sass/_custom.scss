@@ -105,55 +105,31 @@
  */
 
 @mixin media_element($media_element_size, $media_element_float, $background: transparent) {
-  margin: 0 0 20px 0;
+  margin: 0 0 zen-gutter() 0;
   float: $media_element_float;
   width: $media_element_size;
   background-color: $background;
 
   @if $media_element_float == left {
-    float: $media_element_float;
-    .media {
-      margin: 0 zen-half-gutter() 0 0;
-    }
   }
 
   @if $media_element_float == right {
-    float: $media_element_float;
-    .media {
-      margin: 0 0 0 zen-half-gutter();
-    }
   }
 
   @if width == 100% {
     @include zen-clean();
   }
-
-  // Reset elements.
-  ul,
-  .field {
-    margin: 0;
-    padding: 0;
-  }
 }
 
 @mixin media($image_size, $image_float: none) {
   width: $image_size;
-  margin: 0 0 zen-half-gutter() 0;
 
   @if $image_float == left {
     float: $image_float;
-    margin: 0 zen-half-gutter() 0 0;
-    .media_content {
-      margin: 0 0 0 zen-half-gutter();
-    }
   }
 
   @if $image_float == right {
     float: $image_float;
-    margin: 0 0 0 zen-half-gutter();
-    .media_content {
-      margin: 0 zen-half-gutter() 0 0;
-    }
   }
 }
 

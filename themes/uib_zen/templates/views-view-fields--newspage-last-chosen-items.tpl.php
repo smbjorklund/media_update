@@ -25,7 +25,7 @@
  */
 ?>
 <?php $i = 0; ?>
-<?php print '<div class="media clearfix">'; ?>
+<?php print '<div class="media">'; ?>
 
 <?php foreach ($fields as $id => $field): ?>
   <?php if ($i == 0): ?>
@@ -35,7 +35,7 @@
     <?php $i++; ?>
   <?php else: ?>
     <?php if ($i == 1): ?>
-      <?php print '<div class="media-content"><div class="media-wrapper">'; ?>
+      <?php print '<div class="media-wrapper"><div class="media-content">'; ?>
     <?php endif; ?>
     <?php print $field->wrapper_prefix; ?>
     <?php print $field->content; ?>

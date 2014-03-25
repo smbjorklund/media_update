@@ -228,6 +228,9 @@ $zen-auto-include-item-base: false;
     @include media_element(100%, none);
     .field-name-field-uib-main-media {
       @include media(25%, left);
+      .field-items {
+        margin-right: zen-half-gutter();
+      }
     }
     .media_wrapper {
       @include media_content();
@@ -248,11 +251,19 @@ $zen-auto-include-item-base: false;
 
   #node_area_full_group_two_column {
     @include zen-clear();
-    .half {
-      @include media_element(100%, none);
+    ul {
+      margin: 0;
     }
+    .half,
+    .full {
+      margin: 0 0 $zen-gutter-width 0;
+    }
+
     .half li {
       @include media_element(50%, left);
+      .media {
+        margin-left: zen-half-gutter();
+      }
       .image {
         @include media(100%);
       }
@@ -260,22 +271,27 @@ $zen-auto-include-item-base: false;
         @include media(100%);
       }
     }
+
     li:nth-child(even) .media {
       margin: 0 0 0 10px;
     }
     li:nth-child(odd) .media {
       margin: 0 10px 0 0;
     }
+
     .full {
       @include zen-clear();
       @include media_element(100%, none, $light-grey);
       .image {
         @include media(50%, left);
-      }
-      .media-content {
-        @include media_content();
+        .field-content {
+          margin-right: zen-half-gutter();
+        }
       }
       .media-wrapper {
+        @include media_content();
+      }
+      .media-content {
         @include color_box();
       }
       li:nth-child(odd) .media {
