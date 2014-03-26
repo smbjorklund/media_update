@@ -15,6 +15,8 @@ foreach (file("../modules/uib_migrate/not-to-be-migrated.txt", FILE_IGNORE_NEW_L
 $count_migrated = 0;
 $count_tobe_migrated = 0;
 
+$admin = user_load(1);
+
 $topiclist = simplexml_load_file("http://www.uib.no/topicmap/@@xtopic?type=area&allinstances&limit=0");
 foreach ($topiclist->topic as $topic) {
   $w2_path = substr($topic['path'], 1);
@@ -23,6 +25,7 @@ foreach ($topiclist->topic as $topic) {
   $result = $query
     ->entityCondition('entity_type', 'node')
     ->fieldCondition('field_uib_w2_id', 'value', $topic['id'])
+    ->addMetaData('account', $admin)
     ->execute();
 
   if (empty($result)) {
