@@ -18,6 +18,8 @@ $count_tobe_migrated = 0;
 $admin = user_load(1);
 $seen = array();
 
+$path = array();
+
 $topiclist = simplexml_load_file("http://www.uib.no/topicmap/@@xtopic?type=area&allinstances&limit=0");
 foreach ($topiclist->topic as $topic) {
   $w2_path = substr($topic['path'], 1);
@@ -30,15 +32,24 @@ foreach ($topiclist->topic as $topic) {
     ->execute();
 
   if (empty($result)) {
-    if (isset($ignore[$w2_path])) {
-      $ignore[$w2_path]++;
-      print ";; $w2_path\n";
+    if (isset($ignore[$w2_path]) ||
+        startswith($w2_path, 'system/') ||
+        startswith($w2_path, 'prototyper/') ||
+        startswith($w2_path, 'ub/fagressurser/') ||
+        startswith($w2_path, 'ub/resources/') ||
+        FALSE)
+    {
+      if (empty($ignore[$w2_path]))
+        $ignore[$w2_path] = 1;
+      else
+        $ignore[$w2_path]++;
+      $paths['ignored'][$w2_path] = NULL;
     }
     elseif (area_already_present($w2_path)) {
-      print "-+ $w2_path\n";
+      $paths['new2'][$w2_path] = NULL;
     }
     else {
-      print "++ $w2_path\n";
+      $paths['unmigrated'][$w2_path] = NULL;
       $count_tobe_migrated++;
     }
   }
@@ -48,7 +59,7 @@ foreach ($topiclist->topic as $topic) {
     foreach ($nids as $nid) {
       $w3_path = w3_path($nid);
       $seen[$w3_path] = 1;
-      print((count($nids) > 1 ? "-!" : "--") . " $w2_path ➡︎ $w3_path\n");
+      $paths['migrated'][$w2_path] = $w3_path;
     }
     $count_migrated++;
   }
@@ -57,14 +68,10 @@ foreach ($topiclist->topic as $topic) {
 foreach ($ignore as $path => $count) {
   if ($count == 1)
     continue;
-  print "?? $path\n";
+  $paths['badignore']['path'] = NULL;
 }
 
-if ($count_tobe_migrated + $count_migrated > 0) {
-  printf("### %.1f%% migrated\n", $count_migrated / ($count_migrated + $count_tobe_migrated) * 100);
-}
-
-# Report any areas present in w3
+# Determine areas only present in w3
 $query = new EntityFieldQuery;
 $result = $query
 ->entityCondition('entity_type', 'node')
@@ -75,8 +82,46 @@ $result = $query
 foreach (array_keys($result['node']) as $nid) {
   $w3_path = w3_path($nid);
   if (empty($seen[$w3_path])) {
-    print "<> $w3_path\n";
+    $paths['new3'][$w3_path] = NULL;
   }
+}
+
+# Generate report
+print "# w3 migration status as of " . strftime("%F") . "\n";
+
+if ($count_tobe_migrated + $count_migrated > 0) {
+  printf("%.1f%% of the areas have been migrated from w2 to w3.\n", $count_migrated / ($count_migrated + $count_tobe_migrated) * 100);
+}
+
+$sections = array(
+  array('unmigrated', 'Not yet migrated'),
+  array('new2', 'Not migrated but created new in w3'),
+  array('new3', 'New in w3'),
+  array('migrated', 'Migrated'),
+  array('ignored', 'Ignored'),
+  array('badignore', 'Ignored (non existing paths)'),
+);
+
+foreach($sections as $section) {
+  list($id, $title) = $section;
+  if (!isset($paths[$id]))
+    continue;
+  $p = $paths[$id];
+  unset($paths[$id]);
+  print "\n## $title (" . count($p) . ")\n\n";
+  ksort($p);
+  foreach($p as $p1 => $p2) {
+    print "    $p1";
+    if ($p2) {
+      print " => $p2";
+    }
+    print "\n";
+  }
+}
+
+if (!empty($paths)) {
+  print "\n";
+  print_r($paths);
 }
 
 function area_already_present($w2_path) {
@@ -111,4 +156,8 @@ function w3_path($nid) {
     }
   }
   return $node_path;
+}
+
+function startswith($str, $prefix) {
+  return substr($str, 0, strlen($prefix)) == $prefix;
 }
