@@ -1554,6 +1554,22 @@ $zen-auto-include-item-base: false;
     min-width: 336px;
   }
 
+  /* Study filters */
+  #views-exposed-form-courses-study-programmes-all-page {
+    $zen-column-count: 4;
+    .views-widget-filter-term_node_tid_depth {
+      @include zen-grid-item (2, 1);
+    }
+    .views-widget-filter-field_uib_study_category_value {
+      @include zen-grid-item (2, 3);
+    }
+    .views-submit-button {
+      @include zen-grid-item (1, 4);
+      @include zen-clear();
+      margin-left: 83%;
+    }
+  }
+
   $zen-column-count: 5;
 
   // Taxonomy term

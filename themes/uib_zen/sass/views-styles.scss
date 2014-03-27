@@ -362,6 +362,28 @@ table.cols-6 {
   }
 }
 
+#views-exposed-form-courses-study-programmes-all-page {
+  input[class="form-submit"] {
+    background: #77af00;
+    color: #fff;
+    padding: 10px 40px;
+    border: none;
+    border-bottom: solid 4px #629000;
+    margin: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .form-checkboxes.bef-select-as-checkboxes label {
+    display: block;
+    margin-left: 20px;
+  }
+  input[type="checkbox"] {
+    float: left;
+    margin-top: 2px;
+  }
+}
+
 .view-display-id-newspage_one_chosen_item img {
   display: block;
 }
