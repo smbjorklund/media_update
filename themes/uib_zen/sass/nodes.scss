@@ -359,9 +359,9 @@ h1 {
     background-color: transparent;
     float: left;
     width: 30%;
-    border-bottom: 1px solid #DEDFDD;
+    border-bottom: 0;
 
-    .content, .field-items {
+    .field-items {
       margin: 0 1em 0 0;
     }
 
