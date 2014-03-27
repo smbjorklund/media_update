@@ -16,6 +16,7 @@ $count_migrated = 0;
 $count_tobe_migrated = 0;
 
 $admin = user_load(1);
+$seen = array();
 
 $topiclist = simplexml_load_file("http://www.uib.no/topicmap/@@xtopic?type=area&allinstances&limit=0");
 foreach ($topiclist->topic as $topic) {
@@ -45,14 +46,8 @@ foreach ($topiclist->topic as $topic) {
     assert(!isset($ignore[$w2_path]), "Migrated area $w2_path is to be ignored");
     $nids = array_keys($result['node']);
     foreach ($nids as $nid) {
-      $node_path = "node/$nid";
-      foreach (array("nb", "en") as $lang) {
-        $w3_path = drupal_get_path_alias($node_path, $lang);
-        if ($w3_path != $node_path) {
-          $w3_path = "$lang/$w3_path";
-          break;
-        }
-      }
+      $w3_path = w3_path($nid);
+      $seen[$w3_path] = 1;
       print((count($nids) > 1 ? "-!" : "--") . " $w2_path ➡︎ $w3_path\n");
     }
     $count_migrated++;
@@ -67,6 +62,21 @@ foreach ($ignore as $path => $count) {
 
 if ($count_tobe_migrated + $count_migrated > 0) {
   printf("### %.1f%% migrated\n", $count_migrated / ($count_migrated + $count_tobe_migrated) * 100);
+}
+
+# Report any areas present in w3
+$query = new EntityFieldQuery;
+$result = $query
+->entityCondition('entity_type', 'node')
+->entityCondition('bundle', 'area')
+->addMetaData('account', $admin)
+->execute();
+
+foreach (array_keys($result['node']) as $nid) {
+  $w3_path = w3_path($nid);
+  if (empty($seen[$w3_path])) {
+    print "<> $w3_path\n";
+  }
 }
 
 function area_already_present($w2_path) {
@@ -89,4 +99,16 @@ function area_already_present($w2_path) {
     }
   }
   return FALSE;
+}
+
+function w3_path($nid) {
+  $node_path = "node/$nid";
+  foreach (array("nb", "en") as $lang) {
+    $w3_path = drupal_get_path_alias($node_path, $lang);
+    if ($w3_path != $node_path) {
+      $w3_path = "$lang/$w3_path";
+      return $w3_path;
+    }
+  }
+  return $node_path;
 }
