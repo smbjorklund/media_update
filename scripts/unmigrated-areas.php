@@ -33,6 +33,9 @@ foreach ($topiclist->topic as $topic) {
       $ignore[$w2_path]++;
       print ";; $w2_path\n";
     }
+    elseif (area_already_present($w2_path)) {
+      print "-+ $w2_path\n";
+    }
     else {
       print "++ $w2_path\n";
       $count_tobe_migrated++;
@@ -64,4 +67,26 @@ foreach ($ignore as $path => $count) {
 
 if ($count_tobe_migrated + $count_migrated > 0) {
   printf("### %.1f%% migrated\n", $count_migrated / ($count_migrated + $count_tobe_migrated) * 100);
+}
+
+function area_already_present($w2_path) {
+  $lang = NULL;
+  $path = $w2_path;
+  if (substr($w2_path, -3) == '/en') {
+    $path = substr($w2_path, 0, -3);
+    $lang = 'en';
+  }
+  elseif (substr($w2_path, 0, 3) == 'fg/') {
+    $lang = 'nb';
+  }
+  elseif (substr($w2_path, 0, 3) == 'rg/') {
+    $lang = 'en';
+  }
+  $languages = $lang ? array($lang) : array('nb', 'en');
+  foreach ($languages as $lang) {
+    if (drupal_get_normal_path($path, $lang) != $path) {
+      return TRUE;
+    }
+  }
+  return FALSE;
 }
