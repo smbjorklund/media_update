@@ -496,7 +496,7 @@ function uib_area_views_default_views() {
   );
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Content: Entity translation: translations */
   $handler->display->display_options['relationships']['entity_translations']['id'] = 'entity_translations';
@@ -624,7 +624,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['title'] = 'Study programmes';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
       'field' => 'field_uib_study_category',
@@ -632,7 +632,6 @@ return !empty($handler->argument);';
       'rendered_strip' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -1424,7 +1423,6 @@ return !empty($handler->argument);';
     t('next ›'),
     t('last »'),
     t('Found @total courses'),
-    t('<a href="[path]">[field_uib_study_title] / [field_uib_study_code]</a>'),
     t('Type'),
     t('Humanities and aesthetic studies'),
     t('Has taxonomy term'),
