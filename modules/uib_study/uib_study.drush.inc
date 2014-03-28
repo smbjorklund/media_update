@@ -421,34 +421,34 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       $edit[] = 'removed category';
     }
 
+    // Check if any change in referenced programs
+    $prev_refs = array();
+    foreach ($wrapper->field_uib_study_part_of->getIterator() as $delta => $term) {
+      $prev_refs[] = $term->raw();
+    }
+    $new_refs = array();
     if (!empty($study['ref_programs'])) {
-      // Check if any change in referenced programs
-      $prev_refs = array();
-      foreach ($wrapper->field_uib_study_part_of->getIterator() as $delta => $term) {
-        $prev_refs[] = $term->raw();
-      }
-      $new_refs = array();
       foreach ($study['ref_programs'] as $ref_code) {
         if (!empty($existing[$ref_code])) {
           $new_refs[] = $existing[$ref_code];
         }
       }
-      sort($prev_refs);
-      sort($new_refs);
-      if ($prev_refs != $new_refs) {
-        $wrapper->field_uib_study_part_of = array();
-        $delta = 0;
-        foreach ($study['ref_programs'] as $ref_code) {
-          if (!empty($existing[$ref_code])) {
-            $wrapper->field_uib_study_part_of[$delta]->set($existing[$ref_code]);
-            $delta++;
-          }
-          else {
-            $refs_incomplete[] = $ref_code;
-          }
+    }
+    sort($prev_refs);
+    sort($new_refs);
+    if ($prev_refs != $new_refs) {
+      $wrapper->field_uib_study_part_of = array();
+      $delta = 0;
+      foreach ($study['ref_programs'] as $ref_code) {
+        if (!empty($existing[$ref_code])) {
+          $wrapper->field_uib_study_part_of[$delta]->set($existing[$ref_code]);
+          $delta++;
         }
-        $edit[] = 'part_of';
+        else {
+          $refs_incomplete[] = $ref_code;
+        }
       }
+      $edit[] = 'part_of';
     }
 
     // Study point rank
