@@ -952,7 +952,7 @@ function uib_zen_views_post_render(&$view, &$output, &$cache) {
         'field:field_uib_study_category:#allowed_values:' . $key,
         $view->filter['field_uib_study_category_value']->value_options[$key]
         );
-      $output = str_replace('>' . $view->filter['field_uib_study_category_value']->value_options[$key] . '</option>', '>'. drupal_ucfirst($study_category) . '</option>', $output);
+      $output = str_replace('>' . $view->filter['field_uib_study_category_value']->value_options[$key] . '</label>', '>'. drupal_ucfirst($study_category) . '</label>', $output);
     }
   }
 }
