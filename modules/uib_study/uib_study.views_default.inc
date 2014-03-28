@@ -418,6 +418,7 @@ function uib_study_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'specialization';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -482,6 +483,22 @@ function uib_study_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['block_description'] = 'Specializations';
+
+  /* Display: Subview */
+  $handler = $view->new_display('attachment', 'Subview', 'attachment_1');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Part of study (field_uib_study_part_of) */
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['id'] = 'field_uib_study_part_of_target_id';
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['table'] = 'field_data_field_uib_study_part_of';
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['field'] = 'field_uib_study_part_of_target_id';
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['exception']['title'] = 'Alle';
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_uib_study_part_of_target_id']['specify_validation'] = TRUE;
   $translatables['uib_study_specialization'] = array(
     t('Master'),
     t('Specializations'),
@@ -494,6 +511,7 @@ function uib_study_views_default_views() {
     t('<a href="[path]">[field_uib_study_title]</a>'),
     t('Alle'),
     t('Block'),
+    t('Subview'),
   );
   $export['uib_study_specialization'] = $view;
 
@@ -555,6 +573,23 @@ function uib_study_views_default_views() {
   $handler->display->display_options['fields']['field_uib_study_title']['alter']['path'] = '!1';
   $handler->display->display_options['fields']['field_uib_study_title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['field_uib_study_title']['element_label_colon'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Global: View */
+  $handler->display->display_options['fields']['view']['id'] = 'view';
+  $handler->display->display_options['fields']['view']['table'] = 'views';
+  $handler->display->display_options['fields']['view']['field'] = 'view';
+  $handler->display->display_options['fields']['view']['label'] = '';
+  $handler->display->display_options['fields']['view']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['view']['view'] = 'uib_study_specialization';
+  $handler->display->display_options['fields']['view']['display'] = 'attachment_1';
+  $handler->display->display_options['fields']['view']['arguments'] = '[%nid]';
   /* Sort criterion: Content: Category (field_uib_study_category) */
   $handler->display->display_options['sorts']['field_uib_study_category_value']['id'] = 'field_uib_study_category_value';
   $handler->display->display_options['sorts']['field_uib_study_category_value']['table'] = 'field_data_field_uib_study_category';
