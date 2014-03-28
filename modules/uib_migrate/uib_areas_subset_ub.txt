@@ -9,3 +9,5 @@ ccbio
 ccbio/en
 farmasi
 farmasi/en
+fg/paedim
+rg/paedim
