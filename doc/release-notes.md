@@ -1,3 +1,26 @@
+# Release 2014-04-01 tag: R7.2
+
+R7.2 migrerer noen etterlatte områder etter MOFA + Universitetsbiblioteket. I tillegg blir det lagt opp til ny global kalender i w3, det er fortsatt arbeid på funksjonalitet for studieprogram og emnevisninger, i tillegg til at en del mindre saker fikses.
+
+* Migrerer områder som ble glemt ved migreringen av MOFA #5973
+* Migrerer Universitetsbiblioteket #6020
+* Retter opp feil som har gjort at steder i w3 ikke har blitt oppdatert fra Sebra (adresseinformasjon i footer) #5942
+* Endrer farge på tekst i "Viktig melding"-boksen #6068
+* Viser studiespesialiseringer i studieprogram-oversiktsliste #6004
+* Fjerner tomme NUS-kategorier fra NUS-listene
+* Retter opp feil i kalkuleringen av varighet på studieprogram #5920
+* Endrer visning av relevante studieprogram for emne til å hente alle mulige studieprogram med unntak av program der emnet er helt valgfritt #5921
+* Justeringer på studiepgoram-listene #5557 #5532 #5457
+* Gir tittel og justerer layout for NUS-sidene #5456
+* Leverer definerte emnelister for utenlandske studenter til området utdanning #5536
+* Fjerner de andre spesialiseringene fra studieløp-tabellen når en spesialisering er valgt #5387
+* Setter opp global kalender i w3 #4776
+* Gjør kalenderdata tilgjengelig som åpne data #4168
+* Diverse små styling-saker #5926 #5927 #5901 #5394
+* Tekniske saker i forbindelse med visning av studieprogram #6032
+* Diverse tekniske saker #6032 #6019 # 5939 #5384
+
+
 # Release 2014-03-19 tag: R7.1.1
 
 Fikser linken til Alumnusdagene fra logoen nederst på hovedsiden.
