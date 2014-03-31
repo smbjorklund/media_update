@@ -392,6 +392,18 @@ table.cols-6 {
     font-weight: bold;
     margin-bottom: 1em;
   }
+  .views-exposed-form {
+    .form-item-studypoints-rank {
+      .bef-checkboxes {
+        margin-bottom: 1em;
+        div {
+          display: inline;
+          margin-right: 1em;
+        }
+      }
+
+    }
+  }
 }
 
 .view-id-uib_taxonomy_term {

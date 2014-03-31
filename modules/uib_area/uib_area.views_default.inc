@@ -1005,6 +1005,25 @@ return !empty($handler->argument);';
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
   $handler->display->display_options['filters']['language']['group'] = 1;
+  /* Filter criterion: Content: Study points rank (field_uib_study_points_rank) */
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['id'] = 'field_uib_study_points_rank_value';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['table'] = 'field_data_field_uib_study_points_rank';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['field'] = 'field_uib_study_points_rank_value';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator_id'] = 'field_uib_study_points_rank_value_op';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['label'] = 'Study points';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator'] = 'field_uib_study_points_rank_value_op';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['identifier'] = 'studypoints_rank';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
@@ -1165,24 +1184,6 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['tid_4']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['tid_4']['type'] = 'select';
   $handler->display->display_options['filters']['tid_4']['vocabulary'] = 'uib_nus';
-  /* Filter criterion: Content: Study points rank (field_uib_study_points_rank) */
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['id'] = 'field_uib_study_points_rank_value';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['table'] = 'field_data_field_uib_study_points_rank';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['field'] = 'field_uib_study_points_rank_value';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator_id'] = 'field_uib_study_points_rank_value_op';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['label'] = 'Study points';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator'] = 'field_uib_study_points_rank_value_op';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['identifier'] = 'studypoints_rank';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    64272948 => 0,
-    170699807 => 0,
-    74573517 => 0,
-    176168899 => 0,
-  );
   $handler->display->display_options['path'] = 'course';
 
   /* Display: All studyprogrammes */
@@ -1424,13 +1425,13 @@ return !empty($handler->argument);';
     t('last »'),
     t('Found @total courses'),
     t('Type'),
+    t('Study points'),
     t('Humanities and aesthetic studies'),
     t('Has taxonomy term'),
     t('Teacher training and pedagogy'),
     t('Political science and Development studies'),
     t('Natural sciences and techincal subjects'),
     t('Health and welfare'),
-    t('Study points'),
     t('All studyprogrammes'),
     t('Listing all study programmes'),
     t('Found @total study programmes'),
