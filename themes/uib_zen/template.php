@@ -129,6 +129,12 @@ function uib_zen_preprocess_maintenance_page(&$variables, $hook) {
  *   The name of the template being rendered ("html" in this case.)
  */
 function uib_zen_preprocess_html(&$variables, $hook) {
+  $title = __uib_title(current_path());
+  if ($title) {
+    $variables['head_title_array']['title'] = $title;
+    $variables['head_title'] = implode(' | ', $variables['head_title_array']);
+  }
+
   /**
    * Get area menu style.
    */
@@ -935,6 +941,49 @@ function uib_zen_field($variables) {
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
   }
   return $output;
+}
+
+/**
+ * __uib_entity Return entity object if it exist.
+ * @param  string Path current page to get field title from.
+ * @return string Current node/term field based title. Return FALSE if type is
+ * not supported by function.
+ */
+function __uib_title($path) {
+  $path = explode('/', $path);
+  if (!array_key_exists(1, $path)) {
+    return FALSE;
+  }
+  $type = $path[0];
+  global $language;
+  $current_language = $language->language;
+  $id = array($path[1]);
+  if ($type == 'taxonomy') {
+    $type = $type . '_term';
+    $id = array($path[2]);
+    $result = entity_load($type, $id);
+  }
+  if ($type == 'node') {
+    $result = entity_load($type, $id);
+  }
+  if ($result) {
+    foreach ($result as $key => $entity) {
+      $metadata = entity_metadata_wrapper($type, $entity);
+      $bundle = $metadata->getbundle();
+      if ($bundle == 'uib_nus') {
+        return $metadata->language($current_language)->field_uib_term_title->value();
+      }
+      if ($bundle == 'uib_study') {
+        return $metadata->language($current_language)->field_uib_study_title->value();
+      }
+      else {
+        return FALSE;
+      }
+    }
+  }
+  else {
+    return FALSE;
+  }
 }
 
 function uib_zen_views_post_render(&$view, &$output, &$cache) {
