@@ -1416,6 +1416,7 @@ return !empty($handler->argument);';
     t('[field_uib_study_title] - [field_uib_study_code]'),
     t('All courses'),
     t('Listing all courses'),
+    t('Select any filter and click on Apply to see results'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -2739,6 +2740,7 @@ return !empty($handler->argument);';
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Select any filter and click on Apply to see results'),
     t('[title] ([field_uib_date])'),
     t('<div class="phd-lead-title-wrapper">
 <div class="phd-title">[title]</div>

@@ -1802,6 +1802,7 @@ function uib_webdesk_views_default_views() {
     t('Sortér på'),
     t('Stigende'),
     t('Synkende'),
+    t('Select any filter and click on Apply to see results'),
     t('Elementer per side'),
     t('- Alle -'),
     t('Offset'),

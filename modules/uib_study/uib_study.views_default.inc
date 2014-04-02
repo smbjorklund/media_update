@@ -319,6 +319,7 @@ function uib_study_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Select any filter and click on Apply to see results'),
     t('term'),
     t('Translations'),
     t('<a href="[path]">[field_uib_study_title]</a>'),

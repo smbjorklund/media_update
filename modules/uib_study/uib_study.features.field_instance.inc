@@ -964,8 +964,8 @@ function uib_study_field_default_field_instances() {
   t('Relevant links');
   t('Responsible');
   t('Rss feed');
-  t('Study points rank');
   t('Study label');
+  t('Study points rank');
   t('Title');
   t('Type');
 
