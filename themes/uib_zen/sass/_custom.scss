@@ -103,33 +103,29 @@
  * @param string $image
  *   Float direction of image element.
  */
-
 @mixin media_element($media_element_size, $media_element_float, $background: transparent) {
   margin: 0 0 zen-gutter() 0;
   float: $media_element_float;
   width: $media_element_size;
   background-color: $background;
-
-  @if $media_element_float == left {
+  @if $media_element_float == "left" {
   }
-
-  @if $media_element_float == right {
+  @if $media_element_float == "right" {
   }
-
-  @if width == 100% {
-    @include zen-clean();
+  @if $media_element_size == "100%" {
+    margin: 20px;
   }
 }
 
 @mixin media($image_size, $image_float: none) {
   width: $image_size;
-
-  @if $image_float == left {
+  @if $image_float == "left" {
     float: $image_float;
+    margin: 0;
   }
-
-  @if $image_float == right {
+  @if $image_float == "right" {
     float: $image_float;
+    margin: 0;
   }
 }
 
@@ -143,7 +139,7 @@
 }
 
 @mixin color_box($color: transparent, $color_text: none) {
-  padding: zen-half-gutter();
+  margin: zen-half-gutter();
   @if $color != transparent {
     background-color: $color;
     color: $color_text;

@@ -186,7 +186,7 @@ h1 {
 .field-name-field-uib-main-media {
   @include zen-clear(both);
   background-color: #F1F1EF;
-  margin-bottom: 20px;
+  margin-bottom: $zen-gutter-width;
   padding-bottom: 10px;
   border-bottom: 1px solid #DEDFDD;
 
