@@ -309,34 +309,32 @@ table.cols-6 {
 
 .view-courses,
 .view-special-study-listings {
-  .view-courses {
-    .views-row {
-      height: 110px;
-      float: left;
-      margin-right: 1rem;
-      margin-bottom: 1rem;
-      background-color: #efefef;
-      padding: 1rem 1rem 0 1rem;
-      overflow: auto;
-      border-bottom: 1px solid #DEDFDD;
-    }
-    h1 {
-      clear: both;
-    }
-    a {
-      font-size: 1.4em;
-      line-height: 2em;
-    }
-    a.fieldset-title {
-      line-height: 1em;
-    }
-    .view-filters{
-      margin-bottom: 1em;
-    }
-    .view-header {
-      font-weight: bold;
-      margin-bottom: 1em;
-    }
+  .views-row {
+    height: 110px;
+    float: left;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    background-color: #efefef;
+    padding: 1rem 1rem 0 1rem;
+    overflow: auto;
+    border-bottom: 1px solid #DEDFDD;
+  }
+  h1 {
+    clear: both;
+  }
+  a {
+    font-size: 1.4em;
+    line-height: 2em;
+  }
+  a.fieldset-title {
+    line-height: 1em;
+  }
+  .view-filters{
+    margin-bottom: 1em;
+  }
+  .view-header {
+    font-weight: bold;
+    margin-bottom: 1em;
   }
   .views-exposed-form {
     .form-item-studypoints-rank {
