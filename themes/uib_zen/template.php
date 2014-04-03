@@ -154,7 +154,7 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function uib_zen_preprocess_page(&$variables, $hook) {
-  $path = menu_tab_root_path();
+  $page_menu_item = menu_get_item(current_path());
   if (isset($variables['node'])) {
     $not_translated_txt = t('This content has not been translated.');
     if ($variables['node']->type == 'uib_article') {
@@ -194,7 +194,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     $variables['page_title_link'] = l(check_plain($current_area->title), '', array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
   }
 
-  if (!is_int(strpos($path,'node/add/'))) {
+  if (!is_int(strpos($page_menu_item['path'], 'node/add/'))) {
     if ($variables['language']->language == 'nb') {
       $variables['global_menu'] = menu_navigation_links('menu-global-menu-no');
     }
@@ -241,6 +241,20 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   }
   elseif (strlen($variables['page_title']) > 65 && empty($variables['custom_logo'])) {
     $variables['uib_long_page_title'] = TRUE;
+  }
+
+  if (empty($variables['node'])) {
+    if ($page_menu_item['page_arguments'][0] == 'uib_taxonomy_term') {
+      // uib_nus taxonomy term view page
+      $term = taxonomy_term_load($page_menu_item['map'][2]);
+      if ($term->vocabulary_machine_name == 'uib_nus') {
+        $title = __uib_title($page_menu_item['href']);
+        // Set html title
+        drupal_set_title($title);
+        // Empty page title since this is displayed in content
+        $variables['title'] = '';
+      }
+    }
   }
 }
 
@@ -966,7 +980,7 @@ function __uib_title($path) {
   if ($type == 'node') {
     $result = entity_load($type, $id);
   }
-  if ($result) {
+  if (!empty($result)) {
     foreach ($result as $key => $entity) {
       $metadata = entity_metadata_wrapper($type, $entity);
       $bundle = $metadata->getbundle();
@@ -1007,18 +1021,6 @@ function uib_zen_views_post_render(&$view, &$output, &$cache) {
 }
 
 function uib_zen_preprocess_views_view(&$variables) {
-  if ($variables['name'] == 'ansatte') {
-    if (empty($variables['title'])) {
-      $variables['title_prefix']['#markup'] = '<h1 class="title">';
-      $variables['title_suffix']['#markup'] = '</h1>';
-      if ($variables['display_id'] == 'page_2') {
-        $variables['title'] = menu_get_active_title();
-      }
-      else {
-        $variables['title'] = t('Staff');
-      }
-    }
-  }
   if ($variables['name'] == 'courses') {
     if ($variables['display_id'] == 'study_courses_all_page' || $variables['display_id'] == 'study_programmes_all_page') {
       // Force education as current area
@@ -1032,11 +1034,6 @@ function uib_zen_preprocess_views_view(&$variables) {
   if (in_array($variables['name'], $forced_education_area_names)) {
     // Force education as current area
     uib_area__get_current(variable_get('uib_study_area_nid'));
-  }
-  if ($variables['name'] == 'uib_nus_overview') {
-    $variables['title_prefix']['#markup'] = '<h1>';
-    $variables['title'] = t('Studies');
-    $variables['title_suffix']['#markup'] = '</h1>';
   }
 }
 
