@@ -319,7 +319,6 @@ function uib_study_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Select any filter and click on Apply to see results'),
     t('term'),
     t('Translations'),
     t('<a href="[path]">[field_uib_study_title]</a>'),
@@ -345,7 +344,7 @@ function uib_study_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Disciplines';
+  $handler->display->display_options['title'] = 'Studies';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -388,7 +387,7 @@ function uib_study_views_default_views() {
   $handler->display->display_options['path'] = 'education/nus';
   $translatables['uib_nus_overview'] = array(
     t('Master'),
-    t('Disciplines'),
+    t('Studies'),
     t('more'),
     t('Apply'),
     t('Reset'),

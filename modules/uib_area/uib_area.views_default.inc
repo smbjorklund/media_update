@@ -522,7 +522,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Content: Responsible (field_uib_ou) */
+  /* Contextual filter: Content: Place (field_uib_ou) */
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['id'] = 'field_uib_ou_target_id';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['table'] = 'field_data_field_uib_ou';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['field'] = 'field_uib_ou_target_id';
@@ -805,7 +805,7 @@ return !empty($handler->argument);';
   /* Display: All courses */
   $handler = $view->new_display('page', 'All courses', 'study_courses_all_page');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Courses';
+  $handler->display->display_options['title'] = 'Search for courses';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'uib-all-courses';
   $handler->display->display_options['display_description'] = 'Listing all courses';
@@ -1188,6 +1188,8 @@ return !empty($handler->argument);';
 
   /* Display: All studyprogrammes */
   $handler = $view->new_display('page', 'All studyprogrammes', 'study_programmes_all_page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Search for study programmes';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'uib-all-studyprogrammes';
   $handler->display->display_options['display_description'] = 'Listing all study programmes';
@@ -1415,6 +1417,7 @@ return !empty($handler->argument);';
     t('Entity Reference'),
     t('[field_uib_study_title] - [field_uib_study_code]'),
     t('All courses'),
+    t('Search for courses'),
     t('Listing all courses'),
     t('Select any filter and click on Apply to see results'),
     t('Items per page'),
@@ -1434,6 +1437,7 @@ return !empty($handler->argument);';
     t('Natural sciences and techincal subjects'),
     t('Health and welfare'),
     t('All studyprogrammes'),
+    t('Search for study programmes'),
     t('Listing all study programmes'),
     t('Found @total study programmes'),
     t('No result'),
@@ -2698,8 +2702,6 @@ return !empty($handler->argument);';
   $handler->display->display_options['arguments']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
   $handler->display->display_options['arguments']['field_uib_date_value']['field'] = 'field_uib_date_value';
   $handler->display->display_options['arguments']['field_uib_date_value']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_uib_date_value']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_uib_date_value']['title'] = '%1';
   $handler->display->display_options['arguments']['field_uib_date_value']['default_argument_type'] = 'date';
   $handler->display->display_options['arguments']['field_uib_date_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_uib_date_value']['summary']['format'] = 'default_summary';
@@ -2750,7 +2752,6 @@ return !empty($handler->argument);';
     t('Title'),
     t('Alle'),
     t('All'),
-    t('%1'),
     t('Page'),
   );
   $export['recent_phds'] = $view;
