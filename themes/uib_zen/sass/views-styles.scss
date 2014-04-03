@@ -365,3 +365,35 @@ table.cols-6 {
 .view-display-id-newspage_one_chosen_item img {
   display: block;
 }
+
+/* general style for lists */
+.view-courses,
+.view-special-study-listings {
+  background: #f9f9f6;
+  border-left: solid 5px #77af00;
+  padding: 10px;
+  .views-row-odd {
+    background: #fff;
+    border-bottom: solid 1px #dadada;
+  }
+  .views-row-even, .views-row-odd {
+    padding: 5px;
+  }
+  h1 {
+    clear: both;
+  }
+  a {
+    font-size: 1.5em;
+    line-height: 2em;
+  }
+  a.fieldset-title {
+    line-height: 1em;
+  }
+  .view-filters{
+    margin-bottom: 1em;
+  }
+  .view-header {
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+}

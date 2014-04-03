@@ -668,9 +668,6 @@ $zen-auto-include-item-base: false;
   /* Courses  mobile*/
   .view-courses {
     @include zen-grid-item(1, 1);
-    .views-row {
-      width: 93%;
-    }
   }
 
   /* Persons mobile */
@@ -1040,9 +1037,7 @@ $zen-auto-include-item-base: false;
   /* Courses tablet*/
   .view-courses {
     @include zen-grid-item(4, 1);
-    .views-row {
-      width: 44%;
-    }
+    @include zen-grid-item-base();
   }
 
   /* Webdesk */
@@ -1495,9 +1490,7 @@ $zen-auto-include-item-base: false;
   /* Courses */
   .view-courses {
     @include zen-grid-item(4, 1);
-    .views-row {
-      width: 44%;
-    }
+    @include zen-grid-item-base();
   }
 
   /* Recent phds */
