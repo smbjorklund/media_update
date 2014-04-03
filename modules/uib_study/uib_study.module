@@ -1348,15 +1348,10 @@ function uib_study_views_pre_render(&$view) {
       'self_financing',
     );
     if (in_array($view->current_display, $current_displays)) {
-      $taxonomy_tree = taxonomy_get_tree(1, 0, 1);
-      global $language;
-      foreach ($taxonomy_tree as $key => $t) {
-        if (strpos($view->exposed_widgets, $t->name)) {
-          list($nb, $en) = explode('/', substr($t->name, 2));
-          $term = $language->language == 'nb' ? $nb : $en;
-          $view->exposed_widgets = str_replace($t->name, $term, $view->exposed_widgets);
-        }
-      }
+      uib_study__translate_exposed_filter($view, 1, 1, 2);
+    }
+    if ($view->current_display == 'study_courses_all_page') {
+      uib_study__translate_exposed_filter($view, 1, 2, 4);
     }
   }
 
@@ -1443,4 +1438,23 @@ function uib_study__title_and_text($title, $text) {
     $output .= uib_study__filter_text($text);
   }
   return $output;
+}
+
+/**
+ *  Function to translate exposed filter in study views
+ *  @param [object]   $view   the view
+ *  @param [int]      $taxonomy_term  id of taxonomy
+ *  @param [int]      $max_depth  number of levels of the taxonomy
+ *  @param [int]      $number_of_chars_to_remove  the number of chars that makes the nuscode
+ */
+function uib_study__translate_exposed_filter(&$view, $taxonomy_tree, $max_depth, $number_of_chars_to_remove) {
+  $taxonomy_tree = taxonomy_get_tree($taxonomy_tree, 0, $max_depth);
+  global $language;
+  foreach ($taxonomy_tree as $key => $t) {
+    if (strpos($view->exposed_widgets, $t->name)) {
+      list($nb, $en) = explode('/', substr($t->name, $number_of_chars_to_remove));
+      $term = $language->language == 'nb' ? $nb : $en;
+      $view->exposed_widgets = str_replace($t->name, $term, $view->exposed_widgets);
+    }
+  }
 }
