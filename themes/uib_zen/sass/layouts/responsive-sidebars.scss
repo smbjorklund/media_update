@@ -1586,21 +1586,27 @@ $zen-auto-include-item-base: false;
   #uib-tabs-studieplan {
     @include zen-grid-item (4, 1);
   }
-  .view-uib-nus-overview {
-    .field-name-field-uib-nus-image {
-      @include zen-grid-item(1, 1);
-    }
-    h1, .field-name-field-uib-nus-text {
+  .page-education-nus {
+    #page-title {
       @include zen-grid-item (4, 2);
       @include zen-grid-item-base();
-
     }
-    h1 {
-      float: none;
-    }
-    .taxonomy-term {
-      border-bottom: solid 1px #f1f1ef;
-
+    .view-uib-nus-overview {
+      @include zen-clear();
+      .field-name-field-uib-nus-image {
+        @include zen-grid-item(1, 1);
+      }
+      h1,
+      .field-name-field-uib-nus-text {
+        @include zen-grid-item (4, 2);
+        @include zen-grid-item-base();
+      }
+      h1 {
+        float: none;
+      }
+      .taxonomy-term {
+        border-bottom: solid 1px #f1f1ef;
+      }
     }
   }
 
