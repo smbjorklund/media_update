@@ -23,8 +23,8 @@ function uib_area_field_group_info() {
     'label' => 'Bottom wrapper',
     'weight' => '7',
     'children' => array(
-      0 => 'field_uib_bottom_media',
-      1 => 'field_uib_bottom_text',
+      0 => 'field_uib_bottom_text',
+      1 => 'field_uib_bottom_media',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -86,8 +86,8 @@ function uib_area_field_group_info() {
     'label' => 'Column second',
     'weight' => '12',
     'children' => array(
-      0 => 'field_uib_profiled_testimonial',
-      1 => 'field_uib_tertiary_text',
+      0 => 'field_uib_tertiary_text',
+      1 => 'field_uib_profiled_testimonial',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -118,13 +118,14 @@ function uib_area_field_group_info() {
     'label' => 'For level 1',
     'weight' => '1',
     'children' => array(
-      0 => 'field_uib_sebra_id',
-      1 => 'field_uib_area_parents',
-      2 => 'field_uib_area_type',
-      3 => 'field_uib_menu_style',
-      4 => 'field_uib_w2_id',
-      5 => 'field_uib_ou',
-      6 => 'title',
+      0 => 'field_uib_area_banner',
+      1 => 'field_uib_ou',
+      2 => 'field_uib_sebra_id',
+      3 => 'field_uib_w2_id',
+      4 => 'field_uib_menu_style',
+      5 => 'field_uib_area_parents',
+      6 => 'field_uib_area_type',
+      7 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -152,9 +153,9 @@ function uib_area_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_uib_content_manager',
-      1 => 'field_uib_logo',
+      1 => 'field_uib_staff',
       2 => 'field_uib_show_staff',
-      3 => 'field_uib_staff',
+      3 => 'field_uib_logo',
       4 => 'field_uib_important_message',
     ),
     'format_type' => 'tab',
@@ -274,8 +275,8 @@ function uib_area_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'field_uib_profiled_message',
-      1 => 'group_column_second',
-      2 => 'group_column_first',
+      1 => 'group_column_first',
+      2 => 'group_column_second',
     ),
     'format_type' => 'div',
     'format_settings' => array(

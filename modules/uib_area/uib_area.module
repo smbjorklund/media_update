@@ -41,6 +41,10 @@ function uib_area_block_info() {
       'info' => t('Paa hoyden logo on newspage'),
       'status' => TRUE,
     ),
+    'area_banner' => array(
+      'info' => t('Area global html container'),
+      'status' => TRUE,
+    ),
   );
 }
 
@@ -48,6 +52,7 @@ function uib_area_block_info() {
  * Implements hook_block_view().
  */
 function uib_area_block_view($delta='') {
+  $area = uib_area__get_current();
   $block = array();
   switch ($delta) {
     case 'colophon':
@@ -89,7 +94,6 @@ function uib_area_block_view($delta='') {
           '#value' => t('Director of Communications'),
         ),
       );
-      $area = uib_area__get_current();
       if ($area && isset($area->field_uib_ou['und'])) {
         $place = node_load($area->field_uib_ou['und'][0]['target_id']);
         $block['content']['name']['#value'] .= ' | ' . check_plain($area->title);
@@ -123,7 +127,6 @@ function uib_area_block_view($delta='') {
       hide($block['content']['emergency']);
     break;
     case 'jobbnorge':
-      $area = uib_area__get_current();
       $whitelist = array('faculty', 'unit', 'institute');
       if ($area && in_array($area->field_uib_area_type['und'][0]['value'], $whitelist)) {
         if (!empty($area->field_uib_ou['und'])) {
@@ -142,7 +145,6 @@ function uib_area_block_view($delta='') {
       }
     break;
     case 'feed':
-      $area = uib_area__get_current();
       if ($area) {
         $elements = array();
         if (!empty($area->field_uib_feed['und'])) {
@@ -160,7 +162,6 @@ function uib_area_block_view($delta='') {
     break;
     case 'area_parents':
       $block['subject'] = t('Belongs to');
-      $area = uib_area__get_current();
       if (!empty($area->field_uib_area_parents['und'])) {
         // Setup an SQL query to get parent titles from node ids listed.
         $nlist = array();
@@ -192,7 +193,6 @@ function uib_area_block_view($delta='') {
       }
     break;
     case 'newspage_recent_news':
-      $area = uib_area__get_current();
       $slideshow = db_select('field_data_field_uib_profiled_article', 'f')
         ->fields('f', array('field_uib_profiled_article_target_id'))
         ->condition('entity_id', $area->nid)
@@ -239,7 +239,6 @@ function uib_area_block_view($delta='') {
       $logo0_en = $path . 'grunnloven_en.png';
       $logo1_nb = $path . 'alumni.png';
       $logo1_en = $path . 'alumni_en.png';
-      $area = uib_area__get_current();
       if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
         if ($area->language == 'en') {
           $block['content'] = '
@@ -276,7 +275,6 @@ function uib_area_block_view($delta='') {
       global $theme_path;
       $path = $base_url . '/' . $theme_path . '/images/';
       $logo = $path . 'paahoyden.png';
-      $area = uib_area__get_current();
       if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'newspage') {
         if ($area->language == 'nb') {
           $block['content'] = '
@@ -286,6 +284,15 @@ function uib_area_block_view($delta='') {
               </a>
             </div>
           ';
+        }
+      }
+    break;
+    case 'area_banner':
+      if (!empty($area)) {
+        $wrapped_area = entity_metadata_wrapper('node', $area);
+        $block['subject'] = NULL;
+        if ($wrapped_area->field_uib_area_banner->value()) {
+          $block['content'] = $wrapped_area->field_uib_area_banner->value->value();
         }
       }
     break;

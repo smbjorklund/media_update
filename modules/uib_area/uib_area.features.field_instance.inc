@@ -99,6 +99,78 @@ function uib_area_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-area-field_uib_area_banner'
+  $field_instances['node-area-field_uib_area_banner'] = array(
+    'bundle' => 'area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_uib_area_banner',
+    'label' => 'Banner',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+          'restricted_html' => 'restricted_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -7,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+            'restricted_html' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-area-field_uib_area_parents'
   $field_instances['node-area-field_uib_area_parents'] = array(
     'bundle' => 'area',
@@ -3482,6 +3554,7 @@ function uib_area_field_default_field_instances() {
   t('Area');
   t('Areas might provide their own logo image.  It will be included in the header.  The logo ought to be about 80x80 pixels and have a transparent background.');
   t('Attachments');
+  t('Banner');
   t('Bottom image');
   t('Bottom text');
   t('Byline');

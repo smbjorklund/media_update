@@ -202,6 +202,10 @@
 
       <?php print render($page['navigation']); ?>
     </div><!-- /#navigation -->
+
+    <div id="above-content">
+      <?php print render($page['above_content']); ?>
+    </div><!-- /#above-content -->
   <?php endif; ?>
 
   <div id="desktop-tablet-language">

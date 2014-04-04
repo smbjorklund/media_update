@@ -47,7 +47,8 @@ $zen-auto-include-item-base: false;
 #bottom-region-wrapper .inner,
 #global-header,
 #header,
-#navigation .region-navigation {
+#navigation .region-navigation,
+#above-content {
   /* For screen sizes larger than 1200px, prevent excessively long lines of text
      by setting a max-width. */
   margin-left: auto;
@@ -328,6 +329,12 @@ $zen-auto-include-item-base: false;
     {
       @include zen-grid-item-base();
     }
+  }
+
+  #block-uib-area-area-banner {
+    @include zen-clear();
+    @include zen-grid-item-base;
+    @include zen-grid-item(5, 1);
   }
 }
 
@@ -730,6 +737,11 @@ $zen-auto-include-item-base: false;
     }
   }
 
+  #block-uib-area-area-banner {
+    @include zen-clear();
+    @include zen-grid-item-base;
+    @include zen-grid-item(1, 1);
+  }
 }
 
 /* Tablet */

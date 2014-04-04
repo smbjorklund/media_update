@@ -80,10 +80,10 @@ function uib_setup_context_default_contexts() {
           'region' => 'header',
           'weight' => '-9',
         ),
-        'menu_block-top-area-menu' => array(
-          'module' => 'menu_block',
-          'delta' => 'top-area-menu',
-          'region' => 'navigation',
+        'uib_area-area_banner' => array(
+          'module' => 'uib_area',
+          'delta' => 'area_banner',
+          'region' => 'above_content',
           'weight' => '-10',
         ),
         'system-main' => array(
