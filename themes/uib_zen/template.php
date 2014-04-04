@@ -971,13 +971,15 @@ function __uib_title($path) {
   $type = $path[0];
   global $language;
   $current_language = $language->language;
-  $id = array($path[1]);
-  if ($type == 'taxonomy') {
+  $id = FALSE;
+  if ($type == 'taxonomy' and $path[1] == 'term') {
     $type = $type . '_term';
     $id = array($path[2]);
-    $result = entity_load($type, $id);
   }
-  if ($type == 'node') {
+  elseif ($type == 'node') {
+    $id = array($path[1]);
+  }
+  if (is_numeric($id)) {
     $result = entity_load($type, $id);
   }
   if (!empty($result)) {
