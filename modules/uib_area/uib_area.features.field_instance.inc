@@ -1708,7 +1708,7 @@ function uib_area_field_default_field_instances() {
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 3,
+        'weight' => -20,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2150,7 +2150,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => -50,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2230,7 +2230,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => -40,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
@@ -2427,7 +2427,7 @@ function uib_area_field_default_field_instances() {
           'file_view_mode' => 'content_main',
         ),
         'type' => 'file_rendered',
-        'weight' => 2,
+        'weight' => -30,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
