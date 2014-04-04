@@ -676,6 +676,7 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_uib_date']['table'] = 'field_data_field_uib_date';
   $handler->display->display_options['fields']['field_uib_date']['field'] = 'field_uib_date';
   $handler->display->display_options['fields']['field_uib_date']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_date']['settings'] = array(
     'format_type' => 'short',
@@ -689,7 +690,8 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_uib_date] - [title]';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] <br>([field_uib_date])';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -1290,6 +1292,7 @@ function uib_calendar_views_default_views() {
     t('Show entire year.'),
     t('Exhibitions '),
     t('List all events of type exhibitions '),
+    t('[title] <br>([field_uib_date])'),
     t('Date -  start date (field_uib_date)'),
     t('Event filter'),
     t('Feed'),
