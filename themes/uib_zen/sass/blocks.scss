@@ -9,6 +9,10 @@
 .block { /* Block wrapper */
   margin-bottom: 1.5em;
 
+  .region-above-content & {
+    margin-bottom: 0;
+  }
+
   &.first { /* The first block in the region */
   }
 
