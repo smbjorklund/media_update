@@ -536,21 +536,6 @@ h1 {
   padding: 0 0 10px 0;
 }
 
-.view-uib-taxonomy-term {
-  .view-content {
-    ul h2 {
-      font-weight: normal;
-      font-size: 1.3em;
-      line-height: 1em;
-    }
-    h1 {
-      border-bottom: solid 1px silver;
-      padding: 10px 0 0 0;
-      text-transform: uppercase;
-    }
-  }
-}
-
 // Study plan page
 #uib-tabs-studieplan {
   padding: 0 0 20px 0;
@@ -586,9 +571,6 @@ h1 {
     border-left: solid 5px #d95900;
   }
 }
-.view-id-courses .view-content {
-  font-size: .9em;
-}
 
 // Study program
 #views-exposed-form-courses-study-programmes-all-page,
@@ -597,9 +579,6 @@ h1 {
 }
 .view-display-id-study_programmes_all_page,
 .view-special-study-listings {
-  li {
-    font-size: .9em;
-  }
   h3 {
     text-transform: uppercase;
     padding: 30px 0 5px 0;

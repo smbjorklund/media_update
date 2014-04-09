@@ -352,6 +352,7 @@ function uib_study_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Select any filter and click on Apply to see results'),
     t('term'),
     t('Translations'),
     t('<a href="[path]">[field_uib_study_title]</a>'),
@@ -605,7 +606,7 @@ function uib_study_views_default_views() {
   $handler->display->display_options['fields']['field_uib_study_title']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_study_title']['alter']['text'] = '<a href="[path]">[field_uib_study_title]</a>';
   $handler->display->display_options['fields']['field_uib_study_title']['alter']['path'] = '!1';
-  $handler->display->display_options['fields']['field_uib_study_title']['element_type'] = 'h2';
+  $handler->display->display_options['fields']['field_uib_study_title']['element_type'] = '0';
   $handler->display->display_options['fields']['field_uib_study_title']['element_label_colon'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';

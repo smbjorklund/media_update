@@ -665,11 +665,6 @@ $zen-auto-include-item-base: false;
     min-height: 115px;
   }
 
-  /* Courses  mobile*/
-  .view-courses {
-    @include zen-grid-item(1, 1);
-  }
-
   /* Persons mobile */
   .view-ansatte {
     margin-left: 0;
@@ -1563,10 +1558,13 @@ $zen-auto-include-item-base: false;
     .views-widget-filter-field_uib_study_category_value {
       @include zen-grid-item (2, 3);
     }
+  }
+  .view-courses,
+  .view-special-study-listings,
+  .view-uib-taxonomy-term .view-content {
     .views-submit-button {
       @include zen-grid-item (1, 4);
       @include zen-clear();
-      margin-left: 83%;
     }
   }
 

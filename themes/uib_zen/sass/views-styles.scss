@@ -300,45 +300,12 @@ table.cols-6 {
 }
 
 .view-courses,
-.view-special-study-listings {
-  .views-row {
-    height: 110px;
-    float: left;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    background-color: #efefef;
-    padding: 1rem 1rem 0 1rem;
-    overflow: auto;
-    border-bottom: 1px solid #DEDFDD;
-  }
-  h1 {
-    clear: both;
-  }
-  a {
-    font-size: 1.4em;
-    line-height: 2em;
-  }
-  a.fieldset-title {
-    line-height: 1em;
-  }
-  .view-filters{
-    margin-bottom: 1em;
-  }
-  .view-header {
-    font-weight: bold;
-    margin-bottom: 1em;
-  }
-  .views-exposed-form {
-    .form-item-studypoints-rank {
-      .bef-checkboxes {
-        margin-bottom: 1em;
-        div {
-          margin-right: 1em;
-        }
-      }
-
-    }
-  }
+.view-special-study-listings,
+.view-uib-taxonomy-term .view-content {
+  @include study-list();
+}
+.view-uib-study-specialization .view-content{
+  @include study-sub-list();
 }
 
 .view-id-uib_taxonomy_term {
@@ -351,7 +318,6 @@ table.cols-6 {
   .attachment-before {
     margin-bottom: 1rem;
   }
-  .view-content,
   .attachment-after {
     background-color: $light-grey;
     margin-bottom: 1rem;
@@ -362,60 +328,6 @@ table.cols-6 {
   }
 }
 
-#views-exposed-form-courses-study-programmes-all-page {
-  input[class="form-submit"] {
-    background: #77af00;
-    color: #fff;
-    padding: 10px 40px;
-    border: none;
-    border-bottom: solid 4px #629000;
-    margin: 0;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  .form-checkboxes.bef-select-as-checkboxes label {
-    display: block;
-    margin-left: 20px;
-  }
-  input[type="checkbox"] {
-    float: left;
-    margin-top: 2px;
-  }
-}
-
 .view-display-id-newspage_one_chosen_item img {
   display: block;
-}
-
-/* general style for lists */
-.view-courses,
-.view-special-study-listings {
-  background: #f9f9f6;
-  border-left: solid 5px #77af00;
-  padding: 10px;
-  .views-row-odd {
-    background: #fff;
-    border-bottom: solid 1px #dadada;
-  }
-  .views-row-even, .views-row-odd {
-    padding: 5px;
-  }
-  h1 {
-    clear: both;
-  }
-  a {
-    font-size: 1.5em;
-    line-height: 2em;
-  }
-  a.fieldset-title {
-    line-height: 1em;
-  }
-  .view-filters{
-    margin-bottom: 1em;
-  }
-  .view-header {
-    font-weight: bold;
-    margin-bottom: 1em;
-  }
 }

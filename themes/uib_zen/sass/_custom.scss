@@ -145,3 +145,68 @@
     color: $color_text;
   }
 }
+
+/////////////
+// Mixins for study listings
+/////////////
+@mixin study_list() {
+  background-color: #f9f9f6;
+  border-left: 5px solid #77af00;
+  padding: 10px;
+  a {
+    font-size: 1.3333333em;
+    display: block;
+    line-height: 2em;
+    margin: 0;
+    padding: 5px;
+    &.fieldset-title {
+      line-height: 1em;
+    }
+  }
+  li:nth-child(odd) {
+    background: #fff;
+    border-bottom: solid 1px #dadada;
+  }
+  .view-filters{
+    margin-bottom: 1em;
+  }
+  .view-header {
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+  fieldset {
+    border: none 0;
+  }
+  .summary {
+    display: none;
+  }
+  input[class="form-submit"] {
+    background: #77af00;
+    color: #fff;
+    padding: 10px 40px;
+    border: none;
+    border-bottom: solid 4px #629000;
+    margin: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .form-checkboxes.bef-select-as-checkboxes label {
+    display: block;
+    margin-left: 20px;
+  }
+  input[type="checkbox"] {
+    float: left;
+    margin-top: 2px;
+  }
+}
+
+@mixin study-sub-list {
+  background-color: transparent;
+  border-left: none 0;
+  padding: 0 10px;
+  a {
+    font-size: .9em;
+    line-height: 1em;
+  }
+}
