@@ -1,3 +1,8 @@
+# Release 2014-04-10 tag: R7.3.1
+
+Retter opp følgefeil av #5854 som ga listen over institutter på områdeforsiden feil styling #6203
+
+
 # Release 2014-04-10 tag: R7.3
 
 Denne oppdateringen oppdaterer en del Drupalmoduler, gjør justeringer på studieprogram- og emnevisninger og introduserer de første tilretteleggingene for nye personsider på w3.
@@ -16,7 +21,6 @@ I tillegg rettes et par små feil
 * Legger til rette for å kunne lenke til en spesifikk h2-tab på artikkel #5609
 * Retter opp feil i feltrekkefølgen på artikkel #6176
 * Retter feil som gjorde at man ikke kunne legge til nytt innhold etter forrige oppdatering #6184
-* Retter opp følgefeil av #5854 som ga listen over institutter på områdeforsiden feil styling #6203
 
 
 # Release 2014-04-01 tag: R7.2
