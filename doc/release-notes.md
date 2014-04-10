@@ -1,3 +1,24 @@
+# Release 2014-04-10 tag: R7.3
+
+Denne oppdateringen oppdaterer en del Drupalmoduler, gjør justeringer på studieprogram- og emnevisninger og introduserer de første tilretteleggingene for nye personsider på w3.
+I tillegg rettes et par små feil
+
+* NUS, studieprogram og emne-lister har fått likt utseende, tittelfelt og riktig browser-tittel #6099 #6063
+* Moduloppdateringer #6155
+* Endre alle emnelister slik at de viser kode først, og sorterer på denne #6106
+* Endrer utseende på filter for studieprogram og emnelister for bedre plassutnyttelse #6056 #6053
+* Retter opp sorteringen på studieprogram-visningen på fakultets- og instituttnivå til å sortere på bachelor - master - årststudium. #5563
+* Fjerner nummer-id og retter til visning av tittel på riktig språk i filterliste for emner
+* Legger til nye felt for personinformasjon og migrerer informasjon fra w2 #5903 #5904
+* Retter opp layout for nyhetslister der kicker-feltet mangler #5854
+* Legger til hendelsestypen "Møte" for arrangementer #4992
+* Retter opp feil i utseende på hendelser av typen "Utstilling" #6017
+* Legger til rette for å kunne lenke til en spesifikk h2-tab på artikkel #5609
+* Retter opp feil i feltrekkefølgen på artikkel #6176
+* Retter feil som gjorde at man ikke kunne legge til nytt innhold etter forrige oppdatering #6184
+* Retter opp følgefeil av #5854 som ga listen over institutter på områdeforsiden feil styling #6203
+
+
 # Release 2014-04-01 tag: R7.2
 
 R7.2 migrerer noen etterlatte områder etter MOFA + Universitetsbiblioteket. I tillegg blir det lagt opp til ny global kalender i w3, det er fortsatt arbeid på funksjonalitet for studieprogram og emnevisninger, i tillegg til at en del mindre saker fikses.
