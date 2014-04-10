@@ -654,40 +654,50 @@ function uib_study_block_view($delta = '') {
         if (empty($data))
           break;
         list($previous_semester, $current_semester, $next_semester) = uib_study__get_adjacent_semesters();
-        $prev = FALSE;
-        $next = FALSE;
+        $is_empty = array(
+          $previous_semester => TRUE,
+          $current_semester => TRUE,
+          $next_semester => TRUE,
+        );
         foreach ($data as $group) {
           foreach ($group['#items'] as $item) {
-            if (isset($item['#variants']) && count($item['#variants']) > 0) {
-              foreach ($item['#variants'] as $sem_key => $sem_variant) {
-                if ($sem_key == $previous_semester) {
-                  $prev = TRUE;
+            foreach (array_keys($is_empty) as $sem) {
+              if (empty($item['#variants'])) {
+                if (!empty($item['#text'])) {
+                  $is_empty[$sem] = FALSE;
                 }
-                elseif ($sem_key == $next_semester) {
-                  $next = TRUE;
+              }
+              else {
+                if (array_key_exists($sem, $item['#variants'])) {
+                  if (!empty($item['#variants'][$sem])) {
+                    $is_empty[$sem] = FALSE;
+                  }
                 }
-                if ($prev && $next) {
-                  break 3;
+                elseif (!empty($item['#text'])) {
+                  $is_empty[$sem] = FALSE;
                 }
               }
             }
           }
         }
-        if ($prev || $next) {
-           $markup = '<ul>';
-          if ($prev) {
+        {
+          $markup = "";
+          if (!$is_empty[$previous_semester]) {
             $markup .= '<li><a href="#" class="previous">' . uib_study__semester_name($previous_semester);
             $markup .= ' (' . t('Previous semester') . ')' . '</a></li>';
           }
-          $markup .= '<li><a href="#" class="current is-active">' . uib_study__semester_name($current_semester);
-          $markup .= ' (' . t('Current semester') . ')' . '</a></li>';
-          if ($next) {
+          if (!$is_empty[$current_semester]) {
+            $markup .= '<li><a href="#" class="current is-active">' . uib_study__semester_name($current_semester);
+            $markup .= ' (' . t('Current semester') . ')' . '</a></li>';
+          }
+          if (!$is_empty[$next_semester]) {
             $markup .= '<li><a href="#" class="next">' . uib_study__semester_name($next_semester);
             $markup .= ' (' . t('Next semester') . ')' . '</a></li>';
           }
-          $markup .= '</ul>';
-          $block['subject'] = t('Select semester');
-          $block['content'] = $markup;
+          if ($markup) {
+            $block['subject'] = t('Select semester');
+            $block['content'] = "<ul>$markup</ul>";
+          }
         }
       }
       break;
