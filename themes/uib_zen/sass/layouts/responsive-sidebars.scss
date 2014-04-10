@@ -104,9 +104,12 @@ $zen-auto-include-item-base: false;
 .node-uib-article.node-teaser {
   .views-field-title,
   h1 {
-    margin: 0;
-    font-size: 1.6em;
-    line-height: 1.2em;
+    .section-aktuelt &,
+    .section-news & {
+      margin: 0;
+      font-size: 1.6em;
+      line-height: 1.2em;
+    }
   }
   img {
     display: block;
