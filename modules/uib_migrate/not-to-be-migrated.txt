@@ -8,12 +8,17 @@ bdl/fossillab
 bdl/fossillab/en
 bdl/organismelab
 bdl/organismlab/en
+bicentenary-norwegian-constitution-2014
 ccb
 ccb/en
 en/balanse
 en/bnwp
 en/cbu
+en/citizen
+en/diguib
 en/text
+en/wcbhbergen2016
+wcbhbergen2016
 ffl
 ffl/en
 fg/CGB
