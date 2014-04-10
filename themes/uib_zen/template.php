@@ -154,6 +154,7 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function uib_zen_preprocess_page(&$variables, $hook) {
+  global $user;
   $page_menu_item = menu_get_item(current_path());
   if (isset($variables['node'])) {
     $not_translated_txt = t('This content has not been translated.');
@@ -244,7 +245,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   }
 
   if (empty($variables['node'])) {
-    if ($page_menu_item['page_arguments'][0] == 'uib_taxonomy_term') {
+    if (isset($page_menu_item['page_arguments'][0]) && $page_menu_item['page_arguments'][0] == 'uib_taxonomy_term') {
       // uib_nus taxonomy term view page
       $term = taxonomy_term_load($page_menu_item['map'][2]);
       if ($term->vocabulary_machine_name == 'uib_nus') {
@@ -254,6 +255,21 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         // Empty page title since this is displayed in content
         $variables['title'] = '';
       }
+    }
+    // Setup temporary message on user page
+    if (isset($page_menu_item['map'][0])
+      && $page_menu_item['map'][0] == 'user'
+      && count($page_menu_item['original_map']) > 1
+      && is_numeric($page_menu_item['original_map'][1])) {
+      $login_link = l(t('edit the contents of your user profile'), 'https://uib.no/login');
+      $temp_message = t('We are working on the new profile pages, but they are not yet complete!');
+      if ($user->uid == $page_menu_item['original_map'][1]) {
+        $temp_message .= ' ' . t('You still need to go to uib.no/login to ') . $login_link . '.';
+      }
+      if (isset($page_menu_item['map'][2]) && $page_menu_item['map'][2] == 'edit') {
+        $temp_message = t('Please do not edit this page!') . ' ' . $temp_message;
+      }
+      drupal_set_message($temp_message, 'warning');
     }
   }
 }
