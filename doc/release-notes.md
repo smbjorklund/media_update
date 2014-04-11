@@ -1,3 +1,8 @@
+# Release 2014-04-11 tag: R7.3.2
+
+Retter opp følgefeil av #5609 hvor faner i artikler ikke var aktive når
+fanetittelen inneholdt spesielle tegn #6211
+
 # Release 2014-04-10 tag: R7.3.1
 
 Retter opp følgefeil av #5854 som ga listen over institutter på områdeforsiden feil styling #6203
