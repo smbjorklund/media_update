@@ -1341,6 +1341,14 @@ return !empty($handler->argument);';
   $handler->display->display_options['empty']['area']['content'] = 'Your criteria did not match any results';
   $handler->display->display_options['empty']['area']['format'] = 'plain_text';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Category */
+  $handler->display->display_options['fields']['field_uib_study_category']['id'] = 'field_uib_study_category';
+  $handler->display->display_options['fields']['field_uib_study_category']['table'] = 'field_data_field_uib_study_category';
+  $handler->display->display_options['fields']['field_uib_study_category']['field'] = 'field_uib_study_category';
+  $handler->display->display_options['fields']['field_uib_study_category']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_study_category']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_study_category']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_study_category']['type'] = 'i18n_list_default';
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
