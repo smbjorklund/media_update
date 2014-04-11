@@ -25,7 +25,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'user',
@@ -44,7 +44,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -63,7 +63,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'user',
@@ -82,7 +82,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 22,
+      'weight' => 5,
     ),
   );
 
@@ -101,7 +101,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'phone',
-        'weight' => 6,
+        'weight' => 30,
       ),
     ),
     'entity_type' => 'user',
@@ -122,7 +122,7 @@ function uib_user_field_default_field_instances() {
       'module' => 'phone',
       'settings' => array(),
       'type' => 'phone_textfield',
-      'weight' => 27,
+      'weight' => 9,
     ),
   );
 
@@ -141,7 +141,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 28,
       ),
     ),
     'entity_type' => 'user',
@@ -160,7 +160,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 24,
+      'weight' => 7,
     ),
   );
 
@@ -179,7 +179,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 18,
       ),
     ),
     'entity_type' => 'user',
@@ -195,7 +195,7 @@ function uib_user_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 25,
+      'weight' => 8,
     ),
   );
 
@@ -210,7 +210,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'user',
@@ -230,7 +230,7 @@ function uib_user_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 26,
+      'weight' => 9,
     ),
   );
 
@@ -245,7 +245,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'user',
@@ -264,7 +264,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 29,
+      'weight' => 11,
     ),
   );
 
@@ -279,7 +279,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'user',
@@ -324,7 +324,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 23,
+      'weight' => 3,
     ),
   );
 
@@ -356,7 +356,7 @@ function uib_user_field_default_field_instances() {
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 7,
+        'weight' => 31,
       ),
     ),
     'entity_type' => 'user',
@@ -381,7 +381,7 @@ function uib_user_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 7,
+      'weight' => 10,
     ),
   );
 
@@ -400,7 +400,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'user',
@@ -445,7 +445,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 4,
     ),
   );
 
@@ -464,7 +464,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 27,
       ),
     ),
     'entity_type' => 'user',
@@ -509,7 +509,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 6,
     ),
   );
 
@@ -528,7 +528,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 29,
       ),
     ),
     'entity_type' => 'user',
@@ -573,7 +573,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 8,
     ),
   );
 
@@ -592,7 +592,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'user',
@@ -637,7 +637,7 @@ function uib_user_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 17,
     ),
   );
 
@@ -656,7 +656,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 19,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'user',
@@ -675,7 +675,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 18,
+      'weight' => 7,
     ),
   );
 
@@ -693,7 +693,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'file_default',
-        'weight' => 12,
+        'weight' => 35,
       ),
     ),
     'entity_type' => 'user',
@@ -715,7 +715,7 @@ function uib_user_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 11,
+      'weight' => 15,
     ),
   );
 
@@ -733,7 +733,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'file_default',
-        'weight' => 21,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'user',
@@ -755,7 +755,7 @@ function uib_user_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 20,
+      'weight' => 9,
     ),
   );
 
@@ -776,7 +776,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'user',
@@ -795,7 +795,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'size' => 16,
       ),
       'type' => 'text_textfield',
-      'weight' => 30,
+      'weight' => 13,
     ),
   );
 
@@ -814,7 +814,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'link_default',
-        'weight' => 22,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'user',
@@ -847,7 +847,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 21,
+      'weight' => 10,
     ),
   );
 
@@ -866,7 +866,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'user',
@@ -911,7 +911,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 16,
     ),
   );
 
@@ -930,7 +930,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 30,
       ),
     ),
     'entity_type' => 'user',
@@ -975,7 +975,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 17,
+      'weight' => 21,
     ),
   );
 
@@ -994,7 +994,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 29,
       ),
     ),
     'entity_type' => 'user',
@@ -1039,7 +1039,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 20,
     ),
   );
 
@@ -1058,7 +1058,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'user',
@@ -1103,7 +1103,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 8,
     ),
   );
 
@@ -1122,7 +1122,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 28,
       ),
     ),
     'entity_type' => 'user',
@@ -1167,7 +1167,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 19,
     ),
   );
 
@@ -1186,7 +1186,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 32,
       ),
     ),
     'entity_type' => 'user',
@@ -1231,7 +1231,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 11,
     ),
   );
 
@@ -1250,7 +1250,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'socialmedia_formatter',
-        'weight' => 10,
+        'weight' => 32,
       ),
     ),
     'entity_type' => 'user',
@@ -1295,7 +1295,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 12,
     ),
   );
 
@@ -1314,7 +1314,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 27,
       ),
     ),
     'entity_type' => 'user',
@@ -1359,7 +1359,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 14,
+      'weight' => 18,
     ),
   );
 
@@ -1378,7 +1378,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'link_url',
-        'weight' => 9,
+        'weight' => 33,
       ),
     ),
     'entity_type' => 'user',
@@ -1411,7 +1411,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 6,
+      'weight' => 13,
     ),
   );
 
@@ -1429,7 +1429,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'file_default',
-        'weight' => 11,
+        'weight' => 34,
       ),
     ),
     'entity_type' => 'user',
@@ -1451,7 +1451,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 10,
+      'weight' => 14,
     ),
   );
 
@@ -1466,7 +1466,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'user',
@@ -1485,7 +1485,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 28,
+      'weight' => 10,
     ),
   );
 
