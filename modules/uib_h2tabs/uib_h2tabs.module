@@ -85,6 +85,6 @@ function _uib_h2tabs_filter_h2_tips($filter, $format, $long = FALSE) {
 function _uib_h2tabs__generate_id($h2) {
   $h2 = strip_tags($h2);
   $h2 = strtolower($h2);
-  $h2 = str_replace(array(' ', 'æ', 'ø', 'å'), '-', $h2);
+  $h2 = preg_replace('/[^a-z0-9]+/', '-', $h2);
   return $h2;
 }
