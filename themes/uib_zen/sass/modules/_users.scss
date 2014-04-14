@@ -1,0 +1,60 @@
+/**
+ * @file
+ * Users and user profiles
+ *
+ */
+
+.page-user-edit {
+  $zen-column-count: 3;
+
+  #user_user_form_group_first {
+    @include zen-grid-item(2, 1);
+    .inner {
+      background-color: green;
+    }
+  }
+  #user_user_form_group_second {
+    @include zen-grid-item(1, 3);
+    .inner {
+      background-color: red;
+    }
+  }
+}
+
+@media all and (min-width: 720px) {
+  #user_user_full_group_user_first {
+    @include zen-grid-item (3, 1);
+    @include zen-grid-item-base();
+   }
+
+  #user_user_full_group_media_element {
+    @include clearfix();
+    @include media_element(100%, none);
+  }
+
+  .profile .user-picture {
+    float: none;
+    margin: 0;
+  }
+
+  #user_user_full_group_user_media {
+    @include media(33%, left);
+  }
+
+  #user_user_full_group_user_contact_wrapper {
+    @include media_content_wrapper();
+  }
+
+  #user_user_full_group_user_contact {
+    @include media_content();
+  }
+
+  #user_user_full_group_user_work_1 {
+    @include zen-clear();
+  }
+
+  #user_user_full_group_user_second {
+    @include zen-grid-item (2, 4);
+    @include zen-grid-item-base();
+  }
+}

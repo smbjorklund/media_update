@@ -1125,3 +1125,13 @@ function uib_zen_breadcrumb(&$vars) {
   $output .= '</ol></nav>';
   return $output;
 }
+
+/**
+ * Override or insert variables into the user profile template.
+ *
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ */
+function uib_zen_preprocess_user_profile(&$variables) {
+  $variables['elements']['#group_children']['user_picture'] = 'group_user_media';
+}
