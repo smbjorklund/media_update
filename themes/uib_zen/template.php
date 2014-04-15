@@ -206,6 +206,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
 
   if (isset($variables['page']['header']['locale_language'])) {
     $variables['extra_language'] = $variables['page']['header']['locale_language'];
+    $variables['page']['header']['locale_language'] = '';
   }
 
   // Render areas custom logo.
@@ -243,6 +244,11 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   elseif (strlen($variables['page_title']) > 65 && empty($variables['custom_logo'])) {
     $variables['uib_long_page_title'] = TRUE;
   }
+
+  $variables['mobile_menu_links'] = array(
+    array('title' => t('Menu'), 'href' => '', 'attributes' => array('class' => array('mobile-show-menu'),),),
+    array('title' => t('Search'), 'href' => '', 'attributes' => array('class' => array('mobile-show-search'),),),
+  );
 
   if (empty($variables['node'])) {
     if (isset($page_menu_item['page_arguments'][0]) && $page_menu_item['page_arguments'][0] == 'uib_taxonomy_term') {

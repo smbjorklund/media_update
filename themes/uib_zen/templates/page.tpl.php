@@ -73,6 +73,20 @@
   <div id="top-region-wrapper">
     <?php if (isset($global_menu)): ?>
       <div id="global-header">
+        <div class="mobile-logo">
+        <?php if ($logo): ?>
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+        <?php endif; ?>
+          <span class="mobile-uib">UiB</span>
+        </div>
+        <nav class="mobile-menus">
+          <?php print theme('links', array(
+            'links' => $mobile_menu_links,
+            'attributes' => array(
+              'class' => array('mobile-menu'),
+            ),
+          )); ?>
+        </nav>
         <nav id="global-menu">
           <?php print theme('links__menu-global-menu', array(
             'links' => $global_menu,
@@ -82,51 +96,14 @@
           ));
           ?>
         </nav>
-
-        <div id="mobile-name-and-slogan">
-          <?php
-          /**
-           * Modified to print name of area instead of site-name.
-           * The varible 'page_title_link' is setup in template.php and contains
-           * the area name in an url.
-           */
-          if ($site_name || $site_slogan || $page_title_link): ?>
-            <hgroup id="name-and-slogan-mobile" class="clearfix">
-              <?php if ($logo): ?>
-                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-              <?php endif; ?>
-              <h1 class="site-name"><?php print $page_title_link; ?></h1>
-              <?php if ($site_slogan): ?>
-                <h2 id="mobile-site-slogan"><?php print $site_slogan; ?></h2>
-              <?php endif; ?>
-              <?php if ($custom_logo): ?>
-                <?php print $custom_logo; ?>
-              <?php endif; ?>
-            </hgroup><!-- /#name-and-slogan -->
-
-          <?php endif; ?>
-        </div><!-- end #mobile-name-and-slogan -->
-
-        <div id="menu-search-mobile-wrapper">
-          <div id="global-searchform">
-            <form method="get" action="http://www.uib.no/search">
-              <div class="searchbox">
-                <p><input type="text" id="searchField" name="q" value="" autocomplete="off"></p>
-                <p><input alt="Submit" type="image" src="<?php print base_path() . drupal_get_path('theme', 'uib_zen'); ?>/images/submit.gif" value="Search"></p>
-              </div>
-            </form>
-          </div>
-          <?php if (uib_area__get_current_menu()): ?>
-          <div id ="mobile-menu">
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
-          <?php endif; ?>
+        <div id="global-searchform">
+          <form method="get" action="http://www.uib.no/search">
+            <div class="searchbox">
+              <input type="text" id="searchField" name="q" value="" autocomplete="off">
+              <input alt="Submit" type="image" src="<?php print base_path() . drupal_get_path('theme', 'uib_zen'); ?>/images/submit.gif" value="Search">
+            </div>
+          </form>
         </div>
-
       </div>
     <?php endif; ?>
   </div>
@@ -171,46 +148,40 @@
           )); ?>
         </nav>
       <?php endif; ?>
-
       <?php print render($page['header']); ?>
   </header>
   <div id="navigation">
-
+    <nav id="main-menu" role="navigation" tabindex="-1">
+      <?php print render($extra_language); ?>
       <?php if ($main_menu): ?>
-        <nav id="main-menu" role="navigation" tabindex="-1">
-          <?php
-          /**
-           * This code snippet is hard to modify. We recommend turning off the
-           * "Main menu" on your sub-theme's settings form, deleting this PHP
-           * code block, and, instead, using the "Menu block" module.
-           *
-           * @see http://drupal.org/project/menu_block
-           */
-          print theme('links__system_main_menu', array(
-            'links' => $main_menu,
-            'attributes' => array(
-              'class' => array('links', 'inline', 'clearfix'),
-            ),
-            'heading' => array(
-              'text' => t('Main menu'),
-              'level' => 'h2',
-              'class' => array('element-invisible'),
-            ),
-          )); ?>
-        </nav>
+        <?php
+        /**
+         * This code snippet is hard to modify. We recommend turning off the
+         * "Main menu" on your sub-theme's settings form, deleting this PHP
+         * code block, and, instead, using the "Menu block" module.
+         *
+         * @see http://drupal.org/project/menu_block
+         */
+        print theme('links__system_main_menu', array(
+          'links' => $main_menu,
+          'attributes' => array(
+            'class' => array('links', 'inline', 'clearfix'),
+          ),
+          'heading' => array(
+            'text' => t('Main menu'),
+            'level' => 'h2',
+            'class' => array('element-invisible'),
+          ),
+        )); ?>
       <?php endif; ?>
-
       <?php print render($page['navigation']); ?>
-    </div><!-- /#navigation -->
+    </nav>
+  </div><!-- /#navigation -->
 
-    <div id="above-content">
-      <?php print render($page['above_content']); ?>
-    </div><!-- /#above-content -->
+  <div id="above-content">
+    <?php print render($page['above_content']); ?>
+  </div><!-- /#above-content -->
   <?php endif; ?>
-
-  <div id="desktop-tablet-language">
-  <?php print render($extra_language); ?></div>
-
   <div id="main">
     <div id="content" class="column" role="main">
       <?php print render($page['highlighted']); ?>

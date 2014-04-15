@@ -46,27 +46,6 @@ li a.active {
  * Navigation bar
  */
 #navigation {
-  /* Sometimes you want to prevent overlapping with main div. */
-  overflow: visible;
-  clear: both;
-  .block {
-    margin-bottom: 0;
-    display: block;
-  }
-  .block-menu .block-title,
-  .block-menu-block .block-title {
-    @include element-invisible();
-  }
-  ul.links, /* Main menu and secondary menu links */
-  ul .menu {
-    padding-left: 0;
-    margin-right: 40px;
-    /* Menu block links */
-    /* A simple method to get navigation links to appear in one line. */
-    li {
-      list-style: none;
-    }
-  }
 }
 
 .region-navigation {
@@ -119,25 +98,6 @@ ul.language-switcher-locale-url li.active {
 #global-header ul {
   margin: 0;
   padding: 0;
-}
-
-#global-searchform {
-  padding:4px 0 0 0;
-  p {
-    float: left;
-    margin-top: 10px;
-  }
-  form {
-    float:right;
-    #searchField {
-      background-color: #FCFCFC;
-      border: 1px solid #D0D0D0;
-      padding: 0 0 0 10px;
-      height: 23px;
-    }
-    input[type="image"] {
-    }
-  }
 }
 
 .global-menu li {
@@ -217,73 +177,6 @@ ul.language-switcher-locale-url li.active {
         line-height: 1.7em;
         padding: 0.4em 0 0.4em 1em;
         width: 100%;
-      }
-    }
-  }
-}
-
-.dropdown .menu {
-  padding: 0;
-  margin: 0;
-  z-index: 99;
-  position: relative;
-  li {
-    &:hover ul {
-      display: block;
-    }
-    a {
-      border-left: 1px solid #C4C5C3;
-    }
-  }
-  .menu {
-    width: 15.3em;
-    position: absolute;
-    display: none;
-    background: #F1F1EF;
-    li {
-      background: #F1F1EF;
-    }
-    a {
-      font-weight: normal;
-      width: auto;
-      border-left: medium none;
-      &:hover {
-        background-color: #AA0000;
-        background-image: none;
-        color: #FFFFFF;
-      }
-    }
-  }
-}
-
-.expanded .region-navigation {
-  padding: 6px;
-  background: #F1F1EF;
-  .menu {
-    li {
-      list-style: none;
-      background: none;
-      a {
-        font-weight: bold;
-        color: #000;
-        &:hover {
-          text-decoration: none;
-        }
-      }
-    }
-    .menu {
-      li {
-        width: 100%;
-        font-size: 90%;
-        background: none;
-        border-bottom: none;
-        a {
-          color: #037caf;
-          font-weight: normal;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
       }
     }
   }

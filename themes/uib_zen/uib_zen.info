@@ -29,6 +29,7 @@ base theme  = zen
 stylesheets[all][] = system.menus.css
 
 ; Then we add our own stylesheets.
+stylesheets[all][] = css/styles.css
 stylesheets[all][] = css/normalize.css
 stylesheets[all][] = css/wireframes.css
 stylesheets[all][] = css/layouts/responsive-sidebars.css
