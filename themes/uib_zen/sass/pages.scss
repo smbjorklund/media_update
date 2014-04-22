@@ -19,6 +19,19 @@ body {
   background: #f2f2f2;
 }
 
+/**
+ * Improve visually hidden elements. Out of the box drupal core style caused
+ * issues on mobile devices getting the viewport vs page-width wrong trying to
+ * calculate the width of a 1px element.
+ */
+.element-invisible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+}
+
 /*
  * The skip-link link will be completely hidden until a user tabs to the link.
  * See the element-focusable rule in system.base.css.
