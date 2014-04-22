@@ -622,7 +622,9 @@ function uib_area_field_default_field_bases() {
     'locked' => 0,
     'module' => 'geofield',
     'settings' => array(
+      'backend' => 'default',
       'entity_translation_sync' => FALSE,
+      'srid' => 4326,
     ),
     'translatable' => 0,
     'type' => 'geofield',

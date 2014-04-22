@@ -12,6 +12,7 @@ api = 2
 
 ; core
 projects[drupal][version] = 7.26
+projects[drupal][patch][] = https://drupal.org/files/1668644.20.d7.untested.patch
 
 ; themes
 projects[zen][version] = 5.4
@@ -49,7 +50,7 @@ projects[file_entity][version] = 2.0-unstable7
 projects[filecache][version] = 1.0-beta2
 projects[flag][version] = 3.4
 projects[geocoder][version] = 1.2
-projects[geofield][version] = 1.2
+projects[geofield][version] = 2.1
 projects[geophp][version] = 1.7
 projects[google_analytics][version] = 1.4
 projects[i18n][version] = 1.11
