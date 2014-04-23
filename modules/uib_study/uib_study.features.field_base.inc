@@ -164,11 +164,11 @@ function uib_study_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         'integrertemasterpr-profesjonsst' => 'Integrated Master’s degrees/Profession studies',
-        'phdprogram' => 'PhD programmes',
         'bachelorprogram' => 'Bachelor’s degree programmes',
-        'undergraduate' => 'Undergraduate courses',
+        'undergraduate' => 'Undergraduate programmes',
         'arsstudium' => 'One-year programmes',
         'masterprogram' => 'Master’s degree programmes',
+        'postgraduate' => 'Postgraduate programmes',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
