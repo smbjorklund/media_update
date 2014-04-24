@@ -2,27 +2,21 @@
 
 set -x
 
-REL=7.2
+REL=7.3
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
     exit 1
 fi
 
-bin/site-drush uib-sebra-places --verbose
-bin/site-drush uib-sync-fs --verbose
-bin/site-drush pm-enable --yes uib_api
-bin/site-drush php-script fix-stub-users
-bin/site-drush init-show-global-calendar --verbose
-
 # Migrate
 date +%FT%T
-bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_ub.txt
-bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_ub.txt
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_ub.txt
-bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_ub.txt
-bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_ub.txt
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_ub.txt
+bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_rest.txt
+bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_rest.txt
+bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_rest.txt
+bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_rest.txt
+bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_rest.txt
+bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_rest.txt
 date +%FT%T
 
 # Build area menu for migrated content
