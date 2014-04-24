@@ -4,12 +4,12 @@ udir
 udir/en
 ledelsen
 ledelsen/en
-om
-about
+#om
+#about
 fa
 fa/en
-forskning
-research
+#forskning
+#research
 forskning/marin
 research/marine
 forskning/utvikling
