@@ -139,6 +139,8 @@ rg/welfare
 smi
 smi/en
 waterlaw2012_1
+212099
+212099/en
 uib/project/lingclim
 uib/prosjekt/lingclim
 fg/nnlts
