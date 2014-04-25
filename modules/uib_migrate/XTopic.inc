@@ -213,10 +213,12 @@ class XTopic extends stdClass {
       if (!empty($xlink['er_tilknyttet/tilknytning/har_tilknyttet'])) {
         $this->area_parent_ids =  $xlink['er_tilknyttet/tilknytning/har_tilknyttet'];
 
-        if ($this->path == 'aktuelt' || $this->path == 'news') {
+        if ($this->path == 'aktuelt' || $this->path == 'news' || $this->path == 'rektoratet') {
           // The aktuelt/news area belongs to KA in w2.  Since we want to migrate
           // this area first, we ignore this relation to avoid creating an area
           // stub for KA.
+          // Rektoratet has a bad self-referencing connection that cause PHP to
+          // segfault eventually RTS-1391.
           unset($this->area_parent_ids);
         }
       }
