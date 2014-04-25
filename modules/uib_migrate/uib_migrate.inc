@@ -710,7 +710,7 @@ class AreaMigration extends Migration {
       else {
         try {
           // Create a new 'uib_ou' node
-          $ou_node = uib_sebra__create_uib_ou($row->placeid);
+          $ou_node = uib_sebra__update_uib_ou($row->placeid);
           $node->field_uib_ou['und'][0]['target_id'] = $ou_node->nid;
         }
         catch (Exception $e) {
