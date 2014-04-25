@@ -24,8 +24,6 @@ crop
 crop/en
 poa
 poa/en
-forskermobilitet
-researchermobility
 gender-2012
 gender2012
 hms
