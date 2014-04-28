@@ -67,6 +67,8 @@ fg/sns
 fg/tedifa
 fg/tvertek
 fg/uorgnanomod
+fg/crop
+en/nanobergen
 fg/velferd
 fokusomrade/1201162265.81
 fokusomrade/medieforskning
@@ -75,6 +77,7 @@ gades
 gades/en
 http:/www.uib.no/citizenship
 http:/www.uib.no/medborgerskap
+hubro
 hubro2
 institutt/Institutt for Portal
 isf
@@ -96,6 +99,7 @@ rg/cancer
 rg/challenging
 rg/colonialtimes
 rg/company
+rg/crop/en
 rg/cs_abc
 rg/derma
 rg/diabetes
