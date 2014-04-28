@@ -73,8 +73,6 @@ fokusomrade/medieforskning
 fokusomrade/petroleumsforskning
 gades
 gades/en
-gender-2012
-gender2012
 http:/www.uib.no/citizenship
 http:/www.uib.no/medborgerskap
 hubro2
@@ -90,7 +88,6 @@ liaison
 liaison_2
 ok
 ok/en
-om
 rg/1155760271
 rg/CGB
 rg/Inorgnanomod
