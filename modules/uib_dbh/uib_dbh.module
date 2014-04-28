@@ -1,0 +1,116 @@
+<?php
+/**
+ * @file
+ * Code for the UiB DBH integration feature.
+ */
+
+include_once 'uib_dbh.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function uib_dbh_block_info() {
+  return array(
+    'dbh' => array(
+      'info' => t('Key figures are reported by DBH'),
+      'status' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function uib_dbh_menu() {
+  $items["about/nsd/%"] = array(
+    'page callback' => 'uib_dbh__page',
+    'access callback' => TRUE,
+    'page arguments' => array(2),
+  );
+  return $items;
+}
+
+/**
+ * Returns the current data from DBH describing UiB figures.
+ * Also sets the 'lang' property to the current language.
+ */
+function uib_dbh__data() {
+    global $language;
+    $data = drupal_json_decode(file_get_contents(__DIR__ . '/pages.json'));
+    if ($data) {
+      $dbh_lang = $language->language;
+      if ($dbh_lang == 'nb')
+        $dbh_lang = 'no';
+      $data['lang'] = $dbh_lang;
+    }
+    return $data;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function uib_dbh_block_view($delta) {
+  $block = array();
+  switch ($delta) {
+  case 'dbh':
+    $data = uib_dbh__data();
+    if (!$data)
+      break;
+    $header = $data['highlighted_figures']['columns'][$data['lang']];
+    if (!$header)
+      break;
+    array_unshift($header, '');
+    $table = array(
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => array(),
+    );
+
+    foreach ($data['highlighted_figures']['rows'][$data['lang']] as $row) {
+      $t_row = $row['columns'];
+      foreach ($t_row as $idx => $value) {
+        $t_row[$idx] = round($value);
+      }
+      array_unshift($t_row, l($row['title'], 'about/nsd/' . $row['linked_section']));
+      $table['#rows'][] = $t_row;
+    }
+
+    if ($table) {
+      $block['subject'] = t('Key figures UiB');
+      $block['content'] = array(
+        'table' => $table,
+        'source' => array('#markup' => t('Source') . ' ' . l('NSD DBH', $data['nsd_link'])),
+      );
+    }
+    break;
+  }
+  return $block;
+}
+
+/**
+ * Page builder callback (invoked via hook_menu)
+ */
+function uib_dbh__page($slug) {
+  $data = uib_dbh__data();
+  if (empty($data))
+    return MENU_NOT_FOUND;
+  foreach ($data['sections'] as $section) {
+    if ($section['lang'] == $data['lang'] && $section['slug'] == $slug) {
+      $page = array();
+      # drupal_set_title('DBH: ' . $section['title']);
+      $page['content'] = array('#markup' => file_get_contents($section['html_fragment_url']));
+      drupal_add_css(drupal_get_path('module', 'uib_dbh') . '/dbh_style.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+      $about = drupal_get_normal_path("om", "nb");
+      uib_area__get_current(substr($about, 5));
+      return $page;
+    }
+  }
+
+  // another pass where we don't care about the language
+  foreach ($data['sections'] as $section) {
+    if ($section['slug'] == $slug) {
+      drupal_goto('');  # would be slightly prefereable to go to the "about" page
+    }
+  }
+  return MENU_NOT_FOUND;
+}

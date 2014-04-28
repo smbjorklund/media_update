@@ -1,0 +1,13 @@
+/* Styles for dbh-data */
+.nsdDBH { margin-bottom: 3em; }
+.nsdDBH h1 { margin: 1em 0 0.5em; }
+.nsdDBH table { border-collapse: collapse; margin-bottom: 1em; }
+.nsdDBH caption { font-size: 1.2em; font-weight: bold; padding: 0.5em; }
+.nsdDBH th, .nsdDBH td { border: solid 1px #ccc; font-size: 1.2em; padding: 0.5em; }
+.nsdDBH th { text-align: center; }
+.nsdDBH td { text-align: right; }
+.nsdDBH td.label { text-align: left; }
+.nsdDBH table a { float: none; margin: 0; }
+.nsdDBH a { display: block; margin: 3em 0; float: left }
+.nsdDBH p a { display: inline; float: none; margin: 0; }
+.nsdDBH p { clear: left; }
