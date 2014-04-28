@@ -12,7 +12,6 @@ api = 2
 
 ; core
 projects[drupal][version] = 7.26
-projects[drupal][patch][] = https://drupal.org/files/1668644.20.d7.untested.patch
 
 ; themes
 projects[zen][version] = 5.4
