@@ -26,6 +26,7 @@ projects[bot][revision] = d0e10c65616f267543e717addc17422979f83bd2
 projects[calendar][version] = 3.4
 projects[coder][version] = 2.2
 projects[context][version] = 3.2
+projects[context][patch][] = patches/context-disable-menu.patch
 projects[ctools][version] = 1.4
 projects[date][version] = 2.7
 projects[devel][version] = 1.4
