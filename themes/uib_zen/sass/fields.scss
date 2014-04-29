@@ -528,37 +528,33 @@ div.link-field-column {
   margin: 30px auto 30px auto;
 
   &:before {
-    content: "\201C";
-    position: absolute;
-    font-size: 100px;
-    font-family: "Times New Roman", Serif;
-    left: -60px;
-    top: 20px;
-    color: #7F7F7F;
+    @include quotation_mark(100px, #7F7F7F, $times-new-roman, 20px, -60px);
   }
 }
 
 .field-name-field-uib-profiled-testimonial .node-teaser {
   h1 {
-    font-size: 1.4em;
+    font-size: 1.5em;
   }
   .field-name-field-uib-media {
     margin: 0 10px 0 0;
     width: 45%;
   }
   .field-name-field-uib-quote {
-    font-size: 1em;
-    width: 50%;
-    margin: 0 0 10px 0;
-    font-style: normal;
-    font-family: verdana, sans-serif;
-    position: static;
-  }
-  .testimonial-teaser-quote {
     font-size: 1.5em;
-  }
-  .field-name-field-uib-name {
+    font-family: $times-new-roman;
     width: 50%;
+    margin: 10px 0 10px 0;
+    font-style: normal;
+    position: relative;
+    font-style: italic;
+    text-indent: 50px;
+    &:before {
+      @include quotation_mark(4.8em, #7F7F7F, $times-new-roman, 15px, -60px);
+    }
+  }
+  .field-name-field-uib-name .field-item {
+    font-size: 1.2em;
     margin: 0 0 10px 0;
   }
   ul.links {

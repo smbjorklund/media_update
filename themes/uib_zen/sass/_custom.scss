@@ -212,3 +212,16 @@
     line-height: 1em;
   }
 }
+
+/////////////
+// Mixin to insert a quotation mark for block quotes
+/////////////
+@mixin quotation_mark($size, $color, $font-family, $top, $left) {
+  content: "\201C";
+  position: absolute;
+  font-size: $size;
+  font-family: $font-family;
+  left: $left;
+  top: $top;
+  color: $color;
+}
