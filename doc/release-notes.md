@@ -1,3 +1,16 @@
+#Release 2014-04-28 tag: R7.4
+
+Oppdateringen oppdaterer drupalkjerne og moduler, migrerer nye områder til w3, setter opp felt for ny områdeforside for UB, samt avslutter hovedarbeidet med utdanningssidene på w3.
+
+* Migrerte nye områder til w3 #5873
+* Sørget for at PHD-kurs også listes ut i oversiktslister over emner #6212
+* Grupperte full studieprogram i lister etter studienivå #6098
+* Rettet opp i regel for når "Forrige/Neste-semester" vises på emne #5922
+* Rettet opp i bug i visningen av vitnesbyrd over full bredde på områdesiden #6081
+* La til html-felt i toppen av områdeside (skal i første omgang benyttes på ub-området) #6170
+* La til varseltekster på profilsidene for å unngå misforståelser mens vi jobber med nye personsider #6098
+* Oppgradederte drupalkjerne og moduler #6275 #6158
+
 # Release 2014-04-11 tag: R7.3.2
 
 Retter opp følgefeil av #5609 hvor faner i artikler ikke var aktive når
