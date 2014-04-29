@@ -80,3 +80,15 @@ function uib_user__username_lc($form, &$form_state) {
     $form_state['values']['name'] = drupal_strtolower($form_state['values']['name']);
   }
 }
+
+/**
+ * Implements hook_custom_theme().
+ */
+function uib_user_custom_theme() {
+  $arg = arg();
+  if (isset($arg[2])) {
+    if ($arg[0] == 'user' && $arg[2] == 'edit') {
+      return 'uib_zen';
+    }
+  }
+}

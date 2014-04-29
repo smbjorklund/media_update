@@ -6,18 +6,33 @@
 
 .page-user-edit {
   $zen-column-count: 3;
-
-  #user_user_form_group_first {
+  .user-picture img {
+    width: 100%;
+    height: auto;
+  }
+  #user_user_form_group_primary {
     @include zen-grid-item(2, 1);
-    .inner {
-      background-color: green;
+    .inner {}
+  }
+  #user_user_form_group_secondary {
+    @include zen-grid-item(1, 3);
+    .inner {}
+  }
+  #user_user_form_group_uib_hidden {
+    margin: $zen-gutter-width 0 0 0;
+    background-color: #fff;
+    color: #ccc;
+    font-style: italic;
+    a:link,
+    input,
+    .form-item label,
+    .form-item .description {
+      color: #ccc;
+      font-style: italic;
     }
   }
-  #user_user_form_group_second {
-    @include zen-grid-item(1, 3);
-    .inner {
-      background-color: red;
-    }
+  .form-wrapper {
+    @include zen-clear(both);
   }
 }
 
