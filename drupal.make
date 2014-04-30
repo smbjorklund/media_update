@@ -70,6 +70,7 @@ projects[menu_admin_per_menu][version] = 1.0
 projects[menu_block][version] = 2.4
 projects[migrate][version] = 2.4
 projects[module_filter][version] = 2.0-alpha2
+projects[office_hours][version] = 1.3
 projects[override_node_options][version] = 1.12
 projects[panels][version] = 3.4
 projects[pathauto][version] = 1.2

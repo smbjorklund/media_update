@@ -15,3 +15,5 @@ fi
 set -x
 echo "Pre upgrade"
 date +%FT%T
+
+bin/site-drush pm-enable --yes office_hours

@@ -662,6 +662,30 @@ function uib_area_field_default_field_bases() {
     'type' => 'geofield',
   );
 
+  // Exported field_base: 'field_uib_hours'
+  $field_bases['field_uib_hours'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_uib_hours',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'office_hours',
+    'settings' => array(
+      'cardinality' => 2,
+      'entity_translation_sync' => FALSE,
+      'granularity' => 15,
+      'hoursformat' => 0,
+      'limitend' => '',
+      'limitstart' => '',
+      'valhrs' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'office_hours',
+  );
+
   // Exported field_base: 'field_uib_important_message'
   $field_bases['field_uib_important_message'] = array(
     'active' => 1,

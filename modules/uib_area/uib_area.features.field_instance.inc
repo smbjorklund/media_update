@@ -3122,6 +3122,71 @@ function uib_area_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-uib_ou-field_uib_hours'
+  $field_instances['node-uib_ou-field_uib_hours'] = array(
+    'bundle' => 'uib_ou',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'office_hours',
+        'settings' => array(
+          'closedformat' => 'Closed',
+          'compress' => FALSE,
+          'current_status' => array(
+            'closed_text' => 'Currently closed',
+            'open_text' => 'Currently open!',
+            'position' => 'hide',
+          ),
+          'date_first_day' => 1,
+          'daysformat' => 'long',
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+          'grouped' => FALSE,
+          'hoursformat' => 0,
+          'separator_day_hours' => ': ',
+          'separator_days' => '<br />',
+          'separator_grouped_days' => ' - ',
+          'separator_hours_hours' => '-',
+          'separator_more_hours' => ', ',
+          'showclosed' => 'all',
+          'timezone_field' => '',
+        ),
+        'type' => 'office_hours',
+        'weight' => 10,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_uib_hours',
+    'label' => 'Hours',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'office_hours',
+      'settings' => array(),
+      'type' => 'office_hours',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'node-uib_ou-field_uib_jobbnorge_id'
   $field_instances['node-uib_ou-field_uib_jobbnorge_id'] = array(
     'bundle' => 'uib_ou',
@@ -3550,6 +3615,7 @@ function uib_area_field_default_field_instances() {
   t('Fax');
   t('Follow us');
   t('Here you should type which area this content belongs to');
+  t('Hours');
   t('ID w2');
   t('Illustration that goes together with the bottom text.');
   t('Important message');
