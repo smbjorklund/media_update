@@ -195,7 +195,7 @@ function uib_user_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => -4,
     ),
   );
 
@@ -230,7 +230,7 @@ function uib_user_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 9,
+      'weight' => -3,
     ),
   );
 
@@ -264,7 +264,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => -1,
     ),
   );
 
@@ -324,7 +324,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => -9,
     ),
   );
 
@@ -795,7 +795,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'size' => 16,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 0,
     ),
   );
 
@@ -1485,7 +1485,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => -2,
     ),
   );
 

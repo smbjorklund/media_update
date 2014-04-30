@@ -55,34 +55,34 @@ function uib_user_field_group_info() {
     'label' => 'Main information',
     'weight' => '0',
     'children' => array(
-      0 => 'field_uib_first_name',
-      1 => 'field_uib_last_name',
-      2 => 'field_uib_phone',
-      3 => 'field_uib_position',
+      0 => 'field_uib_phone',
+      1 => 'field_uib_user_alt_lastname',
+      2 => 'field_uib_user_alt_position',
+      3 => 'field_uib_user_communication',
       4 => 'field_uib_user_cv',
-      5 => 'field_uib_user_alt_address',
-      6 => 'field_uib_user_alt_firstname',
-      7 => 'field_uib_user_alt_lastname',
-      8 => 'field_uib_user_alt_position',
-      9 => 'field_uib_user_communication',
+      5 => 'field_uib_user_publications',
+      6 => 'field_uib_user_teaching',
+      7 => 'field_uib_user_url',
+      8 => 'field_uib_user_vcard',
+      9 => 'field_uib_last_name',
       10 => 'field_uib_user_field',
       11 => 'field_uib_user_opt_title',
-      12 => 'field_uib_user_publications',
+      12 => 'field_uib_user_room',
       13 => 'field_uib_user_social_media',
-      14 => 'field_uib_user_teaching',
-      15 => 'field_uib_user_url',
-      16 => 'field_uib_user_vcard',
-      17 => 'field_uib_user_opt_content',
-      18 => 'field_uib_user_room',
+      14 => 'field_uib_first_name',
+      15 => 'field_uib_user_alt_address',
+      16 => 'field_uib_user_alt_firstname',
+      17 => 'field_uib_position',
+      18 => 'field_uib_user_opt_content',
       19 => 'picture',
     ),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Main information',
       'instance_settings' => array(
-        'required_fields' => 1,
+        'required_fields' => 0,
         'id' => '',
-        'classes' => 'group-primary field-group-div clearfix',
+        'classes' => '',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -116,9 +116,9 @@ function uib_user_field_group_info() {
     'format_settings' => array(
       'label' => 'Secondary information',
       'instance_settings' => array(
-        'required_fields' => 1,
+        'required_fields' => 0,
         'id' => '',
-        'classes' => 'group-secondary field-group-div clearfix',
+        'classes' => '',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -129,6 +129,50 @@ function uib_user_field_group_info() {
     ),
   );
   $export['group_secondary|user|user|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_uib_hidden|user|user|form';
+  $field_group->group_name = 'group_uib_hidden';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Hidden',
+    'weight' => '33',
+    'children' => array(
+      0 => 'field_uib_position_category',
+      1 => 'field_uib_w2_id',
+      2 => 'field_uib_position_code',
+      3 => 'field_uib_slug',
+      4 => 'field_uib_user_domain',
+      5 => 'field_uib_sort_name',
+      6 => 'googleanalytics',
+      7 => 'redirect',
+      8 => 'account',
+      9 => 'timezone',
+      10 => 'locale',
+      11 => 'wysiwyg',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Hidden',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'id' => '',
+        'classes' => '',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_uib_hidden|user|user|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
