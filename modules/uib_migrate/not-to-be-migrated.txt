@@ -145,3 +145,5 @@ waterlaw2012_1
 uib/project/lingclim
 uib/prosjekt/lingclim
 fg/nnlts
+tilvekstavd
+tilvekstavd/en
