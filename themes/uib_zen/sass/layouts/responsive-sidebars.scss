@@ -328,6 +328,9 @@ $zen-auto-include-item-base: false;
     @include zen-grid-item-base;
     @include zen-grid-item(5, 1);
   }
+  #footer-global-menu {
+    display: none;
+  }
 }
 
 /* Mobile */
