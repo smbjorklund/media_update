@@ -767,16 +767,6 @@ function uib_calendar_views_default_views() {
   $handler->display->display_options['filters']['field_uib_date_value2']['field'] = 'field_uib_date_value2';
   $handler->display->display_options['filters']['field_uib_date_value2']['operator'] = '>=';
   $handler->display->display_options['filters']['field_uib_date_value2']['default_date'] = 'now';
-  /* Filter criterion: Content: Date -  start date (field_uib_date) */
-  $handler->display->display_options['filters']['field_uib_date_value']['id'] = 'field_uib_date_value';
-  $handler->display->display_options['filters']['field_uib_date_value']['table'] = 'field_data_field_uib_date';
-  $handler->display->display_options['filters']['field_uib_date_value']['field'] = 'field_uib_date_value';
-  $handler->display->display_options['filters']['field_uib_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_uib_date_value']['expose']['operator_id'] = 'field_uib_date_value_op';
-  $handler->display->display_options['filters']['field_uib_date_value']['expose']['label'] = 'Date -  start date (field_uib_date)';
-  $handler->display->display_options['filters']['field_uib_date_value']['expose']['operator'] = 'field_uib_date_value_op';
-  $handler->display->display_options['filters']['field_uib_date_value']['expose']['identifier'] = 'field_uib_date_value';
-  $handler->display->display_options['filters']['field_uib_date_value']['default_date'] = 'now';
   /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
@@ -1293,7 +1283,6 @@ function uib_calendar_views_default_views() {
     t('Exhibitions '),
     t('List all events of type exhibitions '),
     t('[title] <br>([field_uib_date])'),
-    t('Date -  start date (field_uib_date)'),
     t('Event filter'),
     t('Feed'),
     t('Start date'),
