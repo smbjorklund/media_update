@@ -7,6 +7,18 @@
 include_once 'uib_webdesk.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function uib_webdesk_menu() {
+  $items["webdesk/stats"] = array(
+    'page callback' => 'uib_webdesk__stats_page',
+    'file' => 'uib_webdesk.stats.inc',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+/**
 * Implements hook_admin_menu_output_alter
 */
 function uib_webdesk_admin_menu_output_alter(&$content) {
