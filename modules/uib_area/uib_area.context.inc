@@ -159,5 +159,46 @@ function uib_area_context_default_contexts() {
   t('block');
   $export['area_blocks'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'area_persons';
+  $context->description = 'Area staff/person listing [area_name/persons]';
+  $context->tag = 'persons';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'ansatte:page_2' => 'ansatte:page_2',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'region' => array(
+      'uib_zen' => array(
+        'disable' => array(
+          'sidebar_second' => 'sidebar_second',
+          'header' => 0,
+          'navigation' => 0,
+          'above_content' => 0,
+          'highlighted' => 0,
+          'help' => 0,
+          'content_top' => 0,
+          'content' => 0,
+          'footer' => 0,
+          'bottom' => 0,
+          'page_top' => 0,
+          'page_bottom' => 0,
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Area staff/person listing [area_name/persons]');
+  t('persons');
+  $export['area_persons'] = $context;
+
   return $export;
 }
