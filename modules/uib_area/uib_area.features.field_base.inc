@@ -610,26 +610,6 @@ function uib_area_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_uib_geo'
-  $field_bases['field_uib_geo'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_uib_geo',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'geofield',
-    'settings' => array(
-      'backend' => 'default',
-      'entity_translation_sync' => FALSE,
-      'srid' => 4326,
-    ),
-    'translatable' => 0,
-    'type' => 'geofield',
-  );
-
   // Exported field_base: 'field_uib_geolocation'
   $field_bases['field_uib_geolocation'] = array(
     'active' => 1,
