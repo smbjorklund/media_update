@@ -11,6 +11,7 @@ fi
 
 bin/site-drush pm-disable --yes menu_block
 bin/site-drush pm-uninstall --yes menu_block
+bin/site-drush php-script geofield-data-relocation --verbose
 
 # Migrate
 date +%FT%T
