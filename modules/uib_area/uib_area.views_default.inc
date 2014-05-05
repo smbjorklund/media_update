@@ -47,13 +47,12 @@ function uib_area_views_default_views() {
 [field_uib_visit_address]
 ';
   /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_uib_geo']['id'] = 'field_uib_geo';
-  $handler->display->display_options['fields']['field_uib_geo']['table'] = 'field_data_field_uib_geo';
-  $handler->display->display_options['fields']['field_uib_geo']['field'] = 'field_uib_geo';
-  $handler->display->display_options['fields']['field_uib_geo']['empty'] = 'No coordinates';
-  $handler->display->display_options['fields']['field_uib_geo']['click_sort_column'] = 'wkt';
-  $handler->display->display_options['fields']['field_uib_geo']['type'] = 'geofield_map_map';
-  $handler->display->display_options['fields']['field_uib_geo']['settings'] = array(
+  $handler->display->display_options['fields']['field_uib_geolocation']['id'] = 'field_uib_geolocation';
+  $handler->display->display_options['fields']['field_uib_geolocation']['table'] = 'field_data_field_uib_geolocation';
+  $handler->display->display_options['fields']['field_uib_geolocation']['field'] = 'field_uib_geolocation';
+  $handler->display->display_options['fields']['field_uib_geolocation']['click_sort_column'] = 'geom';
+  $handler->display->display_options['fields']['field_uib_geolocation']['type'] = 'geofield_map_map';
+  $handler->display->display_options['fields']['field_uib_geolocation']['settings'] = array(
     'geofield_map_width' => '100%',
     'geofield_map_height' => '300px',
     'geofield_map_zoom' => '15',
@@ -138,7 +137,6 @@ function uib_area_views_default_views() {
 [field_uib_visit_address]
 '),
     t('Location'),
-    t('No coordinates'),
     t('Visit Address'),
     t('All'),
     t('Page'),
