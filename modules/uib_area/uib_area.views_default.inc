@@ -38,27 +38,21 @@ function uib_area_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_uib_ou_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_uib_ou_node']['field'] = 'reverse_field_uib_ou_node';
   $handler->display->display_options['relationships']['reverse_field_uib_ou_node']['required'] = TRUE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_uib_ou_node';
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[title]
-[field_uib_visit_address]
-';
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_uib_geolocation']['id'] = 'field_uib_geolocation';
   $handler->display->display_options['fields']['field_uib_geolocation']['table'] = 'field_data_field_uib_geolocation';
   $handler->display->display_options['fields']['field_uib_geolocation']['field'] = 'field_uib_geolocation';
+  $handler->display->display_options['fields']['field_uib_geolocation']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_geolocation']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_uib_geolocation']['click_sort_column'] = 'geom';
   $handler->display->display_options['fields']['field_uib_geolocation']['type'] = 'geofield_map_map';
   $handler->display->display_options['fields']['field_uib_geolocation']['settings'] = array(
     'geofield_map_width' => '100%',
     'geofield_map_height' => '300px',
-    'geofield_map_zoom' => '15',
+    'geofield_map_zoom' => '17',
     'geofield_map_controltype' => 'default',
-    'geofield_map_mtc' => 'standard',
-    'geofield_map_pancontrol' => 1,
+    'geofield_map_mtc' => 'menu',
+    'geofield_map_pancontrol' => 0,
     'geofield_map_maptype' => 'map',
     'geofield_map_baselayers_map' => 1,
     'geofield_map_baselayers_satellite' => 1,
@@ -68,9 +62,18 @@ function uib_area_views_default_views() {
     'geofield_map_overview' => 0,
     'geofield_map_overview_opened' => 0,
     'geofield_map_scrollwheel' => 0,
-    'geofield_map_draggable' => 0,
-    'geofield_map_streetview_show' => 0,
+    'geofield_map_draggable' => 1,
+    'geofield_map_streetview_show' => 1,
   );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_uib_ou_node';
+  $handler->display->display_options['fields']['title']['label'] = 'Name';
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title]
+[field_uib_visit_address]
+';
   /* Field: Content: Visit Address */
   $handler->display->display_options['fields']['field_uib_visit_address']['id'] = 'field_uib_visit_address';
   $handler->display->display_options['fields']['field_uib_visit_address']['table'] = 'field_data_field_uib_visit_address';
@@ -132,11 +135,10 @@ function uib_area_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Content referencing Content from field_uib_ou'),
-    t('Title'),
+    t('Name'),
     t('[title]
 [field_uib_visit_address]
 '),
-    t('Location'),
     t('Visit Address'),
     t('All'),
     t('Page'),
