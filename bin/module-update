@@ -73,7 +73,7 @@ if ($updated) {
 }
 
 my $mod_dir = "modules";
-if ($module == 'zen') {
+if ($module eq 'zen') {
     $mod_dir = 'themes';
 }
 
