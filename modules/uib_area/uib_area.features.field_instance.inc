@@ -3052,7 +3052,7 @@ function uib_area_field_default_field_instances() {
       'module' => 'phone',
       'settings' => array(),
       'type' => 'phone_textfield',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 
@@ -3065,30 +3065,9 @@ function uib_area_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'geofield_map',
-        'settings' => array(
-          'field_multiple_limit' => -1,
-          'field_multiple_limit_offset' => 0,
-          'geofield_map_baselayers_hybrid' => 1,
-          'geofield_map_baselayers_map' => 1,
-          'geofield_map_baselayers_physical' => 0,
-          'geofield_map_baselayers_satellite' => 1,
-          'geofield_map_controltype' => 'default',
-          'geofield_map_draggable' => 1,
-          'geofield_map_height' => '300px',
-          'geofield_map_maptype' => 'map',
-          'geofield_map_mtc' => 'standard',
-          'geofield_map_overview' => 0,
-          'geofield_map_overview_opened' => 0,
-          'geofield_map_pancontrol' => 1,
-          'geofield_map_scale' => 0,
-          'geofield_map_scrollwheel' => 0,
-          'geofield_map_streetview_show' => 1,
-          'geofield_map_width' => '100%',
-          'geofield_map_zoom' => 17,
-        ),
-        'type' => 'geofield_map_map',
-        'weight' => 8,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3135,6 +3114,72 @@ function uib_area_field_default_field_instances() {
             ),
           ),
         ),
+      ),
+      'type' => 'geofield_latlon',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-uib_ou-field_uib_geolocation'
+  $field_instances['node-uib_ou-field_uib_geolocation'] = array(
+    'bundle' => 'uib_ou',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'geofield_map',
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+          'geofield_map_baselayers_hybrid' => 1,
+          'geofield_map_baselayers_map' => 1,
+          'geofield_map_baselayers_physical' => 0,
+          'geofield_map_baselayers_satellite' => 1,
+          'geofield_map_controltype' => 'default',
+          'geofield_map_draggable' => 1,
+          'geofield_map_height' => '300px',
+          'geofield_map_maptype' => 'map',
+          'geofield_map_mtc' => 'standard',
+          'geofield_map_overview' => 0,
+          'geofield_map_overview_opened' => 0,
+          'geofield_map_pancontrol' => 1,
+          'geofield_map_scale' => 0,
+          'geofield_map_scrollwheel' => 0,
+          'geofield_map_streetview_show' => 1,
+          'geofield_map_width' => '100%',
+          'geofield_map_zoom' => 17,
+        ),
+        'type' => 'geofield_map_map',
+        'weight' => 8,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_uib_geolocation',
+    'label' => 'Location',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'geofield',
+      'settings' => array(
+        'html5_geolocation' => 0,
       ),
       'type' => 'geofield_latlon',
       'weight' => 10,
@@ -3192,7 +3237,7 @@ function uib_area_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 7,
+      'weight' => 5,
     ),
   );
 
@@ -3242,7 +3287,7 @@ function uib_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 6,
     ),
   );
 
@@ -3394,7 +3439,7 @@ function uib_area_field_default_field_instances() {
       'module' => 'phone',
       'settings' => array(),
       'type' => 'phone_textfield',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -3465,7 +3510,7 @@ function uib_area_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -3536,7 +3581,7 @@ function uib_area_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
