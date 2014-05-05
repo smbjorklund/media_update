@@ -505,7 +505,7 @@ function uib_setup_field_default_field_instances() {
     'entity_type' => 'file',
     'field_name' => 'field_file_image_alt_text',
     'label' => 'Alt Text',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
