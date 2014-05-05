@@ -11,16 +11,15 @@ fi
 
 bin/site-drush pm-disable --yes menu_block
 bin/site-drush pm-uninstall --yes menu_block
-exit;
 
 # Migrate
 date +%FT%T
-bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_rest.txt
-bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_rest.txt
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_rest.txt
-bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_rest.txt
-bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_rest.txt
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_rest.txt
+bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_rest75.txt
+bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_rest75.txt
+bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_rest75.txt
+bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_rest75.txt
+bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_rest75.txt
+bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_rest75.txt
 date +%FT%T
 
 # Build area menu for migrated content
