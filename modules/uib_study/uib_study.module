@@ -1399,14 +1399,25 @@ function uib_study_views_pre_render(&$view) {
       }
     }
   }
-  if (($view->name == 'courses' && $view->current_display == 'study_programmes') || $view->name == 'uib_taxonomy_term') {
+  if (($view->name == 'courses' && ($view->current_display == 'study_programmes' || $view->current_display == 'study_programmes_all_page')) || $view->name == 'uib_taxonomy_term') {
     // Re-sorting views results when grouping on study category
     // It will probably not work as expected if a pager is used with the view
+    $category_weight = array(
+      'undergraduate' => 1,
+      'bachelorprogram' => 3,
+      'masterprogram' => 5,
+      'integrertemasterpr-profesjonsst' => 7,
+      'arsstudium' => 9,
+      'phdprogram' => 11,
+      'postgraduate' => 13,
+    );
     $sort_array = array();
     $i = 0;
     foreach ($view->result as $row) {
-      $suffix = str_pad($i, 6, '0', STR_PAD_LEFT);
-      $sort_array[$row->field_field_uib_study_category[0]['rendered']['#markup'] . $suffix] = $row;
+      @$weight = $category_weight[$row->field_field_uib_study_category[0]['raw']['value']];
+      $weight = empty($weight) ? "99" : sprintf("%02d", $weight);
+      $suffix = sprintf("%06d", $i);
+      $sort_array[$weight . $row->field_field_uib_study_category[0]['rendered']['#markup'] . $suffix] = $row;
       $i++;
     }
     ksort($sort_array);
