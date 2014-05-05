@@ -72,7 +72,12 @@ if ($updated) {
     warn "Wrote drupal.make\n";
 }
 
-run("rm -rf drupal/sites/all/modules/$module");
+my $mod_dir = "modules";
+if ($module == 'zen') {
+    $mod_dir = 'themes';
+}
+
+run("rm -rf drupal/sites/all/$mod_dir/$module");
 run("ln -s drupal/sites");
 run("drush make drupal.make . --projects=$module --libraries= --no-core");
 run("rm sites");
@@ -83,7 +88,7 @@ my $msg = ($old_vers ?
 	: "Upgrade to $module-$core-$vers (was $old_vers)")
     : "Imported $module-$core-$vers"
 );
-run("(cd drupal && git add --all sites/all/modules/$module)");
+run("(cd drupal && git add --all sites/all/$mod_dir/$module)");
 run("(cd drupal && git commit -m '$msg')");
 run("git add drupal.make drupal");
 run("git commit -m '$msg'");
