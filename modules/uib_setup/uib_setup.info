@@ -32,7 +32,6 @@ dependencies[] = media_internet
 dependencies[] = media_vimeo
 dependencies[] = media_youtube
 dependencies[] = menu
-dependencies[] = menu_block
 dependencies[] = module_filter
 dependencies[] = override_node_options
 dependencies[] = page_manager
