@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -x
+# This script runs at the end of the upgrade process to the next release.
+# It can be use to perform migrations or other manipulations of the content
+# and configuration of the site.
 
 REL=7.5
 
@@ -9,6 +11,7 @@ if git tag | grep -q R$REL; then
     exit 1
 fi
 
+set -x
 bin/site-drush pm-disable --yes menu_block
 bin/site-drush pm-uninstall --yes menu_block
 bin/site-drush php-script geofield-data-relocation --verbose
