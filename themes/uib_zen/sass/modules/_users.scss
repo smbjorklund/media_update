@@ -36,7 +36,29 @@
   }
 }
 
+#user_user_full_group_user_first .field-label, #user_user_full_group_user_second .field-label {
+  border: none;
+  color: #333;
+  font-family: $verdana;
+  font-size: 1.4em;
+}
+
+.page-user #user_user_full_group_media_element {
+  border: solid 1px silver;
+  margin-bottom: 20px;
+  padding: 10px;}
+
+#user_user_full_group_user_second {
+  .field {
+    border: solid 1px silver;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+}
+
 @media all and (min-width: 720px) {
+$zen-column-count: 5;
+
   #user_user_full_group_user_first {
     @include zen-grid-item (3, 1);
     @include zen-grid-item-base();
