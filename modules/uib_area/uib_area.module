@@ -776,6 +776,7 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
       'field_uib_ou', // Place
       'field_uib_menu_style', // Menu style
       'field_uib_logo', // Logo
+      'field_uib_area_banner', // Banner
       );
     // list of fields that should be hidden from
     // level 3 users
