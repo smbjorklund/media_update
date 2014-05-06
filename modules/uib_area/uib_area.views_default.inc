@@ -2475,14 +2475,6 @@ return !empty($handler->argument);';
     'frontpage' => 'frontpage',
     'newspage' => 'newspage',
   );
-  /* Filter criterion: Not too old */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'node';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['ui_name'] = 'Not too old';
-  $handler->display->display_options['filters']['created']['operator'] = '>';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-12 weeks';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
 
   /* Display: News archive */
   $handler = $view->new_display('page', 'News archive', 'newsarchive');
