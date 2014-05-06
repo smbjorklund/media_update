@@ -37,6 +37,12 @@ if ! [ $x == "y" ];then
 fi
 set x
 
+date +%FT%H%M
+if [ -x bin/pre-upgrade ]; then
+    bin/pre-upgrade
+    date +%FT%H%M
+fi
+
 compass compile --force -q themes/uib_zen
 find site/files/{css,js,languages} -type f -print | xargs rm -f
 ## CC all cleans out the deleted files from DB that was deleted above

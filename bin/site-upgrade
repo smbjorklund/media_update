@@ -12,6 +12,10 @@ fi
 git checkout $COMMIT || exit 1
 git submodule update || exit 2
 
+if [ -x bin/pre-upgrade ]; then
+    bin/pre-upgrade
+fi
+
 compass compile --force themes/uib_zen || exit 3
 find site/files/{css,js,languages} -type f -print | xargs rm
 
