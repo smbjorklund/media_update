@@ -16,6 +16,10 @@ bin/site-drush pm-disable --yes menu_block
 bin/site-drush pm-uninstall --yes menu_block
 bin/site-drush php-script geofield-data-relocation --verbose
 
+# The RTS-6270 change to the study categories are not different enough
+# to make the regular 'features-revert-all' affect it.
+bin/site-drush features-revert --force --yes --verbose uib_study
+
 # Migrate
 date +%FT%T
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_rest75.txt
