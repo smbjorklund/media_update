@@ -1058,7 +1058,7 @@ $zen-auto-include-item-base: false;
   $zen-column-count: 4;
 
   .node-type-area {
-    @include zen-grid-item(4, 1)
+    @include zen-grid-item(4, 1);
   }
 
   /* uib_article nodes */
