@@ -1677,6 +1677,7 @@ function uib_area_field_default_field_instances() {
   $field_instances['node-uib_article-field_uib_area'] = array(
     'bundle' => 'uib_article',
     'default_value' => NULL,
+    'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
     'description' => 'Here you should type which area this content belongs to',
     'display' => array(
@@ -1704,6 +1705,19 @@ function uib_area_field_default_field_instances() {
     'label' => 'Area',
     'required' => 1,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'action' => 'none',
+          'action_on_edit' => 0,
+          'fallback' => 'none',
+          'providers' => array(
+            'og_context' => FALSE,
+            'url' => 1,
+          ),
+          'skip_perm' => 0,
+          'status' => 1,
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
