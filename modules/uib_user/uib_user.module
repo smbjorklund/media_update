@@ -72,6 +72,30 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
   if ($form['#form_id'] == 'user_profile_form') {
     field_group_hide_field_groups($form, array('group_uib_hidden'));
   }
+
+  // Disable fields that are synchronized with SEBRA
+  $synchronized_properties = array(
+    'name',
+    'mail',
+    // 'status', // These are synchronized but Level 1 wants to be able to edit them
+    // 'roles',
+    );
+  foreach ($synchronized_properties as $item) {
+    $form['account'][$item]['#disabled'] = TRUE;
+  }
+  $synchronized_fields = array(
+    'field_uib_first_name',
+    'field_uib_last_name',
+    'field_uib_sort_name',
+    'field_uib_phone',
+    'field_uib_position',
+    'field_uib_position_code',
+    'field_uib_position_category',
+    'field_uib_user_domain',
+    );
+  foreach ($synchronized_fields as $item) {
+    $form[$item]['#disabled'] = TRUE;
+  }
 }
 
 /**
