@@ -95,3 +95,43 @@ function uib_user_custom_theme() {
     }
   }
 }
+
+/**
+ * Implements hook_block_info().
+ *
+ */
+function uib_user_block_info() {
+  return array(
+    'research_groups' => array(
+      'info' => t("User's research groups"),
+      'status' => TRUE,
+    ),
+  );
+}
+
+function uib_user_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'research_groups':
+      if (arg(0) == 'user') {
+        $uid = arg(1);
+        // Find research groups that this user belongs to
+        $query = new EntityFieldQuery;
+        $result = $query
+          ->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'area')
+          ->fieldCondition('field_uib_staff', 'target_id', $uid)
+          ->fieldCondition('field_uib_area_type', 'value', 'research group')
+          ->execute();
+        if (!empty($result)) {
+          $areas = entity_load('node', array_keys($result['node']));
+          $block['subject'] = t('Research groups');
+          foreach ($areas as $nid => $research_grp) {
+            $block['content'][]['#markup'] = '<div>' . l($research_grp->title, "node/$nid") . '</div>';
+          }
+        }
+      }
+    break;
+  }
+  return $block;
+}

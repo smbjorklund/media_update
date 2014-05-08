@@ -262,11 +262,13 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         $variables['title'] = '';
       }
     }
-    // Setup temporary message on user page
+    // User profile page (and not login page)
     if (isset($page_menu_item['map'][0])
       && $page_menu_item['map'][0] == 'user'
       && count($page_menu_item['original_map']) > 1
       && is_numeric($page_menu_item['original_map'][1])) {
+
+      // Setup temporary message on user page and user edit form
       $login_link = l(t('edit the contents of your user profile'), 'https://uib.no/login');
       $temp_message = t('We are working on the new profile pages, but they are not yet complete.');
       if ($user->uid == $page_menu_item['original_map'][1]) {
@@ -276,6 +278,16 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         $temp_message = t('Please do not edit this page.') . ' ' . $temp_message;
       }
       drupal_set_message($temp_message, 'warning');
+
+      // Target only the user profile page
+      if (count($page_menu_item['original_map'] == 2)) {
+        // Move research groups block into field group
+        if (isset($variables['page']['content']['uib_user_research_groups'])) {
+          $variables['page']['content']['system_main']['uib_user_research_groups'] = $variables['page']['content']['uib_user_research_groups'];
+          unset($variables['page']['content']['uib_user_research_groups']);
+          $variables['page']['content']['system_main']['#group_children']['uib_user_research_groups'] = 'group_user_second';
+        }
+      }
     }
   }
 }

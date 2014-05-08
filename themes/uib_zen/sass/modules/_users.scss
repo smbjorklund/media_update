@@ -36,20 +36,26 @@ $zen-column-count: 5;
   }
 }
 
-#user_user_full_group_user_first .field-label, #user_user_full_group_user_second .field-label {
-  border: none;
-  color: #333;
-  font-family: $verdana;
-  font-size: 1.4em;
+#user_user_full_group_user_first,
+#user_user_full_group_user_second {
+  .field-label, .block-title {
+    border: none;
+    color: #333;
+    font-family: $verdana;
+    font-size: 1.4em;
+    font-weight: normal;
+    margin-top: 0;
+    text-transform: none;
+  }
 }
 
-.page-user #user_user_full_group_media_element {
+#user_user_full_group_media_element {
   border: solid 1px silver;
   margin-bottom: 20px;
   padding: 10px;}
 
 #user_user_full_group_user_second {
-  .field {
+  .field, .block {
     border: solid 1px silver;
     margin-bottom: 20px;
     padding: 10px;
