@@ -1043,6 +1043,52 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     ),
   );
 
+  // Exported field_instance: 'user-user-field_uib_user_ou'
+  $field_instances['user-user-field_uib_user_ou'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 36,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_uib_user_ou',
+    'label' => 'Organisational unit',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_uib_user_projects'
   $field_instances['user-user-field_uib_user_projects'] = array(
     'bundle' => 'user',
@@ -1507,6 +1553,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Last name');
   t('Last name override');
   t('Optional tab content');
+  t('Organisational unit');
   t('Phone');
   t('Position');
   t('Position category');
