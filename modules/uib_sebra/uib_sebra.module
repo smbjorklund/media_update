@@ -452,6 +452,7 @@ function uib_sebra__add_content_manager($content_manager_areas, $uid) {
  */
 
 function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
+  static $places = array();
   $account = user_load_by_name($username);
   try {
     $u = new SebraPerson($username, $ref);
@@ -464,6 +465,9 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
     throw $e;
   }
 
+  if (!isset($places[$u->place_code])) {
+    $places[$u->place_code] = uib_sebra__uib_ou_nid($u->place_code);
+  }
   $phones = array();
   if (!empty($u->phone_office))
     $phones['und'][]['value'] = '+47 ' . $u->phone_office;
@@ -494,6 +498,9 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
       $edit['field_uib_position_category']['und'][0]['value'] = $u->position_category;
     if ($account->field_uib_phone != $phones)
       $edit['field_uib_phone'] = $phones;
+    if ($account->field_uib_user_ou['und'][0]['target_id'] != $places[$u->place_code]) {
+      $edit['field_uib_user_ou']['und'][0]['target_id'] = $places[$u->place_code];
+    }
     // Some roles have no correspondence in Sebra and will be lost if we do not fix it here.
     // All roles but 'level 2' and 'level 3' are fixed.
     foreach ($account->roles as $key => $value) {
@@ -529,6 +536,9 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
     $account->field_uib_position_code['und'][0]['value'] = $u->position_code;
     $account->field_uib_position_category['und'][0]['value'] = $u->position_category;
     $account->field_uib_phone = $phones;
+    if (!empty($places[$u->place_code])) {
+      $account->field_uib_user_ou['und'][0]['target_id'] = $places[$u->place_code];
+    }
     $account->roles = $u->roles;
     if (!$dry_run)
       user_save($account);
