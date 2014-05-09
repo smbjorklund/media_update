@@ -1889,10 +1889,6 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'You are not content manager for any areas.';
   $handler->display->display_options['empty']['area']['format'] = 'restricted_html';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_uib_content_manager_target_id']['id'] = 'field_uib_content_manager_target_id';
-  $handler->display->display_options['relationships']['field_uib_content_manager_target_id']['table'] = 'field_data_field_uib_content_manager';
-  $handler->display->display_options['relationships']['field_uib_content_manager_target_id']['field'] = 'field_uib_content_manager_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1906,31 +1902,6 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Field: User: Uid */
-  $handler->display->display_options['fields']['uid']['id'] = 'uid';
-  $handler->display->display_options['fields']['uid']['table'] = 'users';
-  $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  $handler->display->display_options['fields']['uid']['relationship'] = 'field_uib_content_manager_target_id';
-  $handler->display->display_options['fields']['uid']['label'] = '';
-  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Add content';
-  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'node/add/uib-article?field_uib_byline=[uid]&field_uib_area=[nid]';
-  $handler->display->display_options['fields']['nothing']['alter']['alt'] = 'Create a new article belonging to this area';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -2026,9 +1997,6 @@ function uib_webdesk_views_default_views() {
     t('next ›'),
     t('last »'),
     t('You are not content manager for any areas.'),
-    t('User entity referenced from field_uib_content_manager'),
-    t('Add content'),
-    t('Create a new article belonging to this area'),
     t('Alle'),
     t('Content pane'),
     t('View panes'),
