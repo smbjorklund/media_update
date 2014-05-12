@@ -461,6 +461,7 @@ function uib_area_field_default_field_bases() {
         'seminar' => 'Seminar',
         'exhibition' => 'Exhibition',
         'meeting' => 'Meeting',
+        'book_release' => 'Book release',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
