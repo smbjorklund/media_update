@@ -1,4 +1,39 @@
-#Release 2014-04-28 tag: R7.4
+# Release 2014-05-12 tag: R7.5
+
+R7.5 har gjort følgende oppdateringer av systemet
+
+Generelle endringer:
+
+* Alternativ tekst for bilder er et krav i henhold til regelverk for universell utforming av offentlige nettsteder. Derfor har vi nå gjort det obligatorisk å legge inn alternativ tekst for bilder. #6023
+* Vi har endret på design for menyen på forsiden til uib.no i mobilvisning, for å bedre synlighet og tilgjengelighet på utvidet meny her. #6172
+* Vi har forbedret utseende på vitnesbyrd-teaser på områdeforsiden #6205
+* Vi har rettet opp i sorteringen på studieprogramlister på engelske sider, etter studienivå (oppfølgingssak etter forrige oppdatering) #6270
+* Vi har fjernet alumnusdager-logoen i bunn-feltet på uib.no #6447
+
+Feilrettinger:
+
+* Problemer med å nå eget område via autocomplete når mange områder har lignende navn, har fått en midlertidig fiks ved å gi mulighet for å lenke direkte til "lag innhold" med forhåndsutfylt områdetilknytning. Saken vil bli fulgt opp med en mer permanent løsning senere. #6414
+* Bannerfeltet som er lagt til på område for å dekke et behov i utviklingen av ny forside for UB, var synlig både alle. Feltet er nå bare gjort synlig for rolle 1 #6402
+* Fiks for RSS-feed som ga feil dato i lister #6238
+* Fiks for at hendelsestypen "Utstilling" skulle være synlig på alle datoer innenfor varigheten til hendelsen. Dette vil bli fulgt opp for alle hendelser senere. #6058
+* Fiks for beregning av bredde på mobile enheter #3558
+
+Endringer og ny funksjonalitet (ikke tilgjengelig for brukerne enda):
+
+* Introduserer ny mal for personsidene #5896
+* Setter opp redigeringsside for nye personsider #5897
+* Fjerner sidebar for personsider #6333
+* Endrer midertidig hjelpetekst/varseltekst på nye personsider #6269
+* Setter inn blokk som viser DBH-tall for UiB (til uib.no/om-siden) #6269
+* Introduserer modul for å vise åpningstider #6154
+
+Migrasjon:
+
+* Migrerer området uib.no/internasjonalt (engelsk og norsk) #6382
+
+Diverse tekniske saker #6397 #6237 #6372 #6381 #6374 #6035
+
+# Release 2014-04-28 tag: R7.4
 
 Oppdateringen oppdaterer drupalkjerne og moduler, migrerer nye områder til w3, setter opp felt for ny områdeforside for UB, samt avslutter hovedarbeidet med utdanningssidene på w3.
 
