@@ -537,6 +537,27 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         ),
       );
 
+      /**
+       * Slideshow thingy.
+       */
+      $slideshow = $metadata->field_uib_main_media[1]->value();
+      if (!is_null($slideshow)) {
+        $cycle_path = libraries_get_path('jquery.cycle');
+        drupal_add_js($cycle_path . '/jquery.cycle.all.js');
+        drupal_add_css(drupal_get_path('theme', 'uib_zen') . '/css/slideshow.css');
+        drupal_add_js('jQuery(function($) {
+          $( ".field-name-field-uib-main-media .field-items" ).cycle(
+            {
+              containerResize: 1,
+              fit: 1,
+              width: 708,
+              height: 560,
+              fx: "scrollHorz",
+            }
+          );
+        }); ', 'inline');
+      }
+
       if ($variables['is_employee']) {
         if (empty($variables['content']['group_article_sidebar']['#id'])) {
           $variables['content']['group_article_sidebar']['#id'] =  'node_uib_article_full_group_article_sidebar';
