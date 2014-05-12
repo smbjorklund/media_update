@@ -357,6 +357,9 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     if ($variables['type'] == 'uib_external_content') {
       $variables['content']['title']['#path'] = $variables['field_uib_links']['und'][0]['url'];
     }
+    if ($variables['type'] == 'uib_ou') {
+      $variables['content']['title']['#weight'] = -1;
+    }
     $variables['title'] = '';
   }
 
@@ -1136,14 +1139,4 @@ function uib_zen_breadcrumb(&$vars) {
   }
   $output .= '</ol></nav>';
   return $output;
-}
-
-/**
- * Override or insert variables into the user profile template.
- *
- * @param $variables
- *   An array of variables to pass to the theme template.
- */
-function uib_zen_preprocess_user_profile(&$variables) {
-  $variables['elements']['#group_children']['user_picture'] = 'group_user_media';
 }

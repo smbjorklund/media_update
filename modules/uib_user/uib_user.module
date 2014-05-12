@@ -159,3 +159,61 @@ function uib_user_block_view($delta='') {
   }
   return $block;
 }
+
+/**
+ * Implements hook_user_view_alter().
+ */
+function uib_user_user_view_alter(&$build) {
+  // Add email address with markup as if it was a field
+  $build['user_email'] = array(
+    '#weight' => 32,
+    '#markup' => uib_user_add_field_markup(t('E-mail'), 'uib-user-email', l($build['#account']->mail, 'mailto:' . $build['#account']->mail, array('absolute' => TRUE))),
+  );
+
+  // Move stuff into field groups
+  $build['#group_children']['user_picture'] = 'group_user_media';
+  $build['#group_children']['user_email'] = 'group_user_contact';
+
+  // Manage field overrides
+  if (!empty($build['#account']->field_uib_user_alt_firstname['und'][0]['value'])) {
+    $build['field_uib_first_name'][0]['#markup'] =
+    $build['#account']->field_uib_user_alt_firstname['und'][0]['value'];
+  }
+  if (!empty($build['#account']->field_uib_user_alt_lastname['und'][0]['value'])) {
+    $build['field_uib_last_name'][0]['#markup'] =
+    $build['#account']->field_uib_user_alt_lastname['und'][0]['value'];
+  }
+  global $language;
+  if (!empty($build['#account']->field_uib_user_alt_address[$language->language][0]['thoroughfare'])) {
+    foreach ($build['#account']->field_uib_user_alt_address[$language->language][0] as $item_name => $item) {
+      if (isset($build['field_uib_user_ou'][0]['node'][$build['field_uib_user_ou']['#items'][0]['target_id']]['field_uib_visit_address'][0]['#address'][$item_name])) {
+        $build['field_uib_user_ou'][0]['node'][$build['field_uib_user_ou']['#items'][0]['target_id']]['field_uib_visit_address'][0]['#address'][$item_name] = $item;
+      }
+    }
+  }
+
+  // Do not show user history
+  hide($build['summary']);
+}
+
+/**
+ * Adds markup to a piece of html to make it look like a field
+ */
+function uib_user_add_field_markup($label, $class, $data) {
+  return uib_zen_field(array(
+    'label' => $label,
+    'label_hidden' => FALSE,
+    'classes' => $class,
+    'element' => array('#field_name' => ''),
+    'items' => array(
+      array(
+        '#markup' => $data,
+        ),
+      ),
+    'attributes' => '',
+    'title_attributes' => '',
+    'content_attributes' => '',
+    'item_attributes' => array(0 => ''),
+    )
+  );
+}
