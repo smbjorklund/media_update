@@ -170,6 +170,20 @@ function uib_user_user_view_alter(&$build) {
     '#markup' => uib_user_add_field_markup(t('E-mail'), 'uib-user-email', l($build['#account']->mail, 'mailto:' . $build['#account']->mail, array('absolute' => TRUE))),
   );
 
+  // Add a link to edit the profile
+  global $user;
+  $options = array();
+  $options['attributes']['class'] = 'button uib-user-edit-button';
+  $button_url = 'user/' . $build['#account']->uid . '/edit';
+  if ($user->uid == 0) {
+    $options['query']['destination'] = $button_url;
+    $button_url = 'user';
+  }
+  $build['user_edit_link'] = array(
+    '#weight' => 99,
+    '#markup' => l(t('Edit your profile'), $button_url, $options),
+  );
+
   // Move stuff into field groups
   $build['#group_children']['user_picture'] = 'group_user_media';
   $build['#group_children']['user_email'] = 'group_user_contact';
