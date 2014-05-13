@@ -164,6 +164,9 @@ function uib_user_block_view($delta='') {
  * Implements hook_user_view_alter().
  */
 function uib_user_user_view_alter(&$build) {
+  drupal_add_library('system' , 'ui.tabs');
+  drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js', array('group' => JS_THEME, ));
+
   // Add email address with markup as if it was a field
   $build['user_email'] = array(
     '#weight' => 32,
@@ -205,6 +208,47 @@ function uib_user_user_view_alter(&$build) {
       }
     }
   }
+
+  // Tabs
+  $tabs_field_list = array();
+  foreach ($build['#group_children'] as $field_name => $group_name) {
+    if ($group_name == 'group_user_work_1' && isset($build[$field_name]['#weight'])) {
+      $tabs_field_list[$field_name] = $build[$field_name]['#weight'];
+    }
+  }
+  asort($tabs_field_list);
+  foreach ($tabs_field_list as $field_name => $weight) {
+    unset($tabs_field_list[$field_name]);
+    $tabs_field_list[$field_name]['weight'] = $weight;
+    $tabs_field_list[$field_name]['title'] = $build[$field_name]['#title'];
+    $tabs_field_list[$field_name]['htmltitle'] = 'uib-tabs-' . mb_ereg_replace('[^a-z0-9]+', '-', drupal_strtolower($build[$field_name]['#title']));
+  }
+  // Manage the optional tab if it has a name
+  if (isset($tabs_field_list['field_uib_user_opt_title'])) {
+    $tabs_field_list['field_uib_user_opt_content']['title'] = $build['field_uib_user_opt_title']['#items'][0]['safe_value'];
+    hide($build['field_uib_user_opt_title']);
+    unset($tabs_field_list['field_uib_user_opt_title']);
+    $tabs_field_list['field_uib_user_opt_content']['htmltitle'] = 'uib-tabs-' . mb_ereg_replace('[^a-z0-9]+', '-', drupal_strtolower($tabs_field_list['field_uib_user_opt_content']['title']));
+    $build['field_uib_user_opt_content']['#title'] = $tabs_field_list['field_uib_user_opt_content']['title'];
+  }
+  else {
+    hide($build['field_uib_user_opt_title']);
+    unset($tabs_field_list['field_uib_user_opt_title']);
+    hide($build['field_uib_user_opt_content']);
+    unset($tabs_field_list['field_uib_user_opt_content']);
+  }
+  $tabs_list_markup = '<ul class="uib-tabs-list">';
+  foreach ($tabs_field_list as $field_name => $tabs_item) {
+    $tabs_list_markup .= '<li><a href="#' . $tabs_item['htmltitle'] . '">' . $tabs_item['title'] . '</a></li>';
+    $build[$field_name]['#prefix'] = '<div id="' . $tabs_item['htmltitle'] . '">';
+    $build[$field_name]['#suffix'] = '</div>';
+  }
+  $tabs_list_markup .= '</ul>';
+  $build['uib_tabs'] = array(
+    '#weight' => 24,
+    '#markup' => $tabs_list_markup,
+    );
+  $build['#group_children']['uib_tabs'] = 'group_user_work_1';
 
   // Do not show user history
   hide($build['summary']);

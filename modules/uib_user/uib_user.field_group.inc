@@ -23,8 +23,8 @@ function uib_user_field_group_info() {
     'label' => 'Media element',
     'weight' => '38',
     'children' => array(
-      0 => 'group_user_media',
-      1 => 'group_user_contact_wrapper',
+      0 => 'group_user_contact_wrapper',
+      1 => 'group_user_media',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -322,8 +322,8 @@ function uib_user_field_group_info() {
     'label' => 'Second',
     'weight' => '1',
     'children' => array(
-      0 => 'field_uib_user_competence',
-      1 => 'field_uib_user_feed',
+      0 => 'field_uib_user_feed',
+      1 => 'field_uib_user_competence',
       2 => 'field_uib_user_projects',
       3 => 'field_uib_user_docs',
     ),
@@ -358,16 +358,16 @@ function uib_user_field_group_info() {
     'children' => array(
       0 => 'field_uib_user_publications',
       1 => 'field_uib_user_opt_title',
-      2 => 'field_uib_user_teaching',
-      3 => 'field_uib_user_opt_content',
-      4 => 'field_uib_user_field',
+      2 => 'field_uib_user_opt_content',
+      3 => 'field_uib_user_field',
+      4 => 'field_uib_user_teaching',
       5 => 'field_uib_user_communication',
     ),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Work information',
       'instance_settings' => array(
-        'classes' => 'group-user-work-1 field-group-div clearfix',
+        'classes' => 'group-user-work-1 field-group-div uib-tabs-container clearfix',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
