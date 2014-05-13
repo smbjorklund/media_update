@@ -4,7 +4,7 @@
 # It can be use to perform migrations or other manipulations of the content
 # and configuration of the site.
 
-REL=7.5
+REL=7.6
 
 if git tag | grep -q R$REL; then
     echo "Disabled after $REL has been released";
@@ -12,22 +12,15 @@ if git tag | grep -q R$REL; then
 fi
 
 set -x
-bin/site-drush pm-disable --yes menu_block
-bin/site-drush pm-uninstall --yes menu_block
-bin/site-drush php-script geofield-data-relocation --verbose
-
-# The RTS-6270 change to the study categories are not different enough
-# to make the regular 'features-revert-all' affect it.
-bin/site-drush features-revert --force --yes --verbose uib_study
 
 # Migrate
 date +%FT%T
-bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_rest75.txt
-bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_rest75.txt
-bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_rest75.txt
-bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_rest75.txt
-bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_rest75.txt
-bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_rest75.txt
+bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_rest76.txt
+bin/site-drush migrate-import --verbose NavPage --strict=0 --area_subset=uib_areas_subset_rest76.txt
+bin/site-drush migrate-import --verbose InfoPage --strict=0 --area_subset=uib_areas_subset_rest76.txt
+bin/site-drush migrate-import --verbose News --strict=0 --area_subset=uib_areas_subset_rest76.txt
+bin/site-drush migrate-import --verbose Event --strict=0 --area_subset=uib_areas_subset_rest76.txt
+bin/site-drush migrate-import --verbose Testimonial --strict=0 --area_subset=uib_areas_subset_rest76.txt
 date +%FT%T
 
 # Build area menu for migrated content
