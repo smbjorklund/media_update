@@ -36,6 +36,7 @@ function uib_area_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
+        'autocomplete_items_limit' => 25,
         'behaviors' => array(
           'views-select-list' => array(
             'status' => 0,
