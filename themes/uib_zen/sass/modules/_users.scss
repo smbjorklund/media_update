@@ -105,3 +105,17 @@ $zen-column-count: 5;
     @include zen-grid-item-base();
   }
 }
+
+.page-user {
+  .user-picture {
+    display: block;
+    margin-bottom: 1em;
+  }
+  .uib-social-media {
+    padding: 0;
+    .field-item {
+      width: 32px;
+      margin: 0 0.5em 0 0;
+    }
+  }
+}

@@ -908,6 +908,9 @@ function uib_zen_preprocess_field(&$variables, $hook) {
   if ($variables['element']['#field_name'] == 'field_uib_relation') {
     $variables['classes_array'][] = 'block-uib-area';
   }
+  if ($variables['element']['#field_name'] == 'field_uib_social_media' || $variables['element']['#field_name'] == 'field_uib_user_social_media' ) {
+    $variables['classes_array'][] = 'uib-social-media';
+  }
 }
 
 /**
