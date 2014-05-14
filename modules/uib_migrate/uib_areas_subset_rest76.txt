@@ -1,6 +1,8 @@
 kunst
 arts
 utdanning/evu
+studiekvalitet
+quality-in-studies
 oka
 it
 eia
