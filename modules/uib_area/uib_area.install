@@ -355,3 +355,11 @@ function uib_area_update_7008() {
     }
   }
 }
+
+/**
+ * Remove the retired uib_geo field on uib_ou
+ */
+function uib_area_update_7009() {
+  field_delete_field('field_uib_geo');
+  field_purge_batch(1000);
+}
