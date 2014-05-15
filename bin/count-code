@@ -80,7 +80,7 @@ find(sub {
 	count_php($_);
 	next
     }
-    elsif (/\.scss$/) {
+    elsif (/\.scss$/ || /\.css$/) {
 	my $lines = count_lines($_);
 	$COUNTERS{lines}{sass} += $lines;
 	$COUNTERS{lines}{code} += $lines;
@@ -95,7 +95,7 @@ find(sub {
 	$COUNTERS{lines}{ruby} += $lines;
 	$COUNTERS{lines}{code} += $lines;
     }
-    elsif (/\.(info|gitignore|json|yml|csv|txt|png|gif|ico|svg|psd)$/) {
+    elsif (/\.(info|gitignore|json|yml|csv|txt|png|gif|ico|svg|psd|DS_Store)$/) {
 	# ignore
     }
     elsif ($File::Find::dir =~ /^(bin|area-walker)$/) {
