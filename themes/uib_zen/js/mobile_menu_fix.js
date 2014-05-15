@@ -9,7 +9,7 @@
       // NB: if has touch events, then has standards event handling too
       // but we don't want to run this code on iOS5+
       if (hasTouch && document.querySelectorAll && !iOS5) {
-        var i, len, element, dropdowns = document.querySelectorAll(".menu-block-wrapper .menu li a");
+        var i, len, element, dropdowns = document.querySelectorAll("#navigation .block-menu > .menu > li > a");
 
         function menuTouch(event) {
           // toggle flag for preventing click for this link
