@@ -134,6 +134,7 @@ function uib_user_block_info() {
 }
 
 function uib_user_block_view($delta='') {
+  global $language;
   $block = array();
   switch ($delta) {
     case 'research_groups':
@@ -149,9 +150,13 @@ function uib_user_block_view($delta='') {
           ->execute();
         if (!empty($result)) {
           $areas = entity_load('node', array_keys($result['node']));
-          $block['subject'] = t('Research groups');
           foreach ($areas as $nid => $research_grp) {
-            $block['content'][]['#markup'] = '<div>' . l($research_grp->title, "node/$nid") . '</div>';
+            if ($research_grp->language == $language->language) {
+              $block['content'][]['#markup'] = '<div>' . l($research_grp->title, "node/$nid") . '</div>';
+            }
+          }
+          if ($block) {
+            $block['subject'] = t('Research groups');
           }
         }
       }
