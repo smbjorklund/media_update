@@ -151,7 +151,7 @@
       <?php print render($page['header']); ?>
   </header>
   <div id="navigation">
-    <nav id="main-menu" role="navigation" tabindex="-1">
+    <nav id="main-menu" role="navigation">
       <?php print render($extra_language); ?>
       <?php if ($main_menu): ?>
         <?php
