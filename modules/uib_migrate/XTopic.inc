@@ -241,15 +241,15 @@ class XTopic extends stdClass {
       }
 
       if (!empty($this->vimeoembed)) {
-        $this->main_media = 'vimeo://v/' . $this->vimeoembed;
+        $this->main_media[] = 'vimeo://v/' . $this->vimeoembed;
       }
       elseif (!empty($xlink['decorated/stort_hovedtekstbilde/decoration'])) { // Main image for article
-        $this->main_media = $xlink['decorated/stort_hovedtekstbilde/decoration'][0];
+        $this->main_media = $xlink['decorated/stort_hovedtekstbilde/decoration'];
       }
 
       if (!empty($xlink['decorated/personbilde/decoration'])) { // Main image for users
         // Can reuse safely reuse main_media here
-        $this->main_media = $xlink['decorated/personbilde/decoration'][0];
+        $this->main_media = $xlink['decorated/personbilde/decoration'];
       }
 
       if (!empty($xlink['decorated/hovedtekstbilde/decoration'])) { // Inline images

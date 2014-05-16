@@ -325,19 +325,19 @@ abstract class XTopicToArticleMigration extends Migration {
   public function prepare($node, $row) {
     $node->status = 1;  # default is unpublished now
 
-    if (strstr($row->main_media, 'vimeo')) {
-      $file = xtopic_vimeo($row->main_media);
-      $node->field_uib_main_media['und'][0] = array(
-        'fid' => $file->fid,
-        'display' => 1,
-      );
-    }
-    elseif (isset($row->main_media)) {
-      $file = xtopic_file($row->main_media, $node->uid, $row->site_lang, $row->id);
-      $node->field_uib_main_media['und'][0] = array(
-        'fid' => $file->fid,
-        'display' => 1,
-      );
+    if (!empty($row->main_media)) {
+      foreach ($row->main_media as $file_id) {
+        if (strstr($file_id, 'vimeo')) {
+          $file = xtopic_vimeo($file_id);
+        }
+        else {
+          $file = xtopic_file($file_id, $node->uid, $row->site_lang, $row->id);
+        }
+        $node->field_uib_main_media['und'][] = array(
+          'fid' => $file->fid,
+          'display' => 1,
+        );
+      }
     }
 
     if (!empty($row->media)) {
