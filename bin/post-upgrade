@@ -12,6 +12,8 @@ if git tag | grep -q R$REL; then
 fi
 
 set -x
+# Since RTS-6413 now adds ou ref for users
+bin/site-drush uib-sebra-users --verbose
 
 # Migrate
 date +%FT%T
