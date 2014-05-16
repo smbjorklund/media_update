@@ -201,7 +201,7 @@
         }
         a {
           @media all and (min-width: 720px) {
-            color: #037caf;
+            color: $link-blue;
           }
           font-weight: normal;
           &:hover {
