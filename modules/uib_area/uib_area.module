@@ -790,64 +790,44 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
         }
       }
     }
+    $not_for_news_and_frontpage = array(
+      'field_uib_bottom_media',
+      'field_uib_profiled_testimonial',
+      'field_uib_bottom_text',
+      'field_uib_secondary_text',
+      'field_uib_tertiary_text',
+      );
+    $not_for_frontpage = array(
+      'field_uib_feed',
+      );
+    $only_for_news_and_frontpage = array(
+      'field_uib_profiled_message',
+      );
+    $area_type = $form['field_uib_area_type']['und']['#entity']->field_uib_area_type['und'][0]['value'];
+    switch ($area_type) {
+      case 'frontpage':
+        foreach ($not_for_frontpage as $nf) {
+          if (isset($form[$nf])) {
+            $form[$nf]['#access'] = FALSE;
+          }
+        }
+      case in_array($area_type, array('frontpage', 'newspage')):
+        foreach ($not_for_news_and_frontpage as $nf) {
+          if (isset($form[$nf])) {
+            $form[$nf]['#access'] = FALSE;
+          }
+        }
+        break;
+      default:
+        foreach ($only_for_news_and_frontpage as $nf) {
+          if (isset($form[$nf])) {
+            $form[$nf]['#access'] = FALSE;
+          }
+        }
+    }
     $form['field_uib_area_parents']['#states'] = array(
       'required' => array(
         ':input[name="field_uib_area_type[und]"]' => array('value' => 'discipline'),
-       ),
-    );
-    // Hiding fields for newspage/frontpage
-    $form['field_uib_bottom_media']['#states'] = array(
-      'invisible' => array(
-        ':input[name="field_uib_area_type[und]"]' => array(
-          array('value' => 'frontpage'),
-          array('value' => 'newspage'),
-        ),
-      ),
-    );
-    $form['field_uib_profiled_testimonial']['#states'] = array(
-      'invisible' => array(
-        ':input[name="field_uib_area_type[und]"]' => array(
-          array('value' => 'frontpage'),
-          array('value' => 'newspage'),
-        ),
-      ),
-    );
-    $form['field_uib_bottom_text']['#states'] = array(
-      'invisible' => array(
-        ':input[name="field_uib_area_type[und]"]' => array(
-          array('value' => 'frontpage'),
-          array('value' => 'newspage'),
-        ),
-      ),
-    );
-    $form['field_uib_secondary_text']['#states'] = array(
-      'invisible' => array(
-        ':input[name="field_uib_area_type[und]"]' => array(
-          array('value' => 'frontpage'),
-          array('value' => 'newspage'),
-        ),
-      ),
-    );
-    $form['field_uib_tertiary_text']['#states'] = array(
-      'invisible' => array(
-        ':input[name="field_uib_area_type[und]"]' => array(
-          array('value' => 'frontpage'),
-          array('value' => 'newspage'),
-        ),
-      ),
-    );
-    // Showing profiled messages only for newspage and frontpage
-    $form['field_uib_profiled_message']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_uib_area_type[und]"]' => array(
-          array('value' => 'frontpage'),
-          array('value' => 'newspage'),
-        ),
-      ),
-    );
-    $form['field_uib_feed']['#states'] = array(
-      'invisible' => array(
-        ':input[name="field_uib_area_type[und]"]' => array('value' => 'frontpage'),
        ),
     );
   }
