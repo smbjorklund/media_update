@@ -60,14 +60,14 @@ $zen-column-count: 5;
 }
 
 #user_user_full_group_media_element {
-  border: solid 1px silver;
   margin-bottom: 20px;
   padding: 10px;
+  border-bottom: 1px solid #DEDFDD;
 }
 
 #user_user_full_group_user_second {
   .field, .block {
-    border: solid 1px silver;
+    border: dotted 1px silver;
     margin-bottom: 20px;
     padding: 10px;
   }
@@ -83,6 +83,7 @@ $zen-column-count: 5;
   #user_user_full_group_user_first {
     @include zen-grid-item (3, 1);
     @include zen-grid-item-base();
+    width: 58%;
    }
 
   #user_user_full_group_media_element {
