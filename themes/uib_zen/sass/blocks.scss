@@ -245,3 +245,14 @@ table .item-list ul {
     margin: 0;
   }
 }
+
+/* Key figures block */
+#block-uib-dbh-dbh  {
+  tbody tr {
+    background-color: transparent;
+    border: none;
+    :nth-child(n+2) {
+      text-align: right;
+    }
+  }
+}
