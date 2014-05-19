@@ -13,7 +13,7 @@ fi
 
 set -x
 # Since RTS-6413 now adds ou ref for users
-bin/site-drush uib-sebra-users --verbose
+bin/site-drush uib-sebra-users --verbose --limit=0
 
 # Migrate
 date +%FT%T
