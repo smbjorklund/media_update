@@ -1380,7 +1380,7 @@ function uib_area__menu_overview_page() {
  * Add non field elements to field group.
  */
 function uib_area_field_group_build_pre_render_alter(&$element) {
-  if ($element['#entity_type'] == 'node' && $element['#bundle'] == 'area') {
+  if ($element['#entity_type'] == 'node' && $element['#bundle'] == 'area' && isset($element['group_two_column'])) {
     if ($element['group_two_column']['group_column_first']) {
       $nid = $element['#node']->nid;
       $tmp_block_html = views_embed_view('faculty_departments_kids', 'block', $nid);
