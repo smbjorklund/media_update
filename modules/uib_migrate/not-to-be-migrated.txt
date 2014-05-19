@@ -23,6 +23,7 @@ ffl
 ffl/en
 fg/CGB
 fg/MigrantNarrative
+fg/biometallporfyri
 fg/bmp
 fg/challenging
 fg/derma
@@ -94,6 +95,7 @@ ok/en
 rg/1155760271
 rg/CGB
 rg/Inorgnanomod
+rg/biometalporphyria
 rg/bmp
 rg/cancer
 rg/challenging
