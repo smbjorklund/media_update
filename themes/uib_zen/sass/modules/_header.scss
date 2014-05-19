@@ -30,6 +30,9 @@
       padding: 1em 0.8889em;
       text-align: left;
       width: 75%;
+      &.custom-logo {
+        width: 59%;
+      }
     }
     a:link,
     a:visited {
