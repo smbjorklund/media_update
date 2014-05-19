@@ -131,6 +131,10 @@ function area_already_present($w2_path) {
     $path = substr($w2_path, 0, -3);
     $lang = 'en';
   }
+  elseif (substr($w2_path, 0, 3) == 'en/') {
+    $path = substr($w2_path, 3);
+    $lang = 'en';
+  }
   elseif (substr($w2_path, 0, 3) == 'fg/') {
     $lang = 'nb';
   }
