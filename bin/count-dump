@@ -1,5 +1,12 @@
 #!/usr/bin/perl -w
 
+use strict;
+use Getopt::Long qw(GetOptions);
+GetOptions(\my %opt,
+    'collapse!',
+) || die "Usage: $0 [--no-collapse] [dump]\n";
+$opt{collapse} //= 1;
+
 my $dump = shift || "site/w3.uib.no.sql";
 
 open(my $fh, "<", $dump) || die;
@@ -12,7 +19,7 @@ while (<$fh>) {
     if (/^COPY (\w+)/) {
 	my $table = $1;
 	die unless / FROM stdin;$/;
-	if (1) {
+	if ($opt{collapse}) {
 	    # Collapse the counts for some tables
 	    $table =~ s/^(field_revision_|field_data_field_).*/$1.../;
 	}
