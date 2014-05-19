@@ -6,3 +6,7 @@ quality-in-studies
 oka
 it
 eia
+fg/kolonitid
+rg/colonialtimes
+fg/peg
+rg/peg

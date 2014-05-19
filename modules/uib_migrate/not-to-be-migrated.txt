@@ -97,7 +97,6 @@ rg/Inorgnanomod
 rg/bmp
 rg/cancer
 rg/challenging
-rg/colonialtimes
 rg/company
 rg/crop/en
 rg/cs_abc
