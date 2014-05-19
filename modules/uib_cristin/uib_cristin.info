@@ -1,0 +1,5 @@
+name = UiB CRIStin integration
+description = "Get data from CRIStin"
+package = UiB
+core = 7.x
+dependencies[] = uib_user

@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * Return a link to a user page in CRIStin
+ */
+function uib_cristin_link($username = NULL) {
+  $pub_link = NULL;
+  $cristin_url = variable_get('uib_cristin_userlink', 'https://www.cristin.no/as/WebObjects/cristin.woa/wa/personVis?type=PERSON&instnr=184&bruker=') . $username;
+
+  // Check if there are ANY publications for this user
+  $cmd = 'hentVarbeiderPerson?navn=' . $username . '&eierkode=UIB&utplukk=nyeste&maksantall=1';
+  $cristin_data = uib_cristin__get_json($cmd);
+  if (!empty($cristin_data)) {
+    $pub_link = l(t('Publications in Cristin'), $cristin_url, array('attributes' => array('target' => '_blank')));
+  }
+  return $pub_link;
+}
+
+/**
+ * Get json data from cristin
+ */
+function uib_cristin__get_json($cmd) {
+  $data = NULL;
+  $url = uib_cristin__ws_url($cmd) . '&format=json';
+  $res = drupal_http_request($url);
+  if ($res->code == 200) {
+    $data = $res->data;
+  }
+  // To be continued...
+
+  return $data;
+}
+
+/**
+ * Assemble a cristin ws command url
+ */
+function uib_cristin__ws_url($cristin_command) {
+  $url = variable_get('uib_cristin_ws', 'http://cristin.no/ws/');
+  $url .= $cristin_command;
+  return $url;
+}
+
+/**
+ * Implements hook_field_attach_view_alter().
+ */
+function uib_cristin_field_attach_view_alter(&$output, $context) {
+  if ($context['entity_type'] != 'user' || $context['view_mode'] != 'full') {
+    return;
+  }
+
+  $user = $context['entity'];
+  $field_name = 'field_uib_user_publications';
+
+  // Get CRIStin data to add
+  // -- Temporary link to user's CRIStin profile
+  // -- Change this when Cristin data is to be properly integrated with user publications
+  $cristin_markup = '';
+  $cristin_user_link = uib_cristin_link($user->name);
+  if (!empty($cristin_user_link)) {
+    $cristin_markup = '<p>' . $cristin_user_link . '</p>';
+  }
+
+  if ($cristin_markup) {
+    if (empty($user->{$field_name})) {
+      // In cases when the field is empty we have to create the render array first
+      // Load field information
+      $instances = _field_invoke_get_instances('user', 'user', array('default' => TRUE, 'deleted' => FALSE));
+      $instance = $instances[$field_name];
+      $display = field_get_display($instance, 'full', $user);
+      $field = field_info_field($field_name);
+
+      // Set output for field.
+      $output[$field_name] = array(
+        '#theme' => 'field',
+        '#title' => $instance['label'],
+        '#label_display' => 'above',
+        '#field_type' => $field['type'],
+        '#field_name' => $field_name,
+        '#bundle' => 'user',
+        '#view_mode' => 'full',
+        '#object' => $context['entity'],
+        '#items' => array(array()),
+        '#entity_type' => 'user',
+        '#weight' => $display['weight'],
+        0 => array('#markup' => $cristin_markup),
+      );
+    }
+    else {
+      $output[$field_name][0]['#markup'] = $cristin_markup . $output[$field_name][0]['#markup'];
+    }
+  }
+}

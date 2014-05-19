@@ -103,3 +103,10 @@ function uib_setup_update_7006() {
 function uib_setup_update_7007() {
   module_enable(array('eu_cookie_compliance'), FALSE);
 }
+
+/**
+ * Enable new module: uib_cristin
+ */
+function uib_setup_update_7008() {
+  module_enable(array('uib_cristin'));
+}
