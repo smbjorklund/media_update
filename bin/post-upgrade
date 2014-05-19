@@ -15,6 +15,9 @@ set -x
 # Since RTS-6413 now adds ou ref for users
 bin/site-drush uib-sebra-users --verbose --limit=0
 
+# Update translation strings
+bin/update-norsk
+
 # Migrate
 date +%FT%T
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_rest76.txt
