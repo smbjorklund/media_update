@@ -148,3 +148,6 @@ uib/prosjekt/lingclim
 fg/nnlts
 tilvekstavd
 tilvekstavd/en
+fs/cms
+fg/grammatikk
+fg/namnegransking
