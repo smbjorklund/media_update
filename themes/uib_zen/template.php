@@ -155,6 +155,7 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  */
 function uib_zen_preprocess_page(&$variables, $hook) {
   global $user;
+  $variables['uib_is_user_page'] = FALSE;
   $page_menu_item = menu_get_item(current_path());
   if (isset($variables['node'])) {
     $not_translated_txt = t('This content has not been translated.');
@@ -281,6 +282,8 @@ function uib_zen_preprocess_page(&$variables, $hook) {
 
       // Target only the user profile page
       if (count($page_menu_item['original_map'] == 2)) {
+        $variables['uib_is_user_page'] = TRUE;
+
         // Move research groups block into field group
         if (isset($variables['page']['content']['uib_user_research_groups'])) {
           $variables['page']['content']['system_main']['uib_user_research_groups'] = $variables['page']['content']['uib_user_research_groups'];

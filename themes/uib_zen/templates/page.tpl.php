@@ -190,7 +190,7 @@
       <?php endif; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
-      <?php if (empty($node) && $title): ?>
+      <?php if (empty($node) && $title && !$uib_is_user_page): ?>
         <h1 class="page__title title" id="page-title"><?php print $title; ?></h1>
       <?php endif; ?>
       <?php if (!empty($page['content_top'])): ?>
