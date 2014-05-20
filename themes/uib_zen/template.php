@@ -932,6 +932,18 @@ function uib_zen_preprocess_field(&$variables, $hook) {
   if ($variables['element']['#field_name'] == 'field_uib_social_media' || $variables['element']['#field_name'] == 'field_uib_user_social_media' ) {
     $variables['classes_array'][] = 'uib-social-media';
   }
+
+  // Aim to remove colon from certain user page fields
+  if ($variables['element']['#entity_type'] == 'user' && $variables['element']['#view_mode'] == 'full') {
+    $certain_fields = array(
+      'field_uib_user_competence',
+      'field_uib_user_projects',
+      'field_uib_user_feed',
+      );
+    if (in_array($variables['element']['#field_name'], $certain_fields)) {
+      $variables['theme_hook_suggestions'][] = 'field__user__label_colonfree';
+    }
+  }
 }
 
 /**
