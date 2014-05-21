@@ -90,37 +90,14 @@ function uib_setup_filter_default_formats() {
     ),
   );
 
-  // Exported format: Full HTML.
+  // Exported format: Full HTML (Raw).
   $formats['full_html'] = array(
     'format' => 'full_html',
-    'name' => 'Full HTML',
+    'name' => 'Full HTML (Raw)',
     'cache' => 1,
     'status' => 1,
     'weight' => -7,
-    'filters' => array(
-      'filter_autop' => array(
-        'weight' => -48,
-        'status' => 1,
-        'settings' => array(),
-      ),
-      'filter_url' => array(
-        'weight' => -47,
-        'status' => 1,
-        'settings' => array(
-          'filter_url_length' => 72,
-        ),
-      ),
-      'filter_uib_url' => array(
-        'weight' => -46,
-        'status' => 1,
-        'settings' => array(),
-      ),
-      'filter_htmlcorrector' => array(
-        'weight' => -42,
-        'status' => 1,
-        'settings' => array(),
-      ),
-    ),
+    'filters' => array(),
   );
 
   // Exported format: Plain text.
