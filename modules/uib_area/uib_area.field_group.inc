@@ -23,8 +23,8 @@ function uib_area_field_group_info() {
     'label' => 'Bottom wrapper',
     'weight' => '7',
     'children' => array(
-      0 => 'field_uib_bottom_text',
-      1 => 'field_uib_bottom_media',
+      0 => 'field_uib_bottom_media',
+      1 => 'field_uib_bottom_text',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -158,6 +158,7 @@ function uib_area_field_group_info() {
       2 => 'field_uib_content_manager',
       3 => 'field_uib_staff',
       4 => 'field_uib_logo',
+      5 => 'field_uib_colophone_logos',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
