@@ -592,20 +592,20 @@ function uib_user_field_default_field_instances() {
           'restricted_html' => 'restricted_html',
         ),
         'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
+        'default_order_toggle' => 1,
         'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
-              'weight' => -9,
+              'weight' => -48,
             ),
             'full_html' => array(
-              'weight' => -7,
+              'weight' => -47,
             ),
             'plain_text' => array(
-              'weight' => -10,
+              'weight' => -49,
             ),
             'restricted_html' => array(
-              'weight' => -8,
+              'weight' => -50,
             ),
           ),
         ),
@@ -866,20 +866,20 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'restricted_html' => 0,
         ),
         'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
+        'default_order_toggle' => 1,
         'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
-              'weight' => -9,
+              'weight' => -48,
             ),
             'full_html' => array(
-              'weight' => -7,
+              'weight' => -47,
             ),
             'plain_text' => array(
-              'weight' => -10,
+              'weight' => -49,
             ),
             'restricted_html' => array(
-              'weight' => -8,
+              'weight' => -50,
             ),
           ),
         ),
@@ -930,20 +930,20 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'restricted_html' => 'restricted_html',
         ),
         'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
+        'default_order_toggle' => 1,
         'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
-              'weight' => -9,
+              'weight' => -48,
             ),
             'full_html' => array(
-              'weight' => -7,
+              'weight' => -47,
             ),
             'plain_text' => array(
-              'weight' => -10,
+              'weight' => -49,
             ),
             'restricted_html' => array(
-              'weight' => -8,
+              'weight' => -50,
             ),
           ),
         ),
@@ -1105,20 +1105,20 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'restricted_html' => 'restricted_html',
         ),
         'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
+        'default_order_toggle' => 1,
         'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
-              'weight' => -9,
+              'weight' => -48,
             ),
             'full_html' => array(
-              'weight' => -7,
+              'weight' => -47,
             ),
             'plain_text' => array(
-              'weight' => -10,
+              'weight' => -49,
             ),
             'restricted_html' => array(
-              'weight' => -8,
+              'weight' => -50,
             ),
           ),
         ),
@@ -1169,20 +1169,20 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'restricted_html' => 'restricted_html',
         ),
         'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
+        'default_order_toggle' => 1,
         'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
-              'weight' => -9,
+              'weight' => -48,
             ),
             'full_html' => array(
-              'weight' => -7,
+              'weight' => -47,
             ),
             'plain_text' => array(
-              'weight' => -10,
+              'weight' => -49,
             ),
             'restricted_html' => array(
-              'weight' => -8,
+              'weight' => -50,
             ),
           ),
         ),
@@ -1361,20 +1361,20 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'restricted_html' => 'restricted_html',
         ),
         'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
+        'default_order_toggle' => 1,
         'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
-              'weight' => -9,
+              'weight' => -48,
             ),
             'full_html' => array(
-              'weight' => -7,
+              'weight' => -47,
             ),
             'plain_text' => array(
-              'weight' => -10,
+              'weight' => -49,
             ),
             'restricted_html' => array(
-              'weight' => -8,
+              'weight' => -50,
             ),
           ),
         ),
