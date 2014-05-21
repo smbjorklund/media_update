@@ -232,41 +232,24 @@ function uib_area_block_view($delta='') {
       }
     break;
     case 'colophon_logos':
-      global $base_url;
-      global $theme_path;
-      $path = $base_url . '/' . $theme_path . '/images/';
-      $logo0_nb = $path . 'merke.png';
-      $logo0_en = $path . 'merke.png';
-      $logo1_nb = $path . 'hp_nb.png';
-      $logo1_en = $path . 'hp_eng.png';
-      if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
-        if ($area->language == 'en') {
-          $block['content'] = '
-            <div id="banner1" class="banner eng">
-              <a title="University of Bergen 2022" href="http://www.uib.no/en/uib2022">
-                <img alt="University of Bergen 2022" src="' . $logo0_en . '"/>
-              </a>
-            </div>
-            <div id="banner2" class="banner eng">
-              <a title="The Holberg Prize" href="http://holbergprisen.no/en">
-                <img alt="The Holberg Prize" src="' . $logo1_en . '"/>
-              </a>
-            </div>
-          ';
-        }
-        else {
-          $block['content'] = '
-            <div id="banner1" class="banner">
-              <a title="Universitetet i Bergen 2022" href="http://www.uib.no/uib2022">
-                <img alt="Universitetet i Bergen 2022" src="' . $logo0_nb . '" />
-              </a>
-            </div>
-            <div id="banner2" class="banner">
-              <a title="Holbergprisen" href="http://holbergprisen.no">
-                <img alt="Holbergprisen" src="' . $logo1_nb . '" />
-              </a>
-            </div>
-          ';
+      if (!empty($area)) {
+        if (!empty($area->field_uib_colophone_logos)) {
+          $externals = array();
+          foreach ($area->field_uib_colophone_logos['und'] as $external) {
+            $externals[] = $external['target_id'];
+          }
+          $logos = entity_load('node', $externals);
+          $block['content'] = '';
+          foreach ($logos as $logo) {
+            $image_src = image_style_url('colophone_logo', $logo->field_uib_media['und'][0]['uri']);
+            $block['content'] .= '
+              <div class="banner">
+                <a title="' . $logo->title . '" href="' . $logo->field_uib_links['und'][0]['url'] . '">
+                  <img alt="' . $logo->title . '" src="' . $image_src . '"/>
+                </a>
+              </div>
+            ';
+          }
         }
       }
     break;
@@ -777,6 +760,7 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
       'field_uib_menu_style', // Menu style
       'field_uib_logo', // Logo
       'field_uib_area_banner', // Banner
+      'field_uib_colophone_logos', // Colophone logos
       );
     // list of fields that should be hidden from
     // level 3 users
