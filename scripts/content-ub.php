@@ -10,6 +10,13 @@ $searchbox = '<form action ="http://bibsys-primo.hosted.exlibrisgroup.com/primo_
 $node->field_uib_area_banner['und'][0]['value'] = $chat;
 $node->field_uib_area_banner['und'][0]['value'] .= $searchbox;
 
+// Offices
+$node->field_uib_offices['und'] = array(
+  0 => array( 'target_id' => 8723),
+  1 => array( 'target_id' => 8724),
+  2 => array( 'target_id' => 8725),
+);
+
 // Social icons
 $node->field_uib_social_media['und'][0]['value'] = 'twitter:uib';
 $node->field_uib_social_media['und'][1]['value'] = 'facebook:uib';
