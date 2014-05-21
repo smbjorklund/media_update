@@ -84,6 +84,7 @@ projects[scheduler][version] = 1.2
 projects[service_links][version] = 2.1
 projects[stage_file_proxy][version] = 1.5
 projects[strongarm][version] = 2.0
+projects[styleguide][version] = 1.1
 projects[subpathauto][version] = 1.3
 projects[title][version] = 1.0-alpha7
 projects[token][version] = 1.5

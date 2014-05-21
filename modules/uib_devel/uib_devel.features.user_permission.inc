@@ -49,5 +49,16 @@ function uib_devel_user_default_permissions() {
     'module' => 'devel',
   );
 
+  // Exported permission: 'view style guides'.
+  $permissions['view style guides'] = array(
+    'name' => 'view style guides',
+    'roles' => array(
+      'admin' => 'admin',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'styleguide',
+  );
+
   return $permissions;
 }
