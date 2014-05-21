@@ -235,23 +235,35 @@ function uib_area_block_view($delta='') {
       global $base_url;
       global $theme_path;
       $path = $base_url . '/' . $theme_path . '/images/';
-      $logo0_nb = $path . 'grunnloven_nb.png';
-      $logo0_en = $path . 'grunnloven_en.png';
+      $logo0_nb = $path . 'merke.png';
+      $logo0_en = $path . 'merke.png';
+      $logo1_nb = $path . 'hp_nb.png';
+      $logo1_en = $path . 'hp_eng.png';
       if(!empty($area) && $area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
         if ($area->language == 'en') {
           $block['content'] = '
+            <div id="banner1" class="banner eng">
+              <a title="University of Bergen 2022" href="http://www.uib.no/en/uib2022">
+                <img alt="University of Bergen 2022" src="' . $logo0_en . '"/>
+              </a>
+            </div>
             <div id="banner2" class="banner eng">
-              <a title="The Bicentenary of the Norwegian Constitution in 2014" href="http://www.uib.no/en/constitution2014">
-                <img alt="The Bicentenary of the Norwegian Constitution in 2014" src="' . $logo0_en . '"/>
+              <a title="The Holberg Prize" href="http://holbergprisen.no/en">
+                <img alt="The Holberg Prize" src="' . $logo1_en . '"/>
               </a>
             </div>
           ';
         }
         else {
           $block['content'] = '
+            <div id="banner1" class="banner">
+              <a title="Universitetet i Bergen 2022" href="http://www.uib.no/uib2022">
+                <img alt="Universitetet i Bergen 2022" src="' . $logo0_nb . '" />
+              </a>
+            </div>
             <div id="banner2" class="banner">
-              <a title="Grunnlovsjubileet 2014" href="http://www.uib.no/grunnlovsjubileet2014">
-                <img alt="Grunnlovsjubileet 2014" src="' . $logo0_nb . '" />
+              <a title="Holbergprisen" href="http://holbergprisen.no">
+                <img alt="Holbergprisen" src="' . $logo1_nb . '" />
               </a>
             </div>
           ';
