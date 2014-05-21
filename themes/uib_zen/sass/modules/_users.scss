@@ -38,7 +38,9 @@ $zen-column-count: 5;
 
 #user_user_full_group_user_first,
 #user_user_full_group_user_second {
-  .field-label, .block-title {
+  .field-label,
+  .block-title,
+  .link-title {
     border: none;
     color: #333;
     font-family: $verdana;
@@ -49,10 +51,19 @@ $zen-column-count: 5;
   }
 }
 
+.field-name-field-uib-user-url .link-title::after {
+  content: ":";
+}
+
+.field-name-field-uib-user-ou {
+  list-style: none;
+}
+
 #user_user_full_group_media_element {
   border: solid 1px silver;
   margin-bottom: 20px;
-  padding: 10px;}
+  padding: 10px;
+}
 
 #user_user_full_group_user_second {
   .field, .block {

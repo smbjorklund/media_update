@@ -1402,13 +1402,13 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'description' => 'Your homepage link',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'link_url',
+        'type' => 'link_separate',
         'weight' => 33,
       ),
     ),
