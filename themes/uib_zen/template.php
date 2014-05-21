@@ -497,12 +497,12 @@ function uib_zen_preprocess_node(&$variables, $hook) {
 
     if ($variables['type'] == 'uib_article') {
       $article_type = $metadata->field_uib_article_type->value();
-      $kicker = $metadata->field_uib_kicker->value();
-      $title = $metadata->label();
+      $kicker = $metadata->field_uib_kicker->value(array('sanitize' => TRUE));
+      $title = check_plain($metadata->label());
       $created = $metadata->created->value();
       $changed = $metadata->changed->value();
       $byline = $metadata->field_uib_byline->value();
-      $external_author = $metadata->field_uib_external_author->value();
+      $external_author = $metadata->field_uib_external_author->value(array('sanitize' => TRUE));
       $uib_text = $metadata->field_uib_text->value();
       hide($variables['content']['field_uib_byline']);
 

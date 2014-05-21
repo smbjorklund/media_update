@@ -73,7 +73,7 @@ function uib_urlfilter_field_formatter_view($entity_type, $entity, $field, $inst
     $elements = array();
     foreach ($items as $delta => $item) {
       $link = _uib_urlfilter__replace($item['url']);
-      $elements[$delta]['#markup'] = '<a href="' . $link . '">' . $item['title'] . '</a>'; // Assign it to the #markup of the element
+      $elements[$delta]['#markup'] = '<a href="' . $link . '">' . check_plain($item['title']) . '</a>'; // Assign it to the #markup of the element
     }
     return $elements;
   }
