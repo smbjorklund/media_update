@@ -4,7 +4,9 @@
       $('.uib-tabs-container').tabs({
         show: function(event, ui) {
           if (ui.panel.id) {
+            var initialScroll = $(window).scrollTop();
             window.location.hash = ui.panel.id;
+            $(window).scrollTop(initialScroll);
           }
         }
       });
