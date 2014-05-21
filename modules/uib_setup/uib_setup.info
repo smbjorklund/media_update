@@ -193,6 +193,7 @@ features[filter][] = restricted_html
 features[filter][] = simple_editor
 features[image][] = area_bottom
 features[image][] = area_main
+features[image][] = colophone_logo
 features[image][] = content_main
 features[image][] = content_sidebar
 features[image][] = custom_logo
