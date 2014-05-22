@@ -1,0 +1,23 @@
+/**
+ * @file
+ * Section showing opening hours/address information.
+ */
+
+$zen-column-count: 5;
+
+.field-name-field-uib-offices,
+.geofieldMap {
+  @include zen-clear(both);
+}
+
+.field-name-field-uib-offices {
+  .first {
+    @include zen-grid-item(2, 1);
+  }
+  .second {
+    @include zen-grid-item(1, 3);
+  }
+  .field-name-field-uib-geolocation {
+    @include zen-grid-item(2, 4);
+  }
+}
