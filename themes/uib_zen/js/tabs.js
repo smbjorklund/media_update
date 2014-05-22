@@ -7,6 +7,7 @@
             var initialScroll = $(window).scrollTop();
             window.location.hash = ui.panel.id;
             $(window).scrollTop(initialScroll);
+            $('#page').scrollTop(0);
           }
         }
       });
