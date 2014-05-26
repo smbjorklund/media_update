@@ -144,7 +144,6 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     $admin_user = user_load(1);
   }
 
-  $expected_status = (substr($study['id'], -2) == '-F') ? 0 : 1;
   static $uib_nus_list;
   if (!isset($uib_nus_list)) {
     $uib_nus_list = array();
@@ -192,7 +191,7 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
     $study_node = entity_create('node', array(
       'type' => 'uib_study',
       'uid' => 1,
-      'status' => $expected_status,
+      'status' => 1,
       'revision' => 0,
       )
     );
@@ -380,9 +379,9 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       }
     }
 
-    if ($wrapper->status->value() != $expected_status) {
-      $wrapper->status->set($expected_status);
-      $edit[] = "status=$expected_status";
+    if ($wrapper->status->value() == 0) {
+      $wrapper->status->set(1);
+      $edit[] = "status";
     }
 
     if (empty($study['title_no']) && empty($study['title_en'])) {
