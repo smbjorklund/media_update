@@ -1008,14 +1008,17 @@ function uib_zen_field($variables) {
     }
 
     if ($variables['element']['#field_name'] == 'field_uib_relation') {
-      $output .= '<div class="field-wrapper">';
       // Render this particular field as an unordered list
       // Render the items.
       $output .= '<ul class="field-items clearfix">';
       foreach ($variables['items'] as $delta => $item) {
+        $nids = array_keys($item['node']);
+        if ($item['node'][$nids[0]]['#bundle'] == 'uib_study') {
+          $item['node'][$nids[0]]['#node']->title = __uib_title('node/' . $nids[0]);
+        }
         $output .= drupal_render($item);
       }
-      $output .= '</ul></div>';
+      $output .= '</ul>';
     }
     else {
 
@@ -1048,14 +1051,14 @@ function __uib_title($path) {
   global $language;
   $current_language = $language->language;
   $id = FALSE;
-  if ($type == 'taxonomy' and $path[1] == 'term') {
+  if ($type == 'taxonomy' and $path[1] == 'term' and is_numeric($path[2])) {
     $type = $type . '_term';
     $id = array($path[2]);
   }
-  elseif ($type == 'node') {
+  elseif ($type == 'node' and is_numeric($path[1])) {
     $id = array($path[1]);
   }
-  if (is_numeric($id)) {
+  if ($id) {
     $result = entity_load($type, $id);
   }
   if (!empty($result)) {
