@@ -169,6 +169,7 @@ function uib_study_field_default_field_bases() {
         'integrertemasterpr-profesjonsst' => 'Integrated Master’s degrees/Profession studies',
         'arsstudium' => 'One-year programmes',
         'postgraduate' => 'Postgraduate programmes',
+        'evu' => 'Continuing Education',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
