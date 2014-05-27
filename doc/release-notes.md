@@ -1,3 +1,54 @@
+# Release 2014-05-26 tag: R7.6
+
+R7.6 har gjort følgende oppdateringer av systemet
+
+Styling og justeringer:
+
+* Justerer fargen på lenker for bedre kontrast (universell utforming) #6590
+* Justering på styling på global kalender #6404
+* Gir styling til nøkkeltall-informasjon som skal vises på nye sider om UiB #6368
+
+Feilrettinger:
+
+* Justerer antallet treff som vises i autocomplete felt når man skal velge område å publisere til. Justerer også regelen for hvilke områder man får lov til å publisere til #6520
+* Retter feil i headerfeltet på uib.no/grieg #6603
+* Tetter et sikkerhetshull i felt for oppretting av ny artikkel #6627
+* Fjerner merket som la seg rundt meny når man klikket i hovedmeny på område – effekt av at vi har justert i muligheten for å kunne bruke tab-tast for å navigerer på sidene (universell utforming) #6483
+* Setter på plass lenke for bytte av språk i webdesk (forsvant ved en feil etter forrige oppdatering) #6517
+* Setter på plass “Add content”-knapp i engelsk webdesk (forsvant ved en feil etter forrige oppdatering) #6516
+* Skjuler feltet for fremhevete artikler for alle områder utenom /Aktuelt, der denne funksjonen er i bruk #6401
+* Retter bug i menyvelger på android enheter #6400
+* Retter opp feil som gjorde at innholdet “hoppet” på siden når man byttet mellom faner i artikkel #6250
+
+Nye funksjoner:
+
+* Legger til funksjon som gjør at man kan laste opp flere bilder til hovedmedia på artikkel. #6485
+* Legger til en ny hendelsestype (boklansering) #6266
+* Legger til en statistikkside for administratorer i webdesken  #6380
+
+* Legger til lenke til Cristin på nye personsider #6568
+* Viser innholdsfaner på nye personsider #6433
+* Knytter sosiale medier til nye personsider #6420
+* Legger til områdetilhørigheter til nye personsider #6415
+* Kombinerer Sebra-data med mulighet til å legge inn egne data på nye personsider #6412
+* Legger til “Rediger din profil”-knapp på ny personside #6430
+* Kombinerer nye personsider med data fra organisasjons-sted #6413
+
+* Leverer funksjon som legger til rette for bibsys-søk i toppbanner for de nye sidene til UB #6652
+* Legger til felt for book widget påny forside for UB  #5741
+* Legger til live chat på ny forside for UB #5739
+* Legger til funksjon for å vise åpningstider på avdelingsbiblioteker på ny forside for UB #5737
+* Ny forsidemal for UB #5617
+
+Tekniske saker:
+
+* Oppdaterer norske oversettelser fra Drupal #6611
+* Oppdaterer til Drupal 7.28 #6480
+* Migrerer nye områder #5874
+* Justerer filter for redigering i full html for administratorer #6634
+* Fiks for feilmeldinger i log fra Drupal #6617
+
+
 # Release 2014-05-12 tag: R7.5
 
 R7.5 har gjort følgende oppdateringer av systemet
