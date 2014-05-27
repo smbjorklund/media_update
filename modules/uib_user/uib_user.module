@@ -71,6 +71,13 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
   }
   if ($form['#form_id'] == 'user_profile_form') {
     field_group_hide_field_groups($form, array('group_uib_hidden'));
+    $profile_user = entity_metadata_wrapper('user', $form['#user']);
+    if ($profile_user->field_uib_position_category->value() == 'faculty') {
+      $form['field_uib_user_field'][$form['field_uib_user_field']['#language']][0]['#title'] = t('Research');
+    }
+    elseif ($profile_user->field_uib_position_category->value() == 'staff') {
+      $form['field_uib_user_field'][$form['field_uib_user_field']['#language']][0]['#title'] = t('Work');
+    }
   }
 
   // Disable fields that are synchronized with SEBRA
