@@ -552,14 +552,6 @@ $zen-auto-include-item-base: false;
     min-height: 115px;
   }
 
-  /* Persons mobile */
-  .view-ansatte {
-    margin-left: 0;
-    .uib-ansatte-section .media {
-      float: none;
-    }
-  }
-
   /* Article mobile */
   .node-uib-article .field-name-field-uib-text {
     @include zen-grid-item(1, 1);
@@ -635,11 +627,24 @@ $zen-auto-include-item-base: false;
    */
   $zen-column-count: 4;
 
+  .view-ansatte {
+    .view-content h3 {
+      @include zen-grid-item(4,1);
+    }
+    .media {
+      @include zen-grid-item(2,1);
+    }
+    .user-competence {
+      @include zen-grid-item(2,3);
+    }
+  }
+
   #main {
     max-width: 722px;
 
-    .node-type-uib-study & {
-      max-width: 100%;
+    .node-type-uib-study &,
+    .page-node-persons & {
+      max-width: 910px;
     }
   }
 
@@ -746,12 +751,6 @@ $zen-auto-include-item-base: false;
 
   /* Area "teaser" block */
   .field-name-field-uib-relation {
-    @include zen-clear();
-    @include zen-grid-item(4, 1);
-  }
-
-  /* Persons list */
-  .uib-ansatte-section {
     @include zen-clear();
     @include zen-grid-item(4, 1);
   }
@@ -893,19 +892,6 @@ $zen-auto-include-item-base: false;
     padding-left: 15px;
   }
 
-  /* Persons list tablet */
-  .view-ansatte {
-    margin-left: 0;
-    .media {
-      width: 324px;
-    }
-  }
-
-  .uib-ansatte-section {
-    @include zen-clear();
-    @include zen-grid-item(4, 1)
-  }
-
   /* Courses tablet*/
   .view-courses {
     @include zen-grid-item(4, 1);
@@ -996,6 +982,18 @@ $zen-auto-include-item-base: false;
    * Use 5 grid columns for larger screens.
    */
   $zen-column-count: 5;
+  
+  .view-ansatte {
+    .view-content h3 {
+      @include zen-grid-item(1,1);
+    }
+    .media {
+      @include zen-grid-item(2,2);
+    }
+    .user-competence {
+      @include zen-grid-item(2,4);
+    }
+  }
 
   .region-bottom {
     .block {
@@ -1086,13 +1084,6 @@ $zen-auto-include-item-base: false;
   #node_uib_testimonial_full_group_article_sidebar,
   #node_uib_article_full_group_article_sidebar {
     @include zen-grid-item(1, 4)
-  }
-
-  .view-ansatte {
-    margin-left: 0;
-    .media {
-      width: 324px;
-    }
   }
 
   /* News archive */
@@ -1270,12 +1261,6 @@ $zen-auto-include-item-base: false;
 
   /* Area "teaser" block */
   .field-name-field-uib-relation {
-    @include zen-clear();
-    @include zen-grid-item(4, 1);
-  }
-
-  /* Persons list */
-  .uib-ansatte-section {
     @include zen-clear();
     @include zen-grid-item(4, 1);
   }

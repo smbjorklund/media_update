@@ -33,7 +33,6 @@ stylesheets[all][] = css/styles.css
 stylesheets[all][] = css/normalize.css
 stylesheets[all][] = css/wireframes.css
 stylesheets[all][] = css/layouts/responsive-sidebars.css
-stylesheets[all][] = css/page-backgrounds.css
 stylesheets[all][] = css/tabs.css
 stylesheets[all][] = css/pages.css
 stylesheets[all][] = css/blocks.css

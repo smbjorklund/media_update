@@ -218,8 +218,10 @@ body {
  */
 
 #main #content {
-  padding-top: $zen-gutter-width;
-  padding-bottom: $zen-gutter-width;
+  @media all and (min-width: 720px) {
+    padding-top: $zen-gutter-width;
+    padding-bottom: $zen-gutter-width;
+  }
 }
 
 .section-node-add #content {

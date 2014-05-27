@@ -253,57 +253,6 @@ table.cols-6 {
   font-size: 1.1em;
 }
 
-/* Persons */
-.view-ansatte {
-  clear: both;
-  ul.pager {
-    padding-top: 30px;
-  }
-  .ctools-auto-submit-full-form {
-    margin-left: 20px;
-    padding-top: 20px;
-  }
-  .title {
-    font-size: 2em;
-  }
-}
-
-.uib-ansatte-section {
-  border-bottom: 1px solid #DEDFDD;
-  background-color: #F1F1EF;
-  margin-bottom: 10px;
-  h3 {
-    display: block;
-    height: 40px;
-    padding-left: 20px;
-    font-size: 2em;
-    padding-top: 20px;
-  }
-  h2 {
-    border: none;
-    font-family: $verdana;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-transform: none;
-    margin: 0 0 5px;
-  }
-  .media {
-    margin-left: 20px;
-    float: left;
-    height: 150px;
-    img {
-      display: block;
-      float: left;
-      margin-top: 2px;
-      margin-right: 20px;
-      max-width: 80px;
-    }
-    .info {
-      padding: 0 10px 0 100px;
-    }
-  }
-}
-
 .node-uib-testimonial .node-readmore a {
   color: $link-blue;
   font-weight: bold;

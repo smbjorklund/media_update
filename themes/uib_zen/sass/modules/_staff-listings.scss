@@ -1,0 +1,61 @@
+/////////////
+// Styles for the ansatte view
+/////////////
+.view-ansatte {
+  .info {
+    @include media_content_wrapper();
+  }
+  h2 {
+    font-size: 1.1em;
+  }
+  p {
+    max-width: 100%;
+  }
+  h2, p, .item-list ul {
+    margin: 0 0 0 0;
+  }
+  .view-content h3 {
+    color: #ccc;
+    font-size: 8em;
+    line-height: 0.7em;
+    margin: 0.15em 0;
+  }
+  .media {
+    &>a,
+    &>span {
+      @include media(80px, left);
+      margin-right: 10px;
+    }
+  }
+  .user-competence {
+    li {
+      float: left;
+      &:nth-child(n+2) {
+        padding-left: 0.5em;
+        &:before {
+          content: "|";
+          padding-right: 0.5em;
+        }
+      }
+    }
+  }
+  .view-content h3, 
+  .media,
+  .user-competence {
+    @include zen-grid-item-base;
+  }
+}
+.uib-ansatte-section {
+  @include zen-clear();
+  background: $light-grey;
+  margin-bottom: 1em;
+  &>div {    margin: 0.5em 0;
+    padding: 1em 0;
+    @media all and (min-width: 720px) and (max-width: 959px) {
+      @include zen-clear();
+    }
+    &:after {
+      @extend %clearfix;
+    }
+  }
+}
