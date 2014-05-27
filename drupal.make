@@ -22,6 +22,7 @@ projects[admin_menu][version] = 3.0-rc4
 projects[advanced_help][version] = 1.1
 projects[better_exposed_filters][version] = 3.0-beta4
 projects[better_formats][version] = 1.0-beta1
+projects[better_formats][patch][] = https://drupal.org/files/issues/better_formats-default-text-format-override-2272385-2_0.patch
 projects[bot][revision] = d0e10c65616f267543e717addc17422979f83bd2
 projects[calendar][version] = 3.4
 projects[coder][version] = 2.2
