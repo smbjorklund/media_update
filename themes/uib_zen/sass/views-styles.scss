@@ -172,20 +172,33 @@ table.cols-6 {
 }
 
 /* Calendar */
-.view-display-id-block_2 { /* Calendar */
+.view-calendar, .view-global-calendar { /* Calendar */
   float: none;
   margin-left: 0;
   .view-header h3 {
     font-weight: normal;
+    text-transform: uppercase;
+    a {
+      color: #b8530c;
+    }
+  }
+  thead .days{
+    color: #333;
   }
   .mini {
     padding: 0;
+    border-bottom: solid 2px #fff;
+    border-right: solid 2px #fff;
+    border-left: solid 2px #fff;
+    font-size: 1.05em;
+
   }
   .mini-day-on {
     background-color: #F1F1F1;
   }
   .has-no-events {
     background-color: #F1F1F1;
+    color: #333;
   }
   .today {
     .mini-day-on {
@@ -195,26 +208,23 @@ table.cols-6 {
       }
     }
   }
-  .has-events {
-    a {
-      color: #BB5200;
-      text-decoration: none;
-    }
-    .calendar-empty {
-      background: #F1F1F1;
-    }
-  }
   .date-nav {
     padding-bottom: 0;
+    color: #b8530c;
   }
   .has-no-events, .mini-day-on {
     padding: 10px;
   }
   .calendar-calendar td {
     text-align: center;
+    a {
+      color: #b8530c;
+      font-weight: bold;
+      text-decoration: none;
+    }
   }
 }
-
+/* Calendar feed in sidebar and calendar page */
 .view-calendar .field-content .date-display-single {
     font-weight: bold;
     color: #b8530c;
