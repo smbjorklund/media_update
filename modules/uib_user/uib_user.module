@@ -172,17 +172,19 @@ function uib_user_user_view_alter(&$build) {
   drupal_add_library('system' , 'ui.tabs');
   drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js', array('group' => JS_THEME, ));
 
+  $profile_user = entity_metadata_wrapper('user', $build['#account']);
+
   // Add email address with markup as if it was a field
   $build['user_email'] = array(
     '#weight' => 32,
-    '#markup' => uib_user_add_field_markup(t('E-mail'), 'uib-user-email', l($build['#account']->mail, 'mailto:' . $build['#account']->mail, array('absolute' => TRUE))),
+    '#markup' => uib_user_add_field_markup(t('E-mail'), 'uib-user-email', l($profile_user->mail->value(), 'mailto:' . $profile_user->mail->value(), array('absolute' => TRUE))),
   );
 
   // Add a link to edit the profile
   global $user;
   $options = array();
   $options['attributes']['class'] = 'button uib-user-edit-button';
-  $button_url = 'user/' . $build['#account']->uid . '/edit';
+  $button_url = 'user/' . $profile_user->getIdentifier() . '/edit';
   if ($user->uid == 0) {
     $options['query']['destination'] = $button_url;
     $button_url = 'user';
@@ -197,13 +199,11 @@ function uib_user_user_view_alter(&$build) {
   $build['#group_children']['user_email'] = 'group_user_contact';
 
   // Manage field overrides
-  if (!empty($build['#account']->field_uib_user_alt_firstname['und'][0]['value'])) {
-    $build['field_uib_first_name'][0]['#markup'] =
-    $build['#account']->field_uib_user_alt_firstname['und'][0]['value'];
+  if ($profile_user->__isset('field_uib_user_alt_firstname')) {
+    $build['field_uib_first_name'][0]['#markup'] = $profile_user->field_uib_user_alt_firstname->value();
   }
-  if (!empty($build['#account']->field_uib_user_alt_lastname['und'][0]['value'])) {
-    $build['field_uib_last_name'][0]['#markup'] =
-    $build['#account']->field_uib_user_alt_lastname['und'][0]['value'];
+  if ($profile_user->__isset('field_uib_user_alt_lastname')) {
+    $build['field_uib_last_name'][0]['#markup'] = $profile_user->field_uib_user_alt_lastname->value();
   }
   global $language;
   if (!empty($build['#account']->field_uib_user_alt_address[$language->language][0]['thoroughfare'])) {
@@ -211,6 +211,14 @@ function uib_user_user_view_alter(&$build) {
       if (isset($build['field_uib_user_ou'][0]['node'][$build['field_uib_user_ou']['#items'][0]['target_id']]['field_uib_visit_address'][0]['#address'][$item_name])) {
         $build['field_uib_user_ou'][0]['node'][$build['field_uib_user_ou']['#items'][0]['target_id']]['field_uib_visit_address'][0]['#address'][$item_name] = $item;
       }
+    }
+  }
+  if (!empty($build['field_uib_user_field'])) {
+    if ($profile_user->field_uib_position_category->value() == 'faculty') {
+      $build['field_uib_user_field']['#title'] = t('Research');
+    }
+    elseif ($profile_user->field_uib_position_category->value() == 'staff') {
+      $build['field_uib_user_field']['#title'] = t('Work');
     }
   }
 
