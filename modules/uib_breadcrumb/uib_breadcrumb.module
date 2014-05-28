@@ -113,9 +113,10 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
         break;
       case 'uib_study':
         $study_type = $item['page_arguments'][0]->field_uib_study_type['und'][0]['value'];
+        $study_category = $item['page_arguments'][0]->field_uib_study_category['und'][0]['value'];
         $uib_active_trail[2] = array(
           'title' => ($study_type == 'course') ? t('Course') : t('Studyprogramme'),
-          'href' => ($study_type == 'course') ? 'course' : 'studyprogramme',
+          'href' => ($study_type == 'course') ? ($study_category == 'evu' ? 'utdanning/evu/courses' : 'course') : 'studyprogramme',
           'link_path' => '',
           'localized_options' => array(),
           'type' => 0,
