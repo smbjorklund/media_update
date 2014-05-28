@@ -201,9 +201,21 @@ function uib_user_user_view_alter(&$build) {
     '#markup' => l(t('Edit your profile'), $button_url, $options),
   );
 
+  // Add a vcard download link
+  if ($build['#account']->field_uib_user_domain['und'][0]['value'] == 'uib') {
+    $vcard_url = 'user/' . $build['#account']->uid . '/card.vcf';
+    $build['user_vcard_link'] = array(
+      '#weight' => 37,
+      '#markup' => l(t('Download vCard'), $vcard_url, array(
+        'attributes' => array('class' => 'uib-user-vcard'),
+      )),
+    );
+  }
+
   // Move stuff into field groups
   $build['#group_children']['user_picture'] = 'group_user_media';
   $build['#group_children']['user_email'] = 'group_user_contact';
+  $build['#group_children']['user_vcard_link'] = 'group_user_contact';
 
   // Manage field overrides
   if ($profile_user->__isset('field_uib_user_alt_firstname')) {
@@ -294,4 +306,99 @@ function uib_user_add_field_markup($label, $class, $data) {
     'item_attributes' => array(0 => ''),
     )
   );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function uib_user_menu() {
+  $items = array();
+
+  $items['user/%user/card.vcf'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'uib_user__vcard_page',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+  );
+
+  return $items;
+}
+
+/**
+ * Generate vCard response for the given user.
+ */
+function uib_user__vcard_page($user_entity = NULL) {
+  if (!empty($user_entity)) {
+    drupal_add_http_header('Content-Type', 'application/vcard');
+    $vcard = uib_user__vcard($user_entity);
+    echo $vcard;
+    return;
+  }
+  return MENU_NOT_FOUND;
+}
+
+/**
+ * Generate the vCard for the given user.
+ * Returns the vCard document as * a string.
+ *
+ * @param  [user object] $user_entity
+ *
+ * @return [string] Vcard formatted data
+ *
+ */
+function uib_user__vcard($user_entity) {
+  $vc_user = entity_metadata_wrapper('user', $user_entity);
+  // Name
+  $first_name = $vc_user->field_uib_first_name->value();
+  $last_name = $vc_user->field_uib_last_name->value();
+  $full_name = "$first_name $last_name";
+
+  // Position
+  $title = $vc_user->field_uib_position->value();
+  $title_alt = $vc_user->field_uib_user_alt_position->value();
+  if (!empty($title_alt)) {
+    $title .= ", $title_alt";
+  }
+
+  // Address
+  $ou_address = $vc_user->field_uib_user_ou->field_uib_visit_address->value();
+  $address_override = $vc_user->field_uib_user_alt_address->value();
+  if (!empty($address_override)) {
+    foreach ($address_override as $item => $value) {
+      if (!empty($value) && $value != $ou_address[$item]) {
+        $ou_address[$item] = $value;
+      }
+    }
+  }
+
+  $vcard = array();
+  $vcard[] = 'BEGIN:VCARD';
+  $vcard[] = 'VERSION:3.0';
+  $vcard[] = "N:$last_name;$first_name;";
+  $vcard[] = "FN:$full_name";
+  $vcard[] = 'ORG:University of Bergen, ' . $vc_user->field_uib_user_ou->label();
+  $vcard[] = "TITLE:$title";
+  // $vcard[] = 'TEL;TYPE=WORK,VOICE:' . $vc_user->field_uib_phone->value();
+  $vcard[] = 'TEL;TYPE=WORK,VOICE:' . $user_entity->field_uib_phone['und'][0]['value'];
+
+  $adr = array();
+  if (!empty($ou_address['thoroughfare'])) {
+    $adr[] = $ou_address['thoroughfare'];
+  }
+  if (!empty($ou_address['postal_code'])) {
+    $adr[] = $ou_address['postal_code'];
+  }
+  if (!empty($ou_address['locality'])) {
+    $adr[] = $ou_address['locality'];
+  }
+  if ($ou_address['country'] == 'NO') {
+    $adr[] = t('Norway');
+  }
+  $vcard[] = 'ADR;TYPE=WORK:;;' . implode(';', $adr);
+
+  $vcard[] = 'EMAIL;TYPE=PREF,INTERNET:' . $vc_user->mail->value();
+  $vcard[] = 'REV:' . date('c');
+  $vcard[] = 'END:VCARD';
+  $vcard[] = '';
+  return implode("\n", $vcard);
 }
