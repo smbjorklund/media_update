@@ -126,10 +126,10 @@ See [check\_plain()](http://api.drupal.org/api/drupal/includes%21bootstrap.inc/f
 
     array(
       '#prefix' => '<h1>',
-      hello => array( '#markup' => t('Hello'),
-      comma => array( '#markup' => ', ',
-      world => array( '#markup' => t('Word'),
-      yeah  => array( '#markup' => '!',
+      'hello'   => array( '#markup' => t('Hello'),
+      'comma'   => array( '#markup' => ', ',
+      'world'   => array( '#markup' => t('Word'),
+      'yeah'    => array( '#markup' => '!',
       '#suffix' => '</h1>',
     )
 
