@@ -111,3 +111,11 @@ function uib_user_update_7005() {
     }
   }
 }
+
+/**
+ * Delete the uib_user_vcard field
+ */
+function uib_user_update_7006() {
+  /* Must also explictly delete fields that are gone from the feature */
+  field_delete_field('field_uib_user_vcard');
+}

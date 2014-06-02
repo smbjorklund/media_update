@@ -38,5 +38,4 @@ features[field_base][] = field_uib_user_room
 features[field_base][] = field_uib_user_social_media
 features[field_base][] = field_uib_user_teaching
 features[field_base][] = field_uib_user_url
-features[field_base][] = field_uib_user_vcard
 features_exclude[taxonomy][uib_research_fields] = uib_research_fields

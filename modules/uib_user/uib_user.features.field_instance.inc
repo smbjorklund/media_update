@@ -1446,46 +1446,6 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     ),
   );
 
-  // Exported field_instance: 'user-user-field_uib_user_vcard'
-  $field_instances['user-user-field_uib_user_vcard'] = array(
-    'bundle' => 'user',
-    'deleted' => 0,
-    'description' => 'Upload your vcard to be available for download from your profile.',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'file',
-        'settings' => array(
-          'field_multiple_limit' => -1,
-          'field_multiple_limit_offset' => 0,
-        ),
-        'type' => 'file_default',
-        'weight' => 37,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_uib_user_vcard',
-    'label' => 'Vcard',
-    'required' => 0,
-    'settings' => array(
-      'description_field' => 0,
-      'entity_translation_sync' => FALSE,
-      'file_directory' => '',
-      'file_extensions' => 'vcf vcard',
-      'max_filesize' => '',
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'file',
-      'settings' => array(
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'file_generic',
-      'weight' => 3,
-    ),
-  );
-
   // Exported field_instance: 'user-user-field_uib_w2_id'
   $field_instances['user-user-field_uib_w2_id'] = array(
     'bundle' => 'user',
@@ -1559,10 +1519,8 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Title for optional tab');
   t('Title for the optional tab');
   t('Upload a Curriculum Vitae document to be available for download from your user profile.');
-  t('Upload your vcard to be available for download from your profile.');
   t('Url');
   t('User Domain');
-  t('Vcard');
   t('Visiting address override');
   t('Your homepage link');
   t('Your room number');
