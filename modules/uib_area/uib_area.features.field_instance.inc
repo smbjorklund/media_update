@@ -888,7 +888,7 @@ function uib_area_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'field_multiple_limit' => -1,
@@ -3302,7 +3302,7 @@ function uib_area_field_default_field_instances() {
           'geofield_map_zoom' => 15,
         ),
         'type' => 'geofield_map_map',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -3366,21 +3366,21 @@ function uib_area_field_default_field_instances() {
         'weight' => 4,
       ),
       'teaser' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'office_hours',
         'settings' => array(
           'closedformat' => 'Closed',
-          'compress' => FALSE,
+          'compress' => 0,
           'current_status' => array(
             'closed_text' => 'Currently closed',
             'open_text' => 'Currently open!',
-            'position' => 'hide',
+            'position' => 'before',
           ),
           'date_first_day' => 1,
           'daysformat' => 'long',
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
-          'grouped' => FALSE,
+          'grouped' => 0,
           'hoursformat' => 0,
           'separator_day_hours' => ': ',
           'separator_days' => '<br />',
@@ -3644,10 +3644,14 @@ function uib_area_field_default_field_instances() {
         'weight' => 6,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
+        'label' => 'hidden',
+        'module' => 'phone',
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
+        'type' => 'phone',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
