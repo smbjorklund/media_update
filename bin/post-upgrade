@@ -13,6 +13,9 @@ fi
 
 set -x
 
+# Because of RTS-6687 (publish the -F courses)
+bin/site-drush uib-sync-fs --verbose
+
 # Migrate
 date +%FT%T
 bin/site-drush migrate-import --verbose Area --strict=0 --area_subset=uib_areas_subset_rest77.txt
