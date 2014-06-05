@@ -36,7 +36,7 @@ function uib_devel_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'devel_error_handlers';
   $strongarm->value = array(
-    4 => '4',
+    1 => '1',
   );
   $export['devel_error_handlers'] = $strongarm;
 
