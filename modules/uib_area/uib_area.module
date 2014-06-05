@@ -283,6 +283,33 @@ function uib_area_block_view($delta='') {
   return $block;
 }
 
+function uib_area_preprocess_page(&$variables) {
+  if (isset($variables['page']['above_content']['uib_area_area_banner']['#markup'])) {
+    $markup = $variables['page']['above_content']['uib_area_area_banner']['#markup'];
+    if (preg_match('/<!--\s*Resources?:\s*(.+?)\s*-->/', $markup, $matches)) {
+      foreach(preg_split('/\s*,\s*/', $matches[1]) as $resource) {
+        switch($resource) {
+        case 'uib.tabs':
+          drupal_add_library('system' , 'ui.tabs');
+          drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js', array('group' => JS_THEME, ));
+          break;
+        default:
+          if (substr($resource, -3) == '.js') {
+            drupal_add_js($resource, array('type' => 'external', 'group' => JS_THEME));
+          }
+          elseif(substr($resource, -4) == '.css') {
+            drupal_add_css($resource, array('type' => 'external', 'group' => CSS_THEME));
+          }
+          else {
+            uibx_log("Don't know how to process banner resource '$resource'", 'warning');
+          }
+          break;
+        }
+      }
+    }
+  }
+}
+
 /**
  * Returns the full address of a place as a string
  */
