@@ -77,6 +77,12 @@ function uib_area_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'uib_area-area_offices' => array(
+          'module' => 'uib_area',
+          'delta' => 'area_offices',
+          'region' => 'above_content',
+          'weight' => '0',
+        ),
         'uib_area-area_parents' => array(
           'module' => 'uib_area',
           'delta' => 'area_parents',

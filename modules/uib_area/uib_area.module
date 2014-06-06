@@ -45,6 +45,10 @@ function uib_area_block_info() {
       'info' => t('Area global html container'),
       'status' => TRUE,
     ),
+    'area_offices' => array(
+      'info' => t('Area offices in different locations'),
+      'status' => TRUE,
+    ),
   );
 }
 
@@ -279,6 +283,14 @@ function uib_area_block_view($delta='') {
         }
       }
     break;
+    case 'area_offices':
+      if(!empty($area)) {
+        $wrapped_area = entity_metadata_wrapper('node', $area);
+        $block['subject'] = NULL;
+        if ($wrapped_area->field_uib_offices->value()) {
+          $block['content'] = uib_area__display_nodes_as_tabs($wrapped_area->field_uib_offices->value(), 'offices');
+        }
+      }
   }
   return $block;
 }
@@ -321,6 +333,37 @@ function uib_area__format_address($place) {
   $p_place = $place->field_uib_postal_address['und'][0]['locality'];
   return $address . ', ' . t('N-') . $p_code . ' ' . $p_place;
 }
+
+/**
+ * @param   array   $items      The content of the tabs
+ * @param   string  $class      Additional classnames needed for the tabs container
+ * @param   string  $view_mode  The view mode of the node displayed
+ * @return  string  html        The markup needed for the tabs
+ */
+function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 'teaser') {
+  drupal_add_library('system' , 'ui.tabs');
+  drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js',
+    array('group' => JS_THEME, )
+  );
+  $tabs = '<div class="uib-tabs-container';
+  $tabs .= $class ? ' ' . $class : '';
+  $tabs .= '">';
+  $tabs_nav = '<ul>';
+  $tabs_content = '';
+  foreach ($items as $key => $item) {
+    $tabs_nav .= '<li><a href="#uib-tab--' . $key . '">' . $item->title . '</li>';
+    $tabs_content .= '<div id="uib-tab--' . $key . '">';
+    $item_view = node_view($item, $view_mode);
+    unset($item_view['links']);
+    unset($item_view['#contextual_links']);
+    $tabs_content .= render($item_view);
+    $tabs_content .= '</div>';
+  }
+  $tabs_nav .= '</ul>';
+  $tabs .= $tabs_nav . $tabs_content . '</div>';
+  return $tabs;
+}
+
 
 /**
  * uib_area_change_to_h2 description missing

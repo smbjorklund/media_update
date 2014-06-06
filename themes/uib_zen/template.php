@@ -496,17 +496,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
       if ($variables['is_employee']) {
         drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/hide_links.js', array('group' => JS_THEME, ));
       }
-
-      if (!empty($variables['content']['field_uib_offices'])) {
-        drupal_add_library('system' , 'ui.tabs');
-        drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js',
-          array('group' => JS_THEME, )
-        );
-        $prefix = '<div class="uib-tabs-container offices">';
-        $prefix .= __uib_create_tabs_nav($variables['content']['field_uib_offices']);
-        $variables['content']['field_uib_offices']['#prefix'] = $prefix;
-        $variables['content']['field_uib_offices']['#suffix'] = '</div>';
-      }
     }
 
     if ($variables['type'] == 'uib_article') {
@@ -958,15 +947,6 @@ function uib_zen_preprocess_field(&$variables, $hook) {
       $variables['theme_hook_suggestions'][] = 'field__user__label_colonfree';
     }
   }
-
-  if ($variables['element']['#field_name'] == 'field_uib_offices') {
-    foreach ($variables['items'] as $key => $item) {
-      $nids = array_keys($item['node']);
-      unset($variables['items'][$key]['node'][$nids[0]]['#contextual_links']);
-      $variables['items'][$key]['node'][$nids[0]]['#prefix'] = '<div id="uib-tab--' . $key . '">';
-      $variables['items'][$key]['node'][$nids[0]]['#suffix'] = '</div>';
-    }
-  }
 }
 
 /**
@@ -978,22 +958,6 @@ function __uib_render_block($module, $block_id, $weight) {
   $render = _block_get_renderable_array($block_content);
   $render['#weight'] = $weight;
   return $render;
-}
-
-/**
- *
- */
-function __uib_create_tabs_nav($items) {
-  $output = '<ul>';
-  foreach ($items as $key => $item) {
-    if (is_numeric($key)) {
-      $nids = array_keys($item['node']);
-      $title = $item['node'][$nids[0]]['#node']->title;
-      $output .= '<li><a href="#uib-tab--' . $key . '">' . $title . '</li>';
-    }
-  }
-  $output .= '</ul>';
-  return $output;
 }
 
 /**
