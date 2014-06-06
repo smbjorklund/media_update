@@ -99,9 +99,9 @@
         <div id="global-searchform">
           <form method="get" action="http://www.uib.no/search">
             <div class="searchbox">
-              <label style="display:none;" for="searchField"><?php print t('Global search');?></label>
+              <label for="searchField" class="element-invisible"><?php print t('Global search');?></label>
               <input placeholder="<?php print t('Search UiB') ?>" type="text" id="searchField" name="q" value="" autocomplete="off">
-              <label style="display:none;" for="submitbutton">Search button</label>
+              <label for="submitbutton" class="element-invisible">Search button</label>
               <input id="submitbutton" alt="Submit" type="image" src="<?php print base_path() . drupal_get_path('theme', 'uib_zen'); ?>/images/submit.gif" value="Search">
             </div>
           </form>
