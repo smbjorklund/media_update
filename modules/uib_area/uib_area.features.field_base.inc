@@ -1418,7 +1418,7 @@ function uib_area_field_default_field_bases() {
   // Exported field_base: 'field_uib_profiled_article'
   $field_bases['field_uib_profiled_article'] = array(
     'active' => 1,
-    'cardinality' => 4,
+    'cardinality' => 5,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_uib_profiled_article',
