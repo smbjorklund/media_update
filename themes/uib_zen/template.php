@@ -182,18 +182,18 @@ function uib_zen_preprocess_page(&$variables, $hook) {
     $current_area = $variables['node'];
     // use the title of current area
     $variables['page_title'] = $current_area->title;
-    $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
+    $variables['page_title_link'] = l($current_area->title, 'node/' . $current_area->nid, array('attributes' => array('title' => $current_area->title . " " . t('Home'))));
   }
   else {
     $current_area = uib_area__get_current();
     if (!empty($current_area)) {
       // use the title of current area
       $variables['page_title'] = $current_area->title;
-      $variables['page_title_link'] = l(check_plain($current_area->title), 'node/' . $current_area->nid, array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
+      $variables['page_title_link'] = l($current_area->title, 'node/' . $current_area->nid, array('attributes' => array('title' => $current_area->title . " " . t('Home'))));
     }
   }
   if (!empty($current_area) && $current_area->field_uib_area_type['und'][0]['value'] == 'frontpage') {
-    $variables['page_title_link'] = l(check_plain($current_area->title), '', array('attributes' => array('title' => check_plain($current_area->title) . " " . t('Home'))));
+    $variables['page_title_link'] = l($current_area->title, '', array('attributes' => array('title' => $current_area->title . " " . t('Home'))));
   }
 
   if (!is_int(strpos($page_menu_item['path'], 'node/add/'))) {
