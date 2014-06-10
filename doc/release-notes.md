@@ -1,3 +1,45 @@
+# Release 2014-06-11 tag: R7.7.1
+
+Retter stylingfeil som gjorde at man ikke kunne redigere i toppmeny på UB-siden #6796
+
+
+# Release 2014-06-10 tag: R7.7
+
+R7.7 har primært håndtert tilrettelegging for visning av EVU-kurs på w3, samt jobber videre med ny forside for Universitetsbiblioteket og nye personsider. I tillegg migrerer vi det siste området fra w2 til w3.
+
+Diverse saker:
+
+* Migrerer området /forskermobilitet fra w2 til w3 #6752
+* Gjør noen styling-endringer i kalender-visningen #3828
+* Gjør endringer i orange-fargen for å møte krav om kontrast #6714
+* Skjuler feltet for "undervisningssemester" på studieprogramsidene #6774
+* Gir navn til søkefeltet (universell utforming) #6772
+* Retter feil som gjorde at videoer bare viste som en tynn linje på mobil #6771
+* Legger til rette for å endre logoer i kolofon via funksjonaliteten "Eksternt innhold" #6473 #6788
+
+Endringer som tilrettelegger for EVU:
+
+* Henter EVU-kursinformasjon fra FS #6481
+* Gjenopptar listing av %-F (evu) kurs igjen #6687
+* Setter kategorien "EVU" for noen evu-kurs #6688
+* Setter opp beta for liste over alle evu-tilbud og -kurs #6695
+* Setter opp riktig brødsmulesti for evu-kurs  #6718
+* Introduserer en ny artikkeltype for EVU-tilbud #6748
+* Introduserer muligheten for å legge studieprogram som tilknyttet innhold til artikkel #6692
+
+Endringer som tilrettelegger for nye personsider:
+
+* Setter begrenset HTML som default for alle tekstfelt på personsidene #6442
+* Gjør tilpasninger for vcard-feltet på personsidene #6707
+* Endrer navnet på tab på personside etter hvilken type ansatt du er ("Forskning" / "Arbeid") #6708
+
+Endringer knyttet til ny forside for UB
+
+* Legger til funksjonalitet som gir kartvisning for kontorer/steder #6650
+* Plasserer åpningstider/kontorer-feltet øverst på et område #6778
+* Justerer bredde på bannerfeltet på toppen av siden (brukt som søkefelt for UB) #6623
+* Gir mulighet for å bruke tabs i bannerfelt på ub-sidene #6765
+
 # Release 2014-05-26 tag: R7.6
 
 R7.6 har gjort følgende oppdateringer av systemet
