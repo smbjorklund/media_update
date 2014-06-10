@@ -11,6 +11,7 @@
 
   .region-above-content & {
     margin-bottom: 0;
+    clear: both;
   }
 
   &.first { /* The first block in the region */

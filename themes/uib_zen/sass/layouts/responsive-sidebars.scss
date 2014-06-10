@@ -57,6 +57,10 @@ $zen-auto-include-item-base: false;
   max-width: 910px;
 }
 
+#above-content {
+  clear: both;
+}
+
 .page-add-node #main {
   position: relative;
   width: 890px;
