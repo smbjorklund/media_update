@@ -1,4 +1,0 @@
-   1  0 Transculturations: Nordic Network of Transcultural Literary Studies [4119519473738977905, forskningsgruppe]
-
-Counter({'forskningsgruppe': 1})
-max depth 0

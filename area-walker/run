@@ -1,7 +1,0 @@
-#!/bin/sh
-
-mkdir menu
-for area in $(perl -ne 'print unless /^\s*(#|$)/' ../modules/uib_migrate/uib_areas_subset_jurhf.txt); do
-   echo $area
-   ./area-walker $area --ids >menu/$(echo $area | perl -pe 's,/,-,g').txt
-done

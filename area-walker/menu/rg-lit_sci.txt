@@ -1,8 +1,0 @@
-   1  0 Research Group Literature and Science [9000625789282785839, forskningsgruppe]
-   2  1   Research [7578324110829662889, navigationpage]
-   3  1   Projects [7578324110829662881, navigationpage]
-   4  1   Publications [7578324110829662885, navigationpage]
-   5  1   Contact us [7578324110829662877, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

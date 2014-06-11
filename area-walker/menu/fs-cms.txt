@@ -1,8 +1,0 @@
-   1  0 Forskerskole i middelalderstudier [8484772882432234948, forskerskole]
-   2  1   Forskerskolen [3728075057033552527, navigationpage]
-   3  1   Forskning [3733374931408595533, navigationpage]
-   4  1   Aktiviteter [3728075057033552533, navigationpage]
-   5  1   Kontakt [3728075057033552539, navigationpage]
-
-Counter({'navigationpage': 4, 'forskerskole': 1})
-max depth 1

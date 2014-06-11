@@ -1,8 +1,0 @@
-   1  0 Research Group Democracy, Governance, Law and Working Life [6850643199866398219, forskningsgruppe exp:research/global exp:research/global exp:ahkr/en]
-   2  1   Research [5835416888225242449, navigationpage]
-   3  1   Projects [5835416888225242441, navigationpage]
-   4  1   Publications [5835416888225242445, navigationpage]
-   5  1   Contact us [5835416888225242437, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

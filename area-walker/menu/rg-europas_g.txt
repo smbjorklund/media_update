@@ -1,8 +1,0 @@
-   1  0 Research Group The Borders of Europe [6850643199866398163, forskningsgruppe exp:research/global]
-   2  1   Research [5715866669737015022, navigationpage]
-   3  1   Projects [5715866669737015014, navigationpage]
-   4  1   Publications [5715866669737015018, navigationpage]
-   5  1   Contact us [5715866669737015010, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

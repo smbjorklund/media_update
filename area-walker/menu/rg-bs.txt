@@ -1,8 +1,0 @@
-   1  0 Research group for Biomedical Law and Social Law [7799123864365095147, forskningsgruppe]
-   2  1   Research [6733873012789882435, navigationpage]
-   3  1   Projects [6733873012789882427, navigationpage]
-   4  1   Publications [6733873012789882431, navigationpage]
-   5  1   Contact us [6733873012789882423, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

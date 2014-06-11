@@ -1,8 +1,0 @@
-   1  0 Research group for Legal Culture [6484489039644347605, forskningsgruppe]
-   2  1   Research [6484489039644347665, navigationpage]
-   3  1   Projects [6484489039644347657, navigationpage]
-   4  1   Publications [6484489039644347661, navigationpage]
-   5  1   Contact us [6484489039644347653, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

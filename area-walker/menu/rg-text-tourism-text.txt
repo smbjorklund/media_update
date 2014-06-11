@@ -1,8 +1,0 @@
-   1  0 Research Group Text-Tourism-Text [1956825242483578170, forskningsgruppe]
-   2  1   Research [2565186377270436581, navigationpage]
-   3  1   Projects [2565186377270436573, navigationpage]
-   4  1   Publications [2565186377270436577, navigationpage]
-   5  1   Contact us [2565186377270436569, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

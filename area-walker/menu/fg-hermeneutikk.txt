@@ -1,4 +1,0 @@
-   1  0 Hermeneutikk, retorikk, resepsjon [6593422570935316449, forskningsgruppe]
-
-Counter({'forskningsgruppe': 1})
-max depth 0

@@ -1,8 +1,0 @@
-   1  0 Research Group Ancient history, culture and religion [6850643199866398135, forskningsgruppe exp:ahkr/en]
-   2  1   Research [1593651600292544444, navigationpage]
-   3  1   Projects [1593651600292544436, navigationpage]
-   4  1   Publications [1593651600292544440, navigationpage]
-   5  1   Contact us [1593651600292544432, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

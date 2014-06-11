@@ -1,8 +1,0 @@
-   1  0 Research group for Legal Theory [7117914931746643272, forskningsgruppe]
-   2  1   Research [7117914931746643558, navigationpage]
-   3  1   Projects [7117914931746643550, navigationpage]
-   4  1   Publications [7117914931746643554, navigationpage]
-   5  1   Contact us [7117914931746643546, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

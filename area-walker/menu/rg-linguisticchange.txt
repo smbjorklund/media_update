@@ -1,8 +1,0 @@
-   1  0 Society and Linguistic Change [6850643199866398254, forskningsgruppe exp:research/global]
-   2  1   Research [5681761335169942485, navigationpage]
-   3  1   Projects [5681761335169942477, navigationpage]
-   4  1   Publications [5681761335169942481, navigationpage]
-   5  1   Contact us [5681761335169942473, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

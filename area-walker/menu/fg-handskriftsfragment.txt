@@ -1,8 +1,0 @@
-   1  0 Fra håndskriftsfragmenter til bokhistorie [4946515791890384076, forskningsgruppe]
-   2  1   Forskning [4946515791890384416, navigationpage]
-   3  1   Prosjekter [4946515791890384424, navigationpage]
-   4  1   Publikasjoner [4946515791890384428, navigationpage]
-   5  1   Kontakt [4946515791890384420, navigationpage]
-
-Counter({'navigationpage': 4, 'forskningsgruppe': 1})
-max depth 1

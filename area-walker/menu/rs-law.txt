@@ -1,9 +1,0 @@
-   1  0 The Ph.D. programme in law [8206698655763108752, forskerskole exp:research/global exp:jur/en]
-   2  1   The Research School [80606409265788909, navigationpage]
-   3  2     Rules and regulations [5789934119014778705, article]
-   4  1   Research [80606409265788917, navigationpage]
-   5  1   Activities [80606409265788913, navigationpage]
-   6  1   Contact us [80606409265788905, navigationpage]
-
-Counter({'navigationpage': 4, 'article': 1, 'forskerskole': 1})
-max depth 2

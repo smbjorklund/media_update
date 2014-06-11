@@ -123,9 +123,3 @@ site and look for the expected content.
 
 This test suite runs automatically from [Jenkins when new stuff is
 pushed](http://float.uib.no/jenkins/) to the repo.
-
-### `area-walker/`
-
-A Python script to extract information about the content of w2.
-Used to get an overview of what kind of content is found under
-the different areas.
