@@ -72,6 +72,38 @@ $zen-column-count: 5;
   }
 }
 
+@media all and (min-width: 240px) and (max-width: 719px) {
+  .offices {
+  @include zen-clear();
+    .ui-tabs-nav {
+       @include zen-grid-item(1, 1);
+        width: 100%;
+        float: none;
+        li {
+        white-space: normal;
+        width: 100%;
+      }
+    }
+    .field-name-field-uib-hours {
+      @include zen-grid-item (1, 1);
+      width: 100%;
+    }
+    .group-contact-info {
+      @include zen-grid-item(1, 1);
+              width: 100%;
+
+    }
+    .field-name-field-uib-geolocation {
+      @include zen-grid-item(1, 1);
+      padding-right: 0;
+      width: 100%;
+    }
+    h3{
+      font-size: 1.2em;
+    }
+  }
+}
+
 .oh-current-open,
 .oh-wrapper {
   display: block;
@@ -93,7 +125,7 @@ $zen-column-count: 5;
 }
 
 .offices {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   ul.ui-tabs-nav {
     background: #f1f1ef;
     border-radius: 0; // add for other browsers
