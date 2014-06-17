@@ -3368,7 +3368,7 @@ function uib_area_field_default_field_instances() {
           'current_status' => array(
             'closed_text' => 'Currently closed',
             'open_text' => 'Currently open!',
-            'position' => 'before',
+            'position' => 'hide',
           ),
           'date_first_day' => 1,
           'daysformat' => 'long',
