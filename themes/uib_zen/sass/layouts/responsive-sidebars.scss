@@ -327,6 +327,10 @@ $zen-auto-include-item-base: false;
     }
   }
 
+  #block-uib-area-area-offices {
+    @include zen-grid-item-base;
+  }
+
   #block-uib-area-area-banner {
     @include zen-clear();
     @include zen-grid-item-base;
@@ -611,6 +615,10 @@ $zen-auto-include-item-base: false;
         }
       }
     }
+  }
+
+  #block-uib-area-area-offices {
+    @include zen-grid-item-base;
   }
 
   #block-uib-area-area-banner {
