@@ -218,11 +218,18 @@ function uib_user_user_view_alter(&$build) {
   $build['#group_children']['user_vcard_link'] = 'group_user_contact';
 
   // Manage field overrides
+  $safe_value = array('sanitize' => TRUE);
   if ($profile_user->__isset('field_uib_user_alt_firstname')) {
-    $build['field_uib_first_name'][0]['#markup'] = $profile_user->field_uib_user_alt_firstname->value();
+    $alt_name = trim($profile_user->field_uib_user_alt_firstname->value($safe_value));
+    if (!empty($alt_name)) {
+      $build['field_uib_first_name'][0]['#markup'] = $alt_name;
+    }
   }
   if ($profile_user->__isset('field_uib_user_alt_lastname')) {
-    $build['field_uib_last_name'][0]['#markup'] = $profile_user->field_uib_user_alt_lastname->value();
+    $alt_name =  trim($profile_user->field_uib_user_alt_lastname->value($safe_value));
+    if (!empty($alt_name)) {
+      $build['field_uib_last_name'][0]['#markup'] = $alt_name;
+    }
   }
   global $language;
   if (!empty($build['#account']->field_uib_user_alt_address[$language->language][0]['thoroughfare'])) {
