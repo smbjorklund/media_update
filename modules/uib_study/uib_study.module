@@ -396,7 +396,7 @@ function uib_study_block_view($delta = '') {
               if (!empty($s_row['emneheader'])) {
                 $t_row[] = uib_study__insert_t_row($max_depth);
                 $headers = array(t('Course code'), t('Course title'), t('SP'), t('S'), t('R'));
-                $header_titles = array('', '', t('Study points'), t('Semester'), t('Recommended semester'),);
+                $header_titles = array('', '', t('ECTS credits'), t('Semester'), t('Recommended semester'),);
                 foreach ($headers as $key => $title) {
                   $t_row[] = array(
                     'data' => $title,
@@ -540,7 +540,7 @@ function uib_study_block_view($delta = '') {
           else {
             $study_code = $data['emneid']['emnekode'];
             $rows[] = array(t('Course code'), $study_code);
-            $rows[] = array(t('Study points'), $data['studiepoeng']);
+            $rows[] = array(t('ECTS credits'), $data['studiepoeng']);
             //$rows[] = array(t('Teaching semester'), $data['undervisningssemester']);
             $tmp = uib_study__extract_study_info($data_2, 'EB_SPRAK');
             $rows[] = array(t('Teaching language'), uib_study__text_markup($tmp, $is_course, TRUE));
@@ -563,7 +563,7 @@ function uib_study_block_view($delta = '') {
         }
         elseif ($type == 'program' or $type == 'specialization') {
           $rows[] = array(t('Study programme code'), $data['studieprogramkode']);
-          $rows[] = array(t('Study points'), $data['studiepoeng']);
+          $rows[] = array(t('ECTS credits'), $data['studiepoeng']);
           // calculate duration of programme, based on 60 credits per year
           global $language;
           $duration = number_format(round($data['studiepoeng'] / (60 * $data['heltidsprosent'] / 100), 1) , 1, ',', ' ');
