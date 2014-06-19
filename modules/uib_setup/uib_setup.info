@@ -319,6 +319,7 @@ features[user_permission][] = edit own uib_external_content content
 features[user_permission][] = edit own uib_ou content
 features[user_permission][] = edit own uib_study content
 features[user_permission][] = edit own uib_testimonial content
+features[user_permission][] = edit terms in uib_nus
 features[user_permission][] = enter area revision log entry
 features[user_permission][] = enter uib_article revision log entry
 features[user_permission][] = enter uib_ou revision log entry

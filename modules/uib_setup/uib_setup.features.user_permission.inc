@@ -906,6 +906,17 @@ function uib_setup_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit terms in uib_nus'.
+  $permissions['edit terms in uib_nus'] = array(
+    'name' => 'edit terms in uib_nus',
+    'roles' => array(
+      'admin' => 'admin',
+      'level 1' => 'level 1',
+      'level 2' => 'level 2',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'enter area revision log entry'.
   $permissions['enter area revision log entry'] = array(
     'name' => 'enter area revision log entry',
