@@ -147,7 +147,8 @@ if (!empty($result['user'])) {
       }
       if ($edit) {
         $wrapper->save();
-        if (empty($wrapper->field_uib_w2_id->value())) {
+        $w2_id = $wrapper->field_uib_w2_id->value();
+        if (empty($w2_id)) {
           uibx_log('Note that user "' . $name . '" uid=' . $entity->uid . ' lacks w2-id');
         }
         $updated_count++;

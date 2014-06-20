@@ -13,5 +13,5 @@ fi
 
 set -x
 
-bin/site-drush php-script migrate_selected_userdata
+bin/site-drush php-script --verbose migrate_selected_userdata
 bin/site-drush cc all
