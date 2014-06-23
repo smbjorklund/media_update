@@ -115,7 +115,7 @@ function uib_area_field_group_info() {
   $field_group->mode = 'teaser';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Contact information',
+    'label' => 'Contact',
     'weight' => '2',
     'children' => array(
       0 => 'field_uib_visit_address',
@@ -123,7 +123,7 @@ function uib_area_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Contact information',
+      'label' => 'Contact',
       'instance_settings' => array(
         'classes' => 'group-contact-info field-group-div',
         'description' => '',
