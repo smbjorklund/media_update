@@ -76,11 +76,11 @@ function uib_migrate__sync_w2_user($username) {
   }
 
   if (!empty($w2u->main_media)) {
-    if (!isset($account->picture->field_uib_w2_id['und'][0]['value']) || $account->picture->field_uib_w2_id['und'][0]['value'] != $w2u->main_media) {
+    if (!isset($account->picture->field_uib_w2_id['und'][0]['value']) || $account->picture->field_uib_w2_id['und'][0]['value'] != $w2u->main_media[0]) {
       if (!empty($account->picture->fid)) {
         file_usage_delete($account->picture, 'user', 'user', $account->uid);
       }
-      $file = xtopic_file($w2u->main_media, $account->uid, $account->language);
+      $file = xtopic_file($w2u->main_media[0], $account->uid, $account->language);
       if ($file && (empty($account->picture) || $account->picture->fid != $file->fid)) {
         $file->status = FILE_STATUS_PERMANENT;
         $edit['picture'] = $file;
