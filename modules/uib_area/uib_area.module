@@ -916,6 +916,27 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
       $form_state['rebuild'] = TRUE;
     }
   }
+  elseif ($form_id == 'uib_ou_node_form') {
+    $not_for_level_2 = array(
+      'title',
+      'field_uib_ou_id',
+      'field_uib_ou_shortname',
+      'field_uib_phone',
+      'field_uib_fax',
+      'field_uib_jobbnorge_id',
+      'field_uib_mail_domain',
+      'field_uib_postal_address',
+      'field_uib_visit_address',
+      'field_uib_geolocation',
+      );
+    if (in_array('level 2', $GLOBALS['user']->roles, TRUE)) {
+      foreach ($not_for_level_2 as $l2) {
+        if (isset($form[$l2])) {
+          $form[$l2]['#access'] = FALSE;
+        }
+      }
+    }
+  }
 }
 
 /**
