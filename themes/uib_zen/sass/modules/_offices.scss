@@ -14,7 +14,7 @@ $zen-column-count: 5;
       width: 100%;
     }
   }
-  .field-name-field-uib-hours {
+  .group-office-hours {
     @include zen-grid-item(1, 3);
     .field-label {
       border-bottom: none 0;
