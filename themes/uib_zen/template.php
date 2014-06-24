@@ -723,6 +723,9 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         $uib_study_toggle = __uib_render_block('uib_study', 'study_semester_toggle', 18);
         $uib_study_related = __uib_render_block('uib_study', 'study_related', 25);
       }
+      if ($metadata->field_uib_study_category->value() == 'evu') {
+        $uib_study_evu = __uib_render_block('uib_study', 'study_evu', 13);
+      }
 
       $specializations = '';
       $view = views_get_view('uib_study_specialization');
@@ -737,6 +740,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         '#value' => render($uib_study_image) .
                     render($uib_study_facts) .
                     $specializations .
+                    render($uib_study_evu) .
                     render($uib_study_contact),
         '#weight' => 1,
         '#attributes' => array('class' => array('uib-study-first-block')),

@@ -35,6 +35,10 @@ function uib_study_block_info() {
       'info' => t('Possibility to toggle semesters'),
       'status' => TRUE,
     ),
+    'study_evu' => array(
+      'info' => t('EVU facts'),
+      'status' => TRUE,
+    ),
   );
 }
 
@@ -744,6 +748,18 @@ function uib_study_block_view($delta = '') {
           }
         }
       }
+      break;
+
+    case 'study_evu':
+      $node = menu_get_object();
+      if ($node) {
+        $study_node = entity_metadata_wrapper('node', $node);
+        if ($study_node->field_uib_study_category->value() == 'evu') {
+          include_once 'uib_study.evu.inc';
+          $block = uib_study__evu_courses_block($node);
+        }
+      }
+
       break;
   }
 
