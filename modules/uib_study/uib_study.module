@@ -573,6 +573,11 @@ function uib_study_block_view($delta = '') {
             $resources['#items'][] = render($tmp);
             $tmp = uib_study__get_resource_links('reading_list', $study_code);
             $resources['#items'][] = render($tmp);
+            // for evu courses, add link to course description
+            if ($node->field_uib_study_category['und'][0]['value'] == 'evu') {
+              $tmp = uib_study__get_description_link($study_code);
+              $resources['#items'][] = render($tmp);
+            }
             $rows[] = array(t('Resources'), render($resources));
           }
           $category = $node->field_uib_study_category['und'][0]['value'];
@@ -1085,6 +1090,20 @@ function uib_study__get_reading_list_link($study_code, $semester, $classes) {
     ),
   );
   return $reading_list;
+}
+
+function uib_study__get_description_link($study_code) {
+  global $language;
+  $course = $language->language == 'nb' ? 'emne' : 'course';
+  return array(
+    '#theme' => 'link',
+    '#text' => t('Course description'),
+    '#path' => $course . '/' . $study_code . '/description',
+    '#options' => array(
+      'attributes' => array(),
+      'html' => TRUE,
+    ),
+  );
 }
 
 /**
