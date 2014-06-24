@@ -1449,7 +1449,8 @@ $zen-auto-include-item-base: false;
       }
     }
   }
-  #uib-tabs-studieplan {
+  #uib-tabs-studieplan,
+  #uib-tabs-emnebeskrivelse {
     @include zen-grid-item (4, 1);
   }
   .page-education-nus {
