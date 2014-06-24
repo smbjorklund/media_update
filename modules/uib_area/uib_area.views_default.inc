@@ -522,7 +522,7 @@ function uib_area_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Content: Responsible (field_uib_ou) */
+  /* Contextual filter: Content: Place (field_uib_ou) */
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['id'] = 'field_uib_ou_target_id';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['table'] = 'field_data_field_uib_ou';
   $handler->display->display_options['arguments']['field_uib_ou_target_id']['field'] = 'field_uib_ou_target_id';
@@ -1089,7 +1089,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator_id'] = 'field_uib_study_points_rank_value_op';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['label'] = 'Study points';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['label'] = 'ECTS credits';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator'] = 'field_uib_study_points_rank_value_op';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['identifier'] = 'studypoints_rank';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['multiple'] = TRUE;
@@ -1514,7 +1514,7 @@ return !empty($handler->argument);';
     t('last »'),
     t('Found @total courses'),
     t('Type'),
-    t('Study points'),
+    t('ECTS credits'),
     t('Humanities and aesthetic studies'),
     t('Has taxonomy term'),
     t('Teacher training and pedagogy'),
