@@ -426,3 +426,13 @@ function uib_user__vcard($user_entity) {
   $vcard[] = '';
   return implode("\n", $vcard);
 }
+
+/**
+ * Implements hook_entity_info_alter()
+ */
+function uib_user_entity_info_alter(&$entity_info) {
+  $entity_info['user']['view modes']['uib_user_teaser'] = array(
+    'label' => t('User teaser'),
+    'custom settings' => TRUE,
+  );
+}
