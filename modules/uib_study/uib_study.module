@@ -560,6 +560,24 @@ function uib_study_block_view($delta = '') {
             $resources['#items'][] = render($tmp);
             $rows[] = array(t('Resources'), render($resources));
           }
+          $category = $node->field_uib_study_category['und'][0]['value'];
+          if ($category == 'evu') {
+            $not_for_evu = array(
+              'Emnekode',
+              'Course code',
+              'Undervisingssemester',
+              'Teaching semester',
+              'Antall semester',
+              'Number of semesters',
+              'Grad',
+              'Study level',
+              );
+            foreach ($rows as $key => $row) {
+              if (in_array($row[0], $not_for_evu)) {
+                unset($rows[$key]);
+              }
+            }
+          }
         }
         elseif ($type == 'program' or $type == 'specialization') {
           $rows[] = array(t('Study programme code'), $data['studieprogramkode']);
@@ -655,7 +673,7 @@ function uib_study_block_view($delta = '') {
 
     case 'study_semester_toggle':
       $node = menu_get_object();
-      if ($node && uib_study__is_course()) {
+      if ($node && uib_study__is_course() && $node->field_uib_study_category['und'][0]['value'] != 'evu') {
         $data = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
         if (empty($data))
           break;
