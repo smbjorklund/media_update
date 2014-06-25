@@ -113,7 +113,7 @@ function uib_user_field_default_field_instances() {
       'ca_phone_separator' => '-',
       'entity_translation_sync' => FALSE,
       'phone_country_code' => 0,
-      'phone_default_country_code' => 1,
+      'phone_default_country_code' => 47,
       'phone_int_max_length' => 15,
       'user_register_form' => 0,
     ),

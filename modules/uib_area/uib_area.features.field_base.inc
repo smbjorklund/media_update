@@ -648,7 +648,7 @@ function uib_area_field_default_field_bases() {
     'locked' => 0,
     'module' => 'phone',
     'settings' => array(
-      'country' => 'int',
+      'country' => 'no',
       'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
@@ -1357,7 +1357,7 @@ function uib_area_field_default_field_bases() {
     'locked' => 0,
     'module' => 'phone',
     'settings' => array(
-      'country' => 'int',
+      'country' => 'no',
       'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
