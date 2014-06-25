@@ -77,13 +77,18 @@ function uib_setup_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
-      'filter_studycodes' => array(
+      'filter_uib_markup' => array(
         'weight' => -45,
         'status' => 1,
         'settings' => array(),
       ),
-      'filter_htmlcorrector' => array(
+      'filter_studycodes' => array(
         'weight' => -44,
+        'status' => 1,
+        'settings' => array(),
+      ),
+      'filter_htmlcorrector' => array(
+        'weight' => -43,
         'status' => 1,
         'settings' => array(),
       ),
@@ -150,13 +155,18 @@ function uib_setup_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
-      'filter_studycodes' => array(
+      'filter_uib_markup' => array(
         'weight' => -47,
         'status' => 1,
         'settings' => array(),
       ),
-      'filter_htmlcorrector' => array(
+      'filter_studycodes' => array(
         'weight' => -46,
+        'status' => 1,
+        'settings' => array(),
+      ),
+      'filter_htmlcorrector' => array(
+        'weight' => -45,
         'status' => 1,
         'settings' => array(),
       ),
