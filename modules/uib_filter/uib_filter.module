@@ -1,0 +1,80 @@
+<?php
+/**
+ * @file
+ * Module file for uib_urlfilter
+ */
+
+/**
+ * Implements hook_filter_info().
+ *
+ */
+function uib_filter_filter_info() {
+  $filters['filter_uib_markup'] = array(
+    'title' => t('Expand UiB markup'),
+    'description' => t('Expands strings like (% cmd : parameter %) to something interesting'),
+    'process callback' => 'uib_filter__process',
+    'tips callback' => '_uib_urlfilter_filter_tips',
+  );
+  return $filters;
+}
+
+/**
+ * filter process callback
+ *
+ * Look for strings on the form "(* cmd : ... *) in the text and expand them.
+ * The set of commands understod will evolve as we see fit.
+ *
+ */
+function uib_filter__process($text, $filter) {
+  return preg_replace_callback('/\(\*\s*(\w+)\s*(?::(.*?))?\*\)/',
+    function ($matches) {
+      if (count($matches) == 3) {
+        $arg = $matches[2];
+        $arg = str_replace("&nbsp;", "", $arg);
+        $arg = trim($arg);
+      }
+      else {
+        $arg = FALSE;
+      }
+      //return check_plain($matches[1] . "[[$arg]]\n");
+      switch ($matches[1]) {
+      case 'today':
+        return date($arg ? $arg : 'Y-m-d');
+      case 'user':
+        if ($arg) {
+          $u = user_load_by_name($arg);
+          if ($u && $u->status) {
+            return l(
+              check_plain($u->field_uib_first_name['und'][0]['value'] . ' ' .
+                          $u->field_uib_last_name['und'][0]['value']
+              ),
+              'user/' . $u->uid
+            );
+          }
+          else {
+            return t('user') . ' ' . check_plain($arg);
+          }
+        }
+      case 'node':
+        if ($arg) {
+          $node = node_load($arg);
+          if ($node) {
+            return l($node->title, 'node/' . $node->nid);
+          }
+        }
+      case 'study':
+        if ($arg) {
+          $arg = 'INF101';
+          return uib_study__study_link($arg, '<title>');
+        }
+      case 'books':
+        if ($arg) {
+          return '<div class="ltfl_bookdisplay_widget" id="ltfl_widget_' . $arg . '"></div>
+<script type="text/javascript" src="http://ltfl.librarything.com/forlibraries/widget.js?id=2175-2558198918"></script>';
+        }
+      }
+      return '(' . check_plain($matches[1]) . ' ' . t('unrecognized') . ')';
+    },
+    $text
+  );
+}
