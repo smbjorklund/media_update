@@ -50,6 +50,7 @@ dependencies[] = uib_breadcrumb
 dependencies[] = uib_cristin
 dependencies[] = uib_dbh
 dependencies[] = uib_field
+dependencies[] = uib_filter
 dependencies[] = uib_h2tabs
 dependencies[] = uib_media
 dependencies[] = uib_service_links

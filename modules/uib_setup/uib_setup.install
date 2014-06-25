@@ -110,3 +110,10 @@ function uib_setup_update_7007() {
 function uib_setup_update_7008() {
   module_enable(array('uib_cristin'));
 }
+
+/**
+ * Enable new module: uib_filter
+ */
+function uib_setup_update_7009() {
+  module_enable(array('uib_filter'));
+}
