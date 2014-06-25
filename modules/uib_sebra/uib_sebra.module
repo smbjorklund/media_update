@@ -139,11 +139,11 @@ function uib_sebra__update_uib_ou($place_id) {
       $edit[] = 'visit';
     }
 
-    if ($ou->field_uib_phone[0]->value() !== $place->phone) {
+    if (str_replace(' ', '', $ou->field_uib_phone[0]->value()) !== str_replace(' ', '', $place->phone)) {
       $ou->field_uib_phone[0]->set($place->phone);
       $edit[] = 'phone';
     }
-    if ($ou->field_uib_fax->value() !== $place->fax) {
+    if (str_replace(' ', '', $ou->field_uib_fax->value()) !== str_replace(' ', '', $place->fax)) {
       $ou->field_uib_fax->set($place->fax);
       $edit[] = 'fax';
     }
@@ -469,10 +469,19 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
     $places[$u->place_code] = uib_sebra__uib_ou_nid($u->place_code);
   }
   $phones = array();
-  if (!empty($u->phone_office))
-    $phones['und'][]['value'] = '+47 ' . $u->phone_office;
-  if (!empty($u->phone_mobile))
-    $phones['und'][]['value'] = '+47 ' . $u->phone_mobile;
+  $country_prefix = '+47';
+  if (!empty($u->phone_office)) {
+    if (substr($u->phone_office, 0, 3) != $country_prefix) {
+      $u->phone_office = $country_prefix . ' ' . $u->phone_office;
+    }
+    $phones['und'][]['value'] = $u->phone_office;
+  }
+  if (!empty($u->phone_mobile)) {
+    if (substr($u->phone_mobile, 0, 3) != $country_prefix) {
+      $u->phone_mobile = $country_prefix . ' ' . $u->phone_mobile;
+    }
+    $phones['und'][]['value'] = $u->phone_mobile;
+  }
 
   if ($account) {
     $edit = array();
@@ -496,7 +505,19 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
       $edit['field_uib_position_code']['und'][0]['value'] = $u->position_code;
     if ($account->field_uib_position_category['und'][0]['value'] != $u->position_category)
       $edit['field_uib_position_category']['und'][0]['value'] = $u->position_category;
-    if ($account->field_uib_phone != $phones)
+    $existing_phone = $account->field_uib_phone;
+    if (isset($existing_phone['und'])) {
+      foreach ($existing_phone['und'] as $delta => $pnr) {
+        $existing_phone['und'][$delta]['value'] = str_replace(' ', '', $pnr);
+      }
+    }
+    $sebra_phone = $phones;
+    if (isset($sebra_phone['und'])) {
+      foreach ($sebra_phone['und'] as $delta => $pnr) {
+        $sebra_phone['und'][$delta]['value'] = str_replace(' ', '', $pnr);
+      }
+    }
+    if ($existing_phone != $sebra_phone)
       $edit['field_uib_phone'] = $phones;
     if ($account->field_uib_user_ou['und'][0]['target_id'] != $places[$u->place_code]) {
       $edit['field_uib_user_ou']['und'][0]['target_id'] = $places[$u->place_code];
