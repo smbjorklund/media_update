@@ -78,6 +78,7 @@ projects[override_node_options][version] = 1.12
 projects[panels][version] = 3.4
 projects[pathauto][version] = 1.2
 projects[phone][version] = 1.0-beta1
+projects[phone][patch][] = https://www.drupal.org/files/issues/phone-norwegian-support-2292299-3.patch
 projects[redirect][version] = 1.0-rc1
 projects[role_delegation][version] = 1.1
 projects[role_export][version] = 1.0
