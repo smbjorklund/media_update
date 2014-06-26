@@ -321,6 +321,12 @@ function uib_user_add_field_markup($label, $class, $data) {
 function uib_user_menu() {
   $items = array();
 
+  $items['user/uib/%'] = array(
+    'page callback' => 'uib_user__uname_lookup',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+  );
+
   $items['user/%user/card.vcf'] = array(
     'type' => MENU_CALLBACK,
     'page callback' => 'uib_user__vcard_page',
@@ -329,6 +335,17 @@ function uib_user_menu() {
   );
 
   return $items;
+}
+
+/**
+ * Generate user redirect.
+ */
+function uib_user__uname_lookup($uname) {
+  $u = user_load_by_name($uname);
+  if ($u) {
+    drupal_goto('user/' . $u->uid);
+  }
+  return MENU_NOT_FOUND;
 }
 
 /**
