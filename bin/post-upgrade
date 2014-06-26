@@ -13,5 +13,9 @@ fi
 
 set -x
 
+date +%FT%T
 bin/site-drush php-script --verbose migrate_selected_userdata
+date +%FT%T
+bin/site-drush php-script --verbose update-phone-nr-formatting
+date +%FT%T
 bin/site-drush cc all
