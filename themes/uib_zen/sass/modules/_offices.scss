@@ -24,6 +24,12 @@ $zen-column-count: 5;
   }
   .group-contact-info {
     @include zen-grid-item(1, 4);
+    h3 {
+      color: #555;
+      :after {
+        content: ":"
+      }
+    }
   }
   .field-name-field-uib-geolocation {
     @include zen-grid-item(1, 5);
@@ -107,7 +113,7 @@ $zen-column-count: 5;
       }
     }
   }
-  .field-name-field-uib-hours, #node_uib_ou_teaser_group_contact_info {
+  .group-office-hours, .group-contact-info {
     margin-top: 10px;
   }
 }
