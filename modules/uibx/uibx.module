@@ -169,3 +169,30 @@ function uibx_html_linkify($pattern, $expand_callback, $text, $size_limit=100000
 
   return $text;
 }
+
+/**
+ * Load one or more path aliases based on a source path
+ *
+ * Returns an array of path alias objects, sorted by language and pid. Highest pid first.
+ */
+function uibx_path_load($source, $language = NULL) {
+  $alias_list = array();
+  $query = 'SELECT pid, source, alias, language FROM {url_alias} WHERE source = :src';
+  $query_args = array(':src' => $source);
+  if ($language) {
+    $query .= ' AND language = :lng';
+    $query_args[':lng'] = $language;
+  }
+  $query .= ' ORDER BY source';
+  if ($language) {
+    $query .= ', language';
+  }
+  $query .= ', pid DESC';
+  $result = db_query($query, $query_args);
+  if ($result) {
+    foreach ($result as $record) {
+      $alias_list[] = $record;
+    }
+  }
+  return $alias_list;
+}

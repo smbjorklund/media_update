@@ -33,6 +33,7 @@ dependencies[] = uib_article
 dependencies[] = uib_field
 dependencies[] = uib_setup
 dependencies[] = uib_urlfilter
+dependencies[] = uibx
 dependencies[] = views
 dependencies[] = views_slideshow
 features[context][] = ansattside_blocks

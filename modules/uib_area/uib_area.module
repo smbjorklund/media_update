@@ -1018,13 +1018,15 @@ function uib_area__create_area_aliases($node_nid, $node_alias, $language = NULL)
       else {
         $new_path = array('source' => $source_url, 'alias' => $new_alias_url, 'language' => $language);
       }
-      if ($existing_alias = path_load($source_url)) { // get existing alias
-         if ($existing_alias['alias'] != $new_alias_url) {
+      if ($existing_alias = uibx_path_load($source_url)) { // get existing alias
+        if ($existing_alias[0]->alias != $new_alias_url) {
           // Alias exists for the source, but different one than this
+          $existing_alias[0]->alias = $new_alias_url;
+          $new_path = (array) $existing_alias[0];
           path_save($new_path);
         }
         elseif (!empty($language)) {
-          if ($existing_alias['language'] != $language) {
+          if ($existing_alias[0]->language != $language) {
             // Alias exists, but not for this language
             path_save($new_path);
           }
@@ -1037,6 +1039,60 @@ function uib_area__create_area_aliases($node_nid, $node_alias, $language = NULL)
   }
   else {
     return FALSE;
+  }
+}
+
+/**
+ * Implements hook_path_update().
+ */
+function uib_area_path_update($path) {
+  // Update a set of additional paths if the path has changed and is an area
+  if ($path['alias'] != $path['original']['alias']) {
+    $tmp = explode('/', $path['source']);
+    if ($tmp[0] == 'node' && is_numeric($tmp[1]) && count($tmp) == 2) {
+      $node = menu_get_object();
+      if ($node && $node->type == 'area' && $tmp[1] == $node->nid) {
+        uib_area__create_area_aliases($tmp[1], $path['alias'], $node->language);
+
+        // Now, update all article aliases for this area
+        // Areas may have identical aliases. Thus we have to find articles for this area only.
+        $query = new EntityFieldQuery;
+        $result = $query->entityCondition('entity_type', 'node')
+          ->propertyCondition('type', 'uib_article')
+          ->fieldCondition('field_uib_area', 'target_id', $node->nid)
+          ->execute();
+        if ($result) {
+          $path_length = strlen($path['original']['alias']);
+          $path_endptr = $path_length + 1;
+          foreach (array_keys($result['node']) as $article_nid) {
+            if ($existing = uibx_path_load('node/' . $article_nid)) {
+              foreach ($existing as $article_alias) {
+                if (substr($article_alias->alias, 0, $path_length) == $path['original']['alias']) {
+                  // Article alias conforming to our pathauto pattern
+                  $article_alias->alias = $path['alias'] . '/' . substr($article_alias->alias, $path_endptr);
+                  $article_alias = (array) $article_alias;
+                  path_save($article_alias);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_path_insert().
+ */
+function uib_area_path_insert($path) {
+  // Add a set of additional paths for an area
+  $tmp = explode('/', $path['source']);
+  if ($tmp[0] == 'node' && is_numeric($tmp[1]) && count($tmp) == 2) {
+    $node = node_load($tmp[1]);
+    if ($node && $node->type == 'area') {
+      uib_area__create_area_aliases($tmp[1], $path['alias'], $node->language);
+    }
   }
 }
 
@@ -1055,8 +1111,10 @@ function uib_area__remove_area_aliases($node_nid) {
     $uib_area_aliases = uib_area__list_area_aliases();
     foreach ($uib_area_aliases as $pa) {
       $source_url = $node_url . $pa;
-      if ($existing = path_load($source_url)) { // Check if alias exists
-        path_delete($existing['pid']); // remove it
+      if ($existing = uibx_path_load($source_url)) { // Check if alias exists
+        foreach ($existing as $path) {
+          path_delete($path->pid); // remove it
+        }
       }
     }
   } else {
@@ -1070,9 +1128,6 @@ function uib_area__remove_area_aliases($node_nid) {
  */
 function uib_area_node_insert($node) {
   if ($node->type == 'area') {
-    if (isset($node->path['alias'])) {
-      uib_area__create_area_aliases($node->nid, $node->path['alias'], $node->language);
-    }
     if (uib_area_menu_is_allowed($node)) {
       if (empty($node->field_uib_w2_id['und'][0])) {
         // Create a unique menu for this area
@@ -1102,17 +1157,6 @@ function uib_area_node_insert($node) {
         }
       }
     }
-  }
-}
-
-/**
- * Implements hook_node_update().
- */
-function uib_area_node_update($node) {
-  if ($node->type == 'area' && isset($node->path['alias'])) {
-    // add uib area aliases if the node path was changed
-    // any previous aliases will remain
-    uib_area__create_area_aliases($node->nid, $node->path['alias'], $node->language);
   }
 }
 
@@ -1612,7 +1656,6 @@ function uib_area_query_uib_study_order_by_title_alter(QueryAlterableInterface $
         'lower_title' : $key
        ] = $value;
     }
-    //dpm((string)$query);
   }
 }
 
