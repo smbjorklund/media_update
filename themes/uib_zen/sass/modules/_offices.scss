@@ -9,9 +9,15 @@ $zen-column-count: 5;
   @include zen-clear();
   .ui-tabs-nav {
     @include zen-grid-item(2, 1);
-    li a {
-      white-space: normal;
-      width: 100%;
+    li {
+      float: none;
+      margin: 0;
+      a {
+        float: none;
+        white-space: normal;
+        display: block;
+        background: transparent;
+      }
     }
   }
   .group-office-hours {
@@ -132,14 +138,12 @@ $zen-column-count: 5;
     li.ui-state-default {
       border: none;
       background: transparent;
-      width: 100%;
       &:hover {
         background: silver;
       }
     }
     li.ui-state-active {
       background: #333;
-      width: 100%;
       &:hover {
         background: #333;
       }
