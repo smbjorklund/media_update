@@ -1,0 +1,19 @@
+<?php
+
+class UiBxTest extends DrupalUnitTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'UiBx tests',
+      'description' => 'Test that the functions that UiBx provides actually work.',
+      'group' => 'UiB',
+    );
+  }
+
+  function test_html_linkify() {
+    $html1 = 'foo INF101 bar <a href="INF101">INF101</a> <div class="INF101">INF101</div> <!-- INF101 -->';
+    $html2 = uibx_html_linkify('/\b[A-Z]{3}\d{3}\b/', function($m) { return "[$m[0]]"; }, $html1);
+    //print_r([$html1, $html2]);
+    $this->assertEqual($html2, 'foo [INF101] bar <a href="INF101">INF101</a> <div class="INF101">[INF101]</div> <!-- INF101 -->',
+      'Replaced sample study code correctly');
+  }
+}
