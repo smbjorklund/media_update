@@ -1,0 +1,47 @@
+<?php
+
+class UibStudyTest extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'Study tests',
+      'description' => 'Check how the code that supports studies are holding up',
+      'group' => 'UiB',
+    );
+  }
+
+  function setUp() {
+    // This cause us to run the tests against the live database.
+    $this->setup = TRUE;
+  }
+
+  function tearDown() {
+  }
+
+  function test_code_pattern() {
+    $studies = &uib_study__study_map();
+    $this->assertTrue(count($studies) > 2000, 'More than 2000 studies');
+
+    $re = '/^' . UIB_STUDY__CODE_PATTERN . '\z/';
+
+    $matched = 0;
+    foreach ($studies as $code => $nid) {
+      if (preg_match($re, $code)) {
+        $matched++;
+      }
+      else {
+        uibx_log("Unmatched study $code", 'warning');
+      }
+    }
+
+    uibx_log(sprintf("Matched %d/%d %.2f%%", $matched, count($studies), 100*$matched/count($studies)));
+    $this->assertTrue($matched/count($studies) > 0.98, 'Almost all study codes matched');
+  }
+
+  function test_filter_text() {
+    $html = uib_study__filter_text("INF101 and ABC999 are codes");
+    $this->assertEqual($html, '<a href="/en/course/INF101">INF101</a> and ABC999 are codes');
+
+    $html_twice = uib_study__filter_text($html);
+    $this->assertEqual($html, $html_twice, "Double filtering should not change anything");
+  }
+}

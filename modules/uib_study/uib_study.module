@@ -794,112 +794,18 @@ function uib_study_filter_info() {
 }
 
 /**
- * Replace study codes in the text with an HTML link to the corresponding study pages.
- * Avoid touching existing links. The filter may fail if there are words with embedded
- * html tags.
+ *
  */
-function uib_study__filter_text($text) {
-  // Check if there is any study code in the text
-  // before parsing it.
-  $study_codes = array_keys(uib_study__study_map());
-  $pattern = implode('|', $study_codes);
-  // Fix some study code characters that interfere with regex
-  $pattern = str_replace('/', '\/', $pattern);
-  $pattern = str_replace('-', '\-', $pattern);
-  $pattern = '/\b(?:' . $pattern . ')\b/';
-  if (preg_match($pattern, $text)) {
-    $in_tag = FALSE;
-    $in_a = FALSE;
-    $word = '';
-    $out = '';
-    $i = 0;
-    while (1) {
-      $ch = drupal_substr($text, $i, 1);
-      if ($ch === '') {
-        if ($word) {
-          $out .= uib_study__word_code_chk($word);
-        }
-        break;
-      }
-      switch ($ch) {
+define('UIB_STUDY__CODE_PATTERN', '[A-ZÆØÅ]{2}[A-ZÆØÅ\d]+(?:-[A-ZÆØÅ\d]+)*(?:\/(?:\d+[HV]?|[A-Z]{2,3}))?');
 
-        case '<':
-          $in_tag = TRUE;
-          if (drupal_strtolower(drupal_substr($text, ($i+1), 1)) == 'a') {
-            // anchor tag
-            $in_a = TRUE;
-          }
-          if ($word) {
-            // end of word
-            $out .= uib_study__word_code_chk($word);
-            $word = '';
-          }
-          $out .= $ch;
-          break;
-
-        case '>':
-          $in_tag = FALSE;
-          if ($in_a && drupal_strtolower(drupal_substr($text, ($i-2), 2)) == '/a') {
-            // end of anchor tag
-            $in_a = FALSE;
-          }
-          $out .= $ch;
-          break;
-
-        case ' ':
-        case "\t":
-        case "\n":
-        case "\r":
-        case '.':
-        case ',':
-        case ';':
-        case ':':
-        case '?':
-        case '!':
-        case '(':
-        case ')':
-          if ($word) {
-            // end of word
-            $out .= uib_study__word_code_chk($word) . $ch;
-            $word = '';
-          }
-          else {
-            $out .= $ch;
-          }
-          break;
-
-        default:
-          if ($in_tag || $in_a) {
-            $out .= $ch;
-          }
-          else {
-            $word .= $ch;
-          }
-      }
-
-      $i++;
-    }
-    return $out;
-  }
-  return $text;
-}
 
 /**
- * Check if a word is a study code
- * Return a link if it is, else return the word.
- * Keeps track of previously checked words that were not codes.
+ * Replace study codes in the text with an HTML link to the corresponding node.
  */
-function uib_study__word_code_chk($word) {
-  static $non_codes = array();
-  if (!in_array($word, $non_codes)) {
-    if (uib_study__study_exists($word)) {
-      $word = uib_study__study_link($word);
-    }
-    else {
-      $non_codes[] = $word;
-    }
-  }
-  return $word;
+function uib_study__filter_text($text) {
+  return uibx_html_linkify('/\b' . UIB_STUDY__CODE_PATTERN . '\b/', function ($matches) {
+    return uib_study__study_link($matches[0]);
+  }, $text);
 }
 
 /**
@@ -939,13 +845,6 @@ function uib_study__study_path($code) {
     return "node/$study_nid[$code]";
   }
   return FALSE;
-}
-
-/**
- *  Returns the TRUE if the given study code is in use.
- */
-function uib_study__study_exists($code) {
-  return !!uib_study__study_path($code);
 }
 
 /**
