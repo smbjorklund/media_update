@@ -1,8 +1,21 @@
 <?php
 
 /**
+ * @file
+ *
+ * Library of functions that are of general utility.
+ *
+ */
+
+/**
  * Alternative logger that will log stuff with drush_log() if running under
  * drush; otherwise redirect messages to the watchdog log.
+ *
+ * @param string $message
+ * The message to be logged
+ * @param string $type
+ * The logging level.  It defaults to 'notice'.
+ * Other commonly used levels are 'error', 'warning', and 'debug'.
  */
 
 function uibx_log($message, $type='notice') {
@@ -37,6 +50,16 @@ function uibx_theme($existing, $type, $theme, $path) {
   );
 }
 
+/**
+ * Turn a key value pair into HTML.
+ *
+ * If value isn't set return nothing.
+ *
+ * @param $variables
+ * An associative array containing:
+ *  - key: string
+ *  - value: string
+ */
 function theme_key_value(&$variables) {
   if (is_null($variables['value']))
     return '';
@@ -53,11 +76,32 @@ function theme_key_value(&$variables) {
  * callback will only be invoked at locations where it's allowed to expand
  * links.
  *
- * If the callback determines that the matched texts isn't a link after all it
- * should just return the match text without modification.
- *
  * Based on the _filter_url() function in core.  We still invoke the (perhaps)
  * private _filter_url_escape_commits function.  Hope it doesn't change :-)
+ *
+ * @param string $pattern
+ * A regular expression that matches segments in the $text that you might want
+ * to turn into links.
+ *
+ * @param string $expand_callback
+ * The callback is invoked with a single parameter, an array of matched strings.
+ * $matched[0] is the full text matches by $pattern.  The callback should return
+ * the HTML for the link.  If the callback determines that the matched texts
+ * isn't a link after all it should just return $matched[0].
+ *
+ * @param string $text
+ * The input HTML to be filtered.
+ *
+ * @param int $size_limit
+ * If the provided $text is longer than this size it's simply returned
+ * unchanged.  Used to protect the code against unreasonably sized texts.
+ *
+ * @param string $ignore_tags
+ * Pattern that match the tags of elements where no substiturions should
+ * take place.  Only elements that can't nest should be provided.
+ *
+ * @return string
+ * The HTML text with substitutions specified.
  */
 function uibx_html_linkify($pattern, $expand_callback, $text, $size_limit=100000, $ignore_tags='a|script|style') {
   if (strlen($text) > $size_limit) {
