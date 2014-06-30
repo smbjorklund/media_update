@@ -15,7 +15,7 @@ $zen-column-count: 5;
     .inner {}
   }
   #user_user_form_group_secondary {
-    @include zen-grid-item(1, 3);
+    @include zen-grid-item(2, 4);
     background-color: #e5e5e5;
     border: solid 1px #cbcbcb;
     .field-name-field-uib-user-competence, .field-name-field-uib-user-projects, .field-name-field-uib-user-docs, .field-name-field-uib-user-feed {
@@ -64,6 +64,28 @@ $zen-column-count: 5;
 
 .field-name-field-uib-user-ou {
   list-style: none;
+}
+
+.field-name-field-uib-first-name,
+.field-name-field-uib-last-name,
+.field-name-field-uib-user-alt-firstname,
+.field-name-field-uib-user-alt-lastname,
+.field-name-field-uib-position,
+.field-name-field-uib-user-alt-position {
+  width: 48%;
+  float: left;
+}
+
+.field-name-field-uib-first-name,
+.field-name-field-uib-user-alt-firstname,
+.field-name-field-uib-position {
+  padding-right: 1rem;
+}
+
+#edit-field-uib-last-name,
+#edit-field-uib-user-alt-lastname,
+#edit-field-uib-user-alt-position {
+  clear: none;
 }
 
 #user_user_full_group_media_element {
