@@ -131,3 +131,49 @@ $zen-column-count: 5;
     }
   }
 }
+
+
+/////////////
+// Styling for view mode user teaser
+/////////////
+$zen-column-count: 4;
+.field-name-field-uib-related-persons {
+  margin-bottom: 30px;
+  background: $light-grey;
+  border-bottom: 1px solid #dedfdd;
+  border-top: 1px solid #dedfdd;
+  &.field-label-above .field-label {
+    border-bottom: none 0;
+    border-top: none 0;
+    font-family: $verdana;
+    font-size: 1.5em;
+    padding: 0.5em 10px;
+    text-transform: none;
+  }
+  @include clearfix();
+  @media all and (min-width: 720px) {
+    .field-item:nth-child(odd){
+      @include zen-grid-item(2,1);
+      @include zen-clear(left);
+    }
+    .field-item:nth-child(even) {
+      @include zen-grid-item(2,3);
+    }
+  }
+  .profile {
+    @include media_content_wrapper();
+    .uib-user-teaser {
+      padding-left: 90px;
+    }
+    h3 {
+      border-bottom: 0;
+    }
+    .uib-user-phone {
+      margin: 0;
+    }
+  }
+  .user-picture {
+    @include media_element(80px, left);
+    margin-right: 1em;
+  }
+}

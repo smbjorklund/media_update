@@ -289,6 +289,15 @@ function uib_user_user_view_alter(&$build) {
     );
   $build['#group_children']['uib_tabs'] = 'group_user_work_1';
 
+  if ($build['#view_mode'] == 'uib_user_teaser') {
+    $build['uib_user_teaser'] = uib_user__teaser_markup($build['#account']);
+    if (isset($build['field_uib_first_name'])) unset($build['field_uib_first_name']);
+    if (isset($build['field_uib_last_name'])) unset($build['field_uib_last_name']);
+    unset($build['user_email']);
+    unset($build['user_edit_link']);
+    unset($build['user_vcard_link']);
+  }
+
   // Do not show user history
   hide($build['summary']);
 }
@@ -435,4 +444,36 @@ function uib_user_entity_info_alter(&$entity_info) {
     'label' => t('User teaser'),
     'custom settings' => TRUE,
   );
+}
+
+/**
+ * Generate markup for a teaser view mode for the given user
+ *
+ *  @param [object] $user a user entity
+ *
+ * @return [string] Markup for the view mode
+ */
+function uib_user__teaser_markup($user = NULL) {
+  $markup = array(
+    '#weight' => '1',
+    );
+  if (!empty($user)) {
+    global $language;
+    $lang = $language->language;
+    $user_wrapper = entity_metadata_wrapper('user', $user, array('langcode' => $lang));
+    $markup['#markup'] = '<div class="uib-user-teaser">';
+    $first_name = $user_wrapper->field_uib_user_alt_firstname->value() ? $user_wrapper->field_uib_user_alt_firstname->value() : $user_wrapper->field_uib_first_name->value();
+    $last_name = $user_wrapper->field_uib_user_alt_lastname->value() ? $user_wrapper->field_uib_user_alt_lastname->value() : $user_wrapper->field_uib_last_name->value();
+    $full_name = $first_name . ' ' . $last_name;
+    $user_url = 'user/' . $user_wrapper->getIdentifier();
+    $position = $user_wrapper->language($lang)->field_uib_position->value();
+    $phone = $user_wrapper->field_uib_phone->value();
+    $mail = $user_wrapper->mail->value();
+    $markup['#markup'] .= '<h3>' . l($full_name, $user_url) . '</h3>';
+    $markup['#markup'] .= '<p class="uib-user-position">' . $position . '</p>';
+    if (!empty($phone)) $markup['#markup'] .= theme('item_list', array('items' => $phone, 'attributes' => array('class' => 'uib-user-phone')));
+    $markup['#markup'] .= '<p class="uib-user-email">' . l($mail, 'mailto:' . $mail, array('absolute' => TRUE)) . '</p>';
+    $markup['#markup'] .= '</div>';
+  }
+  return $markup;
 }
