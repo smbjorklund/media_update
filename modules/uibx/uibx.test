@@ -1,6 +1,16 @@
 <?php
 
-class UiBxTest extends DrupalUnitTestCase {
+class UibLiveTestCase extends DrupalWebTestCase {
+  function setUp() {
+    // This cause us to run the tests against the live database.
+    $this->setup = TRUE;
+  }
+
+  function tearDown() {
+  }
+}
+
+class UibxTest extends UibLiveTestCase {
   public static function getInfo() {
     return array(
       'name' => 'UiBx tests',
@@ -15,5 +25,24 @@ class UiBxTest extends DrupalUnitTestCase {
     //print_r([$html1, $html2]);
     $this->assertEqual($html2, 'foo [INF101] bar <a href="INF101">INF101</a> <div class="INF101">[INF101]</div> <!-- INF101 -->',
       'Replaced sample study code correctly');
+  }
+
+  function test_theme_key_value() {
+    $e = array(
+      '#theme' => 'key_value',
+      '#key' => 'Foo',
+      '#value' => 'bar',
+    );
+    $html = render($e);
+    $this->assertTrue(preg_match('/\bFoo\b/', $html), 'Key found');
+    $this->assertTrue(preg_match('/\bbar\b/', $html), 'Value found');
+    $this->assertTrue($e['#printed']);
+
+    $e = array(
+      '#theme' => 'key_value',
+      '#key' => 'Foo',
+      '#value' => NULL,
+    );
+    $this->assertEqual(render($e), '');
   }
 }

@@ -1,20 +1,12 @@
 <?php
 
-class UibStudyTest extends DrupalWebTestCase {
+class UibStudyTest extends UibLiveTestCase {
   public static function getInfo() {
     return array(
       'name' => 'Study tests',
       'description' => 'Check how the code that supports studies are holding up',
       'group' => 'UiB',
     );
-  }
-
-  function setUp() {
-    // This cause us to run the tests against the live database.
-    $this->setup = TRUE;
-  }
-
-  function tearDown() {
   }
 
   function test_code_pattern() {
