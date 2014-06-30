@@ -94,7 +94,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -6,
+      'weight' => -8,
     ),
   );
 
@@ -493,7 +493,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -8,
+      'weight' => -7,
     ),
   );
 
@@ -559,7 +559,7 @@ function uib_user_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -5,
+      'weight' => -6,
     ),
   );
 
@@ -699,7 +699,7 @@ function uib_user_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -789,7 +789,7 @@ function uib_user_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -1029,7 +1029,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -1099,7 +1099,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -1169,7 +1169,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -1292,7 +1292,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -1572,7 +1572,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
