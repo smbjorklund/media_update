@@ -844,16 +844,20 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
         }
       }
     }
+
     // Disable ("grey out") some fields
-    $not_enabled = array(
-      'field_uib_content_manager',
-      'field_uib_staff',
-    );
-    foreach ($not_enabled as $to_be_disabled) {
-      if (!isset($form[$to_be_disabled]['#access']) || $form[$to_be_disabled]['#access']) {
-        $form[$to_be_disabled]['#disabled'] = TRUE;
+    if ($GLOBALS['user']->uid != 1 && !in_array('level 1', $GLOBALS['user']->roles, TRUE)) {
+      $not_enabled = array(
+        'field_uib_content_manager',
+        'field_uib_staff',
+      );
+      foreach ($not_enabled as $to_be_disabled) {
+        if (!isset($form[$to_be_disabled]['#access']) || $form[$to_be_disabled]['#access']) {
+          $form[$to_be_disabled]['#disabled'] = TRUE;
+        }
       }
     }
+
     $not_for_news_and_frontpage = array(
       'field_uib_bottom_media',
       'field_uib_profiled_testimonial',
