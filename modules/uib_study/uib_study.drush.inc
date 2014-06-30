@@ -1,8 +1,5 @@
 <?php
-/**
- * @file
- * @return [type] [description]
- */
+
 function uib_study_drush_command() {
   $items['uib-sync-fs'] = array(
     'description' => 'Syncronise with fs-pres.app.uib.no',
@@ -127,14 +124,6 @@ function drush_uib_study_uib_sync_fs() {
   }
 }
 
-/**
- * [uib_study__update_study description]
- * @param  [type] $type      [description]
- * @param  [type] $study     [description]
- * @param  [type] $ou_nid    [description]
- * @param  [type] &$existing [list of existing studies]
- * @return [type]            [Returns an empty array or an array with missing study programs]
- */
 function uib_study__update_study($type, $study, $ou_nid, &$existing) {
   $no_path_prefix = $type == 'course' ? 'emne' : 'studieprogram';
   $en_path_prefix = $type == 'course' ? $type : 'studyprogramme';

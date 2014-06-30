@@ -363,11 +363,11 @@ function uib_user__vcard_page($user_entity = NULL) {
 
 /**
  * Generate the vCard for the given user.
- * Returns the vCard document as * a string.
  *
- * @param  [user object] $user_entity
+ * @param object $user_entity
  *
- * @return [string] Vcard formatted data
+ * @return string
+ * Vcard formatted data
  *
  */
 function uib_user__vcard($user_entity) {

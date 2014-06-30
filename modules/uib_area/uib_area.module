@@ -367,24 +367,12 @@ function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 't
 
 /**
  * uib_area_change_to_h2 description missing
- * @param  [type] $markup  [description]
- * @param  [type] $element [description]
- *
- * @return [type]          [description]
  */
 function uib_area_change_to_h2($markup, $element) {
   $markup = preg_replace('/<h3(.*?)>(.*?)<\/h3>/','<h2\1>\2</h2>', $markup);
   return $markup;
 }
 
-/**
- * [uib_area__feed_format description]
- * @param  [type] $url   [description]
- * @param  [type] $title [description]
- * @param  [type] $limit [description]
- *
- * @return [type]        [description]
- */
 function uib_area__feed_format($url, $title, $limit) {
   return array(
     '#cache' => array(
@@ -511,10 +499,7 @@ function uib_area_node_presave($node) {
 }
 
 /**
- * Rcursively tries to get uib_area parent_ids.
- *
- * @param [type] [varname] [description]
- * @param [type] [varname] [description]
+ * Recursively tries to get uib_area parent_ids.
  */
 function uib_area__get_parentage($parent_node_id, &$parent_ids) {
   $parent_ids[] = $parent_node_id;
@@ -534,8 +519,8 @@ function uib_area__get_parentage($parent_node_id, &$parent_ids) {
  *
  * The current area may be set "manually" by passing an area node id
  *
- * @param [integer] Optional area node id to set as current area
- * @return [type] [description]
+ * @param int $area_nid Optional area node id to set as current area
+ * @return object
  *   If no area reference is found, the function returns NULL.
  */
 function uib_area__get_current($area_nid = NULL) {
@@ -615,7 +600,7 @@ function uib_area__get_current_by_language($current_area) {
 /**
  * Get current node address as indicated by node id in URL.
  *
- * @return [type] [description]
+ * @return string
  *   If no node reference is found in URL, the function returns NULL.
  */
 function uib_area__get_current_node() {
@@ -629,9 +614,7 @@ function uib_area__get_current_node() {
  * Get the node type of an indicated node ('node/nid'), or
  * the current node as indicated by node id in URL.
  *
- * @param [type] [varname] [description]
- *
- * @return [type] [description]
+ * @return string
  *   If no node or node type is found, the function returns NULL.
  */
 function uib_area__get_node_type($node = NULL) {
@@ -655,7 +638,7 @@ function uib_area__get_node_type($node = NULL) {
  * Find the OU nid referenced from an area or ou
  * (defaults to the ou nid of current area).
  *
- * @return [type] [description]
+ * @return int
  *   If the area does not have an OU, the function will recursively search its
  *   area parents until an OU is ultimately found -- or return NULL.
  */
@@ -731,7 +714,7 @@ function uib_area__get_ou_nids_recursive($nid) {
 /**
  * Find the node id of the current uib_area.
  *
- * @return [type] [description]
+ * @return int
  *   If no area reference is found, the function returns NULL.
  */
 function uib_area__get_current_nid() {
@@ -747,7 +730,7 @@ function uib_area__get_current_nid() {
 /**
  * Find the menu to use for the current uib_area.
  *
- * @return [type] [description]
+ * @return string
  *   Returns NULL if there is no current area node
  *   or there should be no menu for the area.
  */
@@ -767,7 +750,7 @@ function uib_area__get_current_menu() {
 /**
  * Find menu link for the current uib_area.
  *
- * @return [type] [description]
+ * @return menu_link
  *   If no area reference or no menu link is found, the function returns NULL.
  */
 function uib_area__get_current_menu_link() {
@@ -786,7 +769,7 @@ function uib_area__get_current_menu_link() {
 /**
  * Find link item id of the current uib_area.
  *
- * @return [type] [description]
+ * @return menu_link
  *   If no menu link is found, the function returns NULL.
  */
 function uib_area__get_current_mlid() {
@@ -801,7 +784,7 @@ function uib_area__get_current_mlid() {
  * Find menu link item id which is to be used as a starting point for the top
  * level area menu block.
  *
- * @return [type] [description]
+ * @return int
  *   The function may not return something that evaluates to FALSE,
  *   because this will result in a menu containing the full area menu.
  *   Instead, this fix will return 1 upon failure which will
@@ -1162,7 +1145,7 @@ function uib_area__is_employee_page() {
 /**
  * Is the given user a content manager for the given area.
  *
- * @return [type] [description]
+ * @return boolean
  */
 function uib_area__is_content_manager($area, $user) {
   if (isset($area->field_uib_content_manager['und'])) {
@@ -1255,7 +1238,6 @@ function uib_area_menu_local_tasks_alter(&$data, $router_item, $root_path) {
  * Assemble the current area menu for display on a page
  *
  * Implements hook_block_list_alter().
- * @param  [type] $blocks
  */
 function uib_area_block_list_alter(&$blocks) {
   $current_area_menu_name = uib_area__get_current_menu();
@@ -1455,7 +1437,7 @@ function uib_area__menulink_access($menu_link = NULL) {
  * The user need to have the 'administer uib area menus' permission set
  * and needs to be content manager for the area.
  *
- * @return [type] [description]
+ * @return render_array
  */
 function uib_area__menu_overview_page() {
   // Modified from "menu admin per menu" module
@@ -1544,9 +1526,6 @@ function uib_area__has_bg_box($field_name) {
 
 /**
  * Overrides theme_field on area pages
- * [uib_zen_field__area description]
- * @param  [type] $variables
- * @return [type]
  */
 function uib_zen_field__area($variables) {
   $output = '';

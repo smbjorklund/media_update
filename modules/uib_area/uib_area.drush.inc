@@ -2,7 +2,6 @@
 /**
  * @file
  * uib_area.drush.inc
- * @return [type] [description]
  */
 function uib_area_drush_command() {
   $items['uib-area-connect-ou'] = array(

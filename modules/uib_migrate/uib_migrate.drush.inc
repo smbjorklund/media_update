@@ -1,8 +1,5 @@
 <?php
-/**
- * @file
- * @return [type] [description]
- */
+
 function uib_migrate_drush_command() {
   $items['uib-migrate-build-menu'] = array(
     'description' => 'Recursive traversal of node starting at top level menu item',
@@ -242,11 +239,6 @@ function drush_uib_migrate_update_files() {
 
   /**
    * Populate file array with data if it have a w2id (have been migrated).
-   * @param $media
-   *   File entry to write.
-   *
-   * @param $language
-   *  Language to populate file entry with.
    *
    * @return array of file entries or FALSE if no w2 ID was found.
    */

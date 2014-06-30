@@ -121,9 +121,10 @@ function uib_migrate__sync_w2_user($username) {
 
 /**
  * Fetch user
+ *
  * Fetches an existing w3 user uid
  *
- * @param  string $user UiB user name
+ * @param  string $user_name UiB user name
  * @return integer      Drupal user uid
  */
 function uib_migrate__get_user($user_name) {

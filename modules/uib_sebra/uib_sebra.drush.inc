@@ -1,8 +1,5 @@
 <?php
-/**
- * @file
- * @return [type] [description]
- */
+
 function uib_sebra_drush_command() {
   $items['uib-sebra-places'] = array(
     'description' => 'Syncronize places in Sebra with the Drupal database',

@@ -1295,8 +1295,9 @@ function uib_study_taxonomy_term_delete($term) {
 
 /**
  * Prepares a text string for use in an alias path
- * @param  [string] $in_path  the input text string
- * @return [string]           cleaned text string with hyphens instead of spaces
+ *
+ * @param  string $in_path  the input text string
+ * @return string           cleaned text string with hyphens instead of spaces
  */
 function uib_study__prepare_path($in_path) {
   $in_path = trim($in_path);
@@ -1449,10 +1450,11 @@ function uib_study__title_and_text($title, $text) {
 
 /**
  *  Function to translate exposed filter in study views
- *  @param [object]   $view   the view
- *  @param [int]      $taxonomy_term  id of taxonomy
- *  @param [int]      $max_depth  number of levels of the taxonomy
- *  @param [int]      $number_of_chars_to_remove  the number of chars that makes the nuscode
+ *
+ *  @param object   $view   the view
+ *  @param array    $taxonomy_tree
+ *  @param int      $max_depth  number of levels of the taxonomy
+ *  @param int      $number_of_chars_to_remove  the number of chars that makes the nuscode
  */
 function uib_study__translate_exposed_filter(&$view, $taxonomy_tree, $max_depth, $number_of_chars_to_remove) {
   $taxonomy_tree = taxonomy_get_tree($taxonomy_tree, 0, $max_depth);

@@ -170,6 +170,7 @@ function uib_breadcrumb_page_alter(&$page) {
  * @param int $nid
  * @param array $crumbs
  * @param node $current_area
+ * @param array $menu_ids
  *
  * @return array
  */

@@ -405,8 +405,6 @@ function uib_article_theme_registry_alter(&$theme_registry) {
 
 /**
  * Implements theme_field_multiple_value_form().
- * @param  [type] $variables [description]
- * @return [type]            [description]
  */
 function uib_article_theme_field_multiple_value_form($variables) {
   $element = $variables['element'];
