@@ -39,6 +39,7 @@ HTML = \
 PYTHON = python
 PERL = perl
 BOOTSTRAP_PY = bootstrap.py
+BOOTSTRAP_ARGS =
 
 .SUFFIXES: .md .html
 .PHONY: makefile clean realclean
@@ -59,7 +60,7 @@ bin/python: bin/buildout
 	touch $@
 
 bin/buildout: $(BOOTSTRAP_PY)
-	$(PYTHON) $(BOOTSTRAP_PY)
+	$(PYTHON) $(BOOTSTRAP_PY) $(BOOTSTRAP_ARGS)
 	touch $@
 
 makefile:
