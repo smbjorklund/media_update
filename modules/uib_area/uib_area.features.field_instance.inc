@@ -3453,7 +3453,7 @@ function uib_area_field_default_field_instances() {
           'geofield_map_scrollwheel' => 0,
           'geofield_map_streetview_show' => 0,
           'geofield_map_width' => '100%',
-          'geofield_map_zoom' => 15,
+          'geofield_map_zoom' => 13,
         ),
         'type' => 'geofield_map_map',
         'weight' => 4,
