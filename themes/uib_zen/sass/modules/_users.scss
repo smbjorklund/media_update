@@ -142,6 +142,7 @@ $zen-column-count: 4;
   background: $light-grey;
   border-bottom: 1px solid #dedfdd;
   border-top: 1px solid #dedfdd;
+  @include zen-clear(left);
   &.field-label-above .field-label {
     border-bottom: none 0;
     border-top: none 0;
