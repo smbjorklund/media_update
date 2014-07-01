@@ -3,7 +3,7 @@
 SITE_URL=http://$(basename $(readlink site))
 if test ! -z "$1"; then
     SITE_PATH=$1
-    SITE_PATH=$(perl -le '$p = shift; $p =~ s,^https?://[^/]+/,,; print $p;' $SITE_PATH)
+    SITE_PATH=$(perl -le '$p = shift; $p =~ s,^https?://[^/]+/,,; $p = "nb/$p" if $p !~ /^(nb|en)\//; print $p;' $SITE_PATH)
     SITE_URL=$SITE_URL/$SITE_PATH
 fi
 
