@@ -25,6 +25,7 @@ HTML = \
   man1/make-drupal.html \
   man1/module-update.html \
   man1/patches.html \
+  man1/pick.html \
   man1/rts.html \
   man1/site-drush.html \
   man1/site-dump.html \
