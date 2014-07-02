@@ -1,3 +1,45 @@
+# Release 2014-07-02 tag: R7.8
+
+7.8 ble en stor oppsamlingsrelease før sommerferien. Her har vi gjort ferdig ny funksjonalitet og finpuss for Universitetsbiblioteket, lagt til rette for EVU og fortsatt justeringer på personprofil-sidene.
+
+Ny funksjonalitet for Universitetsbiblioteket
+
+* Rolle 2-brukere vil nå ha tilgang til å redigere Organisasjonsenheter - denne tilgangen trengs hvis man skal ta i bruke funksjonaliteten "åpningstider". Vi har også lagt til felt for organisasjonsenheter; epost og et rent tekstfelt for spesielle beskjeder angående åpningstider #6942 #6798
+* Vi har laget et nytt tekstfilter som kan introduseres i html på artikkel for å vise en widget. Foreløpig er det lagt til rette for en bokwidget for Universitetsbiblioteket #6944
+* Funksjonaliteten for å vise åpningstider er lagt til for Universitetsbiblioteket. Disse sakene justerer, legger til rette for riktig visning av og riktig tilgang til redigering av åpningstider på UB-siden #6943 #6869 #6881 #6899 #6863 #6860 #6990 #6872 #7007
+
+Endringer for EVU og utdanningsinformasjon
+
+* Feltet "undervisningssemester" vil nå etter avtale med SA gjøres synlig igjen #6941
+* Rolle 2 får tilgang til å redigere NUS-sidene #6911
+* "Study points" endres til "ECTS credits" på studiesidene #6908
+* Vi retter en feil i integrasjonen mot FS som førte til dobbelvisning av url i studieprogram/emner #6977
+* Vi henter inn informasjon for POST-studier #6859
+* Evu-menyen og brødsmuler skjules inntil videre for emner knyttet til evu #6993
+* Emnebeskrivelse skjule på EVU-kurssiden og flyttes til separat side, med lenke fra "Ressurser" #6691 #6690
+* Velg semester-boksen samt noen andre elementer skjules for EVU-kurs #6689
+
+Personsidene:
+
+* Migrerer innhold av data for personsidene fra w2 (denne migrasjonen skal tas på nytt senere) #6900
+* Retter feil i sebrasynkroniseringen #6951
+* Du kan nå finne en person på uib ved å bruke url www.uib.no/user/uib/[brukernavn] #6981
+* Retter og justerer rundt visning av navn og foto på personsidene #6974 #6904
+* Endrer widget for opplasting av dokumenter på personsidene #6626
+* Vi har i denne oppdateringen introdusert feltet "Tilknyttede personer" til artikler. Funksjonaliteten som lar deg legge til personer vha brukernavn til en liste nederst på siden på artikkel, skal ha litt mer finpuss før den er helt klar. #6945
+
+Generelle saker og feilrettinger:
+
+* Vi har introdusert et filter som beskytter lange dokumenter fra studiekode-filteret #7003
+* Rolle 2 kan ikke lenger redigere ansatte og innholdsprodusenter i administrasjonsgrensesnittet på område #6889
+* Endring i format på telefonnummer for hele uib.no #6861
+* Endrer visning av "Nyheter" til ikke å vise nyheter eldre enn 4 måneder #6350
+* Legger til rette for å kunne ha enda en artikkel i nyhetskarusell på område #5612
+* Problemet med at man "mistet" fanene i navigering via bokmerker på siden, er fikset #6821
+* Stillings-feltet i vitnesbyrd var blitt låst ved en feil, og er nå åpnet for redigering #6747
+* Feil som viste html i områdetitler  er rettet #6945
+
+
 # Release 2014-06-11 tag: R7.7.1
 
 Retter stylingfeil som gjorde at man ikke kunne redigere i toppmeny på UB-siden #6796
