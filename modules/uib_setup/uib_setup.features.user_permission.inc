@@ -544,7 +544,9 @@ function uib_setup_user_default_permissions() {
   // Exported permission: 'create uib_study content'.
   $permissions['create uib_study content'] = array(
     'name' => 'create uib_study content',
-    'roles' => array(),
+    'roles' => array(
+      'admin' => 'admin',
+    ),
     'module' => 'node',
   );
 
@@ -627,7 +629,9 @@ function uib_setup_user_default_permissions() {
   // Exported permission: 'delete any uib_study content'.
   $permissions['delete any uib_study content'] = array(
     'name' => 'delete any uib_study content',
-    'roles' => array(),
+    'roles' => array(
+      'admin' => 'admin',
+    ),
     'module' => 'node',
   );
 
@@ -702,7 +706,9 @@ function uib_setup_user_default_permissions() {
   // Exported permission: 'delete own uib_study content'.
   $permissions['delete own uib_study content'] = array(
     'name' => 'delete own uib_study content',
-    'roles' => array(),
+    'roles' => array(
+      'admin' => 'admin',
+    ),
     'module' => 'node',
   );
 
@@ -814,7 +820,11 @@ function uib_setup_user_default_permissions() {
   // Exported permission: 'edit any uib_study content'.
   $permissions['edit any uib_study content'] = array(
     'name' => 'edit any uib_study content',
-    'roles' => array(),
+    'roles' => array(
+      'admin' => 'admin',
+      'level 1' => 'level 1',
+      'level 2' => 'level 2',
+    ),
     'module' => 'node',
   );
 
@@ -892,7 +902,9 @@ function uib_setup_user_default_permissions() {
   // Exported permission: 'edit own uib_study content'.
   $permissions['edit own uib_study content'] = array(
     'name' => 'edit own uib_study content',
-    'roles' => array(),
+    'roles' => array(
+      'admin' => 'admin',
+    ),
     'module' => 'node',
   );
 
