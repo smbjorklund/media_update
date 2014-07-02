@@ -4,10 +4,27 @@
  */
 .offices {
   @include zen-clear();
+  margin-bottom: 10px;
   .ui-tabs-nav {
+    background: #f1f1ef;
+    border-radius: 0;
+    display: none;
     li {
       float: none;
       margin: 0;
+      &.ui-state-default {
+        border: none;
+        background: transparent;
+        &:hover {
+          background: silver;
+        }
+      }
+      &.ui-state-active {
+        background: #333;
+        &:hover {
+          background: #333;
+        }
+      }
       a {
         float: none;
         white-space: normal;
@@ -31,12 +48,20 @@
       }
     }
   }
+  .group-office-hours, .group-contact-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   .field-name-field-uib-geolocation {
     padding-right: 0;
   }
   h3{
     font-size: 1.2em;
     text-transform: uppercase;
+  }
+
+  .uib-tabs-nav-mobile {
+    width: 100%;
   }
 }
 
@@ -60,31 +85,6 @@
   display: block !important;
 }
 
-.offices {
-  margin-bottom: 10px;
-  ul.ui-tabs-nav {
-    background: #f1f1ef;
-    border-radius: 0; // add for other browsers
-    li.ui-state-default {
-      border: none;
-      background: transparent;
-      &:hover {
-        background: silver;
-      }
-    }
-    li.ui-state-active {
-      background: #333;
-      &:hover {
-        background: #333;
-      }
-    }
-  }
-  .group-office-hours, .group-contact-info {
-    margin-top: 10px;
-  }
-}
-
-
 $zen-column-count: 2;
 @media all and (min-width: 380px) {
   .group-office-hours {
@@ -101,7 +101,11 @@ $zen-column-count: 2;
 $zen-column-count: 5;
 @media all and (min-width: 800px) {
   .offices {
+    .uib-tabs-nav-mobile {
+      display: none;
+    }
     .ui-tabs-nav {
+      display: block;
       @include zen-grid-item(2, 1);
     }
     .group-office-hours {

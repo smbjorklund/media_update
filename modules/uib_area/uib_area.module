@@ -349,9 +349,11 @@ function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 't
   $tabs .= $class ? ' ' . $class : '';
   $tabs .= '">';
   $tabs_nav = '<ul>';
+  $tabs_nav_mobile = '<select class="uib-tabs-nav-mobile">';
   $tabs_content = '';
   foreach ($items as $key => $item) {
     $tabs_nav .= '<li><a href="#uib-tab--' . $key . '">' . $item->title . '</li>';
+    $tabs_nav_mobile .= '<option value="uib-tab--' . $key . '">' . $item->title . '</ul>';
     $tabs_content .= '<div id="uib-tab--' . $key . '">';
     $item_view = node_view($item, $view_mode);
     unset($item_view['links']);
@@ -360,7 +362,8 @@ function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 't
     $tabs_content .= '</div>';
   }
   $tabs_nav .= '</ul>';
-  $tabs .= $tabs_nav . $tabs_content . '</div>';
+  $tabs_nav_mobile .= '</select>';
+  $tabs .= $tabs_nav_mobile . $tabs_nav . $tabs_content . '</div>';
   return $tabs;
 }
 
