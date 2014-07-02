@@ -23,7 +23,7 @@ Personsidene:
 
 * Migrerer innhold av data for personsidene fra w2 (denne migrasjonen skal tas på nytt senere) #6900
 * Retter feil i sebrasynkroniseringen #6951
-* Du kan nå finne en person på uib ved å bruke url www.uib.no/user/uib/[brukernavn] #6981
+* Du kan nå finne en person på uib ved å bruke url på formen www.uib.no/user/uib/&lt;brukernavn> #6981
 * Retter og justerer rundt visning av navn og foto på personsidene #6974 #6904
 * Endrer widget for opplasting av dokumenter på personsidene #6626
 * Vi har i denne oppdateringen introdusert feltet "Tilknyttede personer" til artikler. Funksjonaliteten som lar deg legge til personer vha brukernavn til en liste nederst på siden på artikkel, skal ha litt mer finpuss før den er helt klar. #6945
