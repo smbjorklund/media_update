@@ -1,5 +1,4 @@
 #!/bin/bash
 cd /var/www/w3.uib.no
-#Needs to be run 2x times (due to bugs in sebra, first run filles cache)
 date +'%H:%M ----------------------------------------------' >>/tmp/fs-import.$(date -I).log
-nice -n 20 su w3-drupal -c 'bin/site-drush uib-sync-fs' 2>>/tmp/fs-import.$(date -I).log
+nice -n 20 su w3-drupal -c 'bin/site-drush uib-sync-fs --verbose' 1>>/tmp/fs-import.$(date -I).log 2>&1
