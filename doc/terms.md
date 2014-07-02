@@ -6,17 +6,39 @@
 Siden vi standardiserer på engelsk i koden så bør vi ha en entydig engelsk
 oversettelse av begrepene vi bruker som er UiB spesifikke.
 
+* Utdanning: Education
+
 * Emne: Course (course)
 
-* Kurs: Course (evucourse)
+* EVU: EVU
+
+  Etter- og videreutdanning
+
+* (EVU) Kurs: EVU Course (evucourse)
+
+* (EVU) Kurs instans: EVU Course Instance
+
+* PhD kurs
 
 * Studieprogram: study programme
 
-* Studieretning: programme option
+* Studieretning: specialization, programme option
 
-* Område: **area**
+* Bachelor program
 
-* Sted: **place**
+* Master program
+
+* Årsstudium
+
+* Profesjonstudium
+
+* Semester
+
+* Område: area
+
+* Sted: organisational unit, ou, place, office
+
+* Stedkode: Place id
 
 * Student: student
 
@@ -32,21 +54,23 @@ oversettelse av begrepene vi bruker som er UiB spesifikke.
 
 * Bruker: User
 
+* Brukernavn: Username
+
 * Nyhet: News article
 
 * Infoside
 
-* Navigasjonsside
+* (Navigasjonsside; ikke brukt mer; samme som en infoside med relatert innhold)
 
 * Kalender
 
-* Kalenderoppføring (hendelse)
+* Kalenderoppføring (hendelse): event
 
-* Utstilling
+* Utstilling: exhibition
 
-* Fakultet: Faculty  (Faculty also means "the teaching staff of a university viewed as a body")
+* Fakultet: Faculty (Faculty also means "the teaching staff of a university viewed as a body")
 
-* Institutt: Institute (official title usually just use "Department")
+* Institutt: Institute (official title usually just use "Department of ...")
 
 * Avdeling: Department
 
