@@ -13,6 +13,41 @@ function uib_user_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_user__user';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'googleanalytics' => array(
+          'weight' => '3',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+        'account' => array(
+          'weight' => '-10',
+        ),
+        'timezone' => array(
+          'weight' => '6',
+        ),
+        'picture' => array(
+          'weight' => '-5',
+        ),
+        'locale' => array(
+          'weight' => '5',
+        ),
+        'wysiwyg' => array(
+          'weight' => '5',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_user__user'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_default';
   $strongarm->value = '/sites/all/themes/uib/uib_zen/images/person-164.png';
   $export['user_picture_default'] = $strongarm;
