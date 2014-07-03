@@ -13,7 +13,7 @@
 
 @import "base";
 
-@each $social in facebook, twitter, google-plus-share, linkedin, youtube, instagram, vimeo, flickr {
+@each $social in facebook, twitter, google-plus-share, linkedin, youtube, instagram, vimeo, flickr, github {
   .icons-social-#{$social} {
     background: inline-image("svg-icons/#{$social}.svg") left top no-repeat;
     background-size: contain;

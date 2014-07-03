@@ -46,6 +46,7 @@ function uib_field_field_formatter_view($entity_type, $entity, $field, $instance
     'flickr' => array('http://flickr.com/', 'photos/unibergen/sets'),
     'vimeo' => array('http://vimeo.com/', 'uib'),
     'instagram' => array('http://instagram.com/', 'uib'),
+    'github' => array('https://github.com/', 'uib'),
   );
   foreach ($items as $delta => $item) {
     $sm = explode(':', $item['safe_value']);
