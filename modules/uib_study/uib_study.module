@@ -1059,6 +1059,7 @@ function uib_study_form_alter(&$form, &$form_state, $form_id) {
       $form['relations']['#access'] = FALSE;
       hide($form['field_uib_nus_id']);
       hide($form['field_uib_term_title']);
+      $form['path']['#access'] = FALSE;
     }
   }
 }
@@ -1223,13 +1224,13 @@ function uib_study_taxonomy_term_insert($term) {
  * Implements hook_taxonomy_term_update().
  */
 function uib_study_taxonomy_term_update($term) {
-  if ($term->vocabulary_machine_name == 'uib_nus') {
+  if ($term->vocabulary_machine_name == 'uib_nus' && $term->field_uib_term_title != $term->original->field_uib_term_title) {
     uib_study__add_taxonomy_aliases($term);
   }
 }
 
 /**
- * Add NUS code aliases for a taxonomy term
+ * Add or update NUS code aliases for a taxonomy term
  */
 function uib_study__add_taxonomy_aliases($term) {
   $taxonomy_term = entity_metadata_wrapper('taxonomy_term', $term);
@@ -1237,30 +1238,56 @@ function uib_study__add_taxonomy_aliases($term) {
 
   // Obtain the names of the education area in 'nb' and 'en' languages
   $study_area_nid = variable_get('uib_study_area_nid');
-  $utdanning = path_load("node/$study_area_nid");
-  $languages['nb'] = $utdanning['alias'];
+  $utdanning = uibx_path_load("node/$study_area_nid");
+  $languages['nb'] = $utdanning[0]->alias;
   $query = new EntityFieldQuery();
   $edu = $query->entityCondition('entity_type', 'node')
     ->propertyCondition('tnid', $study_area_nid)
     ->propertyCondition('language', 'en')
     ->execute();
   $edu_nids = array_keys($edu['node']);
-  $education = path_load('node/' . $edu_nids[0]);
-  $languages['en'] = $education['alias'];
+  $education = uibx_path_load('node/' . $edu_nids[0]);
+  $languages['en'] = $education[0]->alias;
 
   foreach ($languages as $lang_abbrev => $area_name) {
     if ($taxonomy_term->language($lang_abbrev)->field_uib_term_title->value()) {
       $path = $area_name . '/';
       $path .= uib_study__get_parents_path($term, $lang_abbrev);
       $path .= uib_study__prepare_path($taxonomy_term->language($lang_abbrev)->field_uib_term_title->value());
-      $new_alias = array('source' => $source_path, 'alias' => $path, 'language' => $lang_abbrev);
-      if ($existing_alias = path_load($source_path)) {
-        if ($existing_alias['alias'] != $path) {
-          path_save($new_alias);
+      if ($existing_alias = uibx_path_load($source_path, $lang_abbrev)) {
+        if ($existing_alias[0]->alias != $path) {
+          $existing_alias = (array) $existing_alias[0];
+          $existing_alias['alias'] = $path;
+          path_save($existing_alias);
+          // Update the aliases of child terms
+          uib_study__taxonomy_children($term->tid, $term->vid, $area_name, $lang_abbrev);
         }
       }
       else {
+        $new_alias = array('source' => $source_path, 'alias' => $path, 'language' => $lang_abbrev);
         path_save($new_alias);
+      }
+    }
+  }
+}
+
+/**
+ * When a nus term alias has changed, existing child aliases need to be updated too
+ */
+function uib_study__taxonomy_children($parent_tid, $vocab_id, $area_name, $lang_abbrev) {
+  $children = taxonomy_get_children($parent_tid, $vocab_id);
+  foreach ($children as $term) {
+    $term_child = entity_metadata_wrapper('taxonomy_term', $term);
+    // update the aliases
+    $source_path = 'taxonomy/term/' . $term_child->getIdentifier();
+    if ($existing_alias = uibx_path_load($source_path, $lang_abbrev)) {
+      $existing_alias = (array) $existing_alias[0];
+      $new_path = $area_name . '/' . uib_study__get_parents_path($term, $lang_abbrev);
+      $new_path .= uib_study__prepare_path($term_child->language($lang_abbrev)->field_uib_term_title->value());
+      if ($existing_alias['alias'] != $new_path) {
+        $existing_alias['alias'] = $new_path;
+        path_save($existing_alias);
+        uib_study__taxonomy_children($term->tid, $vocab_id, $area_name, $lang_abbrev);
       }
     }
   }
