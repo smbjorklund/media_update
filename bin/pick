@@ -134,6 +134,14 @@ sub do_apply {
     }
 }
 
+sub do_prune {
+    open(my $fd, "git branch --remote |") || die;
+    while (<$fd>) {
+	next unless m,^\s*origin/(picked/.*),;
+	print "git push origin :$1\n";
+    }
+}
+
 sub git_have_ref {
     my $ref = shift;
     run("git", "show-ref", "--quiet", "--verify", "refs/$ref");
