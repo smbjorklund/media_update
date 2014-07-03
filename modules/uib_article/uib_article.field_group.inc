@@ -61,19 +61,20 @@ function uib_article_field_group_info() {
     'label' => 'Information',
     'weight' => '2',
     'children' => array(
-      0 => 'field_uib_related_persons',
-      1 => 'field_uib_relation',
-      2 => 'field_uib_byline',
-      3 => 'field_uib_external_author',
-      4 => 'field_uib_article_type',
-      5 => 'field_uib_text',
-      6 => 'field_uib_kicker',
-      7 => 'field_uib_event_type',
-      8 => 'field_uib_show_global_calendar',
-      9 => 'field_uib_area',
+      0 => 'field_uib_byline',
+      1 => 'field_uib_related_persons',
+      2 => 'field_uib_event_type',
+      3 => 'field_uib_kicker',
+      4 => 'field_uib_show_global_calendar',
+      5 => 'field_uib_relation',
+      6 => 'field_uib_lead',
+      7 => 'field_uib_area',
+      8 => 'field_uib_external_author',
+      9 => 'field_uib_text',
       10 => 'field_uib_main_media',
-      11 => 'field_uib_lead',
+      11 => 'field_uib_article_type',
       12 => 'title',
+      13 => 'field_related_persons_label',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -95,6 +96,33 @@ function uib_article_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_related_persons|node|uib_article|default';
+  $field_group->group_name = 'group_related_persons';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'uib_article';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related persons group',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_related_persons_label',
+      1 => 'field_uib_related_persons',
+    ),
+    'format_type' => 'html5',
+    'format_settings' => array(
+      'label' => 'Related persons group',
+      'instance_settings' => array(
+        'classes' => 'group-related-persons field-group-html5',
+        'wrapper' => 'section',
+      ),
+    ),
+  );
+  $export['group_related_persons|node|uib_article|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_sidebar|node|uib_article|form';
   $field_group->group_name = 'group_sidebar';
   $field_group->entity_type = 'node';
@@ -106,11 +134,11 @@ function uib_article_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_uib_contacts',
-      1 => 'field_uib_location',
+      1 => 'field_uib_date',
       2 => 'field_uib_media',
-      3 => 'field_uib_files',
+      3 => 'field_uib_location',
       4 => 'field_uib_fact_box',
-      5 => 'field_uib_date',
+      5 => 'field_uib_files',
       6 => 'field_uib_links',
     ),
     'format_type' => 'div',

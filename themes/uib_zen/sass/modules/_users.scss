@@ -229,12 +229,19 @@ $zen-column-count: 5;
 // Styling for view mode user teaser
 /////////////
 $zen-column-count: 4;
-.field-name-field-uib-related-persons {
+.group-related-persons {
   margin-bottom: 30px;
   background: $light-grey;
   border-bottom: 1px solid #dedfdd;
   border-top: 1px solid #dedfdd;
   @include zen-clear(left);
+}
+.field-name-field-related-persons-label {
+  font-size: 2em;
+  line-height: 2em*4/3;
+  padding: 0 10px;
+}
+.field-name-field-uib-related-persons {
   &.field-label-above .field-label {
     border-bottom: none 0;
     border-top: none 0;
