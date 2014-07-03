@@ -912,6 +912,7 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
         ':input[name="field_uib_area_type[und]"]' => array('value' => 'discipline'),
        ),
     );
+    $form['#validate'][] = 'uib_area_field_uib_area_banner_css_validation_handler';
   }
   elseif ($form_id == 'menu_edit_item') {
     if (!user_access('administer menu')) {
@@ -963,6 +964,15 @@ function uib_area_node_validate($node, $form, &$form_state) {
         form_set_error('field_uib_area_parents', t('Area parent is required'));
       }
     }
+  }
+}
+
+/**
+ * Making sure nobody uses the !important rule in custom code in field_uib_area_banner
+ */
+function uib_area_field_uib_area_banner_css_validation_handler(&$form, &$form_state) {
+  if (mb_stripos($form_state['values']['field_uib_area_banner']['und'][0]['value'], '!important')) {
+    form_set_error('field_uib_area_banner', t('You are not allowed to use the !important rule in the css. Try applying a more specific selector instead.'));
   }
 }
 
