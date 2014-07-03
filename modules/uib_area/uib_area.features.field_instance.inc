@@ -2924,7 +2924,7 @@ function uib_area_field_default_field_instances() {
           'view_mode' => 'short_teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2961,7 +2961,7 @@ function uib_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
