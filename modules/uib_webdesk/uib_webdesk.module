@@ -15,6 +15,11 @@ function uib_webdesk_menu() {
     'file' => 'uib_webdesk.stats.inc',
     'access callback' => TRUE,
   );
+  $items["webdesk/release-notes"] = array(
+    'page callback' => 'uib_webdesk__release_notes_page',
+    'file' => 'uib_webdesk.release_notes.inc',
+    'access callback' => TRUE,
+  );
   return $items;
 }
 

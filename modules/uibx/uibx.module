@@ -196,3 +196,25 @@ function uibx_path_load($source, $language = NULL) {
   }
   return $alias_list;
 }
+
+/**
+ * Return the version for the site software.
+ * Will return '' on failure to obtain a release number.
+ */
+function uibx_current_version() {
+  static $release;
+  if (isset($release))
+    return $release;
+
+  $release = '';
+  $fh = popen("cd .. && git describe --tags", "r");
+  if ($fh) {
+    $release = trim(fgets($fh));
+    pclose($fh);
+  }
+
+  if (substr($release, 0, 1) == 'R')
+    $release = substr($release, 1);
+
+  return $release;
+}

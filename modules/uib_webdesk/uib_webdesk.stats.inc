@@ -111,6 +111,20 @@ function uib_webdesk__stats_page() {
     '#rows' => $last_node_rows,
   );
 
+  $page['footer'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'style' => 'clear: both; margin-top: 2em; border-top: 1px dotted #bbb;',
+    ),
+  );
+
+  $release = uibx_current_version();
+  if ($release) {
+    $page['footer']['release'] = array(
+      '#markup' => '<div style="text-align: right; color: #aaa;"><a href="release-notes">' . check_plain("Release $release") . '</a></div>',
+    );
+  }
+
   drupal_add_css('
     table {
       float: left;
