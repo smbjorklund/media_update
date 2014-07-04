@@ -668,7 +668,7 @@ Spesifikt for Ansattsidene:
 * Menyen på ansattesidene virker nå i responsiv design (små brett/mobil)
 * Lenker videre-menyen på Ansattesidene er nå flyttet opp til høyre for teksten i artikkelen
  
-\+ en del tekniske saker som rydder og effektiviserer
+samt en del tekniske saker som rydder og effektiviserer
 
 # Release 2013-04-12 tag:R1.2
 
