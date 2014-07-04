@@ -1,3 +1,14 @@
+#Release 2014-07-07 tag: R7.9
+
+Vi slipper igjennom en liten ekstra oppdatering for å rette opp noen små saker som ikke kom med i 7.8.
+
+* Vi har fått på plass regler for hva som skal skje med områder og artikler under områder som bytter navn #4671
+* Feil i filtrering på NUS-lister for studieprogram og emner gjorde at informasjon dupliserte seg selv. Dette er fikset i #6992
+* Rolle 2 har nå tilgang til å redigere studieprogram, emner og åpningstider for områder #7033 #7018
+* Responsiv visning av åpningstider på plass #7008 #7005
+* En liten opprydning i layout på personsidene i redigeringsmodus #6399
+* Og vi har fått vår egen side for disse release-notatene  <http://uib.no/webdesk/release-notes> #7054
+
 # Release 2014-07-02 tag: R7.8
 
 7.8 ble en stor oppsamlingsrelease før sommerferien. Her har vi gjort ferdig ny funksjonalitet og finpuss for Universitetsbiblioteket, lagt til rette for EVU og fortsatt justeringer på personprofil-sidene.
