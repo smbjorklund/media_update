@@ -171,6 +171,24 @@ function uib_study__infotyper_render(&$page, $render, $filter) {
 }
 
 /**
+ * Check if a course has a current description (em-emnebeskrivelse)
+ */
+function uib_study__course_description_exists($fspres_code) {
+  if ($data = uib_study__fspres_get_json(uib_study__fspres_lang() . "/emne/$fspres_code/render.json")) {
+    foreach ($data as $item) {
+      if ($item['#group'] == 'em-emnebeskrivelse') {
+        foreach ($item['#items'] as $subs) {
+          if (!empty($subs['#text'])) {
+            return TRUE;
+          }
+        }
+      }
+    }
+  }
+  return FALSE;
+}
+
+/**
  * Implements hook_flush_caches().
  */
 function uib_study_flush_caches() {
@@ -550,6 +568,7 @@ function uib_study_block_view($delta = '') {
         $data_2 = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
         $rows = array();
         if ($type == 'course') {
+          $category = $node->field_uib_study_category['und'][0]['value'];
           if ($data['studieniva'] == 'FU') {
             $study_code = $data['emneid']['emnekode'];
             $rows[] = array(t('Course code'), $study_code);
@@ -578,13 +597,14 @@ function uib_study_block_view($delta = '') {
             $tmp = uib_study__get_resource_links('reading_list', $study_code);
             $resources['#items'][] = render($tmp);
             // for evu courses, add link to course description
-            if ($node->field_uib_study_category['und'][0]['value'] == 'evu') {
-              $tmp = uib_study__get_description_link($study_code);
-              $resources['#items'][] = render($tmp);
+            if ($category == 'evu') {
+              if (uib_study__course_description_exists($study_code)) {
+                $tmp = uib_study__get_description_link($study_code);
+                $resources['#items'][] = render($tmp);
+              }
             }
             $rows[] = array(t('Resources'), render($resources));
           }
-          $category = $node->field_uib_study_category['und'][0]['value'];
           if ($category == 'evu') {
             $not_for_evu = array(
               'Emnekode',
