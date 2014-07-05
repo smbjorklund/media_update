@@ -33,7 +33,7 @@ effect.
 
 Verify that it works by running:
 
-    echo "<?php phpinfo();" >/Library/WebServer/Documents/phpinfo.php
+    $ echo "<?php phpinfo();" >/Library/WebServer/Documents/phpinfo.php
 
 and then visit <http://localhost/phpinfo.php>.
 
@@ -46,11 +46,11 @@ that it works.
 
 Alternative clone the sources with git, and check out the latest 7.x-release:
 
-    cd ~
-    git clone http://git.drupal.org/project/drush.git
-    git checkout $(git tag | grep 7.x-5 | tail -1)
-    cd ~/bin
-    ln -s ~/drush/drush
+    $ cd ~
+    $ git clone http://git.drupal.org/project/drush.git
+    $ git checkout $(git tag | grep 7.x-5 | tail -1)
+    $ cd ~/bin
+    $ ln -s ~/drush/drush
 
 ### Compass
 
@@ -58,8 +58,8 @@ The [compass program](http://compass-style.org/) is required to compile the
 style sheets.  Compass is a Ruby program and is installed as a Ruby package
 using the `gem` tool.
 
-    gem update --system
-    gem install compass
+    $ gem update --system
+    $ gem install compass
 
 Run 'compass --version' to verify that it works.
 
@@ -75,9 +75,9 @@ Go somewhere you prefer to have your code checked out (we use _/tmp_ in the
 following example, but you can probably come up with something better).
 Then run:
 
-    cd /tmp
-    git clone --recursive git@git.uib.no:site/w3.uib.no
-    cd w3.uib.no
+    $ cd /tmp
+    $ git clone --recursive git@git.uib.no:site/w3.uib.no
+    $ cd w3.uib.no
 
 This should give you our sourced user _/tmp/w3.uib.no_ and a Drupal instance
 for Apache to serve at _/tmp/w3.uib.no/drupal_.
@@ -112,13 +112,17 @@ Then run `sudo apachectl restart` and visit <http://w3.uib.local> to verify that
 works.  You will get into the Drupal install dialog, which we will not use. We'll
 install the site from the command line instead:
 
-    cd /tmp/w3.uib.no
-    bin/site-init --sqlite w3.uib.local
-    bin/site-install
-    bin/site-drush pm-enable --yes uib_devel
+    $ cd /tmp/w3.uib.no
+    $ bin/site-init --sqlite w3.uib.local
+    $ bin/site-install
+    $ bin/site-drush pm-enable --yes uib_devel
 
 Then goto  <http://w3.uib.local> once more.  You should now see the empty front page
 of the w3 application and you can [login](http://w3.uib.local/user) as _admin:admin_.
+
+Alternate recommendation is a use a name like <http://w3.uib.9zlhb.xip.io> as this
+doesn't require you to mess with the _/etc/hosts_ file. Visit [xip.io](http://xip.io)
+to learn how this works.
 
 ### Set up PostgreSQL
 
@@ -137,6 +141,13 @@ to such a database:
   account.
 
 - Install Postgres natively/locally (on OS X for instance using homebrew).
+  Create an account called 'user1' with password 'pass1' that is given permission
+  to create new databases:
+
+This sets up the recommended user if it doesn't already exists:
+
+    $ psql postgres
+    postgres=# CREATE USER user1 WITH PASSWORD 'pass1' CREATEDB;
 
 Running with postgres locally is much faster if you have anything but a very
 fast connection to _glory_, that is if you are not wired to the UiB network
@@ -146,7 +157,7 @@ Select your preferred option above and make sure psql is able to connect to the
 database.  In the examples below we use the first option, and then this should
 work out-of-the-box:
 
-    psql -h glory.uib.no postgres user1
+    $ psql -h glory.uib.no postgres user1
 
 If you run postgres in a virtual box or locally you will have to use _localhost_
 as the hostname.
@@ -158,19 +169,19 @@ the UTF-8 encoding.
 
 exit psql and check that you can connect to the new database:
 
-    psql -u glory.uib.no db42 user1
+    $ psql -u glory.uib.no db42 user1
 
 Jolly good!  Remember to replace _db42_ with something unique to you.  Also in
 the examples below.
 
 Now let's reinstall w3.uib.local so that it connects to Postgres:
 
-    bin/site-uninstall     # get rid of the old one
-    DATABASE=pgsql://user1:pass1@glory.uib.no/db42 bin/site-install w3.uib.local
+    $ bin/site-uninstall     # get rid of the old one
+    $ DATABASE=pgsql://user1:pass1@glory.uib.no/db42 bin/site-install w3.uib.local
 
 And visit  <http://w3.uib.local> again to verify that it worked and that:
 
-    bin/site-drush status
+    $ bin/site-drush status
 
 says that you are connecting to postgres.
 
@@ -180,44 +191,44 @@ If you install the app like above you end up with an empty one with no
 areas or articles.  To fill it up with a copy of the data we currently have
 in production run:
 
-    bin/site-prod-reset
+    $ bin/site-prod-reset
 
 This takes a while the first time you run it because it syncs over all
 files and images uploaded to production.  If the source code is different
 from the production source code you probably want to run:
 
-    bin/site-drush fd
-    bin/site-drush fr
-    bin/site-drush updb
+    $ bin/site-drush fd
+    $ bin/site-drush fr
+    $ bin/site-drush updb
 
 To login to the admin account run:
 
-    bin/site-drush user-login
+    $ bin/site-drush user-login
 
 You might also want to enable the uib\_devel module if you intend to update
 views or stuff like that:
 
-    bin/site-drush pm-enable --yes uib_devel
+    $ bin/site-drush pm-enable --yes uib_devel
 
 ## Development workflow
 
 Some commands you will run into often.  If you don't understand what these
 do, please ask:
 
-    git checkout master
-    git fetch --prune
-    git checkout -b rts/XXXX
-    git checkout rts/XXXX
+    $ git checkout master
+    $ git fetch --prune
+    $ git checkout -b rts/XXXX
+    $ git checkout rts/XXXX
 
-    bin/site-drush cc all
-    bin/site-drush fd
-    bin/site-drush fd <module>
-    bin/site-drush fu
-    bin/site-drush fr
+    $ bin/site-drush cc all
+    $ bin/site-drush fd
+    $ bin/site-drush fd <module>
+    $ bin/site-drush fu
+    $ bin/site-drush fr
 
-    bin/site-init
-    bin/site-prod-reset
-    bin/site-snapshot
-    bin/site-snapshot pop
+    $ bin/site-init
+    $ bin/site-prod-reset
+    $ bin/site-snapshot
+    $ bin/site-snapshot pop
 
-    compass compile --force themes/uib_zen
+    $ compass compile --force themes/uib_zen
