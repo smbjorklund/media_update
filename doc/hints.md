@@ -24,6 +24,42 @@ some files.  Skipping manual confirmation on all the "Are you sure?" prompts is 
 
 ## Postgres
 
+### Setting up nb_NO collation
+
+To restore the postgres dumps from production you need an postgres database
+that supports the 'nb_NO' collation.  MacOS X doesn't do that out-of-the-box.
+
+To check if this is already set up run this SELECT:
+
+    $ psql postgres
+    postgres=# select * from pg_collation where collname like '%_NO%';
+	 collname     | collnamespace | collowner | collencoding |   collcollate    |    collctype
+    ------------------+---------------+-----------+--------------+------------------+------------------
+     nb_NO            |            11 |        10 |            6 | nb_NO.UTF-8      | nb_NO.UTF-8
+     nb_NO.UTF-8      |            11 |        10 |            6 | nb_NO.UTF-8      | nb_NO.UTF-8
+     no_NO            |            11 |        10 |            6 | no_NO            | no_NO
+     no_NO            |            11 |        10 |            8 | no_NO.ISO8859-1  | no_NO.ISO8859-1
+     no_NO            |            11 |        10 |           16 | no_NO.ISO8859-15 | no_NO.ISO8859-15
+     no_NO.ISO8859-1  |            11 |        10 |            8 | no_NO.ISO8859-1  | no_NO.ISO8859-1
+     no_NO.ISO8859-15 |            11 |        10 |           16 | no_NO.ISO8859-15 | no_NO.ISO8859-15
+     no_NO.UTF-8      |            11 |        10 |            6 | no_NO.UTF-8      | no_NO.UTF-8
+    (8 rows)
+
+If you don't see nb_NO in that list run:
+
+    $ locale -a | grep _NO
+
+to see which Norwegian locales are available on your system.  If you see 'nb_NO' there
+you just need to reinitialize Postgres (run initdb once more).
+
+If you don't see 'nb_NO' and you are using MacOS X you can fake it with:
+
+    $ cd /usr/share/locale/
+    $ ln -s no_NO nb_NO
+    $ ln -s no_NO.UTF-8 nb_NO.UTF-8
+
+and then run 'initdb' once more.
+
 ### Running into resource limitation in your local sandbox
 Example. You try to drop all your database tables from drush.
 
