@@ -13,6 +13,20 @@ function uib_area_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_hide_translation_links_uib_ou';
+  $strongarm->value = 0;
+  $export['entity_translation_hide_translation_links_uib_ou'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_node_metadata_uib_ou';
+  $strongarm->value = '0';
+  $export['entity_translation_node_metadata_uib_ou'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__area';
   $strongarm->value = array(
     'view_modes' => array(
@@ -163,7 +177,7 @@ function uib_area_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_uib_ou';
-  $strongarm->value = '0';
+  $strongarm->value = '4';
   $export['language_content_type_uib_ou'] = $strongarm;
 
   $strongarm = new stdClass();

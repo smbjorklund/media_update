@@ -64,10 +64,10 @@ function uib_setup_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_entity_types';
   $strongarm->value = array(
+    'node' => 'node',
     'file' => 'file',
     'taxonomy_term' => 'taxonomy_term',
     'user' => 'user',
-    'node' => 0,
   );
   $export['entity_translation_entity_types'] = $strongarm;
 

@@ -118,7 +118,6 @@ function uib_area_field_group_info() {
     'label' => 'Contact',
     'weight' => '2',
     'children' => array(
-
       0 => 'field_uib_visit_address',
       1 => 'field_uib_phone',
       2 => 'field_uib_custom_email',
