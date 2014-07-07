@@ -3255,7 +3255,7 @@ function uib_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 16,
     ),
   );
 
@@ -3335,7 +3335,7 @@ function uib_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 33,
+      'weight' => 15,
     ),
   );
 
@@ -3354,7 +3354,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'phone',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3387,7 +3387,7 @@ function uib_area_field_default_field_instances() {
       'module' => 'phone',
       'settings' => array(),
       'type' => 'phone_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -3423,7 +3423,7 @@ function uib_area_field_default_field_instances() {
           'geofield_map_zoom' => 17,
         ),
         'type' => 'geofield_map_map',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3474,7 +3474,7 @@ function uib_area_field_default_field_instances() {
         'html5_geolocation' => 0,
       ),
       'type' => 'geofield_latlon',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -3561,7 +3561,7 @@ function uib_area_field_default_field_instances() {
       'module' => 'office_hours',
       'settings' => array(),
       'type' => 'office_hours',
-      'weight' => 32,
+      'weight' => 14,
     ),
   );
 
@@ -3584,7 +3584,7 @@ function uib_area_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3616,7 +3616,7 @@ function uib_area_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -3635,7 +3635,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3666,7 +3666,7 @@ function uib_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 8,
     ),
   );
 
@@ -3685,7 +3685,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3716,7 +3716,7 @@ function uib_area_field_default_field_instances() {
         'size' => 6,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -3735,7 +3735,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3770,7 +3770,83 @@ function uib_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-uib_ou-field_uib_ou_title'
+  $field_instances['node-uib_ou-field_uib_ou_title'] = array(
+    'bundle' => 'uib_ou',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_uib_ou_title',
+    'label' => 'Name',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+          'restricted_html' => 'restricted_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -7,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+            'restricted_html' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
@@ -3789,7 +3865,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'phone',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3826,7 +3902,7 @@ function uib_area_field_default_field_instances() {
       'module' => 'phone',
       'settings' => array(),
       'type' => 'phone_textfield',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -3858,7 +3934,7 @@ function uib_area_field_default_field_instances() {
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3906,7 +3982,7 @@ function uib_area_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -3938,7 +4014,7 @@ function uib_area_field_default_field_instances() {
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -3994,7 +4070,7 @@ function uib_area_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -4046,6 +4122,7 @@ function uib_area_field_default_field_instances() {
   t('Main media');
   t('Menu style');
   t('Menu title w2');
+  t('Name');
   t('Offices');
   t('Parent ID w2');
   t('Parents');

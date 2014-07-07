@@ -90,6 +90,8 @@ function uib_sebra__update_uib_ou($place_id) {
     if (isset($place->fax))
       $node->field_uib_fax['und'][0]['value'] = $place->fax;
 
+    $node->field_uib_ou_title['nb'][0]['value'] = $place->name;
+
     node_save($node);
     uibx_log("Created node $node->nid for place $place_id $place->name");
   }
@@ -103,6 +105,7 @@ function uib_sebra__update_uib_ou($place_id) {
     }
     if ($ou->title->value() != $place->name) {
       $ou->title->set($place->name);
+      $ou->language('nb')->field_uib_ou_title->set($place->name);
       $edit[] = 'title';
     }
     if ($ou->field_uib_ou_id->value() != $place_id) {

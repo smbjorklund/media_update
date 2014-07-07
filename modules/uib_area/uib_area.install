@@ -369,7 +369,7 @@ function uib_area_update_7009() {
 }
 
 /**
- * Set uib_ou nodes to be Norwegian
+ * Setup Organisational Unit for Entity Translation
  */
 function uib_area_update_7010() {
   $query = new EntityFieldQuery();
@@ -378,8 +378,9 @@ function uib_area_update_7010() {
     ->execute();
   if (!empty($result['node'])) {
     $ous = entity_load('node', array_keys($result['node']));
-    foreach ($ous as $ou) {
+    foreach ($ous as $nid => $ou) {
       $ou->language = 'nb';
+      $ou->field_uib_ou_title['nb'][0]['value'] = $ou->title;
       node_save($ou);
     }
   }

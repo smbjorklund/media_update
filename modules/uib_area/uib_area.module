@@ -348,6 +348,7 @@ function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 't
   drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js',
     array('group' => JS_THEME, )
   );
+  global $language;
   $tabs = '<div class="uib-tabs-container';
   $tabs .= $class ? ' ' . $class : '';
   $tabs .= '">';
@@ -355,8 +356,12 @@ function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 't
   $tabs_nav_mobile = '<select class="uib-tabs-nav-mobile">';
   $tabs_content = '';
   foreach ($items as $key => $item) {
-    $tabs_nav .= '<li><a href="#uib-tab--' . $key . '">' . $item->title . '</li>';
-    $tabs_nav_mobile .= '<option value="uib-tab--' . $key . '">' . $item->title . '</ul>';
+    $node_title = $item->title;
+    if ($item->type == 'uib_ou' && !empty($item->field_uib_ou_title[$language->language])) {
+      $node_title = $item->field_uib_ou_title[$language->language][0]['value'];
+    }
+    $tabs_nav .= '<li><a href="#uib-tab--' . $key . '">' . $node_title . '</li>';
+    $tabs_nav_mobile .= '<option value="uib-tab--' . $key . '">' . $node_title . '</ul>';
     $tabs_content .= '<div id="uib-tab--' . $key . '">';
     $item_view = node_view($item, $view_mode);
     $item_view['field_uib_custom_email'][0]['#markup'] =
@@ -923,8 +928,11 @@ function uib_area_form_alter(&$form, &$form_state, $form_id) {
     }
   }
   elseif ($form_id == 'uib_ou_node_form') {
+    $form['title']['#access'] = FALSE;
+
     $not_for_level_2 = array(
       'title',
+      'field_uib_ou_title',
       'field_uib_ou_id',
       'field_uib_ou_shortname',
       'field_uib_phone',

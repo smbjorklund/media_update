@@ -120,10 +120,13 @@ function uib_area_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'redirect' => array(
-          'weight' => '12',
+          'weight' => '13',
+        ),
+        'language' => array(
+          'weight' => '7',
         ),
       ),
       'display' => array(),
