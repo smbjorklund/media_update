@@ -367,3 +367,20 @@ function uib_area_update_7009() {
   field_delete_field('field_uib_geo');
   field_purge_batch(1000);
 }
+
+/**
+ * Set uib_ou nodes to be Norwegian
+ */
+function uib_area_update_7010() {
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'uib_ou')
+    ->execute();
+  if (!empty($result['node'])) {
+    $ous = entity_load('node', array_keys($result['node']));
+    foreach ($ous as $ou) {
+      $ou->language = 'nb';
+      node_save($ou);
+    }
+  }
+}

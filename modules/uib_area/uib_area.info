@@ -189,6 +189,7 @@ features[page_manager_handlers][] = node_view_panel_context
 features[page_manager_handlers][] = term_view_panel_context
 features[variable][] = entity_translation_hide_translation_links_uib_ou
 features[variable][] = entity_translation_node_metadata_uib_ou
+features[variable][] = entity_translation_settings_node__uib_ou
 features[variable][] = field_bundle_settings_node__area
 features[variable][] = field_bundle_settings_node__uib_ou
 features[variable][] = i18n_node_extended_area

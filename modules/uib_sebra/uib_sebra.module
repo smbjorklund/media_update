@@ -70,7 +70,7 @@ function uib_sebra__update_uib_ou($place_id) {
     $node->uid = 1;
     $node->status = 1;
     $node->revision = 0;
-    $node->language = 'und';
+    $node->language = 'nb';
     $node->field_uib_ou_id['und'][0]['value'] = $place_id;
     $node->field_uib_ou_shortname['und'][0]['value'] = $place->alias;
     $node->field_uib_mail_domain['und'][0]['value'] = $place->maildomain;
