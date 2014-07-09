@@ -139,9 +139,16 @@ function uib_study__evu_courses($instance) {
 
     $text = '<span style="font-weight: bold; font-size: larger;">' . t('Sign up') . '</span>';
 
+    $evu_course_fee_text = t('Course fee not set');
     if (isset($instance['kostnad'])) {
-      $text .= '<br>NOK&nbsp;' . $instance['kostnad'];
+      if ($instance['kostnad'] === 0) {
+        $evu_course_fee_text = t('No course fee');
+      }
+      elseif ($instance['kostnad'] > 0) {
+        $evu_course_fee_text = 'NOK&nbsp;' . $instance['kostnad'];
+      }
     }
+    $text .= '<br>' . $evu_course_fee_text;
 
     $text = l($text, $instance['url_evuweb'], array(
       'html' => 'TRUE',
