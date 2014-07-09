@@ -359,6 +359,8 @@ function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 't
     $tabs_nav_mobile .= '<option value="uib-tab--' . $key . '">' . $item->title . '</ul>';
     $tabs_content .= '<div id="uib-tab--' . $key . '">';
     $item_view = node_view($item, $view_mode);
+    $item_view['field_uib_custom_email'][0]['#markup'] =
+      l($item_view['field_uib_custom_email'][0]['#markup'], 'mailto:' . $item_view['field_uib_custom_email'][0]['#markup']);
     unset($item_view['links']);
     unset($item_view['#contextual_links']);
     $tabs_content .= render($item_view);
