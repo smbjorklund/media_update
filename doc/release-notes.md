@@ -1,4 +1,4 @@
-#Release 2014-07-07 tag: R7.9
+# Release 7.9 _2014-07-07_
 
 Vi slipper igjennom en liten ekstra oppdatering for å rette opp noen små saker som ikke kom med i 7.8.
 
@@ -9,7 +9,7 @@ Vi slipper igjennom en liten ekstra oppdatering for å rette opp noen små saker
 * En liten opprydning i layout på personsidene i redigeringsmodus #6399
 * Og vi har fått vår egen side for disse release-notatene  <http://uib.no/webdesk/release-notes> #7054
 
-# Release 2014-07-02 tag: R7.8
+# Release 7.8 _2014-07-02_
 
 7.8 ble en stor oppsamlingsrelease før sommerferien. Her har vi gjort ferdig ny funksjonalitet og finpuss for Universitetsbiblioteket, lagt til rette for EVU og fortsatt justeringer på personprofil-sidene.
 
@@ -51,12 +51,12 @@ Generelle saker og feilrettinger:
 * Feil som viste html i områdetitler  er rettet #6945
 
 
-# Release 2014-06-11 tag: R7.7.1
+# Release 7.7.1 _2014-06-11_
 
 Retter stylingfeil som gjorde at man ikke kunne redigere i toppmeny på UB-siden #6796
 
 
-# Release 2014-06-10 tag: R7.7
+# Release 7.7 _2014-06-10_
 
 R7.7 har primært håndtert tilrettelegging for visning av EVU-kurs på w3, samt jobber videre med ny forside for Universitetsbiblioteket og nye personsider. I tillegg migrerer vi det siste området fra w2 til w3.
 
@@ -93,7 +93,7 @@ Endringer knyttet til ny forside for UB
 * Justerer bredde på bannerfeltet på toppen av siden (brukt som søkefelt for UB) #6623
 * Gir mulighet for å bruke tabs i bannerfelt på ub-sidene #6765
 
-# Release 2014-05-26 tag: R7.6
+# Release 7.6 _2014-05-26_
 
 R7.6 har gjort følgende oppdateringer av systemet
 
@@ -144,7 +144,7 @@ Tekniske saker:
 * Fiks for feilmeldinger i log fra Drupal #6617
 
 
-# Release 2014-05-12 tag: R7.5
+# Release 7.5 _2014-05-12_
 
 R7.5 har gjort følgende oppdateringer av systemet
 
@@ -179,7 +179,7 @@ Migrasjon:
 
 Diverse tekniske saker #6397 #6237 #6372 #6381 #6374 #6035
 
-# Release 2014-04-28 tag: R7.4
+# Release 7.4 _2014-04-28_
 
 Oppdateringen oppdaterer drupalkjerne og moduler, migrerer nye områder til w3, setter opp felt for ny områdeforside for UB, samt avslutter hovedarbeidet med utdanningssidene på w3.
 
@@ -192,17 +192,17 @@ Oppdateringen oppdaterer drupalkjerne og moduler, migrerer nye områder til w3, 
 * La til varseltekster på profilsidene for å unngå misforståelser mens vi jobber med nye personsider #6098
 * Oppgradederte drupalkjerne og moduler #6275 #6158
 
-# Release 2014-04-11 tag: R7.3.2
+# Release 7.3.2 _2014-04-11_
 
 Retter opp følgefeil av #5609 hvor faner i artikler ikke var aktive når
 fanetittelen inneholdt spesielle tegn #6211
 
-# Release 2014-04-10 tag: R7.3.1
+# Release 7.3.1 _2014-04-10_
 
 Retter opp følgefeil av #5854 som ga listen over institutter på områdeforsiden feil styling #6203
 
 
-# Release 2014-04-10 tag: R7.3
+# Release 7.3 _2014-04-10_
 
 Denne oppdateringen oppdaterer en del Drupalmoduler, gjør justeringer på studieprogram- og emnevisninger og introduserer de første tilretteleggingene for nye personsider på w3.
 I tillegg rettes et par små feil
@@ -222,7 +222,7 @@ I tillegg rettes et par små feil
 * Retter feil som gjorde at man ikke kunne legge til nytt innhold etter forrige oppdatering #6184
 
 
-# Release 2014-04-01 tag: R7.2
+# Release 7.2 _2014-04-01_
 
 R7.2 migrerer noen etterlatte områder etter MOFA + Universitetsbiblioteket. I tillegg blir det lagt opp til ny global kalender i w3, det er fortsatt arbeid på funksjonalitet for studieprogram og emnevisninger, i tillegg til at en del mindre saker fikses.
 
@@ -245,11 +245,11 @@ R7.2 migrerer noen etterlatte områder etter MOFA + Universitetsbiblioteket. I t
 * Diverse tekniske saker #6032 #6019 # 5939 #5384
 
 
-# Release 2014-03-19 tag: R7.1.1
+# Release 7.1.1 _2014-03-19_
 
 Fikser linken til Alumnusdagene fra logoen nederst på hovedsiden.
 
-# Release 2014-03-18 tag: R7.1
+# Release 7.1 _2014-03-18_
 
 R7.1 gjør i hovedsak oppdateringer og feilrettinger knyttet til studieprogram, emner og lister på utdanningsområdet.
 
@@ -275,7 +275,7 @@ R7.1 gjør i hovedsak oppdateringer og feilrettinger knyttet til studieprogram, 
 
 
 
-# Release 2014-03-12 tag: R7
+# Release 7 _2014-03-12_
 
 R7 migrerer Universitetsmuseet og Det medisinsk-odontologiske fakultet inkl
 alle underområder til ny plattform. Dermed er alle seks fakulteter migrert til
@@ -289,7 +289,7 @@ Drupal.  Releasen tar også hånd om feil som oppstod i testmigrasjonen:
 - Redaksjonell endring på bildetekst som var for lang #5805
 - Teknisk sak #5842
 
-# Release 2014-03-04 tag R6.3
+# Release 6.3 _2014-03-04_
 
 Denne releasen retter opp feil avdekket i siste runde testing for studiesidene til UiB. Den gjør også en del generelle bugfikser og stylingjusteringer.
 
@@ -318,7 +318,7 @@ Denne releasen retter opp feil avdekket i siste runde testing for studiesidene t
 - Sørger for at alle artikler får opprettet alias på gammel tittel, dersom de får endret tittel #5034
 - Tekniske saker #5500
 
-# Release 2014-02-20 tag R6.2
+# Release 6.2 _2014-02-20_
 
 Oppdateringen gjør endringer og feilrettinger på studieprogram og emnemaler.
 
@@ -341,7 +341,7 @@ Andre mindre stylingjusteringer:
 Tekniske saker: #5383, #5078
 
 
-# Release 2014-02-17 tag: R6.1
+# Release 6.1 _2014-02-17_
 
 Denne oppdateringen gjør ferdig visning av studieinformasjon for w3. All grunnleggende funksjonalitet er nå på plass, men noen deler skal få ytterligere hjelp med utseende.
 
@@ -361,7 +361,7 @@ Oppdateringen oppgraderer også feature-modulen til Drupal, fikser på utseende 
 - Oppgraderer til features 2.0 #4993
 
 
-# Release 2014-02-05 tag: R6
+# Release 6 _2014-02-05_
 
 Release 6 migrerer Det matematisk-naturvitenskapelige fakultet med alle underområder samt to områder som manglet fra migrasjonen av Psykologisk fakultet.
 Releasen håndterer også noen feil knyttet til migrasjon samt et par andre, mindre feil i produksjon.
@@ -373,7 +373,7 @@ Releasen håndterer også noen feil knyttet til migrasjon samt et par andre, min
 * Styling for informasjonskapsel-varsling i IE #4907
 * Diverse tekniske saker #5249 #5246
 
-# Release 2014-01-28 tag: R5.3
+# Release 5.3 _2014-01-28_
 
 Releasen inneholder funksjonalitet for visning av studieprogram og emner, samt stylig for disse. Den inneholder også oppgradering av flere Drupalmoduler og fikser et par feil i løsningen. Legger også til ny logo på forsiden.
 
@@ -390,7 +390,7 @@ Releasen inneholder funksjonalitet for visning av studieprogram og emner, samt s
 * Andre tekniske saker #4995 #4997
 
 
-# Release 2014-01-10 tag: R5.2
+# Release 5.2 _2014-01-10_
 
 Releasen inneholder funksjonalitet for visning av studieprogram og emner, samt stylig for disse, implementerer også en ny innholdstype og område for nye doktorgrader og migrerer områdene uib.no/project/speakup og diverse områder tilknyttet Kommunikasjonsavdelinga.
 
@@ -405,7 +405,7 @@ Releasen inneholder funksjonalitet for visning av studieprogram og emner, samt s
 * Oppdaterer service-link ikonet for Google+ #4723
 * Moduloppgraderinger i Drupal #4855
 
-# Release 2013-12-16 tag: R5.1
+# Release 5.1 _2013-12-16_
 
 R5.1 inneholder saker der vi fortsetter å legge til rette for å vise studieprogrammer og emner på ny plattform. I tillegg har vi lagt inn varsel om informasjonskapsler på uib.no, ryddet i mobilvisningen av arrangementer i slideshow og hardkodet logo for På høyden på uib.no/aktuelt.
 
@@ -414,7 +414,7 @@ R5.1 inneholder saker der vi fortsetter å legge til rette for å vise studiepro
 * Plassert På høyden-logo i sidebar på uib.no/aktuelt
 * Diverse saker som forbereder visning av studieprogrammer og emner på uib.no #4287 #4305 #4308 #4536 #4604 #4605 #4640 #4642 #4643 #4644 #4652 #4702 #4704
 
-# Release 2013-12-02 tag: R5
+# Release 5 _2013-12-02_
 
 R5 migrerer området /utdanning, /ua (studieadministrativ avdeling og /laererutdanning til ny plattform. I tillegg fortsetter vi å legge til rette for å vise studieprogrammer og emner på ny plattform.
 
@@ -429,7 +429,7 @@ R5 migrerer området /utdanning, /ua (studieadministrativ avdeling og /laererutd
 * Retter opp feil i brødsmulesti for hendelser #4527
 
 
-# Release 2013-11-25 tag: R4.3
+# Release 4.3 _2013-11-25_
 
 Forberedende saker til migrasjon av området /utdanning samt sikkerhetsoppdatering av moduler i drupal, bla core.
 
@@ -441,7 +441,7 @@ Forberedende saker til migrasjon av området /utdanning samt sikkerhetsoppdateri
 * Rydde i staging-scripts #4314
 
 
-# Release 2013-11-18 tag: R4.2
+# Release 4.2 _2013-11-18_
 
 Forberedende saker til migrasjon av området /utdanning, opprettinger etter forrige release, funksjonalitet i webdesk for innholdstypen "Tilknyttet innhold" og endring av logoer på forsiden uib.no.
 
@@ -455,7 +455,7 @@ Forberedende saker til migrasjon av området /utdanning, opprettinger etter forr
 * Lagt til mellomrom mellom tittel og dato i rss-feed #4246
 * Diverse saker som forbereder migrasjon og presentasjon av området /utdanning #171 #1279 #4283 #4284 #4286 #4288
 
-# Release 2013-10-31 tag: R4.1
+# Release 4.1 _2013-10-31_
 
 Release gjør primært en rekke justeringer i layout på forsidene.
 
@@ -470,7 +470,7 @@ Release gjør primært en rekke justeringer i layout på forsidene.
 * Reorganiserer kolonnelayout på områdeforsiden #3930
 * Fiks for sjekk av områdemeny satt til bare å sjekke ved migrering #3955
 
-# Release 2013-10-14 tag: R4
+# Release 4 _2013-10-14_
 
 Release tar seg primært av migrering av området Psykologisk fakultet til ny plattform. I tillegg gjøres noen små rettelser.
 
@@ -481,11 +481,11 @@ Release tar seg primært av migrering av området Psykologisk fakultet til ny pl
 * Fiks for oversettelse av hendelses-typer i årsvisning på kalender #3974
 * Forarbeid, testmigrasjon og opprydning foran endelig migrasjon i R4 ble gjort i sakene #3760 #3747 #3981 og #3763
 
-# Release 2013-10-10 tag: R3.2.1
+# Release 3.2.1 _2013-10-10_
 
 Faner ble ikke lenger presentert for artikler (regresjon i 3.2) #3950
 
-# Release 2013-10-09 tag: R3.2
+# Release 3.2 _2013-10-09_
 
 Release for løpende fix på diverse saker og moduloppdatering av Drupal, ny layout for tilknyttet innhold, reformatterer og rydder opp i template.php, og funksjonalitet for å gjøre folk oppmerksomme på cookies på nettstedet. I tillegg remigreres en forskergruppe som manglet etter migrasjonen av SV-fakultetet. Oppdateringen begynner også et arbeid med å restrukturere layout på area for å forbedre flyt og utseende.
 
@@ -503,7 +503,7 @@ Release for løpende fix på diverse saker og moduloppdatering av Drupal, ny lay
 * Opprydning av css og layout på område og fiks etter denne #3754 #3924 #3940 #3933
 * Diverse tekniske saker #3858 #3818 #3762 #3740
 
-# Release 2013-09-18 tag: R3.1
+# Release 3.1 _2013-09-18_
 
 Release for løpende fix på diverse saker og moduloppdatering av Drupal.
 
@@ -520,11 +520,11 @@ Release for løpende fix på diverse saker og moduloppdatering av Drupal.
 * Core og moduloppdateringer av Drupal #3433
 * Diverse tekniske saker #3746 #3740 #3730 #3729 #3709 #3591
 
-# Release 2013-09-12 tag: R3.0.1
+# Release 3.0.1 _2013-09-12_
 
 La inn reklame for Forskningsdagene på forsiden.  #3736
 
-# Release 2013-09-11 tag: R3.0
+# Release 3.0 _2013-09-11_
 
 Release migrerer SV-fakultetet til ny plattform og gjør dessuten en del opprettinger etter r2.2 (menysplit)
 
@@ -542,12 +542,12 @@ Release migrerer SV-fakultetet til ny plattform og gjør dessuten en del opprett
 
 
 
-# Release 2013-09-06 tag: R2.2.1
+# Release 2.2.1 _2013-09-06_
 
 Fikser problemet med at bare det første av de små bildene på artiklene var synlig. #3703
 
 
-# Release 2013-09-04 tag: R2.2
+# Release 2.2 _2013-09-04_
 
 Release onsdag 4. september splitter menyen til enkeltmenyer for hvert område og introduserer ny funksjonalitet for å legge artikler i meny og i relasjon til andre artikler.
 Som en følge av dette har vi også justert rettighetene noe. I tillegg følger noen små justeringer på styling. Vi har også fjernet tilgang for level 2 brukere til å legge opp egen logo i tittelfeltet.
@@ -562,7 +562,7 @@ Vi har også tatt med et par saker som forbereder migrasjon av neste område (R3
 * Fiks for migrasjon av bildetekster fra w2 til w3 #3486
 * Styling på /aktuelt og /news # 3535
 
-# Release 2013-08-19 tag: R2.1
+# Release 2.1 _2013-08-19_
 
 Release mandag 19. august gjør justeringer etter R.2, primært i frontend, både på desktop og mobil.
 
@@ -574,7 +574,7 @@ Release mandag 19. august gjør justeringer etter R.2, primært i frontend, båd
 
 
 
-# Release 2013-08-13 tag: R2.0
+# Release 2.0 _2013-08-13_
 
 Release tirsdag 13. august. Migrasjon av forside uib.no og /aktuelt til w3.  Strengere tilganger til å redigere områder.
 
@@ -589,7 +589,7 @@ Release tirsdag 13. august. Migrasjon av forside uib.no og /aktuelt til w3.  Str
 * Hjelpetekster på introbilde og profilerte meldinger er oppdatert. #3289
 * Reorganisering av info på forsiden og oppsett for /aktuelt (øvrige saker).
 
-# Release 2013-06-24 tag: R1.7
+# Release 1.7 _2013-06-24_
 
 Release mandag 24. juni. Justeringer etter forrige release, noen tekniske ryddesaker.
 
@@ -600,7 +600,7 @@ Release mandag 24. juni. Justeringer etter forrige release, noen tekniske ryddes
 * Fikset feil som fikk videoer til å forsvinne når vinduet ble smalt - #3221
 * Oppgradering av moduler og andre tekniske saker - #3069, #2976, #3116, #933, #3047 #3031
 
-# Release 2013-06-10 tag: R1.6
+# Release 1.6 _2013-06-10_
 
 Release mandag 6. juni inneholdt både justeringer og feilrettinger. Dette ble gjort: 
 
@@ -615,7 +615,7 @@ Release mandag 6. juni inneholdt både justeringer og feilrettinger. Dette ble g
 * Bug som fjernet innhold i media-browser er fikset. Dermed kan man igjen søke på bilder i biblioteket og se egne opplastinger i bildeeditoren. -#2949
 * Noen justeringer i styling, hjelpetekster, samt en håndfull tekniske saker. - #3023, #3024 #2963, #2967, #2386, #2995
 
-# Release 2013-05-27 tag:R1.5
+# Release 1.5 _2013-05-27_
 
 Release mandag 27. mai inneholdt både justeringer og feilrettinger. Her er en oversikt over hva som ble gjort:
 
@@ -630,11 +630,11 @@ Release mandag 27. mai inneholdt både justeringer og feilrettinger. Her er en o
 * For bedre sikkerhet for systemet har vi fjernet tilgang til menystruktur for level 2 og 3 i webdesk. #2948
 * En håndfull saker gir interne forbedringer for økt stabilitet/ytelse. - #2464, #2619, #2906, #2907,#2917 og #2933.
 
-# Release 2013-05-15 tag:R1.4.2
+# Release 1.4.2 _2013-05-15_
 
 Logoen til [Grieg akademiet](http://www.uib.no/grieg) var blitt feilplassert i releasen fra 13. mai.
 
-# Release 2013-05-13 tag:R1.4.1
+# Release 1.4.1 _2013-05-13_
 
 Release mandag 13. mai inneholdt både nyutvikling, justeringer og feilrettinger. Her er en oversikt over hva som ble gjort:
 
@@ -655,11 +655,11 @@ Release mandag 13. mai inneholdt både nyutvikling, justeringer og feilrettinger
 * Feil i funksjon på søkefelt for mobile enheter er rettet opp.
 
 
-# Release 2013-05-07 tag:R1.4
+# Release 1.4 _2013-05-07_
 
 Denne releasen ble rullet tilbake etter at det ble oppdaget feil med hvordan aliasene ble generert.
 
-# Release 2013-04-22 tag:R1.3
+# Release 1.3 _2013-04-22_
 
 Generelt:
 
@@ -681,10 +681,23 @@ Spesifikt for Ansattsidene:
  
 samt en del tekniske saker som rydder og effektiviserer
 
-# Release 2013-04-12 tag:R1.2
+# Release 1.2 _2013-04-12_
 
-# Release 2013-04-08 tag:R1.1
+# Release 1.1 _2013-04-08_
 
-# Release 2013-03-21 tag:R1.0
+# Release 1.0 _2013-03-21_
 
 Denne kom litt brått på, men nå er vi live.
+
+<style>
+h1 {
+  margin-top: 3em;
+}
+h1 em {
+  font-weight: normal;
+  font-size: 70%;
+  font-style: normal;
+  opacity: 0.7;
+  display: block;
+}
+</style>
