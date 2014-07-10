@@ -287,6 +287,7 @@ function uib_user_user_view_alter(&$build) {
     $tabs_list_markup .= '<li><a href="#' . $tabs_item['htmltitle'] . '">' . $tabs_item['title'] . '</a></li>';
     $build[$field_name]['#prefix'] = '<div id="' . $tabs_item['htmltitle'] . '">';
     $build[$field_name]['#suffix'] = '</div>';
+    $build[$field_name]['#label_display'] = 'hidden';
   }
   $tabs_list_markup .= '</ul>';
   $build['uib_tabs'] = array(
