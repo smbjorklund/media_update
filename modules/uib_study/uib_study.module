@@ -619,6 +619,8 @@ function uib_study_block_view($delta = '') {
                 unset($rows[$key]);
               }
             }
+            // Add a caption for evu
+            $caption = t('Continuing education course');
           }
         }
         elseif ($type == 'program' or $type == 'specialization') {
@@ -672,6 +674,9 @@ function uib_study_block_view($delta = '') {
           '#theme' => 'table',
           '#rows' => $rows,
         );
+        if (!empty($caption)) {
+          $render['#caption'] = $caption;
+        }
         $block['title'] = t('Study facts');
         $block['content']['fspres'][] = $render;
       }

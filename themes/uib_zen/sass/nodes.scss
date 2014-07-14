@@ -457,6 +457,13 @@ h1 {
   }
  #block-uib-study-study-facts table, #block-uib-study-study-contact table {
     margin: 0;
+    caption {
+      border: solid 1px #ccc;
+      padding: 5px 10px 5px 10px;
+      background-color: #eee;
+      font-weight: bold;
+      text-align: left;
+    }
   }
   #block-uib-study-study-facts tr, #block-uib-study-study-contact tr {
     border: solid 1px #ccc;
