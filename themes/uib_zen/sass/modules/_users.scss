@@ -66,19 +66,19 @@ $zen-column-count: 5;
   list-style: none;
 }
 
-.field-name-field-uib-first-name,
-.field-name-field-uib-last-name,
-.field-name-field-uib-user-alt-firstname,
-.field-name-field-uib-user-alt-lastname,
-.field-name-field-uib-position,
-.field-name-field-uib-user-alt-position {
+#edit-field-uib-first-name,
+#edit-field-uib-last-name,
+#edit-field-uib-user-alt-firstname,
+#edit-field-uib-user-alt-lastname,
+#edit-field-uib-position,
+#edit-field-uib-user-alt-position {
   width: 48%;
   float: left;
 }
 
-.field-name-field-uib-first-name,
-.field-name-field-uib-user-alt-firstname,
-.field-name-field-uib-position {
+#edit-field-uib-first-name,
+#edit-field-uib-user-alt-firstname,
+#edit-field-uib-position {
   padding-right: 1rem;
 }
 
