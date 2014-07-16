@@ -155,7 +155,7 @@ function uib_zen_preprocess_html(&$variables, $hook) {
  */
 function uib_zen_preprocess_page(&$variables, $hook) {
   global $user;
-  $variables['uib_is_user_page'] = FALSE;
+  $variables['uib_hide_title'] = FALSE;
   $page_menu_item = menu_get_item(current_path());
   if (isset($variables['node'])) {
     $not_translated_txt = t('This content has not been translated.');
@@ -260,8 +260,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         $title = __uib_title($page_menu_item['href']);
         // Set html title
         drupal_set_title($title);
-        // Empty page title since this is displayed in content
-        $variables['title'] = '';
+        $variables['uib_hide_title'] = TRUE;
       }
     }
     // User profile page (and not login page)
@@ -283,7 +282,7 @@ function uib_zen_preprocess_page(&$variables, $hook) {
 
       // Target only the user profile page
       if (count($page_menu_item['original_map'] == 2)) {
-        $variables['uib_is_user_page'] = TRUE;
+        $variables['uib_hide_title'] = TRUE;
 
         // Move research groups block into field group
         if (isset($variables['page']['content']['uib_user_research_groups'])) {
@@ -292,6 +291,12 @@ function uib_zen_preprocess_page(&$variables, $hook) {
           $variables['page']['content']['system_main']['#group_children']['uib_user_research_groups'] = 'group_user_second';
         }
       }
+    }
+    if (($page_menu_item['map'][0] == 'emne' || $page_menu_item['map'][0] == 'course') && $page_menu_item['map'][2] == 'description') {
+      $variables['uib_hide_title'] = TRUE;
+    }
+    if (($page_menu_item['map'][0] == 'studieprogram' || $page_menu_item['map'][0] == 'studyprogramme' ) && $page_menu_item['map'][2] == 'plan') {
+      $variables['uib_hide_title'] = TRUE;
     }
   }
 }

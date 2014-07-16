@@ -112,13 +112,16 @@ function uib_study__infopage($code, $code2 = NULL) {
   $study_type = $study->field_uib_study_type->value();
   $fspres_study_type = $study_type == 'course' ? 'emne' : 'studieprogram';
   $page = array();
+  $page_title = $study_type == 'course' ? t('Course description') : t('Study plan');
+  $header_start = $page_title . ' ' . t('for') . ' ';
+  $header_study = $study_code . ' ' . $study->language($language->language)->field_uib_study_title->value();
+  $header_semester = uib_study__get_current_semester_long();
   $page['header'] = array(
     '#type' => 'html_tag',
     '#tag' => 'h1',
-    '#value' => l($study_code . ' ' . $study->language($language->language)->field_uib_study_title->value(), $path),
+    '#value' => $header_start . l($header_study, $path) . ', ' . $header_semester,
   );
-  $page_title = $study_type == 'course' ? t('Course description') : t('Study plan');
-  drupal_set_title($page_title . ' , ' . $study_code . ' ' . $study->language($language->language)->field_uib_study_title->value(), $path);
+  drupal_set_title($header_start . $header_study . ', ' . $header_semester, $path);
 
   if (!uib_study__infotyper_render(
       $page,
@@ -133,7 +136,13 @@ function uib_study__infopage($code, $code2 = NULL) {
       '#markup' => $page_title . ' ' . t('missing'),
     );
   }
-
+  // Remove unwanted header
+  foreach ($page as $item => $value) {
+    if (substr($item, -11) == '_studieplan' || $item == 'em-emnebeskrivelse') {
+      unset($page[$item]['header']);
+      break;
+    }
+  }
   return $page;
 }
 
@@ -978,9 +987,21 @@ function uib_study_field_formatter_view($entity_type, $entity, $field, $instance
   }
 }
 
+/**
+ * Determine current semester - brief format
+ */
 function uib_study__get_current_semester() {
   $current_semester = (date('n') > 6 ? 'h' : 'v');
   return date('Y') . $current_semester;
+}
+
+/**
+ * Determine current semester - longer format
+ */
+function uib_study__get_current_semester_long() {
+  $tmp = uib_study__get_current_semester();
+  $semester = substr($tmp, 4) == 'h' ? t('fall') : t('spring');
+  return $semester . ' ' . substr($tmp, 0, 4);
 }
 
 function uib_study__get_resource_links($type, $study_code) {
