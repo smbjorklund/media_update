@@ -607,8 +607,6 @@ function uib_study_block_view($delta = '') {
           }
           if ($category == 'evu') {
             $not_for_evu = array(
-              'Emnekode',
-              'Course code',
               'Undervisingssemester',
               'Teaching semester',
               'Antall semester',
