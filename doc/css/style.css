@@ -37,8 +37,8 @@ table tr.even {
     background-color: #edf5ff;
 }
 
-h2 {
-    margin: 1.25 0 0.25 0;
+h2, h3 {
+    margin: 4ex 0 1ex 0;
 }
 
 code {
@@ -47,12 +47,16 @@ code {
 }
 
 a:link {
-    color: #005373;
+    color: #3060b0;
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 a:visited {
-    color: #164456;
+    color: #3060b0;
 }
 
 li, p {
