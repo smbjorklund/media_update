@@ -1,6 +1,6 @@
 # Server layout
 
-<a href="web_server_layout.pdf"><img src="web_server_layout.svg" width="100%"></a>
+<a href="img/web_server_layout.pdf"><img src="img/web_server_layout.svg" width="100%"></a>
 
 * String
 
