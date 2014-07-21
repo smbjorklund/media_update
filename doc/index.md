@@ -14,7 +14,7 @@ If you want to use the system and manage content you're better off reading the
 To be able to make sense of the code you should first understand the structure
 of the content that makes up the web site.
 The simplified view is shown here.
-The central concepts area _areas_, _articles_ and _OUs (organisational units)_.
+The central concepts are _areas_, _articles_ and _OUs (organisational units)_.
 
 The site is divided into sub-sites, but instead of _sub-site_ we say _area_.
 It's at least shorter. Each area get their own page on the web, their own set
@@ -27,8 +27,8 @@ which make it tempting to conflate these two concepts.
 
 Articles contains the textual content of the site, and appear in the form of
 news articles, pages, events, and others.  Articles belong to an area and are
-presented using the areas header, side-bar and footer.  Articles also get URLs
-that make them appear as sub-ordinates of an area.
+presented using the area's header, side-bar and footer.  Articles also get URLs
+that make them appear as subordinates of an area.
 
 The [details of the content structures](model.html) is of course more complex than this and
 is explained in a separate document.  The [terminology of this
