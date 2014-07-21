@@ -1,0 +1,11 @@
+digraph {
+  node [shape="box", fontname="Helvetica"];
+  edge [fontname="Helvetica", fontsize=10];
+
+  ou [label="OU"];
+
+  area -> area [label="parent"];
+  area -> ou [label="belongs\nto"];
+  article -> area [label="belongs\nto"];
+  article -> article [label="related"];
+}

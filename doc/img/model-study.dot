@@ -1,0 +1,12 @@
+digraph {
+  node [shape="box", fontname="Helvetica"];
+  edge [fontname="Helvetica", fontsize=10];
+
+  // types
+  Course;
+  Program [label="Study\nprogramme"];
+  Specialization;
+
+  Course -> Program [label="part_of"];
+  Specialization -> Program [label="part_of"];
+}

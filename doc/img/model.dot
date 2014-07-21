@@ -1,0 +1,37 @@
+digraph {
+  node [shape="box", fontname="Helvetica"];
+  edge [fontname="Helvetica", fontsize=9];
+  study_labels [label="study\nlabels", shape="oval", color="#888888", fontcolor="#888888", fontsize=10, margin=0];
+  research_fields [label="research\nfields", shape="oval", color="#888888", fontcolor="#888888", fontsize=10, margin=0];
+  nus [label="NUS", shape="oval", color="#888888", fontcolor="#888888", fontsize=10, margin=0];
+  ou [label="OU"];
+  user [color="black", style="filled", fillcolor="#aa5555", fontcolor="white"];
+  area [fontsize=24];
+  article -> area;
+  testimonial -> area;
+  external_content -> area;
+  external_content [label="external\ncontent"];
+  testimonial [label="testi-\nmonial"];
+  article -> article [label="related"];
+  article -> testimonial [label="related"];
+  article -> external_content [label="related"];
+  article -> study [label="related"];
+  article -> user [label="author\n+\ncontacts\n+\nbyline"];
+  //article -> user [label="by-\nline"];
+  area -> area [label="parent"];
+  area -> user [label="staff"];
+  area -> user [label="content\nmanager"];
+  area -> article [label="profiled\narticle"];
+  area -> article [label="profiled\nmessage"];
+  area -> testimonial [label="profiled"];
+  area -> external_content [label="colophone\nlogos"];
+  testimonial -> study [label="study\nprogrammes"];
+  area -> ou;
+  area -> ou [label="offices"];
+  study -> nus;
+  study -> ou;
+  study -> study [label="part_of"];
+  user -> ou;
+  study -> study_labels;
+  user -> research_fields;
+}
