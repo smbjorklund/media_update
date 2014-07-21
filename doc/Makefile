@@ -40,16 +40,25 @@ HTML = \
 
 PYTHON = python
 PERL = perl
+DOT = dot
 BOOTSTRAP_PY = bootstrap.py
 BOOTSTRAP_ARGS =
 
-.SUFFIXES: .md .html
+.SUFFIXES: .md .html .dot .svg
 .PHONY: makefile clean realclean
 
 .md.html:
 	bin/python htmlify.py $< >$@
 
+.dot.svg:
+	$(DOT) -Tsvg $< >$@
+
 all: bin/python $(HTML) mockups/index.html man1/index.html
+
+svg: img/model.svg img/model-simple.svg img/model-study.svg img/module-dep.svg
+
+img/module-dep.dot:
+	(cd .. && bin/site-drush scr uib-mod-dep-in-dot) >$@
 
 mockups/index.html: mockups/mkindex
 	$(PERL) mockups/mkindex
