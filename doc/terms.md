@@ -141,12 +141,13 @@ bylines.  Gets its name from the form it normally takes: "By &lt;name>".
 Content Management System; Some denote Drupal a CMS, but it's actually
 more of a system to build CMSes.
 
-### Colophone
+### Colophone (sic) | Kolofon
 
 In our site this is the footer, declaring who is responsible for the content
-belonging to the area.  In general publishing terms it's the text you see on the
-back of the first page of a book.  Where you see what who the publisher is,
-what edition and where and when this book was printed.
+belonging to the area.  In general [publishing terms
+colophon](http://en.wikipedia.org/wiki/Colophon_(publishing)) (without the 'e')
+is the text you see on the back of the first page of a book; where you see who
+the publisher is, what edition and where and when this book was printed.
 
 ### Content | Innhold
 
