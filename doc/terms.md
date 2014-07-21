@@ -179,18 +179,21 @@ a term common with journalists, especially sub editors.
 
 ### Lead | Ingress
 
-Short summary of the content of an _article_.
-
-<http://en.wikipedia.org/wiki/lead_paragraph>
+[Short summary](http://en.wikipedia.org/wiki/lead_paragraph)
+of the content of an _article_.
 
 ### RSS-feed
 
 Chronological index of _news articles_ expressed in machine readable xml.
+More info from [Wikipedia on RSS](http://en.wikipedia.org/wiki/RSS) or
+the [original RSS spec](http://scripting.com/netscapeDocs/RSS%200_91%20Spec,%20revision%203.html).
 
 ### Slug
 
-Some readable string that identifies an object.  Used to create readable urls.
-We use it for instance to identify UiB's users with strings like "&lt;firstname>.&lt;lastname>".
+Some [readable string that identifies an
+object](http://en.wikipedia.org/wiki/Slug_(web_publishing)).  Used to create
+readable urls. We use it for instance to identify UiB's users with strings like
+"&lt;firstname>.&lt;lastname>".
 
 
 
