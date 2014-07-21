@@ -11,6 +11,7 @@ HTML = \
   hints.html \
   index.html \
   model.html \
+  modules.html \
   release-notes.html \
   release-process.html \
   release1.html \
