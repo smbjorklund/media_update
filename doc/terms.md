@@ -8,9 +8,10 @@ h3, em { color: #a55; }
 
 This documents the terminology that we use in UiB's Web Project.
 
-We standardize on using English for our code and the text written for our RTS
-issues.  For all terms this document also displays corresponding the Norwegian
-term after the bar (if known or different).
+We standardize on using English for our code and the text written for our [RTS
+issues](https://rts.uib.no/projects/w3/issues).  For all terms this document
+also displays corresponding the Norwegian term after the bar (if known or
+different).
 
 Within each section the terms are ordered alphabetically.
 
@@ -90,7 +91,7 @@ attended.  Testimonials were found different enough that these are not _articles
 
 Central system at UiB to manage our user accounts, authentication and access
 control.  The website synchronizes its user database and list of content
-managers for each area from Sebra.
+managers for each area from [Sebra](http://sebra.uib.no).
 
 ### w1
 
@@ -121,10 +122,8 @@ Version 3 of UiB's web site.  Implemented in Drupal. Introduced in 2013.
 
 ### Webdesk
 
-Set of pages on the web site where the content managers can find, do stuff with
-the content that are relevant to them.
-
-
+[Set of pages](http://www.uib.no/webdesk) on the web site where the content
+managers can find, do stuff with the content that are relevant to them.
 
 ## Web Publishing
 
@@ -303,7 +302,7 @@ This section describes terms related to the university's subjects of study.
 
 System used by all researcher in Norway to register all work of science that's
 been done.  All papers go here, but also entries for when some researcher has
-been mentioned in media.
+been mentioned in media. This is the [CRIStin site](http://www.cristin.no).
 
 ### Discipline | Fag
 
@@ -312,7 +311,9 @@ term as an _area_ type.
 
 ### NUS
 
-Official Norwegian taxonomy describing subjects of study.
+[Official Norwegian
+taxonomy](http://www.ssb.no/utdanning/norsk-standard-for-utdanningsgruppering)
+describing subjects of study.
 
 
 ## Studies
@@ -353,11 +354,13 @@ course at the given time.
 
 ### FS | Felles studentsystem
 
-A system that the universities of Norway use to manage courses and study
-programmes.  UiB's version of FS exposes the information on _studies_
-through an API called FSrest.  We use a service called
-[fs-pres]:http://fs-pres.app.uib.no to convert this into a more sensible
-API usable for on-the-fly rendering of _study_ information.
+A [system](http://www.fellesstudentsystem.no) that the universities of Norway
+use to manage courses and study programmes.  [UiB's version of
+FS](https://wikihost.uib.no/uawiki/index.php/Felles_studentsystem_(FS)) exposes
+the information on _studies_ through an API called
+[FSrest](http://apidoc.app.uib.no/system/fs.fd.html).  We use a service called
+[fs-pres](http://fs-pres.app.uib.no) to convert this into a more sensible API
+usable for on-the-fly rendering of _study_ information.
 
 ### Master Programme | Masterprogram
 
