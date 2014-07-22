@@ -1,7 +1,6 @@
 HTML = \
   area.html \
   course_site-w3-kurs.uib.no.html \
-  css-retningslinjer.html \
   development-setup.html \
   drupal-deploy.html \
   drupal-sync-course-site.html \

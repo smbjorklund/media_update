@@ -63,7 +63,7 @@ You can browse the w3 git repository on the web from either
 
 ## Guides
 
-* [Coding style (in Norwegian)](style.html); [CSS style (in Norwegian)](css-retningslinjer.html)
+* [Coding style (in Norwegian)](style.html)
 * [Terminology](terms.html)
 * [The code repository](repo.html)
 * [Development setup](development-setup.html)
