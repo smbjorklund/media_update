@@ -1,43 +1,59 @@
-# Kodestandard
+# Coding standards
 
-Dette dokumentet beskriver regler for navngiving og koding i Drupal.
+This documents our rules for naming things and the code layout to use.
 
-## Navngivning
+## Naming
 
-Modulene som vi skriver selv (spesifikt for denne applikasjonen) har `uib_` prefix. Alle disse modulene har `package` satt til `"UiB"` slik at de grupperes sammen i modullisten.  Unntaket er "uibx" modulen vår.
+We use English words as basis for naming stuff.  The [terminology list](terms.html)
+might be helpful for translating names if you only know what it's called in Norwegian.
 
-`uib_`-modulene plasseres under *modules/* (linket fra *drupal/sites/all/modules/uib*). Andre non-core moduler vi installerer ligger under *drupal/sites/all/modules* (som er standard installasjonssted for `drush dl <mod>`.
+The site specific modules (those we write ourself) all get `uib_` as prefix.
+An exception is the `uibx` module.
 
-Drupal sine "machine names" skal være engelske identifikatorer. Alle disse får `uib_` prefix.
+All these modules should have the `package` set to the value `"UiB"`.  This
+ensures that they are listed together on the modules page.
 
-PHP funksjoner bruker navn på formen `foo_bar_baz`.
+The `uib_` modules should be placed in the *modules/* directory (linked from *drupal/sites/all/modules/uib*).
+Other contributes modules are installed under *drupal/sites/all/modules* (the standard install location
+for `drush dl <mod>`).
 
-PHP konstanter bruker navn på formen `FOO_BAR_BAZ`.
+Resources that our modules create that need _machine names_ should all get `uib_` as prefix.
+This includes bundles, fields and views.
 
-PHP klasser bruker navn på `FooBarBaz` formen. Hvis UiB er et av ordene i klassenavnet skrives det som `Uib` slik at det er klarere hvor neste ord starter.
+PHP functions use names on the form `foo_bar_baz()`.
 
-PHP attributter (på klasser) bruker navn på formen `$foo_bar_baz`.
+PHP constants use names on the form `FOO_BAR_BAZ`.
 
-Hjelpefunksjoner i uib-modulen `uib_foo` får `uib_foo__` prefix (merk dobbel `_` på slutten) slik at de ikke kommer i konflikt med andre navn eller hooks (som bare vil ha en enkel `_` på slutten av prefikset).
+PHP classes use names on the form `FooBarBaz`.  If _UiB_ is one of the words in the class name, then we write it as `Uib`.  This makes the identifier easier to read as it's no ambiguity where the next word starts.
 
-## PHP, JS, CSS
+PHP attributes (class members) use names on the form `$foo_bar_baz`.
 
-Generelt prøver vi følge [standarden som Drupal core](http://drupal.org/coding-standards) setter.
+Helper functions in modules get the module name followed by `__` (double underscore) as prefix.
+For instance the module `uib_foo` will use function names like `uib_foo__helper`.
+The double underscore ensures that we don't end up defining hooks by accident.
 
-* Innrykk er 2 *&lt;space>*. Unngå *&lt;tab>* i filene og trailing whitespace.
-* PHP-filer starter med `<?php` men avsluttes ikke med `?>`. En `?>` på slutten av filen er risky fordi det ofte kan være trailing whitespace i fila og det medfører ukontrollert printing av whitespace når filen lastes.
-* Linjekommentar starter med `//` (ikke `#`).
-* Strenger quotes med `'...'`. Bare bruk `"..."` når du vil at noe skal interpoleres i strengen.
+## PHP, JS, CSS (SASS)
 
-Hooks skrives alltid på formen:
+We follow the [Drupal core coding standard](http://drupal.org/coding-standards).
+
+* Indent of 2 *&lt;spaces>*.  Avoid *&lt;tab>* and trailing whitespace in the source files.
+* PHP source files starts with `<?php` on a separate line, but we don't terminate the files
+  with a matching `?>`.  This is good practice as it avoids that any trailing whitespace
+  would then be printed when the file is loaded.
+* Comments on a line start with `//` (not `#`).
+* Strings are quoted with `'...'`.  Only use `"..."` when there are variables to be
+  interpolated in the string.
+
+Hooks are always witten on the form:
 
     /**
      * Implements hook_foo().
      */
     function uib_xxx_foo(...) {
+      ...
     }
 
-Store array oppsett skrives på formen:
+Large literal arrays are written in this format:
 
     $foo = array(
       'first' => 1,
@@ -51,25 +67,34 @@ Store array oppsett skrives på formen:
 
 ## Git commit message format
 
-Det viktigste er at commit meldingen beskriver hvorfor endringen ble gjort.  Hva som ble gjort er forhåpentligvis
-opplagt fra diffen.  Forutsett at den som leser commit meldingen også ser diffen.
+What's most important about a commit message is that it describes *why* the change was made.
+Even if the message reference some RTS issue, don't let readers have to look up the
+issue to understand what the benefit of this change is.
 
-Linjene i commit meldingen må ikke overstige 72 tegn. Skriv kort og konsis. Har
-man behov for en mere utfyllende commit message skal man benytte følgende
-format:
+You normally will not have to explain what was done if it's obvious from the
+source file diff. Write the commit message assuming that the reader also see
+the diff at the same time.
+
+The lines of a commit message should not be longer than 72 characters. The
+first line should preferably be even shorter. Write clear, short and concise
+text.
+
+If you need longer descriptions use this format:
 
     Short summary of change
-    (tom linje)
+    (empty line)
     Explain why this change was made and other details about the change.
     yadayada, bla, bla.
 
-Vi skriver commit meldingene på engelsk.
+All commit messages should be written in English.
 
-Er din commit knyttet til en sak i [RTS](https://rts.uib.no/projects/w3) er konvensjonen at du prefikser commit message med RTS-###. Den vil da har formen:
+Commits should in general be justified by and related to some
+[RTS](https://rts.uib.no/projects/w3) issue.
+The convention is that you prefix the commit message with `RTS-####`
+to connect them.  The commit message will then have this form:
 
-    RTS-### Short summary of change
-    (tom linje)
+    RTS-#### Short summary of change
+    (empty line)
     ...
 
-Det er ønskelig at nesten alle commits har dette
-prefikset. Alle endringer bør være forankret i en RTS-oppgave.
+Replace `####` with the issue number ;-)
