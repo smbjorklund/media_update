@@ -1,0 +1,330 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+# globals filled by collect_info()
+my %MODULES;
+my %DEF;
+my %FEATURES;
+my %USE;
+
+collect_info("modules");
+
+(my $PROGNAME = $0) =~ s,.*/,,;
+my $CMD = shift || "list";
+$CMD =~ s/-/_/g;
+
+my $do_cmd = "do_$CMD";
+unless (defined &$do_cmd) {
+    require Text::Abbrev;
+    my @cmds;
+    for my $name (keys %main::) {
+        push(@cmds, $name) if $name =~ s/^do_//;
+    }
+    my $abbrev = Text::Abbrev::abbrev(@cmds);
+    if (my $cmd = $abbrev->{$CMD}) {
+        $do_cmd = "do_$cmd";
+    }
+    else {
+        require Text::Wrap;
+        usage(Text::Wrap::wrap("", "  ",
+                  "Unrecognized command '$CMD'; try one of " .
+                  join(", ", sort @cmds)
+              )
+        );
+    }
+}
+
+eval {
+    no strict 'refs';
+    &$do_cmd();
+};
+if ($@) {
+    print STDERR "$PROGNAME $CMD failed: $@";
+    exit 1;
+}
+else {
+    exit;
+}
+
+
+sub do_list {
+    for (sort keys %MODULES) {
+	printf "%-20s %s\n", $_, $MODULES{$_}{info}{description} || "?";
+    }
+}
+
+
+sub do_dump_modules {
+    require Data::Dump;
+    Data::Dump::dd(\%MODULES);
+}
+
+
+sub do_defs {
+    for (sort keys %DEF) {
+	printf "%-*s %s\n", max_key_length(\%DEF), $_, $DEF{$_};
+    }
+}
+
+
+sub do_features {
+    for (sort keys %FEATURES) {
+	printf "%-*s %s\n", max_key_length(\%FEATURES), $_, $FEATURES{$_};
+    }
+}
+
+
+sub do_use {
+    for (sort keys %USE) {
+	printf "%-*s %s\n", max_key_length(\%USE), $_, join(" ", @{$USE{$_}});
+    }
+}
+
+
+sub do_unused {
+    for my $symbol (sort keys %DEF) {
+	next unless $symbol =~ /^func:/;
+	if (!$USE{$symbol}) {
+	    print "$symbol";
+	    my $module = $DEF{$symbol};
+	    print " ($module)" unless index($symbol, $module) >= 0;
+	    print "\n";
+	}
+    }
+}
+
+
+sub do_deps {
+    for my $mod (sort keys %MODULES) {
+	for my $dep (sort keys %{$MODULES{$mod}{deps}}) {
+	    print "$mod -> $dep";
+	    my $found;
+	    for my $declared_dep (@{$MODULES{$mod}{info}{dependencies}}) {
+		if ($declared_dep eq $dep) {
+		    $found++;
+		    last;
+		}
+	    }
+	    unless ($found) {
+		print " (undeclared)";
+	    }
+	    print "\n";
+	}
+    }
+}
+
+
+sub usage {
+    my $msg = shift;
+    print STDERR "$msg\n\n" if $msg;
+    die <<EOT
+Usage: $PROGNAME <cmd>
+
+Lists information about the UiB specific modules.
+
+The following lists can be requested:
+
+  list     UiB modules and their description (default)
+  defs     defined symbols and which module defined them
+  features where are the features defined
+  deps     dependencies between modules
+  use      symbol usage
+  unused   functions that appear to not be used
+EOT
+}
+
+
+sub max_key_length {
+    my $hash = shift;
+    my $max = 0;
+    for (%$hash) {
+	$max = length if $max < length;
+    }
+    return $max;
+}
+
+
+sub collect_info {
+    my $modules_dir = shift;
+
+    opendir(my $dh, $modules_dir) || die;
+    while (my $module = readdir($dh)) {
+	next unless $module =~ /^uib/ && -f "$modules_dir/$module/$module.info";
+	next if $module eq "uib_context"; # not used
+	$MODULES{$module} = {
+	    info => parse_module_info("$modules_dir/$module/$module.info"),
+	};
+    }
+    closedir($dh);
+
+    # Locate source files and the defs
+    for my $module (keys %MODULES) {
+	my $info = $MODULES{$module}{info};
+	$MODULES{$module}{defs} = [];
+	if ($info->{features}) {
+	    for my $type (sort keys %{$info->{features} || []}) {
+	        for my $val (@{$info->{features}{$type}}) {
+		    if ($type  =~ /^(?:node|taxonomy|field_base)$/) {
+		       push(@{$MODULES{$module}{defs}}, "$type:$val");
+		    }
+		    $FEATURES{"$type:$val"} = $module;
+		}
+	    }
+	}
+
+	open(my $fh, "find $modules_dir/$module -type f -print|") || die;
+	while (my $file = <$fh>) {
+	    chomp $file;
+	    next if $file =~ /\.(?:csv|txt|png|jpg|css|html|json|xml)$/;
+	    next if $file =~ /\.info$/;
+	    next if $file =~ /\.test$/;
+	    my $short_file = substr($file, length("$modules_dir/$module") + 1);
+	    my $defs = scan_file_php_defs($file, $module);
+	    $MODULES{$module}{file}{$short_file} = {
+		defs => $defs,
+	    };
+	    for my $symbol (@$defs) {
+		push(@{$MODULES{$module}{defs}}, $symbol);
+	    }
+	}
+
+	for my $symbol (@{$MODULES{$module}{defs}}) {
+	    die "Duplicate def for $symbol in $module (already defined for $DEF{$symbol})" if $DEF{$symbol};
+	    $DEF{$symbol} = $module;
+	}
+    }
+
+    # Second round, look for use
+    for my $module (sort keys %MODULES) {
+	for my $file (keys %{$MODULES{$module}{file}}) {
+	    my @refs = scan_file_php_refs("$modules_dir/$module/$file", \%DEF);
+	    $MODULES{$module}{file}{$file}{refs} = \@refs;
+	    for my $ref (@refs) {
+		push(@{$USE{$ref}}, $module);
+		if ($module ne $DEF{$ref}) {
+		    $MODULES{$module}{deps}{$DEF{$ref}}++;
+		}
+	    }
+	}
+    }
+}
+
+
+sub parse_module_info {
+    my $file = shift;
+    open(my $fh, $file) || die "Can't open $file: $!";
+    my %info;
+    while (<$fh>) {
+	if (my($key, $subkey, $array, $value) = /^(\w+)((?:\[[-\w]+\])*)(\[\])?\s*=\s*(.*)/) {
+	    if ($subkey) {
+		$subkey =~ s/^\[//;
+		$subkey =~ s/\]$//;
+		$subkey =~ s/\]\[/./g;
+	    }
+	    $value =~ s/\s+$//;
+	    if ($value =~ /^"/ && $value =~ /"$/) {
+		# quoted value
+		$value = substr($value, 1, -1);
+	    }
+	    if ($array) {
+		die "Assert" unless $array eq "[]";
+		# process as array
+		if ($subkey) {
+		    push(@{$info{$key}{$subkey}}, $value);
+		}
+		else {
+		    push(@{$info{$key}}, $value);
+		}
+	    }
+	    else {
+		if ($subkey) {
+		    die "Duplicate key $key$subkey in $file" if exists $info{$key}{$subkey};
+		    $info{$key}{$subkey} = $value;
+		}
+		else {
+		    die "Duplicate key $key in $file" if exists $info{$key};
+		    $info{$key} = $value;
+		}
+	    }
+	}
+	else {
+	    print "Unrecongized info line: $_";
+	}
+    }
+    return \%info;
+}
+
+
+sub scan_file_php_defs {
+    my $file = shift;
+    my $module = shift;
+    open(my $fh, $file) || die "Can't open $file: $!";
+    my @defs;
+    my $hook;
+    while (<$fh>) {
+	if (/^ \* Implements hook_(\w+)/) {
+	    $hook = $1;
+	}
+	elsif (/\bhook_\w+/ && /plement/) {
+	    chomp;
+	    warn "$file: $_";
+	}
+	elsif (/^function\s+(\w+)\s*\(/) {
+	    my $id = $1;
+	    my $type = "func";
+	    if ($hook) {
+		$type = "hook";
+		$hook =~ s/_N_/_\\d+_/g;
+		$hook =~ s/[A-Z]+(?:_[A-Z]+)*/\\w+/g;
+		warn "$id doesn't match declared hook_$hook" unless $id =~ /^${module}_$hook$/;
+	    }
+	    elsif (
+		($file =~ /\.install$/ && $id =~ /^${module}_update_\d+$/) ||
+	        ($file =~ /\.drush/ && $id eq "${module}_drush_command")
+	    ) {
+		$type = "hook";
+	    }
+	    push(@defs, "$type:$id");
+	    $hook = undef;
+	}
+	elsif (/^class\s+(\w+)/) {
+	    push(@defs, "class:$1");
+	}
+    }
+    return \@defs;
+}
+
+
+sub scan_file_php_refs {
+    my $file = shift;
+    my $defs = shift;
+    open(my $fh, $file) || die "Can't open $file: $!";
+    my %ref;
+    while (<$fh>) {
+	next if /^(function|class)\s+\w+/;
+
+	s/"/'/g; # normalize quoting
+	if (/\bentityCondition\(\s*'bundle'\s*,\s*'(\w+)'\s*\)/) {
+	    my $ref = "node:$1";  # XXX assume node
+	    if ($defs->{$ref}) {
+		$ref{$ref}++;
+	    }
+	    else {
+		warn "No def for $ref";
+	    }
+	}
+	# look at all identifier words (assume they are potential refs
+	while (/\b([a-zA-Z_]\w*)\b/g) {
+	    my $word = $1;
+	    for my $type (qw(func class)) {
+		my $ref = "$type:$word";
+		if ($defs->{$ref}) {
+		    $ref{$ref}++;
+		}
+	    }
+	}
+    }
+    return sort keys %ref;
+}
