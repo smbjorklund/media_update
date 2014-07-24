@@ -1640,7 +1640,7 @@ function uib_area__get_stub_info($stubtitle) {
 }
 
 /**
- * Implements hook_query_alter().
+ * Implements hook_query_TAG_alter().
  */
 function uib_area_query_uib_study_order_by_title_alter(QueryAlterableInterface $query) {
   $order_by =& $query->getOrderBy();
