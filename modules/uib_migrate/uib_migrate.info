@@ -1,5 +1,5 @@
 name = "UiB Migrate w2"
-description = "Migrate data from w2
+description = "Migrate data from w2"
 package = UiB
 core = 7.x
 dependencies[] = migrate
