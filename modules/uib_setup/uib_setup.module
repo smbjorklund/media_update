@@ -61,9 +61,10 @@ function uib_setup__url_rewrite_callback (&$path, &$options) {
 }
 
 /**
-* Implements hook_entity_info_alter().
-* Custom view modes for files
-*/
+ * Implements hook_entity_info_alter().
+ *
+ * Custom view modes for files
+ */
 function uib_setup_entity_info_alter(&$entity_info) {
   $entity_info['file']['view modes']['full_width_image'] = array(
     'label' => t('Full width image (16:9)'),

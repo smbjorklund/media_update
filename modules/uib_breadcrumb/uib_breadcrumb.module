@@ -1,8 +1,7 @@
 <?php
 
 /**
- * @file
- * Implement hook_menu_breadcrumb_alter().
+ * Implements hook_menu_breadcrumb_alter().
  */
 function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
   if (path_is_admin(current_path())) {
@@ -141,7 +140,7 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
 }
 
 /**
- * Implement hook_page_alter()
+ * Implements hook_page_alter().
  */
 function uib_breadcrumb_page_alter(&$page) {
   if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {

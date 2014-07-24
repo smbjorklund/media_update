@@ -1,7 +1,7 @@
 <?php
 /**
-* Implements  hook_field_attach_view_alter()
-*/
+ * Implements hook_field_attach_view_alter().
+ */
 function uib_field_field_attach_view_alter(&$output, $context) {
   foreach ($output as $key => $item) {
     // Check before displaying if field is empty and hide it if it is.

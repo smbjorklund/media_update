@@ -24,8 +24,8 @@ function uib_webdesk_menu() {
 }
 
 /**
-* Implements hook_admin_menu_output_alter
-*/
+ * Implements hook_admin_menu_output_alter
+ */
 function uib_webdesk_admin_menu_output_alter(&$content) {
   global $user;
   if ( (in_array('level 2', $user->roles, TRUE)) || (in_array('level 3', $user->roles, TRUE)) ) {
