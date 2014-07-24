@@ -13,7 +13,6 @@ function uib_filter_filter_info() {
     'title' => t('Expand UiB markup'),
     'description' => t('Expands strings like (% cmd : parameter %) to something interesting'),
     'process callback' => 'uib_filter__process',
-    'tips callback' => '_uib_urlfilter_filter_tips',
   );
   return $filters;
 }
