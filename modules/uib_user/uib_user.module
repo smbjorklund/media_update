@@ -28,6 +28,9 @@ function uib_user_username_alter(&$name, $account) {
   }
 }
 
+/**
+ * Implements hook_user_login().
+ */
 function uib_user_user_login(&$edit, $account) {
   if ( (in_array('level 1', $account->roles, TRUE)) || ($account->uid == 1) || (in_array('level 2', $account->roles, TRUE)) || (in_array('level 3', $account->roles, TRUE)) ) {
     $edit['redirect'] = 'webdesk';
@@ -140,6 +143,9 @@ function uib_user_block_info() {
   );
 }
 
+/**
+ * Implements hook_block_view().
+ */
 function uib_user_block_view($delta='') {
   global $language;
   $block = array();

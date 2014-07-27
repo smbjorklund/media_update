@@ -4,14 +4,23 @@
  * uib_devel.install
  */
 
+/**
+ * Implements hook_install().
+ */
 function uib_devel_install() {
   uibx_log('Install');
 }
 
+/**
+ * Implements hook_uninstall().
+ */
 function uib_devel_uninstall() {
   uibx_log('Uninstall');
 }
 
+/**
+ * Implements hook_enable().
+ */
 function uib_devel_enable() {
   $roles = array_flip(user_roles());
   $uids = array();
@@ -49,6 +58,9 @@ function uib_devel_enable() {
   uibx_log('Disabled production cache and enabled logging.');
 }
 
+/**
+ * Implements hook_disable().
+ */
 function uib_devel_disable() {
   $uids = array();
   foreach (array(1, 2, 3) as $level) {

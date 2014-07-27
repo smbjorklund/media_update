@@ -3,6 +3,10 @@
  * @file
  *
  */
+
+/**
+ * Implements hook_install()
+ */
 function uib_area_install() {
   menu_save(array(
     'menu_name' => 'area',

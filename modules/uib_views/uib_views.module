@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Implements hook_views_query_alter().
+ */
 function uib_views_views_query_alter(&$view, &$query) {
   if ($view->name == 'ansatte') {
 
