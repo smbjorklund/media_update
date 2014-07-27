@@ -210,7 +210,7 @@ like "Uni Research".
 The level below _faculty_.
 For instance "Department of Foreign Languages".
 
-### faculty | fakultet
+### Faculty | Fakultet
 
 Top level organization of the non-administrative parts of university.
 For instance "Faculty of Humanities".
@@ -222,7 +222,7 @@ We don't use this term for that (yet).
 
 ### Person
 
-An human being.  Can take on one or more of the roles "staff", "student", "affiliated", "faculty".
+An human being.  Can take on one or more of the roles "staff", "student", "affiliated".
 
 ### Place, Organization Unit, OU | Sted
 
