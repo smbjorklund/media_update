@@ -35,9 +35,9 @@ modules with drush download.
 
 The cross-repo symlinks are:
 
-    drupal/profiles/uib → profiles/uib
-    drupal/sites/all/modules/uib → modules
-    drupal/sites/all/themes/uib → themes
+    drupal/profiles/uib → ../../profiles/uib
+    drupal/sites/all/modules/uib → ../../../modules
+    drupal/sites/all/themes/uib → ../../../themes
     m → drupal/sites/all/modules
 
 The last one is pure convenience as we found a frequent need to inspect
