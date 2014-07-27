@@ -117,9 +117,9 @@ Various utility scripts that can be invoked with 'drush php-script'.
 
 ### `test-se/`
 
-This is a [Selenium](http://seleniumhq.org/) based test suite.  It contains
+This is a non-working [Selenium](http://seleniumhq.org/) based test suite.  It contains
 scripts (written in Python) that will drive Firefox to visit the pages of the
 site and look for the expected content.
 
-This test suite runs automatically from [Jenkins when new stuff is
+This test suite used to run automatically from [Jenkins when new stuff is
 pushed](http://float.uib.no/jenkins/) to the repo.
