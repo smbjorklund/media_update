@@ -3,4 +3,5 @@ description = Collection of UiB specific Views overrides.
 core = 7.x
 package = UiB
 dependencies[] = ctools
+dependencies[] = uib_area
 dependencies[] = views

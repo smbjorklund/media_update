@@ -20,6 +20,7 @@ dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = uib_area
 dependencies[] = uib_field_bases
+dependencies[] = uibx
 dependencies[] = user
 features[context][] = user_profile
 features[ctools][] = context:context:3

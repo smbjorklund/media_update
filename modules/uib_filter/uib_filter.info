@@ -2,3 +2,4 @@ name = UiB filter
 description = Various UiB specific text filters
 package = UiB
 core = 7.x
+dependencies[] = uib_study

@@ -7,6 +7,7 @@ dependencies[] = calendar
 dependencies[] = context
 dependencies[] = ctools
 dependencies[] = strongarm
+dependencies[] = uib_area
 dependencies[] = views
 features[context][] = calendar
 features[context][] = calendar_year

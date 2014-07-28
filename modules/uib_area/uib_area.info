@@ -31,6 +31,7 @@ dependencies[] = phone
 dependencies[] = strongarm
 dependencies[] = uib_article
 dependencies[] = uib_field
+dependencies[] = uib_migrate
 dependencies[] = uib_setup
 dependencies[] = uib_urlfilter
 dependencies[] = uibx

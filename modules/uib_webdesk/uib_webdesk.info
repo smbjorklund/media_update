@@ -8,6 +8,7 @@ dependencies[] = context
 dependencies[] = features
 dependencies[] = page_manager
 dependencies[] = uib_setup
+dependencies[] = uibx
 dependencies[] = views
 dependencies[] = views_content
 features[context][] = webdesk

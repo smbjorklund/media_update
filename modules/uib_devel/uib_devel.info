@@ -15,6 +15,7 @@ dependencies[] = strongarm
 dependencies[] = styleguide
 dependencies[] = uib_setup
 dependencies[] = views_ui
+dependencies[] = uibx
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[user_permission][] = access devel information

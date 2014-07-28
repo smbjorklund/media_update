@@ -2,6 +2,7 @@ name = UiB Sebra integration
 description = "Syncronize data with Sebra"
 package = UiB
 core = 7.x
+dependencies[] = uib_area
 dependencies[] = uibx
 files[] = SebraPlace.inc
 files[] = SebraPerson.inc

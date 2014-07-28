@@ -2,3 +2,5 @@ name = "UiB Bread Crumb"
 description = Override the default breadcrumb
 package = UiB
 core = 7.x
+dependencies[] = uib_area
+dependencies[] = uib_article
