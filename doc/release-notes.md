@@ -692,12 +692,15 @@ Denne kom litt brått på, men nå er vi live.
 <style>
 h1 {
   margin-top: 3em;
+  font-size: 140%;
+  border-bottom: 1px solid #aaa;
+  clear: left;
 }
 h1 em {
+  font-size: 71.4%; /* should take us back to 100% of body size */
   font-weight: normal;
-  font-size: 70%;
   font-style: normal;
-  opacity: 0.7;
   display: block;
+  float: right;
 }
 </style>

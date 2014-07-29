@@ -1,11 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic);
+
 body {
     color: #333;
     background-color: #fff;
-    font-family: Verdana, Helvetica, "sans-serif";
+    font-family: "Noto Sans", Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 140%;
     margin: 0 auto;
     max-width: 80ex;
     padding: 20px 40px;
-    font-size: 0.875em;
 }
 
 blockquote {
@@ -13,10 +16,14 @@ blockquote {
     font-style: oblique;
 }
 
+pre, code {
+    font-family: "Andale Mono", Courier, fixed-width;
+    font-size: 90%;
+}
+
 pre {
-    padding: 0.5em 2em;
-    border-top: 1px solid #DDD;
-    border-bottom: 1px solid #DDD;
+    line-height: 100%;
+    padding: 0.3em 1.5em;
 }
 
 table {
@@ -37,13 +44,20 @@ table tr.even {
     background-color: #edf5ff;
 }
 
-h2, h3 {
-    margin: 4ex 0 1ex 0;
+h1 {
+  font-size: 140%;
+  font-weight: normal;
 }
-
-code {
-    font-family: Courier, "fixed-width";
-    font-size: 2ex;
+h2 {
+  font-size: 120%;
+  font-weight: normal;
+}
+h3 {
+  font-size: 110%;
+  font-weight: normal;
+}
+h2, h3 {
+    margin: 5ex 0 1.5ex 0;
 }
 
 a:link {

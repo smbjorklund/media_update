@@ -1,7 +1,6 @@
 <style>
 h1, h2, h3 { margin-left: -1em; }
-h2 { margin-top: 3em; }
-h3 { margin-top: 2em; margin-bottom: 0.3em; font-weight: normal; }
+h3 { margin-top: 2em; margin-bottom: 0.2em; font-weight: normal; font-size: 17px; }
 h3, em { color: #a55; }
 </style>
 # Terminology
