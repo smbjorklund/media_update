@@ -29,7 +29,7 @@ newspage,
 phdpresspage,
 and focus area.
 
-The area nodes have lots of textual and media fields that's presented on
+The area nodes have lots of textual and media fields that’s presented on
 the main area page.  In addition it presents the _staff_ and other pieces of
 profiled content.
 
@@ -66,7 +66,7 @@ be filled in.
 Articles, testimonials and external content are created and maintained by
 the users that are content managers of an area.
 
-Articles belong to an area.  Articles are presented using the area's header, side-bar
+Articles belong to an area.  Articles are presented using the area’s header, side-bar
 and footer.  Articles also get URLs that make them appear as sub-ordinates of
 an area.
 

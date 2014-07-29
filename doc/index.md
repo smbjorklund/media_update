@@ -5,7 +5,7 @@ It was introduced in 2013 and by fall 2014 it had replaced all of w2.
 The site is implemented in [Drupal 7](http://drupal.org).
 
 These pages documents the system from a developer perspective.
-If you want to use the system and manage content you're better off reading the
+If you want to use the system and manage content you’re better off reading the
 [User and Editor Documentation Site](http://w3docs.h.uib.no/).
 
 ## Understanding the content structures
@@ -17,7 +17,7 @@ The simplified view is shown here.
 The central concepts are _areas_, _articles_ and _OUs (organisational units)_.
 
 The site is divided into sub-sites, but instead of _sub-site_ we say _area_.
-It's at least shorter. Each area get their own page on the web, their own set
+It’s at least shorter. Each area get their own page on the web, their own set
 of articles, and their own menu.
 
 The OUs represent the organisational structure of university as seen by the
@@ -27,7 +27,7 @@ which make it tempting to conflate these two concepts.
 
 Articles contains the textual content of the site, and appear in the form of
 news articles, pages, events, and others.  Articles belong to an area and are
-presented using the area's header, side-bar and footer.  Articles also get URLs
+presented using the area’s header, side-bar and footer.  Articles also get URLs
 that make them appear as subordinates of an area.
 
 The [details of the content structures](model.html) is of course more complex than this and
@@ -68,7 +68,7 @@ You can browse the w3 git repository on the web from either
 * [The code repository](repo.html)
 * [Development setup](development-setup.html)
 * [Reder Arrays](render-array.html)
-* [Hints that's good to know](hints.html)
+* [Hints that’s good to know](hints.html)
 * [Git hints](git.html)
 * [fs-pres](fs-pres.html)
 

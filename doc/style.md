@@ -5,7 +5,7 @@ This documents our rules for naming things and the code layout to use.
 ## Naming
 
 We use English words as basis for naming stuff.  The [terminology list](terms.html)
-might be helpful for translating names if you only know what it's called in Norwegian.
+might be helpful for translating names if you only know what it’s called in Norwegian.
 
 The site specific modules (those we write ourself) all get `uib_` as prefix.
 An exception is the `uibx` module.
@@ -24,20 +24,20 @@ PHP functions use names on the form `foo_bar_baz()`.
 
 PHP constants use names on the form `FOO_BAR_BAZ`.
 
-PHP classes use names on the form `FooBarBaz`.  If _UiB_ is one of the words in the class name, then we write it as `Uib`.  This makes the identifier easier to read as it's no ambiguity where the next word starts.
+PHP classes use names on the form `FooBarBaz`.  If _UiB_ is one of the words in the class name, then we write it as `Uib`.  This makes the identifier easier to read as it’s no ambiguity where the next word starts.
 
 PHP attributes (class members) use names on the form `$foo_bar_baz`.
 
 Helper functions in modules get the module name followed by `__` (double underscore) as prefix.
 For instance the module `uib_foo` will use function names like `uib_foo__helper`.
-The double underscore ensures that we don't end up defining hooks by accident.
+The double underscore ensures that we don’t end up defining hooks by accident.
 
 ## PHP, JS, CSS (SASS)
 
 We follow the [Drupal core coding standard](http://drupal.org/coding-standards).
 
 * Indent of 2 *&lt;spaces>*.  Avoid *&lt;tab>* and trailing whitespace in the source files.
-* PHP source files starts with `<?php` on a separate line, but we don't terminate the files
+* PHP source files starts with `<?php` on a separate line, but we don’t terminate the files
   with a matching `?>`.  This is good practice as it avoids that any trailing whitespace
   would then be printed when the file is loaded.
 * Comments on a line start with `//` (not `#`).
@@ -67,11 +67,11 @@ Large literal arrays are written in this format:
 
 ## Git commit message format
 
-What's most important about a commit message is that it describes *why* the change was made.
-Even if the message reference some RTS issue, don't let readers have to look up the
+What’s most important about a commit message is that it describes *why* the change was made.
+Even if the message reference some RTS issue, don’t let readers have to look up the
 issue to understand what the benefit of this change is.
 
-You normally will not have to explain what was done if it's obvious from the
+You normally will not have to explain what was done if it’s obvious from the
 source file diff. Write the commit message assuming that the reader also see
 the diff at the same time.
 

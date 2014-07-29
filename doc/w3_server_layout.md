@@ -31,7 +31,7 @@
 
 * teststing
       * Test-server for string
-      * cache for w2's topicmap
+      * cache for w2’s topicmap
 
 * testbool
       * cache for sebra

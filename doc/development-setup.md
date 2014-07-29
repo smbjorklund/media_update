@@ -19,7 +19,7 @@ Tools" are installed.  This will install make, C compilers, and git.
 
 Apache is bundled with Mac OSX.  To enable it just run [`sudo apachectl
 start`](http://superuser.com/questions/455505/how-do-i-start-apache-in-osx-mountain-lion).
-This will both start up Apache and make sure it's enabled on the next system
+This will both start up Apache and make sure it’s enabled on the next system
 reboot.  The configuration files for Apache is found in the _/etc/apache2_ directory.
 
 Verify that it works by visiting <http://localhost>.
@@ -63,7 +63,7 @@ using the `gem` tool.
 
 Run 'compass --version' to verify that it works.
 
-It's a good idea to not pollute the system version Ruby with added packages.  Because
+It’s a good idea to not pollute the system version Ruby with added packages.  Because
 of that many will prefer to use [Homebrew](http://mxcl.github.io/homebrew/) to install
 a new Ruby and install gems into that that one.
 
@@ -109,7 +109,7 @@ Then we create the file _/etc/apache2/other/w3.uib.no-vhosts.conf_ with this con
     </Directory>
 
 Then run `sudo apachectl restart` and visit <http://w3.uib.local> to verify that it
-works.  You will get into the Drupal install dialog, which we will not use. We'll
+works.  You will get into the Drupal install dialog, which we will not use. We’ll
 install the site from the command line instead:
 
     $ cd /tmp/w3.uib.no
@@ -121,7 +121,7 @@ Then goto  <http://w3.uib.local> once more.  You should now see the empty front 
 of the w3 application and you can [login](http://w3.uib.local/user) as _admin:admin_.
 
 Alternate recommendation is a use a name like <http://w3.uib.9zlhb.xip.io> as this
-doesn't require you to mess with the _/etc/hosts_ file. Visit [xip.io](http://xip.io)
+doesn’t require you to mess with the _/etc/hosts_ file. Visit [xip.io](http://xip.io)
 to learn how this works.
 
 ### Set up PostgreSQL
@@ -144,7 +144,7 @@ to such a database:
   Create an account called 'user1' with password 'pass1' that is given permission
   to create new databases:
 
-This sets up the recommended user if it doesn't already exists:
+This sets up the recommended user if it doesn’t already exists:
 
     $ psql postgres
     postgres=# CREATE USER user1 WITH PASSWORD 'pass1' CREATEDB;
@@ -174,7 +174,7 @@ exit psql and check that you can connect to the new database:
 Jolly good!  Remember to replace _db42_ with something unique to you.  Also in
 the examples below.
 
-Now let's reinstall w3.uib.local so that it connects to Postgres:
+Now let’s reinstall w3.uib.local so that it connects to Postgres:
 
     $ bin/site-uninstall     # get rid of the old one
     $ DATABASE=pgsql://user1:pass1@glory.uib.no/db42 bin/site-install w3.uib.local
@@ -212,7 +212,7 @@ views or stuff like that:
 
 ## Development workflow
 
-Some commands you will run into often.  If you don't understand what these
+Some commands you will run into often.  If you don’t understand what these
 do, please ask:
 
     $ git checkout master

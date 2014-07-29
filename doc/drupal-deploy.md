@@ -7,7 +7,7 @@ This describe an deployment on a more and less clean application server.
 * Install the cli tool Drush. Drush is a command line tool to control, setup and change your Drupal installation.
 * Require that the Ruby plugin compass is installed *yum install rubygems*  ; *gem update --system*; *gem install compass*.
 * Make sure that any needed soft links pointing to your storage area exist during installation (details missing, Mike)
-* Please make sure that Drupal's file areas are correct set up. Apache and the local user that you running drush need write permission. Further reading found on http://drupal.org/security/secure-configuration. Verify that your settings on *admin/config/media/file-system*.
+* Please make sure that Drupal’s file areas are correct set up. Apache and the local user that you running drush need write permission. Further reading found on http://drupal.org/security/secure-configuration. Verify that your settings on *admin/config/media/file-system*.
 
 Default drupal PHP stream wrappers are:
 
@@ -36,7 +36,7 @@ Default drupal PHP stream wrappers are:
 * Sjekk /var/www/lib/php/uib/drupal/setup.php og /var/www/etc/auth.txt
 
 ## Configuration changes
-Drupal config lives in the database. Modules sometime create it's own tables but also use the Drupal core variables table to store it's settings. Settings are exported and broken down as feature modules. Feature modules is just like any other module but contain functionality and config. Updates made to these will require us to get the current settings, in the databse, up to sync with that's last git commit.
+Drupal config lives in the database. Modules sometime create it’s own tables but also use the Drupal core variables table to store it's settings. Settings are exported and broken down as feature modules. Feature modules is just like any other module but contain functionality and config. Updates made to these will require us to get the current settings, in the databse, up to sync with that's last git commit.
 
 Theme styling is written in SASS (SCSS) and any updates made to this will require recompile to produce new CSS-files, flushing of caches in all subsystems.
 
@@ -44,7 +44,7 @@ Theme styling is written in SASS (SCSS) and any updates made to this will requir
 Get your current code update to date.
 
 * *git submodule update --recursive*
-* *bin/site-drush cc all* Flush all your drupal caches. This is make sure that drupal check the db. for it's runtime settings used by *drush fl*
+* *bin/site-drush cc all* Flush all your drupal caches. This is make sure that drupal check the db. for it’s runtime settings used by *drush fl*
 * *bin/site-drush fl* show the status of the current runtime settings vs latest version from git.
 * *bin/site-drush fr name_of_module* Enable you select what module to upgrade.
 

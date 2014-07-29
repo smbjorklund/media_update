@@ -19,7 +19,7 @@ You will grow tired of invoking `site-drush` the verbose way, so you might want 
     <?php
     $options['yes'] = TRUE;
 
-We use git for our files and throw-away databases, so it usually doesn't matter if drush overwrite
+We use git for our files and throw-away databases, so it usually doesn’t matter if drush overwrite
 some files.  Skipping manual confirmation on all the "Are you sure?" prompts is a time saver.
 
 ## Postgres
@@ -27,7 +27,7 @@ some files.  Skipping manual confirmation on all the "Are you sure?" prompts is 
 ### Setting up nb_NO collation
 
 To restore the postgres dumps from production you need an postgres database
-that supports the 'nb_NO' collation.  MacOS X doesn't do that out-of-the-box.
+that supports the 'nb_NO' collation.  MacOS X doesn’t do that out-of-the-box.
 
 To check if this is already set up run this SELECT:
 
@@ -45,14 +45,14 @@ To check if this is already set up run this SELECT:
      no_NO.UTF-8      |            11 |        10 |            6 | no_NO.UTF-8      | no_NO.UTF-8
     (8 rows)
 
-If you don't see nb_NO in that list run:
+If you don’t see nb_NO in that list run:
 
     $ locale -a | grep _NO
 
 to see which Norwegian locales are available on your system.  If you see 'nb_NO' there
 you just need to reinitialize Postgres (run initdb once more).
 
-If you don't see 'nb_NO' and you are using MacOS X you can fake it with:
+If you don’t see 'nb_NO' and you are using MacOS X you can fake it with:
 
     $ cd /usr/share/locale/
     $ ln -s no_NO nb_NO
@@ -81,16 +81,16 @@ Starting your database might now throw an error:
 
     FATAL:  could not create shared memory segment: Invalid argument
     DETAIL:  Failed system call was shmget(key=5432001, size=4390912, 03600).
-    HINT:  This error usually means that PostgreSQL's request for a
-    shared memory segment exceeded your kernel's SHMMAX parameter.
+    HINT:  This error usually means that PostgreSQL’s request for a
+    shared memory segment exceeded your kernel’s SHMMAX parameter.
 
     You can either reduce the request size or reconfigure the kernel
     with larger SHMMAX. To reduce the request size (currently
-    4390912 bytes), reduce PostgreSQL's shared memory usage, perhaps
+    4390912 bytes), reduce PostgreSQL’s shared memory usage, perhaps
     by reducing shared_buffers or max_connections.
 
-    If the request size is already small, it's possible that it is
-    less than your kernel's SHMMIN parameter, in which case raising
+    If the request size is already small, it’s possible that it is
+    less than your kernel’s SHMMIN parameter, in which case raising
     the request size or reconfiguring SHMMIN is called for.
 
 You can locally test this by running the following:
@@ -98,7 +98,7 @@ You can locally test this by running the following:
     sudo sysctl -w kern.sysv.shmall=65536
     sudo sysctl -w kern.sysv.shmmax=16777216
 
-To permantly add this to your computer (OS X), add the following to your /etc/sysctl.conf. Create the file if you don't allready have it.
+To permantly add this to your computer (OS X), add the following to your /etc/sysctl.conf. Create the file if you don’t allready have it.
 
       kern.sysv.shmall=65536
       kern.sysv.shmmax=16777216

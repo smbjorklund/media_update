@@ -15,7 +15,7 @@ You can also browse the code repo directly both from
 require a UiB login for access.
 
 The `--recursive` option used above instructs git to also fetch the submodules
-used.  It's needed to get a complete runnable checkout with the full Drupal
+used.  It’s needed to get a complete runnable checkout with the full Drupal
 core and the contributed modules that we depend on.  Without `--recursive` you
 only get "our" code, which is fine if you only need to inspect it.
 
@@ -30,7 +30,7 @@ will be able to locate our code.
 This give us a clear separation between our code and the standard Drupal code.
 The commit history in the root repo is then only about our code and we have
 the full Drupal history in the sub-repo when we need to investigate Drupal
-issues.  It's also easy to upgrade Drupal with a simple git merge and to update
+issues.  It’s also easy to upgrade Drupal with a simple git merge and to update
 modules with drush download.
 
 The cross-repo symlinks are:
@@ -93,7 +93,7 @@ that when the patch is available from a stable URL.
 ### `profiles/`
 
 Our custom profiles.  Currently there is only one; `profiles/uib/`.
-It's used when installing the site from scratch.
+It’s used when installing the site from scratch.
 It declares what modules need to be installed and some install code
 that set things up.
 

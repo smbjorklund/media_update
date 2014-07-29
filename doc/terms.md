@@ -5,7 +5,7 @@ h3, em { color: #a55; }
 </style>
 # Terminology
 
-This documents the terminology that we use in UiB's Web Project.
+This documents the terminology that we use in UiB’s Web Project.
 
 We standardize on using English for our code and the text written for our [RTS
 issues](https://rts.uib.no/projects/w3/issues).  For all terms this document
@@ -24,9 +24,9 @@ This section contains usages of terms that are specific for our site.
 The website is partitioned into areas that are basically their own sub-sites.
 _Articles_ belong to an area and can be edited by the _content managers_ of the
 area.  Areas have their own menu.  Content belonging to an area is currently presented
-together with the area's header, sidebar and footer.
+together with the area’s header, sidebar and footer.
 
-Areas form hierarchies, but don't inherit stuff from their parent(s).  This
+Areas form hierarchies, but don’t inherit stuff from their parent(s).  This
 is used mainly to reflect the organizational structure; for instance to present
 that certain _departments_ are part of some _faculty_.
 
@@ -94,7 +94,7 @@ managers for each area from [Sebra](http://sebra.uib.no).
 
 ### w1
 
-Version 1 of UiB's web site.  Implemented mostly as a static site, but also
+Version 1 of UiB’s web site.  Implemented mostly as a static site, but also
 contained a few CGI scripts and later some PHP scripts. Introduced in
 [1993](http://alfred.uib.no/det.var.tider/) and parts of it is unfortunately
 still going strong; served from webber.uib.no. The first versions ran on
@@ -109,7 +109,7 @@ incarnations, like being an Solaris box and is today a virtual RHEL box.
 
 ### w2
 
-Version 2 of UiB's web site.  [Implemented in
+Version 2 of UiB’s web site.  [Implemented in
 Zope/ZTM.](https://git.uib.no/cgit/site/www.uib.no.git/)  Most of it
 implemented by [Bouvet](http://bouvet.no).  Introduced in 2009 and retired in 2014.
 
@@ -117,7 +117,7 @@ implemented by [Bouvet](http://bouvet.no).  Introduced in 2009 and retired in 20
 
 ### w3
 
-Version 3 of UiB's web site.  Implemented in Drupal. Introduced in 2013.
+Version 3 of UiB’s web site.  Implemented in Drupal. Introduced in 2013.
 
 ### Webdesk
 
@@ -136,7 +136,7 @@ bylines.  Gets its name from the form it normally takes: "By &lt;name>".
 
 ### CMS
 
-Content Management System; Some denote Drupal a CMS, but it's actually
+Content Management System; Some denote Drupal a CMS, but it’s actually
 more of a system to build CMSes.
 
 ### Colophone (sic) | Kolofon
@@ -190,7 +190,7 @@ the [original RSS spec](http://scripting.com/netscapeDocs/RSS%200_91%20Spec,%20r
 
 Some [readable string that identifies an
 object](http://en.wikipedia.org/wiki/Slug_(web_publishing)).  Used to create
-readable urls. We use it for instance to identify UiB's users with strings like
+readable urls. We use it for instance to identify UiB’s users with strings like
 "&lt;firstname>.&lt;lastname>".
 
 
@@ -217,7 +217,7 @@ For instance "Faculty of Humanities".
 Most _faculties_ are sub-divided into _departments_.
 
 In general _faculty_ also denotes the teaching staff at the university.
-We don't use this term for that (yet).
+We don’t use this term for that (yet).
 
 ### Person
 
@@ -295,11 +295,11 @@ A (short) string that identifies a _user_.
 
 ## Subjects
 
-This section describes terms related to the university's subjects of study.
+This section describes terms related to the university’s subjects of study.
 
 ### Cristin
 
-System used by all researcher in Norway to register all work of science that's
+System used by all researcher in Norway to register all work of science that’s
 been done.  All papers go here, but also entries for when some researcher has
 been mentioned in media. This is the [CRIStin site](http://www.cristin.no).
 
@@ -354,7 +354,7 @@ course at the given time.
 ### FS | Felles studentsystem
 
 A [system](http://www.fellesstudentsystem.no) that the universities of Norway
-use to manage courses and study programmes.  [UiB's version of
+use to manage courses and study programmes.  [UiB’s version of
 FS](https://wikihost.uib.no/uawiki/index.php/Felles_studentsystem_(FS)) exposes
 the information on _studies_ through an API called
 [FSrest](http://apidoc.app.uib.no/system/fs.fd.html).  We use a service called
@@ -383,7 +383,7 @@ The year at the university is divided into two semester; spring and fall.
 
 ### Specialization, Programme option | Studieretning
 
-Really just a study programme, but treated as if it's an option you can choose
+Really just a study programme, but treated as if it’s an option you can choose
 when you apply for a study programme.
 
 ### Student
@@ -429,7 +429,7 @@ For _taxonomies_ the _vocabulary_ is the bundle.
 ### Comment
 
 _Nodes_ can have associated comments if you chose to.
-We generally don't for this web site.
+We generally don’t for this web site.
 
 ### Content
 
@@ -565,7 +565,7 @@ We have a [separate document](render-array.html) that describes this in detail.
 ### Revision
 
 Each time a _node_ is saved we store the new set of values as a persistent
-snapshot in what's called a revision.  This allow node content to be compared and
+snapshot in what’s called a revision.  This allow node content to be compared and
 restored to earlier versions of itself.
 
 ### Role
@@ -627,7 +627,7 @@ of UiB.
 ### vid (vocabulary id)
 
 The numeric identifier that Drupal uses to track _vocabularies_.  For some
-reason _vocabularies_ doesn't have a textual name like _content types_ have.
+reason _vocabularies_ doesn’t have a textual name like _content types_ have.
 
 ### View
 

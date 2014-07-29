@@ -29,7 +29,7 @@
 
 ### Drush
 
-Drush installs libraries in a sub-dir. I order to populate the lib, drush is run as root when it's installed. If more libraries is to be installed, Drush must be run as root.
+Drush installs libraries in a sub-dir. I order to populate the lib, drush is run as root when it’s installed. If more libraries is to be installed, Drush must be run as root.
 
 ### PostgreSQL
 

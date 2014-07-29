@@ -279,7 +279,7 @@ Målet med temasidene og funksjonaliteten som skal understøttes er enda uklart.
       * fax
       * postal addresses
       * visit address
-      * jobbnorge\_id (hacked via sebra's areas)
+      * jobbnorge\_id (hacked via sebra’s areas)
     * area fields
       * staff
       * **content managers**

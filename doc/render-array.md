@@ -30,10 +30,10 @@ will be ignored.
 A render array with the property **'#theme'** will pass responsibility for
 rendering to the corresponding theme function or template. The variables that
 the function expects are provided by other properties. If the theme function
-isn't documented to process children, then they will generally be ignored if
+isn’t documented to process children, then they will generally be ignored if
 present.
 
-A render array can't both have the '#markup' and '#theme' property set.
+A render array can’t both have the '#markup' and '#theme' property set.
 
 For instance if the '#theme' property has the value 'item\_list', then the
 [theme\_item\_list()](http://api.drupal.org/api/drupal/includes%21theme.inc/function/theme_item_list/7)
@@ -102,7 +102,7 @@ More information about the render API is found in <http://drupal.org/node/930760
 This section just gives examples of how to set up render arrays to achieve
 various effects.  There are many ways to express the same thing.  The
 difference boils down to how easy it will be for the theme to override the output or
-for various alter hooks to manipulate the structure of what's to be rendered.
+for various alter hooks to manipulate the structure of what’s to be rendered.
 
 ### Just output some escaped text
 
@@ -248,4 +248,4 @@ the rest.  It might go like this:
       return $element;
     }
 
-More examples can for instance be found in [Brendan's #cache article](http://omnifik.com/blog/render-arrays-and-cache-drupal-7).
+More examples can for instance be found in [Brendan’s #cache article](http://omnifik.com/blog/render-arrays-and-cache-drupal-7).
