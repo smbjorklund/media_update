@@ -8,8 +8,8 @@ h3, em { color: #a55; }
 This documents the terminology that we use in UiB’s Web Project.
 
 We standardize on using English for our code and the text written for our [RTS
-issues](https://rts.uib.no/projects/w3/issues).  For all terms this document
-also displays corresponding the Norwegian term after the bar (if known or
+issues](https://rts.uib.no/projects/w3/issues).  This document
+displays the corresponding Norwegian term after the bar (if known or
 different).
 
 Within each section the terms are ordered alphabetically.
@@ -44,7 +44,7 @@ divided into subtypes like _news article_, _info page_, _event_.
 
 ### Calendar | Kalender
 
-Index over _events_.  Each _area_ have their own calendar; and we also have a
+Index over _events_.  Each _area_ have their own calendar; and we have a
 calendar that spans all areas; the one we call the global calendar.
 
 ### External Content | Eksternt innhold
@@ -132,7 +132,7 @@ generally know, thus it makes sense to define them the way we use them.
 ### Byline
 
 The persons presented as author(s) of some article.  News articles usually have
-bylines.  Gets its name from the form it normally takes: "By &lt;name>".
+bylines.  Gets its name from the form it normally takes: “By &lt;name>”.
 
 ### CMS
 
@@ -508,7 +508,7 @@ How _pages_ are divided into sections.
 ### Menu
 
 Hierarchical list of &lt;title>, &lt;url> pairs.
-Menus can also take on the role of being a _block_.
+Menus can take on the role of being a _block_.
 
 ### mlid (menu link id)
 
