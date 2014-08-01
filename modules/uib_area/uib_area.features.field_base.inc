@@ -569,6 +569,7 @@ function uib_area_field_default_field_bases() {
         'exhibition' => 'Exhibition',
         'meeting' => 'Meeting',
         'book_release' => 'Book release',
+        'guided_tour' => 'Guided tour',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
