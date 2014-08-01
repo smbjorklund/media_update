@@ -519,8 +519,13 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
     }
     if ($existing_phone != $sebra_phone)
       $edit['field_uib_phone'] = $phones;
-    if ($account->field_uib_user_ou['und'][0]['target_id'] != $places[$u->place_code]) {
-      $edit['field_uib_user_ou']['und'][0]['target_id'] = $places[$u->place_code];
+    if (empty($places[$u->place_code])) {
+      $edit['field_uib_user_ou'] = array();
+    }
+    else {
+      if ($account->field_uib_user_ou['und'][0]['target_id'] != $places[$u->place_code]) {
+        $edit['field_uib_user_ou']['und'][0]['target_id'] = $places[$u->place_code];
+      }
     }
     // Some roles have no correspondence in Sebra and will be lost if we do not fix it here.
     // All roles but 'level 2' and 'level 3' are fixed.
