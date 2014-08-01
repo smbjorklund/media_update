@@ -63,7 +63,6 @@ function uib_filter__process($text, $filter) {
         }
       case 'study':
         if ($arg) {
-          $arg = 'INF101';
           return uib_study__study_link($arg, '<title>');
         }
       case 'books':
