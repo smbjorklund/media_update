@@ -1,8 +1,12 @@
 <?php
-  function uib_nomail_mail_alter(&$message) {
-    $message['send'] = FALSE;
-    $message_out = t('Outgoing email was blocked');
-    drupal_set_message(check_plain($message_out), $type = 'warning');
-    watchdog('uib_nomail', 'Outgoing email was blocked', array(), WATCHDOG_NOTICE);
-    return;
-  }
+
+/**
+ * Implements hook_mail_alter().
+ */
+function uib_nomail_mail_alter(&$message) {
+  $message['send'] = FALSE;
+  $message_out = t('Outgoing email was blocked');
+  drupal_set_message(check_plain($message_out), $type = 'warning');
+  watchdog('uib_nomail', 'Outgoing email was blocked', array(), WATCHDOG_NOTICE);
+  return;
+}
