@@ -1,5 +1,5 @@
 name = UiB Sebra integration
-description = "Syncronize data with Sebra"
+description = "Synchronize data with Sebra"
 package = UiB
 core = 7.x
 dependencies[] = uib_area
