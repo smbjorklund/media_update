@@ -21,6 +21,8 @@ foreach(system_get_info('module') as $module => $info) {
   foreach ($info['dependencies'] as $dep) {
     if (substr($dep, 0, 3) != 'uib')
       continue;
+    if ($dep == 'uibx')
+      continue;
     print "  $module -> $dep;\n";
   }
 }
