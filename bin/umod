@@ -50,8 +50,19 @@ else {
 
 
 sub do_list {
+    printf "%-17s %3s %3s  %s\n", "NAME", "#D", "#F", "DESCRIPTION";
     for (sort keys %MODULES) {
-	printf "%-20s %s\n", $_, $MODULES{$_}{info}{description} || "?";
+	my $count_features = 0;
+	for my $flist (values %{$MODULES{$_}{info}{features}}) {
+	    $count_features += @$flist;
+	}
+	my @row = (
+	    $_,
+	    int(@{$MODULES{$_}{defs}}),
+	    $count_features,
+	    $MODULES{$_}{info}{description},
+	);
+	printf "%-17s %3d %3d  %s\n", @row;
     }
 }
 
