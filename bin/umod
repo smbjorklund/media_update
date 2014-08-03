@@ -191,6 +191,10 @@ sub collect_info {
 	    next if $file =~ /\.(?:csv|txt|png|jpg|css|js|html|json|xml)$/;
 	    next if $file =~ /\.info$/;
 	    next if $file =~ /\.test$/;
+
+	    # features generated stuff
+	    next if $file =~ /\.features\./;
+	    next if $file =~ /\.(context|ldap_servers|views_default|file_default_displays|pages_default|field_group|strongarm)\.inc$/;
 	    my $short_file = substr($file, length("$modules_dir/$module") + 1);
 	    my $defs = scan_file_php_defs($file, $module);
 	    $MODULES{$module}{file}{$short_file} = {
