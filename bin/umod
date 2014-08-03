@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use Getopt::Long qw(GetOptions);
 
 # globals filled by collect_info()
 my %MODULES;
@@ -50,7 +51,15 @@ else {
 
 
 sub do_list {
-    printf "%-17s %3s %3s  %s\n", "NAME", "#D", "#F", "DESCRIPTION";
+    GetOptions(\my %opt, 'html') || usage();
+    if ($opt{html}) {
+	print "<table class=\"umod-list\">\n";
+	print "<thead><tr><td>Name</td><td>#D</td><td>#F</td><td>Description</td></tr></thead>\n";
+	print "<tbody>\n";
+    }
+    else {
+	printf "%-17s %3s %3s  %s\n", "NAME", "#D", "#F", "DESCRIPTION";
+    }
     for (sort keys %MODULES) {
 	my $count_features = 0;
 	for my $flist (values %{$MODULES{$_}{info}{features}}) {
@@ -62,7 +71,16 @@ sub do_list {
 	    $count_features,
 	    $MODULES{$_}{info}{description},
 	);
-	printf "%-17s %3d %3d  %s\n", @row;
+	if ($opt{html}) {
+	    print "  <tr>", (map "<td>$_</td>", @row), "</tr>\n";
+	}
+	else {
+	    printf "%-17s %3d %3d  %s\n", @row;
+	}
+    }
+    if ($opt{html}) {
+	print "</tbody>\n";
+	print "</table>\n";
     }
 }
 
