@@ -189,7 +189,7 @@ function uib_user_user_view_alter(&$build) {
 
   // Add email address with markup as if it was a field
   $build['user_email'] = array(
-    '#weight' => 32,
+    '#weight' => 15,
     '#markup' => uib_user_add_field_markup(t('E-mail'), 'uib-user-email', l($profile_user->mail->value(), 'mailto:' . $profile_user->mail->value(), array('absolute' => TRUE))),
   );
 
@@ -211,7 +211,7 @@ function uib_user_user_view_alter(&$build) {
   if ($build['#account']->field_uib_user_domain['und'][0]['value'] == 'uib') {
     $vcard_url = 'user/' . $build['#account']->uid . '/card.vcf';
     $build['user_vcard_link'] = array(
-      '#weight' => 37,
+      '#weight' => 17,
       '#markup' => l(t('Download vCard'), $vcard_url, array(
         'attributes' => array('class' => 'uib-user-vcard'),
       )),
@@ -238,13 +238,32 @@ function uib_user_user_view_alter(&$build) {
     }
   }
   global $language;
+  $ou_nid = $build['field_uib_user_ou']['#items'][0]['target_id'];
   if (!empty($build['#account']->field_uib_user_alt_address[$language->language][0]['thoroughfare'])) {
     foreach ($build['#account']->field_uib_user_alt_address[$language->language][0] as $item_name => $item) {
-      if (isset($build['field_uib_user_ou'][0]['node'][$build['field_uib_user_ou']['#items'][0]['target_id']]['field_uib_visit_address'][0]['#address'][$item_name])) {
-        $build['field_uib_user_ou'][0]['node'][$build['field_uib_user_ou']['#items'][0]['target_id']]['field_uib_visit_address'][0]['#address'][$item_name] = $item;
+      if (isset($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_visit_address'][0]['#address'][$item_name])) {
+        $build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_visit_address'][0]['#address'][$item_name] = $item;
       }
     }
   }
+  // Move address fields out of ou div
+  if (isset($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_visit_address'])) {
+    $build['visit_address'] = $build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_visit_address'];
+    unset($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_visit_address']);
+    $build['visit_address']['#weight'] = 1;
+    $build['#group_children']['visit_address'] = 'group_user_ci_2';
+  }
+  if (isset($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_postal_address'])) {
+    $build['postal_address'] = $build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_postal_address'];
+    unset($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_postal_address']);
+    $build['postal_address']['#weight'] = 3;
+    $build['#group_children']['postal_address'] = 'group_user_ci_2';
+  }
+
+  if (!empty($build['field_uib_user_alt_position'][0]['#markup'])) {
+    $build['field_uib_user_alt_position'][0]['#markup'] = ', ' . $build['field_uib_user_alt_position'][0]['#markup'];
+  }
+
   if (!empty($build['field_uib_user_field'])) {
     if ($profile_user->field_uib_position_category->value() == 'faculty') {
       $build['field_uib_user_field']['#title'] = t('Research');

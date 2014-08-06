@@ -137,6 +137,16 @@ $zen-column-count: 5;
     @include media_content();
   }
 
+  #user_user_full_group_user_ci_1 {
+    margin: 10px zen-half-gutter() 0 0;
+    float: left;
+  }
+  #user_user_full_group_user_ci_2 {
+    margin: 10px 0 0 0;
+    float: left;
+  }
+
+
   #user_user_full_group_user_work_1 {
     @include zen-clear();
   }
@@ -148,19 +158,72 @@ $zen-column-count: 5;
 }
 
 .page-user {
-  .user-picture {
-    display: block;
-    margin-bottom: 1em;
-  }
-  .uib-social-media {
-    padding: 0;
-    .field-item {
-      width: 32px;
-      margin: 0 0.5em 0 0;
+  #user_user_full_group_user_first {
+    #user_user_full_group_media_element {
+      background: #f1f1ef;
+    }
+    .field-name-field-uib-first-name,
+    .field-name-field-uib-position {
+      float: left;
+    }
+    .field-name-field-uib-first-name {
+      margin-right: 5px;
+    }
+    .field-label, .link-title {
+      font-size: 1em;
+    }
+    .field-name-field-uib-first-name,
+    .field-name-field-uib-last-name {
+      font-size: 1.2em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .user-picture {
+      display: block;
+      margin-bottom: 1em;
+    }
+    .uib-social-media {
+      padding: 0;
+      .field-item {
+        width: 32px;
+        margin: 0 0.5em 0 0;
+      }
+    }
+    .uib-user-email {
+      clear: both;
+      margin-top: 1em;
+    }
+    .uib-user-vcard {
+      float: right;
+    }
+    .field-name-field-uib-user-ou {
+      clear: both;
     }
   }
-}
 
+  #user_user_full_group_user_second .field-label,
+  #user_user_full_group_user_work_1 .field-label {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  #user_user_full_group_user_second {
+    .field-name-field-uib-user-competence {
+      @include clearfix;
+      .field-items .field-item a {
+        background: #FAEEED;
+        padding: 5px 10px;
+        float: left;
+        margin-right: 5px;
+        border-radius: 5px;
+        margin-bottom: 7px;
+      }
+    }
+  }
+  .uib-user-edit-button {
+    padding: 10px;
+  }
+}
 
 /////////////
 // Styling for view mode user teaser
