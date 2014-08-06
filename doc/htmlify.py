@@ -37,7 +37,7 @@ def md_expand(text, filename):
 
     return text
 
-html  = open("tmpl/header.html").read().decode("UTF-8")
+html  = open("tmpl/header.html").read().decode("UTF-8").replace("PAGE-ID", sys.argv[1].replace('.md', '').replace('/', '-'))
 html += markdown(md_expand(open(sys.argv[1]).read().decode("UTF-8"), sys.argv[1]))
 html += open("tmpl/footer.html").read().decode("UTF-8")
 
