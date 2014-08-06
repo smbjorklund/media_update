@@ -31,6 +31,7 @@ function uib_webdesk__release_notes_page() {
 
   drupal_add_css('
     li { list-style: disc; }
+    h2 em { font-size: 70%; font-style: normal; font-weight: normal; float: right; }
   ', array('type' => 'inline', 'group' => CSS_THEME));
 
   return $page;

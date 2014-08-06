@@ -688,19 +688,3 @@ samt en del tekniske saker som rydder og effektiviserer
 # Release 1.0 _2013-03-21_
 
 Denne kom litt brått på, men nå er vi live.
-
-<style>
-h1 {
-  margin-top: 3em;
-  font-size: 140%;
-  border-bottom: 1px solid #aaa;
-  clear: left;
-}
-h1 em {
-  font-size: 71.4%; /* should take us back to 100% of body size */
-  font-weight: normal;
-  font-style: normal;
-  display: block;
-  float: right;
-}
-</style>
