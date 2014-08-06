@@ -21,6 +21,7 @@ HTML = \
   spec.html \
   style.html \
   terms.html \
+  workflow.html \
   w3_server_layout.html \
   man1/make-drupal.html \
   man1/module-update.html \
