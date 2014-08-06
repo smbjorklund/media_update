@@ -57,7 +57,10 @@ fi
 if [ $(pwd) == '/var/www/w3-prestaging.test.uib.no' ] ;then 
     rsync -rhH --delete /prod_nettapp_w3/sites/w3.uib.no/files/  /nettapp_w3/sites/w3-prestaging.test.uib.no/files/ || exit 7
 fi
-compass compile --force themes/uib_zen || exit 10
+
+bundle check || bundle install || exit
+
+bundle exec compass compile --force themes/uib_zen || exit 10
 find site/files/{css,js,languages} -type f -print | xargs rm -f 
 ## CC all cleans out the deleted files from DB that was deleted above
 bin/site-drush cc all

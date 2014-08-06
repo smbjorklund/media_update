@@ -5,6 +5,8 @@ if [ ! -f site/settings.php ]; then
     exit 1
 fi
 
+bundle check || bundle install || exit
+
 set -x
 
 bin/site-drush site-install uib --site-mail="w3@it.uib.no" --site-name="Universitetet i Bergen" --account-name=admin --account-mail="w3@it.uib.no" --account-pass=admin --clean-url --verbose --yes || exit 1
@@ -13,5 +15,5 @@ bin/site-drush site-install uib --site-mail="w3@it.uib.no" --site-name="Universi
 # Fix that by explictly reverting those changes.
 bin/site-drush features-revert --yes uib_setup
 
-compass compile --force themes/uib_zen
+bundle exec compass compile --force themes/uib_zen
 

@@ -16,6 +16,8 @@ fi
 test -L site || exit 1
 SITE=$(basename $(readlink site))
 
+bundle check || bundle install || exit
+
 RELEASE=$1
 if [ "$RELEASE" != "" ]; then
     set -- $(bin/release-dumps $RELEASE)
@@ -69,7 +71,7 @@ ln -s $SITE drupal/sites/w3.uib.no
 git fetch
 git checkout $COMMIT || exit 2
 git submodule update
-compass compile --force themes/uib_zen || exit 3
+bundle exec compass compile --force themes/uib_zen || exit 3
 bin/site-drush cc all
 
 if [ "$USE_STAGE_FILE_PROXY" = yes ]; then

@@ -5,3 +5,4 @@
 /doc/api/
 .DS_Store
 *~
+/vendor/
