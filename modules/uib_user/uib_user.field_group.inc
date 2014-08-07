@@ -177,6 +177,70 @@ function uib_user_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_user_ci_1|user|user|default';
+  $field_group->group_name = 'group_user_ci_1';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_user_contact';
+  $field_group->data = array(
+    'label' => 'Contact info first',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_uib_user_cv',
+      1 => 'field_uib_user_url',
+      2 => 'field_uib_phone',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Contact info first',
+      'instance_settings' => array(
+        'classes' => 'group-user-ci-1 field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_user_ci_1|user|user|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_user_ci_2|user|user|default';
+  $field_group->group_name = 'group_user_ci_2';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_user_contact';
+  $field_group->data = array(
+    'label' => 'Contact info second',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_uib_user_room',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Contact info second',
+      'instance_settings' => array(
+        'classes' => 'group-user-ci-2 field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_user_ci_2|user|user|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_user_contact_wrapper|user|user|default';
   $field_group->group_name = 'group_user_contact_wrapper';
   $field_group->entity_type = 'user';
@@ -216,18 +280,15 @@ function uib_user_field_group_info() {
   $field_group->parent_name = 'group_user_contact_wrapper';
   $field_group->data = array(
     'label' => 'Contact info',
-    'weight' => '41',
+    'weight' => '1',
     'children' => array(
       0 => 'field_uib_first_name',
       1 => 'field_uib_position',
-      2 => 'field_uib_last_name',
-      3 => 'field_uib_phone',
-      4 => 'field_uib_user_vcard',
-      5 => 'field_uib_user_url',
-      6 => 'field_uib_user_ou',
-      7 => 'field_uib_user_room',
-      8 => 'field_uib_user_alt_position',
-      9 => 'field_uib_user_cv',
+      2 => 'field_uib_user_ou',
+      3 => 'field_uib_last_name',
+      4 => 'field_uib_user_alt_position',
+      5 => 'group_user_ci_1',
+      6 => 'group_user_ci_2',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -258,8 +319,8 @@ function uib_user_field_group_info() {
     'label' => 'First',
     'weight' => '0',
     'children' => array(
-      0 => 'group_user_work_1',
-      1 => 'group_media_element',
+      0 => 'group_media_element',
+      1 => 'group_user_work_1',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -321,10 +382,10 @@ function uib_user_field_group_info() {
     'label' => 'Second',
     'weight' => '1',
     'children' => array(
-      0 => 'field_uib_user_feed',
-      1 => 'field_uib_user_competence',
-      2 => 'field_uib_user_projects',
-      3 => 'field_uib_user_docs',
+      0 => 'field_uib_user_competence',
+      1 => 'field_uib_user_feed',
+      2 => 'field_uib_user_docs',
+      3 => 'field_uib_user_projects',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -356,11 +417,11 @@ function uib_user_field_group_info() {
     'weight' => '41',
     'children' => array(
       0 => 'field_uib_user_publications',
-      1 => 'field_uib_user_opt_title',
-      2 => 'field_uib_user_opt_content',
-      3 => 'field_uib_user_field',
-      4 => 'field_uib_user_teaching',
-      5 => 'field_uib_user_communication',
+      1 => 'field_uib_user_communication',
+      2 => 'field_uib_user_teaching',
+      3 => 'field_uib_user_opt_title',
+      4 => 'field_uib_user_field',
+      5 => 'field_uib_user_opt_content',
     ),
     'format_type' => 'div',
     'format_settings' => array(

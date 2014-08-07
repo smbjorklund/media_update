@@ -138,11 +138,12 @@ $zen-column-count: 5;
   }
 
   #user_user_full_group_user_ci_1 {
-    margin: 10px zen-half-gutter() 0 0;
+    margin: zen-half-gutter() zen-half-gutter() 0 0;
     float: left;
+    width: 50%;
   }
   #user_user_full_group_user_ci_2 {
-    margin: 10px 0 0 0;
+    margin: zen-half-gutter() 0 0 0;
     float: left;
   }
 

@@ -25,7 +25,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 24,
+        'weight' => 1,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -69,7 +69,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 25,
+        'weight' => 3,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -113,7 +113,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'phone',
-        'weight' => 31,
+        'weight' => 1,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -159,7 +159,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 26,
+        'weight' => 5,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -578,7 +578,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 27,
+        'weight' => 7,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -761,7 +761,7 @@ function uib_user_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'file_default',
-        'weight' => 38,
+        'weight' => 5,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -1191,7 +1191,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'view_mode' => 'short_teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 30,
+        'weight' => 9,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -1381,7 +1381,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 35,
+        'weight' => 2,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -1591,7 +1591,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'link_separate',
-        'weight' => 33,
+        'weight' => 3,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
