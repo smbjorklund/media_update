@@ -71,6 +71,9 @@
 }
 
 .uib-tabs-container.offices {
+  .clearfix:after {
+    clear: none;
+  }
   .ui-tabs-panel {
     padding: 0;
   }
