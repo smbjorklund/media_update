@@ -11,4 +11,6 @@ echo $SITE_URL
 
 if [ "$(uname -s)" = "Darwin" ]; then
     open $SITE_URL
+else
+    xdg-open $SITE_URL
 fi
