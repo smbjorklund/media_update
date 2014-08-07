@@ -119,3 +119,43 @@ function uib_user_update_7006() {
   /* Must also explictly delete fields that are gone from the feature */
   field_delete_field('field_uib_user_vcard');
 }
+
+/**
+ * Setup translation for room and url fields for user
+ */
+function uib_user_update_7007() {
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'user')
+    ->execute();
+  if (!empty($result['user'])) {
+    $user_list = array_keys($result['user']);
+    $chunk = 1000;
+    while ($subset = array_splice($user_list, 0, $chunk)) {
+      $users = entity_load('user', $subset);
+      foreach ($users as $account) {
+        $edit = array();
+        $no_und = array();
+        if ($account->uid > 1) {
+          if (!empty($account->field_uib_user_room['und'])) {
+            $edit['field_uib_user_room']['en'][0]['value'] = $account->field_uib_user_room['und'][0]['value'];
+            $edit['field_uib_user_room']['nb'][0]['value'] = $account->field_uib_user_room['und'][0]['value'];
+            $no_und['field_uib_user_room'] = array();
+          }
+          if (!empty($account->field_uib_user_url['und'])) {
+            $edit['field_uib_user_url']['en'][0]['url'] = $account->field_uib_user_url['und'][0]['url'];
+            $edit['field_uib_user_url']['en'][0]['title'] = $account->field_uib_user_url['und'][0]['title'];
+            $edit['field_uib_user_url']['en'][0]['attributes'] = $account->field_uib_user_url['und'][0]['attributes'];
+            $edit['field_uib_user_url']['nb'][0]['url'] = $account->field_uib_user_url['und'][0]['url'];
+            $edit['field_uib_user_url']['nb'][0]['title'] = $account->field_uib_user_url['und'][0]['title'];
+            $edit['field_uib_user_url']['nb'][0]['attributes'] = $account->field_uib_user_url['und'][0]['attributes'];
+            $no_und['field_uib_user_url'] = array();
+          }
+        }
+        if ($edit) {
+          user_save($account, $no_und);
+          user_save($account, $edit);
+        }
+      }
+    }
+  }
+}
