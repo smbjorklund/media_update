@@ -683,6 +683,11 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         );
       }
 
+      // Do not show related persons label if related persons field is empty
+      if (empty($variables['content']['field_uib_related_persons'])) {
+        $variables['content']['field_related_persons_label']['#access'] = FALSE;
+      }
+
       $variables['content']['article_info'] = $article_info;
     }
 
