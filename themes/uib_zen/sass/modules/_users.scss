@@ -46,7 +46,8 @@ $zen-column-count: 5;
 #user_user_full_group_user_first,
 #user_user_full_group_user_second {
   .field-label,
-  .block-title {
+  .block-title,
+  .ctools-collapsible-handle {
     border: none;
     color: #333;
     font-family: $verdana;
@@ -201,6 +202,7 @@ $zen-column-count: 5;
   }
 
   #user_user_full_group_user_second .field-label,
+  #user_user_full_group_user_second .ctools-collapsible-handle,
   #user_user_full_group_user_work_1 .field-label {
     font-size: 1.2em;
     font-weight: bold;

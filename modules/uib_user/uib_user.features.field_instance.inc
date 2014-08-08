@@ -1234,7 +1234,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
           'field_multiple_limit' => -1,
