@@ -1,3 +1,21 @@
+# Release 8 _2014-08-11_
+
+Mindre oppdatering som primært retter noen mindre feil og gjør noen oppdateringer knyttet til uib.no/ub og person-sidene. 
+
+- Gjør e-postadressen klikkbar på OU (steder) #7060
+- Gjør OU-feltene for tittel og "Custom hours" oversettbare #7059
+- Retter feil i layout for uib.no/ub-malen i IE9 #7057
+- Diverse justeringer på layout på personsidene #6975 #6958 #7080 #7028
+- Gir feltet "Related persons" et editerbart tittelfelt #7022
+- Håndterer feil i integrasjon med FS #7113
+- Legger til github som mulig sosiale medier-link #7039
+- Rydder opp i problemer knyttet til oversettelse av taksonomi for NUS-sidene #7004
+- Retter feil i synkronisering av brukere fra Sebra #7118
+- Oppdaterer til Drupal 7.31 og 7x-2.8 #7146
+- Legger begresninger på hva brukere kan legge i html-felt for banner, spesifikt forhindre at "!important" benyttes #7053
+- Fjernet bug knyttet til studiekodefilteret #7019
+- Legger til ny hendelsestype: Guided tour. #7086
+
 # Release 7.9 _2014-07-07_
 
 Vi slipper igjennom en liten ekstra oppdatering for å rette opp noen små saker som ikke kom med i 7.8.
