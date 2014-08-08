@@ -16,7 +16,7 @@ $result = db_query('SELECT pid, source, alias, language FROM {url_alias} ORDER B
 foreach ($result as $alias) {
   $cnt++;
   if ($alias->source == $prev_src && $alias->alias == $prev_alias && $alias->language == $prev_language) {
-    uibx_log("removed duplicate: $alias->source [$pid] <= $alias->alias [$alias->language]");
+    uibx_log("removed duplicate: $alias->source [$alias->pid] <= $alias->alias [$alias->language]");
     path_delete($alias->pid);
     $rmcnt++;
   }
@@ -28,7 +28,7 @@ foreach ($result as $alias) {
     if (array_shift($tmp) == 'node') {
       if (is_numeric(array_shift($tmp))) {
         if (in_array(implode('/', $tmp), $uib_area_aliases)) {
-          uibx_log("removed: $alias->source [$pid] <= $alias->alias [$alias->language]");
+          uibx_log("removed: $alias->source [$alias->pid] <= $alias->alias [$alias->language]");
           path_delete($alias->pid);
           $rmcnt++;
         }
@@ -37,7 +37,7 @@ foreach ($result as $alias) {
     // Taxonomy terms should [currently] only have a single alias per term and language
     elseif (array_shift($tmp) == 'term') {
       if (is_numeric(array_shift($tmp))) {
-        uibx_log("removed: $alias->source [$pid] <= $alias->alias [$alias->language]");
+        uibx_log("removed: $alias->source [$alias->pid] <= $alias->alias [$alias->language]");
         path_delete($alias->pid);
         $rmcnt++;
       }
@@ -49,4 +49,4 @@ foreach ($result as $alias) {
     $prev_alias = $alias->alias;
   }
 }
-uibx_log("Removed $rmcnt of $cnt aliases");
+echo "Removed $rmcnt of $cnt aliases\n";
