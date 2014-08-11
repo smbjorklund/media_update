@@ -111,7 +111,6 @@
       }
       a {
         font-size: 1em;
-        line-height: 2.5;
         padding: 0 0 0 1em;
         display: block;
         color: #333;
@@ -125,6 +124,7 @@
       li {
         width: 99%;
         font-size: 90%;
+        margin-top: 0.7em;
         @media all and (min-width: 720px) {
           border-bottom: solid 1px #C9C9C9;
           background: none;
