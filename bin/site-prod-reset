@@ -71,7 +71,15 @@ ln -s $SITE drupal/sites/w3.uib.no
 git fetch
 git checkout $COMMIT || exit 2
 git submodule update
-bundle exec compass compile --force themes/uib_zen || exit 3
+
+if test -f Gemfile; then
+    bundle exec compass compile --force themes/uib_zen || exit 3
+else
+    # We have gone back to a release before 'bundle' was introduced (RTS-7147),
+    # so attempt to invoke compass the old way.
+    compass compile --force themes/uib_zen || exit 3
+fi
+
 bin/site-drush cc all
 
 if [ "$USE_STAGE_FILE_PROXY" = yes ]; then
