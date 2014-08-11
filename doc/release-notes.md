@@ -11,7 +11,7 @@ Mindre oppdatering som primært retter noen mindre feil og gjør noen oppdaterin
 - Legger til github som mulig sosiale medier-link #7039
 - Rydder opp i problemer knyttet til oversettelse av taksonomi for NUS-sidene #7004
 - Retter feil i synkronisering av brukere fra Sebra #7118
-- Oppdaterer til Drupal 7.31 og 7x-2.8 #7146
+- Oppdaterer til Drupal 7.31, samt moduloppgraderinger #7146
 - Legger begresninger på hva brukere kan legge i html-felt for banner, spesifikt forhindre at "!important" benyttes #7053
 - Fjernet bug knyttet til studiekodefilteret #7019
 - Legger til ny hendelsestype: Guided tour. #7086
