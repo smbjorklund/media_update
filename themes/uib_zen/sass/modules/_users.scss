@@ -46,13 +46,11 @@ $zen-column-count: 5;
 #user_user_full_group_user_first,
 #user_user_full_group_user_second {
   .field-label,
-  .block-title,
-  .link-title {
+  .block-title {
     border: none;
     color: #333;
     font-family: $verdana;
     font-size: 1.4em;
-    font-weight: normal;
     margin-top: 0;
     text-transform: none;
   }
@@ -224,6 +222,16 @@ $zen-column-count: 5;
   .uib-user-edit-button {
     padding: 10px;
   }
+  #user_user_full_group_user_ci_1 .field-label, #user_user_full_group_user_ci_2 .field-label, .uib-user-email .field-label, .ield-type-link-field .link-title {
+    font-weight: bold;
+    margin-top: 8px;
+  }
+  .field-name-field-uib-user-room .field-items, .field-name-field-uib-user-url {
+    margin-top: 8px;
+  }
+}
+.field-name-field-uib-user-url .link-title {
+  font-weight: bold;
 }
 
 /////////////
