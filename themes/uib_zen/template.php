@@ -344,17 +344,19 @@ function uib_zen_preprocess_node(&$variables, $hook) {
   }
 
   if ($variables['view_mode'] == 'short_teaser') {
-    $variables['theme_hook_suggestions'][] = 'node__children';
-    $variables['content']['title'] = array(
-      '#theme' => 'link',
-      '#text' => $variables['title'],
-      '#path' => 'node/' . $variables['nid'],
-      '#options' => array(
-        'attributes' => array(),
-        'html' => TRUE,
-      ),
-      '#weight' => 5,
-    );
+    if ($variables['type'] != 'uib_ou') {
+      $variables['theme_hook_suggestions'][] = 'node__children';
+      $variables['content']['title'] = array(
+        '#theme' => 'link',
+        '#text' => $variables['title'],
+        '#path' => 'node/' . $variables['nid'],
+        '#options' => array(
+          'attributes' => array(),
+          'html' => TRUE,
+        ),
+        '#weight' => 5,
+      );
+    }
     if ($variables['type'] == 'uib_article' && empty($variables['content']['field_uib_main_media'])) {
       // if possible, use first image of small images field in short teaser when main media is empty
       if (isset($variables['field_uib_media']['und'])) {
@@ -373,9 +375,6 @@ function uib_zen_preprocess_node(&$variables, $hook) {
     }
     if ($variables['type'] == 'uib_external_content') {
       $variables['content']['title']['#path'] = $variables['field_uib_links']['und'][0]['url'];
-    }
-    if ($variables['type'] == 'uib_ou') {
-      $variables['content']['title']['#weight'] = -1;
     }
     $variables['title'] = '';
   }
