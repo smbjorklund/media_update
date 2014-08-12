@@ -199,15 +199,17 @@ function uib_sebra__sync_areas() {
     }
     uib_sebra__sync_jobbnorge_id($area, $area_doc);
     $staff = array();
-    foreach ($area_doc->omraade->visninger->uibid as $uname) {
-      $account = user_load_by_name($uname);
-      if (!$account) {
-        $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id staff");
+    if (isset($area_doc->omraade->visninger->uibid)) {
+      foreach ($area_doc->omraade->visninger->uibid as $uname) {
+        $account = user_load_by_name($uname);
         if (!$account) {
-          continue;
+          $account = uib_sebra__sync_user($uname, FALSE, "area $sebra_id staff");
+          if (!$account) {
+            continue;
+          }
         }
+        $staff['und'][]['target_id'] = $account->uid;
       }
-      $staff['und'][]['target_id'] = $account->uid;
     }
     if (!isset($area->field_uib_staff) || $area->field_uib_staff != $staff) {
       $area->field_uib_staff = $staff;
