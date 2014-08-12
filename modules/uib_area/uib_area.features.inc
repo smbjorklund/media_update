@@ -53,5 +53,6 @@ All areas belong to a single organisational unit.'),
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
