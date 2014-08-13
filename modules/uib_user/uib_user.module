@@ -270,6 +270,11 @@ function uib_user_user_view_alter(&$build) {
     $build['postal_address']['#weight'] = 3;
     $build['#group_children']['postal_address'] = 'group_user_ci_2';
   }
+  // Add a relevant area link to name of connected ou
+  if ($relevant_area = uib_user__ou_area($ou_nid, $build['#account']->uid)) {
+    $build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_ou_title'][0]['#markup'] =
+      l($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_ou_title'][0]['#markup'], 'node/' . $relevant_area);
+  }
 
   if (!empty($build['field_uib_user_alt_position'][0]['#markup'])) {
     $build['field_uib_user_alt_position'][0]['#markup'] = ', ' . $build['field_uib_user_alt_position'][0]['#markup'];
@@ -357,10 +362,53 @@ function uib_user_user_view_alter(&$build) {
 }
 
 /**
+ * Find the the most relevant home area for a user
+ */
+function uib_user__ou_area($ou_nid, $uid) {
+  global $language;
+  $area = NULL;
+  // Get area (certain types) connected to ou
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'area')
+    ->propertyCondition('language', $language->language)
+    ->fieldCondition('field_uib_ou', 'target_id', $ou_nid)
+    ->fieldCondition('field_uib_area_type', 'value', array('institute', 'faculty', 'unit'))
+    ->execute();
+  if (!empty($result['node'])) {
+    $area_list = array_keys($result['node']);
+    $area = $area_list[0];
+    if (count($area_list) > 1) {
+      uibx_log('User $uid had more than one optimal area [in function uib_user__ou_area]', "warning");
+    }
+  }
+  else {
+    // Get an area among staff connections for the user
+    $query = new EntityFieldQuery;
+    $result = $query
+      ->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'area')
+      ->propertyCondition('language', $language->language)
+      ->fieldCondition('field_uib_staff', 'target_id', $uid)
+      ->fieldCondition('field_uib_area_type', 'value', array('institute', 'faculty', 'unit'))
+      ->execute();
+    if (!empty($result['node'])) {
+      $area_list = array_keys($result['node']);
+      $area = $area_list[0];
+      if (count($area_list) > 1) {
+        uibx_log('User $uid had more than one optimal staff area [in function uib_user__ou_area]', "warning");
+      }
+    }
+  }
+  return $area;
+}
+
+/**
  * Adds markup to a piece of html to make it look like a field
  */
 function uib_user_add_field_markup($label, $class, $data) {
-  return uib_zen_field(array(
+  return theme_field(array(
     'label' => $label,
     'label_hidden' => FALSE,
     'classes' => $class,
