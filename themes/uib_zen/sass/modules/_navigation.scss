@@ -20,6 +20,7 @@
     li {
       &:hover ul {
         display: block;
+        margin-bottom: 1.5em;
       }
       a {
         border-left: 1px solid #C4C5C3;
@@ -111,7 +112,7 @@
       }
       a {
         font-size: 1em;
-        padding: 0 0 0 1em;
+        padding: 0.7em 0 0.5em 1em;
         display: block;
         color: #333;
         text-decoration: none;
@@ -124,7 +125,6 @@
       li {
         width: 99%;
         font-size: 90%;
-        margin-top: 0.7em;
         @media all and (min-width: 720px) {
           border-bottom: solid 1px #C9C9C9;
           background: none;
