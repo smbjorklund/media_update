@@ -151,7 +151,7 @@ function uib_user_block_view($delta='') {
   $block = array();
   switch ($delta) {
     case 'research_groups':
-      if (arg(0) == 'user') {
+      if (arg(0) == 'user' && is_numeric(arg(1))) {
         $uid = arg(1);
         // Find research groups that this user belongs to
         $query = new EntityFieldQuery;
