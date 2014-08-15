@@ -244,3 +244,38 @@ do, please ask:
     $ bin/site-snapshot pop
 
     $ compass compile --force themes/uib_zen
+
+## Using [Grunt.js](http://gruntjs.com/) in frontend development
+
+There is a configuration for grunt tasks available that may be useful when writing a lot
+of styling. The provided `package.json` and `Gruntfile.js` files specifies the dependencies
+and tasks setup for this project.
+
+The tasks supplied by this configuration is:
+
+1. `watch`: watches for changes to .scss files
+2. `compass`: compiles css files using bundler
+3. `shell`: runs a drush clear cache css-js
+4. `browsersync`: refreshes all connected browsers
+
+To use these grunt tasks in your workflow you need to install node.js with npm
+on your development platform. On a mac node.js is available through homebrew.
+Once node.js is installed in your system you need to do the following steps:
+
+    $ npm install -g grunt-cli
+
+This installs the grunt command allowing it to be run from any directory.
+
+Then in the root folder of your w3 app run:
+
+    $ npm install
+
+This will install all dependecies for the grunt tasks in Gruntfile.js. Then to
+run the grunt task you have to:
+
+    $ grunt --proxy=<your_local_w3_url>
+
+&lt;your\_local\_w3\_url> should be substituted with whatever url you use to access
+your local instans of w3 in the browser. The grunt script will give you urls to
+access the site local and external. You will *not* be abel to log in through
+this site (for now, anyway).

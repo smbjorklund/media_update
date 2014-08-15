@@ -1,0 +1,19 @@
+{
+  "name": "w3",
+  "version": "0.0.1",
+  "description": "Grunt tasks for w3",
+  "repository": {
+    "type": "git",
+    "url": "git.uib.no:site/w3.uib.no.git"
+  },
+  "author": "Are Johannessen",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browser-sync": "^1.3.5",
+    "grunt-contrib-compass": "^0.9.1",
+    "grunt-contrib-sass": "^0.7.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-drush": "0.0.3",
+    "grunt-shell": "^0.7.0"
+  }
+}
