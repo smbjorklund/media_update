@@ -105,6 +105,17 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
     foreach ($synchronized_fields as $item) {
       $form[$item]['#disabled'] = TRUE;
     }
+
+    $hidden_properties_level_2_and_3 = array(
+      'mail',
+      'pass',
+      'current_pass',
+      );
+    if ( (in_array('level 2', $GLOBALS['user']->roles, TRUE) OR in_array('level 3', $GLOBALS['user']->roles, TRUE)) AND (!in_array('level 1', $GLOBALS['user']->roles, TRUE)) ) {
+      foreach ($hidden_properties_level_2_and_3 as $item) {
+        $form['account'][$item]['#access'] = FALSE;
+      }
+    }
   }
 }
 
