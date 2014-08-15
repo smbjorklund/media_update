@@ -68,7 +68,13 @@ function uib_field_field_formatter_view($entity_type, $entity, $field, $instance
           ),
         );
       if ($sm_name != 'mailto') {
-        $options['attributes']['title'] = t("Follow us on") . " " . ucfirst($sm_name);
+        if ($entity_type == 'user') {
+          $title = t('Follow me on @network', array('@network' => ucfirst($sm_name)));
+        }
+        else {
+          $title = t('Follow us on @network', array('@network' => ucfirst($sm_name)));
+        }
+        $options['attributes']['title'] = $title;
       }
       $element[]['#markup'] = l($sm_name, $sm_url, $options);
     }
