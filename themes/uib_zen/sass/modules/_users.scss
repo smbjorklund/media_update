@@ -137,12 +137,15 @@ $zen-column-count: 5;
   }
 
   #user_user_full_group_user_ci_1 {
-    margin: zen-half-gutter() zen-half-gutter() 0 0;
-    float: left;
+    box-sizing: border-box;
     width: 50%;
+    padding: zen-half-gutter() zen-half-gutter() 0 0;
+    float: left;
   }
   #user_user_full_group_user_ci_2 {
-    margin: zen-half-gutter() 0 0 0;
+    box-sizing: border-box;
+    width: 50%;
+    padding: zen-half-gutter() 0 0 0;
     float: left;
   }
 
