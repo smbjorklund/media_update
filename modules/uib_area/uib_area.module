@@ -238,9 +238,9 @@ function uib_area_block_view($delta='') {
         foreach ($node_keys as $key) {
           if (is_numeric($key) && empty($block['content']['nodes'][$key]['field_uib_main_media'])) {
             $block['content']['nodes'][$key]['field_uib_main_media']['#markup'] =
-              '<div class="field-name-field-uib-main-media-recent-news"><img src="/' .
+              '<div class="field-name-field-uib-main-media"><div class="field-items"><img src="/' .
               path_to_theme() .
-              '/images/Recent_High.png" alt=""></div>';
+              '/images/Recent_High.png" alt=""></div></div>';
           }
         }
       }
