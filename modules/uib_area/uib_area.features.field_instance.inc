@@ -2018,7 +2018,7 @@ function uib_area_field_default_field_instances() {
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 22,
+        'weight' => 24,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2135,7 +2135,7 @@ function uib_area_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 29,
+        'weight' => 22,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2193,7 +2193,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'i18n_list_default',
-        'weight' => 24,
+        'weight' => 26,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2312,7 +2312,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 25,
+        'weight' => 27,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2388,7 +2388,7 @@ function uib_area_field_default_field_instances() {
           'file_view_mode' => 'default',
         ),
         'type' => 'file_rendered',
-        'weight' => 27,
+        'weight' => 29,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2598,7 +2598,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'uiblink_formatter',
-        'weight' => 28,
+        'weight' => 30,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2661,7 +2661,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 23,
+        'weight' => 25,
       ),
       'short_teaser' => array(
         'label' => 'above',
@@ -2819,7 +2819,7 @@ function uib_area_field_default_field_instances() {
           'file_view_mode' => 'content_sidebar',
         ),
         'type' => 'file_rendered',
-        'weight' => 26,
+        'weight' => 28,
       ),
       'short_teaser' => array(
         'label' => 'hidden',
@@ -2984,7 +2984,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'link_default',
-        'weight' => 30,
+        'weight' => 23,
       ),
       'short_teaser' => array(
         'label' => 'above',
