@@ -232,6 +232,9 @@ function uib_zen_preprocess_page(&$variables, $hook) {
       if (in_array('page__node__edit', $suggestions)) {
         $variables['uib_node_edit_mode'] = 'edit';
       }
+      // Language switcher on edit pages
+      $variables['page']['content_top'][] = $variables['extra_language'];
+      unset($variables['extra_language']);
     }
 
     if ($variables['node']->type == 'area') {

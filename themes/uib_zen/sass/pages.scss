@@ -152,6 +152,15 @@ body {
 .page-node-add,
 .page-node-edit {
   background-color: lighten($light-grey, 4%);
+
+  .block-locale {
+    margin: 0;
+    float: right;
+  }
+
+  .messages, .tabs-primary {
+    clear: both;
+  }
 }
 
 .page-webdesk #main,
