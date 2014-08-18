@@ -206,6 +206,7 @@ sub collect_info {
 	open(my $fh, "find $modules_dir/$module -type f -print|") || die;
 	while (my $file = <$fh>) {
 	    chomp $file;
+	    next if $file =~ /~$/;
 	    next if $file =~ /\.(?:csv|txt|png|jpg|css|js|html|json|xml)$/;
 	    next if $file =~ /\.info$/;
 	    next if $file =~ /\.test$/;
