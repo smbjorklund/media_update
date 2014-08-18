@@ -202,6 +202,22 @@ function uib_article_form_alter(&$form, &$form_state, $form_id) {
       ),
     );
 
+    $form['field_uib_deadline']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_uib_article_type[und]"]' => array(
+          array('value' => 'event'),
+        ),
+      ),
+    );
+
+     $form['field_uib_registration_link']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_uib_article_type[und]"]' => array(
+          array('value' => 'event'),
+        ),
+      ),
+    );
+
     $form['field_uib_show_global_calendar']['#states'] = array(
       'visible' => array(
         ':input[name="field_uib_article_type[und]"]' => array(

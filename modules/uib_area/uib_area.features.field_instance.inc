@@ -2050,7 +2050,7 @@ function uib_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 17,
+      'weight' => 19,
     ),
   );
 
@@ -2113,6 +2113,68 @@ function uib_area_field_default_field_instances() {
       ),
       'type' => 'date_popup',
       'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'node-uib_article-field_uib_deadline'
+  $field_instances['node-uib_article-field_uib_deadline'] = array(
+    'bundle' => 'uib_article',
+    'deleted' => 0,
+    'description' => 'Deadline for event registration.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 29,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_uib_deadline',
+    'label' => 'Registration Deadline',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 1,
+        'input_format' => 'd.m.Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-0:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 17,
     ),
   );
 
@@ -2307,7 +2369,7 @@ function uib_area_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -2379,7 +2441,7 @@ function uib_area_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -2580,7 +2642,7 @@ function uib_area_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -2656,7 +2718,7 @@ function uib_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 18,
+      'weight' => 20,
     ),
   );
 
@@ -2810,7 +2872,7 @@ function uib_area_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -2904,6 +2966,70 @@ function uib_area_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-uib_article-field_uib_registration_link'
+  $field_instances['node-uib_article-field_uib_registration_link'] = array(
+    'bundle' => 'uib_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Link for even registration/sign up.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
+        'type' => 'link_default',
+        'weight' => 30,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_uib_registration_link',
+    'label' => 'Registration Link',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => '_blank',
+        'title' => 'Registration',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 18,
     ),
   );
 
@@ -4104,6 +4230,7 @@ function uib_area_field_default_field_instances() {
   t('Content Manager');
   t('Custom hours');
   t('Date');
+  t('Deadline for event registration.');
   t('Email');
   t('Event type');
   t('Every event must have both a start date and an end date. Remember to fill out both date fields and time fields.');
@@ -4120,6 +4247,7 @@ function uib_area_field_default_field_instances() {
   t('Jobbnorge ID');
   t('Kicker');
   t('Lead');
+  t('Link for even registration/sign up.');
   t('Links');
   t('List of users that can manage content for this area. This list is managed from SEBRA and new users need to added there. ');
   t('Location');
@@ -4141,6 +4269,8 @@ function uib_area_field_default_field_instances() {
   t('Primary text');
   t('Profiled testimonial');
   t('Promoted articles');
+  t('Registration Deadline');
+  t('Registration Link');
   t('Related content');
   t('Relevant links');
   t('Rss feed');

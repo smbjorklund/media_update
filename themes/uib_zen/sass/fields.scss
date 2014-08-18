@@ -289,6 +289,16 @@
   }
 }
 
+.form-field-name-field-uib-deadline {
+  fieldset.form-wrapper {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  legend {
+    display: none;
+  }
+}
+
 .form-field-type-datetime {
   border-bottom: 1px solid #cbcbcb;
 }
