@@ -1581,7 +1581,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Your homepage link',
+    'description' => 'Your homepage link. If you leave the title empty, "Home page" will be displayed as title automatically.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1716,7 +1716,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Url');
   t('User Domain');
   t('Visiting address override');
-  t('Your homepage link');
+  t('Your homepage link. If you leave the title empty, "Home page" will be displayed as title automatically.');
   t('Your room number');
 
   return $field_instances;
