@@ -2152,7 +2152,7 @@ function uib_area_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_uib_deadline',
-    'label' => 'Registration Deadline',
+    'label' => 'Registration deadline',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -3001,7 +3001,7 @@ function uib_area_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_uib_registration_link',
-    'label' => 'Registration Link',
+    'label' => 'Registration link',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
@@ -4269,8 +4269,8 @@ function uib_area_field_default_field_instances() {
   t('Primary text');
   t('Profiled testimonial');
   t('Promoted articles');
-  t('Registration Deadline');
-  t('Registration Link');
+  t('Registration deadline');
+  t('Registration link');
   t('Related content');
   t('Relevant links');
   t('Rss feed');
