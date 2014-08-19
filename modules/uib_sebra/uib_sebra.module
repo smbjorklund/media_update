@@ -309,7 +309,7 @@ function uib_sebra__sync_jobbnorge_id($area, $area_doc) {
 }
 
 /**
- * Sync users between Sebra and the Drual database.
+ * Sync users between Sebra and the Drupal database.
  *
  * If $limit is provided only sync the given number of users.  In this case the
  * function maintains an internal counter in the variable
@@ -323,7 +323,26 @@ function uib_sebra__sync_users($limit, $do_block=FALSE) {
     uib_sebra__get_persons('staff'),
     uib_sebra__get_persons('extern')
   );
-  //$users = array('adbho', 'gaa041', 'sbj051'); // debug with a smaller set
+
+  // Add users that are marked as staff or content managers on areas but not listed in persons list in Sebra
+  $add_staff = array();
+  $query = 'SELECT DISTINCT u.name
+    FROM users u, field_data_field_uib_staff m
+    WHERE u.uid = m.field_uib_staff_target_id';
+  $result = db_query($query);
+  foreach ($result as $record) {
+    $add_staff[] = $record->name;
+  }
+  $query = 'SELECT DISTINCT u.name
+    FROM users u, field_data_field_uib_content_manager m
+    WHERE u.uid = m.field_uib_content_manager_target_id';
+  $result = db_query($query);
+  foreach ($result as $record) {
+    $add_staff[] = $record->name;
+  }
+  $add_staff = array_diff(array_unique($add_staff), $users);
+  $users = array_merge($users, $add_staff);
+
   $users_count = count($users);
   $offset = 0;
 
@@ -349,30 +368,31 @@ function uib_sebra__sync_users($limit, $do_block=FALSE) {
   }
 
   // look for users to block
-  $users = array_flip($users); // make it easy to look them up by username
 
-  $query = new EntityFieldQuery;
-  $query = $query
-    ->entityCondition('entity_type', 'user')
-    ->fieldCondition('field_uib_user_domain', 'value', 'uib', '=');
-  $result = $query->execute();
   $active_count = 0;
   $blocked_count = 0;
-  foreach (array_keys($result['user']) as $uid) {
-    $account = user_load($uid);
-    if (isset($users[$account->name])) {
-      if ($account->status == 0) {
+  $extras_count = 0;
+  $query = 'SELECT u.uid, u.name, u.status
+    FROM users u, field_data_field_uib_user_domain d
+    WHERE u.uid = d.entity_id AND d.field_uib_user_domain_value = :dom';
+  $result = db_query($query, array(':dom' => 'uib'));
+  foreach ($result as $user) {
+    if (in_array($user->name, $users)) {
+      if ($user->status == 0) {
+        $account = user_load($user->uid);
         user_save($account, array(
           'status' => 1, // ACTIVE
         ));
         uibx_log("$account->name unblocked");
       }
-      else {
-        $active_count++;
+      $active_count++;
+      if (in_array($user->name, $add_staff)) {
+        $extras_count++;
       }
     }
-    elseif ($account->status != 0) {
+    elseif ($user->status != 0) {
       if ($do_block) {
+        $account = user_load($user->uid);
         user_save($account, array(
           'status' => 0, // BLOCKED
         ));
@@ -380,14 +400,14 @@ function uib_sebra__sync_users($limit, $do_block=FALSE) {
         $blocked_count++;
       }
       else {
-        uibx_log("$account->name would be blocked");
+        uibx_log("$user->name would be blocked");
       }
     }
     else {
       $blocked_count++;
     }
   }
-  uibx_log("$active_count active and $blocked_count blocked uib-accounts");
+  uibx_log("$active_count active and $blocked_count blocked uib-accounts. $extras_count active not in Sebra persons.");
 }
 
 /**
@@ -547,7 +567,7 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
       if (!$dry_run)
         user_save($account, $edit);
       uibx_log("Updated user fields for $username <$account->mail>");
-      uibx_log('Update-'.print_r($edit,true));
+      //uibx_log('Update-'.print_r($edit,true));
     }
   }
   else {
