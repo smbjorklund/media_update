@@ -225,16 +225,21 @@ function uib_zen_preprocess_page(&$variables, $hook) {
   }
   $variables['custom_logo'] = render($output);
 
+  $suggestions = theme_get_suggestions(arg(), 'page');
+  if ($suggestions) {
+    if (in_array('page__node__edit', $suggestions) || in_array('page__node__add', $suggestions)) {
+      // Language switcher on edit or create node pages
+      $variables['page']['content_top'][] = $variables['extra_language'];
+      unset($variables['extra_language']);
+    }
+  }
+
   if (isset($variables['node'])) {
     // Create a variable that indicates whether we are in EDIT mode or not
-    $suggestions = theme_get_suggestions(arg(), 'page');
     if ($suggestions) {
       if (in_array('page__node__edit', $suggestions)) {
         $variables['uib_node_edit_mode'] = 'edit';
       }
-      // Language switcher on edit pages
-      $variables['page']['content_top'][] = $variables['extra_language'];
-      unset($variables['extra_language']);
     }
 
     if ($variables['node']->type == 'area') {
