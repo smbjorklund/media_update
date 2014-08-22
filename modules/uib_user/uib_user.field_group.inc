@@ -187,9 +187,9 @@ function uib_user_field_group_info() {
     'label' => 'Contact info first',
     'weight' => '11',
     'children' => array(
-      0 => 'field_uib_user_cv',
-      1 => 'field_uib_user_url',
-      2 => 'field_uib_phone',
+      0 => 'field_uib_phone',
+      1 => 'field_uib_user_cv',
+      2 => 'field_uib_user_url',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -282,11 +282,11 @@ function uib_user_field_group_info() {
     'label' => 'Contact info',
     'weight' => '1',
     'children' => array(
-      0 => 'field_uib_first_name',
-      1 => 'field_uib_position',
-      2 => 'field_uib_user_ou',
+      0 => 'field_uib_position',
+      1 => 'field_uib_user_alt_position',
+      2 => 'field_uib_first_name',
       3 => 'field_uib_last_name',
-      4 => 'field_uib_user_alt_position',
+      4 => 'field_uib_user_ou',
       5 => 'group_user_ci_1',
       6 => 'group_user_ci_2',
     ),
@@ -383,9 +383,8 @@ function uib_user_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_uib_user_competence',
-      1 => 'field_uib_user_feed',
+      1 => 'field_uib_user_projects',
       2 => 'field_uib_user_docs',
-      3 => 'field_uib_user_projects',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -416,12 +415,12 @@ function uib_user_field_group_info() {
     'label' => 'Work information',
     'weight' => '41',
     'children' => array(
-      0 => 'field_uib_user_publications',
-      1 => 'field_uib_user_communication',
+      0 => 'field_uib_user_opt_content',
+      1 => 'field_uib_user_publications',
       2 => 'field_uib_user_teaching',
-      3 => 'field_uib_user_opt_title',
+      3 => 'field_uib_user_communication',
       4 => 'field_uib_user_field',
-      5 => 'field_uib_user_opt_content',
+      5 => 'field_uib_user_opt_title',
     ),
     'format_type' => 'div',
     'format_settings' => array(

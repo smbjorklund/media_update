@@ -298,6 +298,13 @@ function uib_zen_preprocess_page(&$variables, $hook) {
           unset($variables['page']['content']['uib_user_research_groups']);
           $variables['page']['content']['system_main']['#group_children']['uib_user_research_groups'] = 'group_user_second';
         }
+
+        // Move user feed block into field group
+        if (isset($variables['page']['content']['uib_user_feed'])) {
+          $variables['page']['content']['system_main']['uib_user_feed'] = $variables['page']['content']['uib_user_feed'];
+          unset($variables['page']['content']['uib_user_feed']);
+          $variables['page']['content']['system_main']['#group_children']['uib_user_feed'] = 'group_user_second';
+        }
       }
     }
     if (($page_menu_item['map'][0] == 'emne' || $page_menu_item['map'][0] == 'course') && $page_menu_item['map'][2] == 'description') {
@@ -969,7 +976,6 @@ function uib_zen_preprocess_field(&$variables, $hook) {
     $certain_fields = array(
       'field_uib_user_competence',
       'field_uib_user_projects',
-      'field_uib_user_feed',
       );
     if (in_array($variables['element']['#field_name'], $certain_fields)) {
       $variables['theme_hook_suggestions'][] = 'field__user__label_colonfree';

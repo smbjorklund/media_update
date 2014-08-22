@@ -19,6 +19,7 @@ dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = uib_area
+dependencies[] = uib_feed
 dependencies[] = uib_field_bases
 dependencies[] = uibx
 dependencies[] = user

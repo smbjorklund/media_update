@@ -1,0 +1,4 @@
+name = UiB Feed
+description = Provides functions for formatting, parsing and working with RSS feeds.
+core = 7.x
+package = UiB

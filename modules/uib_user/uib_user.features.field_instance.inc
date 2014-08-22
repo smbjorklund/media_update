@@ -203,7 +203,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -240,7 +240,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -281,7 +281,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -321,7 +321,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -396,7 +396,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 12,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -442,7 +442,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 10,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -508,7 +508,7 @@ function uib_user_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 11,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -876,7 +876,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -914,13 +914,9 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'display' => array(
       'default' => array(
         'label' => 'inline',
-        'module' => 'link',
-        'settings' => array(
-          'field_multiple_limit' => -1,
-          'field_multiple_limit_offset' => 0,
-        ),
-        'type' => 'link_default',
-        'weight' => 14,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',
@@ -1646,7 +1642,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'uib_user_teaser' => array(
         'label' => 'above',

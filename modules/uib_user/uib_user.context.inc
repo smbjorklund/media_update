@@ -33,6 +33,12 @@ function uib_user_context_default_contexts() {
           'region' => 'content',
           'weight' => '9',
         ),
+        'uib_user-feed' => array(
+          'module' => 'uib_user',
+          'delta' => 'feed',
+          'region' => 'content',
+          'weight' => '15',
+        ),
       ),
     ),
   );

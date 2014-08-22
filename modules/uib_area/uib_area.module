@@ -155,7 +155,7 @@ function uib_area_block_view($delta='') {
         if ($area->language == 'en') {
           $feed .= '&langid=2';
         }
-        $block['content'] = uib_area__feed_format($feed, t('Open Positions'), $limit = 999);
+        $block['content'] = uib_feed__format($feed, t('Open Positions'), $limit = 999, array('uib_area__feed_format_post_render'));
       }
     break;
     case 'feed':
@@ -168,7 +168,7 @@ function uib_area_block_view($delta='') {
               $limit = explode('#', $url);
             }
             $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
-            $elements[$delta] = uib_area__feed_format($url, $item['title'], $limit);
+            $elements[$delta] = uib_feed__format($url, $item['title'], $limit, array('uib_area__feed_format_post_render'));
           }
         }
         $block['content'] = $elements;
@@ -410,68 +410,10 @@ function uib_area__google_maps_link($item) {
 }
 
 /**
- * uib_area_change_to_h2 description missing
- */
-function uib_area_change_to_h2($markup, $element) {
-  $markup = preg_replace('/<h3(.*?)>(.*?)<\/h3>/','<h2\1>\2</h2>', $markup);
-  return $markup;
-}
-
-function uib_area__feed_format($url, $title, $limit) {
-  return array(
-    '#cache' => array(
-      'keys' => array($url, $title, $limit),
-      'expire' => time() + 30*60,
-    ),
-    '#pre_render' => array('uib_area__feed_format_pre_render'),
-    '#post_render' => array('uib_area__feed_format_post_render'),
-  );
-}
-
-/**
- * The heavy stuff done during uib_area__feed_form()
- */
-function uib_area__feed_format_pre_render($element) {
-  list($url, $title, $limit) = $element['#cache']['keys'];
-  $content = @file_get_contents($url);
-  if (!$content) {
-    return $element;
-  }
-  $xml = @simplexml_load_string($content);
-  if ($xml === FALSE) {
-    return $element;
-  }
-  if ($xml->channel->item) {
-    $element['list'] = array(
-      '#title' => $title,
-      '#items' => array(),
-      '#theme' => 'item_list',
-      '#post_render' => array('uib_area_change_to_h2'),
-    );
-    foreach ($xml->channel->item as $entry) {
-      $pubDate = $entry->pubDate;
-      if (!empty($pubDate)) {
-        $pubDate_t = strtotime($pubDate);
-        if ($pubDate_t) {
-          $pubDate_f = strftime("%Y-%m-%d", $pubDate_t);
-          $entry->title .= " ($pubDate_f)";
-        }
-      }
-      $element['list']['#items'][] = l($entry->title, $entry->link);
-      if (--$limit == 0)
-        break;
-    }
-  }
-  if (!isset($element['list'])) {
-    $element = array();
-  }
-  return $element;
-}
-
-/**
  * Adds markup for blue square on feed block titles
  */
 function uib_area__feed_format_post_render($markup) {
+  $markup = preg_replace('/<h3(.*?)>(.*?)<\/h3>/','<h2\1>\2</h2>', $markup);
   $markup = preg_replace('/<h2>/', '<h2><span></span>', $markup, 1);
   $markup = '<div class="blue-block">' . $markup . '</div>';
   return $markup;
@@ -501,7 +443,7 @@ function uib_area_field_formatter_view($entity_type, $entity, $field, $instance,
         $limit = explode('#', $url);
       }
       $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
-    $elements[$delta] = uib_area__feed_format($url, $item['title'], $limit);
+      $elements[$delta] = uib_feed__format($url, $item['title'], $limit, array('uib_area__feed_format_post_render'));
   }
   return $elements;
 }
