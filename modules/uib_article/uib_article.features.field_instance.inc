@@ -105,6 +105,7 @@ function uib_article_field_default_field_instances() {
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'uib_user_teaser',
         ),
         'type' => 'entityreference_entity_view',

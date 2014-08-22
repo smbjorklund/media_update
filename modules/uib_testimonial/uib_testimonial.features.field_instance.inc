@@ -667,6 +667,7 @@ function uib_testimonial_field_default_field_instances() {
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'short_teaser',
         ),
         'type' => 'entityreference_entity_view',
