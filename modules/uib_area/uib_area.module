@@ -298,7 +298,7 @@ function uib_area_block_view($delta='') {
         $wrapped_area = entity_metadata_wrapper('node', $area);
         $block['subject'] = NULL;
         if ($wrapped_area->field_uib_offices->value()) {
-          $block['content'] = uib_area__display_nodes_as_tabs($wrapped_area->field_uib_offices->value(), 'offices');
+          $block['content'] = uib_area__display_offices_as_tabs($wrapped_area->field_uib_offices->value(), 'offices');
         }
       }
   }
@@ -363,7 +363,7 @@ function uib_area__format_visit_address($place) {
  * @param   string  $view_mode  The view mode of the node displayed
  * @return  string  html        The markup needed for the tabs
  */
-function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 'teaser') {
+function uib_area__display_offices_as_tabs($items, $class = FALSE, $view_mode = 'teaser') {
   drupal_add_library('system' , 'ui.tabs');
   drupal_add_js(drupal_get_path('theme', 'uib_zen') . '/js/tabs.js',
     array('group' => JS_THEME, )
@@ -388,6 +388,8 @@ function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 't
       l($item_view['field_uib_custom_email'][0]['#markup'], 'mailto:' . $item_view['field_uib_custom_email'][0]['#markup']);
     unset($item_view['links']);
     unset($item_view['#contextual_links']);
+    $google_maps_link = uib_area__google_maps_link($item);
+    $item_view['field_uib_geolocation'][0]['#markup'] = $item_view['field_uib_geolocation'][0]['#markup'] . '<p>' . $google_maps_link . '</p>';
     $tabs_content .= render($item_view);
     $tabs_content .= '</div>';
   }
@@ -397,6 +399,15 @@ function uib_area__display_nodes_as_tabs($items, $class = FALSE, $view_mode = 't
   return $tabs;
 }
 
+
+function uib_area__google_maps_link($item) {
+  $url = 'https://www.google.no/maps/?q=';
+  $url .= urlencode($item->field_uib_visit_address['und'][0]['thoroughfare']);
+  $url .= '&center=' .$item->field_uib_geolocation['und'][0]['lat'];
+  $url .= ',' . $item->field_uib_geolocation['und'][0]['lon'];
+  $text = t('Show the map in Google Maps');
+  return l($text, $url);
+}
 
 /**
  * uib_area_change_to_h2 description missing
