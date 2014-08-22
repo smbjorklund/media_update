@@ -763,7 +763,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         '#attributes' => array('class' => array('uib-study-first-block')),
       );
       $variables['content']['uib_study_content'] = __uib_render_block('uib_study', 'study_content', 5);
-      if (isset($variables['field_uib_study_category']) && $variables['field_uib_study_category'][0]['value'] == 'evu') {
+      if (!empty($variables['field_uib_study_category']) && $variables['field_uib_study_category'][0]['value'] == 'evu') {
         // Hide course description for evu courses
         $variables['content']['uib_study_content']['uib_study_study_content']['fspres'][0]['em-emnebeskrivelse']['#access'] = FALSE;
       }

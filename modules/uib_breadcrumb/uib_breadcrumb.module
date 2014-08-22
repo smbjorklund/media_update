@@ -112,7 +112,10 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
         break;
       case 'uib_study':
         $study_type = $item['page_arguments'][0]->field_uib_study_type['und'][0]['value'];
-        $study_category = $item['page_arguments'][0]->field_uib_study_category['und'][0]['value'];
+        $study_category = '';
+        if (!empty($item['page_arguments'][0]->field_uib_study_category)) {
+          $study_category = $item['page_arguments'][0]->field_uib_study_category['und'][0]['value'];
+        }
         $uib_active_trail[2] = array(
           'title' => ($study_type == 'course') ? t('Course') : t('Studyprogramme'),
           'href' => ($study_type == 'course') ? (!"RTS-6993" && $study_category == 'evu' ? 'utdanning/evu/courses' : 'course') : 'studyprogramme',
@@ -120,7 +123,7 @@ function uib_breadcrumb_menu_breadcrumb_alter(&$active_trail, $item) {
           'localized_options' => array(),
           'type' => 0,
         );
-        if ($item['page_arguments'][0]->field_uib_study_type['und'][0]['value'] == 'specialization') {
+        if ($study_category == 'specialization') {
           $parent_nid = $item['page_arguments'][0]->field_uib_study_part_of['und'][0]['target_id'];
           $parent = node_load($parent_nid);
           global $language;
