@@ -154,3 +154,20 @@ function uib_article_update_7004() {
   }
   uibx_log("Fixed end date for $cnt events", 'notice');
 }
+
+/**
+ * Fix some erroenously imported w2 event types
+ */
+function uib_article_update_7005() {
+  $nr_updated = db_update('field_data_field_uib_event_type')
+    ->fields(array('field_uib_event_type_value' => 'meeting'))
+    ->condition('field_uib_event_type_value', 'mote', '=')
+    ->execute();
+  ;
+  $nr_updated += db_update('field_data_field_uib_event_type')
+    ->fields(array('field_uib_event_type_value' => 'grant'))
+    ->condition('field_uib_event_type_value', 'midler_og_stipend', '=')
+    ->execute();
+  ;
+  uibx_log("Fixed $nr_updated event types", 'notice');
+}
