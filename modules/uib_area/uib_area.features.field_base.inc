@@ -570,6 +570,7 @@ function uib_area_field_default_field_bases() {
         'meeting' => 'Meeting',
         'book_release' => 'Book release',
         'guided_tour' => 'Guided tour',
+        'presentation' => 'Presentation',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
