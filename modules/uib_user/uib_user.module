@@ -271,11 +271,11 @@ function uib_user_user_view_alter(&$build) {
       $build['postal_address']['#weight'] = 3;
       $build['#group_children']['postal_address'] = 'group_user_ci_2';
     }
-  }
-  // Add a relevant area link to name of connected ou
-  if ($relevant_area = uib_user__ou_area($ou_nid, $build['#account']->uid)) {
-    $build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_ou_title'][0]['#markup'] =
-      l($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_ou_title'][0]['#markup'], 'node/' . $relevant_area);
+    // Add a relevant area link to name of connected ou
+    if ($relevant_area = uib_user__ou_area($ou_nid, $build['#account']->uid)) {
+      $build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_ou_title'][0]['#markup'] =
+        l($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_ou_title'][0]['#markup'], 'node/' . $relevant_area);
+    }
   }
 
   if (!empty($build['field_uib_user_alt_position'][0]['#markup'])) {
@@ -382,7 +382,7 @@ function uib_user__ou_area($ou_nid, $uid) {
     $area_list = array_keys($result['node']);
     $area = $area_list[0];
     if (count($area_list) > 1) {
-      uibx_log('User $uid had more than one optimal area [in function uib_user__ou_area]', "warning");
+      uibx_log("User $uid had more than one optimal area [in function uib_user__ou_area]", "warning");
     }
   }
   else {
@@ -399,7 +399,7 @@ function uib_user__ou_area($ou_nid, $uid) {
       $area_list = array_keys($result['node']);
       $area = $area_list[0];
       if (count($area_list) > 1) {
-        uibx_log('User $uid had more than one optimal staff area [in function uib_user__ou_area]', "warning");
+        uibx_log("User $uid had more than one optimal staff area [in function uib_user__ou_area]", "warning");
       }
     }
   }
