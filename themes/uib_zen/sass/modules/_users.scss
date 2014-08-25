@@ -97,11 +97,6 @@ $zen-column-count: 5;
   }
 }
 
-.uib-user-edit-button {
-  @include zen-clear();
-  float: right;
-}
-
 @media all and (min-width: 720px) {
 
   #user_user_full_group_user_first {
@@ -193,6 +188,10 @@ $zen-column-count: 5;
       margin-top: 1em;
     }
     .uib-user-vcard {
+      float: right;
+    }
+    .uib-user-login-link {
+      clear: right;
       float: right;
     }
     .field-name-field-uib-user-ou {
