@@ -7,7 +7,7 @@ h3, em { color: #a55; }
 
 This documents the terminology that we use in UiB’s Web Project.
 
-We standardize on using English for our code and the text written for our [RTS
+We standardize on using English for our code, commits, and the text written for our [RTS
 issues](https://rts.uib.no/projects/w3/issues).  This document
 displays the corresponding Norwegian term after the bar (if known or
 different).
@@ -15,9 +15,9 @@ different).
 Within each section the terms are ordered alphabetically.
 
 
-## Site
+## Site specific
 
-This section contains usages of terms that are specific for our site.
+This section contains usages of terms that are specific for [our site](http://www.uib.no).
 
 ### Area | Område
 
@@ -30,7 +30,7 @@ Areas form hierarchies, but don’t inherit stuff from their parent(s).  This
 is used mainly to reflect the organizational structure; for instance to present
 that certain _departments_ are part of some _faculty_.
 
-Areas are associated with a _place_; what part of the university organisation
+Areas are associated with a _place_ (aka _OU_); what part of the university organisation
 that owns this area.
 
 Areas have type that are used to influence how they are presented.  The types
@@ -190,8 +190,8 @@ the [original RSS spec](http://scripting.com/netscapeDocs/RSS%200_91%20Spec,%20r
 
 Some [readable string that identifies an
 object](http://en.wikipedia.org/wiki/Slug_(web_publishing)).  Used to create
-readable urls. We use it for instance to identify UiB’s users with strings like
-"&lt;firstname>.&lt;lastname>".
+readable urls. We use it for instance to identify UiB’s users with slug strings
+on the form "&lt;firstname>.&lt;lastname>".
 
 
 
