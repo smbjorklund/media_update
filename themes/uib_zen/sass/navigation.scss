@@ -129,3 +129,7 @@ ul.language-switcher-locale-url li.active {
   background-color: #a00;
   color: white;
 }
+
+#main-menu .menu {
+  @include clearfix();
+}
