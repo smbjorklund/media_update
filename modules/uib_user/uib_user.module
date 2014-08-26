@@ -155,8 +155,12 @@ function uib_user_block_info() {
        'info' => t("User's RSS feed"),
        'status' => TRUE,
     ),
+    'twitter' => array(
+      'info' => t("User's twitter timeline"),
+      'status' => TRUE,
+    ),
   );
- }
+}
 
 /**
  * Implements hook_block_view().
@@ -206,6 +210,24 @@ function uib_user_block_view($delta='') {
           }
           $block['content'] = $elements;
           $block['subject'] = $item['title'];
+        }
+      }
+    break;
+    case 'twitter':
+      if ($uid) {
+        $user = user_load(intval($uid));
+        if($user){
+          $elements = '';
+          if (!empty($user->field_uib_user_social_media['und'])) {
+            foreach ($user->field_uib_user_social_media['und'] as $delta => $item) {
+              if (preg_match('/twitter:(.*)/', $item['safe_value'], $twitter_handle)){
+                $twitter_handle = $twitter_handle[1];
+                $elements .= '<a class="twitter-timeline" href="https://twitter.com/"' . $twitter_handle . ' data-widget-id="504179221749456896" data-screen-name="' . $twitter_handle . '" height="300">' . t('Tweets by @@twitter_handler', array('@twitter_handler' =>  $twitter_handle)) . '</a>';
+              }
+            }
+            if ($elements != '')
+              $block['content'] = $elements . '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+          }
         }
       }
     break;

@@ -39,6 +39,12 @@ function uib_user_context_default_contexts() {
           'region' => 'content',
           'weight' => '15',
         ),
+        'uib_user-twitter' => array(
+          'module' => 'uib_user',
+          'delta' => 'twitter',
+          'region' => 'content',
+          'weight' => '14',
+        ),
       ),
     ),
   );

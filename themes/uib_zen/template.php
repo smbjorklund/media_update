@@ -305,6 +305,13 @@ function uib_zen_preprocess_page(&$variables, $hook) {
           unset($variables['page']['content']['uib_user_feed']);
           $variables['page']['content']['system_main']['#group_children']['uib_user_feed'] = 'group_user_second';
         }
+
+        // Move twitter block into field group
+        if (isset($variables['page']['content']['uib_user_twitter'])) {
+          $variables['page']['content']['system_main']['uib_user_twitter'] = $variables['page']['content']['uib_user_twitter'];
+          unset($variables['page']['content']['uib_user_twitter']);
+          $variables['page']['content']['system_main']['#group_children']['uib_user_twitter'] = 'group_user_second';
+        }
       }
     }
     if (($page_menu_item['map'][0] == 'emne' || $page_menu_item['map'][0] == 'course') && $page_menu_item['map'][2] == 'description') {
