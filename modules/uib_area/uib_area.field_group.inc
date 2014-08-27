@@ -113,13 +113,13 @@ function uib_area_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'uib_ou';
   $field_group->mode = 'teaser';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_office_hours';
   $field_group->data = array(
     'label' => 'Contact',
     'weight' => '2',
     'children' => array(
-      0 => 'field_uib_visit_address',
-      1 => 'field_uib_phone',
+      0 => 'field_uib_phone',
+      1 => 'field_uib_visit_address',
       2 => 'field_uib_custom_email',
     ),
     'format_type' => 'div',
@@ -278,17 +278,18 @@ function uib_area_field_group_info() {
   $field_group->mode = 'teaser';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Office hours',
+    'label' => 'Office information',
     'weight' => '1',
     'children' => array(
       0 => 'field_uib_custom_hours',
       1 => 'field_uib_hours',
+      2 => 'group_contact_info',
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Office hours',
+      'label' => 'Office information',
       'instance_settings' => array(
-        'classes' => 'group-office-hours field-group-div',
+        'classes' => 'group-office-information field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
