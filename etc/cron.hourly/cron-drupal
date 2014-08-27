@@ -7,7 +7,7 @@ chmod 755 ${logdir}
 for dir in $dirs ;do 
   if [ -d /var/www/$dir ] ;then
     cd /var/www/$dir || exit 1 
-    nice su w3-drupal -c 'bin/site-drush -v cron ' &>> ${logdir}/drupal-cron-${dir}-$(date -I)T$(date +%H%m).log
+    nice su apache -s /bin/bash -c 'bin/site-drush -v cron '  &>> ${logdir}/drupal-cron-${dir}-$(date -I)T$(date +%H%M).log
   else
     echo dir /var/www/$dir not exist | logger -t $0
   fi
