@@ -1,3 +1,27 @@
+# Release 9 _2014-08-26_
+
+Denne oppdateringen gjør først og fremst ytterligere justeringer for nye personsider og EVU-sidene.
+
+- Generell forbedring av lesbarheten og layout på personsidene #7155 #7156 #7184 #6532 #7027
+- Gjør flere av feltene på personsidene til egne felt på norsk og engelske sider (oversettbare) #7029
+- Oversettelse av taksonomifeltene "kompetanse" på personsidene #7196
+- Endre popup-teksten for sosiale medier-ikonene fra "Følg oss på..." til "Følg meg på..." på personsidene #7180
+- Default tittel på url-felt for personsidene skal være "Hjemmeside"/"Homepage" hvis ikke tittelfeltet er fylt ut #7181
+- Lenken til organisasjonsenhet på personsidene skal lenke til området på uib.no #7030
+- Brukere uten rolle på w3 vil nå få en verktøymeny når de logger seg inn for å redigere personprofilen sin #7206
+- Kurskode skal nå vises i faktaboks på evu-kurs #7046
+- Alle kurs av typen "EVU" vil nå få tittel over faktaboks: "Etter- og videreutdanningskurs" #7047
+- Alle kurs/emnebeskrivelser og studieplansider vil nå ha en tittel øverst som også angir hvilket semester det gjelder for #7048
+- Det er introdusert en regel for hvordan pris skal oppgis for EVU-kurs: Settes prisen i FS som et beløp, vises beløpet. Settes prisen til 0, vises det som "gratis", settes det ingenting i feltet for pris, vises teksten "Pris ikke fastsatt"#7050
+- Lenke til kursbeskrivelse skal ikke visesn, når det ikke finnes noen kursbeskrivelse #7051
+- Artikler uten kicker fikk brutt layout på Aktueltsidene, dette er fikset #6185
+- Bytt språk-lenken på edit-sidene er tilbake på plass #6713
+- Besøksadresse er lagt til i kolofonfeltet #7139
+- "Det skjer" i høyre kolonne har fått tankestrek og er justert for riktig layout #7166
+- Linjeavstanden i utfelt meny var for stor, denne er justert #7168
+- Diverse tekniske saker #7147 #7214 #7204 #7208 #7210 #7204 #7295
+- Oppdatert hjelpetekst på innloggingssiden til W2 #7186
+
 # Release 8 _2014-08-11_
 
 Mindre oppdatering som primært retter noen mindre feil og gjør noen oppdateringer knyttet til uib.no/ub og person-sidene. 
