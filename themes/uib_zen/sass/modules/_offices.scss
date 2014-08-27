@@ -33,11 +33,12 @@
       }
     }
   }
-  .group-office-hours {
+  .group-office-information {
     .field-label {
       border-bottom: none 0;
       border-top: none 0;
       font-family: $verdana;
+      float: none;
     }
   }
   .group-contact-info {
@@ -48,9 +49,14 @@
       }
     }
   }
-  .group-office-hours, .group-contact-info {
+  .group-office-information {
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+  .field-name-field-uib-hours,
+  .field-name-field-uib-custom-hours,
+  .group-contact-info {
+    padding-bottom: 15px;
   }
   .field-name-field-uib-geolocation {
     padding-right: 0;
@@ -88,13 +94,34 @@
   display: block !important;
 }
 
+@media all and (max-width: 379px) {
+  .group-office-information {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    flex-direction: column;
+  }
+
+  $i: 1;
+  @each $class in field-name-field-uib-hours, field-name-field-uib-custom-hours, group-contact-info {
+    .#{$class} {
+      -webkit-box-ordinal-group: $i;
+      order: $i;
+    }
+    $i: $i+1;
+  }
+}
+
 $zen-column-count: 2;
-@media all and (min-width: 380px) {
-  .group-office-hours {
-    @include zen-grid-item(1, 1);
+@media all and (min-width: 380px) and (max-width: 799px) {
+  .field-name-field-uib-hours {
+    @include zen-grid-item(2, 1, $gutter-width: 0);
   }
   .group-contact-info {
     @include zen-grid-item(1, 2);
+  }
+  .field-name-field-uib-custom-hours {
+    @include zen-clear(left);
   }
   .field-name-field-uib-geolocation {
     @include zen-clear(left);
@@ -112,14 +139,24 @@ $zen-column-count: 5;
       @include zen-grid-item(2, 1);
       padding: 0 0;
     }
-    .group-office-hours {
-      @include zen-grid-item(1, 3);
+    .group-office-information {
+      @include zen-grid-item(2, 3);
+      @include zen-nested-container();
+    }
+    $zen-column-count: 2;
+    .field-name-field-uib-hours {
+      @include zen-grid-item(1, 1);
     }
     .group-contact-info {
-      @include zen-grid-item(1, 4);
+      @include zen-grid-item(1, 2);
     }
+    .field-name-field-uib-custom-hours {
+      @include zen-grid-item(2, 1);
+      @include zen-clear(left);
+    }
+    $zen-column-count: 5;
     .field-name-field-uib-geolocation {
-      @include zen-grid-item(1, 5);
+      @include zen-grid-item(1, 1, right);
       @include zen-clear(none);
     }
   }
