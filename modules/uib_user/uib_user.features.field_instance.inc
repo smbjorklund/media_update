@@ -748,6 +748,133 @@ function uib_user_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_uib_user_cristin_nr'
+  $field_instances['user-user-field_uib_user_cristin_nr'] = array(
+    'bundle' => 'user',
+    'default_value' => array(
+      0 => array(
+        'value' => 200,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The maximum number of publications from CRIStin you want to display in the publications tab.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+      'uib_user_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_uib_user_cristin_nr',
+    'label' => 'Number of publications',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max' => 1000,
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'user-user-field_uib_user_cristin_place'
+  $field_instances['user-user-field_uib_user_cristin_place'] = array(
+    'bundle' => 'user',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Choose if you want CRIStin publications displayed before or after any you manually add in the "Publications" field. The default is to display CRIStin publications before.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
+      'uib_user_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_uib_user_cristin_place',
+    'label' => 'Publications placement',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'user-user-field_uib_user_cristin_sort'
+  $field_instances['user-user-field_uib_user_cristin_sort'] = array(
+    'bundle' => 'user',
+    'default_value' => array(
+      0 => array(
+        'value' => 'category',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Choose how CRIStin publications displayed in the "Publications" tab are sorted. "Category" will sort per year (descending) within each CRIStin main category. "Year" will sort publications strictly after year (descending).',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
+      'uib_user_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_uib_user_cristin_sort',
+    'label' => 'Sort order',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 36,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_uib_user_cv'
   $field_instances['user-user-field_uib_user_cv'] = array(
     'bundle' => 'user',
@@ -1096,7 +1223,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1166,7 +1293,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1299,7 +1426,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Publications additional to what wil be merged from CRISTIN. These will appear below CRISTIN publications.',
+    'description' => 'Publications additional to what will be merged from CRIStin. These will appear after CRIStin publications unless you change the CRIStin settings below.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1678,6 +1805,8 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Add a more specific title (position) here, if you consider the one from SEBRA to be too general.');
   t('Add ids for the social media links that are desired.  Use strings like twitter:uib, youtube:unibergen, facebook:universitetetibergen, vimeo:uib and flickr:unibergen. Replace "uib" with the desired account. ');
   t('CV');
+  t('Choose how CRIStin publications displayed in the "Publications" tab are sorted. "Category" will sort per year (descending) within each CRIStin main category. "Year" will sort publications strictly after year (descending).');
+  t('Choose if you want CRIStin publications displayed before or after any you manually add in the "Publications" field. The default is to display CRIStin publications before.');
   t('Communication');
   t('Current projects');
   t('Fields of competence');
@@ -1689,6 +1818,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('If you want a last name displayed on your user page - different from your name in SEBRA, put it here. This will override the last name(s) from SEBRA.');
   t('Last name');
   t('Last name override');
+  t('Number of publications');
   t('Optional tab content');
   t('Organisational unit');
   t('Phone');
@@ -1697,17 +1827,20 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Position code');
   t('Position detail');
   t('Publications');
-  t('Publications additional to what wil be merged from CRISTIN. These will appear below CRISTIN publications.');
+  t('Publications additional to what will be merged from CRIStin. These will appear after CRIStin publications unless you change the CRIStin settings below.');
+  t('Publications placement');
   t('RSS feed');
   t('Relevant documents');
   t('Research / work');
   t('Room');
   t('Slug');
   t('Sort name');
+  t('Sort order');
   t('Teaching');
   t('The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
 
 The domain \'local\' is for local users.  The domain \'uib\' is for used for usernames allocated by Sebra. ');
+  t('The maximum number of publications from CRIStin you want to display in the publications tab.');
   t('Title for optional tab');
   t('Title for the optional tab');
   t('Upload a Curriculum Vitae document to be available for download from your user profile.');

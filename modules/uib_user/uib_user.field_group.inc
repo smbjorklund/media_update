@@ -13,6 +13,35 @@ function uib_user_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_cristin|user|user|form';
+  $field_group->group_name = 'group_cristin';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_primary';
+  $field_group->data = array(
+    'label' => 'CRIStin settings',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_uib_user_cristin_sort',
+      1 => 'field_uib_user_cristin_place',
+      2 => 'field_uib_user_cristin_nr',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_cristin|user|user|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_media_element|user|user|default';
   $field_group->group_name = 'group_media_element';
   $field_group->entity_type = 'user';
@@ -55,26 +84,27 @@ function uib_user_field_group_info() {
     'label' => 'Main information',
     'weight' => '0',
     'children' => array(
-      0 => 'field_uib_first_name',
-      1 => 'field_uib_phone',
-      2 => 'field_uib_position',
-      3 => 'field_uib_last_name',
-      4 => 'field_uib_user_url',
-      5 => 'field_uib_user_social_media',
-      6 => 'field_uib_user_alt_address',
-      7 => 'field_uib_user_alt_firstname',
+      0 => 'field_uib_user_alt_firstname',
+      1 => 'field_uib_first_name',
+      2 => 'field_uib_user_alt_position',
+      3 => 'field_uib_position',
+      4 => 'field_uib_user_field',
+      5 => 'field_uib_user_url',
+      6 => 'field_uib_last_name',
+      7 => 'field_uib_user_alt_address',
       8 => 'field_uib_user_cv',
-      9 => 'field_uib_user_alt_position',
-      10 => 'field_uib_user_communication',
-      11 => 'field_uib_user_publications',
-      12 => 'field_uib_user_opt_content',
-      13 => 'field_uib_user_teaching',
-      14 => 'field_uib_user_opt_title',
-      15 => 'field_uib_user_field',
-      16 => 'field_uib_user_room',
-      17 => 'field_uib_user_alt_lastname',
+      9 => 'field_uib_user_teaching',
+      10 => 'field_uib_user_opt_title',
+      11 => 'field_uib_phone',
+      12 => 'field_uib_user_alt_lastname',
+      13 => 'field_uib_user_room',
+      14 => 'field_uib_user_communication',
+      15 => 'field_uib_user_publications',
+      16 => 'field_uib_user_opt_content',
+      17 => 'field_uib_user_social_media',
       18 => 'account',
       19 => 'picture',
+      20 => 'group_cristin',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -107,9 +137,9 @@ function uib_user_field_group_info() {
     'label' => 'Secondary information',
     'weight' => '1',
     'children' => array(
-      0 => 'field_uib_user_competence',
-      1 => 'field_uib_user_projects',
-      2 => 'field_uib_user_feed',
+      0 => 'field_uib_user_feed',
+      1 => 'field_uib_user_competence',
+      2 => 'field_uib_user_projects',
       3 => 'field_uib_user_docs',
     ),
     'format_type' => 'div',
@@ -144,11 +174,11 @@ function uib_user_field_group_info() {
     'weight' => '33',
     'children' => array(
       0 => 'field_uib_position_category',
-      1 => 'field_uib_position_code',
-      2 => 'field_uib_user_domain',
-      3 => 'field_uib_w2_id',
-      4 => 'field_uib_slug',
-      5 => 'field_uib_sort_name',
+      1 => 'field_uib_w2_id',
+      2 => 'field_uib_sort_name',
+      3 => 'field_uib_slug',
+      4 => 'field_uib_user_domain',
+      5 => 'field_uib_position_code',
       6 => 'field_uib_user_ou',
       7 => 'googleanalytics',
       8 => 'redirect',
@@ -187,9 +217,9 @@ function uib_user_field_group_info() {
     'label' => 'Contact info first',
     'weight' => '11',
     'children' => array(
-      0 => 'field_uib_phone',
+      0 => 'field_uib_user_url',
       1 => 'field_uib_user_cv',
-      2 => 'field_uib_user_url',
+      2 => 'field_uib_phone',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -282,11 +312,11 @@ function uib_user_field_group_info() {
     'label' => 'Contact info',
     'weight' => '1',
     'children' => array(
-      0 => 'field_uib_position',
-      1 => 'field_uib_user_alt_position',
-      2 => 'field_uib_first_name',
-      3 => 'field_uib_last_name',
-      4 => 'field_uib_user_ou',
+      0 => 'field_uib_first_name',
+      1 => 'field_uib_position',
+      2 => 'field_uib_last_name',
+      3 => 'field_uib_user_ou',
+      4 => 'field_uib_user_alt_position',
       5 => 'group_user_ci_1',
       6 => 'group_user_ci_2',
     ),
@@ -382,9 +412,10 @@ function uib_user_field_group_info() {
     'label' => 'Second',
     'weight' => '1',
     'children' => array(
-      0 => 'field_uib_user_competence',
-      1 => 'field_uib_user_projects',
-      2 => 'field_uib_user_docs',
+      0 => 'field_uib_user_feed',
+      1 => 'field_uib_user_competence',
+      2 => 'field_uib_user_projects',
+      3 => 'field_uib_user_docs',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -415,12 +446,12 @@ function uib_user_field_group_info() {
     'label' => 'Work information',
     'weight' => '41',
     'children' => array(
-      0 => 'field_uib_user_opt_content',
-      1 => 'field_uib_user_publications',
+      0 => 'field_uib_user_field',
+      1 => 'field_uib_user_opt_title',
       2 => 'field_uib_user_teaching',
       3 => 'field_uib_user_communication',
-      4 => 'field_uib_user_field',
-      5 => 'field_uib_user_opt_title',
+      4 => 'field_uib_user_publications',
+      5 => 'field_uib_user_opt_content',
     ),
     'format_type' => 'div',
     'format_settings' => array(
