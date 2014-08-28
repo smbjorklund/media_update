@@ -706,7 +706,7 @@ function uib_user_field_default_field_instances() {
   // Exported field_instance: 'user-user-field_uib_user_competence'
   $field_instances['user-user-field_uib_user_competence'] = array(
     'bundle' => 'user',
-    'default_value' => NULL,
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -737,12 +737,13 @@ function uib_user_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'taxonomy',
+      'module' => 'autocomplete_deluxe',
       'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'taxonomy_autocomplete',
+      'type' => 'autocomplete_deluxe_taxonomy',
       'weight' => 7,
     ),
   );

@@ -4,6 +4,7 @@ core = 7.x
 package = UiB
 project = uib_user
 dependencies[] = addressfield
+dependencies[] = autocomplete_deluxe
 dependencies[] = ctools
 dependencies[] = entity_translation
 dependencies[] = entityreference

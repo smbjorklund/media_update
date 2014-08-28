@@ -292,3 +292,10 @@ $zen-column-count: 4;
     border: solid 1px #cbcbcb;
   }
 }
+/////////////
+// Additional styling for autocompile_deluxe module
+/////////////
+div.autocomplete-deluxe-multiple {
+  box-sizing: border-box;
+  max-width: 100%;
+}

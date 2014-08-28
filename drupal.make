@@ -20,6 +20,7 @@ projects[zen][version] = 5.5
 projects[addressfield][version] = 1.0-beta5
 projects[admin_menu][version] = 3.0-rc4
 projects[advanced_help][version] = 1.1
+projects[autocomplete_deluxe][version] = 2.0-beta3
 projects[better_exposed_filters][version] = 3.0-beta4
 projects[better_formats][version] = 1.0-beta1
 projects[better_formats][patch][] = https://drupal.org/files/issues/better_formats-default-text-format-override-2272385-2_0.patch
