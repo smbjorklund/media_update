@@ -1,17 +1,356 @@
 <?php
 
 /**
+ * Order a list of publications
+ *
+ * Wraps the list in two arrays "category" and "year",
+ *   and sorts the publication data within those.
+ * Categories are sorted according to a preset order, defined here.
+ * If sort type is not "category" there will only be one
+ *   dummy category: "year".
+ * Publications are sorted by year [Descending], and authors [ascending]
+ *   by using a callback function 'uib_cristin__compare'.
+ *
+ * Returns an array containing the list and if relevant,
+ *   english labels for the categories.
+ */
+function uib_cristin_sort($unsorted, $sort_type = 'category', $limit) {
+  usort($unsorted, 'uib_cristin__compare');
+  if (count($unsorted) > $limit) {
+    for ($i = count($unsorted); $i >= $limit; $i--) {
+      unset($unsorted[$i]);
+    }
+  }
+  $sorted = array();
+  $category_order = array(
+    'BOK' => 1,
+    'TIDSSKRIFTPUBL' => 2,
+    'RAPPORT' => 3,
+    'BOKRAPPORTDEL' => 4,
+    'FOREDRAG' => 5,
+    'PRODUKT' => 6,
+    'UTSTILLING' => 7,
+    'KUNST_PRODUKSJON' => 8,
+    'INFORMASJONSMATR' => 9,
+    'MEDIEBIDRAG' => 10,
+    'OVERSETTELSESARB' => 11,
+    'KOMMERSIALISERIN' => 12,
+    );
+  $category_engl = array();
+  $cnt = 0;
+
+  foreach ($unsorted as $publ) {
+    if ($sort_type == 'category') {
+      $category = $category_order[$publ['fellesdata']['kategori']['hovedkategori']['kode']];
+      if (!isset($category_engl[$category_order[$publ['fellesdata']['kategori']['hovedkategori']['kode']]])) {
+        $category_engl[$category_order[$publ['fellesdata']['kategori']['hovedkategori']['kode']]] = t($publ['fellesdata']['kategori']['hovedkategori']['navnEngelsk']);
+      }
+    }
+    else {
+      $category = 'year';
+    }
+    $sorted['list'][$category][$publ['fellesdata']['ar']][] = $publ;
+  }
+  if (!empty($category_engl)) {
+    $sorted['english_labels'] = $category_engl;
+  }
+  if ($sort_type == 'category') {
+    ksort($sorted, SORT_NUMERIC);
+  }
+  return $sorted;
+}
+
+/**
+ * Callback function to usort
+ * Descending by year, Ascending by authors
+ */
+function uib_cristin__compare($a, $b) {
+  $a_cvalue = $a['fellesdata']['ar'] . uib_cristin_author_string($b['fellesdata']['person']);
+  $b_cvalue = $b['fellesdata']['ar'] . uib_cristin_author_string($a['fellesdata']['person']);
+  if ($a_cvalue > $b_cvalue) { return -1; }
+  if ($a_cvalue < $b_cvalue) { return 1; }
+  return 0;
+}
+
+/**
+ * List authors in correct order in a string
+ */
+function uib_cristin_author_string($authors_in) {
+  $authors_out = array();
+  if (isset($authors_in['id'])) {
+    // single author
+    $authors_out[$authors_in['rekkefolgenr']] = $authors_in['etternavn'] . ', ' . $authors_in['fornavn'];
+  }
+  else {
+    // list of authors
+    foreach ($authors_in as $author) {
+      $authors_out[$author['rekkefolgenr']] = $author['etternavn'] . ', ' . $author['fornavn'];
+    }
+  }
+  ksort($authors_out, SORT_NUMERIC);
+  return implode('; ', $authors_out);
+}
+
+/**
+ * Get publications for a user
+ */
+function uib_cristin_publications($user) {
+  $limit = 200;
+  if (!empty($user->field_uib_user_cristin_nr)) {
+    $limit = $user->field_uib_user_cristin_nr['und'][0]['value'];
+  }
+  $sort_type = 'category';
+  if (!empty($user->field_uib_user_cristin_sort)) {
+    $sort_type = $user->field_uib_user_cristin_sort['und'][0]['value'];
+  }
+  $publications = array();
+  $default_categories = array(
+    'BOK',
+    'TIDSSKRIFTPUBL',
+    'RAPPORT',
+    'BOKRAPPORTDEL',
+    );
+
+  foreach ($default_categories as $category) {
+    $cmd = "hentVarbeiderPerson?navn=$user->name&eierkode=UIB&utplukk=nyeste&hovedkategori=$category&maksantall=$limit";
+    $cristin_data = uib_cristin__get_json($cmd);
+    if (!empty($cristin_data)) {
+      $tmp_publ = drupal_json_decode($cristin_data);
+      if (!empty($tmp_publ['forskningsresultat'])) {
+        $publications = array_merge($publications, $tmp_publ['forskningsresultat']);
+      }
+    }
+  }
+  $publications = uib_cristin_sort($publications, $sort_type, $limit);
+  return $publications;
+}
+
+/**
+ * Get most important publications for a user
+ */
+function uib_cristin_important($username) {
+  $limit = 200;
+  $important = NULL;
+
+  $cmd = "hentVarbeiderPerson?navn=$username&eierkode=UIB&utplukk=viktigste&maksantall=$limit";
+  $cristin_data = uib_cristin__get_json($cmd);
+  if (!empty($cristin_data)) {
+    $important = drupal_json_decode($cristin_data);
+    $important = $important['forskningsresultat'];
+  }
+  return $important;
+}
+
+/**
+ * Generate markup for publications tab
+ */
+  function uib_cristin_publications_tab_format($publications) {
+    $markup = array();
+    if (!empty($publications)) {
+      $markup[] = '<div class="uib-cristin-publications">';
+      foreach ($publications['list'] as $category => $years) {
+        if ($category != 'year') {
+          $markup[] = '<h3>' . $publications['english_labels'][$category] . '</h3>';
+        }
+        foreach ($years as $year) {
+          $markup[] = uib_cristin_format($year);
+        }
+      }
+      $markup[] = '</div>';
+    }
+    return implode('', $markup);
+  }
+
+/**
+ * Generate markup for a set of CRIStin publications
+ */
+function uib_cristin_format($publications) {
+  $markup = array();
+  if (!empty($publications)) {
+    $markup[] = '<div class="uib-cristin-publications-set">';
+    $markup[] = '<ul>';
+    foreach ($publications as $publ) {
+      $markup[] = '<li><div class="uib-cristin-' . $publ['fellesdata']['kategori']['hovedkategori']['kode'] . '">';
+      // Author(s)
+      if (!empty($publ['fellesdata']['person'])) {
+        $markup[] = '<span class="uib-cristin-authors">';
+        $markup[] = rtrim(uib_cristin_author_string($publ['fellesdata']['person']), '.');
+        $markup[] = '.</span> ';
+      }
+      // Year
+      if (!empty($publ['fellesdata']['ar'])) {
+        $markup[] = '<span class="uib-cristin-year">' . check_plain($publ['fellesdata']['ar']) . '.</span> ';
+      }
+      // Title
+      if (!empty($publ['fellesdata']['tittel'])) {
+        $markup[] = '<span class="uib-cristin-title">' . check_plain($publ['fellesdata']['tittel']) . '.</span> ';
+      }
+      // Publication data
+      switch ($publ['fellesdata']['kategori']['hovedkategori']['kode']) {
+        case 'BOK':
+          $markup[] = uib_cristin__format_book($publ);
+          break;
+        case 'TIDSSKRIFTPUBL':
+          $markup[] = uib_cristin__format_journal_article($publ);
+          break;
+        case 'RAPPORT':
+          $markup[] = uib_cristin__format_report($publ);
+          break;
+        case 'BOKRAPPORTDEL':
+          $markup[] = uib_cristin__format_section($publ);
+          break;
+      }
+      $markup[] = '</div></li>';
+    }
+  $markup[] = '</ul>';
+  $markup[] = '</div>';
+  }
+  return implode('', $markup);
+}
+
+/**
+ * Generate markup for journal-article-specific publication data
+ */
+function uib_cristin__format_journal_article(&$publ) {
+  $markup = array();
+  $what = array_keys($publ['kategoridata']);
+  $what = $what[0];
+  $markup[] = '<span class="uib-cristin-journal">' . check_plain($publ['kategoridata'][$what]['tidsskrift']['navn']) . '.</span> ';
+  $full_stop_needed = FALSE;
+  if (!empty($publ['kategoridata'][$what]['volum'])) {
+    $markup[] = '<span class="uib-cristin-journal-volume">' . check_plain($publ['kategoridata'][$what]['volum']) . '</span>';
+    $full_stop_needed = TRUE;
+  }
+  if (!empty($publ['kategoridata'][$what]['sideangivelse'])) {
+    if (!empty($publ['kategoridata'][$what]['volum'])) {
+      $markup[] = ': ';
+    }
+    $markup[] = '<span class="uib-cristin-journal-pages">';
+    if (!empty($publ['kategoridata'][$what]['sideangivelse']['sideFra'])) {
+      $markup[] = check_plain($publ['kategoridata'][$what]['sideangivelse']['sideFra']);
+    }
+    if (!empty($publ['kategoridata'][$what]['sideangivelse']['sideTil'])) {
+      $markup[] = '-' . check_plain($publ['kategoridata'][$what]['sideangivelse']['sideTil']);
+    }
+    $markup[] =  '.</span> ';
+    $full_stop_needed = FALSE;
+  }
+  if ($full_stop_needed) {
+    $markup[] = '. ';
+  }
+  if (!empty($publ['kategoridata'][$what]['dato'])) {
+    $markup[] = '<span class="uib-cristin-journal-date">' . t('Published') . ' ' .check_plain($publ['kategoridata'][$what]['dato']) . '.</span> ';
+  }
+  if (!empty($publ['kategoridata'][$what]['doi'])) {
+    $markup[] = '<span class="uib-cristin-doi">doi:&nbsp;' . l($publ['kategoridata'][$what]['doi'], 'http://dx.doi.org/' . $publ['kategoridata'][$what]['doi'], array('attributes' => array('target' => '_blank'))) . '</span>';
+  }
+  return implode('', $markup);
+}
+
+/**
+ * Generate markup for book-specific publication data
+ */
+function uib_cristin__format_book(&$publ) {
+  $markup = array();
+  $what = array_keys($publ['kategoridata']);
+  $what = $what[0];
+  if (!empty($publ['kategoridata'][$what]['forlag'])) {
+    $markup[] = '<span class="uib-cristin-publisher">' . check_plain($publ['kategoridata'][$what]['forlag']['navn']) . '.</span> ';
+  }
+  if (!empty($publ['kategoridata'][$what]['antallSider'])) {
+    $markup[] = '<span class="uib-cristin-pages">' . check_plain($publ['kategoridata'][$what]['antallSider']) . ' ' . t('pages') . '.</span> ';
+  }
+  if (!empty($publ['kategoridata'][$what]['isbn'])) {
+    $markup[] = '<span class="uib-cristin-isbn">ISBN: ' . check_plain($publ['kategoridata'][$what]['isbn']) . '.</span> ';
+  }
+  return implode('', $markup);
+}
+
+/**
+ * Generate markup for report-specific publication data
+ */
+function uib_cristin__format_report(&$publ) {
+  $markup = array();
+  $what = array_keys($publ['kategoridata']);
+  $what = $what[0];
+  if (!empty($publ['kategoridata'][$what]['serie'])) {
+    $markup[] = '<span class="uib-cristin-serial">'. check_plain($publ['kategoridata'][$what]['serie']['navn']) . '.</span> ';
+  }
+  if (!empty($publ['kategoridata'][$what]['volum'])) {
+    $markup[] = '<span class="uib-cristin-serial-volume">' . check_plain($publ['kategoridata'][$what]['volum']) . '</span>';
+  }
+  if (!empty($publ['kategoridata'][$what]['hefte'])) {
+    if (!empty($publ['kategoridata'][$what]['volum'])) {
+      $markup[] = ': ';
+    }
+    $markup[] = '<span class="uib-cristin-issue">' . check_plain($publ['kategoridata'][$what]['hefte']) . '</span>';
+  }
+  if (!empty($publ['kategoridata'][$what]['volum']) || !empty($publ['kategoridata'][$what]['hefte'])) {
+    $markup[] = '. ';
+  }
+  if (!empty($publ['kategoridata'][$what]['utgiver'])) {
+    $markup[] = '<span class="uib-cristin-serial-publisher">' . check_plain($publ['kategoridata'][$what]['utgiver']['navn']);
+    if (!empty($publ['kategoridata'][$what]['utgiver']['sted'])) {
+      $markup[] = ', ' . check_plain($publ['kategoridata'][$what]['utgiver']['sted']);
+    }
+    $markup[] = '.</span> ';
+  }
+  if (!empty($publ['kategoridata'][$what]['antallSider'])) {
+    $markup[] = '<span class="uib-cristin-pages">' . check_plain($publ['kategoridata'][$what]['antallSider']) . ' ' . t('pages') . '.</span> ';
+  }
+  return implode('', $markup);
+}
+
+/**
+ * Generate markup for book-section-specific publication data
+ */
+function uib_cristin__format_section(&$publ) {
+  $markup = array();
+  $what = array_keys($publ['kategoridata']);
+  $what = $what[0];
+  if (!empty($publ['kategoridata'][$what]['delangivelse'])) {
+    $markup[] = '<span class="uib-cristin-section">' . check_plain($publ['kategoridata'][$what]['delangivelse']) . '</span>';
+  }
+  if (!empty($publ['kategoridata'][$what]['sideangivelse'])) {
+    if (!empty($publ['kategoridata'][$what]['delangivelse'])) {
+      $markup[] = ', ' . t('pages') . ' ';
+    }
+    $markup[] = '<span class="uib-cristin-section-pages">';
+    if (!empty($publ['kategoridata'][$what]['sideangivelse']['sideFra'])) {
+      $markup[] = check_plain($publ['kategoridata'][$what]['sideangivelse']['sideFra']);
+    }
+    if (!empty($publ['kategoridata'][$what]['sideangivelse']['sideTil'])) {
+      $markup[] = '-' . check_plain($publ['kategoridata'][$what]['sideangivelse']['sideTil']);
+    }
+    $markup[] =  '</span>';
+  }
+  if (!empty($publ['kategoridata'][$what]['delangivelse']) || !empty($publ['kategoridata'][$what]['sideangivelse'])) {
+    $markup[] = '. ';
+  }
+  $markup[] = t('In') . ': ';
+  $markup[] = uib_cristin_format(array($publ['kategoridata'][$what]['delAv']['forskningsresultat']));
+
+  return implode('', $markup);
+}
+
+/**
+ * Get an url to a user's CRIStin user page
+ */
+function uib_cristin_url($username = NULL) {
+  return variable_get('uib_cristin_userlink', 'https://www.cristin.no/as/WebObjects/cristin.woa/wa/personVis?type=PERSON&instnr=184&bruker=') . $username;
+}
+
+/**
  * Return a link to a user page in CRIStin
  */
 function uib_cristin_link($username = NULL) {
   $pub_link = NULL;
-  $cristin_url = variable_get('uib_cristin_userlink', 'https://www.cristin.no/as/WebObjects/cristin.woa/wa/personVis?type=PERSON&instnr=184&bruker=') . $username;
 
   // Check if there are ANY publications for this user
   $cmd = 'hentVarbeiderPerson?navn=' . $username . '&eierkode=UIB&utplukk=nyeste&maksantall=1';
   $cristin_data = uib_cristin__get_json($cmd);
   if (!empty($cristin_data)) {
-    $pub_link = l(t('Publications in Cristin'), $cristin_url, array('attributes' => array('target' => '_blank')));
+    $pub_link = l(t('Publications in national current research information system (CRIStin)'), uib_cristin_url($username), array('attributes' => array('target' => '_blank')));
   }
   return $pub_link;
 }
@@ -26,8 +365,10 @@ function uib_cristin__get_json($cmd) {
   if ($res->code == 200) {
     $data = $res->data;
   }
-  // To be continued...
-
+  elseif ($res->code != 404) {
+    // 404 means: no search hits
+    uibx_log("Could not fetch from CRIStin. id=$res->code", "warning");
+  }
   return $data;
 }
 
@@ -47,28 +388,55 @@ function uib_cristin_field_attach_view_alter(&$output, $context) {
   if ($context['entity_type'] != 'user' || $context['view_mode'] != 'full') {
     return;
   }
-
   $user = $context['entity'];
-  $field_name = 'field_uib_user_publications';
+  $instances = _field_invoke_get_instances('user', 'user', array('default' => TRUE, 'deleted' => FALSE));
 
-  // Get CRIStin data to add
-  // -- Temporary link to user's CRIStin profile
-  // -- Change this when Cristin data is to be properly integrated with user publications
+  // Selected publications
+  if ($selected = uib_cristin_important($user->name)) {
+    $selected = uib_cristin_format($selected);
+    $selected_markup = '<div class="uib-user-selected-publications"><div class="field-label">' . t('Selected publications') . '</div>';
+    $selected_markup .= $selected;
+    $selected_markup .= '</div>';
+    $output['selected_publications'] = array(
+      '#weight' => 40,
+      0 => array('#markup' => $selected_markup),
+    );
+  }
+
+  // Publications tab
+  $field_name = 'field_uib_user_publications';
+  $cristin_before = TRUE;
+  if (!empty($user->field_uib_user_cristin_place)) {
+    if ($user->field_uib_user_cristin_place['und'][0]['value']) {
+      $cristin_before = FALSE;
+    }
+  }
+
+  if (empty($user->field_uib_user_cristin_nr) || $user->field_uib_user_cristin_nr['und'][0]['value'] > 0) {
+    if ($publications = uib_cristin_publications($user)) {
+      $publications = uib_cristin_publications_tab_format($publications);
+      $cristin_user_link = l(t('More information in national current research information system (CRIStin)'), uib_cristin_url($user->name), array('attributes' => array('target' => '_blank')));
+    }
+  }
+  else {
+    // Only link to CRIStin
+    $cristin_user_link = uib_cristin_link($user->name);
+  }
   $cristin_markup = '';
-  $cristin_user_link = uib_cristin_link($user->name);
+  if (!empty($publications)) {
+    $cristin_markup .= $publications;
+  }
   if (!empty($cristin_user_link)) {
-    $cristin_markup = '<p>' . $cristin_user_link . '</p>';
+    $cristin_markup .= '<p>' . $cristin_user_link . '</p>';
   }
 
   if ($cristin_markup) {
     if (empty($user->{$field_name})) {
       // In cases when the field is empty we have to create the render array first
       // Load field information
-      $instances = _field_invoke_get_instances('user', 'user', array('default' => TRUE, 'deleted' => FALSE));
       $instance = $instances[$field_name];
       $display = field_get_display($instance, 'full', $user);
       $field = field_info_field($field_name);
-
       // Set output for field.
       $output[$field_name] = array(
         '#theme' => 'field',
@@ -86,7 +454,12 @@ function uib_cristin_field_attach_view_alter(&$output, $context) {
       );
     }
     else {
-      $output[$field_name][0]['#markup'] = $cristin_markup . $output[$field_name][0]['#markup'];
+      if ($cristin_before) {
+        $output[$field_name][0]['#markup'] = $cristin_markup . $output[$field_name][0]['#markup'];
+      }
+      else {
+        $output[$field_name][0]['#markup'] =  $output[$field_name][0]['#markup'] . $cristin_markup;
+      }
     }
   }
 }

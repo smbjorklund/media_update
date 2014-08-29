@@ -278,6 +278,7 @@ function uib_user_user_view_alter(&$build) {
   $build['#group_children']['user_email'] = 'group_user_contact';
   $build['#group_children']['user_vcard_link'] = 'group_user_contact';
   $build['#group_children']['user_login_incard_link'] = 'group_user_contact';
+  $build['#group_children']['selected_publications'] = 'group_user_first';
 
   // Manage field overrides
   $safe_value = array('sanitize' => TRUE);

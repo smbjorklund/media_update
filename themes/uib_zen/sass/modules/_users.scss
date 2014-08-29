@@ -152,10 +152,9 @@ $zen-column-count: 5;
 }
 
 .page-user {
-  #user_user_full_group_user_first {
-    #user_user_full_group_media_element {
-      background: #f1f1ef;
-    }
+  #user_user_full_group_media_element {
+    background: #f1f1ef;
+
     .field-name-field-uib-first-name,
     .field-name-field-uib-position {
       float: left;
@@ -222,12 +221,50 @@ $zen-column-count: 5;
   .uib-user-edit-button {
     padding: 10px;
   }
-  #user_user_full_group_user_ci_1 .field-label, #user_user_full_group_user_ci_2 .field-label, .uib-user-email .field-label, .ield-type-link-field .link-title {
+  #user_user_full_group_user_ci_1 .field-label,
+  #user_user_full_group_user_ci_2 .field-label,
+  .uib-user-email .field-label,
+  .field-type-link-field .link-title {
     font-weight: bold;
     margin-top: 8px;
   }
-  .field-name-field-uib-user-room .field-items, .field-name-field-uib-user-url {
+  .field-name-field-uib-user-room .field-items,
+  .field-name-field-uib-user-url {
     margin-top: 8px;
+  }
+  .uib-user-selected-publications,
+  .uib-cristin-publications {
+    ul {
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.5em;
+    }
+    .uib-cristin-authors {
+      font-weight: bold;
+    }
+    .uib-cristin-journal,
+    .uib-cristin-serial {
+      font-style: italic;
+    }
+    .uib-cristin-BOK {
+      .uib-cristin-title {
+        font-style: italic;
+      }
+    }
+    .uib-cristin-BOKRAPPORTDEL {
+      div, ul, li {
+        display: inline;
+      }
+      .uib-cristin-publications-set {
+        .uib-cristin-authors {
+          font-weight: normal;
+        }
+        .uib-cristin-year {
+          display: none;
+        }
+      }
+    }
   }
 }
 .field-name-field-uib-user-url .link-title {
