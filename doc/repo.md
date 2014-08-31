@@ -71,8 +71,8 @@ such.
 
 ### `bin/`
 
-Some handy scripts.  The handiest of those are `bin/site-drush` and
-`bin/site-prod-reset`.
+Some handy scripts.  The handiest of those are [`bin/site-drush`](man1/site-drush.html) and
+[`bin/site-prod-reset`](man1/site-prod-reset.html).
 
 ### `etc/`
 
@@ -82,12 +82,14 @@ Configuration files (used by the scripts). Not much used yet.
 
 This is a git submodule that contains core Drupal 7 and all the modules
 that we depend on (found under `drupal/sites/all/modules/`).
+The `drupal.make` is a manifest of the contents of the `drupal/` directory.
+Running `drush make` should recreate the `drupal/` directory.
 
 ### `patches/`
 
-Contains patches we have made to 3rd party modules and drupal core.
-The patches must be registered in the 'drupal.make' file.
-The 'drupal.make' can also reference external patches and we prefer
+Contains patches we have made to 3rd party modules and Drupal core.
+The patches must be registered in the `drupal.make` file.
+The `drupal.make` can also reference external patches and we prefer
 that when the patch is available from a stable URL.
 
 ### `profiles/`
@@ -103,7 +105,7 @@ Static HTML prototypes; responsive design, etc.
 
 ### `modules/`
 
-Our custom modules.  Many of these written by
+Our [custom modules](modules.html).  Many of these written by
 [`features`](http://drupal.org/project/features).
 
 ### `themes/`
