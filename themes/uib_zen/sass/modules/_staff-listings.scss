@@ -15,8 +15,8 @@
     margin: 0 0 0 0;
   }
   .view-content h3 {
-    color: #ccc;
-    font-size: 8em;
+    color: $link-blue;
+    font-size: 5em;
     line-height: 0.7em;
     margin: 0.15em 0;
   }
@@ -29,13 +29,13 @@
   }
   .user-competence {
     li {
-      float: left;
+      float: right;
+      background: #FAEEED;
+      padding: 5px 10px;
+      margin-right: 5px;
+      @include border-radius(5px, 5px);
       &:nth-child(n+2) {
-        padding-left: 0.5em;
-        &:before {
-          content: "|";
-          padding-right: 0.5em;
-        }
+        padding-right: 0.5em;
       }
     }
   }
@@ -47,15 +47,44 @@
 }
 .uib-ansatte-section {
   @include zen-clear();
-  background: $light-grey;
   margin-bottom: 1em;
-  &>div {    margin: 0.5em 0;
+  &>div {
+    border-bottom: solid 1px #ccc;
+    margin: 0.5em 0;
     padding: 1em 0;
     @media all and (min-width: 720px) and (max-width: 959px) {
       @include zen-clear();
     }
     &:after {
       @extend %clearfix;
+    }
+  }
+}
+
+$zen-column-count: 4;
+@media all and (min-width: 720px) and (max-width: 959px) {
+  .view-ansatte {
+    .media {
+      @include zen-grid-item(2,1);
+    }
+    .user-competence {
+      @include zen-grid-item(2,3);
+    }
+  }
+}
+
+$zen-column-count: 5;
+@media all and (min-width: 960px) {
+  .view-ansatte {
+    h3 {
+      position: absolute;
+    }
+    .media {
+      @include zen-grid-item(3,1);
+      padding-left: 9em;
+    }
+    .user-competence {
+      @include zen-grid-item(2,4);
     }
   }
 }

@@ -627,18 +627,6 @@ $zen-auto-include-item-base: false;
    */
   $zen-column-count: 4;
 
-  .view-ansatte {
-    .view-content h3 {
-      @include zen-grid-item(4,1);
-    }
-    .media {
-      @include zen-grid-item(2,1);
-    }
-    .user-competence {
-      @include zen-grid-item(2,3);
-    }
-  }
-
   #main {
     max-width: 722px;
 
@@ -982,18 +970,6 @@ $zen-auto-include-item-base: false;
    * Use 5 grid columns for larger screens.
    */
   $zen-column-count: 5;
-  
-  .view-ansatte {
-    .view-content h3 {
-      @include zen-grid-item(1,1);
-    }
-    .media {
-      @include zen-grid-item(2,2);
-    }
-    .user-competence {
-      @include zen-grid-item(2,4);
-    }
-  }
 
   .region-bottom {
     .block {
