@@ -888,17 +888,39 @@ return !empty($handler->argument);';
       'allow_secondary' => 0,
       'secondary_label' => 'Advanced options',
     ),
+    'field_uib_study_points_rank_value' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
     'tid' => array(
       'bef_format' => 'bef',
       'more_options' => array(
         'bef_select_all_none' => 1,
         'bef_collapsible' => 1,
         'is_secondary' => 1,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
         ),
       ),
     ),
@@ -908,11 +930,15 @@ return !empty($handler->argument);';
         'bef_select_all_none' => 1,
         'bef_collapsible' => 1,
         'is_secondary' => 1,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
         ),
       ),
     ),
@@ -922,11 +948,15 @@ return !empty($handler->argument);';
         'bef_select_all_none' => 1,
         'bef_collapsible' => 1,
         'is_secondary' => 1,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
         ),
       ),
     ),
@@ -936,11 +966,15 @@ return !empty($handler->argument);';
         'bef_select_all_none' => 1,
         'bef_collapsible' => 1,
         'is_secondary' => 1,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
         ),
       ),
     ),
@@ -950,29 +984,39 @@ return !empty($handler->argument);';
         'bef_select_all_none' => 1,
         'bef_collapsible' => 1,
         'is_secondary' => 1,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
         ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
       ),
     ),
-    'field_uib_study_points_rank_value' => array(
+    'field_uib_study_category_value' => array(
       'bef_format' => 'bef',
       'more_options' => array(
         'bef_select_all_none' => 0,
         'bef_collapsible' => 0,
         'is_secondary' => 0,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
         ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
       ),
     ),
   );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'plain_text';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'mini';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
@@ -1090,7 +1134,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator_id'] = 'field_uib_study_points_rank_value_op';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['label'] = 'ECTS credits';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['label'] = 'Filter on ECTS credits';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator'] = 'field_uib_study_points_rank_value_op';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['identifier'] = 'studypoints_rank';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['multiple'] = TRUE;
@@ -1102,6 +1146,33 @@ return !empty($handler->argument);';
     74573517 => 0,
     176168899 => 0,
   );
+  /* Filter criterion: Content: Category (field_uib_study_category) */
+  $handler->display->display_options['filters']['field_uib_study_category_value']['id'] = 'field_uib_study_category_value';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['table'] = 'field_data_field_uib_study_category';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['field'] = 'field_uib_study_category_value';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['value'] = array(
+    'undergraduate' => 'undergraduate',
+    'postgraduate' => 'postgraduate',
+    'arsstudium' => 'arsstudium',
+    'phdkurs' => 'phdkurs',
+    'evu' => 'evu',
+  );
+  $handler->display->display_options['filters']['field_uib_study_category_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_uib_study_category_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator_id'] = 'field_uib_study_category_value_op';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['label'] = 'Filter on level';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator'] = 'field_uib_study_category_value_op';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['identifier'] = 'field_uib_study_category_value';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['reduce'] = TRUE;
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
@@ -1515,7 +1586,8 @@ return !empty($handler->argument);';
     t('last »'),
     t('Found @total courses'),
     t('Type'),
-    t('ECTS credits'),
+    t('Filter on ECTS credits'),
+    t('Filter on level'),
     t('Humanities and aesthetic studies'),
     t('Has taxonomy term'),
     t('Teacher training and pedagogy'),

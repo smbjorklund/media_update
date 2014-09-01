@@ -163,13 +163,14 @@ function uib_study_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
+        'undergraduate' => 'Undergraduate courses',
+        'postgraduate' => 'Postgraduate courses',
         'bachelorprogram' => 'Bachelor’s degree programmes',
-        'undergraduate' => 'Undergraduate programmes',
         'masterprogram' => 'Master’s degree programmes',
         'integrertemasterpr-profesjonsst' => 'Integrated Master’s degrees/Profession studies',
-        'arsstudium' => 'One-year programmes',
-        'postgraduate' => 'Postgraduate programmes',
-        'evu' => 'Continuing Education',
+        'arsstudium' => 'One-year studies',
+        'phdkurs' => 'PhD courses',
+        'evu' => 'Continuing Education courses',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
