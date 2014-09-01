@@ -318,8 +318,8 @@ function uib_user_user_view_alter(&$build) {
     }
     // Add a relevant area link to name of connected ou
     if ($relevant_area = uib_user__ou_area($ou_nid, $build['#account']->uid)) {
-      $build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_ou_title'][0]['#markup'] =
-        l($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_ou_title'][0]['#markup'], 'node/' . $relevant_area);
+      $area = entity_load_single('node', $relevant_area);
+      $build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_ou_title'][0]['#markup'] = l($area->title, 'node/' . $relevant_area);
     }
   }
 
