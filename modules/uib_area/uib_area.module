@@ -405,7 +405,7 @@ function uib_area__google_maps_link($item) {
   $url .= urlencode($item->field_uib_visit_address['und'][0]['thoroughfare']);
   $url .= '&center=' .$item->field_uib_geolocation['und'][0]['lat'];
   $url .= ',' . $item->field_uib_geolocation['und'][0]['lon'];
-  $text = t('Show the map in Google Maps');
+  $text = t('Show in Google Maps');
   return l($text, $url);
 }
 
