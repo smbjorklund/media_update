@@ -569,6 +569,45 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
   }
 }
 
+.uib-study-evu-offer{
+  a {
+    text-decoration:none !important;
+  }
+  padding: 5px;
+  .course {
+     border: 1px solid black;
+     margin-bottom: 5px;
+     padding: 5px;
+    .instance {
+      margin-left: 1em;
+      .text{
+        float: left;
+        width: 80%;
+        .title{
+          font-size: larger;
+          font-weight: bold;
+        }
+      }
+      .sign-up{
+        float: left;
+        max-width: 10em;
+        min-width: 8em;
+        overflow: hidden;
+        width: 20%;
+        margin-top:5px;
+        .sign-up-button{
+          background:#484;
+          border-radius: 6px;
+          color: white;
+          display: block;
+          padding: 5px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
 .page-node-ties {
   td, th {
     padding-right: 0.5em;
