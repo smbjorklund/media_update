@@ -91,6 +91,14 @@
   border-bottom: $sidebar-border;
 }
 
+%custom-clearfix {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
 /**
  * Media block layout.
  *
