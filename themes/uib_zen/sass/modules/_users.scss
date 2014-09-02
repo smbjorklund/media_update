@@ -159,6 +159,9 @@ $zen-column-count: 5;
 .page-user {
   #user_user_full_group_media_element {
     background: #f1f1ef;
+    background-image: url(../images/color-strip.png);
+    background-repeat: no-repeat;
+    background-position: top right;
 
     .field-name-field-uib-first-name,
     .field-name-field-uib-position {
