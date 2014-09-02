@@ -177,6 +177,11 @@
     background: #fff;
     border-bottom: solid 1px #dadada;
   }
+  .pager li:nth-child(odd){
+    background: transparent;
+    border-bottom: transparent;
+  }
+
   .view-filters{
     margin-bottom: 1em;
   }
