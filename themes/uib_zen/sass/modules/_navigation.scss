@@ -95,6 +95,19 @@
   }
 }
 
+.language-switcher-locale-url {
+  li {
+    display: inline;
+  }
+  a {
+    display: inline-block;
+
+    &.active {
+      display: none;
+    }
+  }
+}
+
 .block-menu {
   .menu {
     padding: 0;
