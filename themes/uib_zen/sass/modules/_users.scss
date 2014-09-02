@@ -41,6 +41,11 @@ $zen-column-count: 5;
   .form-wrapper {
     @include zen-clear(both);
   }
+  .language-link.tabs-secondary__tab-link.is-active {
+    background: #333;
+    color: #fff;
+    text-shadow: none;
+  }
 }
 
 #user_user_full_group_user_first,
