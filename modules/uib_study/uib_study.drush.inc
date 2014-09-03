@@ -368,9 +368,19 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       }
     }
 
-    if ($wrapper->status->value() == 0) {
-      $wrapper->status->set(1);
-      $edit[] = "status";
+    if (isset($study['category']) && $study['category'] == 'evu') {
+      // ensure unpublished
+      if ($wrapper->status->value() != 0) {
+        $wrapper->status->set(0);
+        $edit[] = "status";
+      }
+    }
+    else {
+      // ensure published
+      if ($wrapper->status->value() == 0) {
+        $wrapper->status->set(1);
+        $edit[] = "status";
+      }
     }
 
     if (empty($study['title_no']) && empty($study['title_en'])) {
