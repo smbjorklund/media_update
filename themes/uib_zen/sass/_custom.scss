@@ -238,3 +238,40 @@
   top: $top;
   color: $color;
 }
+
+/////////////
+// Mixin to insert an arrow inside a box on the right or left side
+//
+// $border-width: border width of parent
+// $border-color: border color of parent
+// $box-side: left/right
+// $background-color: color of the parents parent
+/////////////
+@mixin insert_arrow($border-width, $border-color, $box-side, $background-color) {
+  &:after {
+    border: transparent solid;
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    border-width: 10px;
+    border-#{$box-side}-color: $background-color;
+    top: 50%;
+    margin-top: -10px;
+    #{$box-side}: -#{$border-width}px;
+  }
+  @if $border-width > 0 {
+    &:before {
+      border: transparent solid;
+      content: ' ';
+      height: 0;
+      width: 0;
+      position: absolute;
+      border-width: 10px + $border-width;
+      border-#{$box-side}-color: $border-color;
+      top: 50%;
+      margin-top: -10px - $border-width;
+      #{$box-side}: -#{$border-width}px;
+    }
+  }
+}

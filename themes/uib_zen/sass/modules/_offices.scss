@@ -10,22 +10,23 @@
     border-radius: 0;
     display: none;
     li {
+      border: 1px solid #666;
       float: none;
       margin: 0;
       &.ui-state-default {
-        border: none;
         background: transparent;
         &:hover {
           background: silver;
         }
       }
+      &:last-child {
+        border-bottom: 1px solid !important;
+      }
       &.ui-state-active {
-        background: #333;
-        &:hover {
-          background: #333;
-        }
+        background:silver;
       }
       a {
+        color: #333;
         float: none;
         white-space: normal;
         display: block;
@@ -65,9 +66,11 @@
     font-size: 1.2em;
     text-transform: uppercase;
   }
-
   .uib-tabs-nav-mobile {
     width: 100%;
+  }
+  .ui-tabs-selected {
+    @include insert_arrow(1, #666, right, #fff);
   }
 }
 

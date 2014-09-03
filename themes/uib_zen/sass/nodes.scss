@@ -438,19 +438,6 @@ h1 {
   text-decoration: underline;
 }
 
-#block-uib-area-area-offices .ui-tabs-selected:after {
-	border: transparent solid;
-	content: ' ';
-	position: absolute;
-	border-width: 9px;
-	border-right-color: #fff;
-	top: 7px;
-	right: -1px;
-}
-
-#block-uib-area-area-offices li {
-  border: 1px solid !important;
-}
 // Study nodes
 .node-type-uib-study {
   .previous-semester {
