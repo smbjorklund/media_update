@@ -290,6 +290,26 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
+  /* Filter criterion: User: Fields of competence (field_uib_user_competence) */
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['id'] = 'field_uib_user_competence_tid';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['table'] = 'field_data_field_uib_user_competence';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['field'] = 'field_uib_user_competence_tid';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['operator_id'] = 'field_uib_user_competence_tid_op';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['label'] = 'Fields of competence';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['operator'] = 'field_uib_user_competence_tid_op';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['identifier'] = 'field_uib_user_competence_tid';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['vocabulary'] = 'uib_research_fields';
 
   /* Display: List of all persons */
   $handler = $view->new_display('page', 'List of all persons', 'page_1');
@@ -434,6 +454,7 @@ return TRUE;
     t('All'),
     t('Staff at %1'),
     t('%2 at %1'),
+    t('Fields of competence'),
     t('List of all persons'),
     t('All staff'),
     t('List of staff for area'),

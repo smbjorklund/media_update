@@ -409,6 +409,15 @@ function uib_user_user_view_alter(&$build) {
     unset($build['user_vcard_link']);
   }
 
+  // change field_uib_user_competence from taxonomy/term to persons
+  if (!empty($build['field_uib_user_competence'])) {
+    $items = count($build['field_uib_user_competence']['#items']);
+    for ($i=0; $i < $items; $i++) {
+      $tid = $build['field_uib_user_competence']['#items'][$i]['tid'];
+      $build['field_uib_user_competence'][$i]['#href'] =
+        url('persons', array('absolute' => TRUE, 'query' =>  array('field_uib_user_competence_tid' => $tid)));
+    }
+  }
   // Do not show user history
   hide($build['summary']);
 }
