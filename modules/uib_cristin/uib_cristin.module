@@ -142,6 +142,14 @@ function uib_cristin_important($username) {
 }
 
 /**
+ * Avoid giving an array to check_plain
+ */
+function uib_cristin__check_plain($data) {
+  if (empty($data)) $data = '';
+  return check_plain((string) $data);
+}
+
+/**
  * Generate markup for publications tab
  */
   function uib_cristin_publications_tab_format($publications) {
@@ -179,11 +187,11 @@ function uib_cristin_format($publications) {
       }
       // Year
       if (!empty($publ['fellesdata']['ar'])) {
-        $markup[] = '<span class="uib-cristin-year">' . check_plain($publ['fellesdata']['ar']) . '.</span> ';
+        $markup[] = '<span class="uib-cristin-year">' . uib_cristin__check_plain($publ['fellesdata']['ar']) . '.</span> ';
       }
       // Title
       if (!empty($publ['fellesdata']['tittel'])) {
-        $markup[] = '<span class="uib-cristin-title">' . check_plain($publ['fellesdata']['tittel']) . '.</span> ';
+        $markup[] = '<span class="uib-cristin-title">' . uib_cristin__check_plain($publ['fellesdata']['tittel']) . '.</span> ';
       }
       // Publication data
       switch ($publ['fellesdata']['kategori']['hovedkategori']['kode']) {
@@ -215,10 +223,10 @@ function uib_cristin__format_journal_article(&$publ) {
   $markup = array();
   $what = array_keys($publ['kategoridata']);
   $what = $what[0];
-  $markup[] = '<span class="uib-cristin-journal">' . check_plain($publ['kategoridata'][$what]['tidsskrift']['navn']) . '.</span> ';
+  $markup[] = '<span class="uib-cristin-journal">' . uib_cristin__check_plain($publ['kategoridata'][$what]['tidsskrift']['navn']) . '.</span> ';
   $full_stop_needed = FALSE;
   if (!empty($publ['kategoridata'][$what]['volum'])) {
-    $markup[] = '<span class="uib-cristin-journal-volume">' . check_plain($publ['kategoridata'][$what]['volum']) . '</span>';
+    $markup[] = '<span class="uib-cristin-journal-volume">' . uib_cristin__check_plain($publ['kategoridata'][$what]['volum']) . '</span>';
     $full_stop_needed = TRUE;
   }
   if (!empty($publ['kategoridata'][$what]['sideangivelse'])) {
@@ -227,10 +235,10 @@ function uib_cristin__format_journal_article(&$publ) {
     }
     $markup[] = '<span class="uib-cristin-journal-pages">';
     if (!empty($publ['kategoridata'][$what]['sideangivelse']['sideFra'])) {
-      $markup[] = check_plain($publ['kategoridata'][$what]['sideangivelse']['sideFra']);
+      $markup[] = uib_cristin__check_plain($publ['kategoridata'][$what]['sideangivelse']['sideFra']);
     }
     if (!empty($publ['kategoridata'][$what]['sideangivelse']['sideTil'])) {
-      $markup[] = '-' . check_plain($publ['kategoridata'][$what]['sideangivelse']['sideTil']);
+      $markup[] = '-' . uib_cristin__check_plain($publ['kategoridata'][$what]['sideangivelse']['sideTil']);
     }
     $markup[] =  '.</span> ';
     $full_stop_needed = FALSE;
@@ -239,10 +247,18 @@ function uib_cristin__format_journal_article(&$publ) {
     $markup[] = '. ';
   }
   if (!empty($publ['kategoridata'][$what]['dato'])) {
-    $markup[] = '<span class="uib-cristin-journal-date">' . t('Published') . ' ' .check_plain($publ['kategoridata'][$what]['dato']) . '.</span> ';
+    $markup[] = '<span class="uib-cristin-journal-date">' . t('Published') . ' ' . uib_cristin__check_plain($publ['kategoridata'][$what]['dato']) . '.</span> ';
   }
   if (!empty($publ['kategoridata'][$what]['doi'])) {
-    $markup[] = '<span class="uib-cristin-doi">doi:&nbsp;' . l($publ['kategoridata'][$what]['doi'], 'http://dx.doi.org/' . $publ['kategoridata'][$what]['doi'], array('attributes' => array('target' => '_blank'))) . '</span>';
+    $doi = $publ['kategoridata'][$what]['doi'];
+    if (is_array($doi)) {
+      $doi = $doi[0];
+    }
+    $doi = trim($doi);
+    $doi = trim($doi, '.');
+    if (!empty($doi)) {
+    $markup[] = '<span class="uib-cristin-doi">doi:&nbsp;' . l($doi, 'http://dx.doi.org/' . $doi, array('attributes' => array('target' => '_blank'))) . '</span>';
+    }
   }
   return implode('', $markup);
 }
@@ -255,13 +271,13 @@ function uib_cristin__format_book(&$publ) {
   $what = array_keys($publ['kategoridata']);
   $what = $what[0];
   if (!empty($publ['kategoridata'][$what]['forlag'])) {
-    $markup[] = '<span class="uib-cristin-publisher">' . check_plain($publ['kategoridata'][$what]['forlag']['navn']) . '.</span> ';
+    $markup[] = '<span class="uib-cristin-publisher">' . uib_cristin__check_plain($publ['kategoridata'][$what]['forlag']['navn']) . '.</span> ';
   }
   if (!empty($publ['kategoridata'][$what]['antallSider'])) {
-    $markup[] = '<span class="uib-cristin-pages">' . check_plain($publ['kategoridata'][$what]['antallSider']) . ' ' . t('pages') . '.</span> ';
+    $markup[] = '<span class="uib-cristin-pages">' . uib_cristin__check_plain($publ['kategoridata'][$what]['antallSider']) . ' ' . t('pages') . '.</span> ';
   }
   if (!empty($publ['kategoridata'][$what]['isbn'])) {
-    $markup[] = '<span class="uib-cristin-isbn">ISBN: ' . check_plain($publ['kategoridata'][$what]['isbn']) . '.</span> ';
+    $markup[] = '<span class="uib-cristin-isbn">ISBN: ' . uib_cristin__check_plain($publ['kategoridata'][$what]['isbn']) . '.</span> ';
   }
   return implode('', $markup);
 }
@@ -274,29 +290,29 @@ function uib_cristin__format_report(&$publ) {
   $what = array_keys($publ['kategoridata']);
   $what = $what[0];
   if (!empty($publ['kategoridata'][$what]['serie'])) {
-    $markup[] = '<span class="uib-cristin-serial">'. check_plain($publ['kategoridata'][$what]['serie']['navn']) . '.</span> ';
+    $markup[] = '<span class="uib-cristin-serial">'. uib_cristin__check_plain($publ['kategoridata'][$what]['serie']['navn']) . '.</span> ';
   }
   if (!empty($publ['kategoridata'][$what]['volum'])) {
-    $markup[] = '<span class="uib-cristin-serial-volume">' . check_plain($publ['kategoridata'][$what]['volum']) . '</span>';
+    $markup[] = '<span class="uib-cristin-serial-volume">' . uib_cristin__check_plain($publ['kategoridata'][$what]['volum']) . '</span>';
   }
   if (!empty($publ['kategoridata'][$what]['hefte'])) {
     if (!empty($publ['kategoridata'][$what]['volum'])) {
       $markup[] = ': ';
     }
-    $markup[] = '<span class="uib-cristin-issue">' . check_plain($publ['kategoridata'][$what]['hefte']) . '</span>';
+    $markup[] = '<span class="uib-cristin-issue">' . uib_cristin__check_plain($publ['kategoridata'][$what]['hefte']) . '</span>';
   }
   if (!empty($publ['kategoridata'][$what]['volum']) || !empty($publ['kategoridata'][$what]['hefte'])) {
     $markup[] = '. ';
   }
   if (!empty($publ['kategoridata'][$what]['utgiver'])) {
-    $markup[] = '<span class="uib-cristin-serial-publisher">' . check_plain($publ['kategoridata'][$what]['utgiver']['navn']);
+    $markup[] = '<span class="uib-cristin-serial-publisher">' . uib_cristin__check_plain($publ['kategoridata'][$what]['utgiver']['navn']);
     if (!empty($publ['kategoridata'][$what]['utgiver']['sted'])) {
-      $markup[] = ', ' . check_plain($publ['kategoridata'][$what]['utgiver']['sted']);
+      $markup[] = ', ' . uib_cristin__check_plain($publ['kategoridata'][$what]['utgiver']['sted']);
     }
     $markup[] = '.</span> ';
   }
   if (!empty($publ['kategoridata'][$what]['antallSider'])) {
-    $markup[] = '<span class="uib-cristin-pages">' . check_plain($publ['kategoridata'][$what]['antallSider']) . ' ' . t('pages') . '.</span> ';
+    $markup[] = '<span class="uib-cristin-pages">' . uib_cristin__check_plain($publ['kategoridata'][$what]['antallSider']) . ' ' . t('pages') . '.</span> ';
   }
   return implode('', $markup);
 }
@@ -309,7 +325,7 @@ function uib_cristin__format_section(&$publ) {
   $what = array_keys($publ['kategoridata']);
   $what = $what[0];
   if (!empty($publ['kategoridata'][$what]['delangivelse'])) {
-    $markup[] = '<span class="uib-cristin-section">' . check_plain($publ['kategoridata'][$what]['delangivelse']) . '</span>';
+    $markup[] = '<span class="uib-cristin-section">' . uib_cristin__check_plain($publ['kategoridata'][$what]['delangivelse']) . '</span>';
   }
   if (!empty($publ['kategoridata'][$what]['sideangivelse'])) {
     if (!empty($publ['kategoridata'][$what]['delangivelse'])) {
@@ -317,10 +333,10 @@ function uib_cristin__format_section(&$publ) {
     }
     $markup[] = '<span class="uib-cristin-section-pages">';
     if (!empty($publ['kategoridata'][$what]['sideangivelse']['sideFra'])) {
-      $markup[] = check_plain($publ['kategoridata'][$what]['sideangivelse']['sideFra']);
+      $markup[] = uib_cristin__check_plain($publ['kategoridata'][$what]['sideangivelse']['sideFra']);
     }
     if (!empty($publ['kategoridata'][$what]['sideangivelse']['sideTil'])) {
-      $markup[] = '-' . check_plain($publ['kategoridata'][$what]['sideangivelse']['sideTil']);
+      $markup[] = '-' . uib_cristin__check_plain($publ['kategoridata'][$what]['sideangivelse']['sideTil']);
     }
     $markup[] =  '</span>';
   }
