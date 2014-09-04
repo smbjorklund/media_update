@@ -627,3 +627,15 @@ function uib_user__teaser_markup($user = NULL) {
   }
   return $markup;
 }
+
+/**
+ * Implements hook_tag_alter()
+ *
+ * hook on tag term_access
+ *
+ */
+function uib_user_query_alter(QueryAlterableInterface $query) {
+  if ($query->hasTag('term_access')){
+    $query->orderBy('name');
+  }
+}
