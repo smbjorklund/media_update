@@ -205,11 +205,10 @@ function uib_user_block_view($delta='') {
                 $limit = explode('#', $url);
               }
               $limit = (isset($limit[1]) && is_numeric($limit[1])) ? $limit[1] : 5;
-              $elements[$delta] = uib_feed__format($url, '', $limit);
+              $elements[$delta] = uib_feed__format($url, $item['title'], $limit, array('uib_user__feed_format_post_render'));
             }
           }
           $block['content'] = $elements;
-          $block['subject'] = $item['title'];
         }
       }
     break;
@@ -636,4 +635,16 @@ function uib_user__teaser_markup($user = NULL) {
  */
 function uib_user_query_term_access_alter(QueryAlterableInterface $query) {
     $query->orderBy('name');
+}
+
+/**
+ * Changes the markup of a rendered RSS feed.
+ *
+ * @param [string] Markup for the RSS feed
+ *
+ */
+
+function uib_user__feed_format_post_render($markup) {
+  $markup = preg_replace('/<h3(.*?)>(.*?)<\/h3>/','<h2 class="block__title block-title">\2</h2>', $markup);
+  return $markup;
 }
