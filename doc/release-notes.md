@@ -1,3 +1,27 @@
+# Release 10 _2014-09-08_
+
+Vi fokuserer fortsatt på person-sider og evu-området i denne releasen, samt gjør noen justeringer i ny mal for UB.
+
+- "Rediger profilen din"-knappen som var plassert nede til høyre på personsidene, virket for dominerende og forvirrende. Vi har i stedet flyttet den inn som en tekstlenke på v-card, under "Last ned v-card", lenken. Du kan nå logge inn via denne lenken fra en hvilken som helst personprofil, og du vil bli sendt til din profilside. #7169
+- Legger til rette for å inkludere rss-feed på personprofil #6428
+- Legger til rette for twitter-feed på personprofil #6427
+- Gjør lenken for språkbytte synligere på personprofil edit-side #7182
+- Integrasjon av CRIstindata på personprofilsider #6434
+- Engelske personprofiler viser engelsk navn på enhet for person #7507
+- Legger til grafisk element (fargestripen) på personprofil v-card #7251
+- Feltet for spesielle åpningstider på UB-området bruker nå hele bredden #7061
+- Justering i design for visnings av åpningstider for bedre brukervennlighet #7161
+- Legger til lenke til Google Maps under kart i åpningstider for bedre brukervennlighet #6883
+- Det er lagt til en ny event-type: "Presentasjon" #7258
+- Tidligere forsvant snarveien ("tannhjulet") til å redigere menyen hvis menyen hadde mindre enn fem punkter. Dette er rettet opp, slik at denne snarveien er tilgjengelig uavhengig av antall menypunkter i hovedmenyen #6930
+- Vi har sjekket og dobbeltsjekket Sebra-synkronisering av brukere #7157
+- Det er nå mulig å deaktivere vi-bruker-cookies-popup på sidene (spesielt med tanke på informasjonsskjermer) #6440
+- Fjerner overflødige elementer for filtersiden for kurs #7515
+- Fjerner tab for studieløpstabell på studieprogram når det ikke er innhold i tabellen #7213
+- Skjule evu-kurs (inntil evu-kursmodul er klar) #7543
+- Diverse tekniske saker #7512 #7318
+
+
 # Release 9 _2014-08-26_
 
 Denne oppdateringen gjør først og fremst ytterligere justeringer for nye personsider og EVU-sidene.
