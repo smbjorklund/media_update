@@ -60,6 +60,15 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['uid']['relationship'] = 'field_uib_staff_target_id';
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Relationship: Content: Taxonomy terms on node */
+  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
+  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
+    'uib_research_fields' => 'uib_research_fields',
+    'uib_nus' => 0,
+    'uib_study_labels' => 0,
+  );
   /* Field: token picture */
   $handler->display->display_options['fields']['picture']['id'] = 'picture';
   $handler->display->display_options['fields']['picture']['table'] = 'users';
@@ -157,6 +166,30 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_user_ou']['settings'] = array(
     'link' => 0,
   );
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  /* Field: token field_uib_user_competence */
+  $handler->display->display_options['fields']['field_uib_user_competence']['id'] = 'field_uib_user_competence';
+  $handler->display->display_options['fields']['field_uib_user_competence']['table'] = 'field_data_field_uib_user_competence';
+  $handler->display->display_options['fields']['field_uib_user_competence']['field'] = 'field_uib_user_competence';
+  $handler->display->display_options['fields']['field_uib_user_competence']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_user_competence']['ui_name'] = 'token field_uib_user_competence';
+  $handler->display->display_options['fields']['field_uib_user_competence']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['text'] = '[field_uib_user_competence]';
+  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['path'] = 'persons?field_uib_user_competence_tid=[field_uib_user_competence-tid]';
+  $handler->display->display_options['fields']['field_uib_user_competence']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_uib_user_competence']['settings'] = array(
+    'field_multiple_limit' => '-1',
+    'field_multiple_limit_offset' => '0',
+  );
+  $handler->display->display_options['fields']['field_uib_user_competence']['delta_offset'] = '0';
   /* Field: The generated HTML */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -171,6 +204,10 @@ function uib_ansatte_views_default_views() {
     <p class="user-ou">[field_uib_user_ou]</p>
     <p class="user-mail">[mail]</p>
     [field_uib_phone]
+    [mail]
+    <p>
+      [field_uib_user_competence]
+    </p>
   </div>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -308,6 +345,7 @@ function uib_ansatte_views_default_views() {
     74573517 => 0,
     176168899 => 0,
   );
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_uib_user_competence_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_uib_user_competence_tid']['vocabulary'] = 'uib_research_fields';
 
@@ -427,8 +465,6 @@ return TRUE;
     t('next ›'),
     t('last »'),
     t('User entity referenced from field_uib_staff'),
-    t('Uid'),
-    t('<span><img src="/sites/all/themes/uib/uib_zen/images/person.png"></span>'),
     t('First name'),
     t('Last name'),
     t('[field_uib_last_name]</br>'),
@@ -440,6 +476,11 @@ return TRUE;
     t('Phone'),
     t('[field_uib_phone]'),
     t('[field_uib_first_name] [field_uib_last_name]'),
+    t('Term ID'),
+    t('.'),
+    t(','),
+    t('Fields of competence'),
+    t('[field_uib_user_competence]'),
     t('<div class="media">
  [picture]
   <div class="info">
@@ -448,13 +489,16 @@ return TRUE;
     <p class="user-ou">[field_uib_user_ou]</p>
     <p class="user-mail">[mail]</p>
     [field_uib_phone]
+    [mail]
+    <p>
+      [field_uib_user_competence]
+    </p>
   </div>
 </div>'),
     t('[field_uib_user_competence]'),
     t('All'),
     t('Staff at %1'),
     t('%2 at %1'),
-    t('Fields of competence'),
     t('List of all persons'),
     t('All staff'),
     t('List of staff for area'),
