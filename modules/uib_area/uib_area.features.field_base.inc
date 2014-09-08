@@ -546,6 +546,7 @@ function uib_area_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         'event' => 'Event',
+        'workshop' => 'Workshop',
         'disputation' => 'Disputation',
         'lecture' => 'Lecture',
         'deadline' => 'Deadline',
