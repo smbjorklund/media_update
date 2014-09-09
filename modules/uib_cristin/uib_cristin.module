@@ -189,22 +189,32 @@ function uib_cristin__check_plain($data) {
 /**
  * Generate markup for publications tab
  */
-  function uib_cristin_publications_tab_format($publications) {
-    $markup = array();
-    if (!empty($publications)) {
-      $markup[] = '<div class="uib-cristin-publications">';
-      foreach ($publications['list'] as $category => $years) {
-        if ($category != 'year') {
-          $markup[] = '<h3>' . $publications['category_labels'][$category] . '</h3>';
-        }
-        foreach ($years as $year) {
-          $markup[] = uib_cristin_format($year);
-        }
+function uib_cristin_publications_tab_format($publications) {
+  $markup = array();
+  if (!empty($publications)) {
+    $markup[] = '<div class="uib-cristin-publications">';
+    foreach ($publications['list'] as $category => $years) {
+      $tmp_markup = '';
+      foreach ($years as $year) {
+        $tmp_markup .= uib_cristin_format($year);
       }
-      $markup[] = '</div>';
+      if ($category == 'year') {
+        $markup[] = $tmp_markup;
+      }
+      else {
+        $markup[] = theme('ctools_collapsible',
+          array(
+            'handle' => $publications['category_labels'][$category],
+            'content' => $tmp_markup,
+            'collapsed' => TRUE,
+            )
+        );
+      }
     }
-    return implode('', $markup);
+    $markup[] = '</div>';
   }
+  return implode('', $markup);
+}
 
 /**
  * Generate markup for a set of CRIStin publications
