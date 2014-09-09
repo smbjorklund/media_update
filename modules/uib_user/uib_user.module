@@ -262,7 +262,7 @@ function uib_user_user_view_alter(&$build) {
   }
 
   // Add login link inside card
-  if (!user_is_logged_in()) {
+  if ($build['#view_mode'] == 'full' && !user_is_logged_in()) {
     $options = array();
     $options['attributes']['class'] = 'uib-user-login-link';
     $options['query']['destination'] = 'user';
