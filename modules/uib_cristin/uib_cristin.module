@@ -27,28 +27,46 @@ function uib_cristin_sort($unsorted, $sort_type = 'category', $limit) {
     'TIDSSKRIFTPUBL' => 2,
     'RAPPORT' => 3,
     'BOKRAPPORTDEL' => 4,
-    'FOREDRAG' => 5,
-    'PRODUKT' => 6,
-    'UTSTILLING' => 7,
-    'KUNST_PRODUKSJON' => 8,
+    'FOREDRAG' => 6,
+    'PRODUKT' => 7,
+    'UTSTILLING' => 8,
+    'KUNST_PRODUKSJON' => 5,
     'INFORMASJONSMATR' => 9,
     'MEDIEBIDRAG' => 10,
     'OVERSETTELSESARB' => 11,
     'KOMMERSIALISERIN' => 12,
     );
+  $uib_category_labels = array(
+    'BOK' => array(
+      'en' => 'Books',
+      'nb' => 'Bøker',
+      ),
+    'TIDSSKRIFTPUBL' => array(
+      'en' => 'Journal articles',
+      'nb' => 'Tidsskriftartikler',
+      ),
+    'RAPPORT' => array(
+      'en' => 'Reports and theses',
+      'nb' => 'Rapporter/avhandlinger',
+      ),
+    'BOKRAPPORTDEL' => array(
+      'en' => 'Book sections',
+      'nb' => 'Bokkapitler',
+      ),
+    'KUNST_PRODUKSJON' => array(
+      'en' => 'Artistic production',
+      'nb' => 'Kunstnerisk produksjon',
+      ),
+    );
+
   $category_names = array();
   $cnt = 0;
 
   foreach ($unsorted as $publ) {
     if ($sort_type == 'category') {
       $category = $category_order[$publ['fellesdata']['kategori']['hovedkategori']['kode']];
-      if (!isset($category_names[$category_order[$publ['fellesdata']['kategori']['hovedkategori']['kode']]])) {
-        if ($language->language == 'en') {
-          $category_names[$category_order[$publ['fellesdata']['kategori']['hovedkategori']['kode']]] = $publ['fellesdata']['kategori']['hovedkategori']['navnEngelsk'];
-        }
-        else {
-          $category_names[$category_order[$publ['fellesdata']['kategori']['hovedkategori']['kode']]] = $publ['fellesdata']['kategori']['hovedkategori']['navn'];
-        }
+      if (!isset($category_names[$category])) {
+        $category_names[$category] = $uib_category_labels[$publ['fellesdata']['kategori']['hovedkategori']['kode']][$language->language];
       }
     }
     else {
@@ -114,6 +132,7 @@ function uib_cristin_publications($user) {
     'TIDSSKRIFTPUBL',
     'RAPPORT',
     'BOKRAPPORTDEL',
+    'KUNST_PRODUKSJON',
     );
 
   foreach ($default_categories as $category) {
