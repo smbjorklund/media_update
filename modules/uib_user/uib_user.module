@@ -221,11 +221,16 @@ function uib_user_block_view($delta='') {
             foreach ($user->field_uib_user_social_media['und'] as $delta => $item) {
               if (preg_match('/twitter:(.*)/', $item['safe_value'], $twitter_handle)){
                 $twitter_handle = $twitter_handle[1];
-                $elements .= '<a class="twitter-timeline" href="https://twitter.com/"' . $twitter_handle . ' data-widget-id="504179221749456896" data-screen-name="' . $twitter_handle . '" height="300">' . t('Tweets by @@twitter_handler', array('@twitter_handler' =>  $twitter_handle)) . '</a>';
+                $elements .= '<a class="twitter-timeline" href="https://twitter.com/"' . $twitter_handle .
+                  ' data-widget-id="504179221749456896" data-screen-name="' . $twitter_handle .
+                  '" height="350" data-chrome="noheader nofooter">' .
+                  t('Tweets by @@twitter_handler', array('@twitter_handler' =>  $twitter_handle)) . '</a>';
               }
             }
-            if ($elements != '')
+            if ($elements != ''){
+              $block['subject'] = 'Twitter';
               $block['content'] = $elements . '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+            }
           }
         }
       }
