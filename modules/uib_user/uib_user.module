@@ -632,10 +632,8 @@ function uib_user__teaser_markup($user = NULL) {
  * Implements hook_tag_alter()
  *
  * hook on tag term_access
- *
+ * taxonomy terms in fields of competence ordered by name
  */
-function uib_user_query_alter(QueryAlterableInterface $query) {
-  if ($query->hasTag('term_access')){
+function uib_user_query_term_access_alter(QueryAlterableInterface $query) {
     $query->orderBy('name');
-  }
 }
