@@ -98,6 +98,16 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_position']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_uib_position']['alter']['text'] = '<p class="user-info-item user-position">[field_uib_position]</p>';
   $handler->display->display_options['fields']['field_uib_position']['hide_empty'] = TRUE;
+  /* Field: User: Position detail */
+  $handler->display->display_options['fields']['field_uib_user_alt_position']['id'] = 'field_uib_user_alt_position';
+  $handler->display->display_options['fields']['field_uib_user_alt_position']['table'] = 'field_data_field_uib_user_alt_position';
+  $handler->display->display_options['fields']['field_uib_user_alt_position']['field'] = 'field_uib_user_alt_position';
+  $handler->display->display_options['fields']['field_uib_user_alt_position']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_user_alt_position']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_user_alt_position']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_alt_position']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_alt_position']['alter']['text'] = ', [field_uib_user_alt_position-value]';
+  $handler->display->display_options['fields']['field_uib_user_alt_position']['element_label_colon'] = FALSE;
   /* Field: token mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
@@ -157,7 +167,7 @@ function uib_ansatte_views_default_views() {
  [picture]
   <div class="info">
     <h2>[view_user]</h2>
-    <p class="user-position">[field_uib_position]</p>
+    <p class="user-position">[field_uib_position][field_uib_user_alt_position]</p>
     <p class="user-ou">[field_uib_user_ou]</p>
     <p class="user-mail">[mail]</p>
     [field_uib_phone]
@@ -404,6 +414,7 @@ return TRUE;
     t('[field_uib_last_name]</br>'),
     t('Position'),
     t('<p class="user-info-item user-position">[field_uib_position]</p>'),
+    t(', [field_uib_user_alt_position-value]'),
     t('E-mail'),
     t('<p class="user-info-item user-email">[mail]</p>'),
     t('Phone'),
@@ -413,7 +424,7 @@ return TRUE;
  [picture]
   <div class="info">
     <h2>[view_user]</h2>
-    <p class="user-position">[field_uib_position]</p>
+    <p class="user-position">[field_uib_position][field_uib_user_alt_position]</p>
     <p class="user-ou">[field_uib_user_ou]</p>
     <p class="user-mail">[mail]</p>
     [field_uib_phone]
