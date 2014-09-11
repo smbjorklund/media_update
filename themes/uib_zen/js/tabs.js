@@ -9,6 +9,11 @@
             $(window).scrollTop(initialScroll);
             $('#page').scrollTop(0);
           }
+          else {
+            $(window).scrollTop(0);
+            $('#page').scrollTop(0);
+            $('html, body').animate({ scrollTop: 0 }, 2000);
+          }
         }
       });
       $('.uib-tabs-nav-mobile').change(function() {
