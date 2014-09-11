@@ -142,19 +142,24 @@ function uib_cristin_important($username) {
 }
 
 /**
+ * CRIStin will sometimes improperly give us
+ *   an array instead of a string.
  * Avoid giving an array to check_plain
  * and handle some incoming html-entities
  */
 function uib_cristin__check_plain($data) {
   if (empty($data)) {
-    $data = '';
+    return '';
   }
   else {
+    if (is_array($data)) {
+      $data = implode(' ', $data);
+    }
     // CRIStin may give us some html entites that
     // would be escaped and shown in plain.
     $data = html_entity_decode($data, ENT_XML1);
   }
-  return check_plain((string) $data);
+  return check_plain($data);
 }
 
 /**
@@ -190,7 +195,7 @@ function uib_cristin_format($publications) {
       // Author(s)
       if (!empty($publ['fellesdata']['person'])) {
         $markup[] = '<span class="uib-cristin-authors">';
-        $markup[] = rtrim(uib_cristin_author_string($publ['fellesdata']['person']), '.');
+        $markup[] = rtrim(uib_cristin__check_plain(uib_cristin_author_string($publ['fellesdata']['person'])), '.');
         $markup[] = '.</span> ';
       }
       // Year
