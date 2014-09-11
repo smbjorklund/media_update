@@ -1365,6 +1365,20 @@ $zen-auto-include-item-base: false;
     min-width: 336px;
   }
 
+  /* Course filters */
+  #views-exposed-form-courses-study-courses-all-page {
+    $zen-column-count: 4;
+    .views-widget-filter-field_uib_study_points_rank_value {
+      @include zen-grid-item (2, 1);
+    }
+    .views-widget-filter-field_uib_study_category_value {
+      @include zen-grid-item (2, 3);
+    }
+    .views-widget-filter-tid {
+      clear: both;
+    }
+  }
+
   /* Study filters */
   #views-exposed-form-courses-study-programmes-all-page {
     $zen-column-count: 4;
