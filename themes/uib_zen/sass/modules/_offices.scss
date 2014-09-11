@@ -149,6 +149,7 @@ $zen-column-count: 5;
     $zen-column-count: 2;
     .field-name-field-uib-hours {
       @include zen-grid-item(1, 1);
+      padding-right: 0;
     }
     .group-contact-info {
       @include zen-grid-item(1, 2);
