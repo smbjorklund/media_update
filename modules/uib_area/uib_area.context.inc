@@ -119,6 +119,12 @@ function uib_area_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-5',
         ),
+        'uib_area-ouprosjektet_logo' => array(
+          'module' => 'uib_area',
+          'delta' => 'ouprosjektet_logo',
+          'region' => 'sidebar_second',
+          'weight' => '-11',
+        ),
         'uib_area-jobbnorge' => array(
           'module' => 'uib_area',
           'delta' => 'jobbnorge',

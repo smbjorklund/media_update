@@ -41,6 +41,10 @@ function uib_area_block_info() {
       'info' => t('Paa hoyden logo on newspage'),
       'status' => TRUE,
     ),
+    'ouprosjektet_logo' => array(
+      'info' => t('OU-prosjektet logo on for-employees'),
+      'status' => TRUE,
+    ),
     'area_banner' => array(
       'info' => t('Area global html container'),
       'status' => TRUE,
@@ -282,6 +286,21 @@ function uib_area_block_view($delta='') {
             </div>
           ';
         }
+      }
+    break;
+    case 'ouprosjektet_logo':
+      global $base_url;
+      global $theme_path;
+      $path = $base_url . '/' . $theme_path . '/images/';
+      $logo = $path . 'ouprosjektet.png';
+      if(!empty($area) && $area->nid == 1) {
+        $block['content'] = '
+          <div>
+            <a title="Organisasjonsutviklingsprosjektet" href="http://www.uib.no/ouprosjekt">
+              <img alt="Organisasjonsutviklingsprosjektet" src="' . $logo . '"/>
+            </a>
+          </div>
+        ';
       }
     break;
     case 'area_banner':
