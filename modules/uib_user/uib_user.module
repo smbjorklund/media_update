@@ -621,6 +621,9 @@ function uib_user__teaser_markup($user = NULL) {
     $full_name = $first_name . ' ' . $last_name;
     $user_url = 'user/' . $user_wrapper->getIdentifier();
     $position = $user_wrapper->language($lang)->field_uib_position->value();
+    if ($user_wrapper->language($lang)->field_uib_user_alt_position->value()) {
+      $position .= ', ' . $user_wrapper->language($lang)->field_uib_user_alt_position->value();
+    }
     $phone = $user_wrapper->field_uib_phone->value();
     $mail = $user_wrapper->mail->value();
     $markup['#markup'] .= '<h3>' . l($full_name, $user_url) . '</h3>';
