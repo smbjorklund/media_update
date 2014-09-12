@@ -181,7 +181,7 @@ function uib_cristin__check_plain($data) {
     }
     // CRIStin may give us some html entites that
     // would be escaped and shown in plain.
-    $data = html_entity_decode($data, ENT_XML1);
+    $data = html_entity_decode($data, ENT_COMPAT, 'UTF-8');
   }
   return check_plain($data);
 }
