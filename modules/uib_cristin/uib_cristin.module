@@ -77,7 +77,7 @@ function uib_cristin_sort($unsorted, $sort_type = 'category', $limit) {
   if (!empty($category_names)) {
     $sorted['category_labels'] = $category_names;
   }
-  if ($sort_type == 'category') {
+  if (!empty($sorted['list']) && $sort_type == 'category') {
     ksort($sorted['list'], SORT_NUMERIC);
   }
   return $sorted;
@@ -191,7 +191,7 @@ function uib_cristin__check_plain($data) {
  */
 function uib_cristin_publications_tab_format($publications) {
   $markup = array();
-  if (!empty($publications)) {
+  if (!empty($publications['list'])) {
     $markup[] = '<div class="uib-cristin-publications">';
     foreach ($publications['list'] as $category => $years) {
       $tmp_markup = '';
@@ -505,7 +505,9 @@ function uib_cristin_field_attach_view_alter(&$output, $context) {
   if (empty($user->field_uib_user_cristin_nr) || $user->field_uib_user_cristin_nr['und'][0]['value'] > 0) {
     if ($publications = uib_cristin_publications($user)) {
       $publications = uib_cristin_publications_tab_format($publications);
-      $cristin_user_link = l(t('More information in national current research information system (CRIStin)'), uib_cristin_url($user->name), array('attributes' => array('target' => '_blank')));
+      if (!empty($publications)) {
+        $cristin_user_link = l(t('More information in national current research information system (CRIStin)'), uib_cristin_url($user->name), array('attributes' => array('target' => '_blank')));
+      }
     }
   }
   else {
