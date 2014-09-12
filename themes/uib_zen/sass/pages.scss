@@ -621,3 +621,8 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
     }
   }
 }
+
+/*User-competence override page persons list styling*/
+.user-competence a.active {
+  color: $link-blue;
+}

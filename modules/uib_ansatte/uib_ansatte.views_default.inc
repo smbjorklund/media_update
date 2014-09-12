@@ -178,7 +178,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_user_competence']['field'] = 'field_uib_user_competence';
   $handler->display->display_options['fields']['field_uib_user_competence']['relationship'] = 'field_uib_staff_target_id';
   $handler->display->display_options['fields']['field_uib_user_competence']['ui_name'] = 'token field_uib_user_competence';
-  $handler->display->display_options['fields']['field_uib_user_competence']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['exclude'] = FALSE;
   $handler->display->display_options['fields']['field_uib_user_competence']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_user_competence']['alter']['text'] = '[field_uib_user_competence]';
   $handler->display->display_options['fields']['field_uib_user_competence']['alter']['make_link'] = TRUE;
@@ -205,9 +205,6 @@ function uib_ansatte_views_default_views() {
     <p class="user-mail">[mail]</p>
     [field_uib_phone]
     [mail]
-    <p>
-      [field_uib_user_competence]
-    </p>
   </div>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
