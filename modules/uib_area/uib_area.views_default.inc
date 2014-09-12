@@ -1134,7 +1134,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator_id'] = 'field_uib_study_points_rank_value_op';
-  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['label'] = 'Filter on ECTS credits';
+  $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['label'] = 'Filter by ECTS credits';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['operator'] = 'field_uib_study_points_rank_value_op';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['identifier'] = 'studypoints_rank';
   $handler->display->display_options['filters']['field_uib_study_points_rank_value']['expose']['multiple'] = TRUE;
@@ -1160,7 +1160,7 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['field_uib_study_category_value']['group'] = 1;
   $handler->display->display_options['filters']['field_uib_study_category_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator_id'] = 'field_uib_study_category_value_op';
-  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['label'] = 'Filter on level';
+  $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['label'] = 'Filter by level';
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['operator'] = 'field_uib_study_category_value_op';
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['identifier'] = 'field_uib_study_category_value';
   $handler->display->display_options['filters']['field_uib_study_category_value']['expose']['multiple'] = TRUE;
@@ -1586,8 +1586,8 @@ return !empty($handler->argument);';
     t('last »'),
     t('Found @total courses'),
     t('Type'),
-    t('Filter on ECTS credits'),
-    t('Filter on level'),
+    t('Filter by ECTS credits'),
+    t('Filter by level'),
     t('Humanities and aesthetic studies'),
     t('Has taxonomy term'),
     t('Teacher training and pedagogy'),
