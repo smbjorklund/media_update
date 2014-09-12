@@ -592,6 +592,7 @@ function uib_article_menu_local_task($form, &$form_state, $node, $uib_content_ty
           1 => t('Sibling to (before)'),
           2 => t('Child to'),
         ),
+        '#required' => 'true',
       );
 
       // Check if a menu link with depth > 1 has been selected
@@ -600,9 +601,17 @@ function uib_article_menu_local_task($form, &$form_state, $node, $uib_content_ty
         if ($ml['depth'] > 1) {
           unset($form['uib_area_menu_settings']['radios']['relations']['#options'][2]);
         }
+        else {
+          unset($form['uib_area_menu_settings']['radios']['relations']['#options'][0]);
+          unset($form['uib_area_menu_settings']['radios']['relations']['#options'][1]);
+        }
       }
       elseif (!empty($menu_link) && $menu_link['depth'] > 1) {
         unset($form['uib_area_menu_settings']['radios']['relations']['#options'][2]);
+      }
+      else {
+        unset($form['uib_area_menu_settings']['radios']['relations']['#options'][0]);
+        unset($form['uib_area_menu_settings']['radios']['relations']['#options'][1]);
       }
 
       $form['submit'] = array(
