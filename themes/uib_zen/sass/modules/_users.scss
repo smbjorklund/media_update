@@ -68,8 +68,11 @@ $zen-column-count: 5;
   .ctools-collapsible-container {
     margin-bottom: 10px;
   }
-  word-break: break-word;
+  .link-url{
+    word-break: break-all;
+  }
 }
+
 
 .field-name-field-uib-user-url .link-title::after {
   content: ":";
