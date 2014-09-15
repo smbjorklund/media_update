@@ -501,6 +501,7 @@ function uib_setup_user_default_permissions() {
     'name' => 'create files',
     'roles' => array(
       'admin' => 'admin',
+      'authenticated user' => 'authenticated user',
       'level 1' => 'level 1',
       'level 2' => 'level 2',
       'level 3' => 'level 3',
@@ -663,6 +664,7 @@ function uib_setup_user_default_permissions() {
     'name' => 'delete own files',
     'roles' => array(
       'admin' => 'admin',
+      'authenticated user' => 'authenticated user',
       'level 1' => 'level 1',
       'level 2' => 'level 2',
       'level 3' => 'level 3',
@@ -858,6 +860,7 @@ function uib_setup_user_default_permissions() {
     'name' => 'edit own files',
     'roles' => array(
       'admin' => 'admin',
+      'authenticated user' => 'authenticated user',
       'level 1' => 'level 1',
       'level 2' => 'level 2',
       'level 3' => 'level 3',
