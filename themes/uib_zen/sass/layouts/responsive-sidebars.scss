@@ -93,12 +93,6 @@ $zen-auto-include-item-base: false;
   }
 }
 
-.uib-social-media {
-  .field-item {
-    width: 32px;
-  }
-}
-
 /**
  * Global Aktuelt/News section.
  */
@@ -280,11 +274,6 @@ $zen-auto-include-item-base: false;
 }
 
 @media all and (min-width: 720px) {
-  .uib-social-media {
-    .field-item {
-      width: auto;
-    }
-  }
   .expanded {
     #navigation {
       padding-top: 1px;
@@ -697,11 +686,6 @@ $zen-auto-include-item-base: false;
   }
   .slidecontent {
     width: 60%;
-  }
-
-  .uib-social-media {
-    @include zen-grid-item(4, 1);
-    @include zen-grid-item-base;
   }
 
   #node_area_full_group_column_first {
@@ -1290,12 +1274,6 @@ $zen-auto-include-item-base: false;
       font-size: 1.5em !important;
       font-weight: normal !important;
     }
-  }
-
-  .uib-social-media {
-    @include zen-clear();
-    @include zen-grid-item(4, 1);
-    @include zen-grid-item-base;
   }
 
   /* Courses */

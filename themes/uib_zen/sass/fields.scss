@@ -13,14 +13,6 @@
 
 @import "base";
 
-@each $social in facebook, twitter, google-plus-share, linkedin, youtube, instagram, vimeo, flickr, github {
-  .icons-social-#{$social} {
-    background: inline-image("svg-icons/#{$social}.svg") left top no-repeat;
-    background-size: contain;
-  }
-}
-
-
 /*
  * Field wrappers when the Fences module is enabled.
  */
@@ -418,23 +410,6 @@ div.link-field-column {
 #edit-publish-on,
 #edit-unpublish-on {
   float: none;
-}
-
-.uib-social-media {
-  @include zen-clear();
-  line-height: 2.2em;
-  .field-item {
-    float: left;
-    text-transform: capitalize;
-    margin-left: 1em;
-    overflow: hidden;
-    a:link {
-      display: table-cell;
-      vertical-align: middle;
-      padding-left: 37px;
-      height: 32px;
-    }
-  }
 }
 
 .field-name-field-uib-logo {
