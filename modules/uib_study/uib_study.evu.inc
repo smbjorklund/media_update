@@ -1,23 +1,70 @@
 <?php
+
+function uib_study__evu_courses_page(){
+  $page = array(
+    'form' => drupal_get_form('uib_study__evu_courses_page_form'),
+    'list' => uib_study__evu_courses_page_list(),
+  );
+  return $page;
+}
+
+function uib_study__evu_courses_page_form($form, &$form_state){
+  $form['semesters'] = array(
+    '#type' => 'checkboxes',
+    '#options' => array('autumn' => t('Autumn'),'spring'=> t('Spring')),
+    '#title' => t('Filter by Semester'),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Apply'),
+  );
+  return $form;
+}
+
+function uib_study__evu_courses_page_form_submit ($form, &$form_state){
+  $form_semesters = $form_state['values']['semesters'];
+  $form_state['storage']['semesters'] = $form_semesters;
+  $form_state['rebuild'] = TRUE;
+
+  global $semester;
+  if ($form_semesters['autumn'] && !$form_semesters['spring']){
+    $semester = 'H';
+  }
+  elseif(!$form_semesters['autumn'] && $form_semesters['spring']){
+    $semester = 'V';
+  }
+  else{
+    $semester = FALSE;
+  }
+}
+
 /**
  * Creates a page with a list of evu coursed
  */
-function uib_study__evu_courses_page() {
+function uib_study__evu_courses_page_list() {
   global $language;
+
   $today = date("c");
+  $main = array();
 
   // Fetch all evu uib_study
   $query = new EntityFieldQuery;
   $results = $query
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'uib_study')
+    ->propertyCondition('language', $language->language)
     ->propertyCondition('status', 1)
     ->fieldCondition('field_uib_study_category', 'value', 'evu')
     ->fieldOrderBy('field_uib_study_code', 'value')
     ->execute();
 
   if (!$results) {
-    return t('No EVU courses found');
+    $main['no_results'] = array(
+      '#type' => 'container',
+      '#attributes' => array( ),
+      'header' => uib_study__html_tag('p', t('No EVU courses found')),
+    );
+    return $main;
   }
 
   $evus = node_load_multiple(array_keys($results['node']));
@@ -33,56 +80,31 @@ function uib_study__evu_courses_page() {
   $results = $query
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'uib_article')
+    ->propertyCondition('language', $language->language)
     ->propertyCondition('status', 1)
     ->fieldCondition('field_uib_article_type', 'value', 'evu_study_offer')
     ->propertyOrderBy('title', 'ASC')
     ->execute();
 
   $listed = array();
-  $page = array();
 
-  $page['header'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'h1',
-    '#value' => t('Offered EVU Courses (@count)', array('@count'=> count($evus))),
+  $main['count'] = array(
+    '#type' => 'container',
+    '#attributes' => array('class'=>'clear'),
+    'num_offered' => uib_study__html_tag('p',''),
   );
 
   // List all evu_study_offer and their evu courses
   if ($results) {
-    $artics = node_load_multiple(array_keys($results['node']));
-    foreach ($artics as $nid => $artic) {
-      $artic_added = FALSE;
-      if (!empty ($artic->field_uib_relation['und'])) {
-        $course_ids = array_map('current', $artic->field_uib_relation['und']);
+    $offers = node_load_multiple(array_keys($results['node']));
+    // For each offer (article)
+    foreach ($offers as $nid => $offer) {
+      // If the article has related articles (courses)
+      if (!empty ($offer->field_uib_relation['und'])) {
+        $course_ids = array_map('current', $offer->field_uib_relation['und']);
         $listed = array_merge ($listed, $course_ids);
-
-        foreach ($course_ids as $course_id) {
-          if (!empty($evus[$course_id])){
-            if (!$artic_added){
-              $artic_added = TRUE;
-              $div = array(
-                '#type' => 'container',
-                '#attributes' => array(
-                  'class' => "uib-study-evu-offer",
-                ),
-                'header' => array(
-                  '#type' => 'html_tag',
-                  '#tag' => 'h2',
-                  '#value' => l($artic->title, "node/$nid"),
-                ),
-                'lead_text' => array(
-                  '#type' => 'html_tag',
-                  '#tag' => 'p',
-                  '#value' => $artic->field_uib_lead['und'][0]['safe_value'],
-                ),
-              );
-            }
-            $div[$course_id] = uib_study__evu_course($evus[$course_id]);
-          }
-        }
+        $main[$nid] = uib_study__evu_courses_list($offer, $course_ids, $evus);
       }
-      if($artic_added)
-        $page[$nid] = $div;
     }
   }
 
@@ -93,24 +115,51 @@ function uib_study__evu_courses_page() {
       '#attributes' => array(
         'class' => "uib-study-evu-offer",
       ),
-      'header' => array(
-        '#type' => 'html_tag',
-        '#tag' => 'h2',
-        '#value' => t('Other EVU courses'),
-      ),
+      'header' => uib_study__html_tag('h2', t('Other EVU courses')),
     );
     foreach ($evus as $nid => $evu) {
       if (!array_search($nid, $listed))  {
         $div[$nid] = uib_study__evu_course($evus[$nid]);
       }
     }
-    $page['orfans'] = $div;
+    $main['orfans'] = $div;
   }
 
   // Force EVU as the current area for this page.
   uib_area__get_current(77320);
 
-  return $page;
+  return $main;
+}
+
+function uib_study__evu_courses_list($offer, $course_ids, $evus) {
+  global $semester;
+  $div = array();
+  $offer_added = FALSE;
+
+  foreach ($course_ids as $course_id) {
+    // If it is an evu curs
+    if (!empty($evus[$course_id])){
+      $div_course = uib_study__evu_course($evus[$course_id]);
+      if (!$semester || $div_course) {
+        // Prevents empty offers from being listed
+        if (!$offer_added){
+          $offer_added = TRUE;
+          $div = array(
+            '#type' => 'container',
+            '#attributes' => array(
+              'class' => "uib-study-evu-offer",
+            ),
+            'header' => uib_study__html_tag('h2', l($offer->title, 'node/' . $offer->nid)),
+          );
+          if (isset($offer->field_uib_lead['und'])) {
+            $div['lead_text'] = uib_study__html_tag('p', $offer->field_uib_lead['und'][0]['safe_value']);
+          }
+        }
+        $div[$course_id] = $div_course;
+      }
+    }
+  }
+  return $div;
 }
 
 function uib_study__evu_date($iso, $year=0) {
@@ -158,6 +207,7 @@ function uib_study__evu_courses_block($node) {
 
 function uib_study__evu_course($course) {
   global $language;
+  global $semester;
   $data = $course->data;
   $title = ($language->language == 'nb' ? $data['emnenavn'] : $data ['emnenavn_en']);
   $course_div =  array(
@@ -165,24 +215,51 @@ function uib_study__evu_course($course) {
       '#attributes' => array(
       'class' => "course",
     ),
-    'header' => array(
-       '#type' => 'html_tag',
-       '#tag' => 'h3',
-       '#value' => l($title .' ['.$course->data['emneid']['emnekode'].']', 'node/' . $course->nid),
+    'header' => uib_study__html_tag('h3',
+      l($data['emneid']['emnekode'].' / ' . $title , 'node/' . $course->nid)
+    ),
+    'study_points' => uib_study__html_tag('p',
+      t('Study points: @study_points', array('@study_points' => $data['studiepoeng']))
     ),
   );
-
+  $has_instances = FALSE;
   if ($data['evu']['kurs']) {
-    foreach ($data['evu']['kurs'] as $instance) {
-      $course_div[] = uib_study__evu_instance($instance);
+    if (!$semester) {
+      $has_instances = TRUE;
+      foreach ($data['evu']['kurs'] as $instance) {
+        $course_div[] = uib_study__evu_instance($instance);
+      }
+    }
+    else {
+      foreach ($data['evu']['kurs'] as $instance) {
+        if (uib_study__evu_instance_on_semester($instance, $semester)) {
+          $course_div[] = uib_study__evu_instance($instance);
+          $has_instances = TRUE;
+        }
+      }
     }
   }
-  else {
-    $course_div['no_instances'] = array(
-      '#markup' => t('There are currently no scheduled courses of this subject'),
-    );
+
+  if (!$has_instances) {
+    if ($semester) {
+      return FALSE;
+    }
+    else{
+      $course_div['no_instances'] = array(
+        '#type' => 'container',
+        '#attributes' => array(
+          'class' => "no_instances",
+        ),
+        'no_instances' => uib_study__html_tag('p', t('There are currently no scheduled courses of this subject')),
+      );
+    }
   }
   return $course_div;
+}
+
+function uib_study__evu_instance_on_semester($instance, $semester) {
+  $ins_semester = substr($instance['kursid']['tidkode'], 0, 1);
+  return $ins_semester == $semester;
 }
 
 /**
@@ -208,9 +285,9 @@ function uib_study__evu_instance($instance) {
   // Semester
   $today = date("c");
   $timecode = $instance['kursid']['tidkode'];
-  $semester = (substr($timecode,0,1) == 'H' ? t('Autumn') : t('Spring'));
+  $sem = (substr($timecode, 0, 1) == 'H' ? t('Autumn') : t('Spring'));
   $year = substr($timecode, 2);
-  $tdiv['tidkode'] = array('#markup' => '<span class="title">' . $semester . ' ' . check_plain($year) . "</span>");
+  $tdiv['tidkode'] = array('#markup' => '<span class="title">' . $sem . ' ' . check_plain($year) . "</span>");
 
   // Course date
   if (isset($instance['dato_fra'])) {
@@ -263,4 +340,12 @@ function uib_study__evu_instance($instance) {
   $div[$timecode] = $idiv;
 
   return $div;
+}
+
+function uib_study__html_tag ($type, $value) {
+  return array(
+    '#type' => 'html_tag',
+    '#tag' => $type,
+    '#value' => $value,
+  );
 }
