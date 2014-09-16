@@ -1601,7 +1601,6 @@ return !empty($handler->argument);';
     t('No result'),
     t('Your criteria did not match any results'),
     t('Filter by subject'),
-    t('Filter by level'),
   );
   $export['courses'] = $view;
 
@@ -2396,6 +2395,13 @@ return !empty($handler->argument);';
     'uib_external_content' => 'uib_external_content',
     'uib_study' => 'uib_study',
     'uib_testimonial' => 'uib_testimonial',
+  );
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
 
   /* Display: Entity Reference */
