@@ -337,34 +337,32 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       $wrapper->field_uib_nus->set($uib_nus_list[$nusId]);
       $edit[] = 'nuscode';
     }
-    if (isset($study['labels'])) {
+
+    // update uib_study_labels
+    {
       $existing_labels = array();
       foreach ($wrapper->field_uib_study_label->getIterator() as $delta => $target) {
         $existing_labels[] = $target->raw();
       }
       $new_labels = array();
-      foreach ($study['labels'] as $sl) {
-        if (!array_key_exists($sl, $labels)) {
-          $new_term_tid = uib_study__create_taxonomy_term($sl, 'uib_study_labels');
-          uibx_log('Created taxonomy_term "' . $sl . '" with $tid ' . $new_term_tid);
-          $labels[$new_term_tid] = $sl;
-          $new_labels[] = $new_term_tid;
-        }
-        else {
-          $new_labels[] = $labels[$sl];
+      if (isset($study['labels'])) {
+        foreach ($study['labels'] as $sl) {
+          if (!array_key_exists($sl, $labels)) {
+            $new_term_tid = uib_study__create_taxonomy_term($sl, 'uib_study_labels');
+            uibx_log('Created taxonomy_term "' . $sl . '" with $tid ' . $new_tellrm_tid);
+            $labels[$new_term_tid] = $sl;
+            $new_labels[] = $new_term_tid;
+          }
+          else {
+            $new_labels[] = $labels[$sl];
+          }
         }
       }
-      if (!empty($new_labels)) {
-        sort($existing_labels);
-        sort($new_labels);
-        if ($existing_labels != $new_labels) {
-          $delta = 0;
-          foreach ($new_labels as $l) {
-            $wrapper->field_uib_study_label[$delta]->set($l);
-            $delta++;
-          }
-          $edit[] = 'labels';
-        }
+      sort($existing_labels);
+      sort($new_labels);
+      if ($existing_labels != $new_labels) {
+        $wrapper->field_uib_study_label->set($new_labels);
+        $edit[] = 'labels';
       }
     }
 
