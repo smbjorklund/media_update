@@ -215,7 +215,7 @@ function uib_user_field_group_info() {
   $field_group->parent_name = 'group_user_contact';
   $field_group->data = array(
     'label' => 'Contact info first',
-    'weight' => '11',
+    'weight' => '13',
     'children' => array(
       0 => 'field_uib_user_url',
       1 => 'field_uib_user_cv',
@@ -248,7 +248,7 @@ function uib_user_field_group_info() {
   $field_group->parent_name = 'group_user_contact';
   $field_group->data = array(
     'label' => 'Contact info second',
-    'weight' => '13',
+    'weight' => '11',
     'children' => array(
       0 => 'field_uib_user_room',
     ),
