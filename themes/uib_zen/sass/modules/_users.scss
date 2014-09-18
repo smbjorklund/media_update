@@ -93,6 +93,7 @@ $zen-column-count: 5;
 }
 
 #user_user_full_group_media_element {
+  box-sizing: border-box;
   margin-bottom: 20px;
   padding: 10px;
   border-bottom: 1px solid #DEDFDD;
@@ -106,58 +107,26 @@ $zen-column-count: 5;
   }
 }
 
-@media all and (min-width: 720px) {
+#user_user_full_group_media_element {
+  @include clearfix();
+  @include media_element(100%, none);
+}
 
-  #user_user_full_group_user_first {
-    @include zen-grid-item (3, 1);
-    @include zen-grid-item-base();
-    width: 58%;
-   }
+.profile .user-picture {
+  float: none;
+  margin: 0;
+}
 
-  #user_user_full_group_media_element {
-    @include clearfix();
-    @include media_element(100%, none);
-  }
+#user_user_full_group_user_media {
+  @include media(33%, left);
+}
 
-  .profile .user-picture {
-    float: none;
-    margin: 0;
-  }
+#user_user_full_group_user_contact_wrapper {
+  @include media_content_wrapper();
+}
 
-  #user_user_full_group_user_media {
-    @include media(33%, left);
-  }
-
-  #user_user_full_group_user_contact_wrapper {
-    @include media_content_wrapper();
-  }
-
-  #user_user_full_group_user_contact {
-    @include media_content();
-  }
-
-  #user_user_full_group_user_ci_1 {
-    box-sizing: border-box;
-    width: 50%;
-    padding: zen-half-gutter() zen-half-gutter() 0 0;
-    float: left;
-  }
-  #user_user_full_group_user_ci_2 {
-    box-sizing: border-box;
-    width: 50%;
-    padding: zen-half-gutter() 0 0 0;
-    float: left;
-  }
-
-
-  #user_user_full_group_user_work_1 {
-    @include zen-clear();
-  }
-
-  #user_user_full_group_user_second {
-    @include zen-grid-item (2, 4);
-    @include zen-grid-item-base();
-  }
+#user_user_full_group_user_contact {
+  @include media_content();
 }
 
 .page-user {
@@ -196,13 +165,6 @@ $zen-column-count: 5;
     .uib-user-email {
       clear: both;
       padding-top: zen-half-gutter();
-    }
-    .uib-user-vcard {
-      float: right;
-    }
-    .uib-user-login-link {
-      clear: right;
-      float: right;
     }
     .field-name-field-uib-user-ou {
       clear: both;
@@ -284,6 +246,63 @@ $zen-column-count: 5;
 .field-name-field-uib-user-url .link-title {
   font-weight: bold;
 }
+
+.uib-user-vcard,
+.uib-user-login-link {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+
+@media all and (max-width: 500px) {
+  .page-user {
+    #user_user_full_group_media_element {
+      background-size: contain;
+    }
+  }
+}
+
+@media all and (min-width: 600px) {
+
+  #user_user_full_group_user_ci_1 {
+    box-sizing: border-box;
+    width: 50%;
+    padding: zen-half-gutter() zen-half-gutter() 0 0;
+    float: left;
+  }
+  #user_user_full_group_user_ci_2 {
+    box-sizing: border-box;
+    width: 50%;
+    padding: zen-half-gutter() 0 0 0;
+    float: left;
+  }
+
+  .uib-user-vcard {
+    float: right;
+  }
+  .uib-user-login-link {
+    clear: right;
+    float: right;
+  }
+}
+
+@media all and (min-width: 720px) {
+
+  #user_user_full_group_user_work_1 {
+    @include zen-clear();
+  }
+
+  #user_user_full_group_user_first {
+    @include zen-grid-item(3,1);
+    @include zen-grid-item-base();
+  }
+
+  #user_user_full_group_user_second {
+    @include zen-grid-item (2, 4);
+    @include zen-grid-item-base();
+  }
+}
+
 
 /////////////
 // Styling for view mode user teaser
