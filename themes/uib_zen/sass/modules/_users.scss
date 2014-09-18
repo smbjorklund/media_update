@@ -195,7 +195,7 @@ $zen-column-count: 5;
     }
     .uib-user-email {
       clear: both;
-      margin-top: 1em;
+      padding-top: zen-half-gutter();
     }
     .uib-user-vcard {
       float: right;
