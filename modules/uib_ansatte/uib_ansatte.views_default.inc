@@ -204,7 +204,6 @@ function uib_ansatte_views_default_views() {
     <p class="user-ou">[field_uib_user_ou]</p>
     <p class="user-mail">[mail]</p>
     [field_uib_phone]
-    [mail]
   </div>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -486,7 +485,6 @@ return TRUE;
     <p class="user-ou">[field_uib_user_ou]</p>
     <p class="user-mail">[mail]</p>
     [field_uib_phone]
-    [mail]
     <p>
       [field_uib_user_competence]
     </p>
