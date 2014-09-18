@@ -3533,7 +3533,7 @@ function uib_area_field_default_field_instances() {
             'position' => 'hide',
           ),
           'date_first_day' => 1,
-          'daysformat' => 'long',
+          'daysformat' => 'short',
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
           'grouped' => 0,
