@@ -15,4 +15,6 @@ set -x
 
 date +%FT%T
 bin/site-drush php-script --verbose publish-evu
+bin/site-drush uib-sync-fs --verbose
+bin/site-drush cc all
 date +%FT%T
