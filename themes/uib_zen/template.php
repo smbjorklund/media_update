@@ -773,7 +773,7 @@ function uib_zen_preprocess_node(&$variables, $hook) {
         '#value' => render($uib_study_image) .
                     render($uib_study_facts) .
                     $specializations .
-                    // RTS-6993 render($uib_study_evu) .
+                    render($uib_study_evu) .
                     render($uib_study_contact),
         '#weight' => 1,
         '#attributes' => array('class' => array('uib-study-first-block')),
