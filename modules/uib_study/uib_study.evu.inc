@@ -33,7 +33,10 @@ function uib_study__evu_courses_page_form_submit ($form, &$form_state){
   elseif(!$form_semesters['autumn'] && $form_semesters['spring']){
     $semester = 'V';
   }
-  else{
+  elseif($form_semesters['autumn'] && $form_semesters['spring']){
+    $semester = 'HV';
+  }
+  else {
     $semester = FALSE;
   }
 }
@@ -263,7 +266,7 @@ function uib_study__evu_course($course) {
 
 function uib_study__evu_instance_on_semester($instance, $semester) {
   $ins_semester = substr($instance['kursid']['tidkode'], 0, 1);
-  return $ins_semester == $semester;
+  return ($semester == 'HV'? TRUE: $ins_semester == $semester);
 }
 
 /**
