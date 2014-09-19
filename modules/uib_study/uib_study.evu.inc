@@ -52,7 +52,6 @@ function uib_study__evu_courses_page_list() {
   $results = $query
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'uib_study')
-    ->propertyCondition('language', $language->language)
     ->propertyCondition('status', 1)
     ->fieldCondition('field_uib_study_category', 'value', 'evu')
     ->fieldOrderBy('field_uib_study_code', 'value')
