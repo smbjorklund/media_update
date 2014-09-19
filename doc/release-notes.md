@@ -1,3 +1,45 @@
+# Release 11 _2014-09-22_
+
+Vi fortsetter arbeidet med EVU og personsidene, i tillegg til noen generelle fikser på sidene.
+
+Personsider:
+
+- Justering for bedre brukervennlighet i funksjonaliteten for emneord på personprofilsider #7294
+- Endringer på listing av ansatte for å gi plass for visning av emneord #6100
+- Landingsside for emneord i kompetansefelt (personlister) #6331
+- Feilmelding dukket opp på personsider når person ikke hadde lagt inn RSS-feed. Dette er rettet #7583
+- Lar CRIstin-feltene vise som "trekkspill"-felt #7609
+- Justerer hvilke kategorier vi henter fra CRIStin, rydder i titlene og gjør den språk-avhengige #7615 #7610
+- Fikser en del formateringsproblemer knyttet til visning av data fra CRIStin #7617
+- Sørger for at dyplenke til CRIstin bare vises på personer som har data registrert i CRIstin #7669
+- Viser "mer om stillingen"-feltet i personlistene #7657
+- Styling og justering for personlistene #7659
+- Retter feil i visning av sosiale medier-ikon på personkort i Chrome #7670
+- Lar brukere uten rolle laste opp og slette egne filer på personsidene #7675
+- Endre rekkefølgen på radene på personkortet #7689
+- Juster layout for mobilvisning for personprofil slik at bildet kommer under navn og tittel #7691
+- Syling og justering på personsidene #7611
+
+EVU:
+
+- Justering og styling i listen som viser alle evu-kurs og evu-kursinstanser #7071 #6879
+- Visning av detaljer om evu-kurs-instanser på evu-kurs #6693
+- Filtrer evukurs etter nivå #7052
+- Justerer styling for emnelistene #7643
+
+Diverse:
+
+- Rettelse på feil i visning av åpningstider for UB i MSIE-9 #7577 #7658
+- Synk mot FS for visning av engelske emner har feilet, dette er rettet #7671
+- Retter feil som ga duplikater i personlistene #7624
+- Legger til logo for OU-prosjektet i sidebar på Ansattsidene #7652
+- Fjerner "Logg på"-lenken på Tilknyttede personer-visningen #7623
+- Undervisningssemester viste norsk språk på engelske emnesider. Feilen er rettet #7242
+- Legg til "Workshop" som arrangementstype #7616
+- Ved lenking direkte til tab på side viser nå hele siden #7601
+- Det var mulig å legge til sider som "søsken" til hovedmenypunkt, dette er nå fjernet #7612
+- Diverse tekniske saker #7565
+
 # Release 10 _2014-09-08_
 
 Vi fokuserer fortsatt på person-sider og evu-området i denne releasen, samt gjør noen justeringer i ny mal for UB.
