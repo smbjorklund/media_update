@@ -258,10 +258,20 @@ $zen-column-count: 5;
   font-weight: bold;
 }
 
+.uib-user-vcard {
+  clear: both;
+  float: left;
+}
+.uib-user-login-link {
+  float: right;
+  text-align: right;
+}
 .uib-user-vcard,
 .uib-user-login-link {
-  display: inline-block;
-  margin-right: 5px;
+  width: 50%;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: dashed 1px #dedfdd;
 }
 
 
@@ -286,14 +296,6 @@ $zen-column-count: 5;
     width: 50%;
     padding: zen-half-gutter() 0 0 0;
     float: left;
-  }
-
-  .uib-user-vcard {
-    float: right;
-  }
-  .uib-user-login-link {
-    clear: right;
-    float: right;
   }
 }
 

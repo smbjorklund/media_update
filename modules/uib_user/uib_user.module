@@ -258,7 +258,7 @@ function uib_user_user_view_alter(&$build) {
   if ($build['#account']->field_uib_user_domain['und'][0]['value'] == 'uib') {
     $vcard_url = 'user/' . $build['#account']->uid . '/card.vcf';
     $build['user_vcard_link'] = array(
-      '#weight' => 17,
+      '#weight' => 98,
       '#markup' => l(t('Download vCard'), $vcard_url, array(
         'attributes' => array('class' => 'uib-user-vcard'),
       )),
@@ -272,7 +272,7 @@ function uib_user_user_view_alter(&$build) {
     $options['query']['destination'] = 'user';
     $link_url = 'user';
     $build['user_login_incard_link'] = array (
-      '#weight' => 18,
+      '#weight' => 99,
       '#markup' => l(t('Log in'), 'user', $options),
     );
   }
@@ -280,8 +280,8 @@ function uib_user_user_view_alter(&$build) {
   // Move stuff into field groups
   $build['#group_children']['user_picture'] = 'group_user_media';
   $build['#group_children']['user_email'] = 'group_user_contact';
-  $build['#group_children']['user_vcard_link'] = 'group_user_contact';
-  $build['#group_children']['user_login_incard_link'] = 'group_user_contact';
+  $build['#group_children']['user_vcard_link'] = 'group_media_element';
+  $build['#group_children']['user_login_incard_link'] = 'group_media_element';
   $build['#group_children']['selected_publications'] = 'group_user_first';
 
   // Manage field overrides
