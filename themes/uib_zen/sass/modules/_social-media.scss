@@ -36,35 +36,14 @@ $social-media: (
 }
 
 @media all and (min-width: 720px) {
-  .node-type-area {
-    .uib-social-media {
-      .field-item {
-        width: auto;
-      }
-    }
-  }
-}
-
-@media all and (min-width: 720px) and (max-width: 959px) {
-  /*
-   * Use 4 grid columns for smaller screens.
-   */
   $zen-column-count: 4;
   .node-type-area {
     .uib-social-media {
       @include zen-grid-item(4, 1);
       @include zen-grid-item-base;
-    }
-  }
-}
-
-@media all and (min-width: 960px) {
-  $zen-column-count: 5;
-  .node-type-area {
-    .uib-social-media {
-      @include zen-clear();
-      @include zen-grid-item(4, 1);
-      @include zen-grid-item-base;
+      .field-item {
+        width: auto;
+      }
     }
   }
 }
