@@ -196,15 +196,7 @@
     display: none;
   }
   input[class="form-submit"] {
-    background: #77af00;
-    color: #fff;
-    padding: 10px 40px;
-    border: none;
-    border-bottom: solid 4px #629000;
-    margin: 0;
-    &:hover {
-      text-decoration: underline;
-    }
+    @include study_list_submit;
   }
   .form-checkboxes.bef-select-as-checkboxes label {
     display: block;
@@ -223,6 +215,18 @@
   a {
     font-size: .9em;
     line-height: 1em;
+  }
+}
+
+@mixin study-list-submit() {
+  background: #77af00;
+  color: #fff;
+  padding: 10px 40px;
+  border: none;
+  border-bottom: solid 4px #629000;
+  margin: 0;
+  &:hover {
+    text-decoration: underline;
   }
 }
 

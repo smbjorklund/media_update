@@ -569,42 +569,60 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
   }
 }
 
-.uib-study-evu-offer{
-  a {
-    text-decoration:none !important;
+.page-utdanning-evu-courses #content {
+  @include study-list;
+  label[for=edit-semesters]{
+    font-weight: bold;
   }
-  padding: 5px;
-  .course {
-     border: 1px solid black;
-     margin-bottom: 5px;
-     padding: 5px;
-    .instance {
-      margin-left: 1em;
-      .text{
-        float: left;
-        width: 80%;
-        .title{
-          font-size: larger;
-          font-weight: bold;
-        }
-      }
-      .sign-up{
-        float: left;
-        max-width: 10em;
-        min-width: 8em;
-        overflow: hidden;
-        width: 20%;
-        margin-top:5px;
-        .sign-up-button{
-          background:#484;
-          border-radius: 6px;
-          color: white;
-          display: block;
-          padding: 5px;
-          text-align: center;
-        }
-      }
+  h2 a, h3 a, h2 {
+    font-weight: normal;
+    padding: 0px;
+  }
+  h2, h2 a {
+    font-size: 1.8rem;
+    margin-top: 2em;
+  }
+  h3, h3 a {
+    font-size: 1.5rem;
+    padding-top: 5px;
+  }
+  li {
+    border-bottom:  #dadada solid 1px;
+  }
+  .clear {
+    clear: both;
+  }
+  .instance {
+    position: relative;
+    margin-left: 10px;
+    padding-top: 10px;
+    &:not(:first-child):not(:last-child) {
+      border-bottom:  #dadada solid 1px;
     }
+    .instance-info {
+      float: left;
+    }
+  }
+  .sign-up {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    .sign-up-button {
+      @include study-list-submit;
+      text-decoration: none;
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+  }
+  .lead-text {
+    font-weight: bold;
+    margin: 0px;
+  }
+  .course-info {
+    margin: 0px;
+  }
+  .semester {
+    font-size: 1.4rem;
   }
 }
 

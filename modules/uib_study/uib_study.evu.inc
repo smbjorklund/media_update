@@ -61,7 +61,7 @@ function uib_study__evu_courses_page_list() {
     $main['no_results'] = array(
       '#type' => 'container',
       '#attributes' => array( ),
-      'header' => uib_study__html_tag('p', t('No EVU courses found')),
+      'header' => uib_study__evu_html_tag('p', t('No EVU courses found')),
     );
     return $main;
   }
@@ -87,12 +87,7 @@ function uib_study__evu_courses_page_list() {
 
   $listed = array();
 
-  $main['count'] = array(
-    '#type' => 'container',
-    '#attributes' => array('class'=>'clear'),
-    'num_offered' => uib_study__html_tag('p',''),
-  );
-
+  $main['count'] = uib_study__evu_div_clear();
   // List all evu_study_offer and their evu courses
   if ($results) {
     $offers = node_load_multiple(array_keys($results['node']));
@@ -114,11 +109,15 @@ function uib_study__evu_courses_page_list() {
       '#attributes' => array(
         'class' => "uib-study-evu-offer",
       ),
-      'header' => uib_study__html_tag('h2', t('Other EVU courses')),
+      'header' => uib_study__evu_html_tag('h2', t('Other EVU courses')),
+      'list' => array(
+        '#items' => array(),
+        '#theme' => 'item_list',
+      ),
     );
     foreach ($evus as $nid => $evu) {
       if (!array_search($nid, $listed))  {
-        $div[$nid] = uib_study__evu_course($evus[$nid]);
+        $div['list']['#items'][] = drupal_render(uib_study__evu_course($evus[$nid]));
       }
     }
     $main['orfans'] = $div;
@@ -132,7 +131,7 @@ function uib_study__evu_courses_page_list() {
 
 function uib_study__evu_courses_list($offer, $course_ids, $evus) {
   global $semester;
-  $div = array();
+  $output = array();
   $offer_added = FALSE;
 
   foreach ($course_ids as $course_id) {
@@ -143,22 +142,27 @@ function uib_study__evu_courses_list($offer, $course_ids, $evus) {
         // Prevents empty offers from being listed
         if (!$offer_added){
           $offer_added = TRUE;
-          $div = array(
+          $output = array(
             '#type' => 'container',
             '#attributes' => array(
               'class' => "uib-study-evu-offer",
             ),
-            'header' => uib_study__html_tag('h2', l($offer->title, 'node/' . $offer->nid)),
+            'header' => uib_study__evu_html_tag('h2', l($offer->title, 'node/' . $offer->nid)),
+            'lead_text'=> array(),
+            'list' => array(
+              '#items' => array(),
+              '#theme' => 'item_list',
+            )
           );
           if (isset($offer->field_uib_lead['und'])) {
-            $div['lead_text'] = uib_study__html_tag('p', $offer->field_uib_lead['und'][0]['safe_value']);
+            $output['lead_text'] = uib_study__evu_html_tag('p', $offer->field_uib_lead['und'][0]['safe_value'], 'lead-text');
           }
         }
-        $div[$course_id] = $div_course;
+        $output['list']['#items'][] = drupal_render($div_course);
       }
     }
   }
-  return $div;
+  return $output;
 }
 
 function uib_study__evu_date($iso, $year=0) {
@@ -199,7 +203,8 @@ function uib_study__evu_courses_block($node) {
 /**
  * Parses the information of a course node into a render array
  *
- * @param object $course The course node with a field "data" containing the fs_press information
+ * @param object $course The course node with a field "data" containing the
+ * fs_press information
  *
  * @return array Return a drupal render array with the course information
  */
@@ -214,11 +219,11 @@ function uib_study__evu_course($course) {
       '#attributes' => array(
       'class' => "course",
     ),
-    'header' => uib_study__html_tag('h3',
+    'header' => uib_study__evu_html_tag('h3',
       l($data['emneid']['emnekode'].' / ' . $title , 'node/' . $course->nid)
     ),
-    'study_points' => uib_study__html_tag('p',
-      t('Study points: @study_points', array('@study_points' => $data['studiepoeng']))
+    'study_points' => uib_study__evu_html_tag('p',
+      t('Study points: @study_points', array('@study_points' => $data['studiepoeng'])), 'course-info'
     ),
   );
   $has_instances = FALSE;
@@ -249,7 +254,7 @@ function uib_study__evu_course($course) {
         '#attributes' => array(
           'class' => "no_instances",
         ),
-        'no_instances' => uib_study__html_tag('p', t('There are currently no scheduled courses of this subject')),
+        'no_instances' => uib_study__evu_html_tag('p', t('There are currently no scheduled courses of this subject')),
       );
     }
   }
@@ -278,7 +283,7 @@ function uib_study__evu_instance($instance) {
 
   $tdiv = array(
     '#type' => 'container',
-    '#attributes' => array('class' => 'text'),
+    '#attributes' => array('class' => 'instance-info'),
   );
 
   // Semester
@@ -286,15 +291,15 @@ function uib_study__evu_instance($instance) {
   $timecode = $instance['kursid']['tidkode'];
   $sem = (substr($timecode, 0, 1) == 'H' ? t('Autumn') : t('Spring'));
   $year = substr($timecode, 2);
-  $tdiv['tidkode'] = array('#markup' => '<span class="title">' . $sem . ' ' . check_plain($year) . "</span>");
+  $tdiv['tidkode'] = uib_study__evu_html_tag('span', $sem . ' ' . check_plain($year), 'semester');
 
   // Course date
   if (isset($instance['dato_fra'])) {
-    $tdiv['dates'] = array('#markup' => '<br />' .
-      t('Course date: @start_date - @end_date', array (
-        '@start_date'=> uib_study__evu_date($instance['dato_fra']),
-        '@end_date' => uib_study__evu_date($instance['dato_til']),
-      ))
+    $tdiv['dates'] = array(
+      'br' => array('#markup' => '<br />'),
+      'title' => uib_study__evu_html_tag('span', t('Course date') . ': ', 'title'),
+      'text'=>uib_study__evu_html_tag('span', uib_study__evu_date($instance['dato_fra']) .' - '.
+        uib_study__evu_date($instance['dato_til'])),
     );
   }
 
@@ -308,7 +313,11 @@ function uib_study__evu_instance($instance) {
       $fee = t('NOK ' . $instance['kostnad']);
    }
   }
-  $tdiv['fee'] = array('#markup' => '<br />' . t('Price: @fee', array('@fee' => $fee)));
+  $tdiv['fee'] = array(
+    'br' =>array('#markup' => '<br />'),
+    'title' => uib_study__evu_html_tag('span', t('Price') . ': ', 'title'),
+    'text' => uib_study__evu_html_tag('span', $fee)
+  );
 
   // Deadline && sing up button
   $expires = t('Expired');
@@ -329,22 +338,37 @@ function uib_study__evu_instance($instance) {
       }
     }
   }
-  $tdiv['deadline'] = array('#markup' => '<br />' . t('Application deadline: @deadline', array('@deadline' => $expires)));
+  $tdiv['deadline'] = array(
+    'br' =>array('#markup' => '<br />'),
+    'title' => uib_study__evu_html_tag('span', t('Application deadline') . ': ', 'title'),
+    'text' => uib_study__evu_html_tag('span', $expires)
+  );
 
   // Putting the pieces together
   $idiv['text'] = $tdiv;
   if (isset($sdiv))
     $idiv['sing-up'] = $sdiv;
-  $idiv['clear'] = array('#markup' => '<div style="clear: both;"></div>');
+  $idiv['clear'] = uib_study__evu_div_clear();
   $div[$timecode] = $idiv;
 
   return $div;
 }
 
-function uib_study__html_tag ($type, $value) {
-  return array(
+function uib_study__evu_html_tag ($type, $value, $classes = '') {
+  $output = array(
     '#type' => 'html_tag',
     '#tag' => $type,
     '#value' => $value,
+  );
+  if($classes != '')
+    $output['#attributes'] = array('class' => $classes);
+  return $output;
+}
+
+function uib_study__evu_div_clear() {
+return array(
+    '#type' => 'container',
+    '#attributes' => array('class'=>'clear'),
+    'num_offered' => uib_study__evu_html_tag('p',''),
   );
 }
