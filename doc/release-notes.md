@@ -1,3 +1,7 @@
+# Release 11.1 _2014-09-23_
+
+Fikser opp regresjon med hensyn til hvordan linkene til sosiale medier vises #7783
+
 # Release 11 _2014-09-22_
 
 Vi fortsetter arbeidet med EVU og personsidene, i tillegg til noen generelle fikser på sidene.
