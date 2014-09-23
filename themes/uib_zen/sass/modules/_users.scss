@@ -109,6 +109,12 @@ $zen-column-count: 5;
     border: dotted 1px silver;
     margin-bottom: 20px;
     padding: 10px;
+    ul {
+      margin: 0px;
+    }
+    li {
+      margin-bottom: 7px;
+    }
   }
 }
 
