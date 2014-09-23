@@ -273,6 +273,11 @@ $zen-column-count: 5;
   margin-top: 10px;
   border-top: dashed 1px #dedfdd;
 }
+.logged-in {
+  .uib-user-vcard {
+    width: 100%;
+  }
+}
 
 
 @media all and (max-width: 500px) {
