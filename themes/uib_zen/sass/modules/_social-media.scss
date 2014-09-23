@@ -19,6 +19,9 @@ $social-media: (
 
 .uib-social-media {
   @include zen-clear();
+  .field-label {
+    padding-top: 0.6em;
+  }
   .field-item {
     display: inline-block;
     text-transform: capitalize;
