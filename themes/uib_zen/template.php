@@ -1131,7 +1131,11 @@ function uib_zen_views_post_render(&$view, &$output, &$cache) {
       $output = str_replace('>' . $view->result[$key]->link . '<', '>'. drupal_ucfirst($event_type) . '<', $output);
     }
   }
-  if ($view->name == 'courses' && $view->current_display == 'study_programmes_all_page' && $current_lang == 'nb') {
+  $view_current_display = array(
+    'study_programmes_all_page',
+    'study_courses_all_page',
+  );
+  if ($view->name == 'courses' && in_array($view->current_display, $view_current_display) && $current_lang == 'nb') {
     foreach ($view->filter['field_uib_study_category_value']->value_options as $key => $value) {
       $study_category = i18n_string_translate(
         'field:field_uib_study_category:#allowed_values:' . $key,
