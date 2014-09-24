@@ -116,6 +116,13 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
         $form['account'][$item]['#access'] = FALSE;
       }
     }
+
+    $hidden_fields = array(
+      'field_uib_phone',
+      );
+    foreach ($hidden_fields as $item) {
+      $form[$item]['#access'] = FALSE;
+    }
   }
 }
 
