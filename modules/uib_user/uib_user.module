@@ -247,6 +247,25 @@ function uib_user_block_view($delta='') {
 }
 
 /**
+ * Implements hook_preprocess_page()
+ */
+function uib_user_preprocess_page(&$vars) {
+  $unwanted_tabs_level_2_and_3 = array('user/%/scheduler');
+  global $user;
+  if (!in_array('level 1', $user->roles)) {
+    foreach ($vars['tabs'] as $tabs_key => $tabs) {
+      if (is_array($tabs)) {
+        foreach ($tabs as $tab_key => $tab) {
+          if (isset($tab['#link']['path']) && in_array($tab['#link']['path'], $unwanted_tabs_level_2_and_3)) {
+            unset($vars['tabs'][$tabs_key][$tab_key]);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_user_view_alter().
  */
 function uib_user_user_view_alter(&$build) {
