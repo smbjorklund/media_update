@@ -277,17 +277,6 @@ function uib_zen_preprocess_page(&$variables, $hook) {
       && count($page_menu_item['original_map']) > 1
       && is_numeric($page_menu_item['original_map'][1])) {
 
-      // Setup temporary message on user page and user edit form
-      $login_link = l(t('edit the contents of your user profile'), 'https://uib.no/login');
-      $temp_message = t('We are working on the new profile pages, but they are not yet complete.');
-      if ($user->uid == $page_menu_item['original_map'][1]) {
-        $temp_message .= ' ' . t('You still need to go to uib.no/login to ') . $login_link . '.';
-      }
-      if (isset($page_menu_item['map'][2]) && $page_menu_item['map'][2] == 'edit') {
-        $temp_message = t('Please do not edit this page.') . ' ' . $temp_message;
-      }
-      drupal_set_message($temp_message, 'warning');
-
       // Target only the user profile page
       if (count($page_menu_item['original_map'] == 2)) {
         $variables['uib_hide_title'] = TRUE;
