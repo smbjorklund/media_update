@@ -390,7 +390,7 @@ function uib_user_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'A visiting address other than the address of your institution. This will override the institution address on your profile.',
+    'description' => 'This will override the institution address on your profile.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -436,7 +436,7 @@ function uib_user_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'If you want a first name displayed on your user page - different from your name in SEBRA, put it here. This will override the first name(s) from SEBRA.',
+    'description' => 'This will override the first name(s) from PAGA',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -502,7 +502,7 @@ function uib_user_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'If you want a last name displayed on your user page - different from your name in SEBRA, put it here. This will override the last name(s) from SEBRA.',
+    'description' => 'This will override the last name(s) from PAGA',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -568,7 +568,7 @@ function uib_user_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add a more specific title (position) here, if you consider the one from SEBRA to be too general.',
+    'description' => 'Add a more specific title (position) here.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1232,7 +1232,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Title for the optional tab',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1426,7 +1426,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Publications additional to what will be merged from CRIStin. These will appear after CRIStin publications unless you change the CRIStin settings below.',
+    'description' => 'Manual publications list. It will show in addition to what is imported from CRIStin.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1801,8 +1801,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('A visiting address other than the address of your institution. This will override the institution address on your profile.');
-  t('Add a more specific title (position) here, if you consider the one from SEBRA to be too general.');
+  t('Add a more specific title (position) here.');
   t('Add ids for the social media links that are desired.  Use strings like twitter:uib, youtube:unibergen, facebook:universitetetibergen, vimeo:uib and flickr:unibergen. Replace "uib" with the desired account. ');
   t('CV');
   t('Choose how CRIStin publications displayed in the "Publications" tab are sorted. "Category" will sort per year (descending) within each CRIStin main category. "Year" will sort publications strictly after year (descending).');
@@ -1814,10 +1813,9 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('First name override');
   t('Follow me');
   t('ID w2');
-  t('If you want a first name displayed on your user page - different from your name in SEBRA, put it here. This will override the first name(s) from SEBRA.');
-  t('If you want a last name displayed on your user page - different from your name in SEBRA, put it here. This will override the last name(s) from SEBRA.');
   t('Last name');
   t('Last name override');
+  t('Manual publications list. It will show in addition to what is imported from CRIStin.');
   t('Number of publications');
   t('Optional tab content');
   t('Organisational unit');
@@ -1827,7 +1825,6 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Position code');
   t('Position detail');
   t('Publications');
-  t('Publications additional to what will be merged from CRIStin. These will appear after CRIStin publications unless you change the CRIStin settings below.');
   t('Publications placement');
   t('RSS feed');
   t('Relevant documents');
@@ -1841,8 +1838,10 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
 
 The domain \'local\' is for local users.  The domain \'uib\' is for used for usernames allocated by Sebra. ');
   t('The maximum number of publications from CRIStin you want to display in the publications tab.');
+  t('This will override the first name(s) from PAGA');
+  t('This will override the institution address on your profile.');
+  t('This will override the last name(s) from PAGA');
   t('Title for optional tab');
-  t('Title for the optional tab');
   t('Upload a Curriculum Vitae document to be available for download from your user profile.');
   t('Url');
   t('User Domain');
