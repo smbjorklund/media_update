@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Creates a page wtih a form and a list of evu courses
+ */
 function uib_study__evu_courses_page(){
   $page = array(
     'form' => drupal_get_form('uib_study__evu_courses_page_form'),
@@ -8,6 +11,9 @@ function uib_study__evu_courses_page(){
   return $page;
 }
 
+/**
+ * Creates the form to filter evu courses
+ */
 function uib_study__evu_courses_page_form($form, &$form_state){
   $form['semesters'] = array(
     '#type' => 'checkboxes',
@@ -21,6 +27,9 @@ function uib_study__evu_courses_page_form($form, &$form_state){
   return $form;
 }
 
+/**
+ * Processes the submitted form, updates the $semester global variable
+ */
 function uib_study__evu_courses_page_form_submit ($form, &$form_state){
   $form_semesters = $form_state['values']['semesters'];
   $form_state['storage']['semesters'] = $form_semesters;
@@ -42,7 +51,7 @@ function uib_study__evu_courses_page_form_submit ($form, &$form_state){
 }
 
 /**
- * Creates a page with a list of evu coursed
+ * Returns a display array with a list of evu courses
  */
 function uib_study__evu_courses_page_list() {
   global $language;
@@ -132,6 +141,17 @@ function uib_study__evu_courses_page_list() {
   return $main;
 }
 
+/**
+ * Given an offers its data and that of its courses.
+ *
+ * @param object $offer The offer to list.
+ *
+ * @param array $course-ids List of the id of all related courses.
+ *
+ * @param array $evus List of all evu courses with FS data.
+ *
+ * @return array Return a drupal render array with the offer data.
+ */
 function uib_study__evu_courses_list($offer, $course_ids, $evus) {
   global $semester;
   $output = array();
@@ -264,6 +284,15 @@ function uib_study__evu_course($course) {
   return $course_div;
 }
 
+/**
+ * Check wether the course instance starts in semester(s).
+ *
+ * @param array $instance Instance of EVU course.
+ *
+ * @param string $semester The value of the semester(s) to list.
+ *
+ * @return boolean True if the instance starts in the semester.
+ */
 function uib_study__evu_instance_on_semester($instance, $semester) {
   $ins_semester = substr($instance['kursid']['tidkode'], 0, 1);
   return ($semester == 'HV'? TRUE: $ins_semester == $semester);
@@ -357,10 +386,21 @@ function uib_study__evu_instance($instance) {
   return $div;
 }
 
+/**
+ * Creates a render array of html_tag type.
+ *
+ * @param string $tag Name of the tag to render.
+ *
+ * @param string $value Value of the html_tag.
+ *
+ * @param string $class Style class of the html_tag.
+ *
+ * @return array Render array of html_tag type.
+ */
 function uib_study__evu_html_tag ($type, $value, $classes = '') {
   $output = array(
     '#type' => 'html_tag',
-    '#tag' => $type,
+    '#tag' => $tag,
     '#value' => $value,
   );
   if($classes != '')
