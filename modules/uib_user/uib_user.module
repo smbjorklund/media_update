@@ -418,6 +418,16 @@ function uib_user_user_view_alter(&$build) {
         url('persons', array('absolute' => TRUE, 'query' =>  array('field_uib_user_competence_tid' => $tid)));
     }
   }
+
+  if (!empty($build['field_uib_user_cv'])) {
+    $cv_file_url = file_create_url($build['field_uib_user_cv'][0]['#file']->uri);
+    $cv_text = t('Show CV');
+    $build['field_uib_user_cv'] = array(
+      '#weight' => 5,
+      '#markup' => l($cv_text, $cv_file_url),
+    );
+  }
+
   // Do not show user history
   hide($build['summary']);
 }
