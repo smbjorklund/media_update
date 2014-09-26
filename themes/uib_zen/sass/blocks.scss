@@ -184,6 +184,56 @@
   color: #333;
 }
 
+#block-uib-study-study-evu{
+  h2 {
+    font-weight: normal;
+    border-bottom: solid 1px black;
+    margin-bottom: 0px;
+  }
+  .semester{
+    font-size: 1.22em;
+  }
+  .sign-up {
+    float: right;
+    padding-top: 10px;
+  }
+  .sign-up-button {
+    @include study-list-submit;
+    padding: 10px 20px;
+  }
+  .instance{
+    border-bottom: solid 1px black;
+    float: left;
+    width: 100%;
+    margin-top:10px;
+  }
+  .instance-info {
+    float: left;
+  }
+  .break {
+    display: block;
+  }
+  .clear{
+    clear:both;
+  }
+  @media all and (min-width: 720px) and (max-width: 870px)  {
+    .sign-up, .instance-info{
+      float: none;
+    }
+    .sign-up{
+      padding:10px 0px;
+    }
+  }
+  @media all and (max-width: 350px)  {
+    .sign-up, .instance-info{
+      float: none;
+    }
+    .sign-up{
+      padding:10px 0px;
+    }
+  }
+}
+
 .field-name-field-uib-study-category {
   display: none;
 }

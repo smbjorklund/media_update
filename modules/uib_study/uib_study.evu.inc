@@ -208,15 +208,16 @@ function uib_study__evu_courses_block($node) {
 
   if (sizeof($data['evu']['kurs']) > 0) {
     foreach ($data['evu']['kurs'] as $key => $value) {
-      $result = uib_study__evu_instance($value);
+      $result[] = uib_study__evu_instance($value);
     }
+    $result[] = uib_study__evu_div_clear();
   }
   else {
-    $result = t('Sorry! There are no evu-courses available at this moment');
+    $result[] = uib_study__evu_html_tag('span', t('Sorry! There are no evu-courses available at this moment'));
   }
 
   $block = array(
-    'title' => 'EVU',
+    'title' => 'Available courses',
     'content' => $result,
   );
 
@@ -299,6 +300,55 @@ function uib_study__evu_instance_on_semester($instance, $semester) {
 }
 
 /**
+ * Given an instance of a course it returns its listable data in an array.
+ *
+ * @param array $instance
+ *   Instance of EVU kurs to be parsed.
+ *
+ * @return array
+ *   A keyed array with the data of the instance to list.
+ */
+function uib_study__evu_instance_data($instance) {
+  $data = array();
+
+  // Semester
+  $today = date("c");
+  $timecode = $instance['kursid']['tidkode'];
+  $sem = (substr($timecode, 0, 1) == 'H' ? t('Autumn') : t('Spring'));
+  $year = substr($timecode, 2);
+  $data['semester'] = $sem . ' ' . check_plain($year);
+
+  // Course date
+  if (isset($instance['dato_fra'])) {
+      $data['course_date'] = uib_study__evu_date($instance['dato_fra']) .' - '. uib_study__evu_date($instance['dato_til']);
+  }
+
+  // Price
+  $data['price'] = t('Not set');
+  if (isset($instance['kostnad'])) {
+    if ($instance['kostnad'] === 0) {
+      $data['price'] = t('Free');
+   }
+   elseif ($instance['kostnad'] > 0) {
+      $data['price'] = t('NOK ' . $instance['kostnad']);
+   }
+  }
+
+  // Deadline && sing up
+  $data['expires'] = t('Expired');
+  if (isset($instance['dato_frist_soknad'])) {
+    if ($instance['dato_frist_soknad'] >= $today) {
+      $data['expires'] = uib_study__evu_date($instance['dato_frist_soknad']);
+      if (!empty($instance['url_evuweb'])) {
+        $data['sign_up'] = $instance['url_evuweb'];
+      }
+    }
+  }
+
+  return $data;
+}
+
+/**
  * Parses EVU cource instance.
  *
  * @param array $instance
@@ -308,82 +358,58 @@ function uib_study__evu_instance_on_semester($instance, $semester) {
  *   An render array with key EVU data.
  */
 function uib_study__evu_instance($instance) {
-  $idiv = array(
+  $data = uib_study__evu_instance_data($instance);
+
+  $div = array(
     '#type' => 'container',
     '#attributes' => array('class' => 'instance'),
+    'text' => array(
+      '#type' => 'container',
+      '#attributes' => array('class' => 'instance-info'),
+      'tidkode' => uib_study__evu_html_tag('span', $data['semester'], 'semester'),
+    ),
   );
-
-  $tdiv = array(
-    '#type' => 'container',
-    '#attributes' => array('class' => 'instance-info'),
-  );
-
-  // Semester
-  $today = date("c");
-  $timecode = $instance['kursid']['tidkode'];
-  $sem = (substr($timecode, 0, 1) == 'H' ? t('Autumn') : t('Spring'));
-  $year = substr($timecode, 2);
-  $tdiv['tidkode'] = uib_study__evu_html_tag('span', $sem . ' ' . check_plain($year), 'semester');
 
   // Course date
-  if (isset($instance['dato_fra'])) {
-    $tdiv['dates'] = array(
+  if (isset($data['course_date'])) {
+    $div['text']['dates'] = array(
       'br' => array('#markup' => '<br />'),
-      'title' => uib_study__evu_html_tag('span', t('Course date') . ': ', 'title'),
-      'text'=>uib_study__evu_html_tag('span', uib_study__evu_date($instance['dato_fra']) .' - '.
-        uib_study__evu_date($instance['dato_til'])),
+      'title' => uib_study__evu_html_tag('span', t('Course date') . ': ', 'title break'),
+      'text'=>uib_study__evu_html_tag('span', $data['course_date']),
     );
   }
 
   // Price
-  $fee = t('Not set');
-  if (isset($instance['kostnad'])) {
-    if ($instance['kostnad'] === 0) {
-      $fee = t('Free');
-   }
-   elseif ($instance['kostnad'] > 0) {
-      $fee = t('NOK ' . $instance['kostnad']);
-   }
-  }
-  $tdiv['fee'] = array(
+  $div['text']['fee'] = array(
     'br' =>array('#markup' => '<br />'),
     'title' => uib_study__evu_html_tag('span', t('Price') . ': ', 'title'),
-    'text' => uib_study__evu_html_tag('span', $fee)
+    'text' => uib_study__evu_html_tag('span', $data['price']),
   );
 
-  // Deadline && sing up button
-  $expires = t('Expired');
-  if (isset($instance['dato_frist_soknad'])) {
-    if ($instance['dato_frist_soknad'] >= $today) {
-      $expires = uib_study__evu_date($instance['dato_frist_soknad']);
-      if (!empty($instance['url_evuweb'])) {
-        $sdiv = array(
-          '#type' => 'container',
-          '#attributes' => array('class'=> 'sign-up'),
-          'button' => array(
-            '#type' => 'link',
-            '#attributes' => array('class'=> 'sign-up-button'),
-            '#href' => $instance['url_evuweb'],
-            '#title' => t('Sign up'),
-          ),
-        );
-      }
-    }
-  }
-  $tdiv['deadline'] = array(
+  // Deadline
+  $div['text']['deadline'] = array(
     'br' =>array('#markup' => '<br />'),
     'title' => uib_study__evu_html_tag('span', t('Application deadline') . ': ', 'title'),
-    'text' => uib_study__evu_html_tag('span', $expires)
+    'text' => uib_study__evu_html_tag('span', $data['expires']),
   );
 
-  // Putting the pieces together
-  $idiv['text'] = $tdiv;
-  if (isset($sdiv))
-    $idiv['sing-up'] = $sdiv;
-  $idiv['clear'] = uib_study__evu_div_clear();
-  $div[$timecode] = $idiv;
+  // Sign up button
+  if (isset($data['sign_up'])) {
+    $div['sing-up'] = array(
+      '#type' => 'container',
+      '#attributes' => array('class'=> 'sign-up'),
+      'button' => array(
+        '#type' => 'link',
+        '#attributes' => array('class'=> 'sign-up-button'),
+        '#href' => $instance['url_evuweb'],
+        '#title' => t('Sign up'),
+      ),
+    );
+  }
 
-  return $div;
+  $div['clear'] = uib_study__evu_div_clear();
+  $output[$data['semester']] = $div;
+  return $output;
 }
 
 /**
