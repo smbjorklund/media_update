@@ -35,14 +35,14 @@
       display: inline-block;
       background: #FAEEED;
       padding: 5px 10px;
-      margin-right: 5px;
+      margin: 0 -4px 10px 10px;
       @include border-radius(5px, 5px);
       &:nth-child(n+2) {
         padding-right: 0.5em;
       }
-    }
-    ul .last {
-      margin-right: 9px;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
   .view-content h3, 
