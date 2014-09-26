@@ -516,11 +516,18 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
       $edit['status'] = 1;
       uibx_log("$account->name unblocked");
     }
-    if ($account->field_uib_first_name['und'][0]['value'] != $u->first_name)
-      $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
-    if ($account->field_uib_last_name['und'][0]['value'] != $u->last_name) {
-      $edit['field_uib_last_name']['und'][0]['value'] = $u->last_name;
-      $edit['field_uib_sort_name']['und'][0]['value'] = _uib_sebra__sort_name($u->last_name);
+    if ($account->field_uib_user_alt_firstname['und'][0]['value'] != $u->first_name) {
+      if ($account->field_uib_first_name['und'][0]['value'] == $account->field_uib_user_alt_firstname['und'][0]['value']) {
+        $edit['field_uib_first_name']['und'][0]['value'] = $u->first_name;
+      }
+      $edit['field_uib_user_alt_firstname']['und'][0]['value'] = $u->first_name;
+    }
+    if ($account->field_uib_user_alt_lastname['und'][0]['value'] != $u->last_name) {
+      if ($account->field_uib_last_name['und'][0]['value'] == $account->field_uib_user_alt_lastname['und'][0]['value']) {
+        $edit['field_uib_last_name']['und'][0]['value'] = $u->last_name;
+      }
+      $edit['field_uib_user_alt_lastname']['und'][0]['value'] = $u->last_name;
+      $edit['field_uib_sort_name']['und'][0]['value'] = uibx_sort_name($u->last_name);
     }
     if ($account->field_uib_position['nb'][0]['value'] != $u->position_name_no)
       $edit['field_uib_position']['nb'][0]['value'] = $u->position_name_no;
@@ -581,7 +588,9 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
     $account->field_uib_user_domain['und'][0]['value'] = 'uib';
     $account->field_uib_first_name['und'][0]['value'] = $u->first_name;
     $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
-    $account->field_uib_sort_name['und'][0]['value'] = _uib_sebra__sort_name($u->last_name);
+    $account->field_uib_user_alt_firstname['und'][0]['value'] = $u->first_name;
+    $account->field_uib_user_alt_lastname['und'][0]['value'] = $u->last_name;
+    $account->field_uib_sort_name['und'][0]['value'] = uibx_sort_name($u->last_name);
     $account->field_uib_position['nb'][0]['value'] = $u->position_name_no;
     $account->field_uib_position['en'][0]['value'] = $u->position_name_en;
     $account->field_uib_position_code['und'][0]['value'] = $u->position_code;
@@ -666,11 +675,4 @@ function uib_sebra__area_diff($list = TRUE) {
       echo $unconf_title, ' [sebra id: ', $si, ', entity id: ', $ei, ']', PHP_EOL;
     }
   }
-}
-
-function _uib_sebra__sort_name($last_name) {
-  if (substr($last_name, 0, 2) == 'Aa') {
-    $last_name = substr_replace($last_name, 'Å', 0, 2);
-  }
-  return $last_name;
 }

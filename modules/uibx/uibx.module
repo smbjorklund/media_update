@@ -198,6 +198,16 @@ function uibx_path_load($source, $language = NULL) {
 }
 
 /**
+ * Creates a sort name from a user's last name
+ */
+function uibx_sort_name($last_name) {
+  if (substr($last_name, 0, 2) == 'Aa') {
+    $last_name = substr_replace($last_name, 'Å', 0, 2);
+  }
+  return $last_name;
+}
+
+/**
  * Return the version for the site software.
  * Will return '' on failure to obtain a release number.
  */

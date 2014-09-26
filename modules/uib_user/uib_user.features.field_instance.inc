@@ -15,7 +15,7 @@ function uib_user_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'You may edit this to override the first name(s) from PAGA.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -39,6 +39,32 @@ function uib_user_field_default_field_instances() {
     'label' => 'First name',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+          'restricted_html' => 'restricted_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -7,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+            'restricted_html' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => 0,
@@ -59,7 +85,7 @@ function uib_user_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'You may edit this to override the last name(s) from PAGA.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -83,6 +109,32 @@ function uib_user_field_default_field_instances() {
     'label' => 'Last name',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+          'restricted_html' => 'restricted_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -7,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+            'restricted_html' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => 0,
@@ -436,7 +488,7 @@ function uib_user_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This will override the first name(s) from PAGA',
+    'description' => 'The first name(s) from PAGA',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -453,7 +505,7 @@ function uib_user_field_default_field_instances() {
     ),
     'entity_type' => 'user',
     'field_name' => 'field_uib_user_alt_firstname',
-    'label' => 'First name override',
+    'label' => 'Synchronised first name',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -502,7 +554,7 @@ function uib_user_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This will override the last name(s) from PAGA',
+    'description' => 'The last name(s) from PAGA',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -519,7 +571,7 @@ function uib_user_field_default_field_instances() {
     ),
     'entity_type' => 'user',
     'field_name' => 'field_uib_user_alt_lastname',
-    'label' => 'Last name override',
+    'label' => 'Synchronised last name',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1810,11 +1862,9 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Current projects');
   t('Fields of competence');
   t('First name');
-  t('First name override');
   t('Follow me');
   t('ID w2');
   t('Last name');
-  t('Last name override');
   t('Manual publications list. It will show in addition to what is imported from CRIStin.');
   t('Number of publications');
   t('Optional tab content');
@@ -1833,19 +1883,23 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Slug');
   t('Sort name');
   t('Sort order');
+  t('Synchronised first name');
+  t('Synchronised last name');
   t('Teaching');
   t('The domain this username is allocated from.  Currently we just assume that the domains we operate with do not overlap.
 
 The domain \'local\' is for local users.  The domain \'uib\' is for used for usernames allocated by Sebra. ');
+  t('The first name(s) from PAGA');
+  t('The last name(s) from PAGA');
   t('The maximum number of publications from CRIStin you want to display in the publications tab.');
-  t('This will override the first name(s) from PAGA');
   t('This will override the institution address on your profile.');
-  t('This will override the last name(s) from PAGA');
   t('Title for optional tab');
   t('Upload a Curriculum Vitae document to be available for download from your user profile.');
   t('Url');
   t('User Domain');
   t('Visiting address override');
+  t('You may edit this to override the first name(s) from PAGA.');
+  t('You may edit this to override the last name(s) from PAGA.');
   t('Your homepage link. If you leave the title empty, "Home page" will be displayed as title automatically.');
   t('Your room number');
 

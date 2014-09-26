@@ -65,6 +65,15 @@ function theme_views_view_field__user_block__edit_node($view) {
 }
 
 /**
+ * Implements hook_user_presave().
+ */
+function uib_user_user_presave(&$edit, $account, $category) {
+  if (isset($edit['field_uib_last_name'])) {
+    $edit['field_uib_sort_name']['und'][0]['value'] = uibx_sort_name($edit['field_uib_last_name']['und'][0]['value']);
+  }
+}
+
+/**
  * Implements hook_form_alter().
  *
  */
@@ -93,8 +102,8 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
       $form['account'][$item]['#disabled'] = TRUE;
     }
     $synchronized_fields = array(
-      'field_uib_first_name',
-      'field_uib_last_name',
+      'field_uib_user_alt_firstname',
+      'field_uib_user_alt_lastname',
       'field_uib_sort_name',
       'field_uib_phone',
       'field_uib_position',
@@ -311,19 +320,6 @@ function uib_user_user_view_alter(&$build) {
   $build['#group_children']['selected_publications'] = 'group_user_first';
 
   // Manage field overrides
-  $safe_value = array('sanitize' => TRUE);
-  if ($profile_user->__isset('field_uib_user_alt_firstname')) {
-    $alt_name = trim($profile_user->field_uib_user_alt_firstname->value($safe_value));
-    if (!empty($alt_name)) {
-      $build['field_uib_first_name'][0]['#markup'] = $alt_name;
-    }
-  }
-  if ($profile_user->__isset('field_uib_user_alt_lastname')) {
-    $alt_name =  trim($profile_user->field_uib_user_alt_lastname->value($safe_value));
-    if (!empty($alt_name)) {
-      $build['field_uib_last_name'][0]['#markup'] = $alt_name;
-    }
-  }
   global $language;
   if (isset($build['field_uib_user_ou'])) {
     $ou_nid = $build['field_uib_user_ou']['#items'][0]['target_id'];
