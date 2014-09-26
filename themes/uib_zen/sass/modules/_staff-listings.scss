@@ -28,8 +28,11 @@
     }
   }
   .user-competence {
+    ul {
+      text-align: right;
+    }
     li {
-      float: right;
+      display: inline-block;
       background: #FAEEED;
       padding: 5px 10px;
       margin-right: 5px;
@@ -37,6 +40,9 @@
       &:nth-child(n+2) {
         padding-right: 0.5em;
       }
+    }
+    ul .last {
+      margin-right: 9px;
     }
   }
   .view-content h3, 
