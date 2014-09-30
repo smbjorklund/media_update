@@ -332,8 +332,6 @@ function uib_user_user_view_alter(&$build) {
       foreach ($build['#account']->field_uib_user_alt_address[$language->language][0] as $item_name => $item) {
         if (isset($build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_visit_address'][0]['#address'][$item_name])) {
           $build['field_uib_user_ou'][0]['node'][$ou_nid]['field_uib_visit_address'][0]['#address'][$item_name] = $item;
-          dpm($build['field_uib_user_ou']);
-          unset($build['field_uib_user_ou'][0]['node'][$ou_nid]['#contextual_links']);
         }
       }
     }
