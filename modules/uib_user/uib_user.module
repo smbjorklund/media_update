@@ -12,7 +12,6 @@ include_once 'uib_user.features.inc';
  * The UiB user names are too ugly to show to regular people, so we want
  * users to be presented by their "<first name> <last name>".
  */
-
 function uib_user_username_alter(&$name, $account) {
   if (isset($account->uid)) {
     $user = user_load($account->uid);
@@ -32,7 +31,7 @@ function uib_user_username_alter(&$name, $account) {
  * Implements hook_user_login().
  */
 function uib_user_user_login(&$edit, $account) {
-  if ( (in_array('level 1', $account->roles, TRUE)) || ($account->uid == 1) || (in_array('level 2', $account->roles, TRUE)) || (in_array('level 3', $account->roles, TRUE)) ) {
+  if ((in_array('level 1', $account->roles, TRUE)) || ($account->uid == 1) || (in_array('level 2', $account->roles, TRUE)) || (in_array('level 3', $account->roles, TRUE))) {
     $edit['redirect'] = 'webdesk';
   }
   else {
@@ -42,7 +41,6 @@ function uib_user_user_login(&$edit, $account) {
 
 /**
  * Implements hook_theme().
- *
  */
 function uib_user_theme($existing, $type, $theme, $path) {
   return array(
@@ -74,16 +72,77 @@ function uib_user_user_presave(&$edit, $account, $category) {
 }
 
 /**
+ * Implements hook_menu_alter().
+ */
+function uib_user_menu_alter(&$items) {
+  $items['admin/people']['access callback'] = __uib_deny;
+  $items['admin/people/create']['access callback'] = __uib_deny;
+}
+
+/**
+ * UiB access callback.
+ */
+function __uib_deny() {
+  global $user;
+  if ($user->uid == 0) {
+    return FALSE;
+  }
+  if ($user->uid == 1) {
+    return TRUE;
+  }
+  else {
+    $roles_allowed = array(
+      'level 1',
+      'level 2',
+    );
+    foreach ($roles_allowed as $role) {
+      if (in_array($role, $user->roles)) {
+        if ($role == 'level 1') {
+          print 'Level 1 user allowed ';
+          return TRUE;
+        }
+        else {
+          print 'Level 2 user blocked ';
+          return FALSE;
+        }
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
  * Implements hook_form_alter().
- *
  */
 function uib_user_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'user_cancel_confirm_form') {
+    global $user;
+    if ($user->uid != 1 ) {
+      if ($form['uid']['#value'] != $user->uid) {
+        if (!in_array('level 1', $user->roles)) {
+          $form['actions']['submit']['#disabled'] = TRUE;
+        }
+      }
+    }
+  }
   if ($form_id == 'user_login') {
     array_unshift($form['#validate'], 'uib_user__username_lc');
   }
   if ($form['#form_id'] == 'user_profile_form') {
+    global $user;
     field_group_hide_field_groups($form, array('group_uib_hidden'));
     $profile_user = entity_metadata_wrapper('user', $form['#user']);
+
+    // No access to user cancel button editing other users as level x.
+    if ($user->uid != 1 ) {
+      if ($profile_user->uid->value() != $user->uid) {
+        if (!in_array('level 1', $user->roles)) {
+          $form['actions']['cancel']['#disabled'] = TRUE;
+        }
+      }
+    }
+
     if ($profile_user->field_uib_position_category->value() == 'faculty') {
       $form['field_uib_user_field'][$form['field_uib_user_field']['#language']][0]['#title'] = t('Research');
     }
@@ -91,12 +150,10 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
       $form['field_uib_user_field'][$form['field_uib_user_field']['#language']][0]['#title'] = t('Work');
     }
 
-    // Disable fields that are synchronized with SEBRA
+    // Disable fields that are synchronized with SEBRA.
     $synchronized_properties = array(
       'name',
       'mail',
-      // 'status', // These are synchronized but Level 1 wants to be able to edit them
-      // 'roles',
     );
     foreach ($synchronized_properties as $item) {
       $form['account'][$item]['#disabled'] = TRUE;
@@ -119,9 +176,11 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
       'pass',
       'current_pass',
     );
-    if (!in_array('level 1', $GLOBALS['user']->roles, TRUE)) {
-      foreach ($hidden_properties_level_2_and_3 as $item) {
-        $form['account'][$item]['#access'] = FALSE;
+    if (!$user->uid == 1) {
+      if (!in_array('level 1', $user->roles, TRUE)) {
+        foreach ($hidden_properties_level_2_and_3 as $item) {
+          $form['account'][$item]['#access'] = FALSE;
+        }
       }
     }
 
@@ -145,7 +204,6 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
 
 /**
  * Always lowercase username.
- *
  */
 function uib_user__username_lc($form, &$form_state) {
   if (!empty($form_state['values']['name'])) {
@@ -167,7 +225,6 @@ function uib_user_custom_theme() {
 
 /**
  * Implements hook_block_info().
- *
  */
 function uib_user_block_info() {
   return array(
@@ -176,8 +233,8 @@ function uib_user_block_info() {
       'status' => TRUE,
     ),
     'feed' => array(
-       'info' => t("User's RSS feed"),
-       'status' => TRUE,
+      'info' => t("User's RSS feed"),
+      'status' => TRUE,
     ),
     'twitter' => array(
       'info' => t("User's twitter timeline"),
@@ -189,15 +246,15 @@ function uib_user_block_info() {
 /**
  * Implements hook_block_view().
  */
-function uib_user_block_view($delta='') {
+function uib_user_block_view($delta = '') {
   global $language;
   $block = array();
   $uid = ((arg(0) == 'user' && is_numeric(arg(1))) ? arg(1) : FALSE);
   switch ($delta) {
     case 'research_groups':
       if ($uid) {
-        // Find research groups that this user belongs to
-        $query = new EntityFieldQuery;
+        // Find research groups that this user belongs to.
+        $query = new EntityFieldQuery();
         $result = $query
           ->entityCondition('entity_type', 'node')
           ->entityCondition('bundle', 'area')
@@ -745,7 +802,7 @@ function uib_user__teaser_markup($user = NULL) {
  * taxonomy terms in fields of competence ordered by name
  */
 function uib_user_query_term_access_alter(QueryAlterableInterface $query) {
-    $query->orderBy('name');
+  $query->orderBy('name');
 }
 
 /**
@@ -754,7 +811,6 @@ function uib_user_query_term_access_alter(QueryAlterableInterface $query) {
  * @param [string] Markup for the RSS feed
  *
  */
-
 function uib_user__feed_format_post_render($markup) {
   $markup = preg_replace('/<h3(.*?)>(.*?)<\/h3>/','<h2 class="block__title block-title">\2</h2>', $markup);
   return $markup;
