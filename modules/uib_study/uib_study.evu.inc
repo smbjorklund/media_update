@@ -129,7 +129,8 @@ function uib_study__evu_courses_page_list() {
     );
     foreach ($evus as $nid => $evu) {
       if (!array_search($nid, $listed))  {
-        $div['list']['#items'][] = drupal_render(uib_study__evu_course($evus[$nid]));
+        $course = uib_study__evu_course($evus[$nid]);
+        $div['list']['#items'][] = drupal_render($course);
       }
     }
     $main['orfans'] = $div;
@@ -423,7 +424,7 @@ function uib_study__evu_instance($instance) {
  *
  * @return array Render array of html_tag type.
  */
-function uib_study__evu_html_tag ($type, $value, $classes = '') {
+function uib_study__evu_html_tag ($tag, $value, $classes = '') {
   $output = array(
     '#type' => 'html_tag',
     '#tag' => $tag,
