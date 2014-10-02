@@ -217,7 +217,7 @@ function uib_study__evu_courses_block($node) {
   }
 
   $block = array(
-    'title' => 'Available courses',
+    'title' => t('Available courses'),
     'content' => $result,
   );
 
