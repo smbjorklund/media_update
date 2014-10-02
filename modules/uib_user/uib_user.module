@@ -658,9 +658,7 @@ function uib_user__teaser_markup($user = NULL) {
     $lang = $language->language;
     $user_wrapper = entity_metadata_wrapper('user', $user, array('langcode' => $lang));
     $markup['#markup'] = '<div class="uib-user-teaser">';
-    $first_name = $user_wrapper->field_uib_user_alt_firstname->value() ? $user_wrapper->field_uib_user_alt_firstname->value() : $user_wrapper->field_uib_first_name->value();
-    $last_name = $user_wrapper->field_uib_user_alt_lastname->value() ? $user_wrapper->field_uib_user_alt_lastname->value() : $user_wrapper->field_uib_last_name->value();
-    $full_name = $first_name . ' ' . $last_name;
+    $full_name = $user_wrapper->field_uib_first_name->value() . ' ' . $user_wrapper->field_uib_last_name->value();
     $user_url = 'user/' . $user_wrapper->getIdentifier();
     $position = $user_wrapper->language($lang)->field_uib_position->value();
     if ($user_wrapper->language($lang)->field_uib_user_alt_position->value()) {
