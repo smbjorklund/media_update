@@ -98,11 +98,9 @@ function __uib_deny() {
     foreach ($roles_allowed as $role) {
       if (in_array($role, $user->roles)) {
         if ($role == 'level 1') {
-          print 'Level 1 user allowed ';
           return TRUE;
         }
         else {
-          print 'Level 2 user blocked ';
           return FALSE;
         }
       }

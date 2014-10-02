@@ -303,12 +303,14 @@ function uib_zen_preprocess_page(&$variables, $hook) {
         }
       }
     }
-    if (($page_menu_item['map'][0] == 'emne' || $page_menu_item['map'][0] == 'course') && isset($page_menu_item['map'][2]) && $page_menu_item['map'][2] == 'description') {
-      $variables['uib_hide_title'] = TRUE;
-    }
-    if ($page_menu_item['map'][0] == 'studieprogram' || $page_menu_item['map'][0] == 'studyprogramme') {
-      if (isset($page_menu_item['map'][2]) && $page_menu_item['map'][2] == 'plan') {
+    if (isset($page_menu_item['map'])) {
+      if (($page_menu_item['map'][0] == 'emne' || $page_menu_item['map'][0] == 'course') && isset($page_menu_item['map'][2]) && $page_menu_item['map'][2] == 'description') {
         $variables['uib_hide_title'] = TRUE;
+      }
+      if ($page_menu_item['map'][0] == 'studieprogram' || $page_menu_item['map'][0] == 'studyprogramme') {
+        if (isset($page_menu_item['map'][2]) && $page_menu_item['map'][2] == 'plan') {
+          $variables['uib_hide_title'] = TRUE;
+        }
       }
     }
   }
