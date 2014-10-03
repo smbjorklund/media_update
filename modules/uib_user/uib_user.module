@@ -484,7 +484,8 @@ function uib_user_field_formatter_view($entity_type, $entity, $field, $instance,
           $elements[$delta]['#markup'] = $item['safe_value'];
         }
         elseif ($field['type'] == 'link_field' ) {
-          $elements[$delta]['#markup'] = l($item['title'], $item['url'], array('attributes' => $item['attributes']));
+          $link_title = (empty($item['title']) || $item['title'] == $item['url']) ? t('Home Page') : check_plain($item['title']);
+          $elements[$delta]['#markup'] = l($link_title, $item['url'], array('attributes' => $item['attributes']));
         }
         elseif ($field['type'] == 'taxonomy_term_reference') {
           // Taxonomy term reference link
