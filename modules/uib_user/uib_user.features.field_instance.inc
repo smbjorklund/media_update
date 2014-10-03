@@ -1779,7 +1779,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     ),
     'entity_type' => 'user',
     'field_name' => 'field_uib_user_url',
-    'label' => 'Url',
+    'label' => 'Home page',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
@@ -1863,6 +1863,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('Fields of competence');
   t('First name');
   t('Follow me');
+  t('Home page');
   t('ID w2');
   t('Last name');
   t('Manual publications list. It will show in addition to what is imported from CRIStin.');
@@ -1895,7 +1896,6 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
   t('This will override the institution address on your profile.');
   t('Title for optional tab');
   t('Upload a Curriculum Vitae document to be available for download from your user profile.');
-  t('Url');
   t('User Domain');
   t('Visiting address override');
   t('You may edit this to override the first name(s) from PAGA.');
