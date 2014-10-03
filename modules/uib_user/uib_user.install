@@ -161,7 +161,8 @@ function uib_user_update_7007() {
 }
 
 /**
- * Update user name fields in accordance with new override functionality (for all users)
+ * Update user name fields in accordance with new override functionality (for all users).
+ * Set default values for CRIStin settings (for all users)
  */
 function uib_user_update_7008() {
   $cnt = 0;
@@ -175,16 +176,16 @@ function uib_user_update_7008() {
       $users = entity_load('user', $subset);
       foreach ($users as $account) {
         if ($account->uid > 1) {
-          echo $cnt, PHP_EOL;
-          // print_r($account);
           $user = entity_metadata_wrapper('user', $account);
           $user->field_uib_user_alt_firstname->set($user->field_uib_first_name->value());
           $user->field_uib_user_alt_lastname->set($user->field_uib_last_name->value());
+          $user->field_uib_user_cristin_place->set(0);
+          $user->field_uib_user_cristin_sort->set('category');
           $user->save();
           $cnt++;
         }
       }
     }
   }
-  uibx_log("Updated names for $cnt users", 'notice');
+  uibx_log("Updated data for $cnt users", 'notice');
 }

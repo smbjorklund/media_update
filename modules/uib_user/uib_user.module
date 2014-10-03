@@ -68,7 +68,7 @@ function theme_views_view_field__user_block__edit_node($view) {
  * Implements hook_user_presave().
  */
 function uib_user_user_presave(&$edit, $account, $category) {
-  if (isset($edit['field_uib_last_name'])) {
+  if (isset($edit['field_uib_last_name']['und'])) {
     $edit['field_uib_sort_name']['und'][0]['value'] = uibx_sort_name($edit['field_uib_last_name']['und'][0]['value']);
   }
 }
