@@ -644,10 +644,3 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
 .user-competence a.active {
   color: $link-blue;
 }
-
-/**
- * Hiding field_of_competence exposed filter from display
- */
-.views-widget-filter-field_uib_user_competence_tid {
-  display: none;
-}
