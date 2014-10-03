@@ -57,7 +57,7 @@ function uib_user_strongarm() {
         'summary' => array(
           'default' => array(
             'weight' => '5',
-            'visible' => TRUE,
+            'visible' => FALSE,
           ),
         ),
       ),

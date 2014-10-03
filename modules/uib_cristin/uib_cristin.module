@@ -495,6 +495,10 @@ function uib_cristin_field_attach_view_alter(&$output, $context) {
 
   // Publications tab
   $field_name = 'field_uib_user_publications';
+  $existing_markup = '';
+  if (!empty($output[$field_name][0]['#markup'])) {
+    $existing_markup = $output[$field_name][0]['#markup'];
+  }
   $cristin_before = TRUE;
   if (!empty($user->field_uib_user_cristin_place)) {
     if ($user->field_uib_user_cristin_place['und'][0]['value']) {
@@ -523,13 +527,12 @@ function uib_cristin_field_attach_view_alter(&$output, $context) {
   }
 
   if ($cristin_markup) {
-    if (empty($user->{$field_name})) {
-      // In cases when the field is empty we have to create the render array first
-      // Load field information
-      $instance = $instances[$field_name];
-      $display = field_get_display($instance, 'full', $user);
-      $field = field_info_field($field_name);
-      // Set output for field.
+    // Load field information
+    $instance = $instances[$field_name];
+    $display = field_get_display($instance, 'full', $user);
+    $field = field_info_field($field_name);
+    // Set output for field.
+    if (!$existing_markup) {
       $output[$field_name] = array(
         '#theme' => 'field',
         '#title' => $instance['label'],
@@ -542,16 +545,13 @@ function uib_cristin_field_attach_view_alter(&$output, $context) {
         '#items' => array(array()),
         '#entity_type' => 'user',
         '#weight' => $display['weight'],
-        0 => array('#markup' => $cristin_markup),
       );
     }
+    if ($cristin_before) {
+      $output[$field_name][0]['#markup'] = $cristin_markup . $existing_markup;
+    }
     else {
-      if ($cristin_before) {
-        $output[$field_name][0]['#markup'] = $cristin_markup . $output[$field_name][0]['#markup'];
-      }
-      else {
-        $output[$field_name][0]['#markup'] =  $output[$field_name][0]['#markup'] . $cristin_markup;
-      }
+      $output[$field_name][0]['#markup'] =  $existing_markup . $cristin_markup;
     }
   }
 }

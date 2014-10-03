@@ -456,6 +456,55 @@ function uib_user_user_view_alter(&$build) {
 }
 
 /**
+ * Implements hook_field_formatter_info().
+ */
+function uib_user_field_formatter_info() {
+  return array(
+    'uib_strict_translation_formatter' => array(
+      'label' => t('UiB strict EntityTranslation'),
+      'field types' => array('text_long', 'text', 'link_field', 'taxonomy_term_reference'),
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function uib_user_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  if ($display['type'] == 'uib_strict_translation_formatter' && $field['translatable']) {
+    // Formats fields only if content exists in the current language
+    // i.e. Entity translation fallback setting is ignored.
+    global $language;
+    $elements = array();
+    foreach ($items as $delta => $item) {
+      if (!empty($entity->{$field['field_name']}[$language->language])) {
+        // Translation exists
+        if ($field['type'] == 'text' || $field['type'] == 'text_long') {
+          $elements[$delta]['#markup'] = $item['safe_value'];
+        }
+        elseif ($field['type'] == 'link_field' ) {
+          $elements[$delta]['#markup'] = l($item['title'], $item['url'], array('attributes' => $item['attributes']));
+        }
+        elseif ($field['type'] == 'taxonomy_term_reference') {
+          // Taxonomy term reference link
+          $term = taxonomy_term_load($item['tid']);
+          $uri = entity_uri('taxonomy_term', $term);
+          $elements[$delta] = array(
+            '#type' => 'link',
+            '#title' => $term->name,
+            '#href' => $uri['path'],
+            '#options' => $uri['options'],
+          );
+        }
+      }
+    }
+    return $elements;
+  }
+}
+
+
+/**
  * Find the the most relevant home area for a user
  */
 function uib_user__ou_area($ou_nid, $uid) {

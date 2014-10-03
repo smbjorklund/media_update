@@ -624,12 +624,12 @@ function uib_user_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'text_default',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 7,
       ),
       'uib_user_teaser' => array(
@@ -694,12 +694,12 @@ function uib_user_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'text_default',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 26,
       ),
       'uib_user_teaser' => array(
@@ -764,12 +764,12 @@ function uib_user_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 8,
       ),
       'uib_user_teaser' => array(
@@ -1148,12 +1148,12 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'text_default',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 25,
       ),
       'uib_user_teaser' => array(
@@ -1218,12 +1218,12 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'text_default',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 30,
       ),
       'uib_user_teaser' => array(
@@ -1288,12 +1288,12 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'text_default',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 29,
       ),
       'uib_user_teaser' => array(
@@ -1412,12 +1412,12 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'text_default',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 10,
       ),
       'uib_user_teaser' => array(
@@ -1482,12 +1482,12 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'text_default',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 28,
       ),
       'uib_user_teaser' => array(
@@ -1552,12 +1552,12 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'display' => array(
       'default' => array(
         'label' => 'inline',
-        'module' => 'text',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'text_default',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 2,
       ),
       'uib_user_teaser' => array(
@@ -1692,12 +1692,12 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'text_default',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 27,
       ),
       'uib_user_teaser' => array(
@@ -1762,12 +1762,12 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
+        'module' => 'uib_user',
         'settings' => array(
           'field_multiple_limit' => -1,
           'field_multiple_limit_offset' => 0,
         ),
-        'type' => 'link_separate',
+        'type' => 'uib_strict_translation_formatter',
         'weight' => 3,
       ),
       'uib_user_teaser' => array(
