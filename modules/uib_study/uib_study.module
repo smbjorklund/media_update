@@ -554,9 +554,15 @@ function uib_study_block_view($delta = '') {
     case 'study_contact':
       $node = menu_get_object();
       if ($node) {
+        $category = $node->field_uib_study_category['und'][0]['value'];
         $data = uib_study__fspres_get_node_json($node->nid, 'render.json', TRUE);
         $render = array();
-        $tmp = uib_study__extract_study_info($data, 'EB_KONTAKT');
+        if ($category == 'evu') {
+          $tmp = uib_study__extract_study_info($data, 'EVU_KONTAK');
+        }
+        else {
+          $tmp = uib_study__extract_study_info($data, 'EB_KONTAKT');
+        }
         if (!$tmp) {
           $tmp = uib_study__extract_study_info($data, 'B_RE_INFO');
         }
