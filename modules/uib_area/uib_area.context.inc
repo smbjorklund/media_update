@@ -113,6 +113,12 @@ function uib_area_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-6',
         ),
+        'uib_area-ub_special_logo' => array(
+          'module' => 'uib_area',
+          'delta' => 'ub_special_logo',
+          'region' => 'sidebar_second',
+          'weight' => '-12',
+        ),
         'uib_area-paahoyden_logo' => array(
           'module' => 'uib_area',
           'delta' => 'paahoyden_logo',
