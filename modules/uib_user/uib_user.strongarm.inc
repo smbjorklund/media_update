@@ -44,7 +44,7 @@ function uib_user_strongarm() {
           'weight' => '6',
         ),
         'picture' => array(
-          'weight' => '-5',
+          'weight' => '-4',
         ),
         'locale' => array(
           'weight' => '5',

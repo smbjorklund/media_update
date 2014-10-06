@@ -97,7 +97,7 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
       'mail',
       // 'status', // These are synchronized but Level 1 wants to be able to edit them
       // 'roles',
-      );
+    );
     foreach ($synchronized_properties as $item) {
       $form['account'][$item]['#disabled'] = TRUE;
     }
@@ -109,8 +109,7 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
       'field_uib_position',
       'field_uib_position_code',
       'field_uib_position_category',
-      'field_uib_user_domain',
-      );
+    );
     foreach ($synchronized_fields as $item) {
       $form[$item]['#disabled'] = TRUE;
     }
@@ -119,16 +118,25 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
       'mail',
       'pass',
       'current_pass',
-      );
+    );
     if (!in_array('level 1', $GLOBALS['user']->roles, TRUE)) {
       foreach ($hidden_properties_level_2_and_3 as $item) {
         $form['account'][$item]['#access'] = FALSE;
       }
     }
 
+    $hidden_fields_not_level_1 = array(
+      'field_uib_user_domain',
+    );
+    if (!in_array('level 1', $GLOBALS['user']->roles, TRUE)) {
+      foreach ($hidden_fields_not_level_1 as $item) {
+        $form[$item]['#access'] = FALSE;
+      }
+    }
+
     $hidden_fields = array(
       'field_uib_phone',
-      );
+    );
     foreach ($hidden_fields as $item) {
       $form[$item]['#access'] = FALSE;
     }
