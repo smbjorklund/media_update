@@ -494,13 +494,15 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
   }
   $phones = array();
   $country_prefix = '+47';
-  if (!empty(trim($u->phone_office))) {
+  $u->phone_office = trim($u->phone_office);
+  if (!empty($u->phone_office)) {
     if (substr($u->phone_office, 0, 3) != $country_prefix) {
       $u->phone_office = $country_prefix . ' ' . $u->phone_office;
     }
     $phones['und'][]['value'] = $u->phone_office;
   }
-  if (!empty(trim($u->phone_mobile))) {
+  $u->phone_mobile = trim($u->phone_mobile);
+  if (!empty($u->phone_mobile)) {
     if (substr($u->phone_mobile, 0, 3) != $country_prefix) {
       $u->phone_mobile = $country_prefix . ' ' . $u->phone_mobile;
     }
