@@ -388,6 +388,7 @@ function uib_setup_user_default_permissions() {
     'roles' => array(
       'admin' => 'admin',
       'level 1' => 'level 1',
+      'level 2' => 'level 2',
     ),
     'module' => 'user',
   );
