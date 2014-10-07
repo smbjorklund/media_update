@@ -129,6 +129,18 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
   }
   if ($form['#form_id'] == 'user_profile_form') {
     global $user;
+    global $language;
+    $restricted_html_fields = array(
+      'field_uib_user_field',
+      'field_uib_user_communication',
+      'field_uib_user_teaching',
+      'field_uib_user_publications',
+      'field_uib_user_opt_content',
+      'field_uib_user_projects',
+    );
+    foreach ($restricted_html_fields as $item) {
+      $form[$item][$language->language][0]['#format'] = 'restricted_html';
+    }
     field_group_hide_field_groups($form, array('group_uib_hidden'));
     $profile_user = entity_metadata_wrapper('user', $form['#user']);
 
