@@ -212,6 +212,9 @@
   background-color: transparent;
   border-left: none 0;
   padding: 0 10px;
+  .block-uib-study & {
+    padding: 0;
+  }
   a {
     font-size: .9em;
     line-height: 1em;
