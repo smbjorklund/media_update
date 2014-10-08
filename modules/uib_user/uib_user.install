@@ -189,3 +189,27 @@ function uib_user_update_7008() {
   }
   uibx_log("Updated data for $cnt users", 'notice');
 }
+
+/**
+ * Remove redirects for users to prevent inifite loops.
+ */
+function uib_user_update_7009() {
+  if (db_driver() == 'pgsql') {
+    $result = db_query(
+      'with deleted_rows as
+      (delete from redirect
+        where redirect
+        like \'user/%\'
+        returning *
+      )
+      select source, redirect
+      from deleted_rows
+    ');
+    $i = 0;
+    foreach ($result as $item) {
+      uibx_log('Deleted redirect: ' . $item->source . ' > ' . $item->redirect, 'notice');
+      $i++;
+    }
+    uibx_log('Deleted ' . $i . ' user redirects!', 'notice');
+  }
+}
