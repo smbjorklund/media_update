@@ -1469,7 +1469,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
