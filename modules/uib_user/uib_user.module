@@ -186,7 +186,7 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
       'pass',
       'current_pass',
     );
-    if (!$user->uid == 1) {
+    if ($user->uid != 1) {
       if (!in_array('level 1', $user->roles, TRUE)) {
         foreach ($hidden_properties_level_2_and_3 as $item) {
           $form['account'][$item]['#access'] = FALSE;
