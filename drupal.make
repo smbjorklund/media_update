@@ -23,7 +23,7 @@ projects[advanced_help][version] = 1.1
 projects[autocomplete_deluxe][version] = 2.0-beta3
 projects[better_exposed_filters][version] = 3.0-beta4
 projects[better_formats][version] = 1.0-beta1
-projects[better_formats][patch][] = https://drupal.org/files/issues/better_formats-default-text-format-override-2272385-2_0.patch
+projects[better_formats][patch][] = https://www.drupal.org/files/issues/better_formats-default-text-format-override-2272385-6.patch
 projects[better_formats][patch][] = http://cgit.drupalcode.org/better_formats/patch/?id=ca0822a94fc79a3b3b69ae96d1e3cb43c61aaa15
 projects[bot][revision] = d0e10c65616f267543e717addc17422979f83bd2
 projects[calendar][version] = 3.4
