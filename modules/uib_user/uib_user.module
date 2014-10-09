@@ -77,6 +77,7 @@ function uib_user_user_presave(&$edit, $account, $category) {
 function uib_user_menu_alter(&$items) {
   $items['admin/people']['access callback'] = __uib_deny;
   $items['admin/people/create']['access callback'] = __uib_deny;
+  $items['admin/config']['access callback'] = __uib_deny;
 }
 
 /**
@@ -173,6 +174,8 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
       'mail',
       'pass',
       'current_pass',
+      'name',
+      'status',
     );
     if ($user->uid != 1) {
       if (!in_array('level 1', $user->roles, TRUE)) {
