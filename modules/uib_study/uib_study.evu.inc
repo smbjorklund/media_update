@@ -248,7 +248,7 @@ function uib_study__evu_course($course) {
       l($data['emneid']['emnekode'].' / ' . $title , 'node/' . $course->nid)
     ),
     'study_points' => uib_study__evu_html_tag('p',
-      t('Study points: @study_points', array('@study_points' => $data['studiepoeng'])), 'course-info'
+      t('ECTS credits: @study_points', array('@study_points' => $data['studiepoeng'])), 'course-info'
     ),
   );
   $has_instances = FALSE;
