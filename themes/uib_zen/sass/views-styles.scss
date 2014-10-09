@@ -262,9 +262,17 @@ table.cols-6 {
 .view-special-study-listings,
 .view-uib-taxonomy-term .view-content {
   @include study-list();
+  li:nth-child(odd) {
+    background: #fff;
+    border-bottom: solid 1px #dadada;
+  }
 }
 .view-uib-study-specialization .view-content{
   @include study-sub-list();
+  li:nth-child(odd) {
+    background: #fff;
+    border-bottom: solid 1px #dadada;
+  }
 }
 
 .view-id-uib_taxonomy_term {

@@ -574,19 +574,30 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
   label[for=edit-semesters]{
     font-weight: bold;
   }
+  .uib-study-evu-offer {
+    background-color: #fff;
+    border: solid 1px silver;
+    margin: 20px 0;
+    p {
+      padding: 0 10px;
+    }
+  }
   h2 a, h3 a, h2 {
     font-weight: normal;
     padding: 0px;
   }
   h2, h2 a {
     font-size: 1.8rem;
-    margin-top: 2em;
+  }
+  h2, h3 {
+    margin-left: 10px;
   }
   h3, h3 a {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     padding-top: 5px;
+    margin-bottom: 0;
   }
-  li {
+  li:not(:last-child) {
     border-bottom:  #dadada solid 1px;
   }
   .clear {
@@ -599,8 +610,13 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
     &:not(:first-child):not(:last-child) {
       border-bottom:  #dadada solid 1px;
     }
+    .semester {
+      font-size: 1em;
+      font-weight: bold;
+    }
     .instance-info {
       float: left;
+      padding-bottom: 10px
     }
   }
   .sign-up {
@@ -623,6 +639,12 @@ $uib-study-construction-zebra-light-color: #f2f2f2;
   }
   .semester {
     font-size: 1.4rem;
+  }
+  .form-item {
+    margin-top: 5px;
+    input {
+      margin-right: 6px;
+    }
   }
 }
 
