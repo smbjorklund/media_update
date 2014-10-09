@@ -706,12 +706,12 @@ $zen-auto-include-item-base: false;
     }
   }
 
- .full-width #node_area_full_group_column_first {
-    @include zen-grid-item(4, 1);
-  }
+  .full-width #node_area_full_group_column_first,
   .full-width #node_area_full_group_column_second {
     @include zen-grid-item(4, 1);
   }
+
+
   #node_area_full_group_bottom_wrapper,
   #bottom-region-wrapper {
     @include zen-clear();
