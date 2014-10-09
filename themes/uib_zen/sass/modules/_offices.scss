@@ -59,9 +59,6 @@
   .group-contact-info {
     padding-bottom: 15px;
   }
-  .field-name-field-uib-geolocation {
-    padding-right: 0;
-  }
   h3{
     font-size: 1.2em;
     text-transform: uppercase;
@@ -162,6 +159,7 @@ $zen-column-count: 5;
     .field-name-field-uib-geolocation {
       @include zen-grid-item(1, 1, right);
       @include zen-clear(none);
+      padding-right: 0px;
     }
   }
 }
