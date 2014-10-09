@@ -1396,6 +1396,8 @@ function uib_setup_user_default_permissions() {
     'roles' => array(
       'admin' => 'admin',
       'level 1' => 'level 1',
+      'level 2' => 'level 2',
+      'level 3' => 'level 3',
     ),
     'module' => 'better_formats',
   );
@@ -1406,6 +1408,8 @@ function uib_setup_user_default_permissions() {
     'roles' => array(
       'admin' => 'admin',
       'level 1' => 'level 1',
+      'level 2' => 'level 2',
+      'level 3' => 'level 3',
     ),
     'module' => 'better_formats',
   );
@@ -1416,6 +1420,8 @@ function uib_setup_user_default_permissions() {
     'roles' => array(
       'admin' => 'admin',
       'level 1' => 'level 1',
+      'level 2' => 'level 2',
+      'level 3' => 'level 3',
     ),
     'module' => 'better_formats',
   );
@@ -1425,6 +1431,7 @@ function uib_setup_user_default_permissions() {
     'name' => 'show format selection for user',
     'roles' => array(
       'admin' => 'admin',
+      'authenticated user' => 'authenticated user',
       'level 1' => 'level 1',
     ),
     'module' => 'better_formats',
