@@ -1657,6 +1657,11 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = 'Content Type';
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['field_uib_article_type']['id'] = 'field_uib_article_type';
   $handler->display->display_options['fields']['field_uib_article_type']['table'] = 'field_data_field_uib_article_type';
   $handler->display->display_options['fields']['field_uib_article_type']['field'] = 'field_uib_article_type';
@@ -1711,6 +1716,20 @@ function uib_webdesk_views_default_views() {
     'uib_testimonial' => 'uib_testimonial',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
   /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
@@ -1846,6 +1865,7 @@ function uib_webdesk_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Content Type'),
     t('Author'),
   );
   $export['uib_webdesk'] = $view;
