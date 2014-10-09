@@ -1,3 +1,38 @@
+# Release 12 _2014-10-08_
+
+Vi migrerer personsidene en siste gang og gjør ferdig de siste justeringene for disse sidene i denne releasen. EVU blir også pusset på!
+
+Saker relatert til personsidene:
+
+- Bilde med lenke til spesialsamlingene på /UB sin områdeforside #7941
+- Endelig migrasjon av innhold fra personsidene på w2 til w3 #7827
+- Tilgang for level 2-brukere til å redigere andres personsider #7904
+- Noen ansatte fikk telefonnumre med dobbel landkode. Dette er fikset i #7848
+- Lenke til hjemmeside er nå gjemt under tittelfeltet - og tittelfeltet er default "Hjemmeside" dersom man ikke legger inn egen tittel. Vi har samtidig endret overskriften på dette feltet i edit-mode til "Hjemmeside", for at det skal korrespondere bedre med innholdet. #7690 #7872
+- Lenken til CV er på samme måte nå gjemt under default tittelfelt (Vis CV) #7840
+- En bug som ga html-tags i fritekstfelt på personsidene er fikset i #7183
+- Personsiden speilet norsk og engelsk innhold. Dette har vi endret, slik at man nå kan ha innhold på den norske personsiden som ikke vises på den engelske #7830
+- Muligheten for å redigere steders åpningstider var dukket opp via personsidene, denne er fjernet #7826
+- Vi har fjernet visning av telefonnummer fra edit-siden på personsidene, ettersom disse ikke kan redigeres her #7821
+- Profilbildet i edit-visningen har fått redusert størrelse #7820
+- Det er gjort en liten justering i hvordan visningen av "last ned v-card" og "Logg på" vises på personsidene #7768
+- Det var kommet inn en rullegardinliste for kompetansefelt på ansattlister - denne er foreløpig fjernet. Planen er på sikt å reintrodusere dette feltet som et autocomplete-felt #7761
+- Noen små styling-justeringer i #7717 #7673 #7566
+- Man kan nå endre navnet sitt på personsiden. I #7712 sørger vi for at en slik endring også gjenspeiles i ansattlister, tilknyttede personer og i forfatterfelt på uib.no.
+- Kompetansefelt vil nå vises på personsiden i den rekkefølgen du har lagt dem inn #7710
+- Vi har ryddet litt i hjelpetekstene og fjernet en overflødig redigeringsfane på personsidene i #7824 #7825
+- Vi har fjernet advarslene om ikke å redigere personsidene - etter denne oppdateringen kan alle redigere! #7828
+
+EVU, UB og generelle saker:
+
+- Endre slik at EVU-kurs viser kontaktinformasjon til EVU #7921
+- Blokk for å vise EVU-kursinstansinformasjon på EVU-kursene #7864
+- Justering slik at man bare får opp kurs med kursinstanser i EVU kursoversikt når man har valgt høst/vår-filter #7767
+- Styling for listen over evu-kurs #7705
+- Engelsk versjon av chat til UB og en ny hjelpe-lenke på UB-søk #7581 #7234
+- Filterkategoriene på emnelistene manglet oversettelse fra engelsk. Dette er fikset. #7802
+- Emner har på oppdrag fra redaksjonsrådet for utdanningsinformasjon nå fått justert visningen slik at "Undervisningssemester" er omdøpt til "Undervisningsstart", og at "Antall semester" vises over informasjon om undervisningsspråk. #7765
+
 # Release 11.1 _2014-09-23_
 
 Fikser opp regresjon med hensyn til hvordan linkene til sosiale medier vises #7783
