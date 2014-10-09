@@ -1,3 +1,13 @@
+# Release 12.1 _2014-10-09_
+
+Liten release for å fikse kritiske problemer i forhold til lanseringen av nye personsider. 
+
+- Fiks for publikasjonsfane som ikke viste riktig språk #7978
+- Fiks for å hindre at level 2,3 og brukere uten rolle kan se passord, brukernavn, tilgangsgrupper og annen kontoinformasjon i redigeringsbildet til personsiden #7975
+- Formatfiks for tekstfelt på persosnidene #7976
+- Fiks for personside som gikk i loop #7977
+
+
 # Release 12 _2014-10-08_
 
 Vi migrerer personsidene en siste gang og gjør ferdig de siste justeringene for disse sidene i denne releasen. EVU blir også pusset på!
