@@ -133,12 +133,10 @@ function uib_user_form_alter(&$form, &$form_state, $form_id) {
     field_group_hide_field_groups($form, array('group_uib_hidden'));
     $profile_user = entity_metadata_wrapper('user', $form['#user']);
 
-    // No access to user cancel button editing other users as level x.
+    // No access to user cancel button unless level 1.
     if ($user->uid != 1 ) {
-      if ($profile_user->uid->value() != $user->uid) {
-        if (!in_array('level 1', $user->roles)) {
-          $form['actions']['cancel']['#disabled'] = TRUE;
-        }
+      if (!in_array('level 1', $user->roles)) {
+        $form['actions']['cancel']['#access'] = FALSE;
       }
     }
 
