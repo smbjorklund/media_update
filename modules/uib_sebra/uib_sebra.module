@@ -616,6 +616,19 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
   return $account;
 }
 
+/**
+ * Check if user name is the person's main user name.
+ * A person may have more than one active user, but one is main user.
+ * Returns TRUE if this is the main user, else FALSE.
+ */
+function uib_sebra_user_is_main($name = NULL) {
+  if ($name) {
+    $main = uib_sebra__sws_get("hoveduid?uid=$name");
+    if ($main->uid != 'No data') {
+      return ($main->uid == $name) ? TRUE : FALSE;
+    }
+  }
+}
 
 function uib_sebra__area_diff($list = TRUE) {
   $sebra_areas_not_in_w3 = array();
