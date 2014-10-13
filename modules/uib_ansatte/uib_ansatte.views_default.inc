@@ -172,30 +172,6 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['tid']['field'] = 'tid';
   $handler->display->display_options['fields']['tid']['relationship'] = 'term_node_tid';
   $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
-  /* Field: token field_uib_user_competence */
-  $handler->display->display_options['fields']['field_uib_user_competence']['id'] = 'field_uib_user_competence';
-  $handler->display->display_options['fields']['field_uib_user_competence']['table'] = 'field_data_field_uib_user_competence';
-  $handler->display->display_options['fields']['field_uib_user_competence']['field'] = 'field_uib_user_competence';
-  $handler->display->display_options['fields']['field_uib_user_competence']['relationship'] = 'field_uib_staff_target_id';
-  $handler->display->display_options['fields']['field_uib_user_competence']['ui_name'] = 'token field_uib_user_competence';
-  $handler->display->display_options['fields']['field_uib_user_competence']['label'] = '';
-  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['text'] = '[field_uib_user_competence]';
-  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['path'] = 'persons?field_uib_user_competence_tid=[field_uib_user_competence-tid]';
-  $handler->display->display_options['fields']['field_uib_user_competence']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_uib_user_competence']['element_class'] = 'user-competence';
-  $handler->display->display_options['fields']['field_uib_user_competence']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_uib_user_competence']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_uib_user_competence']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_user_competence']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_uib_user_competence']['settings'] = array(
-    'field_multiple_limit' => '-1',
-    'field_multiple_limit_offset' => '0',
-  );
-  $handler->display->display_options['fields']['field_uib_user_competence']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_uib_user_competence']['multi_type'] = 'ul';
-  $handler->display->display_options['fields']['field_uib_user_competence']['separator'] = ' | ';
   /* Field: The generated HTML */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -226,6 +202,30 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_sort_name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['field_uib_sort_name']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_uib_sort_name']['element_label_colon'] = FALSE;
+  /* Field: token field_uib_user_competence */
+  $handler->display->display_options['fields']['field_uib_user_competence']['id'] = 'field_uib_user_competence';
+  $handler->display->display_options['fields']['field_uib_user_competence']['table'] = 'field_data_field_uib_user_competence';
+  $handler->display->display_options['fields']['field_uib_user_competence']['field'] = 'field_uib_user_competence';
+  $handler->display->display_options['fields']['field_uib_user_competence']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['fields']['field_uib_user_competence']['ui_name'] = 'token field_uib_user_competence';
+  $handler->display->display_options['fields']['field_uib_user_competence']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['text'] = '[field_uib_user_competence]';
+  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['path'] = 'persons?field_uib_user_competence_tid=[field_uib_user_competence-tid]';
+  $handler->display->display_options['fields']['field_uib_user_competence']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_uib_user_competence']['element_class'] = 'user-competence';
+  $handler->display->display_options['fields']['field_uib_user_competence']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_user_competence']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_uib_user_competence']['settings'] = array(
+    'field_multiple_limit' => '-1',
+    'field_multiple_limit_offset' => '0',
+  );
+  $handler->display->display_options['fields']['field_uib_user_competence']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_uib_user_competence']['multi_type'] = 'ul';
+  $handler->display->display_options['fields']['field_uib_user_competence']['separator'] = ' | ';
   /* Sort criterion: User: Sort name (field_uib_sort_name) */
   $handler->display->display_options['sorts']['field_uib_sort_name_value']['id'] = 'field_uib_sort_name_value';
   $handler->display->display_options['sorts']['field_uib_sort_name_value']['table'] = 'field_data_field_uib_sort_name';
@@ -444,7 +444,6 @@ return TRUE;
     t('Term ID'),
     t('.'),
     t(','),
-    t('[field_uib_user_competence]'),
     t('<div class="media">
  [picture]
   <div class="info">
@@ -455,6 +454,7 @@ return TRUE;
     [field_uib_phone]
   </div>
 </div>'),
+    t('[field_uib_user_competence]'),
     t('All'),
     t('Staff at %1'),
     t('%2 at %1'),

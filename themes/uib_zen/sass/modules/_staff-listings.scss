@@ -28,20 +28,28 @@
     }
   }
   .user-competence {
-    ul {
-      text-align: right;
+    @media all and (max-width: 719px) {
+      @include zen-clear();
     }
     li {
       display: inline-block;
       background: #FAEEED;
       padding: 5px 10px;
-      margin: 0 -4px 10px 10px;
+      margin: 10px 10px 0 0;
       @include border-radius(5px, 5px);
       &:nth-child(n+2) {
         padding-right: 0.5em;
       }
       &:last-child {
         margin-right: 0;
+      }
+    }
+    @media all and (min-width: 720px) {
+      ul {
+        text-align: right;
+      }
+      li {
+        margin: 0 -4px 10px 10px;
       }
     }
   }
