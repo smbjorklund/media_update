@@ -1,6 +1,0 @@
-#!/bin/bash
-
-if test -d /var/www/w3.uib.no; then
-    cd /var/www/w3.uib.no || exit 1
-    nice su w3-drupal -c 'bin/site-drush -v uib-sync-w2-user 250' &>> /tmp/drupal-uib-sync-w2-user-$(date -I)T$(date +%H%m).log
-fi
