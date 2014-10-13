@@ -467,16 +467,14 @@ function uib_sebra__add_content_manager($content_manager_areas, $uid) {
 }
 
 /**
- * Syncronice the given user with Sebra.  If the user did not already exist in
- * the Drupal database it will be created.  If it exist, this function will
- * figure out if any attributes need to be changed and if so update the user.
- *
- * The function logs what it does with uibx_log().
+ * Synchronise the given user with Sebra.  If the user did not already exist in
+ * the Drupal database it will be created.  If it exists, this function will
+ * figure out if any attributes need to be changed and - if so - update the user.
  *
  * The function returns the user object created/loaded.
  */
 
-function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
+function uib_sebra__sync_user($username, $dry_run = FALSE, $ref = NULL) {
   static $places = array();
   $account = user_load_by_name($username);
   try {
@@ -513,9 +511,15 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
     $edit = array();
     if ($account->mail != $u->email)
       $edit['mail'] = $u->email;
+
     if ($account->status != 1) {
       $edit['status'] = 1;
-      uibx_log("$account->name unblocked");
+      if (!$dry_run) {
+        uibx_log("$account->name unblocked");
+      }
+      else {
+        uibx_log("$account->name would be unblocked");
+      }
     }
     $u->first_name = trim($u->first_name);
     if ($account->field_uib_user_alt_firstname['und'][0]['value'] != $u->first_name) {
@@ -531,6 +535,12 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
       }
       $edit['field_uib_user_alt_lastname']['und'][0]['value'] = $u->last_name;
       $edit['field_uib_sort_name']['und'][0]['value'] = uibx_sort_name($u->last_name);
+    }
+    $slug_first_name = (empty($edit['field_uib_first_name'])) ? $account->field_uib_first_name['und'][0]['value'] : $edit['field_uib_first_name']['und'][0]['value'];
+    $slug_last_name = (empty($edit['field_uib_last_name'])) ? $account->field_uib_last_name['und'][0]['value'] : $edit['field_uib_last_name']['und'][0]['value'];
+    $slug = uib_sebra_slug($slug_first_name, $slug_last_name, $account->uid);
+    if (empty($account->field_uib_slug['und']) || $account->field_uib_slug['und'][0]['value'] != $slug) {
+      $edit['field_uib_slug']['und'][0]['value'] = $slug;
     }
     if ($account->field_uib_position['nb'][0]['value'] != $u->position_name_no)
       $edit['field_uib_position']['nb'][0]['value'] = $u->position_name_no;
@@ -576,10 +586,13 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
       uibx_log("No user field change for $username <$account->mail>");
     }
     else {
-      if (!$dry_run)
+      if (!$dry_run){
         user_save($account, $edit);
-      uibx_log("Updated user fields for $username <$account->mail>");
-      //uibx_log('Update-'.print_r($edit,true));
+        uibx_log("Updated user fields for $username <$account->mail>");
+      }
+      else {
+        uibx_log("Would have updated user fields for $username <$account->mail>");
+      }
     }
   }
   else {
@@ -591,6 +604,8 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
     $account->field_uib_user_domain['und'][0]['value'] = 'uib';
     $account->field_uib_first_name['und'][0]['value'] = $u->first_name;
     $account->field_uib_last_name['und'][0]['value'] = $u->last_name;
+    $slug = uib_sebra_slug($u->first_name, $u->last_name);
+    $account->field_uib_slug['und'][0]['value'] = $slug;
     $account->field_uib_user_alt_firstname['und'][0]['value'] = $u->first_name;
     $account->field_uib_user_alt_lastname['und'][0]['value'] = $u->last_name;
     $account->field_uib_sort_name['und'][0]['value'] = uibx_sort_name($u->last_name);
@@ -603,17 +618,60 @@ function uib_sebra__sync_user($username, $dry_run=FALSE, $ref=NULL) {
       $account->field_uib_user_ou['und'][0]['target_id'] = $places[$u->place_code];
     }
     $account->roles = $u->roles;
-    if (!$dry_run)
+    if (!$dry_run) {
       user_save($account);
-    uibx_log("Created user $account->uid for $username <$u->email>");
+      uibx_log("Created user $account->uid for $username <$u->email>");
+    }
+    else {
+      uibx_log("Would have created user $account->uid for $username <$u->email>");
+    }
+  }
+
+  // Add user path aliases according to slug.
+  // Note that changed names may result in adding new aliases:
+  //   old aliases will not be changed or pruned.
+  if ($account->uid) {
+    $source = 'user/' . $account->uid;
+    $languages = array(
+      'nb' => 'personer',
+      'en' => 'persons',
+    );
+    foreach ($languages as $lang => $prefix) {
+      $alias = $prefix . '/' . $slug;
+      if (isset($edit)) {
+        if ($path_list = uibx_path_load($source, $lang)) {
+          foreach ($path_list as $path) {
+            if ($path->alias == $alias) {
+              // no need up update the alias for this language
+              uibx_log("No change in '$lang' path alias $alias for $username");
+              continue 2;
+            }
+          }
+        }
+      }
+      $path = array(
+        'source' => $source,
+        'alias' => $alias,
+        'language' => $lang,
+      );
+      if (!$dry_run) {
+        path_save($path);
+        uibx_log("Added '$lang' path alias $alias for $username");
+      }
+      else {
+        uibx_log("Would have added '$lang' path alias $alias for $username");
+      }
+    }
   }
 
   // Just add uid to content_manager on areas.
   // A full run of sync_users will remove stale uids from content_manager
-  if (uib_sebra__add_content_manager($u->content_manager_areas, $account->uid))
-    uibx_log("Content manager - updated for user $account->uid for $username <$u->email>");
-  else
-    uibx_log("Content manager - no change for user $account->uid for $username <$u->email>");
+  if (!$dry_run) {
+    if (uib_sebra__add_content_manager($u->content_manager_areas, $account->uid))
+      uibx_log("Content manager - updated for user $account->uid for $username <$u->email>");
+    else
+      uibx_log("Content manager - no change for user $account->uid for $username <$u->email>");
+  }
 
   return $account;
 }
@@ -630,6 +688,53 @@ function uib_sebra_user_is_main($name = NULL) {
       return ($main->uid == $name) ? TRUE : FALSE;
     }
   }
+}
+
+/**
+ * Creates and returns a personal name string, a.k.a. "slug" based on the supplied
+ *   name of the user.
+ * If a user id is supplied and it matches an existing slug, that slug will be returned.
+ * If the slug is already in use by other user, a suffix will be added: an underscore
+ *   and a serial number starting at 2.
+ *
+ * Returns a user slug string
+ */
+function uib_sebra_slug($first, $last, $uid = NULL) {
+  $slug = '';
+  $suffix = '';
+  if ($last) {
+    $first = trim($first);
+    $first = preg_replace('/[\s]+/', '.', $first);
+    $last = trim($last);
+    $last = preg_replace('/[\s]+/', '.', $last);
+    $slug = $first . '.' . $last;
+
+    $suffix_cnt = 1;
+    $searching = TRUE;
+    $query = new EntityFieldQuery();
+    while ($searching) {
+      $result = $query->entityCondition('entity_type', 'user')
+        ->fieldCondition('field_uib_slug', 'value', $slug . $suffix, '=')
+        ->execute();
+      if (empty($result['user'])) {
+        $searching = FALSE;
+      }
+      else {
+        $list = array_keys($result['user']);
+        if ($uid) {
+          foreach ($list as $user_uid) {
+            if ($user_uid == $uid) {
+              $searching = FALSE;
+            }
+          }
+        }
+        if ($searching) {
+          $suffix = '_' . ++$suffix_cnt;
+        }
+      }
+    }
+  }
+  return $slug . $suffix;
 }
 
 function uib_sebra__area_diff($list = TRUE) {
