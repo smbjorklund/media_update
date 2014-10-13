@@ -8,15 +8,6 @@ function uib_migrate_drush_command() {
     'arguments' => array(),
     'options' => array(),
   );
-  $items['uib-sync-w2-user'] = array(
-    'description' => 'Syncronise user fields that are maintained in w2',
-    'aliases' => array('uib-w2u'),
-    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
-    'arguments' => array(
-      'user' => 'The username or count of users to sync',
-    ),
-    'required-arguments' => TRUE,
-  );
   $items['uib-migrate-menu-clean-up'] = array(
     'description' => 'Removes items that are not area from depth 1 in menu_links',
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
@@ -30,16 +21,6 @@ function uib_migrate_drush_command() {
     'options' => array(),
   );
   return $items;
-}
-
-function drush_uib_migrate_uib_sync_w2_user($limit_or_username) {
-  module_load_include('inc', 'uib_migrate');
-  if (is_numeric($limit_or_username)) {
-    uib_migrate__sync_w2_users($limit_or_username);
-  }
-  else {
-    uib_migrate__sync_w2_user($limit_or_username);
-  }
 }
 
 function drush_uib_migrate_build_menu() {
