@@ -366,18 +366,18 @@ function uib_study__update_study($type, $study, $ou_nid, &$existing) {
       }
     }
 
-    if (isset($study['category']) && $study['category'] == 'evu') {
+    if (!empty($study['unpublished'])) {
       // ensure unpublished
       if ($wrapper->status->value() != 0) {
         $wrapper->status->set(0);
-        $edit[] = "status";
+        $edit[] = "status=0";
       }
     }
     else {
       // ensure published
       if ($wrapper->status->value() == 0) {
         $wrapper->status->set(1);
-        $edit[] = "status";
+        $edit[] = "status=1";
       }
     }
 
