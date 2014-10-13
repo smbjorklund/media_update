@@ -95,9 +95,9 @@ function uib_user_user_presave(&$edit, $account, $category) {
  * Implements hook_menu_alter().
  */
 function uib_user_menu_alter(&$items) {
-  $items['admin/people']['access callback'] = __uib_deny;
-  $items['admin/people/create']['access callback'] = __uib_deny;
-  $items['admin/config']['access callback'] = __uib_deny;
+  $items['admin/people']['access callback'] = '__uib_deny';
+  $items['admin/people/create']['access callback'] = '__uib_deny';
+  $items['admin/config']['access callback'] = '__uib_deny';
 }
 
 /**
