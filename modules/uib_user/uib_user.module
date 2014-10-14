@@ -66,6 +66,26 @@ function theme_views_view_field__user_block__edit_node($view) {
  * Implements hook_user_presave().
  */
 function uib_user_user_presave(&$edit, $account, $category) {
+  // Force first and last names not to be empty
+  if (isset($edit['field_uib_last_name']['und'])) {
+    $last_name = '';
+    if (isset($edit['field_uib_last_name']['und'][0]['value'])) {
+      $last_name = trim($edit['field_uib_last_name']['und'][0]['value']);
+    }
+    if (empty($last_name)) {
+      $edit['field_uib_last_name']['und'][0]['value'] = $account->field_uib_user_alt_lastname['und'][0]['value'];
+    }
+  }
+  if (isset($edit['field_uib_first_name']['und'])) {
+    $first_name = '';
+    if (isset($edit['field_uib_first_name']['und'][0]['value'])) {
+      $first_name = trim($edit['field_uib_first_name']['und'][0]['value']);
+    }
+    if (empty($first_name)) {
+      $edit['field_uib_first_name']['und'][0]['value'] = $account->field_uib_user_alt_firstname['und'][0]['value'];
+    }
+  }
+
   if (isset($edit['field_uib_last_name']['und'])) {
     $edit['field_uib_sort_name']['und'][0]['value'] = uibx_sort_name($edit['field_uib_last_name']['und'][0]['value']);
   }
