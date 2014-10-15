@@ -618,6 +618,20 @@ function uib_sebra__sync_user($username, $dry_run = FALSE, $ref = NULL) {
       $account->field_uib_user_ou['und'][0]['target_id'] = $places[$u->place_code];
     }
     $account->roles = $u->roles;
+    // Initialise translation
+    $trans_handler = entity_translation_get_handler('user', $account);
+    $translation = array(
+      'status' => 1,
+      'language' => 'en',
+    );
+    $trans_handler->setTranslation($translation);
+    $translation = array(
+      'status' => 1,
+      'language' => 'nb',
+      'source' => 'en',
+    );
+    $trans_handler->setTranslation($translation);
+
     if (!$dry_run) {
       user_save($account);
       uibx_log("Created user $account->uid for $username <$u->email>");
