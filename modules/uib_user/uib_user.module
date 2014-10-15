@@ -520,9 +520,9 @@ function uib_user_user_view_alter(&$build) {
   if (!empty($build['field_uib_user_competence'])) {
     $items = count($build['field_uib_user_competence']['#items']);
     for ($i=0; $i < $items; $i++) {
-      $tid = $build['field_uib_user_competence']['#items'][$i]['tid'];
+      $title = $build['field_uib_user_competence'][$i]['#title'];
       $build['field_uib_user_competence'][$i]['#href'] =
-        url('persons', array('absolute' => TRUE, 'query' =>  array('field_uib_user_competence_tid' => $tid)));
+        url('persons', array('absolute' => TRUE, 'query' =>  array('field_uib_user_competence' => $title)));
     }
   }
 

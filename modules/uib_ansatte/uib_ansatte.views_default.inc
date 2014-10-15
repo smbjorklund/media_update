@@ -30,7 +30,6 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '100';
@@ -212,7 +211,7 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['fields']['field_uib_user_competence']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_uib_user_competence']['alter']['text'] = '[field_uib_user_competence]';
   $handler->display->display_options['fields']['field_uib_user_competence']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['path'] = 'persons?field_uib_user_competence_tid=[field_uib_user_competence-tid]';
+  $handler->display->display_options['fields']['field_uib_user_competence']['alter']['path'] = 'persons?field_uib_user_competence=[field_uib_user_competence]';
   $handler->display->display_options['fields']['field_uib_user_competence']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_uib_user_competence']['element_class'] = 'user-competence';
   $handler->display->display_options['fields']['field_uib_user_competence']['element_label_colon'] = FALSE;
@@ -310,6 +309,26 @@ function uib_ansatte_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
+  /* Filter criterion: User: Fields of competence (field_uib_user_competence) */
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['id'] = 'field_uib_user_competence_tid';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['table'] = 'field_data_field_uib_user_competence';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['field'] = 'field_uib_user_competence_tid';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['relationship'] = 'field_uib_staff_target_id';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['operator_id'] = 'field_uib_user_competence_tid_op';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['label'] = 'Fields of competence';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['operator'] = 'field_uib_user_competence_tid_op';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['identifier'] = 'field_uib_user_competence';
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  $handler->display->display_options['filters']['field_uib_user_competence_tid']['vocabulary'] = 'uib_research_fields';
 
   /* Display: List of all persons */
   $handler = $view->new_display('page', 'List of all persons', 'page_1');
@@ -458,6 +477,7 @@ return TRUE;
     t('All'),
     t('Staff at %1'),
     t('%2 at %1'),
+    t('Fields of competence'),
     t('List of all persons'),
     t('All staff'),
     t('List of staff for area'),
