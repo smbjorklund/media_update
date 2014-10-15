@@ -630,36 +630,54 @@ function uib_sebra__sync_user($username, $dry_run = FALSE, $ref = NULL) {
   // Add user path aliases according to slug.
   // Note that changed names may result in adding new aliases:
   //   old aliases will not be changed or pruned.
-  if ($account->uid) {
-    $source = 'user/' . $account->uid;
-    $languages = array(
-      'nb' => 'personer',
-      'en' => 'persons',
-    );
-    foreach ($languages as $lang => $prefix) {
-      $alias = $prefix . '/' . $slug;
-      if (isset($edit)) {
-        if ($path_list = uibx_path_load($source, $lang)) {
-          foreach ($path_list as $path) {
-            if ($path->alias == $alias) {
-              // no need up update the alias for this language
-              uibx_log("No change in '$lang' path alias $alias for $username");
-              continue 2;
+  $source = 'user/' . $account->uid;
+  if (uib_sebra_user_is_main($account->name)) {
+    if ($account->uid) {
+      $languages = array(
+        'nb' => 'personer',
+        'en' => 'persons',
+      );
+      foreach ($languages as $lang => $prefix) {
+        $alias = $prefix . '/' . $slug;
+        if (isset($edit)) {
+          if ($path_list = uibx_path_load($source, $lang)) {
+            foreach ($path_list as $path) {
+              if ($path->alias == $alias) {
+                // no need up update the alias for this language
+                uibx_log("No change in '$lang' path alias $alias for $username");
+                continue 2;
+              }
             }
           }
         }
+        $path = array(
+          'source' => $source,
+          'alias' => $alias,
+          'language' => $lang,
+        );
+        if (!$dry_run) {
+          path_save($path);
+          uibx_log("Added '$lang' path alias $alias for $username");
+        }
+        else {
+          uibx_log("Would have added '$lang' path alias $alias for $username");
+        }
       }
-      $path = array(
-        'source' => $source,
-        'alias' => $alias,
-        'language' => $lang,
-      );
-      if (!$dry_run) {
-        path_save($path);
-        uibx_log("Added '$lang' path alias $alias for $username");
-      }
-      else {
-        uibx_log("Would have added '$lang' path alias $alias for $username");
+    }
+  }
+  else {
+    // Remove aliases if this is not the person's main account
+    if (isset($edit)) {
+      if ($path_list = uibx_path_load($source)) {
+        foreach ($path_list as $path) {
+          if (!$dry_run) {
+            path_delete($path->pid);
+            uibx_log("Removed path alias $path->alias for $username (non-main account)");
+          }
+          else {
+            uibx_log("Would have removed path alias $path->alias for $username (non-main account)");
+          }
+        }
       }
     }
   }
