@@ -974,6 +974,7 @@ function uib_zen_preprocess_field(&$variables, $hook) {
     $certain_fields = array(
       'field_uib_user_competence',
       'field_uib_user_projects',
+      'field_uib_user_docs',
       );
     if (in_array($variables['element']['#field_name'], $certain_fields)) {
       $variables['theme_hook_suggestions'][] = 'field__user__label_colonfree';
