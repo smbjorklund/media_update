@@ -126,9 +126,14 @@ $zen-column-count: 5;
   @include media_element(100%, none);
 }
 
-.profile .user-picture {
-  float: none;
-  margin: 0;
+.profile {
+  h3 {
+    border: 0;
+  }
+  .user-picture {
+    float: none;
+    margin: 0;
+  }
 }
 
 #user_user_full_group_user_media {
