@@ -53,6 +53,7 @@ run("git", "checkout", "master");
 if (git_have_ref("heads/pick/$id")) {
     run("git", "branch", "-D", "pick/$id");
 }
+run("git", "fetch");  # make sure we have the lates version of the branch
 run("git", "checkout", "-b", "pick/$id", "origin/rts/$id");
 run("git", "rebase", "master");
 die "Aborting" if $?;
