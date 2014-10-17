@@ -172,8 +172,12 @@ function uib_study__infotyper_render(&$page, $render, $filter) {
         '#markup' => uib_study__text_markup($item, $is_course),
       );
     }
-    if (array_key_exists('em-emnebeskrivelse', $page)) {
-      $page['em-emnebeskrivelse']['header'] = NULL;
+
+    // some infotype categegory headers that we don't want to display because
+    // in the context we use them it's obvious what the content below is
+    foreach (array('em-emnebeskrivelse', 'ku_kursinformasjon') as $category) {
+      if (isset($page[$category]))
+        hide($page[$category]['header']);
     }
   }
   return $count;
