@@ -1,3 +1,37 @@
+# Release 13 _2014-10-20_
+
+Personsider, EVU og mindre fix og bugfix
+
+- Tekstformateringen H3 hadde en bug i visning på pesonsidene, denne er fikset #8067
+- Legger til regel om at synkronisert navn vises hvis det ikke er innhold i feltene for overskriving av navn på personsidene #8059
+- Fikser funksjonen som sender deg til riktig søkeside når du klikker på et kompetansefelt #8058
+- Sørger for riktig rekkefølge på personinformasjon i personlistene #8018
+- Fiks for bug som oppstod der en bruker har to kontoer i Sebra #7962
+- En del brukere manglet oversettelse av personsiden sin, noe som ga en del bugs, blant annet i form av at man ikke fikk overskrevet besøksadresse. Dette er fikset i #8013
+- Rolle 2 kunne ved en feil kansellere/slette kontoer - denne muligheten er fjernet #8009
+- Vi har satt i gang funksjonen som blokker brukere som ikke finnes i Sebra #8008
+- Vi fjerner w2-synkronisering av brukere, og introduserer funksjon som lager alias/slugs i w3 for nye brukere #7995
+- Fjern kolon etter "Filer"-tittel på personprofil #7716
+- Ordne rekkefølge på feltene "kompetansefelt" og "Prosjekter" på personprofil #7713
+
+- Stylingjusteringer på listen over evu-kurs #7986
+- Fjerner doble headinger på evu-kurs #7866
+- Gjør det mulig å søke opp emner/kurs som tilknyttet innhold basert på emnekode #7868
+- Bytt "Studypoints" til "ECTS credits" på evu-kurs #7955
+
+- Fiks for plassering av bokkarusellen på /ub-sidene #7991
+- Stylingjusteringer på plasseringen av logo for spesialsamlingene på /ub "7969
+
+- Legger til felt for påmeldingsfrist/påmelding på kalenderhendelser # 6842
+- Fiks for visning av informasjon på feil språk i studieløpstabellen #7822
+- Endrer "Undervisningsstart" til "Undervisningssemester" på emner #8057
+- Fiks for å synliggjøre Spesialiseringsvalg på studieprogram bedre #7813
+
+- Lar deg bare søke etter artikler på riktig språk for tilknyttet innhold #6906
+- Fiks for visning av vitnesbyrd over en kolonne (tablet) #6199
+- Løser bug som kuttet bilder i tilknyttet innhold i noen responsive visninger #7269
+- Diverse tekniske saker #7209 #7998
+
 # Release 12.1 _2014-10-09_
 
 Liten release for å fikse kritiske problemer i forhold til lanseringen av nye personsider. 
