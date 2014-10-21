@@ -59,6 +59,10 @@ function uib_user_strongarm() {
             'weight' => '5',
             'visible' => FALSE,
           ),
+          'uib_user_teaser' => array(
+            'weight' => '5',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),
