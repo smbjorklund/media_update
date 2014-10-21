@@ -476,12 +476,15 @@ function uib_user_user_view_alter(&$build) {
     hide($build['field_uib_user_opt_content']);
     unset($tabs_field_list['field_uib_user_opt_content']);
   }
-  $tabs_list_markup = '<ul class="uib-tabs-list">';
-  foreach ($tabs_field_list as $field_name => $tabs_item) {
-    $tabs_list_markup .= '<li><a href="#' . $tabs_item['htmltitle'] . '">' . $tabs_item['title'] . '</a></li>';
-    $build[$field_name]['#prefix'] = '<div id="' . $tabs_item['htmltitle'] . '">';
-    $build[$field_name]['#suffix'] = '</div>';
-    $build[$field_name]['#label_display'] = 'hidden';
+  $tabs_list_markup = '';
+  if (!empty($tabs_field_list)) {
+    $tabs_list_markup .= '<ul class="uib-tabs-list">';
+    foreach ($tabs_field_list as $field_name => $tabs_item) {
+      $tabs_list_markup .= '<li><a href="#' . $tabs_item['htmltitle'] . '">' . $tabs_item['title'] . '</a></li>';
+      $build[$field_name]['#prefix'] = '<div id="' . $tabs_item['htmltitle'] . '">';
+      $build[$field_name]['#suffix'] = '</div>';
+      $build[$field_name]['#label_display'] = 'hidden';
+    }
   }
   $tabs_list_markup .= '</ul>';
   $build['uib_tabs'] = array(
