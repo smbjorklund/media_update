@@ -127,6 +127,12 @@ function uib_cristin_publications($user) {
     $sort_type = $user->field_uib_user_cristin_sort['und'][0]['value'];
   }
   $publications = array();
+  // Get person data
+  $cristin_data = uib_cristin__get_json("hentPerson?navn=$user->name&eierkode=UIB");
+  $person_data = drupal_json_decode($cristin_data);
+  $cristin_person_id = $person_data['forskningsresultat'][0]['person']['id'];
+
+  // Get publication data
   $default_categories = array(
     'BOK',
     'TIDSSKRIFTPUBL',
@@ -141,12 +147,46 @@ function uib_cristin_publications($user) {
     if (!empty($cristin_data)) {
       $tmp_publ = drupal_json_decode($cristin_data);
       if (!empty($tmp_publ['forskningsresultat'])) {
+        if ($category == 'RAPPORT') {
+          uib_cristin__unlist_theses($tmp_publ['forskningsresultat'], $cristin_person_id);
+        }
         $publications = array_merge($publications, $tmp_publ['forskningsresultat']);
       }
     }
   }
   $publications = uib_cristin_sort($publications, $sort_type, $limit);
   return $publications;
+}
+
+/**
+ * Supervisors should not be listed as author, nor display the theses
+ */
+function uib_cristin__unlist_theses(&$publ_list, $id) {
+  $theses = array(
+    'MASTERGRADSOPPG',
+    'MAGISTERAVH',
+    'HOVEDFAGSOPPGAVE',
+    'DRGRADAVH',
+  );
+  foreach ($publ_list as $delta => $publ) {
+    if ($publ['fellesdata']['kategori']['hovedkategori']['kode'] == 'RAPPORT') {
+      if (in_array($publ['fellesdata']['kategori']['underkategori']['kode'], $theses)) {
+        foreach ($publ['fellesdata']['person'] as $index => $person) {
+          if (isset($person['tilhorighet']) && $person['tilhorighet']['sted']['rolle']['kode'] == 'VEILEDER') {
+            if ($person['id'] == $id) {
+              // Remove the publication
+              unset($publ_list[$delta]);
+              continue 2;
+            }
+            else {
+              // Remove supervisor from author list
+              unset($publ_list[$delta]['fellesdata']['person'][$index]);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /**
