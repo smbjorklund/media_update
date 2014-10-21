@@ -266,10 +266,12 @@ table.cols-6 {
     @extend %odd-study-item;
   }
 }
-.view-uib-study-specialization .view-content{
-  @include study-sub-list();
-  li:nth-child(odd) {
-    @extend %odd-study-item;
+.page-views {
+  .view-uib-study-specialization{
+    @include study-sub-list();
+    li:nth-child(odd) {
+      @extend %odd-study-item;
+    }
   }
 }
 
