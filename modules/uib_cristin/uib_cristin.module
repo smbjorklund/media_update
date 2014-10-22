@@ -491,14 +491,24 @@ function uib_cristin_link($username = NULL) {
 function uib_cristin__get_json($cmd) {
   $data = NULL;
   $url = uib_cristin__ws_url($cmd) . '&format=json';
+
+  $before = microtime(true);
   $res = drupal_http_request($url);
+
+  $log_message = "GET $url => ";
+  $log_message .= $res->code < 0 ? "$res->error errno=" . -$res->code : "$res->code $res->status_message";
+  $log_message .= sprintf(" (%.0fms)", 1000 * (microtime(true) - $before));
+  $severity = 'notice';
+
   if ($res->code == 200) {
     $data = $res->data;
   }
   elseif ($res->code != 404) {
     // 404 means: no search hits
-    uibx_log("Could not fetch from CRIStin. id=$res->code", "warning");
+    $severity = 'error';
   }
+  uibx_log($log_message, $severity);
+
   return $data;
 }
 
