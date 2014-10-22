@@ -631,6 +631,12 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
+  /* Filter criterion: Content: ID (field_uib_study_code) */
+  $handler->display->display_options['filters']['field_uib_study_code_value']['id'] = 'field_uib_study_code_value';
+  $handler->display->display_options['filters']['field_uib_study_code_value']['table'] = 'field_data_field_uib_study_code';
+  $handler->display->display_options['filters']['field_uib_study_code_value']['field'] = 'field_uib_study_code_value';
+  $handler->display->display_options['filters']['field_uib_study_code_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_uib_study_code_value']['value'] = 'EKSTWEB100';
   $handler->display->display_options['path'] = 'node/%/courses';
 
   /* Display: Studyprogrammes */
@@ -1333,6 +1339,12 @@ return !empty($handler->argument);';
   $handler->display->display_options['filters']['tid_4']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['tid_4']['type'] = 'select';
   $handler->display->display_options['filters']['tid_4']['vocabulary'] = 'uib_nus';
+  /* Filter criterion: Content: ID (field_uib_study_code) */
+  $handler->display->display_options['filters']['field_uib_study_code_value_1']['id'] = 'field_uib_study_code_value_1';
+  $handler->display->display_options['filters']['field_uib_study_code_value_1']['table'] = 'field_data_field_uib_study_code';
+  $handler->display->display_options['filters']['field_uib_study_code_value_1']['field'] = 'field_uib_study_code_value';
+  $handler->display->display_options['filters']['field_uib_study_code_value_1']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_uib_study_code_value_1']['value'] = 'EKSTWEB100';
   $handler->display->display_options['path'] = 'course';
 
   /* Display: All studyprogrammes */
