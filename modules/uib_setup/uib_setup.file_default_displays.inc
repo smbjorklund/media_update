@@ -336,6 +336,16 @@ function uib_setup_file_default_displays() {
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
+  $file_display->name = 'image__full__file_image';
+  $file_display->weight = 5;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'image_style' => 'large',
+  );
+  $export['image__full__file_image'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
   $file_display->name = 'image__full_width_image__file_field_file_default';
   $file_display->weight = 0;
   $file_display->status = FALSE;
@@ -439,6 +449,16 @@ function uib_setup_file_default_displays() {
     'title' => '[file:field_file_image_title_text]',
   );
   $export['image__preview__file_image'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'image__teaser__file_image';
+  $file_display->weight = 5;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'image_style' => 'medium',
+  );
+  $export['image__teaser__file_image'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
