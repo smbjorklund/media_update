@@ -1,3 +1,7 @@
+# Release 13.1 _2014-10-23_
+
+Hovedfagsoppgaver som ble listet på veilederens side måtte fjernes før vi offentliggjør de nye personsidene. #8132
+
 # Release 13 _2014-10-20_
 
 Personsider, EVU og mindre fix og bugfix
