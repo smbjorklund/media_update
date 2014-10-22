@@ -171,16 +171,25 @@ function uib_cristin__unlist_theses(&$publ_list, $id) {
   foreach ($publ_list as $delta => $publ) {
     if ($publ['fellesdata']['kategori']['hovedkategori']['kode'] == 'RAPPORT') {
       if (in_array($publ['fellesdata']['kategori']['underkategori']['kode'], $theses)) {
-        foreach ($publ['fellesdata']['person'] as $index => $person) {
-          if (isset($person['tilhorighet']) && $person['tilhorighet']['sted']['rolle']['kode'] == 'VEILEDER') {
-            if ($person['id'] == $id) {
-              // Remove the publication
-              unset($publ_list[$delta]);
-              continue 2;
-            }
-            else {
-              // Remove supervisor from author list
-              unset($publ_list[$delta]['fellesdata']['person'][$index]);
+        if (isset($publ['fellesdata']['person']['id'])) {
+          // Single person (we do not get an array of persons)
+          if ($publ['fellesdata']['person']['tilhorighet']['sted']['rolle']['kode'] == 'VEILEDER' && $publ['fellesdata']['person']['id'] == $id) {
+            unset($publ_list[$delta]);
+          }
+        }
+        else {
+          // More than one person
+          foreach ($publ['fellesdata']['person'] as $index => $person) {
+            if (isset($person['tilhorighet']) && $person['tilhorighet']['sted']['rolle']['kode'] == 'VEILEDER') {
+              if ($person['id'] == $id) {
+                // Remove the publication
+                unset($publ_list[$delta]);
+                continue 2;
+              }
+              else {
+                // Remove supervisor from author list
+                unset($publ_list[$delta]['fellesdata']['person'][$index]);
+              }
             }
           }
         }
