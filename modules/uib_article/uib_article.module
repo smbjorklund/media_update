@@ -286,20 +286,25 @@ function uib_article_node_submit($node, $form, &$form_state) {
     $areanid = $node->field_uib_area['und'][0]['target_id'];
     if (isset($areanid)) {
       $area = node_load($areanid);
-      if (isset($area->language))
-        $node->language = $area->language;
-        if (strstr($form['#action'], 'uib-article?translation')) {
-          $translatesets = translation_node_get_translations($area->tnid);
-          if ($area->language == 'en') {
-            $translatedid = $translatesets['nb']->nid;
-            $node->language = 'nb';
-          }
-          else if ($area->language == 'nb') {
-            $translatedid = $translatesets['en']->nid;
-            $node->language = 'en';
-          }
-        $node->field_uib_area['und'][0]['target_id'] = $translatedid;
+
+      if (strstr($form['#action'], 'uib-article?translation')) {
+        $other_lang = array('en' => 'nb', 'nb' => 'en');
+        $translations = translation_node_get_translations($area->tnid);
+        $node->language = $other_lang[$area->language];
+        $new_area = $translations[$node->language]->nid;
+        $node->field_uib_area['und'][0]['target_id'] = $new_area;
+
+        for ($i = 1; $i < sizeof($node->field_uib_area['und']); $i++){
+          $area = node_load($node->field_uib_area['und'][$i]['target_id']);
+          $translations = translation_node_get_translations($area->tnid);
+          $new_area = $translations[$other_lang[$area->language]]->nid;
+          $node->field_uib_area['und'][$i]['target_id'] = $new_area;
         }
+      }
+      else {
+        if (isset($area->language))
+          $node->language = $area->language;
+      }
     }
   }
 }
