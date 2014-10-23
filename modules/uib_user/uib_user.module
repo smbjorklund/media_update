@@ -815,7 +815,7 @@ function uib_user__teaser_markup($user = NULL) {
 }
 
 /**
- * Implements hook_tag_alter()
+ * Implements hook_query_TAG_alter()
  *
  * hook on tag term_access
  * taxonomy terms in fields of competence ordered by name
