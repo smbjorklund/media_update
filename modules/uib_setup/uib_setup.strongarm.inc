@@ -243,56 +243,9 @@ function uib_setup_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'googleanalytics_custom_var';
-  $strongarm->value = array(
-    'slots' => array(
-      1 => array(
-        'slot' => 1,
-        'name' => '',
-        'value' => '',
-        'scope' => '3',
-      ),
-      2 => array(
-        'slot' => 2,
-        'name' => '',
-        'value' => '',
-        'scope' => '3',
-      ),
-      3 => array(
-        'slot' => 3,
-        'name' => '',
-        'value' => '',
-        'scope' => '3',
-      ),
-      4 => array(
-        'slot' => 4,
-        'name' => '',
-        'value' => '',
-        'scope' => '3',
-      ),
-      5 => array(
-        'slot' => 5,
-        'name' => '',
-        'value' => '',
-        'scope' => '3',
-      ),
-    ),
-  );
-  $export['googleanalytics_custom_var'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_domain_mode';
   $strongarm->value = '0';
   $export['googleanalytics_domain_mode'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'googleanalytics_js_scope';
-  $strongarm->value = 'header';
-  $export['googleanalytics_js_scope'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
