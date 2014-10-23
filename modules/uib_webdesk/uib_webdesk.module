@@ -44,6 +44,10 @@ function uib_webdesk_admin_menu_output_alter(&$content) {
     // prepopulate byline field for level 2 and 3 users (admin menu structure is different)
     $content['menu']['node/add']['node/add/uib-article']['#options']['query'] = array('field_uib_byline' => $user->uid);
   }
+  if (isset($content['menu']['webdesk/files'])) {
+    $content['menu']['admin/content']['webdesk/files'] = $content['menu']['webdesk/files'];
+    unset($content['menu']['webdesk/files']);
+  }
 }
 
 /**

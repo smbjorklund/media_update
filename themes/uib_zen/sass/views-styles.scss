@@ -70,6 +70,38 @@ table.cols-6 {
   margin: auto;
 }
 
+// File management (with filters) view
+.view-webdesk-files {
+  table {
+    width: 100%;
+    border: 1px solid #ccc;
+    thead, tbody {
+      padding-left: 1em;
+    }
+    td {
+      padding: 0 0.25em 0.5em 0.25em;
+    }
+    th {
+      border-width: 2px 1px;
+      border-style: solid;
+      border-color: #ccc;
+      padding: 0 0.25em 0.5em 0.25em;
+      // using admin theme table header color: #e1e2dc
+      background-color: #e1e2dc;
+    }
+  }
+  .views-field-filename {
+    width: 50%;
+  }
+  .vbo-views-form {
+    background-color: #fff;
+  }
+  #edit-select {
+    margin-bottom: 1em;
+  }
+
+}
+
 /* Views in area */
 .view-area-kids {
   width: 48%;

@@ -2275,13 +2275,18 @@ function uib_webdesk_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'admin/content/file/filter';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access administration menu';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    176168899 => '176168899',
+    74573517 => '74573517',
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
@@ -2339,41 +2344,15 @@ function uib_webdesk_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Field: File: Name */
-  $handler->display->display_options['fields']['filename']['id'] = 'filename';
-  $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
-  $handler->display->display_options['fields']['filename']['field'] = 'filename';
-  $handler->display->display_options['fields']['filename']['label'] = '';
-  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['filename']['link_to_file'] = TRUE;
-  /* Field: File: Size */
-  $handler->display->display_options['fields']['filesize']['id'] = 'filesize';
-  $handler->display->display_options['fields']['filesize']['table'] = 'file_managed';
-  $handler->display->display_options['fields']['filesize']['field'] = 'filesize';
-  /* Field: File: Title */
-  $handler->display->display_options['fields']['field_file_image_title_text']['id'] = 'field_file_image_title_text';
-  $handler->display->display_options['fields']['field_file_image_title_text']['table'] = 'field_data_field_file_image_title_text';
-  $handler->display->display_options['fields']['field_file_image_title_text']['field'] = 'field_file_image_title_text';
-  /* Field: File: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'file_managed';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['machine_name'] = 0;
-  /* Field: File: Upload date */
-  $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
-  $handler->display->display_options['fields']['timestamp']['table'] = 'file_managed';
-  $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
-  $handler->display->display_options['fields']['timestamp']['date_format'] = 'long';
-  $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'long';
-  /* Field: File Usage: Use count */
-  $handler->display->display_options['fields']['count']['id'] = 'count';
-  $handler->display->display_options['fields']['count']['table'] = 'file_usage';
-  $handler->display->display_options['fields']['count']['field'] = 'count';
+  /* Relationship: File: User who uploaded */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'file_managed';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   /* Field: Bulk operations: File */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'file_managed';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '1';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
@@ -2441,6 +2420,67 @@ function uib_webdesk_views_default_views() {
       'label' => '',
     ),
   );
+  /* Field: File: File ID */
+  $handler->display->display_options['fields']['fid']['id'] = 'fid';
+  $handler->display->display_options['fields']['fid']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['fid']['field'] = 'fid';
+  $handler->display->display_options['fields']['fid']['label'] = '';
+  $handler->display->display_options['fields']['fid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['fid']['element_label_colon'] = FALSE;
+  /* Field: File: Name */
+  $handler->display->display_options['fields']['filename']['id'] = 'filename';
+  $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filename']['field'] = 'filename';
+  $handler->display->display_options['fields']['filename']['label'] = 'File name';
+  $handler->display->display_options['fields']['filename']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['filename']['alter']['text'] = '<a href="/file/[fid]">[filename]</a>';
+  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['filename']['element_label_colon'] = FALSE;
+  /* Field: File: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = 0;
+  /* Field: File: Size */
+  $handler->display->display_options['fields']['filesize']['id'] = 'filesize';
+  $handler->display->display_options['fields']['filesize']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filesize']['field'] = 'filesize';
+  $handler->display->display_options['fields']['filesize']['element_label_colon'] = FALSE;
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: User: First name */
+  $handler->display->display_options['fields']['field_uib_first_name']['id'] = 'field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['table'] = 'field_data_field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['field'] = 'field_uib_first_name';
+  $handler->display->display_options['fields']['field_uib_first_name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_uib_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_uib_first_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_first_name']['element_label_colon'] = FALSE;
+  /* Field: User: Last name */
+  $handler->display->display_options['fields']['field_uib_last_name']['id'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['table'] = 'field_data_field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['field'] = 'field_uib_last_name';
+  $handler->display->display_options['fields']['field_uib_last_name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_uib_last_name']['label'] = 'Author';
+  $handler->display->display_options['fields']['field_uib_last_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_uib_last_name']['alter']['text'] = '<a href="/user/[uid]">[field_uib_first_name] [field_uib_last_name]</a>';
+  $handler->display->display_options['fields']['field_uib_last_name']['element_label_colon'] = FALSE;
+  /* Field: File: Upload date */
+  $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['fields']['timestamp']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['timestamp']['date_format'] = 'medium';
+  $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'long';
   /* Filter criterion: File: Name */
   $handler->display->display_options['filters']['filename']['id'] = 'filename';
   $handler->display->display_options['filters']['filename']['table'] = 'file_managed';
@@ -2448,7 +2488,7 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['filename']['operator'] = 'contains';
   $handler->display->display_options['filters']['filename']['exposed'] = TRUE;
   $handler->display->display_options['filters']['filename']['expose']['operator_id'] = 'filename_op';
-  $handler->display->display_options['filters']['filename']['expose']['label'] = 'Name';
+  $handler->display->display_options['filters']['filename']['expose']['label'] = 'File name';
   $handler->display->display_options['filters']['filename']['expose']['operator'] = 'filename_op';
   $handler->display->display_options['filters']['filename']['expose']['identifier'] = 'filename';
   $handler->display->display_options['filters']['filename']['expose']['remember_roles'] = array(
@@ -2464,17 +2504,34 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'audio' => 'audio',
     'document' => 'document',
-    'image' => 'image',
-    'video' => 'video',
   );
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['required'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
+  );
+  /* Filter criterion: User: Current */
+  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['uid_current']['value'] = 'All';
+  $handler->display->display_options['filters']['uid_current']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['uid_current']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['uid_current']['expose']['label'] = 'The logged in user is author';
+  $handler->display->display_options['filters']['uid_current']['expose']['operator'] = 'uid_current_op';
+  $handler->display->display_options['filters']['uid_current']['expose']['identifier'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     64272948 => 0,
@@ -2484,8 +2541,15 @@ function uib_webdesk_views_default_views() {
   );
 
   /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  $handler = $view->new_display('page', 'Page', 'filtered_file_page');
   $handler->display->display_options['path'] = 'webdesk/files';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Filtered files';
+  $handler->display->display_options['menu']['description'] = 'File management, with some filtering ability';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'management';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['webdesk_files'] = array(
     t('Master'),
     t('admin/content/file/filter'),
@@ -2502,16 +2566,17 @@ function uib_webdesk_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Size'),
-    t('Title'),
-    t('Type'),
-    t('Upload date'),
-    t('Use count'),
-    t('.'),
-    t(','),
+    t('User who uploaded'),
     t('File'),
     t('- Choose an operation -'),
-    t('Name'),
+    t('File name'),
+    t('<a href="/file/[fid]">[filename]</a>'),
+    t('Type'),
+    t('Size'),
+    t('Author'),
+    t('<a href="/user/[uid]">[field_uib_first_name] [field_uib_last_name]</a>'),
+    t('Upload date'),
+    t('The logged in user is author'),
     t('Page'),
   );
   $export['webdesk_files'] = $view;
