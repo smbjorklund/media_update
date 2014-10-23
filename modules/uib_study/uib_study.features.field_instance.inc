@@ -299,7 +299,7 @@ function uib_study_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
         ),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -656,10 +656,14 @@ function uib_study_field_default_field_instances() {
         'weight' => 7,
       ),
       'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'i18n_field',
+        'settings' => array(
+          'field_multiple_limit' => -1,
+          'field_multiple_limit_offset' => 0,
+        ),
+        'type' => 'i18n_list_default',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',

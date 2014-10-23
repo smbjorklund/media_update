@@ -362,6 +362,7 @@ h1 {
 
   a {
     font-weight: bold;
+    display: block;
   }
 
   .field-name-field-uib-media,
@@ -388,6 +389,16 @@ h1 {
 
   a, .field-name-field-uib-lead {
     padding-right: 1em;
+
+  }
+
+  .field-name-field-uib-study-type,
+  .field-name-field-uib-study-code {
+    float: left;
+  }
+
+  .field-name-field-uib-study-type .field-items .field-item:after {
+    content: ':\00A0';
   }
 }
 
