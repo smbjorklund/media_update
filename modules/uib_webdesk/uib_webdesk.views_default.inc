@@ -1385,22 +1385,31 @@ function uib_webdesk_views_default_views() {
         'bef_select_all_none' => FALSE,
         'bef_collapsible' => 0,
         'is_secondary' => 0,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
         ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
       ),
     ),
     'title' => array(
+      'bef_format' => 'default',
       'more_options' => array(
         'is_secondary' => 0,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
         ),
       ),
     ),
@@ -1410,36 +1419,47 @@ function uib_webdesk_views_default_views() {
         'bef_select_all_none' => FALSE,
         'bef_collapsible' => 0,
         'is_secondary' => 0,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
         ),
       ),
     ),
     'title_1' => array(
+      'bef_format' => 'default',
       'more_options' => array(
         'is_secondary' => 0,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
         ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
       ),
     ),
-    'field_uib_article_type_value' => array(
+    'combine' => array(
       'bef_format' => 'default',
       'more_options' => array(
-        'bef_select_all_none' => FALSE,
-        'bef_collapsible' => 0,
         'is_secondary' => 0,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
         ),
       ),
     ),
@@ -1449,15 +1469,21 @@ function uib_webdesk_views_default_views() {
         'bef_select_all_none' => FALSE,
         'bef_collapsible' => 0,
         'is_secondary' => 0,
+        'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
           ),
         ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
       ),
     ),
   );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'plain_text';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
@@ -1706,30 +1732,6 @@ function uib_webdesk_views_default_views() {
     2 => '2',
     1 => 0,
   );
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'uib_article' => 'uib_article',
-    'uib_external_content' => 'uib_external_content',
-    'uib_testimonial' => 'uib_testimonial',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
-  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
-  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
-  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    64272948 => 0,
-    170699807 => 0,
-    74573517 => 0,
-    176168899 => 0,
-  );
-  $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
   /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
@@ -1783,20 +1785,83 @@ function uib_webdesk_views_default_views() {
     74573517 => 0,
     176168899 => 0,
   );
-  /* Filter criterion: Content: Type (field_uib_article_type) */
-  $handler->display->display_options['filters']['field_uib_article_type_value']['id'] = 'field_uib_article_type_value';
-  $handler->display->display_options['filters']['field_uib_article_type_value']['table'] = 'field_data_field_uib_article_type';
-  $handler->display->display_options['filters']['field_uib_article_type_value']['field'] = 'field_uib_article_type_value';
-  $handler->display->display_options['filters']['field_uib_article_type_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_uib_article_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['operator_id'] = 'field_uib_article_type_value_op';
-  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['label'] = 'Article type';
-  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['operator'] = 'field_uib_article_type_value_op';
-  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['identifier'] = 'field_uib_article_type_value';
-  $handler->display->display_options['filters']['field_uib_article_type_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Global: Combine fields filter */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Combine fields filter';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['combine']['group_info']['label'] = 'Type';
+  $handler->display->display_options['filters']['combine']['group_info']['identifier'] = 'combine__content_type__uib_article_type__value';
+  $handler->display->display_options['filters']['combine']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'External content',
+      'operator' => 'starts',
+      'value' => 'uib_external_content',
+    ),
+    2 => array(
+      'title' => 'Testimonial',
+      'operator' => 'starts',
+      'value' => 'uib_testimonial',
+    ),
+    3 => array(
+      'title' => 'News',
+      'operator' => 'ends',
+      'value' => 'news',
+    ),
+    4 => array(
+      'title' => 'Info Page',
+      'operator' => 'ends',
+      'value' => 'infopage',
+    ),
+    5 => array(
+      'title' => 'PhD press release',
+      'operator' => 'ends',
+      'value' => 'phd_press_release',
+    ),
+    6 => array(
+      'title' => 'EVU offer',
+      'operator' => 'ends',
+      'value' => 'evu_study_offer',
+    ),
+    7 => array(
+      'title' => 'Event',
+      'operator' => 'ends',
+      'value' => 'event',
+    ),
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'type' => 'type',
+    'field_uib_article_type' => 'field_uib_article_type',
+  );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'uib_article' => 'uib_article',
+    'uib_external_content' => 'uib_external_content',
+    'uib_testimonial' => 'uib_testimonial',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
+    64272948 => 0,
+    170699807 => 0,
+    74573517 => 0,
+    176168899 => 0,
   );
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
   /* Filter criterion: Content: Event type (field_uib_event_type) */
   $handler->display->display_options['filters']['field_uib_event_type_value']['id'] = 'field_uib_event_type_value';
   $handler->display->display_options['filters']['field_uib_event_type_value']['table'] = 'field_data_field_uib_event_type';
@@ -1867,6 +1932,7 @@ function uib_webdesk_views_default_views() {
     t('Desc'),
     t('Content Type'),
     t('Author'),
+    t('Combine fields filter'),
   );
   $export['uib_webdesk'] = $view;
 
