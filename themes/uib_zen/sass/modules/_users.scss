@@ -200,19 +200,6 @@ $zen-column-count: 5;
     font-weight: bold;
     text-transform: uppercase;
   }
-  #user_user_full_group_user_second {
-    .field-name-field-uib-user-competence {
-      @include clearfix;
-      .field-items .field-item a {
-        background: #FAEEED;
-        padding: 5px 10px;
-        float: left;
-        margin-right: 5px;
-        border-radius: 5px;
-        margin-bottom: 7px;
-      }
-    }
-  }
   .uib-user-edit-button {
     padding: 10px;
   }
@@ -262,6 +249,22 @@ $zen-column-count: 5;
     }
   }
 }
+.field-name-field-uib-user-competence {
+  @include clearfix;
+  .field-items,
+  .field-item {
+    display: inline;
+  }
+  a {
+    display: inline-block;
+    background: #FAEEED;
+    padding: 5px 10px;
+    @include border-radius(5px, 5px);
+    &:nth-child(n+2) {
+      padding-right: 0.5em;
+    }
+  }
+}
 .field-name-field-uib-user-url .link-title {
   font-weight: bold;
 }
@@ -297,18 +300,17 @@ $zen-column-count: 5;
 }
 
 @media all and (min-width: 600px) {
-
-  #user_user_full_group_user_ci_1 {
-    box-sizing: border-box;
-    width: 50%;
-    padding: zen-half-gutter() zen-half-gutter() 0 0;
-    float: left;
-  }
+  #user_user_full_group_user_ci_1,
   #user_user_full_group_user_ci_2 {
     box-sizing: border-box;
     width: 50%;
-    padding: zen-half-gutter() 0 0 0;
     float: left;
+  }
+  #user_user_full_group_user_ci_1 {
+    padding: zen-half-gutter() zen-half-gutter() 0 0;
+  }
+  #user_user_full_group_user_ci_2 {
+    padding: zen-half-gutter() 0 0 0;
   }
 }
 
@@ -333,53 +335,56 @@ $zen-column-count: 5;
 /////////////
 // Styling for view mode user teaser
 /////////////
-$zen-column-count: 4;
-.group-related-persons {
-  margin-bottom: 30px;
-  background: $light-grey;
-  border-bottom: 1px solid #dedfdd;
-  border-top: 1px solid #dedfdd;
-  @include zen-clear(left);
-}
-.field-name-field-related-persons-label {
-  font-size: 2em;
-  line-height: 2em*4/3;
-  padding: 0 10px;
-}
-.field-name-field-uib-related-persons {
-  &.field-label-above .field-label {
-    border-bottom: none 0;
-    border-top: none 0;
-    font-family: $verdana;
-    font-size: 1.5em;
-    padding: 0.5em 10px;
-    text-transform: none;
-  }
-  @include clearfix();
-  @media all and (min-width: 720px) {
-    .field-item:nth-child(odd){
-      @include zen-grid-item(2,1);
-      @include zen-clear(left);
-    }
-    .field-item:nth-child(even) {
-      @include zen-grid-item(2,3);
-    }
-  }
-  .profile {
-    @include media_content_wrapper();
-    .uib-user-teaser {
-      padding-left: 90px;
-    }
-    h3 {
-      border-bottom: 0;
+$zen-column-count: 10;
+.page-node {
+  .field-name-field-uib-related-persons,
+  .view-ansatte {
+    .profile {
+      border-bottom: solid 1px #ccc;
+      &:after {
+        @extend %clearfix;
+      }
+      &> * {
+        margin-bottom: 10px;
+      }
     }
     .uib-user-phone {
-      margin: 0;
+      margin: 0.5em 0;
     }
   }
-  .user-picture {
-    @include media_element(80px, left);
-    margin-right: 1em;
+  @media all and (min-width: 320px) and (max-width: 599px) {
+    .user-picture {
+      @include zen-grid-item(3,1);
+    }
+    .uib-user-teaser {
+      @include zen-grid-item(7,4);
+    }
+    .field-name-field-uib-user-competence {
+      @include zen-clear();
+      @include zen-grid-item(10,1);
+      a {
+        margin: 0 10px 10px 0;
+      }
+    }
+  }
+  @media all and (min-width: 600px) {
+    .user-picture {
+      img {
+        max-width: 80px;
+      }
+    }
+    .uib-user-teaser {
+      @include zen-grid-item(5,1);
+      padding-left: 90px;
+    }
+    .field-name-field-uib-user-competence {
+      @include zen-grid-item(5,6);
+      padding-right: 0;
+      text-align: right;
+      a {
+        margin: 0 0 10px 10px;
+      }
+    }
   }
 }
 

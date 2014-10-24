@@ -1,104 +1,58 @@
 /////////////
-// Styles for the ansatte view
+// Styles for staff listings in view and related persons section
 /////////////
+.group-related-persons {
+  margin-bottom: 30px;
+  border-top: 1px solid #dedfdd;
+  @include zen-clear(left);
+}
+.field-name-field-related-persons-label {
+  font-size: 2em;
+  line-height: 2em*4/3;
+}
 .view-ansatte {
-  .info {
-    @include media_content_wrapper();
+  .view-filters {
+    background: $light-grey;
   }
-  h2 {
-    font-size: 1.1em;
-  }
-  p {
-    max-width: 100%;
-  }
-  h2, p, .item-list ul {
-    margin: 0 0 0 0;
-  }
-  .view-content h3 {
-    color: $link-blue;
-    font-size: 5em;
-    line-height: 0.7em;
-    margin: 0.15em 0;
-  }
-  .media {
-    &>a,
-    &>span {
-      @include media(80px, left);
-      margin-right: 10px;
+  .views-exposed-widgets {
+    padding-bottom: 1em;
+    [type="text"] {
+      box-sizing: border-box;
+      padding: 0.5em;
+      width: 100%;
     }
   }
-  .user-competence {
-    @media all and (max-width: 719px) {
-      @include zen-clear();
-    }
-    li {
-      display: inline-block;
-      background: #FAEEED;
-      padding: 5px 10px;
-      margin: 10px 10px 0 0;
-      @include border-radius(5px, 5px);
-      &:nth-child(n+2) {
-        padding-right: 0.5em;
-      }
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-    @media all and (min-width: 720px) {
-      ul {
-        text-align: right;
-      }
-      li {
-        margin: 0 -4px 10px 10px;
-      }
-    }
-  }
-  .view-content h3, 
-  .media,
-  .user-competence {
+  $zen-column-count:10;
+  .views-exposed-widgets .views-exposed-widget {
     @include zen-grid-item-base;
   }
-}
-.uib-ansatte-section {
-  @include zen-clear();
-  margin-bottom: 1em;
-  &>div {
-    border-bottom: solid 1px #ccc;
-    margin: 0.5em 0;
-    padding: 1em 0;
-    @media all and (min-width: 720px) and (max-width: 959px) {
+  @media all and (min-width: 320px) and (max-width: 599px) {
+    .views-exposed-widget.views-widget-filter-field_uib_first_name_value {
+      @include zen-grid-item(5,1);
+    }
+    .views-exposed-widget.views-widget-filter-field_uib_last_name_value {
+      @include zen-grid-item(5,6);
+    }
+    .views-exposed-widget.views-widget-filter-field_uib_user_competence_tid {
       @include zen-clear();
+      @include zen-grid-item(8,1);
     }
-    &:after {
-      @extend %clearfix;
-    }
-  }
-}
-
-$zen-column-count: 4;
-@media all and (min-width: 720px) and (max-width: 959px) {
-  .view-ansatte {
-    .media {
-      @include zen-grid-item(2,1);
-    }
-    .user-competence {
-      @include zen-grid-item(2,3);
+    .views-exposed-widget.views-submit-button {
+      @include zen-grid-item(2,9);
     }
   }
-}
-
-$zen-column-count: 5;
-@media all and (min-width: 960px) {
-  .view-ansatte {
-    h3 {
-      position: absolute;
-    }
-    .media {
+  @media all and (min-width: 600px) {
+    .views-exposed-widget.views-widget-filter-field_uib_first_name_value {
       @include zen-grid-item(3,1);
-      padding-left: 9em;
     }
-    .user-competence {
-      @include zen-grid-item(2,4);
+    .views-exposed-widget.views-widget-filter-field_uib_last_name_value {
+      @include zen-grid-item(3,4);
+    }
+    .views-exposed-widget.views-widget-filter-field_uib_user_competence_tid {
+      @include zen-grid-item(3,7);
+    }
+    .views-exposed-widget.views-submit-button {
+      @include zen-grid-item(1,10);
     }
   }
 }
