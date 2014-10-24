@@ -3672,7 +3672,7 @@ function uib_area_field_default_field_instances() {
           'field_multiple_limit_offset' => 0,
           'grouped' => 0,
           'hoursformat' => 0,
-          'separator_day_hours' => ': ',
+          'separator_day_hours' => '.',
           'separator_days' => '<br />',
           'separator_grouped_days' => ' - ',
           'separator_hours_hours' => '-',
