@@ -1,4 +1,4 @@
-diff --git a/plugins/context_condition_menu.inc b/sites/all/modules/context/plugins/context_condition_menu.inc
+diff --git a/plugins/context_condition_menu.inc b/plugins/context_condition_menu.inc
 index 0df8811..32288a5 100644
 --- a/plugins/context_condition_menu.inc
 +++ b/plugins/context_condition_menu.inc
@@ -11,16 +11,16 @@ index 0df8811..32288a5 100644
        $menus = menu_parent_options(menu_get_menus(), array('mlid' => 0));
        $root_menus = array();
        foreach ($menus as $key => $name) {
-diff --git a/plugins/context_reaction_menu.inc b/sites/all/modules/context/plugins/context_reaction_menu.inc
-index e51143b..2998e02 100644
+diff --git a/plugins/context_reaction_menu.inc b/plugins/context_reaction_menu.inc
+index 1118ec3..fe7e627 100644
 --- a/plugins/context_reaction_menu.inc
 +++ b/plugins/context_reaction_menu.inc
-@@ -8,7 +8,7 @@ class context_reaction_menu extends context_reaction {
-    * Provide a form element that allow the admin to chose a menu item.
+@@ -9,7 +9,7 @@ class context_reaction_menu extends context_reaction {
     */
    function options_form($context) {
+     $options = array("-- " . t('None') . " --");
 -    if (module_exists('menu')) {
 +    if (0 && module_exists('menu')) {
        $menus = menu_parent_options(menu_get_menus(), array('mlid' => 0));
-       $root_menus = array();
-       foreach ($menus as $key => $name) {
+       $menu_names = array();
+       foreach ($menus as $id => $title) {
