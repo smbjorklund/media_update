@@ -1110,6 +1110,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'label' => 'RSS feed',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1124,6 +1125,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -1782,6 +1784,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
     'label' => 'Home page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1796,6 +1799,7 @@ The domain \'local\' is for local users.  The domain \'uib\' is for used for use
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
