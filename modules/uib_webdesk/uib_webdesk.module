@@ -53,10 +53,10 @@ function uib_webdesk_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == "views_exposed_form") {
     $form['created']['#size'] = 20;
     $form['changed']['#size'] = 20;
-    //In combine__content_type__uib_article_type__value, value 5 corresponds to event
+    //In combine__content_type__uib_article_type__value, value 1 corresponds to event
     $form['field_uib_event_type_value']['#states'] = array(
       'enabled' => array(
-        ':input[name="combine__content_type__uib_article_type__value"]' => array('value' => '5'),
+        ':input[name="combine__content_type__uib_article_type__value"]' => array('value' => '1'),
        ),
     );
   }

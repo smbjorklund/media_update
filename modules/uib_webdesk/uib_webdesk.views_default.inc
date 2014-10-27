@@ -1800,9 +1800,9 @@ function uib_webdesk_views_default_views() {
   $handler->display->display_options['filters']['combine']['group_info']['identifier'] = 'combine__content_type__uib_article_type__value';
   $handler->display->display_options['filters']['combine']['group_info']['group_items'] = array(
     1 => array(
-      'title' => 'External content',
-      'operator' => 'starts',
-      'value' => 'uib_external_content',
+      'title' => 'Event',
+      'operator' => 'ends',
+      'value' => 'event',
     ),
     2 => array(
       'title' => 'Testimonial',
@@ -1830,9 +1830,9 @@ function uib_webdesk_views_default_views() {
       'value' => 'evu_study_offer',
     ),
     7 => array(
-      'title' => 'Event',
-      'operator' => 'ends',
-      'value' => 'event',
+      'title' => 'External content',
+      'operator' => 'starts',
+      'value' => 'uib_external_content',
     ),
   );
   $handler->display->display_options['filters']['combine']['fields'] = array(
