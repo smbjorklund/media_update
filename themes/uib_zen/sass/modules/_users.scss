@@ -259,6 +259,7 @@ $zen-column-count: 5;
     display: inline-block;
     background: #FAEEED;
     padding: 5px 10px;
+    margin: 0 10px 10px 0;
     @include border-radius(5px, 5px);
     &:nth-child(n+2) {
       padding-right: 0.5em;
@@ -336,7 +337,8 @@ $zen-column-count: 5;
 // Styling for view mode user teaser
 /////////////
 $zen-column-count: 10;
-.page-node {
+.page-node,
+.page-persons {
   .field-name-field-uib-related-persons,
   .view-ansatte {
     .profile {
@@ -362,9 +364,6 @@ $zen-column-count: 10;
     .field-name-field-uib-user-competence {
       @include zen-clear();
       @include zen-grid-item(10,1);
-      a {
-        margin: 0 10px 10px 0;
-      }
     }
   }
   @media all and (min-width: 600px) {

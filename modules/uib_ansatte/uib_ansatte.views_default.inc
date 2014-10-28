@@ -180,7 +180,6 @@ function uib_ansatte_views_default_views() {
   /* Display: List of all persons */
   $handler = $view->new_display('page', 'List of all persons', 'page_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
