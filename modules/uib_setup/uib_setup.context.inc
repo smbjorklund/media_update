@@ -74,17 +74,11 @@ function uib_setup_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'text_resize-0' => array(
-          'module' => 'text_resize',
-          'delta' => '0',
-          'region' => 'header',
-          'weight' => '-8',
-        ),
         'locale-language' => array(
           'module' => 'locale',
           'delta' => 'language',
           'region' => 'header',
-          'weight' => '-7',
+          'weight' => '-9',
         ),
         'uib_area-area_banner' => array(
           'module' => 'uib_area',

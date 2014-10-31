@@ -114,17 +114,3 @@ function uib_setup_update_7008() {
 function uib_setup_update_7009() {
   module_enable(array('uib_filter'));
 }
-
-/**
- * Enable new module: text_resize
- */
-function uib_setup_update_7010() {
-  module_enable(array('text_resize'));
-  db_update('block')
-    ->fields(array(
-      'title' => '<none>',
-    ))
-    ->condition('module', 'text_resize')
-    ->condition('delta', 0)
-    ->execute();
-}
